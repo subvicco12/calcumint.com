@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "engineId": "technology.cloud-data-transfer-cost",
+  "version": 1,
+  "rows": [
+    {
+      "raw": "500,0.09",
+      "snapshot": {
+        "calculatorSlug": "cloud-data-transfer-cost-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "transferGb": 500,
+          "pricePerGb": 0.09
+        },
+        "output": {
+          "value": 45,
+          "steps": [
+            "Cloud Data Transfer Cost = 45"
+          ]
+        }
+      }
+    },
+    {
+      "raw": "0,0.09",
+      "snapshot": {
+        "calculatorSlug": "cloud-data-transfer-cost-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "transferGb": 0,
+          "pricePerGb": 0.09
+        },
+        "output": {
+          "value": 0,
+          "steps": [
+            "Cloud Data Transfer Cost = 0"
+          ]
+        }
+      }
+    }
+  ]
+}

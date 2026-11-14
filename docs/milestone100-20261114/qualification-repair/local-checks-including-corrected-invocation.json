@@ -1,0 +1,36 @@
+{
+  "head": "12f1a02c88e57f23cdceaff1c5929bffea65473f",
+  "results": [
+    {
+      "name": "lint",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "exitCode": 0,
+      "log": "/workspace/artifacts/milestone100-20261114/new-ci-repair/final-checks/lint.log"
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "log": "/workspace/artifacts/milestone100-20261114/new-ci-repair/final-checks/typecheck.log"
+    },
+    {
+      "name": "certification",
+      "command": [
+        "node",
+        "--test",
+        "tests/launch-certification.test.mjs",
+        "tests/calculator-certification.test.mjs"
+      ],
+      "exitCode": 1,
+      "log": "/workspace/artifacts/milestone100-20261114/new-ci-repair/final-checks/certification.log"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+CalcuMint | Calculation report
+
+
+Base64 Size Calculator
+Calculator: base64-size-calculator | Engine version: 1
+Raw engine values: full numeric precision; no display rounding or sampled rows.
+Units appear only where supplied by the calculation or bound display metadata.
+Embedded Unicode glyphs are readable.
+Unsupported characters and controls use explicit Unicode escapes.
+Tagged PDF; PDF/UA conformance: UNVERIFIED.
+Text follows document order; charts include complete numeric text alternatives.
+
+
+INPUTS
+Input bytes
+input["inputBytes"] = 1000
+
+
+RESULTS
+Base64 encoded size [bytes]
+output["value"] = 1336
+output["steps"][0] = "Base64 Size = 1336"
+
+
+METHODOLOGY
+Deterministic calculation using the reviewed Technology & Computing engine.\u000aTechnic
+al calculation revision: technology.base64-size@1\u000a\u000aBase64 encoded payload leng
+th without line wrapping or data-URL/MIME headers.\u000aEncoded bytes = 4 × ceil(input b
+ytes ÷ 3)
+
+
+DECLARED FORMULAS
+base64-size-calculator: Encoded bytes = 4 × ceil(input bytes ÷ 3)
+Base64 encoded payload length without line wrapping or data-URL/MIME headers.
+
+
+SOURCES
+RFC 4648 — Base-N Encodings
+https://www.rfc-editor.org/rfc/rfc4648
+Base64 represents 24 input bits (three octets) as four encoded characters, with padding
+for incomplete final groups.
+
+
+
+
+Engine v1 | Page 1 of 1
+

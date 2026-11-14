@@ -1,0 +1,103 @@
+{
+  "kind": "SCOPED_AUTHENTIC_READ_ONLY_OPERATIONAL_FRESHNESS_NOT_ATTESTATION",
+  "projectId": "zpwpstsvztyshcnwdfye",
+  "linkId": "link_6acdf19ce43881919f5b6738cc479124",
+  "observation": {
+    "observed_at": "2026-11-13 12:29:11.543289+00",
+    "read_only": "on",
+    "seven_relation_projection_sha256": "56b55a34c29d2c0dc60863da60df510d5a70d962edbc6582591ba025a756c3f1",
+    "relation_count": 7,
+    "held_rpc_metadata": [
+      {
+        "acl": null,
+        "owner": null,
+        "exists": false,
+        "signature": "assign_calculator_reviewer(uuid,uuid)",
+        "anon_execute": null,
+        "service_execute": null,
+        "security_definer": null,
+        "authenticated_execute": null
+      },
+      {
+        "acl": null,
+        "owner": null,
+        "exists": false,
+        "signature": "create_catalog_calculator_with_audit(text,text,text,text,text,jsonb)",
+        "anon_execute": null,
+        "service_execute": null,
+        "security_definer": null,
+        "authenticated_execute": null
+      },
+      {
+        "acl": null,
+        "owner": null,
+        "exists": false,
+        "signature": "prepare_catalog_inventory_drafts(jsonb)",
+        "anon_execute": null,
+        "service_execute": null,
+        "security_definer": null,
+        "authenticated_execute": null
+      },
+      {
+        "acl": null,
+        "owner": null,
+        "exists": false,
+        "signature": "publish_calculator_batch_with_audit_v1(jsonb)",
+        "anon_execute": null,
+        "service_execute": null,
+        "security_definer": null,
+        "authenticated_execute": null
+      },
+      {
+        "acl": null,
+        "owner": null,
+        "exists": false,
+        "signature": "record_calculator_qa_decision(uuid,text,text,text)",
+        "anon_execute": null,
+        "service_execute": null,
+        "security_definer": null,
+        "authenticated_execute": null
+      },
+      {
+        "acl": null,
+        "owner": null,
+        "exists": false,
+        "signature": "transition_calculator_with_audit(uuid,text,text)",
+        "anon_execute": null,
+        "service_execute": null,
+        "security_definer": null,
+        "authenticated_execute": null
+      }
+    ]
+  },
+  "retained": {
+    "coreObservedAt": "2026-11-10 09:25:42.876834+00",
+    "coreSHA256": "56b55a34c29d2c0dc60863da60df510d5a70d962edbc6582591ba025a756c3f1",
+    "coreQuerySource": "docs/adoption1528/production-readonly.sql",
+    "rpcObservedAt": "2026-11-10 14:25:21.74617 UTC",
+    "rpcSource": "docs/publication-rpc-six-20261110/hosted-tool-receipt.json"
+  },
+  "comparison": {
+    "sameSevenRelationProjection": true,
+    "sameSixExactRPCAbsences": true,
+    "securityAndGrantsForAbsentRPCs": "NOT_APPLICABLE_ABSENT_NOT_ASSUMED_DENIED"
+  },
+  "scope": {
+    "oneReadOnlyRepeatableReadTransaction": true,
+    "applicationRowsQueried": false,
+    "secretValuesQueried": false,
+    "serverFilesQueried": false,
+    "functionBodiesReturned": false,
+    "rawSQLStoredInReceipt": false,
+    "productionWrites": false,
+    "writerFreezeAttested": false,
+    "operatorAuthorityAttested": false,
+    "backupOrCredentialCustodyAttested": false,
+    "reviewerAppointmentInvestigated": false,
+    "hostinger": "NOT_ATTEMPTED_OPTIONAL_NO_EXACT_TARGET_READY_IN_THIS_CHECK"
+  },
+  "releaseHold": true,
+  "activationAuthorized": false,
+  "certificationGranted": false,
+  "publicationEligibilityIncrement": 0
+}

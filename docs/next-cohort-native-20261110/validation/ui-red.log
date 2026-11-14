@@ -1,0 +1,313 @@
+
+ RUN  v3.2.7 /tmp/calcumint-next-cohort-native-20261110
+
+ ❯ src/components/technology-next-native.test.tsx (3 tests | 3 failed) 183ms
+   × offers exactly thirteen explicit tuples, preserving original five and excluding unselected identities 53ms
+     → expected [ 370, 371, 372, 373, 386 ] to deeply equal [ 370, 371, 372, 373, 386, 374, …(7) ]
+   × issues website bandwidth grants at2, never the old version1 default 29ms
+     → Cannot read properties of undefined (reading 'catalogId')
+   × renders storage enums as offered choices and retains exact source/target unit IDs in the request 100ms
+     → Unable to find an accessible element with the role "combobox" and name "From unit"
+
+Here are the accessible roles:
+
+  paragraph:
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p />[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Storage Conversion Calculator":
+  [36m<h1 />[39m
+
+  --------------------------------------------------
+  form:
+
+  Name "Embedded Technology calculation":
+  [36m<form[39m
+    [33maria-label[39m=[32m"Embedded Technology calculation"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Value":
+  [36m<input[39m
+    [33minputmode[39m=[32m"decimal"[39m
+    [33mmaxlength[39m=[32m"4096"[39m
+    [33mrequired[39m=[32m""[39m
+    [33mvalue[39m=[32m"1"[39m
+  [36m/>[39m
+
+  Name "From unit":
+  [36m<input[39m
+    [33minputmode[39m=[32m"decimal"[39m
+    [33mmaxlength[39m=[32m"4096"[39m
+    [33mrequired[39m=[32m""[39m
+    [33mvalue[39m=[32m"GiB"[39m
+  [36m/>[39m
+
+  Name "To unit":
+  [36m<input[39m
+    [33minputmode[39m=[32m"decimal"[39m
+    [33mmaxlength[39m=[32m"4096"[39m
+    [33mrequired[39m=[32m""[39m
+    [33mvalue[39m=[32m"MiB"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Calculate":
+  [36m<button[39m
+    [33mtype[39m=[32m"submit"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mclass[39m=[32m"calculator-ui"[39m
+      [33mstyle[39m=[32m"padding: 1rem; overflow-wrap: anywhere;"[39m
+    [36m>[39m
+      [36m<p>[39m
+        [0mFixture[0m
+      [36m</p>[39m
+      [36m<h1>[39m
+        [0mStorage Conversion Calculator[0m
+      [36m</h1>[39m
+      [36m<p>[39m
+        [0mCalcuMint · [0m
+        [0mtechnology.storage-conversion[0m
+        [0m · technical revision [0m
+        [0m1[0m
+      [36m</p>[39m
+      [36m<form[39m
+        [33maria-label[39m=[32m"Embedded Technology calculation"[39m
+      [36m>[39m
+        [36m<label>[39m
+          [0mValue[0m
+          [36m<input[39m
+            [33minputmode[39m=[32m"decimal"[39m
+            [33mmaxlength[39m=[32m"4096"[39m
+            [33mrequired[39m=[32m""[39m
+            [33mvalue[39m=[32m"1"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<label>[39m
+          [0mFrom unit[0m
+          [36m<input[39m
+            [33minputmode[39m=[32m"decimal"[39m
+            [33mmaxlength[39m=[32m"4096"[39m
+            [33mrequired[39m=[32m""[39m
+            [33mvalue[39m=[32m"GiB"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<label>[39m
+          [0mTo unit[0m
+          [36m<input[39m
+            [33minputmode[39m=[32m"decimal"[39m
+            [33mmaxlength[39m=[32m"4096"[39m
+            [33mrequired[39m=[32m""[39m
+            [33mvalue[39m=[32m"MiB"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<button[39m
+          [33mtype[39m=[32m"submit"[39m
+        [36m>[39m
+          [0mCalculate[0m
+        [36m</button>[39m
+      [36m</form>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/technology-next-native.test.tsx > offers exactly thirteen explicit tuples, preserving original five and excluding unselected identities
+AssertionError: expected [ 370, 371, 372, 373, 386 ] to deeply equal [ 370, 371, 372, 373, 386, 374, …(7) ]
+
+- Expected
++ Received
+
+@@ -2,14 +2,6 @@
+    370,
+    371,
+    372,
+    373,
+    386,
+-   374,
+-   377,
+-   378,
+-   379,
+-   382,
+-   383,
+-   384,
+-   385,
+  ]
+
+ ❯ src/components/technology-next-native.test.tsx:4:299
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  src/components/technology-next-native.test.tsx > issues website bandwidth grants at2, never the old version1 default
+TypeError: Cannot read properties of undefined (reading 'catalogId')
+ ❯ TechnologyFiveDeliverySession src/components/technology-five-delivery.tsx:8:36
+
+ ❯ Object.react_stack_bottom_frame ../../workspace/work/batch13-deps/node_modules/react-dom/cjs/react-dom-client.development.js:28571:20
+ ❯ renderWithHooks ../../workspace/work/batch13-deps/node_modules/react-dom/cjs/react-dom-client.development.js:8030:22
+ ❯ updateFunctionComponent ../../workspace/work/batch13-deps/node_modules/react-dom/cjs/react-dom-client.development.js:10569:19
+ ❯ beginWork ../../workspace/work/batch13-deps/node_modules/react-dom/cjs/react-dom-client.development.js:12205:18
+ ❯ runWithFiberInDEV ../../workspace/work/batch13-deps/node_modules/react-dom/cjs/react-dom-client.development.js:1048:13
+ ❯ performUnitOfWork ../../workspace/work/batch13-deps/node_modules/react-dom/cjs/react-dom-client.development.js:19176:22
+ ❯ workLoopSync ../../workspace/work/batch13-deps/node_modules/react-dom/cjs/react-dom-client.development.js:19004:41
+ ❯ renderRootSync ../../workspace/work/batch13-deps/node_modules/react-dom/cjs/react-dom-client.development.js:18985:11
+ ❯ performWorkOnRoot ../../workspace/work/batch13-deps/node_modules/react-dom/cjs/react-dom-client.development.js:18094:35
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  src/components/technology-next-native.test.tsx > renders storage enums as offered choices and retains exact source/target unit IDs in the request
+TestingLibraryElementError: Unable to find an accessible element with the role "combobox" and name "From unit"
+
+Here are the accessible roles:
+
+  paragraph:
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p />[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Storage Conversion Calculator":
+  [36m<h1 />[39m
+
+  --------------------------------------------------
+  form:
+
+  Name "Embedded Technology calculation":
+  [36m<form[39m
+    [33maria-label[39m=[32m"Embedded Technology calculation"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Value":
+  [36m<input[39m
+    [33minputmode[39m=[32m"decimal"[39m
+    [33mmaxlength[39m=[32m"4096"[39m
+    [33mrequired[39m=[32m""[39m
+    [33mvalue[39m=[32m"1"[39m
+  [36m/>[39m
+
+  Name "From unit":
+  [36m<input[39m
+    [33minputmode[39m=[32m"decimal"[39m
+    [33mmaxlength[39m=[32m"4096"[39m
+    [33mrequired[39m=[32m""[39m
+    [33mvalue[39m=[32m"GiB"[39m
+  [36m/>[39m
+
+  Name "To unit":
+  [36m<input[39m
+    [33minputmode[39m=[32m"decimal"[39m
+    [33mmaxlength[39m=[32m"4096"[39m
+    [33mrequired[39m=[32m""[39m
+    [33mvalue[39m=[32m"MiB"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Calculate":
+  [36m<button[39m
+    [33mtype[39m=[32m"submit"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33mclass[39m=[32m"calculator-ui"[39m
+      [33mstyle[39m=[32m"padding: 1rem; overflow-wrap: anywhere;"[39m
+    [36m>[39m
+      [36m<p>[39m
+        [0mFixture[0m
+      [36m</p>[39m
+      [36m<h1>[39m
+        [0mStorage Conversion Calculator[0m
+      [36m</h1>[39m
+      [36m<p>[39m
+        [0mCalcuMint · [0m
+        [0mtechnology.storage-conversion[0m
+        [0m · technical revision [0m
+        [0m1[0m
+      [36m</p>[39m
+      [36m<form[39m
+        [33maria-label[39m=[32m"Embedded Technology calculation"[39m
+      [36m>[39m
+        [36m<label>[39m
+          [0mValue[0m
+          [36m<input[39m
+            [33minputmode[39m=[32m"decimal"[39m
+            [33mmaxlength[39m=[32m"4096"[39m
+            [33mrequired[39m=[32m""[39m
+            [33mvalue[39m=[32m"1"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<label>[39m
+          [0mFrom unit[0m
+          [36m<input[39m
+            [33minputmode[39m=[32m"decimal"[39m
+            [33mmaxlength[39m=[32m"4096"[39m
+            [33mrequired[39m=[32m""[39m
+            [33mvalue[39m=[32m"GiB"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<label>[39m
+          [0mTo unit[0m
+          [36m<input[39m
+            [33minputmode[39m=[32m"decimal"[39m
+            [33mmaxlength[39m=[32m"4096"[39m
+            [33mrequired[39m=[32m""[39m
+            [33mvalue[39m=[32m"MiB"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<button[39m
+          [33mtype[39m=[32m"submit"[39m
+        [36m>[39m
+          [0mCalculate[0m
+        [36m</button>[39m
+      [36m</form>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError ../../workspace/work/batch13-deps/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../../workspace/work/batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../../workspace/work/batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../workspace/work/batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/technology-next-native.test.tsx:6:357
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  03:29:28
+   Duration  1.24s (transform 177ms, setup 0ms, collect 264ms, tests 183ms, environment 398ms, prepare 115ms)
+

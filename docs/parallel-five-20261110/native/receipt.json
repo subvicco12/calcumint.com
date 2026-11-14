@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "checks": [
+    "All original13 exact tuples pass protected jobs; old13 rejects new5 with nonempty historical jobs/grants/usage",
+    "Injected function-source drift refuses adoption without changing seeded rows",
+    "Held adoption preserves historical row bytes and refuses reapplication",
+    "Exact reverse restores source/constraint/ACL/RLS/trigger metadata and all nonempty historical bytes; reapply refuses",
+    "Restored exact old13 schema permits repeat forward adoption",
+    "Exact new5 jobs pass with duplicate stability; wrong identity/version, unrelated IDs and untrusted roles refuse",
+    "All new-five exact embed grants debit protected quotas and retain durable duplicate identity",
+    "Reverse refuses new-five durable rows without deleting or mutating audit",
+    "Every unchanged function and all table ownership/ACL/RLS/columns/indexes/policies/triggers retain exact metadata"
+  ],
+  "preHash": "4fdc4e64ca7c026410675c95b1bfbb93744d4049c508384c2a80df35253404cf",
+  "postHash": "2dde38827b518a62e393f98f0ef1db3f5c68a61d29dcf868cf59217de6bc61ae",
+  "historicalRowsSHA256": "fbac7eb97d3527eb8ff2f94abc7cf800f48340a67abade2bbdbad3906070b1c8",
+  "nonemptyHistoricalCounts": {
+    "technology_five_jobs": 13,
+    "technology_five_embed_usage": 1,
+    "technology_five_embed_grants": 1
+  },
+  "sources": {
+    "docs/native440/quota-readiness-wrapper.sql": "59fbc3417054f5482b2e1cc2e9a13cd98167c73fa243e35e72a067a74496de59",
+    "docs/first-five-native-20261109/embed-metering-proposal.sql": "e889df1052cbc44680939c2624c78014a32e18c6a47450a49619d572ee231294",
+    "docs/first-five-native-20261109/jobs-webhooks-proposal.sql": "59fb18da69e9008859cbffc18f56763df64fa681136cfd86f87372cfeced0e92",
+    "docs/first-five-native-20261109/embed-integrity-successor.sql": "5e56446b99fcb7c70b6f40f188cb9a2731a77d923a1e5ff0930770ce6a616d66",
+    "docs/next-cohort-native-20261110/contract-successor.sql": "aafbbc87dca61581fc68cc6aa1af65022b478879b8c91c4d791fdbba3f36917a"
+  },
+  "successorSHA256": "a9fe9272d0a31d36949b66a84a87b07c6023f3cb466b5ee860c6877ca0e689b1",
+  "reverseSHA256": "2be70d58d68246d21fe06de60107568d7a3d682d64db49cc41fda7a6e28edfa9",
+  "productionWrites": false,
+  "sqlActivated": false,
+  "syntheticLowerPublication": true,
+  "fixtureOutputs": true,
+  "certificationGranted": false
+}

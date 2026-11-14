@@ -1,0 +1,63 @@
+{
+  "kind": "FINAL_TWO_GUARDED_SQL_MODEL_ACCEPTANCE_NOT_HOSTED_OR_MATHEMATICAL_APPROVAL",
+  "baselineGit": "cef0352fca135b252b981b959c3529170b1f0c81",
+  "recordedAt": "2026-11-11T12:48:49.308339+00:00",
+  "identities": [
+    {
+      "catalogId": 368,
+      "engineId": "technology.ip-subnet",
+      "version": 1
+    },
+    {
+      "catalogId": 376,
+      "engineId": "technology.screen-ppi",
+      "version": 1
+    }
+  ],
+  "preservedWebsiteBandwidthVersion": 2,
+  "native": {
+    "passed": true,
+    "checkGroups": 11,
+    "preimage": "40a6fc0dca4392c58a178b1df154b7099865e024a554f9f317611cc06d2ab728",
+    "postimage": "1a371a13355af3b186659076489269a887749f8d45c65e27610fd556628b8d85",
+    "finalCommand": "node tests/technology-final-two-20261111/native.postgres.mjs",
+    "captureUsedForFinalVerification": false,
+    "scope": "Real PostgreSQL SQL-role tests; local auth services initialized but no genuine HTTP native proof; synthetic lower publication and output"
+  },
+  "sharing": {
+    "passed": true,
+    "checkGroups": 34,
+    "preimage": "10460332dffadc0d2965c27abee458ce56e03c2c7d642b20bf310eefa5014353",
+    "postimage": "7183b5b50dcd9bc2c4d0d85f8cb048424700cc993351b0d7cc5861240154d647",
+    "finalCommand": "node tests/technology-final-two-20261111/sharing.postgres.mjs",
+    "captureUsedForFinalVerification": false,
+    "scope": "Genuine local GoTrue/PostgREST roles/tenants/storage, opaque synthetic snapshots not mathematical proof"
+  },
+  "lint": "PASS focused ESLint",
+  "newBindings": {
+    "docs/technology-final-two-20261111/native/contract-reverse.sql": "feee758d460d98b532453c16f7b100fff1b09f6708b577ba92f4963f54eb75e6",
+    "docs/technology-final-two-20261111/native/contract-successor.sql": "3d6a521eb420cf73088f8c740f1d5b2b7d4567b20f32c93678d7a403d2e6bc0e",
+    "docs/technology-final-two-20261111/sharing/contract-reverse.sql": "be7ad026b756e91e9b2a33e22d5e6d1e2b87743b9653fc8893cbd3c0c09bce74",
+    "docs/technology-final-two-20261111/sharing/contract-successor.sql": "ebefd67b6d823bdec5981f2526289b9cc77162d379442a2a0ba16e2c6eeca8ef",
+    "tests/technology-final-two-20261111/native-shape.mjs": "f8349e784457adfa50d451e695be54363787d4e5e539dabdc1ccbc81cdbad091",
+    "tests/technology-final-two-20261111/native.postgres.mjs": "ee0631dbb8483d37ed73f13ebba466e210228246bae31fa4c87a7a83354fe862",
+    "tests/technology-final-two-20261111/sharing-proposal.mjs": "5994df44bfd0a7b86bc694ac3b64e91de55060cb032457b4a9ce2e9061dd14b5",
+    "tests/technology-final-two-20261111/sharing.postgres.mjs": "88b58712ae8c9688d7d052f7818a2830779a88b85c6773e438a8a89e94b3016b"
+  },
+  "oldGuardedPackagesChanged": false,
+  "productionWrites": false,
+  "activeMigrationsChanged": false,
+  "certificationGranted": false,
+  "newPublicationEligible": 0,
+  "releaseHold": true,
+  "blockers": [
+    "No authentic target-schema compatibility established",
+    "No adoption/operator authorization; old-binary capability2 compatibility not established; require quiesced deployment and all-writer reconciliation",
+    "No qualified mathematical/canonical/source acceptance inferred from SQL storage",
+    "Current full source-admission/build/browser proof remains separate integration work"
+  ],
+  "implementationAttempts": [
+    "Initial new sharing harness expected an incorrect rejection message; corrected to actual Unsupported shared snapshot without weakening refusal",
+    "Initial per-function source hash omitted pg_get_functiondef trailing newline trimmed by test transport; preserved failure log and added explicit native hash/newline assertion before generating held source preconditions"
+  ]
+}

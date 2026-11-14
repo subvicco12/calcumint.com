@@ -1,0 +1,47 @@
+{
+  "kind": "EXACT_LIVE_DIAGNOSTIC_SUCCESSOR_NOT_HASH_OR_ASSERTION_WAIVER",
+  "source": {
+    "source": "tests/calculator-sprint-20261108/historical-source.test.mjs",
+    "node": "v22.23.4",
+    "rows": [
+      {
+        "stage": "baseline",
+        "ref": "3252a0c74e6e2762b68ff4ddc4cf80b51a9bc9ad",
+        "blob": "972193916a31194e8903217a4045e35e0f3b8690",
+        "sha256": "d7c7979f52d7771c05f5d5c87d52930aabd263480df9f021cf16f650de4d658c",
+        "bytes": 1662
+      },
+      {
+        "stage": "successor",
+        "ref": "0275efd3f9310b31a62b77b1a44adbdfd625af1f",
+        "blob": "19117f0d3b83e24217f55b0665da15e7cf4b2905",
+        "sha256": "203e9664b2f11d31567396f7c05d1603273170ef2388325eb6259f367c3004b7",
+        "bytes": 1709
+      }
+    ],
+    "mutation": "Only exact Error-instance/message expectation for same zero-Git identity; one source predicate produces two cases",
+    "ownedRows": [],
+    "incomingEdges": [],
+    "logs": [
+      {
+        "file": "calculator-sprint-node-before.log",
+        "bytes": 10322,
+        "sha256": "8a5cb3e4a0dffb27e84162b9573935cc648c99d461697dfdf2b771beabeb5760"
+      },
+      {
+        "file": "calculator-sprint-node-after.log",
+        "bytes": 6721,
+        "sha256": "780ff43623c5fce58d86dad3d143428b7a9d9e3a7a721ca21f280c244e083041"
+      }
+    ]
+  },
+  "newTestSuccessor": "0275efd3f9310b31a62b77b1a44adbdfd625af1f",
+  "changed": "One predicate inside two-path loop; same zero-filled Git provider, test names, positive/reversion/dependency checks and timeouts",
+  "metadataOwnedRows": 0,
+  "metadataIncomingEdges": 0,
+  "newAdmission": "Explicit current source capture of the actual five-file32case CI consumer; no invented metadata edge",
+  "frozenHistoricalTestsRetainedInGit": true,
+  "mathematicsChanged": false,
+  "productionChanged": false,
+  "releaseHold": true
+}

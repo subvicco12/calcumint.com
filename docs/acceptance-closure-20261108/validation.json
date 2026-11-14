@@ -1,0 +1,359 @@
+{
+  "baselineSHA": "3350a313ebc6b5300757e64ae4c125af29bdfdb3",
+  "baselineCI": {
+    "run": 42497221114,
+    "conclusion": "success",
+    "verifiedWithAuthenticatedGitHub": true
+  },
+  "testedImplementationCapture": "b2d72aa66293b752739b7924745a57a51c4b5acb",
+  "deliverySHAAndHostedCI": "External exact-SHA checkpoint after final commit; hosted success required, not inferred from local tests",
+  "localChecks": [
+    {
+      "command": "npm test",
+      "result": {
+        "passed": 8288,
+        "skippedExisting": 4,
+        "filesPassed": 929,
+        "filesSkippedExisting": 2
+      },
+      "scope": "Complete default src unit suite",
+      "archiveLog": "logs/acceptance-closure-unit-full.log",
+      "sha256": "c9fd8563d3169b9aec3b21a38ef89e4e78bef06d9eced3501f714d2908502958"
+    },
+    {
+      "command": "vitest run [new financial + remaining UI files]",
+      "result": {
+        "passed": 149,
+        "newFinancial": 93,
+        "newUI": 56
+      },
+      "scope": "New source contract/refusal/immutability tests; subset of full unit suite",
+      "archiveLog": "logs/acceptance-final-functional-focused.log",
+      "sha256": "632c0577c805478d6682f3a59ee66bab0627d9771d85c7aa18910b8e376c011c"
+    },
+    {
+      "command": "node --test [new receipt/source lineage + financial/product/bootstrap/software closure]",
+      "result": {
+        "passed": 93
+      },
+      "scope": "Includes overlapping existing/new cases, not additive to other Node totals",
+      "archiveLog": "logs/acceptance-source-guards.log",
+      "sha256": "32b26a928bce7c5aa958fd33fd9fdf926608c77fe55610046fe900b56389bc13"
+    },
+    {
+      "command": "node --test tests/acceptance-closure-20261108/*.test.mjs tests/calculator-sprint-20261108/*.test.mjs",
+      "result": {
+        "passed": 53
+      },
+      "scope": "Retained65-profile evidence and new scoped ledger/provenance; no promotions",
+      "archiveLog": "logs/acceptance-new-and-retained-node.log",
+      "sha256": "1565c2e9a6131a8e3791fadba51e3528ff528fe45227875ea4e7c7e76d8597b0"
+    },
+    {
+      "command": "FIRST_TWO_FRESH_RECEIPT=... node --test tests/acceptance-closure-20261108/*.test.mjs",
+      "result": {
+        "passed": 27
+      },
+      "scope": "Actual fresh isolated auth receipt must match current Git HEAD and every captured source; source captureb2d",
+      "archiveLog": "logs/acceptance-closure-fresh-proof.log",
+      "sha256": "5d516925da77736343b5b56e12c85291cf953d946ba85181efdaf70d6f2a7267"
+    },
+    {
+      "command": "node tests/acceptance-closure-20261108/first-two-auth.mjs",
+      "result": {
+        "checks": 6,
+        "scenarioArtifacts": 4,
+        "explicitDenials": 24
+      },
+      "scope": "Genuine isolated PG17.6/GoTrue/PostgREST; production schema equivalence unknown",
+      "archiveLog": "logs/acceptance-closure-auth-fresh-head.log",
+      "sha256": "b82c8b2073d567cee40d5c9cbe57b3279bf474933e5cb1856b3f64a613ac4b01"
+    },
+    {
+      "command": "node tests/acceptance-closure-20261108/shared-browser.mjs",
+      "result": {
+        "nativeJourneys": 57,
+        "individualInputProfiles": 51,
+        "downloadReplayPlanViewportJourneys": 6
+      },
+      "scope": "Loopback private fixture; individual per-ID replay not generalized from477",
+      "archiveLog": "logs/acceptance-closure-shared-browser-final.log",
+      "sha256": "043b1e69925d980722accde722d2a12638c1fe84fc7e98b14af0c7267e10ab01"
+    },
+    {
+      "command": "npm run lint",
+      "result": {
+        "errors": 0,
+        "existingWarnings": 28
+      },
+      "scope": "Mandatory final local check",
+      "archiveLog": "logs/acceptance-closure-lint.log",
+      "sha256": "bb308ecafc155f5bef71526621327627f27daa47e6c1cf88d5de22c71a8ece04"
+    },
+    {
+      "command": "npm run typecheck",
+      "result": "PASS",
+      "scope": "Mandatory final local check",
+      "archiveLog": "logs/acceptance-closure-typecheck.log",
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    {
+      "command": "npm run test:launch",
+      "result": {
+        "passed": 45
+      },
+      "scope": "Mandatory final local check",
+      "archiveLog": "logs/acceptance-closure-launch.log",
+      "sha256": "5266cbe78dd6556dccb967b29c2b771d779bc98586cdc6051b2b553279cbe9e6"
+    },
+    {
+      "command": "npm run test:certification",
+      "result": {
+        "passed": 15
+      },
+      "scope": "Mandatory final local check",
+      "archiveLog": "logs/acceptance-closure-certification.log",
+      "sha256": "ab03a1a3c7ff3836a5e23cde00d0d60f305fdd79235da6cd4107061c5a40809e"
+    },
+    {
+      "command": "vitest run --config tests/owner-p0/calculus/vitest.config.mts",
+      "result": {
+        "passed": 21
+      },
+      "scope": "Mandatory final local check",
+      "archiveLog": "logs/acceptance-closure-owner-calculus.log",
+      "sha256": "70dcbdbaf42957d6068032639705b9f6c6230652e016d8be34014dcbd68476fb"
+    },
+    {
+      "command": "npm run build",
+      "result": "PASS: next build --webpack",
+      "scope": "Mandatory final local check",
+      "archiveLog": "logs/acceptance-closure-webpack.log",
+      "sha256": "f7287515e9b9f27d6f3a243fb2588df91ef05030ce1d56b92ec959ed5efae596"
+    },
+    {
+      "command": "node --test [acceptance closure and retained calculator sprint cases]",
+      "result": {
+        "passed": 59
+      },
+      "scope": "Post-verifier-portability correction; no application/math/auth source changed",
+      "archiveLog": "logs/acceptance-relocation-all-node.log",
+      "sha256": "9d5e1df4a56fad678a8f3bf3b766b32f5f363f3c84104ee6f41f2bd157242e01"
+    },
+    {
+      "command": "node --test [closure and exact financial/product/bootstrap/software source groups]",
+      "result": {
+        "passed": 100
+      },
+      "scope": "Post-verifier-portability correction; no application/math/auth source changed",
+      "archiveLog": "logs/acceptance-relocation-source-guards.log",
+      "sha256": "a585b02bca832628d57d825c6a0af4a1e585550e3656399371ee924f15ab27c1"
+    },
+    {
+      "command": "npm run lint",
+      "result": {
+        "errors": 0,
+        "existingWarnings": 28
+      },
+      "scope": "Post-verifier-portability correction; no application/math/auth source changed",
+      "archiveLog": "logs/acceptance-relocation-full-lint.log",
+      "sha256": "bb308ecafc155f5bef71526621327627f27daa47e6c1cf88d5de22c71a8ece04"
+    },
+    {
+      "command": "npm run typecheck",
+      "result": "PASS",
+      "scope": "Post-verifier-portability correction; no application/math/auth source changed",
+      "archiveLog": "logs/acceptance-relocation-typecheck.log",
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    {
+      "command": "vitest run [controlled held-worker reproduction and focused remaining UI]",
+      "result": {
+        "reproductionPassed": 57,
+        "unhandledErrors": 0,
+        "focusedUIPassed": 60
+      },
+      "scope": "No temporary reproduction test retained in src; exact recipe and raw red/green logs retained in archive",
+      "archiveLogs": [
+        "logs/acceptance-url-timer-reproduction-red.log",
+        "logs/acceptance-url-timer-reproduction-green.log",
+        "logs/acceptance-url-timer-focused-green.log"
+      ]
+    },
+    {
+      "command": "Post-timer-fix unit-full",
+      "result": {
+        "passed": 8288,
+        "skippedExisting": 4,
+        "unhandledErrors": 0
+      },
+      "scope": "Final timer successor capture91b19c3; no production math or application change",
+      "archiveLog": "logs/acceptance-timer-unit-full.log",
+      "sha256": "d596559c31f51c8d221ab5c3158da2c96cd0f2dc22139e44f9894fc23a614cd5"
+    },
+    {
+      "command": "Post-timer-fix source-guards",
+      "result": {
+        "passed": 104
+      },
+      "scope": "Final timer successor capture91b19c3; no production math or application change",
+      "archiveLog": "logs/acceptance-timer-source-guards.log",
+      "sha256": "13522782b1a343bdf543e7eebfc0de80464a660d817e5da933170f01bb27276b"
+    },
+    {
+      "command": "Post-timer-fix all-node",
+      "result": {
+        "passed": 63
+      },
+      "scope": "Final timer successor capture91b19c3; no production math or application change",
+      "archiveLog": "logs/acceptance-timer-all-node.log",
+      "sha256": "3a6c134308c3e17d9048d061ebc09904fb0aa85f9ed3305dfeb6b3e0da096391"
+    },
+    {
+      "command": "Post-timer-fix lint",
+      "result": {
+        "errors": 0,
+        "existingWarnings": 28
+      },
+      "scope": "Final timer successor capture91b19c3; no production math or application change",
+      "archiveLog": "logs/acceptance-timer-lint.log",
+      "sha256": "bb308ecafc155f5bef71526621327627f27daa47e6c1cf88d5de22c71a8ece04"
+    },
+    {
+      "command": "Post-timer-fix typecheck",
+      "result": "PASS",
+      "scope": "Final timer successor capture91b19c3; no production math or application change",
+      "archiveLog": "logs/acceptance-timer-typecheck.log",
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    {
+      "command": "Post-timer-fix launch",
+      "result": {
+        "passed": 45
+      },
+      "scope": "Final timer successor capture91b19c3; no production math or application change",
+      "archiveLog": "logs/acceptance-timer-launch.log",
+      "sha256": "446d165c5300b8b17bf54f6c7c2a25023d04601d8f63a5dae14ee20fbb5fa99f"
+    },
+    {
+      "command": "Post-timer-fix certification",
+      "result": {
+        "passed": 15
+      },
+      "scope": "Final timer successor capture91b19c3; no production math or application change",
+      "archiveLog": "logs/acceptance-timer-certification.log",
+      "sha256": "1860c971f26b0d467662a215526ed8cb6c19c8ce63732617b376dd892b6bb8e5"
+    },
+    {
+      "command": "Post-timer-fix owner-calculus",
+      "result": {
+        "passed": 21
+      },
+      "scope": "Final timer successor capture91b19c3; no production math or application change",
+      "archiveLog": "logs/acceptance-timer-owner-calculus.log",
+      "sha256": "fcb97bf05eae52c623bcd83113184dbc80dde748d463a89d0ec6a6d69210b550"
+    },
+    {
+      "command": "Post-timer-fix webpack",
+      "result": "PASS: next build --webpack",
+      "scope": "Final timer successor capture91b19c3; no production math or application change",
+      "archiveLog": "logs/acceptance-timer-webpack.log",
+      "sha256": "336da55331e118a531c00a40968d3692cf374a915eb6b0ad76f973944744ee37"
+    }
+  ],
+  "otherEvidence": {
+    "firstTwoPublicationCompositionTests": 4,
+    "independentFiniteFractionalChecks": 1794,
+    "independentReviewRawLog": "None saved; retrospective review record says so explicitly",
+    "roundingOracleCases": 74,
+    "roundingModeComparisons": 296,
+    "formulaOracle": "Independent Python Fraction + exact root identities; no production helper; explicit precision refusals instead of tolerance widening",
+    "financialSpecialistApproval": false
+  },
+  "failedIntermediateAttempts": [
+    {
+      "evidence": "logs/acceptance-financial-red-final.log",
+      "finding": "14 failures in inherited finite rounding/formula behavior; exact-grid preservation did not qualify off-grid inputs"
+    },
+    {
+      "evidence": "logs/acceptance-financial-review-red.log",
+      "finding": "Floating formulas crossed exact half-cents; output precision loss not refused"
+    },
+    {
+      "evidence": "logs/acceptance-financial-rational-red.log",
+      "finding": "Recurring division at768digits still crossed exact rational ties; corrected with exact rational evaluation and fractional proof inequalities"
+    },
+    {
+      "evidence": "first-two-auth-sandbox-denial.json",
+      "finding": "Restricted local Docker access; supported permission used, no auth assertion waived"
+    },
+    {
+      "evidence": "raw-shared-unit-logs.zip",
+      "finding": "55 original UI assertions demonstrated silent raw-number loss; fixed two parsing callsites, then56new+4existing pass"
+    },
+    {
+      "finding": "New browser harness initially read an empty in-progress download; now waits for complete parseable bytes, with all output comparisons retained"
+    },
+    {
+      "finding": "Raw stdout whitespace preserved byte-for-byte in ZIP/original Git rather than normalized or guard exemption"
+    }
+  ],
+  "preservation": "preservation.json",
+  "newCanonicalAcceptances": 0,
+  "newPublicationEligible": 0,
+  "productionWrites": false,
+  "releaseHold": true,
+  "failedHostedAttempts": [
+    {
+      "run": 42506638644,
+      "head": "11b7a54b033cc54d0ff8ad3d0d7ba29bdb4bb8e6",
+      "conclusion": "failure",
+      "passedJobs": [
+        "checks",
+        "build",
+        "source-acceptance",
+        "full-product"
+      ],
+      "failedJobs": [
+        "publication-factory",
+        "validate"
+      ],
+      "cause": "Retained receipt verifier attempted historical Cloud cache path absent in clean checkout; exact ENOENT retained in failure excerpt",
+      "repair": "Explicit original-cache-prefix relocation with mandatory original per-file hashes, safe path checks and original receipt+lock immutability; producer/math/auth unchanged",
+      "evidence": "ci-42506638644-recovery.json",
+      "genuineHostedAuthPassed": true
+    },
+    {
+      "run": 42508601317,
+      "associatedHeadSHA": "4b632c4b99da383895cbfb06465e60e4f5b3d401",
+      "conclusion": "failure",
+      "passedJobs": [
+        "checks",
+        "build",
+        "full-product",
+        "publication-factory"
+      ],
+      "failedJobs": [
+        "source-acceptance",
+        "validate"
+      ],
+      "unitAssertionsPassed": 8288,
+      "existingSkipped": 4,
+      "unhandledErrors": 1,
+      "error": "TypeError: URL.revokeObjectURL is not a function",
+      "cause": "Test download timer fired after its JSDOM URL stub was removed",
+      "sourceChange": "Test lifecycle only; advance/drain bounded fake timers while URL stub remains, restore real timers before unstub",
+      "successorCapture": "91b19c36521943a5423c37f2754480e654f884f5",
+      "reproductionRed": "57 assertions passed,1unhandled,exit1",
+      "reproductionGreen": "57 assertions passed,no unhandled,exit0",
+      "focusedUI": "60PASS",
+      "productionSourceChanged": false,
+      "errorPolicyRelaxed": false,
+      "oldEvidenceHashesReplaced": false,
+      "newApproval": false,
+      "excerptLog": "logs/acceptance-ci-42508601317-unit-failure-excerpt.log"
+    }
+  ],
+  "checkoutIdentityNote": "Hosted default PR merge checkout can differ from event head; final checkpoint verifies actual checkout tree equals associated exact PR-head tree. Do not relabel receipt sourceCommit.",
+  "testTimerSuccessor": "shared-test-timer-successor.json"
+}

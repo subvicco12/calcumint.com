@@ -1,0 +1,37 @@
+
+ RUN  v3.2.7 /workspace/work/product-completion-20261108
+
+ ❯ src/lib/technology-five-batch.test.ts (9 tests | 1 failed) 56ms
+   ✓ technology.bandwidth runs exact original engines and replays immutable entered rows 15ms
+   ✓ technology.download-time runs exact original engines and replays immutable entered rows 5ms
+   ✓ technology.upload-time runs exact original engines and replays immutable entered rows 4ms
+   ✓ technology.data-transfer runs exact original engines and replays immutable entered rows 4ms
+   ✓ technology.base64-size runs exact original engines and replays immutable entered rows 7ms
+   ✓ preserves invalid row and refuses every export until corrected 4ms
+   ✓ rejects unsupported identities, bounds, extra/missing columns and malformed/lossy numbers 2ms
+   ✓ rejects tampered results, entered text, identity, versions and unexpected replay fields 4ms
+   × rejects inherited prototype names as unsupported identities 9ms
+     → expected [Function] to throw an error
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/technology-five-batch.test.ts > rejects inherited prototype names as unsupported identities
+AssertionError: expected [Function] to throw an error
+
+- Expected: 
+null
+
++ Received: 
+undefined
+
+ ❯ src/lib/technology-five-batch.test.ts:9:168
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 8 passed (9)
+   Start at  18:40:22
+   Duration  1.61s (transform 724ms, setup 0ms, collect 1.10s, tests 56ms, environment 0ms, prepare 130ms)
+

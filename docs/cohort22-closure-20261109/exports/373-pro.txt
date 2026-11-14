@@ -1,0 +1,52 @@
+CalcuMint | Calculation report
+
+
+Data Transfer Calculator
+Calculator: data-transfer-calculator | Engine version: 1
+Raw engine values: full numeric precision; no display rounding or sampled rows.
+Units appear only where supplied by the calculation or bound display metadata.
+Embedded Unicode glyphs are readable.
+Unsupported characters and controls use explicit Unicode escapes.
+Tagged PDF; PDF/UA conformance: UNVERIFIED.
+Text follows document order; charts include complete numeric text alternatives.
+
+
+INPUTS
+Bandwidth (Mbps) [Mbps]
+input["bandwidthMbps"] = 80
+Time (s) [s]
+input["timeSeconds"] = 10
+
+
+RESULTS
+Transferred data [MB]
+output["value"] = 100
+output["steps"][0] = "Data Transfer = 100"
+
+
+METHODOLOGY
+Ideal deterministic arithmetic using decimal MB (1 MB = 1,000,000 octets) and Mbps (1 Mb
+ps = 1,000,000 bits/second), eight bits per octet. Strictly positive supplied quantities
+; not measured bandwidth, provider speed or a delivery guarantee. Protocol overhead, lat
+ency, congestion and changing rates are excluded.\u000aTechnical calculation revision: t
+echnology.data-transfer@1\u000a\u000aIdealized transferred data from bandwidth and durat
+ion.\u000aData (MB) = bandwidth Mbps × seconds ÷ 8
+
+
+DECLARED FORMULAS
+data-transfer-calculator: Data (MB) = bandwidth Mbps × seconds ÷ 8
+Idealized transferred data from bandwidth and duration.
+
+
+SOURCES
+RFC 1547 — octet terminology
+https://www.rfc-editor.org/rfc/rfc1547
+RFC 1547 defines an octet as eight bits. CalcuMint uses that unit relationship for its i
+dealized MB/Mbps transfer-rate arithmetic; protocol overhead, latency and congestion are
+ intentionally outside these simple estimates.
+
+
+
+
+Engine v1 | Page 1 of 1
+

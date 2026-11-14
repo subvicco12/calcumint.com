@@ -1,0 +1,39 @@
+{
+  "kind": "FIRST20_CONSUMER_EXACT_SOURCE_SUCCESSOR_NOT_QA_OR_CERTIFICATION",
+  "predecessor": {
+    "ref": "65d8724fd8e8167b9e092f199611a161c4281f03",
+    "path": "scripts/first20-publication/evidence.mjs",
+    "blob": "157919451f6edaf443c5b6d403e0ce65b9352093",
+    "sha256": "f116f77beac8cc66a65e817f4c9844155730d7982a8ab9fdb7e987da7b4e8ce1",
+    "bytes": 7229
+  },
+  "successor": {
+    "ref": "b11d1ad3a826b5c318d69b4963f905b05c2ed061",
+    "path": "scripts/first20-publication/evidence.mjs",
+    "blob": "f39410d66d1fb94ad977a60af77af262521caa0b",
+    "sha256": "ce3b7492a15029f125cc4ed483a2de7669559914782444a34fa131f55e82b38c",
+    "bytes": 8504
+  },
+  "immutableHistoricalManifest": {
+    "ref": "65d8724fd8e8167b9e092f199611a161c4281f03",
+    "path": "docs/first20-publication/execution-manifest.json",
+    "blob": "bbc7c4fdd98480b3f436b003199afcca6b347a16",
+    "sha256": "be5e50738be851d33fb3544128ec8a71a5e3e7e686087f129e74c61a27e7aa53",
+    "bytes": 4558
+  },
+  "admittedPreview": {
+    "ref": "d7eb23e22d2357af838b6d4ba983971090ed8713",
+    "path": "src/lib/first20/preview-security.test.ts",
+    "blob": "62ab6ce739a035309f1fc8df54c5c687247ba726",
+    "sha256": "bf5cc36e9ec4c02d5cc7c68c4a6777d22a9f423f4d862da01b310de9d678140b",
+    "bytes": 2194
+  },
+  "retainedPreviewClaimSHA256": "a54520f4db68a6d208e3151987667aa9356052e9160a0f5c828449abe8cb7484",
+  "reason": "Direct historical hash comparison did not compose with independently admitted exact preview fixture successor. This script also self-binds through the unchanged historical manifest.",
+  "admission": "Fresh independent current-source proof with same reader/Git; script exactA7 preimage SHA verified and newscript separately captured; only named preview uses existing finite9 predecessor/successor proof; all other historical manifest hashes still strict.",
+  "historicalManifestRewritten": false,
+  "mathematicsChanged": false,
+  "productionChanged": false,
+  "newApprovals": 0,
+  "releaseHold": true
+}

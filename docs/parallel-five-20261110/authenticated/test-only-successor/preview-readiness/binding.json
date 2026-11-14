@@ -1,0 +1,26 @@
+{
+  "baselineGit": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+  "successorGit": "b2f12b04b6ded9e84bb07d4d6c170ac157f8cad3",
+  "scope": "Only private fixture authorized GET/body readiness in unchanged30s beforeAll; all four original security case bodies and5s limits unchanged",
+  "rows": [
+    {
+      "path": "src/lib/final-rc-preview-security.test.ts",
+      "baseline": {
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "archive": "baseline.fixture",
+        "sha256": "865ef4a3beff21eaa0f8217682b5b327d2a8ca27dbe699e9f34c6552f31274df",
+        "blob": "72611768f284e201f6a224c920f2d345aa6072fd"
+      },
+      "successor": {
+        "ref": "b2f12b04b6ded9e84bb07d4d6c170ac157f8cad3",
+        "archive": "successor.fixture",
+        "sha256": "6cdb0acf987e7e737e5af03b703004fc9668bc3559bf2311748b2987dc0373a2",
+        "blob": "9d6e1695ac6584f9ca70606b93e293d5684c873f"
+      }
+    }
+  ],
+  "replacement": {
+    "from": ";},30000);",
+    "to": ";const ready=await fetch(base+'/tests/release-candidate/',{headers:{Authorization:authorization}});expect(ready.status).toBe(200);await ready.text();},30000);"
+  }
+}

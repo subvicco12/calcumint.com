@@ -1,0 +1,676 @@
+{
+  "kind": "RETAINED_UCUM_SOURCE_FACTOR_FACTS_NOT_APPROVAL",
+  "sourceArchive": "docs/first-live-closure-20261108/source/ucum-v2.2-native-source.zip",
+  "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+  "nativeMetadata": {
+    "version": "2.2",
+    "revision": "N/A",
+    "revision-date": "2024-06-17"
+  },
+  "memberSha256": {
+    "ucum-essence.xml": "dfccea1b5dc284245ebae97edd1dc03c45864da4e87df55bc9851797b4fd0b61",
+    "ucum-source.xml": "f73b71889bfe726c63acb4a36fa0affc19dfc64ee3e49e1dcef4a1308940bef0",
+    "LICENSE.md": "b7989c84c68b7a80d42aad28cfdd824d756c2f70f26eaf1347d2e49f7838bbdf",
+    "ucum-2.2-parsed.md": "f2c144813e6dc6aa09ee9629654ed37645df6e0fbe3bd0212230c3fa8e2540ee"
+  },
+  "engineSourceSha256": {
+    "src/calculators/conversion/catalog-batch-1.ts": "e4c01d7544568d9ce3900b54b50895d3212824ec5ec6dbfcf3e49c92bb014da9",
+    "src/calculators/conversion/catalog-batch-2.ts": "8c8021714b27b2399ea4d27a6bec595e446426ca2e6ad846815e60a9a5b35467",
+    "src/calculators/conversion/catalog-batch-3.ts": "8605a98cbc051450fbd71089d77f174f961ea56d5ee6b743e38c8a473b87c165"
+  },
+  "classificationMeaning": "SUPPORTED means retained source relationships support the stated intended factor/formula correspondence, not competent applicability, precision or lifecycle approval. PARTIAL marks a concrete mapping/approximation decision still needed. All values remain subject to binary64 representation and operation error.",
+  "facts": [
+    {
+      "catalogId": 423,
+      "classification": "SUPPORTED",
+      "supportedCorrespondence": "International inch .0254 m; foot=12 inches; yard=3 feet; mile=5280 feet. All declared decimal length factors match these exact constructions and SI prefixes.",
+      "remainingDecision": "Product aliases in/ft/yd/mi correspond to international UCUM codes [in_i]/[ft_i]/[yd_i]/[mi_i], not survey variants."
+    },
+    {
+      "catalogId": 424,
+      "classification": "PARTIAL",
+      "supportedCorrespondence": "Square international foot/yard/mile and SI area factors match; hectare derives from 100 ar, ar=100 m2. Acre4046.8564224 equals 4840 international yards squared.",
+      "remainingDecision": "UCUM [acr_us] uses survey rod/foot and differs; [acr_br] uses British historical yard. Retained bytes do not directly name the international acre used by this code; require explicit mapping/source applicability, never substitute another acre."
+    },
+    {
+      "catalogId": 425,
+      "classification": "SUPPORTED",
+      "supportedCorrespondence": "Liter=dm3; cubic inch/foot derive from international inch/foot. UCUM [gal_us]=231[in_i]3 and [qt_us]=[gal_us]/4 exactly match declared US liquid gallon/quart decimals.",
+      "remainingDecision": "Product gal_us/qt_us are explicit aliases, not imperial gallon/quart."
+    },
+    {
+      "catalogId": 427,
+      "classification": "SUPPORTED",
+      "supportedCorrespondence": "Native source defines Celsius xK-273.15 and inverse xC+273.15; Fahrenheit=9/5*xK-459.67 and inverse=5/9*(xF+459.67). Existing pair formulas are algebraically consistent.",
+      "remainingDecision": "Binary64 offset/multiplier error and cancellation need separate numerical review; no physical-domain applicability inferred."
+    },
+    {
+      "catalogId": 428,
+      "classification": "SUPPORTED",
+      "supportedCorrespondence": "International mile/foot, hour=3600s and nautical mile1852m support mph=.44704, ft/s=.3048, km/h=1000/3600 and knot1852/3600 m/s.",
+      "remainingDecision": "Division expressions are binary64 approximations; exact source relationships do not establish output precision."
+    },
+    {
+      "catalogId": 429,
+      "classification": "PARTIAL",
+      "supportedCorrespondence": "Pa SI construction, bar=100000Pa and atm=101325Pa directly supported. UCUM [psi]=[lbf_av]/[in_i]2.",
+      "remainingDecision": "Legacy psi6894.757293168 truncates source-derived6894.7572931683613367... and is not its nearest binary64. Approximation requires an explicit accepted error/domain decision."
+    },
+    {
+      "catalogId": 430,
+      "classification": "SUPPORTED",
+      "supportedCorrespondence": "J=N.m; W=J/s; hour=3600s supports Wh/kWh. UCUM cal_th=4.184J and cal=cal_th match existing thermochemical cal/kcal.",
+      "remainingDecision": "Do not infer alternate calorie variants or nutritional applicability."
+    },
+    {
+      "catalogId": 431,
+      "classification": "SUPPORTED",
+      "supportedCorrespondence": "UCUM [HP]=550[ft_i].[lbf_av]/s derives exact745.69987158227022W. Existing literal745.6998715822702 yields the nearest binary64 to that exact value.",
+      "remainingDecision": "Decimal spelling differs by2e-14W, but there is no additional stored-number truncation beyond nearest binary64 representation. hp_mech->[HP] mapping remains explicit."
+    },
+    {
+      "catalogId": 433,
+      "classification": "SUPPORTED",
+      "supportedCorrespondence": "UCUM deg=2[pi].rad/360; gon=.9deg; circ=2[pi].rad. These support degree, grad=gon, and turn=circ formulas.",
+      "remainingDecision": "Math.PI is an approximation; UCUM itself stores a finite long decimal [pi]. Do not claim exact real-pi outputs or silently treat product rad/deg/grad/turn as UCUM literal codes."
+    },
+    {
+      "catalogId": 434,
+      "classification": "SUPPORTED",
+      "supportedCorrespondence": "UCUM By=8bit; decimal k/M/G/T prefixes=1000/1e6/1e9/1e12 and binary Ki/Mi/Gi=1024/1048576/1073741824 match byte-factor ratios exactly.",
+      "remainingDecision": "Product B/KB/MB/GB/TB mean By/kBy/MBy/GBy/TBy. Case-sensitive KB is a product alias, not a UCUM unit spelling; no bit mode or reinterpretation."
+    },
+    {
+      "catalogId": 437,
+      "classification": "PARTIAL",
+      "supportedCorrespondence": "kg/m3, g/cm3 and kg/l factors follow SI and liter. UCUM pound and international foot derive lb/ft3=16.018463373960139579...kg/m3.",
+      "remainingDecision": "Legacy16.01846337396 is not nearest binary64 to that source-derived value. Approximation approval remains pending."
+    },
+    {
+      "catalogId": 438,
+      "classification": "SUPPORTED",
+      "supportedCorrespondence": "N=kg.m/s2; dyn=g.cm/s2=1e-5N; [lbf_av]=[lb_av].[g] with pound=.45359237kg and standard gravity9.80665m/s2 gives exact4.4482216152605N.",
+      "remainingDecision": "Standard conventional force only; no location-dependent mass/weight model or output precision approval."
+    },
+    {
+      "catalogId": 439,
+      "classification": "PARTIAL",
+      "supportedCorrespondence": "Source-defined lbf times international foot gives exact1.3558179483314004N.m; lbf times international inch gives exact.1129848290276167N.m.",
+      "remainingDecision": "Legacy constant1.3558179483314 and its /12 inch expression are not nearest binary64 to these source values. Existing twelve-inch geometry does not erase absolute factor approximation."
+    }
+  ],
+  "exactComparisons": [
+    {
+      "label": "force",
+      "engineCode": "lbf",
+      "sourceLiteral": "4.4482216152605",
+      "sourceDerivedExactFraction": "8896443230521/2000000000000",
+      "sourceDerivedDecimal80": "4.4482216152605",
+      "literalMinusExactFraction": "0",
+      "literalMinusExactDecimal80": "0",
+      "storedNumberIsNearestBinary64ToExactSource": true,
+      "storedBinary64MinusExactFraction": "-99084537/274877906944000000000000"
+    },
+    {
+      "label": "pressure",
+      "engineCode": "psi",
+      "sourceLiteral": "6894.757293168",
+      "sourceDerivedExactFraction": "8896443230521/1290320000",
+      "sourceDerivedDecimal80": "6894.7572931683613367226734453468906937813875627751255502511005022010044020088040",
+      "literalMinusExactFraction": "-1457/4032250000000",
+      "literalMinusExactDecimal80": "-3.6133672267344534689069378138756277512555025110050220100440200880401760803521607E-10",
+      "storedNumberIsNearestBinary64ToExactSource": false,
+      "storedBinary64MinusExactFraction": "-4008235557/11083764402749440000"
+    },
+    {
+      "label": "power",
+      "engineCode": "hp_mech",
+      "sourceLiteral": "745.6998715822702",
+      "sourceDerivedExactFraction": "37284993579113511/50000000000000",
+      "sourceDerivedDecimal80": "745.69987158227022",
+      "literalMinusExactFraction": "-1/50000000000000",
+      "literalMinusExactDecimal80": "-2E-14",
+      "storedNumberIsNearestBinary64ToExactSource": true,
+      "storedBinary64MinusExactFraction": "1499331561/53687091200000000000000"
+    },
+    {
+      "label": "density",
+      "engineCode": "lb_ft3",
+      "sourceLiteral": "16.01846337396",
+      "sourceDerivedExactFraction": "28349523125/1769802912",
+      "sourceDerivedDecimal80": "16.018463373960139579655070654556590536336511576493552520496700369312083039447502",
+      "literalMinusExactFraction": "-192991/1382658525000000000",
+      "literalMinusExactDecimal80": "-1.3957965507065455659053633651157649355252049670036931208303944750205044300435641E-13",
+      "storedNumberIsNearestBinary64ToExactSource": false,
+      "storedBinary64MinusExactFraction": "-2180210533/15567351044926599069696"
+    },
+    {
+      "label": "international-acre-construction",
+      "engineCode": "acre",
+      "sourceLiteral": "4046.8564224",
+      "sourceDerivedExactFraction": "316160658/78125",
+      "sourceDerivedDecimal80": "4046.8564224",
+      "literalMinusExactFraction": "0",
+      "literalMinusExactDecimal80": "0",
+      "storedNumberIsNearestBinary64ToExactSource": true,
+      "storedBinary64MinusExactFraction": "837/5368709120000000"
+    },
+    {
+      "label": "UCUM-survey-acre-conflict",
+      "engineCode": "acre",
+      "sourceLiteral": "4046.8564224",
+      "sourceDerivedExactFraction": "62726400000/15499969",
+      "sourceDerivedDecimal80": "4046.8726098742520065685292660907902460966212255005155171600665781976725243773068",
+      "literalMinusExactFraction": "-19601980398/1210935078125",
+      "literalMinusExactDecimal80": "-0.016187474252006568529266090790246096621225500515517160066578197672524377306819130",
+      "storedNumberIsNearestBinary64ToExactSource": false,
+      "storedBinary64MinusExactFraction": "-17242084299864519/1065149759104221184"
+    },
+    {
+      "label": "torque",
+      "engineCode": "lbf_ft",
+      "sourceExpression": "LBF_FT_TO_N_M",
+      "constantLiteral": "1.3558179483314",
+      "sourceDerivedExactFraction": "3389544870828501/2500000000000000",
+      "sourceDerivedDecimal80": "1.3558179483314004",
+      "storedNumberIsNearestBinary64ToExactSource": false,
+      "storedBinary64MinusExactFraction": "-341859839069/687194767360000000000000000"
+    },
+    {
+      "label": "torque",
+      "engineCode": "lbf_in",
+      "sourceExpression": "LBF_FT_TO_N_M/12",
+      "constantLiteral": "1.3558179483314",
+      "sourceDerivedExactFraction": "1129848290276167/10000000000000000",
+      "sourceDerivedDecimal80": "0.1129848290276167",
+      "storedNumberIsNearestBinary64ToExactSource": false,
+      "storedBinary64MinusExactFraction": "-506675748967/10995116277760000000000000000"
+    }
+  ],
+  "nativeExcerpts": [
+    {
+      "code": "[in_i]",
+      "kind": "unit",
+      "names": [
+        "inch"
+      ],
+      "value": "254e-2",
+      "unit": "cm",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"[in_i]\" CODE=\"[IN_I]\" isMetric=\"no\" class=\"intcust\">\n      <ns0:name>inch</ns0:name>\n      <ns0:printSymbol>in</ns0:printSymbol>\n      <ns0:property>length</ns0:property>\n      <ns0:value Unit=\"cm\" UNIT=\"CM\" value=\"254e-2\">2.54</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "[ft_i]",
+      "kind": "unit",
+      "names": [
+        "foot"
+      ],
+      "value": "12",
+      "unit": "[in_i]",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"[ft_i]\" CODE=\"[FT_I]\" isMetric=\"no\" class=\"intcust\">\n      <ns0:name>foot</ns0:name>\n      <ns0:printSymbol>ft</ns0:printSymbol>\n      <ns0:property>length</ns0:property>\n      <ns0:value Unit=\"[in_i]\" UNIT=\"[IN_I]\" value=\"12\">12</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "[yd_i]",
+      "kind": "unit",
+      "names": [
+        "yard"
+      ],
+      "value": "3",
+      "unit": "[ft_i]",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"[yd_i]\" CODE=\"[YD_I]\" isMetric=\"no\" class=\"intcust\">\n      <ns0:name>yard</ns0:name>\n      <ns0:printSymbol>yd</ns0:printSymbol>\n      <ns0:property>length</ns0:property>\n      <ns0:value Unit=\"[ft_i]\" UNIT=\"[FT_I]\" value=\"3\">3</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "[mi_i]",
+      "kind": "unit",
+      "names": [
+        "mile"
+      ],
+      "value": "5280",
+      "unit": "[ft_i]",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"[mi_i]\" CODE=\"[MI_I]\" isMetric=\"no\" class=\"intcust\">\n      <ns0:name>mile</ns0:name>\n      <ns0:printSymbol>mi</ns0:printSymbol>\n      <ns0:property>length</ns0:property>\n      <ns0:value Unit=\"[ft_i]\" UNIT=\"[FT_I]\" value=\"5280\">5280</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "[acr_us]",
+      "kind": "unit",
+      "names": [
+        "acre"
+      ],
+      "value": "160",
+      "unit": "[rd_us]2",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"[acr_us]\" CODE=\"[ACR_US]\" isMetric=\"no\" class=\"us-lengths\">\n      <ns0:name>acre</ns0:name>\n      <ns0:property>area</ns0:property>\n      <ns0:value Unit=\"[rd_us]2\" UNIT=\"[RD_US]2\" value=\"160\">160</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "[rd_us]",
+      "kind": "unit",
+      "names": [
+        "rod"
+      ],
+      "value": "16.5",
+      "unit": "[ft_us]",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"[rd_us]\" CODE=\"[RD_US]\" isMetric=\"no\" class=\"us-lengths\">\n      <ns0:name>rod</ns0:name>\n      <ns0:property>length</ns0:property>\n      <ns0:value Unit=\"[ft_us]\" UNIT=\"[FT_US]\" value=\"16.5\">16.5</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "[ft_us]",
+      "kind": "unit",
+      "names": [
+        "foot"
+      ],
+      "value": "1200",
+      "unit": "m/3937",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"[ft_us]\" CODE=\"[FT_US]\" isMetric=\"no\" class=\"us-lengths\">\n      <ns0:name>foot</ns0:name>\n      <ns0:printSymbol>ft<ns0:sub>us</ns0:sub>\n      </ns0:printSymbol>\n      <ns0:property>length</ns0:property>\n      <ns0:value Unit=\"m/3937\" UNIT=\"M/3937\" value=\"1200\">1200</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "[acr_br]",
+      "kind": "unit",
+      "names": [
+        "acre"
+      ],
+      "value": "4840",
+      "unit": "[yd_br]2",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"[acr_br]\" CODE=\"[ACR_BR]\" isMetric=\"no\" class=\"brit-length\">\n      <ns0:name>acre</ns0:name>\n      <ns0:property>area</ns0:property>\n      <ns0:value Unit=\"[yd_br]2\" UNIT=\"[YD_BR]2\" value=\"4840\">4840</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "[yd_br]",
+      "kind": "unit",
+      "names": [
+        "yard"
+      ],
+      "value": "3",
+      "unit": "[ft_br]",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"[yd_br]\" CODE=\"[YD_BR]\" isMetric=\"no\" class=\"brit-length\">\n      <ns0:name>yard</ns0:name>\n      <ns0:property>length</ns0:property>\n      <ns0:value Unit=\"[ft_br]\" UNIT=\"[FT_BR]\" value=\"3\">3</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "ar",
+      "kind": "unit",
+      "names": [
+        "are"
+      ],
+      "value": "100",
+      "unit": "m2",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"ar\" CODE=\"AR\" isMetric=\"yes\" class=\"iso1000\">\n      <ns0:name>are</ns0:name>\n      <ns0:printSymbol>a</ns0:printSymbol>\n      <ns0:property>area</ns0:property>\n      <ns0:value Unit=\"m2\" UNIT=\"M2\" value=\"100\">100</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "l",
+      "kind": "unit",
+      "names": [
+        "liter"
+      ],
+      "value": "1",
+      "unit": "dm3",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"l\" CODE=\"L\" isMetric=\"yes\" class=\"iso1000\">\n      <ns0:name>liter</ns0:name>\n      <ns0:printSymbol>l</ns0:printSymbol>\n      <ns0:property>volume</ns0:property>\n      <ns0:value Unit=\"dm3\" UNIT=\"DM3\" value=\"1\">1</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "[gal_us]",
+      "kind": "unit",
+      "names": [
+        "Queen\u00a0Anne's wine gallon"
+      ],
+      "value": "231",
+      "unit": "[in_i]3",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"[gal_us]\" CODE=\"[GAL_US]\" isMetric=\"no\" class=\"us-volumes\">\n      <ns0:name>Queen\u00a0Anne's wine gallon</ns0:name>\n      <ns0:property>fluid volume</ns0:property>\n      <ns0:value Unit=\"[in_i]3\" UNIT=\"[IN_I]3\" value=\"231\">231</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "[qt_us]",
+      "kind": "unit",
+      "names": [
+        "quart"
+      ],
+      "value": "1",
+      "unit": "[gal_us]/4",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"[qt_us]\" CODE=\"[QT_US]\" isMetric=\"no\" class=\"us-volumes\">\n      <ns0:name>quart</ns0:name>\n      <ns0:property>fluid volume</ns0:property>\n      <ns0:value Unit=\"[gal_us]/4\" UNIT=\"[GAL_US]/4\" value=\"1\">1</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "[gr]",
+      "kind": "unit",
+      "names": [
+        "grain"
+      ],
+      "value": "64.79891",
+      "unit": "mg",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"[gr]\" CODE=\"[GR]\" isMetric=\"no\" class=\"avoirdupois\">\n      <ns0:name>grain</ns0:name>\n      <ns0:property>mass</ns0:property>\n      <ns0:value Unit=\"mg\" UNIT=\"MG\" value=\"64.79891\">64.79891</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "[lb_av]",
+      "kind": "unit",
+      "names": [
+        "pound"
+      ],
+      "value": "7000",
+      "unit": "[gr]",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"[lb_av]\" CODE=\"[LB_AV]\" isMetric=\"no\" class=\"avoirdupois\">\n      <ns0:name>pound</ns0:name>\n      <ns0:printSymbol>lb</ns0:printSymbol>\n      <ns0:property>mass</ns0:property>\n      <ns0:value Unit=\"[gr]\" UNIT=\"[GR]\" value=\"7000\">7000</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "[g]",
+      "kind": "unit",
+      "names": [
+        "standard acceleration of free fall"
+      ],
+      "value": "980665e-5",
+      "unit": "m/s2",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"[g]\" CODE=\"[G]\" isMetric=\"yes\" class=\"const\">\n      <ns0:name>standard acceleration of free fall</ns0:name>\n      <ns0:printSymbol>\n         <ns0:i>g<ns0:sub>n</ns0:sub>\n         </ns0:i>\n      </ns0:printSymbol>\n      <ns0:property>acceleration</ns0:property>\n      <ns0:value Unit=\"m/s2\" UNIT=\"M/S2\" value=\"980665e-5\">9.80665</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "[lbf_av]",
+      "kind": "unit",
+      "names": [
+        "pound force"
+      ],
+      "value": "1",
+      "unit": "[lb_av].[g]",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"[lbf_av]\" CODE=\"[LBF_AV]\" isMetric=\"no\" class=\"const\">\n      <ns0:name>pound force</ns0:name>\n      <ns0:printSymbol>lbf</ns0:printSymbol>\n      <ns0:property>force</ns0:property>\n      <ns0:value Unit=\"[lb_av].[g]\" UNIT=\"[LB_AV].[G]\" value=\"1\">1</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "[psi]",
+      "kind": "unit",
+      "names": [
+        "pound per square inch"
+      ],
+      "value": "1",
+      "unit": "[lbf_av]/[in_i]2",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"[psi]\" CODE=\"[PSI]\" isMetric=\"no\" class=\"misc\">\n      <ns0:name>pound per square inch</ns0:name>\n      <ns0:printSymbol>psi</ns0:printSymbol>\n      <ns0:property>pressure</ns0:property>\n      <ns0:value Unit=\"[lbf_av]/[in_i]2\" UNIT=\"[LBF_AV]/[IN_I]2\" value=\"1\">1</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "[HP]",
+      "kind": "unit",
+      "names": [
+        "horsepower"
+      ],
+      "value": "550",
+      "unit": "[ft_i].[lbf_av]/s",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"[HP]\" CODE=\"[HP]\" isMetric=\"no\" class=\"heat\">\n      <ns0:name>horsepower</ns0:name>\n      <ns0:property>power</ns0:property>\n      <ns0:value Unit=\"[ft_i].[lbf_av]/s\" UNIT=\"[FT_I].[LBF_AV]/S\" value=\"550\">550</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "cal_th",
+      "kind": "unit",
+      "names": [
+        "thermochemical calorie"
+      ],
+      "value": "4.184",
+      "unit": "J",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"cal_th\" CODE=\"CAL_TH\" isMetric=\"yes\" class=\"heat\">\n      <ns0:name>thermochemical calorie</ns0:name>\n      <ns0:printSymbol>cal<ns0:sub>th</ns0:sub>\n      </ns0:printSymbol>\n      <ns0:property>energy</ns0:property>\n      <ns0:value Unit=\"J\" UNIT=\"J\" value=\"4.184\">4.184</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "cal",
+      "kind": "unit",
+      "names": [
+        "calorie"
+      ],
+      "value": "1",
+      "unit": "cal_th",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"cal\" CODE=\"CAL\" isMetric=\"yes\" class=\"heat\">\n      <ns0:name>calorie</ns0:name>\n      <ns0:printSymbol>cal</ns0:printSymbol>\n      <ns0:property>energy</ns0:property>\n      <ns0:value Unit=\"cal_th\" UNIT=\"CAL_TH\" value=\"1\">1</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "[nmi_i]",
+      "kind": "unit",
+      "names": [
+        "nautical mile"
+      ],
+      "value": "1852",
+      "unit": "m",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"[nmi_i]\" CODE=\"[NMI_I]\" isMetric=\"no\" class=\"intcust\">\n      <ns0:name>nautical mile</ns0:name>\n      <ns0:printSymbol>n.mi</ns0:printSymbol>\n      <ns0:property>length</ns0:property>\n      <ns0:value Unit=\"m\" UNIT=\"M\" value=\"1852\">1852</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "[kn_i]",
+      "kind": "unit",
+      "names": [
+        "knot"
+      ],
+      "value": "1",
+      "unit": "[nmi_i]/h",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"[kn_i]\" CODE=\"[KN_I]\" isMetric=\"no\" class=\"intcust\">\n      <ns0:name>knot</ns0:name>\n      <ns0:printSymbol>knot</ns0:printSymbol>\n      <ns0:property>velocity</ns0:property>\n      <ns0:value Unit=\"[nmi_i]/h\" UNIT=\"[NMI_I]/H\" value=\"1\">1</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "min",
+      "kind": "unit",
+      "names": [
+        "minute"
+      ],
+      "value": "60",
+      "unit": "s",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"min\" CODE=\"MIN\" isMetric=\"no\" class=\"iso1000\">\n      <ns0:name>minute</ns0:name>\n      <ns0:printSymbol>min</ns0:printSymbol>\n      <ns0:property>time</ns0:property>\n      <ns0:value Unit=\"s\" UNIT=\"S\" value=\"60\">60</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "h",
+      "kind": "unit",
+      "names": [
+        "hour"
+      ],
+      "value": "60",
+      "unit": "min",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"h\" CODE=\"HR\" isMetric=\"no\" class=\"iso1000\">\n      <ns0:name>hour</ns0:name>\n      <ns0:printSymbol>h</ns0:printSymbol>\n      <ns0:property>time</ns0:property>\n      <ns0:value Unit=\"min\" UNIT=\"MIN\" value=\"60\">60</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "Cel",
+      "kind": "unit",
+      "names": [
+        "degree Celsius"
+      ],
+      "value": null,
+      "unit": "cel(1 K)",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"Cel\" CODE=\"CEL\" isMetric=\"yes\" isSpecial=\"yes\" class=\"si\">\n      <ns0:name>degree Celsius</ns0:name>\n      <ns0:printSymbol>\u00b0C</ns0:printSymbol>\n      <ns0:property>temperature</ns0:property>\n      <ns0:value Unit=\"cel(1 K)\" UNIT=\"CEL(1 K)\">\n         <ns0:function name=\"Cel\" value=\"1\" Unit=\"K\" />\n      </ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "[degF]",
+      "kind": "unit",
+      "names": [
+        "degree Fahrenheit"
+      ],
+      "value": null,
+      "unit": "degf(5 K/9)",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"[degF]\" CODE=\"[DEGF]\" isMetric=\"no\" isSpecial=\"yes\" class=\"heat\">\n      <ns0:name>degree Fahrenheit</ns0:name>\n      <ns0:printSymbol>\u00b0F</ns0:printSymbol>\n      <ns0:property>temperature</ns0:property>\n      <ns0:value Unit=\"degf(5 K/9)\" UNIT=\"DEGF(5 K/9)\">\n         <ns0:function name=\"degF\" value=\"5\" Unit=\"K/9\" />\n      </ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "deg",
+      "kind": "unit",
+      "names": [
+        "degree"
+      ],
+      "value": "2",
+      "unit": "[pi].rad/360",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"deg\" CODE=\"DEG\" isMetric=\"no\" class=\"iso1000\">\n      <ns0:name>degree</ns0:name>\n      <ns0:printSymbol>\u00b0</ns0:printSymbol>\n      <ns0:property>plane angle</ns0:property>\n      <ns0:value Unit=\"[pi].rad/360\" UNIT=\"[PI].RAD/360\" value=\"2\">2</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "gon",
+      "kind": "unit",
+      "names": [
+        "gon",
+        "grade"
+      ],
+      "value": "0.9",
+      "unit": "deg",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"gon\" CODE=\"GON\" isMetric=\"no\" class=\"iso1000\">\n      <ns0:name>gon</ns0:name>\n      <ns0:name>grade</ns0:name>\n      <ns0:printSymbol>\n         <ns0:sup>g</ns0:sup>\n      </ns0:printSymbol>\n      <ns0:property>plane angle</ns0:property>\n      <ns0:value Unit=\"deg\" UNIT=\"DEG\" value=\"0.9\">0.9</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "circ",
+      "kind": "unit",
+      "names": [
+        "circle"
+      ],
+      "value": "2",
+      "unit": "[pi].rad",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"circ\" CODE=\"CIRC\" isMetric=\"no\" class=\"misc\">\n      <ns0:name>circle</ns0:name>\n      <ns0:printSymbol>circ</ns0:printSymbol>\n      <ns0:property>plane angle</ns0:property>\n      <ns0:value Unit=\"[pi].rad\" UNIT=\"[PI].RAD\" value=\"2\">2</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "[pi]",
+      "kind": "unit",
+      "names": [
+        "the number pi"
+      ],
+      "value": "3.1415926535897932384626433832795028841971693993751058209749445923",
+      "unit": "1",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"[pi]\" CODE=\"[PI]\" isMetric=\"no\" class=\"dimless\">\n      <ns0:name>the number pi</ns0:name>\n      <ns0:printSymbol>\u03c0</ns0:printSymbol>\n      <ns0:property>number</ns0:property>\n      <ns0:value Unit=\"1\" UNIT=\"1\" value=\"3.1415926535897932384626433832795028841971693993751058209749445923\">\u03c0</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "By",
+      "kind": "unit",
+      "names": [
+        "byte"
+      ],
+      "value": "8",
+      "unit": "bit",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"By\" CODE=\"BY\" isMetric=\"yes\" class=\"infotech\">\n      <ns0:name>byte</ns0:name>\n      <ns0:printSymbol>B</ns0:printSymbol>\n      <ns0:property>amount of information</ns0:property>\n      <ns0:value Unit=\"bit\" UNIT=\"bit\" value=\"8\">8</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "bit",
+      "kind": "unit",
+      "names": [
+        "bit"
+      ],
+      "value": "1",
+      "unit": "1",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"bit\" CODE=\"BIT\" isMetric=\"yes\" class=\"infotech\">\n      <ns0:name>bit</ns0:name>\n      <ns0:printSymbol>bit</ns0:printSymbol>\n      <ns0:property>amount of information</ns0:property>\n      <ns0:value Unit=\"1\" UNIT=\"1\" value=\"1\">1</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "N",
+      "kind": "unit",
+      "names": [
+        "newton"
+      ],
+      "value": "1",
+      "unit": "kg.m/s2",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"N\" CODE=\"N\" isMetric=\"yes\" class=\"si\">\n      <ns0:name>newton</ns0:name>\n      <ns0:printSymbol>N</ns0:printSymbol>\n      <ns0:property>force</ns0:property>\n      <ns0:value Unit=\"kg.m/s2\" UNIT=\"KG.M/S2\" value=\"1\">1</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "J",
+      "kind": "unit",
+      "names": [
+        "joule"
+      ],
+      "value": "1",
+      "unit": "N.m",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"J\" CODE=\"J\" isMetric=\"yes\" class=\"si\">\n      <ns0:name>joule</ns0:name>\n      <ns0:printSymbol>J</ns0:printSymbol>\n      <ns0:property>energy</ns0:property>\n      <ns0:value Unit=\"N.m\" UNIT=\"N.M\" value=\"1\">1</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "W",
+      "kind": "unit",
+      "names": [
+        "watt"
+      ],
+      "value": "1",
+      "unit": "J/s",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"W\" CODE=\"W\" isMetric=\"yes\" class=\"si\">\n      <ns0:name>watt</ns0:name>\n      <ns0:printSymbol>W</ns0:printSymbol>\n      <ns0:property>power</ns0:property>\n      <ns0:value Unit=\"J/s\" UNIT=\"J/S\" value=\"1\">1</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "dyn",
+      "kind": "unit",
+      "names": [
+        "dyne"
+      ],
+      "value": "1",
+      "unit": "g.cm/s2",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"dyn\" CODE=\"DYN\" isMetric=\"yes\" class=\"cgs\">\n      <ns0:name>dyne</ns0:name>\n      <ns0:printSymbol>dyn</ns0:printSymbol>\n      <ns0:property>force</ns0:property>\n      <ns0:value Unit=\"g.cm/s2\" UNIT=\"G.CM/S2\" value=\"1\">1</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "bar",
+      "kind": "unit",
+      "names": [
+        "bar"
+      ],
+      "value": "1e5",
+      "unit": "Pa",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"bar\" CODE=\"BAR\" isMetric=\"yes\" class=\"iso1000\">\n      <ns0:name>bar</ns0:name>\n      <ns0:printSymbol>bar</ns0:printSymbol>\n      <ns0:property>pressure</ns0:property>\n      <ns0:value Unit=\"Pa\" UNIT=\"PAL\" value=\"1e5\">1 \u00d7 10<ns0:sup>5</ns0:sup>\n      </ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "atm",
+      "kind": "unit",
+      "names": [
+        "standard atmosphere"
+      ],
+      "value": "101325",
+      "unit": "Pa",
+      "xml": "<ns0:unit xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"atm\" CODE=\"ATM\" isMetric=\"no\" class=\"const\">\n      <ns0:name>standard atmosphere</ns0:name>\n      <ns0:printSymbol>atm</ns0:printSymbol>\n      <ns0:property>pressure</ns0:property>\n      <ns0:value Unit=\"Pa\" UNIT=\"PAL\" value=\"101325\">101325</ns0:value>\n   </ns0:unit>"
+    },
+    {
+      "code": "k",
+      "kind": "prefix",
+      "names": [
+        "kilo"
+      ],
+      "value": "1e3",
+      "unit": null,
+      "xml": "<ns0:prefix xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"k\" CODE=\"K\">\n      <ns0:name>kilo</ns0:name>\n      <ns0:printSymbol>k</ns0:printSymbol>\n      <ns0:value value=\"1e3\">1 \u00d7 10<ns0:sup>3</ns0:sup>\n      </ns0:value>\n   </ns0:prefix>"
+    },
+    {
+      "code": "M",
+      "kind": "prefix",
+      "names": [
+        "mega"
+      ],
+      "value": "1e6",
+      "unit": null,
+      "xml": "<ns0:prefix xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"M\" CODE=\"MA\">\n      <ns0:name>mega</ns0:name>\n      <ns0:printSymbol>M</ns0:printSymbol>\n      <ns0:value value=\"1e6\">1 \u00d7 10<ns0:sup>6</ns0:sup>\n      </ns0:value>\n   </ns0:prefix>"
+    },
+    {
+      "code": "G",
+      "kind": "prefix",
+      "names": [
+        "giga"
+      ],
+      "value": "1e9",
+      "unit": null,
+      "xml": "<ns0:prefix xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"G\" CODE=\"GA\">\n      <ns0:name>giga</ns0:name>\n      <ns0:printSymbol>G</ns0:printSymbol>\n      <ns0:value value=\"1e9\">1 \u00d7 10<ns0:sup>9</ns0:sup>\n      </ns0:value>\n   </ns0:prefix>"
+    },
+    {
+      "code": "T",
+      "kind": "prefix",
+      "names": [
+        "tera"
+      ],
+      "value": "1e12",
+      "unit": null,
+      "xml": "<ns0:prefix xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"T\" CODE=\"TR\">\n      <ns0:name>tera</ns0:name>\n      <ns0:printSymbol>T</ns0:printSymbol>\n      <ns0:value value=\"1e12\">1 \u00d7 10<ns0:sup>12</ns0:sup>\n      </ns0:value>\n   </ns0:prefix>"
+    },
+    {
+      "code": "c",
+      "kind": "prefix",
+      "names": [
+        "centi"
+      ],
+      "value": "1e-2",
+      "unit": null,
+      "xml": "<ns0:prefix xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"c\" CODE=\"C\">\n      <ns0:name>centi</ns0:name>\n      <ns0:printSymbol>c</ns0:printSymbol>\n      <ns0:value value=\"1e-2\">1 \u00d7 10<ns0:sup>-2</ns0:sup>\n      </ns0:value>\n   </ns0:prefix>"
+    },
+    {
+      "code": "m",
+      "kind": "prefix",
+      "names": [
+        "milli"
+      ],
+      "value": "1e-3",
+      "unit": null,
+      "xml": "<ns0:prefix xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"m\" CODE=\"M\">\n      <ns0:name>milli</ns0:name>\n      <ns0:printSymbol>m</ns0:printSymbol>\n      <ns0:value value=\"1e-3\">1 \u00d7 10<ns0:sup>-3</ns0:sup>\n      </ns0:value>\n   </ns0:prefix>"
+    },
+    {
+      "code": "Ki",
+      "kind": "prefix",
+      "names": [
+        "kibi"
+      ],
+      "value": "1024",
+      "unit": null,
+      "xml": "<ns0:prefix xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"Ki\" CODE=\"KIB\">\n      <ns0:name>kibi</ns0:name>\n      <ns0:printSymbol>Ki</ns0:printSymbol>\n      <ns0:value value=\"1024\">1024</ns0:value>\n   </ns0:prefix>"
+    },
+    {
+      "code": "Mi",
+      "kind": "prefix",
+      "names": [
+        "mebi"
+      ],
+      "value": "1048576",
+      "unit": null,
+      "xml": "<ns0:prefix xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"Mi\" CODE=\"MIB\">\n      <ns0:name>mebi</ns0:name>\n      <ns0:printSymbol>Mi</ns0:printSymbol>\n      <ns0:value value=\"1048576\">1048576</ns0:value>\n   </ns0:prefix>"
+    },
+    {
+      "code": "Gi",
+      "kind": "prefix",
+      "names": [
+        "gibi"
+      ],
+      "value": "1073741824",
+      "unit": null,
+      "xml": "<ns0:prefix xmlns:ns0=\"http://unitsofmeasure.org/ucum-essence\" Code=\"Gi\" CODE=\"GIB\">\n      <ns0:name>gibi</ns0:name>\n      <ns0:printSymbol>Gi</ns0:printSymbol>\n      <ns0:value value=\"1073741824\">1073741824</ns0:value>\n   </ns0:prefix>"
+    }
+  ],
+  "competentApproval": false,
+  "canonicalAdoptionAuthorized": false,
+  "productionChanges": false
+}

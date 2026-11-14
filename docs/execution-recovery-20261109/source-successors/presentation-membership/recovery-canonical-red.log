@@ -1,0 +1,81 @@
+
+ RUN  v3.2.7 /workspace/work/product-completion-20261108
+
+ ❯ src/lib/historical-canonical-evidence.test.ts (5 tests | 4 failed) 2505ms
+   × immutable historical canonical evidence with exact guard succession > reproduces the original without advancing acceptance or source claims 503ms
+     → Historical canonical source membership differs
+   ✓ immutable historical canonical evidence with exact guard succession > rejects artifact identity, source hash and authority tampering  492ms
+   × immutable historical canonical evidence with exact guard succession > rejects unrelated current metadata and source membership drift 440ms
+     → expected [Function] to throw error including 'metadata' but got 'Historical canonical source membershi…'
+   × historical Batch16 retains fresh witness comparison > admits exact caller transitions but rejects changed witnesses and unrelated source claims 369ms
+     → Historical canonical source membership differs
+   × exact supplemental technology presentation preserves historical membership > rejects missing, duplicate, unknown and stale supplemental membership without rewriting historical412 698ms
+     → Historical canonical source membership differs
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/historical-canonical-evidence.test.ts > immutable historical canonical evidence with exact guard succession > reproduces the original without advancing acceptance or source claims
+Error: Historical canonical source membership differs
+ ❯ src/lib/historical-canonical-evidence.ts:23:39
+     21|  const files=current.implementationSourceSnapshot.files.map((file,inde…
+     22|   const old=oldFiles[index];
+     23|   if(!old||old.path!==file.path)throw Error('Historical canonical sour…
+       |                                       ^
+     24|   const admitted=verifyFinancialSafetyBinding(file.path,readFileSync(f…
+     25|   if(old.sha256!==file.sha256&&!admitted)throw Error('Historical canon…
+ ❯ validateHistoricalCanonicalEvidence src/lib/historical-canonical-evidence.ts:21:57
+ ❯ src/lib/historical-canonical-evidence.test.ts:8:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  src/lib/historical-canonical-evidence.test.ts > immutable historical canonical evidence with exact guard succession > rejects unrelated current metadata and source membership drift
+AssertionError: expected [Function] to throw error including 'metadata' but got 'Historical canonical source membershi…'
+
+Expected: "metadata"
+Received: "Historical canonical source membership differs"
+
+ ❯ src/lib/historical-canonical-evidence.test.ts:23:62
+     21|   try{
+     22|    const metadata=structuredClone(current);metadata.rows[0].title='ali…
+     23|    expect(()=>validateHistoricalCanonicalEvidence(original)).toThrow('…
+       |                                                              ^
+     24|    const source=structuredClone(current);source.implementationSourceSn…
+     25|    expect(()=>validateHistoricalCanonicalEvidence(original)).toThrow('…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  src/lib/historical-canonical-evidence.test.ts > historical Batch16 retains fresh witness comparison > admits exact caller transitions but rejects changed witnesses and unrelated source claims
+Error: Historical canonical source membership differs
+ ❯ src/lib/historical-canonical-evidence.ts:23:39
+     21|  const files=current.implementationSourceSnapshot.files.map((file,inde…
+     22|   const old=oldFiles[index];
+     23|   if(!old||old.path!==file.path)throw Error('Historical canonical sour…
+       |                                       ^
+     24|   const admitted=verifyFinancialSafetyBinding(file.path,readFileSync(f…
+     25|   if(old.sha256!==file.sha256&&!admitted)throw Error('Historical canon…
+ ❯ validateHistoricalCanonicalEvidence src/lib/historical-canonical-evidence.ts:21:57
+ ❯ collectBatch16RequirementEvidence src/lib/batch16-requirement-evidence.ts:22:17
+ ❯ src/lib/historical-canonical-evidence.test.ts:34:15
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  src/lib/historical-canonical-evidence.test.ts > exact supplemental technology presentation preserves historical membership > rejects missing, duplicate, unknown and stale supplemental membership without rewriting historical412
+Error: Historical canonical source membership differs
+ ❯ src/lib/historical-canonical-evidence.ts:23:39
+     21|  const files=current.implementationSourceSnapshot.files.map((file,inde…
+     22|   const old=oldFiles[index];
+     23|   if(!old||old.path!==file.path)throw Error('Historical canonical sour…
+       |                                       ^
+     24|   const admitted=verifyFinancialSafetyBinding(file.path,readFileSync(f…
+     25|   if(old.sha256!==file.sha256&&!admitted)throw Error('Historical canon…
+ ❯ validateHistoricalCanonicalEvidence src/lib/historical-canonical-evidence.ts:21:57
+ ❯ src/lib/historical-canonical-evidence.test.ts:53:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 1 passed (5)
+   Start at  10:27:39
+   Duration  6.20s (transform 2.04s, setup 0ms, collect 3.37s, tests 2.50s, environment 0ms, prepare 72ms)
+

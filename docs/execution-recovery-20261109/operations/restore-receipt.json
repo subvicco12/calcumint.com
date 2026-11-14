@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "observedAt": "2026-11-09T09:03:49.624Z",
+  "checks": [
+    "Actual pg_dump schema and public synthetic data captured without auth data or role credentials",
+    "Injected late restore failure rolls back schema and data atomically in separate empty database",
+    "Actual restore preserves exact core metadata/ACL/RLS/constraints and all seven-table rows including publication/audit sentinel; FK and anonymous denial enforced",
+    "Restored database supports exact reversal and reapplication while preserving committed publication/audit state"
+  ],
+  "sourceHashes": {
+    "tests/execution-recovery-20261109/operations-restore.mjs": "8cec6b1ba2d1c13b3258a097a1a702a85c8a3619044c2c3b2f70ae7ceaf2026d",
+    "tests/adoption1528/initializer.mjs": "26e20c2e0318271735dfc8d7eaf0b4dae858d80090974ef4aff90b045a9f8fc9",
+    "tests/adoption1528/bundle.mjs": "7c53b3a0ff481c37b9dd197ae09cff992c9815012439a451b0d8139934d112ec"
+  },
+  "dumpSha256": "9ac5cd8f225bbd521f654fe3d9571ece3ec28831922bd54a7a908947d904df88",
+  "dumpPersisted": false,
+  "syntheticOnly": true,
+  "productionRestoreEstablished": false,
+  "productionWrites": false,
+  "corePreimage": "7156e648f39334759e3bd4d5d678c63ec8fb7c499a1aecf66994ca8af27baf20",
+  "corePostimage": "26601099cb6a3f8c923782fc3e7b05e71ec53aa11e7c0fe6a32f6eaf8873aa43",
+  "provenance": {
+    "images": {
+      "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+      "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+      "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+    },
+    "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+    "autoconfirm": true,
+    "scope": "Isolated reconstruction of seven-table captured metadata; synthetic rows only; authentic provider internals outside uid/role not represented",
+    "sourceObservedAt": "2026-11-06 14:43:07.87206+00",
+    "productionWrites": false
+  }
+}

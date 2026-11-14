@@ -119,7 +119,7 @@ export default async function BusinessPage({ searchParams }: PageProps) {
       <div className="account-grid section">
         <article className="card">
           <span className="eyebrow">Shared work</span><h2>Projects</h2>
-          {projectsError ? <ReadUnavailable label="Projects"/> : projects?.length ? <ul>{projects.map((project) => <li key={project.id}><strong>{project.name}</strong> · {project.status}{project.description ? ` — ${project.description}` : ""}</li>)}</ul> : <p>No projects yet.</p>}
+          {projectsError ? <ReadUnavailable label="Projects"/> : projects?.length ? <ul>{projects.map((project) => <li key={project.id}><Link href={`/business/projects/${project.id}`}>{project.name}</Link> · {project.status}{project.description ? ` — ${project.description}` : ""}</li>)}</ul> : <p>No projects yet.</p>}
           {!projectsError && canManageProjects(role) && <form className="form-stack compact-form" action={createProject}><input type="hidden" name="organizationId" value={organizationId} /><label>Project name<input name="name" required /></label><label>Description<input name="description" /></label><button className="button secondary" type="submit">Create project</button></form>}
         </article>
 

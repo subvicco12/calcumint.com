@@ -2,6 +2,9 @@ import fs from 'node:fs';
 import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
+import {verifyParallelSource,capturePath} from '../../tests/parallel-source-20261110/core.mjs';
+import {sourceGit,baselineRef} from '../../tests/parallel-source-20261110/baseline-runtime.mjs';
+import {assertTestOnlySuccessor} from '../../tests/parallel-five-20261110/test-only-successor.mjs';
 const root='docs/first20-publication/',input=root+'input/';
 const read=p=>JSON.parse(fs.readFileSync(p,'utf8')),sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 const safe=p=>typeof p==='string'&&!p.startsWith('/')&&!p.includes('\\')&&p.split('/').every(s=>s&&s!=='.'&&s!=='..');
@@ -13,9 +16,21 @@ export function verifyPackage(){
  for(const name of ['MANIFEST-SHA256.json','INPUT-MANIFEST.json'])for(const [original,record] of Object.entries(read(input+name))){const storage=integrity.storagePaths[original];assert(safe(storage));const bytes=fs.readFileSync(input+storage);assert.equal(bytes.length,record.bytes);assert.equal(sha(bytes),record.sha256);}
  return integrity;
 }
-export function verifyExecutionManifest(){
- const m=read(root+'execution-manifest.json');assert.equal(m.baseline,'cac3becb8957c10452b3a66e882b8a3a1d7ec555');assert.equal(m.releaseHold,true);assert.equal(m.canonicalPromotion,false);assert.equal(m.publicationEligible,0);
- for(const [name,hash] of Object.entries(m.sourceHashes)){assert(safe(name)&&/^(src|tests|scripts|docs)\//.test(name));assert.equal(sha(fs.readFileSync(name)),hash,'Current source binding drift: '+name);}
+export async function verifyExecutionManifest(readSource=fs.readFileSync,git=sourceGit){
+ // The unchanged historical manifest is a predecessor claim, never permission
+ // to substitute old bytes for the reviewed current implementation.
+ assert.equal(verifyParallelSource(readSource,git),true);
+ const m=JSON.parse(readSource(root+'execution-manifest.json'));assert.equal(m.baseline,'cac3becb8957c10452b3a66e882b8a3a1d7ec555');assert.equal(m.releaseHold,true);assert.equal(m.canonicalPromotion,false);assert.equal(m.publicationEligible,0);
+ for(const [name,hash] of Object.entries(m.sourceHashes)){
+  assert(safe(name)&&/^(src|tests|scripts|docs)\//.test(name));const bytes=readSource(name);
+  if(name==='scripts/first20-publication/evidence.mjs'){
+   assert.equal(hash,'f116f77beac8cc66a65e817f4c9844155730d7982a8ab9fdb7e987da7b4e8ce1','Exact retained verifier preimage required');
+   assert.equal(sha(git(['show',baselineRef+':'+name])),hash,'Historical verifier Git provenance differs');
+   const record=JSON.parse(readSource(capturePath)).currentSources.find(r=>r.path===name);assert(record,'Reviewed current verifier must be independently captured');assert.equal(sha(bytes),record.sha256,'Current verifier differs from reviewed exact Git source');
+  }else if(name==='src/lib/first20/preview-security.test.ts'){
+   await assertTestOnlySuccessor(name,hash,bytes,git);
+  }else assert.equal(sha(bytes),hash,'Current source binding drift: '+name);
+ }
 }
 export function project(register,requirements,requests,ranked,numerical,browser){
  assert.equal(register.rows.length,44);assert.equal(new Set(register.rows.map(r=>r.masterId)).size,44);assert.equal(requirements.entries.length,1100);assert.equal(requirements.closed,0);
@@ -37,7 +52,7 @@ export function project(register,requirements,requests,ranked,numerical,browser)
  });
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){
- if(process.argv.includes('--check'))verifyExecutionManifest();
+ if(process.argv.includes('--check'))await verifyExecutionManifest();
  verifyPackage();const paths=['publication-readiness-register-44.json','requirement-dispositions-1100.json','reviewer-and-source-requests-44.json','ranked-review-cohorts.json'];const rows=project(...paths.map(p=>read(input+p)),read(root+'wave1-numerical.json'),read(root+'browser.json'));
  const out={kind:'FIRST20_SOFTWARE_SUPPLEMENTS_NOT_REVIEWER_DECISIONS',baseline:'cac3becb8957c10452b3a66e882b8a3a1d7ec555',baselineCI:{run:41507851529,conclusion:'SUCCESS'},summary:{firstWave:20,retainedAllCohortRequirements:1100,firstWaveRequirements:500,newNumericalBoundaryRejectionWitnesses:60,actualSourceBrowserJourneys:120,formalQaPassesAdded:0,newFullCriterionAcceptances:0,newlyPublicationEligible:0},sourceHashes:Object.fromEntries([...paths.map(p=>input+p),root+'wave1-numerical.json',root+'browser.json'].map(p=>[p,sha(fs.readFileSync(p))])),rows,releaseHold:true};
  const text=JSON.stringify(out,null,2)+'\n',dest=root+'readiness-supplement-20.json';if(process.argv.includes('--check'))assert.equal(fs.readFileSync(dest,'utf8'),text,'First20 supplemental evidence drift');else fs.writeFileSync(dest,text);

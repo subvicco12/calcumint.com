@@ -1,0 +1,22 @@
+{
+  "head": "15f324f18776fb1cf26866d477f2e0161f7a5278",
+  "run": 43008670409,
+  "job": 130482459582,
+  "conclusion": "FAILURE",
+  "failedStep": "Unit tests",
+  "assertionsPassed": 9130,
+  "assertionsFailed": 0,
+  "existingSkipped": 4,
+  "passedFiles": 1006,
+  "skippedFiles": 2,
+  "unhandledErrors": [
+    {
+      "kind": "vitest-worker",
+      "message": "Timeout calling \"onTaskUpdate\""
+    }
+  ],
+  "notAFormulaFailure": true,
+  "noErrorIgnored": true,
+  "correctionCandidate": "c0f593fa2ee6dd66fd54f7903b3ca553785c10aa",
+  "correction": "Await unchanged proof child processes so worker IPC remains live; exact timeouts/arguments/assertions retained. Actual proof heartbeat added."
+}

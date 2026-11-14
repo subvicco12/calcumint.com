@@ -1,0 +1,48 @@
+// @vitest-environment jsdom
+import {useState} from 'react';
+import {cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react';
+import {afterEach,beforeEach,expect,it,vi} from 'vitest';
+const mock=vi.hoisted(()=>({load:vi.fn(),share:vi.fn(),template:vi.fn()}));
+vi.mock('@/app/admin/calculator-factory/sharing-actions',()=>({factorySharingWorkspace:mock.load,factoryShareSnapshot:mock.share,factorySharingTemplate:mock.template,factorySharingOrganizations:vi.fn(),factorySharingProjects:vi.fn()}));
+import {CalculatorFactorySharedWorkspace} from './calculator-factory-shared-workspace';
+import {getFactoryWorkflows} from '@/lib/calculator-factory/registry';
+const packet=getFactoryWorkflows(218).execute({x:'12'});
+beforeEach(()=>{mock.load.mockReset().mockResolvedValue({organizationId:'org',project:{id:'project',name:'Team',status:'active'},role:'member',clients:[],records:[]});mock.share.mockReset().mockRejectedValue(Error('Retry same request'));mock.template.mockReset();});afterEach(cleanup);
+it('loads explicitly and keeps idempotent share identity on retry',async()=>{render(<CalculatorFactorySharedWorkspace ownerId="owner" packet={packet} organizationId="org" projectId="project" onRestore={vi.fn()}/>);expect(mock.load).not.toHaveBeenCalled();fireEvent.click(screen.getByRole('button',{name:'Load shared workspace'}));await screen.findByText(/Project: Team/);fireEvent.change(screen.getByLabelText('Shared snapshot title'),{target:{value:'Case'}});fireEvent.click(screen.getByRole('button',{name:'Share current verified snapshot'}));await screen.findByText('Retry same request');fireEvent.click(screen.getByRole('button',{name:'Share current verified snapshot'}));await waitFor(()=>expect(mock.share).toHaveBeenCalledTimes(2));expect(mock.share.mock.calls[0][1].requestId).toBe(mock.share.mock.calls[1][1].requestId);expect(mock.share.mock.calls[0][1].snapshot.output).toEqual({result:144});});
+it('does not expose stale records after switching organization context',async()=>{render(<CalculatorFactorySharedWorkspace ownerId="owner" packet={packet} organizationId="org" projectId="project" onRestore={vi.fn()}/>);fireEvent.click(screen.getByRole('button',{name:'Load shared workspace'}));await screen.findByText(/Project: Team/);fireEvent.change(screen.getByLabelText('Business organization'),{target:{value:''}});expect(screen.queryByText(/Project: Team/)).toBeNull();expect(screen.queryByRole('button',{name:'Share current verified snapshot'})).toBeNull();});
+
+it('retains verified template acknowledgement only across its matching parent packet update',async()=>{const restored=getFactoryWorkflows(218).execute({x:'5'});mock.load.mockResolvedValue({organizationId:'org',project:{id:'project',name:'Team',status:'active'},role:'member',clients:[],records:[{id:'record',title:'Template',snapshot:restored.snapshot}]});mock.template.mockResolvedValue({catalogId:218,snapshot:restored.snapshot});function Parent(){const [value,setValue]=useState(packet);return <><button onClick={()=>setValue(getFactoryWorkflows(218).execute({x:'7'}))}>Edit calculation</button><CalculatorFactorySharedWorkspace ownerId="owner" packet={value} organizationId="org" projectId="project" onRestore={()=>setValue(restored)}/></>;}render(<Parent/>);fireEvent.click(screen.getByRole('button',{name:'Load shared workspace'}));await screen.findByText(/Project: Team/);fireEvent.click(screen.getByRole('button',{name:'Open shared record as template'}));await screen.findByText('Verified shared snapshot opened as an independent working template.');fireEvent.click(screen.getByRole('button',{name:'Edit calculation'}));expect(screen.queryByText('Verified shared snapshot opened as an independent working template.')).toBeNull();});
+
+it('keeps template acknowledgement when an equal snapshot normalizes raw decimal text and field order',async()=>{
+ const initial=getFactoryWorkflows(423).execute({value:'01.000',toUnit:'cm',fromUnit:'m'});
+ const normalized=getFactoryWorkflows(423).execute({fromUnit:'m',toUnit:'cm',value:'1'});
+ expect(initial.snapshot.input).toEqual(normalized.snapshot.input);
+ expect(initial.snapshot.output).toEqual(normalized.snapshot.output);
+ expect(JSON.stringify(initial)).not.toBe(JSON.stringify(normalized));
+ mock.load.mockResolvedValue({organizationId:'org',project:{id:'project',name:'Team',status:'active'},role:'member',clients:[],records:[{id:'same-record',title:'Same numeric template',snapshot:normalized.snapshot}]});
+ mock.template.mockResolvedValue({catalogId:423,snapshot:normalized.snapshot});
+ function Parent(){
+  const [value,setValue]=useState(initial);
+  return <><output aria-label="Parent raw input">{JSON.stringify(value.raw)}</output><button onClick={()=>setValue(getFactoryWorkflows(423).execute({value:'2',fromUnit:'m',toUnit:'cm'}))}>Edit real value</button><CalculatorFactorySharedWorkspace ownerId="owner" packet={value} organizationId="org" projectId="project" onRestore={()=>setValue(normalized)}/></>;
+ }
+ render(<Parent/>);fireEvent.click(screen.getByRole('button',{name:'Load shared workspace'}));await screen.findByText(/Project: Team/);
+ fireEvent.click(screen.getByRole('button',{name:'Open shared record as template'}));
+ await waitFor(()=>expect(screen.getByLabelText('Parent raw input').textContent).toBe(JSON.stringify(normalized.raw)));
+ expect(screen.getByText('Verified shared snapshot opened as an independent working template.')).toBeTruthy();
+ fireEvent.click(screen.getByRole('button',{name:'Edit real value'}));
+ expect(screen.queryByText('Verified shared snapshot opened as an independent working template.')).toBeNull();
+});
+
+it.each([322,325,327])('uses the immutable primary output for shared physics %s and scenario capture',async catalogId=>{
+ const {businessCases}=await import('@/lib/completion-wave-20261113/business-cases');
+ const row=businessCases().find(row=>row.id===catalogId)!;
+ const stored=getFactoryWorkflows(catalogId).execute(row.input);
+ mock.load.mockResolvedValue({organizationId:'org',project:{id:'project',name:'Team',status:'active'},role:'member',clients:[],records:[{id:'physics-record',title:'Physics',snapshot:stored.snapshot}]});
+ render(<CalculatorFactorySharedWorkspace ownerId="owner" packet={stored} organizationId="org" projectId="project" onRestore={vi.fn()}/>);
+ fireEvent.click(screen.getByRole('button',{name:'Load shared workspace'}));
+ await screen.findByText(`Recorded result: ${String(stored.snapshot.output.value)}`);
+ fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+ await screen.findByRole('button',{name:'Replace baseline A'});
+ expect(screen.queryByText(/Could not capture this calculation/)).toBeNull();
+ expect(stored.snapshot.output).toHaveProperty('steps');
+});

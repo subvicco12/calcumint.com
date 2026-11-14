@@ -14,6 +14,9 @@ export function roundTo(value: number, digits = 2, mode: RoundingMode = "half-aw
 
   const factor = 10 ** digits;
   const scaled = value * factor;
+  if (!Number.isFinite(scaled)) {
+    throw new RangeError("Rounding exceeds supported numeric range");
+  }
   let rounded: number;
 
   switch (mode) {

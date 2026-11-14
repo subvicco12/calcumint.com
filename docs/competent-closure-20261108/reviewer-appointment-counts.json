@@ -1,0 +1,50 @@
+{
+  "kind": "EXACT_CANDIDATE_REVIEWER_ASSIGNMENT_OBSERVATION",
+  "rows": [
+    {
+      "observed_at": "2026-11-08 20:19:34.846203+00",
+      "read_only": "on",
+      "observed_actor": "postgres",
+      "actor_bypass_rls": true,
+      "master_id": 432,
+      "engine_id": "conversion.time",
+      "slug": "time-converter",
+      "version": 1,
+      "exact_candidate_count": 0,
+      "assigned_candidate_count": 0,
+      "assigned_without_platform_role_count": 0,
+      "active_review_capable_assignment_count": 0,
+      "assigned_role_states": []
+    },
+    {
+      "observed_at": "2026-11-08 20:19:34.846277+00",
+      "read_only": "on",
+      "observed_actor": "postgres",
+      "actor_bypass_rls": true,
+      "master_id": 440,
+      "engine_id": "conversion.frequency",
+      "slug": "frequency-converter",
+      "version": 1,
+      "exact_candidate_count": 0,
+      "assigned_candidate_count": 0,
+      "assigned_without_platform_role_count": 0,
+      "active_review_capable_assignment_count": 0,
+      "assigned_role_states": []
+    }
+  ],
+  "readOnly": true,
+  "identityCollected": false,
+  "interpretation": "At2026-11-08T20:19:34Z neither exact tuple has a hosted catalog row observed by postgres with RLS bypass; therefore neither has a hosted catalog reviewer assignment. No inference that no competent authorized reviewer exists.",
+  "minimumAppointmentAction": "Identify an actual competent independent eligible reviewer and document identity, competence, independence and authorized appointment in the review record. Because exact hosted catalog rows are absent, existing assign_calculator_reviewer cannot target these tuples until separately authorized exact draft catalog creation/adoption occurs; then owner/admin may assign an active owner/admin/reviewer through audited workflow. Do not create rows or assign during read-only work.",
+  "engineeringGo": "GO_FOR_EXISTING_AUTHORIZED_OFFLINE_ENGINEERING_AND_REVIEW_PREPARATION; retained implementation has no new demonstrated defect in this observation.",
+  "certificationGo": "NO_GO; actual source/formula/precision/canonical-QA decisions and exact-version adoption remain pending. Missing hosted row is not canonical acceptance.",
+  "ordinaryReviewRoute": "Competent independent engineering/source review; no newly imposed blanket human-only or external-specialist requirement.",
+  "certificationGranted": false,
+  "publicationAuthorized": false,
+  "productionWrites": false,
+  "releaseHold": true,
+  "observedActor": "postgres",
+  "actorBypassRls": true,
+  "visibilityScope": "Privileged postgres actor with observed rolbypassrls=true; absence is not limited by ordinary catalog RLS visibility.",
+  "initialEvidence": "reviewer-appointment-initial-* preserves original19:39 observation without recorded actor/RLS visibility."
+}

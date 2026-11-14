@@ -26,6 +26,8 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: package-lock.json
+      - name: Fetch exact financial and caller source revisions
+        run: node scripts/fetch-source-lineage.mjs
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
       - name: GrowthOS heartbeat syntax
@@ -108,6 +110,8 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: package-lock.json
+      - name: Fetch exact financial and caller source revisions
+        run: node scripts/fetch-source-lineage.mjs
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
       - name: Pull pinned isolated database fixtures
@@ -133,6 +137,57 @@ jobs:
         run: npm run test:launch
       - name: Calculator and rule-pack certification
         run: npm run test:certification
+
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Use Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Fetch exact financial and caller source revisions
+        run: node scripts/fetch-source-lineage.mjs
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Production build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: https://calcumint.com
+      - name: Provision pinned isolated browser for contract acceptance
+        timeout-minutes: 4
+        run: |
+          browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")
+          echo "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"
+          "$browser" --version
+      - name: Reusable private canonical contract evidence and browser acceptance
+        run: |
+          python3 scripts/canonical-validation-source.py --check
+          node scripts/canonical-validation-evidence.mjs --check
+          node tests/canonical-validation/browser.mjs
+          node tests/canonical-validation/workflow-browser.mjs
+        env:
+          VALIDATION_EVIDENCE: ${{ runner.temp }}
+      - name: Expanded immutable validation revision and source acceptance
+        run: |
+          python3 scripts/scale-validation-source.py --check
+          python3 tests/validation-scale/source.test.py
+          node scripts/scale-validation-evidence.mjs --check
+          node tests/validation-scale/browser.mjs
+          node tests/validation-scale/workflow-browser.mjs
+        env:
+          SCALE_EVIDENCE: ${{ runner.temp }}
+      - name: Require independent PDF reader and renderer
+        run: |
+          if ! command -v pdftotext >/dev/null || ! command -v pdffonts >/dev/null || ! command -v pdftoppm >/dev/null || ! command -v pdfinfo >/dev/null; then
+            sudo apt-get update -qq
+            sudo apt-get install -y --no-install-recommends poppler-utils
+          fi
+          node scripts/assert-pdf-tools.mjs
       - name: Synthetic Reference Six browser acceptance
         run: |
           test -x "$CHROMIUM_PATH"
@@ -183,47 +238,6 @@ jobs:
           node tests/canonical-calculus-workbench/browser.mjs
         env:
           CALCULUS_EVIDENCE: ${{ runner.temp }}/canonical-calculus
-  build:
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-      - name: Use Node.js 22
-        uses: actions/setup-node@v5
-        with:
-          node-version: 22
-          cache: npm
-          cache-dependency-path: package-lock.json
-      - name: Install dependencies
-        run: npm ci --no-audit --no-fund
-      - name: Production build
-        run: npm run build
-        env:
-          NEXT_PUBLIC_SITE_URL: https://calcumint.com
-      - name: Provision pinned isolated browser for contract acceptance
-        timeout-minutes: 4
-        run: |
-          browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")
-          echo "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"
-          "$browser" --version
-      - name: Reusable private canonical contract evidence and browser acceptance
-        run: |
-          python3 scripts/canonical-validation-source.py --check
-          node scripts/canonical-validation-evidence.mjs --check
-          node tests/canonical-validation/browser.mjs
-          node tests/canonical-validation/workflow-browser.mjs
-        env:
-          VALIDATION_EVIDENCE: ${{ runner.temp }}
-      - name: Expanded immutable validation revision and source acceptance
-        run: |
-          python3 scripts/scale-validation-source.py --check
-          python3 tests/validation-scale/source.test.py
-          node scripts/scale-validation-evidence.mjs --check
-          node tests/validation-scale/browser.mjs
-          node tests/validation-scale/workflow-browser.mjs
-        env:
-          SCALE_EVIDENCE: ${{ runner.temp }}
   full-product:
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -236,6 +250,8 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: package-lock.json
+      - name: Fetch exact financial and caller source revisions
+        run: node scripts/fetch-source-lineage.mjs
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
       - name: Pull pinned isolated database fixtures
@@ -302,6 +318,7 @@ jobs:
           node --test tests/software-closure/ci-workflow.test.mjs
           node tests/calculus-recovery-workbench/browser.mjs
           node tests/software-closure/recovery-browser.mjs
+          node --test tests/software-closure/preservation.test.mjs
         env:
           SOFTWARE_CLOSURE_ARTIFACTS: ${{ runner.temp }}/software-closure
           CALCULUS_RECOVERY_EVIDENCE: ${{ runner.temp }}/calculus-recovery
@@ -317,6 +334,17 @@ jobs:
           BATCH16_FULL_SCHEMA: '1'
           GOTRUE_ARTIFACTS: ${{ runner.temp }}/batch16-full-schema-browser
           BATCH16_FINDER_ARTIFACTS: ${{ runner.temp }}/batch16-finder
+      - name: Preserve sanitized native login observations
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-login-observation-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            ${{ runner.temp }}/batch13-gotrue/login-observation.json
+            ${{ runner.temp }}/batch13-gotrue/failure-summary.json
+            ${{ runner.temp }}/batch16-full-schema-browser/login-observation.json
+            ${{ runner.temp }}/batch16-full-schema-browser/failure-summary.json
+          if-no-files-found: warn
       - name: Batch17 independent issuance capture and expiry acceptance
         timeout-minutes: 5
         run: |
@@ -427,7 +455,9 @@ jobs:
           SIX_BOUNDARY_BROWSER_RECEIPT: ${{ runner.temp }}/six-publication-boundaries
   publication-factory:
     runs-on: ubuntu-latest
-    timeout-minutes: 18
+    # Run42648534309 exhausted18min after152 successful journeys; retain every
+    # acceptance step and its own tighter timeout within a bounded25min job.
+    timeout-minutes: 25
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -451,6 +481,8 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: package-lock.json
+      - name: Fetch exact financial and caller source revisions
+        run: node scripts/fetch-source-lineage.mjs
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
       - name: Verify exact cohort, identity, authority and preparation evidence
@@ -490,7 +522,7 @@ jobs:
         timeout-minutes: 4
         run: |
           node scripts/check-shortest-publication20.mjs
-          node --test tests/shortest-publication-20/caller-lineage.test.mjs tests/shortest-publication-20/frequency-presentation-lineage.test.mjs
+          node --test tests/shortest-publication-20/caller-lineage.test.mjs tests/shortest-publication-20/frequency-presentation-lineage.test.mjs tests/shortest-publication-20/completion-lineage.test.mjs
           python3 -m unittest discover -s tests/shortest-publication-20 -p 'test_*.py'
           python3 scripts/shortest-publication-routes.py --output "$RUNNER_TEMP/shortest-publication-20/production-routes.json"
           node tests/shortest-publication-20/browser.mjs
@@ -570,16 +602,27 @@ jobs:
       - name: Approved six-candidate worker, workflow and replay acceptance
         timeout-minutes: 3
         run: |
-          node scripts/check-six-candidate-evidence.mjs
+          if ! command -v pdftotext >/dev/null || ! command -v pdffonts >/dev/null || ! command -v pdftoppm >/dev/null || ! command -v pdfinfo >/dev/null; then
+            sudo apt-get update -qq
+            sudo apt-get install -y --no-install-recommends poppler-utils
+          fi
+          node scripts/assert-pdf-tools.mjs
+          python3 scripts/product-completion-20261108/inventory.py --check
+          node --test tests/financial-safety-lineage.test.mjs tests/product-completion-lineage.test.mjs tests/source-lineage-bootstrap.test.mjs
+          node scripts/check-current-six-candidate-evidence.mjs
           node --test tests/full-six-candidate/preview.test.mjs
           node tests/full-six-candidate/browser.mjs
+          node tests/product-completion-20261108/browser.mjs
         env:
           SIX_CANDIDATE_BROWSER_RECEIPT: ${{ runner.temp }}/six-candidate-closure
+          PRODUCT_COMPLETION_BROWSER: ${{ runner.temp }}/six-candidate-closure/product-completion
       - name: Preserve exact six-candidate acceptance receipt
         uses: actions/upload-artifact@v4
         with:
           name: six-candidate-closure-${{ github.event.pull_request.head.sha || github.sha }}
-          path: ${{ runner.temp }}/six-candidate-closure/receipt.json
+          path: |
+            ${{ runner.temp }}/six-candidate-closure/receipt.json
+            ${{ runner.temp }}/six-candidate-closure/product-completion/
           if-no-files-found: error
           retention-days: 7
       - name: Private Decimal50 worker and statistics workflow acceptance
@@ -637,6 +680,47 @@ jobs:
         run: node tests/publication-factory/browser.mjs
         env:
           PUBLICATION_FACTORY_BROWSER_ARTIFACTS: ${{ runner.temp }}/publication-factory-browser
+      - name: Calculator sprint shared boundary and version-safe private finance evidence
+        timeout-minutes: 4
+        run: |
+          node_modules/.bin/vitest run --config tests/calculator-sprint-20261108/cohort.vitest.config.ts
+          node --test tests/calculator-sprint-20261108/*.test.mjs
+          node tests/calculator-sprint-20261108/cohort-browser.mjs
+          node tests/calculator-sprint-20261108/cohort-business-browser.mjs
+        env:
+          COHORT_BROWSER_REPORT: ${{ runner.temp }}/calculator-sprint-cohort-browser-report.json
+          COHORT_BUSINESS_BROWSER_REPORT: ${{ runner.temp }}/calculator-sprint-cohort-business-browser-report.json
+      - name: Preserve calculator sprint boundary evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: calculator-sprint-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            ${{ runner.temp }}/calculator-sprint-cohort-browser-report.json
+            ${{ runner.temp }}/calculator-sprint-cohort-business-browser-report.json
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Exact financial successor and first-two authenticated acceptance closure
+        timeout-minutes: 4
+        run: |
+          python3 scripts/acceptance-closure-20261108/financial-witnesses.py --check
+          node tests/acceptance-closure-20261108/first-two-auth.mjs
+          node --test tests/acceptance-closure-20261108/*.test.mjs
+          node tests/acceptance-closure-20261108/shared-browser.mjs
+        env:
+          FIRST_TWO_AUTH_RECEIPT: ${{ runner.temp }}/acceptance-closure
+          FIRST_TWO_FRESH_RECEIPT: ${{ runner.temp }}/acceptance-closure/first-two-auth-receipt.json
+          SHARED_BROWSER_REPORT: ${{ runner.temp }}/acceptance-closure/shared-browser-report.json
+      - name: Preserve exact-head acceptance closure receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: acceptance-closure-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            ${{ runner.temp }}/acceptance-closure/
+            docs/acceptance-closure-20261108/financial-rounding-witnesses.json
+          if-no-files-found: warn
+          retention-days: 7
   validate:
     runs-on: ubuntu-latest
     needs: [checks, build, full-product, source-acceptance, publication-factory]

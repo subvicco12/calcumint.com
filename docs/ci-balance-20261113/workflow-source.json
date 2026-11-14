@@ -1,0 +1,29 @@
+{
+  "kind": "EXACT_FIVE_JOB_CAMPAIGN_RELOCATION",
+  "predecessor": {
+    "path": ".github/workflows/ci.yml",
+    "ref": "5663fce3901e87ec2928a9508f181abf385a8b29",
+    "blob": "507033e51ce3fe41d91787d9cbb20c6c1d28a6bc",
+    "bytes": 38874,
+    "sha256": "de5e1479736932860cc59aac9ef59b37a8bdbf632c4300df5eaa0e22bc564de4"
+  },
+  "current": {
+    "path": ".github/workflows/ci.yml",
+    "ref": "6016a500d429680401370a255fc7064d40e35cb9",
+    "blob": "657433d3a71a5ece42819edfa5cf2707d9465c7d",
+    "bytes": 39275,
+    "sha256": "d5b6e2d5562a0385362ffd0f01b012d869b0771134193626bb12754b8b667632"
+  },
+  "oldNS": {
+    "path": ".github/workflows/ci.yml",
+    "ref": "345c6cd6ed42aff39635d5e92d4adb48989b78ac",
+    "blob": "507033e51ce3fe41d91787d9cbb20c6c1d28a6bc",
+    "bytes": 38874,
+    "sha256": "de5e1479736932860cc59aac9ef59b37a8bdbf632c4300df5eaa0e22bc564de4"
+  },
+  "movedTail": "      - name: Synthetic Reference Six browser acceptance\n        run: |\n          test -x \"$CHROMIUM_PATH\"\n          npm run test:final-reference-browser\n        env:\n          FINAL_REFERENCE_ARTIFACTS: ${{ runner.temp }}/final-reference-browser\n      - name: Isolated Business browser acceptance\n        run: |\n          test -x \"$CHROMIUM_PATH\"\n          node scripts/test-business-browser.mjs\n        env:\n          BUSINESS_BROWSER_ARTIFACTS: ${{ runner.temp }}/business-browser\n      - name: Source-package integrity and fail-closed CI recovery guards\n        run: |\n          python3 scripts/verify-partial16-source.py --check\n          node --test tests/ci-gate-recovery/*.test.mjs\n      - name: Conditional private source contracts and immutable browser acceptance\n        run: |\n          python3 scripts/verify-conditional-source.py\n          node tests/conditional-authority-review/browser.mjs\n        env:\n          CONDITIONAL_EVIDENCE: ${{ runner.temp }}/conditional-source-contracts\n      - name: Six captured-source contracts and immutable browser acceptance\n        run: |\n          python3 scripts/verify-remaining-six-source.py\n          node tests/remaining-authority-review/browser.mjs\n        env:\n          REMAINING_SIX_EVIDENCE: ${{ runner.temp }}/remaining-six-source-contracts\n      - name: Fetch immutable native Blueprint candidate source\n        run: git fetch --no-tags --depth=1 origin 50f307c67e3a5e5d289d2b83e2a285029151f866\n      - name: Original Blueprint scope and exact runtime receipts\n        run: |\n          python3 scripts/reconcile-native-blueprint.py --check\n          python3 tests/blueprint-reconciliation/native.test.py\n          node --test tests/blueprint-reconciliation/*.test.mjs\n      - name: Fetch immutable canonical evidence source\n        run: git fetch --no-tags --depth=1 origin 7eff39b23a52953c028852d50d5571211a3f8a44\n      - name: Canonical ledger and analytical successor acceptance\n        run: |\n          node scripts/canonical-acceptance-evidence.mjs docs/canonical-acceptance --check\n          node tests/canonical-acceptance-review/browser.mjs\n        env:\n          CANONICAL_EVIDENCE: ${{ runner.temp }}/canonical-acceptance\n      - name: Declared-domain calculus source, replay and typed browser acceptance\n        run: |\n          python3 scripts/reconcile-canonical-calculus.py --check\n          node --test tests/canonical-calculus-workbench/frozen-source.test.mjs\n          node tests/canonical-calculus-workbench/browser.mjs\n        env:\n          CALCULUS_EVIDENCE: ${{ runner.temp }}/canonical-calculus",
+  "copiedPDFSetup": "      - name: Require independent PDF reader and renderer\n        run: |\n          if ! command -v pdftotext >/dev/null || ! command -v pdffonts >/dev/null || ! command -v pdftoppm >/dev/null || ! command -v pdfinfo >/dev/null; then\n            sudo apt-get update -qq\n            sudo apt-get install -y --no-install-recommends poppler-utils\n          fi\n          node scripts/assert-pdf-tools.mjs\n",
+  "productionWrites": false,
+  "timeoutsChanged": false,
+  "sourceCommandsRemoved": false
+}

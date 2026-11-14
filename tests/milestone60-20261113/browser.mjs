@@ -1,0 +1,78 @@
+import assert from 'node:assert/strict';
+import {readFile,writeFile,mkdir,rm} from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
+import {randomUUID,randomBytes,createHash} from 'node:crypto';
+import http from 'node:http';
+import path from 'node:path';
+import {pathToFileURL} from 'node:url';
+import {createClient} from '@supabase/supabase-js';
+import {createServerClient} from '@supabase/ssr';
+import {startGoTrueFixture} from '../gotrue-runtime/fixture.mjs';
+import {initializeFullSchema} from '../gotrue-full-schema/schema.mjs';
+import {startProductionRuntime} from '../completion-delivery-20261112/runtime.mjs';
+import {startBrowser} from '../next-runtime/cdp.mjs';
+import {recordedDownload} from '../next-runtime/recorded-download.mjs';
+import {registerCredentials,redactText,evidenceJSON,captureFixtureDiagnostics,waitForDeliveryReadiness} from '../completion-delivery-20261112/evidence.mjs';
+export const cases=[
+ {id:218,engine:'launch-square-calculator',slug:'square-calculator',input:{x:'12'},edit:{x:'3'}},
+ {id:219,engine:'launch-cube-calculator',slug:'cube-calculator',input:{x:'5'},edit:{x:'3'}},
+ {id:220,engine:'launch-square-root-calculator',slug:'square-root-calculator',input:{x:'144'},edit:{x:'9'}},
+ {id:423,engine:'conversion.length',slug:'length-converter',input:{value:'1',fromUnit:'mi',toUnit:'km'},edit:{value:'2'}},
+ {id:430,engine:'conversion.energy',slug:'energy-converter',input:{value:'1',fromUnit:'kwh',toUnit:'mj'},edit:{value:'2'}},
+ {id:431,engine:'conversion.power',slug:'power-converter',input:{value:'1',fromUnit:'kw',toUnit:'w'},edit:{value:'2'}},
+ {id:432,engine:'conversion.time',slug:'time-converter',input:{value:'2',fromUnit:'h',toUnit:'min'},edit:{value:'3'}},
+ {id:438,engine:'conversion.force',slug:'force-converter',input:{value:'1',fromUnit:'kn',toUnit:'n'},edit:{value:'2'}},
+ {id:440,engine:'conversion.frequency',slug:'frequency-converter',input:{value:'2.4',fromUnit:'ghz',toUnit:'mhz'},edit:{value:'3'}}];
+const out=path.resolve(process.env.COMPLETION_DELIVERY_ARTIFACTS||'/workspace/artifacts/milestone60-20261113/browser');
+const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
+const ok=async promise=>{const r=await promise;assert.equal(r.error,null,JSON.stringify(r.error));return r.data;};
+const unhold=text=>{const hold=/DO (\$[a-z_]*\$) BEGIN\s*RAISE EXCEPTION '[A-Z_0-9]+';\s*END \1;/;assert.match(text,hold);return text.replace(hold,'-- disposable isolated fixture only');};
+async function main(){
+ const waveCasesFile=process.env.BUSINESS_CASES_INPUT||'docs/milestone60-20261113/business-browser-cases.json';const activeCases=JSON.parse(await readFile(waveCasesFile,'utf8'));
+ if(waveCasesFile){assert.equal(activeCases.length,20);assert.equal(new Set(activeCases.map(row=>row.id)).size,20);assert(activeCases.every(row=>row.engine&&row.edit&&row.version===1));assert(process.env.BUSINESS_WAVE_SQL,'Held milestone SQL required');}
+ assert.deepEqual(activeCases.map(row=>row.id).sort((a,b)=>a-b),[255,256,259,260,261,262,263,264,265,266,267,269,270,271,273,424,429,436,437,439]);const expectedCount=activeCases.length;
+ for(const key of ['DATABASE_URL','SUPABASE_DB_URL','PGHOST','PGDATABASE','PGPORT','PGUSER','PGPASSWORD'])assert(!process.env[key],'External connection selector refused');
+ assert.equal(process.env.COMPLETION_DELIVERY_BUILD_WINDOW,'approved','Root production build resource window must be granted before invocation');
+ await mkdir(out,{recursive:true});const producerCommit=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+ assert.equal(execFileSync('git',['status','--porcelain','--','tests/milestone60-20261113/browser.mjs','tests/milestone60-20261113/browser-pro.mjs','tests/milestone60-20261113/business-acceptance.mjs','tests/milestone60-20261113/journeys.mjs'],{encoding:'utf8'}).trim(),'','Commit producer before invocation');
+ const report={kind:'NINE_INTEGRATED_GENUINE_NEXT_ACCOUNT_SHARING_EMBED_BROWSER',producerCommit,applicationSourceCommit:producerCommit,freeHistory:[],sharing:[],embed:[],api:[],uiIssuedGrants:{},roleChecks:[],releaseHold:true,productionWrites:false,canonicalAccepted:false,limitations:['Genuine disposable GoTrue/PostgREST/Postgres and byte-bound production Next composition; hosted equivalence is unknown.','Conditional positive embed publication uses explicit lower repository-reader and hosted-manifest fixtures only; no approvals or lifecycle records created.','All nineteen current identities are exercised; prior cohort receipts remain historical scoped evidence.']};
+ if(waveCasesFile){report.kind='TWENTY_INTEGRATED_GENUINE_NEXT_THREE_PLAN_ACCOUNT_SHARING_EMBED_BROWSER';report.disposableCommercialFixture={rateLimitPerMinute:1000,monthlyQuota:10000,scope:'Explicit isolated positive fixture values; no provider policy or entitlement claim'};report.exactCases=activeCases.map(({id,engine,slug,version})=>({catalogId:id,engine,slug,version}));}
+ report.reusedJourneyProducer={path:'tests/completion-delivery-20261112/acceptance.mjs',sha256:sha(await readFile('tests/completion-delivery-20261112/acceptance.mjs')),bodyReusedExceptTrustedClickHelper:true};report.currentJourneyProducer={path:'tests/milestone60-20261113/journeys.mjs',sha256:sha(await readFile('tests/milestone60-20261113/journeys.mjs'))};report.currentProProducer={path:'tests/milestone60-20261113/browser-pro.mjs',sha256:sha(await readFile('tests/milestone60-20261113/browser-pro.mjs'))};report.producerSHA256=sha(await readFile('tests/milestone60-20261113/browser.mjs'));report.casesSHA256=sha(await readFile(waveCasesFile));let db,next,browser,parent,deniedParent;let passed=false;
+ try{
+  db=await startGoTrueFixture({initializeSchema:initializeFullSchema});registerCredentials(db.anonKey,db.serviceKey);
+  const sqlFiles=['docs/native440/quota-readiness-wrapper.sql','docs/native440-remediation/embed-metering.sql','docs/completion-native-20261112/embed-successor.sql','docs/first-five-native-20261109/embed-metering-proposal.sql','docs/first-five-native-20261109/jobs-webhooks-proposal.sql','docs/first-five-native-20261109/embed-integrity-successor.sql','docs/next-cohort-native-20261110/contract-successor.sql','docs/parallel-five-20261110/native/contract-successor.sql','docs/technology-final-two-20261111/native/contract-successor.sql','docs/completion-first-20261112/automation/contract-successor.sql','docs/first-five-full-contract-20261109/sharing/review-only-sharing.sql','docs/next-cohort-sharing-20261110/review-only-sharing.sql','docs/parallel-five-20261110/sharing/contract-successor.sql','docs/technology-final-two-20261111/sharing/contract-successor.sql','docs/completion-sharing-20261112/contract-successor.sql'];
+  if(waveCasesFile)sqlFiles.push('docs/completion-wave-20261113/held-business-successor.sql',process.env.BUSINESS_WAVE_SQL);
+  report.fixtureSQL=[];for(const file of sqlFiles){const source=await readFile(file,'utf8');await db.sql(unhold(source));report.fixtureSQL.push({file,sha256:sha(source),isolatedHoldRemovedOnly:true});}await db.sql("NOTIFY pgrst,'reload schema';");
+  const users={};for(const [name,plan]of [['free','free'],['pro','pro'],['owner','business'],['member','business'],['viewer','business'],['foreign','business']]){
+   const sdk=createClient(db.url,db.anonKey,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}}),auth=await ok(sdk.auth.signUp({email:randomUUID()+'@example.invalid',password:'Isolated-'+randomUUID()}));
+   await db.sql(`UPDATE public.profiles SET plan='${plan}' WHERE id='${auth.user.id}';INSERT INTO public.platform_admins(user_id,role,active) VALUES('${auth.user.id}','reviewer',true);`);
+   let cookies=[];const ssr=createServerClient(db.url,db.anonKey,{cookies:{getAll:()=>cookies,setAll:values=>{cookies=values;}}});await ok(ssr.auth.setSession(auth.session));users[name]={id:auth.user.id,sdk,session:auth.session,cookies};registerCredentials(auth.session.access_token,auth.session.refresh_token,cookies.map(cookie=>cookie.value));
+  }
+  const org=await ok(users.owner.sdk.rpc('create_business_organization',{org_name:'Integrated nine Business',org_slug:'nine-'+randomUUID()}));
+  await db.sql(`INSERT INTO public.organization_members(organization_id,user_id,role) VALUES('${org}','${users.member.id}','member'),('${org}','${users.viewer.id}','viewer');`);
+  const project=await ok(users.owner.sdk.from('business_projects').insert({organization_id:org,name:'Integrated exact nine project',created_by:users.owner.id}).select().single());
+  const client=await ok(users.owner.sdk.from('client_workspaces').insert({organization_id:org,project_id:project.id,name:'Integrated exact nine client',created_by:users.owner.id}).select().single());
+  const foreignOrg=await ok(users.foreign.sdk.rpc('create_business_organization',{org_name:'Separate Business tenant',org_slug:'foreign-'+randomUUID()}));
+  const keySecret='cm_test_'+randomBytes(32).toString('hex');registerCredentials(keySecret);const apiKey=await ok(users.owner.sdk.from('business_api_keys').insert({organization_id:org,name:'Integrated scoped key',key_prefix:keySecret.slice(0,18),key_hash:sha(keySecret),...(waveCasesFile?{rate_limit_per_minute:1000,monthly_quota:10000}:{}),scopes:['calculations:run','calculations:batch'],created_by:users.owner.id}).select().single());
+  try{report.readOnlySchemaReadiness=await waitForDeliveryReadiness({db,owner:users.owner,org,apiKey});}catch(error){report.schemaReadinessDiagnostics=await captureFixtureDiagnostics(db,out);report.fixtureHTTPRequests=db.requests;throw error;}
+  const embeds=new Map();const makeParent=async()=>{const server=http.createServer((req,res)=>{const id=Number(new URL(req.url,'http://fixture').pathname.slice(1)),url=embeds.get(id);res.setHeader('Content-Type','text/html');res.end('<!doctype html><title>Actual external embed parent</title><iframe title="Native calculator" width="320" height="1000" src="'+(url||'about:blank')+'"></iframe>');});await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));return server;};
+  parent=await makeParent();deniedParent=await makeParent();const parentOrigin='http://127.0.0.1:'+parent.address().port,deniedOrigin='http://127.0.0.1:'+deniedParent.address().port;
+  next=await startProductionRuntime({root:process.cwd(),auth:{url:db.url},db,artifacts:out,...(waveCasesFile?{fixtureIds:activeCases.map(row=>row.engine)}:{})});report.runtimeDirectory=next.dir;
+  browser=await startBrowser(next.url,[db.url,parentOrigin,deniedOrigin]);await browser.send('Accessibility.enable');
+  const identify=async user=>{await browser.send('Network.clearBrowserCookies');for(const cookie of user.cookies)await browser.send('Network.setCookie',{name:cookie.name,value:cookie.value,url:next.url,httpOnly:false,sameSite:'Lax'});};
+  const api=async row=>{const route=row.id===440?'/api/v1/native/calculate':'/api/v1/calculator-factory/calculate',response=await fetch(next.url+route,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+keySecret},body:JSON.stringify({catalogId:row.id,version:1,input:row.input}),signal:AbortSignal.timeout(90000)});return{route,status:response.status,body:await response.json()};};
+  const batch=async(method,requestId,input)=>{const response=await fetch(next.url+'/api/v1/calculator-factory/batch',{method,headers:{'Content-Type':'application/json',Authorization:'Bearer '+keySecret,'Idempotency-Key':requestId},...(method==='POST'?{body:JSON.stringify(input)}:{}),signal:AbortSignal.timeout(90000)});return{status:response.status,body:await response.json()};};
+  const issue=async(row,user=users.owner)=>{const cookie=user.cookies.map(c=>c.name+'='+c.value).join('; '),r=await fetch(next.url+'/api/business/native-embeds',{method:'POST',headers:{'Content-Type':'application/json',Cookie:cookie,Origin:next.url},body:JSON.stringify({organizationId:org,apiKeyId:apiKey.id,catalogId:row.id,version:1,allowedOrigin:parentOrigin}),signal:AbortSignal.timeout(90000)});return{status:r.status,body:await r.json()};};
+  for(let attempt=1;attempt<=3;attempt++){
+   const producerBytes=await readFile('tests/milestone60-20261113/browser.mjs');const commit=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();assert.equal(execFileSync('git',['status','--porcelain','--','tests/milestone60-20261113/browser.mjs','tests/milestone60-20261113/browser-pro.mjs','tests/milestone60-20261113/business-acceptance.mjs','tests/milestone60-20261113/journeys.mjs'],{encoding:'utf8'}).trim(),'','Commit producer fixes before retry');
+   await writeFile(path.join(out,`attempt-${attempt}-producer.mjs`),producerBytes);for(const [kind,file]of [['journeys','tests/milestone60-20261113/journeys.mjs'],['pro','tests/milestone60-20261113/browser-pro.mjs']])await writeFile(path.join(out,`attempt-${attempt}-${kind}.mjs`),await readFile(file));await writeFile(path.join(out,`attempt-${attempt}-invocation.json`),JSON.stringify({attempt,producerCommit:commit,producerSHA256:sha(producerBytes),applicationSourceCommit:report.applicationSourceCommit,recordedBeforeInvocation:true},null,2)+'\n');
+   try{const producer=await import(pathToFileURL(path.resolve('tests/milestone60-20261113/journeys.mjs')).href+'?attempt='+attempt);const context={cases:activeCases,db,next,browser,users,org,project,client,foreignOrg,apiKey,embeds,parentOrigin,deniedOrigin,identify,issue,api,batch,report,out};if(waveCasesFile){const {runMilestoneBusiness}=await import('./business-acceptance.mjs');await runMilestoneBusiness(context,{cases:activeCases,runJourneys:producer.runJourneys});await identify(users.pro);const {runPro}=await import('./browser-pro.mjs');report.pro??={rows:[]};await runPro({...context,sdk:users.pro.sdk,auth:{user:{id:users.pro.id}},prior:report,report:report.pro});}else await producer.runJourneys(context);break;}
+   catch(error){await next.flush();await writeFile(path.join(out,`attempt-${attempt}-failure.json`),evidenceJSON({...report,error:redactText(error.stack),browserErrors:browser.errors,body:await browser.text().catch(()=>null)}));if(report.currentSourceDrift)throw error;console.log('ASSERTION PAUSED; same fixture and production runtime retained. Commit producer fix then write '+out+'/retry-request.json');if(attempt===3)throw error;let retry=false;const deadline=Date.now()+600000;while(Date.now()<deadline){try{await readFile(path.join(out,'retry-request.json'));await rm(path.join(out,'retry-request.json'));retry=true;break;}catch{}await new Promise(resolve=>setTimeout(resolve,500));}if(!retry)throw error;}
+  }
+  assert.equal(report.freeHistory.length,expectedCount);assert.equal(report.sharing.length,expectedCount);assert.equal(report.embed.length,expectedCount);assert.equal(report.api.length,expectedCount);report.passed=true;passed=true;assert.equal(sha(await db.sql("SELECT pg_get_functiondef('public.factory_native_embed_publication_v1(integer,integer)'::regprocedure);")),report.originalOuterEmbedGateSHA256);report.fixture=db.provenance;report.requests=db.requests;report.browserErrors=browser.errors;report.copiedSources=next.builtSources;
+ }catch(error){report.passed=false;report.error=redactText(error.stack);report.fixtureHTTPRequests=db?.requests;throw Error(redactText(error.stack));}
+ finally{await next?.flush();await writeFile(path.join(out,'receipt.json'),evidenceJSON(report));await browser?.close();for(const server of [parent,deniedParent])if(server){server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}await next?.close();await db?.close();}
+ console.log(JSON.stringify({passed,freeHistory:report.freeHistory.length,sharing:report.sharing.length,embed:report.embed.length,out}));
+}
+
+if(!new URL(import.meta.url).search)await main();

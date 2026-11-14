@@ -1,0 +1,30 @@
+
+ RUN  v3.2.7 /tmp/calcumint-first-five-native-20261109
+
+ ❯ src/components/technology-five-embed.test.tsx (3 tests | 1 failed) 179ms
+   ✓ submits exact decimal strings and shows server-authoritative results with methodology 124ms
+   ✓ removes stale result on input change and renders server refusals accessibly 31ms
+   × resets exact identity and refuses stale pending output when the grant and calculator change 23ms
+     → expected '' to be '4' // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/technology-five-embed.test.tsx > resets exact identity and refuses stale pending output when the grant and calculator change
+AssertionError: expected '' to be '4' // Object.is equality
+
+- Expected
++ Received
+
+- 4
+
+ ❯ src/components/technology-five-embed.test.tsx:6:846
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  18:45:23
+   Duration  1.18s (transform 83ms, setup 0ms, collect 208ms, tests 179ms, environment 488ms, prepare 76ms)
+

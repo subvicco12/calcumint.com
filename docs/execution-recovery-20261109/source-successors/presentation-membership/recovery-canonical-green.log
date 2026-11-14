@@ -1,0 +1,19 @@
+
+ RUN  v3.2.7 /workspace/work/product-completion-20261108
+
+ ✓ src/lib/historical-canonical-evidence.test.ts (5 tests) 7843ms
+   ✓ immutable historical canonical evidence with exact guard succession > reproduces the original without advancing acceptance or source claims  972ms
+   ✓ immutable historical canonical evidence with exact guard succession > rejects artifact identity, source hash and authority tampering  1009ms
+   ✓ immutable historical canonical evidence with exact guard succession > rejects unrelated current metadata and source membership drift  1274ms
+   ✓ historical Batch16 retains fresh witness comparison > admits exact caller transitions but rejects changed witnesses and unrelated source claims  2773ms
+   ✓ exact supplemental technology presentation preserves historical membership > rejects missing, duplicate, unknown and stale supplemental membership without rewriting historical412  1808ms
+ ✓ src/lib/batch16-requirement-evidence.test.ts (3 tests) 10935ms
+   ✓ exact requirement evidence without canonical promotion > processes all identities but limits independent witness coverage to the exact 79 bindings  1717ms
+   ✓ exact requirement evidence without canonical promotion > uses exact master-bound witnesses rather than family or component associations  1355ms
+   ✓ exact requirement evidence without canonical promotion > rejects promoted statuses, substituted identity, stale hashes and changed exact evidence pointers  7860ms
+
+ Test Files  2 passed (2)
+      Tests  8 passed (8)
+   Start at  10:28:17
+   Duration  24.02s (transform 2.14s, setup 0ms, collect 4.43s, tests 18.78s, environment 0ms, prepare 183ms)
+

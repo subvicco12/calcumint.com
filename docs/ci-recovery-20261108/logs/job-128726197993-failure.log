@@ -1,0 +1,135 @@
+2026-11-08T12:13:20.3390987Z # skipped 0
+2026-11-08T12:13:20.3391322Z # todo 0
+2026-11-08T12:13:20.3391656Z # duration_ms 1127.930992
+2026-11-08T12:13:20.3845747Z TAP version 13
+2026-11-08T12:13:20.4325040Z # Subtest: bounded repartition preserves prior steps and strictly substitutes original-source historical replay
+2026-11-08T12:13:20.4336964Z not ok 1 - bounded repartition preserves prior steps and strictly substitutes original-source historical replay
+2026-11-08T12:13:20.4338068Z   ---
+2026-11-08T12:13:20.4347469Z   duration_ms: 3.978736
+2026-11-08T12:13:20.4348106Z   type: 'test'
+2026-11-08T12:13:20.4349294Z   location: '/home/runner/work/calcumint.com/calcumint.com/tests/full-product-batch14/workflow.test.mjs:7:1'
+2026-11-08T12:13:20.4350566Z   failureType: 'testCodeFailure'
+2026-11-08T12:13:20.4351252Z   error: |-
+2026-11-08T12:13:20.4351905Z     Expected values to be strictly deep-equal:
+2026-11-08T12:13:20.4352514Z     + actual - expected
+2026-11-08T12:13:20.4352974Z
+2026-11-08T12:13:20.4353346Z       [
+2026-11-08T12:13:20.4353950Z         '      - name: Checkout\n        uses: actions/checkout@v5\n',
+2026-11-08T12:13:20.4354691Z         '      - name: Use Node.js 22\n' +
+2026-11-08T12:13:20.4355331Z           '        uses: actions/setup-node@v5\n' +
+2026-11-08T12:13:20.4355921Z           '        with:\n' +
+2026-11-08T12:13:20.4356683Z           '          node-version: 22\n',
+2026-11-08T12:13:20.4357446Z     +   '      - name: Fetch exact financial and caller source revisions\n' +
+2026-11-08T12:13:20.4358271Z     +     '        run: node scripts/fetch-source-lineage.mjs\n',
+2026-11-08T12:13:20.4358948Z         '      - name: Install dependencies\n' +
+2026-11-08T12:13:20.4359747Z           '        run: npm ci --no-audit --no-fund\n',
+2026-11-08T12:13:20.4360511Z         '      - name: Pull pinned isolated database fixtures\n' +
+2026-11-08T12:13:20.4361213Z           '        run: |\n' +
+2026-11-08T12:13:20.4362384Z           '          docker pull postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94\n' +
+2026-11-08T12:13:20.4364211Z           '          docker pull postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401\n',
+2026-11-08T12:13:20.4365537Z     -   '      - name: Provision pinned isolated browser fixture\n' +
+2026-11-08T12:13:20.4366511Z     -     '        timeout-minutes: 4\n' +
+2026-11-08T12:13:20.4367130Z     -     '        run: |\n' +
+2026-11-08T12:13:20.4367930Z     -     '          browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")\n' +
+2026-11-08T12:13:20.4368877Z     -     '          echo "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"\n' +
+2026-11-08T12:13:20.4369620Z     -     '          "$browser" --version\n'
+2026-11-08T12:13:20.4370225Z       ]
+2026-11-08T12:13:20.4370533Z
+2026-11-08T12:13:20.4370931Z   code: 'ERR_ASSERTION'
+2026-11-08T12:13:20.4371384Z   name: 'AssertionError'
+2026-11-08T12:13:20.4371823Z   expected:
+2026-11-08T12:13:20.4372155Z     0: |-
+2026-11-08T12:13:20.4372553Z             - name: Checkout
+2026-11-08T12:13:20.4373036Z               uses: actions/checkout@v5
+2026-11-08T12:13:20.4373551Z
+2026-11-08T12:13:20.4373896Z     1: |-
+2026-11-08T12:13:20.4374145Z             - name: Use Node.js 22
+2026-11-08T12:13:20.4374490Z               uses: actions/setup-node@v5
+2026-11-08T12:13:20.4375514Z               with:
+2026-11-08T12:13:20.4376059Z                 node-version: 22
+2026-11-08T12:13:20.4376642Z
+2026-11-08T12:13:20.4376921Z     2: |-
+2026-11-08T12:13:20.4377301Z             - name: Install dependencies
+2026-11-08T12:13:20.4377832Z               run: npm ci --no-audit --no-fund
+2026-11-08T12:13:20.4378302Z
+2026-11-08T12:13:20.4378599Z     3: |-
+2026-11-08T12:13:20.4379060Z             - name: Pull pinned isolated database fixtures
+2026-11-08T12:13:20.4379578Z               run: |
+2026-11-08T12:13:20.4380505Z                 docker pull postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94
+2026-11-08T12:13:20.4382236Z                 docker pull postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401
+2026-11-08T12:13:20.4383183Z
+2026-11-08T12:13:20.4383497Z     4: |-
+2026-11-08T12:13:20.4384018Z             - name: Provision pinned isolated browser fixture
+2026-11-08T12:13:20.4384650Z               timeout-minutes: 4
+2026-11-08T12:13:20.4385073Z               run: |
+2026-11-08T12:13:20.4385669Z                 browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")
+2026-11-08T12:13:20.4386617Z                 echo "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"
+2026-11-08T12:13:20.4387203Z                 "$browser" --version
+2026-11-08T12:13:20.4387625Z
+2026-11-08T12:13:20.4387940Z   actual:
+2026-11-08T12:13:20.4388247Z     0: |-
+2026-11-08T12:13:20.4388578Z             - name: Checkout
+2026-11-08T12:13:20.4389035Z               uses: actions/checkout@v5
+2026-11-08T12:13:20.4389464Z
+2026-11-08T12:13:20.4389758Z     1: |-
+2026-11-08T12:13:20.4390131Z             - name: Use Node.js 22
+2026-11-08T12:13:20.4390638Z               uses: actions/setup-node@v5
+2026-11-08T12:13:20.4391098Z               with:
+2026-11-08T12:13:20.4391498Z                 node-version: 22
+2026-11-08T12:13:20.4391897Z
+2026-11-08T12:13:20.4392200Z     2: |-
+2026-11-08T12:13:20.4392724Z             - name: Fetch exact financial and caller source revisions
+2026-11-08T12:13:20.4393452Z               run: node scripts/fetch-source-lineage.mjs
+2026-11-08T12:13:20.4393952Z
+2026-11-08T12:13:20.4394239Z     3: |-
+2026-11-08T12:13:20.4394621Z             - name: Install dependencies
+2026-11-08T12:13:20.4395178Z               run: npm ci --no-audit --no-fund
+2026-11-08T12:13:20.4395713Z
+2026-11-08T12:13:20.4396025Z     4: |-
+2026-11-08T12:13:20.4396650Z             - name: Pull pinned isolated database fixtures
+2026-11-08T12:13:20.4397201Z               run: |
+2026-11-08T12:13:20.4398154Z                 docker pull postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94
+2026-11-08T12:13:20.4399727Z                 docker pull postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401
+2026-11-08T12:13:20.4400726Z
+2026-11-08T12:13:20.4401012Z   operator: 'deepStrictEqual'
+2026-11-08T12:13:20.4401285Z   stack: |-
+2026-11-08T12:13:20.4401914Z     TestContext.<anonymous> (file:///home/runner/work/calcumint.com/calcumint.com/tests/full-product-batch14/workflow.test.mjs:7:474)
+2026-11-08T12:13:20.4402610Z     Test.runInAsyncScope (node:async_hooks:214:14)
+2026-11-08T12:13:20.4402997Z     Test.run (node:internal/test_runner/test:1047:25)
+2026-11-08T12:13:20.4403506Z     Test.start (node:internal/test_runner/test:944:17)
+2026-11-08T12:13:20.4403979Z     startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+2026-11-08T12:13:20.4404367Z   ...
+2026-11-08T12:13:20.4404808Z # Subtest: native and report acceptance remain mandatory after original evidence steps
+2026-11-08T12:13:20.4405467Z ok 2 - native and report acceptance remain mandatory after original evidence steps
+2026-11-08T12:13:20.4405873Z   ---
+2026-11-08T12:13:20.4406067Z   duration_ms: 0.445542
+2026-11-08T12:13:20.4406284Z   type: 'test'
+2026-11-08T12:13:20.4406813Z   ...
+2026-11-08T12:13:20.4407300Z # Subtest: Batch14 historical replay fetches the exact frozen source and runs tamper regressions
+2026-11-08T12:13:20.4408230Z ok 3 - Batch14 historical replay fetches the exact frozen source and runs tamper regressions
+2026-11-08T12:13:20.4408672Z   ---
+2026-11-08T12:13:20.4408867Z   duration_ms: 0.211736
+2026-11-08T12:13:20.4409088Z   type: 'test'
+2026-11-08T12:13:20.4409282Z   ...
+2026-11-08T12:13:20.4435034Z 1..3
+2026-11-08T12:13:20.4435563Z # tests 3
+2026-11-08T12:13:20.4436181Z # suites 0
+2026-11-08T12:13:20.4438056Z # pass 2
+2026-11-08T12:13:20.4438543Z # fail 1
+2026-11-08T12:13:20.4439153Z # cancelled 0
+2026-11-08T12:13:20.4439725Z # skipped 0
+2026-11-08T12:13:20.4440303Z # todo 0
+2026-11-08T12:13:20.4441074Z # duration_ms 70.989008
+2026-11-08T12:13:20.4507938Z ##[error]Process completed with exit code 1.
+2026-11-08T12:13:20.4646128Z ##[group]Run actions/upload-artifact@v4
+2026-11-08T12:13:20.4646748Z with:
+2026-11-08T12:13:20.4647057Z   name: batch21-browser-138dc8e0d54396369ca15865ee170497729a4924
+2026-11-08T12:13:20.4647676Z   path: /home/runner/work/_temp/batch21-browser/report.json
+/home/runner/work/_temp/batch21-browser/*.png
+
+2026-11-08T12:13:20.4648184Z   if-no-files-found: warn
+2026-11-08T12:13:20.4648421Z   compression-level: 6
+2026-11-08T12:13:20.4648644Z   overwrite: false
+2026-11-08T12:13:20.4648863Z   include-hidden-files: false
+2026-11-08T12:13:20.4649093Z env:
+2026-11-08T12:13:20.4649461Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.f6Il1h/opt/google/chrome/chrome

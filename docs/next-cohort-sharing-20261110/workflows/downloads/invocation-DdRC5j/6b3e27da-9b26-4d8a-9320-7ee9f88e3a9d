@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "resolution-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "input": {
+        "widthPixels": 1920,
+        "heightPixels": 1080
+      },
+      "output": {
+        "steps": [
+          "Resolution = 2073600"
+        ],
+        "value": 2073600
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "input": {
+        "widthPixels": 3840,
+        "heightPixels": 1080
+      },
+      "output": {
+        "steps": [
+          "Resolution = 4147200"
+        ],
+        "value": 4147200
+      }
+    }
+  ],
+  "comparison": {
+    "schemaVersion": 1,
+    "metrics": [
+      {
+        "field": "value",
+        "label": "value",
+        "cells": [
+          {
+            "slot": "A",
+            "value": 2073600,
+            "difference": 0,
+            "unavailable": null
+          },
+          {
+            "slot": "B",
+            "value": 4147200,
+            "difference": 2073600,
+            "unavailable": null
+          }
+        ]
+      }
+    ],
+    "charts": []
+  }
+}

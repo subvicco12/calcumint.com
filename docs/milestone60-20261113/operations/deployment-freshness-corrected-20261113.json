@@ -1,0 +1,63 @@
+{
+  "kind": "CORRECTED_OPERATIONAL_METADATA_WITH_RETAINED_ORIGINAL_BYTES",
+  "preparedAtUTC": "2026-11-13T12:37:47.043519+00:00",
+  "originalReceiptSHA256": "65c07a41abf93f5f051adb0c37e3aa425dafbbdada17ee0d162ec8dd8fdead5a",
+  "originalReceiptUTF8": "{\n  \"kind\": \"FOCUSED_PROVIDER_DEPLOYMENT_FRESHNESS_NOT_RUNTIME_ATTESTATION\",\n  \"domain\": \"calcumint.com\",\n  \"observedAtUTC\": \"2026-11-13 12:32:57 UTC\",\n  \"readOperation\": \"hosting_get-deployment\",\n  \"build\": {\n    \"uuid\": \"01a12a3d-9c48-7282-9707-033bf0bf5cab\",\n    \"state\": \"completed\",\n    \"createdAt\": \"2026-10-11T09:14:03Z\",\n    \"updatedAt\": \"2026-10-11T09:15:17Z\",\n    \"sourceSHA\": \"caffafe639350ca0c2c2cf33ae1f099294f5af54\",\n    \"sourceBranch\": \"main\",\n    \"sourceRepository\": \"calcumint.com\"\n  },\n  \"automaticDeployment\": {\n    \"enabled\": true,\n    \"branch\": \"main\",\n    \"repository\": \"calcumint.com\"\n  },\n  \"retainedObservation\": {\n    \"path\": \"docs/remaining-five-20261110/hosting-build-metadata.json\",\n    \"observedAtUTC\": \"2026-11-10T09:49:45.321233+00:00\",\n    \"sourceSHA\": \"caffafe639350ca0c2c2cf33ae1f099294f5af54\"\n  },\n  \"sameProviderReportedBuildAsRetained\": true,\n  \"candidateSHA\": \"6be28beff69d02f075215da24698d25bb16430c5\",\n  \"preserved1537Baseline\": \"16cb2804fa3e9731a7f39a761de9a7a27ee87e67\",\n  \"candidateIsProviderReportedLatestBuild\": false,\n  \"baselineIsProviderReportedLatestBuild\": false,\n  \"githubMainFreshness\": {\n    \"status\": \"UNAVAILABLE_LOCAL_READ_ONLY_TRANSPORT\",\n    \"reason\": \"git ls-remote origin refs/heads/main failed immediately: configured proxy port8080 could not connect; no retry/auth/escalation\"\n  },\n  \"limits\": [\n    \"Provider-reported latest completed build and stored auto-main configuration only; not actual serving-process SHA/checksum or deployment freeze attestation\",\n    \"No website inventory, logs retained, environment values, credentials, reconfiguration, redeployment, OAuth or production writes\",\n    \"Branch enabled does not establish successful deployment of candidate or main HEAD\"\n  ],\n  \"releaseHold\": true,\n  \"productionWrites\": false\n}\n",
+  "corrections": [
+    {
+      "path": "/preserved1537Baseline",
+      "from": "16cb2804fa3e9731a7f39a761de9a7a27ee87e67",
+      "to": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+      "basis": "Explicit owner primary candidate and independently fetched PR1538 base SHA; 16cb was a later factory ancestor, not PR1537."
+    }
+  ],
+  "additionalVerifiedRead": "Authenticated GitHub connector fetch_commit(main) resolved the provider-matching SHA after CLI proxy failure. No source or configuration changed.",
+  "currentView": {
+    "kind": "FOCUSED_PROVIDER_DEPLOYMENT_FRESHNESS_NOT_RUNTIME_ATTESTATION",
+    "domain": "calcumint.com",
+    "observedAtUTC": "2026-11-13 12:32:57 UTC",
+    "readOperation": "hosting_get-deployment",
+    "build": {
+      "uuid": "01a12a3d-9c48-7282-9707-033bf0bf5cab",
+      "state": "completed",
+      "createdAt": "2026-10-11T09:14:03Z",
+      "updatedAt": "2026-10-11T09:15:17Z",
+      "sourceSHA": "caffafe639350ca0c2c2cf33ae1f099294f5af54",
+      "sourceBranch": "main",
+      "sourceRepository": "calcumint.com"
+    },
+    "automaticDeployment": {
+      "enabled": true,
+      "branch": "main",
+      "repository": "calcumint.com"
+    },
+    "retainedObservation": {
+      "path": "docs/remaining-five-20261110/hosting-build-metadata.json",
+      "observedAtUTC": "2026-11-10T09:49:45.321233+00:00",
+      "sourceSHA": "caffafe639350ca0c2c2cf33ae1f099294f5af54"
+    },
+    "sameProviderReportedBuildAsRetained": true,
+    "candidateSHA": "6be28beff69d02f075215da24698d25bb16430c5",
+    "preserved1537Baseline": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+    "candidateIsProviderReportedLatestBuild": false,
+    "baselineIsProviderReportedLatestBuild": false,
+    "githubMainFreshness": {
+      "status": "VERIFIED_AUTHENTICATED_GITHUB_CONNECTOR",
+      "ref": "main",
+      "sha": "caffafe639350ca0c2c2cf33ae1f099294f5af54",
+      "url": "https://github.com/subvicco12/calcumint.com/commit/caffafe639350ca0c2c2cf33ae1f099294f5af54",
+      "originalCliTransportFailurePreserved": true
+    },
+    "limits": [
+      "Provider-reported latest completed build and stored auto-main configuration only; not actual serving-process SHA/checksum or deployment freeze attestation",
+      "No website inventory, logs retained, environment values, credentials, reconfiguration, redeployment, OAuth or production writes",
+      "Branch enabled does not establish successful deployment of candidate or main HEAD"
+    ],
+    "releaseHold": true,
+    "productionWrites": false,
+    "mainMatchesProviderReportedBuild": true
+  },
+  "actualServingProcessAttested": false,
+  "releaseHold": true,
+  "productionWrites": false
+}

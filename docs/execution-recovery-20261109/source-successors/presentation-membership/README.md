@@ -1,0 +1,9 @@
+# Exact presentation supplement preserves the historical canonical source tree
+
+The historical canonical snapshot has412 non-test calculator source files. The current recursive collector has413: the only additional path is `src/calculators/final-framework/technology-scalar-presentation.ts`. Its sorted insertion shifted the old indexed comparison and caused six historical-canonical/Batch16 tests to fail before reaching their actual evidence checks.
+
+The current collector remains complete. The validator requires exact current membership equal to the original412 paths plus this one explicitly named addition, verifies its7086 commit/blob/SHA and current physical bytes, then reconstructs the original ordered412-file vector and hashes for historical comparison. It still validates every original file, identity, metadata field and restriction. No arbitrary additions are ignored; missing/duplicate/unknown/stale supplementary sources reject. The old evidence JSON is unchanged and no current canonical acceptance is inferred.
+
+The root's811 UI accessibility correction is admitted as an exact caller successor. Its original46903 predecessor claim, all76 source dependencies and exact7086 intermediate remain preserved. The dual-revision guard validates that evolution independently against actual Git objects/current bytes; the original9c-to-a7a historical block remains intact. The guard itself and validator/tests are source-captured atfc45, followed by this metadata-only proof stage. Existing source-reference builder and verifier tail are byte-identical.
+
+Affected Vitest:8passed. Strict source/receipt/packet/lineage Node checks:205passed. The red regression, green test and Node logs are retained with hashes. No calculator arithmetic, historical packet, production state or approval changed.

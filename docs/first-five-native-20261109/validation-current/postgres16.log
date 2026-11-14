@@ -1,0 +1,16 @@
+PASS Actual registered outputs, immutable duplicate POST/outbox and read-only recovery with inherited request quotas
+PASS Concurrent duplicate submissions create one immutable job/event while preserving existing per-POST quota policy
+PASS Native job and existing API share the same configured last-slot quota under concurrency
+PASS Job/quota/immutable outbox commit atomically and roll back together on audit failure
+PASS Current publication withdrawal, batch-scope removal and Business downgrade deny new submissions and recovery
+PASS Exact five/version and inherited1–100 row bounds reject unsupported jobs
+PASS Malformed current key scope metadata cannot substitute for an authoritative scope array
+PASS Atomic single-worker lease, expired lease recovery and stale/foreign completion fencing preserve event identity
+PASS Actual worker and local HTTP receiver verify HMAC, unchanged event/payload retry and durable failure/success audits
+PASS Actual signed worker stops at inherited8 attempts and cannot dispatch a ninth dead-letter event
+PASS Endpoint disable and key revocation prevent dispatch, including after a lease was acquired
+PASS RLS and function/table privileges deny untrusted direct job/outbox/audit access
+PASS RPC-only job/outbox/attempt writes and owner row-identity guards reject direct fabrication and rewrite
+PASS Original candidate counterexample reproduced: direct service identity rewrite/unrevoke and fabricated usage without quota
+PASS Source-bound embed successor enforces column privileges, monotonic revocation, immutable audits and RPC-only quota-backed usage
+PASS Held source-bound disable blocks new issuance/jobs/dispatch/debits while preserving every immutable audit record

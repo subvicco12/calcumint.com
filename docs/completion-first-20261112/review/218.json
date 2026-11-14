@@ -1,0 +1,231 @@
+{
+  "kind": "UNSIGNED_EXACT_VERSION_REVIEW_PREPARATION_NOT_ACCEPTANCE",
+  "catalogId": 218,
+  "engine": {
+    "catalogId": 218,
+    "engineId": "launch-square-calculator",
+    "calculatorSlug": "square-calculator",
+    "calculatorVersion": 1,
+    "sourceVersion": "factory-wave1-20261112.1/launch-square-calculator@1/private.basic-math-capture.normal-output.20261112.1"
+  },
+  "frozenRuntimeSHA": "79bf64466663cc961fdb80365143d0c750dccc6f",
+  "canonicalTarget": {
+    "catalogPath": "docs/first20-publication/input/input/governing/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx",
+    "catalogRow": 219,
+    "blueprintPath": "docs/blueprint-reconciliation/native-paragraphs.txt"
+  },
+  "observedSnapshot": {
+    "calculatorSlug": "square-calculator",
+    "calculatorVersion": 1,
+    "input": {
+      "x": 12
+    },
+    "output": {
+      "result": 144
+    }
+  },
+  "rawExample": {
+    "x": "12"
+  },
+  "mathematicsEvidence": {
+    "path": "src/lib/calculator-factory/completion/math.test.ts",
+    "independentExpectedValues": true,
+    "historicalEngineChanged": false,
+    "sha256": "112c9074dd9c33aa61a22ce28a06271ca3fda236abdc9d2b3e4e70ddd1a5d361"
+  },
+  "sourceEvidence": {
+    "path": "src/lib/calculator-factory/completion/math.ts",
+    "nativeUCUMCapture": null,
+    "sha256": "3ff49cbb46695c4d7ff66c5a4d4d1378b799a58d4fc3a561282e8423562285bc"
+  },
+  "browserEvidence": {
+    "receipt": "../browser-receipt.json",
+    "syntheticAccountActions": true,
+    "journeys": [
+      {
+        "catalogId": 218,
+        "plan": "free",
+        "interactionElapsedMs": 129.10000000149012,
+        "performanceObservation": "Local visible calculation includes CDP latency; not hosted SLA",
+        "sourceBoundRealComponent": true,
+        "staleInvalidRefusal": true,
+        "keyboard": true,
+        "mobile": true,
+        "mathAnalysis": true,
+        "conversionSource": false,
+        "persistedSyntheticSaveReloadRestore": false,
+        "syntheticAuth": true
+      },
+      {
+        "catalogId": 218,
+        "plan": "pro",
+        "interactionElapsedMs": 40,
+        "performanceObservation": "Local visible calculation includes CDP latency; not hosted SLA",
+        "sourceBoundRealComponent": true,
+        "staleInvalidRefusal": true,
+        "keyboard": true,
+        "mobile": true,
+        "mathAnalysis": true,
+        "conversionSource": false,
+        "persistedSyntheticSaveReloadRestore": true,
+        "syntheticAuth": true
+      },
+      {
+        "catalogId": 218,
+        "plan": "business",
+        "interactionElapsedMs": 29.400000002235174,
+        "performanceObservation": "Local visible calculation includes CDP latency; not hosted SLA",
+        "sourceBoundRealComponent": true,
+        "staleInvalidRefusal": true,
+        "keyboard": true,
+        "mobile": true,
+        "mathAnalysis": true,
+        "conversionSource": false,
+        "persistedSyntheticSaveReloadRestore": true,
+        "syntheticAuth": true
+      }
+    ],
+    "downloads": [
+      {
+        "catalogId": 218,
+        "plan": "pro",
+        "format": "json",
+        "bytes": 509,
+        "sha256": "07bbcb1ed3591bc84953e6dd1dc0ced3709a5d510dd9c704b5180930fdcfe553",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 218,
+        "plan": "pro",
+        "format": "csv",
+        "bytes": 383,
+        "sha256": "3f42db3fc88632459bceadb75df007fde868fa706651c318978fa0050f81065a",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 218,
+        "plan": "pro",
+        "format": "pdf",
+        "bytes": 14645,
+        "sha256": "09fdf93410245e21f513517669052e39b773e821d886934b6847c293435a5c81",
+        "popplerReadback": true
+      },
+      {
+        "catalogId": 218,
+        "plan": "business",
+        "format": "json",
+        "bytes": 509,
+        "sha256": "07bbcb1ed3591bc84953e6dd1dc0ced3709a5d510dd9c704b5180930fdcfe553",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 218,
+        "plan": "business",
+        "format": "csv",
+        "bytes": 383,
+        "sha256": "3f42db3fc88632459bceadb75df007fde868fa706651c318978fa0050f81065a",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 218,
+        "plan": "business",
+        "format": "pdf",
+        "bytes": 14645,
+        "sha256": "09fdf93410245e21f513517669052e39b773e821d886934b6847c293435a5c81",
+        "popplerReadback": true
+      }
+    ]
+  },
+  "genuineAccountRpcEvidence": {
+    "receipt": "../account-receipt.json",
+    "observations": [
+      {
+        "catalogId": 218,
+        "slug": "square-calculator",
+        "version": 1,
+        "plan": "free",
+        "input": {
+          "x": 12
+        },
+        "output": {
+          "result": 144
+        },
+        "historyId": "e1c8acdc-6ac1-4eff-8746-26e352f74adf",
+        "scenarioId": null,
+        "registeredRestoreVerified": false,
+        "realJWT": true,
+        "exactRetry": true,
+        "conflictDenied": true,
+        "foreignReadUpdateDeleteDenied": true,
+        "freeScenarioDenied": true
+      },
+      {
+        "catalogId": 218,
+        "slug": "square-calculator",
+        "version": 1,
+        "plan": "pro",
+        "input": {
+          "x": 12
+        },
+        "output": {
+          "result": 144
+        },
+        "historyId": "56884481-2dae-4fbe-ab78-fbf90652fb1b",
+        "scenarioId": "4c0902f0-5a76-45fb-81f5-4fec932100ba",
+        "registeredRestoreVerified": true,
+        "realJWT": true,
+        "exactRetry": true,
+        "conflictDenied": true,
+        "foreignReadUpdateDeleteDenied": true,
+        "freeScenarioDenied": false
+      },
+      {
+        "catalogId": 218,
+        "slug": "square-calculator",
+        "version": 1,
+        "plan": "business",
+        "input": {
+          "x": 12
+        },
+        "output": {
+          "result": 144
+        },
+        "historyId": "1f3db504-db9a-4497-95e2-113b0c4d2d82",
+        "scenarioId": "d3fa1165-c297-41c7-a730-1a4bdf4d0176",
+        "registeredRestoreVerified": true,
+        "realJWT": true,
+        "exactRetry": true,
+        "conflictDenied": true,
+        "foreignReadUpdateDeleteDenied": true,
+        "freeScenarioDenied": false
+      }
+    ],
+    "genuineBrowserServerActions": "SEE_SEPARATE_FINAL_VALIDATION"
+  },
+  "outstandingDecisions": [
+    "Accept/reject full canonical scope against exact catalog/Blueprint; offered bounded profile is not automatically complete",
+    "Accept/reject source applicability, formula/units, numerical precision/refusal and QA evidence",
+    "Resolve applicable organization-shared attachment and durable delivery/automation requirements; preserve proven capabilities",
+    "Record actual reviewer competence, independence, appointment authority and signed exact-version decision"
+  ],
+  "reviewerIdentity": null,
+  "appointment": null,
+  "competence": null,
+  "independence": null,
+  "signature": null,
+  "sourceDecision": "PENDING",
+  "formulaPrecisionDecision": "PENDING",
+  "canonicalQaDecision": "PENDING",
+  "canonicalAccepted": false,
+  "certified": false,
+  "publicationEligible": false,
+  "releaseHold": true,
+  "genuineNextPositiveEvidence": {
+    "path": "../genuine-browser-positive-receipt.json",
+    "sha256": "822a6c865a2aa4ffe6783a3ec377a292b2f6c13a279ea5ac8be33b5db094a088",
+    "observedPositiveJourneys": 3,
+    "paidDocumentReloadRestores": 2,
+    "wholeProducerPassed": false,
+    "ownerSwitchPostSqlVerified": false
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "kind": "INDEPENDENT_FINITE_ENGINEERING_REVIEW_RECORD",
+  "date": "2026-11-08",
+  "source": "src/lib/financial-successor/decimal-rounding-private.ts",
+  "sourceSha256": "762b120dc672566d71a35e8981084fe4ddf0de59353f63c81e7e70d1dfacaf38",
+  "reviewer": "Independent delegated AI engineering/math reviewer",
+  "scope": "Read-only source review and focused independent finite arithmetic checks. No production writes, registration, adoption, certification, merge or deployment.",
+  "executionRecord": {
+    "method": "Inline node heredoc; TypeScript transpileModule CommonJS require hook loaded the actual source module. No standalone script or log file was saved.",
+    "toolSessionId": 46668,
+    "completion": "exit_code=0; stdout: { checked: 1794 }",
+    "recordTiming": "This document was written after the successful execution; it is a review record, not a contemporaneously saved raw log. No test rerun was performed to create it."
+  },
+  "fractionalCompoundSweep": {
+    "casesChecked": 1794,
+    "result": "All matched independently computed rational expected cents; execution would throw immediately on any mismatch.",
+    "years": "0.5",
+    "compoundsPerYear": 1,
+    "principalCentsInclusive": [1, 299],
+    "annualRatePercentAndExactGrowthFactor": [
+      [44, "6/5"],
+      [69, "13/10"],
+      [125, "3/2"],
+      [300, "2"],
+      [525, "5/2"],
+      [800, "3"]
+    ],
+    "expectedCentsAlgorithm": "For principal cents c and growth a/b, numerator=BigInt(c*a), denominator=BigInt(b); expected cents=(2*numerator+denominator)/(2*denominator), using integer division. Compare actual futureValue with Number(expected cents)/100. This exercises rational-exponent square roots and exact half-cent ties without Decimal as the expected-value oracle."
+  },
+  "earlierCounterexamplesCorrected": [
+    {"engine": "loan", "input": {"principal": 0.03, "annualRatePercent": 200, "termMonths": 1}, "verifiedOutput": {"monthlyPayment": 0.04, "totalPayment": 0.04, "totalInterest": 0.01}},
+    {"engine": "loan", "input": {"principal": 0.39, "annualRatePercent": 200, "termMonths": 2}, "verifiedOutput": {"monthlyPayment": 0.25, "totalPayment": 0.5, "totalInterest": 0.11}}
+  ],
+  "sourceReviewFindings": [
+    "Loan rational formula and interest units were checked.",
+    "Fractional compound acceptance compares exact qth powers against lower-inclusive and upper-exclusive half-cent boundaries; nonpositive lower thresholds pass safely.",
+    "Output precision refusal checks exact decimal equality after Number conversion.",
+    "Power work checks precede exponentiation and can conservatively refuse work exceeding the private qualification budget.",
+    "Replay pins the implementation revision and rounding contract, validates strict envelope shape, recomputes outputs and compares recorded JSON. No cross-revision replay hole was observed."
+  ],
+  "conclusion": "No new engineering blocker found in the reviewed exact-rational revision and these finite checks.",
+  "limitations": "Finite evidence and source inspection are not a formal whole-domain proof, universal acceptance claim, commercial financial policy approval, or qualified financial specialist review.",
+  "financialSpecialistApproval": false,
+  "canonicalAdoptionAuthorized": false
+}

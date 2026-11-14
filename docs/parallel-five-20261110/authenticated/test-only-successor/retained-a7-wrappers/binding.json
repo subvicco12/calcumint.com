@@ -1,0 +1,111 @@
+{
+  "baselineGit": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+  "successorGit": "05129e2a74e70e23160578c63a984c4bf035ed0f",
+  "scope": "Only four exact retained-A7 evidence wrappers; current R6 required before historical execution; no production source or historical record changed",
+  "rows": [
+    {
+      "path": "src/lib/execution-recovery-evidence.test.ts",
+      "baseline": {
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "archive": "execution-recovery-baseline.fixture",
+        "sha256": "1686f5a9df0175c12762a1cecbe5cdf32186bc592732a56a946234da7e44f38a",
+        "blob": "20c28061f8c8fdf5d020d49902a33fb3f03ffc98"
+      },
+      "successor": {
+        "ref": "05129e2a74e70e23160578c63a984c4bf035ed0f",
+        "archive": "execution-recovery-successor.fixture",
+        "sha256": "ba04aeec65362e5586697a8013ecf5c444b78480243150a332a84c8c245c3649",
+        "blob": "8bb490e90651b322e482e6f48f03d3031ff82035"
+      },
+      "patches": [
+        {
+          "from": "import {verifyCapturedCurrentCaller} from '../../tests/acceptance-closure-20261108/receipt-source-path.mjs';\n",
+          "to": "import {verifyRetainedA7Case} from '../../tests/parallel-source-20261110/retained-vitest.mjs';\n"
+        },
+        {
+          "from": "const verifyHashes=(record:Record<string,string>,read:(path:string)=>Buffer=readFileSync)=>{for(const [p,expected] of Object.entries(record)){expect(expected).toMatch(/^[a-f0-9]{64}$/);const path=sourcePath(p);if(path==='src/components/calculator-interactive.tsx')expect(verifyCapturedCurrentCaller({path,sha256:expected},read)).toBe(path);else expect(createHash('sha256').update(read(path)).digest('hex')).toBe(expected);}};\nit('runs the new exact-source, reviewer and operator guard tests through normal mandatory unit discovery',()=>{\n const env={...process.env};delete env.NODE_TEST_CONTEXT;\n const output=execFileSync(process.execPath,['--test','--test-reporter=tap','tests/recovery-reviewer440/packet.test.mjs','tests/source-lineage-bootstrap.test.mjs','tests/execution-recovery-20261109/operations-preflight.test.mjs','tests/execution-recovery-20261109/reader-forwarding.test.mjs'],{env,encoding:'utf8',timeout:60000,maxBuffer:4000000});\n expect(output).toContain('# fail 0');expect(output).toMatch(/# tests \\d+/);\n},60000);\n",
+          "to": "it('RETAINED A7 \u2014 runs the new exact-source, reviewer and operator guard tests through normal mandatory unit discovery',()=>{expect(verifyRetainedA7Case('src/lib/execution-recovery-evidence.test.ts','runs the new exact-source, reviewer and operator guard tests through normal mandatory unit discovery')).toBe(true);},150000);\n"
+        },
+        {
+          "from": "it('binds actual authenticated nineteen-identity receipts and independently isolated shared plan gating',()=>{\n const auth=json(directory+'technology-auth/receipt.json');expect(auth.passed).toBe(true);expect(auth.productionWrites).toBe(false);expect(auth.journeys).toHaveLength(57);\n const ids=[368,...Array.from({length:18},(_,i)=>370+i)];expect([...new Set(auth.journeys.map((r:{masterId:number})=>r.masterId))]).toEqual(ids);\n for(const id of ids){const rows=auth.journeys.filter((r:{masterId:number})=>r.masterId===id);expect(rows.map((r:{plan:string})=>r.plan)).toEqual(['free','pro','business']);for(const r of rows){expect(r.history).toBe('ATOMIC_IDEMPOTENT_PERSISTED_REPLAY');expect(r.wrongVersionsRejected).toBe(true);expect(r.foreignReadUpdateDenied).toBe(true);}}\n for(const binding of auth.sources)expect(sha(sourcePath(binding.path))).toBe(binding.sha256);\n const plan=json(directory+'technology-auth/plan-isolation-receipt.json');expect(plan.passed).toBe(true);expect(plan.freeScenarioRows).toBe(0);expect(plan.proScenarioRows).toBe(1);expect(plan.sameJwtUserProjectHistoryArgumentsAndRequestId).toBe(true);expect(plan.productionWrites).toBe(false);verifyHashes(plan.sourceHashes);\n});\nit('binds native UI and actual isolated restore receipts without fabricating human or production acceptance',()=>{\n const mobile=json(directory+'technology-native-browser.json'),desktop=json(directory+'technology-desktop/report.json'),privateUI=json(directory+'converters/native-browser-report.json');\n expect(mobile.passed).toBe(true);expect(mobile.journeys).toHaveLength(57);verifyHashes(mobile.sourceHashes);\n expect(desktop.passed).toBe(true);expect(desktop.journeys).toHaveLength(19);verifyHashes(desktop.sourceHashes);\n expect(privateUI.passed).toBe(true);expect(privateUI.journeys).toHaveLength(9);verifyHashes(privateUI.sourceSha256);expect(sha('tests/execution-recovery-20261109/converter-workspace-browser.mjs')).toBe(privateUI.testSha256);\n expect(privateUI.canonicalAdoptionAuthorized).toBe(false);expect(privateUI.competentApproval).toBe(false);\n const restore=json(directory+'operations/restore-receipt.json');expect(restore.passed).toBe(true);expect(restore.checks).toHaveLength(4);expect(restore.productionRestoreEstablished).toBe(false);expect(restore.dumpPersisted).toBe(false);verifyHashes(restore.sourceHashes);\n const current=json(directory+'reviewer/current-assignment-readonly.json');expect(current.readOnly).toBe(true);expect(current.certificationGranted).toBe(false);for(const row of current.rows){expect(row.actor_bypass_rls).toBe(true);expect(row.read_only).toBe('on');expect(row.assigned_candidate_count).toBe(0);}\n});\n",
+          "to": "it('RETAINED A7 \u2014 binds actual authenticated nineteen-identity receipts and independently isolated shared plan gating',()=>{expect(verifyRetainedA7Case('src/lib/execution-recovery-evidence.test.ts','binds actual authenticated nineteen-identity receipts and independently isolated shared plan gating')).toBe(true);},150000);\nit('RETAINED A7 \u2014 binds native UI and actual isolated restore receipts without fabricating human or production acceptance',()=>{expect(verifyRetainedA7Case('src/lib/execution-recovery-evidence.test.ts','binds native UI and actual isolated restore receipts without fabricating human or production acceptance')).toBe(true);},150000);\n"
+        }
+      ]
+    },
+    {
+      "path": "src/lib/remaining-five-evidence.test.ts",
+      "baseline": {
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "archive": "remaining-five-baseline.fixture",
+        "sha256": "3126d42c4e6e254614ff7625b95110c0f09b3b43f7a38b12b5e1fd983ae5f158",
+        "blob": "4199af29e38c8de257cc5ef6b363258c5b58883c"
+      },
+      "successor": {
+        "ref": "05129e2a74e70e23160578c63a984c4bf035ed0f",
+        "archive": "remaining-five-successor.fixture",
+        "sha256": "9f4f165f3f2d60a73f3a4b484f9153db642741365827e8b3c9fe0227628b720d",
+        "blob": "d445007ea2d4db706ae415293d3cd7e951fddcec"
+      },
+      "patches": [
+        {
+          "from": "import {withRetained23Proof} from '../../tests/next-five-20261110/retained23-proof.mjs';\n",
+          "to": "import {verifyRetainedA7Case} from '../../tests/parallel-source-20261110/retained-vitest.mjs';\nimport {withRetained23Proof} from '../../tests/next-five-20261110/retained23-proof.mjs';\n"
+        },
+        {
+          "from": "it('requires actual five-specific authenticated team artifacts before engineering closure',()=>{\n const path='docs/remaining-five-team-20261110/receipt.json';expect(existsSync(path)).toBe(true);const r=read(path);expect(r.passed).toBe(true);expect(r.originalWorkflowRunPassed).toBe(false);expect(r.completedDownloads).toBe(55);expect(r.perId).toHaveLength(5);const phase=read('docs/remaining-five-team-20261110/workflow-phase/comparison-phase.json');expect(phase.workflows).toHaveLength(5);\n const expected:{[slug:string]:[number,number,number]}={'storage-conversion-calculator':[1,1024,2048],'power-supply-calculator':[1,600,1200],'website-bandwidth-calculator':[2,200,400],'cloud-storage-cost-calculator':[1,20,40],'cloud-data-transfer-cost-calculator':[1,45,90]};\n expect(phase.workflows.map((w:{slug:string})=>w.slug).sort()).toEqual(Object.keys(expected).sort());for(const w of phase.workflows){const [version,a,b]=expected[w.slug];expect(w.version).toBe(version);expect(w.a.output.value).toBe(a);expect(w.b.output.value).toBe(b);expect(w.a.calculatorVersion).toBe(version);expect(w.b.calculatorVersion).toBe(version);expect(w.templateClone&&w.recovered&&w.tamperRejected).toBe(true);}\n expect(execFileSync(process.execPath,['tests/remaining-five-team-20261110/artifacts.mjs','--check'],{env,encoding:'utf8',timeout:60000,maxBuffer:2000000})).toContain('PASS');\n},65000);\n",
+          "to": "it('RETAINED A7 \u2014 requires actual five-specific authenticated team artifacts before engineering closure',()=>{expect(verifyRetainedA7Case('src/lib/remaining-five-evidence.test.ts','requires actual five-specific authenticated team artifacts before engineering closure')).toBe(true);},150000);\n\n"
+        }
+      ]
+    },
+    {
+      "path": "src/lib/cohort22-closure-evidence.test.ts",
+      "baseline": {
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "archive": "cohort22-closure-baseline.fixture",
+        "sha256": "0618163ab6146166ca424f37dc5a2f3c3e611958f0a30046b219183bb8d6286a",
+        "blob": "7002114bd9d6af64d7d8ed810f4eab81b82c8f04"
+      },
+      "successor": {
+        "ref": "05129e2a74e70e23160578c63a984c4bf035ed0f",
+        "archive": "cohort22-closure-successor.fixture",
+        "sha256": "cbb6549c7c06674683ea2f622a59ac88476a4a91a5aad62ab45dccfe4258469f",
+        "blob": "26f76364d8307043beb8f94351901281916509ab"
+      },
+      "patches": [
+        {
+          "from": "import {it,expect} from 'vitest';\n",
+          "to": "import {verifyRetainedA7Case} from '../../tests/parallel-source-20261110/retained-vitest.mjs';\nimport {it,expect} from 'vitest';\n"
+        },
+        {
+          "from": "it('binds57 actual source browser journeys,30refusals and distinct A/B without authenticated-browser claims',()=>{\n const data=read(prefix+'native-browser.json');expect(data.passed).toBe(true);expect(data.journeys).toHaveLength(57);expect(data.precisionRefusals).toHaveLength(30);expect(data.syntheticAccountTransport).toBe(true);expect(data.canonicalAcceptance).toBe(false);\n for(const row of data.journeys){expect(row.engineExample).toBe(true);expect(row.keyboardRecovery).toBe(true);expect(row.portraitLandscapeDesktopNoOverflow).toBe(true);expect(row.distinctABPreserved).toBe(row.plan!=='free');expect(row.jsonReplayTamper).toBe(row.plan!=='free');}\n for(const [path,hash]of Object.entries(data.sourceHashes)){if(path==='src/components/calculator-interactive.tsx')expect(verifyCapturedCurrentCaller({path,sha256:String(hash)})).toBe(path);else expect(createHash('sha256').update(readFileSync(path)).digest('hex')).toBe(hash);}\n});\n",
+          "to": "it('RETAINED A7 \u2014 binds57 actual source browser journeys,30refusals and distinct A/B without authenticated-browser claims',()=>{expect(verifyRetainedA7Case('src/lib/cohort22-closure-evidence.test.ts','binds57 actual source browser journeys,30refusals and distinct A/B without authenticated-browser claims')).toBe(true);},150000);\n\n"
+        }
+      ]
+    },
+    {
+      "path": "src/lib/thirteen-program-evidence.test.ts",
+      "baseline": {
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "archive": "thirteen-program-baseline.fixture",
+        "sha256": "25459a2b1621be9bc7bcecc10f06bcfdd492230ebd917a8a5c10caac10015b38",
+        "blob": "f981de7a98f87373ff8cadd48ea3a73f1b9e1468"
+      },
+      "successor": {
+        "ref": "05129e2a74e70e23160578c63a984c4bf035ed0f",
+        "archive": "thirteen-program-successor.fixture",
+        "sha256": "aa880b41c099aa693972b40826fee7f6cec416cc4920f6d825c44017a98bac2a",
+        "blob": "2678ea56b6c947a0268b7e46e124d093e7b75540"
+      },
+      "patches": [
+        {
+          "from": "import {beforeAll,it,expect} from 'vitest';\n",
+          "to": "import {verifyRetainedA7Case} from '../../tests/parallel-source-20261110/retained-vitest.mjs';\nimport {beforeAll,it,expect} from 'vitest';\n"
+        },
+        {
+          "from": "it('retains thirteen unsigned exact-version packets, original clause associations and genuine approval gaps',()=>{\n expect(execFileSync('python',['docs/canonical-thirteen-20261110/verify.py'],{encoding:'utf8',env,timeout:30000})).toContain('PASS13exact packets');\n expect(execFileSync('python',['-m','unittest','discover','-s','docs/canonical-thirteen-20261110','-p','test_*.py'],{encoding:'utf8',env,timeout:30000,stdio:['ignore','pipe','pipe']}).length).toBe(0);\n const index=read('docs/canonical-thirteen-20261110/index.json'),delta=read('docs/thirteen-program-20261110/canonical-presentation-delta.json');\n expect(delta.rows.map((r:{masterId:number;engineId:string;version:number})=>[r.masterId,r.engineId,r.version])).toEqual(index.packets.map((r:{masterId:number;engineId:string;version:number})=>[r.masterId,r.engineId,r.version]));\n expect(delta.existingPacketsModified).toBe(false);expect(hash(readFileSync('src/components/calculator-interactive.tsx'))).toBe(delta.currentCallerSHA256);\n for(const r of delta.rows){expect(r.competentDecision).toBeNull();for(const key of ['engineImplementationChanged','canonicalAccepted','certificationGranted','publicationEligible'])expect(r[key]).toBe(false);}\n});\n",
+          "to": "it('RETAINED A7 \u2014 retains thirteen unsigned exact-version packets, original clause associations and genuine approval gaps',()=>{expect(verifyRetainedA7Case('src/lib/thirteen-program-evidence.test.ts','retains thirteen unsigned exact-version packets, original clause associations and genuine approval gaps')).toBe(true);},150000);\n\n"
+        }
+      ]
+    }
+  ]
+}

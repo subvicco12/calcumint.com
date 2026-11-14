@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "sourceHead": "8640505041eb54ca3b37963c357c746639eb2874",
+  "startedAt": "2026-11-11T09:18:32.790449+00:00",
+  "runtime": "v22.23.4",
+  "checks": [
+    {
+      "name": "unit",
+      "command": [
+        "npm",
+        "test",
+        "--",
+        "--maxWorkers=1"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/first20-binding-repair-20261111/validation-serial/unit.log",
+      "exitCode": 0,
+      "durationSeconds": 929.2594901809971,
+      "sha256": "6b7962ca7594a53348b46db50cfaef92f316801b13a9e0ade35ad71f54d2f49c"
+    },
+    {
+      "name": "lint",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/first20-binding-repair-20261111/validation-serial/lint.log",
+      "exitCode": 0,
+      "durationSeconds": 60.31970086600268,
+      "sha256": "ccd2d8479d8f5ad9f44bde515ceee31f491b672a07d3d841c42ac9d36955b757"
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/first20-binding-repair-20261111/validation-serial/typecheck.log",
+      "exitCode": 0,
+      "durationSeconds": 8.352003495001554,
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    {
+      "name": "launch",
+      "command": [
+        "npm",
+        "run",
+        "test:launch"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/first20-binding-repair-20261111/validation-serial/launch.log",
+      "exitCode": 0,
+      "durationSeconds": 3.2635358429979533,
+      "sha256": "952f5b9cb70335d43c830ad89c1662eb5f965bce8dcf82119c7918776abbb4c2"
+    },
+    {
+      "name": "certification",
+      "command": [
+        "npm",
+        "run",
+        "test:certification"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/first20-binding-repair-20261111/validation-serial/certification.log",
+      "exitCode": 0,
+      "durationSeconds": 3.7533443569991505,
+      "sha256": "aaecc729ca32faf2bf449fe72902070b3a3ede2ad821c31e7dbbae33880f47ec"
+    },
+    {
+      "name": "webpack",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/first20-binding-repair-20261111/validation-serial/webpack.log",
+      "exitCode": 0,
+      "durationSeconds": 43.01605914500033,
+      "sha256": "1d77908b54527ae4209355f516f014d2da857c9e4e9a8d3c9537170a2f0b2e65"
+    }
+  ],
+  "finishedAt": "2026-11-11T09:36:00.771535+00:00",
+  "headAtEnd": "8640505041eb54ca3b37963c357c746639eb2874"
+}

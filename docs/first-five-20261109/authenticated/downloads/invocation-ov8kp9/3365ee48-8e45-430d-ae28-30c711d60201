@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "download-time-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "methodology": "Ideal deterministic arithmetic using decimal MB (1 MB = 1,000,000 octets) and Mbps (1 Mbps = 1,000,000 bits/second), eight bits per octet. Strictly positive supplied quantities; not measured bandwidth, provider speed or a delivery guarantee. Protocol overhead, latency, congestion and changing rates are excluded.\nTechnical calculation revision: technology.download-time@1\n\nIdealized transfer time using supplied data size and bandwidth, ignoring protocol and network overhead.\nTime (s) = data MB × 8 ÷ bandwidth Mbps",
+      "input": {
+        "dataMegabytes": 100,
+        "bandwidthMbps": 80
+      },
+      "output": {
+        "value": 10,
+        "steps": [
+          "Download Time = 10"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "download-time-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "dataMegabytes": {
+            "label": "Data (MB)",
+            "unit": "MB"
+          },
+          "bandwidthMbps": {
+            "label": "Bandwidth (Mbps)",
+            "unit": "Mbps"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Download time",
+            "unit": "s"
+          }
+        }
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "methodology": "Ideal deterministic arithmetic using decimal MB (1 MB = 1,000,000 octets) and Mbps (1 Mbps = 1,000,000 bits/second), eight bits per octet. Strictly positive supplied quantities; not measured bandwidth, provider speed or a delivery guarantee. Protocol overhead, latency, congestion and changing rates are excluded.\nTechnical calculation revision: technology.download-time@1\n\nIdealized transfer time using supplied data size and bandwidth, ignoring protocol and network overhead.\nTime (s) = data MB × 8 ÷ bandwidth Mbps",
+      "input": {
+        "dataMegabytes": 200,
+        "bandwidthMbps": 80
+      },
+      "output": {
+        "value": 20,
+        "steps": [
+          "Download Time = 20"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "download-time-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "dataMegabytes": {
+            "label": "Data (MB)",
+            "unit": "MB"
+          },
+          "bandwidthMbps": {
+            "label": "Bandwidth (Mbps)",
+            "unit": "Mbps"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Download time",
+            "unit": "s"
+          }
+        }
+      }
+    }
+  ]
+}

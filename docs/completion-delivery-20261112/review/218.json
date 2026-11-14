@@ -1,0 +1,694 @@
+{
+  "identity": {
+    "catalogId": 218,
+    "engineId": "launch-square-calculator",
+    "slug": "square-calculator",
+    "version": 1
+  },
+  "nativeApplicability": {
+    "I": "Steps/graph when useful",
+    "J": "Advanced steps; reverse solve; graphing; exports",
+    "K": "Pro analytics + team/client/embed/API/automation",
+    "mathAdvancedStepsReverseGraphRequired": true,
+    "converterUniversalGraphRequired": null,
+    "converterGraphRationale": null,
+    "JMapping": "Forward steps +signed/domain-correct reverse +bounded graph/table +exports",
+    "KMandatoryForThisIdentity": [
+      "team-client-sharing",
+      "api",
+      "embed",
+      "automation"
+    ]
+  },
+  "localFunctionalComplete": true,
+  "remainingFunctionalCodeGaps": [],
+  "criteria": [
+    {
+      "id": "identity-scope",
+      "applicability": "required",
+      "localStatus": "LOCAL_ENGINEERING_EVIDENCE_READY",
+      "passed": true,
+      "evidence": [
+        {
+          "path": "/workspace/work/completion-delivery-20261112/docs/first20-publication/input/input/governing/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx",
+          "sha256": "4dbc3ade32ad20413aec7533838b969ece4185d0b62641b581bffc6ccf5d2899",
+          "bytes": 280100,
+          "scope": "Native catalog authority; no certification acts",
+          "evidenceId": "catalogWorkbook"
+        },
+        {
+          "path": "/workspace/work/completion-delivery-20261112/docs/completion-first-20261112/selection-27.json",
+          "sha256": "16096abf807a5111436539325b0622dcb33a2d7fb3dcb7feb9001cd1ca839851",
+          "bytes": 79642,
+          "scope": "Native workbook row/G-M extraction; fixed9 selected here, not old ranked10",
+          "originalExecutionOrFrozenSource": "79bf64466663cc961fdb80365143d0c750dccc6f",
+          "evidenceId": "catalogSelection"
+        },
+        {
+          "path": "/workspace/work/completion-delivery-20261112/docs/completion-first-20261112/review/218.json",
+          "sha256": "0197c3bc850d7abc29980ab03000200b4f20bd285d5745fdc7f8d00b993ade34",
+          "bytes": 7399,
+          "scope": "Unsigned preparation only; competent appointment/signature/canonical QA not granted",
+          "originalExecutionOrFrozenSource": "79bf64466663cc961fdb80365143d0c750dccc6f",
+          "evidenceId": "unsigned218"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/individual-assessment/current-local-source-bridge.json",
+          "sha256": "d2e8684bbf071e6d1f46bb33431fe1d1b0a135ccf85a6fc74d68dbb523fd723b",
+          "bytes": 454255,
+          "scope": "Independent actual read/hash2037current sources+29oldhelpers+37current docs; preserves failed whole-producer classifications.",
+          "evidenceId": "currentLocalBridge"
+        }
+      ],
+      "rationale": "Actual historical/current executed evidence and relevant source bridge are retained; no canonical or production authority."
+    },
+    {
+      "id": "native-feature-applicability",
+      "applicability": "required",
+      "localStatus": "LOCAL_ENGINEERING_EVIDENCE_READY",
+      "passed": true,
+      "evidence": [
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/publication/DELIVERY-GATES.md",
+          "sha256": "e63c870d5d1a8efc23ded6730905594ceaf0ce2b0aaed6614e1021f2996f4ee6",
+          "bytes": 5401,
+          "scope": "Independent provisional applicability/delivery review; no completion adjudication",
+          "evidenceId": "deliveryGates"
+        },
+        {
+          "path": "/workspace/work/completion-delivery-20261112/docs/completion-first-20261112/selection-27.json",
+          "sha256": "16096abf807a5111436539325b0622dcb33a2d7fb3dcb7feb9001cd1ca839851",
+          "bytes": 79642,
+          "scope": "Native workbook row/G-M extraction; fixed9 selected here, not old ranked10",
+          "originalExecutionOrFrozenSource": "79bf64466663cc961fdb80365143d0c750dccc6f",
+          "evidenceId": "catalogSelection"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/browser-final/receipt.json",
+          "sha256": "2c81c54c164e563630bc75fe831c83d0b7dfa9cb9652090cc01361118a966953",
+          "bytes": 274357,
+          "scope": "Qualified9FreeSSR/9sharing+documents/320px44pxAX/9API/Nextbatch/largeownartifact only. Whole producer failed clean-check before native frame stage; do not mark passed.",
+          "evidenceId": "currentQualifiedPartial"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/remaining-final/qualified-gates-personal-pending.json",
+          "sha256": "b9ab30f720282381b2ec90a3fdcf08ea5dec17cdaeb68b63f483127462262519",
+          "bytes": 770710,
+          "scope": "Qualified9actualnativeframes/CSP/parity/usage,9fresh-loader math-tier journeys,9warmAPI observations/shared ack1. Whole personal stage failed; distinct ordinary regression now closes it.",
+          "evidenceId": "remainingQualified"
+        }
+      ],
+      "rationale": "Actual historical/current executed evidence and relevant source bridge are retained; no canonical or production authority."
+    },
+    {
+      "id": "formula-provenance-domain-precision",
+      "applicability": "required",
+      "localStatus": "LOCAL_ENGINEERING_EVIDENCE_READY",
+      "passed": true,
+      "evidence": [
+        {
+          "path": "/workspace/artifacts/completion-first-20261112/math/acceptance.json",
+          "sha256": "321e5b359ebc934f4aae990a2488c0c211d0208891d3fd255d12b32baa0b529d",
+          "bytes": 6841,
+          "scope": "Independent BigInt/branches/domain/overflow/underflow and bounded graph/reverse engineering tests; historical remaining fields are not fresh gap findings",
+          "originalExecutionOrFrozenSource": "79bf64466663cc961fdb80365143d0c750dccc6f",
+          "evidenceId": "mathNumerical"
+        },
+        {
+          "path": "/workspace/work/completion-delivery-20261112/src/lib/calculator-factory/completion/math.test.ts",
+          "sha256": "112c9074dd9c33aa61a22ce28a06271ca3fda236abdc9d2b3e4e70ddd1a5d361",
+          "bytes": 2382,
+          "scope": "Independent expected values and branch/domain tests, not competent formal acceptance",
+          "evidenceId": "mathTests"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/individual-assessment/current-local-source-bridge.json",
+          "sha256": "d2e8684bbf071e6d1f46bb33431fe1d1b0a135ccf85a6fc74d68dbb523fd723b",
+          "bytes": 454255,
+          "scope": "Independent actual read/hash2037current sources+29oldhelpers+37current docs; preserves failed whole-producer classifications.",
+          "evidenceId": "currentLocalBridge"
+        }
+      ],
+      "rationale": "Actual historical/current executed evidence and relevant source bridge are retained; no canonical or production authority."
+    },
+    {
+      "id": "three-plan-entitlements",
+      "applicability": "required",
+      "localStatus": "LOCAL_ENGINEERING_EVIDENCE_READY",
+      "passed": true,
+      "evidence": [
+        {
+          "path": "/workspace/work/completion-delivery-20261112/docs/completion-first-20261112/account-receipt.json",
+          "sha256": "7a06650348e451bbd730a8e915b6da06d91dc19919d89c45ebc8e54f237707e8",
+          "bytes": 168915,
+          "scope": "66 genuine disposable GoTrue/PostgREST actual atomic RPC cases,44 paid scenario restores; no Next claim",
+          "originalExecutionOrFrozenSource": "79bf64466663cc961fdb80365143d0c750dccc6f",
+          "evidenceId": "rpc66"
+        },
+        {
+          "path": "/workspace/work/completion-delivery-20261112/docs/completion-first-20261112/genuine-browser-positive-receipt.json",
+          "sha256": "822a6c865a2aa4ffe6783a3ec377a292b2f6c13a279ea5ac8be33b5db094a088",
+          "bytes": 263218,
+          "scope": "27 genuine configured production Next positive journeys;18 paid reload/restores; whole producer false, owner-refusal postSQL not verified",
+          "originalExecutionOrFrozenSource": "79bf64466663cc961fdb80365143d0c750dccc6f",
+          "evidenceId": "genuine27"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/remaining-final/qualified-gates-personal-pending.json",
+          "sha256": "b9ab30f720282381b2ec90a3fdcf08ea5dec17cdaeb68b63f483127462262519",
+          "bytes": 770710,
+          "scope": "Qualified9actualnativeframes/CSP/parity/usage,9fresh-loader math-tier journeys,9warmAPI observations/shared ack1. Whole personal stage failed; distinct ordinary regression now closes it.",
+          "evidenceId": "remainingQualified"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/browser-final/receipt.json",
+          "sha256": "2c81c54c164e563630bc75fe831c83d0b7dfa9cb9652090cc01361118a966953",
+          "bytes": 274357,
+          "scope": "Qualified9FreeSSR/9sharing+documents/320px44pxAX/9API/Nextbatch/largeownartifact only. Whole producer failed clean-check before native frame stage; do not mark passed.",
+          "evidenceId": "currentQualifiedPartial"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/ordinary-personal-final/receipt.json",
+          "sha256": "72ed98ce898710dcb62dd6f2587ad7f17bd01718e410911b849cfd63b50a160c",
+          "bytes": 621606,
+          "scope": "PASSED genuine personal normalization/same-snapshot acknowledgement on byte-identical2037-source ordinary webpack with zero registry exceptions.",
+          "evidenceId": "ordinaryPersonal"
+        }
+      ],
+      "rationale": "Math3 fresh-loader9actual Free/Pro/Business observations close Free reverse guard while preserving paid inverses. All9 existing plan/persistence and newbackend guards retained."
+    },
+    {
+      "id": "browser-interaction",
+      "applicability": "required",
+      "localStatus": "LOCAL_ENGINEERING_EVIDENCE_READY",
+      "passed": true,
+      "evidence": [
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/browser-final/receipt.json",
+          "sha256": "2c81c54c164e563630bc75fe831c83d0b7dfa9cb9652090cc01361118a966953",
+          "bytes": 274357,
+          "scope": "Qualified9FreeSSR/9sharing+documents/320px44pxAX/9API/Nextbatch/largeownartifact only. Whole producer failed clean-check before native frame stage; do not mark passed.",
+          "evidenceId": "currentQualifiedPartial"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/remaining-final/qualified-gates-personal-pending.json",
+          "sha256": "b9ab30f720282381b2ec90a3fdcf08ea5dec17cdaeb68b63f483127462262519",
+          "bytes": 770710,
+          "scope": "Qualified9actualnativeframes/CSP/parity/usage,9fresh-loader math-tier journeys,9warmAPI observations/shared ack1. Whole personal stage failed; distinct ordinary regression now closes it.",
+          "evidenceId": "remainingQualified"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/ordinary-personal-final/receipt.json",
+          "sha256": "72ed98ce898710dcb62dd6f2587ad7f17bd01718e410911b849cfd63b50a160c",
+          "bytes": 621606,
+          "scope": "PASSED genuine personal normalization/same-snapshot acknowledgement on byte-identical2037-source ordinary webpack with zero registry exceptions.",
+          "evidenceId": "ordinaryPersonal"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/individual-assessment/current-local-source-bridge.json",
+          "sha256": "d2e8684bbf071e6d1f46bb33431fe1d1b0a135ccf85a6fc74d68dbb523fd723b",
+          "bytes": 454255,
+          "scope": "Independent actual read/hash2037current sources+29oldhelpers+37current docs; preserves failed whole-producer classifications.",
+          "evidenceId": "currentLocalBridge"
+        }
+      ],
+      "rationale": "Actual historical/current executed evidence and relevant source bridge are retained; no canonical or production authority."
+    },
+    {
+      "id": "accessibility-recovery",
+      "applicability": "required",
+      "localStatus": "LOCAL_ENGINEERING_EVIDENCE_READY",
+      "passed": true,
+      "evidence": [
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/browser-final/receipt.json",
+          "sha256": "2c81c54c164e563630bc75fe831c83d0b7dfa9cb9652090cc01361118a966953",
+          "bytes": 274357,
+          "scope": "Qualified9FreeSSR/9sharing+documents/320px44pxAX/9API/Nextbatch/largeownartifact only. Whole producer failed clean-check before native frame stage; do not mark passed.",
+          "evidenceId": "currentQualifiedPartial"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/remaining-final/qualified-gates-personal-pending.json",
+          "sha256": "b9ab30f720282381b2ec90a3fdcf08ea5dec17cdaeb68b63f483127462262519",
+          "bytes": 770710,
+          "scope": "Qualified9actualnativeframes/CSP/parity/usage,9fresh-loader math-tier journeys,9warmAPI observations/shared ack1. Whole personal stage failed; distinct ordinary regression now closes it.",
+          "evidenceId": "remainingQualified"
+        }
+      ],
+      "rationale": "Actual historical/current executed evidence and relevant source bridge are retained; no canonical or production authority."
+    },
+    {
+      "id": "performance",
+      "applicability": "required",
+      "localStatus": "LOCAL_ENGINEERING_EVIDENCE_READY",
+      "passed": true,
+      "evidence": [
+        {
+          "path": "/workspace/work/completion-delivery-20261112/docs/completion-first-20261112/browser-receipt.json",
+          "sha256": "ecbfde97d365385ff3693e1fec3f0313ad0f89379b5d30a146e2887aefcce750",
+          "bytes": 44825,
+          "scope": "27 real-component journeys,54 actual downloads, synthetic account-action transport",
+          "originalExecutionOrFrozenSource": "5f91c9f3837cef79edfa96b562e489b3c4d7db14",
+          "evidenceId": "browser54"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/remaining-final/qualified-gates-personal-pending.json",
+          "sha256": "b9ab30f720282381b2ec90a3fdcf08ea5dec17cdaeb68b63f483127462262519",
+          "bytes": 770710,
+          "scope": "Qualified9actualnativeframes/CSP/parity/usage,9fresh-loader math-tier journeys,9warmAPI observations/shared ack1. Whole personal stage failed; distinct ordinary regression now closes it.",
+          "evidenceId": "remainingQualified"
+        }
+      ],
+      "rationale": "Historical visible timings plus current warm loopback API 40.58362000001944ms, single timedrequest after warmup; no hostedSLA/load claim."
+    },
+    {
+      "id": "independent-review",
+      "applicability": "required",
+      "localStatus": "LOCAL_ENGINEERING_EVIDENCE_READY",
+      "passed": true,
+      "evidence": [
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/publication/DELIVERY-GATES.md",
+          "sha256": "e63c870d5d1a8efc23ded6730905594ceaf0ce2b0aaed6614e1021f2996f4ee6",
+          "bytes": 5401,
+          "scope": "Independent provisional applicability/delivery review; no completion adjudication",
+          "evidenceId": "deliveryGates"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/individual-assessment/current-local-source-bridge.json",
+          "sha256": "d2e8684bbf071e6d1f46bb33431fe1d1b0a135ccf85a6fc74d68dbb523fd723b",
+          "bytes": 454255,
+          "scope": "Independent actual read/hash2037current sources+29oldhelpers+37current docs; preserves failed whole-producer classifications.",
+          "evidenceId": "currentLocalBridge"
+        }
+      ],
+      "rationale": "Independent agent engineering/applicability/source reconciliation review is recorded; no competent human source/canonical signature is asserted."
+    },
+    {
+      "id": "exact-source-ci",
+      "applicability": "required",
+      "localStatus": "PENDING_SOURCE_FULL_UNIT_EXACT_CI",
+      "passed": false,
+      "evidence": [
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/publication/stage3-cap41-first.log",
+          "sha256": "d5d20c41eda57baef5457e422e04ee10e7d56615b7fddd4d376766d61fadf680",
+          "bytes": 1192,
+          "scope": "Four current source-stage3 guard tests PASS; this does not qualify retained-five/source/fullunit/exactCI.",
+          "evidenceId": "stage3FourGuards"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/publication/retained-five-cap42-first.log",
+          "sha256": "26c85211f846ecfc27d43047598b7976462fe816efd2dfa9c56613e66adb0b9f",
+          "bytes": 1617,
+          "scope": "Actual retained-five API evidence guard times out at unchanged5000ms; immutable commit-batch optimization/source/full suite/CI still pending.",
+          "evidenceId": "retainedFivePending"
+        }
+      ],
+      "rationale": "Four source-stage3 guards passed. Retained-five unchanged5000ms API guard failed; immutable batching repair/fullsource/fullunit/finalexactCI remain pending."
+    },
+    {
+      "id": "team-client-sharing",
+      "applicability": "required",
+      "localStatus": "LOCAL_ENGINEERING_EVIDENCE_READY",
+      "passed": true,
+      "evidence": [
+        {
+          "path": "/workspace/artifacts/completion-sharing-20261112/verified/receipt.json",
+          "sha256": "bd7b785a441ce0ea718736166a1e3d660dd3e55f807426e1bece7c45cb31266e",
+          "bytes": 59256,
+          "scope": "Exact9 genuine SDK/server-facade/SQL local acceptance; explicit transport context adapters",
+          "evidenceId": "sharingPG9"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/browser-final/receipt.json",
+          "sha256": "2c81c54c164e563630bc75fe831c83d0b7dfa9cb9652090cc01361118a966953",
+          "bytes": 274357,
+          "scope": "Qualified9FreeSSR/9sharing+documents/320px44pxAX/9API/Nextbatch/largeownartifact only. Whole producer failed clean-check before native frame stage; do not mark passed.",
+          "evidenceId": "currentQualifiedPartial"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/remaining-final/qualified-gates-personal-pending.json",
+          "sha256": "b9ab30f720282381b2ec90a3fdcf08ea5dec17cdaeb68b63f483127462262519",
+          "bytes": 770710,
+          "scope": "Qualified9actualnativeframes/CSP/parity/usage,9fresh-loader math-tier journeys,9warmAPI observations/shared ack1. Whole personal stage failed; distinct ordinary regression now closes it.",
+          "evidenceId": "remainingQualified"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/individual-assessment/current-local-source-bridge.json",
+          "sha256": "d2e8684bbf071e6d1f46bb33431fe1d1b0a135ccf85a6fc74d68dbb523fd723b",
+          "bytes": 454255,
+          "scope": "Independent actual read/hash2037current sources+29oldhelpers+37current docs; preserves failed whole-producer classifications.",
+          "evidenceId": "currentLocalBridge"
+        }
+      ],
+      "rationale": "Actual9org/client immutable A/B/template/scenario+whatif files/mobile44px/AX; independent backend retry/tenant/roles/reversal; sharedsameSnapshot ack regression also qualified."
+    },
+    {
+      "id": "api",
+      "applicability": "required",
+      "localStatus": "LOCAL_ENGINEERING_EVIDENCE_READY",
+      "passed": true,
+      "evidence": [
+        {
+          "path": "/workspace/artifacts/completion-first-20261112/automation/run4/receipt.json",
+          "sha256": "457ed9f40c90d38a9fb7451b2aaaa0bd2cd87756b20cc3bce79d62aeeb0ae113",
+          "bytes": 91906,
+          "scope": "All9 actual handler/worker/SQL and HMAC retry campaign; reused, not rerun",
+          "evidenceId": "automation17"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/browser-final/receipt.json",
+          "sha256": "2c81c54c164e563630bc75fe831c83d0b7dfa9cb9652090cc01361118a966953",
+          "bytes": 274357,
+          "scope": "Qualified9FreeSSR/9sharing+documents/320px44pxAX/9API/Nextbatch/largeownartifact only. Whole producer failed clean-check before native frame stage; do not mark passed.",
+          "evidenceId": "currentQualifiedPartial"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/remaining-final/qualified-gates-personal-pending.json",
+          "sha256": "b9ab30f720282381b2ec90a3fdcf08ea5dec17cdaeb68b63f483127462262519",
+          "bytes": 770710,
+          "scope": "Qualified9actualnativeframes/CSP/parity/usage,9fresh-loader math-tier journeys,9warmAPI observations/shared ack1. Whole personal stage failed; distinct ordinary regression now closes it.",
+          "evidenceId": "remainingQualified"
+        }
+      ],
+      "rationale": "Actual historical/current executed evidence and relevant source bridge are retained; no canonical or production authority."
+    },
+    {
+      "id": "embed",
+      "applicability": "required",
+      "localStatus": "LOCAL_ENGINEERING_EVIDENCE_READY",
+      "passed": true,
+      "evidence": [
+        {
+          "path": "/workspace/artifacts/completion-first-20261112/conversions/embed-pg-snapshot/receipt.json",
+          "sha256": "3880df01f7a4763b0686cf3767eea115f240c58448d287b7ac662ced94341c55",
+          "bytes": 2251,
+          "scope": "Eight genuine local SQL composition checks; explicit lower publication snapshot fixture, real outer exact9 gate unchanged",
+          "evidenceId": "embedPG8"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/remaining-final/qualified-gates-personal-pending.json",
+          "sha256": "b9ab30f720282381b2ec90a3fdcf08ea5dec17cdaeb68b63f483127462262519",
+          "bytes": 770710,
+          "scope": "Qualified9actualnativeframes/CSP/parity/usage,9fresh-loader math-tier journeys,9warmAPI observations/shared ack1. Whole personal stage failed; distinct ordinary regression now closes it.",
+          "evidenceId": "remainingQualified"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/individual-assessment/current-local-source-bridge.json",
+          "sha256": "d2e8684bbf071e6d1f46bb33431fe1d1b0a135ccf85a6fc74d68dbb523fd723b",
+          "bytes": 454255,
+          "scope": "Independent actual read/hash2037current sources+29oldhelpers+37current docs; preserves failed whole-producer classifications.",
+          "evidenceId": "currentLocalBridge"
+        }
+      ],
+      "rationale": "All9 genuine allowed+wrong-ancestor browser frames,exactwebparity,durableusage1; conditional exact lower publication fixtures remain explicit. Ordinary personal build haszero registry exceptions."
+    },
+    {
+      "id": "automation",
+      "applicability": "required",
+      "localStatus": "LOCAL_ENGINEERING_EVIDENCE_READY",
+      "passed": true,
+      "evidence": [
+        {
+          "path": "/workspace/artifacts/completion-first-20261112/automation/run4/receipt.json",
+          "sha256": "457ed9f40c90d38a9fb7451b2aaaa0bd2cd87756b20cc3bce79d62aeeb0ae113",
+          "bytes": 91906,
+          "scope": "All9 actual handler/worker/SQL and HMAC retry campaign; reused, not rerun",
+          "evidenceId": "automation17"
+        },
+        {
+          "path": "/workspace/work/completion-delivery-20261112/docs/completion-first-20261112/automation/qualification.json",
+          "sha256": "cf734e01943d54519f6acedddc27a2e29564772ed7df90f1e65ec8fe31d89753",
+          "bytes": 2664,
+          "scope": "17 real HTTP-handler/worker/SQL/HMAC500-to204 checks for all9; loopback and lower-publication fixture; not Next route mount",
+          "evidenceId": "automationQualification"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/browser-final/receipt.json",
+          "sha256": "2c81c54c164e563630bc75fe831c83d0b7dfa9cb9652090cc01361118a966953",
+          "bytes": 274357,
+          "scope": "Qualified9FreeSSR/9sharing+documents/320px44pxAX/9API/Nextbatch/largeownartifact only. Whole producer failed clean-check before native frame stage; do not mark passed.",
+          "evidenceId": "currentQualifiedPartial"
+        },
+        {
+          "path": "/workspace/artifacts/completion-delivery-20261112/individual-assessment/current-local-source-bridge.json",
+          "sha256": "d2e8684bbf071e6d1f46bb33431fe1d1b0a135ccf85a6fc74d68dbb523fd723b",
+          "bytes": 454255,
+          "scope": "Independent actual read/hash2037current sources+29oldhelpers+37current docs; preserves failed whole-producer classifications.",
+          "evidenceId": "currentLocalBridge"
+        }
+      ],
+      "rationale": "All9 actualhandler/worker/HMAC500\u2192204/retry/concurrency/refusal campaign retained; actualNext mountedPOST/GET218 shares codepath and immutable rows, not a fake rerun of9receiver campaign."
+    }
+  ],
+  "currentPerformance": {
+    "catalogId": 218,
+    "elapsedMs": 40.58362000001944,
+    "warmupRequests": 1,
+    "timedRequests": 1,
+    "scope": "Warm loopback genuine Next/auth/database response; no production SLA threshold or load claim"
+  },
+  "currentNative": {
+    "catalogId": 218,
+    "actualAllowedFrame": true,
+    "actualWrongAncestorDenied": true,
+    "exactWebOutputParity": true,
+    "durableUsage": 1,
+    "targets44": true,
+    "grantId": "60f5a214-a6cb-4c27-8ae3-199f7b90840e",
+    "grantTokenSHA256": "3fe46da78c5f525eb6c0e43e4b281f57989b5f74a40986f1a96a7a1cab31d2f1"
+  },
+  "currentFreePersistence": {
+    "catalogId": 218,
+    "historyId": "6819f585-550e-41d8-b17f-d651eb817a8e",
+    "version": 1,
+    "reloadedOwnSSRHistory": true,
+    "recordedInputs": {
+      "x": 12
+    },
+    "recordedOutput": {
+      "result": 144
+    },
+    "explicitExactEngineReplay": true,
+    "freeExportDenied": true
+  },
+  "currentSharing": {
+    "catalogId": 218,
+    "recordA": "876eddb0-2dcc-4774-94c7-c6a987384009",
+    "recordB": "33173f05-0864-4ce1-863d-f11cdaaf44be",
+    "clientWorkspaceId": "0667ba01-00c4-44c5-8307-bed85866c7c7",
+    "independentTemplate": true,
+    "immutableOriginal": true,
+    "comparisonA": {
+      "result": 144
+    },
+    "comparisonB": {
+      "result": 9
+    },
+    "newPortalMobile320": true,
+    "newPortalAccessibleNames": true,
+    "newControlTargets44": [
+      {
+        "tag": "SELECT",
+        "name": "control",
+        "height": 44
+      },
+      {
+        "tag": "INPUT",
+        "name": "control",
+        "height": 44
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Preview what-if",
+        "height": 44
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Download what-if JSON",
+        "height": 44
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Download what-if CSV",
+        "height": 44
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Download what-if PDF",
+        "height": 44
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Replay what-if",
+        "height": 44
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Load Business organizations",
+        "height": 44
+      },
+      {
+        "tag": "SELECT",
+        "name": "control",
+        "height": 44
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Load organization projects",
+        "height": 44
+      },
+      {
+        "tag": "SELECT",
+        "name": "control",
+        "height": 44
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Load shared workspace",
+        "height": 44
+      },
+      {
+        "tag": "SELECT",
+        "name": "control",
+        "height": 44
+      },
+      {
+        "tag": "SELECT",
+        "name": "Metering API key",
+        "height": 44
+      },
+      {
+        "tag": "INPUT",
+        "name": "control",
+        "height": 44
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Create native embed grant",
+        "height": 44
+      },
+      {
+        "tag": "SELECT",
+        "name": "control",
+        "height": 44
+      },
+      {
+        "tag": "INPUT",
+        "name": "control",
+        "height": 44
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Share current verified snapshot",
+        "height": 44
+      },
+      {
+        "tag": "SELECT",
+        "name": "control",
+        "height": 44
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Open shared record as template",
+        "height": 44
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Replace baseline A",
+        "height": 44
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Replace scenario B",
+        "height": 44
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Capture scenario C",
+        "height": 44
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Clear scenario set",
+        "height": 44
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Export scenario set JSON",
+        "height": 44
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Export scenario set CSV",
+        "height": 44
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Export scenario report JSON",
+        "height": 44
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Export scenario report CSV",
+        "height": 44
+      },
+      {
+        "tag": "BUTTON",
+        "name": "Export scenario report PDF",
+        "height": 44
+      }
+    ],
+    "whatIfIndependentPreviewAndReplay": true,
+    "whatIfPresentationDownloads": [
+      {
+        "format": "csv",
+        "file": "/workspace/artifacts/completion-delivery-20261112/browser-final/shared-downloads/218/invocation-Sbk2kR/96b3fe91-2960-4aa2-af57-e3a001ddc5ac",
+        "bytes": 491,
+        "sha256": "d2237fcf9b26f28703f2c14ef946089d9f2b86ab2ac0b17d433f50e6f28ea778",
+        "valueReadback": true,
+        "tableReadingOrderVerified": false,
+        "pdfUAClaimed": false
+      },
+      {
+        "format": "pdf",
+        "file": "/workspace/artifacts/completion-delivery-20261112/browser-final/shared-downloads/218/invocation-DhZ1fT/15d7f72d-6f6c-4bb3-a1b5-f36e25c661b5",
+        "bytes": 16096,
+        "sha256": "c8ef91c65888aa48748a9acf3744e80735332fd24a45751f7f99aba42db9cf91",
+        "valueReadback": true,
+        "tableReadingOrderVerified": true,
+        "pdfUAClaimed": false
+      }
+    ],
+    "whatIfJSON": {
+      "file": "/workspace/artifacts/completion-delivery-20261112/browser-final/shared-downloads/218/invocation-3HFgHL/12372b57-fb1c-43d1-b285-12f5d9d8ddc2",
+      "bytes": 2301,
+      "sha256": "28d8b401a184bbcdbe96b32f765c3f353f40edfb50f6589206b6ce1923eada73"
+    },
+    "actualScenarioJSON": {
+      "file": "/workspace/artifacts/completion-delivery-20261112/browser-final/shared-downloads/218/invocation-T1XMRY/c116606c-8c61-4a49-9db8-0b9b85680391",
+      "bytes": 930,
+      "sha256": "818a32b1e70dccbc3ae5d36a175a8ba28016da3d7dec33488d5631d606f069eb"
+    }
+  },
+  "receiptPath": "/workspace/artifacts/completion-delivery-20261112/individual-assessment/ready-local-receipts/218.json",
+  "receiptSHA256": "82393e72650f64d42b56698248c5acc19c344e40c5268d6f97ea612d70f691d1",
+  "newEngineeringConfirmed": false,
+  "canonicalAccepted": false,
+  "certificationGranted": false,
+  "publicationEligible": false,
+  "sourceReviewerSignature": "PENDING_EXTERNAL_NOT_AGENT_FORGED",
+  "sourceQualifiedIntegration": "612031e10d17fe1fe514012eede56b8a64475002",
+  "qualification": {
+    "localSourceConsumers": "PASS",
+    "coldRetainedAPI": {
+      "actualMs": 3922,
+      "unchangedBudgetMs": 5000,
+      "passed": true
+    },
+    "fullRegression": "ALL1050_FILE_COVERAGE_PASS_AFTER_RUNTIME_RESUMPTION_SINGLE_HOSTED_RUN_PENDING",
+    "exactHeadCI": "NOT_SUBMITTED"
+  },
+  "conditionalCandidateAwaitingFullUnitAndExactCI": true
+}

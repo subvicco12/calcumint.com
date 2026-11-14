@@ -1,0 +1,27 @@
+{
+  "kind": "CONTEMPORANEOUS_FINITE_INDEPENDENT_FINANCIAL_SWEEP_RECEIPT",
+  "recordedAtUtc": "2026-11-08T18:53:50.974949+00:00",
+  "command": "node tests/acceptance-continuation-20261108/financial-fractional-independent.mjs",
+  "exitCode": 0,
+  "toolSessionId": 44506,
+  "rawLogPath": "/tmp/acceptance-continuation-financial.log",
+  "rawLogSha256": "539d3a0c6ad0883912948b2b8ed0e0b450609e0aeb62e527b42871069d8e6a40",
+  "initialLoaderFailureLogPath": "/tmp/acceptance-continuation-financial-initial-loader-failure.log",
+  "note": "Initial launch failed before calculation because typescript was not resolvable; successful rerun retained here. This is a new reproducible sweep, not recovery of the historical unsaved log.",
+  "result": {
+    "kind": "FINITE_INDEPENDENT_RATIONAL_FRACTIONAL_COMPOUND_CHECK",
+    "mode": "production-comparison",
+    "source": "src/lib/financial-successor/decimal-rounding-private.ts",
+    "sourceSha256": "762b120dc672566d71a35e8981084fe4ddf0de59353f63c81e7e70d1dfacaf38",
+    "scriptSha256": "2d37f35e0b6189771f190a885c14cfad0fce798805f87b14499aa35f39316c95",
+    "generatedCases": 1794,
+    "actualCasesChecked": 1794,
+    "exactHalfCentCases": 330,
+    "casesSha256": "f3dcd7fbaf7201e6176f05498bea9ec2cd557f4e425a1ee5984426043f8d4233",
+    "scope": "Six exact rational square-root growth identities; principal cents 1..299; years .5; compoundsPerYear 1; future value and total interest.",
+    "expectedOracle": "Independent BigInt rational square identities and quotient half-away rounding; no production arithmetic used for expectations.",
+    "financialSpecialistApproval": false,
+    "canonicalAdoptionAuthorized": false,
+    "limitation": "Finite cases only; not whole-domain proof or financial policy approval."
+  }
+}

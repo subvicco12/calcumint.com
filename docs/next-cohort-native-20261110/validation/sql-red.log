@@ -1,0 +1,15 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+Error: Docker exec failed: ERROR:  Exact publication unavailable
+CONTEXT:  PL/pgSQL function public.technology_five_require_publication_v1(integer,integer) line 5 at RAISE
+SQL statement "SELECT public.technology_five_require_publication_v1(p_catalog_id,p_version)"
+PL/pgSQL function public.submit_technology_five_job_v1(uuid,text,uuid,uuid,integer,integer,jsonb,jsonb,uuid) line 6 at PERFORM
+
+    at ChildProcess.<anonymous> (file:///tmp/calcumint-next-cohort-native-20261110/tests/gotrue-runtime/fixture.mjs:8:336)
+    at ChildProcess.emit (node:events:509:28)
+    at maybeClose (node:internal/child_process:1141:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:306:5)
+
+Node.js v24.19.0

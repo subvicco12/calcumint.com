@@ -4,6 +4,7 @@ import {copyCalculationData,createCalculationSnapshot} from './calculation-snaps
 import {captureScenario,type CapturedScenario} from './scenario-set';
 import {validateScenarioDisplayMetadata,type ScenarioDisplayMetadata} from './scenario-display-metadata';
 import {serializeScenarioReportJson} from './scenario-report';
+import {recordedStorageScenarioMetadata} from './storage-scenario-context';
 import {sameRecordedJson} from './recorded-json-equality';
 import {verifyRegisteredSnapshot} from './registered-snapshot-verification';
 const record=z.record(z.string(),z.unknown());
@@ -27,6 +28,7 @@ export function recoverScenarioSet(raw:unknown,identity:{calculatorSlug:string;c
    // A recovered copy can restore explicit unit context absent in an old export; the file remains unchanged.
    metadata={schemaVersion:1,calculatorSlug:snapshot.calculatorSlug,calculatorVersion:snapshot.calculatorVersion,inputs:{...metadata?.inputs,value:{label:metadata?.inputs.value?.label??'Value',unit:from}},outputs:{...metadata?.outputs,result:{label:metadata?.outputs.result?.label??'Converted value',unit:to}}};
   }
+  if(snapshot.calculatorSlug==='storage-conversion-calculator'&&snapshot.calculatorVersion===1)metadata=recordedStorageScenarioMetadata(snapshot,metadata);
   rows=captureScenario(rows,entry.slot,snapshot,entry.notes,metadata,entry.methodology);
  }
  if(Object.hasOwn(p,'comparison')){

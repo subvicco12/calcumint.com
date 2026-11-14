@@ -1,3 +1,4 @@
+import {parseFinalPrivateSnapshotText} from '@/lib/final-private-snapshot-text';
 import {z} from 'zod';
 import {runCalculator} from '@/calculators/engine';
 import {getPublication20Definition} from '@/lib/publication20';
@@ -18,5 +19,5 @@ export async function readNativeJson(request:Request){
  const reader=request.body?.getReader();if(!reader)throw new NativeDeliveryError(400,'JSON body required');let length=0;const chunks:Uint8Array[]=[];
  try{for(;;){const {done,value}=await reader.read();if(done)break;length+=value.length;if(length>8192){await reader.cancel();throw new NativeDeliveryError(413,'Request exceeds 8 KiB');}chunks.push(value);}}
  finally{reader.releaseLock();}
- const bytes=new Uint8Array(length);let at=0;for(const c of chunks){bytes.set(c,at);at+=c.length;}try{return JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));}catch{throw new NativeDeliveryError(400,'Valid JSON required');}
+ const bytes=new Uint8Array(length);let at=0;for(const c of chunks){bytes.set(c,at);at+=c.length;}try{return parseFinalPrivateSnapshotText(new TextDecoder('utf-8',{fatal:true}).decode(bytes));}catch{throw new NativeDeliveryError(400,'Valid JSON required');}
 }

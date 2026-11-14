@@ -1,0 +1,629 @@
+{
+  "passed": true,
+  "scope": "THREE_PRIORITY_GENUINE_TEMPLATE_CLONES_AND_RECORDED_EXPORTS_ONLY_NOT_COMPARISON_COMPLETION",
+  "sourceHashes": {
+    "src/lib/business/technology-next-sharing.ts": "e4c40c9d4eb571c265d7024d3b95888c13b10714a98b421bfbe93930c7bc30ab",
+    "src/lib/business/technology-next-sharing-server.ts": "f31775fd30611577a9e2714c385b1277c1ab479f3cb5e53476c322bcb7bd8b40",
+    "src/components/technology-five-share-form.tsx": "0928d46624a3764c7e141e0984b26f3f93dc132522441e7c179b63f81ffc7444",
+    "src/app/api/business/technology-five-shares/route.ts": "d32a0b98f4b1c9daa14cacdb6b575b30c57aca87d03d4bafd2bcf74a822f41d9",
+    "src/app/business/projects/[id]/page.tsx": "ea32badd3a5e4049963747ea018f5b399bb9a1953053dab03d88150f14423db4",
+    "src/app/business/shared/[id]/page.tsx": "e020d51eed26293dc846a5049a82b45489d178c8fb772a41b5b733bba04e29b3",
+    "src/app/business/page.tsx": "9dd6577974cfd09cb821d9e3aaf26725ccc89b5f47fa58773010a1dd3f4d4911",
+    "src/app/business/api/page.tsx": "61db8cf167d1c727e1cae52f33c35e5e62b799cd30b3c8c0c66288c99fa056c3",
+    "src/components/saved-calculation-actions.tsx": "eb10109b0dfc8a73b0ed4043d35da898cd11a3eace9e711755d8de5179928529",
+    "src/components/account-session-boundary.tsx": "ca131c33a083c5b10f7eca6828c998eaf88cc3c254c583346aa3e48b40f3c3d5",
+    "docs/next-cohort-sharing-20261110/review-only-sharing.sql": "68fcf9f69a24ca6c1d945b5f1164402cf8a65c56712b5bc194bcca17eee0a462",
+    "tests/next-cohort-sharing-20261110/sharing-workflows.mjs": "389cf31d4b1685841f4c4fe918b2cadd8641d66f5522d45763c1bbeb0a391aa7",
+    "src/components/technology-five-shared-comparison.tsx": "21f8d4eb2cb0d455e420234e831f1754e9dba720d5497cd7cadc550982e4cefa",
+    "src/components/calculator-scenario-workspace.tsx": "d35ae6ea673594d23eee4e352ba32a09ac55c61df41694afc91a0c418b03c090",
+    "src/components/scenario-set-recovery.tsx": "6e44983e6b038686f398ad1393a1039bef0f45bc449ec56710f2006cb1cbb6a7",
+    "src/lib/scenario-report.ts": "82ff3dd14620b921d036b49dd6b77e8e3e76bd6900e1b863546c674d9fa030d1",
+    "src/lib/scenario-report-pdf.ts": "b0b2cd15a1280a147fd08a9a09875e059de482158693ce4009e0fa6b19099d56",
+    "src/lib/draft-history-pagination.ts": "46d906eb07088af5c3a5f1cd184ba330036182983e6dc6b2bac71fb54283b5d4",
+    "src/lib/storage-scenario-context.ts": "6f076a49301c13598c7bb4cd730bdfe9199d669de1b16c4d94253b392cbb861c",
+    "src/lib/scenario-set-recovery.ts": "5454b551650cdce18fb9ba2d0af78e777c233dcd9b41660a8e85f5bd28b1cd53",
+    "src/lib/technology-next-capture-trust.ts": "7d26d1d359895f15bb8f0bdf121dcd23b2bfb3871842124ea8b951dee9e36e22",
+    "src/lib/native-delivery/technology-next-catalog.ts": "6e6c0cdca34a7d084c3baeaa64e639aba790853ca2ef0ecfa17faae800369cc6",
+    "src/lib/technology-current-presentation.ts": "57461c97356fa79a69bb3a8e4d3e1edd50c798a1f8fa9bed3da41d05f406d3c5"
+  },
+  "copiedSourceHashes": {
+    "src/lib/business/technology-next-sharing.ts": "e4c40c9d4eb571c265d7024d3b95888c13b10714a98b421bfbe93930c7bc30ab",
+    "src/lib/business/technology-next-sharing-server.ts": "f31775fd30611577a9e2714c385b1277c1ab479f3cb5e53476c322bcb7bd8b40",
+    "src/components/technology-five-share-form.tsx": "0928d46624a3764c7e141e0984b26f3f93dc132522441e7c179b63f81ffc7444",
+    "src/app/api/business/technology-five-shares/route.ts": "d32a0b98f4b1c9daa14cacdb6b575b30c57aca87d03d4bafd2bcf74a822f41d9",
+    "src/app/business/projects/[id]/page.tsx": "ea32badd3a5e4049963747ea018f5b399bb9a1953053dab03d88150f14423db4",
+    "src/app/business/shared/[id]/page.tsx": "e020d51eed26293dc846a5049a82b45489d178c8fb772a41b5b733bba04e29b3",
+    "src/app/business/page.tsx": "9dd6577974cfd09cb821d9e3aaf26725ccc89b5f47fa58773010a1dd3f4d4911",
+    "src/app/business/api/page.tsx": "61db8cf167d1c727e1cae52f33c35e5e62b799cd30b3c8c0c66288c99fa056c3",
+    "src/components/saved-calculation-actions.tsx": "eb10109b0dfc8a73b0ed4043d35da898cd11a3eace9e711755d8de5179928529",
+    "src/components/account-session-boundary.tsx": "ca131c33a083c5b10f7eca6828c998eaf88cc3c254c583346aa3e48b40f3c3d5",
+    "src/components/technology-five-shared-comparison.tsx": "21f8d4eb2cb0d455e420234e831f1754e9dba720d5497cd7cadc550982e4cefa",
+    "src/components/calculator-scenario-workspace.tsx": "d35ae6ea673594d23eee4e352ba32a09ac55c61df41694afc91a0c418b03c090",
+    "src/components/scenario-set-recovery.tsx": "6e44983e6b038686f398ad1393a1039bef0f45bc449ec56710f2006cb1cbb6a7",
+    "src/lib/scenario-report.ts": "82ff3dd14620b921d036b49dd6b77e8e3e76bd6900e1b863546c674d9fa030d1",
+    "src/lib/scenario-report-pdf.ts": "b0b2cd15a1280a147fd08a9a09875e059de482158693ce4009e0fa6b19099d56",
+    "src/lib/draft-history-pagination.ts": "46d906eb07088af5c3a5f1cd184ba330036182983e6dc6b2bac71fb54283b5d4",
+    "src/lib/storage-scenario-context.ts": "6f076a49301c13598c7bb4cd730bdfe9199d669de1b16c4d94253b392cbb861c",
+    "src/lib/scenario-set-recovery.ts": "5454b551650cdce18fb9ba2d0af78e777c233dcd9b41660a8e85f5bd28b1cd53",
+    "src/lib/technology-next-capture-trust.ts": "7d26d1d359895f15bb8f0bdf121dcd23b2bfb3871842124ea8b951dee9e36e22",
+    "src/lib/native-delivery/technology-next-catalog.ts": "6e6c0cdca34a7d084c3baeaa64e639aba790853ca2ef0ecfa17faae800369cc6",
+    "src/lib/technology-current-presentation.ts": "57461c97356fa79a69bb3a8e4d3e1edd50c798a1f8fa9bed3da41d05f406d3c5"
+  },
+  "native": [
+    {
+      "snapshot": {
+        "calculatorSlug": "aspect-ratio-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "width": 1920,
+          "height": 1080
+        },
+        "output": {
+          "value": 1.7777777777777777,
+          "steps": [
+            "Aspect Ratio = 1.7777777777777777"
+          ]
+        }
+      },
+      "href": "/business/shared/f7565f2a-e756-4ca2-9862-304b69afdb1d?cohort=next"
+    },
+    {
+      "snapshot": {
+        "calculatorSlug": "resolution-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "widthPixels": 1920,
+          "heightPixels": 1080
+        },
+        "output": {
+          "value": 2073600,
+          "steps": [
+            "Resolution = 2073600"
+          ]
+        }
+      },
+      "href": "/business/shared/cd498909-ca63-4660-9a71-ad0ad8e30941?cohort=next"
+    },
+    {
+      "snapshot": {
+        "calculatorSlug": "dpi-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "pixels": 3000,
+          "lengthInches": 10
+        },
+        "output": {
+          "value": 300,
+          "steps": [
+            "DPI = 300"
+          ]
+        }
+      },
+      "href": "/business/shared/c4859cf7-ea46-4946-8234-d43c95a5a388?cohort=next"
+    }
+  ],
+  "exports": [
+    {
+      "tag": "owner:aspect-ratio-calculator",
+      "file": "downloads/invocation-ynkmx2/8dee6bb4-1f62-4960-967e-8f32b9c89c10",
+      "filename": "aspect-ratio-calculator-v1.json",
+      "bytes": 246,
+      "sha256": "73b4fe375a0c83a5efc6c67f9ad438f01b2d5f9ed00df4a1b1148609a44e7cd8",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "8dee6bb4-1f62-4960-967e-8f32b9c89c10",
+          "suggestedFilename": "aspect-ratio-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "8dee6bb4-1f62-4960-967e-8f32b9c89c10",
+          "totalBytes": 246,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "8dee6bb4-1f62-4960-967e-8f32b9c89c10",
+          "totalBytes": 246,
+          "receivedBytes": 246,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "8dee6bb4-1f62-4960-967e-8f32b9c89c10",
+          "totalBytes": 246,
+          "receivedBytes": 246,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "8dee6bb4-1f62-4960-967e-8f32b9c89c10",
+          "totalBytes": 246,
+          "receivedBytes": 246,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "8dee6bb4-1f62-4960-967e-8f32b9c89c10",
+          "totalBytes": 246,
+          "receivedBytes": 246,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "8dee6bb4-1f62-4960-967e-8f32b9c89c10",
+          "totalBytes": 246,
+          "receivedBytes": 246,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/downloads/invocation-ynkmx2/8dee6bb4-1f62-4960-967e-8f32b9c89c10"
+        }
+      ]
+    },
+    {
+      "tag": "owner:aspect-ratio-calculator",
+      "file": "downloads/invocation-i0ELLO/8b98bfe4-a947-4729-853f-fa7214d9a9a2",
+      "filename": "aspect-ratio-calculator-v1.csv",
+      "bytes": 258,
+      "sha256": "151ae4487ffc7cf936d8c0c005c16eae7199dbe883b1dbacd340780e83e5ac58",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "8b98bfe4-a947-4729-853f-fa7214d9a9a2",
+          "suggestedFilename": "aspect-ratio-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "8b98bfe4-a947-4729-853f-fa7214d9a9a2",
+          "totalBytes": 258,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "8b98bfe4-a947-4729-853f-fa7214d9a9a2",
+          "totalBytes": 258,
+          "receivedBytes": 258,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "8b98bfe4-a947-4729-853f-fa7214d9a9a2",
+          "totalBytes": 258,
+          "receivedBytes": 258,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "8b98bfe4-a947-4729-853f-fa7214d9a9a2",
+          "totalBytes": 258,
+          "receivedBytes": 258,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "8b98bfe4-a947-4729-853f-fa7214d9a9a2",
+          "totalBytes": 258,
+          "receivedBytes": 258,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "8b98bfe4-a947-4729-853f-fa7214d9a9a2",
+          "totalBytes": 258,
+          "receivedBytes": 258,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/downloads/invocation-i0ELLO/8b98bfe4-a947-4729-853f-fa7214d9a9a2"
+        }
+      ]
+    },
+    {
+      "tag": "owner:aspect-ratio-calculator",
+      "file": "downloads/invocation-EUbjSz/431cdab1-c0a0-4843-8bd7-5373d593cb3e",
+      "filename": "aspect-ratio-calculator-v1.pdf",
+      "bytes": 395439,
+      "sha256": "85b07a136eb53375fe4a33a01b66b88ea6c196b4d209de1375c0712f5a43d6a1",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "431cdab1-c0a0-4843-8bd7-5373d593cb3e",
+          "suggestedFilename": "aspect-ratio-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "431cdab1-c0a0-4843-8bd7-5373d593cb3e",
+          "totalBytes": 395439,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "431cdab1-c0a0-4843-8bd7-5373d593cb3e",
+          "totalBytes": 395439,
+          "receivedBytes": 395439,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "431cdab1-c0a0-4843-8bd7-5373d593cb3e",
+          "totalBytes": 395439,
+          "receivedBytes": 395439,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "431cdab1-c0a0-4843-8bd7-5373d593cb3e",
+          "totalBytes": 395439,
+          "receivedBytes": 395439,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "431cdab1-c0a0-4843-8bd7-5373d593cb3e",
+          "totalBytes": 395439,
+          "receivedBytes": 395439,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "431cdab1-c0a0-4843-8bd7-5373d593cb3e",
+          "totalBytes": 395439,
+          "receivedBytes": 395439,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/downloads/invocation-EUbjSz/431cdab1-c0a0-4843-8bd7-5373d593cb3e"
+        }
+      ]
+    },
+    {
+      "tag": "owner:resolution-calculator",
+      "file": "downloads/invocation-ISkrqn/e329ee89-990a-45ef-ac79-d28b6b76a520",
+      "filename": "resolution-calculator-v1.json",
+      "bytes": 232,
+      "sha256": "a07a9f1800a0e078b056c71bb2e4c4e2cae6663bf4d49abedff8e922372f9fe6",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "e329ee89-990a-45ef-ac79-d28b6b76a520",
+          "suggestedFilename": "resolution-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "e329ee89-990a-45ef-ac79-d28b6b76a520",
+          "totalBytes": 232,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e329ee89-990a-45ef-ac79-d28b6b76a520",
+          "totalBytes": 232,
+          "receivedBytes": 232,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e329ee89-990a-45ef-ac79-d28b6b76a520",
+          "totalBytes": 232,
+          "receivedBytes": 232,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e329ee89-990a-45ef-ac79-d28b6b76a520",
+          "totalBytes": 232,
+          "receivedBytes": 232,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e329ee89-990a-45ef-ac79-d28b6b76a520",
+          "totalBytes": 232,
+          "receivedBytes": 232,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e329ee89-990a-45ef-ac79-d28b6b76a520",
+          "totalBytes": 232,
+          "receivedBytes": 232,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/downloads/invocation-ISkrqn/e329ee89-990a-45ef-ac79-d28b6b76a520"
+        }
+      ]
+    },
+    {
+      "tag": "owner:resolution-calculator",
+      "file": "downloads/invocation-Jg5rJS/1fc8945a-5ae9-4762-adc9-17fd540d2bef",
+      "filename": "resolution-calculator-v1.csv",
+      "bytes": 244,
+      "sha256": "0544348393b195493bf17d016bfb74fceac7ee63fe49d9d59b8b052e5818c4a7",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "1fc8945a-5ae9-4762-adc9-17fd540d2bef",
+          "suggestedFilename": "resolution-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "1fc8945a-5ae9-4762-adc9-17fd540d2bef",
+          "totalBytes": 244,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1fc8945a-5ae9-4762-adc9-17fd540d2bef",
+          "totalBytes": 244,
+          "receivedBytes": 244,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1fc8945a-5ae9-4762-adc9-17fd540d2bef",
+          "totalBytes": 244,
+          "receivedBytes": 244,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1fc8945a-5ae9-4762-adc9-17fd540d2bef",
+          "totalBytes": 244,
+          "receivedBytes": 244,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1fc8945a-5ae9-4762-adc9-17fd540d2bef",
+          "totalBytes": 244,
+          "receivedBytes": 244,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1fc8945a-5ae9-4762-adc9-17fd540d2bef",
+          "totalBytes": 244,
+          "receivedBytes": 244,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/downloads/invocation-Jg5rJS/1fc8945a-5ae9-4762-adc9-17fd540d2bef"
+        }
+      ]
+    },
+    {
+      "tag": "owner:resolution-calculator",
+      "file": "downloads/invocation-Vg3YHq/deef8f1e-5231-4856-8d3b-fcfb9266541e",
+      "filename": "resolution-calculator-v1.pdf",
+      "bytes": 395437,
+      "sha256": "f77d71d21df430d92bb6fc1c69d397acb6680b44cf6eeceed83c618dca083fd1",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "deef8f1e-5231-4856-8d3b-fcfb9266541e",
+          "suggestedFilename": "resolution-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "deef8f1e-5231-4856-8d3b-fcfb9266541e",
+          "totalBytes": 395437,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "deef8f1e-5231-4856-8d3b-fcfb9266541e",
+          "totalBytes": 395437,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "deef8f1e-5231-4856-8d3b-fcfb9266541e",
+          "totalBytes": 395437,
+          "receivedBytes": 395437,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "deef8f1e-5231-4856-8d3b-fcfb9266541e",
+          "totalBytes": 395437,
+          "receivedBytes": 395437,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "deef8f1e-5231-4856-8d3b-fcfb9266541e",
+          "totalBytes": 395437,
+          "receivedBytes": 395437,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "deef8f1e-5231-4856-8d3b-fcfb9266541e",
+          "totalBytes": 395437,
+          "receivedBytes": 395437,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/downloads/invocation-Vg3YHq/deef8f1e-5231-4856-8d3b-fcfb9266541e"
+        }
+      ]
+    },
+    {
+      "tag": "owner:dpi-calculator",
+      "file": "downloads/invocation-D2oRbW/84121698-9bb6-4fce-9320-a1be4a4cd8dd",
+      "filename": "dpi-calculator-v1.json",
+      "bytes": 203,
+      "sha256": "8b1db4c5bddebb2b5f712824f19439a9b79dcbba3f17c9a85057a1b2f2b8a9c3",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "84121698-9bb6-4fce-9320-a1be4a4cd8dd",
+          "suggestedFilename": "dpi-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "84121698-9bb6-4fce-9320-a1be4a4cd8dd",
+          "totalBytes": 203,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "84121698-9bb6-4fce-9320-a1be4a4cd8dd",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "84121698-9bb6-4fce-9320-a1be4a4cd8dd",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "84121698-9bb6-4fce-9320-a1be4a4cd8dd",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "84121698-9bb6-4fce-9320-a1be4a4cd8dd",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "84121698-9bb6-4fce-9320-a1be4a4cd8dd",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/downloads/invocation-D2oRbW/84121698-9bb6-4fce-9320-a1be4a4cd8dd"
+        }
+      ]
+    },
+    {
+      "tag": "owner:dpi-calculator",
+      "file": "downloads/invocation-nyH4HO/76541d63-c57a-40c6-9695-b884c0d81c98",
+      "filename": "dpi-calculator-v1.csv",
+      "bytes": 215,
+      "sha256": "981fa8842284846793bc2e9e642003d5302d1c1a26408392b4ae67eb530c6e20",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "76541d63-c57a-40c6-9695-b884c0d81c98",
+          "suggestedFilename": "dpi-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "76541d63-c57a-40c6-9695-b884c0d81c98",
+          "totalBytes": 215,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "76541d63-c57a-40c6-9695-b884c0d81c98",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "76541d63-c57a-40c6-9695-b884c0d81c98",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "76541d63-c57a-40c6-9695-b884c0d81c98",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "76541d63-c57a-40c6-9695-b884c0d81c98",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "76541d63-c57a-40c6-9695-b884c0d81c98",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/downloads/invocation-nyH4HO/76541d63-c57a-40c6-9695-b884c0d81c98"
+        }
+      ]
+    },
+    {
+      "tag": "owner:dpi-calculator",
+      "file": "downloads/invocation-wE9Ky0/f5f137ea-b717-4276-9ef9-4b0d0658ac79",
+      "filename": "dpi-calculator-v1.pdf",
+      "bytes": 395282,
+      "sha256": "6e70b65579931c47aae9bcf078856fa156e6550f1307f53b1e2a1026458f54db",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "f5f137ea-b717-4276-9ef9-4b0d0658ac79",
+          "suggestedFilename": "dpi-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "f5f137ea-b717-4276-9ef9-4b0d0658ac79",
+          "totalBytes": 395282,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f5f137ea-b717-4276-9ef9-4b0d0658ac79",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f5f137ea-b717-4276-9ef9-4b0d0658ac79",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f5f137ea-b717-4276-9ef9-4b0d0658ac79",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f5f137ea-b717-4276-9ef9-4b0d0658ac79",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f5f137ea-b717-4276-9ef9-4b0d0658ac79",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/downloads/invocation-wE9Ky0/f5f137ea-b717-4276-9ef9-4b0d0658ac79"
+        }
+      ]
+    }
+  ]
+}

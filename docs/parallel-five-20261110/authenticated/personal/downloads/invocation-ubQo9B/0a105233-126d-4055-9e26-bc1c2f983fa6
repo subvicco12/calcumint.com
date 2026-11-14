@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "raid-capacity-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "methodology": "Deterministic calculation using the reviewed Technology & Computing engine.\nTechnical calculation revision: technology.raid-capacity@1\n\nSimplified nominal RAID usable capacity; RAID 5 requires at least 3 disks, RAID 6 at least 4, and RAID 10 an even disk count of at least 4. Vendor/filesystem overhead is not modeled.\nUsable capacity = RAID-level-specific disk count × disk size",
+      "input": {
+        "diskCount": 4,
+        "diskSizeGb": 1000,
+        "raidLevel": "10"
+      },
+      "output": {
+        "value": 2000,
+        "steps": [
+          "RAID Capacity = 2000"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "raid-capacity-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "diskCount": {
+            "label": "Disk count"
+          },
+          "diskSizeGb": {
+            "label": "Disk size (GB)",
+            "unit": "GB"
+          },
+          "raidLevel": {
+            "label": "RAID level"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Usable RAID capacity",
+            "unit": "GB"
+          }
+        }
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "methodology": "Deterministic calculation using the reviewed Technology & Computing engine.\nTechnical calculation revision: technology.raid-capacity@1\n\nSimplified nominal RAID usable capacity; RAID 5 requires at least 3 disks, RAID 6 at least 4, and RAID 10 an even disk count of at least 4. Vendor/filesystem overhead is not modeled.\nUsable capacity = RAID-level-specific disk count × disk size",
+      "input": {
+        "diskCount": 4,
+        "diskSizeGb": 2000,
+        "raidLevel": "10"
+      },
+      "output": {
+        "value": 4000,
+        "steps": [
+          "RAID Capacity = 4000"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "raid-capacity-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "diskCount": {
+            "label": "Disk count"
+          },
+          "diskSizeGb": {
+            "label": "Disk size (GB)",
+            "unit": "GB"
+          },
+          "raidLevel": {
+            "label": "RAID level"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Usable RAID capacity",
+            "unit": "GB"
+          }
+        }
+      }
+    }
+  ]
+}

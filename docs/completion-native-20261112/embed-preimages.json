@@ -1,0 +1,54 @@
+{
+  "kind": "HELD_EXACT_PREDECESSOR_BINDING",
+  "predecessorSQL": "docs/native440-remediation/embed-metering.sql",
+  "predecessorSHA256": "01fd6fdb9b07aa51d95e375fdd5d25ae0c0e6e7407b32df3e9e142287bd0a4a7",
+  "functionSHA256": "33edec8eeba2e57626ce21537576e9ccffc8d4a4186aa70a827a629bcde55dcd",
+  "quotaFunctionSHA256": "4cc6f6a10adafd43e3e064301d4a0631d80bed09bec54f80b1a94c7b556fe9b9",
+  "catalogIds": [
+    218,
+    219,
+    220,
+    423,
+    430,
+    431,
+    432,
+    438,
+    440
+  ],
+  "publicationAdoptionSQLChanged": false,
+  "commercialLimitsInvented": false,
+  "requiresIsolatedPostgresAcceptance": true,
+  "productionApplied": false,
+  "successorFunctionBodySHA256": {
+    "factory_native_embed_identity_v1": "3899fb88db4fdb1661cd8b51db36f4cda71276fda21912d3edbbccff2bd27949",
+    "factory_native_embed_publication_snapshot_v1": "e845fefb606727fc4e78093e91195fae8757b1dc00844f61ba7ad253b80307de",
+    "factory_native_embed_publication_v1": "a19778a745d36e83b26746eb10200060fa2dbcc016c171f847ee7c323bf64da7",
+    "consume_native_embed_v1": "5832656a9850f92d223825de8e230e508df8f773d089297d82b6d1a7f84a0fcb"
+  },
+  "successorSQLSHA256": "3040be944c7b68614b1ca8eaefb57cb54dce1e4e22ac61302e95171a76439792",
+  "qualifiedPostgresFunctionSHA256": {
+    "consume_native_embed_v1": {
+      "bodySHA256": "5832656a9850f92d223825de8e230e508df8f773d089297d82b6d1a7f84a0fcb",
+      "definitionSHA256": "e8d1d10b1d228c14a1d7f3d06f8a7f38c3778edcdc6bd333192f061dfa08b58e"
+    },
+    "factory_native_embed_identity_v1": {
+      "bodySHA256": "3899fb88db4fdb1661cd8b51db36f4cda71276fda21912d3edbbccff2bd27949",
+      "definitionSHA256": "e74d715c7694f24152052992a0b2c3ba80be06e69f54bc55ffc06c1f9d859e16"
+    },
+    "factory_native_embed_publication_v1": {
+      "bodySHA256": "a19778a745d36e83b26746eb10200060fa2dbcc016c171f847ee7c323bf64da7",
+      "definitionSHA256": "786e2e21f6889fa4245c95200956349c13a0b41380e3612f951724e0ddcfa782"
+    },
+    "factory_native_embed_publication_snapshot_v1": {
+      "bodySHA256": "e845fefb606727fc4e78093e91195fae8757b1dc00844f61ba7ad253b80307de",
+      "definitionSHA256": "a0372a8a629a5652ad90b9e639340b2a8bc713d3138b7220720877b62db31db1"
+    }
+  },
+  "qualification": {
+    "isolatedPostgresPassed": true,
+    "groupedChecks": 8,
+    "outerMappingVersionPT404ByteUnmodified": true,
+    "conditionalOnlyLowerSnapshotReplaced": true,
+    "snapshotHelper": "public.factory_native_embed_publication_snapshot_v1(text,text,integer)"
+  }
+}

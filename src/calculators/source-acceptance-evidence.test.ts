@@ -2,25 +2,44 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { describe, expect, it } from "vitest";
+import {verifyFinancialSafetyBinding} from "../../scripts/financial-safety-lineage.mjs";
 
 const dir="data/catalog/source-acceptance-2026-10-26";
 const read=(p:string)=>JSON.parse(readFileSync(p,"utf8"));
 const hash=(b:string|Buffer)=>createHash("sha256").update(b).digest("hex");
 type Row={masterId:number;title:string;domain:string;status:string;packetPath:string|null;packetSHA256:string|null;historicalQualifiedApprovalStatus:string;certificationAuthorized:boolean;publicationAuthorized:boolean};
-function inspectSourceBindings(value:unknown,bytesFor:(p:string)=>Buffer){
- if(Array.isArray(value)){for(const item of value)inspectSourceBindings(item,bytesFor);return;}
+const guardedFinancialPaths=new Set(['src/calculators/precision.ts','src/calculators/finance/loan-payment.ts','src/calculators/finance/compound-interest.ts']);
+type VerifiedInspection={current:Buffer;historical:Buffer};
+function inspectedHistoricalBytes(path:string,bytesFor:(p:string)=>Buffer,verified:Map<string,VerifiedInspection>,actualBytesFor:(p:string)=>Buffer=p=>readFileSync(p)){
+ const current=bytesFor(path);
+ if(!guardedFinancialPaths.has(path))return current;
+ // Packet claims refer to the retained source, not a new review of the guard
+ // successor. Verify current bytes independently before inspecting that history.
+ expect(current.equals(actualBytesFor(path))).toBe(true);
+ // Scope reuse to this one synchronous validation, after checking each current
+ // byte capture. Never reuse trust across requests or bypass changed bytes.
+ const prior=verified.get(path);if(prior){expect(current.equals(prior.current)).toBe(true);return prior.historical;}
+ const historical=execFileSync('git',['show',`a955cdad7019a645b7ed2950299d0603ba1784a7:${path}`],{stdio:['ignore','pipe','pipe']});
+ const git=(args:string[])=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']});
+ expect(verifyFinancialSafetyBinding(path,current,hash(historical),git)).toBe(true);
+ verified.set(path,{current:Buffer.from(current),historical});
+ return historical;
+}
+function inspectSourceBindings(value:unknown,bytesFor:(p:string)=>Buffer,verified:Map<string,VerifiedInspection>){
+ if(Array.isArray(value)){for(const item of value)inspectSourceBindings(item,bytesFor,verified);return;}
  if(!value||typeof value!=="object")return;
  const obj=value as Record<string,unknown>;
  if(typeof obj.path==="string"&&obj.path.startsWith("src/")){
-  expect(obj.path.split("/")).not.toContain("..");const bytes=bytesFor(obj.path);
+  expect(obj.path.split("/")).not.toContain("..");const bytes=inspectedHistoricalBytes(obj.path,bytesFor,verified);
   const gitBlob=createHash("sha1").update(Buffer.concat([Buffer.from(`blob ${bytes.length}\0`),bytes])).digest("hex");
   for(const key of ["githubBlobSha","blobSha"]){if(typeof obj[key]==="string")expect(obj[key]).toBe(gitBlob);}
   for(const key of ["localEvidenceSha256","contentSha256"]){if(typeof obj[key]==="string")expect([hash(bytes),hash(Buffer.concat([bytes,Buffer.from("\n")]))]).toContain(obj[key]);}
   for(const key of ["baseline","reviewedHead"]){const v=obj[key] as Record<string,unknown>|undefined;if(v?.sha256){expect(v.sha256).toBe(hash(bytes));expect(v.gitBlob).toBe(gitBlob);}}
  }
- for(const nested of Object.values(obj))inspectSourceBindings(nested,bytesFor);
+ for(const nested of Object.values(obj))inspectSourceBindings(nested,bytesFor,verified);
 }
 function assertSnapshot(register:ReturnType<typeof read>,bytesFor:(p:string)=>Buffer=(p)=>readFileSync(p)){
+ const verified=new Map<string,VerifiedInspection>();
  const prior=read("data/catalog/risk-review-2026-10-26/reassessment.json");
  expect(register.sourceIndex.path).toBe(`${dir}/source-index.json`);expect(hash(bytesFor(register.sourceIndex.path))).toBe(register.sourceIndex.sha256);
  expect(Object.keys(register.protectedHashes).sort()).toEqual(["data/catalog/master-catalog-2026.csv","docs/audits/final-acceptance-p0-2026-10-21/acceptance-ledger.csv","data/catalog/risk-review-2026-10-26/reassessment.json","docs/audits/specialist-technical-review-2026-10-26/technical-register.json","docs/MASTER-BLUEPRINT-GOVERNANCE-AMENDMENT-2026-10-26.md","src/calculators/certification-review-policy.ts","src/lib/admin/publishing.ts","src/calculators/publication-authority.ts"].sort());
@@ -36,7 +55,7 @@ function assertSnapshot(register:ReturnType<typeof read>,bytesFor:(p:string)=>Bu
   const lane=JSON.parse(bytesFor(p.basis.lanePath).toString());expect(lane.cases.find((x:Row)=>x.masterId===r.masterId)).toEqual(p.analysis);
   expect(hash(bytesFor(p.basis.riskRegisterPath))).toBe(p.basis.riskRegisterSHA256);expect(hash(bytesFor(p.basis.technicalRegisterPath))).toBe(p.basis.technicalRegisterSHA256);
   expect(p.currentSourceVerification.sourceUrls.slice().sort()).toEqual(old.sourceEvidence.map((x:{url:string})=>x.url).sort());
-  inspectSourceBindings(p.analysis.implementationBinding,bytesFor);
+  inspectSourceBindings(p.analysis.implementationBinding,bytesFor,verified);
   expect(p.masterId).toBe(r.masterId);expect(p.evidenceComplete).toBe(false);expect(p.actualEngineGoldensAccepted).toBe(false);
   expect(p.certificationAuthorized).toBe(false);expect(p.publicationAuthorized).toBe(false);expect(p.remainingGaps.length).toBeGreaterThan(0);
   for(const key of ["candidateFormula","units","applicability","limits","rounding","sourceEvidence","independentNumericalEvidence","implementationBinding"]){expect(p.analysis[key]).toBeDefined();}
@@ -55,10 +74,19 @@ describe("source acceptance evidence is complete in coverage and fail-closed in 
  });
  it("rejects stale referenced lane, source-index and inspected implementation evidence",()=>{
   const register=read(`${dir}/readiness-register.json`);
-  for(const path of [`${dir}/lanes/finance-14.json`,`${dir}/source-index.json`,"src/calculators/finance/credit-card-payoff.ts"]){
+  for(const path of [`${dir}/lanes/finance-14.json`,`${dir}/source-index.json`,"src/calculators/finance/credit-card-payoff.ts","src/calculators/precision.ts"]){
    const corrupt=(p:string)=>p===path?Buffer.from(readFileSync(p,"utf8")+" "):readFileSync(p);
    expect(()=>assertSnapshot(register,corrupt)).toThrow();
   }
+ });
+ it("rechecks repeated current bytes and never shares verified history across validation calls",()=>{
+  const path="src/calculators/precision.ts",current=readFileSync(path),verified=new Map<string,VerifiedInspection>();
+  expect(inspectedHistoricalBytes(path,()=>current,verified)).not.toEqual(current);
+  expect(()=>inspectedHistoricalBytes(path,()=>Buffer.concat([current,Buffer.from("//tamper")]),verified)).toThrow();
+  const changed=Buffer.concat([current,Buffer.from("//changed-on-disk")]);
+  expect(()=>inspectedHistoricalBytes(path,()=>changed,verified,()=>changed)).toThrow();
+  const original=read(`${dir}/readiness-register.json`);
+  expect(()=>assertSnapshot(original,p=>p===path?Buffer.concat([current,Buffer.from("//tamper")]):readFileSync(p))).toThrow();
  });
  it("replays67exact-rational candidate checks without claimingactual-engine acceptance",()=>{
   const result=JSON.parse(execFileSync("python3",[`${dir}/lanes/bounded-witnesses.py`],{encoding:"utf8"}));

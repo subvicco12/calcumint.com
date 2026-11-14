@@ -11,6 +11,8 @@ export default defineConfig({
     }
   },
   test: {
+    // Retained source suites launch bounded child workers; avoid nested outer oversubscription.
+    maxWorkers: 1,
     environment: "node",
     include: ["src/**/*.test.ts", "src/**/*.test.tsx"],
     coverage: {

@@ -1,0 +1,311 @@
+TAP version 13
+# Subtest: preserves original frequency-to-N1 proof before exact Final successor proof
+ok 1 - preserves original frequency-to-N1 proof before exact Final successor proof
+  ---
+  duration_ms: 1576.110775
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects a historical caller reversion
+ok 2 - current Final proof rejects a historical caller reversion
+  ---
+  duration_ms: 118.798797
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects arbitrary caller tamper
+ok 3 - current Final proof rejects arbitrary caller tamper
+  ---
+  duration_ms: 116.796634
+  type: 'test'
+  ...
+# Subtest: original caller hash claim cannot be replaced by current Final hash
+ok 4 - original caller hash claim cannot be replaced by current Final hash
+  ---
+  duration_ms: 4.360401
+  type: 'test'
+  ...
+# Subtest: historical N1 object corruption cannot be hidden by a valid current source
+ok 5 - historical N1 object corruption cannot be hidden by a valid current source
+  ---
+  duration_ms: 7.9021
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects dependency tamper src/components/final-calculator-renderer.tsx
+ok 6 - current Final proof rejects dependency tamper src/components/final-calculator-renderer.tsx
+  ---
+  duration_ms: 10.563258
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects dependency tamper src/calculators/final-framework/unit-conversion-presentation.ts
+ok 7 - current Final proof rejects dependency tamper src/calculators/final-framework/unit-conversion-presentation.ts
+  ---
+  duration_ms: 20.553806
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects dependency tamper src/calculators/final-framework/renderer-display.ts
+ok 8 - current Final proof rejects dependency tamper src/calculators/final-framework/renderer-display.ts
+  ---
+  duration_ms: 31.178255
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects dependency tamper src/calculators/final-framework/renderer-trust-surface.ts
+ok 9 - current Final proof rejects dependency tamper src/calculators/final-framework/renderer-trust-surface.ts
+  ---
+  duration_ms: 42.249791
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects dependency tamper src/calculators/final-framework/result-inspection.ts
+ok 10 - current Final proof rejects dependency tamper src/calculators/final-framework/result-inspection.ts
+  ---
+  duration_ms: 53.67937
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects dependency tamper src/calculators/final-framework/analysis-surface-policy.ts
+ok 11 - current Final proof rejects dependency tamper src/calculators/final-framework/analysis-surface-policy.ts
+  ---
+  duration_ms: 66.776454
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects dependency tamper src/lib/n1-publication-methodology.ts
+ok 12 - current Final proof rejects dependency tamper src/lib/n1-publication-methodology.ts
+  ---
+  duration_ms: 78.659426
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects dependency tamper src/lib/frequency-presentation.ts
+ok 13 - current Final proof rejects dependency tamper src/lib/frequency-presentation.ts
+  ---
+  duration_ms: 89.353667
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects dependency tamper src/lib/publication20/conversions.ts
+ok 14 - current Final proof rejects dependency tamper src/lib/publication20/conversions.ts
+  ---
+  duration_ms: 97.750326
+  type: 'test'
+  ...
+# Subtest: composed proof reads dependencies from its target tree, not process cwd
+ok 15 - composed proof reads dependencies from its target tree, not process cwd
+  ---
+  duration_ms: 669.71571
+  type: 'test'
+  ...
+# Subtest: composed proof rejects symlinked target dependency even with correct bytes
+ok 16 - composed proof rejects symlinked target dependency even with correct bytes
+  ---
+  duration_ms: 656.014263
+  type: 'test'
+  ...
+# Subtest: composed proof rejects silent target-tree N1 reversion under the valid original manifest
+ok 17 - composed proof rejects silent target-tree N1 reversion under the valid original manifest
+  ---
+  duration_ms: 1327.950039
+  type: 'test'
+  ...
+# Subtest: 13cohort ledger preserves540 prior dispositions and adds bounded scopes only
+ok 18 - 13cohort ledger preserves540 prior dispositions and adds bounded scopes only
+  ---
+  duration_ms: 6.431589
+  type: 'test'
+  ...
+# Subtest: source facts reproduce against native bytes without changing retained output
+ok 19 - source facts reproduce against native bytes without changing retained output
+  ---
+  duration_ms: 71.205917
+  type: 'test'
+  ...
+# Subtest: isolated lock receipt binds final producer but does not attest production freeze
+ok 20 - isolated lock receipt binds final producer but does not attest production freeze
+  ---
+  duration_ms: 0.70113
+  type: 'test'
+  ...
+# Subtest: native renderer proof distinguishes13partial targets and2regressions without authority promotion
+ok 21 - native renderer proof distinguishes13partial targets and2regressions without authority promotion
+  ---
+  duration_ms: 0.506227
+  type: 'test'
+  ...
+# Subtest: all older source bindings and verifier logic remain intact except explicit checker successor
+ok 22 - all older source bindings and verifier logic remain intact except explicit checker successor
+  ---
+  duration_ms: 10.659086
+  type: 'test'
+  ...
+# Subtest: appointment absence is explicitly observed with privileged read-only visibility
+ok 23 - appointment absence is explicitly observed with privileged read-only visibility
+  ---
+  duration_ms: 0.32859
+  type: 'test'
+  ...
+# Subtest: current guard evolution independently preserves historical stages and exact captured targets
+not ok 24 - current guard evolution independently preserves historical stages and exact captured targets
+  ---
+  duration_ms: 9.384938
+  type: 'test'
+  location: '/workspace/work/product-completion-20261108/tests/acceptance-closure-20261108/converter-final-source.test.mjs:77:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    ... Skipped lines
+    
+      {
+        intermediateSources: [
+          {
+            blob: '81f68542a0757edffc604a30f8ad99df8d00b65d',
+            ref: 'fb2531218dbf71e1116dbc90fc17367692213bdc',
+    ...
+          },
+    +     {
+    +       blob: '2e146967e59f77ab662dab1b18d60db5e852d823',
+    +       ref: 'b2d72aa66293b752739b7924745a57a51c4b5acb',
+    +       sha256: '934bf945aa864691a3fba7307484a7996eaf407f49b61f83c98c281780a420c9'
+    +     }
+        ],
+        path: '.github/workflows/ci.yml',
+        predecessorBlob: '938281abbbf9bbea928d6844d71b06f9dc423f7f',
+        predecessorRef: 'a955cdad7019a645b7ed2950299d0603ba1784a7',
+        predecessorSHA256: '6556a6d89c583ea1bb8ccd82ff47f379606850399da7600b59e274567b6d0416',
+    +   successorBlob: '5f1156c52ae6926860a61d529faaed825661bba4',
+    +   successorRef: '00651cc382be5dcbd596882071787fd6702c13d3',
+    +   successorSHA256: '39703e767294bee42f65f6495f2f9c3c8807c2f237cef79d1a48659196aca243'
+    -   successorBlob: '2e146967e59f77ab662dab1b18d60db5e852d823',
+    -   successorRef: 'b2d72aa66293b752739b7924745a57a51c4b5acb',
+    -   successorSHA256: '934bf945aa864691a3fba7307484a7996eaf407f49b61f83c98c281780a420c9'
+      }
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    path: '.github/workflows/ci.yml'
+    predecessorRef: 'a955cdad7019a645b7ed2950299d0603ba1784a7'
+    successorRef: 'b2d72aa66293b752739b7924745a57a51c4b5acb'
+    predecessorBlob: '938281abbbf9bbea928d6844d71b06f9dc423f7f'
+    successorBlob: '2e146967e59f77ab662dab1b18d60db5e852d823'
+    predecessorSHA256: '6556a6d89c583ea1bb8ccd82ff47f379606850399da7600b59e274567b6d0416'
+    successorSHA256: '934bf945aa864691a3fba7307484a7996eaf407f49b61f83c98c281780a420c9'
+    intermediateSources:
+      0:
+        ref: 'fb2531218dbf71e1116dbc90fc17367692213bdc'
+        blob: '81f68542a0757edffc604a30f8ad99df8d00b65d'
+        sha256: '68e4dc64f8edcea69bdc1c56d3666f82f1ed1d113954dc548801293ea0daacfa'
+      1:
+        ref: '154d28f5d879856b02636c192ea2a81f334e7836'
+        blob: 'd5f2177aefa880af46cdf37d9f67dd12d26d8332'
+        sha256: 'e7b9610f21acc7eef52c032a034b2af89e72eeef62b0e3037ec4dbaa59b865df'
+      2:
+        ref: 'a342492a6da420b64a2cf63aa2ef8d8496633def'
+        blob: 'f7ab19ff8905da2544d01165acaffd7f596aab14'
+        sha256: '28c35736999fd50d6e5f4cab98c56cc08d2c73eff39e1ea8da74c682d312d951'
+      3:
+        ref: 'e5542ff7e60351e46a352cebd12210b498d5ad00'
+        blob: '2b83bd30acf6dfd091f8a7532b5b97ad6ecfd476'
+        sha256: 'b8c9d0eece648d72f20390b0a33b3f02ef972c7ec880a91a97f7ece4f2e27c8f'
+      4:
+        ref: 'df82f28340d58e058d17e74937cd512283ccaed6'
+        blob: '7cfa77dd804d48a3b5d2027127af0812e931c7d2'
+        sha256: '988d90c87c69ab09aab0748124471381341dd1fe7e50c62ef957f1e64563a36e'
+      5:
+        ref: 'e80a691e86b5bb996a0cd0863fc810b432d7303d'
+        blob: '8953c23d35cc88e660816276eb652ab6fb68d6e5'
+        sha256: 'f963ba821baac73c93bbf16915e27c344c5db022c7b4e11420505778c172007c'
+      6:
+        ref: 'b6b1a72127d40712f0d3c212188d8ca84063721b'
+        blob: 'd3538f2cfd277b6877efc083ecef59a17ec3554f'
+        sha256: '4c50fb082caac20a87df605934d693632be91b5194282467161b596a5b7a2cdb'
+      7:
+        ref: '606c44e09799a89922e4c575d24a7798d33ee33b'
+        blob: '360179f221fee30409658eb9be1bba63864a3729'
+        sha256: '1b34d38604e057d2e28e650fd3806fc66b6d38c5fcfa46d08f36eef4ec4318e3'
+  actual:
+    path: '.github/workflows/ci.yml'
+    predecessorRef: 'a955cdad7019a645b7ed2950299d0603ba1784a7'
+    successorRef: '00651cc382be5dcbd596882071787fd6702c13d3'
+    predecessorBlob: '938281abbbf9bbea928d6844d71b06f9dc423f7f'
+    successorBlob: '5f1156c52ae6926860a61d529faaed825661bba4'
+    predecessorSHA256: '6556a6d89c583ea1bb8ccd82ff47f379606850399da7600b59e274567b6d0416'
+    successorSHA256: '39703e767294bee42f65f6495f2f9c3c8807c2f237cef79d1a48659196aca243'
+    intermediateSources:
+      0:
+        ref: 'fb2531218dbf71e1116dbc90fc17367692213bdc'
+        blob: '81f68542a0757edffc604a30f8ad99df8d00b65d'
+        sha256: '68e4dc64f8edcea69bdc1c56d3666f82f1ed1d113954dc548801293ea0daacfa'
+      1:
+        ref: '154d28f5d879856b02636c192ea2a81f334e7836'
+        blob: 'd5f2177aefa880af46cdf37d9f67dd12d26d8332'
+        sha256: 'e7b9610f21acc7eef52c032a034b2af89e72eeef62b0e3037ec4dbaa59b865df'
+      2:
+        ref: 'a342492a6da420b64a2cf63aa2ef8d8496633def'
+        blob: 'f7ab19ff8905da2544d01165acaffd7f596aab14'
+        sha256: '28c35736999fd50d6e5f4cab98c56cc08d2c73eff39e1ea8da74c682d312d951'
+      3:
+        ref: 'e5542ff7e60351e46a352cebd12210b498d5ad00'
+        blob: '2b83bd30acf6dfd091f8a7532b5b97ad6ecfd476'
+        sha256: 'b8c9d0eece648d72f20390b0a33b3f02ef972c7ec880a91a97f7ece4f2e27c8f'
+      4:
+        ref: 'df82f28340d58e058d17e74937cd512283ccaed6'
+        blob: '7cfa77dd804d48a3b5d2027127af0812e931c7d2'
+        sha256: '988d90c87c69ab09aab0748124471381341dd1fe7e50c62ef957f1e64563a36e'
+      5:
+        ref: 'e80a691e86b5bb996a0cd0863fc810b432d7303d'
+        blob: '8953c23d35cc88e660816276eb652ab6fb68d6e5'
+        sha256: 'f963ba821baac73c93bbf16915e27c344c5db022c7b4e11420505778c172007c'
+      6:
+        ref: 'b6b1a72127d40712f0d3c212188d8ca84063721b'
+        blob: 'd3538f2cfd277b6877efc083ecef59a17ec3554f'
+        sha256: '4c50fb082caac20a87df605934d693632be91b5194282467161b596a5b7a2cdb'
+      7:
+        ref: '606c44e09799a89922e4c575d24a7798d33ee33b'
+        blob: '360179f221fee30409658eb9be1bba63864a3729'
+        sha256: '1b34d38604e057d2e28e650fd3806fc66b6d38c5fcfa46d08f36eef4ec4318e3'
+      8:
+        ref: 'b2d72aa66293b752739b7924745a57a51c4b5acb'
+        blob: '2e146967e59f77ab662dab1b18d60db5e852d823'
+        sha256: '934bf945aa864691a3fba7307484a7996eaf407f49b61f83c98c281780a420c9'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/acceptance-closure-20261108/converter-final-source.test.mjs:87:40)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: inventory test stays exact while its current caller dependency advances with preserved history
+not ok 25 - inventory test stays exact while its current caller dependency advances with preserved history
+  ---
+  duration_ms: 16.349222
+  type: 'test'
+  location: '/workspace/work/product-completion-20261108/tests/acceptance-closure-20261108/converter-final-source.test.mjs:127:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + '00651cc382be5dcbd596882071787fd6702c13d3'
+    - '955e2ed5df93e646275c4d94d33548cac5925380'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '955e2ed5df93e646275c4d94d33548cac5925380'
+  actual: '00651cc382be5dcbd596882071787fd6702c13d3'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/acceptance-closure-20261108/converter-final-source.test.mjs:139:68)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+1..25
+# tests 25
+# suites 0
+# pass 23
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5236.347779

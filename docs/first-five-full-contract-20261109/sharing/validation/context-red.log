@@ -1,0 +1,31 @@
+
+ RUN  v3.2.7 /tmp/calcumint-five-sharing-20261109
+
+ ❯ src/components/technology-five-share-form.test.tsx (4 tests | 1 failed) 314ms
+   ✓ submits a verified immutable history copy and preserves request identity across schema-unavailable retry 245ms
+   ✓ rejects forged JSON locally and retains the editable source 37ms
+   ✓ shows viewers their read/export role without offering a shared write 3ms
+   × resets private draft and client selection when project context changes 27ms
+     → expected 'private draft from previous project' to be '' // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/technology-five-share-form.test.tsx > resets private draft and client selection when project context changes
+AssertionError: expected 'private draft from previous project' to be '' // Object.is equality
+
+- Expected
++ Received
+
++ private draft from previous project
+
+ ❯ src/components/technology-five-share-form.test.tsx:10:520
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  18:54:38
+   Duration  2.39s (transform 582ms, setup 0ms, collect 1.03s, tests 314ms, environment 597ms, prepare 121ms)
+

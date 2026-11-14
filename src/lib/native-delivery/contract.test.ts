@@ -7,3 +7,7 @@ describe('native immutable delivery',()=>{
  it('bounds body bytes regardless of Content-Length',async()=>{await expect(readNativeJson(new Request('https://local',{method:'POST',body:'x'.repeat(8193)}))).rejects.toMatchObject({status:413});await expect(readNativeJson(new Request('https://local',{method:'POST',body:'not-json'}))).rejects.toMatchObject({status:400});});
  it('binds purpose, issuer, origin, exact version and expiry',()=>{const token=issueNativeGrant(identity,secret,100);expect(readNativeGrant(token,secret,101)).toMatchObject(identity);expect(()=>readNativeGrant(token,secret,3700)).toThrow();expect(()=>readNativeGrant(token+'x',secret,101)).toThrow();expect(()=>readNativeGrant(token,'different-secret-000000000000000000000',101)).toThrow();expect(()=>issueNativeGrant({...identity,allowedOrigin:'https://customer.example/path'},secret,100)).toThrow();});
 });
+it('refuses serialized identity digits that JSON.parse would erase before exact tuple validation',async()=>{
+ for(const body of ['{"catalogId":218.000000000000000001,"version":1,"rows":[{"x":"2"}]}','{"catalogId":440,"version":1.00000000000000001,"input":{"value":"2","fromUnit":"hz","toUnit":"khz"}}'])await expect(readNativeJson(new Request('https://local',{method:'POST',body}))).rejects.toMatchObject({status:400});
+ const raw='{"catalogId":440,"version":1,"input":{"value":"01.000","fromUnit":"hz","toUnit":"khz"}}';expect(await readNativeJson(new Request('https://local',{method:'POST',body:raw}))).toMatchObject({input:{value:'01.000'}});
+});

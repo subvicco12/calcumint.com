@@ -1,0 +1,87 @@
+{
+  "kind": "OFFLINE_NONPRODUCTION_DIAGNOSTIC_NOT_QUALIFICATION",
+  "head": "40fedc76767ac5dd8db2eccd53cd133718129654",
+  "applicationSource": "b1dccffe1cc9e0515030d5e7ea4bad8a72756080",
+  "editsPerformed": false,
+  "deadlineOverrides": false,
+  "applicationRuntimeBugDemonstrated": false,
+  "classification": "Retained source/evidence verification setup exceeds unchanged qualification budgets; not an API production latency measurement",
+  "API": {
+    "test": "src/lib/five-full-contract-evidence.test.ts:6",
+    "name": "retains genuine five API execution source and requires reviewed current runtime successors separately",
+    "budgetMilliseconds": 5000,
+    "profiledMilliseconds": 7610,
+    "result": "FAIL",
+    "callPath": [
+      "readRuntimeEvidenceFile",
+      "retainedRuntimeBytes",
+      "verifyCurrentRuntimeContext",
+      "proveNamedCurrentContext",
+      "fresh full Stage8 plus retained named source context"
+    ],
+    "gitCommands": 433,
+    "fullOIDCommitMisses": 0,
+    "mutableGitQueries": {
+      "origin": 155,
+      "HEAD": 133,
+      "status": 69,
+      "total": 357
+    },
+    "spawnSyncSampleMilliseconds": 4064.385,
+    "hashUpdateSampleMilliseconds": 712.61,
+    "safeMinimalFix": "No sufficient object-only fix demonstrated; direct commit cache has no misses to eliminate in this profile",
+    "rawDirectory": "api-profile-A11"
+  },
+  "auth": {
+    "test": "src/lib/parallel-five-auth-evidence.test.ts:13",
+    "name": "beforeAll verifyComposition",
+    "budgetMilliseconds": 30000,
+    "profiledSuiteMilliseconds": 31405,
+    "result": "FAIL_HOOK",
+    "executedTests": 0,
+    "skippedTests": 1,
+    "callPath": [
+      "verifyComposition",
+      "verifyParallelSource fresh full proof",
+      "1794 binding reads with40 changed files",
+      "assertTestOnlySuccessor/assertSevenTestSuccessor/assertNamedApplicationSuccessor",
+      "95 completed native artifact reads"
+    ],
+    "gitCommands": 2971,
+    "fullOIDCommitMisses": 1089,
+    "spawnSyncSampleMilliseconds": 26293.559,
+    "proposedFix": "Existing reader verified full-OID immutable commit cache fill; math owns implementation. No proof/status/HEAD/file cache",
+    "rawDirectory": "auth-profile-A11"
+  },
+  "futureQualification": "Rerun original5s and30s bounds after independently admitted fix; no green inference from diagnostic profile",
+  "postFixQualification": {
+    "head": "f287985f4f128c14a4b25e27eab67b084b649233",
+    "admission": "A12/capture79",
+    "instrumentation": false,
+    "deadlineOverrides": false,
+    "API": {
+      "result": "FAIL",
+      "budgetMilliseconds": 5000,
+      "caseMilliseconds": 8593,
+      "selectedFailed": 1,
+      "deselected": 5,
+      "log": "A12-api-original5s.log"
+    },
+    "auth": {
+      "result": "FAIL_HOOK",
+      "budgetMilliseconds": 30000,
+      "suiteMilliseconds": 30279,
+      "executedTests": 0,
+      "skippedTests": 1,
+      "assertionCaseBudgetMilliseconds": 5000,
+      "assertionCaseExecuted": false,
+      "log": "A12-auth-full-original-bounds.log"
+    },
+    "sourceGroup": {
+      "result": "TIMEOUT_REPORTED_BY_MATH_LANE",
+      "budgetMilliseconds": 150000,
+      "observedMilliseconds": 150128
+    },
+    "interpretation": "Verified immutable commit cache improves demonstrated repeated immutable object work but does not establish unchanged budget qualification. API had zero direct immutable commit misses before fix; no reduction in its mutable-query checks was attempted. No application source changed."
+  }
+}

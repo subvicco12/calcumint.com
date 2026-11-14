@@ -1,0 +1,54 @@
+{
+  "implementationSourceCommit": "8db467dd0dddbd50e7c38a7bb0215736bb3657dd",
+  "recoveredBaselineCI": {
+    "run": 42556123568,
+    "head": "9af8c74c7cf0825e5c06ba0e3ec5c8ab70ee02c3",
+    "allFiveAndAggregate": "SUCCESS"
+  },
+  "checks": {
+    "focused": {
+      "status": "PASS",
+      "archiveLog": "logs/ci425200-successor-focused.log",
+      "sha256": "de4265383f6ff8888db08b22c3b339a631d6ffb8847b062307ced6972ea5b0c3"
+    },
+    "oracle": {
+      "status": "PASS",
+      "archiveLog": "logs/ci425200-final-oracle.log",
+      "sha256": "e787c1dc03dd60f60998a7f2be36f2c2ce2f6ca649d1b38ee1e115bbcd5020d6"
+    },
+    "lint": {
+      "status": "PASS",
+      "archiveLog": "logs/ci425200-final-lint.log",
+      "sha256": "bb308ecafc155f5bef71526621327627f27daa47e6c1cf88d5de22c71a8ece04",
+      "errors": 0,
+      "existingWarnings": 28
+    },
+    "typecheck": {
+      "status": "PASS",
+      "archiveLog": "logs/ci425200-final-typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "unit": {
+      "status": "PASS",
+      "archiveLog": "logs/ci425200-final-unit.log",
+      "sha256": "37de1de130d72b890692c21207388c77e7a0b25658fdc082ced62e634a10e483",
+      "passed": 8462,
+      "existingSkipped": 4
+    },
+    "webpack": {
+      "status": "PASS",
+      "archiveLog": "logs/ci425200-final-webpack.log",
+      "sha256": "47ea269e58327f9ce62bf03d449d10de7ca527ad178dabe24b99eb975958ce21"
+    }
+  },
+  "focusedTests": 84,
+  "directedPairs": 68,
+  "signedExactRationalWitnesses": 1224,
+  "signedZeroChecks": 136,
+  "extremeIdentityChecks": 56,
+  "independentEngineeringReview": "No important issues; not competent source/formula/QA certification",
+  "historicalMathChanges": false,
+  "productionChanges": false,
+  "releaseHold": true,
+  "finalHostedCI": "Final delivery SHA/run/result recorded in the external Drive checkpoint after commit, avoiding self-referential CI report commits."
+}

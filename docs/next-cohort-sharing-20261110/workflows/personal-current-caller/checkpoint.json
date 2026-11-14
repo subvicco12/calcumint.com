@@ -1,0 +1,1358 @@
+{
+  "passed": true,
+  "scope": "COMPLETED_PERSONAL_JOURNEYS_ONLY_NOT_FULL_COHORT",
+  "sourceHashes": {
+    "src/components/calculator-interactive.tsx": "a1e28af69cb2ee1b5e3cafcc66111b9baba3ae8f09e4287968e1f6fcb6c17a87",
+    "src/components/technology-next-analysis.tsx": "557567f999e2e4e026a93eacd92c78289926e2a7a67f2766639e9bab0bd40ae6",
+    "src/lib/technology-next-capture-trust.ts": "7d26d1d359895f15bb8f0bdf121dcd23b2bfb3871842124ea8b951dee9e36e22",
+    "src/lib/storage-scenario-context.ts": "6f076a49301c13598c7bb4cd730bdfe9199d669de1b16c4d94253b392cbb861c",
+    "src/lib/scenario-set-recovery.ts": "5454b551650cdce18fb9ba2d0af78e777c233dcd9b41660a8e85f5bd28b1cd53",
+    "src/lib/technology-current-presentation.ts": "57461c97356fa79a69bb3a8e4d3e1edd50c798a1f8fa9bed3da41d05f406d3c5",
+    "src/components/calculator-account-actions.tsx": "c0237e89e75a029c1022890f6981f0b2e268ce55b7e78832f3ad389c765e50d4",
+    "src/components/calculator-scenario-workspace.tsx": "d35ae6ea673594d23eee4e352ba32a09ac55c61df41694afc91a0c418b03c090",
+    "src/components/scenario-set-recovery.tsx": "6e44983e6b038686f398ad1393a1039bef0f45bc449ec56710f2006cb1cbb6a7",
+    "src/components/saved-calculation-actions.tsx": "eb10109b0dfc8a73b0ed4043d35da898cd11a3eace9e711755d8de5179928529",
+    "src/app/account/actions.ts": "dd3ce3722bbdb4b68e28b1405f9a320d63123a9c9ee932304abe1eee8daed822",
+    "src/app/account/history/page.tsx": "dd3e1cce93d8575e1c991a45ebd99f2a69ee8653707c705416fedc0401fb54a5",
+    "src/app/account/saved/page.tsx": "e8564df7ec21e7068dc849a48fe22a9ea7be5dbcb4f5c1c786da8e0c51d6c1ac",
+    "src/app/account/projects/[id]/page.tsx": "d30b24717e35b994a95b61d32ab1d2945461d3a1b32d02498b06c43d968c4ab5",
+    "src/lib/registered-snapshot-verification.ts": "7a288d92b16613f4208b43de2ef7b2b52d2c111a4457b1677e7b0df9a9031cf8",
+    "src/lib/technology-snapshot-verification.ts": "276ad7ee37203fa90b65571a3bab1b3dde271f13c1f323a1e8d330a6bab9e521"
+  },
+  "producerSha256": "92465cae52efd65ab44eeb12a1c593b6878e66d369e31f3bb522e366a90e9521",
+  "journeys": [
+    {
+      "catalogId": 374,
+      "slug": "storage-conversion-calculator",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "value": 1,
+        "toUnit": "MiB",
+        "fromUnit": "GiB"
+      },
+      "output": {
+        "steps": [
+          "Storage Conversion = 1024"
+        ],
+        "value": 1024
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": false,
+      "localABRecovery": false,
+      "recordedExports": []
+    },
+    {
+      "catalogId": 379,
+      "slug": "dpi-calculator",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "pixels": 3000,
+        "lengthInches": 10
+      },
+      "output": {
+        "steps": [
+          "DPI = 300"
+        ],
+        "value": 300
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": false,
+      "localABRecovery": false,
+      "recordedExports": []
+    },
+    {
+      "catalogId": 374,
+      "slug": "storage-conversion-calculator",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "value": 1,
+        "toUnit": "MiB",
+        "fromUnit": "GiB"
+      },
+      "output": {
+        "steps": [
+          "Storage Conversion = 1024"
+        ],
+        "value": 1024
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": true,
+      "localABRecovery": true,
+      "recordedExports": [
+        "JSON",
+        "CSV",
+        "PDF"
+      ]
+    },
+    {
+      "catalogId": 379,
+      "slug": "dpi-calculator",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "pixels": 3000,
+        "lengthInches": 10
+      },
+      "output": {
+        "steps": [
+          "DPI = 300"
+        ],
+        "value": 300
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": true,
+      "localABRecovery": true,
+      "recordedExports": [
+        "JSON",
+        "CSV",
+        "PDF"
+      ]
+    },
+    {
+      "catalogId": 374,
+      "slug": "storage-conversion-calculator",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "value": 1,
+        "toUnit": "MiB",
+        "fromUnit": "GiB"
+      },
+      "output": {
+        "steps": [
+          "Storage Conversion = 1024"
+        ],
+        "value": 1024
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": true,
+      "localABRecovery": true,
+      "recordedExports": [
+        "JSON",
+        "CSV",
+        "PDF"
+      ]
+    },
+    {
+      "catalogId": 379,
+      "slug": "dpi-calculator",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "pixels": 3000,
+        "lengthInches": 10
+      },
+      "output": {
+        "steps": [
+          "DPI = 300"
+        ],
+        "value": 300
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": true,
+      "localABRecovery": true,
+      "recordedExports": [
+        "JSON",
+        "CSV",
+        "PDF"
+      ]
+    }
+  ],
+  "downloads": [
+    {
+      "tag": "pro:374:local-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "storage-conversion-calculator-scenarios.json",
+      "file": "downloads/invocation-cANBk2/72e1a824-5b4d-4997-808a-9d9a3a6d7c69",
+      "bytes": 2631,
+      "sha256": "56914d053175725fab0acbff8cccc722fa78bac6382f1aff5dcbb55627ca357c",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "72e1a824-5b4d-4997-808a-9d9a3a6d7c69",
+          "suggestedFilename": "storage-conversion-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "72e1a824-5b4d-4997-808a-9d9a3a6d7c69",
+          "totalBytes": 2631,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "72e1a824-5b4d-4997-808a-9d9a3a6d7c69",
+          "totalBytes": 2631,
+          "receivedBytes": 2631,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "72e1a824-5b4d-4997-808a-9d9a3a6d7c69",
+          "totalBytes": 2631,
+          "receivedBytes": 2631,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "72e1a824-5b4d-4997-808a-9d9a3a6d7c69",
+          "totalBytes": 2631,
+          "receivedBytes": 2631,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "72e1a824-5b4d-4997-808a-9d9a3a6d7c69",
+          "totalBytes": 2631,
+          "receivedBytes": 2631,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "72e1a824-5b4d-4997-808a-9d9a3a6d7c69",
+          "totalBytes": 2631,
+          "receivedBytes": 2631,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/personal-current-caller/downloads/invocation-cANBk2/72e1a824-5b4d-4997-808a-9d9a3a6d7c69"
+        }
+      ]
+    },
+    {
+      "tag": "pro:374:recovered-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "storage-conversion-calculator-scenarios.json",
+      "file": "downloads/invocation-WoYeRV/2c54c0be-e374-49e2-b46a-abd2f1685745",
+      "bytes": 2359,
+      "sha256": "a5e3ac95ec03bbbb957da21737faf3dbcd6b0f10e77297bfa5a4fc68aab5554f",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "2c54c0be-e374-49e2-b46a-abd2f1685745",
+          "suggestedFilename": "storage-conversion-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "2c54c0be-e374-49e2-b46a-abd2f1685745",
+          "totalBytes": 2359,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2c54c0be-e374-49e2-b46a-abd2f1685745",
+          "totalBytes": 2359,
+          "receivedBytes": 2359,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2c54c0be-e374-49e2-b46a-abd2f1685745",
+          "totalBytes": 2359,
+          "receivedBytes": 2359,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2c54c0be-e374-49e2-b46a-abd2f1685745",
+          "totalBytes": 2359,
+          "receivedBytes": 2359,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2c54c0be-e374-49e2-b46a-abd2f1685745",
+          "totalBytes": 2359,
+          "receivedBytes": 2359,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2c54c0be-e374-49e2-b46a-abd2f1685745",
+          "totalBytes": 2359,
+          "receivedBytes": 2359,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/personal-current-caller/downloads/invocation-WoYeRV/2c54c0be-e374-49e2-b46a-abd2f1685745"
+        }
+      ]
+    },
+    {
+      "tag": "pro:374:recorded-JSON",
+      "label": "Export recorded JSON",
+      "filename": "storage-conversion-calculator-v1.json",
+      "file": "downloads/invocation-f4qqhr/54ecb5bd-37b9-4f13-9fcb-2a6a5611cb76",
+      "bytes": 251,
+      "sha256": "fb2abff86ede1eddcc7fb09d8f375bc8d157e8b788cfac408fe4b1b767c0513d",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "54ecb5bd-37b9-4f13-9fcb-2a6a5611cb76",
+          "suggestedFilename": "storage-conversion-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "54ecb5bd-37b9-4f13-9fcb-2a6a5611cb76",
+          "totalBytes": 251,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "54ecb5bd-37b9-4f13-9fcb-2a6a5611cb76",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "54ecb5bd-37b9-4f13-9fcb-2a6a5611cb76",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "54ecb5bd-37b9-4f13-9fcb-2a6a5611cb76",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "54ecb5bd-37b9-4f13-9fcb-2a6a5611cb76",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "54ecb5bd-37b9-4f13-9fcb-2a6a5611cb76",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/personal-current-caller/downloads/invocation-f4qqhr/54ecb5bd-37b9-4f13-9fcb-2a6a5611cb76"
+        }
+      ]
+    },
+    {
+      "tag": "pro:374:recorded-CSV",
+      "label": "Export recorded CSV",
+      "filename": "storage-conversion-calculator-v1.csv",
+      "file": "downloads/invocation-y1vfrj/c89b99db-441f-4a15-8b97-f84d7f8aadbc",
+      "bytes": 263,
+      "sha256": "4407fabe18c5b18e768264edd99940d67309f95bb52544b0fb6eb9e566bf0688",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "c89b99db-441f-4a15-8b97-f84d7f8aadbc",
+          "suggestedFilename": "storage-conversion-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "c89b99db-441f-4a15-8b97-f84d7f8aadbc",
+          "totalBytes": 263,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "c89b99db-441f-4a15-8b97-f84d7f8aadbc",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "c89b99db-441f-4a15-8b97-f84d7f8aadbc",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "c89b99db-441f-4a15-8b97-f84d7f8aadbc",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "c89b99db-441f-4a15-8b97-f84d7f8aadbc",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "c89b99db-441f-4a15-8b97-f84d7f8aadbc",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/personal-current-caller/downloads/invocation-y1vfrj/c89b99db-441f-4a15-8b97-f84d7f8aadbc"
+        }
+      ]
+    },
+    {
+      "tag": "pro:374:recorded-PDF",
+      "label": "Export recorded PDF",
+      "filename": "storage-conversion-calculator-v1.pdf",
+      "file": "downloads/invocation-8zgq7E/cd371351-0de1-4329-8535-bc96b4999a33",
+      "bytes": 395687,
+      "sha256": "4bb88eeb187713737473b203d6dc9595817670683c1dc7f4ed84fee5cba1c118",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "cd371351-0de1-4329-8535-bc96b4999a33",
+          "suggestedFilename": "storage-conversion-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "cd371351-0de1-4329-8535-bc96b4999a33",
+          "totalBytes": 395687,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "cd371351-0de1-4329-8535-bc96b4999a33",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "cd371351-0de1-4329-8535-bc96b4999a33",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "cd371351-0de1-4329-8535-bc96b4999a33",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "cd371351-0de1-4329-8535-bc96b4999a33",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "cd371351-0de1-4329-8535-bc96b4999a33",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/personal-current-caller/downloads/invocation-8zgq7E/cd371351-0de1-4329-8535-bc96b4999a33"
+        }
+      ]
+    },
+    {
+      "tag": "pro:379:local-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "dpi-calculator-scenarios.json",
+      "file": "downloads/invocation-gLAieQ/864cd573-012f-459f-bd02-6c47ff7bc277",
+      "bytes": 2058,
+      "sha256": "643f587b53f39e52a6623ef8b1f9f423ed33eb3af50d2e05bc66757734bf0cf4",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "864cd573-012f-459f-bd02-6c47ff7bc277",
+          "suggestedFilename": "dpi-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "864cd573-012f-459f-bd02-6c47ff7bc277",
+          "totalBytes": 2058,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "864cd573-012f-459f-bd02-6c47ff7bc277",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "864cd573-012f-459f-bd02-6c47ff7bc277",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "864cd573-012f-459f-bd02-6c47ff7bc277",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "864cd573-012f-459f-bd02-6c47ff7bc277",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "864cd573-012f-459f-bd02-6c47ff7bc277",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/personal-current-caller/downloads/invocation-gLAieQ/864cd573-012f-459f-bd02-6c47ff7bc277"
+        }
+      ]
+    },
+    {
+      "tag": "pro:379:recovered-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "dpi-calculator-scenarios.json",
+      "file": "downloads/invocation-0EclBF/0d2c37e6-7b7f-4ec9-ba77-63f20700dcbd",
+      "bytes": 2058,
+      "sha256": "643f587b53f39e52a6623ef8b1f9f423ed33eb3af50d2e05bc66757734bf0cf4",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "0d2c37e6-7b7f-4ec9-ba77-63f20700dcbd",
+          "suggestedFilename": "dpi-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "0d2c37e6-7b7f-4ec9-ba77-63f20700dcbd",
+          "totalBytes": 2058,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0d2c37e6-7b7f-4ec9-ba77-63f20700dcbd",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0d2c37e6-7b7f-4ec9-ba77-63f20700dcbd",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0d2c37e6-7b7f-4ec9-ba77-63f20700dcbd",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0d2c37e6-7b7f-4ec9-ba77-63f20700dcbd",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0d2c37e6-7b7f-4ec9-ba77-63f20700dcbd",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/personal-current-caller/downloads/invocation-0EclBF/0d2c37e6-7b7f-4ec9-ba77-63f20700dcbd"
+        }
+      ]
+    },
+    {
+      "tag": "pro:379:recorded-JSON",
+      "label": "Export recorded JSON",
+      "filename": "dpi-calculator-v1.json",
+      "file": "downloads/invocation-OUO1wI/eab98366-05bc-438b-85a0-9ede81ccde37",
+      "bytes": 203,
+      "sha256": "8b1db4c5bddebb2b5f712824f19439a9b79dcbba3f17c9a85057a1b2f2b8a9c3",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "eab98366-05bc-438b-85a0-9ede81ccde37",
+          "suggestedFilename": "dpi-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "eab98366-05bc-438b-85a0-9ede81ccde37",
+          "totalBytes": 203,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "eab98366-05bc-438b-85a0-9ede81ccde37",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "eab98366-05bc-438b-85a0-9ede81ccde37",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "eab98366-05bc-438b-85a0-9ede81ccde37",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "eab98366-05bc-438b-85a0-9ede81ccde37",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "eab98366-05bc-438b-85a0-9ede81ccde37",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/personal-current-caller/downloads/invocation-OUO1wI/eab98366-05bc-438b-85a0-9ede81ccde37"
+        }
+      ]
+    },
+    {
+      "tag": "pro:379:recorded-CSV",
+      "label": "Export recorded CSV",
+      "filename": "dpi-calculator-v1.csv",
+      "file": "downloads/invocation-R4vVbq/aa5e5b4c-7a1f-49da-9edc-4daed0e863be",
+      "bytes": 215,
+      "sha256": "981fa8842284846793bc2e9e642003d5302d1c1a26408392b4ae67eb530c6e20",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "aa5e5b4c-7a1f-49da-9edc-4daed0e863be",
+          "suggestedFilename": "dpi-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "aa5e5b4c-7a1f-49da-9edc-4daed0e863be",
+          "totalBytes": 215,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "aa5e5b4c-7a1f-49da-9edc-4daed0e863be",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "aa5e5b4c-7a1f-49da-9edc-4daed0e863be",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "aa5e5b4c-7a1f-49da-9edc-4daed0e863be",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "aa5e5b4c-7a1f-49da-9edc-4daed0e863be",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "aa5e5b4c-7a1f-49da-9edc-4daed0e863be",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/personal-current-caller/downloads/invocation-R4vVbq/aa5e5b4c-7a1f-49da-9edc-4daed0e863be"
+        }
+      ]
+    },
+    {
+      "tag": "pro:379:recorded-PDF",
+      "label": "Export recorded PDF",
+      "filename": "dpi-calculator-v1.pdf",
+      "file": "downloads/invocation-WDC13x/930d69d5-31d6-4cf2-9deb-9c8e2c369d0f",
+      "bytes": 395282,
+      "sha256": "6e70b65579931c47aae9bcf078856fa156e6550f1307f53b1e2a1026458f54db",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "930d69d5-31d6-4cf2-9deb-9c8e2c369d0f",
+          "suggestedFilename": "dpi-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "930d69d5-31d6-4cf2-9deb-9c8e2c369d0f",
+          "totalBytes": 395282,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "930d69d5-31d6-4cf2-9deb-9c8e2c369d0f",
+          "totalBytes": 395282,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "930d69d5-31d6-4cf2-9deb-9c8e2c369d0f",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "930d69d5-31d6-4cf2-9deb-9c8e2c369d0f",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "930d69d5-31d6-4cf2-9deb-9c8e2c369d0f",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "930d69d5-31d6-4cf2-9deb-9c8e2c369d0f",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/personal-current-caller/downloads/invocation-WDC13x/930d69d5-31d6-4cf2-9deb-9c8e2c369d0f"
+        }
+      ]
+    },
+    {
+      "tag": "business:374:local-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "storage-conversion-calculator-scenarios.json",
+      "file": "downloads/invocation-38tCJF/d83c902c-5a0b-4584-a67f-077624bdfb95",
+      "bytes": 2631,
+      "sha256": "56914d053175725fab0acbff8cccc722fa78bac6382f1aff5dcbb55627ca357c",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "d83c902c-5a0b-4584-a67f-077624bdfb95",
+          "suggestedFilename": "storage-conversion-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "d83c902c-5a0b-4584-a67f-077624bdfb95",
+          "totalBytes": 2631,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d83c902c-5a0b-4584-a67f-077624bdfb95",
+          "totalBytes": 2631,
+          "receivedBytes": 2631,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d83c902c-5a0b-4584-a67f-077624bdfb95",
+          "totalBytes": 2631,
+          "receivedBytes": 2631,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d83c902c-5a0b-4584-a67f-077624bdfb95",
+          "totalBytes": 2631,
+          "receivedBytes": 2631,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d83c902c-5a0b-4584-a67f-077624bdfb95",
+          "totalBytes": 2631,
+          "receivedBytes": 2631,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d83c902c-5a0b-4584-a67f-077624bdfb95",
+          "totalBytes": 2631,
+          "receivedBytes": 2631,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/personal-current-caller/downloads/invocation-38tCJF/d83c902c-5a0b-4584-a67f-077624bdfb95"
+        }
+      ]
+    },
+    {
+      "tag": "business:374:recovered-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "storage-conversion-calculator-scenarios.json",
+      "file": "downloads/invocation-EJvdtd/439a4057-8039-42e7-9fea-e287cae1473f",
+      "bytes": 2359,
+      "sha256": "a5e3ac95ec03bbbb957da21737faf3dbcd6b0f10e77297bfa5a4fc68aab5554f",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "439a4057-8039-42e7-9fea-e287cae1473f",
+          "suggestedFilename": "storage-conversion-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "439a4057-8039-42e7-9fea-e287cae1473f",
+          "totalBytes": 2359,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "439a4057-8039-42e7-9fea-e287cae1473f",
+          "totalBytes": 2359,
+          "receivedBytes": 2359,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "439a4057-8039-42e7-9fea-e287cae1473f",
+          "totalBytes": 2359,
+          "receivedBytes": 2359,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "439a4057-8039-42e7-9fea-e287cae1473f",
+          "totalBytes": 2359,
+          "receivedBytes": 2359,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "439a4057-8039-42e7-9fea-e287cae1473f",
+          "totalBytes": 2359,
+          "receivedBytes": 2359,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "439a4057-8039-42e7-9fea-e287cae1473f",
+          "totalBytes": 2359,
+          "receivedBytes": 2359,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/personal-current-caller/downloads/invocation-EJvdtd/439a4057-8039-42e7-9fea-e287cae1473f"
+        }
+      ]
+    },
+    {
+      "tag": "business:374:recorded-JSON",
+      "label": "Export recorded JSON",
+      "filename": "storage-conversion-calculator-v1.json",
+      "file": "downloads/invocation-0k46Sf/72adea6c-4a5e-44a3-b474-96f373b42bb4",
+      "bytes": 251,
+      "sha256": "fb2abff86ede1eddcc7fb09d8f375bc8d157e8b788cfac408fe4b1b767c0513d",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "72adea6c-4a5e-44a3-b474-96f373b42bb4",
+          "suggestedFilename": "storage-conversion-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "72adea6c-4a5e-44a3-b474-96f373b42bb4",
+          "totalBytes": 251,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "72adea6c-4a5e-44a3-b474-96f373b42bb4",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "72adea6c-4a5e-44a3-b474-96f373b42bb4",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "72adea6c-4a5e-44a3-b474-96f373b42bb4",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "72adea6c-4a5e-44a3-b474-96f373b42bb4",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "72adea6c-4a5e-44a3-b474-96f373b42bb4",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/personal-current-caller/downloads/invocation-0k46Sf/72adea6c-4a5e-44a3-b474-96f373b42bb4"
+        }
+      ]
+    },
+    {
+      "tag": "business:374:recorded-CSV",
+      "label": "Export recorded CSV",
+      "filename": "storage-conversion-calculator-v1.csv",
+      "file": "downloads/invocation-DtSnjp/d69ea69a-d8b4-4ee9-8190-9721327b53df",
+      "bytes": 263,
+      "sha256": "4407fabe18c5b18e768264edd99940d67309f95bb52544b0fb6eb9e566bf0688",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "d69ea69a-d8b4-4ee9-8190-9721327b53df",
+          "suggestedFilename": "storage-conversion-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "d69ea69a-d8b4-4ee9-8190-9721327b53df",
+          "totalBytes": 263,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d69ea69a-d8b4-4ee9-8190-9721327b53df",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d69ea69a-d8b4-4ee9-8190-9721327b53df",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d69ea69a-d8b4-4ee9-8190-9721327b53df",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d69ea69a-d8b4-4ee9-8190-9721327b53df",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d69ea69a-d8b4-4ee9-8190-9721327b53df",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/personal-current-caller/downloads/invocation-DtSnjp/d69ea69a-d8b4-4ee9-8190-9721327b53df"
+        }
+      ]
+    },
+    {
+      "tag": "business:374:recorded-PDF",
+      "label": "Export recorded PDF",
+      "filename": "storage-conversion-calculator-v1.pdf",
+      "file": "downloads/invocation-R19McC/5673f462-4f18-480f-a6b9-91f9ebaa9073",
+      "bytes": 395687,
+      "sha256": "4bb88eeb187713737473b203d6dc9595817670683c1dc7f4ed84fee5cba1c118",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "5673f462-4f18-480f-a6b9-91f9ebaa9073",
+          "suggestedFilename": "storage-conversion-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "5673f462-4f18-480f-a6b9-91f9ebaa9073",
+          "totalBytes": 395687,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5673f462-4f18-480f-a6b9-91f9ebaa9073",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5673f462-4f18-480f-a6b9-91f9ebaa9073",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5673f462-4f18-480f-a6b9-91f9ebaa9073",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5673f462-4f18-480f-a6b9-91f9ebaa9073",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5673f462-4f18-480f-a6b9-91f9ebaa9073",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/personal-current-caller/downloads/invocation-R19McC/5673f462-4f18-480f-a6b9-91f9ebaa9073"
+        }
+      ]
+    },
+    {
+      "tag": "business:379:local-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "dpi-calculator-scenarios.json",
+      "file": "downloads/invocation-GN7wTR/97c76630-e7ac-4544-a6e0-fe46fda40940",
+      "bytes": 2058,
+      "sha256": "643f587b53f39e52a6623ef8b1f9f423ed33eb3af50d2e05bc66757734bf0cf4",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "97c76630-e7ac-4544-a6e0-fe46fda40940",
+          "suggestedFilename": "dpi-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "97c76630-e7ac-4544-a6e0-fe46fda40940",
+          "totalBytes": 2058,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "97c76630-e7ac-4544-a6e0-fe46fda40940",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "97c76630-e7ac-4544-a6e0-fe46fda40940",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "97c76630-e7ac-4544-a6e0-fe46fda40940",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "97c76630-e7ac-4544-a6e0-fe46fda40940",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "97c76630-e7ac-4544-a6e0-fe46fda40940",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/personal-current-caller/downloads/invocation-GN7wTR/97c76630-e7ac-4544-a6e0-fe46fda40940"
+        }
+      ]
+    },
+    {
+      "tag": "business:379:recovered-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "dpi-calculator-scenarios.json",
+      "file": "downloads/invocation-pAmAF4/e6516c6e-f030-404b-9c0d-0f16999431d7",
+      "bytes": 2058,
+      "sha256": "643f587b53f39e52a6623ef8b1f9f423ed33eb3af50d2e05bc66757734bf0cf4",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "e6516c6e-f030-404b-9c0d-0f16999431d7",
+          "suggestedFilename": "dpi-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "e6516c6e-f030-404b-9c0d-0f16999431d7",
+          "totalBytes": 2058,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e6516c6e-f030-404b-9c0d-0f16999431d7",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e6516c6e-f030-404b-9c0d-0f16999431d7",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e6516c6e-f030-404b-9c0d-0f16999431d7",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e6516c6e-f030-404b-9c0d-0f16999431d7",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e6516c6e-f030-404b-9c0d-0f16999431d7",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/personal-current-caller/downloads/invocation-pAmAF4/e6516c6e-f030-404b-9c0d-0f16999431d7"
+        }
+      ]
+    },
+    {
+      "tag": "business:379:recorded-JSON",
+      "label": "Export recorded JSON",
+      "filename": "dpi-calculator-v1.json",
+      "file": "downloads/invocation-IPKmfV/ab45d5b6-2ff1-4509-bc70-20063d1092c3",
+      "bytes": 203,
+      "sha256": "8b1db4c5bddebb2b5f712824f19439a9b79dcbba3f17c9a85057a1b2f2b8a9c3",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "ab45d5b6-2ff1-4509-bc70-20063d1092c3",
+          "suggestedFilename": "dpi-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "ab45d5b6-2ff1-4509-bc70-20063d1092c3",
+          "totalBytes": 203,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ab45d5b6-2ff1-4509-bc70-20063d1092c3",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ab45d5b6-2ff1-4509-bc70-20063d1092c3",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ab45d5b6-2ff1-4509-bc70-20063d1092c3",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ab45d5b6-2ff1-4509-bc70-20063d1092c3",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ab45d5b6-2ff1-4509-bc70-20063d1092c3",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/personal-current-caller/downloads/invocation-IPKmfV/ab45d5b6-2ff1-4509-bc70-20063d1092c3"
+        }
+      ]
+    },
+    {
+      "tag": "business:379:recorded-CSV",
+      "label": "Export recorded CSV",
+      "filename": "dpi-calculator-v1.csv",
+      "file": "downloads/invocation-8Po6EH/cd78b75a-956d-4159-9f1b-04899c27fd9f",
+      "bytes": 215,
+      "sha256": "981fa8842284846793bc2e9e642003d5302d1c1a26408392b4ae67eb530c6e20",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "cd78b75a-956d-4159-9f1b-04899c27fd9f",
+          "suggestedFilename": "dpi-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "cd78b75a-956d-4159-9f1b-04899c27fd9f",
+          "totalBytes": 215,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "cd78b75a-956d-4159-9f1b-04899c27fd9f",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "cd78b75a-956d-4159-9f1b-04899c27fd9f",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "cd78b75a-956d-4159-9f1b-04899c27fd9f",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "cd78b75a-956d-4159-9f1b-04899c27fd9f",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "cd78b75a-956d-4159-9f1b-04899c27fd9f",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/personal-current-caller/downloads/invocation-8Po6EH/cd78b75a-956d-4159-9f1b-04899c27fd9f"
+        }
+      ]
+    },
+    {
+      "tag": "business:379:recorded-PDF",
+      "label": "Export recorded PDF",
+      "filename": "dpi-calculator-v1.pdf",
+      "file": "downloads/invocation-xXFcpt/4d99e330-91d3-4bb9-9d53-7e3e50492a43",
+      "bytes": 395282,
+      "sha256": "6e70b65579931c47aae9bcf078856fa156e6550f1307f53b1e2a1026458f54db",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "33D784191EF08B70342C1F9F81F0E09F",
+          "guid": "4d99e330-91d3-4bb9-9d53-7e3e50492a43",
+          "suggestedFilename": "dpi-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "4d99e330-91d3-4bb9-9d53-7e3e50492a43",
+          "totalBytes": 395282,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4d99e330-91d3-4bb9-9d53-7e3e50492a43",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4d99e330-91d3-4bb9-9d53-7e3e50492a43",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4d99e330-91d3-4bb9-9d53-7e3e50492a43",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4d99e330-91d3-4bb9-9d53-7e3e50492a43",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4d99e330-91d3-4bb9-9d53-7e3e50492a43",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "completed",
+          "filePath": "/workspace/work/product-completion-20261108/docs/next-cohort-sharing-20261110/workflows/personal-current-caller/downloads/invocation-xXFcpt/4d99e330-91d3-4bb9-9d53-7e3e50492a43"
+        }
+      ]
+    }
+  ]
+}

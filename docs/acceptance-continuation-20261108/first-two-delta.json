@@ -1,0 +1,122 @@
+{
+  "kind": "FIRST_TWO_PRECISE_DELTA_NOT_APPROVAL",
+  "sourceCommit": "120b4043a763c5262491bcb15b46d9dd32c89ac2",
+  "scope": [
+    {
+      "masterId": 432,
+      "engineId": "conversion.time",
+      "slug": "time-converter",
+      "version": 1
+    },
+    {
+      "masterId": 440,
+      "engineId": "conversion.frequency",
+      "slug": "frequency-converter",
+      "version": 1
+    }
+  ],
+  "technicalGap": {
+    "masterId": 432,
+    "id": "FIXED_WEEK_PUBLISHER_BODY",
+    "status": "UNRESOLVED_SOURCE_PROVENANCE_NOT_DEMONSTRATED_ARITHMETIC_DEFECT",
+    "priorExplicitFinding": "docs/acceptance20-20261106/adjudication-20.json row catalogId432 source.missing: Fixed week definition source body",
+    "laterEvidence": "first-two-packet repeats week=7*86400=604800 and BIPM Table8/SI-prefix locator; complete_source_body_factor_applicability exists only for440. Repetition of engine facts does not supply the missing publisher body.",
+    "nextAction": "Capture a directly applicable authoritative publisher passage establishing a fixed seven-day week, bind source bytes and exact locator, then obtain competent applicability adoption. Do not change historical v1 arithmetic or substitute a calendar/timezone contract."
+  },
+  "correctionOverlay": {
+    "path": "docs/acceptance-closure-20261108/first-two-disposition.md",
+    "overstatement": "BIPM fixed day/week",
+    "correctedMeaning": "Retained BIPM citation must not be represented as establishing the fixed-week body. Fixed day and SI-prefix facts are distinct from the still-unestablished week-source attribution. This overlay corrects attribution only; historical files are preserved."
+  },
+  "targetedSourceSearch": {
+    "retainedRepositoryPaths": [
+      "docs/first20-publication/input/input/source-provenance.json",
+      "docs/shortest-publication-20",
+      "docs/acceptance20-20261106"
+    ],
+    "retainedExternalPaths": [
+      "/workspace/artifacts/acceptance20-20261106/delivery/retained-bipm-parsed-capture.json",
+      "/workspace/work/six-fullscope-input/input/source-captures/bipm-full.json"
+    ],
+    "retainedFinding": "No week-definition publisher body found in the targeted retained material; no retained NIST SP811 week capture discovered. Not an exhaustive global search.",
+    "singlePublisherCheck": {
+      "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b8",
+      "method": "Firecrawl markdown retrieval of official NIST alphabetical conversion-factor table",
+      "statusCode": 200,
+      "scrapeId": "01a1bc7f-1462-723f-a0c7-eb81c1f63dd2",
+      "cacheState": "hit",
+      "cachedAt": "2026-11-07T09:18:51.307Z",
+      "finding": "Returned parsed body contains no whole-word week; this targeted NIST page does not close the gap. No claim about every NIST publication or native PDF completeness."
+    }
+  },
+  "technicalProofsAlreadyClosed": [
+    {
+      "requirement": "#432 offered authenticated atomic scenario/RLS; #440 focused regression",
+      "receipt": "docs/acceptance-closure-20261108/first-two-auth-receipt.json",
+      "passed": true,
+      "checks": 6,
+      "scenarios": 4,
+      "explicitDenials": 24,
+      "limits": "Genuine disposable GoTrue/SDK/PostgREST/PG17.6 candidate schema; not production parity or complete Next action/cookie browser acceptance."
+    },
+    {
+      "requirement": "Exact432/440 authority reader + route/discovery/sitemap publication/withdrawal composition",
+      "receipt": "docs/acceptance-closure-20261108/first-two-publication-receipt.json",
+      "passedTests": 4,
+      "limits": "External SDK RPC/env mocked; positive transition conditional on in-memory certified registry fixture; real draft definitions refused. No hosted publication."
+    }
+  ],
+  "governance": {
+    "requiredCompetence": "Competent math/metrology/technical source reviewer and applicable QA owners; relevant numerical/precision/domain/source competence with documented authority. No invented mandatory degree or paid specialist.",
+    "namedSigner": "NOT_ESTABLISHED_IN_RETAINED_EXACT_VERSION_DECISIONS",
+    "evidence": "Both competentDecision objects have null reviewerName/reviewerAuthorityProvenance/signedAt; QA20-SOURCE-ACCEPTANCE reviewerIdentity/competenceDecision null.",
+    "assignmentDistinction": "Historical production snapshot has hosted_match=false and reviewer_assigned=false for both absent candidates. This proves neither that no authorized reviewer exists nor that current assignment status is known. Matrix wording presently unassigned must be read as no assignment documented in retained decisions, not current global absence.",
+    "requiredDecisions": [
+      "Named competent exact-version source/formula/precision/technical-QA accept or reject with authority provenance and timestamp",
+      "Accountable canonical exact identity/version and full offered-contract adoption; individual applicable requirement dispositions",
+      "Separate held certification/adoption/publication authorization and operational prerequisites"
+    ]
+  },
+  "status": "IMPLEMENTED_REVIEW_PENDING",
+  "canonicalAccepted": false,
+  "certificationGranted": false,
+  "publicationEligible": false,
+  "releaseHold": true,
+  "productionWrites": false,
+  "campaignsRerun": false,
+  "historicalPacketsEdited": false,
+  "sourceBindings": [
+    {
+      "path": "docs/acceptance20-20261106/adjudication-20.json",
+      "sha256": "a9037b7996c7d165fc22b7cd0f49deecf365a0f32e863adbdccd307fa6cdd1f8"
+    },
+    {
+      "path": "docs/calculator-sprint-20261108/first-two-packet.json",
+      "sha256": "d034b179e5255b18d0ec7b0fba5c80d57c92b7c638c95acb709c1162f11df363"
+    },
+    {
+      "path": "docs/acceptance-closure-20261108/first-two-disposition.md",
+      "sha256": "c8fb074cb0bcc35605f8185cb9fc69afa2cc4340dbf9c06aa4a07c9f9edf5f19"
+    },
+    {
+      "path": "docs/acceptance-closure-20261108/first-two-acceptance-matrix.json",
+      "sha256": "1b3a263fe0eb501edea694e1b9c8c703e9f517abcd1601a11dc46a010a1e40bd"
+    },
+    {
+      "path": "docs/acceptance-closure-20261108/first-two-auth-receipt.json",
+      "sha256": "98846518e7dee9f44832392d0e803fd950e9c7e0fa8b01356b085a746cbaf181"
+    },
+    {
+      "path": "docs/acceptance-closure-20261108/first-two-publication-receipt.json",
+      "sha256": "828a672dab392fb795fa928790c1c6e09830629536902cc853d7c92d6e36b92d"
+    },
+    {
+      "path": "docs/shortest-publication-20/decision-packages.json",
+      "sha256": "b49c51aa23e4755beea5fe5552987427c23c379dae34be62215d73f9abde1d07"
+    },
+    {
+      "path": "docs/acceptance20-20261106/production.json",
+      "sha256": "26d6c8c3826626895f5f1c440611476dd200ad033deaf28fd833da60e3050ee3"
+    }
+  ]
+}

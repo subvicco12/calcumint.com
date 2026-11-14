@@ -4,7 +4,7 @@ import {createCalculationSnapshot,serializeCalculationJson,type CalculationSnaps
 import {serializeCalculationSnapshotCsv as serializeSavedCalculationCsv,serializeCalculationPdf} from '@/lib/calculation-export';
 import {downloadPdfBytes} from '@/lib/download-pdf';
 import {getPlanEntitlements} from '@/lib/entitlements';
-import {verifyRegisteredSnapshot} from '@/lib/registered-snapshot-verification';
+import {verifySavedSnapshotWithWave100} from '@/lib/wave100-history-verification';
 import {useCalculatorPlan} from './use-calculator-plan';
 import {CalculatorScenarioWorkspace} from './calculator-scenario-workspace';
 
@@ -36,7 +36,7 @@ function RecordedActions({snapshot}:{snapshot:CalculationSnapshot}){
    setError(false);setMessage(`Recorded ${format.toUpperCase()} download requested. Browser completion is not verified; the saved record is unchanged.`);
   }catch{setError(true);setMessage(`Could not download recorded ${format.toUpperCase()}. Retry the same export; the saved record is unchanged.`);}
  }
- function verifyStored(){try{const verified=verifyRegisteredSnapshot(snapshot);setVerification({error:false,message:`Exact engine agreement verified: ${verified.engineId} v${verified.engineVersion}. ${verified.scope} Original saved inputs and outputs remain unchanged.`});}catch{setVerification({error:true,message:'Exact-engine verification is unavailable or does not agree for this historical record. Its original inputs, outputs and version remain readable and exportable; no current-engine fallback or upgrade is applied.'});}}
+ function verifyStored(){try{const verified=verifySavedSnapshotWithWave100(snapshot);setVerification({error:false,message:`Exact engine agreement verified: ${verified.engineId} v${verified.engineVersion}. ${verified.scope} Original saved inputs and outputs remain unchanged.`});}catch{setVerification({error:true,message:'Exact-engine verification is unavailable or does not agree for this historical record. Its original inputs, outputs and version remain readable and exportable; no current-engine fallback or upgrade is applied.'});}}
  return <section aria-label="Saved calculation tools"><h2>Use this recorded calculation</h2><p>These actions preserve the recorded calculator identity, technical version, inputs and results. They do not upgrade or recalculate the saved record, or apply current labels and units.</p>
  <button type="button" className="button secondary" onClick={verifyStored}>Verify exact engine agreement</button><p>Verification is optional and runs only when requested. It checks an explicit immutable forward-engine contract where available; it does not authenticate original source authorship or approve clinical, provider or jurisdictional applicability.</p>{verification&&<p role={verification.error?'alert':'status'} aria-atomic="true">{verification.message}</p>}
  <div>{(['json','csv','pdf'] as const).map(format=><button key={format} type="button" className="button secondary" disabled={!entitlements.exports} onClick={()=>exportStored(format)}>Export recorded {format.toUpperCase()}</button>)}</div>

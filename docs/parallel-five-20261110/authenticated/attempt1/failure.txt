@@ -1,0 +1,16 @@
+Error: Production fixture build failed: ▲ Next.js 16.3.5 (webpack)
+✓ Running next.config.ts took 83ms
+- Experiments (use with caution):
+  · optimizePackageImports
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 30.7s
+  Running TypeScript ...
+src/components/catalog-engineering-review.tsx(19,62): error TS2322: Type 'unknown' is not assignable to type 'Record<string, unknown> | null'.
+Failed to type check.
+
+
+    at ChildProcess.<anonymous> (file:///workspace/work/product-completion-20261108/tests/parallel-five-20261110/production-runtime.mjs:30:155)
+    at Object.onceWrapper (node:events:631:26)
+    at ChildProcess.emit (node:events:509:28)
+    at ChildProcess._handle.onexit (node:internal/child_process:295:12)

@@ -1,0 +1,52 @@
+CalcuMint | Calculation report
+
+
+Storage Conversion Calculator
+Calculator: storage-conversion-calculator | Engine version: 1
+Raw engine values: full numeric precision; no display rounding or sampled rows.
+Units appear only where supplied by the calculation or bound display metadata.
+Embedded Unicode glyphs are readable.
+Unsupported characters and controls use explicit Unicode escapes.
+Tagged PDF; PDF/UA conformance: UNVERIFIED.
+Text follows document order; charts include complete numeric text alternatives.
+
+
+INPUTS
+Value [GiB]
+input["value"] = 1
+From unit
+input["fromUnit"] = "GiB"
+To unit
+input["toUnit"] = "MiB"
+
+
+RESULTS
+Converted storage [MiB]
+output["value"] = 1024
+output["steps"][0] = "Storage Conversion = 1024"
+
+
+METHODOLOGY
+Binary IEC storage conversion only: B, KiB, MiB, GiB and TiB use exact powers of 1024 by
+tes. Decimal MB/GB and provider billing conventions are not silently substituted. The im
+mutable v1 schema requires a strictly positive value.\u000aTechnical calculation revisio
+n: technology.storage-conversion@1\u000a\u000aBinary IEC storage-unit conversion using 1
+024-based multiples.\u000aConverted value = input bytes ÷ target-unit bytes
+
+
+DECLARED FORMULAS
+storage-conversion-calculator: Converted value = input bytes ÷ target-unit bytes
+Binary IEC storage-unit conversion using 1024-based multiples.
+
+
+SOURCES
+NIST — Binary prefixes
+https://physics.nist.gov/cuu/Units/binary.html
+IEC binary prefixes distinguish 1024-based units such as MiB and GiB from decimal SI MB
+and GB.
+
+
+
+
+Engine v1 | Page 1 of 1
+

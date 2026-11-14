@@ -1,0 +1,158 @@
+{
+  "kind": "FINANCIAL_SPECIALIST_REVIEW_PACKET_NOT_APPROVAL",
+  "baselineSHA": "3350a313ebc6b5300757e64ae4c125af29bdfdb3",
+  "reviewAssociations": [
+    {
+      "masterId": 1,
+      "title": "Loan Payment Calculator",
+      "baselineEngineId": "finance.loan-payment",
+      "baselineTechnicalVersion": 1
+    },
+    {
+      "masterId": 51,
+      "title": "Compound Interest Calculator",
+      "baselineEngineId": "finance.compound-interest",
+      "baselineTechnicalVersion": 1
+    }
+  ],
+  "associationMeaning": "Inherited lexical catalog/engine review targets; not full canonical adoption",
+  "proposedPrivateRevision": "private-financial-decimal-rounding-20261108.1",
+  "allocatedRegisteredSuccessorVersion": null,
+  "methodology": {
+    "inputs": "Exact rational values of finite Number.toString() decimal spellings; original schemas reused by reference. Proposed interpretation requires financial competent acceptance.",
+    "directRounding": "BigInt decimal rounding, half-away/floor/ceil/truncate0\u201312digits, no epsilon; existing +/-1.005=>+/-1.01 software convention retained, not financial source approval.",
+    "loan": "Exact rational P*r*(1+r)^n/((1+r)^n-1); zero-rate P/n. Round monthly payment to cents, total=rounded payment times n, then round interest. Final residual/payment policy not invented.",
+    "compound": "Integer periods: exact rational P*base^period. Rational p/q periods: isolated Decimal768 estimates a cent candidate, exact qth-power inequalities prove lower-inclusive/upper-exclusive half-cent interval; at most3 adjustments, otherwise refusal. Decimal alone never authorizes output.",
+    "output": "Number only when its shortest decimal spelling equals exact rounded-cent rational. Otherwise explicit precision refusal; normalize negative zero.",
+    "workDomain": "4,000,000 aggregate base-bit-length times exponent budget per proof before powers. Private computational bound, not a commercial limit or approved canonical scope. Pathological rates/fractional periods can be refused; full-domain scope remains unresolved.",
+    "parity": "No plan input/entitlement branch in private arithmetic. Existing registered plan paths/math unchanged; new registered successor UI/entitlement integration and provider acceptance are not claimed."
+  },
+  "closedProposedMethodDefects": [
+    {
+      "id": "FIN-EPSILON",
+      "witness": "1.0049999999999992 -> 1.00, not 1.01"
+    },
+    {
+      "id": "FIN-TINY-RATE",
+      "witness": "P1000,APR1e-12,n12 -> monthly83.33; exact rational denominator avoids cancellation"
+    },
+    {
+      "id": "FIN-RECURRING-TIE",
+      "witness": "P.39,APR200,n2 -> monthly.25, not .24"
+    },
+    {
+      "id": "FIN-COMPOUND-TIE",
+      "witness": "P.15,APR10,years1,n1 -> future.17,interest.02"
+    },
+    {
+      "id": "FIN-ZERO-FACTOR",
+      "witness": "P0 with overflowing standalone factor -> future0,interest0"
+    },
+    {
+      "id": "FIN-OUTPUT-PRECISION",
+      "witness": "Unrepresentable rounded currency outputs refuse capture instead of approximation"
+    }
+  ],
+  "evidence": {
+    "oracle": "financial-rounding-witnesses.json",
+    "directRoundingCases": 74,
+    "modeComparisons": 296,
+    "formulaOracle": "Python Fraction integer formulas, quotient/remainder cents and exact root identities; Decimal1000 only for direct rounding. No production helper used.",
+    "comparison": "Exact rounded decimal Number equality or required explicit precision refusal, no relative waiver",
+    "independentReview": "financial-independent-review.json",
+    "independentFiniteFractionalCases": 1794,
+    "fullDomainCertification": false
+  },
+  "versionCompatibility": {
+    "historicalV1SourceChanged": false,
+    "previousPrivateExactGridRevisionChanged": false,
+    "preview": "Separate source/candidate artifacts, output-change flag, adoptionAuthorized=false and no allocated version. Cross-revision replay and relabelling into registered history rejected. Unsupported precision throws without rewriting old captures.",
+    "persistence": "No migrations, registry, routing, saved-history or lifecycle changes",
+    "caveat": "Valid retained baseline captures/source preserved; not a blanket assertion every previously invalid direct-call capture replays after earlier safety changes.",
+    "registeredReplayScopeClarification": "Private slugs/envelopes are not registered. Mismatched outputs relabelled as old version fail registered replay. Coincident outputs may reproduce a valid old result, but never carry new-revision authority."
+  },
+  "sourceBindings": [
+    {
+      "path": "src/lib/financial-successor/decimal-rounding-private.ts",
+      "sha256": "762b120dc672566d71a35e8981084fe4ddf0de59353f63c81e7e70d1dfacaf38"
+    },
+    {
+      "path": "src/lib/financial-successor/decimal-rounding-private.test.ts",
+      "sha256": "f38d25f3d8b0cd604f21a36d676316df411715a6387e9258a0387f46553a8130"
+    },
+    {
+      "path": "src/calculators/exact-rational.ts",
+      "sha256": "cccb4e1366200c799eb82f3542d4f90ecfc0341d8678db29f93d347f39af806a"
+    },
+    {
+      "path": "src/lib/financial-successor/exact-grid-private.ts",
+      "sha256": "e3f66e441620e0fbe351796ed6bcc52493796eb784839045f8c0d46da270cdc1"
+    },
+    {
+      "path": "src/lib/financial-exact-grid.ts",
+      "sha256": "e55bc952661b1f08c494aef90789205615e7967bc2c48ffd8625159ca47ba10e"
+    },
+    {
+      "path": "src/calculators/finance/loan-payment.ts",
+      "sha256": "c4347c6d8d5cc7ea7d95bc2eda914a3f9eb4faba37f373d4be521f71dd2923f5"
+    },
+    {
+      "path": "src/calculators/finance/compound-interest.ts",
+      "sha256": "7c948d1deec2565b9386f9978f1ef6f81c33993354065e9d8a393aeb5cf28b8d"
+    },
+    {
+      "path": "src/calculators/precision.ts",
+      "sha256": "139319afc73ef22c45dd46ef94b56b85f3442ed57b239cd6a0e59f92cd68643a"
+    },
+    {
+      "path": "src/calculators/units.test.ts",
+      "sha256": "355dd8431ba99d33912acf61462f8a22ed7f97bd03ef0aa7899ef6ff6da91139"
+    },
+    {
+      "path": "src/lib/calculation-snapshot.ts",
+      "sha256": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c"
+    },
+    {
+      "path": "src/lib/publication-factory-contracts-input.ts",
+      "sha256": "d0c5d00cc0c5d024420f11f21c27534f5b38dc681cbd53d22e750eb4a8dd281f"
+    },
+    {
+      "path": "src/lib/recorded-json-equality.ts",
+      "sha256": "59fda934bec9e573c970d5a451b3d3e3ba14292838a9c6544cafbd10e71f0fcc"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "b564e5ff97f9dad6c934e6a2eb0977871b2ee3f0b36a23325f1715b241114273"
+    },
+    {
+      "path": "scripts/acceptance-closure-20261108/financial-witnesses.py",
+      "sha256": "35204e798ffe89458511d29782c959cdd049b193ca0687a3a434ff14fee0c73e"
+    }
+  ],
+  "requiredDecisions": [
+    {
+      "id": "FIN-POLICY",
+      "status": "PENDING",
+      "responsible": "Authorized financial/math specialist",
+      "action": "Accept/reject decimal input interpretation, rounding stages, two-decimal monetary-unit applicability, timing and residual payment semantics; sign exact source/version/witnesses."
+    },
+    {
+      "id": "FIN-DOMAIN",
+      "status": "PENDING",
+      "responsible": "Numerical engineering and competent financial reviewer",
+      "action": "Review work/precision refusals against complete canonical contracts. Supported-result proof is not proof every schema-valid request can be calculated."
+    },
+    {
+      "id": "FIN-ADOPTION",
+      "status": "PENDING",
+      "responsible": "Catalog/version owner and release authority",
+      "action": "Allocate immutable successor identity/version and separately approve routing/history compatibility after full acceptance."
+    }
+  ],
+  "reviewerName": null,
+  "competentApproval": false,
+  "certified": false,
+  "publicationEligible": false,
+  "releaseHold": true,
+  "productionWrites": false
+}

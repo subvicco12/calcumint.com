@@ -1,0 +1,14 @@
+/* Scoped delivery controls: valid long organization/key/template names must not
+   expand the viewport. Touch controls retain usable targets without changing data. */
+.factory-delivery-controls { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+.factory-delivery-controls label { display: block; min-width: 0; max-width: 100%; }
+.factory-delivery-controls select,
+.factory-delivery-controls textarea,
+.factory-delivery-controls input:not([type="checkbox"]):not([type="radio"]) {
+  display: block; width: 100%; min-width: 0; max-width: 100%; min-height: 44px;
+}
+.factory-delivery-controls button {
+  min-width: 0; max-width: 100%; min-height: 44px;
+  white-space: normal; overflow-wrap: anywhere;
+}
+.factory-delivery-controls pre { max-width: 100%; white-space: pre-wrap; overflow-wrap: anywhere; }

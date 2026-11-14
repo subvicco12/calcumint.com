@@ -1,0 +1,99 @@
+2026-11-11T03:36:13.3246038Z   type: 'test'
+2026-11-11T03:36:13.3246155Z   ...
+2026-11-11T03:36:13.3246300Z # node:internal/errors:983
+2026-11-11T03:36:13.3246477Z #   const err = new Error(message);
+2026-11-11T03:36:13.3246641Z #               ^
+2026-11-11T03:36:13.3247189Z # Error: Command failed: git -c protocol.file.allow=never -c protocol.ext.allow=never fetch --no-tags --depth=1 origin b2f12b04b6ded9e84bb07d4d6c170ac157f8cad3
+2026-11-11T03:36:13.3247613Z # fatal: shallow file has changed since we read it
+2026-11-11T03:36:13.3247860Z #     at genericNodeError (node:internal/errors:983:15)
+2026-11-11T03:36:13.3248106Z #     at wrappedFn (node:internal/errors:537:14)
+2026-11-11T03:36:13.3248349Z #     at checkExecSyncError (node:child_process:916:11)
+2026-11-11T03:36:13.3248579Z #     at execFileSync (node:child_process:952:15)
+2026-11-11T03:36:13.3248973Z #     at invoke (file:///home/runner/work/calcumint.com/calcumint.com/tests/parallel-source-20261110/bootstrap.mjs:7:20)
+2026-11-11T03:36:13.3249507Z #     at requireObject (file:///home/runner/work/calcumint.com/calcumint.com/tests/parallel-source-20261110/bootstrap.mjs:17:273)
+2026-11-11T03:36:13.3250149Z #     at ensureParallelSources (file:///home/runner/work/calcumint.com/calcumint.com/tests/parallel-source-20261110/bootstrap.mjs:18:28)
+2026-11-11T03:36:13.3250707Z #     at verifyParallelSource (file:///home/runner/work/calcumint.com/calcumint.com/tests/parallel-source-20261110/core.mjs:34:2)
+2026-11-11T03:36:13.3251284Z #     at registerRetainedA7Tests (file:///home/runner/work/calcumint.com/calcumint.com/tests/parallel-source-20261110/historical-tests.mjs:31:15)
+2026-11-11T03:36:13.3251878Z #     at file:///home/runner/work/calcumint.com/calcumint.com/tests/p0-decision-contracts/next-five-runtime-successor.test.mjs:3:1 {
+2026-11-11T03:36:13.3252212Z #   status: 128,
+2026-11-11T03:36:13.3252344Z #   signal: null,
+2026-11-11T03:36:13.3252582Z #   output: [
+2026-11-11T03:36:13.3252762Z #     null,
+2026-11-11T03:36:13.3252913Z #     Buffer(0) [Uint8Array] [],
+2026-11-11T03:36:13.3253089Z #     Buffer(49) [Uint8Array] [
+2026-11-11T03:36:13.3253288Z #       102,  97, 116,  97, 108,  58,  32, 115, 104,
+2026-11-11T03:36:13.3253500Z #        97, 108, 108, 111, 119,  32, 102, 105, 108,
+2026-11-11T03:36:13.3253706Z #       101,  32, 104,  97, 115,  32,  99, 104,  97,
+2026-11-11T03:36:13.3253906Z #       110, 103, 101, 100,  32, 115, 105, 110,  99,
+2026-11-11T03:36:13.3254106Z #       101,  32, 119, 101,  32, 114, 101,  97, 100,
+2026-11-11T03:36:13.3254274Z #        32, 105, 116,  10
+2026-11-11T03:36:13.3254406Z #     ]
+2026-11-11T03:36:13.3254521Z #   ],
+2026-11-11T03:36:13.3254636Z #   pid: 76425,
+2026-11-11T03:36:13.3254795Z #   stdout: Buffer(0) [Uint8Array] [],
+2026-11-11T03:36:13.3254981Z #   stderr: Buffer(49) [Uint8Array] [
+2026-11-11T03:36:13.3255179Z #     102,  97, 116,  97, 108,  58,  32, 115, 104,
+2026-11-11T03:36:13.3255379Z #      97, 108, 108, 111, 119,  32, 102, 105, 108,
+2026-11-11T03:36:13.3255575Z #     101,  32, 104,  97, 115,  32,  99, 104,  97,
+2026-11-11T03:36:13.3255779Z #     110, 103, 101, 100,  32, 115, 105, 110,  99,
+2026-11-11T03:36:13.3255977Z #     101,  32, 119, 101,  32, 114, 101,  97, 100,
+2026-11-11T03:36:13.3256144Z #      32, 105, 116,  10
+2026-11-11T03:36:13.3256285Z #   ]
+2026-11-11T03:36:13.3256395Z # }
+2026-11-11T03:36:13.3256518Z # Node.js v22.23.4
+2026-11-11T03:36:13.3256773Z # Subtest: tests/p0-decision-contracts/next-five-runtime-successor.test.mjs
+2026-11-11T03:36:13.3257124Z not ok 11 - tests/p0-decision-contracts/next-five-runtime-successor.test.mjs
+2026-11-11T03:36:13.3257352Z   ---
+2026-11-11T03:36:13.3257473Z   duration_ms: 447.505577
+2026-11-11T03:36:13.3257617Z   type: 'test'
+2026-11-11T03:36:13.3257955Z   location: '/home/runner/work/calcumint.com/calcumint.com/tests/p0-decision-contracts/next-five-runtime-successor.test.mjs:1:1'
+2026-11-11T03:36:13.3258302Z   failureType: 'testCodeFailure'
+2026-11-11T03:36:13.3258459Z   exitCode: 1
+2026-11-11T03:36:13.3258579Z   signal: ~
+2026-11-11T03:36:13.3258700Z   error: 'test failed'
+2026-11-11T03:36:13.3258847Z   code: 'ERR_TEST_FAILURE'
+2026-11-11T03:36:13.3258986Z   ...
+2026-11-11T03:36:13.3259093Z 1..175
+2026-11-11T03:36:13.3259210Z # tests 175
+2026-11-11T03:36:13.3259325Z # suites 0
+2026-11-11T03:36:13.3259546Z # pass 174
+2026-11-11T03:36:13.3259666Z # fail 1
+2026-11-11T03:36:13.3259785Z # cancelled 0
+2026-11-11T03:36:13.3259904Z # skipped 0
+2026-11-11T03:36:13.3260019Z # todo 0
+2026-11-11T03:36:13.3260149Z # duration_ms 10845.946846
+2026-11-11T03:36:13.3267949Z ##[error]Process completed with exit code 1.
+2026-11-11T03:36:13.3330953Z ##[group]Run actions/upload-artifact@v4
+2026-11-11T03:36:13.3331138Z with:
+2026-11-11T03:36:13.3331317Z   name: batch21-browser-c59a68565ad7cbb52f62ff62ecb166b9c848dac7
+2026-11-11T03:36:13.3331666Z   path: /home/runner/work/_temp/batch21-browser/report.json
+/home/runner/work/_temp/batch21-browser/*.png
+
+2026-11-11T03:36:13.3331955Z   if-no-files-found: warn
+2026-11-11T03:36:13.3332100Z   compression-level: 6
+2026-11-11T03:36:13.3332238Z   overwrite: false
+2026-11-11T03:36:13.3332376Z   include-hidden-files: false
+2026-11-11T03:36:13.3332887Z env:
+2026-11-11T03:36:13.3333106Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.woirFa/opt/google/chrome/chrome
+2026-11-11T03:36:13.3333363Z ##[endgroup]
+2026-11-11T03:36:13.4448581Z (node:80418) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-11T03:36:13.4449047Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-11T03:36:13.4472932Z ##[warning]No files were found with the provided path: /home/runner/work/_temp/batch21-browser/report.json
+/home/runner/work/_temp/batch21-browser/*.png. No artifacts will be uploaded.
+2026-11-11T03:36:13.4714579Z Post job cleanup.
+2026-11-11T03:36:13.5284059Z [command]/usr/bin/git version
+2026-11-11T03:36:13.5320013Z git version 2.56.0
+2026-11-11T03:36:13.5344832Z Temporarily overriding HOME='/home/runner/work/_temp/36bf51eb-a822-4692-a2e9-312bc63e7d1c' before making global git config changes
+2026-11-11T03:36:13.5345648Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-11T03:36:13.5348767Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/calcumint.com/calcumint.com
+2026-11-11T03:36:13.5385974Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-11T03:36:13.5418631Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-11T03:36:13.5703367Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-11T03:36:13.5733683Z http.https://github.com/.extraheader
+2026-11-11T03:36:13.5736222Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-11T03:36:13.5812546Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-11T03:36:13.6053435Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-11T03:36:13.6083036Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-11T03:36:13.6471476Z Cleaning up orphan processes
+2026-11-11T03:36:13.6758913Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

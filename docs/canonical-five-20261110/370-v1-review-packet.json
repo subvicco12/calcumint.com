@@ -1,0 +1,783 @@
+{
+  "kind": "UNSIGNED_CANONICAL_REVIEW_WORKING_PACKET_NOT_POLICY_ASSESSOR_INPUT",
+  "preparedOn": "2026-11-10",
+  "checkpoint": {
+    "sourceCommit": "1ec63cd11626df15063546c7e5bfedecec33f6ee",
+    "ciRun": "42693180061",
+    "ciConclusion": "SUCCESS",
+    "provenance": "Exact-head green checkpoint supplied by coordinating owner task; not independently re-queried in this lane. Frozen Nov9 pending-CI records preserved."
+  },
+  "identity": {
+    "masterId": 370,
+    "engineId": "technology.bandwidth",
+    "slug": "bandwidth-calculator",
+    "version": 1
+  },
+  "implementation": {
+    "path": "src/calculators/technology-computing/catalog-batch-1.ts",
+    "sourceCommit": "1ec63cd11626df15063546c7e5bfedecec33f6ee",
+    "gitBlob": "a613d01505870f23971c532ecda58703e47f0f18",
+    "sha256": "31f347fc286cc0b22cd888b9f53719e4733ffa17ab8323aa4f6dc5bc497079f6",
+    "bytes": 9422
+  },
+  "nativeCatalog": {
+    "sheet": "Master Catalog",
+    "sheetRow": 371,
+    "cells": {
+      "A371": "370",
+      "B371": "Technology & Computing",
+      "C371": "Bandwidth Calculator",
+      "D371": "Planned",
+      "E371": "Foundation / Expansion 1",
+      "F371": "Technical / engineering",
+      "G371": "B \u2014 Analytical",
+      "H371": "Full certified core calculation",
+      "I371": "Relationship/result visual when useful",
+      "J371": "Advanced variables; tables; unit analysis; scenarios",
+      "K371": "Pro analytics + team/client/embed/API/automation",
+      "L371": "Required before publish",
+      "M371": "Formula verified after certification",
+      "N371": "",
+      "O371": "",
+      "P371": "",
+      "Q371": "",
+      "R371": "",
+      "S371": "",
+      "T371": "",
+      "U371": "",
+      "V371": "",
+      "W371": "",
+      "X371": "",
+      "Y371": "",
+      "Z371": ""
+    }
+  },
+  "declaredContract": "Ideal scalar average Mbps = supplied decimal MB*8/seconds.",
+  "sourceScope": {
+    "url": "https://www.rfc-editor.org/rfc/rfc1547",
+    "retainedClaim": "An octet contains eight bits.",
+    "applicabilityGap": "Octet terminology alone does not establish decimal MB/Mbps convention or real network throughput applicability. Explicit SI decimal prefixes and idealized no-overhead model require approval.",
+    "fullTextVerifiedByThisPacket": false,
+    "applicabilityApproved": false
+  },
+  "numericalReview": {
+    "domain": "Positive finite parsed binary64 operands <=1e100. Current capture refuses subnormal operands/output, positive underflow and nonfinite results; historical original replay remains unchanged.",
+    "argumentRef": "docs/first-five-20261109/NUMERICAL-ENVELOPE.md",
+    "reviewQuestions": "Normal-domain half-ULP forward bound, representability/refusal boundary and forward-verified inverse residual; not arbitrary decimal exactness.",
+    "competentAcceptance": null
+  },
+  "blueprintClauses": {
+    "core": "BP0135\u20130143; BP0148\u20130162",
+    "presentationAnalysis": "BP0267\u20130280; BP0387\u20130397",
+    "business": "BP0402\u20130414; BP0543\u20130561",
+    "qaAndLifecycle": "BP0433\u20130463; BP0515\u20130523; BP0667\u20130699",
+    "locator": "docs/blueprint-reconciliation/native-paragraphs.txt"
+  },
+  "clauseAssociations": [
+    {
+      "clauseId": "identity-full-contract",
+      "before": {
+        "clauseId": "identity-full-contract",
+        "classification": [
+          "COMPETENT_REVIEW",
+          "SOURCE_DECISION"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Authorized competent/canonical/source decision; existing engineering evidence does not sign or certify.",
+        "classification": "COMPETENT_REVIEW_OR_SOURCE_AUTHORITY"
+      }
+    },
+    {
+      "clauseId": "B-core-inputs-accuracy",
+      "before": {
+        "clauseId": "B-core-inputs-accuracy",
+        "classification": [
+          "QA_EVIDENCE",
+          "COMPETENT_REVIEW"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "B-forward-math-rounding",
+      "before": {
+        "clauseId": "B-forward-math-rounding",
+        "classification": [
+          "COMPETENT_REVIEW",
+          "SOURCE_DECISION"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Authorized competent/canonical/source decision; existing engineering evidence does not sign or certify.",
+        "classification": "COMPETENT_REVIEW_OR_SOURCE_AUTHORITY"
+      }
+    },
+    {
+      "clauseId": "B-structured-result",
+      "before": {
+        "clauseId": "B-structured-result",
+        "classification": [
+          "QA_EVIDENCE",
+          "SOURCE_DECISION"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "I-useful-visual",
+      "before": {
+        "clauseId": "I-useful-visual",
+        "classification": [
+          "QA_EVIDENCE"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "J-advanced-variables",
+      "before": {
+        "clauseId": "J-advanced-variables",
+        "classification": [
+          "ENGINEERING_APPLICABILITY",
+          "SOURCE_DECISION"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "J-tables-unit-analysis",
+      "before": {
+        "clauseId": "J-tables-unit-analysis",
+        "classification": [
+          "QA_EVIDENCE"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "J-goal-inverse",
+      "before": {
+        "clauseId": "J-goal-inverse",
+        "classification": [
+          "QA_EVIDENCE",
+          "COMPETENT_REVIEW"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "J-scenarios",
+      "before": {
+        "clauseId": "J-scenarios",
+        "classification": [
+          "QA_EVIDENCE"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "J-sensitivity",
+      "before": {
+        "clauseId": "J-sensitivity",
+        "classification": [
+          "QA_EVIDENCE",
+          "COMPETENT_REVIEW"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "K-organizations-roles",
+      "before": {
+        "clauseId": "K-organizations-roles",
+        "classification": [
+          "ENGINEERING_IMPLEMENTATION",
+          "QA_EVIDENCE"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "K-client-project-share-template",
+      "before": {
+        "clauseId": "K-client-project-share-template",
+        "classification": [
+          "ENGINEERING_IMPLEMENTATION",
+          "QA_EVIDENCE",
+          "SOURCE_DECISION"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "K-api-exact-delivery",
+      "before": {
+        "clauseId": "K-api-exact-delivery",
+        "classification": [
+          "ENGINEERING_IMPLEMENTATION",
+          "QA_EVIDENCE",
+          "OPERATIONS"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "K-embed-exact-delivery",
+      "before": {
+        "clauseId": "K-embed-exact-delivery",
+        "classification": [
+          "ENGINEERING_IMPLEMENTATION",
+          "QA_EVIDENCE",
+          "OPERATIONS"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "K-bounded-batch",
+      "before": {
+        "clauseId": "K-bounded-batch",
+        "classification": [
+          "ENGINEERING_IMPLEMENTATION",
+          "QA_EVIDENCE"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "K-automation-webhooks",
+      "before": {
+        "clauseId": "K-automation-webhooks",
+        "classification": [
+          "ENGINEERING_IMPLEMENTATION",
+          "QA_EVIDENCE",
+          "OPERATIONS"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "K-quota-metering-audit",
+      "before": {
+        "clauseId": "K-quota-metering-audit",
+        "classification": [
+          "ENGINEERING_IMPLEMENTATION",
+          "QA_EVIDENCE",
+          "OPERATIONS"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "K-brand-builder",
+      "before": {
+        "clauseId": "K-brand-builder",
+        "classification": [
+          "ENGINEERING_APPLICABILITY",
+          "SOURCE_DECISION",
+          "QA_EVIDENCE"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "EXISTING_PLATFORM_OR_CONDITIONAL_SCOPE_RETAINED",
+        "approval": "NOT_GRANTED",
+        "remaining": "No blanket N/A: existing builder remains a platform facility, organization branding is rendered in embeds, lead capture is conditional on consent/appropriateness, grounded AI is optional and cannot supply mathematics.",
+        "classification": "DOCUMENTED_APPLICABILITY_NO_AUTOMATIC_WAIVER"
+      }
+    },
+    {
+      "clauseId": "K-lead-capture",
+      "before": {
+        "clauseId": "K-lead-capture",
+        "classification": [
+          "ENGINEERING_APPLICABILITY",
+          "SOURCE_DECISION",
+          "QA_EVIDENCE"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "EXISTING_PLATFORM_OR_CONDITIONAL_SCOPE_RETAINED",
+        "approval": "NOT_GRANTED",
+        "remaining": "No blanket N/A: existing builder remains a platform facility, organization branding is rendered in embeds, lead capture is conditional on consent/appropriateness, grounded AI is optional and cannot supply mathematics.",
+        "classification": "DOCUMENTED_APPLICABILITY_NO_AUTOMATIC_WAIVER"
+      }
+    },
+    {
+      "clauseId": "central-entitlement-primary-parity",
+      "before": {
+        "clauseId": "central-entitlement-primary-parity",
+        "classification": [
+          "QA_EVIDENCE"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "history-exact-replay",
+      "before": {
+        "clauseId": "history-exact-replay",
+        "classification": [
+          "QA_EVIDENCE"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "exports-reconciliation",
+      "before": {
+        "clauseId": "exports-reconciliation",
+        "classification": [
+          "QA_EVIDENCE"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "editorial-methodology-source",
+      "before": {
+        "clauseId": "editorial-methodology-source",
+        "classification": [
+          "SOURCE_DECISION",
+          "COMPETENT_REVIEW",
+          "QA_EVIDENCE"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Authorized competent/canonical/source decision; existing engineering evidence does not sign or certify.",
+        "classification": "COMPETENT_REVIEW_OR_SOURCE_AUTHORITY"
+      }
+    },
+    {
+      "clauseId": "source-risk-rule-applicability",
+      "before": {
+        "clauseId": "source-risk-rule-applicability",
+        "classification": [
+          "SOURCE_DECISION",
+          "COMPETENT_REVIEW"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Authorized competent/canonical/source decision; existing engineering evidence does not sign or certify.",
+        "classification": "COMPETENT_REVIEW_OR_SOURCE_AUTHORITY"
+      }
+    },
+    {
+      "clauseId": "qa-formula-input-refusal",
+      "before": {
+        "clauseId": "qa-formula-input-refusal",
+        "classification": [
+          "QA_EVIDENCE",
+          "COMPETENT_REVIEW"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "qa-responsive-input-recovery",
+      "before": {
+        "clauseId": "qa-responsive-input-recovery",
+        "classification": [
+          "QA_EVIDENCE"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "qa-accessibility",
+      "before": {
+        "clauseId": "qa-accessibility",
+        "classification": [
+          "QA_EVIDENCE"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "qa-performance",
+      "before": {
+        "clauseId": "qa-performance",
+        "classification": [
+          "QA_EVIDENCE",
+          "COMPETENT_REVIEW"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "qa-seo-discovery",
+      "before": {
+        "clauseId": "qa-seo-discovery",
+        "classification": [
+          "QA_EVIDENCE",
+          "OPERATIONS"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "qa-security-protected-actions",
+      "before": {
+        "clauseId": "qa-security-protected-actions",
+        "classification": [
+          "ENGINEERING_IMPLEMENTATION",
+          "QA_EVIDENCE",
+          "OPERATIONS"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Exact-head final validation and competent requirement-specific acceptance remain separate.",
+        "classification": "ENGINEERING_AND_QA_EVIDENCE_AVAILABLE_NOT_COMPETENT_APPROVAL"
+      }
+    },
+    {
+      "clauseId": "ai-boundary",
+      "before": {
+        "clauseId": "ai-boundary",
+        "classification": [
+          "ENGINEERING_APPLICABILITY",
+          "SOURCE_DECISION",
+          "QA_EVIDENCE"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "EXISTING_PLATFORM_OR_CONDITIONAL_SCOPE_RETAINED",
+        "approval": "NOT_GRANTED",
+        "remaining": "No blanket N/A: existing builder remains a platform facility, organization branding is rendered in embeds, lead capture is conditional on consent/appropriateness, grounded AI is optional and cannot supply mathematics.",
+        "classification": "DOCUMENTED_APPLICABILITY_NO_AUTOMATIC_WAIVER"
+      }
+    },
+    {
+      "clauseId": "certification-lifecycle",
+      "before": {
+        "clauseId": "certification-lifecycle",
+        "classification": [
+          "COMPETENT_REVIEW",
+          "OPERATIONS"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "IMPLEMENTED_AND_SCOPED_ISOLATED_PROOF_AVAILABLE",
+        "approval": "NOT_GRANTED",
+        "remaining": "Authorized competent/canonical/source decision; existing engineering evidence does not sign or certify.",
+        "classification": "COMPETENT_REVIEW_OR_SOURCE_AUTHORITY"
+      }
+    },
+    {
+      "clauseId": "ops-recovery-custody-deployment",
+      "before": {
+        "clauseId": "ops-recovery-custody-deployment",
+        "classification": [
+          "OPERATIONS"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "ISOLATED_SOFTWARE_REHEARSAL_ONLY",
+        "approval": "NOT_GRANTED",
+        "remaining": "Actual responsible operator writer/freeze/recovery/custody/deployment/schema attestations and separate release authorization.",
+        "classification": "OPERATIONAL_DEPENDENCY"
+      }
+    },
+    {
+      "clauseId": "ci-and-evidence-integrity",
+      "before": {
+        "clauseId": "ci-and-evidence-integrity",
+        "classification": [
+          "QA_EVIDENCE",
+          "OPERATIONS"
+        ],
+        "status": "PARTIAL_OR_PENDING_WITH_RETAINED_BOUNDED_EVIDENCE",
+        "nativeSource": "Master Catalog!G371:M371"
+      },
+      "after": {
+        "engineering": "CURRENT_SOURCE_GUARDS_VERIFIED_FINAL_CI_REQUIRED",
+        "approval": "NOT_GRANTED",
+        "remaining": "Five mandatory exact-head CI jobs and aggregate must succeed; final external checkpoint establishes completion.",
+        "classification": "QA_EVIDENCE_PENDING_EXACT_HEAD_CI"
+      }
+    }
+  ],
+  "retainedEngineeringEvidence": {
+    "original_math_and_replay": [
+      "docs/first-five-20261109/NUMERICAL-ENVELOPE.md",
+      "docs/first-five-20261109/authenticated/receipt.json"
+    ],
+    "batch_local": [
+      "docs/five-full-contract-20261109/batch/receipt.json",
+      "docs/five-full-contract-20261109/performance/receipt.json"
+    ],
+    "native_api_embed_jobs": [
+      "docs/five-native-auth-20261109/receipt-identity-corrected.json",
+      "docs/five-native-auth-20261109/final-schema/receipt-identity-corrected.json",
+      "docs/first-five-native-20261109/current-delivery-packet.json"
+    ],
+    "shared_workspace": [
+      "docs/first-five-full-contract-20261109/sharing/authenticated/receipt.json",
+      "docs/first-five-full-contract-20261109/sharing/workflows/receipt.json",
+      "docs/first-five-full-contract-20261109/sharing/plan-entitlements/receipt.json"
+    ],
+    "interface_and_pdf": [
+      "docs/five-interface-qa-20261109/browser.json",
+      "docs/five-interface-qa-20261109/pdf.json"
+    ],
+    "source_integrity": [
+      "docs/publication-workflows-20261109/source-successors/business/automation-integration-validation.json",
+      "docs/publication-workflows-20261109/source-successors/business/validation.json",
+      "docs/publication-workflows-20261109/source-successors/fresh-shallow-audit.json"
+    ]
+  },
+  "engineeringCheckpoint": "SCOPED_CURRENT_CONTRACT_ENGINEERING_SUPPORTED_AT_REPORTED_GREEN_CHECKPOINT; not canonical acceptance",
+  "requiredDecisions": [
+    {
+      "dimension": "contract",
+      "request": "Accept the exact native catalog identity and declared scalar contract; decide conditional branding/builder/lead capture and grounded-AI applicability with reasons. Generic advanced variables does not itself select an additional model.",
+      "status": "UNAPPROVED",
+      "decision": null,
+      "reviewer": null,
+      "decidedAt": null
+    },
+    {
+      "dimension": "source",
+      "request": "Verify complete authoritative source text/revision/snapshot and its applicability; approve units, exclusions and intended claims. Existing source labels/reviewed metadata are not this decision.",
+      "status": "UNAPPROVED",
+      "decision": null,
+      "reviewer": null,
+      "decidedAt": null
+    },
+    {
+      "dimension": "precision",
+      "request": "Approve offered domain, binary64 interpretation, display/raw distinction, input fidelity/refusals, forward error argument and inverse limits; inspect independent witnesses, not only test counts.",
+      "status": "UNAPPROVED",
+      "decision": null,
+      "reviewer": null,
+      "decidedAt": null
+    },
+    {
+      "dimension": "risk",
+      "request": "Record risk tier and screen applicable legal/rule/qualification obligations. Do not assume the prospective engineering-led policy amendment is adopted or that every technical calculator universally requires an external specialist.",
+      "status": "UNAPPROVED",
+      "decision": null,
+      "reviewer": null,
+      "decidedAt": null
+    },
+    {
+      "dimension": "competence",
+      "request": "An accountable authorized owner must appoint actual independent reviewer(s), identify author and document competence/authority for the covered dimensions; no identity is inferred from role counts, Git authors or CI.",
+      "status": "UNAPPROVED",
+      "decision": null,
+      "reviewer": null,
+      "decidedAt": null
+    },
+    {
+      "dimension": "decision",
+      "request": "Record exact-version dated decisions with evidence references and genuine attestations through the authorized process. Offline packets cannot authorize hosted assignment, lifecycle, certification or publication.",
+      "status": "UNAPPROVED",
+      "decision": null,
+      "reviewer": null,
+      "decidedAt": null
+    }
+  ],
+  "authority": {
+    "actualAppointedReviewer": null,
+    "actualAuthorIdentityForReview": null,
+    "appointmentEstablished": false,
+    "policyRef": "src/calculators/certification-review-policy.ts",
+    "governanceRef": "docs/RELEASE-GOVERNANCE.md",
+    "prospectivePolicyStatus": "Read retained governance amendment status before selecting review route; no adoption inferred."
+  },
+  "canonicalAccepted": false,
+  "certificationGranted": false,
+  "publicationEligible": false,
+  "productionReadiness": "UNATTESTED: actual writer/DDL freeze, backup restore/custody, deploy binding/schema/RPC compatibility, rollback and withdrawal authority required separately."
+}

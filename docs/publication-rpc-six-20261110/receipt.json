@@ -1,0 +1,176 @@
+{
+  "passed": true,
+  "startedAt": "2026-11-10T14:04:21.666Z",
+  "finishedAt": "2026-11-10T14:04:32.689Z",
+  "checks": [
+    "Six exact runtime signatures are invoker functions with anon EXECUTE denied and authenticated granted",
+    "Already-issued genuine owner JWT loses all six RPC authorities immediately after active=false with no row/audit effects",
+    "Concurrent identical create has one success/one unique refusal; retry refuses without duplicate catalog/QA/audit",
+    "Same expected lifecycle concurrent calls yield one success/one stale refusal; retry cannot duplicate transition audit",
+    "Assigned reviewer already-issued JWT cannot submit QA after authority revocation; historical assignment grants no bypass",
+    "Successful create inside caller-aborted transaction leaves no catalog, pending QA or audit",
+    "Unchanged exact guarded reverse restores predecessor metadata and preserves every synthetic application row"
+  ],
+  "revoked": [
+    {
+      "name": "create_catalog_calculator_with_audit",
+      "status": 400,
+      "message": "Platform admin permission required"
+    },
+    {
+      "name": "record_calculator_qa_decision",
+      "status": 400,
+      "message": "Reviewer permission required"
+    },
+    {
+      "name": "assign_calculator_reviewer",
+      "status": 400,
+      "message": "Admin permission required"
+    },
+    {
+      "name": "transition_calculator_with_audit",
+      "status": 400,
+      "message": "Platform admin required"
+    },
+    {
+      "name": "prepare_catalog_inventory_drafts",
+      "status": 403,
+      "message": "Owner or admin permission required"
+    },
+    {
+      "name": "publish_calculator_batch_with_audit_v1",
+      "status": 400,
+      "message": "Active owner/admin required"
+    }
+  ],
+  "metadata": [
+    {
+      "name": "assign_calculator_reviewer",
+      "owner": "postgres",
+      "config": [
+        "search_path=public"
+      ],
+      "result": "void",
+      "signature": "assign_calculator_reviewer(uuid,uuid)",
+      "anonExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": false,
+      "identityArguments": "p_calculator_id uuid, p_reviewer_id uuid",
+      "authenticatedExecute": true,
+      "definitionSHA256": "bc344f3b6af48b4fcab7499f4f9e1776e1cf55d028bf15fd5b4b2fa4f7c7d419"
+    },
+    {
+      "name": "create_catalog_calculator_with_audit",
+      "owner": "postgres",
+      "config": [
+        "search_path=public"
+      ],
+      "result": "uuid",
+      "signature": "create_catalog_calculator_with_audit(text,text,text,text,text,jsonb)",
+      "anonExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": false,
+      "identityArguments": "p_calculator_key text, p_slug text, p_title text, p_category text, p_risk_class text, p_metadata jsonb",
+      "authenticatedExecute": true,
+      "definitionSHA256": "d2d7a27c14c06c02b8682a7ab755bbd64612044780c500db5bfe5b7267bbd28b"
+    },
+    {
+      "name": "prepare_catalog_inventory_drafts",
+      "owner": "postgres",
+      "config": [
+        "search_path=public"
+      ],
+      "result": "jsonb",
+      "signature": "prepare_catalog_inventory_drafts(jsonb)",
+      "anonExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": false,
+      "identityArguments": "p_items jsonb",
+      "authenticatedExecute": true,
+      "definitionSHA256": "31c8eccb82e4547e47459e96bfda27a74ead2e6b1f05075953b8baed3e9bd20c"
+    },
+    {
+      "name": "publish_calculator_batch_with_audit_v1",
+      "owner": "postgres",
+      "config": [
+        "search_path=pg_catalog, public"
+      ],
+      "result": "integer",
+      "signature": "publish_calculator_batch_with_audit_v1(jsonb)",
+      "anonExecute": false,
+      "serviceExecute": false,
+      "securityDefiner": false,
+      "identityArguments": "p_items jsonb",
+      "authenticatedExecute": true,
+      "definitionSHA256": "5e1c61d4877ecd290918cd965e82050db38e63548e4875ab4792ed321aa5179e"
+    },
+    {
+      "name": "record_calculator_qa_decision",
+      "owner": "postgres",
+      "config": [
+        "search_path=public"
+      ],
+      "result": "void",
+      "signature": "record_calculator_qa_decision(uuid,text,text,text)",
+      "anonExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": false,
+      "identityArguments": "p_calculator_id uuid, p_check_type text, p_status text, p_details text",
+      "authenticatedExecute": true,
+      "definitionSHA256": "6c9db494f011444d4844e7d006b780ec77b2e1bb640c0ed0a3c112ca568982b7"
+    },
+    {
+      "name": "transition_calculator_with_audit",
+      "owner": "postgres",
+      "config": [
+        "search_path=public"
+      ],
+      "result": "void",
+      "signature": "transition_calculator_with_audit(uuid,text,text)",
+      "anonExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": false,
+      "identityArguments": "p_calculator_id uuid, p_expected_lifecycle text, p_target_lifecycle text",
+      "authenticatedExecute": true,
+      "definitionSHA256": "74b5b040ec144b083f710f198ae16dfb80dd6f758781d68fb773e67dacafa03e"
+    }
+  ],
+  "sources": {
+    "supabase/migrations/032_atomic_reviewer_qa_audit.sql": "b548046cb0a3aa91dd2838a824a5a1155b7b4c317d65cc644b6c9673a26418f1",
+    "supabase/migrations/033_atomic_reviewer_assignment_audit.sql": "74ce0f947c3922c4c7992880abd108a2900a6ce14933bd45c3a5762617f2fcd8",
+    "supabase/migrations/034_atomic_lifecycle_transition_audit.sql": "745efcbcb731821dd82727e91a6fe46093413890122818eb0560fd05a3414c90",
+    "supabase/migrations/035_atomic_catalog_creation.sql": "426de9383b1ca63f504adbdb9e515c239c8d2c4bd37f518a6b900667d2f30b47",
+    "docs/sprint20-publication/guarded/prepare-catalog-inventory-drafts.sql": "1bf012895fe18526908edfb620c130fb25b51de69da41e3e033a873d3aa95a63",
+    "tests/hosted-schema-remediation/publication/review-only-correction.sql": "5caec753de00a9550c215bfd5d4c8db96124dce19dcffbedfd4edf8a28fe6fb6",
+    "tests/hosted-remediation-closure/publication/review-only-deferred-gate.sql": "e84da335aba10aaac784197711915bb2858de9b5e717734053b757cfc517530c",
+    "tests/p0-publication-business/publication/review-only-successor.sql": "7163e4949dd1bbfb7679621309e6a20eaad99f2b81b99184727868711ee1bcc0",
+    "docs/adoption1528/package/new-trigger-privileges.sql": "19979dc8bed722b9b8ed05994201c554c5c17882f8f666bce4d3e74b667620c4",
+    "docs/publication540-shared/database/guarded-successor.sql": "ff64fee9c2196752a5dc7c9875b6210e05d04714037dbb00cc87ab9b7dae0233",
+    "docs/adoption1535/package/guarded-target-apply.sql": "7dfc42e461c0e9f836cacdeab368cb54bc0695b3cd2de243a5741348a537a530",
+    "docs/adoption1535/package/guarded-target-reverse.sql": "733eb6ff56968bc602633b5722e4a96fa889b8944476a4870048d502460c85d6",
+    "tests/gotrue-runtime/fixture.mjs": "98265ac37460e7676f6f5dae59a20110e82aefba1e9d567f880e0df6aa768387",
+    "tests/adoption1528/initializer.mjs": "26e20c2e0318271735dfc8d7eaf0b4dae858d80090974ef4aff90b045a9f8fc9",
+    "tests/adoption1528/bundle.mjs": "7c53b3a0ff481c37b9dd197ae09cff992c9815012439a451b0d8139934d112ec",
+    "tests/publication540-shared/database-package.mjs": "5d6cc7a8cb960b51e8ac99bbf2ebea9ddecc6f638a761f4c47e1b9915419f3d0",
+    "tests/publication-rpc-six-20261110/acceptance.mjs": "b45ad54c0786e19dcdbe69912f348b026f41a8b96c7873dc0ad2b6608ed01911"
+  },
+  "provenance": {
+    "images": {
+      "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+      "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+      "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+    },
+    "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+    "autoconfirm": true,
+    "scope": "Isolated reconstruction of seven-table captured metadata; synthetic rows only; authentic provider internals outside uid/role not represented",
+    "sourceObservedAt": "2026-11-06 14:43:07.87206+00",
+    "productionWrites": false
+  },
+  "preimage": "7156e648f39334759e3bd4d5d678c63ec8fb7c499a1aecf66994ca8af27baf20",
+  "corePostimage": "26601099cb6a3f8c923782fc3e7b05e71ec53aa11e7c0fe6a32f6eaf8873aa43",
+  "composedPostimage": "31ca06bc375e1e4a657dd50bb7684ce61e44f07d007dae89a840e92d0dcd8ff2",
+  "productionWrites": false,
+  "activationAuthorized": false,
+  "certificationGranted": false,
+  "releaseHold": true
+}

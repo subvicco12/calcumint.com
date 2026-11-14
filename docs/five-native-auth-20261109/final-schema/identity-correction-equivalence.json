@@ -1,0 +1,17 @@
+{
+  "scope": "Identity-only re-sanitization of the exact retained actual run; no workflow/build rerun and no changed acceptance claims. Original sanitized packet remains byte-identical.",
+  "rawReceiptSHA256": "c912693bf6b8115972393a7ba51d5ac5cc195c0ce9c3eafafda0b8dc9d46bd9d",
+  "originalSanitizedPacketSHA256": "8ac8a6a5eeb7833ed103093c8296b8ab597cd859f7b430c36973c9fc0f8f9071",
+  "identityCorrectedPacketSHA256": "c912693bf6b8115972393a7ba51d5ac5cc195c0ce9c3eafafda0b8dc9d46bd9d",
+  "sanitizerSource": "tests/five-native-auth-20261109/evidence-sanitizer.mjs",
+  "sanitizerCodeSHA256": "3d3402dfdfa3f6c580b861e1aad3cbca4dd06b1a7e674e2cc2a68307e50dc024",
+  "equivalence": "Applying the original sanitizer to the identity-corrected receipt reproduces original receipt.json byte-for-byte.",
+  "canonicalIdentity": {
+    "slug": "base64-size-calculator",
+    "engineId": "technology.base64-size",
+    "methodologyId": "base64-size-calculator"
+  },
+  "timingFieldNormalization": "None",
+  "releaseHold": true,
+  "newPublicationEligible": 0
+}

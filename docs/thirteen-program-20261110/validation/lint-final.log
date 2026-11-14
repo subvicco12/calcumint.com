@@ -1,0 +1,91 @@
+
+> calcumint@0.1.0 lint
+> eslint .
+
+
+/workspace/work/product-completion-20261108/postcss.config.mjs
+  1:1  warning  Assign object to a variable before exporting as module default  import/no-anonymous-default-export
+
+/workspace/work/product-completion-20261108/src/app/admin/actions.ts
+   89:21  warning  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  109:21  warning  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  132:21  warning  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/src/calculators/advanced-math/catalog-batch-8.ts
+  2:281  warning  'evalCubic' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/src/calculators/biology/catalog-batch-2.ts
+  4:6  warning  'Out' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/src/calculators/conversion/catalog-batch-1.ts
+  23:7  warning  'sharedDefinition' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/src/calculators/date-time/catalog-batch-2.ts
+  27:10  warning  'dateKey' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/src/calculators/earth-science/catalog-batch-2.ts
+  3:7  warning  'nist' is assigned a value but only used as a type  @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/src/calculators/engineering-construction/catalog-batch-3.ts
+  6:7  warning  'nonnegative' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/src/calculators/engineering/section-properties-batch-2.ts
+  2:55  warning  'pos' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/src/calculators/final-framework/physics-batch3-final-renderer-migration.test.ts
+  1:99  warning  'runCalculator' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/src/calculators/geometry/geometry-batch-2.ts
+  2:100  warning  'nonneg' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/src/calculators/geometry/geometry-batch-3.ts
+  2:100  warning  'nonneg' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/src/calculators/geometry/geometry-batch-5.ts
+  2:100  warning  'nonneg' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/src/calculators/geometry/solid-geometry-batch-8.ts
+  2:55  warning  'pos' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/src/calculators/geometry/solid-geometry-batch-9.ts
+  7:7  warning  'hexArea' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/src/calculators/physics/catalog-batch-4.ts
+  2:146  warning  'finite' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/src/calculators/statistics/catalog-batch-4.ts
+  3:7  warning  'dataset' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/src/calculators/technology-computing/catalog-batch-1.ts
+  20:260  warning  'network' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/src/components/calculator-interactive.tsx
+  307:374  warning  The 'input' conditional could make the dependencies of useMemo Hook (at line 307) change on every render. To fix this, wrap the initialization of 'input' in its own useMemo() Hook  react-hooks/exhaustive-deps
+  348:6    warning  'PhysicsKind' is defined but never used                                                                                                                                              @typescript-eslint/no-unused-vars
+  349:7    warning  'physicsConfig' is assigned a value but never used                                                                                                                                   @typescript-eslint/no-unused-vars
+  361:551  warning  'input' is assigned a value but never used                                                                                                                                           @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/src/components/custom-calculator-preview.tsx
+  21:43  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/workspace/work/product-completion-20261108/src/components/pro-checkout-button.tsx
+  179:52  warning  Do not use `window.location.assign()` to navigate to internal Next.js pages. Use `redirect()` in the render phase, or `useRouter().push()` in Client Components' event handlers instead. See: https://nextjs.org/docs/messages/no-location-assign-relative-destination  @next/next/no-location-assign-relative-destination
+
+/workspace/work/product-completion-20261108/src/components/public-embed-calculator.test.tsx
+  44:43  warning  '_options' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/tests/five-native-auth-20261109/final-schema.mjs
+  1:83   warning  'createHmac' is defined but never used      @typescript-eslint/no-unused-vars
+  6:504  warning  'other' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/tests/next-cohort-native-20261110/contract.postgres.mjs
+  1:153  warning  'createHash' is defined but never used  @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/tests/remaining-five-native-20261110/acceptance.mjs
+  3:379  warning  'q' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/work/product-completion-20261108/tests/schema-reconciliation/compare.mjs
+  8:10  warning  'id' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+✖ 32 problems (0 errors, 32 warnings)
+

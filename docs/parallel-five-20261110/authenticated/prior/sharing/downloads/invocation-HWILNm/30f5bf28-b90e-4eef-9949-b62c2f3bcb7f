@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "ups-runtime-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "input": {
+        "batteryWh": 600,
+        "loadWatts": 300,
+        "efficiencyPercent": 90
+      },
+      "output": {
+        "steps": [
+          "UPS Runtime = 1.8"
+        ],
+        "value": 1.8
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "input": {
+        "batteryWh": 1200,
+        "loadWatts": 300,
+        "efficiencyPercent": 90
+      },
+      "output": {
+        "steps": [
+          "UPS Runtime = 3.6"
+        ],
+        "value": 3.6
+      }
+    }
+  ]
+}

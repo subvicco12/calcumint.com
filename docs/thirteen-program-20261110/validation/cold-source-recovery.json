@@ -1,0 +1,63 @@
+{
+  "kind": "GENUINE_HTTPS_SHALLOW_GIT_DOCUMENTARY_REF_RECOVERY",
+  "started": "2026-11-10T16:01:53.359Z",
+  "finished": "2026-11-10T16:02:08.907Z",
+  "shallowHead": "3531d59a62538caed6e0173cefa60abbb7905a05",
+  "missingBefore": [
+    true,
+    true
+  ],
+  "recovered": {
+    "sourceCommits": [
+      "40d3c8e03125b9075a273805b6760066ad828b8f",
+      "531d677e0cca42d7259d4a2440057ccc74daea86"
+    ],
+    "sourceRevisions": 2,
+    "fetched": 2,
+    "releaseHold": true,
+    "productionWrites": false
+  },
+  "warm": {
+    "sourceCommits": [
+      "40d3c8e03125b9075a273805b6760066ad828b8f",
+      "531d677e0cca42d7259d4a2440057ccc74daea86"
+    ],
+    "sourceRevisions": 2,
+    "fetched": 0,
+    "releaseHold": true,
+    "productionWrites": false
+  },
+  "fetches": [
+    [
+      "fetch",
+      "--no-tags",
+      "--depth=1",
+      "origin",
+      "40d3c8e03125b9075a273805b6760066ad828b8f"
+    ],
+    [
+      "fetch",
+      "--no-tags",
+      "--depth=1",
+      "origin",
+      "531d677e0cca42d7259d4a2440057ccc74daea86"
+    ]
+  ],
+  "sources": [
+    {
+      "ref": "40d3c8e03125b9075a273805b6760066ad828b8f",
+      "path": "docs/remaining-five-20261110/operations-readonly-summary.json",
+      "bytes": 2148,
+      "sha256": "b5e28ed28dc871267f0aff595fed61bfb34ec7250a567c025fd1d2a233399c1f"
+    },
+    {
+      "ref": "531d677e0cca42d7259d4a2440057ccc74daea86",
+      "path": "docs/next-five-20261110/browser.json",
+      "bytes": 10032,
+      "sha256": "2dbd767c50c0e104071453c3fd67800e3e3170fe3c6fdfca20d0d892a8534339"
+    }
+  ],
+  "passed": true,
+  "productionWrites": false,
+  "releaseHold": true
+}

@@ -1,0 +1,67 @@
+{
+  "kind": "EXACT_GIT_READER_DIAGNOSTIC_TEST_SUCCESSOR",
+  "ci": {
+    "run": 42960521179,
+    "job": 130325694111,
+    "sourceHead": "5a869a9877368082cf130f13b6a75381ec978e3d",
+    "step": "Approved six-candidate worker, workflow and replay acceptance",
+    "failedGroup": "node --test tests/financial-safety-lineage.test.mjs tests/product-completion-lineage.test.mjs tests/source-lineage-bootstrap.test.mjs",
+    "hostedPassed": 37,
+    "hostedTotal": 43,
+    "failures": 6,
+    "cause": "Three substituted commit and three corrupt blob negative tests were rejected earlier by reviewed immutable Git reader; six stale regular-expression diagnostics mismatched. No math, artifact or browser acceptance failed in this group."
+  },
+  "change": {
+    "bindingPath": "scripts/check-current-six-candidate-evidence.mjs",
+    "before": {
+      "path": "tests/product-completion-lineage.test.mjs",
+      "ref": "80d18305104a9db4a015ea26199f8b916370467c",
+      "blob": "4667824f066c32c03303d0c1c454675451bc3f7d",
+      "sha256": "d32d67b95091149c2d5b1d579fa8d7b41043a3f0bc474d633081e51dfb8132b1"
+    },
+    "after": {
+      "path": "tests/product-completion-lineage.test.mjs",
+      "ref": "a963ef7aaa04664d07709cc431d6214511bc0573",
+      "blob": "be1bf8791e13857db88eee57a8f9fab0ff87cc11",
+      "sha256": "28dfdccfbaa65f31219a80bda8a4b82dc280f8c894b5290ce46c4473a6122efe"
+    }
+  },
+  "sourceProof": {
+    "oldGitBlobAndSHA256Verified": true,
+    "newGitCommit": "a963ef7aaa04664d07709cc431d6214511bc0573",
+    "newGitBlob": "be1bf8791e13857db88eee57a8f9fab0ff87cc11",
+    "newSHA256": "28dfdccfbaa65f31219a80bda8a4b82dc280f8c894b5290ce46c4473a6122efe",
+    "preservedAllTamperInputsAndOtherAssertions": true,
+    "diagnostics": "Error instances with exact Git commit identity message and exact per-path first corrupted Git blob ID; no alternative acceptance branch"
+  },
+  "local": {
+    "targetedBefore": {
+      "tests": 6,
+      "pass": 0,
+      "fail": 6
+    },
+    "exactCIGroupAfter": {
+      "tests": 43,
+      "pass": 43,
+      "fail": 0
+    },
+    "artifactDirectory": "/workspace/artifacts/parallel-completion-20261110",
+    "logSHA256": {
+      "publication-worker-429605-failure.log": "faac53bdfc0b51dba9f0d752f03af09ed41d0e1fbf2f9a8183e41a81ec25f400",
+      "publication-worker-429605-failure-local.log": "5ffd5a25690dc75bc2b886cf221c8d0e57fba2f2a41b00c5f2782234558c665c",
+      "publication-worker-429605-repaired-node43.log": "cb7c1ab1f4fab75ee56c9f48b7ad500bfa4a0d125d302fd7ebe90e13a576fcff"
+    }
+  },
+  "metadata": {
+    "beforeSHA256": "13edce36e8896e7159b82f22730ea9d154a8f1398fa2057bf9322bcc163bee6f",
+    "afterSHA256": "ca89c18f4dc77090c2e81cd4591537603ae95e2a40021198e222ee3cb442baca",
+    "updatedCurrentEdges": 1,
+    "allOtherRowsUnchanged": true,
+    "entireExecutableTailUnchanged": true
+  },
+  "historicalRecordsEdited": false,
+  "productionWrites": false,
+  "certificationGranted": false,
+  "releaseHold": true,
+  "limits": "Current graph requires independent root capture/authority succession; repaired local Node group is not a claim of fresh full CI success."
+}

@@ -1,0 +1,29 @@
+2026-11-08T12:10:08.9451298Z ##[endgroup]
+2026-11-08T12:10:08.9893330Z file:///home/runner/work/calcumint.com/calcumint.com/scripts/check-shortest-publication20.mjs:8
+2026-11-08T12:10:08.9896302Z for(const [file,expected]of Object.entries(manifest.sourceHashes))if(createHash('sha256').update(readFileSync(file)).digest('hex')!==expected)throw Error('Source binding differs: '+file);
+2026-11-08T12:10:08.9897629Z                                                                                                                                                     ^
+2026-11-08T12:10:08.9898047Z
+2026-11-08T12:10:08.9898334Z Error: Source binding differs: .github/workflows/ci.yml
+2026-11-08T12:10:08.9899169Z     at file:///home/runner/work/calcumint.com/calcumint.com/scripts/check-shortest-publication20.mjs:8:149
+2026-11-08T12:10:08.9899974Z     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+2026-11-08T12:10:08.9900694Z     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+2026-11-08T12:10:08.9901467Z     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+2026-11-08T12:10:08.9901886Z
+2026-11-08T12:10:08.9902007Z Node.js v22.23.4
+2026-11-08T12:10:08.9936464Z ##[error]Process completed with exit code 1.
+2026-11-08T12:10:09.0139973Z Post job cleanup.
+2026-11-08T12:10:09.1036713Z [command]/usr/bin/git version
+2026-11-08T12:10:09.1087604Z git version 2.56.0
+2026-11-08T12:10:09.1128808Z Temporarily overriding HOME='/home/runner/work/_temp/0a5e41a9-6390-4705-a069-30febabff319' before making global git config changes
+2026-11-08T12:10:09.1130323Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-08T12:10:09.1134691Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/calcumint.com/calcumint.com
+2026-11-08T12:10:09.1182274Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-08T12:10:09.1227106Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-08T12:10:09.1574246Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-08T12:10:09.1603388Z http.https://github.com/.extraheader
+2026-11-08T12:10:09.1616963Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-08T12:10:09.1660040Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-08T12:10:09.1997775Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-08T12:10:09.2046062Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-08T12:10:09.2511478Z Cleaning up orphan processes
+2026-11-08T12:10:09.2899298Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

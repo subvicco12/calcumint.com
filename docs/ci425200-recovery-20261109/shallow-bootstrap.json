@@ -1,0 +1,32 @@
+{
+  "failedHead": "d5485440f7481e3220cc6eab234d5268843e1def",
+  "run": 42554346210,
+  "originalFailedStep": "PASS",
+  "newFailure": {
+    "job": "publication-factory",
+    "step": "Exact financial successor and first-two authenticated acceptance closure",
+    "test": "tests/acceptance-closure-20261108/converter-final-source.test.mjs:67",
+    "cause": "Shallow CI lacked the exact9c0b5dc comparison commit. Full local history masked missing bootstrap dependency."
+  },
+  "requiredRef": "9c0b5dc3e3aec18ed03fb6849562ebddc854db06",
+  "retainedPacket": {
+    "path": "docs/calculator-sprint-20261108/first-two-packet.json",
+    "gitBlob": "9df9d88c76524664f006759aee92d65de8504dd8",
+    "sha256": "d034b179e5255b18d0ec7b0fba5c80d57c92b7c638c95acb709c1162f11df363"
+  },
+  "correction": "Additional immutable retained packet provenance makes existing exact-ref bootstrap fetch9c. No verifier logic, historical bytes or workflows changed.",
+  "independentReview": "No important issues; exactref/blob/hash and unchanged older bindings verified",
+  "isolatedShallowReproduction": {
+    "passed": true,
+    "isolatedShallowRepository": true,
+    "preBootstrapComparisonMissing": true,
+    "postBootstrapComparisonAvailable": true,
+    "sourceRevisions": 26,
+    "fetched": 26,
+    "releaseHold": true,
+    "productionWrites": false
+  },
+  "sourceReviewGranted": false,
+  "productionChanges": false,
+  "releaseHold": true
+}

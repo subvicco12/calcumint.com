@@ -1,0 +1,51 @@
+CalcuMint | Calculation report
+
+
+Cloud Storage Cost Calculator
+Calculator: cloud-storage-cost-calculator | Engine version: 1
+Raw engine values: full numeric precision; no display rounding or sampled rows.
+Units appear only where supplied by the calculation or bound display metadata.
+Embedded Unicode glyphs are readable.
+Unsupported characters and controls use explicit Unicode escapes.
+Tagged PDF; PDF/UA conformance: UNVERIFIED.
+Text follows document order; charts include complete numeric text alternatives.
+
+
+INPUTS
+Storage (GB) [GB]
+input["storageGb"] = 1000
+Price per GB-month
+input["pricePerGbMonth"] = 0.02
+
+
+RESULTS
+Monthly storage cost [currency units]
+output["value"] = 20
+output["steps"][0] = "Cloud Storage Cost = 20"
+
+
+METHODOLOGY
+Deterministic calculation using the reviewed Technology & Computing engine.\u000aTechnic
+al calculation revision: technology.cloud-storage-cost@1\u000a\u000aProvider-neutral mon
+thly storage estimate using a user-supplied unit price.\u000aMonthly cost = storage GB ×
+ price per GB-month
+
+
+DECLARED FORMULAS
+cloud-storage-cost-calculator: Monthly cost = storage GB × price per GB-month
+Provider-neutral monthly storage estimate using a user-supplied unit price.
+
+
+SOURCES
+NIST SP 1181 — Unit Pricing Guide
+https://www.nist.gov/publications/nist-sp-1181-unit-pricing-guide-best-practice-approach
+-unit-pricing-2025-ed
+NIST documents unit pricing as expressing price relative to a unit quantity. These provi
+der-neutral estimators multiply a user-supplied quantity by a user-supplied unit price;
+provider tiers and allowances remain outside the calculation.
+
+
+
+
+Engine v1 | Page 1 of 1
+

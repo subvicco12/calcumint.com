@@ -1,0 +1,41 @@
+✔ full tooling exists before accepting metadata equality (1.599103ms)
+✔ complete fixture equality preserves exact duplicate-prefix migration identities (151.015179ms)
+✔ omissions, unknowns, duplicate identities, malformed and incompatible descriptors fail closed even against themselves (352.125665ms)
+✔ known metadata changes are unequal while section row order is irrelevant (206.883126ms)
+✔ export SQL is read only and CLI rejects missing input (49.590906ms)
+✔ reconciliation reports catalog drift without promoting unknown ledgers (50.165326ms)
+✔ CLI round-trip, drift, malformed input and ledger attachment preserve fail-closed exits (729.653419ms)
+✔ index validity, trigger enablement, function security and ledger effect changes are visible (358.641682ms)
+✔ column ACL/effective grants and PG17 membership SET/inherit options are part of the contract (0.738056ms)
+✔ schema privileges, sequence definitions/ACL/grants and declared enum/domain definitions are captured (0.332989ms)
+✔ unsupported present object classes cannot silently establish equality (4.843766ms)
+✔ attachment rejects malformed purported-complete ledgers before writing (70.357244ms)
+✔ hanging transport that ignores abort rejects and Node exits (144.4961ms)
+✔ hanging response body is bounded and Node exits (100.136443ms)
+✔ caller abort reason survives and reaches transport; Node exits (38.686317ms)
+✔ deadline exhaustion avoids transport entirely (1.799945ms)
+✔ remaining campaign budget caps request timeout and Node exits (96.034518ms)
+✔ already aborted Request preserves caller reason without transport (31.502678ms)
+✔ successful JSON response and empty 204 preserve status/headers (4.242858ms)
+✔ reject invalid lifetime 0 before Docker (2.564571ms)
+✔ reject invalid lifetime -1 before Docker (0.26269ms)
+✔ reject invalid lifetime 3601 before Docker (0.154338ms)
+✔ reject invalid lifetime 1.5 before Docker (0.229791ms)
+✔ reject invalid lifetime NaN before Docker (0.206353ms)
+✔ reject invalid lifetime Infinity before Docker (0.262491ms)
+✔ reject invalid lifetime 15 before Docker (0.373979ms)
+✔ reject invalid lifetime null before Docker (0.289699ms)
+✔ reject invalid lifetime true before Docker (0.330587ms)
+✔ reject invalid lifetime [object Object] before Docker (0.3629ms)
+✔ requires an artifact directory and rejects source destinations including symlinks (19.980803ms)
+✔ fresh valid receipt verifies and malformed bindings fail before source reads (735.230869ms)
+✔ the three exact independent task campaigns and receipt checks are mandatory and bounded (1.354605ms)
+✔ strict aggregate outcomes and bounded native acceptance budget remain intact (144.785088ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2060.325142

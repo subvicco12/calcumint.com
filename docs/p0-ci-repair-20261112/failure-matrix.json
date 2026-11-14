@@ -1,0 +1,106 @@
+{
+  "baselineHead": "aace2ac8fd1f6c98da7a4d63ada3cd3232199513",
+  "baselineCI": 43066406561,
+  "baselineMandatoryJobs": {
+    "checks": "SUCCESS",
+    "build": "SUCCESS",
+    "publication-factory": "SUCCESS",
+    "source-acceptance": "SUCCESS",
+    "full-product": "FAILURE",
+    "validate": "FAILURE"
+  },
+  "cases": [
+    {
+      "exactTestName": "historical mathematical closure remains exact with explicit Git-bound caller and financial successors",
+      "file": "tests/p0-decision-contracts/bindings.test.mjs",
+      "classification": "SOURCE_OBJECT_FETCH_COORDINATION_DEFECT",
+      "observedFailure": "Wrapped current-context source fetch failed, reported as project source mismatch",
+      "repair": "Remove adapter identity lock bypass; keep origin/ref/blob/hash/current-byte and negative checks unchanged"
+    },
+    {
+      "exactTestName": "tests/p0-decision-contracts/business-current-source.test.mjs",
+      "file": "tests/p0-decision-contracts/business-current-source.test.mjs",
+      "classification": "SOURCE_OBJECT_FETCH_COORDINATION_DEFECT",
+      "observedFailure": "Default verifier fetch collided with unlocked wrapped-adapter fetch",
+      "repair": "Remove adapter identity lock bypass; keep origin/ref/blob/hash/current-byte and negative checks unchanged"
+    },
+    {
+      "exactTestName": "src/app/business/api/page.tsx: caller successor verifies original and successor Git objects",
+      "file": "tests/p0-decision-contracts/caller-successor.test.mjs",
+      "classification": "SOURCE_OBJECT_FETCH_COORDINATION_DEFECT",
+      "observedFailure": "Wrapped current-context source fetch failed, reported as project source mismatch",
+      "repair": "Remove adapter identity lock bypass; keep origin/ref/blob/hash/current-byte and negative checks unchanged"
+    },
+    {
+      "exactTestName": "tests/p0-decision-contracts/next-cohort-runtime-successor.test.mjs",
+      "file": "tests/p0-decision-contracts/next-cohort-runtime-successor.test.mjs",
+      "classification": "SOURCE_OBJECT_FETCH_COORDINATION_DEFECT",
+      "observedFailure": "Concurrent shallow metadata mutation during object bootstrap",
+      "repair": "Remove adapter identity lock bypass; keep origin/ref/blob/hash/current-byte and negative checks unchanged"
+    },
+    {
+      "exactTestName": "tests/p0-decision-contracts/next-five-runtime-successor.test.mjs",
+      "file": "tests/p0-decision-contracts/next-five-runtime-successor.test.mjs",
+      "classification": "SOURCE_OBJECT_FETCH_COORDINATION_DEFECT",
+      "observedFailure": "Concurrent shallow metadata mutation during object bootstrap",
+      "repair": "Remove adapter identity lock bypass; keep origin/ref/blob/hash/current-byte and negative checks unchanged"
+    }
+  ],
+  "reproduction": {
+    "preparedDepthOneBaseline": {
+      "tests": 59,
+      "passed": 54,
+      "failed": 5,
+      "log": "cold-prepared-original-p0.log"
+    },
+    "incompletePreambleAttempt": {
+      "tests": 205,
+      "passed": 196,
+      "failed": 9,
+      "log": "cold-original-p0.log",
+      "limit": "Missing earlier workflow source prefetch; not treated as faithful CI reproduction"
+    },
+    "adapterIntegrationRed": {
+      "passed": 4,
+      "failed": 1,
+      "message": "Wrapped source adapter must execute inside the actual common-directory lock"
+    },
+    "adapterIntegrationGreen": {
+      "passed": 5,
+      "failed": 0
+    },
+    "warmCorrectedP0": {
+      "passed": 205,
+      "failed": 0,
+      "sourceHead": "95cfd96ea4c1f2a8ce9978d98c4171232ca4dcaf"
+    },
+    "coldCorrectedP0": {
+      "passed": 205,
+      "failed": 0,
+      "durationMilliseconds": 53839.65076,
+      "sourceHead": "95cfd96ea4c1f2a8ce9978d98c4171232ca4dcaf",
+      "limit": "Unpublished exact code13d33 preloaded locally; governing origin/historical objects fetched normally in depth-one fixture"
+    }
+  },
+  "secondDemonstratedDefect": {
+    "file": "tests/owner-p0/adoption/acceptance.mjs",
+    "error": "PGRST202 after OpenAPI visibility",
+    "repair": "Retain original OpenAPI check and five-second deadline; actual authenticated null-organization probe retries only PGRST202 and must return P0001 Invalid invitation details before proceeding; full business state unchanged; per-request abort bounded by remaining time",
+    "mutatingOperationsRetried": false,
+    "sqlChanged": false,
+    "genuineRepairedAcceptance": "PASS"
+  },
+  "admission": {
+    "lockSourceCommit": "13d33b57ce2575768e88f751ae1d5abd11404ed6",
+    "nativeReadinessCommit": "f4fa576cb070a31a3408f46c267c13b1e7b1f4eb",
+    "qualifiedCandidate": "fe88a3d327fd0e3a0a3ca3299f285c7b123150a5",
+    "additiveCaptures": [
+      30,
+      31
+    ],
+    "oldCapture29Retained": true,
+    "historicalHashesChanged": false,
+    "workflowChanged": false,
+    "timeoutsRaised": false
+  }
+}

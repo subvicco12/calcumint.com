@@ -1,0 +1,135 @@
+{
+  "kind": "MILESTONE60_CONVERSION_ENGINEERING_CANDIDATES_NOT_COMPLETIONS",
+  "priorConfirmedExcluded": [
+    423,
+    425,
+    427,
+    428,
+    430,
+    431,
+    432,
+    433,
+    434,
+    438,
+    440
+  ],
+  "rows": [
+    {
+      "catalogId": 429,
+      "engineId": "conversion.pressure",
+      "slug": "pressure-converter",
+      "version": 1,
+      "registered": true,
+      "scope": "Fixed scalar pressure; legacy psi factor relative error under 7e-14; no gauge offset.",
+      "status": "BOUNDED_IMPLEMENTATION_AND_LOCAL_TESTS_PASS",
+      "sourceApplicability": "NOT_HUMAN_ADOPTED",
+      "remaining": [
+        "Individual browser/download/persistence/Business evidence and exact-head CI qualification; local tests do not establish these.",
+        "Canonical scope/source acceptance and certification remain pending."
+      ]
+    },
+    {
+      "catalogId": 435,
+      "engineId": "conversion.fuel-economy",
+      "slug": "fuel-economy-converter",
+      "version": 1,
+      "registered": false,
+      "scope": "Exact positive economy/consumption rational conversion, 34 significant digits half-even, US/imperial distinct.",
+      "status": "BOUNDED_IMPLEMENTATION_AND_LOCAL_TESTS_PASS",
+      "sourceApplicability": "NOT_HUMAN_ADOPTED",
+      "remaining": [
+        "Individual browser/download/persistence/Business evidence and exact-head CI qualification; local tests do not establish these.",
+        "Canonical scope/source acceptance and certification remain pending."
+      ]
+    },
+    {
+      "catalogId": 436,
+      "engineId": "conversion.cooking-measurement",
+      "slug": "cooking-measurement-converter",
+      "version": 1,
+      "registered": true,
+      "scope": "Approximate US household liquid capacities; individual factor error under4e-7; pair error under8e-7. No ingredient mass.",
+      "status": "BOUNDED_IMPLEMENTATION_AND_LOCAL_TESTS_PASS",
+      "sourceApplicability": "NOT_HUMAN_ADOPTED",
+      "remaining": [
+        "Individual browser/download/persistence/Business evidence and exact-head CI qualification; local tests do not establish these.",
+        "Canonical scope/source acceptance and certification remain pending."
+      ]
+    },
+    {
+      "catalogId": 437,
+      "engineId": "conversion.density",
+      "slug": "density-converter",
+      "version": 1,
+      "registered": true,
+      "scope": "Fixed scalar density; legacy pound/cubic-foot relative error under9e-14. No material model.",
+      "status": "BOUNDED_IMPLEMENTATION_AND_LOCAL_TESTS_PASS",
+      "sourceApplicability": "NOT_HUMAN_ADOPTED",
+      "remaining": [
+        "Individual browser/download/persistence/Business evidence and exact-head CI qualification; local tests do not establish these.",
+        "Canonical scope/source acceptance and certification remain pending."
+      ]
+    },
+    {
+      "catalogId": 439,
+      "engineId": "conversion.torque",
+      "slug": "torque-converter",
+      "version": 1,
+      "registered": true,
+      "scope": "Fixed scalar torque; legacy pound-force foot relative error under1e-15. No calibration.",
+      "status": "BOUNDED_IMPLEMENTATION_AND_LOCAL_TESTS_PASS",
+      "sourceApplicability": "NOT_HUMAN_ADOPTED",
+      "remaining": [
+        "Individual browser/download/persistence/Business evidence and exact-head CI qualification; local tests do not establish these.",
+        "Canonical scope/source acceptance and certification remain pending."
+      ]
+    },
+    {
+      "catalogId": 441,
+      "engineId": "conversion.digital-resolution",
+      "slug": "digital-resolution-converter",
+      "version": 1,
+      "registered": false,
+      "scope": "CSS density only, exact rational, 34 significant digits. Retained W3C full-text source not established.",
+      "status": "SOURCE_BLOCKED",
+      "sourceApplicability": "NOT_HUMAN_ADOPTED",
+      "remaining": [
+        "Individual browser/download/persistence/Business evidence and exact-head CI qualification; local tests do not establish these.",
+        "Canonical scope/source acceptance and certification remain pending.",
+        "Retain authoritative W3C CSS resolution full text."
+      ],
+      "sourceUpdate": "Official W3C retained source now available in sources/w3c-css-values-4-manifest.json; original candidate assessment above remains historical. No cohort expansion or full delivery established."
+    }
+  ],
+  "source": {
+    "path": "docs/first-live-closure-20261108/source/ucum-v2.2-native-source.zip",
+    "sha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+    "member": "ucum-essence.xml",
+    "relationships": {
+      "429": "[psi]=[lbf_av]/[in_i]2; atm=101325 Pa; bar=100000 Pa",
+      "435": "[mi_i]=5280 [ft_i]; [gal_us]=231 [in_i]3; [gal_br]=4.54609 l",
+      "436": "[tsp_us]=[tbs_us]/3; [tbs_us]=[foz_us]/2; [cup_us]=16 [tbs_us]; [pt_us]=[qt_us]/2; [qt_us]=[gal_us]/4",
+      "437": "[lb_av]=7000 [gr]; [gr]=64.79891 mg; [ft_i]=12[in_i]; [in_i]=2.54 cm",
+      "439": "[lbf_av]=[lb_av]\u00d79.80665 m/s2; torque derives from force \u00d7 international length"
+    }
+  },
+  "residual424": {
+    "status": "SOURCE_ESTABLISHED_INTERNATIONAL_ACRE_MAPPING",
+    "evidence": "docs/milestone60-20261113/sources/nist-international-acre-manifest.json",
+    "fact": "NIST explicitly maps acre43560internationalft\u00b2 to4046.8564224m\u00b2 exact; full424delivery and formal acceptance remain pending."
+  },
+  "verification": {
+    "test": "src/lib/calculator-factory/completion/conversion-next.test.ts",
+    "tests": 18,
+    "allDirectedPairs": 149,
+    "pairInputs": [
+      "-2.5",
+      "0",
+      "1",
+      "17.125"
+    ],
+    "historicalEnginesChanged": false
+  },
+  "canonicalAccepted": false,
+  "publicationEligible": false
+}

@@ -1,0 +1,113 @@
+{
+  "evidenceRevision": "private.physics-scaled.20261112.1",
+  "status": "PRIVATE_BOUNDED_ENGINEERING_ONLY",
+  "baseCommit": "9ad7e75641322696f75a018e53513c8158c39870",
+  "preservedHistory": {
+    "worktree": "/workspace/work/physics-five-20261111",
+    "commit": "7b7d9880f8a688848fe8168d88628551dff7be9d",
+    "artifacts": "/workspace/artifacts/physics-five-20261111",
+    "journeys": 15,
+    "nativeExports": 50,
+    "successorCoverage": false
+  },
+  "candidates": [
+    {
+      "catalogId": 322,
+      "engineId": "physics.capacitance",
+      "version": 1,
+      "canonicalUnit": null,
+      "status": "BLOCKED_CANONICAL_ADOPTION"
+    },
+    {
+      "catalogId": 323,
+      "engineId": "private.physics-scaled.coulomb-force",
+      "version": 1,
+      "canonicalUnit": null,
+      "status": "BLOCKED_CANONICAL_ADOPTION",
+      "slug": "private-physics-scaled-coulomb-force",
+      "privateRevision": "private.physics-scaled.20261112.1",
+      "historicalEngine": {
+        "id": "physics.coulomb-force",
+        "slug": "coulomb-force-calculator",
+        "version": 1
+      },
+      "registered": false
+    },
+    {
+      "catalogId": 324,
+      "engineId": "private.physics-scaled.projectile-range",
+      "version": 1,
+      "canonicalUnit": null,
+      "status": "BLOCKED_CANONICAL_ADOPTION",
+      "slug": "private-physics-scaled-projectile-range",
+      "privateRevision": "private.physics-scaled.20261112.1",
+      "historicalEngine": {
+        "id": "physics.projectile-motion",
+        "slug": "projectile-motion-calculator",
+        "version": 1
+      },
+      "registered": false
+    },
+    {
+      "catalogId": 325,
+      "engineId": "physics.free-fall",
+      "version": 1,
+      "canonicalUnit": null,
+      "status": "BLOCKED_CANONICAL_ADOPTION"
+    },
+    {
+      "catalogId": 327,
+      "engineId": "physics.angular-velocity",
+      "version": 1,
+      "canonicalUnit": null,
+      "status": "BLOCKED_CANONICAL_ADOPTION"
+    }
+  ],
+  "sourceEvidence": [
+    "src/calculators/physics/catalog-batch-3.ts",
+    "docs/physics-five-20261112/engineering-gap-review.md",
+    "docs/blueprint-reconciliation/blueprint-to-540.json"
+  ],
+  "numericalWitnesses": [
+    {
+      "catalogId": 323,
+      "input": {
+        "charge1": 1e-200,
+        "charge2": 1e-200,
+        "distance": 1e-100
+      },
+      "preservedV1": 0,
+      "privateExpected": 8.9875517923e-191
+    },
+    {
+      "catalogId": 324,
+      "input": {
+        "speed": 1e-200,
+        "angle": 45,
+        "gravity": 1e-300
+      },
+      "preservedV1": 0,
+      "privateExpected": 1e-100
+    }
+  ],
+  "verification": {
+    "runtime": "Node 22.23.4",
+    "command": "node node_modules/vitest/vitest.mjs run src/lib/calculator-factory/cohorts/physics.test.ts src/lib/calculator-factory/experimental/physics-scaled.test.ts --maxWorkers=1",
+    "files": 2,
+    "passed": 36,
+    "independentOracle": "Literal analytical vectors and BigInt exact decimal rational reduction; no model-generated expected values"
+  },
+  "limitations": [
+    "No canonical unit metadata or physical source approval inferred",
+    "No public version, registry, routes, historical engines, ledgers, certification or publication changes",
+    "No full-domain accuracy proof; floating trigonometric endpoint residual preserved",
+    "Unrepresentable nonzero final products rejected; representable subnormals accepted",
+    "Existing browser/export evidence does not cover this private revision"
+  ],
+  "blockers": [
+    "CANONICAL_UNITS_AND_SCOPE_UNAPPROVED",
+    "SOURCE_APPLICABILITY_AND_COMPETENT_REVIEW_REQUIRED",
+    "FULL_DOMAIN_ACCEPTANCE_REQUIRED",
+    "SUCCESSOR_PRODUCT_JOURNEY_AND_EXPORT_ACCEPTANCE_REQUIRED"
+  ]
+}

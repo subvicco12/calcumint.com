@@ -1,0 +1,38 @@
+import assert from 'node:assert/strict';
+import {randomUUID,createHash} from 'node:crypto';
+import {readFile,writeFile,mkdir,mkdtemp,rm} from 'node:fs/promises';
+import {build} from 'esbuild';
+import {createClient} from '@supabase/supabase-js';
+import {startGoTrueFixture} from '../gotrue-runtime/fixture.mjs';
+import {initializeFullSchema} from '../gotrue-full-schema/schema.mjs';
+for(const key of ['DATABASE_URL','SUPABASE_DB_URL','PGHOST','PGSERVICE','PGDATABASE','PGPORT','PGUSER','PGPASSWORD'])assert(!process.env[key],'External selector rejected: '+key);
+assert.equal(process.argv.length,2,'No connection arguments accepted');
+const directory=process.env.TECHNOLOGY_PLAN_REPORT||'/tmp/calcumint-technology-plan-isolation';await mkdir(directory,{recursive:true});
+const temporary=await mkdtemp('/tmp/technology-plan-'),hash=x=>createHash('sha256').update(x).digest('hex');let db;
+const ok=async query=>{const r=await query;assert.equal(r.error,null,JSON.stringify(r.error));return r.data;};
+try{
+ const bundle=await build({entryPoints:['tests/critical440-auth/adapter.ts'],bundle:true,platform:'node',format:'esm',outfile:temporary+'/adapter.mjs',metafile:true});const math=await import(temporary+'/adapter.mjs');
+ db=await startGoTrueFixture({initializeSchema:initializeFullSchema});
+ const sdk=createClient(db.url,db.anonKey,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}});
+ const signed=await ok(sdk.auth.signUp({email:randomUUID()+'@example.invalid',password:'Fixture-'+randomUUID()})),id=signed.user.id;
+ await db.sql("UPDATE public.profiles SET plan='pro' WHERE id='"+id+"';");
+ const project=await ok(sdk.from('calculation_projects').insert({user_id:id,name:'Owned plan isolation'}).select().single());
+ await db.sql("UPDATE public.profiles SET plan='free' WHERE id='"+id+"';");
+ const snapshot=math.generate(440,{value:1,fromUnit:'khz',toUnit:'hz'}),historyId=randomUUID();
+ await math.saveHistoryAtomically(sdk,historyId,snapshot,id);
+ const args={p_expected_owner_id:id,p_request_id:randomUUID(),p_project_id:project.id,p_history_id:historyId,p_name:'Same owner and request'};
+ const ownership=await db.sql("SELECT (SELECT user_id FROM public.calculation_projects WHERE id='"+project.id+"')=(SELECT user_id FROM public.calculation_history WHERE id='"+historyId+"');");assert.equal(ownership,'t');
+ const free=await sdk.rpc('save_project_scenario_atomic',args);assert(free.error,'Free unexpectedly succeeded: stop, plan gate not established');
+ assert.equal(await db.sql("SELECT count(*) FROM public.saved_scenarios WHERE id='"+args.p_request_id+"'"),'0');
+ assert.deepEqual(math.readPersistedCalculationSnapshot(await ok(sdk.from('calculation_history').select('*').eq('id',historyId).single())),snapshot);
+ console.log('PASS Free owned project/history denied with zero scenarios');
+ await db.sql("UPDATE public.profiles SET plan='pro' WHERE id='"+id+"';");
+ const pro=await sdk.rpc('save_project_scenario_atomic',args);assert.equal(pro.error,null,JSON.stringify(pro.error));assert.equal(pro.data,args.p_request_id);
+ assert.equal(await db.sql("SELECT count(*) FROM public.saved_scenarios WHERE id='"+args.p_request_id+"'"),'1');
+ assert.deepEqual(math.verifyRegisteredSnapshot(math.readPersistedCalculationSnapshot(await ok(sdk.from('saved_scenarios').select('*').eq('id',args.p_request_id).single()))).snapshot,snapshot);
+ console.log('PASS Same JWT/user/project/history/request succeeds after only fixture plan changes to Pro');
+ const files=[...new Set(['tests/execution-recovery-20261109/technology-plan-isolation.mjs','tests/gotrue-full-schema/schema.mjs','tests/gotrue-runtime/fixture.mjs',...Object.keys(bundle.metafile.inputs)])],sourceHashes={};
+ for(const path of files)sourceHashes[path]=hash(await readFile(path));
+ const rpcDefinition=await db.sql("SELECT pg_get_functiondef(p.oid) FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname='public' AND p.proname='save_project_scenario_atomic' AND p.prokind='f' ORDER BY p.oid;");
+ await writeFile(directory+'/receipt.json',JSON.stringify({passed:true,observedAt:new Date().toISOString(),freeDenialCode:free.error.code,freeScenarioRows:0,proScenarioRows:1,sameJwtUserProjectHistoryArgumentsAndRequestId:true,changedFactor:'Privileged isolated profiles.plan free to pro only',sourceHashes,installedRpcDefinitionSha256:hash(rpcDefinition),snapshotSha256:hash(JSON.stringify(snapshot)),provenance:db.provenance,productionWrites:false,limitations:['Shared scenario entitlement gate isolated on one exact existing frequency snapshot, not another19-calculator run','Fixture-only entitlement setup; no production downgrade policy or billing-provider acceptance','Original nineteen Free attempts remain ownership-or-plan denials; new shared-gate causal proof supplements rather than rewrites them']},null,2)+'\n');
+}finally{await db?.close();await rm(temporary,{recursive:true,force:true});}

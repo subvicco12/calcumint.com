@@ -1,0 +1,10 @@
+file:///workspace/work/product-completion-20261108/tests/acceptance-closure-20261108/receipt-source-path.mjs:35
+  if(binding.sha256!==historical&&binding.sha256!==sourceHash(bytes))throw Error('Captured analysis historical claim differs');
+                                                                           ^
+
+Error: Captured analysis historical claim differs
+    at verifyCapturedSource (file:///workspace/work/product-completion-20261108/tests/acceptance-closure-20261108/receipt-source-path.mjs:35:76)
+    at async verifyFiveBatchEvidence (file:///workspace/work/product-completion-20261108/tests/five-full-contract-20261109/verify-batch.mjs:7:57)
+    at async file:///workspace/work/product-completion-20261108/tests/five-full-contract-20261109/verify-batch.mjs:18:80
+
+Node.js v24.19.0

@@ -2,20 +2,26 @@
 import {useState} from 'react';
 import inventory from '../../docs/cloud-batch07/discovery.json';
 import {businessContracts,businessExamples,exportBusinessContract,importBusinessContract} from '../calculators/business-contracts';
+import {parsePublicationFactoryInput} from '../lib/publication-factory-contracts-input';
+import {parseFinalPrivateSnapshotText} from '../lib/final-private-snapshot-text';
+import {GuidedBusinessWorkspace} from './specialist-general-20261110-business-input';
+import {supportsGuidedBusiness} from '../lib/specialist-general-20261110-business-input';
 type Snapshot=ReturnType<typeof exportBusinessContract>;
 const json=(v:unknown)=>JSON.stringify(v,null,2);
 const matches=(r:{masterId:number;title:string;domain:string},q:string)=>/^\d+$/.test(q.trim())?String(r.masterId)===q.trim():`${r.masterId} ${r.title} ${r.domain}`.toLowerCase().includes(q.trim().toLowerCase());
 export function CatalogEngineeringReview(){
- const [id,setId]=useState(139),[search,setSearch]=useState(''),[filter,setFilter]=useState('ALL'),[plan,setPlan]=useState<'free'|'pro'|'business'>('free');
+ const [id,setId]=useState(139),[search,setSearch]=useState(''),[filter,setFilter]=useState('ALL'),[plan,setPlan]=useState<'free'|'pro'|'business'>('free'),[guidedRevision,setGuidedRevision]=useState(0);
  const [input,setInput]=useState(json(businessExamples[139])),[snapshot,setSnapshot]=useState<Snapshot|null>(null),[history,setHistory]=useState<readonly Snapshot[]>([]),[error,setError]=useState(''),[importText,setImportText]=useState('');
  const rows=inventory.rows.filter(r=>matches(r,search)&&(filter==='ALL'||r.implementationClass===filter));
  const row=inventory.rows.find(r=>r.masterId===id),definition=businessContracts.find(d=>d.id===`private.business.${id}`);
  const invalidate=()=>{setSnapshot(null);setError('');};
- function choose(n:number){setId(n);setInput(businessExamples[n]?json(businessExamples[n]):'');invalidate();}
+ let guidedInput:Record<string,unknown>|null=null;
+ if(supportsGuidedBusiness(id)&&input.length<=1_000_000){try{const parsed=parsePublicationFactoryInput(input);if(parsed&&typeof parsed==='object'&&!Array.isArray(parsed))guidedInput=parsed as Record<string,unknown>;}catch{/* Invalid JSON remains editable; it cannot seed a guided calculation. */}}
+ function choose(n:number){setGuidedRevision(n=>n+1);setId(n);setInput(businessExamples[n]?json(businessExamples[n]):'');invalidate();}
  function find(q:string,c=filter){setSearch(q);setFilter(c);const visible=inventory.rows.filter(r=>matches(r,q)&&(c==='ALL'||r.implementationClass===c));if(!visible.some(r=>r.masterId===id))choose(visible[0]?.masterId??-1);}
- function calculate(){invalidate();try{if(input.length>1_000_000)throw Error('Scenario size limit');setSnapshot(exportBusinessContract(id,JSON.parse(input),plan));}catch{setError('Check the required supplied business scope, units, denominators, membership, identities and numerical bounds.');}}
- function restore(s:Snapshot){setSearch('');setFilter('ALL');setId(s.masterId);setInput(json(s.calculation.input));setSnapshot(s);setError('');}
- function replay(){invalidate();try{if(importText.length>8_000_000)throw Error('Snapshot size limit');restore(importBusinessContract(JSON.parse(importText)));}catch{setError('Snapshot must match its selected identity, evidence, dependency versions and actual engine output.');}}
+ function calculate(){invalidate();try{if(input.length>1_000_000)throw Error('Scenario size limit');setSnapshot(exportBusinessContract(id,parsePublicationFactoryInput(input),plan));}catch{setError('Check the required supplied business scope, units, denominators, membership, identities and numerical bounds.');}}
+ function restore(s:Snapshot){setGuidedRevision(n=>n+1);setSearch('');setFilter('ALL');setId(s.masterId);setInput(json(s.calculation.input));setSnapshot(s);setError('');}
+ function replay(){invalidate();try{restore(importBusinessContract(parseFinalPrivateSnapshotText(importText)));}catch{setError('Snapshot must match its selected identity, evidence, dependency versions and actual engine output.');}}
  function download(){if(!snapshot)return;const url=URL.createObjectURL(new Blob([json(snapshot)+'\n'],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=`private-business-${snapshot.masterId}-v1.json`;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
  const headline=(s:Snapshot)=>s.calculation.output.value===null?'Undefined for zero base':String(s.calculation.output.value);
  return <main style={{maxWidth:1000,margin:'auto',padding:16,fontFamily:'system-ui',overflowWrap:'anywhere'}}>
@@ -31,6 +37,7 @@ export function CatalogEngineeringReview(){
   </>}
   {definition&&<><h3>Private scoped methodology and units</h3><p>{definition.formulas[0].expression}</p><p>{definition.formulas[0].description}</p><details><summary>Method/source references</summary><ul>{definition.sources.map((s,i)=><li key={i}>{s.url?<a href={s.url}>{s.label}</a>:s.label}<p>{s.note}</p></li>)}</ul></details>
    <label htmlFor="business-plan">Review plan</label>{' '}<select id="business-plan" value={plan} onChange={e=>setPlan(e.target.value as typeof plan)} style={{minHeight:44}}><option value="free">Free</option><option value="pro">Pro</option><option value="business">Business</option></select><p>Same mathematical engine and precision for all plans. Review selection does not prove subscription-provider acceptance.</p>
+   {supportsGuidedBusiness(id)&&guidedInput&&<GuidedBusinessWorkspace key={`${id}:${guidedRevision}:${input}`} id={id} input={guidedInput} plan={plan} onInvalidate={invalidate} onCalculate={saved=>{setInput(json(saved.calculation.input));setSnapshot(saved);setError('');}}/>}
    <label htmlFor="business-json">Scenario JSON</label><br/><textarea id="business-json" rows={13} value={input} style={{width:'100%',boxSizing:'border-box',fontSize:16}} onChange={e=>{setInput(e.target.value);invalidate();}}/>
    <div style={{display:'flex',gap:8,flexWrap:'wrap',marginBlock:12}}><button type="button" onClick={calculate}>Calculate</button><button type="button" onClick={()=>choose(id)}>Load example</button></div>
   </>}

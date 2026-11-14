@@ -1,0 +1,166 @@
+{
+  "kind": "RELEASE_HELD_REVIEW_MANIFEST_NOT_ACTIVATION",
+  "releaseHold": true,
+  "activationAuthorized": false,
+  "productionWrites": false,
+  "certificationGranted": false,
+  "publicationEligible": false,
+  "authorizedBatch": [],
+  "counts": {
+    "confirmedEngineering": 41,
+    "conditionalEngineering": 20,
+    "conditionalUnion": 61,
+    "newCertified": 0,
+    "newPublicationEligible": 0
+  },
+  "applicationCommit": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+  "lastTestedWholeSuiteCommit": "f00acbfdb882688eb1d0c22bc68305eb4984ac41",
+  "finalQualifiedCommit": null,
+  "finalExactHeadGatesPassed": false,
+  "pullRequest": "https://github.com/subvicco12/calcumint.com/pull/1538",
+  "remotePRBaselineAtHandoff": "2d5d105892134f8af46fc2a02edd5932c431b845",
+  "recoveryBranch": "engineering/completion-wave-source-20261113",
+  "deliveryEvidence": [
+    {
+      "kind": "SAFE_ZIP_READBACK_VERIFIED",
+      "url": "https://drive.google.com/file/d/1y2TFSFgLqXp8gimcHIJmtQ_5aZ45OYwQ/view",
+      "bytes": 399566,
+      "sha256": "7c0fff625868ccf5f4329bbadd7a45a62cbde8c4bfa731e62b9b94b43dfe5059"
+    },
+    {
+      "kind": "INTERIM_CHECKPOINT_READBACK_VERIFIED_NOT_FINAL",
+      "url": "https://drive.google.com/file/d/1hxAnpUfzyJPdEUQwsdWdAJsEUmR_yUsB/view",
+      "bytes": 2052,
+      "sha256": "7bf115199947074577979c0d04319c8bd3399fbc278ebcf9dabd1ad44238073e"
+    }
+  ],
+  "operatorControlsUnsigned": 10,
+  "heldPublicationRPCs": 6,
+  "conditionalFirstPilot": {
+    "primary": {
+      "catalogId": 440,
+      "version": 1,
+      "accepted": false,
+      "authorized": false
+    },
+    "fallback": {
+      "catalogId": 432,
+      "version": 1,
+      "accepted": false,
+      "authorized": false
+    },
+    "optionalLowerRiskAlternative": {
+      "catalogId": 218,
+      "version": 1,
+      "accepted": false,
+      "authorized": false
+    },
+    "newPublicationEligibility": 0
+  },
+  "evidenceScope": "Actual disposable fixtures and retained scoped browser/Pro receipts; no production equivalence or human source/QA approval.",
+  "pending": "Final integrated SHA freeze, actual cold qualification and mandatory exact-head hosted unfiltered regression/all-five jobs plus aggregate.",
+  "sourceQualifiedAPPref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
+  "finalDeliverySHA": null,
+  "selfReferentialCommitHashEmbedded": false,
+  "externalFinalDeliveryRecordPending": true,
+  "qualifiedRuntimeAPPref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+  "APP2BrowserByteEquivalence": {
+    "receipt": "/workspace/artifacts/milestone60-20261113/clean-equivalence-APP2-review.json",
+    "sha256": "afc8e92d0892d2eedbaff4a77eef09b46d17bb7fc0f3f0d2aa8593fb9eaba7c9",
+    "sourcePinsCompared": 2061,
+    "byteIdenticalPins": 2058,
+    "testOnlyExceptionPaths": [
+      "src/lib/calculator-factory/completion/conversion-next.test.ts",
+      "src/lib/calculator-factory/completion/milestone-source.test.ts",
+      "src/lib/completion-wave-20261113/sql-successor.test.ts"
+    ],
+    "runtimeOrEngineChanges": false,
+    "durableRepositoryReceipt": "docs/milestone60-20261113/operations/CLEAN-APP2-EQUIVALENCE.json",
+    "durableReceiptSHA256": "afc8e92d0892d2eedbaff4a77eef09b46d17bb7fc0f3f0d2aa8593fb9eaba7c9"
+  },
+  "sourceAdmission": {
+    "APP2": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
+    "G5": "9c1a6cae1dd5b8b922cbb23585956b69e5e57d14",
+    "authorityCommit": "49cac9941e81646aca6ef4a7e70acd7374e15d92",
+    "concreteSelfPinCommit": "b5d9c4a53c02ae68e4eaebf59fdc6b20adbf22e1",
+    "capture65SHA256": "ce3894d2ceab616e21a7f424867c128bbdd981583a5b7c2070131ac55a74875c",
+    "authority75SHA256": "7df9a80f58991d4cbd4b68758de242e62161088e01878ce318ed0273eca76691",
+    "retainedCanonicalCaptureAndPolicyUnchanged": true,
+    "retained66AuthorityRecordsUnchanged": true,
+    "reviewedSourcePaths": 22,
+    "newAuthorityRecords": 75,
+    "safeBootstrapRefs": 7,
+    "installed": true,
+    "focusedAndWholeSuiteRerunsPending": true
+  },
+  "latestWholeSuiteStatus": {
+    "commit": "49810cb675b0827fcc2d7582ffcd398ba3b46bae",
+    "passed": false,
+    "testsPassed": 9860,
+    "testsFailed": 1,
+    "testsSkipped": 4,
+    "failure": "Unchanged5000ms API source-proof deadline",
+    "G6ImmutableHintBenefitVerified": true,
+    "historicalFailedRunUnchanged": true
+  },
+  "immutablePrefetchObservedResult": {
+    "receipt": "/workspace/artifacts/milestone60-20261113/source/pure-prefetch-original-api-comparison.json",
+    "sha256": "289fcfd49045db1b40eb8af4d9810822854d3e88b7ba2c132c658997798b4c12",
+    "qualifiedSourceHead": "4fd05e0b4b9c005cef1704cef888133580f8c2cf",
+    "passed": true,
+    "testsPassed": 6,
+    "testsFailed": 0,
+    "APICaseMilliseconds": 4128,
+    "unchangedAPIDeadlineMilliseconds": 5000,
+    "marginMilliseconds": 872,
+    "observedReductionMilliseconds": 975,
+    "scope": "One original unmodified isolated API-file run; no full-suite or production SLA conclusion.",
+    "proofLogicOrMutableTargetReadCacheChanged": false,
+    "timeoutOrAssertionsChanged": false
+  },
+  "activeSourceAdmission": {
+    "APP2": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
+    "G6": "f35d489f32f72b465fdf3f548e918bc89a9a2350",
+    "authorityCommit": "36434788baf38632ca6e04d9b8867dc92e7ef1b8",
+    "concreteSelfPinCommit": "4fd05e0b4b9c005cef1704cef888133580f8c2cf",
+    "capture66SHA256": "d7ef794bebb51be6d27cd17432db51ee13fd73d19c47ab9f6e53740de06a4a4b",
+    "authority79SHA256": "6d7592f29200b26a498c333b0876452fe9a305660d9caf245b72243ac9d232e2",
+    "authority79GitBlob": "b17ad92955b8f15479bc5a6c0c80aef10f26c623",
+    "newAuthorityRecords": 79,
+    "retainedAuthorityRecords": [
+      75,
+      66,
+      148
+    ],
+    "sourcePaths": 22,
+    "safeAddedBootstrapRefSet": 9,
+    "installed": true,
+    "immutablePrefetchOnly": true,
+    "currentTargetProofsAndDeadlinesUnchanged": true
+  },
+  "localFocusedQualification": {
+    "commit": "4fd05e0b4b9c005cef1704cef888133580f8c2cf",
+    "passed": true,
+    "outerCases": 13,
+    "outerCasesFailed": 0,
+    "outerCasesSkipped": 0,
+    "durationSeconds": 253.85,
+    "coverage": [
+      "Retained source115 and consumer/nomination/tamper/refusal bridge",
+      "Authenticated receipt98 with original historical claims and exact reviewed successors",
+      "Original mandatory22 source/cold cases plus2 additive literal-preservation cases",
+      "Exact retained25 and current44 held SQL test5"
+    ],
+    "log": {
+      "path": "/workspace/artifacts/milestone60-20261113/source/final-prefetch-all-source.log",
+      "sha256": "df6734b4e52cbd1b5bd70849a21b51cbecd4c79652e32951742f89d92790bfd4"
+    }
+  },
+  "localFocusedQualifiedCommit": "4fd05e0b4b9c005cef1704cef888133580f8c2cf",
+  "finalUnfilteredQualification": {
+    "status": "PENDING_MANDATORY_EXACT_HEAD_HOSTED_CI",
+    "localFullSuitePassClaimed": false,
+    "previousFailedUnfilteredAttemptsRetained": true,
+    "required": "Run unfiltered unit regression in mandatory hosted CI at the final integrated SHA; require all five jobs and aggregate success before promoting20 conditional."
+  }
+}

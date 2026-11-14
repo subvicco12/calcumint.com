@@ -1,0 +1,100 @@
+{
+  "status": "PASS",
+  "head": "f797954a91c206085aea8a9c284bde11e466ef5b",
+  "startedAt": "2026-11-11T04:29:52.995519+00:00",
+  "checks": [
+    {
+      "name": "current-source",
+      "command": [
+        "node",
+        "--input-type=module",
+        "-e",
+        "import{verifyParallelSource}from'./tests/parallel-source-20261110/core.mjs';if(verifyParallelSource()!==true)process.exit(1);console.log('Current source and bounded fetch coordination PASS')"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/p0-race-correction/current-source.log",
+      "exitCode": 0,
+      "durationSeconds": 6.841740374999972,
+      "sha256": "604d8c95eef85968d063488aad4851ce37d7052ccd36d80b316e5c1887a748fa",
+      "retainedLog": "docs/recovery-20261111/ci-repair/p0-race-correction/current-source.log"
+    },
+    {
+      "name": "actual-parallel-p0-group",
+      "command": [
+        "node",
+        "--test",
+        "tests/p0-decision-contracts/adoption.test.mjs",
+        "tests/p0-decision-contracts/bindings.test.mjs",
+        "tests/p0-decision-contracts/business-current-source.test.mjs",
+        "tests/p0-decision-contracts/caller-successor.test.mjs",
+        "tests/p0-decision-contracts/membership-model.test.mjs",
+        "tests/p0-decision-contracts/next-cohort-runtime-successor.test.mjs",
+        "tests/p0-decision-contracts/next-five-runtime-successor.test.mjs",
+        "tests/owner-p0/authorization.test.mjs",
+        "tests/owner-p0/privileges/contract.test.mjs",
+        "tests/owner-p0/adoption/bundle.test.mjs",
+        "tests/owner-p0/adoption/source-preflight.test.mjs"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/p0-race-correction/actual-parallel-p0-group.log",
+      "exitCode": 0,
+      "durationSeconds": 21.022515740000017,
+      "sha256": "3953cb9927c76c8d14db8705f91fdb8e068c1e12f3f3dc8484f1c3ac48197f11",
+      "retainedLog": "docs/recovery-20261111/ci-repair/p0-race-correction/actual-parallel-p0-group.log"
+    },
+    {
+      "name": "focused",
+      "command": [
+        "npx",
+        "vitest",
+        "run",
+        "src/lib/parallel-source-evidence.test.ts",
+        "src/lib/parallel-five-auth-evidence.test.ts",
+        "src/lib/execution-recovery-evidence.test.ts",
+        "--maxWorkers=1"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/p0-race-correction/focused.log",
+      "exitCode": 0,
+      "durationSeconds": 70.92822055400029,
+      "sha256": "1729f4bff2bbadaf61f6114b6be7483e20a3fd85b3ea835adb55eb3fbd9771ce",
+      "retainedLog": "docs/recovery-20261111/ci-repair/p0-race-correction/focused.log"
+    },
+    {
+      "name": "lint",
+      "command": [
+        "npx",
+        "eslint",
+        "tests/parallel-source-20261110/bootstrap.mjs",
+        "tests/parallel-source-20261110/core.mjs",
+        "tests/parallel-source-20261110/authority.mjs",
+        "tests/parallel-source-20261110/current.test.mjs",
+        "tests/parallel-source-20261110/source-object-lock.mjs",
+        "tests/parallel-source-20261110/source-object-lock.test.mjs",
+        "src/lib/parallel-source-evidence.test.ts"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/p0-race-correction/lint.log",
+      "exitCode": 0,
+      "durationSeconds": 2.4774138020002283,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "retainedLog": "docs/recovery-20261111/ci-repair/p0-race-correction/lint.log"
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/p0-race-correction/typecheck.log",
+      "exitCode": 0,
+      "durationSeconds": 7.723997864000012,
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d",
+      "retainedLog": "docs/recovery-20261111/ci-repair/p0-race-correction/typecheck.log"
+    }
+  ],
+  "finishedAt": "2026-11-11T04:31:41.995303+00:00",
+  "headAtEnd": "f797954a91c206085aea8a9c284bde11e466ef5b"
+}

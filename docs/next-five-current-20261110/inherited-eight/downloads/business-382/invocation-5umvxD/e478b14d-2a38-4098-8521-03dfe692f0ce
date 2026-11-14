@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "engineId": "technology.power-supply",
+  "version": 1,
+  "rows": [
+    {
+      "raw": "500,20",
+      "snapshot": {
+        "calculatorSlug": "power-supply-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "systemLoadWatts": 500,
+          "headroomPercent": 20
+        },
+        "output": {
+          "value": 600,
+          "steps": [
+            "Power Supply = 600"
+          ]
+        }
+      }
+    },
+    {
+      "raw": "100,0",
+      "snapshot": {
+        "calculatorSlug": "power-supply-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "systemLoadWatts": 100,
+          "headroomPercent": 0
+        },
+        "output": {
+          "value": 100,
+          "steps": [
+            "Power Supply = 100"
+          ]
+        }
+      }
+    }
+  ]
+}

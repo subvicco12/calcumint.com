@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "website-bandwidth-calculator",
+  "calculatorVersion": 2,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "methodology": "Deterministic calculation using the reviewed Technology & Computing engine.\nTechnical calculation revision: technology.website-bandwidth@2\n\nEstimated monthly transfer using decimal SI megabytes and gigabytes; caching, bots and CDN behavior are not modeled.\nMonthly GB = page MB × page views ÷ 1000",
+      "input": {
+        "pageSizeMb": 2,
+        "monthlyPageViews": 100000
+      },
+      "output": {
+        "value": 200,
+        "steps": [
+          "Website Bandwidth = 200"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "website-bandwidth-calculator",
+        "calculatorVersion": 2,
+        "inputs": {
+          "pageSizeMb": {
+            "label": "Page size (MB)",
+            "unit": "MB"
+          },
+          "monthlyPageViews": {
+            "label": "Monthly page views"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Monthly transfer",
+            "unit": "GB"
+          }
+        }
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "methodology": "Deterministic calculation using the reviewed Technology & Computing engine.\nTechnical calculation revision: technology.website-bandwidth@2\n\nEstimated monthly transfer using decimal SI megabytes and gigabytes; caching, bots and CDN behavior are not modeled.\nMonthly GB = page MB × page views ÷ 1000",
+      "input": {
+        "pageSizeMb": 4,
+        "monthlyPageViews": 100000
+      },
+      "output": {
+        "value": 400,
+        "steps": [
+          "Website Bandwidth = 400"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "website-bandwidth-calculator",
+        "calculatorVersion": 2,
+        "inputs": {
+          "pageSizeMb": {
+            "label": "Page size (MB)",
+            "unit": "MB"
+          },
+          "monthlyPageViews": {
+            "label": "Monthly page views"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Monthly transfer",
+            "unit": "GB"
+          }
+        }
+      }
+    }
+  ]
+}

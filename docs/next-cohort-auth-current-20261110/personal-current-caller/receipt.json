@@ -1,0 +1,1375 @@
+{
+  "passed": true,
+  "kind": "STORAGE_DPI_CURRENT_CALLER_GENUINE_PERSONAL_WORKFLOW_ACCEPTANCE",
+  "sourceRootUsed": "/tmp/next-cohort-current-production-d2CFLr",
+  "sourceHashes": {
+    "src/components/calculator-interactive.tsx": "af625bb001afe2cc52eea383f6e6462a5eb728b74de321f84d436611729ea5ad",
+    "src/components/technology-next-analysis.tsx": "4c1bb64adc75daf2e4702d75ab90525167e0666f780edef2476c7e35e4f87c61",
+    "src/lib/technology-next-capture-trust.ts": "7d26d1d359895f15bb8f0bdf121dcd23b2bfb3871842124ea8b951dee9e36e22",
+    "src/lib/storage-scenario-context.ts": "6f076a49301c13598c7bb4cd730bdfe9199d669de1b16c4d94253b392cbb861c",
+    "src/lib/scenario-set-recovery.ts": "5454b551650cdce18fb9ba2d0af78e777c233dcd9b41660a8e85f5bd28b1cd53",
+    "src/lib/technology-current-presentation.ts": "57461c97356fa79a69bb3a8e4d3e1edd50c798a1f8fa9bed3da41d05f406d3c5",
+    "src/components/calculator-account-actions.tsx": "c0237e89e75a029c1022890f6981f0b2e268ce55b7e78832f3ad389c765e50d4",
+    "src/components/calculator-scenario-workspace.tsx": "d35ae6ea673594d23eee4e352ba32a09ac55c61df41694afc91a0c418b03c090",
+    "src/components/scenario-set-recovery.tsx": "6e44983e6b038686f398ad1393a1039bef0f45bc449ec56710f2006cb1cbb6a7",
+    "src/components/saved-calculation-actions.tsx": "eb10109b0dfc8a73b0ed4043d35da898cd11a3eace9e711755d8de5179928529",
+    "src/app/account/actions.ts": "dd3ce3722bbdb4b68e28b1405f9a320d63123a9c9ee932304abe1eee8daed822",
+    "src/app/account/history/page.tsx": "dd3e1cce93d8575e1c991a45ebd99f2a69ee8653707c705416fedc0401fb54a5",
+    "src/app/account/saved/page.tsx": "e8564df7ec21e7068dc849a48fe22a9ea7be5dbcb4f5c1c786da8e0c51d6c1ac",
+    "src/app/account/projects/[id]/page.tsx": "d30b24717e35b994a95b61d32ab1d2945461d3a1b32d02498b06c43d968c4ab5",
+    "src/lib/registered-snapshot-verification.ts": "7a288d92b16613f4208b43de2ef7b2b52d2c111a4457b1677e7b0df9a9031cf8",
+    "src/lib/technology-snapshot-verification.ts": "276ad7ee37203fa90b65571a3bab1b3dde271f13c1f323a1e8d330a6bab9e521"
+  },
+  "producerSha256": "92465cae52efd65ab44eeb12a1c593b6878e66d369e31f3bb522e366a90e9521",
+  "journeys": [
+    {
+      "catalogId": 374,
+      "slug": "storage-conversion-calculator",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "value": 1,
+        "toUnit": "MiB",
+        "fromUnit": "GiB"
+      },
+      "output": {
+        "steps": [
+          "Storage Conversion = 1024"
+        ],
+        "value": 1024
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": false,
+      "localABRecovery": false,
+      "recordedExports": []
+    },
+    {
+      "catalogId": 379,
+      "slug": "dpi-calculator",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "pixels": 3000,
+        "lengthInches": 10
+      },
+      "output": {
+        "steps": [
+          "DPI = 300"
+        ],
+        "value": 300
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": false,
+      "localABRecovery": false,
+      "recordedExports": []
+    },
+    {
+      "catalogId": 374,
+      "slug": "storage-conversion-calculator",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "value": 1,
+        "toUnit": "MiB",
+        "fromUnit": "GiB"
+      },
+      "output": {
+        "steps": [
+          "Storage Conversion = 1024"
+        ],
+        "value": 1024
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": true,
+      "localABRecovery": true,
+      "recordedExports": [
+        "JSON",
+        "CSV",
+        "PDF"
+      ]
+    },
+    {
+      "catalogId": 379,
+      "slug": "dpi-calculator",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "pixels": 3000,
+        "lengthInches": 10
+      },
+      "output": {
+        "steps": [
+          "DPI = 300"
+        ],
+        "value": 300
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": true,
+      "localABRecovery": true,
+      "recordedExports": [
+        "JSON",
+        "CSV",
+        "PDF"
+      ]
+    },
+    {
+      "catalogId": 374,
+      "slug": "storage-conversion-calculator",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "value": 1,
+        "toUnit": "MiB",
+        "fromUnit": "GiB"
+      },
+      "output": {
+        "steps": [
+          "Storage Conversion = 1024"
+        ],
+        "value": 1024
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": true,
+      "localABRecovery": true,
+      "recordedExports": [
+        "JSON",
+        "CSV",
+        "PDF"
+      ]
+    },
+    {
+      "catalogId": 379,
+      "slug": "dpi-calculator",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "pixels": 3000,
+        "lengthInches": 10
+      },
+      "output": {
+        "steps": [
+          "DPI = 300"
+        ],
+        "value": 300
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": true,
+      "localABRecovery": true,
+      "recordedExports": [
+        "JSON",
+        "CSV",
+        "PDF"
+      ]
+    }
+  ],
+  "downloads": [
+    {
+      "tag": "pro:374:local-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "storage-conversion-calculator-scenarios.json",
+      "file": "downloads/invocation-fdvRP3/42fef4ed-51b1-4e19-a008-75a2f70e1fab",
+      "bytes": 2631,
+      "sha256": "56914d053175725fab0acbff8cccc722fa78bac6382f1aff5dcbb55627ca357c",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "A07079773DA2BB03054C337E8F391182",
+          "guid": "42fef4ed-51b1-4e19-a008-75a2f70e1fab",
+          "suggestedFilename": "storage-conversion-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "42fef4ed-51b1-4e19-a008-75a2f70e1fab",
+          "totalBytes": 2631,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "42fef4ed-51b1-4e19-a008-75a2f70e1fab",
+          "totalBytes": 2631,
+          "receivedBytes": 2631,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "42fef4ed-51b1-4e19-a008-75a2f70e1fab",
+          "totalBytes": 2631,
+          "receivedBytes": 2631,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "42fef4ed-51b1-4e19-a008-75a2f70e1fab",
+          "totalBytes": 2631,
+          "receivedBytes": 2631,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "42fef4ed-51b1-4e19-a008-75a2f70e1fab",
+          "totalBytes": 2631,
+          "receivedBytes": 2631,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "42fef4ed-51b1-4e19-a008-75a2f70e1fab",
+          "totalBytes": 2631,
+          "receivedBytes": 2631,
+          "state": "completed",
+          "filePath": "/tmp/next-cohort-auth-current-20261110/personal-current-caller/downloads/invocation-fdvRP3/42fef4ed-51b1-4e19-a008-75a2f70e1fab"
+        }
+      ]
+    },
+    {
+      "tag": "pro:374:recovered-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "storage-conversion-calculator-scenarios.json",
+      "file": "downloads/invocation-cwcdQx/feb5f43f-0045-4a34-aa76-39b08ce6eb78",
+      "bytes": 2359,
+      "sha256": "a5e3ac95ec03bbbb957da21737faf3dbcd6b0f10e77297bfa5a4fc68aab5554f",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "A07079773DA2BB03054C337E8F391182",
+          "guid": "feb5f43f-0045-4a34-aa76-39b08ce6eb78",
+          "suggestedFilename": "storage-conversion-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "feb5f43f-0045-4a34-aa76-39b08ce6eb78",
+          "totalBytes": 2359,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "feb5f43f-0045-4a34-aa76-39b08ce6eb78",
+          "totalBytes": 2359,
+          "receivedBytes": 2359,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "feb5f43f-0045-4a34-aa76-39b08ce6eb78",
+          "totalBytes": 2359,
+          "receivedBytes": 2359,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "feb5f43f-0045-4a34-aa76-39b08ce6eb78",
+          "totalBytes": 2359,
+          "receivedBytes": 2359,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "feb5f43f-0045-4a34-aa76-39b08ce6eb78",
+          "totalBytes": 2359,
+          "receivedBytes": 2359,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "feb5f43f-0045-4a34-aa76-39b08ce6eb78",
+          "totalBytes": 2359,
+          "receivedBytes": 2359,
+          "state": "completed",
+          "filePath": "/tmp/next-cohort-auth-current-20261110/personal-current-caller/downloads/invocation-cwcdQx/feb5f43f-0045-4a34-aa76-39b08ce6eb78"
+        }
+      ]
+    },
+    {
+      "tag": "pro:374:recorded-JSON",
+      "label": "Export recorded JSON",
+      "filename": "storage-conversion-calculator-v1.json",
+      "file": "downloads/invocation-yMwPap/f22fcdaf-3bba-42e2-ad0d-66ada8fedef2",
+      "bytes": 251,
+      "sha256": "fb2abff86ede1eddcc7fb09d8f375bc8d157e8b788cfac408fe4b1b767c0513d",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "A07079773DA2BB03054C337E8F391182",
+          "guid": "f22fcdaf-3bba-42e2-ad0d-66ada8fedef2",
+          "suggestedFilename": "storage-conversion-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "f22fcdaf-3bba-42e2-ad0d-66ada8fedef2",
+          "totalBytes": 251,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f22fcdaf-3bba-42e2-ad0d-66ada8fedef2",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f22fcdaf-3bba-42e2-ad0d-66ada8fedef2",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f22fcdaf-3bba-42e2-ad0d-66ada8fedef2",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f22fcdaf-3bba-42e2-ad0d-66ada8fedef2",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f22fcdaf-3bba-42e2-ad0d-66ada8fedef2",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "completed",
+          "filePath": "/tmp/next-cohort-auth-current-20261110/personal-current-caller/downloads/invocation-yMwPap/f22fcdaf-3bba-42e2-ad0d-66ada8fedef2"
+        }
+      ]
+    },
+    {
+      "tag": "pro:374:recorded-CSV",
+      "label": "Export recorded CSV",
+      "filename": "storage-conversion-calculator-v1.csv",
+      "file": "downloads/invocation-aeRgLQ/d45f95af-3d27-490f-9114-ad06e762876e",
+      "bytes": 263,
+      "sha256": "4407fabe18c5b18e768264edd99940d67309f95bb52544b0fb6eb9e566bf0688",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "A07079773DA2BB03054C337E8F391182",
+          "guid": "d45f95af-3d27-490f-9114-ad06e762876e",
+          "suggestedFilename": "storage-conversion-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "d45f95af-3d27-490f-9114-ad06e762876e",
+          "totalBytes": 263,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d45f95af-3d27-490f-9114-ad06e762876e",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d45f95af-3d27-490f-9114-ad06e762876e",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d45f95af-3d27-490f-9114-ad06e762876e",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d45f95af-3d27-490f-9114-ad06e762876e",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d45f95af-3d27-490f-9114-ad06e762876e",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "completed",
+          "filePath": "/tmp/next-cohort-auth-current-20261110/personal-current-caller/downloads/invocation-aeRgLQ/d45f95af-3d27-490f-9114-ad06e762876e"
+        }
+      ]
+    },
+    {
+      "tag": "pro:374:recorded-PDF",
+      "label": "Export recorded PDF",
+      "filename": "storage-conversion-calculator-v1.pdf",
+      "file": "downloads/invocation-wXTslO/ccad574d-0335-416c-8212-1e7e947ffe82",
+      "bytes": 395687,
+      "sha256": "4bb88eeb187713737473b203d6dc9595817670683c1dc7f4ed84fee5cba1c118",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "A07079773DA2BB03054C337E8F391182",
+          "guid": "ccad574d-0335-416c-8212-1e7e947ffe82",
+          "suggestedFilename": "storage-conversion-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "ccad574d-0335-416c-8212-1e7e947ffe82",
+          "totalBytes": 395687,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ccad574d-0335-416c-8212-1e7e947ffe82",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ccad574d-0335-416c-8212-1e7e947ffe82",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ccad574d-0335-416c-8212-1e7e947ffe82",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ccad574d-0335-416c-8212-1e7e947ffe82",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ccad574d-0335-416c-8212-1e7e947ffe82",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "completed",
+          "filePath": "/tmp/next-cohort-auth-current-20261110/personal-current-caller/downloads/invocation-wXTslO/ccad574d-0335-416c-8212-1e7e947ffe82"
+        }
+      ]
+    },
+    {
+      "tag": "pro:379:local-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "dpi-calculator-scenarios.json",
+      "file": "downloads/invocation-51z9Sc/96293f36-4e93-4a4c-a75a-16f5af26171b",
+      "bytes": 2058,
+      "sha256": "643f587b53f39e52a6623ef8b1f9f423ed33eb3af50d2e05bc66757734bf0cf4",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "A07079773DA2BB03054C337E8F391182",
+          "guid": "96293f36-4e93-4a4c-a75a-16f5af26171b",
+          "suggestedFilename": "dpi-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "96293f36-4e93-4a4c-a75a-16f5af26171b",
+          "totalBytes": 2058,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "96293f36-4e93-4a4c-a75a-16f5af26171b",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "96293f36-4e93-4a4c-a75a-16f5af26171b",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "96293f36-4e93-4a4c-a75a-16f5af26171b",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "96293f36-4e93-4a4c-a75a-16f5af26171b",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "96293f36-4e93-4a4c-a75a-16f5af26171b",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "completed",
+          "filePath": "/tmp/next-cohort-auth-current-20261110/personal-current-caller/downloads/invocation-51z9Sc/96293f36-4e93-4a4c-a75a-16f5af26171b"
+        }
+      ]
+    },
+    {
+      "tag": "pro:379:recovered-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "dpi-calculator-scenarios.json",
+      "file": "downloads/invocation-FVgBK1/95de183f-64ec-47f1-b513-eb4abea29cd0",
+      "bytes": 2058,
+      "sha256": "643f587b53f39e52a6623ef8b1f9f423ed33eb3af50d2e05bc66757734bf0cf4",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "A07079773DA2BB03054C337E8F391182",
+          "guid": "95de183f-64ec-47f1-b513-eb4abea29cd0",
+          "suggestedFilename": "dpi-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "95de183f-64ec-47f1-b513-eb4abea29cd0",
+          "totalBytes": 2058,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "95de183f-64ec-47f1-b513-eb4abea29cd0",
+          "totalBytes": 2058,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "95de183f-64ec-47f1-b513-eb4abea29cd0",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "95de183f-64ec-47f1-b513-eb4abea29cd0",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "95de183f-64ec-47f1-b513-eb4abea29cd0",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "95de183f-64ec-47f1-b513-eb4abea29cd0",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "completed",
+          "filePath": "/tmp/next-cohort-auth-current-20261110/personal-current-caller/downloads/invocation-FVgBK1/95de183f-64ec-47f1-b513-eb4abea29cd0"
+        }
+      ]
+    },
+    {
+      "tag": "pro:379:recorded-JSON",
+      "label": "Export recorded JSON",
+      "filename": "dpi-calculator-v1.json",
+      "file": "downloads/invocation-1weyOq/966d345e-1ada-4bd0-a06e-25f862f04540",
+      "bytes": 203,
+      "sha256": "8b1db4c5bddebb2b5f712824f19439a9b79dcbba3f17c9a85057a1b2f2b8a9c3",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "A07079773DA2BB03054C337E8F391182",
+          "guid": "966d345e-1ada-4bd0-a06e-25f862f04540",
+          "suggestedFilename": "dpi-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "966d345e-1ada-4bd0-a06e-25f862f04540",
+          "totalBytes": 203,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "966d345e-1ada-4bd0-a06e-25f862f04540",
+          "totalBytes": 203,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "966d345e-1ada-4bd0-a06e-25f862f04540",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "966d345e-1ada-4bd0-a06e-25f862f04540",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "966d345e-1ada-4bd0-a06e-25f862f04540",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "966d345e-1ada-4bd0-a06e-25f862f04540",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "completed",
+          "filePath": "/tmp/next-cohort-auth-current-20261110/personal-current-caller/downloads/invocation-1weyOq/966d345e-1ada-4bd0-a06e-25f862f04540"
+        }
+      ]
+    },
+    {
+      "tag": "pro:379:recorded-CSV",
+      "label": "Export recorded CSV",
+      "filename": "dpi-calculator-v1.csv",
+      "file": "downloads/invocation-dnBFYN/bbe38030-5975-4b5c-afd5-2cdc4272ce06",
+      "bytes": 215,
+      "sha256": "981fa8842284846793bc2e9e642003d5302d1c1a26408392b4ae67eb530c6e20",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "A07079773DA2BB03054C337E8F391182",
+          "guid": "bbe38030-5975-4b5c-afd5-2cdc4272ce06",
+          "suggestedFilename": "dpi-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "bbe38030-5975-4b5c-afd5-2cdc4272ce06",
+          "totalBytes": 215,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "bbe38030-5975-4b5c-afd5-2cdc4272ce06",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "bbe38030-5975-4b5c-afd5-2cdc4272ce06",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "bbe38030-5975-4b5c-afd5-2cdc4272ce06",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "bbe38030-5975-4b5c-afd5-2cdc4272ce06",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "bbe38030-5975-4b5c-afd5-2cdc4272ce06",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "completed",
+          "filePath": "/tmp/next-cohort-auth-current-20261110/personal-current-caller/downloads/invocation-dnBFYN/bbe38030-5975-4b5c-afd5-2cdc4272ce06"
+        }
+      ]
+    },
+    {
+      "tag": "pro:379:recorded-PDF",
+      "label": "Export recorded PDF",
+      "filename": "dpi-calculator-v1.pdf",
+      "file": "downloads/invocation-auvPwB/4dc0c149-a580-45c6-b18a-d1417579ad71",
+      "bytes": 395282,
+      "sha256": "6e70b65579931c47aae9bcf078856fa156e6550f1307f53b1e2a1026458f54db",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "A07079773DA2BB03054C337E8F391182",
+          "guid": "4dc0c149-a580-45c6-b18a-d1417579ad71",
+          "suggestedFilename": "dpi-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "4dc0c149-a580-45c6-b18a-d1417579ad71",
+          "totalBytes": 395282,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4dc0c149-a580-45c6-b18a-d1417579ad71",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4dc0c149-a580-45c6-b18a-d1417579ad71",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4dc0c149-a580-45c6-b18a-d1417579ad71",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4dc0c149-a580-45c6-b18a-d1417579ad71",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4dc0c149-a580-45c6-b18a-d1417579ad71",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "completed",
+          "filePath": "/tmp/next-cohort-auth-current-20261110/personal-current-caller/downloads/invocation-auvPwB/4dc0c149-a580-45c6-b18a-d1417579ad71"
+        }
+      ]
+    },
+    {
+      "tag": "business:374:local-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "storage-conversion-calculator-scenarios.json",
+      "file": "downloads/invocation-SpQZVa/d4f5337a-d415-4126-ba89-83400917685d",
+      "bytes": 2631,
+      "sha256": "56914d053175725fab0acbff8cccc722fa78bac6382f1aff5dcbb55627ca357c",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "A07079773DA2BB03054C337E8F391182",
+          "guid": "d4f5337a-d415-4126-ba89-83400917685d",
+          "suggestedFilename": "storage-conversion-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "d4f5337a-d415-4126-ba89-83400917685d",
+          "totalBytes": 2631,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d4f5337a-d415-4126-ba89-83400917685d",
+          "totalBytes": 2631,
+          "receivedBytes": 2631,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d4f5337a-d415-4126-ba89-83400917685d",
+          "totalBytes": 2631,
+          "receivedBytes": 2631,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d4f5337a-d415-4126-ba89-83400917685d",
+          "totalBytes": 2631,
+          "receivedBytes": 2631,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d4f5337a-d415-4126-ba89-83400917685d",
+          "totalBytes": 2631,
+          "receivedBytes": 2631,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d4f5337a-d415-4126-ba89-83400917685d",
+          "totalBytes": 2631,
+          "receivedBytes": 2631,
+          "state": "completed",
+          "filePath": "/tmp/next-cohort-auth-current-20261110/personal-current-caller/downloads/invocation-SpQZVa/d4f5337a-d415-4126-ba89-83400917685d"
+        }
+      ]
+    },
+    {
+      "tag": "business:374:recovered-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "storage-conversion-calculator-scenarios.json",
+      "file": "downloads/invocation-HVCIcR/9984c2bd-60de-495d-a491-302f3e886eea",
+      "bytes": 2359,
+      "sha256": "a5e3ac95ec03bbbb957da21737faf3dbcd6b0f10e77297bfa5a4fc68aab5554f",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "A07079773DA2BB03054C337E8F391182",
+          "guid": "9984c2bd-60de-495d-a491-302f3e886eea",
+          "suggestedFilename": "storage-conversion-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "9984c2bd-60de-495d-a491-302f3e886eea",
+          "totalBytes": 2359,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "9984c2bd-60de-495d-a491-302f3e886eea",
+          "totalBytes": 2359,
+          "receivedBytes": 2359,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "9984c2bd-60de-495d-a491-302f3e886eea",
+          "totalBytes": 2359,
+          "receivedBytes": 2359,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "9984c2bd-60de-495d-a491-302f3e886eea",
+          "totalBytes": 2359,
+          "receivedBytes": 2359,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "9984c2bd-60de-495d-a491-302f3e886eea",
+          "totalBytes": 2359,
+          "receivedBytes": 2359,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "9984c2bd-60de-495d-a491-302f3e886eea",
+          "totalBytes": 2359,
+          "receivedBytes": 2359,
+          "state": "completed",
+          "filePath": "/tmp/next-cohort-auth-current-20261110/personal-current-caller/downloads/invocation-HVCIcR/9984c2bd-60de-495d-a491-302f3e886eea"
+        }
+      ]
+    },
+    {
+      "tag": "business:374:recorded-JSON",
+      "label": "Export recorded JSON",
+      "filename": "storage-conversion-calculator-v1.json",
+      "file": "downloads/invocation-MbAZVa/930a1306-40d0-416e-89ba-cdc300051db0",
+      "bytes": 251,
+      "sha256": "fb2abff86ede1eddcc7fb09d8f375bc8d157e8b788cfac408fe4b1b767c0513d",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "A07079773DA2BB03054C337E8F391182",
+          "guid": "930a1306-40d0-416e-89ba-cdc300051db0",
+          "suggestedFilename": "storage-conversion-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "930a1306-40d0-416e-89ba-cdc300051db0",
+          "totalBytes": 251,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "930a1306-40d0-416e-89ba-cdc300051db0",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "930a1306-40d0-416e-89ba-cdc300051db0",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "930a1306-40d0-416e-89ba-cdc300051db0",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "930a1306-40d0-416e-89ba-cdc300051db0",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "930a1306-40d0-416e-89ba-cdc300051db0",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "completed",
+          "filePath": "/tmp/next-cohort-auth-current-20261110/personal-current-caller/downloads/invocation-MbAZVa/930a1306-40d0-416e-89ba-cdc300051db0"
+        }
+      ]
+    },
+    {
+      "tag": "business:374:recorded-CSV",
+      "label": "Export recorded CSV",
+      "filename": "storage-conversion-calculator-v1.csv",
+      "file": "downloads/invocation-a3n5Cp/52ec70f0-8b44-48b3-9fb8-2a673f390979",
+      "bytes": 263,
+      "sha256": "4407fabe18c5b18e768264edd99940d67309f95bb52544b0fb6eb9e566bf0688",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "A07079773DA2BB03054C337E8F391182",
+          "guid": "52ec70f0-8b44-48b3-9fb8-2a673f390979",
+          "suggestedFilename": "storage-conversion-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "52ec70f0-8b44-48b3-9fb8-2a673f390979",
+          "totalBytes": 263,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "52ec70f0-8b44-48b3-9fb8-2a673f390979",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "52ec70f0-8b44-48b3-9fb8-2a673f390979",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "52ec70f0-8b44-48b3-9fb8-2a673f390979",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "52ec70f0-8b44-48b3-9fb8-2a673f390979",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "52ec70f0-8b44-48b3-9fb8-2a673f390979",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "completed",
+          "filePath": "/tmp/next-cohort-auth-current-20261110/personal-current-caller/downloads/invocation-a3n5Cp/52ec70f0-8b44-48b3-9fb8-2a673f390979"
+        }
+      ]
+    },
+    {
+      "tag": "business:374:recorded-PDF",
+      "label": "Export recorded PDF",
+      "filename": "storage-conversion-calculator-v1.pdf",
+      "file": "downloads/invocation-SWmZMn/7cb2093e-8430-45eb-8b0b-3193d8d4f685",
+      "bytes": 395687,
+      "sha256": "4bb88eeb187713737473b203d6dc9595817670683c1dc7f4ed84fee5cba1c118",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "A07079773DA2BB03054C337E8F391182",
+          "guid": "7cb2093e-8430-45eb-8b0b-3193d8d4f685",
+          "suggestedFilename": "storage-conversion-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "7cb2093e-8430-45eb-8b0b-3193d8d4f685",
+          "totalBytes": 395687,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7cb2093e-8430-45eb-8b0b-3193d8d4f685",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7cb2093e-8430-45eb-8b0b-3193d8d4f685",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7cb2093e-8430-45eb-8b0b-3193d8d4f685",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7cb2093e-8430-45eb-8b0b-3193d8d4f685",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7cb2093e-8430-45eb-8b0b-3193d8d4f685",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "completed",
+          "filePath": "/tmp/next-cohort-auth-current-20261110/personal-current-caller/downloads/invocation-SWmZMn/7cb2093e-8430-45eb-8b0b-3193d8d4f685"
+        }
+      ]
+    },
+    {
+      "tag": "business:379:local-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "dpi-calculator-scenarios.json",
+      "file": "downloads/invocation-JwoOMs/5fe1e8e4-5d29-4781-8534-b5d10b7a91b9",
+      "bytes": 2058,
+      "sha256": "643f587b53f39e52a6623ef8b1f9f423ed33eb3af50d2e05bc66757734bf0cf4",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "A07079773DA2BB03054C337E8F391182",
+          "guid": "5fe1e8e4-5d29-4781-8534-b5d10b7a91b9",
+          "suggestedFilename": "dpi-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "5fe1e8e4-5d29-4781-8534-b5d10b7a91b9",
+          "totalBytes": 2058,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5fe1e8e4-5d29-4781-8534-b5d10b7a91b9",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5fe1e8e4-5d29-4781-8534-b5d10b7a91b9",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5fe1e8e4-5d29-4781-8534-b5d10b7a91b9",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5fe1e8e4-5d29-4781-8534-b5d10b7a91b9",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5fe1e8e4-5d29-4781-8534-b5d10b7a91b9",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "completed",
+          "filePath": "/tmp/next-cohort-auth-current-20261110/personal-current-caller/downloads/invocation-JwoOMs/5fe1e8e4-5d29-4781-8534-b5d10b7a91b9"
+        }
+      ]
+    },
+    {
+      "tag": "business:379:recovered-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "dpi-calculator-scenarios.json",
+      "file": "downloads/invocation-wXyKuy/ddcc8593-d9c3-4328-8028-438309c2c880",
+      "bytes": 2058,
+      "sha256": "643f587b53f39e52a6623ef8b1f9f423ed33eb3af50d2e05bc66757734bf0cf4",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "A07079773DA2BB03054C337E8F391182",
+          "guid": "ddcc8593-d9c3-4328-8028-438309c2c880",
+          "suggestedFilename": "dpi-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "ddcc8593-d9c3-4328-8028-438309c2c880",
+          "totalBytes": 2058,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ddcc8593-d9c3-4328-8028-438309c2c880",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ddcc8593-d9c3-4328-8028-438309c2c880",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ddcc8593-d9c3-4328-8028-438309c2c880",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ddcc8593-d9c3-4328-8028-438309c2c880",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ddcc8593-d9c3-4328-8028-438309c2c880",
+          "totalBytes": 2058,
+          "receivedBytes": 2058,
+          "state": "completed",
+          "filePath": "/tmp/next-cohort-auth-current-20261110/personal-current-caller/downloads/invocation-wXyKuy/ddcc8593-d9c3-4328-8028-438309c2c880"
+        }
+      ]
+    },
+    {
+      "tag": "business:379:recorded-JSON",
+      "label": "Export recorded JSON",
+      "filename": "dpi-calculator-v1.json",
+      "file": "downloads/invocation-a3HRHx/214ad4a0-4dff-4059-97a0-6616025c9d81",
+      "bytes": 203,
+      "sha256": "8b1db4c5bddebb2b5f712824f19439a9b79dcbba3f17c9a85057a1b2f2b8a9c3",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "A07079773DA2BB03054C337E8F391182",
+          "guid": "214ad4a0-4dff-4059-97a0-6616025c9d81",
+          "suggestedFilename": "dpi-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "214ad4a0-4dff-4059-97a0-6616025c9d81",
+          "totalBytes": 203,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "214ad4a0-4dff-4059-97a0-6616025c9d81",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "214ad4a0-4dff-4059-97a0-6616025c9d81",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "214ad4a0-4dff-4059-97a0-6616025c9d81",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "214ad4a0-4dff-4059-97a0-6616025c9d81",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "214ad4a0-4dff-4059-97a0-6616025c9d81",
+          "totalBytes": 203,
+          "receivedBytes": 203,
+          "state": "completed",
+          "filePath": "/tmp/next-cohort-auth-current-20261110/personal-current-caller/downloads/invocation-a3HRHx/214ad4a0-4dff-4059-97a0-6616025c9d81"
+        }
+      ]
+    },
+    {
+      "tag": "business:379:recorded-CSV",
+      "label": "Export recorded CSV",
+      "filename": "dpi-calculator-v1.csv",
+      "file": "downloads/invocation-KwJvsr/0b4cf3dc-b144-49b3-b7f9-8e0634e60645",
+      "bytes": 215,
+      "sha256": "981fa8842284846793bc2e9e642003d5302d1c1a26408392b4ae67eb530c6e20",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "A07079773DA2BB03054C337E8F391182",
+          "guid": "0b4cf3dc-b144-49b3-b7f9-8e0634e60645",
+          "suggestedFilename": "dpi-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "0b4cf3dc-b144-49b3-b7f9-8e0634e60645",
+          "totalBytes": 215,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0b4cf3dc-b144-49b3-b7f9-8e0634e60645",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0b4cf3dc-b144-49b3-b7f9-8e0634e60645",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0b4cf3dc-b144-49b3-b7f9-8e0634e60645",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0b4cf3dc-b144-49b3-b7f9-8e0634e60645",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0b4cf3dc-b144-49b3-b7f9-8e0634e60645",
+          "totalBytes": 215,
+          "receivedBytes": 215,
+          "state": "completed",
+          "filePath": "/tmp/next-cohort-auth-current-20261110/personal-current-caller/downloads/invocation-KwJvsr/0b4cf3dc-b144-49b3-b7f9-8e0634e60645"
+        }
+      ]
+    },
+    {
+      "tag": "business:379:recorded-PDF",
+      "label": "Export recorded PDF",
+      "filename": "dpi-calculator-v1.pdf",
+      "file": "downloads/invocation-S4pNg9/d7a19e4f-0bbb-4ba4-a78f-07bdfdf6c626",
+      "bytes": 395282,
+      "sha256": "6e70b65579931c47aae9bcf078856fa156e6550f1307f53b1e2a1026458f54db",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "A07079773DA2BB03054C337E8F391182",
+          "guid": "d7a19e4f-0bbb-4ba4-a78f-07bdfdf6c626",
+          "suggestedFilename": "dpi-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "d7a19e4f-0bbb-4ba4-a78f-07bdfdf6c626",
+          "totalBytes": 395282,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d7a19e4f-0bbb-4ba4-a78f-07bdfdf6c626",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d7a19e4f-0bbb-4ba4-a78f-07bdfdf6c626",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d7a19e4f-0bbb-4ba4-a78f-07bdfdf6c626",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d7a19e4f-0bbb-4ba4-a78f-07bdfdf6c626",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d7a19e4f-0bbb-4ba4-a78f-07bdfdf6c626",
+          "totalBytes": 395282,
+          "receivedBytes": 395282,
+          "state": "completed",
+          "filePath": "/tmp/next-cohort-auth-current-20261110/personal-current-caller/downloads/invocation-S4pNg9/d7a19e4f-0bbb-4ba4-a78f-07bdfdf6c626"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    "free:374 actual current caller save/history/exact replay/Free paid-feature refusal",
+    "free:379 actual current caller save/history/exact replay/Free paid-feature refusal",
+    "pro:374 actual current caller save/history/exact replay/immutable scenarios and completed exports",
+    "pro:379 actual current caller save/history/exact replay/immutable scenarios and completed exports",
+    "business:374 actual current caller save/history/exact replay/immutable scenarios and completed exports",
+    "business:379 actual current caller save/history/exact replay/immutable scenarios and completed exports"
+  ],
+  "limits": [
+    "Genuine existing private Next routes, real GoTrue sessions and personal persistence; not production equivalence or billing acceptance",
+    "Reviewer roles and plans assigned only in disposable fixture",
+    "Two exact registered tuples374/379@1; no historical version upgrade or mathematical-policy adoption",
+    "12 completed single-record JSON/CSV/PDF files plus8 original/recovered local scenario-set JSON files; native download lifecycle and exact disk bytes",
+    "This personal receipt does not claim team/cohort sharing or cross-owner/membership coverage; those are separate lanes",
+    "No source/canonical/specialist/publication approval"
+  ]
+}

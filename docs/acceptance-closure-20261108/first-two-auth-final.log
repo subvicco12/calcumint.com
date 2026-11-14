@@ -1,0 +1,6 @@
+PASS #432 pro: concurrent exact retry one row, immutable replay, conflicting retry and foreign read/update/copy denied
+PASS #432 business: concurrent exact retry one row, immutable replay, conflicting retry and foreign read/update/copy denied
+PASS #440 pro: concurrent exact retry one row, immutable replay, conflicting retry and foreign read/update/copy denied
+PASS #440 business: concurrent exact retry one row, immutable replay, conflicting retry and foreign read/update/copy denied
+PASS pro downgraded to Free: new #432/#440 scenario denied, existing immutable snapshots readable
+PASS business downgraded to Free: new #432/#440 scenario denied, existing immutable snapshots readable

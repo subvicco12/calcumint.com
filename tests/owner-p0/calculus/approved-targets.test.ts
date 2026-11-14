@@ -1,5 +1,7 @@
 import {describe,it,expect} from 'vitest';
 import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+import {verifyFinancialSafetyBinding} from '../../../scripts/financial-safety-lineage.mjs';
 import {readFileSync} from 'node:fs';
 import contract from '../../../docs/p0-decision-contracts/calculus.json';
 import {runCanonicalCalculus as run} from '../../../src/calculators/canonical-calculus';
@@ -7,14 +9,23 @@ import {exportCanonicalCalculation as make,importCanonicalCalculation as replay,
 import {exportPrivateCalculus} from '../../../src/calculators/private-calculus-successor';
 import {appendCanonicalHistory,readCanonicalHistory,CANONICAL_HISTORY_KEY} from '../../../src/lib/canonical-calculus-history';
 // Independent integer/rational oracle: no engine parser, coefficient builder or rational helper.
+const readGit=(args:string[])=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']});
+const sourceHash=(bytes:Buffer)=>createHash('sha256').update(bytes).digest('hex');
+const sourceFiles:Record<string,string>=contract.currentSourceClosure.files;
+function verifySource(path:string,bytes:Buffer,claim:string,git=readGit):void{
+ // Known financial successors are checked before any historical hash fallback.
+ // An exact old source hash proves history, not the current approved successor.
+ if(verifyFinancialSafetyBinding(path,bytes,claim,git))return;
+ expect(sourceHash(bytes),path).toBe(claim);
+}
 const gcd=(a:bigint,b:bigint):bigint=>b?gcd(b,a%b):a<0n?-a:a;
 const q=(n:bigint,d=1n)=>{const g=gcd(n,d);return {numerator:String(n/g*(d<0n?-1n:1n)),denominator:String(d/g*(d<0n?-1n:1n))};};
 const wf=(calculation:unknown)=>({calculation,plot:{enabled:true,radius:'1',samples:9}});
 const storage=()=>{let bytes:string|null=null;return {getItem:()=>bytes,setItem:(_key:string,value:string)=>{bytes=value;}};};
 describe('owner approved bounded calculus engineering targets',()=>{
- it('binds all three exact review identities and freezes all historical source closure bytes',()=>{
+ it('binds exact review identities and preserves historical closure with exact source successors',()=>{
   expect(Object.keys(contract.currentSourceClosure.files)).toHaveLength(194);
-  for(const [path,hash] of Object.entries(contract.currentSourceClosure.files))expect(createHash('sha256').update(readFileSync(path)).digest('hex'),path).toBe(hash);
+  for(const [path,hash] of Object.entries(sourceFiles))verifySource(path,readFileSync(path),hash);
   for(const [operation,id] of [['derivative',246],['integral',247],['limit',248]] as const){
    const calculation=operation==='integral'?{operation,expression:'x',lower:'0',upper:'1'}:{operation,expression:'x',x:'1'};
    const s=make(wf(calculation));expect(s.contractId).toBe('private.canonical-calculus.'+id);
@@ -22,6 +33,22 @@ describe('owner approved bounded calculus engineering targets',()=>{
    expect(s.calculation.calculatorVersion).toBe(3);expect(s.calculation.calculatorSlug).toBe('private-canonical-calculus-'+operation);
   }
  });
+ for(const path of ['src/calculators/finance/compound-interest.ts','src/calculators/finance/loan-payment.ts','src/calculators/precision.ts']){
+  it(path+': refuses historical source reversion even with the correct retained hash',()=>{
+   const previous=readGit(['show','a955cdad7019a645b7ed2950299d0603ba1784a7:'+path]);
+   expect(sourceHash(previous)).toBe(sourceFiles[path]);
+   expect(()=>verifySource(path,previous,sourceFiles[path])).toThrow(/current successor differs/);
+  });
+  it(path+': refuses tampering and re-signed self-asserted claims',()=>{
+   const changed=Buffer.concat([readFileSync(path),Buffer.from('\n//tampered')]);
+   expect(()=>verifySource(path,changed,sourceFiles[path])).toThrow(/current successor differs/);
+   expect(()=>verifySource(path,changed,sourceHash(changed))).toThrow(/historical claim differs/);
+  });
+  it(path+': requires exact immutable source objects',()=>{
+   expect(()=>verifySource(path,readFileSync(path),sourceFiles[path],()=>{throw Error('source unavailable');})).toThrow(/source unavailable/);
+   expect(()=>verifySource(path,readFileSync(path),sourceFiles[path],()=>Buffer.from('0'.repeat(40)))).toThrow(/unavailable/);
+  });
+ }
  it('independently checks 180 quotient derivatives with signed rational coefficients and nested divisors',()=>{
   for(let a=-4;a<=4;a++)for(let b=1;b<=4;b++)for(let x=-2;x<=2;x++){
    // f=(a*x^2+b)/(x+4); f'=(a*x^2+8*a*x-b)/(x+4)^2.

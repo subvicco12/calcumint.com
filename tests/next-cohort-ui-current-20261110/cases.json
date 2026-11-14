@@ -1,0 +1,171 @@
+[
+  {
+    "id": 374,
+    "slug": "storage-conversion-calculator",
+    "engine": "technology.storage-conversion",
+    "version": 1,
+    "value": 1024,
+    "field": "value",
+    "edit": "2",
+    "changed": 2048,
+    "target": "2048",
+    "batch": "1,GiB,MiB\n2,GiB,MiB",
+    "columns": [
+      "value",
+      "fromUnit",
+      "toUnit"
+    ],
+    "batchValues": [
+      1024,
+      2048
+    ],
+    "unit": "MiB"
+  },
+  {
+    "id": 377,
+    "slug": "aspect-ratio-calculator",
+    "engine": "technology.aspect-ratio",
+    "version": 1,
+    "value": 1.7777777777777777,
+    "field": "width",
+    "edit": "3840",
+    "changed": 3.5555555555555554,
+    "target": "2",
+    "batch": "16,9\n4,3",
+    "columns": [
+      "width",
+      "height"
+    ],
+    "batchValues": [
+      1.7777777777777777,
+      1.3333333333333333
+    ],
+    "unit": "ratio"
+  },
+  {
+    "id": 378,
+    "slug": "resolution-calculator",
+    "engine": "technology.resolution",
+    "version": 1,
+    "value": 2073600,
+    "field": "widthPixels",
+    "edit": "3840",
+    "changed": 4147200,
+    "target": "1080000",
+    "batch": "1920,1080\n100,100",
+    "columns": [
+      "widthPixels",
+      "heightPixels"
+    ],
+    "batchValues": [
+      2073600,
+      10000
+    ],
+    "unit": "pixels"
+  },
+  {
+    "id": 379,
+    "slug": "dpi-calculator",
+    "engine": "technology.dpi",
+    "version": 1,
+    "value": 300,
+    "field": "pixels",
+    "edit": "6000",
+    "changed": 600,
+    "target": "600",
+    "batch": "3000,10\n600,2",
+    "columns": [
+      "pixels",
+      "lengthInches"
+    ],
+    "batchValues": [
+      300,
+      300
+    ],
+    "unit": "pixels/inch"
+  },
+  {
+    "id": 382,
+    "slug": "power-supply-calculator",
+    "engine": "technology.power-supply",
+    "version": 1,
+    "value": 600,
+    "field": "systemLoadWatts",
+    "edit": "1000",
+    "changed": 1200,
+    "target": "1200",
+    "batch": "500,20\n100,0",
+    "columns": [
+      "systemLoadWatts",
+      "headroomPercent"
+    ],
+    "batchValues": [
+      600,
+      100
+    ],
+    "unit": "W"
+  },
+  {
+    "id": 383,
+    "slug": "website-bandwidth-calculator",
+    "engine": "technology.website-bandwidth",
+    "version": 2,
+    "value": 200,
+    "field": "pageSizeMb",
+    "edit": "4",
+    "changed": 400,
+    "target": "400",
+    "batch": "2,100000\n1,1000",
+    "columns": [
+      "pageSizeMb",
+      "monthlyPageViews"
+    ],
+    "batchValues": [
+      200,
+      1
+    ],
+    "unit": "GB/month"
+  },
+  {
+    "id": 384,
+    "slug": "cloud-storage-cost-calculator",
+    "engine": "technology.cloud-storage-cost",
+    "version": 1,
+    "value": 20,
+    "field": "storageGb",
+    "edit": "2000",
+    "changed": 40,
+    "target": "40",
+    "batch": "1000,0.02\n0,0.02",
+    "columns": [
+      "storageGb",
+      "pricePerGbMonth"
+    ],
+    "batchValues": [
+      20,
+      0
+    ],
+    "unit": "currency units/month"
+  },
+  {
+    "id": 385,
+    "slug": "cloud-data-transfer-cost-calculator",
+    "engine": "technology.cloud-data-transfer-cost",
+    "version": 1,
+    "value": 45,
+    "field": "transferGb",
+    "edit": "1000",
+    "changed": 90,
+    "target": "90",
+    "batch": "500,0.09\n0,0.09",
+    "columns": [
+      "transferGb",
+      "pricePerGb"
+    ],
+    "batchValues": [
+      45,
+      0
+    ],
+    "unit": "currency units"
+  }
+]
