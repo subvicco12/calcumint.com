@@ -3485,7 +3485,9 @@ export const acceptedStage8=Object.freeze([
     "sha256": "427a82483c05b757d490a12345c8823fe4c7267597d820fc7b1983d3242eb004"
   }
 ]); // Guard producer fills only after immutable candidate and independent review.
-export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8].map(row=>[row.path,row])).values()]);
+export const additionalStage8V3BootstrapRefs=Object.freeze([]);
+export const acceptedStage8V3=Object.freeze([]);
+export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8,...acceptedStage8V3].map(row=>[row.path,row])).values()]);
 for(const record of accepted)Object.freeze(record);
 export function verifyParallelAuthority(read,git){
  assert(acceptedStage8.length>0,'Independently reviewed Stage8 authority is not installed');
