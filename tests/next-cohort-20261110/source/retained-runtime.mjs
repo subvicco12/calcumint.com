@@ -503,10 +503,10 @@ export function retainedRuntimeBytes(path,read=readFileSync,sourceGit=git){
  const admitted=verifyCurrentRuntimeContext(read,sourceGit);
  return retainedMappedRuntimeBytes(path,row,read,sourceGit,admitted);
 }
-function retainedMappedRuntimeBytes(path,row,read,sourceGit,admitted){
+function retainedMappedRuntimeBytes(path,row,read,sourceGit,admitted,boundHead){
  const current=read(path);
  const blob=sourceGit(['cat-file','blob',row.currentBlob]);assert.equal(hash(blob),row.currentSHA256,'Retained evidence current Git bytes differ: '+path);
- if(sourceGit(['rev-parse','HEAD:'+path]).toString().trim()===row.currentBlob)assert(current.equals(blob),'Retained evidence current target bytes differ: '+path);
+ if(sourceGit(['rev-parse',(boundHead??'HEAD')+':'+path]).toString().trim()===row.currentBlob)assert(current.equals(blob),'Retained evidence current target bytes differ: '+path);
  else {const proof=admitted.get(path);assert.equal(proof?.recordedSHA256,row.currentSHA256,'Exact retained runtime source claim required');assert(current.equals(sourceGit(['cat-file','blob',proof.current.blob])),'Retained evidence current target bytes differ: '+path);}
  const predecessor=sourceGit(['show',prior+':'+path]);assert.equal(hash(predecessor),row.priorSHA256,'Retained evidence predecessor bytes differ: '+path);
  return predecessor;
@@ -536,14 +536,14 @@ const stage2BatchRows=Object.freeze([
     "sha256": "95fae5857935bae8098fa390df33f62342f06f4bf335640b9e19e124edbf6276"
   }
 ].map(Object.freeze));
-function retainedStage2BatchBytes(path,row,admitted){
+function retainedStage2BatchBytes(path,row,admitted,boundHead){
  let currentRecord;
  if(path==='tests/gotrue-runtime/acceptance.mjs'){
   // The successful sealed global proof validates NS records; this path is not
   // an application-map entry. Preserve the original explicit NS predecessor route.
   const ns=nonSourceRecords(readFileSync).get(path),predecessor=ns?.predecessor;assert(predecessor&&ns.current,'Exact NS current and predecessor required');for(const field of ['path','ref','blob','bytes','sha256'])assert.equal(predecessor[field],row[field],'Exact NS predecessor differs: '+field);currentRecord=ns.current;
  }else{const proof=admitted.get(path);assert(proof,'Explicit current Stage2 batch proof required');assert.equal(proof.recordedSHA256,row.sha256,'Exact retained Stage2 source claim required');currentRecord=proof.current;}
- const current=readFileSync(path),currentGit=git(['cat-file','blob',currentRecord.blob]);assert.equal(hash(currentGit),currentRecord.sha256,'Current Stage2 Git digest differs');assert(current.equals(currentGit),'Current Stage2 source changed after proof');assert.equal(git(['rev-parse','HEAD:'+path]).toString().trim(),currentRecord.blob,'Current Stage2 HEAD differs');
+ const current=readFileSync(path),currentGit=git(['cat-file','blob',currentRecord.blob]);assert.equal(hash(currentGit),currentRecord.sha256,'Current Stage2 Git digest differs');assert(current.equals(currentGit),'Current Stage2 source changed after proof');assert.equal(git(['rev-parse',(boundHead??'HEAD')+':'+path]).toString().trim(),currentRecord.blob,'Current Stage2 HEAD differs');
  assert.equal(git(['rev-parse','--verify',row.ref+'^{commit}']).toString().trim(),row.ref,'Exact Stage2 old commit differs');assert.equal(git(['rev-parse',row.ref+':'+path]).toString().trim(),row.blob,'Exact Stage2 old path-to-blob differs');
  const historical=git(['cat-file','blob',row.blob]);assert.equal(historical.length,row.bytes,'Exact Stage2 old bytes differ');assert.equal(hash(historical),row.sha256,'Exact Stage2 old SHA differs');return Buffer.from(historical);
 }
@@ -553,6 +553,20 @@ function assertRegularBatchCurrentPath(path){
 }
 // End per-read batch physical source fence.
 
+function preloadBatchCurrentPaths(declared,admitted,boundHead){
+ const records=[];
+ for(const path of declared){
+  const row=sources.find(source=>source.path===path),stage2=stage2BatchRows.find(source=>source.path===path);if(!row&&!stage2)continue;
+  let blob;
+  if(row)blob=admitted.get(path)?.current?.blob??row.currentBlob;
+  else if(path==='tests/gotrue-runtime/acceptance.mjs'){const current=nonSourceRecords(readFileSync).get(path)?.current;assert(current&&current.path===path,'Exact NS current path required');blob=current.blob;}
+  else{const proof=admitted.get(path);assert(proof?.current,'Explicit current Stage2 preload proof required');blob=proof.current.blob;}
+  assert.match(blob,/^[a-f0-9]{40}$/);records.push({ref:boundHead,path,blob});
+ }
+ assert.equal(typeof git.preloadPaths,'function','Existing immutable Git path preload required');git.preloadPaths(records);
+}
+// End private bound-head path preload.
+
 // Explicit synchronous opt-in only. Default per-read entry points above remain unchanged.
 const rawActualState=()=>({head:execFileSync('git',['rev-parse','--verify','HEAD^{commit}'],{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024}),status:execFileSync('git',['status','--porcelain=v1','--untracked-files=all'],{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024})});
 function assertActualState(before){const after=rawActualState();assert(before.head.equals(after.head),'Evidence batch actual HEAD changed');assert(before.status.equals(after.status),'Evidence batch actual status changed');}
@@ -561,17 +575,17 @@ export function withRuntimeEvidenceBatch(paths,run,...extra){
  return runClosedSynchronousBatch(paths,run,{
   begin(declared){
    assert.equal(extra.length,0,'Custom evidence batch readers or arguments are forbidden');assertAPIEvidencePaths(declared);
-   const before=rawActualState();let admitted;
+   const before=rawActualState();let admitted;const boundHead=before.head.toString().trim();assert.match(boundHead,/^[a-f0-9]{40}$/);
    try{
     if(!immutableObjectsPreloaded){preloadRetainedImmutableObjects(readFileSync,git);immutableObjectsPreloaded=true;}
-    admitted=verifyCurrentRuntimeContext();
+    admitted=verifyCurrentRuntimeContext();preloadBatchCurrentPaths(declared,admitted,boundHead);
    }finally{assertActualState(before);}
-   return {before,admitted};
+   return {before,admitted,boundHead};
   },
   read(path,state){
    const row=sources.find(source=>source.path===path),stage2=stage2BatchRows.find(source=>source.path===path);if(!row&&!stage2)return retainedRuntimeBytes(path);
    assertActualHead(state.before);
-   try{assertRegularBatchCurrentPath(path);return row?retainedMappedRuntimeBytes(path,row,readFileSync,git,state.admitted):retainedStage2BatchBytes(path,stage2,state.admitted);}
+   try{assertRegularBatchCurrentPath(path);return row?retainedMappedRuntimeBytes(path,row,readFileSync,git,state.admitted,state.boundHead):retainedStage2BatchBytes(path,stage2,state.admitted,state.boundHead);}
    finally{assertActualHead(state.before);}
   },
   end(state){try{verifyCurrentRuntimeContext();}finally{assertActualState(state.before);}}
