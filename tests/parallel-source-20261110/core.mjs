@@ -51,7 +51,7 @@ export const retainedStage7V6CapturePath='docs/parallel-source-20261110/capture-
 export const retainedStage7V7CapturePath='docs/parallel-source-20261110/capture-revision66.json';
 export const retainedStage7V8CapturePath='docs/parallel-source-20261110/capture-revision67.json';
 const retainedStage8CapturePath='docs/parallel-source-20261110/capture-revision68.json';
-export const capturePath='docs/parallel-source-20261110/capture-revision88.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision89.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -63,8 +63,8 @@ function currentGit(source){
  return reader;
 }
 export function parseRows(text){const match=/const bindings=(\[[\s\S]*?\n\]);/.exec(text);assert(match,'Exact completion bindings required');return JSON.parse(match[1]);}
-function sourceRecord(record,read,git){
- if(stage5Paths.has(record.path)){const row=proveStage5(read,git).get(record.path);assert(row);immutableRecord(record,git);return currentSourceRecord(row.current,read,git);}
+function sourceRecord(record,read,git,stage5){
+ if(stage5Paths.has(record.path)){const row=(stage5??proveStage5(read,git)).get(record.path);assert(row);assert.equal(row.current.path,record.path);if(row.predecessor)assert.equal(row.predecessor.path,record.path);immutableRecord(record,git);return currentSourceRecord(row.current,read,git);}
  return currentSourceRecord(record,read,git);
 }
 function currentSourceRecord(record,read,git){
@@ -104,10 +104,29 @@ function withCoreAuthorityWitness(read,git,run){
   const record=accepted.find(row=>row.path===path);assert(record,'Independent authority scope implementation required: '+path);
   const bytes=view.actualInput.read(path);assert(Buffer.isBuffer(bytes)&&hash(bytes)===record.sha256,'Independent authority scope implementation differs: '+path);
  }
- // Use the original full verifier; the downstream direct helper also proves afresh.
- assert.equal(verifyParallelAuthority(read,git),true);return run(undefined);
+ // Bind mutable state before the original authority and beginning Stage5 proof.
+ const actual=view.actualInput,actualRead=actual.read,actualGit=actual.git,actualRoot=actual.root,head=actualGit(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),status=actualGit(['status','--porcelain=v1','--untracked-files=all']).toString();
+ const freeze=value=>{if(value&&typeof value==='object'){for(const child of Object.values(value))freeze(child);Object.freeze(value);}return value;};
+ let stage5,result;const errors=[];
+ try{
+  assert.equal(verifyParallelAuthority(read,git),true);
+  stage5=new Map([...proveStage5(read,git)].map(([path,row])=>{assert.equal(row.current.path,path,'Stage5 map path differs');return[path,freeze(JSON.parse(JSON.stringify(row)))];}));
+  result=run(undefined,stage5);assert.notEqual(result,stage5,'Private Stage5 map cannot escape');assert(!result||typeof result.then!=='function','Synchronous Stage5 scope required');
+ }catch(error){errors.push(error);}
+ finally{
+  try{if(stage5){const fresh=proveStage5(read,git);assert.deepEqual([...fresh],[...stage5],'Stage5 scope current records changed');}}catch(error){errors.push(error);}
+  finally{
+   try{
+    assert.equal(sourceStage8HistoricalView(git),view,'Stage5 view identity differs');assert.equal(view.historicalInput.read,read,'Stage5 reader identity differs');assert.equal(view.actualInput,actual,'Stage5 actual input identity differs');
+    assert.equal(actual.read,actualRead,'Stage5 actual reader identity differs');assert.equal(actual.git,actualGit,'Stage5 actual Git identity differs');assert.equal(actual.root,actualRoot,'Stage5 actual root identity differs');
+    assert.equal(actualGit(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),head,'Actual HEAD moved during Stage5 scope');
+    assert.equal(actualGit(['status','--porcelain=v1','--untracked-files=all']).toString(),status,'Actual source status changed during Stage5 scope');assertSourceStage8HeadStable(view);
+   }catch(error){errors.push(error);}finally{stage5?.clear();}
+  }
+ }
+ if(errors.length===1)throw errors[0];if(errors.length)throw new AggregateError(errors,errors.map(error=>error.message).join('\n'));return result;
 }
-function applicationSuccession(capture,read,git,witness){
+function applicationSuccession(capture,read,git,witness,stage5){
  assert.equal(capture.applicationBaselineRef,applicationBaselineRef);assert.equal(capture.applicationSuccessorRef,applicationSuccessorRef);
  assert.equal(capture.applicationSuccessionKind,'EXACT_FINAL_TWO_APP_AND_TEST_SUCCESSOR_NOT_CANONICAL_ACCEPTANCE');
  const changed=git(['diff','--name-only',applicationBaselineRef,applicationSuccessorRef,'--','src']).toString().trim().split('\n');
@@ -117,7 +136,7 @@ function applicationSuccession(capture,read,git,witness){
  assert.deepEqual([...personal.values()].map(r=>r.current),capture.personalSources);assert.deepEqual([...personalAuxiliary.values()].map(r=>r.current),capture.personalAuxiliarySources);
  assert.deepEqual([...workflow.values()].map(r=>r.current),capture.workflowSources,'Workflow sources must enter closed current capture');
  assert.deepEqual([...nonSource.values()].map(r=>r.current),capture.workflowNonSourceSources,'Exact NS current sources required');
- assert.deepEqual(capture.workflowGuardSources.map(r=>r.path),workflowPolicy.guardPaths);for(const row of capture.workflowGuardSources){assert.equal(row.ref,workflowPolicy.guardRef);sourceRecord(row,read,git);}
+ assert.deepEqual(capture.workflowGuardSources.map(r=>r.path),workflowPolicy.guardPaths);for(const row of capture.workflowGuardSources){assert.equal(row.ref,workflowPolicy.guardRef);sourceRecord(row,read,git,stage5);}
  assert.deepEqual([...completion.values()].map(r=>r.current),capture.completionSources,'Completion sources must enter closed current capture');
  assert.deepEqual([...factory.values()].map(r=>r.current),capture.factorySources,'Factory sources must enter closed current capture');
  const appPaths=changed.filter(p=>!(/\.test\.(?:ts|tsx)$/.test(p)));
@@ -129,7 +148,7 @@ function applicationSuccession(capture,read,git,witness){
   assert(row.path.startsWith('src/')&&!row.path.startsWith('src/calculators/'));assert.equal(row.current.path,row.path);assert.equal(row.current.ref,applicationSuccessorRef);
   if(parentPaths.has(row.path)){assert.equal(row.parent.path,row.path);assert.equal(row.parent.ref,applicationBaselineRef);immutableRecord(row.parent,git);}else assert.equal(row.parent,null);
   if(originalPaths.has(row.path)){assert.equal(row.historical.path,row.path);assert.equal(row.historical.ref,appRef);immutableRecord(row.historical,git);}else assert.equal(row.historical,null);
-  sourceRecord(row.current,read,git);result.set(row.path,row);
+  sourceRecord(row.current,read,git,stage5);result.set(row.path,row);
  }
  for(const [path,row]of completion)result.set(path,{path,current:row.current,historical:capture.applicationSuccessors.find(r=>r.path===path)?.historical});
  const retainedWorkflowPaths=["src/app/api/business/native-embeds/route.ts","src/app/api/business/technology-embeds/route.ts","src/app/api/internal/technology-webhooks/process/route.ts","src/app/api/native-embed/[grant]/calculate/route.ts","src/app/embed/native/[grant]/page.tsx","src/components/native-embed-grant-form.tsx","src/components/native-frequency-embed.tsx","src/lib/native-delivery/contract.ts","src/lib/native-delivery/embed-request.ts","src/lib/native-delivery/grant.ts","src/lib/native-delivery/metering.ts","src/lib/native-delivery/publication.ts","src/lib/native-delivery/technology-five-job-storage.ts","src/lib/native-delivery/technology-five-webhook-worker.ts","src/lib/native-delivery/contract.test.ts"];
@@ -137,7 +156,7 @@ function applicationSuccession(capture,read,git,witness){
  const retainedWorkflow=new Map(capture.workflowHistoricalClaims.map(row=>{assert.equal(row.ref,appRef);assert(workflow.has(row.path));immutableRecord(row,git);return[row.path,row];}));
  for(const [path,row]of workflow)result.set(path,{path,current:row.current,historical:result.get(path)?.historical??retainedWorkflow.get(path),contextPredecessor:row.predecessor});
  for(const [path,row]of personal)result.set(path,{path,current:row.current,historical:result.get(path)?.historical,contextPredecessor:row.predecessor});
- for(const [path,row]of proveStage5(read,git)){
+ for(const [path,row]of (stage5??proveStage5(read,git))){
   const prior=result.get(path),original=capture.applicationSources.find(source=>source.path===path);
   const historical=prior?.historical??selectStage7HistoricalSource({path,stage7Paths:sourceStage7Policy.paths,row,original,appRef});
   if(historical)immutableRecord(historical,git);
@@ -147,12 +166,12 @@ function applicationSuccession(capture,read,git,witness){
 }
 export const sevenTestRef='f68c077b63b1dfabbe9ca3f21e4f195ef645ad97';
 export const sevenTestPaths=Object.freeze(['src/app/business/shared/[id]/page.test.tsx','src/lib/native-delivery/technology-next-composition.test.ts','src/lib/thirteen-program-evidence.test.ts']);
-function sevenTestSuccession(capture,read,git){
+function sevenTestSuccession(capture,read,git,stage5){
  assert.equal(capture.sevenTestRef,sevenTestRef);assert.deepEqual(capture.sevenTestSuccessors.map(r=>r.path),sevenTestPaths);
  const result=new Map();for(const row of capture.sevenTestSuccessors){
   assert.equal(row.current.path,row.path);assert.equal(row.current.ref,sevenTestRef);assert.equal(row.predecessor.path,row.path);
   assert.equal(row.predecessor.ref,row.path==='src/lib/thirteen-program-evidence.test.ts'?'05129e2a74e70e23160578c63a984c4bf035ed0f':appRef);
-  immutableRecord(row.predecessor,git);sourceRecord(row.current,read,git);result.set(row.path,{path:row.path,current:stage5Paths.has(row.path)?stage5Rows(read).get(row.path).current:testStagePolicy.paths.includes(row.path)?testStageRecords(read).get(row.path).current:row.current});
+  immutableRecord(row.predecessor,git);sourceRecord(row.current,read,git,stage5);result.set(row.path,{path:row.path,current:stage5Paths.has(row.path)?stage5Rows(read).get(row.path).current:testStagePolicy.paths.includes(row.path)?testStageRecords(read).get(row.path).current:row.current});
  }return result;
 }
 function retainedAssertSevenTestSuccessor(file,claim,currentBytes,read=readFileSync,git=sourceGit){
@@ -167,15 +186,15 @@ function retainedAssertSevenTestSuccessor(file,claim,currentBytes,read=readFileS
 }
 /** One invocation proves all named current bytes; callers must not retain this proof across reads. */
 function retainedProveNamedCurrentContext(read=readFileSync,git=sourceGit){
- git=currentGit(git);return withCoreAuthorityWitness(read,git,witness=>{const capture=JSON.parse(read(retainedStage8CapturePath));ensureParallelSources(capture,git);
- const rows=new Map([...applicationSuccession(capture,read,git,witness),...sevenTestSuccession(capture,read,git)]);
+ git=currentGit(git);return withCoreAuthorityWitness(read,git,(witness,stage5)=>{const capture=JSON.parse(read(retainedStage8CapturePath));ensureParallelSources(capture,git);
+ const rows=new Map([...applicationSuccession(capture,read,git,witness,stage5),...sevenTestSuccession(capture,read,git,stage5)]);
  return new Map([...rows].map(([path,row])=>{const original=capture.sevenTestSuccessors.find(r=>r.path===path)?.predecessor??row.historical??row.contextPredecessor;return[path,{current:row.current,recordedSHA256:original?.sha256}];}));
  });
 }
 function retainedAssertNamedApplicationSuccessor(file,recordedSHA256,currentBytes,read=readFileSync,git=sourceGit){
  git=currentGit(git);
- return withCoreAuthorityWitness(read,git,witness=>{const capture=JSON.parse(read(retainedStage8CapturePath));ensureParallelSources(capture,git);
- const row=applicationSuccession(capture,read,git,witness).get(file);assert(row&&row.historical,'Only an exact historical named final-two source claim is admitted');
+ return withCoreAuthorityWitness(read,git,(witness,stage5)=>{const capture=JSON.parse(read(retainedStage8CapturePath));ensureParallelSources(capture,git);
+ const row=applicationSuccession(capture,read,git,witness,stage5).get(file);assert(row&&row.historical,'Only an exact historical named final-two source claim is admitted');
  assert.equal(recordedSHA256,row.historical.sha256,'Exact original F042 source claim required');assert.equal(hash(currentBytes),row.current.sha256,'Current named application successor differs');assert(currentBytes.equals(immutableRecord(row.current,git)));
  return {file,recordedApplicationGit:appRef,currentApplicationGit:row.current.ref,historicalEvidenceOnly:true};
  });
@@ -184,8 +203,8 @@ function retainedAssertFinalTwoScopeTestSuccessor(file,intermediateBytes,current
  assert(['src/components/technology-five-delivery.test.tsx','src/components/technology-next-native.test.tsx'].includes(file),'Only two named native test successors');
  // Reject malformed supplied bytes before expensive full-graph proof; successful claims still prove every edge below.
  assert(currentBytes.equals(git(['show',applicationSuccessorRef+':'+file])),'Current final-two scope test differs from exact reviewed Git');
- return withCoreAuthorityWitness(read,git,witness=>{const capture=JSON.parse(read(retainedStage8CapturePath));ensureParallelSources(capture,git);
- const row=applicationSuccession(capture,read,git,witness).get(file);assert(row?.parent);const prior='a1014a3914977af8a8d9e85aa2bf08269fccf504';
+ return withCoreAuthorityWitness(read,git,(witness,stage5)=>{const capture=JSON.parse(read(retainedStage8CapturePath));ensureParallelSources(capture,git);
+ const row=applicationSuccession(capture,read,git,witness,stage5).get(file);assert(row?.parent);const prior='a1014a3914977af8a8d9e85aa2bf08269fccf504';
  assert.equal(git(['rev-parse','--verify',prior+'^{commit}']).toString().trim(),prior);assert(intermediateBytes.equals(git(['show',prior+':'+file])),'Original exact A101 test stage must remain proved');
  assert(intermediateBytes.equals(immutableRecord(row.parent,git)),'Prior current test stage must match the frozen baseline');
  assert.equal(hash(currentBytes),row.current.sha256,'Current final-two scope test differs from exact reviewed Git');assert(currentBytes.equals(immutableRecord(row.current,git)));
@@ -195,19 +214,19 @@ function retainedAssertFinalTwoScopeTestSuccessor(file,intermediateBytes,current
 function retainedVerifyParallelSource(read=readFileSync,git=sourceGit,suppliedRows){
  const actualGit=git;
  git=currentGit(git);
- return withCoreAuthorityWitness(read,git,witness=>{
+ return withCoreAuthorityWitness(read,git,(witness,stage5)=>{
  const capture=JSON.parse(read(retainedStage8CapturePath));assert.equal(capture.baselineRef,baselineRef);assert.equal(capture.appRef,appRef);assert.equal(capture.productionWrites,false);assert.equal(capture.historicalRecordsEdited,false);
  ensureParallelSources(capture,git);
  if(actualGit===sourceGit)sourceGit.preloadBlobs([...capture.currentSources,...capture.applicationSources,...capture.guardSources].map(r=>r.blob));
- const delta=new Map([...applicationSuccession(capture,read,git,witness),...sevenTestSuccession(capture,read,git)]);
+ const delta=new Map([...applicationSuccession(capture,read,git,witness,stage5),...sevenTestSuccession(capture,read,git,stage5)]);
  const baseline=retainedA7Proof();assert.deepEqual(capture.retainedReads,baseline.rows,'Original R5 read closure differs');
  const appPaths=git(['diff','--name-only',baselineRef,appRef,'--','src']).toString().trim().split('\n');assert.equal(appPaths.length,27);assert.deepEqual(capture.applicationSources.map(r=>r.path),appPaths);
- for(const row of capture.applicationSources){assert.equal(row.ref,appRef);if(delta.has(row.path)){immutableRecord(row,git);sourceRecord(delta.get(row.path).current,read,git);}else sourceRecord(row,read,git);}
+ for(const row of capture.applicationSources){assert.equal(row.ref,appRef);if(delta.has(row.path)){immutableRecord(row,git);sourceRecord(delta.get(row.path).current,read,git,stage5);}else sourceRecord(row,read,git,stage5);}
  const guardPaths=['tests/next-five-20261110/source/current-proof.mjs','tests/publication-workflows-20261109/source-evolution.test.mjs','tests/first-five-20261109/crossed-dependency-source.test.mjs','tests/acceptance-closure-20261108/converter-final-source.test.mjs'];
  assert.deepEqual(capture.guardSources.map(r=>r.path),guardPaths,'Only the exact historical-test and proof entry successors may advance');
- for(const row of capture.guardSources)sourceRecord(row,read,git);
+ for(const row of capture.guardSources)sourceRecord(row,read,git,stage5);
  const all=[...capture.currentSources,...capture.applicationSources];assert.equal(new Set(capture.currentSources.map(r=>r.path)).size,capture.currentSources.length);
- for(const row of capture.currentSources)sourceRecord(row,read,git);
+ for(const row of capture.currentSources)sourceRecord(row,read,git,stage5);
  // Every byte observed by the old complete proof remains guarded in the new view.
  for(const row of baseline.rows)assert(all.some(r=>r.path===row.path),'Unbound original current source: '+row.path);
  const metadata='scripts/product-completion-lineage.mjs',old=git(['show',baselineRef+':'+metadata]).toString(),current=read(metadata).toString();
@@ -225,7 +244,7 @@ function retainedVerifyParallelSource(read=readFileSync,git=sourceGit,suppliedRo
  for(const row of capture.completionSources)apps.set(row.path,row);
  for(const row of capture.workflowSources)apps.set(row.path,row);
  for(const row of capture.personalSources)apps.set(row.path,row);
- for(const [path,row]of proveStage5(read,git))apps.set(path,row.current);
+ for(const [path,row]of (stage5??proveStage5(read,git)))apps.set(path,row.current);
  const auxiliary=new Map([...capture.workflowNonSourceSources,...capture.workflowGuardSources,...capture.personalAuxiliarySources].map(r=>[r.path,r]));
  const evolutions=new Map([...apps,...auxiliary,...capture.guardSources.map(r=>[r.path,r])]);
  const reviewedPath='src/lib/execution-recovery-evidence.test.ts',reviewedRef='05129e2a74e70e23160578c63a984c4bf035ed0f';
@@ -270,7 +289,7 @@ function retainedVerifyParallelSource(read=readFileSync,git=sourceGit,suppliedRo
  const checkedEdges=new Set();
  for(const row of after)for(const dep of row.supplementalSources??[]){
   const identity=dep.ref+':'+dep.path+':'+dep.blob;if(checkedEdges.has(identity))continue;checkedEdges.add(identity);
-  const bytes=git(['cat-file','blob',dep.blob]);sourceRecord({...dep,bytes:bytes.length},read,git);
+  const bytes=git(['cat-file','blob',dep.blob]);sourceRecord({...dep,bytes:bytes.length},read,git,stage5);
  }
  for(const r of [...apps.values(),...auxiliary.values()])assert(after.some(b=>b.path===r.path||b.supplementalSources?.some(d=>d.path===r.path)),'Application or explicit NS dependency missing from current binding graph');
  return true;
