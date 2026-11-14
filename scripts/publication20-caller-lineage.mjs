@@ -1,3 +1,4 @@
+import {rejectPublication20CallerEvidence} from '../tests/milestone100-20261114/source-stage8-negative-publication-caller.mjs';
 import {completionGitReader} from '../tests/parallel-source-20261110/git-reader.mjs';
 import {verifyCompletionBinding} from './product-completion-stage8.mjs';
 import {verifyFinancialSafetyBinding} from './financial-safety-lineage.mjs';
@@ -19,6 +20,7 @@ export function verifyPublication20CallerLineage(directory){
  // Reject unsafe declared source paths before deeper successor dependencies are read.
  // This preflight grants no source/hash admission; every original proof still follows.
  for(const name of [...expectedPaths,frequencyPresentationSupplementalPath,n1PublicationSupplementalPath])safe(directory,name);
+ rejectPublication20CallerEvidence(m,name=>safe(directory,name));
  const git=completionGitReader((args,options={})=>execFileSync('git',args,{cwd:directory,maxBuffer:8*1024*1024,stdio:['pipe','pipe','pipe'],...options}));
  if(git(['rev-parse','--verify',predecessor+'^{commit}']).toString().trim()!==predecessor)throw Error('Exact caller predecessor unavailable');
  const oldCaller=git(['show',predecessor+':'+caller]),oldManifest=git(['show',predecessor+':'+priorManifest]);
