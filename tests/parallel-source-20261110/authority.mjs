@@ -4233,7 +4233,75 @@ export const acceptedStage8V13=Object.freeze([
     "sha256": "3b948671a63b9202c39404d4dffd0c4ef83ffcd84b7a60c66407ab897ebcb111"
   }
 ]);
-export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8,...acceptedStage8V3,...acceptedStage8V4,...acceptedStage8V5,...acceptedStage8V6,...acceptedStage8V7,...acceptedStage8V8,...acceptedStage8V9,...acceptedStage8V10,...acceptedStage8V11,...acceptedStage8V12,...acceptedStage8V13].map(row=>[row.path,row])).values()]);
+export const additionalStage8V14BootstrapRefs=Object.freeze(["101bdd56f6c5d195c85c340ac9ab4ff0cb643fa3","746e74b8661637fc381ae51f7970e62d3ad0cff1"]);
+export const acceptedStage8V14=Object.freeze([
+  {
+    "path": "tests/parallel-source-20261110/bootstrap.mjs",
+    "blob": "6b31b6813a9ec422d162357a05f081f807e4e55d",
+    "sha256": "341d3fe3c7f3e178dd4bd362cab20e560e20afb21e9a2e3f8b7e16c51f5e3403"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-authority-availability.mjs",
+    "blob": "7f63c80693023ba206aff69f7dc3ad129f823360",
+    "sha256": "6d5c8037167caf99321a6a10580a2c37b3c7279893525f95a187ade829b01013"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-authority-availability.test.mjs",
+    "blob": "925b664312b8f0e0fa4a879fc80d231a0579c0f2",
+    "sha256": "63813ed54be52690f55b58cd2c407b299388c543cea3fbfdfa3b427a5d88947a"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-supplied-lock.test.mjs",
+    "blob": "8d93ca77c262318db5b6b3f01dffffec26b7d20c",
+    "sha256": "d48956f6ce5115bfad97be1d1a4e1597eef7a8e7007ccae769b9f3e58f2a51d7"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-preflight-stage8.mjs",
+    "blob": "797bc3f71e49b9fef56fa4064725358de5add354",
+    "sha256": "ca68dc85d8e5e5d778dd7be4acbc7302abe9ad797864a247d66e6bfd9df0f22b"
+  },
+  {
+    "path": "tests/source-lineage-bootstrap.test.mjs",
+    "blob": "3dffa81756891cba9fded2adc8a813193a7a6bae",
+    "sha256": "702c4c206e58c5bb7c0e6a406725a13afe5fc5ba8339d4a5722819560861d659"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-guard-selection.mjs",
+    "blob": "31e3a4bbb496198196429ea23b8194a78951f074",
+    "sha256": "9fd4e4954b865a24e35b4d0cdf76d4a7b7eb830bc71fed4db86e7285751dcafd"
+  },
+  {
+    "path": "tests/parallel-source-20261110/core.mjs",
+    "blob": "125a784d479e66ea4cdbefa22b4f0334f61840be",
+    "sha256": "63eab4c6a249b8e48067be23ec516297699252b20ae0db502aa60f47400daa03"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-proof-capture-stage8-v14.mjs",
+    "blob": "686b07a26fba12aa2383526f22942f190435b43d",
+    "sha256": "2b1b69f5c88aa7d60943e6e2e93144bc20f23841b3123f1d41dc1975369c3bbc"
+  },
+  {
+    "path": "docs/milestone100-20261114/source-qualified-authority80.mjs",
+    "blob": "c230f9727903ddec8337bb4f966576b48ab234ec",
+    "sha256": "184fb36421da43b6ee6eb10da7edba6834f7770fec3c6bba598f09304a2415bb"
+  },
+  {
+    "path": "scripts/fetch-source-lineage.mjs",
+    "blob": "cfc087b83bcd0a12b0f0c729fb9837e55643978a",
+    "sha256": "6b621043ffd70217d7e26183ad4d1f89f9b57af846a2e8127f1c5937c15867b4"
+  },
+  {
+    "path": "tests/milestone60-20261113/source-cold-preflight.test.mjs",
+    "blob": "995a0ecf7ffb6f50d8670b6d2385918402f81cf1",
+    "sha256": "9251fb69e3f3780894ebff2b8b8bcc1a3384adca704d4c1e7502e9c7d23002aa"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision81.json",
+    "blob": "0874188de61d76ead58e8387525201a5db94663a",
+    "sha256": "41f015c69c50e517690a646e28d9e443e8c0cf2c52a890ac89127a0e92d93d4d"
+  }
+]);
+export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8,...acceptedStage8V3,...acceptedStage8V4,...acceptedStage8V5,...acceptedStage8V6,...acceptedStage8V7,...acceptedStage8V8,...acceptedStage8V9,...acceptedStage8V10,...acceptedStage8V11,...acceptedStage8V12,...acceptedStage8V13,...acceptedStage8V14].map(row=>[row.path,row])).values()]);
 for(const record of accepted)Object.freeze(record);
 export function verifyParallelAuthority(read,git){
  assert(acceptedStage8.length>0,'Independently reviewed Stage8 authority is not installed');
