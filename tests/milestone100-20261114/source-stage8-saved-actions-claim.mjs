@@ -1,3 +1,4 @@
+import {retainedStage8CurrentRecord} from './source-stage8-current-ref-join.mjs';
 /** One explicitly reviewed retained claim: F042 bytes equal the exact Stage8 predecessor. */
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
@@ -15,7 +16,7 @@ export function proveSavedActionsClaim({file,recordedSHA256,row,currentBytes,git
  assert.equal(recordedSHA256,savedActionsClaim.historical.sha256,'Exact original F042 source claim required');
  assert(row?.predecessor,'Added source has no retained predecessor claim');
  assert.deepEqual(row.predecessor,savedActionsClaim.predecessor,'Exact eac9 predecessor required');
- assert.deepEqual(row.current,savedActionsClaim.current,'Exact reviewed current source required');
+ assert.deepEqual(retainedStage8CurrentRecord({file,current:row.current,retained:savedActionsClaim.current,currentBytes,git}),savedActionsClaim.current,'Exact reviewed current source required');
  const original=immutable(savedActionsClaim.historical,git),previous=immutable(savedActionsClaim.predecessor,git),current=immutable(savedActionsClaim.current,git);
  assert(original.equals(previous),'F042 must join byte-identically to the exact eac9 predecessor');
  assert(Buffer.isBuffer(currentBytes)&&currentBytes.equals(current),'Current named application successor differs');

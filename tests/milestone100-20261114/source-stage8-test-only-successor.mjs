@@ -1,3 +1,4 @@
+import {retainedStage8CurrentRecord} from './source-stage8-current-ref-join.mjs';
 /** Exactly two reviewed test-only import successors. Original test-only verifier stays literal. */
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -49,7 +50,7 @@ const oldImport="'../../tests/acceptance-closure-20261108/receipt-source-path.mj
 function immutable(record,git){assert.equal(git(['rev-parse','--verify',record.ref+'^{commit}']).toString().trim(),record.ref);assert.equal(git(['rev-parse',record.ref+':'+record.path]).toString().trim(),record.blob);const bytes=git(['cat-file','blob',record.blob]);assert.equal(bytes.length,record.bytes);assert.equal(sha(bytes),record.sha256);return bytes;}
 export function importOnlyPredecessor({file,row,currentBytes,git}){
  const expected=policies.find(item=>item.path===file);assert(expected,'Only the two reviewed import-only test paths');
- assert.deepEqual(row?.predecessor,expected.predecessor,'Exact eac9 test predecessor required');assert.deepEqual(row?.current,expected.current,'Exact reviewed current test required');
+ assert.deepEqual(row?.predecessor,expected.predecessor,'Exact eac9 test predecessor required');assert.deepEqual(retainedStage8CurrentRecord({file,current:row?.current,retained:expected.current,currentBytes,git}),expected.current,'Exact reviewed current test required');
  const previous=immutable(expected.predecessor,git),current=immutable(expected.current,git);assert(Buffer.isBuffer(currentBytes)&&currentBytes.equals(current),'Current import-only test bytes differ');
  const text=previous.toString('utf8');assert.equal(text.split(oldImport).length,2,'Exactly one old helper import required');assert(Buffer.from(text.replace(oldImport,nextImport)).equals(current),'Only the reviewed helper import may change');return previous;
 }
