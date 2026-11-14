@@ -1,4 +1,4 @@
-import {sourceStage8Policy} from '../milestone100-20261114/source-stage8-policy-v2.mjs';
+import {sourceStage8Policy} from '../milestone100-20261114/source-stage8-policy-v3.mjs';
 /** Object availability only. The caller must first verify the independently pinned capture. */
 import assert from 'node:assert/strict';
 import {makeGitReader} from './git-reader.mjs';

@@ -1,18 +1,18 @@
-import {sourceOwnershipRef} from './source-stage8-current-ref-join.mjs';
+import {sourceOwnershipRef,sourceBatchRef} from './source-stage8-current-ref-join.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {sourceGit} from '../parallel-source-20261110/baseline-runtime.mjs';
 import {savedActionsClaim,proveSavedActionsClaim} from './source-stage8-saved-actions-claim.mjs';
 const input=()=>({file:savedActionsClaim.path,recordedSHA256:savedActionsClaim.historical.sha256,row:{predecessor:structuredClone(savedActionsClaim.predecessor),current:structuredClone(savedActionsClaim.current)},currentBytes:sourceGit(['cat-file','blob',savedActionsClaim.current.blob]),git:sourceGit});
-test('the one fixed F042 claim joins to exact eac9 and reviewed current Git bytes',()=>{assert.equal(proveSavedActionsClaim(input()),true);const args=input();args.row.current.ref=sourceOwnershipRef;assert.equal(proveSavedActionsClaim(args),true);});
+test('the one fixed F042 claim joins to exact eac9 and reviewed current Git bytes',()=>{assert.equal(proveSavedActionsClaim(input()),true);const args=input();for(const ref of [sourceOwnershipRef,sourceBatchRef]){args.row.current.ref=ref;assert.equal(proveSavedActionsClaim(args),true);}});
 test('unknown or added paths and wrong historical claims refuse',()=>{
  for(const patch of [{file:'src/components/unknown.tsx'},{recordedSHA256:'0'.repeat(64)},{row:{predecessor:null,current:savedActionsClaim.current}}])assert.throws(()=>proveSavedActionsClaim({...input(),...patch}));
 });
 test('every predecessor/current identity field remains exact',()=>{
- for(const activeRef of [savedActionsClaim.current.ref,sourceOwnershipRef])for(const side of ['predecessor','current'])for(const [key,value]of [['path','src/unknown.ts'],['ref','0'.repeat(40)],['blob','1'.repeat(40)],['bytes',1],['sha256','0'.repeat(64)]]){const args=input();args.row.current.ref=activeRef;args.row[side][key]=value;assert.throws(()=>proveSavedActionsClaim(args));}
+ for(const activeRef of [savedActionsClaim.current.ref,sourceOwnershipRef,sourceBatchRef])for(const side of ['predecessor','current'])for(const [key,value]of [['path','src/unknown.ts'],['ref','0'.repeat(40)],['blob','1'.repeat(40)],['bytes',1],['sha256','0'.repeat(64)]]){const args=input();args.row.current.ref=activeRef;args.row[side][key]=value;assert.throws(()=>proveSavedActionsClaim(args));}
 });
 test('current tamper and valid old-byte reversion refuse',()=>{
- for(const ref of [savedActionsClaim.current.ref,sourceOwnershipRef])for(const bytes of [Buffer.from('tamper'),sourceGit(['cat-file','blob',savedActionsClaim.predecessor.blob])]){const args=input();args.row.current.ref=ref;assert.throws(()=>proveSavedActionsClaim({...args,currentBytes:bytes}),/Current named application successor differs|Fresh current source join bytes differ/);}
+ for(const ref of [savedActionsClaim.current.ref,sourceOwnershipRef,sourceBatchRef])for(const bytes of [Buffer.from('tamper'),sourceGit(['cat-file','blob',savedActionsClaim.predecessor.blob])]){const args=input();args.row.current.ref=ref;assert.throws(()=>proveSavedActionsClaim({...args,currentBytes:bytes}),/Current named application successor differs|Fresh current source join bytes differ/);}
 });
 test('missing or substituted immutable provenance refuses',()=>{
  assert.throws(()=>proveSavedActionsClaim({...input(),git:()=>{throw Error('missing provenance');}}),/missing provenance/);

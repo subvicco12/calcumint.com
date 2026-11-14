@@ -19,7 +19,7 @@ function once(source,before,after){assert.equal(source.split(before).length,2,'E
 export function expectedStage8PreflightSource(previous){
  const oldNames='additionalBootstrapRefs,additionalStage7BootstrapRefs';
  const additions=['additionalStage8BootstrapRefs','additionalStage8V3BootstrapRefs','additionalStage8V4BootstrapRefs','additionalStage8V5BootstrapRefs','additionalStage8V6BootstrapRefs','additionalStage8V7BootstrapRefs','additionalStage8V8BootstrapRefs','additionalStage8V9BootstrapRefs','additionalStage8V10BootstrapRefs','additionalStage8V11BootstrapRefs','additionalStage8V12BootstrapRefs','additionalStage8V13BootstrapRefs','additionalStage8V14BootstrapRefs','additionalStage8V15BootstrapRefs','additionalStage8V16BootstrapRefs'];
- let result="import {sourceStage8Policy} from '../tests/milestone100-20261114/source-stage8-policy-v2.mjs';\n"+previous;
+ let result="import {sourceStage8Policy} from '../tests/milestone100-20261114/source-stage8-policy-v3.mjs';\n"+previous;
  result=once(result,'{'+oldNames+'}', '{'+oldNames+','+additions.join(',')+'}');
  result=once(result,'...sourceStage7Policy.ancestry,...additionalBootstrapRefs,...additionalStage7BootstrapRefs]', '...sourceStage7Policy.ancestry,...sourceStage8Policy.ancestry,...additionalBootstrapRefs,...additionalStage7BootstrapRefs,'+additions.map(name=>'...'+name).join(',')+']');
  return result;

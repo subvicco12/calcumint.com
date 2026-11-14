@@ -13,8 +13,16 @@ test('inherited retained-runtime row never overrides its original auxiliary succ
  assert.equal(selectStage8GuardSuccessor(capture,path),undefined);
  const actual=personalAuxiliaryRecords(readFileSync).get(path).current;
  assert.equal(actual.blob,'99666fd1d09a2b7f782b05d4dbd9f9656be08eea');
- assert.equal(sourceGit(['rev-parse','HEAD:'+path]).toString().trim(),actual.blob);
- assert(readFileSync(path).equals(sourceGit(['cat-file','blob',actual.blob])));
+ assert.equal(actual.ref,'054854bceed263ba59e8cd0052f1f3e9b1ea8e30');
+ assert.equal(sourceGit(['rev-parse',actual.ref+':'+path]).toString().trim(),actual.blob);
+ const original=sourceGit(['show',actual.ref+':'+path]);assert(original.equals(sourceGit(['cat-file','blob',actual.blob])));
+ assert.equal(createHash('sha256').update(original).digest('hex'),'a6b0b939f5e5cee3072cc2776bc3dbf6663a7c70731419a3905d7904a2f87f0c');
+ const historic=JSON.parse(readFileSync('docs/parallel-source-20261110/capture-revision82.json'));assert.equal(selectStage8GuardSuccessor(historic,path),undefined);assert.deepEqual(historic.personalAuxiliarySources.find(row=>row.path===path),actual);
+ const current=JSON.parse(readFileSync('docs/parallel-source-20261110/capture-revision83.json')),next=current.currentSources.find(row=>row.path===path);
+ assert.equal(selectStage8GuardSuccessor(current,path),next,'An already-current owned row must select itself');assert.equal(next.ref,current.sourceStage8V16.guardRef);assert.notEqual(next.blob,actual.blob);
+ assert.equal(sourceGit(['rev-parse','2a59a85c6e935c43e9a5a71ae15c9954e4fcab42:'+path]).toString().trim(),next.blob);
+ assert.equal(sourceGit(['rev-parse','HEAD:'+path]).toString().trim(),next.blob);
+ const bytes=sourceGit(['cat-file','blob',next.blob]);assert.equal(bytes.length,next.bytes);assert.equal(createHash('sha256').update(bytes).digest('hex'),next.sha256);assert(readFileSync(path).equals(bytes));
 });
 test('only explicit Stage8 guard paths select their exact captured successor',()=>{
  const path='tests/parallel-source-20261110/core.mjs',row=capture.currentSources.find(row=>row.path===path);

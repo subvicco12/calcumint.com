@@ -71,7 +71,7 @@ function currentSourceRecord(record,read,git){
  if(stage8View&&!record.path.startsWith('src/')){
   const currentCapture=JSON.parse(stage8View.actualInput.read(capturePath));
   const successor=selectStage8GuardSuccessor(currentCapture,record.path);
-  if(successor&&successor.blob!==record.blob){immutableRecord(record,git);return exactCurrentSourceRecord(successor,read,git);}
+  if(successor){immutableRecord(record,git);return exactCurrentSourceRecord(successor,read,git);}
  }
 
  if(stage5Paths.has(record.path))return exactCurrentSourceRecord(record,read,git);

@@ -1,3 +1,4 @@
+import {sourceStage8Policy as retainedOwnershipPolicy} from './source-stage8-policy-v2.mjs';
 import {sourceStage8Policy as retainedStage8Policy} from './source-stage8-policy.mjs';
 import {assertSourceStage8HeadStable,proveCurrentStage8AndHistoricalInputs} from './source-stage8.mjs';
 import test from 'node:test';
@@ -9,14 +10,14 @@ import {proveSourceStage8AndHistoricalInputs} from './source-stage8.mjs';
 const root=process.cwd(),input={read:readFileSync,git:sourceGit,root};
 test('exact Stage8 rows prove current bytes and historical reads only after full Git proof',()=>{
  const proof=provePinnedSourceStage8(input),capture=JSON.parse(readFileSync(sourceStage8CapturePath));
- assert.deepEqual([...proof.live.keys()],sourceStage8Policy.paths);assert.equal([...proof.live.keys()].filter(path=>retainedStage8Policy.paths.includes(path)).length,22);assert.equal(proof.live.size,23);
+ assert.deepEqual([...proof.live.keys()],sourceStage8Policy.paths);assert.equal([...proof.live.keys()].filter(path=>retainedStage8Policy.paths.includes(path)).length,22);assert.equal([...proof.live.keys()].filter(path=>retainedOwnershipPolicy.paths.includes(path)).length,23);assert.equal(proof.live.size,24);
  for(const row of capture.rows){assert(readFileSync(row.path).equals(sourceGit(['cat-file','blob',row.current.blob])));if(row.predecessor)assert(proof.historicalInput.read(row.path).equals(sourceGit(['cat-file','blob',row.predecessor.blob])));else assert.throws(()=>proof.historicalInput.read(row.path),/no historical bytes/);}
 });
 test('closed supplied reader provides capture and every current source with no reader fallback',()=>{
  const names=[sourceStage8CapturePath,...sourceStage8Policy.paths],map=new Map(names.map(p=>[p,readFileSync(p)])),seen=new Set(),calls=[];
  const git=(args,options)=>{calls.push(args);return sourceGit(args,options);};git.preloadCommits=refs=>sourceGit.preloadCommits(refs);
  const read=path=>{assert(map.has(path),'Undeclared reader dependency '+path);seen.add(path);return map.get(path);};
- const proof=provePinnedSourceStage8({read,git,root});assert.deepEqual([...seen].sort(),names.sort());assert.equal([...proof.live.keys()].filter(path=>retainedStage8Policy.paths.includes(path)).length,22);assert.equal(proof.live.size,23);assert(calls.length>0);
+ const proof=provePinnedSourceStage8({read,git,root});assert.deepEqual([...seen].sort(),names.sort());assert.equal([...proof.live.keys()].filter(path=>retainedStage8Policy.paths.includes(path)).length,22);assert.equal([...proof.live.keys()].filter(path=>retainedOwnershipPolicy.paths.includes(path)).length,23);assert.equal(proof.live.size,24);assert(calls.length>0);
  const pass='opaque-not-a-source-path';assert.throws(()=>proof.historicalInput.read(pass),/Undeclared reader dependency/);
 });
 test('each Stage8 row rejects mutation and every retained valid reversion before projection',()=>{

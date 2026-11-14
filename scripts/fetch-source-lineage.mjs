@@ -1,4 +1,4 @@
-import {sourceStage8Policy} from '../tests/milestone100-20261114/source-stage8-policy-v2.mjs';
+import {sourceStage8Policy} from '../tests/milestone100-20261114/source-stage8-policy-v3.mjs';
 /** Fetch only immutable source revisions required by the existing exact guards. */
 import {execFileSync} from 'node:child_process';
 import path from 'node:path';

@@ -1,6 +1,6 @@
 import {ensurePinnedAuthorityRecord} from '../milestone100-20261114/source-stage8-authority-availability.mjs';
 import test from 'node:test';
-import {execFileSync} from 'node:child_process';
+import {execFileSync,execFile} from 'node:child_process';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
@@ -56,7 +56,13 @@ test('actual current execution passes while unchanged R5 executes at literal A7'
 });
 const capture=JSON.parse(readFileSync(capturePath));
 for(const record of capture.applicationSources)test('current source reader rejects changed exact app bytes '+record.path,()=>assert.throws(()=>verifyParallelSource(name=>name===record.path?Buffer.from('plausible changed implementation'):readFileSync(name)),/Current target source differs|Independent current target bytes differ|Current factory bytes differ/));
-for(const path of ['tests/parallel-source-20261110/core.mjs','tests/parallel-source-20261110/bootstrap.mjs','tests/parallel-source-20261110/baseline-probe.mjs','tests/parallel-source-20261110/historical-tests.mjs','tests/parallel-source-20261110/git-reader.mjs','tests/parallel-source-20261110/source-object-lock.mjs','scripts/product-completion-lineage.mjs'])test('no-op validator cannot nominate itself '+path,()=>assert.throws(()=>verifyParallelSource(name=>name===path?Buffer.from('export function verify(){return true}'):readFileSync(name)),/Independent current target bytes differ/));
+for(const path of ['tests/parallel-source-20261110/core.mjs','tests/parallel-source-20261110/bootstrap.mjs','tests/parallel-source-20261110/baseline-probe.mjs','tests/parallel-source-20261110/historical-tests.mjs','tests/parallel-source-20261110/git-reader.mjs','tests/parallel-source-20261110/source-object-lock.mjs','scripts/product-completion-lineage.mjs'])test('no-op validator cannot nominate itself '+path,()=>{
+ assert.throws(()=>verifyParallelSource(name=>name===path?Buffer.from('export function verify(){return true}'):readFileSync(name)),/Independent current target bytes differ/);
+ if(path==='tests/parallel-source-20261110/git-reader.mjs'){
+  const runtime='tests/next-cohort-20261110/source/retained-runtime.mjs',old=sourceGit(['cat-file','blob','99666fd1d09a2b7f782b05d4dbd9f9656be08eea']);
+  for(const bytes of [Buffer.from('tampered owned runtime'),old])assert.throws(()=>verifyParallelSource(name=>name===runtime?bytes:readFileSync(name)),/Independent current target bytes differ/);
+ }
+});
 test('a closed asynchronous-style target map supplies every current byte without a workspace fallback',()=>{
  const names=new Set([...capture.currentSources,...capture.applicationSources].map(r=>r.path));names.add(capturePath);names.add('tests/milestone100-20261114/source-stage8-guard-policy.mjs');const target=new Map([...names].map(p=>[p,readFileSync(p)])),seen=new Set();
  assert.equal(verifyParallelSource(path=>{seen.add(path);assert(target.has(path),'Undeclared reader dependency '+path);return target.get(path);}),true);
@@ -112,10 +118,33 @@ test('exact Stage5 actual application source is live and finite',()=>{
 for(const path of appStage5Policy.paths)test('Stage5 refuses altered actual current application bytes '+path,()=>assert.throws(()=>proveCurrentAppStage5AndHistoricalInputs({read:name=>name===path?Buffer.from('tampered actual frozen application'):readFileSync(name),git:sourceGit,root:process.cwd(),policy:appStage5Policy,capturePath:appStage5CapturePath}),/Current factory bytes differ/));
 for(const path of ['tests/completion-wave-20261113/source-app-stage5.mjs','tests/completion-wave-20261113/source-app-stage5-policy.mjs',appStage5CapturePath])test('Stage5 proof imports and finite capture remain independent authority '+path,()=>assert.throws(()=>verifyParallelSource(name=>name===path?Buffer.from('{}'):readFileSync(name)),/Independent current target bytes differ/));
 
-test('mandatory source guard regressions exercise exact source and immutable availability without skips',()=>{
+test('mandatory source guard regressions exercise exact source and immutable availability without skips',async context=>{
  const env={...process.env};delete env.NODE_TEST_CONTEXT;
- for(const [file,count]of [['source-app-stage5.test.mjs',7],['source-app-stage5-availability.test.mjs',5],['source-authority-preload.test.mjs',6],['source-preflight.test.mjs',5],['source-preflight-stage.test.mjs',5],['source-test-stage6.test.mjs',6]]){
-  let tap;try{tap=execFileSync(process.execPath,['tests/completion-wave-20261113/'+file],{env,encoding:'utf8',timeout:30000,maxBuffer:1000000});}catch(error){throw new Error('Mandatory source guard child failed: '+file+'\nstdout:\n'+(error.stdout??'')+'\nstderr:\n'+(error.stderr??''),{cause:error});}
-  for(const [name,value]of [['tests',count],['pass',count],['fail',0],['skipped',0]])assert.match(tap,new RegExp('# '+name+' '+value+'\\b'));
+ const files=[['source-app-stage5.test.mjs',7],['source-app-stage5-availability.test.mjs',5],['source-authority-preload.test.mjs',6],['source-preflight.test.mjs',5],['source-preflight-stage.test.mjs',5],['source-test-stage6.test.mjs',6],['tests/next-cohort-20261110/source/runtime-evidence-batch.test.mjs',11],['tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs',6]];
+ const run=([file])=>new Promise((resolve,reject)=>{
+  if(context.signal.aborted){reject(new Error('Mandatory source guard queue cancelled: '+file,{cause:context.signal.reason}));return;}
+  // Inherit the outer verifier's owned process group; never detach nested children.
+  execFile(process.execPath,[file.startsWith('tests/')?file:'tests/completion-wave-20261113/'+file],{env,encoding:'utf8',timeout:30000,maxBuffer:1000000,signal:context.signal},(error,stdout,stderr)=>{if(error)reject(Object.assign(error,{stdout,stderr}));else resolve(stdout);});
+ });
+ const results=new Map(),cold=files.find(([file])=>file==='source-app-stage5-availability.test.mjs');
+ // The original eight-worker availability case owns its entire window alone.
+ results.set(cold[0],(await Promise.allSettled([run(cold)]))[0]);
+ const remaining=files.filter(row=>row!==cold);
+ for(let index=0;index<remaining.length;index+=2){
+  const pair=remaining.slice(index,index+2),settled=await Promise.allSettled(pair.map(run));
+  pair.forEach(([file],position)=>results.set(file,settled[position]));
  }
+ const failures=[];
+ // Report every child in the original declared order, even when an earlier child failed.
+ for(const [file,count]of files){
+  const result=results.get(file);
+  try{
+   if(result.status==='rejected'){const error=result.reason;throw new Error('Mandatory source guard child failed: '+file+'\nstdout:\n'+(error.stdout??'')+'\nstderr:\n'+(error.stderr??''),{cause:error});}
+   const tap=result.value;
+   for(const [name,value]of [['tests',count],['pass',count],['fail',0],['skipped',0]])assert.match(tap,new RegExp('# '+name+' '+value+'\\b'));
+   if(file.startsWith('tests/'))assert.match(tap,/# cancelled 0\b/);
+  }catch(error){failures.push(error);}
+ }
+ if(failures.length===1)throw failures[0];
+ if(failures.length>1)throw new AggregateError(failures,'Mandatory source guard children failed: '+failures.map(error=>error.message).join('\n'));
 });

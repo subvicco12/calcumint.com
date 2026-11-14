@@ -2,6 +2,8 @@
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 export const sourceOwnershipRef='e3b91f869b9b218e7a24e2ae5c3cbddba1297780';
+export const sourceBatchRef='2a59a85c6e935c43e9a5a71ae15c9954e4fcab42';
+const approvedRefs=Object.freeze([sourceOwnershipRef,sourceBatchRef]);
 const records=[
   {
     "path": "src/components/saved-calculation-actions.tsx",
@@ -37,7 +39,8 @@ export function retainedStage8CurrentRecord({file,current,retained,currentBytes,
  const expected=records.find(row=>row.path===file);assert(expected,'Only the three exact retained Stage8 byte identities may join');
  assert.deepEqual(retained,expected,'Literal b1 claim must remain exact');
  if(current?.ref===expected.ref)return current;
- const successor={...expected,ref:sourceOwnershipRef};assert.deepEqual(current,successor,'Only the exact source ownership ref-only successor may join');
+ assert(approvedRefs.includes(current?.ref),'Only the exact approved source successor references may join');
+ const successor={...expected,ref:current.ref};assert.deepEqual(current,successor,'Only the exact source ownership ref-only successor may join');
  const previous=immutable(expected,git),actual=immutable(successor,git);assert(actual.equals(previous),'Source ref-only bytes differ');
  assert(Buffer.isBuffer(currentBytes)&&currentBytes.equals(actual),'Fresh current source join bytes differ');
  return expected;
