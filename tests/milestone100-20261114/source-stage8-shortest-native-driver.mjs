@@ -32,3 +32,34 @@ export function proveShortestNativeDriverSuccessor(git,read){
  const path=resolve(actual.root??driverRoot,row.path),stat=lstatSync(path);assert(stat.isFile()&&!stat.isSymbolicLink(),'Regular current shortest checker required');assert.equal(realpathSync(path),path,'Redirected current shortest checker');const fresh=actual.read(row.path);assert(Buffer.isBuffer(fresh)&&fresh.equals(current),'Completion supplemental source bytes differ: '+row.path);
  assert.equal(actual.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),before,'Actual HEAD moved during shortest native driver proof');return Buffer.from(current);
 }
+
+export const shortestNativeTestRecords=Object.freeze([
+ Object.freeze({path:'tests/shortest-publication-20/completion-lineage.test.mjs',ref:'80d18305104a9db4a015ea26199f8b916370467c',blob:'fc1cb0e2caabcd7ca814d3f2305833e802f23ef5',bytes:1952,sha256:'af234ca45348e71d04d046af11de30db5119f84f0f71191ed4c413d300559468'}),
+ Object.freeze({path:'tests/shortest-publication-20/frequency-presentation-lineage.test.mjs',ref:'11d38597565922ac12d1a06678288ee7d6daf863',blob:'fbf6102cc8f77dca994545119895428edf148a01',bytes:1506,sha256:'54f259f8ff069eb2aae5e04f4006659d603df7de47c5646d3aace4ff9fba4151'})
+]);
+export function expectedShortestNativeTest(file,previous){
+ assert(shortestNativeTestRecords.some(row=>row.path===file),'Only two exact shortest test transports may advance');
+ const before=file.endsWith('/frequency-presentation-lineage.test.mjs')?"const git=args=>execFileSync('git',args);":"const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']});";
+ assert.equal(previous.split(before).length,2,'Exactly the literal shortest test constructor is required');assert(!previous.includes('import {makeGitReader}'),'Only one new shortest test transport import is allowed');
+ const after=before.replace('const git=args=>','const immutableNativeGit=makeGitReader(args=>').slice(0,-1)+');\nconst git=args=>immutableNativeGit(args);';
+ return "import {makeGitReader} from '../parallel-source-20261110/git-reader.mjs';\n"+previous.replace(before,after);
+}
+function proveShortestNativeTestBytes(file,expected,git,read){
+ assert(shortestNativeTestRecords.some(row=>row.path===file),'Only two exact shortest test transports may advance');const shortestNativeDriverPath=file;
+ const view=sourceStage8HistoricalView(git);if(view)assert.equal(read,view.historicalInput.read,'Historical shortest source reader capability differs');
+ const actual=view?.actualInput??{git,read,root:driverRoot},before=actual.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.match(before,/^[0-9a-f]{40}$/);
+ const captures=accepted.filter(row=>/^docs\/parallel-source-20261110\/capture-revision[0-9]+\.json$/.test(row.path)).sort((a,b)=>Number(/revision([0-9]+)/.exec(b.path)[1])-Number(/revision([0-9]+)/.exec(a.path)[1]));assert(captures.length>0&&captures.length<=256,'Finite independently admitted current captures required');assert.equal(new Set(captures.map(row=>row.path)).size,captures.length);
+ const nominated=captures[0],supplied=actual.read(nominated.path);assert(Buffer.isBuffer(supplied));const captureBytes=Buffer.from(supplied);assert.equal(sha(captureBytes),nominated.sha256,'Independent current checker capture differs');
+ const row=selectStage8GuardSuccessor(JSON.parse(captureBytes),shortestNativeDriverPath),authority=accepted.find(record=>record.path===shortestNativeDriverPath);assert(row&&authority,'Independently admitted shortest checker required');assert.equal(row.path,shortestNativeDriverPath);assert.equal(row.blob,authority.blob);assert.equal(row.sha256,authority.sha256);assert.match(row.ref,/^[0-9a-f]{40}$/);assert.match(row.blob,/^[0-9a-f]{40}$/);assert(Number.isSafeInteger(row.bytes)&&row.bytes>=0);
+ assert.equal(actual.git(['rev-parse','--verify',row.ref+'^{commit}']).toString().trim(),row.ref);assert.equal(actual.git(['rev-parse',row.ref+':'+row.path]).toString().trim(),row.blob);assert.equal(actual.git(['rev-parse',before+':'+row.path]).toString().trim(),row.blob);
+ const current=actual.git(['cat-file','blob',row.blob]);assert(Buffer.isBuffer(current));assert.equal(current.length,row.bytes);assert.equal(sha(current),row.sha256);assert(current.equals(expected),'Only the exact shortest checker native transport may change');
+ const path=resolve(actual.root??driverRoot,row.path),stat=lstatSync(path);assert(stat.isFile()&&!stat.isSymbolicLink(),'Regular current shortest checker required');assert.equal(realpathSync(path),path,'Redirected current shortest checker');const fresh=actual.read(row.path);assert(Buffer.isBuffer(fresh)&&fresh.equals(current),'Completion supplemental source bytes differ: '+row.path);
+ assert.equal(actual.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),before,'Actual HEAD moved during shortest native driver proof');return Buffer.from(current);
+}
+export function shortestNativeSupplementalPredecessor(file,git,read){
+ const row=shortestNativeTestRecords.find(row=>row.path===file);assert(row,'Only two exact shortest test transports may advance');
+ const view=sourceStage8HistoricalView(git);if(view)assert.equal(read,view.historicalInput.read,'Historical shortest source reader capability differs');const actual=view?.actualInput??{git,read};
+ assert.equal(actual.git(['rev-parse','--verify',row.ref+'^{commit}']).toString().trim(),row.ref);assert.equal(actual.git(['rev-parse',row.ref+':'+file]).toString().trim(),row.blob);
+ const supplied=actual.git(['cat-file','blob',row.blob]);assert(Buffer.isBuffer(supplied));const previous=Buffer.from(supplied);assert.equal(previous.length,row.bytes);assert.equal(sha(previous),row.sha256);
+ proveShortestNativeTestBytes(file,Buffer.from(expectedShortestNativeTest(file,previous.toString())),git,read);return Buffer.from(previous);
+}

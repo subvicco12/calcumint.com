@@ -1,4 +1,4 @@
-import {shortestNativeDriverPath,shortestNativeArgumentBytes,proveShortestNativeDriverSuccessor} from '../tests/milestone100-20261114/source-stage8-shortest-native-driver.mjs';
+import {shortestNativeDriverPath,shortestNativeArgumentBytes,proveShortestNativeDriverSuccessor,shortestNativeTestRecords,shortestNativeSupplementalPredecessor} from '../tests/milestone100-20261114/source-stage8-shortest-native-driver.mjs';
 import {runtimeAuxiliarySource,proveRuntimeAuxiliarySuccessor} from '../tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs';
 import {publicationTransportPath,publicationTransportArgumentBytes,provePublicationTransportSuccessor} from '../tests/milestone100-20261114/source-stage8-publication-transport.mjs';
 import {expectedShortestFixtureSuccessor} from '../tests/milestone100-20261114/source-stage8-shortest-fixture.mjs';
@@ -60,6 +60,7 @@ export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
  }
  if(name===guardV6){assert(Buffer.isBuffer(bytes)&&bytes.equals(guardV6Proof.current),'Completion current successor differs');historicalBytes=guardV6Proof.previous;}
  const historicalRead=path=>{
+  if(shortestNativeTestRecords.some(row=>row.path===path)&&retainedDependencies(name).includes(path))return shortestNativeSupplementalPredecessor(path,proof.historicalInput.git,proof.historicalInput.read);
   if(retainedDependencies(name).includes(runtimeAuxiliarySource.prior.path)&&path===runtimeAuxiliarySource.prior.path){
    proveRuntimeAuxiliarySuccessor({record:runtimeAuxiliarySource.prior,currentBytes:read(path),input:proof.historicalInput});
    return Buffer.from(git(['cat-file','blob',runtimeAuxiliarySource.prior.blob]));
