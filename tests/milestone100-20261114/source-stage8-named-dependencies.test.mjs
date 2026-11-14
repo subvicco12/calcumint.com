@@ -1,3 +1,4 @@
+import {runtimeAuxiliarySource,runtimeAuxiliaryBatchPredecessor} from './source-stage8-runtime-auxiliary.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -16,6 +17,10 @@ test('unknown completion paths gain no named core dependency closure',()=>assert
 test('unchanged caller has full current proof without being falsely required in the changed-path roster',()=>{
  const capture=JSON.parse(readFileSync('docs/milestone100-20261114/source-stage8.json'));assert.equal(capture.rows.some(row=>row.path===caller),false);
  const claim='46903cd272e5e8a9b7ff37e338a6d9e149bf8956c4d5bed7afec7f9539d2c123';
- assert.equal(verifyCompletionBinding(caller,readFileSync(caller),claim,sourceGit),true);
+ const names=completionBindingDependencies(caller),closed=new Map(names.map(path=>[path,readFileSync(path)]));
+ const read=path=>{assert(closed.has(path),'Undeclared named reader dependency '+path);return closed.get(path);};
+ assert.equal(verifyCompletionBinding(caller,readFileSync(caller),claim,sourceGit,read),true);
+ const runtime='tests/next-cohort-20261110/source/retained-runtime.mjs',old=sourceGit(['cat-file','blob','99666fd1d09a2b7f782b05d4dbd9f9656be08eea']);
+ for(const bytes of [Buffer.from('tampered runtime supplemental'),old,...[runtimeAuxiliarySource.current,runtimeAuxiliaryBatchPredecessor].map(row=>sourceGit(['cat-file','blob',row.blob]))])assert.throws(()=>verifyCompletionBinding(caller,readFileSync(caller),claim,sourceGit,path=>path===runtime?bytes:read(path)),/Independent current target bytes differ|Current personal auxiliary source bytes differ/);
  assert.throws(()=>verifyCompletionBinding(caller,Buffer.from('unbound caller argument'),claim,sourceGit),/Completion current successor differs/);
 });

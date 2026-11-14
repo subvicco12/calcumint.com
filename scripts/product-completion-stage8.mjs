@@ -1,3 +1,4 @@
+import {runtimeAuxiliarySource,proveRuntimeAuxiliarySuccessor} from '../tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs';
 import {publicationTransportPath,publicationTransportArgumentBytes,provePublicationTransportSuccessor} from '../tests/milestone100-20261114/source-stage8-publication-transport.mjs';
 import {expectedShortestFixtureSuccessor} from '../tests/milestone100-20261114/source-stage8-shortest-fixture.mjs';
 import {assertSourceStage8HeadStable} from '../tests/milestone100-20261114/source-stage8.mjs';
@@ -57,6 +58,12 @@ export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
   if(guardSuccessors.some(row=>row.path===name))historicalBytes=git(['show',sourceStage8Policy.predecessorRef+':'+name]);
  }
  if(name===guardV6){assert(Buffer.isBuffer(bytes)&&bytes.equals(guardV6Proof.current),'Completion current successor differs');historicalBytes=guardV6Proof.previous;}
- const historicalRead=path=>path===guardV6&&guardV6Proof?Buffer.from(guardV6Proof.previous):guardSuccessors.some(row=>row.path===path)?git(['show',sourceStage8Policy.predecessorRef+':'+path]):proof.historicalInput.read(path);
+ const historicalRead=path=>{
+  if(retainedDependencies(name).includes(runtimeAuxiliarySource.prior.path)&&path===runtimeAuxiliarySource.prior.path){
+   proveRuntimeAuxiliarySuccessor({record:runtimeAuxiliarySource.prior,currentBytes:read(path),input:proof.historicalInput});
+   return Buffer.from(git(['cat-file','blob',runtimeAuxiliarySource.prior.blob]));
+  }
+  return path===guardV6&&guardV6Proof?Buffer.from(guardV6Proof.previous):guardSuccessors.some(row=>row.path===path)?git(['show',sourceStage8Policy.predecessorRef+':'+path]):proof.historicalInput.read(path);
+ };
  return finish(retainedVerify(name,historicalBytes,claim,git,historicalRead));
 }

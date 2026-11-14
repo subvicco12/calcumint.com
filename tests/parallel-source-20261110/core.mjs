@@ -51,7 +51,7 @@ export const retainedStage7V6CapturePath='docs/parallel-source-20261110/capture-
 export const retainedStage7V7CapturePath='docs/parallel-source-20261110/capture-revision66.json';
 export const retainedStage7V8CapturePath='docs/parallel-source-20261110/capture-revision67.json';
 const retainedStage8CapturePath='docs/parallel-source-20261110/capture-revision68.json';
-export const capturePath='docs/parallel-source-20261110/capture-revision89.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision90.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -308,11 +308,23 @@ export function preloadRetainedImmutableObjects(read,git){
 
 function currentStage8Input(read,git){return provePinnedSourceStage8({read,git,root});}
 function completeStage8(view,run){const result=run();assertSourceStage8HeadStable(view);return result;}
+function rejectChangedUnchangedFactoryBytes(currentRead){
+ // Negative-only fast refusal: every positive input still executes the full proof.
+ const later=new Set([...completionPolicy.paths,...workflowPolicy.paths,...personalPolicy.paths,...testStagePolicy.paths,...appStage5Policy.paths,...testStage6Policy.paths,...sourceStage7Policy.paths,...sourceStage8Policy.paths]);
+ const bytes=currentRead(factoryCapturePath);assert(Buffer.isBuffer(bytes)&&hash(bytes)===factoryPolicy.captureSHA256,'Independent current target bytes differ: '+factoryCapturePath);
+ const rows=JSON.parse(bytes).rows;assert(Array.isArray(rows),'Finite factory source rows required');
+ for(const path of factoryPolicy.paths.filter(path=>!later.has(path))){
+  const found=rows.filter(row=>row.path===path);assert.equal(found.length,1,'Exact finite factory source row required');const row=found[0].current;
+  assert.equal(row.path,path);assert.equal(row.ref,factoryPolicy.codeRef);assert.match(row.blob,/^[a-f0-9]{40}$/);assert.match(row.sha256,/^[a-f0-9]{64}$/);assert(Number.isSafeInteger(row.bytes)&&row.bytes>=0);
+  const current=currentRead(path);assert(Buffer.isBuffer(current)&&current.length===row.bytes&&hash(current)===row.sha256,'Current factory bytes differ: '+path);
+ }
+}
 function rejectChangedCurrentAuthorityBytes(read,git){
  const view=sourceStage8HistoricalView(git);
  if(view)assert.equal(read,view.historicalInput.read,'Historical Stage8 reader capability differs');
  const currentRead=view?view.actualInput.read:read;
  for(const record of accepted){const current=currentRead(record.path);assert(Buffer.isBuffer(current)&&hash(current)===record.sha256,'Independent current target bytes differ: '+record.path);}
+ rejectChangedUnchangedFactoryBytes(currentRead);
 }
 export function verifyParallelSource(read=readFileSync,git=sourceGit,suppliedRows){rejectChangedCurrentAuthorityBytes(read,git);const p=currentStage8Input(read,git);return completeStage8(p,()=>retainedVerifyParallelSource(p.historicalInput.read,p.historicalInput.git,suppliedRows));}
 export function proveNamedCurrentContext(read=readFileSync,git=sourceGit){const p=currentStage8Input(read,git);return completeStage8(p,()=>{const rows=retainedProveNamedCurrentContext(p.historicalInput.read,p.historicalInput.git);for(const [path,row]of p.live){const prior=rows.get(path);rows.set(path,{current:row.current,recordedSHA256:prior?.recordedSHA256??row.predecessor?.sha256});}return rows;});}
