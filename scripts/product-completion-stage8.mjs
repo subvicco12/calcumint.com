@@ -1,4 +1,4 @@
-import {shortestNativeDriverPath,shortestNativeArgumentBytes,proveShortestNativeDriverSuccessor,shortestNativeTestRecords,shortestNativeSupplementalPredecessor} from '../tests/milestone100-20261114/source-stage8-shortest-native-driver.mjs';
+import {shortestNativeDriverPath,shortestNativeArgumentBytes,proveShortestNativeDriverSuccessor,shortestNativeTestRecords,shortestNativeSupplementalPredecessor,rejectShortestCallerArgument} from '../tests/milestone100-20261114/source-stage8-shortest-native-driver.mjs';
 import {runtimeAuxiliarySource,proveRuntimeAuxiliarySuccessor} from '../tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs';
 import {publicationTransportPath,publicationTransportArgumentBytes,provePublicationTransportSuccessor} from '../tests/milestone100-20261114/source-stage8-publication-transport.mjs';
 import {expectedShortestFixtureSuccessor} from '../tests/milestone100-20261114/source-stage8-shortest-fixture.mjs';
@@ -37,6 +37,7 @@ export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
  const supplied=git;git=immutableTreeQueryReader(completionGitReader(git));
  const argumentGuard=guardSuccessors.find(row=>row.path===name);
  if(argumentGuard){assert.equal(git(['rev-parse','--verify',argumentGuard.ref+'^{commit}']).toString().trim(),argumentGuard.ref);assert.equal(git(['rev-parse',argumentGuard.ref+':'+name]).toString().trim(),argumentGuard.blob);const expected=argumentGuard.path===publicationTransportPath?publicationTransportArgumentBytes(git):argumentGuard.path===shortestNativeDriverPath?shortestNativeArgumentBytes(git):git(['cat-file','blob',argumentGuard.blob]);if(argumentGuard.path!==publicationTransportPath&&argumentGuard.path!==shortestNativeDriverPath){assert.equal(expected.length,argumentGuard.bytes);assert.equal(sha(expected),argumentGuard.sha256);}assert(Buffer.isBuffer(bytes)&&bytes.equals(expected),'Completion current successor differs');}
+ rejectShortestCallerArgument(name,bytes,supplied);
  const proofGit=(args,options)=>git(args,options);
  for(const name of ['preloadCommits','preloadBlobs','preloadPaths'])if(typeof supplied[name]==='function')proofGit[name]=values=>supplied[name](values);
  const proof=provePinnedSourceStage8({read,git:proofGit,root:fileURLToPath(new URL('../',import.meta.url))});

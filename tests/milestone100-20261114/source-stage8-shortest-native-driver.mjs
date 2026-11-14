@@ -63,3 +63,10 @@ export function shortestNativeSupplementalPredecessor(file,git,read){
  const supplied=actual.git(['cat-file','blob',row.blob]);assert(Buffer.isBuffer(supplied));const previous=Buffer.from(supplied);assert.equal(previous.length,row.bytes);assert.equal(sha(previous),row.sha256);
  proveShortestNativeTestBytes(file,Buffer.from(expectedShortestNativeTest(file,previous.toString())),git,read);return Buffer.from(previous);
 }
+
+/** Negative-only counterexample pin from immutable capture68, not a new current-source verdict. */
+export const shortestCallerArgumentRecord=Object.freeze({path:'src/components/calculator-interactive.tsx',ref:'25b56970c05aaffaad2dd856809aaf077ab70554',blob:'db0c1d614cbafbc9468bafdd1fda5f064176fcad',bytes:202736,sha256:'017a01294f2980d25deca43ff8dddb9ab6ea87ec1271dcb4755e91223ec8d142'});
+export function rejectShortestCallerArgument(name,bytes,git){
+ if(name!==shortestCallerArgumentRecord.path||sourceStage8HistoricalView(git))return;
+ assert(Buffer.isBuffer(bytes)&&bytes.length===shortestCallerArgumentRecord.bytes&&sha(bytes)===shortestCallerArgumentRecord.sha256,'Completion current successor differs');
+}
