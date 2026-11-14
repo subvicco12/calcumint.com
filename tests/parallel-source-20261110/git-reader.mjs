@@ -26,10 +26,19 @@ export function makeGitReader(invoke){
   if(!blobs.has(id)){const value=bytes(invoke(['cat-file','blob',id]));verifyBlob(id,value);blobs.set(id,Buffer.from(value));}
   return Buffer.from(blobs.get(id));
  }
+ function commit(id){
+  if(!commitObjects.has(id)){
+   const value=Buffer.from(bytes(invoke(['cat-file','commit',id])));
+   const actual=createHash('sha1').update(Buffer.from(`commit ${value.length}\0`)).update(value).digest('hex');
+   if(actual!==id)throw Error('Git commit content address differs: '+id);
+   commitObjects.set(id,value);
+  }
+  return Buffer.from(commitObjects.get(id));
+ }
  function reader(args,options){
   if(options!==undefined)return invoke(args,options);
   if(args.length===3&&args[0]==='cat-file'&&args[1]==='blob'&&objectId.test(args[2]))return blob(args[2]);
-  if(args.length===3&&args[0]==='cat-file'&&args[1]==='commit'&&objectId.test(args[2])&&commitObjects.has(args[2]))return Buffer.from(commitObjects.get(args[2]));
+  if(args.length===3&&args[0]==='cat-file'&&args[1]==='commit'&&typeof args[2]==='string'&&objectId.test(args[2]))return commit(args[2]);
   if(args.length===3&&args[0]==='rev-parse'&&args[1]==='--verify'&&/^[0-9a-f]{40}\^\{commit\}$/.test(args[2])){
    const id=args[2].slice(0,40);
    if(!commits.has(id)){
