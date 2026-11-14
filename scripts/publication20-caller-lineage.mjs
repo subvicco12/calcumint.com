@@ -1,4 +1,4 @@
-import {verifyCompletionBinding} from './product-completion-lineage.mjs';
+import {verifyCompletionBinding} from './product-completion-stage8.mjs';
 import {verifyFinancialSafetyBinding} from './financial-safety-lineage.mjs';
 import {verifyN1PublicationBinding,n1PublicationSupplementalPath} from './n1-publication-lineage.mjs';
 import {verifyFrequencyPresentationBinding,frequencyPresentationSupplementalPath} from './frequency-presentation-lineage.mjs';

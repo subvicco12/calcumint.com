@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';import path from 'node:path';import {createHash} from 'node:crypto';import {fileURLToPath} from 'node:url';
 import {readBoundedArtifact} from '../first-five-20261109/artifact-file.mjs';
-import {verifyCapturedSource} from '../acceptance-closure-20261108/receipt-source-path.mjs';
+import {verifyCapturedSource} from '../milestone100-20261114/receipt-source-path-stage8.mjs';
 export async function verifyFiveBatchEvidence(directory='docs/five-full-contract-20261109/batch'){
  const r=JSON.parse(await readFile(path.join(directory,'receipt.json'),'utf8'));assert.equal(r.passed,true);assert.equal(r.syntheticAccountTransport,true);assert.equal(r.productionAcceptance,false);assert.equal(r.fullEngineeringComplete,0);assert.equal(r.journeys.length,15);assert.equal(r.downloads.length,30);assert.equal(r.releaseHold,true);
  const ids=[370,371,372,373,386],plans=['free','pro','business'];const names={370:'bandwidth',371:'download-time',372:'upload-time',373:'data-transfer',386:'base64-size'};const expected={370:[80,40],371:[80,40],372:[80,40],373:[125,250],386:[8,8]};

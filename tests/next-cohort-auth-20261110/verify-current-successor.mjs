@@ -1,5 +1,5 @@
 import {execFileSync} from 'node:child_process';
-import {verifyCapturedCurrentCaller} from '../acceptance-closure-20261108/receipt-source-path.mjs';
+import {verifyCapturedCurrentCaller} from '../milestone100-20261114/receipt-source-path-stage8.mjs';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';

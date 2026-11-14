@@ -2,7 +2,7 @@ import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {verifyFinancialSafetyBinding} from './financial-safety-lineage.mjs';
-import {verifyCompletionBinding} from './product-completion-lineage.mjs';
+import {verifyCompletionBinding} from './product-completion-stage8.mjs';
 const directory='docs/publication-candidate-closure';
 const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:16*1024*1024});
 // These remain historical evidence packets. Current guard/presentation changes

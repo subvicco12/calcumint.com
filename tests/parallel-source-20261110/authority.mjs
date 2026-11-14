@@ -1,3 +1,8 @@
+import {lstatSync,realpathSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {provePinnedSourceStage8} from '../milestone100-20261114/source-stage8-activation.mjs';
+import {sourceStage8HistoricalView} from '../milestone100-20261114/source-stage8.mjs';
+import {accepted as retainedStage8Authority} from '../../docs/milestone100-20261114/source-qualified-authority68.mjs';
 /** Filled only after independent review of an actual committed candidate. */
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
@@ -2901,13 +2906,24 @@ export const acceptedStage7V9=Object.freeze([
     "sha256": "e9bc59cd40b54da57bef70ccba322b22fc2bab255b31261a3a65d72cd2744fd3"
   }
 ]);
-export const accepted=Object.freeze([...new Map([...acceptedStage6,...acceptedStage7,...acceptedStage7V6,...acceptedStage7V7,...acceptedStage7V8,...acceptedStage7V9].map(row=>[row.path,row])).values()]);
+export const acceptedBeforeStage8=Object.freeze([...new Map([...acceptedStage6,...acceptedStage7,...acceptedStage7V6,...acceptedStage7V7,...acceptedStage7V8,...acceptedStage7V9].map(row=>[row.path,row])).values()]);
+export const additionalStage8BootstrapRefs=Object.freeze([]);
+export const acceptedStage8=Object.freeze([]); // Guard producer fills only after immutable candidate and independent review.
+export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8].map(row=>[row.path,row])).values()]);
+for(const record of accepted)Object.freeze(record);
 export function verifyParallelAuthority(read,git){
- assert(accepted.length>0,'Reviewed parallel source authority is not installed');
- // Static independently pinned objects only; all live checks below still execute.
- if(typeof git.preloadBlobs==='function')git.preloadBlobs(accepted.map(record=>record.blob));
- const head=git(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.match(head,/^[0-9a-f]{40}$/);
- if(typeof git.preloadPaths==='function')git.preloadPaths(accepted.map(record=>({ref:head,path:record.path,blob:record.blob})));
- for(const record of accepted){assert.equal(git(['rev-parse',head+':'+record.path]).toString().trim(),record.blob,'Independent parallel HEAD authority differs: '+record.path);const bytes=git(['cat-file','blob',record.blob]);assert.equal(createHash('sha256').update(bytes).digest('hex'),record.sha256);assert(read(record.path).equals(bytes),'Independent current target bytes differ: '+record.path);}
+ assert(acceptedStage8.length>0,'Independently reviewed Stage8 authority is not installed');
+ const view=sourceStage8HistoricalView(git);
+ provePinnedSourceStage8({read,git,root:process.cwd()});
+ const actual=view?.actualInput??{read,git};
+ const records=view?[...accepted.filter(row=>!row.path.startsWith('src/')),...retainedStage8Authority.filter(row=>row.path.startsWith('src/'))]:accepted;
+ for(const record of records){
+  const input=view&&record.path.startsWith('src/')?{read,git}:actual;
+  const head=input.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.match(head,/^[0-9a-f]{40}$/);
+  assert.equal(input.git(['rev-parse',head+':'+record.path]).toString().trim(),record.blob,'Independent parallel HEAD authority differs: '+record.path);
+  if(!record.path.startsWith('src/')){const target=resolve(actual.root??process.cwd(),record.path),stat=lstatSync(target);assert(stat.isFile()&&!stat.isSymbolicLink(),'Regular current guard required: '+record.path);assert.equal(realpathSync(target),target,'Redirected current guard: '+record.path);}
+  const bytes=input.git(['cat-file','blob',record.blob]);assert.equal(createHash('sha256').update(bytes).digest('hex'),record.sha256);
+  assert(input.read(record.path).equals(bytes),'Independent current target bytes differ: '+record.path);
+ }
  return true;
 }

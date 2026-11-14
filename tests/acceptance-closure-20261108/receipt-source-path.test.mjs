@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
-import {verifyCapturedSource} from './receipt-source-path.mjs';
+import {verifyCapturedSource} from '../milestone100-20261114/receipt-source-path-stage8.mjs';
 const bytes=Buffer.from('synthetic locked package source\n'),sha256=createHash('sha256').update(bytes).digest('hex');
 test('verifies the retained cache capture against the same canonical dependency bytes',async()=>{
  const binding=Object.freeze({path:'../batch13-deps/node_modules/zod/index.js',sha256}),reads=[];

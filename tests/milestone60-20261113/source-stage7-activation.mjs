@@ -5,6 +5,6 @@ import { ensureSourceStage7Objects } from '../parallel-source-20261110/bootstrap
 export { sourceStage7Policy, sourceStage7CapturePath };
 export const pinnedSourceStage7Records = read => sourceStage7Records({ read, policy: sourceStage7Policy, capturePath: sourceStage7CapturePath });
 export function provePinnedSourceStage7(input, retainedProver) {
-  ensureSourceStage7Objects();
+  ensureSourceStage7Objects(input.git);
   return proveCurrentStage7AndHistoricalInputs({ ...input, policy: sourceStage7Policy, capturePath: sourceStage7CapturePath }, retainedProver);
 }

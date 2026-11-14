@@ -4,7 +4,7 @@ import {execFileSync} from 'node:child_process';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {verifyFinancialSafetyBinding} from './financial-safety-lineage.mjs';
-import {verifyCompletionBinding} from './product-completion-lineage.mjs';
+import {verifyCompletionBinding} from './product-completion-stage8.mjs';
 
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 /** Keep historical claims immutable while independently checking exact current successors. */

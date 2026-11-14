@@ -1,7 +1,7 @@
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
-import {verifyCompletionBinding} from './product-completion-lineage.mjs';
+import {verifyCompletionBinding} from './product-completion-stage8.mjs';
 import {verifyCallerSuccessor} from './check-calculator-closure-history.mjs';
 import {verifyPublication20CallerLineage} from './publication20-caller-lineage.mjs';
 const root=process.cwd(),directory='docs/shortest-publication-20';

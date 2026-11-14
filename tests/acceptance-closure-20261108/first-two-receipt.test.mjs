@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
-import {verifyCapturedSource} from './receipt-source-path.mjs';
+import {verifyCapturedSource} from '../milestone100-20261114/receipt-source-path-stage8.mjs';
 const read=async path=>JSON.parse(await readFile(path,'utf8'));
 async function verifyReceipt(path){
  const receipt=await read(path);
