@@ -9,7 +9,10 @@ export function expectedPublicationTransport(previous){
  const after="const git=completionGitReader((args,options={})=>execFileSync('git',args,{cwd:directory,maxBuffer:8*1024*1024,stdio:['pipe','pipe','pipe'],...options}));";
  assert.equal(previous.split(before).length,2,'Exactly the literal G2 Git constructor is required');
  assert(!previous.includes("import {completionGitReader}"),'Transport import must be the single new import');
- return "import {completionGitReader} from '../tests/parallel-source-20261110/git-reader.mjs';\n"+previous.replace(before,after);
+ const membership=" if(JSON.stringify(Object.keys(m.sourceHashes??{}).sort())!==JSON.stringify(expectedPaths))throw Error('Caller source binding membership differs');\n";
+ assert.equal(previous.split(membership).length,2,'Exactly the literal source membership check is required');
+ const preflight=" // Reject unsafe declared source paths before deeper successor dependencies are read.\n // This preflight grants no source/hash admission; every original proof still follows.\n for(const name of [...expectedPaths,frequencyPresentationSupplementalPath,n1PublicationSupplementalPath])safe(directory,name);\n";
+ return "import {completionGitReader} from '../tests/parallel-source-20261110/git-reader.mjs';\n"+previous.replace(before,after).replace(membership,membership+preflight);
 }
 export function publicationTransportArgumentBytes(git){
  const old=guardSuccessors.find(row=>row.path===publicationTransportPath);assert(old);
@@ -19,8 +22,8 @@ export function publicationTransportArgumentBytes(git){
 }
 /** Caller must first prove the complete current source and independent authority. */
 export function provePublicationTransportSuccessor(git,read){
- const expected=publicationTransportArgumentBytes(git),capture=JSON.parse(read('docs/parallel-source-20261110/capture-revision77.json'));assert(capture.sourceStage8V10.guardPaths.includes(publicationTransportPath));
- const row=capture.currentSources.find(row=>row.path===publicationTransportPath);assert(row);assert.equal(row.ref,capture.sourceStage8V10.guardRef);
+ const expected=publicationTransportArgumentBytes(git),capture=JSON.parse(read('docs/parallel-source-20261110/capture-revision78.json'));assert(capture.sourceStage8V11.guardPaths.includes(publicationTransportPath));
+ const row=capture.currentSources.find(row=>row.path===publicationTransportPath);assert(row);assert.equal(row.ref,capture.sourceStage8V11.guardRef);
  assert.equal(git(['rev-parse','--verify',row.ref+'^{commit}']).toString().trim(),row.ref);assert.equal(git(['rev-parse',row.ref+':'+row.path]).toString().trim(),row.blob);assert.equal(git(['rev-parse','HEAD:'+row.path]).toString().trim(),row.blob);
- const current=git(['cat-file','blob',row.blob]);assert.equal(current.length,row.bytes);assert.equal(sha(current),row.sha256);assert(current.equals(expected),'Only the exact transport import and constructor may change');assert(read(row.path).equals(current),'Completion supplemental source bytes differ: '+row.path);return current;
+ const current=git(['cat-file','blob',row.blob]);assert.equal(current.length,row.bytes);assert.equal(sha(current),row.sha256);assert(current.equals(expected),'Only the exact transport and negative path preflight may change');assert(read(row.path).equals(current),'Completion supplemental source bytes differ: '+row.path);return current;
 }
