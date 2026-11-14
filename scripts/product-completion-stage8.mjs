@@ -16,13 +16,6 @@ const caller='src/components/calculator-interactive.tsx',guard='scripts/publicat
 const guardV6='tests/shortest-publication-20/caller-lineage.test.mjs';
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 const needsStage8=name=>name===caller||name===guard||name===guardV6||sourceStage8Policy.paths.includes(name)||guardSuccessors.some(row=>row.path===name)||retainedDependencies(name).some(path=>path===guardV6||sourceStage8Policy.paths.includes(path)||guardSuccessors.some(row=>row.path===path));
-function assertCurrentCallerBytes(bytes,git,read){
- const captureBytes=read(sourceStage8CapturePath);assert.equal(sha(captureBytes),sourceStage8Policy.captureSHA256,'Independent caller capture differs');
- const capture=JSON.parse(captureBytes),row=capture.rows.find(row=>row.path===caller)?.current;assert(row);assert.equal(row.ref,sourceStage8Policy.codeRef);assert.equal(row.path,caller);
- assert.equal(git(['rev-parse','--verify',row.ref+'^{commit}']).toString().trim(),row.ref);assert.equal(git(['rev-parse',row.ref+':'+caller]).toString().trim(),row.blob);
- const current=git(['cat-file','blob',row.blob]);assert.equal(current.length,row.bytes);assert.equal(sha(current),row.sha256);
- if(!Buffer.isBuffer(bytes)||!bytes.equals(current))throw Error('Completion current successor differs');
-}
 /** An additional single import successor, separate from the five literal G2 guards. */
 function shortestGuardPredecessor(git,read){
  const capture=JSON.parse(read('docs/parallel-source-20261110/capture-revision73.json'));assert(capture.sourceStage8V6.guardPaths.includes(guardV6),'Exact reviewed shortest guard scope required');
@@ -39,9 +32,6 @@ export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
  const affected=needsStage8(name);
  if(!affected){const valid=retainedVerify(name,bytes,claim,git,read);if(!valid)return false;}
  const supplied=git;git=immutableTreeQueryReader(completionGitReader(git));
- // Refuse this exact path before the broader proof so existing caller-hash diagnostics stay precise.
- // This negative precheck grants no positive admission; the complete current proof still follows.
- if(name===caller)assertCurrentCallerBytes(bytes,git,read);
  const proofGit=(args,options)=>git(args,options);
  for(const name of ['preloadCommits','preloadBlobs','preloadPaths'])if(typeof supplied[name]==='function')proofGit[name]=values=>supplied[name](values);
  const proof=provePinnedSourceStage8({read,git:proofGit,root:fileURLToPath(new URL('../',import.meta.url))});
