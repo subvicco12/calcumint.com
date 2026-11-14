@@ -1,3 +1,4 @@
+import {replayActualAuthorityWitness} from './source-stage8-authority-scope.mjs';
 /** One immutable auxiliary evolution; the original personal policy stays literal. */
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
@@ -14,7 +15,7 @@ function immutable(row,git){
  assert.equal(git(['rev-parse',row.ref+':'+row.path]).toString().trim(),row.blob);
  const bytes=git(['cat-file','blob',row.blob]);assert(Buffer.isBuffer(bytes));assert.equal(bytes.length,row.bytes);assert.equal(sha(bytes),row.sha256);return bytes;
 }
-export function proveRuntimeAuxiliarySuccessor({record,currentBytes,input,...extra}){
+export function proveRuntimeAuxiliarySuccessor({record,currentBytes,input,witness,...extra}){
  assert.equal(Object.keys(extra).length,0,'Caller-nominated current records or proof options are forbidden');
  assert.deepEqual(record,runtimeAuxiliarySource.prior,'Only the literal personal auxiliary record may advance');
  assert.equal(typeof input?.read,'function','Explicit source reader required');assert.equal(typeof input?.git,'function','Explicit source Git required');
@@ -22,13 +23,14 @@ export function proveRuntimeAuxiliarySuccessor({record,currentBytes,input,...ext
  const actual=retained?.actualInput??input,root=actual.root??process.cwd();
  const before=actual.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.match(before,/^[a-f0-9]{40}$/);
  assert.equal(sourceStage8Policy.codeRef,runtimeAuxiliarySource.current.ref);assert.equal(sourceStage8Policy.paths.length,24);
- const proof=provePinnedSourceStage8({...input,root});assert.equal(proof.actualInput.read,actual.read,'The same registered actual source reader is required');assertSourceStage8HeadStable(proof);
- verifyParallelAuthority(actual.read,actual.git);
+ let proof;
+ if(witness===undefined){proof=provePinnedSourceStage8({...input,root});assert.equal(proof.actualInput.read,actual.read,'The same registered actual source reader is required');assertSourceStage8HeadStable(proof);verifyParallelAuthority(actual.read,actual.git);}
+ else replayActualAuthorityWitness(witness,input);
  const authority=accepted.find(row=>row.path===runtimeAuxiliarySource.current.path);assert(authority,'Independently admitted runtime guard required');assert.equal(authority.blob,runtimeAuxiliarySource.current.blob);assert.equal(authority.sha256,runtimeAuxiliarySource.current.sha256);
  immutable(runtimeAuxiliarySource.prior,actual.git);const bytes=immutable(runtimeAuxiliarySource.current,actual.git),path=runtimeAuxiliarySource.current.path;
  assert.equal(actual.git(['rev-parse',before+':'+path]).toString().trim(),runtimeAuxiliarySource.current.blob,'Exact actual HEAD runtime object differs');
  const target=resolve(root,path),stat=lstatSync(target);assert(stat.isFile()&&!stat.isSymbolicLink(),'Regular actual runtime source required');assert.equal(realpathSync(target),target,'Redirected runtime source');
  const fresh=actual.read(path);assert(Buffer.isBuffer(fresh)&&fresh.equals(bytes)&&Buffer.isBuffer(currentBytes)&&currentBytes.equals(fresh),'Current personal auxiliary source bytes differ');
- assertSourceStage8HeadStable(proof);assert.equal(actual.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),before,'Actual HEAD moved during runtime auxiliary proof');
+ if(proof)assertSourceStage8HeadStable(proof);assert.equal(actual.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),before,'Actual HEAD moved during runtime auxiliary proof');
  return true;
 }

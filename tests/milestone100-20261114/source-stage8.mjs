@@ -1,3 +1,4 @@
+import {createAuthorityObservationCollector} from './authority-observation-collector.mjs';
 import {immutableTreeQueryReader} from './source-immutable-queries.mjs';
 /** Unarmed additive source proof; immutable policy must be independently admitted. */
 import assert from 'node:assert/strict';
@@ -58,4 +59,18 @@ export function assertSourceStage8HeadStable(view){
  assert(observedHeads.has(view),'Private fresh Stage8 view required');
  const current=view.actualInput.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim();
  assert.equal(current,observedHeads.get(view),'Actual HEAD moved during public source proof');
+}
+
+/** Observation aliases only. Every operation still invokes the original supplied provider. */
+export function createSourceStage8ObservationInput(input){
+ const original=historicalViews.get(input.git);assert(original,'Only a registered Stage8 historical input may be observed');
+ assert.equal(input.read,original.historicalInput.read,'Historical Stage8 reader capability differs');assert.equal(input.root,original.historicalInput.root,'Historical Stage8 root differs');
+ const collector=createAuthorityObservationCollector();
+ const actualInput=Object.freeze({read:collector.wrapRead(original.actualInput.read,'actual'),git:collector.wrapGit(original.actualInput.git,'actual'),root:original.actualInput.root});
+ const historicalInput=Object.freeze({read:collector.wrapRead(original.historicalInput.read,'historical'),git:collector.wrapGit(original.historicalInput.git,'historical'),root:original.historicalInput.root});
+ collector.bindReceiver(actualInput,original.actualInput);collector.bindReceiver(historicalInput,original.historicalInput);
+ const observed=Object.freeze({live:original.live,actualInput,historicalInput});
+ // Reactivation must observe actual source24 reads/queries, never unwrap unrecorded originals.
+ historicalViews.set(historicalInput.git,observed);assert(observedHeads.has(original));observedHeads.set(observed,observedHeads.get(original));
+ return Object.freeze({input:historicalInput,actualInput,collector});
 }

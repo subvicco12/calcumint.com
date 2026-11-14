@@ -34,3 +34,14 @@ export function proveApiRuntimeSourceSuccessor({fixed,read,git,root=process.cwd(
  assert.equal(actual.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),before,'Actual HEAD moved during fixed API runtime proof');
  return true;
 }
+
+/** Object relation only: the public core owns fresh source/authority and HEAD-end proof. */
+export function assertApiRuntimeHistoricalObjectJoin({file,recordedSHA256,row,currentBytes,git,...extra}){
+ assert.equal(Object.keys(extra).length,0,'Only the fixed API historical object relation is supported');
+ assert.equal(file,apiRuntimeAnchor.fixed.path,'Only the exact API test historical claim is supported');
+ assert.equal(recordedSHA256,apiRuntimeAnchor.predecessor.sha256,'Exact original API source claim required');
+ assertApiRuntimeAnchorRow(row);
+ const recorded=immutable({...apiRuntimeAnchor.predecessor,ref:'f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5'},git),previous=immutable(apiRuntimeAnchor.predecessor,git),current=immutable(apiRuntimeAnchor.current,git);
+ assert(recorded.equals(previous),'F042 API source must join the exact eac9 predecessor');
+ assert(Buffer.isBuffer(currentBytes)&&currentBytes.equals(current),'Current exact API test source bytes differ');
+}
