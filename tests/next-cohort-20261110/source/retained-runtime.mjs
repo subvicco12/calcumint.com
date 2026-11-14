@@ -1,10 +1,12 @@
+import {nonSourceRecords} from '../../completion-first-20261112/non-source-stage2.mjs';
 import {runClosedSynchronousBatch,assertAPIEvidencePaths} from './runtime-evidence-batch.mjs';
 import {proveNamedCurrentContext,preloadRetainedImmutableObjects} from '../../parallel-source-20261110/core.mjs';
 import {readStage2HistoricalRuntime} from '../../completion-first-20261112/retained-runtime-stage2.mjs';
 import {completionGitReader} from '../../parallel-source-20261110/git-reader.mjs';
 /** Historical receipts retain their exact byte claims; current successors prove separately. */
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
+import {readFileSync,lstatSync,realpathSync} from 'node:fs';
+import {resolve} from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 const prior='1ec63cd11626df15063546c7e5bfedecec33f6ee';
@@ -511,6 +513,42 @@ function retainedMappedRuntimeBytes(path,row,read,sourceGit,admitted){
 }
 export function readRuntimeEvidenceFile(path,encoding){const bytes=retainedRuntimeBytes(path);return encoding===undefined?bytes:bytes.toString(encoding);}
 
+const stage2BatchRows=Object.freeze([
+  {
+    "path": "src/lib/native-delivery/technology-five-job-storage.ts",
+    "ref": "5008aa4cadd77f7a9a5dc1523cace694f3bbdf47",
+    "blob": "9831531b3c87bdadd8146ce566451d86f140bdd1",
+    "sha256": "32ae836e0ab3dfa6e3ce7bc82107e05bc89a031fe1c04f7e371b9f0ef11c32f0",
+    "bytes": 3900
+  },
+  {
+    "path": "src/lib/native-delivery/technology-five-webhook-worker.ts",
+    "ref": "5008aa4cadd77f7a9a5dc1523cace694f3bbdf47",
+    "blob": "55072e75b8246480639d842ded1a7cd05a71bdcf",
+    "sha256": "9ea8e2235cce7924a58fffee2eaa8c5e71f4c0090fb80f3ced4ec734d15ecea1",
+    "bytes": 3380
+  },
+  {
+    "path": "tests/gotrue-runtime/acceptance.mjs",
+    "ref": "5008aa4cadd77f7a9a5dc1523cace694f3bbdf47",
+    "blob": "b44449b723be709c560ef7e6c1e207705cdbae67",
+    "bytes": 9053,
+    "sha256": "95fae5857935bae8098fa390df33f62342f06f4bf335640b9e19e124edbf6276"
+  }
+].map(Object.freeze));
+function retainedStage2BatchBytes(path,row,admitted){
+ const proof=admitted.get(path);assert(proof,'Explicit current Stage2 batch proof required');assert.equal(proof.recordedSHA256,row.sha256,'Exact retained Stage2 source claim required');
+ const current=readFileSync(path),currentGit=git(['cat-file','blob',proof.current.blob]);assert.equal(hash(currentGit),proof.current.sha256,'Current Stage2 Git digest differs');assert(current.equals(currentGit),'Current Stage2 source changed after proof');assert.equal(git(['rev-parse','HEAD:'+path]).toString().trim(),proof.current.blob,'Current Stage2 HEAD differs');
+ if(path==='tests/gotrue-runtime/acceptance.mjs'){const predecessor=nonSourceRecords(readFileSync).get(path)?.predecessor;assert(predecessor,'Exact NS predecessor required');for(const field of ['path','ref','blob','bytes','sha256'])assert.equal(predecessor[field],row[field],'Exact NS predecessor differs: '+field);}
+ assert.equal(git(['rev-parse','--verify',row.ref+'^{commit}']).toString().trim(),row.ref,'Exact Stage2 old commit differs');assert.equal(git(['rev-parse',row.ref+':'+path]).toString().trim(),row.blob,'Exact Stage2 old path-to-blob differs');
+ const historical=git(['cat-file','blob',row.blob]);assert.equal(historical.length,row.bytes,'Exact Stage2 old bytes differ');assert.equal(hash(historical),row.sha256,'Exact Stage2 old SHA differs');return Buffer.from(historical);
+}
+// End private Stage2 batch resolver.
+function assertRegularBatchCurrentPath(path){
+ const target=resolve(path),stat=lstatSync(target);assert(stat.isFile()&&!stat.isSymbolicLink(),'Regular current batch source required');assert.equal(realpathSync(target),target,'Redirected current batch source');
+}
+// End per-read batch physical source fence.
+
 // Explicit synchronous opt-in only. Default per-read entry points above remain unchanged.
 const rawActualState=()=>({head:execFileSync('git',['rev-parse','--verify','HEAD^{commit}'],{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024}),status:execFileSync('git',['status','--porcelain=v1','--untracked-files=all'],{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024})});
 function assertActualState(before){const after=rawActualState();assert(before.head.equals(after.head),'Evidence batch actual HEAD changed');assert(before.status.equals(after.status),'Evidence batch actual status changed');}
@@ -527,9 +565,9 @@ export function withRuntimeEvidenceBatch(paths,run,...extra){
    return {before,admitted};
   },
   read(path,state){
-   const row=sources.find(source=>source.path===path);if(!row)return retainedRuntimeBytes(path);
+   const row=sources.find(source=>source.path===path),stage2=stage2BatchRows.find(source=>source.path===path);if(!row&&!stage2)return retainedRuntimeBytes(path);
    assertActualHead(state.before);
-   try{return retainedMappedRuntimeBytes(path,row,readFileSync,git,state.admitted);}
+   try{assertRegularBatchCurrentPath(path);return row?retainedMappedRuntimeBytes(path,row,readFileSync,git,state.admitted):retainedStage2BatchBytes(path,stage2,state.admitted);}
    finally{assertActualHead(state.before);}
   },
   end(state){try{verifyCurrentRuntimeContext();}finally{assertActualState(state.before);}}
