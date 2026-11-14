@@ -1,5 +1,6 @@
 import {assertSourceStage8HeadStable} from '../tests/milestone100-20261114/source-stage8.mjs';
 import {immutableTreeQueryReader} from '../tests/milestone100-20261114/source-immutable-queries.mjs';
+import {factoryPolicy} from '../tests/calculator-factory-source-20261112/policy.mjs';
 import {accepted,verifyParallelAuthority} from '../tests/parallel-source-20261110/authority.mjs';
 import {completionGitReader} from '../tests/parallel-source-20261110/git-reader.mjs';
 import {guardSuccessors} from '../tests/milestone100-20261114/source-stage8-guard-policy.mjs';
@@ -32,7 +33,7 @@ function shortestGuardPredecessor(git,read){
  const before="'../../scripts/product-completion-lineage.mjs'",after="'../../scripts/product-completion-stage8.mjs'",text=previous.toString();assert.equal(text.split(before).length,2);
  assert(Buffer.from(text.replace(before,after)).equals(current),'Only the exact dependency-reader import may change');return {previous,current};
 }
-export const completionBindingDependencies=name=>legacyBindingPaths.includes(name)?Object.freeze([...new Set([...retainedDependencies(name),...sourceStage8Policy.paths,sourceStage8CapturePath,'tests/milestone100-20261114/receipt-source-path-stage8.mjs','tests/milestone100-20261114/source-stage8-activation.mjs','tests/milestone100-20261114/source-stage8-policy.mjs','tests/milestone100-20261114/source-stage8-guard-policy.mjs','scripts/product-completion-stage8.mjs',...accepted.map(row=>row.path),...guardSuccessors.map(row=>row.path)])]):retainedDependencies(name);
+export const completionBindingDependencies=name=>legacyBindingPaths.includes(name)?Object.freeze([...new Set([...retainedDependencies(name),...(name===caller?[...factoryPolicy.paths,'tests/calculator-factory-20261112/account-acceptance.mjs']:[]),...sourceStage8Policy.paths,sourceStage8CapturePath,'tests/milestone100-20261114/receipt-source-path-stage8.mjs','tests/milestone100-20261114/source-stage8-activation.mjs','tests/milestone100-20261114/source-stage8-policy.mjs','tests/milestone100-20261114/source-stage8-guard-policy.mjs','scripts/product-completion-stage8.mjs',...accepted.map(row=>row.path),...guardSuccessors.map(row=>row.path)])]):retainedDependencies(name);
 export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
  if(!legacyBindingPaths.includes(name))return retainedVerify(name,bytes,claim,git,read);
  const affected=needsStage8(name);

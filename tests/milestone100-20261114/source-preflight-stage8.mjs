@@ -18,7 +18,7 @@ const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 function once(source,before,after){assert.equal(source.split(before).length,2,'Exact retained preflight insertion required');return source.replace(before,after);}
 export function expectedStage8PreflightSource(previous){
  const oldNames='additionalBootstrapRefs,additionalStage7BootstrapRefs';
- const additions=['additionalStage8BootstrapRefs','additionalStage8V3BootstrapRefs','additionalStage8V4BootstrapRefs','additionalStage8V5BootstrapRefs','additionalStage8V6BootstrapRefs'];
+ const additions=['additionalStage8BootstrapRefs','additionalStage8V3BootstrapRefs','additionalStage8V4BootstrapRefs','additionalStage8V5BootstrapRefs','additionalStage8V6BootstrapRefs','additionalStage8V7BootstrapRefs'];
  let result="import {sourceStage8Policy} from '../tests/milestone100-20261114/source-stage8-policy.mjs';\n"+previous;
  result=once(result,'{'+oldNames+'}', '{'+oldNames+','+additions.join(',')+'}');
  result=once(result,'...sourceStage7Policy.ancestry,...additionalBootstrapRefs,...additionalStage7BootstrapRefs]', '...sourceStage7Policy.ancestry,...sourceStage8Policy.ancestry,...additionalBootstrapRefs,...additionalStage7BootstrapRefs,'+additions.map(name=>'...'+name).join(',')+']');
@@ -37,7 +37,7 @@ function executeLiteralAudit(root){
   assert.equal(execFileSync('git',['rev-parse','HEAD'],{cwd:tree,encoding:'utf8'}).trim(),retainedRef);
   for(const path of paths)assert(readFileSync(join(tree,path)).equals(git(['show',retainedRef+':'+path])));
   const env={...process.env};delete env.NODE_TEST_CONTEXT;
-  const output=execFileSync(process.execPath,['--test','tests/source-lineage-bootstrap.test.mjs'],{cwd:tree,env,encoding:'utf8',timeout:10000,maxBuffer:4*1024*1024});
+  const output=execFileSync(process.execPath,['--test','--test-reporter=tap','tests/source-lineage-bootstrap.test.mjs'],{cwd:tree,env,encoding:'utf8',timeout:10000,maxBuffer:4*1024*1024});
   for(const [field,value]of [['tests',5],['pass',5],['fail',0],['skipped',0],['cancelled',0]])assert.match(output,new RegExp('^# '+field+' '+value+'$','m'));
  }finally{try{if(added)git(['worktree','remove','--force',tree]);}finally{rmSync(temporary,{recursive:true,force:true});}}
 }
@@ -45,10 +45,10 @@ export function proveSourcePreflightAndHistoricalInputs({read,git,root=rootDefau
  const proof=provePinnedSourceStage8({read,git,root});
  for(const path of paths){const row=accepted.find(row=>row.path===path);assert(row,'Independently admitted current preflight required');const bytes=read(path);assert(Buffer.isBuffer(bytes)&&sha(bytes)===row.sha256,'Exact current bootstrap source bytes differ');assert.equal(git(['rev-parse','HEAD:'+path]).toString().trim(),row.blob,'Exact current HEAD source object differs');}
  verifyParallelAuthority(read,git);
- const capture=JSON.parse(read(capturePath));assert(capture.sourceStage8V6,'Exact reviewed preflight successor required');
+ const capture=JSON.parse(read(capturePath));assert(capture.sourceStage8V7,'Exact reviewed preflight successor required');
  for(const path of paths){
-  assert(capture.sourceStage8V6.guardPaths.includes(path),'Preflight path outside reviewed successor');
-  const row=capture.currentSources.find(row=>row.path===path);assert(row);assert.equal(row.ref,capture.sourceStage8V6.guardRef);
+  assert(capture.sourceStage8V7.guardPaths.includes(path),'Preflight path outside reviewed successor');
+  const row=capture.currentSources.find(row=>row.path===path);assert(row);assert.equal(row.ref,capture.sourceStage8V7.guardRef);
   const current=immutable(row,git),target=resolve(root,path);assert(lstatSync(target).isFile()&&!lstatSync(target).isSymbolicLink());assert.equal(realpathSync(target),target);
   assert(read(path).equals(current),'Exact current bootstrap source bytes differ');
   const previous=git(['show',retainedRef+':'+path]);
