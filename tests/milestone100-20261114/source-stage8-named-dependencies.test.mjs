@@ -8,6 +8,6 @@ const caller='src/components/calculator-interactive.tsx';
 test('named current closure declares all23 exact factory reads and account acceptance auxiliary',()=>{
  const capture=JSON.parse(readFileSync(factoryCapturePath));assert.deepEqual(capture.rows.map(row=>row.path),factoryPolicy.paths);assert.equal(factoryPolicy.paths.length,23);
  const account='tests/calculator-factory-20261112/account-acceptance.mjs';const auxiliary=JSON.parse(readFileSync(completionCapturePath)).auxiliaryRows.find(row=>row.path===account);assert(auxiliary);assert.equal(auxiliary.current.path,account);
- const names=completionBindingDependencies(caller);for(const path of [...factoryPolicy.paths,account])assert(names.includes(path),'Undeclared named core source '+path);assert.equal(new Set(names).size,names.length);
+ const names=completionBindingDependencies(caller);for(const path of [caller,...factoryPolicy.paths,account])assert(names.includes(path),'Undeclared named core source '+path);assert.equal(new Set(names).size,names.length);
 });
 test('unknown completion paths gain no named core dependency closure',()=>assert.deepEqual(completionBindingDependencies('unapproved/unknown.mjs'),[]));
