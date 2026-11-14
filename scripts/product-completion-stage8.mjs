@@ -1,3 +1,4 @@
+import {immutableTreeQueryReader} from '../tests/milestone100-20261114/source-immutable-queries.mjs';
 import {accepted,verifyParallelAuthority} from '../tests/parallel-source-20261110/authority.mjs';
 import {completionGitReader} from '../tests/parallel-source-20261110/git-reader.mjs';
 import {guardSuccessors} from '../tests/milestone100-20261114/source-stage8-guard-policy.mjs';
@@ -16,7 +17,7 @@ export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
  if(!legacyBindingPaths.includes(name))return retainedVerify(name,bytes,claim,git,read);
  const affected=needsStage8(name);
  if(!affected){const valid=retainedVerify(name,bytes,claim,git,read);if(!valid)return false;}
- const supplied=git;git=completionGitReader(git);
+ const supplied=git;git=immutableTreeQueryReader(completionGitReader(git));
  const proofGit=(args,options)=>git(args,options);
  for(const name of ['preloadCommits','preloadBlobs','preloadPaths'])if(typeof supplied[name]==='function')proofGit[name]=values=>supplied[name](values);
  const proof=provePinnedSourceStage8({read,git:proofGit,root:fileURLToPath(new URL('../',import.meta.url))});

@@ -1,3 +1,4 @@
+import {immutableTreeQueryReader} from './source-immutable-queries.mjs';
 /** Unarmed additive source proof; immutable policy must be independently admitted. */
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
@@ -8,6 +9,7 @@ export const predecessorRef='eac9a6c23ae4d8f1abb607e32f57ce0d422a3cb8';
 export function proveSourceStage8AndHistoricalInputs({read,git,root,policy,capturePath}) {
  assert.equal(policy.predecessorRef,predecessorRef,'Stage8 exact predecessor required');
  assert.equal(typeof read,'function');assert.equal(typeof git,'function');
+ git=immutableTreeQueryReader(git);
  const bytes=read(capturePath),capture=JSON.parse(bytes);
  assert.deepEqual(capture.ancestry,policy.ancestry,'Stage8 finite reviewed ancestry differs');
  assert.equal(createHash('sha256').update(bytes).digest('hex'),policy.captureSHA256,'Independent Stage8 capture digest differs');
@@ -32,7 +34,7 @@ export function proveSourceStage8AndHistoricalInputs({read,git,root,policy,captu
   if(JSON.stringify(args)===JSON.stringify(['status','--porcelain','--untracked-files=all','--','src']))return Buffer.alloc(0);
   return git(args.map(arg=>arg==='HEAD'?predecessorRef:arg.startsWith('HEAD:src/')?predecessorRef+arg.slice(4):arg),options);
  };
- if(typeof git.preloadCommits==='function')historicalGit.preloadCommits=refs=>git.preloadCommits(refs);
+ for(const name of ['preloadCommits','preloadBlobs','preloadPaths'])if(typeof git[name]==='function')historicalGit[name]=values=>git[name](values);
  const view=Object.freeze({live,actualInput:Object.freeze({read,git,root}),historicalInput:Object.freeze({read:historicalRead,git:historicalGit,root})});
  historicalViews.set(historicalGit,view);
  return view;
