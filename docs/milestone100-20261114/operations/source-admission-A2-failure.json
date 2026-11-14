@@ -1,0 +1,23 @@
+{
+  "kind": "TRANSCRIBED_ACTUAL_LOCAL_TEST_FAILURE_NOT_RAW_LOG_OR_AUTHORIZATION",
+  "recordedAt": "2026-11-14T04:35:56.148194+00:00",
+  "applicationSHA": "b1dccffe1cc9e0515030d5e7ea4bad8a72756080",
+  "guardSHA": "11d38597565922ac12d1a06678288ee7d6daf863",
+  "installedAuthoritySHA": "b5a07bb4b7023dd9427e2edca36c36aebe665737",
+  "command": "node --input-type=module -e import verifyParallelSource and invoke verifyParallelSource() in a fresh process",
+  "exitCode": 1,
+  "observedShellElapsedSeconds": 28.874,
+  "error": "Current HEAD source object differs: tests/next-cohort-20261110/source/retained-runtime.mjs",
+  "actualHEADBlob": "99666fd1d09a2b7f782b05d4dbd9f9656be08eea",
+  "incorrectlySelectedInheritedBlob": "79e66a296cce5ed3d12edf29e7f51174de663964",
+  "cause": "New guard override consulted an inherited currentSources row before the original personal auxiliary evolution.",
+  "proposedSuccessor": "Restrict override to explicit Stage8 guard paths; retain legacy personal auxiliary evolution unchanged.",
+  "retainedEvidence": [
+    "docs/parallel-source-20261110/capture-revision69.json",
+    "docs/milestone100-20261114/source-qualified-authority69.mjs"
+  ],
+  "releaseHold": true,
+  "productionWrites": false,
+  "certificationGranted": false,
+  "newPublicationEligible": 0
+}
