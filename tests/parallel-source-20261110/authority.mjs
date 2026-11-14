@@ -4542,7 +4542,75 @@ export const acceptedStage8V16=Object.freeze([
     "sha256": "fd7cc896ae2f1dfc92c28d7017ba3302450f4ea600015decc69c1f679937320d"
   }
 ]);
-export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8,...acceptedStage8V3,...acceptedStage8V4,...acceptedStage8V5,...acceptedStage8V6,...acceptedStage8V7,...acceptedStage8V8,...acceptedStage8V9,...acceptedStage8V10,...acceptedStage8V11,...acceptedStage8V12,...acceptedStage8V13,...acceptedStage8V14,...acceptedStage8V15,...acceptedStage8V16].map(row=>[row.path,row])).values()]);
+export const additionalStage8V17BootstrapRefs=Object.freeze(["0c2221df406558a8d0017913ae3b621ccd51f655","bccbd61e1ec73687ccd0736c14f82fc0daf66e66"]);
+export const acceptedStage8V17=Object.freeze([
+  {
+    "path": "tests/completion-first-20261112/personal-stage.mjs",
+    "blob": "75b88961b7b9650eba3de8b9926b99c131962e3b",
+    "sha256": "bcdab09b5b710dc38edab318be1dc6f287bd22f89a12404ce696012616fa9265"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs",
+    "blob": "1cd9865758a814a175a3bd9041f7d8b5189f8c36",
+    "sha256": "ffc6c164f8a0452907d86cc5c3b83cd4072107be2dea6e881ae40350572bd4c1"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs",
+    "blob": "03a7eca458a4dbd4e3655d64a2880e24a8da60fe",
+    "sha256": "524fc8a8b6eb8f8f2f91c87554df02a97d1cfd2ca947d882f0a93407d8c9fe1d"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-preflight-stage8.mjs",
+    "blob": "f506b7ff756de77627b5d7fcbdc98851ec1a651a",
+    "sha256": "9c97f1711fb1cae35c9321d2f89214ea1be3cf1347ae666d2323a169596e8605"
+  },
+  {
+    "path": "tests/source-lineage-bootstrap.test.mjs",
+    "blob": "3dffa81756891cba9fded2adc8a813193a7a6bae",
+    "sha256": "702c4c206e58c5bb7c0e6a406725a13afe5fc5ba8339d4a5722819560861d659"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-guard-selection.mjs",
+    "blob": "e15169611da03f3fa581e017f33955e3e53f279d",
+    "sha256": "d347a72ef49840f9dbb68b1b57ae294b811b2b5d9d0057ad860b67537b1b7516"
+  },
+  {
+    "path": "tests/parallel-source-20261110/core.mjs",
+    "blob": "d04fd81deeb419543d6b1bc8b4b669147b6043c7",
+    "sha256": "0675d40a8c87a5031d823f4937de2831a221f64f295b539aea212d7527505094"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-proof-capture-stage8-v17.mjs",
+    "blob": "f137d80365aceda9d3ad3477de4ce57d10d4e2f2",
+    "sha256": "b9e0d5ec9e5c8a5ee27824f1237c2e9e341e71c2b4352a3eedc506a8d43de8aa"
+  },
+  {
+    "path": "docs/milestone100-20261114/source-qualified-authority83.mjs",
+    "blob": "49225451a774e1078b728661a17c67db730b15a2",
+    "sha256": "fc786dd109037fefe0076bc221f7b0de2f2a33f3d6da20cff7d520d262db9755"
+  },
+  {
+    "path": "tests/parallel-source-20261110/bootstrap.mjs",
+    "blob": "4e55287bdbce182be34ab927a86d71f78a62ae46",
+    "sha256": "a5703ca6d4c0b2c3fa97211d8356edd8c911da3500c9bd9fc4fde4d403519597"
+  },
+  {
+    "path": "scripts/fetch-source-lineage.mjs",
+    "blob": "270f111a32c3d888b8d0ae17ca4af74491306c3b",
+    "sha256": "492a6a89cea763582ee5d6162b256b9cb64fb980416badafddecdbb2926708bb"
+  },
+  {
+    "path": "tests/milestone60-20261113/source-cold-preflight.test.mjs",
+    "blob": "6a4d22552f3227a5185993af0ed1cc58ebaa8037",
+    "sha256": "3afcfaf0f242e190afad683cecb832f9b526d0cf64da0fb23c6fec01f77ae03d"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision84.json",
+    "blob": "d583caf5e65484cc0b6bfb071bde29edd1874aad",
+    "sha256": "be695aa1f970058df2e7aa66408ad033707df77b901f4c3edd69762c748d33af"
+  }
+]);
+export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8,...acceptedStage8V3,...acceptedStage8V4,...acceptedStage8V5,...acceptedStage8V6,...acceptedStage8V7,...acceptedStage8V8,...acceptedStage8V9,...acceptedStage8V10,...acceptedStage8V11,...acceptedStage8V12,...acceptedStage8V13,...acceptedStage8V14,...acceptedStage8V15,...acceptedStage8V16,...acceptedStage8V17].map(row=>[row.path,row])).values()]);
 for(const record of accepted)Object.freeze(record);
 export function verifyParallelAuthority(read,git){
  assert(acceptedStage8.length>0,'Independently reviewed Stage8 authority is not installed');
