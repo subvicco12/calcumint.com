@@ -1,3 +1,4 @@
+import {assertSourceStage8HeadStable,proveCurrentStage8AndHistoricalInputs} from './source-stage8.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -58,4 +59,20 @@ test('historical capability reuse rechecks live HEAD and source status',()=>{
 test('historical capability cannot nominate a substituted source reader',()=>{
  const first=provePinnedSourceStage8(input);
  assert.throws(()=>provePinnedSourceStage8({...first.historicalInput,read:()=>Buffer.from('forged source')}),/reader capability differs/);
+});
+
+test('metadata HEAD paths share only a per-proof observation and movement refuses at return',()=>{
+ const current=sourceGit(['rev-parse','--verify','HEAD^{commit}']).toString().trim();let head=current,headReads=0;
+ const git=(args,options)=>JSON.stringify(args)===JSON.stringify(['rev-parse','--verify','HEAD^{commit}'])?(headReads++,Buffer.from(head+'\n')):sourceGit(args,options);
+ const proof=provePinnedSourceStage8({...input,git}),before=headReads;
+ for(let index=0;index<3;index++)assert.equal(proof.historicalInput.git(['rev-parse','HEAD:package.json']).toString(),sourceGit(['rev-parse',current+':package.json']).toString());
+ assert.equal(headReads,before,'Metadata paths use the observed immutable commit, not cached HEAD responses');
+ head=sourceStage8Policy.codeRef;assert.throws(()=>assertSourceStage8HeadStable(proof),/HEAD moved/);
+ const next=provePinnedSourceStage8({...input,git});assertSourceStage8HeadStable(next);assert(headReads>before,'Every new proof and stability check observes live HEAD');
+});
+
+test('a metadata-only HEAD switch inside the retained callback is rejected before return',()=>{
+ let head=sourceGit(['rev-parse','--verify','HEAD^{commit}']).toString().trim();
+ const git=(args,options)=>JSON.stringify(args)===JSON.stringify(['rev-parse','--verify','HEAD^{commit}'])?Buffer.from(head+'\n'):sourceGit(args,options);
+ assert.throws(()=>proveCurrentStage8AndHistoricalInputs({...input,git,policy:sourceStage8Policy,capturePath:sourceStage8CapturePath},()=>{head=sourceStage8Policy.codeRef;return {actualCurrent:new Map()};}),/HEAD moved during public source proof/);
 });

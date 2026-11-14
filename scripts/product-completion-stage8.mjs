@@ -1,3 +1,4 @@
+import {assertSourceStage8HeadStable} from '../tests/milestone100-20261114/source-stage8.mjs';
 import {immutableTreeQueryReader} from '../tests/milestone100-20261114/source-immutable-queries.mjs';
 import {accepted,verifyParallelAuthority} from '../tests/parallel-source-20261110/authority.mjs';
 import {completionGitReader} from '../tests/parallel-source-20261110/git-reader.mjs';
@@ -22,10 +23,11 @@ export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
  for(const name of ['preloadCommits','preloadBlobs','preloadPaths'])if(typeof supplied[name]==='function')proofGit[name]=values=>supplied[name](values);
  const proof=provePinnedSourceStage8({read,git:proofGit,root:fileURLToPath(new URL('../',import.meta.url))});
  verifyParallelAuthority(read,proofGit);
- if(!affected)return true;
+ const finish=result=>{assertSourceStage8HeadStable(proof);return result;};
+ if(!affected)return finish(true);
  let historicalBytes=bytes;
  const sourceRow=proof.live.get(name);
- if(sourceRow){assert(bytes.equals(git(['cat-file','blob',sourceRow.current.blob])),'Completion current successor differs');if(!sourceRow.predecessor)return false;historicalBytes=proof.historicalInput.read(name);}
+ if(sourceRow){assert(bytes.equals(git(['cat-file','blob',sourceRow.current.blob])),'Completion current successor differs');if(!sourceRow.predecessor)return finish(false);historicalBytes=proof.historicalInput.read(name);}
  if(guardSuccessors.some(row=>row.path===name)||retainedDependencies(name).some(path=>guardSuccessors.some(row=>row.path===path))){
   assert.deepEqual(guardSuccessors.map(row=>row.path),['scripts/check-current-six-candidate-evidence.mjs','scripts/check-shortest-publication20.mjs','scripts/publication20-caller-lineage.mjs','tests/cohort22-closure-20261109/caller-source.test.mjs','tests/execution-recovery-20261109/source-lineage.test.mjs'],'Exact reviewed guard successors required');
   for(const record of guardSuccessors){
@@ -38,5 +40,5 @@ export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
   if(guardSuccessors.some(row=>row.path===name))historicalBytes=git(['show',sourceStage8Policy.predecessorRef+':'+name]);
  }
  const historicalRead=path=>guardSuccessors.some(row=>row.path===path)?git(['show',sourceStage8Policy.predecessorRef+':'+path]):proof.historicalInput.read(path);
- return retainedVerify(name,historicalBytes,claim,git,historicalRead);
+ return finish(retainedVerify(name,historicalBytes,claim,git,historicalRead));
 }

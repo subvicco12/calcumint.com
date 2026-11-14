@@ -3591,7 +3591,9 @@ export const acceptedStage8V4=Object.freeze([
     "sha256": "7869617bcc27fe17938f48a471f7b1b7489006515d3ddeb161cb42364297a74d"
   }
 ]);
-export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8,...acceptedStage8V3,...acceptedStage8V4].map(row=>[row.path,row])).values()]);
+export const additionalStage8V5BootstrapRefs=Object.freeze([]);
+export const acceptedStage8V5=Object.freeze([]);
+export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8,...acceptedStage8V3,...acceptedStage8V4,...acceptedStage8V5].map(row=>[row.path,row])).values()]);
 for(const record of accepted)Object.freeze(record);
 export function verifyParallelAuthority(read,git){
  assert(acceptedStage8.length>0,'Independently reviewed Stage8 authority is not installed');

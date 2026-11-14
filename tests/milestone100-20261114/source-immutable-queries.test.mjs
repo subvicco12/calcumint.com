@@ -59,3 +59,14 @@ test('accessor or missing argument slots are never coerced into a cached query',
  const hole=['ls-tree','-rz','--name-only',a];delete hole[3];assert.equal(isImmutableTreeQuery(hole),false);
  const calls=[],reader=immutableTreeQueryReader(args=>{calls.push(args);return Buffer.from('raw');});reader(accessor);reader(accessor);assert.equal(reads,0);assert.equal(calls.length,2);assert.equal(calls[0],accessor);
 });
+
+test('normalized literal source path lists are immutable but traversal and metacharacters are not',()=>{
+ assert(isImmutableTreeQuery(['diff','--name-only','-z',a,b,'--','src/lib/a.ts','src/components/b.test.tsx']));
+ for(const path of ['/src/file','src/../file','src//file','src/./file','src/*','src/[id]/page.tsx','src/:(glob)/file','src/file?','src/file\\x'])assert.equal(isImmutableTreeQuery(['diff','--name-only','-z',a,b,'--',path]),false,path);
+});
+
+test('installed capture71 remains byte-identical before HEAD stability successor',()=>{
+ const ref='a058ff261af1678854c79ecc725c54f2fc2273a1',path='docs/parallel-source-20261110/capture-revision71.json';
+ assert(readFileSync(path).equals(sourceGit(['show',ref+':'+path])));
+ assert(readFileSync('docs/milestone100-20261114/source-qualified-authority71.mjs').equals(sourceGit(['show',ref+':tests/parallel-source-20261110/authority.mjs'])));
+});
