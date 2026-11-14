@@ -1,0 +1,1 @@
+export function runSourceNode(args:string[],options?:{cwd?:string|URL;env?:NodeJS.ProcessEnv;stdio?:'inherit';timeout?:number;maxBuffer?:number;signal?:AbortSignal;encoding?:BufferEncoding}):Promise<string>;
