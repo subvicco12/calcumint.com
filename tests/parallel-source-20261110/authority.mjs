@@ -4039,8 +4039,79 @@ export const acceptedStage8V10=Object.freeze([
     "sha256": "6d1a759b2c15b3ef10e9995be8633ec614c4edd3e19dbfc4df2a18a0268f9528"
   }
 ]);
-export const additionalStage8V11BootstrapRefs=Object.freeze([]);
-export const acceptedStage8V11=Object.freeze([]);
+export const additionalStage8V11BootstrapRefs=Object.freeze(["80a29e843722e435155a0073f90202b3c41d1aa7","c5eaec43175b98f153486aef8c5a73c2354693e1"]);
+export const acceptedStage8V11=Object.freeze([
+  {
+    "path": "scripts/publication20-caller-lineage.mjs",
+    "blob": "4fd5ac7353f50cb8f57f3a593826da22a5399e87",
+    "sha256": "783e4f5f5d55ae38d2ce39a3e181ab953937b36edb5e48f649c4a17ba8018831"
+  },
+  {
+    "path": "scripts/product-completion-stage8.mjs",
+    "blob": "5a036f7010488354551d2eda2d379da22c15e549",
+    "sha256": "4f4507c4850221b930b10cad795f6382d72cf893b54e642aa2289764a348a864"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-publication-transport.mjs",
+    "blob": "706533f8b065eca1842e128364dc9a93e119645e",
+    "sha256": "38b1013f680f223fdaa1a8655477b804b6ec720dfd677a531068234647a9968d"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-publication-transport.test.mjs",
+    "blob": "3ec101ca81211c5a5abc548a7529c88b075cc220",
+    "sha256": "dc71bce3f9d622a0216183aabd20e6c2012d95cabb9b938ae4c33863354349dc"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-preflight-stage8.mjs",
+    "blob": "17cc1dea5e540568b353c1acb6f40276c2a203f6",
+    "sha256": "be5f26db5570dd8219f81a12fd2853532e38dc79305b3f269ae6824f14fb428c"
+  },
+  {
+    "path": "tests/source-lineage-bootstrap.test.mjs",
+    "blob": "3dffa81756891cba9fded2adc8a813193a7a6bae",
+    "sha256": "702c4c206e58c5bb7c0e6a406725a13afe5fc5ba8339d4a5722819560861d659"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-guard-selection.mjs",
+    "blob": "911d2e906a4fbf6297e551eab46036467b627569",
+    "sha256": "f9c28f0e6d115601e47bf598c971489d160e3322434cda4397d8ae5ef33452c4"
+  },
+  {
+    "path": "tests/parallel-source-20261110/core.mjs",
+    "blob": "eb0ca78c95cf1eeb7d422a595738194e4c594ac2",
+    "sha256": "88495a5523d6d0365a09fbe5a27f4b17a7b84f7665e8a2816cb938d64b872ee6"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-proof-capture-stage8-v11.mjs",
+    "blob": "f1e6684d5716318c6b86b2a51c65c6a5b7aac2a9",
+    "sha256": "117c02a27b3a824192eafe8cf107034b04afde472f19010f5a04d647281eecb2"
+  },
+  {
+    "path": "docs/milestone100-20261114/source-qualified-authority77.mjs",
+    "blob": "b87d073d73a431f2057c35270ca057fe608293a4",
+    "sha256": "dccd2b6a3bd5f8c12757726ed1673ff14da381b39295304ab2834d6b2fb85bab"
+  },
+  {
+    "path": "tests/parallel-source-20261110/bootstrap.mjs",
+    "blob": "e0456cab5fe1eb3538a67c26808c8a2ea308365e",
+    "sha256": "aeb5e1dee87145037b32cdc70f5c5cbeeef2351c0c470e2fbccdb2eaecd6037e"
+  },
+  {
+    "path": "scripts/fetch-source-lineage.mjs",
+    "blob": "afa54202b2b7777f97913440a8bc9807f8652746",
+    "sha256": "cefe83e13294b34cbd544e8ba63ca8c342c37bf463b1ff92894d9289cc784ab7"
+  },
+  {
+    "path": "tests/milestone60-20261113/source-cold-preflight.test.mjs",
+    "blob": "6801664b50d52a0e3a96593d251bf401ff466423",
+    "sha256": "0e2e5ca06880542246ff96650055e5e2f4e1c71b316e2de9a98ced3a161cf9a4"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision78.json",
+    "blob": "f1c04fe843a8645a3941907ca8905fc430feb58a",
+    "sha256": "96f89c6a74fbb3d1ce2db33d21b52f76496723511474c4af96cb70124c8b830c"
+  }
+]);
 export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8,...acceptedStage8V3,...acceptedStage8V4,...acceptedStage8V5,...acceptedStage8V6,...acceptedStage8V7,...acceptedStage8V8,...acceptedStage8V9,...acceptedStage8V10,...acceptedStage8V11].map(row=>[row.path,row])).values()]);
 for(const record of accepted)Object.freeze(record);
 export function verifyParallelAuthority(read,git){
