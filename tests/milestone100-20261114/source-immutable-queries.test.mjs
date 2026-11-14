@@ -43,3 +43,19 @@ test('fresh public proof facades share only the stable original immutable query 
  for(let index=0;index<2;index++){const facade=(args,options)=>stable(args,options),proof=immutableTreeQueryReader(facade);for(const args of [['rev-parse','--verify','HEAD^{commit}'],['status','--porcelain'],['remote','get-url','--all','origin']])proof(args);}
  assert.equal(calls.length,7);
 });
+
+test('non-string OID coercion and array serialization hooks cannot alias immutable keys',()=>{
+ const calls=[],reader=immutableTreeQueryReader(args=>{calls.push(args);return Buffer.from(JSON.stringify(args));}),objectA={toString:()=>a},objectB={toString:()=>b};
+ assert.equal(isImmutableTreeQuery(['ls-tree','-rz','--name-only',objectA]),false);
+ for(const value of [objectA,objectB])reader(['ls-tree','-rz','--name-only',value]);assert.equal(calls.length,2);calls.length=0;
+ const first=['ls-tree','-rz','--name-only',a],second=['ls-tree','-rz','--name-only',b];first.toJSON=second.toJSON=()=>['same'];
+ assert.notDeepEqual(reader(first),reader(second));assert.equal(calls.length,2);assert.equal(Object.hasOwn(calls[0],'toJSON'),false);
+ const custom=['ls-tree','-rz','--name-only',a];custom[Symbol.iterator]=function*(){yield 'forged';};assert.deepEqual(reader(custom),reader(first));
+});
+
+test('accessor or missing argument slots are never coerced into a cached query',()=>{
+ let reads=0;const accessor=['ls-tree','-rz','--name-only',a];Object.defineProperty(accessor,'3',{get(){reads++;return a;}});
+ assert.equal(isImmutableTreeQuery(accessor),false);assert.equal(reads,0);
+ const hole=['ls-tree','-rz','--name-only',a];delete hole[3];assert.equal(isImmutableTreeQuery(hole),false);
+ const calls=[],reader=immutableTreeQueryReader(args=>{calls.push(args);return Buffer.from('raw');});reader(accessor);reader(accessor);assert.equal(reads,0);assert.equal(calls.length,2);assert.equal(calls[0],accessor);
+});

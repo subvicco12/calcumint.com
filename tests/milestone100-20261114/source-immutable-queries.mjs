@@ -1,6 +1,13 @@
 /** Cache immutable Git tree-query bytes only. Never cache a proof, symbolic ref, status, config or current file. */
 const readers=new WeakMap(),oid=/^[a-f0-9]{40}$/;
-export function isImmutableTreeQuery(args){
+function literalArguments(args){
+ if(!Array.isArray(args))return undefined;
+ const length=Object.getOwnPropertyDescriptor(args,'length')?.value;if(typeof length!=='number'||!Number.isSafeInteger(length))return undefined;
+ const result=[];for(let index=0;index<length;index++){const field=Object.getOwnPropertyDescriptor(args,String(index));if(!field||!Object.hasOwn(field,'value')||typeof field.value!=='string')return undefined;result.push(field.value);}
+ return result;
+}
+export function isImmutableTreeQuery(input){
+ const args=literalArguments(input);if(!args)return false;
  if(args[0]==='ls-tree'){
   if(!['-r','-rz'].includes(args[1])||!['--name-only','--full-tree'].includes(args[2])||!oid.test(args[3]??''))return false;
   const tail=args.slice(4);
@@ -15,7 +22,8 @@ export function isImmutableTreeQuery(args){
 export function immutableTreeQueryReader(source){
  if(readers.has(source))return readers.get(source);
  const cache=new Map();
- const reader=(args,options)=>{
+ const reader=(input,options)=>{
+  const args=literalArguments(input);if(!args)return source(input,options);
   if(options!==undefined||!isImmutableTreeQuery(args))return source(args,options);
   const key=JSON.stringify(args);
   if(!cache.has(key)){
