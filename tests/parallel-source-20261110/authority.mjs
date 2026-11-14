@@ -3485,8 +3485,54 @@ export const acceptedStage8=Object.freeze([
     "sha256": "427a82483c05b757d490a12345c8823fe4c7267597d820fc7b1983d3242eb004"
   }
 ]); // Guard producer fills only after immutable candidate and independent review.
-export const additionalStage8V3BootstrapRefs=Object.freeze([]);
-export const acceptedStage8V3=Object.freeze([]);
+export const additionalStage8V3BootstrapRefs=Object.freeze(["6c7a166959aaaddb81c46110b8570e7ed3de97b9","b5a07bb4b7023dd9427e2edca36c36aebe665737"]);
+export const acceptedStage8V3=Object.freeze([
+  {
+    "path": "tests/parallel-source-20261110/core.mjs",
+    "blob": "f4bffd1489d7dde5ec81c86b06819f215679bc8c",
+    "sha256": "14c52b52382423faffd7a8e4e8a893dd7b9fe7e19b8ed8a59e22ad27f863f23d"
+  },
+  {
+    "path": "tests/parallel-source-20261110/bootstrap.mjs",
+    "blob": "d0476caeaa3e53990c5e23a28f4bb1dd0e11d914",
+    "sha256": "b8c4fbf9d0a46ccfafef9ef720ba113354beb815f9be01c7b8184c047aca32a8"
+  },
+  {
+    "path": "scripts/fetch-source-lineage.mjs",
+    "blob": "a001f16dbb13b712f976a972c3ca99c9d8dc38d4",
+    "sha256": "723fb13cacfa1cd69b5ef2c41b3dcfaa51ea23e710064f6c162fe2a6fe7cb098"
+  },
+  {
+    "path": "tests/milestone60-20261113/source-cold-preflight.test.mjs",
+    "blob": "d8eacfe06d776ba4493e591083cac014bd73e187",
+    "sha256": "ca94e68b94454762a24b82e4befcd4b5c8fb777feab4f4613f7f119b39c2c634"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-guard-selection.mjs",
+    "blob": "0470b63186f22afb1130b43559c3ce189a97f4e1",
+    "sha256": "280cbfbb1daafecf59900ce20c944007b42254b0cac7f545986ecd33aa315f02"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-guard-selection.test.mjs",
+    "blob": "5d3ab345f17b09f70468e2fdf7428dd6bb090ccd",
+    "sha256": "f6ce7d73f6ed2006b865cc5b59b927719ebb164a70f9774a5e53d0d4e12e821d"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-proof-capture-stage8-v3.mjs",
+    "blob": "dc1fe7f1a38507d43e3ad9a9e5adad48d9c16587",
+    "sha256": "2c16de5af5d5a9eb481c844a2e0eafff0d0618673c9c8d0477ec961dd379818e"
+  },
+  {
+    "path": "docs/milestone100-20261114/source-qualified-authority69.mjs",
+    "blob": "b797600afd2608566b717bd0ca1cedd727e92080",
+    "sha256": "b23f60a4e6b19a73a5eda7f276618a800b53d555707f9095616fd4006cf85ca2"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision70.json",
+    "blob": "88258d09fe55401f7f1bf909d950c1f412e863d4",
+    "sha256": "a8a53519a679ae4cb820c12bd2818906759d08da21b8d7e67c8df1e87234f1dc"
+  }
+]);
 export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8,...acceptedStage8V3].map(row=>[row.path,row])).values()]);
 for(const record of accepted)Object.freeze(record);
 export function verifyParallelAuthority(read,git){
