@@ -2,7 +2,7 @@ import {it,expect} from 'vitest';
 import {readFileSync} from 'node:fs';import {createHash} from 'node:crypto';import {execFileSync,execFile} from 'node:child_process';
 import {promisify} from 'node:util';
 const execFileAsync=promisify(execFile);
-import {verifyCapturedSource} from '../../tests/acceptance-closure-20261108/receipt-source-path.mjs';
+import {verifyCapturedSource} from '../../tests/milestone100-20261114/receipt-source-path-stage8.mjs';
 const prefix='docs/first-five-20261109/',json=(p:string)=>JSON.parse(readFileSync(p,'utf8')),digest=(p:string)=>createHash('sha256').update(readFileSync(p)).digest('hex');
 it('retains all540 identities and inherited criteria while recording only five individually scoped engineering deltas',()=>{
  const out=JSON.parse(execFileSync('python3',['tests/first-five-20261109/requirements.py','--check'],{encoding:'utf8'}));expect(out.selected).toEqual([370,371,372,373,386]);

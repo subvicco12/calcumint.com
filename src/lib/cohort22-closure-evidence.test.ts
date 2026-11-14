@@ -1,7 +1,7 @@
 import {verifyRetainedA7Case} from '../../tests/parallel-source-20261110/retained-vitest.mjs';
 import {it,expect} from 'vitest';
 import {readFileSync} from 'node:fs';import {createHash} from 'node:crypto';import {execFileSync} from 'node:child_process';
-import {verifyCapturedCurrentCaller} from '../../tests/acceptance-closure-20261108/receipt-source-path.mjs';
+import {verifyCapturedCurrentCaller} from '../../tests/milestone100-20261114/receipt-source-path-stage8.mjs';
 const prefix='docs/cohort22-closure-20261109/',read=(p:string)=>JSON.parse(readFileSync(p,'utf8'));
 it('reconciles the exact existing22 and every inherited requirement without approval promotion',()=>{
  const output=execFileSync('python3',['tests/cohort22-closure-20261109/requirements.py','--check'],{encoding:'utf8'});expect(JSON.parse(output).identities).toBe(22);

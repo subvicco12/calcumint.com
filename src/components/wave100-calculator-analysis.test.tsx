@@ -21,3 +21,7 @@ it('shows source-established chemistry units, exact target replay and invalid-ta
 it('rejects tampered exact-version packets before analysis',()=>{
  const p=JSON.parse(JSON.stringify(getFactoryWorkflows(328).execute({moles:'1',solutionVolumeLiters:'2'})));p.snapshot.output.value=999;render(<Wave100CalculatorAnalysis packet={p} plan="business" onRestore={()=>{}}/>);expect(screen.getByRole('alert').textContent).toContain('verified');expect(screen.queryByRole('table')).toBeNull();
 });
+
+it('presents every original engine output field and secondary units without recomputation',()=>{
+ const packet=getFactoryWorkflows(257).execute({a:'13',b:'14',c:'15'});const view=render(<Wave100CalculatorAnalysis packet={packet} plan="business" onRestore={()=>{}}/>);const t=screen.getByRole('table',{name:'Immutable engine output'});for(const [k,v] of Object.entries(packet.snapshot.output)){expect(t.textContent).toContain(k);expect(t.textContent).toContain(typeof v==='object'?JSON.stringify(v):String(v));}expect(t.textContent).toContain('degrees');expect(t.textContent).toContain('square units');expect(packet.snapshot.output.perimeter).toBe(42);view.rerender(<Wave100CalculatorAnalysis packet={getFactoryWorkflows(277).execute({x1:'1',y1:'2',x2:'6',y2:'14'})} plan="business" onRestore={()=>{}}/>);const coordinate=screen.getByRole('table',{name:'Immutable engine output'});for(const key of ['dx','dy'])expect([...coordinate.querySelectorAll('tr')].find(row=>row.querySelector('th')?.textContent===key)?.textContent).toContain('length units');
+});
