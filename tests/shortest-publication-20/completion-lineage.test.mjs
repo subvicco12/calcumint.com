@@ -4,8 +4,8 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import {verifyShortestSourceBinding,verifyShortestManifest} from '../../scripts/check-shortest-publication20.mjs';
-const immutableNativeGit=makeGitReader(args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']}));
-const git=args=>immutableNativeGit(args);
+const immutableNativeGit=makeGitReader((args,options={})=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],...options}));
+const git=immutableNativeGit;
 const manifest=JSON.parse(readFileSync('docs/shortest-publication-20/implementation-manifest.json'));
 for(const path of ['.github/workflows/ci.yml','scripts/publication20-caller-lineage.mjs','scripts/check-shortest-publication20.mjs']){
  const claim=manifest.sourceHashes[path];

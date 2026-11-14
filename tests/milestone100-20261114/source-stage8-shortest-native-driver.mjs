@@ -11,7 +11,7 @@ import {sourceStage8HistoricalView} from './source-stage8.mjs';
 export const shortestNativeDriverPath='scripts/check-shortest-publication20.mjs';
 const driverRoot=fileURLToPath(new URL('../../',import.meta.url)),sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 export function expectedShortestNativeDriver(previous){
- const before="const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']});",after="const immutableNativeGit=makeGitReader(args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']}));\nconst git=args=>immutableNativeGit(args);";
+ const before="const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']});",after="const immutableNativeGit=makeGitReader((args,options={})=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],...options}));\nconst git=immutableNativeGit;";
  assert.equal(previous.split(before).length,2,'Exactly the literal G2 checker constructor is required');assert(!previous.includes('import {makeGitReader}'),'Only one new checker transport import is allowed');
  return "import {makeGitReader} from '../tests/parallel-source-20261110/git-reader.mjs';\n"+previous.replace(before,after);
 }
@@ -41,7 +41,7 @@ export function expectedShortestNativeTest(file,previous){
  assert(shortestNativeTestRecords.some(row=>row.path===file),'Only two exact shortest test transports may advance');
  const before=file.endsWith('/frequency-presentation-lineage.test.mjs')?"const git=args=>execFileSync('git',args);":"const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']});";
  assert.equal(previous.split(before).length,2,'Exactly the literal shortest test constructor is required');assert(!previous.includes('import {makeGitReader}'),'Only one new shortest test transport import is allowed');
- const after=before.replace('const git=args=>','const immutableNativeGit=makeGitReader(args=>').slice(0,-1)+');\nconst git=args=>immutableNativeGit(args);';
+ const after=file.endsWith('/frequency-presentation-lineage.test.mjs')?"const immutableNativeGit=makeGitReader((args,options={})=>execFileSync('git',args,{...options}));\nconst git=immutableNativeGit;":"const immutableNativeGit=makeGitReader((args,options={})=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],...options}));\nconst git=immutableNativeGit;";
  return "import {makeGitReader} from '../parallel-source-20261110/git-reader.mjs';\n"+previous.replace(before,after);
 }
 function proveShortestNativeTestBytes(file,expected,git,read){
