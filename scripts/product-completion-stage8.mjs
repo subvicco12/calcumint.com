@@ -1,3 +1,4 @@
+import {expectedShortestFixtureSuccessor} from '../tests/milestone100-20261114/source-stage8-shortest-fixture.mjs';
 import {assertSourceStage8HeadStable} from '../tests/milestone100-20261114/source-stage8.mjs';
 import {immutableTreeQueryReader} from '../tests/milestone100-20261114/source-immutable-queries.mjs';
 import {factoryPolicy} from '../tests/calculator-factory-source-20261112/policy.mjs';
@@ -18,13 +19,12 @@ const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 const needsStage8=name=>name===caller||name===guard||name===guardV6||sourceStage8Policy.paths.includes(name)||guardSuccessors.some(row=>row.path===name)||retainedDependencies(name).some(path=>path===guardV6||sourceStage8Policy.paths.includes(path)||guardSuccessors.some(row=>row.path===path));
 /** An additional single import successor, separate from the five literal G2 guards. */
 function shortestGuardPredecessor(git,read){
- const capture=JSON.parse(read('docs/parallel-source-20261110/capture-revision73.json'));assert(capture.sourceStage8V6.guardPaths.includes(guardV6),'Exact reviewed shortest guard scope required');
- const row=capture.currentSources.find(row=>row.path===guardV6);assert(row);assert.equal(row.ref,capture.sourceStage8V6.guardRef);
+ const capture=JSON.parse(read('docs/parallel-source-20261110/capture-revision76.json'));assert(capture.sourceStage8V9.guardPaths.includes(guardV6),'Exact reviewed shortest guard scope required');
+ const row=capture.currentSources.find(row=>row.path===guardV6);assert(row);assert.equal(row.ref,capture.sourceStage8V9.guardRef);
  assert.equal(git(['rev-parse','--verify',row.ref+'^{commit}']).toString().trim(),row.ref);assert.equal(git(['rev-parse',row.ref+':'+guardV6]).toString().trim(),row.blob);
  const current=git(['cat-file','blob',row.blob]);assert.equal(current.length,row.bytes);assert.equal(sha(current),row.sha256);assert.equal(git(['rev-parse','HEAD:'+guardV6]).toString().trim(),row.blob);assert(read(guardV6).equals(current),'Current shortest guard successor differs');
  const previous=git(['show',sourceStage8Policy.predecessorRef+':'+guardV6]);
- const before="'../../scripts/product-completion-lineage.mjs'",after="'../../scripts/product-completion-stage8.mjs'",text=previous.toString();assert.equal(text.split(before).length,2);
- assert(Buffer.from(text.replace(before,after)).equals(current),'Only the exact dependency-reader import may change');return {previous,current};
+ assert(Buffer.from(expectedShortestFixtureSuccessor(previous.toString())).equals(current),'Only the exact reviewed fixture successor may change');return {previous,current};
 }
 export const completionBindingDependencies=name=>legacyBindingPaths.includes(name)?Object.freeze([...new Set([...retainedDependencies(name),...(name===caller?[caller,...factoryPolicy.paths,'tests/calculator-factory-20261112/account-acceptance.mjs']:[]),...sourceStage8Policy.paths,sourceStage8CapturePath,'tests/milestone100-20261114/receipt-source-path-stage8.mjs','tests/milestone100-20261114/source-stage8-activation.mjs','tests/milestone100-20261114/source-stage8-policy.mjs','tests/milestone100-20261114/source-stage8-guard-policy.mjs','scripts/product-completion-stage8.mjs',...accepted.map(row=>row.path),...guardSuccessors.map(row=>row.path)])]):retainedDependencies(name);
 export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
@@ -32,6 +32,8 @@ export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
  const affected=needsStage8(name);
  if(!affected){const valid=retainedVerify(name,bytes,claim,git,read);if(!valid)return false;}
  const supplied=git;git=immutableTreeQueryReader(completionGitReader(git));
+ const argumentGuard=guardSuccessors.find(row=>row.path===name);
+ if(argumentGuard){assert.equal(git(['rev-parse','--verify',argumentGuard.ref+'^{commit}']).toString().trim(),argumentGuard.ref);assert.equal(git(['rev-parse',argumentGuard.ref+':'+name]).toString().trim(),argumentGuard.blob);const expected=git(['cat-file','blob',argumentGuard.blob]);assert.equal(expected.length,argumentGuard.bytes);assert.equal(sha(expected),argumentGuard.sha256);assert(Buffer.isBuffer(bytes)&&bytes.equals(expected),'Completion current successor differs');}
  const proofGit=(args,options)=>git(args,options);
  for(const name of ['preloadCommits','preloadBlobs','preloadPaths'])if(typeof supplied[name]==='function')proofGit[name]=values=>supplied[name](values);
  const proof=provePinnedSourceStage8({read,git:proofGit,root:fileURLToPath(new URL('../',import.meta.url))});
