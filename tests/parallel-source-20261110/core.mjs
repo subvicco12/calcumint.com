@@ -1,3 +1,4 @@
+import {workflowSourceEvidenceClaims} from '../milestone100-20261114/workflow-source-evidence-claims.mjs';
 import {negativeReject as rejectWrongWorkflowClaim} from '../milestone100-20261114/source-stage8-negative-workflow-claim.mjs';
 import {runCompositionSourceEvidenceBatch} from '../milestone100-20261114/composition-source-evidence-batch.mjs';
 import {runtimeAuxiliaryImmutableChain} from '../milestone100-20261114/source-stage8-runtime-auxiliary.mjs';
@@ -55,7 +56,7 @@ export const retainedStage7V6CapturePath='docs/parallel-source-20261110/capture-
 export const retainedStage7V7CapturePath='docs/parallel-source-20261110/capture-revision66.json';
 export const retainedStage7V8CapturePath='docs/parallel-source-20261110/capture-revision67.json';
 const retainedStage8CapturePath='docs/parallel-source-20261110/capture-revision68.json';
-export const capturePath='docs/parallel-source-20261110/capture-revision99.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision100.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -372,3 +373,10 @@ export function assertFinalTwoScopeTestSuccessor(file,intermediateBytes,currentB
 
 /** Exact synchronous retained-composition source claim scope; no custom transports. */
 export function withCompositionSourceEvidenceBatch(run){return runCompositionSourceEvidenceBatch({prove:()=>proveNamedCurrentContext(),git:sourceGit,read:readFileSync},run,arguments.length);}
+
+/** Fixed workflow claims share only one synchronous, invocation-local source proof. */
+export function withWorkflowSourceEvidenceBatch(run){
+ let context;
+ try{return runCompositionSourceEvidenceBatch({claims:workflowSourceEvidenceClaims,prove:()=>{context=proveNamedCurrentContext();return context;},git:sourceGit,read:readFileSync},verify=>run(function(file,claim,bytes){verify(...arguments);return{file,currentApplicationGit:context.get(file).current.ref,recordedApplicationGit:appRef,historicalEvidenceOnly:true};}),arguments.length);}
+ finally{context=null;}
+}

@@ -1,3 +1,4 @@
+import {makeGitReader} from '../parallel-source-20261110/git-reader.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
@@ -6,7 +7,8 @@ import {verifyFrequencyPresentationBinding} from '../../scripts/frequency-presen
 const name='src/components/publication20-tool.tsx';
 const bytes=readFileSync(name);
 const claim=JSON.parse(readFileSync('docs/shortest-publication-20/caller-lineage.json')).sourceHashes[name];
-const git=args=>execFileSync('git',args);
+const immutableNativeGit=makeGitReader(args=>execFileSync('git',args));
+const git=args=>immutableNativeGit(args);
 test('requires independent successor Git object bytes even when current file matches its pinned SHA',()=>{
  assert.throws(()=>verifyFrequencyPresentationBinding(name,bytes,claim,args=>args[0]==='cat-file'&&args[2]==='d905119cbb745eee673b4215bcc59359d9692fe1'?Buffer.from('changed object'):git(args)),/source hash/);
 });

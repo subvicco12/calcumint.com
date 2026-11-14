@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import {sourceGit} from '../parallel-source-20261110/baseline-runtime.mjs';
-import {assertNamedApplicationSuccessor,proveNamedCurrentContext,capturePath} from '../parallel-source-20261110/core.mjs';
+import {assertNamedApplicationSuccessor,withWorkflowSourceEvidenceBatch,proveNamedCurrentContext,capturePath} from '../parallel-source-20261110/core.mjs';
 import {verifyExactStage as originalVerifyExactStage} from '../calculator-factory-source-20261112/exact-stage.mjs';
 import {nonSourcePolicy} from './non-source-policy.mjs';
 import {nonSourceRecords,verifyNonSourceStage,historicalWorkflowWithoutLoginObservations,nativeLoginObservationStep} from './non-source-stage2.mjs';
@@ -69,7 +69,8 @@ test('an overlapping historical Business source discloses the actual latest immu
  for(const path of ['src/app/api/internal/technology-webhooks/process/route.ts','src/lib/native-delivery/technology-five-job-storage.ts','src/lib/native-delivery/technology-five-webhook-worker.ts','src/app/api/business/technology-embeds/route.ts'])assert(workflowPolicy.paths.includes(path),'Actual reviewed current-context overlap remains explicit');
  for(const path of ['src/lib/native-delivery/technology-five-job-storage.ts','src/lib/native-delivery/technology-five-webhook-worker.ts']){const historical=sourceGit(['show',workflowPolicy.predecessorRef+':'+path]);assert(retainedRuntimeBytes(path).equals(historical));assert.throws(()=>retainedRuntimeBytes(path,p=>p===path?historical:readFileSync(p)),/Current factory bytes differ|current context target differs/);assert.throws(()=>retainedRuntimeBytes(path,readFileSync,()=>{throw Error('Missing current provenance');}),/Missing current provenance/);}
  const nsPath='tests/gotrue-runtime/acceptance.mjs',nsOld=sourceGit(['show',workflowPolicy.predecessorRef+':'+nsPath]);assert(retainedRuntimeBytes(nsPath).equals(nsOld));assert.throws(()=>retainedRuntimeBytes(nsPath,p=>p===nsPath?nsOld:readFileSync(p)),/Current NS source bytes differ|Independent current target bytes differ: tests\/gotrue-runtime\/acceptance\.mjs/);assert.throws(()=>retainedRuntimeBytes(nsPath,readFileSync,()=>{throw Error('Missing NS provenance');}),/Missing NS provenance/);
- for(const row of currentCapture.workflowHistoricalClaims){assert.equal(row.ref,'f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5');assert.equal(assertNamedApplicationSuccessor(row.path,row.sha256,readFileSync(row.path)).currentApplicationGit,workflowPolicy.codeRef);assert.throws(()=>assertNamedApplicationSuccessor(row.path,'0'.repeat(64),readFileSync(row.path)),/Exact original F042 source claim required/);}
+ withWorkflowSourceEvidenceBatch(verify=>{for(const row of currentCapture.workflowHistoricalClaims){assert.equal(row.ref,'f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5');assert.equal(verify(row.path,row.sha256,readFileSync(row.path)).currentApplicationGit,workflowPolicy.codeRef);}});
+ for(const row of currentCapture.workflowHistoricalClaims){assert.throws(()=>assertNamedApplicationSuccessor(row.path,'0'.repeat(64),readFileSync(row.path)),/Exact original F042 source claim required/);}
  for(const row of JSON.parse(readFileSync(personalCapturePath)).rows){const path=row.path;retainedRuntimeBytes('tests/gotrue-runtime/acceptance.mjs');for(const bytes of [Buffer.from('changed after immutable warm'),sourceGit(['cat-file','blob',row.predecessor.blob])])assert.throws(()=>retainedRuntimeBytes('tests/gotrue-runtime/acceptance.mjs',p=>p===path?bytes:readFileSync(p)),/Current factory bytes differ/);}
  verifyCurrentRuntimeContext();
 

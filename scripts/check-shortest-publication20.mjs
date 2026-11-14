@@ -1,3 +1,4 @@
+import {makeGitReader} from '../tests/parallel-source-20261110/git-reader.mjs';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
@@ -5,7 +6,8 @@ import {verifyCompletionBinding} from './product-completion-stage8.mjs';
 import {verifyCallerSuccessor} from './check-calculator-closure-history.mjs';
 import {verifyPublication20CallerLineage} from './publication20-caller-lineage.mjs';
 const root=process.cwd(),directory='docs/shortest-publication-20';
-const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']});
+const immutableNativeGit=makeGitReader(args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']}));
+const git=args=>immutableNativeGit(args);
 export function verifyShortestManifest(bytes,readGit=git){
  const original=readGit(['show','a955cdad7019a645b7ed2950299d0603ba1784a7:docs/shortest-publication-20/implementation-manifest.json']);
  if(!bytes.equals(original))throw Error('Historical shortest-publication manifest differs');
