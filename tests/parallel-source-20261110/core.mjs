@@ -1,3 +1,4 @@
+import {retainedCompletionExecutable} from '../next-engineering-20261115/source-completion-prewarm-admission.mjs';
 import {rejectChangedInteractiveSource} from '../next-engineering-20261115/source-interactive-negative.mjs';
 import {rejectWrongSevenTestArguments} from '../next-engineering-20261115/source-seven-test-negative.mjs';
 import {completionGitReader} from './git-reader.mjs';
@@ -265,7 +266,7 @@ function retainedVerifyParallelSource(read=readFileSync,git=sourceGit,suppliedRo
  const historicalTail=old.slice(old.indexOf('export const completionSourceRefs'));
  const insertion=" if(claim!==b.predecessorSHA256)throw Error('Completion predecessor claim differs: '+name);";
  assert.equal(historicalTail.split(insertion).length,2,'Exact unchanged guard insertion preimage required');
- assert.equal(current.slice(current.indexOf('export const completionSourceRefs')),historicalTail.replace(insertion,insertion+'\n git=completionGitReader(git);'),'Only the independently bound immutable Git transport insertion may extend the unchanged executable guard');
+ assert.equal(retainedCompletionExecutable(current).slice(retainedCompletionExecutable(current).indexOf('export const completionSourceRefs')),historicalTail.replace(insertion,insertion+'\n git=completionGitReader(git);'),'Only the independently bound immutable Git transport insertion may extend the unchanged executable guard');
  assert.equal(capture.workflowGraphPredecessor.path,metadata);assert.equal(capture.workflowGraphPredecessor.ref,workflowPolicy.predecessorRef);
  const workflowPrior=parseRows(immutableRecord(capture.workflowGraphPredecessor,git).toString());
  const before=parseRows(old),after=parseRows(current);assert.deepEqual(after.map(r=>r.path),before.map(r=>r.path));if(suppliedRows)assert.deepEqual(suppliedRows,after,'Only the reviewed parallel source rows are admitted');

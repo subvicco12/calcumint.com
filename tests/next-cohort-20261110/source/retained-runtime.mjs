@@ -484,6 +484,13 @@ const immutableObjects=new WeakMap();
 const hash=b=>createHash('sha256').update(b).digest('hex');
 const git=completionGitReader((args,options={})=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024,...options}));
 let immutableObjectsPreloaded=false;
+let batchObjectsPrimed=false;
+/** Explicit opt-in immutable availability only; no current proof or admitted map escapes. */
+export function primeRuntimeEvidenceBatchObjects(...extra){
+ assert.equal(extra.length,0,'Custom immutable batch prewarm inputs are forbidden');
+ if(batchObjectsPrimed)return;
+ primeRetainedImmutableObjects(readFileSync,git);batchObjectsPrimed=true;
+}
 export function verifyCurrentRuntimeContext(read=readFileSync,sourceGit=git){
  assert(currentContext.length>0,'Missing reviewed current runtime context');
  const head=sourceGit(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.match(head,/^[a-f0-9]{40}$/);
@@ -577,7 +584,7 @@ export function withRuntimeEvidenceBatch(paths,run,...extra){
    assert.equal(extra.length,0,'Custom evidence batch readers or arguments are forbidden');assertAPIEvidencePaths(declared);
    const before=rawActualState();let admitted;const boundHead=before.head.toString().trim();assert.match(boundHead,/^[a-f0-9]{40}$/);
    try{
-    if(!immutableObjectsPreloaded)primeRetainedImmutableObjects(readFileSync,git);
+    if(!immutableObjectsPreloaded&&!batchObjectsPrimed)primeRetainedImmutableObjects(readFileSync,git);
     admitted=verifyCurrentRuntimeContext();preloadBatchCurrentPaths(declared,admitted,boundHead);
    }finally{assertActualState(before);}
    immutableObjectsPreloaded=true;
