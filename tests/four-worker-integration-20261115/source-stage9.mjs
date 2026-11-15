@@ -1,3 +1,4 @@
+import {proveSourceStage10,sourceStage10HistoricalView,assertSourceStage10Stable} from '../next-engineering-20261115/source-stage10.mjs';
 import {resolve} from 'node:path';
 import {sourceStage8Policy,sourceStage8CapturePath} from '../milestone100-20261114/source-stage8-policy-v3.mjs';
 /** Incremental proof. No historical capability escapes before exact live verification. */
@@ -17,7 +18,8 @@ export function proveSourceStage9(input){
  const prior=historical.get(input.git);
  if(prior){assert.equal(input.read,prior.historicalInput.read,'Stage9 historical reader differs');assert.equal(input.root,prior.historicalInput.root,'Stage9 root differs');input=prior.actualInput;}
  assert.equal(typeof input.read,'function');assert.equal(typeof input.git,'function');assert.equal(typeof input.root,'string');
- const actual=Object.freeze({...input,git:immutableTreeQueryReader(input.git)});
+ const successor=proveSourceStage10(input);
+ const actual=Object.freeze({...successor.historicalInput,git:immutableTreeQueryReader(successor.historicalInput.git)});
  const captureBytes=actual.read(capturePath);assert.equal(sha(captureBytes),policy.captureSHA256,'Independent Stage9 capture digest differs');
  const capture=JSON.parse(captureBytes);assert.deepEqual(capture.ancestry,policy.ancestry);assert.equal(policy.paths.length,18);
  currentBytesFirst(actual,captureBytes);
@@ -33,16 +35,17 @@ export function proveSourceStage9(input){
  const git=(args,options)=>{
   if(args.length===3&&args[0]==='rev-parse'&&args[1]==='--verify'&&args[2]==='HEAD^{commit}')return Buffer.from(policy.predecessorRef+'\n');
   if(JSON.stringify(args)===JSON.stringify(['status','--porcelain','--untracked-files=all','--','src']))return Buffer.alloc(0);
-  return actual.git(args.map(arg=>arg==='HEAD'?policy.predecessorRef:arg.startsWith('HEAD:src/')?policy.predecessorRef+arg.slice(4):arg.startsWith('HEAD:')?head+arg.slice(4):arg),options);
+  return actual.git(args.map(arg=>arg==='HEAD'?policy.predecessorRef:arg.startsWith('HEAD:src/')?policy.predecessorRef+arg.slice(4):arg.startsWith('HEAD:')?successor.nativeHead+arg.slice(4):arg),options);
  };
  for(const name of ['preloadCommits','preloadBlobs','preloadPaths'])if(typeof actual.git[name]==='function')git[name]=values=>actual.git[name](values);
  const historicalInput=Object.freeze({read,git,root:actual.root});
- const view=Object.freeze({actualInput:actual,historicalInput,nativeHead:head,get live(){return new Map(live);}});
+ assertSourceStage10Stable(successor);
+ const view=Object.freeze({actualInput:successor.actualInput,historicalInput,nativeHead:successor.nativeHead,get live(){return new Map(live);}});
  proved.add(view);historical.set(git,view);historical.set(immutableTreeQueryReader(git),view);return view;
 }
 export function assertSourceStage9Stable(view){
  assert(proved.has(view),'Private verified Stage9 capability required');
  assert.equal(view.actualInput.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),view.nativeHead,'Native HEAD moved during nested proof');
- exact(view.actualInput); // fresh bytes, dirty/untracked SRC, lstat and realpath checks
+ proveSourceStage9(view.actualInput); // fresh Stage10 and Stage9 proofs, dirty/untracked SRC, lstat and realpath checks
  assert.equal(view.actualInput.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),view.nativeHead,'Native HEAD moved during final Stage9 proof');
 }

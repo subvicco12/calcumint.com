@@ -1,3 +1,4 @@
+import {sourceStage10Policy,sourceStage10CapturePath} from '../next-engineering-20261115/source-stage10-policy.mjs';
 import {sourceStage9Policy,sourceStage9CapturePath} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import {proveSourceStage9} from '../four-worker-integration-20261115/source-stage9.mjs';
 import {sourceStage8Policy as retainedOwnershipPolicy} from './source-stage8-policy-v2.mjs';
@@ -16,7 +17,7 @@ test('exact Stage8 rows prove current bytes and historical reads only after full
  for(const row of capture.rows){assert(readFileSync(row.path).equals(sourceGit(['cat-file','blob',row.current.blob])));if(row.predecessor)assert(proof.historicalInput.read(row.path).equals(sourceGit(['cat-file','blob',row.predecessor.blob])));else assert.throws(()=>proof.historicalInput.read(row.path),/no historical bytes/);}
 });
 test('closed supplied reader provides capture and every current source with no reader fallback',()=>{
- const names=[sourceStage8CapturePath,sourceStage9CapturePath,...new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths])],map=new Map(names.map(p=>[p,readFileSync(p)])),seen=new Set(),calls=[];
+ const names=[sourceStage8CapturePath,sourceStage9CapturePath,sourceStage10CapturePath,...new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths,...sourceStage10Policy.paths])],map=new Map(names.map(p=>[p,readFileSync(p)])),seen=new Set(),calls=[];
  const git=(args,options)=>{calls.push(args);return sourceGit(args,options);};git.preloadCommits=refs=>sourceGit.preloadCommits(refs);
  const read=path=>{assert(map.has(path),'Undeclared reader dependency '+path);seen.add(path);return map.get(path);};
  const proof=provePinnedSourceStage8({read,git,root});assert.deepEqual([...seen].sort(),names.sort());assert.equal([...proof.live.keys()].filter(path=>retainedStage8Policy.paths.includes(path)).length,22);assert.equal([...proof.live.keys()].filter(path=>retainedOwnershipPolicy.paths.includes(path)).length,23);assert.equal(proof.live.size,24);assert(calls.length>0);
@@ -37,7 +38,7 @@ test('unknown current source is rejected before any projection',()=>{
 });
 
 test('a retained historical transport cannot cache a current proof across source mutation',()=>{
- const names=[sourceStage8CapturePath,sourceStage9CapturePath,...new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths])],target=new Map(names.map(path=>[path,readFileSync(path)]));
+ const names=[sourceStage8CapturePath,sourceStage9CapturePath,sourceStage10CapturePath,...new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths,...sourceStage10Policy.paths])],target=new Map(names.map(path=>[path,readFileSync(path)]));
  const read=path=>{assert(target.has(path));return target.get(path);};
  const first=provePinnedSourceStage8({read,git:sourceGit,root});
  target.set(sourceStage8Policy.paths[0],Buffer.from('changed after the first proof'));
