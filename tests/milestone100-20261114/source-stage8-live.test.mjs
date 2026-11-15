@@ -13,7 +13,7 @@ const root=process.cwd(),input={read:readFileSync,git:sourceGit,root};
 test('exact Stage8 rows prove current bytes and historical reads only after full Git proof',()=>{
  const proof=provePinnedSourceStage8(input),capture=JSON.parse(readFileSync(sourceStage8CapturePath));
  assert.deepEqual([...proof.live.keys()],sourceStage8Policy.paths);assert.equal([...proof.live.keys()].filter(path=>retainedStage8Policy.paths.includes(path)).length,22);assert.equal([...proof.live.keys()].filter(path=>retainedOwnershipPolicy.paths.includes(path)).length,23);assert.equal(proof.live.size,24);
- for(const row of capture.rows){assert(readFileSync(row.path).equals(sourceGit(['cat-file','blob',row.current.blob])));if(row.predecessor)assert(proof.historicalInput.read(row.path).equals(sourceGit(['cat-file','blob',row.predecessor.blob])));else assert.throws(()=>proof.historicalInput.read(row.path),/no historical bytes/);}
+ for(const row of capture.rows){const actual=proof.stage9Live.get(row.path)?.current??row.current;assert(readFileSync(row.path).equals(sourceGit(['cat-file','blob',actual.blob])));if(row.predecessor)assert(proof.historicalInput.read(row.path).equals(sourceGit(['cat-file','blob',row.predecessor.blob])));else assert.throws(()=>proof.historicalInput.read(row.path),/no historical bytes/);}
 });
 test('closed supplied reader provides capture and every current source with no reader fallback',()=>{
  const names=[sourceStage8CapturePath,sourceStage9CapturePath,...new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths])],map=new Map(names.map(p=>[p,readFileSync(p)])),seen=new Set(),calls=[];

@@ -13,8 +13,8 @@ import { testStage6Policy } from '../completion-wave-20261113/source-test-stage6
 const root=resolve(new URL('../../',import.meta.url).pathname);
 const input={read:readFileSync,git:sourceGit,root};
 test('actual Stage7 rows match the finite exact policy while historical Stage6 retains literal20',()=>{
- const proved=proveCurrentAppStage5AndHistoricalInputs(input);
- for(const [path,row]of proved.stage8){assert(readFileSync(path).equals(sourceGit(['cat-file','blob',row.current.blob])));}
+ const proved=proveCurrentAppStage5AndHistoricalInputs(input),current=provePinnedSourceStage8(input);
+ for(const [path,row]of proved.stage8){const actual=current.stage9Live.get(path)?.current??row.current;assert(readFileSync(path).equals(sourceGit(['cat-file','blob',actual.blob])));}
  assert.equal(proved.actualCurrent.size,20);
  assert.equal(proved.live.size,19);assert.equal(proved.testOnly.size,1);
  assert.deepEqual([...proved.stage7.keys()],sourceStage7Policy.paths);
