@@ -1,3 +1,5 @@
+import {sourceStage8Policy,sourceStage8CapturePath} from '../milestone100-20261114/source-stage8-policy-v3.mjs';
+import {sourceStage9Policy,sourceStage9CapturePath} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 /** Exact current source must be authenticated before any older historical projection. */
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
@@ -21,6 +23,14 @@ function native(input){
  return head;
 }
 function exact(input){
+ // Negative-only preflight: these fixed independently hashed captures cannot grant a capability.
+ // All immutable/native/physical proofs below still execute for every successful invocation.
+ const current=new Map();
+ for(const [path,digest]of [[sourceStage8CapturePath,sourceStage8Policy.captureSHA256],[sourceStage9CapturePath,sourceStage9Policy.captureSHA256],[capturePath,policy.captureSHA256]]){
+  const bytes=input.read(path);assert(Buffer.isBuffer(bytes)&&sha(bytes)===digest,'Independent Stage10 capture digest differs: '+path);
+  for(const row of JSON.parse(bytes).rows)current.set(row.path,row.current);
+ }
+ for(const [path,row]of current){const bytes=input.read(path);assert(Buffer.isBuffer(bytes)&&bytes.length===row.bytes&&sha(bytes)===row.sha256,'Current factory bytes differ: '+path);}
  const before=native(input);
  const bytes=input.read(capturePath);assert(Buffer.isBuffer(bytes)&&sha(bytes)===policy.captureSHA256,'Independent Stage10 capture digest differs');
  const capture=JSON.parse(bytes);assert.deepEqual(capture.ancestry,policy.ancestry,'Stage10 exact ancestry differs');
