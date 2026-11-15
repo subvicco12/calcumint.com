@@ -11,11 +11,18 @@ import {verifyExactStage} from '../calculator-factory-source-20261112/exact-stag
 const historicalViews=new WeakMap(),observedHeads=new WeakMap(),incrementalViews=new WeakMap(),policyBindings=new WeakMap();
 export const sourceStage8HistoricalView=git=>historicalViews.get(git);
 export const predecessorRef='eac9a6c23ae4d8f1abb607e32f57ce0d422a3cb8';
-export function proveSourceStage8AndHistoricalInputs({read,git,root,policy,capturePath}) {
+export function proveSourceStage8AndHistoricalInputs(input){return proveStage8(input);}
+/** Fixed synchronous canonical composition: Stage9 closes immediately before this private builder. */
+export function provePinnedCurrentStage8(input){
+ const current={read:input.read,git:input.git,root:input.root};
+ const fresh=proveSourceStage9(current);
+ return proveStage8({...fresh.historicalInput,policy:pinnedPolicy,capturePath:pinnedCapturePath},fresh);
+}
+function proveStage8({read,git,root,policy,capturePath},fresh) {
  assert.equal(policy.predecessorRef,predecessorRef,'Stage8 exact predecessor required');
  assert.equal(typeof read,'function');assert.equal(typeof git,'function');
  const incremental=sourceStage9HistoricalView(git);
- if(incremental){assert.equal(read,incremental.historicalInput.read,'Stage9 reader differs');assert.equal(root,incremental.historicalInput.root,'Stage9 root differs');assertSourceStage9Stable(incremental);}
+ if(incremental){assert.equal(read,incremental.historicalInput.read,'Stage9 reader differs');assert.equal(root,incremental.historicalInput.root,'Stage9 root differs');if(incremental!==fresh)assertSourceStage9Stable(incremental);}
  git=immutableTreeQueryReader(git);
  const bytes=read(capturePath),capture=JSON.parse(bytes);
  assert.deepEqual(capture.ancestry,policy.ancestry,'Stage8 finite reviewed ancestry differs');

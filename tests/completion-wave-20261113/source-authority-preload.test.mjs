@@ -13,6 +13,7 @@ const content=new Map(accepted.map(r=>[r.blob,actual(['cat-file','blob',r.blob])
 const sourceCapture=JSON.parse(readFileSync(sourceStage8CapturePath)),sourceNames=[sourceStage8CapturePath,sourceStage9CapturePath,sourceStage10CapturePath,...new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths,...sourceStage10Policy.paths])],sourceContent=new Map(sourceNames.map(path=>[path,readFileSync(path)]));
 const sourceIDs=[...new Set(sourceCapture.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean)).map(row=>row.blob))];
 const source9Capture=JSON.parse(readFileSync(sourceStage9CapturePath)),source9IDs=[...new Set(source9Capture.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean)).map(row=>row.blob))],sourcePaths=new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths,...sourceStage10Policy.paths]);
+const source10Capture=JSON.parse(readFileSync(sourceStage10CapturePath)),source10Records=source10Capture.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean));source10Records.push(...source10Capture.retainedStages.flatMap(stage=>Object.values(stage)));const source10IDs=[...new Set(source10Records.map(row=>row.blob))];
 const head=actual(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),target='tests/parallel-source-20261110/bootstrap.mjs';
 function fixture({preload=true}={}){
  const events=[],sourceReads=new Set(),sourceObjects=makeGitReader(actual);let batches=0,batchOverride=null,pathOverride=false,rawOverride=false,preloadFailure=false,phase='idle',sourceGitReads=0,pendingAuthorityRead,sourceOverride=null;
@@ -32,7 +33,7 @@ function fixture({preload=true}={}){
  };
  if(preload)git.preloadBlobs=values=>{
   if(JSON.stringify(values)!==JSON.stringify(ids)){
-   assert.equal(phase,'source');assert([sourceIDs,source9IDs].some(exact=>JSON.stringify(values)===JSON.stringify(exact)),'Only exact independently pinned source blob IDs may preload');sourceObjects.preloadBlobs(values);return;
+   assert.equal(phase,'source');assert([sourceIDs,source9IDs,source10IDs].some(exact=>JSON.stringify(values)===JSON.stringify(exact)),'Only exact independently pinned source blob IDs may preload');sourceObjects.preloadBlobs(values);return;
   }
   sourceFirst();phase='authority';events.push('preload');if(preloadFailure)throw Error('preload rejected');objects.preloadBlobs(values);
  };
