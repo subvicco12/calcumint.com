@@ -1,4 +1,7 @@
-import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
+import { readFileSync, mkdirSync, writeFileSync, mkdtempSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { expect, it } from "vitest";
 import { auditCatalogSlugReviewLedger, type CatalogSlugReview } from "./catalog-slug-review-ledger";
 import { buildCatalogCertificationQueueReport } from "./catalog-certification-queue-report";
@@ -29,7 +32,17 @@ it("exports reviewed-identity shortlist and packet readiness without granting ce
   },{} as Record<string,number>)).sort(([a],[b])=>a.localeCompare(b));
   const standardCertified=registry.filter(d=>d.riskClass==="standard"&&d.reviewStatus==="certified");
   const standardReviewed=registry.filter(d=>d.riskClass==="standard"&&d.reviewStatus==="reviewed");
-  console.info("REGISTRY_IDENTITY_SNAPSHOT",JSON.stringify(registry.map(d=>({id:d.id,slug:d.slug,version:d.version,riskClass:d.riskClass,reviewStatus:d.reviewStatus,category:d.category}))));
+  // Keep large diagnostics out of a single console/RPC message. These files are
+  // run-local unless the caller configures the existing evidence output directory.
+  const diagnostics=process.env.CALCUMINT_CERTIFICATION_EVIDENCE_OUT
+    ??mkdtempSync(join(tmpdir(),"calcumint-catalog-reviewed-"));
+  mkdirSync(diagnostics,{recursive:true});
+  const diagnosticFile=(name:string,value:unknown,records:number)=>{
+    const body=JSON.stringify(value,null,2)+"\n",path=join(diagnostics,name);
+    writeFileSync(path,body);
+    return {records,bytes:Buffer.byteLength(body),sha256:createHash("sha256").update(body).digest("hex"),runLocalPath:path};
+  };
+  console.info("REGISTRY_IDENTITY_SNAPSHOT",JSON.stringify(diagnosticFile("registry-identity-snapshot.json",registry.map(d=>({id:d.id,slug:d.slug,version:d.version,riskClass:d.riskClass,reviewStatus:d.reviewStatus,category:d.category})),registry.length)));
   console.info("STANDARD_RISK_REGISTRY_AUDIT",JSON.stringify({
     totalRegistered:registry.length,
     standardCertified:standardCertified.length,
@@ -84,7 +97,7 @@ it("exports reviewed-identity shortlist and packet readiness without granting ce
     const gateHolds=[...(identityDecision!=="candidate-needs-source-review"?["catalog-domain-or-title-unresolved"]:["catalog-identity-source-review-unapproved"]),...(!dedicatedGoldenFixturePresent?["dedicated-golden-fixture-missing"]:[]),"database-certification-not-verified","publication-authority-not-granted"];
     return {id:d.id,slug:d.slug,version:d.version,riskClass:d.riskClass,reviewStatus:d.reviewStatus,formulaCount:d.formulas.length,sourceCount:d.sources.length,goldenTestCount:d.goldenTests?.length??0,exampleCount:d.examples.length,launchAuditIssues:issues,catalogTitleCandidates:titles,expectedMasterDomain:expectedDomain??null,domainTitleMatches,identityDecision,sourceDetails,formulaContracts,fixtureContracts,inputSchemaDescription:inputContract.slice(0,120),dedicatedGoldenFixturePresent,gateHolds,sourceReviewDomain:audit.approvedDomains[d.slug]??null,publicationApproved:false};
   });
-  console.info("SIX_STANDARD_CANDIDATE_EVIDENCE",JSON.stringify(six));
+  console.info("SIX_STANDARD_CANDIDATE_EVIDENCE",JSON.stringify(diagnosticFile("six-standard-candidate-evidence.json",six,six.length)));
   expect(six.every(d=>d.riskClass==="standard"&&d.reviewStatus==="certified")).toBe(true);
   const output=process.env.CALCUMINT_CERTIFICATION_EVIDENCE_OUT;
   if(output){
