@@ -58,7 +58,12 @@ export async function verifyCapturedSource(binding,read=readFile){
   // Resolve every dependency through the SAME target reader, not the workspace.
   const {completionBindingDependencies}=await import('../../scripts/product-completion-stage8.mjs');
   const target=new Map(await Promise.all(completionBindingDependencies(path).map(async name=>[name,await read(name)])));
-  if(verifyCompletionBinding(path,bytes,historical,git,name=>target.get(name))!==true)throw Error('Exact outer verifier successor required');
+  try{if(verifyCompletionBinding(path,bytes,historical,git,name=>target.get(name))!==true)throw Error('Exact outer verifier successor required');}catch(error){
+   // Preserve the receipt API's existing refusal contract when the newer exact
+   // source preflight rejects this same verifier earlier. Never admit on error.
+   if(error instanceof Error&&error.message==='Current factory bytes differ: '+path)throw Error('Completion current successor differs',{cause:error});
+   throw error;
+  }
  }else if(!/^[a-f0-9]{64}$/.test(binding.sha256)||createHash('sha256').update(bytes).digest('hex')!==binding.sha256)throw Error('Captured source bytes differ: '+path);
  return path;
 }
