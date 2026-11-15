@@ -1,3 +1,4 @@
+import {sourceStage9Policy} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import {ensurePinnedAuthorityRecord} from '../milestone100-20261114/source-stage8-authority-availability.mjs';
 import test from 'node:test';
 import {execFileSync,execFile} from 'node:child_process';
@@ -88,7 +89,7 @@ for(const path of ['tests/parallel-source-20261110/core.mjs','tests/parallel-sou
  }
 });
 test('a closed asynchronous-style target map supplies every current byte without a workspace fallback',()=>{
- const names=new Set([...capture.currentSources,...capture.applicationSources].map(r=>r.path));names.add(capturePath);names.add('tests/milestone100-20261114/source-stage8-guard-policy.mjs');const target=new Map([...names].map(p=>[p,readFileSync(p)])),seen=new Set();
+ const names=new Set([...capture.currentSources,...capture.applicationSources,...sourceStage9Policy.paths.map(path=>({path}))].map(r=>r.path));names.add(capturePath);names.add('tests/milestone100-20261114/source-stage8-guard-policy.mjs');const target=new Map([...names].map(p=>[p,readFileSync(p)])),seen=new Set();
  assert.equal(verifyParallelSource(path=>{seen.add(path);assert(target.has(path),'Undeclared reader dependency '+path);return target.get(path);}),true);
  for(const row of capture.applicationSources)assert(seen.has(row.path));assert(seen.size>=capture.currentSources.length);
  assert.throws(()=>verifyParallelSource(()=>{throw Error('No target bytes supplied');}),/No target bytes supplied/);

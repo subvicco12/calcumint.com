@@ -1,3 +1,5 @@
+import {resolve} from 'node:path';
+import {sourceStage8Policy,sourceStage8CapturePath} from '../milestone100-20261114/source-stage8-policy-v3.mjs';
 /** Incremental proof. No historical capability escapes before exact live verification. */
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
@@ -7,15 +9,18 @@ import {sourceStage9Policy as policy,sourceStage9CapturePath as capturePath} fro
 const historical=new WeakMap(),proved=new WeakSet();
 export const sourceStage9HistoricalView=git=>historical.get(git);
 const sha=b=>createHash('sha256').update(b).digest('hex');
-function exact(input){return verifyExactStage({...input,policy,captureBytes:input.read(capturePath)});}
+function currentBytesFirst(input,bytes){const priorBytes=input.read(sourceStage8CapturePath);assert.equal(sha(priorBytes),sourceStage8Policy.captureSHA256,'Independent Stage8 capture digest differs');const prior=JSON.parse(priorBytes);assert.deepEqual(prior.rows.map(row=>row.path),sourceStage8Policy.paths);for(const row of new Map([...prior.rows,...JSON.parse(bytes).rows].map(row=>[row.path,row])).values()){const value=input.read(row.path);assert(Buffer.isBuffer(value)&&value.length===row.current.bytes&&sha(value)===row.current.sha256,'Current factory bytes differ: '+row.path);}}
+function exact(input){const bytes=input.read(capturePath);currentBytesFirst(input,bytes);return verifyExactStage({...input,policy,captureBytes:bytes});}
 export function proveSourceStage9(input){
  assert.deepEqual(Object.keys(input).sort(),['git','read','root'],'Only explicit Stage9 read/Git/root inputs allowed');
+ input={...input,root:resolve(input.root)};
  const prior=historical.get(input.git);
  if(prior){assert.equal(input.read,prior.historicalInput.read,'Stage9 historical reader differs');assert.equal(input.root,prior.historicalInput.root,'Stage9 root differs');input=prior.actualInput;}
  assert.equal(typeof input.read,'function');assert.equal(typeof input.git,'function');assert.equal(typeof input.root,'string');
  const actual=Object.freeze({...input,git:immutableTreeQueryReader(input.git)});
  const captureBytes=actual.read(capturePath);assert.equal(sha(captureBytes),policy.captureSHA256,'Independent Stage9 capture digest differs');
  const capture=JSON.parse(captureBytes);assert.deepEqual(capture.ancestry,policy.ancestry);assert.equal(policy.paths.length,18);
+ currentBytesFirst(actual,captureBytes);
  if(typeof actual.git.preloadCommits==='function')actual.git.preloadCommits(policy.ancestry);
  const records=capture.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean));
  if(typeof actual.git.preloadPaths==='function')actual.git.preloadPaths(records.map(({ref,path,blob})=>({ref,path,blob})));

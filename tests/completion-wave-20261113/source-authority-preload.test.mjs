@@ -1,3 +1,4 @@
+import {sourceStage9CapturePath,sourceStage9Policy} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import {sourceStage8CapturePath,sourceStage8Policy} from '../milestone100-20261114/source-stage8-activation.mjs';
 import {readFileSync} from 'node:fs';
 import test from 'node:test';import assert from 'node:assert/strict';
@@ -8,16 +9,18 @@ const root=resolve(new URL('../../',import.meta.url).pathname),ids=accepted.map(
 const actual=(args,options={})=>execFileSync('git',args,{cwd:root,stdio:['ignore','pipe','pipe'],maxBuffer:128*1024*1024,...options});
 const fullBatch=actual(['cat-file','--batch'],{input:Buffer.from(ids.join('\n')+'\n'),stdio:['pipe','pipe','pipe']});
 const content=new Map(accepted.map(r=>[r.blob,actual(['cat-file','blob',r.blob])])),byPath=new Map(accepted.map(r=>[r.path,r]));
-const sourceCapture=JSON.parse(readFileSync(sourceStage8CapturePath)),sourceNames=[sourceStage8CapturePath,...sourceStage8Policy.paths],sourceContent=new Map(sourceNames.map(path=>[path,readFileSync(path)]));
+const sourceCapture=JSON.parse(readFileSync(sourceStage8CapturePath)),sourceNames=[sourceStage8CapturePath,sourceStage9CapturePath,...new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths])],sourceContent=new Map(sourceNames.map(path=>[path,readFileSync(path)]));
 const sourceIDs=[...new Set(sourceCapture.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean)).map(row=>row.blob))];
+const source9Capture=JSON.parse(readFileSync(sourceStage9CapturePath)),source9IDs=[...new Set(source9Capture.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean)).map(row=>row.blob))],sourcePaths=new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths]);
 const head=actual(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),target='tests/parallel-source-20261110/bootstrap.mjs';
 function fixture({preload=true}={}){
  const events=[],sourceReads=new Set(),sourceObjects=makeGitReader(actual);let batches=0,batchOverride=null,pathOverride=false,rawOverride=false,preloadFailure=false,phase='idle',sourceGitReads=0,pendingAuthorityRead,sourceOverride=null;
- const sourceFirst=()=>{assert.equal(sourceReads.size,sourceStage8Policy.paths.length,'Every actual source read must precede authority operations');assert(sourceGitReads>0,'Real source Git proof must precede authority operations');};
+ const sourceFirst=()=>{assert.equal(sourceReads.size,sourcePaths.size,'Every actual source read must precede authority operations');assert(sourceGitReads>0,'Real source Git proof must precede authority operations');};
  const objects=makeGitReader((args,options)=>{assert.deepEqual(args,['cat-file','--batch']);assert.equal(options.input.toString(),ids.join('\n')+'\n');batches++;return batchOverride?.(batches)??fullBatch;});
  const git=(args,options)=>{
   if(phase==='source'){
-   if(JSON.stringify(args)===JSON.stringify(['rev-parse','--verify','HEAD^{commit}'])&&sourceReads.size===sourceStage8Policy.paths.length){sourceFirst();phase='authority';}
+   const authorityPath=args[0]==='rev-parse'&&args.length===2&&args[1].startsWith(head+':')?args[1].slice(41):null;
+   if(authorityPath&&byPath.has(authorityPath)&&!sourcePaths.has(authorityPath)){sourceFirst();phase='authority';}
    else{assert(['rev-parse','cat-file','diff','status','ls-tree'].includes(args[0]),'Read-only source Git query required');sourceGitReads++;return sourceObjects(args,options);}
   }
   assert.equal(phase,'authority','Authority operations require a completed source proof');events.push(args[0]);
@@ -25,10 +28,15 @@ function fixture({preload=true}={}){
   if(args[0]==='rev-parse'){const path=args[1].slice(41);assert(byPath.has(path),'Unknown authority path '+path);pendingAuthorityRead=path;return Buffer.from((pathOverride&&path===target?'0'.repeat(40):byPath.get(path).blob)+'\n');}
   assert.equal(args[0],'cat-file');if(rawOverride&&args[2]===byPath.get(target).blob)return Buffer.from('substituted current Git bytes');return preload?objects(args):content.get(args[2]);
  };
- if(preload)git.preloadBlobs=values=>{if(phase==='source'){assert.deepEqual(values,sourceIDs,'Only exact independently pinned source blob IDs may preload');sourceObjects.preloadBlobs(values);return;}sourceFirst();assert.equal(phase,'authority');events.push('preload');assert.deepEqual(values,ids);if(preloadFailure)throw Error('preload rejected');objects.preloadBlobs(values);};
+ if(preload)git.preloadBlobs=values=>{
+  if(JSON.stringify(values)!==JSON.stringify(ids)){
+   assert.equal(phase,'source');assert([sourceIDs,source9IDs].some(exact=>JSON.stringify(values)===JSON.stringify(exact)),'Only exact independently pinned source blob IDs may preload');sourceObjects.preloadBlobs(values);return;
+  }
+  sourceFirst();phase='authority';events.push('preload');if(preloadFailure)throw Error('preload rejected');objects.preloadBlobs(values);
+ };
  return{git,events,read:path=>{
-  if(path===sourceStage8CapturePath&&pendingAuthorityRead!==path){phase='source';sourceReads.clear();sourceGitReads=0;}
-  if(phase==='source'){assert(sourceContent.has(path),'Unknown closed source target '+path);if(path!==sourceStage8CapturePath)sourceReads.add(path);return Buffer.from(sourceOverride&&path===sourceStage8Policy.paths[0]?sourceOverride:sourceContent.get(path));}
+  if(path===sourceStage9CapturePath&&pendingAuthorityRead!==path){phase='source';sourceReads.clear();sourceGitReads=0;}
+  if(phase==='source'){assert(sourceContent.has(path),'Unknown closed source target '+path);if(sourcePaths.has(path))sourceReads.add(path);return Buffer.from(sourceOverride&&path===sourceStage8Policy.paths[0]?sourceOverride:sourceContent.get(path));}
   assert(byPath.has(path),'Unknown closed authority target '+path);pendingAuthorityRead=undefined;return Buffer.from(content.get(byPath.get(path).blob));
  },set sourceOverride(v){sourceOverride=v;},get batches(){return batches;},set batchOverride(v){batchOverride=v;},set pathOverride(v){pathOverride=v;},set rawOverride(v){rawOverride=v;},set preloadFailure(v){preloadFailure=v;}};
 }
