@@ -49,6 +49,7 @@ export const statisticsAContracts: readonly EngineeringContract[] = Object.freez
         throw Error('Probability result outside mathematical event bounds');
       }
       if ((a > 0 && a < 1 && !(output.notA > 0 && output.notA < 1))
+        || (a < 1 && b < 1 && output.eitherIndependent === 1)
         || (a > 0 && a < 1 && b > 0 && b < 1 && output.eitherIndependent === Math.max(a, b))) {
         throw Error('Nonzero probability contribution collapses at binary64 precision');
       }

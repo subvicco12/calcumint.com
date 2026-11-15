@@ -132,6 +132,15 @@ describe('independent constants and domain boundaries', () => {
     expect(contract(287).verifyHistorical(snapshot).snapshot).toEqual(snapshot);
   });
 
+  it('287: rejects an interior-event union rounded to certainty and preserves v1 history', () => {
+    const input = {probabilityOfA: 0.999999999, probabilityOfB: 0.999999999};
+    const output = probabilityCalculator.calculate(input, {});
+    expect(output.eitherIndependent).toBe(1);
+    expect(() => contract(287).execute(textInput(input))).toThrow(/collapse/i);
+    const snapshot = {calculatorSlug: probabilityCalculator.slug, calculatorVersion: 1, input, output};
+    expect(contract(287).verifyHistorical(snapshot).snapshot).toEqual(snapshot);
+  });
+
   it.each(['-0.1', '1.1'])('287: rejects probabilities outside [0,1]: %s', probabilityOfA => {
     expect(() => contract(287).execute({probabilityOfA, probabilityOfB: '0.5'})).toThrow();
   });
