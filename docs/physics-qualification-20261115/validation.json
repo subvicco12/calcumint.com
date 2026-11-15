@@ -1,0 +1,149 @@
+{
+  "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+  "qualifiedHarnessCommit": "9af9210d70302312595ae4917a861954a4df89e2",
+  "sourceTree": "351339f16f711d7a6838f54e60062c261e81aa7a",
+  "runtime": "v24.19.0",
+  "releaseHold": true,
+  "newScopedCompletions": 0,
+  "canonicalPromotions": 0,
+  "certifications": 0,
+  "publicationEligibilityGranted": 0,
+  "runtimeAndEngineChanges": 0,
+  "privateSuccessorsCreatedOrAdopted": 0,
+  "targetedResults": {
+    "numericalReplay": {
+      "files": 5,
+      "passed": 131
+    },
+    "observedDomainAndRational": {
+      "files": 2,
+      "passed": 31
+    },
+    "presentation": {
+      "files": 1,
+      "passed": 27
+    },
+    "newQualification": {
+      "files": 1,
+      "passed": 15
+    },
+    "deliveryApiQuotaAndHistorical": {
+      "files": 9,
+      "passed": 299
+    },
+    "sourceAdversarial": {
+      "passed": 9
+    },
+    "currentSourceStage9": {
+      "passed": 5
+    },
+    "authenticatedHistorical": {
+      "passed": 15,
+      "scenarioRoundTrips": 10,
+      "nativeFiles": 15,
+      "pdfParsed": 5,
+      "cleanupCompleted": true
+    },
+    "lintExit": 0,
+    "typecheckExit": 0
+  },
+  "failedAttempts": [
+    {
+      "receipt": "physics-qualification-tests.log",
+      "cause": "Sandbox denied spawnSync git EPERM: six source checks failed and nine numerical/identity checks passed. Unchanged suite passed with subprocess permissions; no assertion weakened."
+    },
+    {
+      "kind": "PDF receipt assembly assertion",
+      "cause": "Harness checked uppercase Version; actual label is Engine version: 1. Corrected readback assertion to exact label; all five PDFs parse."
+    }
+  ],
+  "notRun": [
+    "full unfiltered unit suite",
+    "production build",
+    "fresh browser journeys",
+    "exact-head hosted CI"
+  ],
+  "dispositions": [
+    {
+      "catalogId": 322,
+      "disposition": "PARTIAL",
+      "scopedEngineeringComplete": false,
+      "historicalIdentity": {
+        "id": "physics.capacitance",
+        "slug": "capacitance-calculator",
+        "version": 1
+      },
+      "privateRevision": null,
+      "freshAuthenticatedCoverage": "historical-v1-only",
+      "blockers": [
+        "Publisher-defined units and signed Q/V applicability are not admitted.",
+        "Final quotients below minimum subnormal cannot be represented by reordering."
+      ]
+    },
+    {
+      "catalogId": 323,
+      "disposition": "PARTIAL",
+      "scopedEngineeringComplete": false,
+      "historicalIdentity": {
+        "id": "physics.coulomb-force",
+        "slug": "coulomb-force-calculator",
+        "version": 1
+      },
+      "privateRevision": "private.physics-scaled.20261112.1",
+      "freshAuthenticatedCoverage": "historical-v1-only",
+      "blockers": [
+        "Medium, point-charge interpretation, signed-force convention, units and constant precision are unapproved.",
+        "Historical numerator underflow is preserved; private revision is unregistered with no exact-revision product/account/Business acceptance."
+      ]
+    },
+    {
+      "catalogId": 324,
+      "disposition": "PARTIAL",
+      "scopedEngineeringComplete": false,
+      "historicalIdentity": {
+        "id": "physics.projectile-motion",
+        "slug": "projectile-motion-calculator",
+        "version": 1
+      },
+      "privateRevision": "private.physics-scaled.20261112.1",
+      "freshAuthenticatedCoverage": "historical-v1-only",
+      "blockers": [
+        "Units, ideal launch/level-ground scope and endpoint policy are unapproved.",
+        "Private scaling recovers speed-squared underflow but not tiny-angle conversion underflow.",
+        "Private revision is unregistered with no exact-revision authenticated/product delivery acceptance."
+      ]
+    },
+    {
+      "catalogId": 325,
+      "disposition": "PARTIAL",
+      "scopedEngineeringComplete": false,
+      "historicalIdentity": {
+        "id": "physics.free-fall",
+        "slug": "free-fall-calculator",
+        "version": 1
+      },
+      "privateRevision": null,
+      "freshAuthenticatedCoverage": "historical-v1-only",
+      "blockers": [
+        "Units, from-rest/constant-gravity and zero-gravity applicability are unapproved.",
+        "Historical leading half-factor loses recoverable result 2^-875; no separately admitted adopted successor exists."
+      ]
+    },
+    {
+      "catalogId": 327,
+      "disposition": "PARTIAL",
+      "scopedEngineeringComplete": false,
+      "historicalIdentity": {
+        "id": "physics.angular-velocity",
+        "slug": "angular-velocity-calculator",
+        "version": 1
+      },
+      "privateRevision": null,
+      "freshAuthenticatedCoverage": "historical-v1-only",
+      "blockers": [
+        "Units and average signed angular velocity applicability are unapproved; radians cannot be inferred.",
+        "Final quotients below minimum subnormal cannot be represented by reordering."
+      ]
+    }
+  ]
+}

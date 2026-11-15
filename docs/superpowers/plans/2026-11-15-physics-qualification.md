@@ -9,9 +9,9 @@
 **Review focus:** tiny positive angle conversion; premature free-fall underflow; signed quotient zero; private-versus-historical identity; authenticated ownership and exact snapshot preservation.
 
 - [x] Reconcile existing implementation, source manifests, private revision and retained workflow limits.
-- [ ] Add missing numerical/identity witnesses and baseline byte bindings in `tests/physics-qualification-20261115/`.
-- [ ] Run existing numerical, presentation, source, replay and delivery tests; retain raw receipts.
-- [ ] Run disposable authenticated per-ID history/scenario checks; distinguish historical identities from private revisions.
-- [ ] Record dispositions and genuine blockers in `docs/physics-qualification-20261115/REPORT.md`, commit isolated work, push and independently read back remote SHA.
+- [x] Add missing numerical/identity witnesses and baseline byte bindings in `tests/physics-qualification-20261115/`.
+- [x] Run existing numerical, presentation, source, replay and delivery tests; retain raw receipts.
+- [x] Run disposable authenticated per-ID history/scenario checks; distinguish historical identities from private revisions.
+- [x] Record dispositions and genuine blockers in `docs/physics-qualification-20261115/REPORT.md`, commit isolated work, push and independently read back remote SHA (delivery step recorded in final response).
 
 This is an evidence investigation, not a new physical method or successor implementation. Existing approval gaps are not repaired by inventing units or adoption decisions.
