@@ -12598,8 +12598,49 @@ export const acceptedStage10Availability=Object.freeze([
   }
 ]);
 export const additionalStage10AvailabilityBootstrapRefs=Object.freeze(["8aaa1886a0dee4b7ae1bd6349078731139afd46a","31a5322591af546b732096008dea8408cca23f9b","7e65c1fe521116d247688b8f11edd4bab4af6f4e","2b74b7a5c81bbae7625451df4f7f082b5452093b"]);
-export const acceptedStage10Deadline=Object.freeze([]);
-export const additionalStage10DeadlineBootstrapRefs=Object.freeze([]);
+export const acceptedStage10Deadline=Object.freeze([
+  {
+    "path": "scripts/fetch-source-lineage.mjs",
+    "blob": "8a6c7dc8218d28f8f1b71f6179001c7d99d73d87",
+    "sha256": "a8a1dd748c9c9a4bbc096b14b5f44b4d6b54dd774d8de934b082a1d2d9578853"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-preflight-stage8.mjs",
+    "blob": "72d5500e09f255b69f5bb3bef234de597acd01f9",
+    "sha256": "69d50ba17f4aafeefab21afd03a25a3ec5aa90598a4be91c389b7c7b75360b46"
+  },
+  {
+    "path": "tests/next-engineering-20261115/source-admission-deadline.mjs",
+    "blob": "4eae90eb8d0b86e3fe8ee38ab6ba319666dc9c23",
+    "sha256": "c48fe42947a37bc84dfcf7b52b679411d87a563f997295905e45646fdb1cdcd9"
+  },
+  {
+    "path": "tests/next-engineering-20261115/source-availability.test.mjs",
+    "blob": "a60f2b24f65681498c1b6b167a607b18052f21c6",
+    "sha256": "d28e30326a83a8c6760f96d0bdf383d97a2d6a14bafc515f620bce812c6c35de"
+  },
+  {
+    "path": "tests/next-engineering-20261115/source-stage10.mjs",
+    "blob": "243ec23af25796495e5de63821f931b02706b164",
+    "sha256": "4222ae1f871c230e303999e78a5582c7fb05b4a3da1948f5f07b4f9f1ee25af8"
+  },
+  {
+    "path": "tests/parallel-source-20261110/bootstrap.mjs",
+    "blob": "ca3c537328e3b86756e7a8f45134a2c47c252030",
+    "sha256": "39d138595fc8c208cd9212908b60f23e0909609536f4b71dd4d68fa0087efcb5"
+  },
+  {
+    "path": "tests/parallel-source-20261110/core.mjs",
+    "blob": "e496c76c1ca2ed933b8c55bc53083814bc309fbb",
+    "sha256": "9032ae1e664da8ed6560054106ddc649025a6c39f218103d668c6b71c4371e0c"
+  },
+  {
+    "path": "docs/next-engineering-20261115/source/guard-capture-deadline.json",
+    "blob": "f828617bd54644e65a0a5ae3d7cc0b6ee3ea41dc",
+    "sha256": "d53434f4684acff7fbec5a1fc90f04c87e44fb7c147fa9e5d888b1ede6860894"
+  }
+]);
+export const additionalStage10DeadlineBootstrapRefs=Object.freeze(["8f8b9b03f070d3279351c02d6573ce528e99a1b4","955f860712e938c9d1140e4fda41ff1535c53272"]);
 export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8,...acceptedStage8V3,...acceptedStage8V4,...acceptedStage8V5,...acceptedStage8V6,...acceptedStage8V7,...acceptedStage8V8,...acceptedStage8V9,...acceptedStage8V10,...acceptedStage8V11,...acceptedStage8V12,...acceptedStage8V13,...acceptedStage8V14,...acceptedStage8V15,...acceptedStage8V16,...acceptedStage8V17,...acceptedStage8V18,...acceptedStage8V19,...acceptedStage8V20,...acceptedStage8V21,...acceptedStage8V22,...acceptedStage8V23,...acceptedStage8V24,...acceptedStage8V25,...acceptedStage8V26,...acceptedStage8V27,...acceptedStage8V28,...acceptedStage8V29,...acceptedStage8V30,...acceptedStage8V31,...acceptedStage8V32,...acceptedStage8V33,...acceptedStage8V34,...acceptedStage8V35,...acceptedStage8V36,...acceptedStage8V37,...acceptedStage8V38,...acceptedStage8V39,...acceptedStage8V40,...acceptedStage8V41,...acceptedStage8V42,...acceptedStage8V43,...acceptedStage8V44,...acceptedStage8V45,...acceptedStage10,...acceptedStage10Review2,...acceptedStage10Availability,...acceptedStage10Deadline].map(row=>[row.path,row])).values()]);
 for(const record of accepted)Object.freeze(record);
 export function verifyParallelAuthority(read,git){
