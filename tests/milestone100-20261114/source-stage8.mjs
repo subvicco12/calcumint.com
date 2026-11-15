@@ -45,7 +45,7 @@ export function proveSourceStage8AndHistoricalInputs({read,git,root,policy,captu
   return git(args.map(arg=>arg==='HEAD'?predecessorRef:arg.startsWith('HEAD:src/')?predecessorRef+arg.slice(4):arg),options);
  };
  for(const name of ['preloadCommits','preloadBlobs','preloadPaths'])if(typeof git[name]==='function')historicalGit[name]=values=>git[name](values);
- const view=Object.freeze({live,actualInput:incremental?.actualInput??Object.freeze({read,git,root}),historicalInput:Object.freeze({read:historicalRead,git:historicalGit,root}),stage9Active:!!incremental,get stage9Live(){return incremental?.live??new Map();}});
+ const view=Object.freeze({live,actualInput:incremental?.actualInput??Object.freeze({read,git,root}),historicalInput:Object.freeze({read:historicalRead,git:historicalGit,root}),stage9Active:!!incremental,get stage9Live(){return incremental?.live??new Map();},get stage10Live(){return incremental?.stage10Live??new Map();}});
  if(incremental)assertSourceStage9Stable(incremental);
  historicalViews.set(historicalGit,view);observedHeads.set(view,nativeHead);
  return view;
@@ -75,7 +75,7 @@ export function createSourceStage8ObservationInput(input){
  const actualInput=Object.freeze({read:collector.wrapRead(original.actualInput.read,'actual'),git:collector.wrapGit(original.actualInput.git,'actual'),root:original.actualInput.root});
  const historicalInput=Object.freeze({read:collector.wrapRead(original.historicalInput.read,'historical'),git:collector.wrapGit(original.historicalInput.git,'historical'),root:original.historicalInput.root});
  collector.bindReceiver(actualInput,original.actualInput);collector.bindReceiver(historicalInput,original.historicalInput);
- const observed=Object.freeze({live:original.live,actualInput,historicalInput,stage9Active:original.stage9Active,get stage9Live(){return original.stage9Live;}});
+ const observed=Object.freeze({live:original.live,actualInput,historicalInput,stage9Active:original.stage9Active,get stage9Live(){return original.stage9Live;},get stage10Live(){return original.stage10Live;}});
  // Reactivation must observe actual source24 reads/queries, never unwrap unrecorded originals.
  historicalViews.set(historicalInput.git,observed);assert(observedHeads.has(original));observedHeads.set(observed,observedHeads.get(original));
  return Object.freeze({input:historicalInput,actualInput,collector});

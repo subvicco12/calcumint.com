@@ -1,3 +1,4 @@
+import {proveSourceStage10} from '../next-engineering-20261115/source-stage10.mjs';
 import {sourceStage10Policy,sourceStage10CapturePath} from '../next-engineering-20261115/source-stage10-policy.mjs';
 import {sourceStage9Policy,sourceStage9CapturePath} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import {proveSourceStage9} from '../four-worker-integration-20261115/source-stage9.mjs';
@@ -14,7 +15,8 @@ const root=process.cwd(),input={read:readFileSync,git:sourceGit,root};
 test('exact Stage8 rows prove current bytes and historical reads only after full Git proof',()=>{
  const proof=provePinnedSourceStage8(input),capture=JSON.parse(readFileSync(sourceStage8CapturePath));
  assert.deepEqual([...proof.live.keys()],sourceStage8Policy.paths);assert.equal([...proof.live.keys()].filter(path=>retainedStage8Policy.paths.includes(path)).length,22);assert.equal([...proof.live.keys()].filter(path=>retainedOwnershipPolicy.paths.includes(path)).length,23);assert.equal(proof.live.size,24);
- for(const row of capture.rows){assert(readFileSync(row.path).equals(sourceGit(['cat-file','blob',row.current.blob])));if(row.predecessor)assert(proof.historicalInput.read(row.path).equals(sourceGit(['cat-file','blob',row.predecessor.blob])));else assert.throws(()=>proof.historicalInput.read(row.path),/no historical bytes/);}
+ const actual=proveSourceStage10(input).live;
+ for(const row of capture.rows){assert(readFileSync(row.path).equals(sourceGit(['cat-file','blob',actual.get(row.path)?.current.blob??row.current.blob])));if(row.predecessor)assert(proof.historicalInput.read(row.path).equals(sourceGit(['cat-file','blob',row.predecessor.blob])));else assert.throws(()=>proof.historicalInput.read(row.path),/no historical bytes/);}
 });
 test('closed supplied reader provides capture and every current source with no reader fallback',()=>{
  const names=[sourceStage8CapturePath,sourceStage9CapturePath,sourceStage10CapturePath,...new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths,...sourceStage10Policy.paths])],map=new Map(names.map(p=>[p,readFileSync(p)])),seen=new Set(),calls=[];
@@ -72,7 +74,8 @@ test('metadata HEAD paths share only a per-proof observation and movement refuse
  const proof=provePinnedSourceStage8({...input,git}),before=headReads;
  for(let index=0;index<3;index++)assert.equal(proof.historicalInput.git(['rev-parse','HEAD:package.json']).toString(),sourceGit(['rev-parse',current+':package.json']).toString());
  assert.equal(headReads,before,'Metadata paths use the observed immutable commit, not cached HEAD responses');
- head=sourceStage9Policy.codeRef;assert.throws(()=>assertSourceStage8HeadStable(proof),/HEAD moved/);
+ head=sourceStage10Policy.codeRef;assert.throws(()=>assertSourceStage8HeadStable(proof),/HEAD moved/);
+ assert.throws(()=>provePinnedSourceStage8({...input,git}),/Native HEAD moved or supplied HEAD differs/);head=current;
  const next=provePinnedSourceStage8({...input,git});assertSourceStage8HeadStable(next);assert(headReads>before,'Every new proof and stability check observes live HEAD');
 });
 

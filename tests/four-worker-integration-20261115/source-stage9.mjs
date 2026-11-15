@@ -1,4 +1,4 @@
-import {proveSourceStage10,sourceStage10HistoricalView,assertSourceStage10Stable} from '../next-engineering-20261115/source-stage10.mjs';
+import {proveSourceStage10,assertSourceStage10Stable} from '../next-engineering-20261115/source-stage10.mjs';
 import {resolve} from 'node:path';
 import {sourceStage8Policy,sourceStage8CapturePath} from '../milestone100-20261114/source-stage8-policy-v3.mjs';
 /** Incremental proof. No historical capability escapes before exact live verification. */
@@ -40,7 +40,7 @@ export function proveSourceStage9(input){
  for(const name of ['preloadCommits','preloadBlobs','preloadPaths'])if(typeof actual.git[name]==='function')git[name]=values=>actual.git[name](values);
  const historicalInput=Object.freeze({read,git,root:actual.root});
  assertSourceStage10Stable(successor);
- const view=Object.freeze({actualInput:successor.actualInput,historicalInput,nativeHead:successor.nativeHead,get live(){return new Map(live);}});
+ const view=Object.freeze({actualInput:successor.actualInput,historicalInput,nativeHead:successor.nativeHead,get live(){return new Map(live);},get stage10Live(){return successor.live;}});
  proved.add(view);historical.set(git,view);historical.set(immutableTreeQueryReader(git),view);return view;
 }
 export function assertSourceStage9Stable(view){

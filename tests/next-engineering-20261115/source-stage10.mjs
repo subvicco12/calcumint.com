@@ -1,5 +1,6 @@
 /** Exact current source must be authenticated before any older historical projection. */
 import assert from 'node:assert/strict';
+import {execFileSync} from 'node:child_process';
 import {resolve} from 'node:path';
 import {readFileSync,lstatSync,realpathSync} from 'node:fs';
 import {createHash} from 'node:crypto';
@@ -10,13 +11,24 @@ const historical=new WeakMap(),proved=new WeakSet();
 const headArgs=['rev-parse','--verify','HEAD^{commit}'];
 const sha=b=>createHash('sha256').update(b).digest('hex');
 export const sourceStage10HistoricalView=git=>historical.get(git);
+function native(input){
+ const run=args=>execFileSync('git',args,{cwd:input.root,stdio:['ignore','pipe','pipe'],maxBuffer:64*1024*1024});
+ const root=run(['rev-parse','--show-toplevel']).toString().trim();assert.equal(resolve(root),input.root,'Native Git workspace root differs');
+ const head=run(headArgs).toString().trim();assert.match(head,/^[a-f0-9]{40}$/);
+ assert.equal(input.git(headArgs).toString().trim(),head,'Native HEAD moved or supplied HEAD differs');
+ const statusArgs=['status','--porcelain','--untracked-files=all','--','src'],status=run(statusArgs);assert.equal(status.length,0,'Committed current src required; native dirty or unknown source');assert(input.git(statusArgs).equals(status),'Committed current src required; Dirty or unknown current source; Native source status differs');
+ const deltaArgs=['diff','--name-only','-z',policy.codeRef,head,'--','src'];const delta=run(deltaArgs);assert.equal(delta.length,0,'Unreviewed native current source delta');assert(input.git(deltaArgs).equals(delta),'Native source delta differs');
+ return head;
+}
 function exact(input){
+ const before=native(input);
  const bytes=input.read(capturePath);assert(Buffer.isBuffer(bytes)&&sha(bytes)===policy.captureSHA256,'Independent Stage10 capture digest differs');
  const capture=JSON.parse(bytes);assert.deepEqual(capture.ancestry,policy.ancestry,'Stage10 exact ancestry differs');
  const target=resolve(input.root,capturePath);assert(lstatSync(target).isFile()&&!lstatSync(target).isSymbolicLink()&&realpathSync(target)===target,'Redirected Stage10 capture');assert(readFileSync(target).equals(bytes),'Physical Stage10 capture differs');
  const rows=verifyExactStage({...input,policy,captureBytes:bytes});
  // A supplied reader must describe the actual physical workspace, not an alternative tree.
  for(const [path,row]of rows){const physical=readFileSync(resolve(input.root,path));assert.equal(sha(physical),row.current.sha256,'Physical current source differs: '+path);}
+ assert.equal(native(input),before,'Native HEAD moved during exact Stage10 proof');
  return rows;
 }
 export function proveSourceStage10(input){
@@ -25,6 +37,7 @@ export function proveSourceStage10(input){
  if(old){assert.equal(input.read,old.historicalInput.read,'Stage10 historical reader differs');assert.equal(resolve(input.root),old.actualInput.root,'Stage10 root differs');input=old.actualInput;}
  assert.equal(typeof input.read,'function');assert.equal(typeof input.git,'function');assert.equal(resolve(input.root),realpathSync(process.cwd()),'Redirected current source: Actual workspace root required');
  const actual=Object.freeze({...input,root:resolve(input.root),git:immutableTreeQueryReader(input.git)});
+ assert.equal(resolve(actual.git(['rev-parse','--show-toplevel']).toString().trim()),actual.root,'Actual Git workspace root differs');
  const nativeHead=actual.git(headArgs).toString().trim();assert.match(nativeHead,/^[a-f0-9]{40}$/);
  const live=exact(actual);assert.equal(actual.git(headArgs).toString().trim(),nativeHead,'Native HEAD moved during Stage10 verification');
  const rows=new Map([...live].map(([p,r])=>[p,Object.freeze({predecessor:r.predecessor?Object.freeze({...r.predecessor}):null,current:Object.freeze({...r.current})})]));

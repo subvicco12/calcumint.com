@@ -47,7 +47,7 @@ export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
  if(!affected)return finish(true);
  const guardV6Proof=name===guardV6||retainedDependencies(name).includes(guardV6)?shortestGuardPredecessor(git,read):undefined;
  let historicalBytes=bytes;
- const sourceRow=proof.stage9Live.get(name)??proof.live.get(name);
+ const sourceRow=proof.stage10Live.get(name)??proof.stage9Live.get(name)??proof.live.get(name);
  if(sourceRow){assert(bytes.equals(git(['cat-file','blob',sourceRow.current.blob])),'Completion current successor differs');if(!sourceRow.predecessor)return finish(false);historicalBytes=proof.historicalInput.read(name);}
  if(guardSuccessors.some(row=>row.path===name)||retainedDependencies(name).some(path=>guardSuccessors.some(row=>row.path===path))){
   assert.deepEqual(guardSuccessors.map(row=>row.path),['scripts/check-current-six-candidate-evidence.mjs','scripts/check-shortest-publication20.mjs','scripts/publication20-caller-lineage.mjs','tests/cohort22-closure-20261109/caller-source.test.mjs','tests/execution-recovery-20261109/source-lineage.test.mjs'],'Exact reviewed guard successors required');
