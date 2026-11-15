@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
-import {verifyCompletionBinding} from '../../scripts/product-completion-lineage.mjs';
+import {verifyCompletionBinding} from '../../scripts/product-completion-stage8.mjs';
 const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']});
 for(const path of ['src/components/final-private-workbench.tsx','src/components/catalog-engineering-review.tsx']){
 const original=git(['show','a955cdad7019a645b7ed2950299d0603ba1784a7:'+path]);
