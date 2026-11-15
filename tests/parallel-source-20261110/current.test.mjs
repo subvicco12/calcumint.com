@@ -192,7 +192,10 @@ test('mandatory source guard regressions exercise exact source and immutable ava
  const results=new Map(),cold=files.find(([file])=>file==='source-app-stage5-availability.test.mjs');
  // The original eight-worker availability case owns its entire window alone.
  results.set(cold[0],(await Promise.allSettled([run(cold)]))[0]);
- const remaining=files.filter(row=>row!==cold);
+ const priority=['tests/milestone100-20261114/source-stage8-authority-scope.test.mjs','source-authority-preload.test.mjs','tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs','tests/milestone100-20261114/retained-stage7-preflight.mjs','tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs','source-test-stage6.test.mjs'];
+ // Measured longest children start first; declaration/report order and the two-worker limit stay fixed.
+ const rank=file=>priority.includes(file)?priority.indexOf(file):priority.length;
+ const remaining=files.filter(row=>row!==cold).sort((a,b)=>rank(a[0])-rank(b[0]));
  let nextIndex=0;
  const worker=async()=>{while(nextIndex<remaining.length){const row=remaining[nextIndex++],result=(await Promise.allSettled([run(row)]))[0];results.set(row[0],result);}};
  await Promise.all([worker(),worker()]);
