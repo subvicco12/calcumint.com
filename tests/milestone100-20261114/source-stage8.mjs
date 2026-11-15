@@ -1,3 +1,6 @@
+import {resolve} from 'node:path';
+import {realpathSync} from 'node:fs';
+import {sourceStage8Policy as pinnedPolicy,sourceStage8CapturePath as pinnedCapturePath} from './source-stage8-policy-v3.mjs';
 import {sourceStage9HistoricalView,proveSourceStage9,assertSourceStage9Stable} from '../four-worker-integration-20261115/source-stage9.mjs';
 import {createAuthorityObservationCollector} from './authority-observation-collector.mjs';
 import {immutableTreeQueryReader} from './source-immutable-queries.mjs';
@@ -5,7 +8,7 @@ import {immutableTreeQueryReader} from './source-immutable-queries.mjs';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {verifyExactStage} from '../calculator-factory-source-20261112/exact-stage.mjs';
-const historicalViews=new WeakMap(),observedHeads=new WeakMap(),incrementalViews=new WeakMap();
+const historicalViews=new WeakMap(),observedHeads=new WeakMap(),incrementalViews=new WeakMap(),policyBindings=new WeakMap();
 export const sourceStage8HistoricalView=git=>historicalViews.get(git);
 export const predecessorRef='eac9a6c23ae4d8f1abb607e32f57ce0d422a3cb8';
 export function proveSourceStage8AndHistoricalInputs({read,git,root,policy,capturePath}) {
@@ -45,9 +48,9 @@ export function proveSourceStage8AndHistoricalInputs({read,git,root,policy,captu
   return git(args.map(arg=>arg==='HEAD'?predecessorRef:arg.startsWith('HEAD:src/')?predecessorRef+arg.slice(4):arg),options);
  };
  for(const name of ['preloadCommits','preloadBlobs','preloadPaths'])if(typeof git[name]==='function')historicalGit[name]=values=>git[name](values);
- const view=Object.freeze({live,actualInput:incremental?.actualInput??Object.freeze({read,git,root}),historicalInput:Object.freeze({read:historicalRead,git:historicalGit,root}),stage9Active:!!incremental,get stage9Live(){return incremental?.live??new Map();},get stage10Live(){return incremental?.stage10Live??new Map();}});
+ const view=Object.freeze({get live(){return new Map(historicalRows);},actualInput:incremental?.actualInput??Object.freeze({read,git,root}),historicalInput:Object.freeze({read:historicalRead,git:historicalGit,root}),stage9Active:!!incremental,get stage9Live(){return incremental?.live??new Map();},get stage10Live(){return incremental?.stage10Live??new Map();}});
  if(incremental)assertSourceStage9Stable(incremental);
- historicalViews.set(historicalGit,view);observedHeads.set(view,nativeHead);if(incremental)incrementalViews.set(view,incremental);
+ historicalViews.set(historicalGit,view);observedHeads.set(view,nativeHead);if(incremental)incrementalViews.set(view,incremental);policyBindings.set(view,Object.freeze({policy,capturePath}));
  return view;
 }
 export function proveCurrentStage8AndHistoricalInputs(input,retainedProver){
@@ -83,8 +86,22 @@ export function createSourceStage8ObservationInput(input){
  const actualInput=Object.freeze({read:collector.wrapRead(original.actualInput.read,'actual'),git:collector.wrapGit(original.actualInput.git,'actual'),root:original.actualInput.root});
  const historicalInput=Object.freeze({read:collector.wrapRead(original.historicalInput.read,'historical'),git:collector.wrapGit(original.historicalInput.git,'historical'),root:original.historicalInput.root});
  collector.bindReceiver(actualInput,original.actualInput);collector.bindReceiver(historicalInput,original.historicalInput);
- const observed=Object.freeze({live:original.live,actualInput,historicalInput,stage9Active:original.stage9Active,get stage9Live(){return original.stage9Live;},get stage10Live(){return original.stage10Live;}});
+ const observed=Object.freeze({get live(){return original.live;},actualInput,historicalInput,stage9Active:original.stage9Active,get stage9Live(){return original.stage9Live;},get stage10Live(){return original.stage10Live;}});
  // Reactivation must observe actual source24 reads/queries, never unwrap unrecorded originals.
  historicalViews.set(historicalInput.git,observed);assert(observedHeads.has(original));observedHeads.set(observed,observedHeads.get(original));
  return Object.freeze({input:historicalInput,actualInput,collector});
+}
+
+/** Refresh only canonical private projection facts; every mutable source check runs again. */
+export function refreshPrivatePinnedStage8(input){
+ const view=historicalViews.get(input.git),binding=view&&policyBindings.get(view);
+ if(!view||!incrementalViews.has(view)||binding?.policy!==pinnedPolicy||binding.capturePath!==pinnedCapturePath)return undefined;
+ assert.equal(input.read,view.historicalInput.read,'Historical Stage8 reader capability differs');assert.equal(resolve(input.root),resolve(view.historicalInput.root),'Historical Stage8 root differs');
+ assert.equal(realpathSync(process.cwd()),resolve(view.actualInput.root),'Actual workspace root required');
+ const current=view.actualInput.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim();
+ // A new metadata HEAD must take the original complete fresh construction path.
+ if(current!==observedHeads.get(view))return undefined;
+ assertSourceStage8HeadStable(view);
+ assert.equal(realpathSync(process.cwd()),resolve(view.actualInput.root),'Actual workspace root required');
+ return view;
 }
