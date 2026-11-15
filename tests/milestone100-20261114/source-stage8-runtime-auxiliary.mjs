@@ -21,6 +21,12 @@ export function assertRuntimeAvailabilitySuccessor(prior,current){
  assert.equal(prior.split(original).length,2);assert.equal(prior.split(entry).length,2);
  assert.equal(current,prior.replace(original,replacement).replace(entry,next),"Only the exact immutable availability hook may extend the current runtime");
 }
+export const runtimeAuxiliaryTreeAvailabilitySuccessor=Object.freeze({"path":"tests/next-cohort-20261110/source/retained-runtime.mjs","ref":"7881c915a47f898e26ca9f85a6c62dbd236a0db3","blob":"b1435076f4a2beaa1afeb66f77101a73408e26e9","bytes":31214,"sha256":"b54326e23b282e98de779f7e25da8a40fbdb2ace71f655ce5c033f60fe322e67"});
+export function assertRuntimeTreeAvailabilitySuccessor(prior,current){
+ const prefix="import {runtimeNativeGit} from '../../next-engineering-20261115/source-runtime-native-git.mjs';\nimport {primeRuntimeImmutableTrees} from '../../next-engineering-20261115/source-runtime-immutable-trees.mjs';\nimport {immutableTreeQueryReader} from '../../milestone100-20261114/source-immutable-queries.mjs';\n",original="const git=completionGitReader((args,options={})=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024,...options}));",replacement="const git=completionGitReader(immutableTreeQueryReader(runtimeNativeGit));";
+ const entry="primeRetainedImmutableObjects(readFileSync,git);batchObjectsPrimed=true;",next="primeRetainedImmutableObjects(readFileSync,git);primeRuntimeImmutableTrees(git);batchObjectsPrimed=true;";
+ assert.equal(prior.split(original).length,2);assert.equal(prior.split(entry).length,2);assert.equal(current,prefix+prior.replace(original,replacement).replace(entry,next),"Only the exact canonical immutable tree availability may extend the runtime");
+}
 function preloadRuntimeAuxiliaryObjects(git){
  if(typeof git.preloadCommits==='function')git.preloadCommits(runtimeAuxiliaryImmutableRefs);
  if(typeof git.preloadPaths==='function')git.preloadPaths(runtimeAuxiliaryImmutableChain.map(({ref,path,blob})=>({ref,path,blob})));
@@ -44,14 +50,14 @@ export function proveRuntimeAuxiliarySuccessor({record,currentBytes,input,witnes
  let proof;
  if(witness===undefined){proof=verifyCurrentParallelAuthorityAndSourceView({read:input.read,git:input.git,root});assert.equal(proof.actualInput.read,actual.read,'The same registered actual source reader is required');assert.equal(resolve(proof.actualInput.root),resolve(root),'The same registered actual source root is required');assertSourceStage8HeadStable(proof);}
  else replayActualAuthorityWitness(witness,input);
- const next=runtimeAuxiliaryAvailabilitySuccessor;assert.equal(next.path,runtimeAuxiliarySource.current.path);
+ const next=runtimeAuxiliaryTreeAvailabilitySuccessor;assert.equal(next.path,runtimeAuxiliarySource.current.path);
  const authority=accepted.find(row=>row.path===next.path);assert(authority,'Independently admitted runtime guard required');assert.equal(authority.blob,next.blob);assert.equal(authority.sha256,next.sha256);
  preloadRuntimeAuxiliaryObjects(actual.git);
- if(typeof actual.git.preloadCommits==='function')actual.git.preloadCommits([next.ref]);
- if(typeof actual.git.preloadPaths==='function')actual.git.preloadPaths([{ref:next.ref,path:next.path,blob:next.blob}]);
- if(typeof actual.git.preloadBlobs==='function')actual.git.preloadBlobs([next.blob]);
- immutable(runtimeAuxiliarySource.prior,actual.git);immutable(runtimeAuxiliarySource.current,actual.git);immutable(runtimeAuxiliaryBatchPredecessor,actual.git);immutable(runtimeAuxiliaryBoundHeadPredecessor,actual.git);immutable(runtimeAuxiliaryPrimePredecessor,actual.git);const predecessor=immutable(runtimeAuxiliaryBatchSuccessor,actual.git),bytes=immutable(next,actual.git),path=next.path;
- assertRuntimeAvailabilitySuccessor(predecessor.toString(),bytes.toString());
+ if(typeof actual.git.preloadCommits==='function')actual.git.preloadCommits([runtimeAuxiliaryAvailabilitySuccessor.ref,next.ref]);
+ if(typeof actual.git.preloadPaths==='function')actual.git.preloadPaths([runtimeAuxiliaryAvailabilitySuccessor,next].map(({ref,path,blob})=>({ref,path,blob})));
+ if(typeof actual.git.preloadBlobs==='function')actual.git.preloadBlobs([runtimeAuxiliaryAvailabilitySuccessor.blob,next.blob]);
+ immutable(runtimeAuxiliarySource.prior,actual.git);immutable(runtimeAuxiliarySource.current,actual.git);immutable(runtimeAuxiliaryBatchPredecessor,actual.git);immutable(runtimeAuxiliaryBoundHeadPredecessor,actual.git);immutable(runtimeAuxiliaryPrimePredecessor,actual.git);const predecessor=immutable(runtimeAuxiliaryBatchSuccessor,actual.git),availability=immutable(runtimeAuxiliaryAvailabilitySuccessor,actual.git),bytes=immutable(next,actual.git),path=next.path;
+ assertRuntimeAvailabilitySuccessor(predecessor.toString(),availability.toString());assertRuntimeTreeAvailabilitySuccessor(availability.toString(),bytes.toString());
  assert.equal(actual.git(['rev-parse',before+':'+path]).toString().trim(),next.blob,'Exact actual HEAD runtime object differs');
  const target=resolve(root,path),stat=lstatSync(target);assert(stat.isFile()&&!stat.isSymbolicLink(),'Regular actual runtime source required');assert.equal(realpathSync(target),target,'Redirected runtime source');
  const fresh=actual.read(path);assert(Buffer.isBuffer(fresh)&&fresh.equals(bytes)&&Buffer.isBuffer(currentBytes)&&currentBytes.equals(fresh),'Current personal auxiliary source bytes differ');

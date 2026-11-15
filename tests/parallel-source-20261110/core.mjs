@@ -4,8 +4,8 @@ import {rejectWrongSevenTestArguments} from '../next-engineering-20261115/source
 import {completionGitReader} from './git-reader.mjs';
 import {workflowSourceEvidenceClaims} from '../milestone100-20261114/workflow-source-evidence-claims.mjs';
 import {negativeReject as rejectWrongWorkflowClaim} from '../milestone100-20261114/source-stage8-negative-workflow-claim.mjs';
-import {runCompositionSourceEvidenceBatch} from '../milestone100-20261114/composition-source-evidence-batch.mjs';
-import {runtimeAuxiliaryImmutableChain,runtimeAuxiliaryAvailabilitySuccessor} from '../milestone100-20261114/source-stage8-runtime-auxiliary.mjs';
+import {runCompositionSourceEvidenceBatch,currentCompositionSourceEvidenceClaims} from '../milestone100-20261114/composition-source-evidence-batch.mjs';
+import {runtimeAuxiliaryImmutableChain,runtimeAuxiliaryAvailabilitySuccessor,runtimeAuxiliaryTreeAvailabilitySuccessor} from '../milestone100-20261114/source-stage8-runtime-auxiliary.mjs';
 import {rejectChangedCurrentStageSourceBytes} from '../milestone100-20261114/source-stage8-negative-current-src.mjs';
 import {apiRuntimeAnchor,assertApiRuntimeHistoricalObjectJoin} from '../milestone100-20261114/source-stage8-api-runtime-anchor.mjs';
 import {proveSavedActionsClaim} from '../milestone100-20261114/source-stage8-saved-actions-claim.mjs';
@@ -60,7 +60,7 @@ export const retainedStage7V6CapturePath='docs/parallel-source-20261110/capture-
 export const retainedStage7V7CapturePath='docs/parallel-source-20261110/capture-revision66.json';
 export const retainedStage7V8CapturePath='docs/parallel-source-20261110/capture-revision67.json';
 const retainedStage8CapturePath='docs/parallel-source-20261110/capture-revision68.json';
-export const capturePath='docs/next-engineering-20261115/source/guard-capture-runtime-availability.json';
+export const capturePath='docs/next-engineering-20261115/source/guard-capture-runtime-trees.json';
 const root=resolve(fileURLToPath(new URL('../../',import.meta.url))),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -334,8 +334,8 @@ function primeRetainedImmutableAvailability(read,git){
  const auxiliaryPath='tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs',auxiliaryAuthority=accepted.find(row=>row.path===auxiliaryPath);assert(auxiliaryAuthority,'Independent runtime auxiliary authority required');const auxiliarySupplied=read(auxiliaryPath);assert(Buffer.isBuffer(auxiliarySupplied),'Independent runtime auxiliary module must contain bytes');const auxiliaryBytes=Buffer.from(auxiliarySupplied);assert.equal(hash(auxiliaryBytes),auxiliaryAuthority.sha256,'Independent runtime auxiliary module bytes differ');
  ensureParallelSources(captures.get(retainedStage8CapturePath),git,{defaultRetainedCommitBatch:true});
  for(const capture of captures.values())visit(capture);
- for(const record of [...runtimeAuxiliaryImmutableChain,runtimeAuxiliaryAvailabilitySuccessor])visit(record);
- git.preloadCommits([...new Set([...factoryPolicy.ancestry,...completionPolicy.ancestry,...workflowPolicy.ancestry,...workflowPolicy.guardAncestry,...personalPolicy.ancestry,...personalPolicy.auxiliaryAncestry,...nonSourcePolicy.ancestry,...appStage5Policy.ancestry,...testStage6Policy.ancestry,...sourceStage7Policy.ancestry,...sourceStage8Policy.ancestry,...runtimeAuxiliaryImmutableChain.map(row=>row.ref),runtimeAuxiliaryAvailabilitySuccessor.ref])]);
+ for(const record of [...runtimeAuxiliaryImmutableChain,runtimeAuxiliaryAvailabilitySuccessor,runtimeAuxiliaryTreeAvailabilitySuccessor])visit(record);
+ git.preloadCommits([...new Set([...factoryPolicy.ancestry,...completionPolicy.ancestry,...workflowPolicy.ancestry,...workflowPolicy.guardAncestry,...personalPolicy.ancestry,...personalPolicy.auxiliaryAncestry,...nonSourcePolicy.ancestry,...appStage5Policy.ancestry,...testStage6Policy.ancestry,...sourceStage7Policy.ancestry,...sourceStage8Policy.ancestry,...runtimeAuxiliaryImmutableChain.map(row=>row.ref),runtimeAuxiliaryAvailabilitySuccessor.ref,runtimeAuxiliaryTreeAvailabilitySuccessor.ref])]);
  if(typeof git.preloadPaths==='function')git.preloadPaths([...paths.values()]);
  for(const record of accepted){assert.match(record.blob,/^[a-f0-9]{40}$/);ids.add(record.blob);}
  git.preloadBlobs([...ids]);
@@ -384,7 +384,7 @@ export function assertSevenTestSuccessor(file,claim,currentBytes,read=readFileSy
 export function assertFinalTwoScopeTestSuccessor(file,intermediateBytes,currentBytes,git=sourceGit){const p=currentStage8Input(readFileSync,git);return completeStage8(p,()=>retainedAssertFinalTwoScopeTestSuccessor(file,intermediateBytes,currentBytes,p.historicalInput.git,p.historicalInput.read));}
 
 /** Exact synchronous retained-composition source claim scope; no custom transports. */
-export function withCompositionSourceEvidenceBatch(run){return runCompositionSourceEvidenceBatch({prove:()=>proveNamedCurrentContext(),git:sourceGit,read:readFileSync},run,arguments.length);}
+export function withCompositionSourceEvidenceBatch(run){return runCompositionSourceEvidenceBatch({claims:currentCompositionSourceEvidenceClaims,prove:()=>proveNamedCurrentContext(),git:sourceGit,read:readFileSync},run,arguments.length);}
 
 /** Fixed workflow claims share only one synchronous, invocation-local source proof. */
 export function withWorkflowSourceEvidenceBatch(run){

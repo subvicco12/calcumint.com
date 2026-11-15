@@ -69,5 +69,6 @@ export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
   }
   return path===guardV6&&guardV6Proof?Buffer.from(guardV6Proof.previous):guardSuccessors.some(row=>row.path===path)?git(['show',sourceStage8Policy.predecessorRef+':'+path]):proof.historicalInput.read(path);
  };
- return finish(retainedVerify(name,historicalBytes,claim,git,historicalRead));
+ // Forward preload methods only when the original supplied transport explicitly owned them.
+ return finish(retainedVerify(name,historicalBytes,claim,proofGit,historicalRead));
 }

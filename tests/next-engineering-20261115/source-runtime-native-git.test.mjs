@@ -13,6 +13,6 @@ test('native immutable view stays canonical across changed cwd, diff config, pat
   assert(runtimeNativeGit(tree).equals(oldTree));assert(runtimeNativeGit(diff).equals(oldDiff));
   writeFileSync(join(root,'src/evil.txt'),'replacement\n');git(['add','src/evil.txt']);git(['commit','-qm','replacement']);const replacement=git(['rev-parse','HEAD']).toString().trim();git(['replace',a,replacement]);delete process.env.GIT_ICASE_PATHSPECS;assert(!git(tree).equals(oldTree),'Replacement must affect an ordinary Git view');process.env.GIT_ICASE_PATHSPECS='1';
   for(const query of [tree,diff]){const expected=query===tree?oldTree:oldDiff;assert(cached(query).equals(expected));assert(runtimeNativeGit(query).equals(expected));const cold=immutableTreeQueryReader(args=>runtimeNativeGit(args));assert(cold(query).equals(expected));}
-  assert(runtimeNativeGit(tree,{env:{GIT_NO_REPLACE_OBJECTS:'0',GIT_GLOB_PATHSPECS:'1'}}).equals(oldTree));
+  assert(runtimeNativeGit(tree,{env:{GIT_NO_REPLACE_OBJECTS:'0',GIT_GLOB_PATHSPECS:'1',GIT_DIR:'/unavailable/git-dir',GIT_WORK_TREE:tmpdir(),GIT_COMMON_DIR:'/unavailable/common',GIT_OBJECT_DIRECTORY:'/unavailable/objects',GIT_ALTERNATE_OBJECT_DIRECTORIES:'/unavailable/alternate'}}).equals(oldTree));
  }finally{process.chdir(before);if(oldGlob===undefined)delete process.env.GIT_ICASE_PATHSPECS;else process.env.GIT_ICASE_PATHSPECS=oldGlob;rmSync(root,{recursive:true,force:true});}
 });

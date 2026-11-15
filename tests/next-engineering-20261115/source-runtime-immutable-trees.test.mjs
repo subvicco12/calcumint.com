@@ -12,3 +12,8 @@ test('private immutable transport priming caches only fixed queries; symbolic cu
  for(const query of [['rev-parse','--verify','HEAD^{commit}'],['status','--porcelain','--','src'],['rev-parse','--show-toplevel'],['ls-files','-v','--','src']]){git(query);git(query);}assert.equal(calls.length,59);
  assert.throws(()=>primeRuntimeImmutableTrees(git,{queries:[]}),/Custom immutable tree/);assert.throws(()=>primeRuntimeImmutableTrees(()=>{throw Error('Missing immutable transport');}),/Missing immutable transport/);assert.throws(()=>primeRuntimeImmutableTrees(()=>''),/binary Git/);
 });
+test('runtime successor keeps all availability predecessor bytes apart from the three exact transport insertions',async()=>{
+ const {execFileSync}=await import('node:child_process');const {runtimeAuxiliaryAvailabilitySuccessor:prior,runtimeAuxiliaryTreeAvailabilitySuccessor:next,assertRuntimeTreeAvailabilitySuccessor}=await import('../milestone100-20261114/source-stage8-runtime-auxiliary.mjs');
+ const old=execFileSync('git',['cat-file','blob',prior.blob]).toString(),current=execFileSync('git',['cat-file','blob',next.blob]).toString();assertRuntimeTreeAvailabilitySuccessor(old,current);
+ for(const bytes of [current.replace('primeRuntimeImmutableTrees(git);','primeRuntimeImmutableTrees(git);immutableObjectsPreloaded=true;'),current+'\n//unexpected tail'])assert.throws(()=>assertRuntimeTreeAvailabilitySuccessor(old,bytes),/Only the exact canonical immutable tree availability/);
+});
