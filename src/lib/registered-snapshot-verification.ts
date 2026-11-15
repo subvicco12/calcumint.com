@@ -1,3 +1,4 @@
+import {nextEngineeringContracts,verifyNextEngineeringSnapshot} from './calculator-factory/completion/next-engineering';
 import {verifyCookingSnapshot} from './cooking-snapshot-verification';
 import {technologyReplayBindings,verifyTechnologySnapshot} from './technology-snapshot-verification';
 import {launchReplaySlugs,verifyLaunchSnapshot} from './launch-snapshot-verification';
@@ -13,6 +14,7 @@ import {verifyCidrSnapshot} from './technology-cidr-snapshot-verification';
 export function verifyRegisteredSnapshot(raw:unknown){
  const clean=copyCalculationData({value:raw},{}).input.value;
  const slug=clean&&typeof clean==='object'&&!Array.isArray(clean)?(clean as Record<string,unknown>).calculatorSlug:undefined;
+ if(nextEngineeringContracts.some(row=>row.slug===slug))return verifyNextEngineeringSnapshot(clean);
  if(slug==='cooking-measurement-converter')return verifyCookingSnapshot(clean);
  if(slug==='molarity-calculator'||slug==='moles-calculator'||slug==='dilution-calculator')return verifyWorkerCScienceSnapshot(clean);
  if(slug==='surface-area-calculator')return verifySurfaceAreaSnapshot(clean);

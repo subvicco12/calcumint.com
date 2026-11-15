@@ -19,7 +19,7 @@ export function createEngineeringContract<I extends object,O extends object>(eng
   return engine.inputSchema.parse(clean);
  };
  const record=(input:I,output:O)=>createCalculationSnapshot({calculatorSlug:engine.slug,calculatorVersion:engine.version,input:input as Record<string,unknown>,output:output as Record<string,unknown>});
- return Object.freeze({catalogId:options.catalogId,engineId:engine.id,slug:engine.slug,version:engine.version,title:engine.title,registered:true,captureRevision:'private.next-engineering.20261115.1',primaryKey:options.primaryKey,unit:options.unit,scope:options.scope,sourceEvidence:Object.freeze([...options.sourceEvidence]),limitations:Object.freeze(['Private engineering contract; canonical acceptance, certification and publication remain pending.','Capture uses binary64 finite inputs |x| ≤ 1e50; nonzero magnitudes ≥ 1e-50. Original historical domain is preserved.']),fields:Object.freeze(keys.map(key=>({key,label:key,kind:'number' as const,defaultValue:String((example as Record<string,unknown>)[key]),...(options.fieldUnits?.[key]?{unit:options.fieldUnits[key]}:{})}))),
+ return Object.freeze({catalogId:options.catalogId,engineId:engine.id,slug:engine.slug,version:engine.version,title:engine.title,registered:true,captureRevision:'private.next-engineering.20261115.1',primaryKey:options.primaryKey,unit:options.unit,scope:options.scope,sourceEvidence:Object.freeze([...options.sourceEvidence]),limitations:Object.freeze(['Private engineering contract; canonical acceptance, certification and publication remain pending.','Capture uses binary64 finite inputs |x| ≤ 1e50; nonzero magnitudes ≥ 1e-50. Original historical domain is preserved.']),fields:Object.freeze(keys.map(key=>Object.freeze({key,label:key,kind:'number' as const,defaultValue:String((example as Record<string,unknown>)[key]),...(options.fieldUnits?.[key]?{unit:options.fieldUnits[key]}:{})}))),
  execute(raw){
   const clean=copyCalculationData(raw,{}).input;
   if(Object.values(clean).some(value=>typeof value!=='string'))throw Error('Explicit numeric text fields required');
@@ -34,7 +34,9 @@ export function createEngineeringContract<I extends object,O extends object>(eng
   return snapshot;
  },
  verifyHistorical(raw){
-  const snapshot=createCalculationSnapshot(raw);
+  const clean=copyCalculationData({snapshot:raw},{}).input.snapshot;
+  if(!clean||typeof clean!=='object'||Array.isArray(clean)||Object.keys(clean).length!==4||!['calculatorSlug','calculatorVersion','input','output'].every(key=>Object.hasOwn(clean,key)))throw Error('Exact historical snapshot shape required');
+  const snapshot=createCalculationSnapshot(clean as CalculationSnapshot);
   if(snapshot.calculatorSlug!==engine.slug||snapshot.calculatorVersion!==engine.version)throw Error('Exact historical identity/version unavailable');
   const input=parse(snapshot.input),expected=record(input,engine.calculate(input,{}));
   if(!sameRecordedJson(snapshot,expected))throw Error('Stored result differs from immutable historical engine');
