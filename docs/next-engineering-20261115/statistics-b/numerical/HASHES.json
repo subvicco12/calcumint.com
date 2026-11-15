@@ -1,0 +1,26 @@
+{
+  "algorithm": "SHA256",
+  "immutableEngineSources": {
+    "src/calculators/statistics/catalog-batch-2.ts": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f",
+    "src/calculators/statistics/catalog-batch-3.ts": "41df470fd871e6fd1779035805c1b96cb120c91aff7a3cce40bc7628e3c3dd8e"
+  },
+  "sourceStableDuringRun": true,
+  "reproducerScripts": {
+    "scripts/next-engineering-20261115/numerical-oracle.mjs": "a2b37fe52501266a23346ffc10937a4cac90edea49603ac91b5b4254b87b9a1a",
+    "scripts/next-engineering-20261115/numerical-oracle.py": "7831c8e0a57fd9127521c53eaa5c24a300efba49b6418676e01adcde35d29c80"
+  },
+  "artifacts": {
+    "RECEIPT.md": "16c3285855942d191b37a7962e7b2ff714c9484663a2db72c9117b344cfbfd60",
+    "RESULTS.json": "ce7ff14cda94a93a9bfefeabd2ed753b913733ba8c07ba765f63cf273c0024fc",
+    "SPEC.json": "3e46bdacbb1aa39999cb31e9b8ae6c78dc26d5d23c74e45199190fd8c9838c94",
+    "engine-observations.json.gz": "2a57c67835079c7c49ab84a154f2d8eec7659c06e2a2a639f24afffbe9e5d9d1",
+    "mpmath-doc-excerpts.md": "705f04e507bc4e35a73af257d1959e6a44995a7510e224bab528f15f113e8005",
+    "oracle-values.json.gz": "1fb3176f2fb2575f58e546940e2431ca57b86ad4605b1576007c68542e4c285f"
+  },
+  "runtime": {
+    "node": "v24.19.0",
+    "esbuild": "0.28.2"
+  },
+  "command": "node scripts/next-engineering-20261115/numerical-oracle.mjs",
+  "artifactDirectory": "docs/next-engineering-20261115/statistics-b/numerical"
+}
