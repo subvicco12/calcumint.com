@@ -1,5 +1,5 @@
 import {accepted} from './authority.mjs';
-import {sourceStage10Policy,sourceStage10CapturePath} from '../next-engineering-20261115/source-stage10-current-policy.mjs';
+import {sourceStage10Policy,sourceStage10CapturePath} from '../next-engineering-20261115/source-stage10-current26-policy.mjs';
 import {sourceStage9Policy} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import {ensurePinnedAuthorityRecord} from '../milestone100-20261114/source-stage8-authority-availability.mjs';
 import test from 'node:test';

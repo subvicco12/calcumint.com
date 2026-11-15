@@ -1,4 +1,5 @@
-import {sourceStage10Policy} from '../next-engineering-20261115/source-stage10-current-policy.mjs';
+import {rejectChangedInteractiveSource} from '../next-engineering-20261115/source-interactive-negative.mjs';
+import {sourceStage10Policy} from '../next-engineering-20261115/source-stage10-current26-policy.mjs';
 import {sourceStage9Policy} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import {savedActionsClaim,savedActionsReceiptHistoricalClaim} from './source-stage8-saved-actions-claim.mjs';
 import {assertNamedApplicationSuccessor} from '../parallel-source-20261110/core.mjs';
@@ -17,6 +18,7 @@ export function verifyCapturedCurrentCaller(binding,read=readFileSync,git=source
  if(binding.path!==currentCaller)throw Error('Unapproved current caller source path');
  const claims=knownCallerRefs.map(ref=>sourceHash(git(['show',ref+':'+currentCaller])));
  if(!claims.includes(binding.sha256))throw Error('Captured source historical claim differs: '+currentCaller);
+ if(git===sourceGit)try{rejectChangedInteractiveSource(read);}catch(error){if(error instanceof Error&&error.message==='Current target source differs: '+currentCaller)throw Error('Completion current successor differs',{cause:error});throw error;}
  if(verifyCompletionBinding(currentCaller,read(currentCaller),claims[0],git,read)!==true)throw Error('Exact current caller successor required');
  return currentCaller;
 }

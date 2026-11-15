@@ -5800,7 +5800,18 @@ const bindings=[
 ];
 export const completionSourceRefs=Object.freeze([...new Set(bindings.flatMap(b=>[b.predecessorRef,b.successorRef,...(b.intermediateSources??[]).map(m=>m.ref),...(b.supplementalSources??[]).map(m=>m.ref)]))]);
 const hash=b=>createHash('sha256').update(b).digest('hex');
+/** Availability only through already-supplied immutable capabilities; opaque transports retain original queries. */
 export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
+ const b=bindings.find(row=>row.path===name);
+ if(b&&claim===b.predecessorSHA256){
+  const records=[...(b.supplementalSources??[]),...(b.intermediateSources??[]).map(row=>({...row,path:name})),...['predecessor','successor'].map(stage=>({ref:b[stage+'Ref'],path:name,blob:b[stage+'Blob']}))];
+  if(typeof git.preloadCommits==='function')git.preloadCommits([...new Set(records.map(row=>row.ref))]);
+  if(typeof git.preloadPaths==='function')git.preloadPaths(records.map(({ref,path,blob})=>({ref,path,blob})));
+  if(typeof git.preloadBlobs==='function')git.preloadBlobs([...new Set(records.map(row=>row.blob))]);
+ }
+ return retainedVerifyCompletionBinding(name,bytes,claim,git,read);
+}
+function retainedVerifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
  const b=bindings.find(x=>x.path===name);if(!b)return false;
  if(claim!==b.predecessorSHA256)throw Error('Completion predecessor claim differs: '+name);
  git=completionGitReader(git);

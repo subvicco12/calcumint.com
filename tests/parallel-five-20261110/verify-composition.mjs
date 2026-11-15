@@ -1,9 +1,11 @@
+import {sourceGit as baselineRuntimeSourceGit} from '../parallel-source-20261110/baseline-runtime.mjs';
 import {loadCompositionBindingBytes} from '../milestone100-20261114/composition-source-evidence-batch.mjs';
-import {verifyParallelSource,withCompositionSourceEvidenceBatch,sevenTestPaths,applicationSuccessorRef,appRef} from '../parallel-source-20261110/core.mjs';
+import {primeRetainedImmutableObjects,verifyParallelSource,withCompositionSourceEvidenceBatch,sevenTestPaths,applicationSuccessorRef,appRef} from '../parallel-source-20261110/core.mjs';
 import {assertTestOnlySuccessor,testOnlySuccessorPaths} from '../milestone100-20261114/source-stage8-test-only-successor.mjs';
 import {readFileSync} from 'node:fs';
 import assert from 'node:assert/strict';import{readFile}from'node:fs/promises';import path from'node:path';import{createHash}from'node:crypto';
 export async function verifyComposition(directory='docs/parallel-five-20261110/authenticated'){
+primeRetainedImmutableObjects(readFileSync,baselineRuntimeSourceGit);
 assert.equal(verifyParallelSource(),true,'Fresh current source and exact object availability must precede retained artifact claims');
 const sha=b=>createHash('sha256').update(b).digest('hex'),json=async f=>JSON.parse(await readFile(path.join(directory,f),'utf8')),ids=[369,375,380,381,387];
 const main=await json('receipt.json'),native=await json('prior/native-receipt.json'),personal=await json('personal/receipt.json'),four=await json('prior/sharing/completed-four-checkpoint.json'),fifth=await json('sharing/receipt.json'),batch=await json('batch-receipt.json'),bindings={...await json('production-source-tree-sha256.json'),...await json('build-source-sha256.json')},final=await json('final-source-version.json');
