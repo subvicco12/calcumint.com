@@ -1,0 +1,225 @@
+{
+  "catalogId": 226,
+  "engineId": "launch-remainder-calculator",
+  "slug": "remainder-calculator",
+  "technicalVersion": 1,
+  "privateCaptureRevision": "private.remainder-exact-zero.20261114.2",
+  "base": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+  "testedSourceCommit": "b404b3361faf5896544fe2b5417057502d0bbff4",
+  "branch": "worker/remainder-private-delivery-20261115",
+  "privateIntegration": "PASS",
+  "canonicalAccepted": false,
+  "certified": false,
+  "publicationEligible": false,
+  "releaseHold": true,
+  "sharedOverlayPromoted": false,
+  "sharedPR1538Modified": false,
+  "centralSourceAdmissionActivated": false,
+  "sourceAdmission": {
+    "base": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+    "codeRef": "b404b3361faf5896544fe2b5417057502d0bbff4",
+    "verifiedHead": "b404b3361faf5896544fe2b5417057502d0bbff4",
+    "sourcePaths": [
+      "src/components/calculator-factory-portal.tsx",
+      "src/components/remainder-capture-successor.tsx",
+      "src/components/remainder-private-delivery.test.tsx",
+      "src/components/remainder-private-delivery.tsx",
+      "src/lib/calculator-factory/completion/business.ts",
+      "src/lib/calculator-factory/completion/remainder-business-recovery.test.ts",
+      "src/lib/calculator-factory/completion/remainder-private-delivery.test.ts",
+      "src/lib/calculator-factory/private-delivery.ts",
+      "src/lib/surface-area-dispatch.test.ts"
+    ],
+    "sourceCaptureSHA256": "c2b391ba9f64cf370858ea876df4266424c6790adac3f3fa664cc740f98a07aa",
+    "positiveExactObjects": true,
+    "negativeControls": [
+      "capture tamper",
+      "all current paths substituted",
+      "all predecessors reverted",
+      "unknown dirty source",
+      "HEAD reversion",
+      "symlink"
+    ],
+    "allGitReadsAvailabilityLocked": true,
+    "historicalMathematicalAndCaptureSourcesUnchanged": true,
+    "centralPolicyActivated": false,
+    "releaseHold": true
+  },
+  "unit": {
+    "passed": 360,
+    "failed": 0,
+    "skipped": 0,
+    "files": 21,
+    "testFiles": [
+      "components/calculator-factory-downloads.test.tsx",
+      "components/calculator-factory-persisted-scenario.test.tsx",
+      "components/calculator-factory-portal.test.tsx",
+      "components/calculator-factory-shared-workspace.test.tsx",
+      "components/calculator-factory-workbench.test.tsx",
+      "components/remainder-capture-successor.test.tsx",
+      "components/remainder-private-delivery.test.tsx",
+      "lib/launch-snapshot-verification.test.ts",
+      "lib/registered-snapshot-replay.test.ts",
+      "lib/surface-area-dispatch.test.ts",
+      "lib/business/factory-nine-sharing-server.test.ts",
+      "lib/business/factory-nine-sharing.test.ts",
+      "lib/calculator-factory/registry.test.ts",
+      "lib/native-delivery/factory-automation-contract.test.ts",
+      "lib/native-delivery/factory-embed-contract.test.ts",
+      "app/admin/calculator-factory/actions.test.ts",
+      "lib/calculator-factory/completion/business.test.ts",
+      "lib/calculator-factory/completion/math-worker-a.integration.test.ts",
+      "lib/calculator-factory/completion/remainder-business-recovery.test.ts",
+      "lib/calculator-factory/completion/remainder-capture-successor.test.ts",
+      "lib/calculator-factory/completion/remainder-private-delivery.test.ts"
+    ]
+  },
+  "genuineAuthenticatedAcceptance": {
+    "catalogId": 226,
+    "revision": "private.remainder-exact-zero.20261114.2",
+    "checks": [
+      "Unauthenticated private portal denied",
+      "free: exact zero, AX labels/mobile, actual history persistence, same-request deduplication and foreign RLS denial",
+      "Free export and scenario affordances denied",
+      "free: invalid divisor hides stale output; trusted keyboard recovery succeeds",
+      "pro: exact zero, AX labels/mobile, actual history persistence, same-request deduplication and foreign RLS denial",
+      "pro: JSON/CSV/PDF native download readback and genuine persisted scenario restore/foreign denial",
+      "pro: invalid divisor hides stale output; trusted keyboard recovery succeeds",
+      "owner: exact zero, AX labels/mobile, actual history persistence, same-request deduplication and foreign RLS denial",
+      "owner: JSON/CSV/PDF native download readback and genuine persisted scenario restore/foreign denial",
+      "owner: invalid divisor hides stale output; trusted keyboard recovery succeeds",
+      "owner: actual Business share, template restore, exact v1 zero and cross-tenant isolation",
+      "admin: actual Business share, template restore, exact v1 zero and cross-tenant isolation",
+      "member: actual Business share, template restore, exact v1 zero and cross-tenant isolation",
+      "Revoked member denied by actual server action despite retained UI selection",
+      "Authenticated role cannot bypass server-only shared writer RPC",
+      "Private integration does not publish #226"
+    ],
+    "exports": [
+      {
+        "plan": "pro",
+        "format": "json",
+        "bytes": 540,
+        "sha256": "94c84f6657fa74e41572b51fa9256b762f3261161e73d6ef39821562f58b7b00",
+        "file": "invocation-XcIbCq/f72ee0a6-1ff0-47e9-be2f-e0cfd6063c4a"
+      },
+      {
+        "plan": "pro",
+        "format": "csv",
+        "bytes": 403,
+        "sha256": "96a821bc94ed42bc99acbcb70faaef6cc975ee27a190e4f43a8d030e2a18fe5e",
+        "file": "invocation-RZ6fby/d8c0b13c-e7ae-422f-802b-064ce7ce1b5d"
+      },
+      {
+        "plan": "pro",
+        "format": "pdf",
+        "bytes": 404767,
+        "sha256": "aa19c64a06660464189d38dea6fae7a4f6a351e65c680fc705868ba86973dfc4",
+        "file": "invocation-nEuIbK/31e89492-3315-453f-aac7-1d8eda843fca"
+      },
+      {
+        "plan": "owner",
+        "format": "json",
+        "bytes": 540,
+        "sha256": "94c84f6657fa74e41572b51fa9256b762f3261161e73d6ef39821562f58b7b00",
+        "file": "invocation-GQoQJZ/2ff8b89b-2431-453c-a8fd-6777005dbbd4"
+      },
+      {
+        "plan": "owner",
+        "format": "csv",
+        "bytes": 403,
+        "sha256": "96a821bc94ed42bc99acbcb70faaef6cc975ee27a190e4f43a8d030e2a18fe5e",
+        "file": "invocation-wolQs7/3a9cbca1-3f7f-43d4-ad84-0417782aefc3"
+      },
+      {
+        "plan": "owner",
+        "format": "pdf",
+        "bytes": 404767,
+        "sha256": "aa19c64a06660464189d38dea6fae7a4f6a351e65c680fc705868ba86973dfc4",
+        "file": "invocation-aPcB6n/d2a7a0c3-80de-4758-9860-53b783118d1a"
+      }
+    ],
+    "productionWrites": false,
+    "releaseHold": true,
+    "publicationAuthorityFixture": false,
+    "scope": "Actual private portal, actual application server actions and unchanged RLS on disposable PostgreSQL17/GoTrue/PostgREST. Loopback auth transport; not production qualification.",
+    "publicRouteStatus": 404,
+    "images": {
+      "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+      "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+      "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+    },
+    "passed": true
+  },
+  "compiledSources": {
+    "compiledSourceFiles": 2090,
+    "allCurrentBytesMatch": true,
+    "mismatches": [],
+    "publicationReaderFixture": false
+  },
+  "lint": "PASS",
+  "typecheck": "PASS",
+  "productionWebpackBuild": "PASS",
+  "independentSoftwareReview": {
+    "blockingFindings": 0,
+    "humanCompetentAcceptance": false,
+    "verified": [
+      "Exact namespace selection and legacy packet refusal",
+      "Server-owned authentication, plan, tenant and role checks",
+      "Independent legacy analysis packet execution and snapshot agreement",
+      "Native control props and publication guards preserved"
+    ]
+  },
+  "evidenceFiles": {
+    "affected.json": {
+      "sha256": "71af0f35cd65ad14c7feb315eda6a5cb02248f4be0e23fbe6fec0ce83952b075",
+      "bytes": 105821
+    },
+    "authenticated/receipt.json": {
+      "sha256": "dbcff9304fa454a672b181a403234c69e0df2b7c05c1c10d51a86e2c812d758a",
+      "bytes": 3626
+    },
+    "authenticated/build-source-sha256.json": {
+      "sha256": "284aa2ca58e118ec9158686dfb6a2303beccf4f2129e5b40691edb88ebba357f",
+      "bytes": 597380
+    },
+    "authenticated/build.log": {
+      "sha256": "b0a0510b80c3b94609fcd8cd701b9f2a7fd95a4cb28f840f0f2b7a8245958e14",
+      "bytes": 2838
+    },
+    "compiled-source-verification.json": {
+      "sha256": "d4bb06360e832d47e07fe5cce49bda66b54712267f069a034b027727d5fc9c20",
+      "bytes": 123
+    },
+    "source-admission.json": {
+      "sha256": "8c44224303d6704f391874a5f655752e0b147fb1d202b4d57858ea80922ba5e8",
+      "bytes": 1202
+    },
+    "lint.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "typecheck.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "auth-first-harness-failure.json": {
+      "sha256": "4d2e0fb733f2cbc9182e500c8217117af145f27fc0ed1eb1fd0e673a4ac3e4fd",
+      "bytes": 993
+    },
+    "auth-second-harness-failure.json": {
+      "sha256": "c636e6c64fe7bafc69285bba59076080af602c8032b5a56fe0afe94fcd77defd",
+      "bytes": 1834
+    },
+    "affected-sandbox-failure.json": {
+      "sha256": "2a9373b698ff140a4be4969fc429c05196e1c7682ab20487270220eb2bff6896",
+      "bytes": 116333
+    }
+  },
+  "remaining": [
+    "Coordinator must admit the exact nine-path successor into the cumulative source-authority chain and run integrated exact-head mandatory CI before any overlay qualification.",
+    "Full canonical source/applicability and competent-review decisions remain unsigned; no certification or publication authority granted.",
+    "Legacy optional analysis retains its original refusal boundary; fractional exact-zero cases have working successor result, history, scenarios and exports, but no broadened legacy analysis contract."
+  ],
+  "externalChanges": false
+}
