@@ -48,5 +48,4 @@ test('bootstrap source audit refuses old-valid reversion, arbitrary tamper and m
  const old=sourceGit(['show','a7a656f71b04b50192485a49b0b56b3fa6bd86b9:'+name]);
  for(const bytes of [old,Buffer.from('tampered bootstrap')])assert.throws(()=>verifyBootstrapSuccession(path=>path===name?bytes:readFileSync(path)),/current bootstrap source bytes differ/);
  assert.throws(()=>verifyBootstrapSuccession(readFileSync,()=>{throw Error('Missing exact bootstrap Git proof');}),/Missing exact bootstrap Git proof/);
-
 });

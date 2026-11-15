@@ -10,7 +10,7 @@ const historical=new WeakMap(),proved=new WeakSet();
 export const sourceStage9HistoricalView=git=>historical.get(git);
 const sha=b=>createHash('sha256').update(b).digest('hex');
 function currentBytesFirst(input,bytes){const priorBytes=input.read(sourceStage8CapturePath);assert.equal(sha(priorBytes),sourceStage8Policy.captureSHA256,'Independent Stage8 capture digest differs');const prior=JSON.parse(priorBytes);assert.deepEqual(prior.rows.map(row=>row.path),sourceStage8Policy.paths);for(const row of new Map([...prior.rows,...JSON.parse(bytes).rows].map(row=>[row.path,row])).values()){const value=input.read(row.path);assert(Buffer.isBuffer(value)&&value.length===row.current.bytes&&sha(value)===row.current.sha256,'Current factory bytes differ: '+row.path);}}
-function exact(input){const bytes=input.read(capturePath);currentBytesFirst(input,bytes);return verifyExactStage({...input,policy,captureBytes:bytes});}
+function exact(input){const bytes=input.read(capturePath);assert.equal(sha(bytes),policy.captureSHA256,'Independent Stage9 capture digest differs');currentBytesFirst(input,bytes);return verifyExactStage({...input,policy,captureBytes:bytes});}
 export function proveSourceStage9(input){
  assert.deepEqual(Object.keys(input).sort(),['git','read','root'],'Only explicit Stage9 read/Git/root inputs allowed');
  input={...input,root:resolve(input.root)};
