@@ -51,8 +51,8 @@ test('isolated physical extra source, dirty tracked source and same-byte symlink
  const dir=mkdtempSync(join(tmpdir(),'stage10-physical-')),tree=join(dir,'tree');let added=false;
  try{
   git(['worktree','add','--detach',tree,'HEAD']);added=true;
-  const module=new URL('./source-stage10.mjs',import.meta.url).href;
-  const script=`import assert from 'node:assert/strict';import {readFileSync,writeFileSync,rmSync,renameSync,symlinkSync} from 'node:fs';import {execFileSync} from 'node:child_process';import {proveSourceStage10} from ${JSON.stringify(module)};
+  const stage10Module=new URL('./source-stage10.mjs',import.meta.url).href;
+  const script=`import assert from 'node:assert/strict';import {readFileSync,writeFileSync,rmSync,renameSync,symlinkSync} from 'node:fs';import {execFileSync} from 'node:child_process';import {proveSourceStage10} from ${JSON.stringify(stage10Module)};
    const root=process.cwd(),path='src/components/calculator-factory-portal.tsx',original=readFileSync(path),git=a=>execFileSync('git',a,{stdio:['ignore','pipe','pipe'],maxBuffer:64000000}),hidden=a=>a[0]==='status'?Buffer.alloc(0):git(a),input={root,git:hidden,read:p=>p===path?original:readFileSync(p)};
    writeFileSync('src/.unexpected-stage10-source','untracked');assert.throws(()=>proveSourceStage10(input),/native dirty or unknown source/);rmSync('src/.unexpected-stage10-source');
    writeFileSync(path,'changed actual tracked bytes');assert.throws(()=>proveSourceStage10(input),/native dirty or unknown source/);writeFileSync(path,original);
