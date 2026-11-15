@@ -1,5 +1,6 @@
 import {z} from 'zod';
-import {factoryContracts,getFactoryWorkflows} from '../registry';
+import {factoryContracts} from '../registry';
+import {verifyPrivateFactoryPacket} from '../private-delivery';
 import type {FactoryExecutionPacket} from '../workflows';
 import {createCalculationSnapshot,type CalculationSnapshot} from '@/lib/calculation-snapshot';
 import {equalCompletionJson} from '@/calculators/completion-contracts';
@@ -12,7 +13,7 @@ export function verifyFactoryPacket(value:unknown):FactoryExecutionPacket {
  const packet=z.object({identity:z.object({catalogId:z.number().int()}).passthrough()}).passthrough().parse(value);
  const contract=factoryContracts.find(row=>row.catalogId===packet.identity.catalogId&&row.registered);
  if(!contract)throw Error('Registered factory calculator required');
- return getFactoryWorkflows(contract.catalogId).verify(value as FactoryExecutionPacket);
+ return verifyPrivateFactoryPacket(value as FactoryExecutionPacket);
 }
 
 /** Stored scenarios contain normalized snapshots, not original raw keystrokes or source packets. */

@@ -15,9 +15,9 @@ describe('stored #226 v1 history is verified independently of current capture po
   const {snapshot}=getRemainderCaptureWorkflows().execute({a:'1.5',b:'.5'});
   for(const forged of [{...snapshot,output:{result:1}},{...snapshot,input:{...snapshot.input,extra:1}},{...snapshot,calculatorVersion:2},{...snapshot,calculatorSlug:'square-calculator'}])expect(()=>verifyFactoryStoredSnapshot(forged)).toThrow();
  });
- it('does not admit the unadopted current packet or rewrite its predecessor namespace',()=>{
+ it('admits the private current packet without rewriting its predecessor namespace',()=>{
   const successor=getRemainderCaptureWorkflows().execute({a:'1.5',b:'.5'});
-  expect(()=>verifyFactoryPacket(successor)).toThrow();
+  expect(verifyFactoryPacket(successor)).toEqual(successor);
   expect(()=>getFactoryWorkflows(226).verify(successor)).toThrow();
   const predecessor=getFactoryWorkflows(226).execute({a:'17',b:'5'});
   expect(verifyFactoryPacket(predecessor)).toEqual(predecessor);
