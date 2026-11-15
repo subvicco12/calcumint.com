@@ -1,0 +1,82 @@
+{
+  "kind": "EXACT_STAGE10_LINT_REPAIR_CHECKPOINT",
+  "preservedFailure": {
+    "ciRun": 43703105932,
+    "exactHead": "fee65f11",
+    "job": "checks",
+    "step": "Lint",
+    "file": "tests/next-engineering-20261115/source-stage10.test.mjs",
+    "line": 54,
+    "rule": "@next/next/no-assign-module-variable",
+    "cause": "Local const module binding is forbidden by the Next lint rule.",
+    "disposition": "Original CI failure retained; no qualification inferred from a replacement run."
+  },
+  "repair": "Rename local module binding to stage10Module and its interpolation reference; assertions unchanged. Additive guard capture, authority pin and explicit prior13298943 availability.",
+  "testedHead": "7fd9e40cb69ccfee70924e6dd6c2bc393a0043f8",
+  "immutableAuthorityRef": "379997d86b163f5dc7e95de76e26fa055361a2d1",
+  "srcDeltaFromFrozen550": [],
+  "workflowDelta": [],
+  "deadlinesChanged": false,
+  "historicalAuthorityArraysChanged": false,
+  "fullRepositoryLint": {
+    "exitCode": 0,
+    "errors": 0,
+    "warnings": 88
+  },
+  "exactChangedAdmissionJavaScriptLint": {
+    "files": 24,
+    "exitCode": 0,
+    "errors": 0,
+    "warnings": 10
+  },
+  "focusedCasesPassed": 13,
+  "sourceChecks": {
+    "stage10": 8,
+    "preflight": 4,
+    "availability": 1,
+    "completeAuthorityProof": true
+  },
+  "evidence": [
+    {
+      "name": "full-lint",
+      "path": "docs/next-engineering-20261115/source/lint-repair-validation/full-lint.log",
+      "sha256": "2d4a18756a61fec63ce2bb4e4379f3ca8ab9f38ab78f8b65c074bea98158baae",
+      "exitCode": 0
+    },
+    {
+      "name": "changed-javascript-lint",
+      "path": "docs/next-engineering-20261115/source/lint-repair-validation/changed-javascript-lint.log",
+      "sha256": "5455642b2241ba1cc658831652ee7bcd21f64eb8a17bab2408a576a426e2953a",
+      "exitCode": 0
+    },
+    {
+      "name": "stage10",
+      "path": "docs/next-engineering-20261115/source/lint-repair-validation/stage10.log",
+      "sha256": "3c5b60eb79dd9167928c8407d04ba71ca798e098bc6df0d86f6f3356b0db4f85",
+      "exitCode": 0
+    },
+    {
+      "name": "preflight",
+      "path": "docs/next-engineering-20261115/source/lint-repair-validation/preflight.log",
+      "sha256": "016e6001c363b5593e833390f014f97ed3d4be3b770382242425007a56f80b61",
+      "exitCode": 0
+    },
+    {
+      "name": "availability",
+      "path": "docs/next-engineering-20261115/source/lint-repair-validation/availability.log",
+      "sha256": "c748a49391ae7f4ef0cd96ee3dc6b3ebe7692c647f045464b83eef7972140add",
+      "exitCode": 0
+    },
+    {
+      "name": "authority",
+      "path": "docs/next-engineering-20261115/source/lint-repair-validation/authority.log",
+      "sha256": "a17fcf0a2f50e2d495e4f90ce263410edc183add6c62699a2facbccf60410f74",
+      "exitCode": 0
+    }
+  ],
+  "runtime": "Node24.19 outside process sandbox; existing local dependencies reused without installation or network fetch",
+  "completionCountsChanged": false,
+  "qualified": false,
+  "qualificationRemaining": "Independent review and all five unchanged exact-head Node22 CI jobs plus aggregate at the integrated repaired head.",
+  "releaseHold": true
+}
