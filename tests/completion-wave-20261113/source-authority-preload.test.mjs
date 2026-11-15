@@ -1,7 +1,7 @@
 import {sourceStage10CapturePath,sourceStage10Policy} from '../next-engineering-20261115/source-stage10-current-policy.mjs';
 import {sourceStage9CapturePath,sourceStage9Policy} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import {sourceStage8CapturePath,sourceStage8Policy} from '../milestone100-20261114/source-stage8-activation.mjs';
-import {readFileSync} from 'node:fs';
+import {readFileSync} from 'node:fs';import {createHash} from 'node:crypto';
 import test from 'node:test';import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';import {resolve} from 'node:path';
 import {accepted,verifyParallelAuthority} from '../parallel-source-20261110/authority.mjs';
@@ -9,14 +9,30 @@ import {makeGitReader} from '../parallel-source-20261110/git-reader.mjs';
 const root=resolve(new URL('../../',import.meta.url).pathname),ids=accepted.map(r=>r.blob);
 const actual=(args,options={})=>execFileSync('git',args,{cwd:root,stdio:['ignore','pipe','pipe'],maxBuffer:128*1024*1024,...options});
 const fullBatch=actual(['cat-file','--batch'],{input:Buffer.from(ids.join('\n')+'\n'),stdio:['pipe','pipe','pipe']});
-const content=new Map(accepted.map(r=>[r.blob,actual(['cat-file','blob',r.blob])])),byPath=new Map(accepted.map(r=>[r.path,r]));
+// Independent fixture oracle: parse the already-real batch without using the reader under test.
+const content=new Map();let batchOffset=0;
+for(const expected of ids){const newline=fullBatch.indexOf(10,batchOffset);assert(newline>=0,'Fixture batch header required');const header=/^([0-9a-f]{40}) blob (0|[1-9][0-9]*)$/.exec(fullBatch.subarray(batchOffset,newline).toString('ascii'));assert(header&&header[1]===expected,'Fixture batch identity/type differs');const length=Number(header[2]);assert(Number.isSafeInteger(length),'Fixture batch length differs');const start=newline+1,end=start+length;assert(end<fullBatch.length&&fullBatch[end]===10,'Fixture batch content/separator differs');const bytes=Buffer.from(fullBatch.subarray(start,end));assert.equal(createHash('sha1').update(Buffer.from('blob '+bytes.length+'\0')).update(bytes).digest('hex'),expected,'Fixture blob content address differs');content.set(expected,bytes);batchOffset=end+1;}
+assert.equal(batchOffset,fullBatch.length,'Fixture batch has trailing bytes');
+const byPath=new Map(accepted.map(r=>[r.path,r]));
 const sourceCapture=JSON.parse(readFileSync(sourceStage8CapturePath)),sourceNames=[sourceStage8CapturePath,sourceStage9CapturePath,sourceStage10CapturePath,...new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths,...sourceStage10Policy.paths])],sourceContent=new Map(sourceNames.map(path=>[path,readFileSync(path)]));
 const sourceIDs=[...new Set(sourceCapture.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean)).map(row=>row.blob))];
 const source9Capture=JSON.parse(readFileSync(sourceStage9CapturePath)),source9IDs=[...new Set(source9Capture.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean)).map(row=>row.blob))],sourcePaths=new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths,...sourceStage10Policy.paths]);
 const source10Capture=JSON.parse(readFileSync(sourceStage10CapturePath)),source10Records=source10Capture.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean));source10Records.push(...source10Capture.retainedStages.flatMap(stage=>Object.values(stage)));const source10IDs=[...new Set(source10Records.map(row=>row.blob))];
 const head=actual(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),target='tests/parallel-source-20261110/bootstrap.mjs';
+// Private source-only availability setup. The exposed authority transport/counters remain unchanged.
+function prewarmSourceObjects(reader){
+ const records=[],commits=[];
+ for(const [path,policy]of [[sourceStage8CapturePath,sourceStage8Policy],[sourceStage9CapturePath,sourceStage9Policy],[sourceStage10CapturePath,sourceStage10Policy]]){
+  const bytes=sourceContent.get(path);assert.equal(createHash('sha256').update(bytes).digest('hex'),policy.captureSHA256,'Fixture source capture must be independently fixed');const capture=JSON.parse(bytes);assert.deepEqual(capture.ancestry,policy.ancestry);assert.deepEqual(capture.rows.map(row=>row.path),policy.paths);commits.push(...policy.ancestry);records.push(...capture.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean)));
+  for(const stage of capture.retainedStages??(capture.retainedStage?[capture.retainedStage]:[])){
+   records.push(...Object.values(stage));const retained=reader(['cat-file','blob',stage.capture.blob]);assert.equal(retained.length,stage.capture.bytes);assert.equal(createHash('sha256').update(retained).digest('hex'),stage.capture.sha256);const original=JSON.parse(retained);assert(original.rows.length<=policy.paths.length);assert(original.rows.every(row=>policy.paths.includes(row.path)));records.push(...original.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean)));
+  }
+ }
+ reader.preloadCommits([...new Set(commits)]);reader.preloadPaths(records.map(({ref,path,blob})=>({ref,path,blob})));reader.preloadBlobs([...new Set(records.map(row=>row.blob))]);
+}
 function fixture({preload=true}={}){
  const events=[],sourceReads=new Set(),sourceObjects=makeGitReader(actual);let batches=0,batchOverride=null,pathOverride=false,rawOverride=false,preloadFailure=false,phase='idle',sourceGitReads=0,pendingAuthorityRead,sourceOverride=null;
+ prewarmSourceObjects(sourceObjects);
  const sourceFirst=()=>{assert.equal(sourceReads.size,sourcePaths.size,'Every actual source read must precede authority operations');assert(sourceGitReads>0,'Real source Git proof must precede authority operations');};
  const objects=makeGitReader((args,options)=>{assert.deepEqual(args,['cat-file','--batch']);assert.equal(options.input.toString(),ids.join('\n')+'\n');batches++;return batchOverride?.(batches)??fullBatch;});
  const git=(args,options)=>{

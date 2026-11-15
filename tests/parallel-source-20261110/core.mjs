@@ -1,3 +1,5 @@
+import {rejectChangedInteractiveSource} from '../next-engineering-20261115/source-interactive-negative.mjs';
+import {rejectWrongSevenTestArguments} from '../next-engineering-20261115/source-seven-test-negative.mjs';
 import {completionGitReader} from './git-reader.mjs';
 import {workflowSourceEvidenceClaims} from '../milestone100-20261114/workflow-source-evidence-claims.mjs';
 import {negativeReject as rejectWrongWorkflowClaim} from '../milestone100-20261114/source-stage8-negative-workflow-claim.mjs';
@@ -57,7 +59,7 @@ export const retainedStage7V6CapturePath='docs/parallel-source-20261110/capture-
 export const retainedStage7V7CapturePath='docs/parallel-source-20261110/capture-revision66.json';
 export const retainedStage7V8CapturePath='docs/parallel-source-20261110/capture-revision67.json';
 const retainedStage8CapturePath='docs/parallel-source-20261110/capture-revision68.json';
-export const capturePath='docs/next-engineering-20261115/source/guard-capture-stage5-negative.json';
+export const capturePath='docs/next-engineering-20261115/source/guard-capture-fixture-prewarm.json';
 const root=resolve(fileURLToPath(new URL('../../',import.meta.url))),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -373,10 +375,11 @@ function rejectNamedInputBytes(read,git,file,currentBytes){
  else if(git!==sourceGit&&(typeof git!=='function'||completionGitReader(git)!==git))return;
  // Memo identity selects only a negative fast path; it grants no source verdict.
  rejectChangedPersonalWorkflowSourceBytes(read,file,currentBytes);
+ if(!view&&file===undefined)rejectChangedInteractiveSource(read);
 }
 export function proveNamedCurrentContext(read=readFileSync,git=sourceGit){rejectNamedInputBytes(read,git);const p=currentStage8Input(read,git);return completeStage8(p,()=>{const rows=retainedProveNamedCurrentContext(p.historicalInput.read,p.historicalInput.git);for(const [path,row]of [...p.live,...p.stage9Live,...p.stage10Live]){const prior=rows.get(path);rows.set(path,{current:row.current,recordedSHA256:prior?.recordedSHA256??row.predecessor?.sha256});}return rows;});}
 export function assertNamedApplicationSuccessor(file,recordedSHA256,currentBytes,read=readFileSync,git=sourceGit){if(read===readFileSync&&git===sourceGit)rejectWrongWorkflowClaim(file,recordedSHA256,read);rejectNamedInputBytes(read,git,file,currentBytes);const p=currentStage8Input(read,git);return completeStage8(p,()=>{const row=p.stage10Live.get(file)??p.stage9Live.get(file)??p.live.get(file);if(!row)return retainedAssertNamedApplicationSuccessor(file,recordedSHA256,currentBytes,p.historicalInput.read,p.historicalInput.git);const prior=retainedProveNamedCurrentContext(p.historicalInput.read,p.historicalInput.git).get(file);if(prior)assert.equal(recordedSHA256,prior.recordedSHA256);else if(file===apiRuntimeAnchor.fixed.path)assertApiRuntimeHistoricalObjectJoin({file,recordedSHA256,row,currentBytes,git});else proveSavedActionsClaim({file,recordedSHA256,row,currentBytes,git});assert(currentBytes.equals(git(['cat-file','blob',row.current.blob])),'Current named application successor differs');return {file,recordedApplicationGit:appRef,currentApplicationGit:row.current.ref,historicalEvidenceOnly:true};});}
-export function assertSevenTestSuccessor(file,claim,currentBytes,read=readFileSync,git=sourceGit){const p=currentStage8Input(read,git);return completeStage8(p,()=>retainedAssertSevenTestSuccessor(file,claim,currentBytes,p.historicalInput.read,p.historicalInput.git));}
+export function assertSevenTestSuccessor(file,claim,currentBytes,read=readFileSync,git=sourceGit){rejectWrongSevenTestArguments({read,git,root},file,claim,currentBytes);const p=currentStage8Input(read,git);return completeStage8(p,()=>retainedAssertSevenTestSuccessor(file,claim,currentBytes,p.historicalInput.read,p.historicalInput.git));}
 export function assertFinalTwoScopeTestSuccessor(file,intermediateBytes,currentBytes,git=sourceGit){const p=currentStage8Input(readFileSync,git);return completeStage8(p,()=>retainedAssertFinalTwoScopeTestSuccessor(file,intermediateBytes,currentBytes,p.historicalInput.git,p.historicalInput.read));}
 
 /** Exact synchronous retained-composition source claim scope; no custom transports. */
