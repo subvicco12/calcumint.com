@@ -33,3 +33,11 @@ The Business89-tuple successor and reverse are HELD/unapplied documents outside 
 ## First hosted attempt and narrow lint repair
 
 CI43703105932 atfee65f11 failedchecks/Lint because a provenance test used Next's reserved local binding `module`. The local binding and its references were renamed `stage10Module`; no assertion, application source or deadline changed. The lint-only guard change has fresh additive capture/authority and an independently verified remote pin379997d8. Full coordinator lint now passes0errors/88warnings. Thirteen post-pin focused provenance cases and complete authority verification pass. Other first-run jobs were still running at this checkpoint; their result is not assumed. The corrected exact head requires its own five-job+aggregate run.
+
+## Source-current24 and existing Node22 verification
+
+The first hosted run finished red. Beyond the lint binding, actual consumers exposed a Stage9-only early source selector, the retained whole-roster assertion still expecting69, and the inherited-eight proof exceeding its unchanged5s test bound. The pending duplicate run43704101518 was cancelled before spending another known-failing cycle. No failure was relabelled a pass.
+
+The authorized whole-roster correction preserves the original69 tuple/SQL assertions and adds all20 exact new witnesses plus the complete89 tuple/four-function SQL checks, without filtering. It is the only additional SRC delta from550ae67, frozen at822743dd987bc2f07e52ab07a3c2ef4ab05f625f. An additive current24 capture retains the original23 capture/policy literally; the original23 blobs remain unchanged. The integration preserves822 ancestry with a normal merge. Every calculator engine remains identical to the original3cc baseline.
+
+An existing Node22.23.4 runtime was found in the workspace; retained archive and extracted binary SHA256 agree. No runtime was downloaded. The integrated calculator/UI/native/whole-roster group passes298 tests in9files under Node22. All124 compiled source fingerprints in the genuine Business receipt still match current bytes, so that scoped evidence is reused. Numerical evidence remains unchanged. Full source-wrapper/fresh hosted qualification remains pending.
