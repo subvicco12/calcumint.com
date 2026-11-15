@@ -1,3 +1,4 @@
+import {rejectChangedKnownStage5Source} from '../next-engineering-20261115/source-stage5-negative-current.mjs';
 import {provePinnedSourceStage8} from '../milestone100-20261114/source-stage8-activation.mjs';
 /** Test-only outer stage proves actual SRC20 before retaining the literal APP19 Stage5. */
 import { provePinnedSourceStage7 } from '../milestone60-20261113/source-stage7-activation.mjs';
@@ -18,6 +19,7 @@ export function proveSourceTestStage6AndHistoricalInputs({read,git,root,policy=t
  return{live,historicalInput:{read:historicalRead,git:historicalGit,root}};
 }
 export function proveCurrentAppStage5AndHistoricalInputs(input){
+ rejectChangedKnownStage5Source(input);
  // Stage7 proves actual SRC first. The original body below receives only its exact historical view.
  const stage8=provePinnedSourceStage8(input);
  const result=provePinnedSourceStage7(stage8.historicalInput,proveLiteralCurrentAppStage5AndHistoricalInputs);
