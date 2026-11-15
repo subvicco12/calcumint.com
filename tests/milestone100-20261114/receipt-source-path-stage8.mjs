@@ -1,3 +1,4 @@
+import {sourceStage9Policy} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import {savedActionsClaim,savedActionsReceiptHistoricalClaim} from './source-stage8-saved-actions-claim.mjs';
 import {assertNamedApplicationSuccessor} from '../parallel-source-20261110/core.mjs';
 import {completionGitReader} from '../parallel-source-20261110/git-reader.mjs';
@@ -52,7 +53,8 @@ export async function verifyCapturedSource(binding,read=readFile){
   const {sourceStage7Policy}=await import('../milestone60-20261113/source-stage7-activation.mjs');
   if(!/^[a-f0-9]{40}$/.test(sourceStage7Policy.codeRef))throw Error('Exact independently pinned verifier code revision required');
   const admittedCurrent=digest(git(['show',sourceStage7Policy.codeRef+':'+path]));
-  if(![historical,fresh,qualified,admittedCurrent].includes(binding.sha256))throw Error('Captured source historical claim differs: '+path);
+  const admittedIncremental=digest(git(['show',sourceStage9Policy.codeRef+':'+path]));
+  if(![historical,fresh,qualified,admittedCurrent,admittedIncremental].includes(binding.sha256))throw Error('Captured source historical claim differs: '+path);
   // Resolve every dependency through the SAME target reader, not the workspace.
   const {completionBindingDependencies}=await import('../../scripts/product-completion-stage8.mjs');
   const target=new Map(await Promise.all(completionBindingDependencies(path).map(async name=>[name,await read(name)])));

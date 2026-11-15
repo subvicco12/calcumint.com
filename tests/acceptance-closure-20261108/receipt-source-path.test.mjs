@@ -1,3 +1,4 @@
+import {sourceStage9Policy,sourceStage9CapturePath} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
@@ -44,7 +45,9 @@ const reviewedBinding=Object.freeze({path:registeredPath,sha256:reviewedVerifier
 const sha=source=>createHash('sha256').update(source).digest('hex');
 const gitSource=ref=>exactSourceGit('git',['show',ref+':'+registeredPath],{maxBuffer:8*1024*1024});
 const boundaryDependency='src/lib/technology-cidr-snapshot-verification.ts';
-const pinnedCurrentBinding=()=>Object.freeze({path:registeredPath,sha256:sha(gitSource(sourceStage7Policy.codeRef))});
+const pinnedStage7Binding=()=>Object.freeze({path:registeredPath,sha256:sha(gitSource(sourceStage7Policy.codeRef))});
+const pinnedCurrentBinding=()=>Object.freeze({path:registeredPath,sha256:sha(gitSource(sourceStage9Policy.codeRef))});
+const currentRefusal=error=>error instanceof Error&&['Completion current successor differs','Current factory bytes differ: '+registeredPath].includes(error.message);
 test('the exact F042 verifier claim preserves BASE2 history and proves the reviewed clean Stage7 successor and every dependency',async()=>{
  const original=gitSource(reviewedVerifierRef);assert.equal(sha(original),reviewedVerifierSHA);
  const retainedRef='2d5d105892134f8af46fc2a02edd5932c431b845',retained=gitSource(retainedRef);assert(original.equals(retained));assert.equal(sha(retained),reviewedVerifierSHA);
@@ -55,11 +58,12 @@ test('the exact F042 verifier claim preserves BASE2 history and proves the revie
  assert(gitSource(qualifiedRef).equals(gitSource(successor.current.ref)),'Current APP and qualified verifier bytes must be identical');
  assert.equal(successor.predecessor.ref,retainedRef);assert.equal(successor.predecessor.sha256,reviewedVerifierSHA);assert.equal(successor.predecessor.blob,exactSourceGit('git',['rev-parse',reviewedVerifierRef+':'+registeredPath]).toString().trim());
  assert.equal(exactSourceGit('git',['rev-parse',successor.current.ref+':'+registeredPath]).toString().trim(),successor.current.blob);
- const reviewedCurrent=exactSourceGit('git',['cat-file','blob',successor.current.blob],{maxBuffer:8*1024*1024});assert.equal(reviewedCurrent.length,successor.current.bytes);assert.equal(sha(reviewedCurrent),successor.current.sha256);assert(reviewedCurrent.equals(await readCurrentSource(registeredPath)));
+ const reviewedCurrent=exactSourceGit('git',['cat-file','blob',successor.current.blob],{maxBuffer:8*1024*1024});assert.equal(reviewedCurrent.length,successor.current.bytes);assert.equal(sha(reviewedCurrent),successor.current.sha256);assert(reviewedCurrent.equals(gitSource(sourceStage9Policy.predecessorRef)),'Stage7 exact bytes remain the immutable incremental predecessor');
+ const captureBytes=readPinnedSource(sourceStage9CapturePath);assert.equal(sha(captureBytes),sourceStage9Policy.captureSHA256);const incremental=JSON.parse(captureBytes).rows.find(row=>row.path===registeredPath);assert(incremental);assert.equal(incremental.predecessor.blob,successor.current.blob);assert.equal(incremental.current.ref,sourceStage9Policy.codeRef);assert.equal(incremental.current.blob,exactSourceGit('git',['rev-parse',sourceStage9Policy.codeRef+':'+registeredPath]).toString().trim());const current=gitSource(sourceStage9Policy.codeRef);assert.equal(current.length,incremental.current.bytes);assert.equal(sha(current),incremental.current.sha256);assert(current.equals(await readCurrentSource(registeredPath)));
  const dependencies=completionBindingDependencies(registeredPath),names=[registeredPath,...dependencies],target=new Map(await Promise.all(names.map(async path=>[path,await readCurrentSource(path)]))),reads=[];
  assert.equal(await verifyCapturedSource(reviewedBinding,async path=>{assert(target.has(path),'Undeclared target reader path: '+path);reads.push(path);return target.get(path);}),registeredPath);
  assert.deepEqual(reads,names);
- reads.length=0;assert.equal(await verifyCapturedSource(pinnedCurrentBinding(),async path=>{assert(target.has(path),'Undeclared target reader path: '+path);reads.push(path);return target.get(path);}),registeredPath);assert.deepEqual(reads,names);
+ reads.length=0;assert.equal(await verifyCapturedSource(pinnedStage7Binding(),async path=>target.get(path)),registeredPath);assert.equal(await verifyCapturedSource(pinnedCurrentBinding(),async path=>{assert(target.has(path),'Undeclared target reader path: '+path);reads.push(path);return target.get(path);}),registeredPath);assert.deepEqual(reads,names);
 });
 test('both original immutable verifier receipt claims still require the current complete binding',async()=>{
  for(const ref of ['a7a656f71b04b50192485a49b0b56b3fa6bd86b9','7086b85437b025225f5736fb6b849415e518dc08'])assert.equal(await verifyCapturedSource({path:registeredPath,sha256:sha(gitSource(ref))}),registeredPath);
@@ -69,11 +73,11 @@ test('an arbitrary registered verifier claim is refused before dependency resolu
  const forged=Buffer.concat([await readCurrentSource(registeredPath),Buffer.from('\n// forged current claim')]),forgedReads=[];await assert.rejects(verifyCapturedSource({path:registeredPath,sha256:sha(forged)},async path=>{forgedReads.push(path);assert.equal(path,registeredPath);return forged;}),/Captured source historical claim differs/);assert.deepEqual(forgedReads,[registeredPath]);
 });
 test('the exact F042 claim cannot admit changed current verifier bytes',async()=>{
- for(const binding of [reviewedBinding,pinnedCurrentBinding()])await assert.rejects(verifyCapturedSource(binding,async path=>path===registeredPath?Buffer.concat([await readCurrentSource(path),Buffer.from('\n// unreviewed current source')]):readCurrentSource(path)),error=>error instanceof Error&&error.message==='Completion current successor differs');
+ for(const binding of [reviewedBinding,pinnedCurrentBinding()])await assert.rejects(verifyCapturedSource(binding,async path=>path===registeredPath?Buffer.concat([await readCurrentSource(path),Buffer.from('\n// unreviewed current source')]):readCurrentSource(path)),currentRefusal);
 });
 test('the exact F042 claim cannot admit a valid historical verifier reversion',async()=>{
  const original=gitSource('a7a656f71b04b50192485a49b0b56b3fa6bd86b9');assert.notEqual(sha(original),reviewedVerifierSHA);
- for(const binding of [reviewedBinding,pinnedCurrentBinding()])await assert.rejects(verifyCapturedSource(binding,async path=>path===registeredPath?original:readCurrentSource(path)),error=>error instanceof Error&&error.message==='Completion current successor differs');
+ for(const binding of [reviewedBinding,pinnedCurrentBinding()])await assert.rejects(verifyCapturedSource(binding,async path=>path===registeredPath?original:readCurrentSource(path)),currentRefusal);
 });
 test('the exact F042 claim rejects altered dependency bytes from the same supplied reader',async()=>{
  assert(completionBindingDependencies(registeredPath).includes(boundaryDependency));
