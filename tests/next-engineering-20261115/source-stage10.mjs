@@ -56,6 +56,18 @@ function exact(input){
  const bytes=input.read(capturePath);assert(Buffer.isBuffer(bytes)&&sha(bytes)===policy.captureSHA256,'Independent Stage10 capture digest differs');
  const capture=JSON.parse(bytes);assert.deepEqual(capture.ancestry,policy.ancestry,'Stage10 exact ancestry differs');
  const target=resolve(input.root,capturePath);assert(lstatSync(target).isFile()&&!lstatSync(target).isSymbolicLink()&&realpathSync(target)===target,'Redirected Stage10 capture');assert(readFileSync(target).equals(bytes),'Physical Stage10 capture differs');
+ // Availability only: batch the same fixed immutable identities that the complete verifier checks below.
+ // Opaque providers without their own preload capabilities keep every original raw query.
+ if(typeof input.git.preloadCommits==='function')input.git.preloadCommits(policy.ancestry);
+ const retainedStages=capture.retainedStages??(capture.retainedStage?[capture.retainedStage]:[]);
+ const immutableRecords=capture.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean));
+ immutableRecords.push(...retainedStages.flatMap(stage=>Object.values(stage)));
+ if(typeof input.git.preloadBlobs==='function'){
+  input.git.preloadBlobs([...new Set(immutableRecords.map(row=>row.blob))]);
+  for(const stage of retainedStages){const raw=input.git(['cat-file','blob',stage.capture.blob]);assert(Buffer.isBuffer(raw)&&raw.length===stage.capture.bytes&&sha(raw)===stage.capture.sha256,'Retained Stage10 capture bytes differ');const retained=JSON.parse(raw);assert(Array.isArray(retained.rows)&&retained.rows.length<=policy.paths.length,'Finite retained Stage10 rows required');immutableRecords.push(...retained.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean)));}
+  input.git.preloadBlobs([...new Set(immutableRecords.map(row=>row.blob))]);
+ }
+ if(typeof input.git.preloadPaths==='function')input.git.preloadPaths(immutableRecords.map(({ref,path,blob})=>({ref,path,blob})));
  const rows=verifyExactStage({...input,policy,captureBytes:bytes});
  // A supplied reader must describe the actual physical workspace, not an alternative tree.
  for(const [path,row]of rows){const physical=readFileSync(resolve(input.root,path));assert.equal(sha(physical),row.current.sha256,'Physical current source differs: '+path);}
