@@ -1,3 +1,6 @@
+import {runtimeNativeGit} from '../../next-engineering-20261115/source-runtime-native-git.mjs';
+import {primeRuntimeImmutableTrees} from '../../next-engineering-20261115/source-runtime-immutable-trees.mjs';
+import {immutableTreeQueryReader} from '../../milestone100-20261114/source-immutable-queries.mjs';
 import {nonSourceRecords} from '../../completion-first-20261112/non-source-stage2.mjs';
 import {runClosedSynchronousBatch,assertAPIEvidencePaths} from './runtime-evidence-batch.mjs';
 import {proveNamedCurrentContext,preloadRetainedImmutableObjects,primeRetainedImmutableObjects} from '../../parallel-source-20261110/core.mjs';
@@ -482,14 +485,14 @@ const currentContext=Object.freeze([
 ]);
 const immutableObjects=new WeakMap();
 const hash=b=>createHash('sha256').update(b).digest('hex');
-const git=completionGitReader((args,options={})=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024,...options}));
+const git=completionGitReader(immutableTreeQueryReader(runtimeNativeGit));
 let immutableObjectsPreloaded=false;
 let batchObjectsPrimed=false;
 /** Explicit opt-in immutable availability only; no current proof or admitted map escapes. */
 export function primeRuntimeEvidenceBatchObjects(...extra){
  assert.equal(extra.length,0,'Custom immutable batch prewarm inputs are forbidden');
  if(batchObjectsPrimed)return;
- primeRetainedImmutableObjects(readFileSync,git);batchObjectsPrimed=true;
+ primeRetainedImmutableObjects(readFileSync,git);primeRuntimeImmutableTrees(git);batchObjectsPrimed=true;
 }
 export function verifyCurrentRuntimeContext(read=readFileSync,sourceGit=git){
  assert(currentContext.length>0,'Missing reviewed current runtime context');
