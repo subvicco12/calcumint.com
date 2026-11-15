@@ -13,7 +13,7 @@ const artifacts=process.env.WORKER_A_BROWSER_ARTIFACTS||'/workspace/artifacts/wo
 const here=path.dirname(new URL(import.meta.url).pathname);
 for(const key of ['DATABASE_URL','SUPABASE_DB_URL','PGHOST','PGDATABASE','PGPORT','PGUSER','PGPASSWORD'])assert(!process.env[key],'External selector refused');
 const ok=async p=>{const r=await p;assert.equal(r.error,null,JSON.stringify(r.error));return r.data;};
-let db,next,browser,overlay;const report={workerCommit:'56844ec40292b010bc89ad7371c2d0340340bafe',checks:[],productionWrites:false,publicationFixture:false,releaseHold:true,limitations:['Disposable additional private fixture route; not production routing or competent approval.','Current shared Business packet/recovery compatibility remains blocked and is not replaced in this fixture.']};
+let db,next,browser,overlay;const report={workerCommit:'56844ec40292b010bc89ad7371c2d0340340bafe',checks:[],productionWrites:false,publicationFixture:false,releaseHold:true,limitations:['Disposable additional private fixture route; not production routing or competent approval.','Unadopted private packets remain denied; stored-v1 Business recovery uses the actual corrected reader.']};
 try{
  await mkdir(artifacts,{recursive:true});overlay=await mkdtemp('/tmp/worker-a-intake-overlay-');
  for(const entry of ['src','data','public','package.json','package-lock.json','tsconfig.json','next-env.d.ts','next.config.ts','postcss.config.mjs'])try{await cp(path.join(source,entry),path.join(overlay,entry),{recursive:true});}catch(e){if(e.code!=='ENOENT')throw e;}
@@ -48,15 +48,15 @@ try{
   await browser.field('input[name=a]','1.5');await browser.field('input[name=b]','.5');await browser.click('Calculate');await browser.until('!!document.querySelector("table")');
   assert.equal(await browser.js('document.querySelector("table tbody td").textContent'),'0');
   const ax=await browser.send('Accessibility.getFullAXTree');assert(ax.nodes.some(n=>n.name?.value==='Dividend'));assert(ax.nodes.some(n=>n.name?.value==='Divisor'));
-  assert(await browser.js('document.documentElement.scrollWidth<=innerWidth'),'No horizontal mobile overflow');
+  assert(await browser.js('document.documentElement.scrollWidth<=innerWidth'),'No horizontal mobile overflow');report.checks.push(`${plan}: exact zero, AX labels and mobile width`);
   await browser.click('Save calculation');await browser.until('!!document.querySelector("[role=alert]")');
   let rows=await ok(user.sdk.from('calculation_history').select('id,calculator_slug,calculator_version,input_data,output_data'));
   assert.equal(rows.length,1);assert.equal(rows[0].calculator_slug,'remainder-calculator');assert.equal(rows[0].calculator_version,1);assert.equal(rows[0].output_data.result,0);
   await browser.click('Save calculation');await browser.until('document.body.innerText.includes("Verified authenticated history saved")');
   const retry=await ok(user.sdk.from('calculation_history').select('id'));assert.deepEqual(retry.map(r=>r.id),rows.map(r=>r.id));
-  const foreign=users[plan==='free'?'business':'free'];assert.equal((await ok(foreign.sdk.from('calculation_history').select('id').eq('id',rows[0].id))).length,0);
+  const foreign=users[plan==='free'?'business':'free'];assert.equal((await ok(foreign.sdk.from('calculation_history').select('id').eq('id',rows[0].id))).length,0);report.checks.push(`${plan}: real history save, post-commit response-loss recovery, atomic deduplication and cross-account denial`);
   await browser.field('input[name=b]','0');await browser.click('Calculate');await browser.until('!!document.querySelector("[role=alert]")');assert.equal(await browser.js('!!document.querySelector("table")'),false);
-  await browser.field('input[name=b]','.5');await browser.send('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});await browser.send('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});await browser.until('!!document.querySelector("table")');
+  await browser.field('input[name=b]','.5');await browser.send('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,text:'\r'});await browser.send('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});await browser.until('!!document.querySelector("table")');
   report.checks.push(`${plan}: exact zero, real authenticated save, post-commit response-loss recovery, atomic deduplication, cross-account RLS denial, mobile/AX labels, invalid-divisor refusal and keyboard recovery`);
  }
  await identity(users.business);await browser.visit(recoveryRoute);await browser.until('!!document.querySelector("pre[aria-label]")');
