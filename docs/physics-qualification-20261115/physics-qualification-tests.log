@@ -1,0 +1,51 @@
+
+ RUN  v3.2.7 /workspace/physics-qualification
+
+ ❯ tests/physics-qualification-20261115/qualification.test.ts (15 tests | 6 failed) 56ms
+   × immutable source and identity qualification > retains exact baseline bytes: src/calculators/physics/catalog-batch-3.ts 15ms
+     → spawnSync git EPERM
+   × immutable source and identity qualification > retains exact baseline bytes: src/lib/calculator-factory/experimental/physics-scaled.ts 5ms
+     → spawnSync git EPERM
+   × immutable source and identity qualification > retains exact baseline bytes: src/lib/calculator-factory/cohorts/physics.ts 5ms
+     → spawnSync git EPERM
+   × immutable source and identity qualification > retains exact baseline bytes: src/lib/calculator-factory/completion/physics.ts 5ms
+     → spawnSync git EPERM
+   × immutable source and identity qualification > retains exact baseline bytes: src/lib/batch22-physics-replay.ts 6ms
+     → spawnSync git EPERM
+   × immutable source and identity qualification > retains exact baseline bytes: docs/calculator-factory/wave1/physics-evidence.json 6ms
+     → spawnSync git EPERM
+   ✓ immutable source and identity qualification > keeps delivery identity separate for 322 1ms
+   ✓ immutable source and identity qualification > keeps delivery identity separate for 323 5ms
+   ✓ immutable source and identity qualification > keeps delivery identity separate for 324 0ms
+   ✓ immutable source and identity qualification > keeps delivery identity separate for 325 0ms
+   ✓ immutable source and identity qualification > keeps delivery identity separate for 327 0ms
+   ✓ unresolved numerical boundaries are evidence, not fixes > 325 loses a recoverable exact power-of-two result before time multiplication 3ms
+   ✓ unresolved numerical boundaries are evidence, not fixes > 322 signed quotient rounds below minimum subnormal to negative zero 1ms
+   ✓ unresolved numerical boundaries are evidence, not fixes > 327 signed quotient rounds below minimum subnormal to negative zero 1ms
+   ✓ unresolved numerical boundaries are evidence, not fixes > 324 private scaling cannot recover an angle already rounded to zero 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/physics-qualification-20261115/qualification.test.ts > immutable source and identity qualification > retains exact baseline bytes: src/calculators/physics/catalog-batch-3.ts
+ FAIL  tests/physics-qualification-20261115/qualification.test.ts > immutable source and identity qualification > retains exact baseline bytes: src/lib/calculator-factory/experimental/physics-scaled.ts
+ FAIL  tests/physics-qualification-20261115/qualification.test.ts > immutable source and identity qualification > retains exact baseline bytes: src/lib/calculator-factory/cohorts/physics.ts
+ FAIL  tests/physics-qualification-20261115/qualification.test.ts > immutable source and identity qualification > retains exact baseline bytes: src/lib/calculator-factory/completion/physics.ts
+ FAIL  tests/physics-qualification-20261115/qualification.test.ts > immutable source and identity qualification > retains exact baseline bytes: src/lib/batch22-physics-replay.ts
+ FAIL  tests/physics-qualification-20261115/qualification.test.ts > immutable source and identity qualification > retains exact baseline bytes: docs/calculator-factory/wave1/physics-evidence.json
+Error: spawnSync git EPERM
+ ❯ tests/physics-qualification-20261115/qualification.test.ts:19:38
+     17|     'docs/calculator-factory/wave1/physics-evidence.json',
+     18|   ])('retains exact baseline bytes: %s', path => {
+     19|     expect(readFileSync(path).equals(execFileSync('git', ['show', `${b…
+       |                                      ^
+     20|   });
+     21|   it.each(physicsCandidates)('keeps delivery identity separate for $ca…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  6 failed | 9 passed (15)
+   Start at  09:30:09
+   Duration  917ms (transform 306ms, setup 0ms, collect 504ms, tests 56ms, environment 0ms, prepare 104ms)
+
