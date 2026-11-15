@@ -31,3 +31,9 @@ npx eslint src/lib/calculator-factory/completion/next-engineering-statistics-a.t
 - A Python hash verification checked all six manifest hashes and source URL bindings successfully. No full test suite, build, publication, or release command was run.
 
 Disposition: ready for coordinator review and integration/source qualification under the active release hold. Canonical admission, historical certification and publication remain pending.
+
+## Review correction: near-one probability union
+
+Independent review identified `P(A)=P(B)=0.999999999`, whose unchanged v1 calculation rounds the union to `1`. Under the existing independent-event source binding, both inputs below one imply `(1-A)(1-B)>0`, so the mathematical union is strictly below one. New capture now rejects a union equal to one when both inputs are below one. The same original v1 output remains accepted by historical verification; the regression checks both behaviors.
+
+`validation/red-near-one-union.log` records the regression failing before the guard (1 failed, 62 skipped). `validation/green-near-one-union.log` records the final focused run (63 lane tests + 2 shared-core tests = 65 passed, exit 0). `validation/eslint-near-one-union.log` records owned-file ESLint exit 0. The commands were the same scoped Vitest and ESLint commands above; the red run additionally selected `-t 'interior-event union rounded to certainty'`. No broader tests or production/release actions were run.
