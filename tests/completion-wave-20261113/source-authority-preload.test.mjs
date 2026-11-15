@@ -1,3 +1,4 @@
+import {sourceStage10CapturePath,sourceStage10Policy} from '../next-engineering-20261115/source-stage10-current-policy.mjs';
 import {sourceStage9CapturePath,sourceStage9Policy} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import {sourceStage8CapturePath,sourceStage8Policy} from '../milestone100-20261114/source-stage8-activation.mjs';
 import {readFileSync} from 'node:fs';
@@ -9,15 +10,16 @@ const root=resolve(new URL('../../',import.meta.url).pathname),ids=accepted.map(
 const actual=(args,options={})=>execFileSync('git',args,{cwd:root,stdio:['ignore','pipe','pipe'],maxBuffer:128*1024*1024,...options});
 const fullBatch=actual(['cat-file','--batch'],{input:Buffer.from(ids.join('\n')+'\n'),stdio:['pipe','pipe','pipe']});
 const content=new Map(accepted.map(r=>[r.blob,actual(['cat-file','blob',r.blob])])),byPath=new Map(accepted.map(r=>[r.path,r]));
-const sourceCapture=JSON.parse(readFileSync(sourceStage8CapturePath)),sourceNames=[sourceStage8CapturePath,sourceStage9CapturePath,...new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths])],sourceContent=new Map(sourceNames.map(path=>[path,readFileSync(path)]));
+const sourceCapture=JSON.parse(readFileSync(sourceStage8CapturePath)),sourceNames=[sourceStage8CapturePath,sourceStage9CapturePath,sourceStage10CapturePath,...new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths,...sourceStage10Policy.paths])],sourceContent=new Map(sourceNames.map(path=>[path,readFileSync(path)]));
 const sourceIDs=[...new Set(sourceCapture.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean)).map(row=>row.blob))];
-const source9Capture=JSON.parse(readFileSync(sourceStage9CapturePath)),source9IDs=[...new Set(source9Capture.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean)).map(row=>row.blob))],sourcePaths=new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths]);
+const source9Capture=JSON.parse(readFileSync(sourceStage9CapturePath)),source9IDs=[...new Set(source9Capture.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean)).map(row=>row.blob))],sourcePaths=new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths,...sourceStage10Policy.paths]);
 const head=actual(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),target='tests/parallel-source-20261110/bootstrap.mjs';
 function fixture({preload=true}={}){
  const events=[],sourceReads=new Set(),sourceObjects=makeGitReader(actual);let batches=0,batchOverride=null,pathOverride=false,rawOverride=false,preloadFailure=false,phase='idle',sourceGitReads=0,pendingAuthorityRead,sourceOverride=null;
  const sourceFirst=()=>{assert.equal(sourceReads.size,sourcePaths.size,'Every actual source read must precede authority operations');assert(sourceGitReads>0,'Real source Git proof must precede authority operations');};
  const objects=makeGitReader((args,options)=>{assert.deepEqual(args,['cat-file','--batch']);assert.equal(options.input.toString(),ids.join('\n')+'\n');batches++;return batchOverride?.(batches)??fullBatch;});
  const git=(args,options)=>{
+  if(args.length===2&&args[0]==='rev-parse'&&args[1]==='--show-toplevel'){phase='source';sourceReads.clear();sourceGitReads=0;pendingAuthorityRead=undefined;}
   if(phase==='source'){
    const authorityPath=args[0]==='rev-parse'&&args.length===2&&args[1].startsWith(head+':')?args[1].slice(41):null;
    if(authorityPath&&byPath.has(authorityPath)&&!sourcePaths.has(authorityPath)){sourceFirst();phase='authority';}

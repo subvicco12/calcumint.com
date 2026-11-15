@@ -16,7 +16,7 @@ const nativeReaders=new Map();
 function nativeReader(root){
  let reader=nativeReaders.get(root);if(reader)return reader;
  // Only full immutable tree-query bytes enter this existing query cache.
- reader=immutableTreeQueryReader(args=>execFileSync('git',args,{cwd:root,env:{...process.env,GIT_NO_REPLACE_OBJECTS:'1'},stdio:['ignore','pipe','pipe'],maxBuffer:64*1024*1024}));
+ reader=immutableTreeQueryReader(args=>execFileSync('git',['-c','core.fsmonitor=false','-c','core.ignorestat=false','-c','core.untrackedCache=false',...args],{cwd:root,env:{...process.env,GIT_NO_REPLACE_OBJECTS:'1'},stdio:['ignore','pipe','pipe'],maxBuffer:64*1024*1024}));
  if(nativeReaders.size>=32)nativeReaders.delete(nativeReaders.keys().next().value);nativeReaders.set(root,reader);return reader;
 }
 export const sourceStage10HistoricalView=git=>historical.get(git);
@@ -35,9 +35,11 @@ function native(input){
  const run=nativeReader(input.root);
  const root=run(['rev-parse','--show-toplevel']).toString().trim();assert.equal(resolve(root),input.root,'Native Git workspace root differs');
  // Native porcelain v2 reports current HEAD and source status in one fresh observation; never cached.
- const head=nativeStatusHead(run(['status','--porcelain=v2','--branch','--untracked-files=all','--','src']));
+ const head=nativeStatusHead(run(['status','--porcelain=v2','--branch','--ignored=matching','--untracked-files=all','--','src']));
  assert.equal(input.git(headArgs).toString().trim(),head,'Native HEAD moved or supplied HEAD differs');
  const statusArgs=['status','--porcelain','--untracked-files=all','--','src'];assert(input.git(statusArgs).equals(Buffer.alloc(0)),'Committed current src required; Dirty or unknown current source; Native source status differs');
+ const tracked=run(['ls-files','-v','-z','--','src']).toString().split('\0').filter(Boolean);assert(tracked.length>0,'Native source index required');
+ for(const entry of tracked)assert(entry.startsWith('H '),'Unsupported native source index flag: '+entry);
  const deltaArgs=['diff','--name-only','-z',policy.codeRef,head,'--','src'];const delta=run(deltaArgs);assert.equal(delta.length,0,'Unreviewed native current source delta');assert(input.git(deltaArgs).equals(delta),'Native source delta differs');
  return head;
 }
