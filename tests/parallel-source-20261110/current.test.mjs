@@ -124,23 +124,15 @@ test('source availability refuses unsafe or multiple origins and substituted com
 });
 
 for(const record of capture.factorySources)test('finite factory stage rejects altered or reverted bytes '+record.path,()=>{for(const bytes of [Buffer.from('tamper'),Buffer.alloc(0)])assert.throws(()=>verifyParallelSource(name=>name===record.path?bytes:readFileSync(name)),/Current factory bytes differ|Current target source differs|Independent current target bytes differ/);});
-test('factory capture and literal policy are independently governed',async context=>{
+test('factory capture and literal policy are independently governed',()=>{
  const scheduler=JSON.parse(readFileSync('docs/calculator-factory/unit-scheduler-successor.json'));assert.equal(scheduler.path,'vitest.config.ts');assert.equal(scheduler.predecessor.ref,'9ad7e75641322696f75a018e53513c8158c39870');assert.equal(factoryPolicy.codeRef,'b3f0844e8ec09010464afa3ea33306bc4f384c41');assert.equal(scheduler.current.ref,factoryPolicy.codeRef);
  const contents=[];for(const record of [scheduler.predecessor,scheduler.current]){assert.equal(record.path,'vitest.config.ts');assert.equal(sourceGit(['rev-parse',record.ref+':'+record.path]).toString().trim(),record.blob);const bytes=sourceGit(['cat-file','blob',record.blob]);assert.equal(bytes.length,record.bytes);assert.equal(createHash('sha256').update(bytes).digest('hex'),record.sha256);contents.push(bytes.toString());}
  assert.equal(contents[0].split('  test: {').length,2);assert.equal(contents[1],contents[0].replace('  test: {','  test: {\n    // Retained source suites launch bounded child workers; avoid nested outer oversubscription.\n    maxWorkers: 1,'));
  for(const path of ['vitest.config.ts','docs/calculator-factory/unit-scheduler-successor.json','tests/calculator-factory-source-20261112/policy.mjs','docs/calculator-factory/source-stage-20261112.json','tests/calculator-factory-source-20261112/exact-stage.mjs','tests/completion-first-20261112/stage.mjs','tests/completion-first-20261112/policy.mjs','docs/completion-first-20261112/source-stage.json','tests/completion-first-20261112/workflows-stage.mjs','tests/completion-first-20261112/workflows-policy.mjs','tests/completion-first-20261112/retained-stage1-tests.mjs','docs/completion-first-20261112/source-stage2.json','tests/completion-first-20261112/non-source-stage2.mjs','tests/completion-first-20261112/non-source-policy.mjs','docs/completion-first-20261112/non-source-stage2.json','tests/completion-first-20261112/retained-runtime-stage2.mjs'])assert.throws(()=>verifyParallelSource(name=>name===path?Buffer.from('{}'):readFileSync(name)),/Independent current target bytes differ/);
  const env={...process.env};delete env.NODE_TEST_CONTEXT;
- // Independent readonly suites share only the existing coordinated Git store.
- // Inherit the outer owned process group; no detached nested verifier can escape.
- const run=(args,timeout)=>new Promise((resolve,reject)=>execFile(process.execPath,args,{env,encoding:'utf8',timeout,maxBuffer:4000000,signal:context.signal},(error,stdout,stderr)=>error?reject(Object.assign(error,{stdout,stderr})):resolve(stdout)));
- const settled=await Promise.allSettled([
-  run(['tests/completion-first-20261112/retained-stage1-tests.mjs'],60000),
-  run(['--test','tests/completion-first-20261112/personal-stage.test.mjs'],60000),
- ]);
- const failures=settled.filter(row=>row.status==='rejected').map(row=>new Error('Independent factory source suite failed\n'+String(row.reason.stdout??'')+'\n'+String(row.reason.stderr??''),{cause:row.reason}));
- if(failures.length)throw new AggregateError(failures,'Independent factory source suites failed');
- const [tap,stage2]=settled.map(row=>row.value);
+ const tap=execFileSync(process.execPath,['tests/completion-first-20261112/retained-stage1-tests.mjs'],{env,encoding:'utf8',timeout:60000,maxBuffer:4000000});
  assert.match(tap,/# tests 4\b/);assert.match(tap,/# pass 4\b/);assert.match(tap,/# fail 0\b/);assert.match(tap,/# skipped 0\b/);
+ const stage2=execFileSync(process.execPath,['--test','tests/completion-first-20261112/personal-stage.test.mjs'],{env,encoding:'utf8',timeout:60000,maxBuffer:4000000});
  assert.match(stage2,/# tests 4\b/);assert.match(stage2,/# pass 4\b/);assert.match(stage2,/# fail 0\b/);assert.match(stage2,/# skipped 0\b/);
  const stage9=execFileSync(process.execPath,['--test','tests/four-worker-integration-20261115/source-stage9.test.mjs'],{env,encoding:'utf8',timeout:15000,maxBuffer:4000000});
  for(const [key,value]of [['tests',5],['pass',5],['fail',0],['skipped',0],['cancelled',0]])assert.match(stage9,new RegExp('^# '+key+' '+value+'$','m'));

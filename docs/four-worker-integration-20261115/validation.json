@@ -44,5 +44,54 @@
   "confirmedOverlay": 61,
   "qualifiedIncrement": 0,
   "publicationEligibleIncrement": 0,
-  "releaseHold": true
+  "releaseHold": true,
+  "firstHostedAttempt": {
+    "head": "5af28386c798cbc18309ca76ba86fcc6ba9ae1c1",
+    "run": 43691210847,
+    "conclusion": "FAILURE",
+    "passedJobs": [
+      "checks",
+      "build",
+      "full-product"
+    ],
+    "failedJobs": [
+      "source-acceptance",
+      "publication-factory",
+      "validate"
+    ],
+    "unitPassed": 10083,
+    "unitFailed": 1,
+    "existingSkips": 4,
+    "unitDurationSeconds": 838.4,
+    "soleUnitFailure": "calculator-sprint historical-source.test.mjs literal-verifier import; same failure reproduced in publication-factory",
+    "sourceGroupMilliseconds": 89557,
+    "sourceGroupDeadlineMilliseconds": 150000,
+    "nativeAPIEvidenceMilliseconds": 3248,
+    "nativeAPIEvidenceDeadlineMilliseconds": 5000,
+    "coupledSourceMilliseconds": 21012,
+    "coupledSourceDeadlineMilliseconds": 45000
+  },
+  "finalFocusedAt5af": {
+    "passedTests": 23,
+    "failedTests": 3,
+    "rpcErrors": 1,
+    "failedCriteria": [
+      "local150s",
+      "remaining calculator-sprint import (subsequently corrected and32pass)",
+      "local5s"
+    ],
+    "passedFiles": [
+      "execution-recovery-evidence",
+      "first-five-engineering-evidence",
+      "parallel-five-auth-evidence",
+      "milestone-source"
+    ]
+  },
+  "calculatorSprintFinal": {
+    "tests": 32,
+    "passed": 32,
+    "milliseconds": 8721
+  },
+  "newHeadHostedCI": "NOT_YET_STARTED",
+  "localFactoryChildParallelExperiment": "FAILED_TO_MEET_150s_ON_SLOWER_LOCAL_RUNTIME; reverted to exact factory body proven by hosted5af"
 }
