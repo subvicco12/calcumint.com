@@ -24,13 +24,13 @@
   "sourceProposalPaths": 9,
   "cumulativeSourcePaths": 23,
   "sourceAncestryEntries": 36,
-  "sourceAuthorityRevision": 115,
+  "sourceAuthorityRevision": 116,
   "sourceGate": {
-    "passed": 96,
+    "passed": 107,
     "failed": 0,
     "skipped": 0,
     "runtime": "22.23.4",
-    "testedHead": "9f05736c69ead25c228648f57d5090c528393ef8"
+    "testedHead": "e04484c5618172ce056b598c0775d0b04a6577be"
   },
   "affected": {
     "passed": 360,
@@ -56,14 +56,40 @@
   "productionWebpackBuild": "PASS fresh authenticated runtime",
   "independentReview": {
     "blockingFindings": 0,
-    "head": "9f05736c69ead25c228648f57d5090c528393ef8",
+    "head": "e04484c5618172ce056b598c0775d0b04a6577be",
     "competentHumanCertification": false
   },
-  "hostedExactHeadCI": "REQUIRED PENDING",
+  "hostedExactHeadCI": "BLOCKED: automatic approval review rejected Git push as publication; explicit Git-only authorization pending",
   "scopedEngineeringComplete": false,
   "canonicalAccepted": false,
   "certified": false,
   "publicationEligible": false,
   "productionWrites": false,
-  "releaseHold": true
+  "releaseHold": true,
+  "previousV48SourceGate": {
+    "passed": 96,
+    "failed": 0,
+    "skipped": 0,
+    "runtime": "22.23.4",
+    "testedHead": "9f05736c69ead25c228648f57d5090c528393ef8"
+  },
+  "fullLocalRegression": {
+    "head": "d13343d65e76eda5972cb46ae9807fa686b45c7e",
+    "passed": 10089,
+    "failed": 1,
+    "existingSkipped": 4,
+    "files": 1081,
+    "failedTest": "src/lib/calculator-factory/completion/milestone-source.test.ts: qualifies Stage7 actual current objects and literal retained Stage6 with all twenty-two refusal cases",
+    "cause": "Expected cold refs omitted new exact bootstrap sets; live Stage7 test compared old Stage8 portal hash with admitted Stage9 bytes.",
+    "followup": "Exact V49 verification-only successors; no application changes",
+    "focusedOriginalWrapper": {
+      "passed": 2,
+      "failed": 0,
+      "originalChildAssertions": 22
+    },
+    "uninterruptedFullGreenClaim": false
+  },
+  "pr1538Modified": false,
+  "remotePushCompleted": false,
+  "allSixFreshExportHashesEqualWorkerReceipt": true
 }
