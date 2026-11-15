@@ -2,7 +2,7 @@
 
 Initial candidate: `80e52c5cd5d89cd88826ad5b06378431f4cf693b`, based on frozen source `550ae67dfdf8fcfa8fb0ac68ccbe2ac68e13fb0f`.
 
-Status: all three findings resolved; final reviewed candidate is `b8694256532a2f13a5808c426e0c54e104d1775b`. Independent clean remote availability verification passed. No source or candidate files changed by this review. No full suite run. No unresolved critical, important or minor findings.
+Status: all three findings resolved; latest reviewed candidate is `7fd9e40cb69ccfee70924e6dd6c2bc393a0043f8`. Independent clean remote availability verification passed for predecessor b8694256 and, separately, the new lint-fix authority 379997d8. No source or candidate files changed by this review. No full suite run. No unresolved critical, important or minor findings.
 
 ## Important findings
 
@@ -66,3 +66,13 @@ Independently verified all 19 commit content addresses, all five Stage10 retaine
 Machine-readable proof: `/tmp/calcumint-source-clean-remote-proof.json`. Fetch log: `/tmp/calcumint-source-remote-fetch.log`.
 
 Worker's final attributed validation reports 30 cases passed: strict Stage10 8, retained Stage9 child 5 inside its unchanged 15000ms deadline (7266ms observed), Stage8-live 11, preflight 4 including the literal prior five-case audit, actual named-current context 1, and availability 1; raw `verifyParallelAuthority` also returned true. The later `347c9e65` receipt commit is reported docs-only and is not the reviewed implementation identity. Final approval here is limited to exact source admission; historical evidence remains scoped, and this does not qualify the new cohort or authorize production/canonical-count/PR1538 changes.
+
+## CI lint correction review: 7fd9e40c
+
+CI identified the prohibited local binding `module` in the new physical-source negative test. Mechanically verified that the test file changes only `const module` to `const stage10Module` and its one `JSON.stringify` reference. Every assertion, fixture operation and deadline remains identical. Worker reports full lint passes with zero errors and 88 warnings.
+
+Reviewed the exact supplemental guard adapters and entire new lint capture. All previous authority declarations remain byte-literal, prior capture fields remain identical except additive current guard rows/metadata, and the fetch set now contains 450 refs including every retained authority pin (newly including 13298943). Source and workflow deltas from frozen 550ae67 remain zero. Final authority ref `379997d86b163f5dc7e95de76e26fa055361a2d1` maps its authority path to blob `37dbab1c426e93ba758a8594a255d8da6e526ce3`, SHA256 `9f394ef02e8c10482741ec86ddc4afb312258ce151e6d8bfb91cf31806fda264`; candidate 7fd9e40c is its immediate child. No additional finding; incremental signoff given pending new-pin remote verification after publication.
+
+After parent-confirmed publication at docs-only descendant `a931482f3972bda57dcf966fce9a3bbe9b4d8320`, independently fetched exact authority commit `379997d86b163f5dc7e95de76e26fa055361a2d1` into a second freshly initialized bare repository, `/tmp/calcumint-source-lint-remote-n49c9q_d`, directly from the official HTTPS origin with `--depth=1`. Verified shallow status, no alternates, commit SHA1, exact authority path/blob, blob SHA1 and SHA256. The new authority remote verification passed. This second check fetched only that exact new authority commit; prior 19-ref remote evidence is retained separately and not represented as a rerun against the latest docs-only branch tip.
+
+New machine-readable proof: `/tmp/calcumint-source-lint-clean-remote-proof.json`; fetch log: `/tmp/calcumint-source-lint-remote-fetch.log`. Worker reports post-pin Stage10 8/8, preflight 4/4, availability 1/1 and raw authority success. No full current-test suite or hosted CI success is claimed by this review.
