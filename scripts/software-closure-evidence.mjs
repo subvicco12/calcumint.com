@@ -3,12 +3,36 @@ import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {completionGitReader} from '../tests/parallel-source-20261110/git-reader.mjs';
+import {proveSourceStage10,assertSourceStage10Stable} from '../tests/next-engineering-20261115/source-stage10.mjs';
 import {verifyFinancialSafetyBinding} from './financial-safety-lineage.mjs';
 import {verifyCompletionBinding} from './product-completion-stage8.mjs';
 
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 /** Keep historical claims immutable while independently checking exact current successors. */
 export function verifyPreservedSource(name,current,historical,git){
+ if(name!=='src/calculators/catalog-reviewed-standard-evidence.test.ts')return retainedVerifyPreservedSource(name,current,historical,git);
+ // This one diagnostic test retains the original software-corpus hash. Every
+ // mathematical engine and every other protected path retains its original route.
+ const claim=hash(historical);
+ assert.equal(claim,'ee95ed2dfaad9660c4e1891bd2013b6a3629969ab0905deb463850a5c13d0fc2','Catalog diagnostic historical claim differs');
+ assert.equal(hash(current),'b0acca517d28ba8bf10b52c921c9db23cad63e0b86b14b78c9e38df2a2d8a726','Catalog diagnostic current successor differs');
+ const objects=completionGitReader(git);
+ // Do not manufacture batch capabilities for a supplied opaque Git transport.
+ const proofGit=(args,options)=>objects(args,options);
+ const proof=proveSourceStage10({root:process.cwd(),read:readFileSync,git:proofGit});
+ try{
+  const row=proof.live.get(name);
+  assert.equal(row?.current.ref,'29bbd941128fe79c825450f0541f630b45b995d8','Fixed current26 diagnostic source required');
+  assert.equal(row.current.sha256,hash(current),'Catalog diagnostic current successor differs');
+  assert.equal(row.predecessor.sha256,claim,'Catalog diagnostic historical claim differs');
+  assert(current.equals(readFileSync(name)),'Catalog diagnostic current successor differs');
+  return claim;
+ }finally{assertSourceStage10Stable(proof);}
+}
+function retainedVerifyPreservedSource(name,current,historical,git){
  const claim=hash(historical);
  // Verify registered transitions before equality, so valid old bytes cannot bypass reversion checks.
  if(verifyFinancialSafetyBinding(name,current,claim,git)||verifyCompletionBinding(name,current,claim,git))return claim;

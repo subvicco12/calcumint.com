@@ -5,12 +5,12 @@ import {readFileSync,mkdtempSync,symlinkSync,rmSync,writeFileSync} from 'node:fs
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {proveSourceStage10,assertSourceStage10Stable} from './source-stage10.mjs';
-import {sourceStage10Policy as policy,sourceStage10CapturePath} from './source-stage10-current-policy.mjs';
+import {sourceStage10Policy as policy,sourceStage10CapturePath} from './source-stage10-current26-policy.mjs';
 import {proveSourceStage9,assertSourceStage9Stable} from '../four-worker-integration-20261115/source-stage9.mjs';
 const root=process.cwd(),git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:64*1024*1024}),read=readFileSync;
 const input={root,read,git};
-test('exact24 immutable source rows precede historical projection; final nested proofs retain current HEAD',()=>{
- const p=proveSourceStage10(input);assert.equal(p.live.size,24);const copy=p.live;copy.clear();assert.equal(p.live.size,24);
+test('exact26 immutable source rows precede historical projection; final nested proofs retain current HEAD',()=>{
+ const p=proveSourceStage10(input);assert.equal(p.live.size,26);const copy=p.live;copy.clear();assert.equal(p.live.size,26);
  for(const [path,row]of p.live){if(row.predecessor)assert(p.historicalInput.read(path).equals(git(['cat-file','blob',row.predecessor.blob])));else assert.throws(()=>p.historicalInput.read(path),/no historical bytes/);}
  assertSourceStage10Stable(p);assert.throws(()=>assertSourceStage10Stable({...p}),/Private verified/);
  const prior=proveSourceStage9(input);assert.equal(prior.nativeHead,p.nativeHead);assertSourceStage9Stable(prior);
@@ -63,7 +63,7 @@ test('isolated physical extra source, dirty tracked source and same-byte symlink
 });
 
 test('current24 capture retains the original23 immutable source and policy records without engine changes',()=>{
- const current=JSON.parse(read(sourceStage10CapturePath)),retained=JSON.parse(read('docs/next-engineering-20261115/source/stage10.json'));
+ const current=JSON.parse(read('docs/next-engineering-20261115/source/stage10-current24.json')),retained=JSON.parse(read('docs/next-engineering-20261115/source/stage10.json'));
  assert.equal(current.rows.length,24);assert.equal(retained.rows.length,23);assert.equal(retained.codeRef,'550ae67dfdf8fcfa8fb0ac68ccbe2ac68e13fb0f');
  for(const row of retained.rows)assert.equal(current.rows.find(value=>value.path===row.path).current.blob,row.current.blob);
  assert.deepEqual(current.rows.filter(row=>!retained.rows.some(old=>old.path===row.path)).map(row=>row.path),['src/lib/completion-wave-20261113/sql-successor.test.ts']);

@@ -129,6 +129,8 @@ export const compositionSourceEvidenceClaims=Object.freeze([
     "sha256": "24bf6f31ef7283d9fc319598268c1047ff1c58cd95bda787d55b396e9e3bde4c"
   }
 ].map(row=>Object.freeze(row)));
+/** The exact new diagnostic-only test joins the original31 claims through current26. */
+export const currentCompositionSourceEvidenceClaims=Object.freeze([...compositionSourceEvidenceClaims,Object.freeze({path:'src/calculators/catalog-reviewed-standard-evidence.test.ts',sha256:'ee95ed2dfaad9660c4e1891bd2013b6a3629969ab0905deb463850a5c13d0fc2'})]);
 const originalRef='f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5';
 let active=null;
 export function assertCompositionPhysicalSource(file){const absolute=resolve(file),stat=lstatSync(absolute);assert(stat.isFile()&&!stat.isSymbolicLink(),'Composition source must be a regular file');assert.equal(realpathSync(absolute),absolute,'Composition source physical path differs');}

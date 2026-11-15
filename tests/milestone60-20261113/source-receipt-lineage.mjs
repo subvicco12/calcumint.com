@@ -1,3 +1,4 @@
+import {retainedCompletionExecutable} from '../next-engineering-20261115/source-completion-prewarm-admission.mjs';
 /** Fixed one-helper MJS successor; the existing SRC-stage proof remains independently mandatory. */
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
@@ -20,7 +21,8 @@ export const receiptLineagePolicy=Object.freeze({
   }
 });
 Object.freeze(receiptLineagePolicy.predecessor);Object.freeze(receiptLineagePolicy.current);
-export function verifyReceiptLineageExtension({previous,current,git}){
+export function verifyReceiptLineageExtension(input){return retainedVerifyReceiptLineageExtension({...input,current:retainedCompletionExecutable(input.current)});}
+function retainedVerifyReceiptLineageExtension({previous,current,git}){
  const policy=receiptLineagePolicy,path=policy.current.path;
  for(const record of [policy.predecessor,policy.current]){
   assert.equal(git(['rev-parse',record.ref+':'+path]).toString().trim(),record.blob,'Exact receipt helper Git object differs');

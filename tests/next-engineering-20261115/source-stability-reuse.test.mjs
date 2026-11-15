@@ -7,7 +7,7 @@ import {sourceStage9Policy,sourceStage9CapturePath} from '../four-worker-integra
 import {sourceStage8CapturePath} from '../milestone100-20261114/source-stage8-policy-v3.mjs';
 import {provePinnedSourceStage8} from '../milestone100-20261114/source-stage8-activation.mjs';
 import {assertSourceStage8HeadStable,createSourceStage8ObservationInput,sourceStage8HistoricalView} from '../milestone100-20261114/source-stage8.mjs';
-import {sourceStage10Policy} from './source-stage10-current-policy.mjs';
+import {sourceStage10Policy} from './source-stage10-current26-policy.mjs';
 const root=process.cwd();
 test('private bound stability freshly checks old captures, non24 source and all current bytes',()=>{
  let changed;const read=path=>path===changed?Buffer.from('freshly changed live bytes'):readFileSync(path),view=proveSourceStage9({root,read,git:sourceGit});

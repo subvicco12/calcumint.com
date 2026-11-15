@@ -1,3 +1,5 @@
+import {sourceStage10Policy,sourceStage10CapturePath} from '../next-engineering-20261115/source-stage10-current26-policy.mjs';
+import {createHash} from 'node:crypto';
 import {sourceStage9Policy,sourceStage9CapturePath} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import {provePinnedSourceStage8,sourceStage8Policy,sourceStage8CapturePath} from '../milestone100-20261114/source-stage8-activation.mjs';
 /** Actual pinned-stage checks; intentionally fail until frozen APP capture and authority are installed. */
@@ -14,7 +16,8 @@ const root=resolve(new URL('../../',import.meta.url).pathname);
 const input={read:readFileSync,git:sourceGit,root};
 test('actual Stage7 rows match the finite exact policy while historical Stage6 retains literal20',()=>{
  const proved=proveCurrentAppStage5AndHistoricalInputs(input);
- for(const [path,row]of proved.stage8){assert(readFileSync(path).equals(sourceGit(['cat-file','blob',row.current.blob])));}
+ const currentRows=new Map();for(const [capturePath,policy]of [[sourceStage8CapturePath,sourceStage8Policy],[sourceStage9CapturePath,sourceStage9Policy],[sourceStage10CapturePath,sourceStage10Policy]]){const bytes=readFileSync(capturePath);assert.equal(createHash('sha256').update(bytes).digest('hex'),policy.captureSHA256);const capture=JSON.parse(bytes);assert.deepEqual(capture.rows.map(row=>row.path),policy.paths);for(const row of capture.rows)currentRows.set(row.path,row.current);}
+ for(const [path,row]of proved.stage8){assert.equal(row.current.ref,sourceStage8Policy.codeRef);assert.equal(sourceGit(['rev-parse',row.current.ref+':'+path]).toString().trim(),row.current.blob,'Original Stage8 current object must remain immutable');const current=currentRows.get(path);assert(current);assert(readFileSync(path).equals(sourceGit(['cat-file','blob',current.blob])));}
  assert.equal(proved.actualCurrent.size,20);
  assert.equal(proved.live.size,19);assert.equal(proved.testOnly.size,1);
  assert.deepEqual([...proved.stage7.keys()],sourceStage7Policy.paths);
@@ -26,7 +29,7 @@ test('every new live row rejects current mutation or retained-valid reversion be
  // every newly admitted Stage8 path before retaining the unchanged Stage7 checks.
  const nextCapture=JSON.parse(readFileSync(sourceStage8CapturePath));
  for(const row of nextCapture.rows)for(const bytes of [Buffer.from('Stage8 current tamper'),...(row.predecessor?[sourceGit(['cat-file','blob',row.predecessor.blob])]:[])])assert.throws(()=>proveCurrentAppStage5AndHistoricalInputs({...input,read:path=>path===row.path?bytes:readFileSync(path)}),/Current factory bytes differ/);
- const names=[sourceStage8CapturePath,sourceStage9CapturePath,...new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths])],target=new Map(names.map(path=>[path,readFileSync(path)]));
+ const names=[sourceStage8CapturePath,sourceStage9CapturePath,sourceStage10CapturePath,...new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths,...sourceStage10Policy.paths])],target=new Map(names.map(path=>[path,readFileSync(path)]));
  const read=path=>{assert(target.has(path),'Undeclared Stage8 dependency '+path);return target.get(path);};
  const first=provePinnedSourceStage8({...input,read});
  target.set(sourceStage8Policy.paths[0],Buffer.from('mutated after proof'));
