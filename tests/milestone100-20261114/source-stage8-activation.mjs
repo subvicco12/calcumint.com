@@ -8,6 +8,6 @@ export {sourceStage8Policy,sourceStage8CapturePath};
 export function provePinnedSourceStage8(input){
  const retained=sourceStage8HistoricalView(input.git);
  if(retained){assert.equal(input.read,retained.historicalInput.read,'Historical Stage8 reader capability differs');assert.equal(resolve(input.root),resolve(retained.historicalInput.root),'Historical Stage8 root differs');input=retained.actualInput;}
- const incremental=proveSourceStage9(input);
+ const incremental=proveSourceStage9({read:input.read,git:input.git,root:input.root});
  return proveSourceStage8AndHistoricalInputs({...incremental.historicalInput,policy:sourceStage8Policy,capturePath:sourceStage8CapturePath});
 }

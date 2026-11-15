@@ -128,6 +128,8 @@ test('factory capture and literal policy are independently governed',()=>{
  assert.match(tap,/# tests 4\b/);assert.match(tap,/# pass 4\b/);assert.match(tap,/# fail 0\b/);assert.match(tap,/# skipped 0\b/);
  const stage2=execFileSync(process.execPath,['--test','tests/completion-first-20261112/personal-stage.test.mjs'],{env,encoding:'utf8',timeout:60000,maxBuffer:4000000});
  assert.match(stage2,/# tests 4\b/);assert.match(stage2,/# pass 4\b/);assert.match(stage2,/# fail 0\b/);assert.match(stage2,/# skipped 0\b/);
+ const stage9=execFileSync(process.execPath,['--test','tests/four-worker-integration-20261115/source-stage9.test.mjs'],{env,encoding:'utf8',timeout:15000,maxBuffer:4000000});
+ for(const [key,value]of [['tests',5],['pass',5],['fail',0],['skipped',0],['cancelled',0]])assert.match(stage9,new RegExp('^# '+key+' '+value+'$','m'));
  const diagnostics=execFileSync(process.execPath,['--test','tests/gotrue-runtime/login-diagnostics.test.mjs'],{env,encoding:'utf8',timeout:30000,maxBuffer:4000000});
  assert.match(diagnostics,/# tests 4\b/);assert.match(diagnostics,/# pass 4\b/);assert.match(diagnostics,/# fail 0\b/);assert.match(diagnostics,/# skipped 0\b/);
  const workflowConsumers=execFileSync(process.execPath,['--test','tests/full-product-batch13/workflow.test.mjs','tests/full-product-batch14/workflow.test.mjs','tests/full-product-batch17/workflow.test.mjs'],{env,encoding:'utf8',timeout:30000,maxBuffer:4000000});
