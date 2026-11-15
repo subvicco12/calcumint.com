@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "declaredBeforeRunUTC": "2026-11-15 10:03:59 UTC",
+  "oracle": {
+    "library": "mpmath",
+    "version": "1.3.0",
+    "decimalDigits": 90,
+    "inputSemantics": "Exact binary64 engine inputs converted directly from Python float to mp.mpf; confidence levels use intended exact decimal table labels."
+  },
+  "tolerances": {
+    "criticalValueAbsolute": "5e-13",
+    "cdfAbsolute": "1e-7",
+    "upperTailAbsolute": "1e-7",
+    "pdfRelative": "1e-12",
+    "symmetryAbsolute": "1e-7",
+    "complementAbsolute": "1e-15"
+  },
+  "grid": {
+    "minimum": -4,
+    "maximum": 4,
+    "spacing": "0.001",
+    "pointCount": 8001,
+    "construction": "x = integer / 1000, integer -4000 through 4000; mean=0, standardDeviation=1"
+  },
+  "locationScaleCases": {
+    "meansAndScales": [
+      [
+        123.5,
+        2.25
+      ],
+      [
+        -10,
+        0.125
+      ],
+      [
+        1000000000000,
+        0.001
+      ],
+      [
+        1e-20,
+        1e-20
+      ]
+    ],
+    "targetZ": [
+      -4,
+      -1.96,
+      0,
+      1.96,
+      4
+    ],
+    "construction": "Binary64 x=mean+targetZ*scale; oracle uses actual exact input floats, including input rounding."
+  },
+  "confidenceLevels": [
+    "0.8",
+    "0.9",
+    "0.95",
+    "0.98",
+    "0.99"
+  ],
+  "sampleSizeWitnesses": {
+    "targetInteger": 100000000,
+    "proportion": 0.5,
+    "construction": "For each confidence level, choose binary64 margin from high-precision midpoint of the squares of inherited table critical value and ideal inverse-normal value, scaled by p(1-p)/targetInteger. Evaluate immutable v1 and ideal formula on the identical actual binary64 margin."
+  },
+  "limits": [
+    "Finite grid and selected transformations do not prove continuous-domain maxima or error bounds.",
+    "Sample size is the immutable table-based ceiling; it need not be the ceiling of an ideal inverse-normal quantile formula.",
+    "No source changes, full suite, production, certification or canonical counts."
+  ]
+}
