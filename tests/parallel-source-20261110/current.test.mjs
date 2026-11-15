@@ -195,13 +195,14 @@ test('mandatory source guard regressions exercise exact source and immutable ava
  const results=new Map(),cold=files.find(([file])=>file==='source-app-stage5-availability.test.mjs');
  // The original eight-worker availability case owns its entire window alone.
  results.set(cold[0],(await Promise.allSettled([run(cold)]))[0]);
- const priority=['tests/milestone100-20261114/source-stage8-authority-scope.test.mjs','source-authority-preload.test.mjs','tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs','tests/milestone100-20261114/retained-stage7-preflight.mjs','tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs','source-test-stage6.test.mjs'];
- // Measured longest children start first; declaration/report order and the two-worker limit stay fixed.
- const rank=file=>priority.includes(file)?priority.indexOf(file):priority.length;
- const remaining=files.filter(row=>row!==cold).sort((a,b)=>rank(a[0])-rank(b[0]));
- let nextIndex=0;
- const worker=async()=>{while(nextIndex<remaining.length){const row=remaining[nextIndex++],result=(await Promise.allSettled([run(row)]))[0];results.set(row[0],result);}};
- await Promise.all([worker(),worker()]);
+ const remaining=files.filter(row=>row!==cold),scope=remaining.find(([file])=>file==='tests/milestone100-20261114/source-stage8-authority-scope.test.mjs');
+ const heavy=remaining.filter(([file])=>file==='source-authority-preload.test.mjs'||file==='tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs');assert(scope&&heavy.length===2,'Fixed source guard workload required');
+ const companion=remaining.filter(row=>row!==scope&&!heavy.includes(row));
+ const record=async row=>{results.set(row[0],(await Promise.allSettled([run(row)]))[0]);};
+ // Avoid pairing the observation-heavy scope with either large authority workload.
+ // Every declared job is attempted; the original report order and max two children remain fixed.
+ await Promise.all([record(scope),(async()=>{for(const row of companion)await record(row);})()]);
+ await Promise.all(heavy.map(record));
  const failures=[];
  // Report every child in the original declared order, even when an earlier child failed.
  for(const [file,count]of files){
