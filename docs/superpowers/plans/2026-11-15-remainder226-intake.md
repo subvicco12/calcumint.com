@@ -6,9 +6,9 @@
 
 - [x] Independently fetch and verify worker remote SHA and exact15 changed paths; confirm no engine, migration, workflow or dependency changes.
 - [x] Run original nine-path source verifier and all360 affected tests; retain initial binding failure and environment failure receipts.
-- [ ] Verify16 genuine isolated authenticated checks and six downloaded artifacts, including exact compiled source bytes.
-- [ ] Retain original Stage9 capture; prove cumulative23 paths and finite immutable ancestry, all tamper/reversion/dirty/HEAD/symlink negatives.
-- [ ] Install separately frozen source authority and cold-fetch prerequisites with immutable predecessor authority retained; run source and shared-contract regressions.
+- [x] Verify16 genuine isolated authenticated checks and six downloaded artifacts, including exact compiled source bytes.
+- [x] Retain original Stage9 capture; prove cumulative23 paths and finite immutable ancestry, all tamper/reversion/dirty/HEAD/symlink negatives.
+- [x] Install separately frozen source authority and cold-fetch prerequisites with immutable predecessor authority retained; run source and shared-contract regressions.
 - [ ] Recheck current PR head and ownership, fast-forward only after gates pass, then run full mandatory exact-head CI.
 - [ ] Promote only scoped engineering completion after every applicable gate succeeds; canonical, certification and publication counts remain unchanged.
 

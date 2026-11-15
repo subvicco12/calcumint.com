@@ -1,0 +1,69 @@
+{
+  "base": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+  "workerRef": "worker/remainder-private-delivery-20261115",
+  "workerSHA": "fddcb619415f7b39f78795af3cb01159117b88b8",
+  "testedApplicationCommit": "b404b3361faf5896544fe2b5417057502d0bbff4",
+  "workerChangedPaths": [
+    "docs/remainder226-20261115/REPORT.md",
+    "docs/remainder226-20261115/acceptance.json",
+    "docs/remainder226-20261115/source-policy.json",
+    "docs/remainder226-20261115/source-successor.json",
+    "src/components/calculator-factory-portal.tsx",
+    "src/components/remainder-capture-successor.tsx",
+    "src/components/remainder-private-delivery.test.tsx",
+    "src/components/remainder-private-delivery.tsx",
+    "src/lib/calculator-factory/completion/business.ts",
+    "src/lib/calculator-factory/completion/remainder-business-recovery.test.ts",
+    "src/lib/calculator-factory/completion/remainder-private-delivery.test.ts",
+    "src/lib/calculator-factory/private-delivery.ts",
+    "src/lib/surface-area-dispatch.test.ts",
+    "tests/remainder226-20261115/auth-browser.mjs",
+    "tests/remainder226-20261115/source-admission.mjs"
+  ],
+  "workerPathCount": 15,
+  "sourceProposalPaths": 9,
+  "cumulativeSourcePaths": 23,
+  "sourceAncestryEntries": 36,
+  "sourceAuthorityRevision": 115,
+  "sourceGate": {
+    "passed": 96,
+    "failed": 0,
+    "skipped": 0,
+    "runtime": "22.23.4",
+    "testedHead": "9f05736c69ead25c228648f57d5090c528393ef8"
+  },
+  "affected": {
+    "passed": 360,
+    "failed": 0,
+    "skipped": 0,
+    "files": 21
+  },
+  "sharedContracts": {
+    "passed": 250,
+    "failed": 0,
+    "files": 9
+  },
+  "authenticatedChecks": 16,
+  "nativeExportReadbacks": 6,
+  "compiledSourceFingerprints": 2090,
+  "allCompiledSourceBytesMatch": true,
+  "launchCertificationGuardTests": 60,
+  "lint": {
+    "errors": 0,
+    "warnings": 83
+  },
+  "typecheck": "PASS",
+  "productionWebpackBuild": "PASS fresh authenticated runtime",
+  "independentReview": {
+    "blockingFindings": 0,
+    "head": "9f05736c69ead25c228648f57d5090c528393ef8",
+    "competentHumanCertification": false
+  },
+  "hostedExactHeadCI": "REQUIRED PENDING",
+  "scopedEngineeringComplete": false,
+  "canonicalAccepted": false,
+  "certified": false,
+  "publicationEligible": false,
+  "productionWrites": false,
+  "releaseHold": true
+}

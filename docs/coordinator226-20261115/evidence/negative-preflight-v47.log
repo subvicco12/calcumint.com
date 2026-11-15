@@ -1,0 +1,178 @@
+TAP version 13
+# Subtest: mandatory live Stage2 composes exact historical Stage1 at5008 and Stage6 without replacing their literal records
+ok 1 - mandatory live Stage2 composes exact historical Stage1 at5008 and Stage6 without replacing their literal records
+  ---
+  duration_ms: 5054.724292
+  type: 'test'
+  ...
+# Subtest: every current Stage2 source rejects genuine Stage1 predecessor bytes and current substitutions
+ok 2 - every current Stage2 source rejects genuine Stage1 predecessor bytes and current substitutions
+  ---
+  duration_ms: 1066.08298
+  type: 'test'
+  ...
+# Subtest: Stage2 captures and commits cannot nominate themselves or hide a later current source delta
+ok 3 - Stage2 captures and commits cannot nominate themselves or hide a later current source delta
+  ---
+  duration_ms: 4393.249974
+  type: 'test'
+  ...
+# Subtest: an overlapping historical Business source discloses the actual latest immutable source ref
+ok 4 - an overlapping historical Business source discloses the actual latest immutable source ref
+  ---
+  duration_ms: 33179.875811
+  type: 'test'
+  ...
+# Subtest: all ten literal captures and latest exact current source bytes pass without a verdict
+not ok 5 - all ten literal captures and latest exact current source bytes pass without a verdict
+  ---
+  duration_ms: 23.358331
+  type: 'test'
+  location: '/workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs:8:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    11 !== 10
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 10
+  actual: 11
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs:8:296)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: every capture digest is authenticated before target nominations are used
+ok 6 - every capture digest is authenticated before target nominations are used
+  ---
+  duration_ms: 85.36876
+  type: 'test'
+  ...
+# Subtest: wrong codeRef roster duplicate and malformed tuple fail even with a matching synthetic capture digest
+ok 7 - wrong codeRef roster duplicate and malformed tuple fail even with a matching synthetic capture digest
+  ---
+  duration_ms: 72.361823
+  type: 'test'
+  ...
+# Subtest: every finite target rejects fresh changed bytes with the original path diagnostic
+ok 8 - every finite target rejects fresh changed bytes with the original path diagnostic
+  ---
+  duration_ms: 948.243201
+  type: 'test'
+  ...
+# Subtest: chronological later tuples replace earlier valid historical bytes
+ok 9 - chronological later tuples replace earlier valid historical bytes
+  ---
+  duration_ms: 4.531648
+  type: 'test'
+  ...
+# Subtest: unknown paths are never added and no Git filesystem fallback or supplied policy is available
+ok 10 - unknown paths are never added and no Git filesystem fallback or supplied policy is available
+  ---
+  duration_ms: 5.548685
+  type: 'test'
+  ...
+# Subtest: missing reader bytes unsupported capture values and nonBuffer target results fail closed
+ok 11 - missing reader bytes unsupported capture values and nonBuffer target results fail closed
+  ---
+  duration_ms: 4.13214
+  type: 'test'
+  ...
+# Subtest: each invocation freshly rereads all captures and targets after a previous pass
+ok 12 - each invocation freshly rereads all captures and targets after a previous pass
+  ---
+  duration_ms: 15.612312
+  type: 'test'
+  ...
+# Subtest: the module exposes only negative refusal and no caller-selected records or proof map
+ok 13 - the module exposes only negative refusal and no caller-selected records or proof map
+  ---
+  duration_ms: 0.347223
+  type: 'test'
+  ...
+# Subtest: the finite chronological captures resolve actual47 bytes with exactly10 current overrides
+not ok 14 - the finite chronological captures resolve actual47 bytes with exactly10 current overrides
+  ---
+  duration_ms: 11.710764
+  type: 'test'
+  location: '/workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs:6:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    10 !== 8
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 8
+  actual: 10
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs:6:303)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: capture tamper is rejected before any nominated target bytes can enter
+ok 15 - capture tamper is rejected before any nominated target bytes can enter
+  ---
+  duration_ms: 7.795279
+  type: 'test'
+  ...
+# Subtest: codeRef path roster duplicate and malformed current tuple fail despite a synthetic matching digest
+ok 16 - codeRef path roster duplicate and malformed current tuple fail despite a synthetic matching digest
+  ---
+  duration_ms: 14.765126
+  type: 'test'
+  ...
+# Subtest: all47 changed or retained-version target bytes fail the old diagnostic before Git
+ok 17 - all47 changed or retained-version target bytes fail the old diagnostic before Git
+  ---
+  duration_ms: 82.897685
+  type: 'test'
+  ...
+# Subtest: overlays never expand beyond the literal workflow47 path universe
+ok 18 - overlays never expand beyond the literal workflow47 path universe
+  ---
+  duration_ms: 1.204303
+  type: 'test'
+  ...
+# Subtest: opaque transports skip without invoking either supplied endpoint
+ok 19 - opaque transports skip without invoking either supplied endpoint
+  ---
+  duration_ms: 0.31882
+  type: 'test'
+  ...
+# Subtest: registered inputs use the same actual reader and reject reader or root substitution
+ok 20 - registered inputs use the same actual reader and reject reader or root substitution
+  ---
+  duration_ms: 2.127185
+  type: 'test'
+  ...
+# Subtest: positive entry always continues into the unchanged full historical helper
+ok 21 - positive entry always continues into the unchanged full historical helper
+  ---
+  duration_ms: 0.745021
+  type: 'test'
+  ...
+# Subtest: repeated invocations reread all metadata and targets and cannot reuse a prior success
+ok 22 - repeated invocations reread all metadata and targets and cannot reuse a prior success
+  ---
+  duration_ms: 4.318932
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 20
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 43937.085595

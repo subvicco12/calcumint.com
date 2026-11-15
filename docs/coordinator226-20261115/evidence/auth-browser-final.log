@@ -1,0 +1,18 @@
+Disposable genuine accounts ready; building unchanged production-mode application
+PASS Unauthenticated private portal denied
+PASS free: exact zero, AX labels/mobile, actual history persistence, same-request deduplication and foreign RLS denial
+PASS Free export and scenario affordances denied
+PASS free: invalid divisor hides stale output; trusted keyboard recovery succeeds
+PASS pro: exact zero, AX labels/mobile, actual history persistence, same-request deduplication and foreign RLS denial
+PASS pro: JSON/CSV/PDF native download readback and genuine persisted scenario restore/foreign denial
+PASS pro: invalid divisor hides stale output; trusted keyboard recovery succeeds
+PASS owner: exact zero, AX labels/mobile, actual history persistence, same-request deduplication and foreign RLS denial
+PASS owner: JSON/CSV/PDF native download readback and genuine persisted scenario restore/foreign denial
+PASS owner: invalid divisor hides stale output; trusted keyboard recovery succeeds
+PASS owner: actual Business share, template restore, exact v1 zero and cross-tenant isolation
+PASS admin: actual Business share, template restore, exact v1 zero and cross-tenant isolation
+PASS member: actual Business share, template restore, exact v1 zero and cross-tenant isolation
+PASS Revoked member denied by actual server action despite retained UI selection
+PASS Authenticated role cannot bypass server-only shared writer RPC
+PASS Private integration does not publish #226
+{"passed":true,"checks":16,"exports":6}

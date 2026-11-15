@@ -1,0 +1,135 @@
+✖ exact18live objects precede historical capability; maps cannot alter private evidence (3.603307ms)
+✖ all18current paths reject tamper and predecessor reversion before capability escape (38.201678ms)
+✖ native metadata HEAD move and dirty SRC fail closed (0.402744ms)
+✖ physical file and parent directory symlinks are rejected (2.429765ms)
+✖ raw retained Stage8 rejects stale Stage9 capability and immutable alias (0.504071ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 0
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 147.749158
+
+✖ failing tests:
+
+test at tests/four-worker-integration-20261115/source-stage9.test.mjs:13:1
+✖ exact18live objects precede historical capability; maps cannot alter private evidence (3.603307ms)
+  AssertionError [ERR_ASSERTION]: Current factory bytes differ: src/components/calculator-factory-portal.tsx
+      at currentBytesFirst (file:///workspace/coordinator-226-20261115/tests/four-worker-integration-20261115/source-stage9.mjs:12:445)
+      at proveSourceStage9 (file:///workspace/coordinator-226-20261115/tests/four-worker-integration-20261115/source-stage9.mjs:23:2)
+      at TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/four-worker-integration-20261115/source-stage9.test.mjs:13:107)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/four-worker-integration-20261115/source-stage9.test.mjs:14:1
+✖ all18current paths reject tamper and predecessor reversion before capability escape (38.201678ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /capture digest/. Input:
+  
+  'AssertionError [ERR_ASSERTION]: Current factory bytes differ: src/components/calculator-factory-portal.tsx'
+  
+      at TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/four-worker-integration-20261115/source-stage9.test.mjs:14:978)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: AssertionError [ERR_ASSERTION]: Current factory bytes differ: src/components/calculator-factory-portal.tsx
+        at currentBytesFirst (file:///workspace/coordinator-226-20261115/tests/four-worker-integration-20261115/source-stage9.mjs:12:445)
+        at proveSourceStage9 (file:///workspace/coordinator-226-20261115/tests/four-worker-integration-20261115/source-stage9.mjs:23:2)
+        at file:///workspace/coordinator-226-20261115/tests/four-worker-integration-20261115/source-stage9.test.mjs:14:989
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/four-worker-integration-20261115/source-stage9.test.mjs:14:978)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+        at Test.postRun (node:internal/test_runner/test:1522:19),
+    expected: /capture digest/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/four-worker-integration-20261115/source-stage9.test.mjs:15:1
+✖ native metadata HEAD move and dirty SRC fail closed (0.402744ms)
+  AssertionError [ERR_ASSERTION]: Current factory bytes differ: src/components/calculator-factory-portal.tsx
+      at currentBytesFirst (file:///workspace/coordinator-226-20261115/tests/four-worker-integration-20261115/source-stage9.mjs:12:445)
+      at proveSourceStage9 (file:///workspace/coordinator-226-20261115/tests/four-worker-integration-20261115/source-stage9.mjs:23:2)
+      at TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/four-worker-integration-20261115/source-stage9.test.mjs:15:248)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/four-worker-integration-20261115/source-stage9.test.mjs:16:1
+✖ physical file and parent directory symlinks are rejected (2.429765ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Redirected current source/. Input:
+  
+  'AssertionError [ERR_ASSERTION]: Current factory bytes differ: src/components/calculator-factory-portal.tsx'
+  
+      at TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/four-worker-integration-20261115/source-stage9.test.mjs:16:626)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: AssertionError [ERR_ASSERTION]: Current factory bytes differ: src/components/calculator-factory-portal.tsx
+        at currentBytesFirst (file:///workspace/coordinator-226-20261115/tests/four-worker-integration-20261115/source-stage9.mjs:12:445)
+        at proveSourceStage9 (file:///workspace/coordinator-226-20261115/tests/four-worker-integration-20261115/source-stage9.mjs:23:2)
+        at file:///workspace/coordinator-226-20261115/tests/four-worker-integration-20261115/source-stage9.test.mjs:16:637
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/four-worker-integration-20261115/source-stage9.test.mjs:16:626)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+        at Test.postRun (node:internal/test_runner/test:1522:19),
+    expected: /Redirected current source/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/four-worker-integration-20261115/source-stage9.test.mjs:18:1
+✖ raw retained Stage8 rejects stale Stage9 capability and immutable alias (0.504071ms)
+  AssertionError [ERR_ASSERTION]: Current factory bytes differ: src/components/calculator-factory-portal.tsx
+      at currentBytesFirst (file:///workspace/coordinator-226-20261115/tests/four-worker-integration-20261115/source-stage9.mjs:12:445)
+      at proveSourceStage9 (file:///workspace/coordinator-226-20261115/tests/four-worker-integration-20261115/source-stage9.mjs:23:2)
+      at TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/four-worker-integration-20261115/source-stage9.test.mjs:18:219)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

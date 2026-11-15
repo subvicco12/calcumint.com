@@ -1,0 +1,77 @@
+{
+  "catalogId": 226,
+  "revision": "private.remainder-exact-zero.20261114.2",
+  "checks": [
+    "Unauthenticated private portal denied",
+    "free: exact zero, AX labels/mobile, actual history persistence, same-request deduplication and foreign RLS denial",
+    "Free export and scenario affordances denied",
+    "free: invalid divisor hides stale output; trusted keyboard recovery succeeds",
+    "pro: exact zero, AX labels/mobile, actual history persistence, same-request deduplication and foreign RLS denial",
+    "pro: JSON/CSV/PDF native download readback and genuine persisted scenario restore/foreign denial",
+    "pro: invalid divisor hides stale output; trusted keyboard recovery succeeds",
+    "owner: exact zero, AX labels/mobile, actual history persistence, same-request deduplication and foreign RLS denial",
+    "owner: JSON/CSV/PDF native download readback and genuine persisted scenario restore/foreign denial",
+    "owner: invalid divisor hides stale output; trusted keyboard recovery succeeds",
+    "owner: actual Business share, template restore, exact v1 zero and cross-tenant isolation",
+    "admin: actual Business share, template restore, exact v1 zero and cross-tenant isolation",
+    "member: actual Business share, template restore, exact v1 zero and cross-tenant isolation",
+    "Revoked member denied by actual server action despite retained UI selection",
+    "Authenticated role cannot bypass server-only shared writer RPC",
+    "Private integration does not publish #226"
+  ],
+  "exports": [
+    {
+      "plan": "pro",
+      "format": "json",
+      "bytes": 540,
+      "sha256": "94c84f6657fa74e41572b51fa9256b762f3261161e73d6ef39821562f58b7b00",
+      "file": "invocation-uBEW2v/c4879485-79b0-48ed-84df-f6ec578da383"
+    },
+    {
+      "plan": "pro",
+      "format": "csv",
+      "bytes": 403,
+      "sha256": "96a821bc94ed42bc99acbcb70faaef6cc975ee27a190e4f43a8d030e2a18fe5e",
+      "file": "invocation-o3mI0M/d46913ac-2ab9-4d8a-af16-145e12eabd20"
+    },
+    {
+      "plan": "pro",
+      "format": "pdf",
+      "bytes": 404767,
+      "sha256": "aa19c64a06660464189d38dea6fae7a4f6a351e65c680fc705868ba86973dfc4",
+      "file": "invocation-AOCmsD/90bb35d3-694b-4632-abd2-945f26ce6936"
+    },
+    {
+      "plan": "owner",
+      "format": "json",
+      "bytes": 540,
+      "sha256": "94c84f6657fa74e41572b51fa9256b762f3261161e73d6ef39821562f58b7b00",
+      "file": "invocation-Mk1CyG/fb8bea09-bfea-4717-96ee-9fa5886b9050"
+    },
+    {
+      "plan": "owner",
+      "format": "csv",
+      "bytes": 403,
+      "sha256": "96a821bc94ed42bc99acbcb70faaef6cc975ee27a190e4f43a8d030e2a18fe5e",
+      "file": "invocation-QPhCLP/98b02af5-6e66-41d0-a92b-8f58c80479d5"
+    },
+    {
+      "plan": "owner",
+      "format": "pdf",
+      "bytes": 404767,
+      "sha256": "aa19c64a06660464189d38dea6fae7a4f6a351e65c680fc705868ba86973dfc4",
+      "file": "invocation-niVq0k/2702ede3-164e-4f83-a3f1-fcd9d778ea6b"
+    }
+  ],
+  "productionWrites": false,
+  "releaseHold": true,
+  "publicationAuthorityFixture": false,
+  "scope": "Actual private portal, actual application server actions and unchanged RLS on disposable PostgreSQL17/GoTrue/PostgREST. Loopback auth transport; not production qualification.",
+  "publicRouteStatus": 404,
+  "images": {
+    "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+    "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+    "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+  },
+  "passed": true
+}
