@@ -34,7 +34,7 @@ function nativeStatusHead(bytes){
 function native(input){
  const run=nativeReader(input.root);
  const root=run(['rev-parse','--show-toplevel']).toString().trim();assert.equal(resolve(root),input.root,'Native Git workspace root differs');
- // Native porcelain v2 atomically observes current HEAD and source status; never cached.
+ // Native porcelain v2 reports current HEAD and source status in one fresh observation; never cached.
  const head=nativeStatusHead(run(['status','--porcelain=v2','--branch','--untracked-files=all','--','src']));
  assert.equal(input.git(headArgs).toString().trim(),head,'Native HEAD moved or supplied HEAD differs');
  const statusArgs=['status','--porcelain','--untracked-files=all','--','src'];assert(input.git(statusArgs).equals(Buffer.alloc(0)),'Committed current src required; Dirty or unknown current source; Native source status differs');
