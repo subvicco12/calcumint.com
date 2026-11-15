@@ -1,3 +1,5 @@
+import {sourceStage9Policy,sourceStage9CapturePath} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
+import {proveSourceStage9} from '../four-worker-integration-20261115/source-stage9.mjs';
 import {sourceStage8Policy as retainedOwnershipPolicy} from './source-stage8-policy-v2.mjs';
 import {sourceStage8Policy as retainedStage8Policy} from './source-stage8-policy.mjs';
 import {assertSourceStage8HeadStable,proveCurrentStage8AndHistoricalInputs} from './source-stage8.mjs';
@@ -14,7 +16,7 @@ test('exact Stage8 rows prove current bytes and historical reads only after full
  for(const row of capture.rows){assert(readFileSync(row.path).equals(sourceGit(['cat-file','blob',row.current.blob])));if(row.predecessor)assert(proof.historicalInput.read(row.path).equals(sourceGit(['cat-file','blob',row.predecessor.blob])));else assert.throws(()=>proof.historicalInput.read(row.path),/no historical bytes/);}
 });
 test('closed supplied reader provides capture and every current source with no reader fallback',()=>{
- const names=[sourceStage8CapturePath,...sourceStage8Policy.paths],map=new Map(names.map(p=>[p,readFileSync(p)])),seen=new Set(),calls=[];
+ const names=[sourceStage8CapturePath,sourceStage9CapturePath,...new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths])],map=new Map(names.map(p=>[p,readFileSync(p)])),seen=new Set(),calls=[];
  const git=(args,options)=>{calls.push(args);return sourceGit(args,options);};git.preloadCommits=refs=>sourceGit.preloadCommits(refs);
  const read=path=>{assert(map.has(path),'Undeclared reader dependency '+path);seen.add(path);return map.get(path);};
  const proof=provePinnedSourceStage8({read,git,root});assert.deepEqual([...seen].sort(),names.sort());assert.equal([...proof.live.keys()].filter(path=>retainedStage8Policy.paths.includes(path)).length,22);assert.equal([...proof.live.keys()].filter(path=>retainedOwnershipPolicy.paths.includes(path)).length,23);assert.equal(proof.live.size,24);assert(calls.length>0);
@@ -35,7 +37,7 @@ test('unknown current source is rejected before any projection',()=>{
 });
 
 test('a retained historical transport cannot cache a current proof across source mutation',()=>{
- const names=[sourceStage8CapturePath,...sourceStage8Policy.paths],target=new Map(names.map(path=>[path,readFileSync(path)]));
+ const names=[sourceStage8CapturePath,sourceStage9CapturePath,...new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths])],target=new Map(names.map(path=>[path,readFileSync(path)]));
  const read=path=>{assert(target.has(path));return target.get(path);};
  const first=provePinnedSourceStage8({read,git:sourceGit,root});
  target.set(sourceStage8Policy.paths[0],Buffer.from('changed after the first proof'));
@@ -55,7 +57,7 @@ test('historical capability reuse rechecks live HEAD and source status',()=>{
   let changed=false;
   const git=(args,options)=>changed&&mutation==='head'&&JSON.stringify(args)===JSON.stringify(['rev-parse','--verify','HEAD^{commit}'])?Buffer.from(sourceStage8Policy.predecessorRef+'\n'):changed&&mutation==='status'&&args[0]==='status'?Buffer.from('?? src/unreviewed.ts\n'):sourceGit(args,options);
   const first=provePinnedSourceStage8({...input,git});changed=true;
-  assert.throws(()=>provePinnedSourceStage8(first.historicalInput),/Unreviewed current source delta|Dirty or unknown current source/);
+  assert.throws(()=>provePinnedSourceStage8(first.historicalInput),/Unreviewed current source delta|Dirty or unknown current source|Native HEAD moved/);
  }
 });
 test('historical capability cannot nominate a substituted source reader',()=>{
@@ -69,12 +71,12 @@ test('metadata HEAD paths share only a per-proof observation and movement refuse
  const proof=provePinnedSourceStage8({...input,git}),before=headReads;
  for(let index=0;index<3;index++)assert.equal(proof.historicalInput.git(['rev-parse','HEAD:package.json']).toString(),sourceGit(['rev-parse',current+':package.json']).toString());
  assert.equal(headReads,before,'Metadata paths use the observed immutable commit, not cached HEAD responses');
- head=sourceStage8Policy.codeRef;assert.throws(()=>assertSourceStage8HeadStable(proof),/HEAD moved/);
+ head=sourceStage9Policy.codeRef;assert.throws(()=>assertSourceStage8HeadStable(proof),/HEAD moved/);
  const next=provePinnedSourceStage8({...input,git});assertSourceStage8HeadStable(next);assert(headReads>before,'Every new proof and stability check observes live HEAD');
 });
 
 test('a metadata-only HEAD switch inside the retained callback is rejected before return',()=>{
  let head=sourceGit(['rev-parse','--verify','HEAD^{commit}']).toString().trim();
  const git=(args,options)=>JSON.stringify(args)===JSON.stringify(['rev-parse','--verify','HEAD^{commit}'])?Buffer.from(head+'\n'):sourceGit(args,options);
- assert.throws(()=>proveCurrentStage8AndHistoricalInputs({...input,git,policy:sourceStage8Policy,capturePath:sourceStage8CapturePath},()=>{head=sourceStage8Policy.codeRef;return {actualCurrent:new Map()};}),/HEAD moved during public source proof/);
+ assert.throws(()=>proveCurrentStage8AndHistoricalInputs({...proveSourceStage9({...input,git}).historicalInput,policy:sourceStage8Policy,capturePath:sourceStage8CapturePath},()=>{head=sourceStage9Policy.codeRef;return {actualCurrent:new Map()};}),/HEAD moved during public source proof/);
 });

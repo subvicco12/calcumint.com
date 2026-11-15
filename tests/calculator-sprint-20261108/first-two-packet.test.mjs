@@ -4,7 +4,7 @@ import {readFile} from 'node:fs/promises';
 import {readFileSync as requireBytes} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
-import {verifyCompletionBinding} from '../../scripts/product-completion-lineage.mjs';
+import {verifyCompletionBinding} from '../../scripts/product-completion-stage8.mjs';
 const packetPath='docs/calculator-sprint-20261108/first-two-packet.json';
 const packetBytes=await readFile(packetPath),packet=JSON.parse(packetBytes);
 const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024});

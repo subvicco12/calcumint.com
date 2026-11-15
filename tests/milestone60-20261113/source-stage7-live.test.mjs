@@ -1,3 +1,4 @@
+import {sourceStage9Policy,sourceStage9CapturePath} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import {provePinnedSourceStage8,sourceStage8Policy,sourceStage8CapturePath} from '../milestone100-20261114/source-stage8-activation.mjs';
 /** Actual pinned-stage checks; intentionally fail until frozen APP capture and authority are installed. */
 import test from 'node:test';
@@ -25,7 +26,7 @@ test('every new live row rejects current mutation or retained-valid reversion be
  // every newly admitted Stage8 path before retaining the unchanged Stage7 checks.
  const nextCapture=JSON.parse(readFileSync(sourceStage8CapturePath));
  for(const row of nextCapture.rows)for(const bytes of [Buffer.from('Stage8 current tamper'),...(row.predecessor?[sourceGit(['cat-file','blob',row.predecessor.blob])]:[])])assert.throws(()=>proveCurrentAppStage5AndHistoricalInputs({...input,read:path=>path===row.path?bytes:readFileSync(path)}),/Current factory bytes differ/);
- const names=[sourceStage8CapturePath,...sourceStage8Policy.paths],target=new Map(names.map(path=>[path,readFileSync(path)]));
+ const names=[sourceStage8CapturePath,sourceStage9CapturePath,...new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths])],target=new Map(names.map(path=>[path,readFileSync(path)]));
  const read=path=>{assert(target.has(path),'Undeclared Stage8 dependency '+path);return target.get(path);};
  const first=provePinnedSourceStage8({...input,read});
  target.set(sourceStage8Policy.paths[0],Buffer.from('mutated after proof'));
@@ -33,7 +34,7 @@ test('every new live row rejects current mutation or retained-valid reversion be
  assert.throws(()=>provePinnedSourceStage8({...first.historicalInput,read:()=>Buffer.from('forged')}),/reader capability differs/);
  for(const mutation of ['head','status']){
   let changed=false;const git=(args,options)=>changed&&mutation==='head'&&JSON.stringify(args)===JSON.stringify(['rev-parse','--verify','HEAD^{commit}'])?Buffer.from(sourceStage8Policy.predecessorRef+'\n'):changed&&mutation==='status'&&args[0]==='status'?Buffer.from('?? src/unknown.ts\n'):sourceGit(args,options);
-  const prior=provePinnedSourceStage8({...input,git});changed=true;assert.throws(()=>provePinnedSourceStage8(prior.historicalInput),/Unreviewed current source delta|Dirty or unknown current source/);
+  const prior=provePinnedSourceStage8({...input,git});changed=true;assert.throws(()=>provePinnedSourceStage8(prior.historicalInput),/Unreviewed current source delta|Dirty or unknown current source|Native HEAD moved/);
  }
 
  const capture=JSON.parse(readFileSync(sourceStage7CapturePath));
