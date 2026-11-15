@@ -12747,8 +12747,234 @@ export const acceptedStage10Selector=Object.freeze([
   }
 ]);
 export const additionalStage10SelectorBootstrapRefs=Object.freeze(["09cf034d0a5f8f2ac82352cb3118ae8374e56294","379997d86b163f5dc7e95de76e26fa055361a2d1"]);
-export const acceptedStage10Current24=Object.freeze([]);
-export const additionalStage10Current24BootstrapRefs=Object.freeze([]);
+export const acceptedStage10Current24=Object.freeze([
+  {
+    "path": "docs/next-engineering-20261115/source/stage10-current24.json",
+    "blob": "e2893cf2f8d2a89101b453fb0d08fa9d14597b66",
+    "sha256": "45138ebbb7f879c74259f312395604365ac0411fa743e7f548f8faa71380fc7f"
+  },
+  {
+    "path": "scripts/fetch-source-lineage.mjs",
+    "blob": "c881ae8963c6e7c2b13dd1f2c33921fc91def88f",
+    "sha256": "d01b8104e0a8abc366551eb79f1bc9a69e50bfeed914d932205ca6adfc842390"
+  },
+  {
+    "path": "tests/completion-first-20261112/personal-stage.mjs",
+    "blob": "64c0a0a944da33af686f727646083fd7feaf6207",
+    "sha256": "1ef1855bb8ab780ce6a08055871c86eb887254cc4fcd23baa9c3999d1a0eacc2"
+  },
+  {
+    "path": "tests/four-worker-integration-20261115/source-stage9.mjs",
+    "blob": "998908a1ffd61f8b28d84e4e5948e63c102ffe71",
+    "sha256": "e99473e0487aa86887116f42f484c7626536f2f15abf6b22ee51f0e11ee35aae"
+  },
+  {
+    "path": "tests/milestone100-20261114/receipt-source-path-stage8.mjs",
+    "blob": "5b327a1b4738753e8d8cff9a7e5c6af3e59b78aa",
+    "sha256": "48fab46d6c521a152caded073179cfb8adaef4e4fe5ceee03e3a30ae3bd434d7"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-preflight-stage8.mjs",
+    "blob": "ef3e4fa4ba9f8638b9014305d8d9ce1087b34bb0",
+    "sha256": "4a839c55e9bf7417906a996f493fbd3572cb24112cb4b6ac6efc90811f947a2c"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-live.test.mjs",
+    "blob": "bdff224a624cd25c3295fe5ae2d95eea227fedbf",
+    "sha256": "ed9dee7532b1f21886b43aed17a5f479a5643966f217a3ea4b9a9c02cd1292d7"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-negative-current-src.mjs",
+    "blob": "7b68584f5af188c71ac17aefcbc660d1f192a83d",
+    "sha256": "4c6af61c75354372b29a2e3ecece2dd99812ed03b322bb3587944414fa4b80f0"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs",
+    "blob": "1ab0e54f7b0ce7946539d8dbf1548a0f36caac24",
+    "sha256": "8f129236b9f5aa0274b5e93353cc5ddfc3bc5612b10f287ee3778b658d2bd1d7"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs",
+    "blob": "c1acfeb38fc57b4bfcb01d4c162b00726f28bcbb",
+    "sha256": "8d45ae23bf03eba6c09dd485cff87df057af8d6788de1067dd632838b3955584"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8.mjs",
+    "blob": "65f1d6130ccedf1976566fd4d4f405d990f5a58d",
+    "sha256": "270e11a94fa34763a5e8b1b877377097da0a0ba6b4f30f277b90254ac0ba34ba"
+  },
+  {
+    "path": "tests/next-engineering-20261115/source-admission-current24.mjs",
+    "blob": "49e805addcb9eef1e19d898762002cc561be16e1",
+    "sha256": "8e12b52912fae119c74351b598bc02233728ebe1417af970e8e546ea6e762bb8"
+  },
+  {
+    "path": "tests/next-engineering-20261115/source-availability.test.mjs",
+    "blob": "353bc292022ba08c5a714d1d0a47f85cc87b5257",
+    "sha256": "5ac12b1db7a8bee6b7594823b4c7744f5903c853dcca333eb340cc27a7090021"
+  },
+  {
+    "path": "tests/next-engineering-20261115/source-named-current.test.mjs",
+    "blob": "bb0c8540812121ef3420f679a7f4e83d24f990fd",
+    "sha256": "32234d93f2b8619d213f6b9438980f45bab43d5ccda7e29c35d510d25003ad61"
+  },
+  {
+    "path": "tests/next-engineering-20261115/source-stability-reuse.test.mjs",
+    "blob": "3d89be0ad14daa474725ac621287fdc6aee0dc46",
+    "sha256": "9277c3fa0976cf4a98a48e34f5598e9915679adb543e4388e16afce70efe4f66"
+  },
+  {
+    "path": "tests/next-engineering-20261115/source-stage10-current-policy.mjs",
+    "blob": "0ca4d8d91de91887bb93c909a09e1ca0cb92ca42",
+    "sha256": "c6de1a71fa522b494c6f7b4ce13529b5abaff9fb3923c0b7740074033e049acc"
+  },
+  {
+    "path": "tests/next-engineering-20261115/source-stage10.mjs",
+    "blob": "0291bb53d520de973579f4970817581734a07cb1",
+    "sha256": "fb5b01ae3f01d04bb704fdb223bc4af37d1eed8287ca761b18a530819cfa2729"
+  },
+  {
+    "path": "tests/next-engineering-20261115/source-stage10.test.mjs",
+    "blob": "7f6b0092cd9098cce3fddd4e17fcc8c9d810709a",
+    "sha256": "574c1413d0899553c9c6bbd937704b894f2db5f3181908963b095b97676532e8"
+  },
+  {
+    "path": "tests/parallel-source-20261110/bootstrap.mjs",
+    "blob": "c2b6caacf26db70a883bdbd95eaaae930196efdf",
+    "sha256": "00e903e34f5a0c30e9d1dd6f2c1234e254e48dac801b3d67cc85ffb4262ce503"
+  },
+  {
+    "path": "tests/parallel-source-20261110/core.mjs",
+    "blob": "c622fb27635b810a6274aabca47ec51a09e654ae",
+    "sha256": "e0ff2e851af21b21d8000a4d44c14c314bf6b4078df78f422782fc82a461ec2f"
+  },
+  {
+    "path": "docs/next-engineering-20261115/source/guard-capture-current24.json",
+    "blob": "0a0b763870b8f00a3c18ef1a0ad2dbab97547aab",
+    "sha256": "2e85aeb3938bddba509a6505daabeac6fef36e748ac1edd472503b313dfb7165"
+  },
+  {
+    "path": "src/components/calculator-factory-portal.tsx",
+    "blob": "897b31ce2bf64e94031b3004fa8b01123ce56043",
+    "sha256": "3e6c088ded6f0bc05e2893fc830e166b3149c9f5578f157698944aa0a3609320"
+  },
+  {
+    "path": "src/components/next-engineering-analysis.test.tsx",
+    "blob": "1f6c6a9664cc29e9de76af4b8fea3139b964bd80",
+    "sha256": "99b7a1065acc24e7810c2771f93c769155023b0e6650a145ed2ab91f69d3ecf8"
+  },
+  {
+    "path": "src/components/next-engineering-analysis.tsx",
+    "blob": "3b6034b058488a14ffdd8d2982ed7b8eb15191ec",
+    "sha256": "7a3358c374a3ae1d6d81b7fa97e0cab26f7bfb80a785de8f6aac6f7b0ef0ec2c"
+  },
+  {
+    "path": "src/lib/business/factory-nine-sharing.test.ts",
+    "blob": "e9d2548dd59a4d3eb66eba5ab720752672197f63",
+    "sha256": "a65f9576fbbb391ce14e21cefd68e75572028bd4900bdcb6cca3751f4ede3273"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/business.ts",
+    "blob": "472c79202852618e27cc3af19d801b41cebc8ce2",
+    "sha256": "a92bf9b766442834deb217c65ee14c0c8c36594f02c75f8f0a863414d3f215ea"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts",
+    "blob": "30a9522fad7f0e8b7795af9ba70e844e22d966fe",
+    "sha256": "b9dbfe201541b15175dbc9043ec2cfae0839f1503b4600626cbfada4c1d006eb"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-a.ts",
+    "blob": "434023f3f8ba88c4e9c7477751f935b9e1ab898f",
+    "sha256": "d03e9bb0c3a59f5b232b68ffea3205297a07c49b0016fae1b04bf0b9d9ded37a"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts",
+    "blob": "f001871a1cab16ce1a5b3755a1e4bedace179f68",
+    "sha256": "464aef407d0f024d76401adf232114d32e4c0a971b007d0d24288331c87aba46"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-b.ts",
+    "blob": "b688d2646831bf922a197131741cb6d654ff42c5",
+    "sha256": "835435adab7b7c2caab0c8e045e041f94009d779cfe4a59d9d99717502444580"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+    "blob": "706908108d8967f2efa78fd08f0d7064b78d4dc8",
+    "sha256": "045d1b30bdf9144ee31673665da1879359bdb90d86c25be031bdacbb9dc9a2eb"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-core.ts",
+    "blob": "8fe50d2a203e228dfb9285c08c887604218a55b7",
+    "sha256": "b50db1e836a0a0858281005dc384cf312ea7fba117a14257020cc962e1ce33ec"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+    "blob": "e4e7641c64fd603adc886adb0b4bef98d7142bba",
+    "sha256": "73e69998be3678a787cbaaf016a8a980fe267ec958acf472c7eaeddd86ce6d24"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts",
+    "blob": "190ea72b11ff688b6f818518f9e24ff3d6da43fd",
+    "sha256": "1424ba796264a7bce6cea3b0bb8a6fc747a192f351b0be43c159ca4344fc7b21"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-statistics-a.ts",
+    "blob": "599eef3451d3c6e985437fc1d1aab2a1efc3788a",
+    "sha256": "3fcbab24b57ff249d77477370ae4dca301e729245ef2591e01719b34962eb755"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-statistics-b.test.ts",
+    "blob": "3154c6b181efb63851e0725d4351ac6d95285622",
+    "sha256": "4957ce204c5d16eb3a202664c28ca8c4fabe79f6b0ac6c025fd3744cac361808"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-statistics-b.ts",
+    "blob": "2d0a6175d9a7c07a6f1b3f5c7accd648529d7a25",
+    "sha256": "3ac2447f87852d50ba76f51aa852964116fab7a9cf7e3269df932d35e0204b5b"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering.ts",
+    "blob": "3467dca9540bdcae09b692ae6bd87d321e6f03c2",
+    "sha256": "82ba8f13c54e165b2a4d56420a7e65df4d99da453329f7040cff7d162cea1ad4"
+  },
+  {
+    "path": "src/lib/calculator-factory/registry.test.ts",
+    "blob": "0af71d8b9d3447279a17be51258d89420e1ea1af",
+    "sha256": "e6f5adecb9e49668791caefb36f02ac99d4c42cd509a74854f5439cbaf764c0d"
+  },
+  {
+    "path": "src/lib/calculator-factory/registry.ts",
+    "blob": "37b2aa94913ffea8a7416bf24957173ccfbc78f7",
+    "sha256": "85653a120bc3be44867cbec29319e895d9fcf78d5fe27e83d7a96ee0cdf4b925"
+  },
+  {
+    "path": "src/lib/completion-wave-20261113/sql-successor.test.ts",
+    "blob": "c44d3a8d434e84287a88980800a31503472eb67f",
+    "sha256": "acf845d5b44140a490157c75dcfa9adc6d7b2a45facdefdae1d930b922c4ce99"
+  },
+  {
+    "path": "src/lib/native-delivery/factory-automation-contract.test.ts",
+    "blob": "648d6da59de72e2c9776e3b814db517796d2e678",
+    "sha256": "bd53184b4f10c10f29c6ba4f7c1e1149a03388a2264655bce8ab1e1385525676"
+  },
+  {
+    "path": "src/lib/native-delivery/factory-delivery-catalog.ts",
+    "blob": "c6d7c371a962e8b1d01f0a725e3651786a426385",
+    "sha256": "761c1a546635d3a4ab34302d3a7326d3b0a5bea7769181d876ab27d8b274a9be"
+  },
+  {
+    "path": "src/lib/native-delivery/factory-embed-contract.test.ts",
+    "blob": "0557d900af11db5ab634461bb5ace0642dce5824",
+    "sha256": "e9886a19526a02743646ef9ed85771a438b4e27ba04c91ba0de09fadc1fca538"
+  },
+  {
+    "path": "src/lib/registered-snapshot-verification.ts",
+    "blob": "f01ce77d1e69e537e0c11a94204f3730d021cda8",
+    "sha256": "7858d334f0abaf70b91bab8ae1f8681ace559f49a16c7b334867d4ab48c576b9"
+  }
+]);
+export const additionalStage10Current24BootstrapRefs=Object.freeze(["09cf034d0a5f8f2ac82352cb3118ae8374e56294","0ec51bf308caa466840d3344a7572dc79c67d089","1034034ddb3c106eb7695f90f8f7d429b6dfc9c7","13298943d7357e4593c25772c3e7d9db118db623","26c222457278bf69b4f351d0cc100de47ca9eb33","2b74b7a5c81bbae7625451df4f7f082b5452093b","2f74af87d1ce41b5aa229a401baa55ac7a3c0d22","347c9e6569d6b6a9c141c926042e3cf7ecc3e641","3674ec4b0dcdb909b8b00d6b3dccc892ab95e01d","379997d86b163f5dc7e95de76e26fa055361a2d1","38a495e4277fb7ec8423e9fd0107b4ccc599848e","3ccdd6d026ca0ec51063ff4501901ac92e8ace6a","550ae67dfdf8fcfa8fb0ac68ccbe2ac68e13fb0f","568ea8520dbf58f1e7823f095e32d2cc57333c33","5a29f5341bebab0dda2165a49d3fed9e6109e6f1","7629d5a032f516a3c7f1bec5fb6e991c2f7a992f","7e65c1fe521116d247688b8f11edd4bab4af6f4e","7fd9e40cb69ccfee70924e6dd6c2bc393a0043f8","80e52c5cd5d89cd88826ad5b06378431f4cf693b","822743dd987bc2f07e52ab07a3c2ef4ab05f625f","8aaa1886a0dee4b7ae1bd6349078731139afd46a","8f8b9b03f070d3279351c02d6573ce528e99a1b4","955f860712e938c9d1140e4fda41ff1535c53272","9cb48d726ae3754393b90d2c8afae1e9218f9079","9d00f1ef8690f7bf8a23b6b7860f78f9b67838ca","a0c6ca7350d09f9b2d4c990871822567fd8b7586","a931482f3972bda57dcf966fce9a3bbe9b4d8320","b8694256532a2f13a5808c426e0c54e104d1775b","cb652516a1e8b1dc4f908f3cb6f85a6cae02d864","e84aba4ed0624aaac53f80df0ddcc380e4ff653d","e8b7fb2df91dbd1b0efc77ae3a120754295c68e3","ebf9553952e51c8ef2b534c5e30007621938d9cf"]);
 export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8,...acceptedStage8V3,...acceptedStage8V4,...acceptedStage8V5,...acceptedStage8V6,...acceptedStage8V7,...acceptedStage8V8,...acceptedStage8V9,...acceptedStage8V10,...acceptedStage8V11,...acceptedStage8V12,...acceptedStage8V13,...acceptedStage8V14,...acceptedStage8V15,...acceptedStage8V16,...acceptedStage8V17,...acceptedStage8V18,...acceptedStage8V19,...acceptedStage8V20,...acceptedStage8V21,...acceptedStage8V22,...acceptedStage8V23,...acceptedStage8V24,...acceptedStage8V25,...acceptedStage8V26,...acceptedStage8V27,...acceptedStage8V28,...acceptedStage8V29,...acceptedStage8V30,...acceptedStage8V31,...acceptedStage8V32,...acceptedStage8V33,...acceptedStage8V34,...acceptedStage8V35,...acceptedStage8V36,...acceptedStage8V37,...acceptedStage8V38,...acceptedStage8V39,...acceptedStage8V40,...acceptedStage8V41,...acceptedStage8V42,...acceptedStage8V43,...acceptedStage8V44,...acceptedStage8V45,...acceptedStage10,...acceptedStage10Review2,...acceptedStage10Availability,...acceptedStage10Deadline,...acceptedStage10Lint,...acceptedStage10Selector,...acceptedStage10Current24].map(row=>[row.path,row])).values()]);
 for(const record of accepted)Object.freeze(record);
 export function verifyParallelAuthority(read,git){
