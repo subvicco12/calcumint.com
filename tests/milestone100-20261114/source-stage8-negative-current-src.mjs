@@ -1,3 +1,4 @@
+import {sourceStage9Policy,sourceStage9CapturePath} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 /** Negative-only finite source check. Every passing caller must still run its original full proof. */
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
@@ -18,5 +19,6 @@ export function rejectChangedCurrentStageSourceBytes(read){
   const capture=JSON.parse(bytes);assert.equal(capture.codeRef,stage.codeRef);assert.deepEqual(capture.rows.map(row=>row.path),stage.paths);assert.equal(new Set(stage.paths).size,stage.paths.length);
   for(const row of capture.rows)record(row.current,row.path,stage.codeRef);
  }
+ const incrementalBytes=read(sourceStage9CapturePath);assert(Buffer.isBuffer(incrementalBytes)&&hash(incrementalBytes)===sourceStage9Policy.captureSHA256,'Independent Stage9 capture bytes differ');const incremental=JSON.parse(incrementalBytes);assert.equal(incremental.codeRef,sourceStage9Policy.codeRef);assert.deepEqual(incremental.rows.map(row=>row.path),sourceStage9Policy.paths);for(const row of incremental.rows)record(row.current,row.path,incremental.codeRef);
  for(const [path,row]of current){const bytes=read(path);assert(Buffer.isBuffer(bytes)&&bytes.length===row.bytes&&hash(bytes)===row.sha256,'Independent current target bytes differ: '+path);}
 }

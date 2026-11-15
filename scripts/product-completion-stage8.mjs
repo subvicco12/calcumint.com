@@ -1,3 +1,4 @@
+import {sourceStage9Policy,sourceStage9CapturePath} from '../tests/four-worker-integration-20261115/source-stage9-policy.mjs';
 import {shortestNativeDriverPath,shortestNativeArgumentBytes,proveShortestNativeDriverSuccessor,shortestNativeTestRecords,shortestNativeSupplementalPredecessor,rejectShortestCallerArgument} from '../tests/milestone100-20261114/source-stage8-shortest-native-driver.mjs';
 import {runtimeAuxiliarySource,proveRuntimeAuxiliarySuccessor} from '../tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs';
 import {publicationTransportPath,publicationTransportArgumentBytes,provePublicationTransportSuccessor} from '../tests/milestone100-20261114/source-stage8-publication-transport.mjs';
@@ -19,7 +20,7 @@ const legacyBindingPaths=Object.freeze(["src/calculators/finance/compound-intere
 const caller='src/components/calculator-interactive.tsx',guard='scripts/publication20-caller-lineage.mjs';
 const guardV6='tests/shortest-publication-20/caller-lineage.test.mjs';
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
-const needsStage8=name=>name===caller||name===guard||name===guardV6||sourceStage8Policy.paths.includes(name)||guardSuccessors.some(row=>row.path===name)||retainedDependencies(name).some(path=>path===guardV6||sourceStage8Policy.paths.includes(path)||guardSuccessors.some(row=>row.path===path));
+const needsStage8=name=>sourceStage9Policy.paths.includes(name)||name===caller||name===guard||name===guardV6||sourceStage8Policy.paths.includes(name)||guardSuccessors.some(row=>row.path===name)||retainedDependencies(name).some(path=>path===guardV6||sourceStage9Policy.paths.includes(path)||sourceStage8Policy.paths.includes(path)||guardSuccessors.some(row=>row.path===path));
 /** An additional single import successor, separate from the five literal G2 guards. */
 function shortestGuardPredecessor(git,read){
  const capture=JSON.parse(read('docs/parallel-source-20261110/capture-revision76.json'));assert(capture.sourceStage8V9.guardPaths.includes(guardV6),'Exact reviewed shortest guard scope required');
@@ -29,7 +30,7 @@ function shortestGuardPredecessor(git,read){
  const previous=git(['show',sourceStage8Policy.predecessorRef+':'+guardV6]);
  assert(Buffer.from(expectedShortestFixtureSuccessor(previous.toString())).equals(current),'Only the exact reviewed fixture successor may change');return {previous,current};
 }
-export const completionBindingDependencies=name=>legacyBindingPaths.includes(name)?Object.freeze([...new Set([...retainedDependencies(name),...(name===caller?[caller,...factoryPolicy.paths,'tests/calculator-factory-20261112/account-acceptance.mjs']:[]),...sourceStage8Policy.paths,sourceStage8CapturePath,'tests/milestone100-20261114/receipt-source-path-stage8.mjs','tests/milestone100-20261114/source-stage8-activation.mjs','tests/milestone100-20261114/source-stage8-policy.mjs','tests/milestone100-20261114/source-stage8-guard-policy.mjs','scripts/product-completion-stage8.mjs',...accepted.map(row=>row.path),...guardSuccessors.map(row=>row.path)])]):retainedDependencies(name);
+export const completionBindingDependencies=name=>legacyBindingPaths.includes(name)?Object.freeze([...new Set([...retainedDependencies(name),...(name===caller?[caller,...factoryPolicy.paths,'tests/calculator-factory-20261112/account-acceptance.mjs']:[]),...sourceStage8Policy.paths,...sourceStage9Policy.paths,sourceStage9CapturePath,sourceStage8CapturePath,'tests/milestone100-20261114/receipt-source-path-stage8.mjs','tests/milestone100-20261114/source-stage8-activation.mjs','tests/milestone100-20261114/source-stage8-policy.mjs','tests/milestone100-20261114/source-stage8-guard-policy.mjs','scripts/product-completion-stage8.mjs',...accepted.map(row=>row.path),...guardSuccessors.map(row=>row.path)])]):retainedDependencies(name);
 export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
  if(!legacyBindingPaths.includes(name))return retainedVerify(name,bytes,claim,git,read);
  const affected=needsStage8(name);
@@ -46,7 +47,7 @@ export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
  if(!affected)return finish(true);
  const guardV6Proof=name===guardV6||retainedDependencies(name).includes(guardV6)?shortestGuardPredecessor(git,read):undefined;
  let historicalBytes=bytes;
- const sourceRow=proof.live.get(name);
+ const sourceRow=proof.stage9Live.get(name)??proof.live.get(name);
  if(sourceRow){assert(bytes.equals(git(['cat-file','blob',sourceRow.current.blob])),'Completion current successor differs');if(!sourceRow.predecessor)return finish(false);historicalBytes=proof.historicalInput.read(name);}
  if(guardSuccessors.some(row=>row.path===name)||retainedDependencies(name).some(path=>guardSuccessors.some(row=>row.path===path))){
   assert.deepEqual(guardSuccessors.map(row=>row.path),['scripts/check-current-six-candidate-evidence.mjs','scripts/check-shortest-publication20.mjs','scripts/publication20-caller-lineage.mjs','tests/cohort22-closure-20261109/caller-source.test.mjs','tests/execution-recovery-20261109/source-lineage.test.mjs'],'Exact reviewed guard successors required');

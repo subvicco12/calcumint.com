@@ -1,3 +1,4 @@
+import {proveSourceStage9} from '../four-worker-integration-20261115/source-stage9.mjs';
 import assert from 'node:assert/strict';
 /** Pinned immutable Stage8 candidate; independent admission review remains required. */
 import {proveSourceStage8AndHistoricalInputs,sourceStage8HistoricalView} from './source-stage8.mjs';
@@ -5,6 +6,7 @@ import {sourceStage8Policy,sourceStage8CapturePath} from './source-stage8-policy
 export {sourceStage8Policy,sourceStage8CapturePath};
 export function provePinnedSourceStage8(input){
  const retained=sourceStage8HistoricalView(input.git);
- if(retained){assert.equal(input.read,retained.historicalInput.read,'Historical Stage8 reader capability differs');return proveSourceStage8AndHistoricalInputs({...retained.actualInput,policy:sourceStage8Policy,capturePath:sourceStage8CapturePath});}
- return proveSourceStage8AndHistoricalInputs({...input,policy:sourceStage8Policy,capturePath:sourceStage8CapturePath});
+ if(retained){assert.equal(input.read,retained.historicalInput.read,'Historical Stage8 reader capability differs');assert.equal(input.root,retained.historicalInput.root,'Historical Stage8 root differs');input=retained.actualInput;}
+ const incremental=proveSourceStage9(input);
+ return proveSourceStage8AndHistoricalInputs({...incremental.historicalInput,policy:sourceStage8Policy,capturePath:sourceStage8CapturePath});
 }

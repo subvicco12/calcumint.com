@@ -1,0 +1,43 @@
+/** Incremental proof. No historical capability escapes before exact live verification. */
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {verifyExactStage} from '../calculator-factory-source-20261112/exact-stage.mjs';
+import {immutableTreeQueryReader} from '../milestone100-20261114/source-immutable-queries.mjs';
+import {sourceStage9Policy as policy,sourceStage9CapturePath as capturePath} from './source-stage9-policy.mjs';
+const historical=new WeakMap(),proved=new WeakSet();
+export const sourceStage9HistoricalView=git=>historical.get(git);
+const sha=b=>createHash('sha256').update(b).digest('hex');
+function exact(input){return verifyExactStage({...input,policy,captureBytes:input.read(capturePath)});}
+export function proveSourceStage9(input){
+ assert.deepEqual(Object.keys(input).sort(),['git','read','root'],'Only explicit Stage9 read/Git/root inputs allowed');
+ const prior=historical.get(input.git);
+ if(prior){assert.equal(input.read,prior.historicalInput.read,'Stage9 historical reader differs');assert.equal(input.root,prior.historicalInput.root,'Stage9 root differs');input=prior.actualInput;}
+ assert.equal(typeof input.read,'function');assert.equal(typeof input.git,'function');assert.equal(typeof input.root,'string');
+ const actual=Object.freeze({...input,git:immutableTreeQueryReader(input.git)});
+ const captureBytes=actual.read(capturePath);assert.equal(sha(captureBytes),policy.captureSHA256,'Independent Stage9 capture digest differs');
+ const capture=JSON.parse(captureBytes);assert.deepEqual(capture.ancestry,policy.ancestry);assert.equal(policy.paths.length,18);
+ if(typeof actual.git.preloadCommits==='function')actual.git.preloadCommits(policy.ancestry);
+ const records=capture.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean));
+ if(typeof actual.git.preloadPaths==='function')actual.git.preloadPaths(records.map(({ref,path,blob})=>({ref,path,blob})));
+ if(typeof actual.git.preloadBlobs==='function')actual.git.preloadBlobs([...new Set(records.map(row=>row.blob))]);
+ const head=actual.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.match(head,/^[a-f0-9]{40}$/);
+ const live=exact(actual);
+ assert.equal(actual.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),head,'Native HEAD moved during Stage9 verification');
+ for(const row of live.values()){if(row.predecessor)Object.freeze(row.predecessor);Object.freeze(row.current);Object.freeze(row);}
+ const read=path=>{const row=live.get(path);if(!row)return actual.read(path);assert(row.predecessor,'Added Stage9 source has no historical bytes: '+path);return actual.git(['cat-file','blob',row.predecessor.blob]);};
+ const git=(args,options)=>{
+  if(args.length===3&&args[0]==='rev-parse'&&args[1]==='--verify'&&args[2]==='HEAD^{commit}')return Buffer.from(policy.predecessorRef+'\n');
+  if(JSON.stringify(args)===JSON.stringify(['status','--porcelain','--untracked-files=all','--','src']))return Buffer.alloc(0);
+  return actual.git(args.map(arg=>arg==='HEAD'?policy.predecessorRef:arg.startsWith('HEAD:src/')?policy.predecessorRef+arg.slice(4):arg.startsWith('HEAD:')?head+arg.slice(4):arg),options);
+ };
+ for(const name of ['preloadCommits','preloadBlobs','preloadPaths'])if(typeof actual.git[name]==='function')git[name]=values=>actual.git[name](values);
+ const historicalInput=Object.freeze({read,git,root:actual.root});
+ const view=Object.freeze({actualInput:actual,historicalInput,nativeHead:head,get live(){return new Map(live);}});
+ proved.add(view);historical.set(git,view);historical.set(immutableTreeQueryReader(git),view);return view;
+}
+export function assertSourceStage9Stable(view){
+ assert(proved.has(view),'Private verified Stage9 capability required');
+ assert.equal(view.actualInput.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),view.nativeHead,'Native HEAD moved during nested proof');
+ exact(view.actualInput); // fresh bytes, dirty/untracked SRC, lstat and realpath checks
+ assert.equal(view.actualInput.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),view.nativeHead,'Native HEAD moved during final Stage9 proof');
+}
