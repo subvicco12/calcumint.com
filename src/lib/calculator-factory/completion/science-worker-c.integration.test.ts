@@ -14,7 +14,7 @@ import {createCalculationSnapshot} from '@/lib/calculation-snapshot';
 const cases:[NextScienceId,Record<string,string>,number,string][]=[[328,{moles:'0.01',solutionVolumeLiters:'0.2'},0.05,'mol/L'],[331,{massGrams:'36',molarMass:'18'},2,'mol'],[332,{initialConcentration:'2.04',initialVolume:'0.025',finalVolume:'0.5'},0.102,'mol/L']];
 for(const [id,raw,expected,unit]of cases)it(`exact science contract and delivery #${id}`,()=>{
  const flows=getFactoryWorkflows(id),packet=flows.execute(raw),input=Object.fromEntries(Object.entries(raw).map(([k,v])=>[k,Number(v)]));
- expect(()=>verifyRegisteredSnapshot(packet.snapshot)).toThrow(/unavailable/); // Coordinator must wire the target verifier.
+ expect(verifyRegisteredSnapshot(packet.snapshot).snapshot).toEqual(packet.snapshot); // Exact v1 coordinator dispatch is now wired.
  expect(verifyWorkerCScienceSnapshot(packet.snapshot).snapshot).toEqual(packet.snapshot);expect(verifyFactoryPacket(packet)).toEqual(packet);expect(verifyFactoryStoredSnapshot(packet.snapshot).snapshot).toEqual(packet.snapshot);
  const capture=calc(id,input);expect(Math.abs(Number(capture.snapshot.output.value)-expected)).toBeLessThanOrEqual(8*Number.EPSILON*Math.abs(expected));expect(capture.unit).toBe(unit);
  for(const bad of [{...packet.snapshot,calculatorVersion:2},{...packet.snapshot,input:{...packet.snapshot.input,extra:1}},{...packet.snapshot,output:{...packet.snapshot.output,value:999}},{...packet.snapshot,extra:true}])expect(()=>verifyWorkerCScienceSnapshot(bad)).toThrow();
