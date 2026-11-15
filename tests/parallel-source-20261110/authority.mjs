@@ -13672,8 +13672,169 @@ export const acceptedStage10FreshAuthority=Object.freeze([
   }
 ]);
 export const additionalStage10FreshAuthorityBootstrapRefs=Object.freeze(["09cf034d0a5f8f2ac82352cb3118ae8374e56294","0ec51bf308caa466840d3344a7572dc79c67d089","1034034ddb3c106eb7695f90f8f7d429b6dfc9c7","13298943d7357e4593c25772c3e7d9db118db623","26c222457278bf69b4f351d0cc100de47ca9eb33","2764df86eeffbc7a6e6874450897e128adf1edf7","2b74b7a5c81bbae7625451df4f7f082b5452093b","2f74af87d1ce41b5aa229a401baa55ac7a3c0d22","347c9e6569d6b6a9c141c926042e3cf7ecc3e641","3674ec4b0dcdb909b8b00d6b3dccc892ab95e01d","379997d86b163f5dc7e95de76e26fa055361a2d1","38a495e4277fb7ec8423e9fd0107b4ccc599848e","3ccdd6d026ca0ec51063ff4501901ac92e8ace6a","47e47282414aa1e91804456e290193f4cbdbd579","550ae67dfdf8fcfa8fb0ac68ccbe2ac68e13fb0f","568ea8520dbf58f1e7823f095e32d2cc57333c33","5a29f5341bebab0dda2165a49d3fed9e6109e6f1","7629d5a032f516a3c7f1bec5fb6e991c2f7a992f","7e65c1fe521116d247688b8f11edd4bab4af6f4e","7fd9e40cb69ccfee70924e6dd6c2bc393a0043f8","80e52c5cd5d89cd88826ad5b06378431f4cf693b","822743dd987bc2f07e52ab07a3c2ef4ab05f625f","8aaa1886a0dee4b7ae1bd6349078731139afd46a","8f8b9b03f070d3279351c02d6573ce528e99a1b4","955f860712e938c9d1140e4fda41ff1535c53272","9cb48d726ae3754393b90d2c8afae1e9218f9079","9d00f1ef8690f7bf8a23b6b7860f78f9b67838ca","a931482f3972bda57dcf966fce9a3bbe9b4d8320","b8694256532a2f13a5808c426e0c54e104d1775b","cb652516a1e8b1dc4f908f3cb6f85a6cae02d864","e84aba4ed0624aaac53f80df0ddcc380e4ff653d","e8b7fb2df91dbd1b0efc77ae3a120754295c68e3","ebf9553952e51c8ef2b534c5e30007621938d9cf"]);
-export const acceptedStage10FreshAdapter=Object.freeze([]);
-export const additionalStage10FreshAdapterBootstrapRefs=Object.freeze([]);
+export const acceptedStage10FreshAdapter=Object.freeze([
+  {
+    "path": "scripts/fetch-source-lineage.mjs",
+    "blob": "2e06636d044d8dbe72a19d186711caa7a871bbae",
+    "sha256": "0c88e61e3dc495a364861f319a2d5df400b71332101760b6c06f525115df399b"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-preflight-stage8.mjs",
+    "blob": "2c02de0b87903940539fba041659fe8424fda7b9",
+    "sha256": "c56bfcda937b2b3abec703119b01fc6ebcb3aa6413a08bf2ed144fc7720178d4"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs",
+    "blob": "affe2aa5f1c6109bf85d645fb43797d3ac966f19",
+    "sha256": "e6f259f81c204b5c4670b8def52d28578023a67da07647d3a9b2bda593e76a05"
+  },
+  {
+    "path": "tests/next-engineering-20261115/source-admission-fresh-adapter.mjs",
+    "blob": "ca4765053abc06cec06136fb6f725822c454b9c7",
+    "sha256": "736e1b7ca853b1366f1af8c8638831452910024e392d98a39373c9d8d55ea4f7"
+  },
+  {
+    "path": "tests/next-engineering-20261115/source-availability.test.mjs",
+    "blob": "45485d44e8ea1632e7b93bf3222bfcbc52e4bf7a",
+    "sha256": "de0244e509c1965145bee51cd0a3020127557cf7348f062761123b2286c6cf50"
+  },
+  {
+    "path": "tests/parallel-source-20261110/bootstrap.mjs",
+    "blob": "f78d7006323c01085cb0a27afc09fcadceb76604",
+    "sha256": "1be5dffa863b452e734e5a910e2dd16e757f0b51db01b84713f14ebfe8b29db3"
+  },
+  {
+    "path": "tests/parallel-source-20261110/core.mjs",
+    "blob": "5041466a65105046a0370dbe8673d5a2e7cce908",
+    "sha256": "c3c9ce27915d25d5e1d62b11ebfafa87c5fd066b58ee1607ed7f32879a2e51f9"
+  },
+  {
+    "path": "docs/next-engineering-20261115/source/guard-capture-fresh-adapter.json",
+    "blob": "33ef959400f3919d474471094e1b83e15fe6254c",
+    "sha256": "f5b1557a2def8d635714ca7bb4b0c09f9444cc0f8267895619b4803c6d9f4f19"
+  },
+  {
+    "path": "src/components/calculator-factory-portal.tsx",
+    "blob": "897b31ce2bf64e94031b3004fa8b01123ce56043",
+    "sha256": "3e6c088ded6f0bc05e2893fc830e166b3149c9f5578f157698944aa0a3609320"
+  },
+  {
+    "path": "src/components/next-engineering-analysis.test.tsx",
+    "blob": "1f6c6a9664cc29e9de76af4b8fea3139b964bd80",
+    "sha256": "99b7a1065acc24e7810c2771f93c769155023b0e6650a145ed2ab91f69d3ecf8"
+  },
+  {
+    "path": "src/components/next-engineering-analysis.tsx",
+    "blob": "3b6034b058488a14ffdd8d2982ed7b8eb15191ec",
+    "sha256": "7a3358c374a3ae1d6d81b7fa97e0cab26f7bfb80a785de8f6aac6f7b0ef0ec2c"
+  },
+  {
+    "path": "src/lib/business/factory-nine-sharing.test.ts",
+    "blob": "e9d2548dd59a4d3eb66eba5ab720752672197f63",
+    "sha256": "a65f9576fbbb391ce14e21cefd68e75572028bd4900bdcb6cca3751f4ede3273"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/business.ts",
+    "blob": "472c79202852618e27cc3af19d801b41cebc8ce2",
+    "sha256": "a92bf9b766442834deb217c65ee14c0c8c36594f02c75f8f0a863414d3f215ea"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts",
+    "blob": "30a9522fad7f0e8b7795af9ba70e844e22d966fe",
+    "sha256": "b9dbfe201541b15175dbc9043ec2cfae0839f1503b4600626cbfada4c1d006eb"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-a.ts",
+    "blob": "434023f3f8ba88c4e9c7477751f935b9e1ab898f",
+    "sha256": "d03e9bb0c3a59f5b232b68ffea3205297a07c49b0016fae1b04bf0b9d9ded37a"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts",
+    "blob": "f001871a1cab16ce1a5b3755a1e4bedace179f68",
+    "sha256": "464aef407d0f024d76401adf232114d32e4c0a971b007d0d24288331c87aba46"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-b.ts",
+    "blob": "b688d2646831bf922a197131741cb6d654ff42c5",
+    "sha256": "835435adab7b7c2caab0c8e045e041f94009d779cfe4a59d9d99717502444580"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+    "blob": "706908108d8967f2efa78fd08f0d7064b78d4dc8",
+    "sha256": "045d1b30bdf9144ee31673665da1879359bdb90d86c25be031bdacbb9dc9a2eb"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-core.ts",
+    "blob": "8fe50d2a203e228dfb9285c08c887604218a55b7",
+    "sha256": "b50db1e836a0a0858281005dc384cf312ea7fba117a14257020cc962e1ce33ec"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+    "blob": "e4e7641c64fd603adc886adb0b4bef98d7142bba",
+    "sha256": "73e69998be3678a787cbaaf016a8a980fe267ec958acf472c7eaeddd86ce6d24"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts",
+    "blob": "190ea72b11ff688b6f818518f9e24ff3d6da43fd",
+    "sha256": "1424ba796264a7bce6cea3b0bb8a6fc747a192f351b0be43c159ca4344fc7b21"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-statistics-a.ts",
+    "blob": "599eef3451d3c6e985437fc1d1aab2a1efc3788a",
+    "sha256": "3fcbab24b57ff249d77477370ae4dca301e729245ef2591e01719b34962eb755"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-statistics-b.test.ts",
+    "blob": "3154c6b181efb63851e0725d4351ac6d95285622",
+    "sha256": "4957ce204c5d16eb3a202664c28ca8c4fabe79f6b0ac6c025fd3744cac361808"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering-statistics-b.ts",
+    "blob": "2d0a6175d9a7c07a6f1b3f5c7accd648529d7a25",
+    "sha256": "3ac2447f87852d50ba76f51aa852964116fab7a9cf7e3269df932d35e0204b5b"
+  },
+  {
+    "path": "src/lib/calculator-factory/completion/next-engineering.ts",
+    "blob": "3467dca9540bdcae09b692ae6bd87d321e6f03c2",
+    "sha256": "82ba8f13c54e165b2a4d56420a7e65df4d99da453329f7040cff7d162cea1ad4"
+  },
+  {
+    "path": "src/lib/calculator-factory/registry.test.ts",
+    "blob": "0af71d8b9d3447279a17be51258d89420e1ea1af",
+    "sha256": "e6f5adecb9e49668791caefb36f02ac99d4c42cd509a74854f5439cbaf764c0d"
+  },
+  {
+    "path": "src/lib/calculator-factory/registry.ts",
+    "blob": "37b2aa94913ffea8a7416bf24957173ccfbc78f7",
+    "sha256": "85653a120bc3be44867cbec29319e895d9fcf78d5fe27e83d7a96ee0cdf4b925"
+  },
+  {
+    "path": "src/lib/completion-wave-20261113/sql-successor.test.ts",
+    "blob": "c44d3a8d434e84287a88980800a31503472eb67f",
+    "sha256": "acf845d5b44140a490157c75dcfa9adc6d7b2a45facdefdae1d930b922c4ce99"
+  },
+  {
+    "path": "src/lib/native-delivery/factory-automation-contract.test.ts",
+    "blob": "648d6da59de72e2c9776e3b814db517796d2e678",
+    "sha256": "bd53184b4f10c10f29c6ba4f7c1e1149a03388a2264655bce8ab1e1385525676"
+  },
+  {
+    "path": "src/lib/native-delivery/factory-delivery-catalog.ts",
+    "blob": "c6d7c371a962e8b1d01f0a725e3651786a426385",
+    "sha256": "761c1a546635d3a4ab34302d3a7326d3b0a5bea7769181d876ab27d8b274a9be"
+  },
+  {
+    "path": "src/lib/native-delivery/factory-embed-contract.test.ts",
+    "blob": "0557d900af11db5ab634461bb5ace0642dce5824",
+    "sha256": "e9886a19526a02743646ef9ed85771a438b4e27ba04c91ba0de09fadc1fca538"
+  },
+  {
+    "path": "src/lib/registered-snapshot-verification.ts",
+    "blob": "f01ce77d1e69e537e0c11a94204f3730d021cda8",
+    "sha256": "7858d334f0abaf70b91bab8ae1f8681ace559f49a16c7b334867d4ab48c576b9"
+  }
+]);
+export const additionalStage10FreshAdapterBootstrapRefs=Object.freeze(["09cf034d0a5f8f2ac82352cb3118ae8374e56294","0ec51bf308caa466840d3344a7572dc79c67d089","1034034ddb3c106eb7695f90f8f7d429b6dfc9c7","13298943d7357e4593c25772c3e7d9db118db623","26c222457278bf69b4f351d0cc100de47ca9eb33","2b74b7a5c81bbae7625451df4f7f082b5452093b","2f74af87d1ce41b5aa229a401baa55ac7a3c0d22","347c9e6569d6b6a9c141c926042e3cf7ecc3e641","3674ec4b0dcdb909b8b00d6b3dccc892ab95e01d","379997d86b163f5dc7e95de76e26fa055361a2d1","38a495e4277fb7ec8423e9fd0107b4ccc599848e","3ccdd6d026ca0ec51063ff4501901ac92e8ace6a","48f80ecd41ca57e139cb5db694afa8da4add09ef","550ae67dfdf8fcfa8fb0ac68ccbe2ac68e13fb0f","568ea8520dbf58f1e7823f095e32d2cc57333c33","5a29f5341bebab0dda2165a49d3fed9e6109e6f1","7629d5a032f516a3c7f1bec5fb6e991c2f7a992f","7e65c1fe521116d247688b8f11edd4bab4af6f4e","7fd9e40cb69ccfee70924e6dd6c2bc393a0043f8","80e52c5cd5d89cd88826ad5b06378431f4cf693b","822743dd987bc2f07e52ab07a3c2ef4ab05f625f","8aaa1886a0dee4b7ae1bd6349078731139afd46a","8f8b9b03f070d3279351c02d6573ce528e99a1b4","955f860712e938c9d1140e4fda41ff1535c53272","9cb48d726ae3754393b90d2c8afae1e9218f9079","9d00f1ef8690f7bf8a23b6b7860f78f9b67838ca","a931482f3972bda57dcf966fce9a3bbe9b4d8320","b8694256532a2f13a5808c426e0c54e104d1775b","ba5b1e5d854d137c9fabfeb782fd91ec43e7d2e0","cb652516a1e8b1dc4f908f3cb6f85a6cae02d864","e84aba4ed0624aaac53f80df0ddcc380e4ff653d","e8b7fb2df91dbd1b0efc77ae3a120754295c68e3","ebf9553952e51c8ef2b534c5e30007621938d9cf"]);
 export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8,...acceptedStage8V3,...acceptedStage8V4,...acceptedStage8V5,...acceptedStage8V6,...acceptedStage8V7,...acceptedStage8V8,...acceptedStage8V9,...acceptedStage8V10,...acceptedStage8V11,...acceptedStage8V12,...acceptedStage8V13,...acceptedStage8V14,...acceptedStage8V15,...acceptedStage8V16,...acceptedStage8V17,...acceptedStage8V18,...acceptedStage8V19,...acceptedStage8V20,...acceptedStage8V21,...acceptedStage8V22,...acceptedStage8V23,...acceptedStage8V24,...acceptedStage8V25,...acceptedStage8V26,...acceptedStage8V27,...acceptedStage8V28,...acceptedStage8V29,...acceptedStage8V30,...acceptedStage8V31,...acceptedStage8V32,...acceptedStage8V33,...acceptedStage8V34,...acceptedStage8V35,...acceptedStage8V36,...acceptedStage8V37,...acceptedStage8V38,...acceptedStage8V39,...acceptedStage8V40,...acceptedStage8V41,...acceptedStage8V42,...acceptedStage8V43,...acceptedStage8V44,...acceptedStage8V45,...acceptedStage10,...acceptedStage10Review2,...acceptedStage10Availability,...acceptedStage10Deadline,...acceptedStage10Lint,...acceptedStage10Selector,...acceptedStage10Current24,...acceptedStage10NativeBatch,...acceptedStage10Wrappers,...acceptedStage10Private8,...acceptedStage10FreshAuthority,...acceptedStage10FreshAdapter].map(row=>[row.path,row])).values()]);
 for(const record of accepted)Object.freeze(record);
 export function verifyParallelAuthority(read,git){
