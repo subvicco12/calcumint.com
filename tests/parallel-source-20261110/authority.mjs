@@ -12482,8 +12482,79 @@ export const acceptedStage10=Object.freeze([
   }
 ]);
 export const additionalStage10BootstrapRefs=Object.freeze(["1034034ddb3c106eb7695f90f8f7d429b6dfc9c7","3674ec4b0dcdb909b8b00d6b3dccc892ab95e01d","3ccdd6d026ca0ec51063ff4501901ac92e8ace6a","550ae67dfdf8fcfa8fb0ac68ccbe2ac68e13fb0f","568ea8520dbf58f1e7823f095e32d2cc57333c33","5a29f5341bebab0dda2165a49d3fed9e6109e6f1","7629d5a032f516a3c7f1bec5fb6e991c2f7a992f","9cb48d726ae3754393b90d2c8afae1e9218f9079","9d00f1ef8690f7bf8a23b6b7860f78f9b67838ca","cb652516a1e8b1dc4f908f3cb6f85a6cae02d864"]);
-export const acceptedStage10Review2=Object.freeze([]);
-export const additionalStage10Review2BootstrapRefs=Object.freeze([]);
+export const acceptedStage10Review2=Object.freeze([
+  {
+    "path": "scripts/fetch-source-lineage.mjs",
+    "blob": "555cdb249c53d585186a9225efc1ed6b9bd50f4c",
+    "sha256": "038e36a10664567f49fce9c1e8ae4c0ce35d7ca2f83949922078827ff1cfb4c2"
+  },
+  {
+    "path": "scripts/product-completion-stage8.mjs",
+    "blob": "2aec951b057898dcd297a47b7e7140e5fd8c5939",
+    "sha256": "c3b1aefa06a983802c288e7090f3f80e9f7112d39b7c43d4b0d49e7938b222a7"
+  },
+  {
+    "path": "tests/four-worker-integration-20261115/source-stage9.mjs",
+    "blob": "69458b16b689348dd95f3464fd5db2b635e4fa06",
+    "sha256": "67b90ed8285ac050f97ca00525e03cda4cfa8130b58467a976016310d9d958d3"
+  },
+  {
+    "path": "tests/milestone100-20261114/receipt-source-path-stage8.mjs",
+    "blob": "e13cae911fe72a8ecb158230561fa2baa9e7a717",
+    "sha256": "db26828b3ec33f23ddb1320bf92a2f744781bd7a09ed7651b7891bd282d2ff39"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-preflight-stage8.mjs",
+    "blob": "74cd0bc7e39c501c6b06f49b5a7a9b8076f6c01f",
+    "sha256": "b7c479398f0edae2c98794921a80b8f0106efaad664ecb3a2640e30cadd9194d"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-live.test.mjs",
+    "blob": "c40b2cbaa7abc666db708b4342b6f7e62925d96f",
+    "sha256": "7687529e4fe8e2a23f6bf9a45112513e1ee9757dc6a46ea7b45186d837acd023"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8.mjs",
+    "blob": "f74237232f8b3928bd3d73afaaf686ef235aa52f",
+    "sha256": "42f04d9d6a8a9c8b9af61e4db03a65781a960f55a6edb3efb67861900dec1e14"
+  },
+  {
+    "path": "tests/next-engineering-20261115/source-admission-review2.mjs",
+    "blob": "38951f08cd245fd52e6067644d26af742826140e",
+    "sha256": "6a0d573bdb2934f52b018d9ebee0c30c8573696004ab2c3f0f10deb99d0bcdb2"
+  },
+  {
+    "path": "tests/next-engineering-20261115/source-named-current.test.mjs",
+    "blob": "6ddd655115f9e5ecdf5dea1e96be605df0ce0083",
+    "sha256": "0d3cb40b41a657c69b19b86bb406feee54439b01913711580c5f270c21fdeaa7"
+  },
+  {
+    "path": "tests/next-engineering-20261115/source-stage10.mjs",
+    "blob": "7f3fe31ac24866512b8f9388529b83a8d770e13d",
+    "sha256": "034b30251dcc082910a15bb3fbb8d5069f39003f4f582a395246764785d42285"
+  },
+  {
+    "path": "tests/next-engineering-20261115/source-stage10.test.mjs",
+    "blob": "e51a1b6d5c238940a82282eb628ff55e0f70f99b",
+    "sha256": "4b0e0b2df070eef1235625c70ca0098f577388f8cbb17ad2077aa17b101d028c"
+  },
+  {
+    "path": "tests/parallel-source-20261110/bootstrap.mjs",
+    "blob": "79b0adc6c4e40297eaa83db56cd2ef5ab9184091",
+    "sha256": "6e2a00d8fd8b64a09f6cc392fcb550de441838620e6da30b85607c516066b670"
+  },
+  {
+    "path": "tests/parallel-source-20261110/core.mjs",
+    "blob": "d87d5fda2cc1f9199e66223c34e889c556023e67",
+    "sha256": "00a3ae1bf7a5e0c8c0afb420f280decabefbd342d2eff6d9c58d0b9fdf30dab0"
+  },
+  {
+    "path": "docs/next-engineering-20261115/source/guard-capture-review2.json",
+    "blob": "1e7c33b4ab2a2f6053e8b7f6f82d33734602f61b",
+    "sha256": "1597ab94e3b5f29e036c4a4e11040f7c4c8cf91c53259cc5662e87c09b0ab663"
+  }
+]);
+export const additionalStage10Review2BootstrapRefs=Object.freeze(["38a495e4277fb7ec8423e9fd0107b4ccc599848e"]);
 export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8,...acceptedStage8V3,...acceptedStage8V4,...acceptedStage8V5,...acceptedStage8V6,...acceptedStage8V7,...acceptedStage8V8,...acceptedStage8V9,...acceptedStage8V10,...acceptedStage8V11,...acceptedStage8V12,...acceptedStage8V13,...acceptedStage8V14,...acceptedStage8V15,...acceptedStage8V16,...acceptedStage8V17,...acceptedStage8V18,...acceptedStage8V19,...acceptedStage8V20,...acceptedStage8V21,...acceptedStage8V22,...acceptedStage8V23,...acceptedStage8V24,...acceptedStage8V25,...acceptedStage8V26,...acceptedStage8V27,...acceptedStage8V28,...acceptedStage8V29,...acceptedStage8V30,...acceptedStage8V31,...acceptedStage8V32,...acceptedStage8V33,...acceptedStage8V34,...acceptedStage8V35,...acceptedStage8V36,...acceptedStage8V37,...acceptedStage8V38,...acceptedStage8V39,...acceptedStage8V40,...acceptedStage8V41,...acceptedStage8V42,...acceptedStage8V43,...acceptedStage8V44,...acceptedStage8V45,...acceptedStage10,...acceptedStage10Review2].map(row=>[row.path,row])).values()]);
 for(const record of accepted)Object.freeze(record);
 export function verifyParallelAuthority(read,git){
