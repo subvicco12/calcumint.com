@@ -201,10 +201,11 @@ test('mandatory source guard regressions exercise exact source and immutable ava
  const heavy=['tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs','source-authority-preload.test.mjs'].map(file=>remaining.find(row=>row[0]===file));assert(scope&&heavy.every(Boolean),'Fixed source guard workload required');
  const companion=remaining.filter(row=>row!==scope&&!heavy.includes(row));
  const record=async row=>{results.set(row[0],(await Promise.allSettled([run(row)]))[0]);};
- let scopeSettled=false,nextCompanion=0,nextHeavy=0,releaseScope;const scopeDone=new Promise(resolve=>{releaseScope=resolve;});
- // Exactly two workers. Only the scope must settle before either large authority child starts.
- const worker=async()=>{for(;;){let row;if(scopeSettled&&nextHeavy<heavy.length)row=heavy[nextHeavy++];else if(nextCompanion<companion.length)row=companion[nextCompanion++];else if(!scopeSettled){await scopeDone;continue;}else return;await record(row);}};
- await Promise.all([(async()=>{await record(scope);scopeSettled=true;releaseScope();await worker();})(),worker()]);
+ // This observation-heavy child owns its original 30-second window alone.
+ await record(scope);
+ const priority=['tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs','source-authority-preload.test.mjs','tests/milestone100-20261114/retained-stage7-preflight.mjs','tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs','source-test-stage6.test.mjs'];
+ const rank=file=>priority.includes(file)?priority.indexOf(file):priority.length,pool=[...heavy,...companion].sort((a,b)=>rank(a[0])-rank(b[0]));let nextIndex=0;
+ const worker=async()=>{while(nextIndex<pool.length)await record(pool[nextIndex++]);};await Promise.all([worker(),worker()]);
  const failures=[];
  // Report every child in the original declared order, even when an earlier child failed.
  for(const [file,count]of files){
