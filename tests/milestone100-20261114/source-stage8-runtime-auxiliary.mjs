@@ -35,7 +35,7 @@ export function proveRuntimeAuxiliarySuccessor({record,currentBytes,input,witnes
  const before=actual.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.match(before,/^[a-f0-9]{40}$/);
  assert.equal(sourceStage8Policy.codeRef,runtimeAuxiliarySource.current.ref);assert.equal(sourceStage8Policy.paths.length,24);
  let proof;
- if(witness===undefined){proof=verifyCurrentParallelAuthorityAndSourceView({...input,root});assert.equal(proof.actualInput.read,actual.read,'The same registered actual source reader is required');assert.equal(resolve(proof.actualInput.root),resolve(root),'The same registered actual source root is required');assertSourceStage8HeadStable(proof);}
+ if(witness===undefined){proof=verifyCurrentParallelAuthorityAndSourceView({read:input.read,git:input.git,root});assert.equal(proof.actualInput.read,actual.read,'The same registered actual source reader is required');assert.equal(resolve(proof.actualInput.root),resolve(root),'The same registered actual source root is required');assertSourceStage8HeadStable(proof);}
  else replayActualAuthorityWitness(witness,input);
  const next=runtimeAuxiliaryBatchSuccessor;assert.equal(next.path,runtimeAuxiliarySource.current.path);
  const authority=accepted.find(row=>row.path===next.path);assert(authority,'Independently admitted runtime guard required');assert.equal(authority.blob,next.blob);assert.equal(authority.sha256,next.sha256);
