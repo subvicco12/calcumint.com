@@ -4,9 +4,9 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {lstatSync,realpathSync} from 'node:fs';
 import {resolve} from 'node:path';
-import {provePinnedSourceStage8,sourceStage8Policy} from './source-stage8-activation.mjs';
+import {sourceStage8Policy} from './source-stage8-activation.mjs';
 import {sourceStage8HistoricalView,assertSourceStage8HeadStable} from './source-stage8.mjs';
-import {accepted,verifyParallelAuthority} from '../parallel-source-20261110/authority.mjs';
+import {accepted,verifyCurrentParallelAuthorityAndSourceView} from '../parallel-source-20261110/authority.mjs';
 export const runtimeAuxiliarySource=Object.freeze({prior:Object.freeze({"path": "tests/next-cohort-20261110/source/retained-runtime.mjs", "ref": "054854bceed263ba59e8cd0052f1f3e9b1ea8e30", "blob": "99666fd1d09a2b7f782b05d4dbd9f9656be08eea", "bytes": 24134, "sha256": "a6b0b939f5e5cee3072cc2776bc3dbf6663a7c70731419a3905d7904a2f87f0c"}),current:Object.freeze({"path": "tests/next-cohort-20261110/source/retained-runtime.mjs", "ref": "2a59a85c6e935c43e9a5a71ae15c9954e4fcab42", "blob": "15ba13c6dda37bf18bb5ecee22e948daeefc4280", "bytes": 26117, "sha256": "6556bcf9ffb5bcaf7873a6d66718933343cf46c311f8895b27aee3386bcf6676"})});
 export const runtimeAuxiliaryBatchPredecessor=Object.freeze({"path":"tests/next-cohort-20261110/source/retained-runtime.mjs","ref":"9fa7614e903ef0027298ee6ac63be93bbae5eb47","blob":"c729ed47e4feb489bc3eea33db8b6cef518c6154","bytes":29084,"sha256":"7a436834029725c7922bb8ee0500c4fd033d6ad00c3d56a301568ba9b2cd524e"});
 export const runtimeAuxiliaryBoundHeadPredecessor=Object.freeze({"path":"tests/next-cohort-20261110/source/retained-runtime.mjs","ref":"88de7068ba2674aab85df5611840c4b029ef68c0","blob":"777f9b68d5a0b41d5c21d2650f7199867d1dc503","bytes":29359,"sha256":"e0f6a8da85bbb125270670cecaecf9ce98d7aa5eff6ae72c28bac9f91bd42455"});
@@ -30,12 +30,12 @@ export function proveRuntimeAuxiliarySuccessor({record,currentBytes,input,witnes
  assert.equal(Object.keys(extra).length,0,'Caller-nominated current records or proof options are forbidden');
  assert.deepEqual(record,runtimeAuxiliarySource.prior,'Only the literal personal auxiliary record may advance');
  assert.equal(typeof input?.read,'function','Explicit source reader required');assert.equal(typeof input?.git,'function','Explicit source Git required');
- const retained=sourceStage8HistoricalView(input.git);if(retained)assert.equal(input.read,retained.historicalInput.read,'Historical source reader capability differs');
+ const retained=sourceStage8HistoricalView(input.git);if(retained){assert.equal(input.read,retained.historicalInput.read,'Historical source reader capability differs');assert.equal(resolve(input.root??retained.historicalInput.root),resolve(retained.historicalInput.root),'Historical source root capability differs');}
  const actual=retained?.actualInput??input,root=actual.root??process.cwd();
  const before=actual.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.match(before,/^[a-f0-9]{40}$/);
  assert.equal(sourceStage8Policy.codeRef,runtimeAuxiliarySource.current.ref);assert.equal(sourceStage8Policy.paths.length,24);
  let proof;
- if(witness===undefined){proof=provePinnedSourceStage8({...input,root});assert.equal(proof.actualInput.read,actual.read,'The same registered actual source reader is required');assertSourceStage8HeadStable(proof);verifyParallelAuthority(actual.read,actual.git);}
+ if(witness===undefined){proof=verifyCurrentParallelAuthorityAndSourceView({...input,root});assert.equal(proof.actualInput.read,actual.read,'The same registered actual source reader is required');assert.equal(resolve(proof.actualInput.root),resolve(root),'The same registered actual source root is required');assertSourceStage8HeadStable(proof);}
  else replayActualAuthorityWitness(witness,input);
  const next=runtimeAuxiliaryBatchSuccessor;assert.equal(next.path,runtimeAuxiliarySource.current.path);
  const authority=accepted.find(row=>row.path===next.path);assert(authority,'Independently admitted runtime guard required');assert.equal(authority.blob,next.blob);assert.equal(authority.sha256,next.sha256);
