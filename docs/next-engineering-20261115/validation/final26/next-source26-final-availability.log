@@ -1,0 +1,34 @@
+TAP version 13
+# Subtest: actual pre-npm cold prerequisite set retains original286 and adds every independently pinned Stage7 source and guard ref
+ok 1 - actual pre-npm cold prerequisite set retains original286 and adds every independently pinned Stage7 source and guard ref
+  ---
+  duration_ms: 12.072274
+  type: 'test'
+  ...
+# Subtest: actual warm prerequisites perform both full presence passes and refuse any missing post-fetch identity
+ok 2 - actual warm prerequisites perform both full presence passes and refuse any missing post-fetch identity
+  ---
+  duration_ms: 9.554166
+  type: 'test'
+  ...
+# Subtest: actual cold preflight rejects substituted identities and propagates one bounded fetch failure
+ok 3 - actual cold preflight rejects substituted identities and propagates one bounded fetch failure
+  ---
+  duration_ms: 3.389031
+  type: 'test'
+  ...
+# Subtest: all retained Stage10 authority pins are explicitly available in a fresh shallow fetch
+ok 4 - all retained Stage10 authority pins are explicitly available in a fresh shallow fetch
+  ---
+  duration_ms: 7.290785
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 184.42533

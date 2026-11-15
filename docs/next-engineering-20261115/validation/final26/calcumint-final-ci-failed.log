@@ -1,0 +1,397 @@
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	﻿2026-11-15T16:25:56.2003815Z ##[group]Run if ! command -v pdftotext >/dev/null || ! command -v pdffonts >/dev/null || ! command -v pdftoppm >/dev/null || ! command -v pdfinfo >/dev/null; then
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:56.2004902Z [36;1mif ! command -v pdftotext >/dev/null || ! command -v pdffonts >/dev/null || ! command -v pdftoppm >/dev/null || ! command -v pdfinfo >/dev/null; then[0m
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:56.2005539Z [36;1m  sudo apt-get update -qq[0m
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:56.2005957Z [36;1m  sudo apt-get install -y --no-install-recommends poppler-utils[0m
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:56.2006335Z [36;1mfi[0m
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:56.2006577Z [36;1mnode scripts/assert-pdf-tools.mjs[0m
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:56.2006995Z [36;1mpython3 scripts/product-completion-20261108/inventory.py --check[0m
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:56.2007788Z [36;1mnode --test tests/financial-safety-lineage.test.mjs tests/product-completion-lineage.test.mjs tests/source-lineage-bootstrap.test.mjs[0m
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:56.2008542Z [36;1mnode scripts/check-current-six-candidate-evidence.mjs[0m
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:56.2009005Z [36;1mnode --test tests/full-six-candidate/preview.test.mjs[0m
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:56.2009400Z [36;1mnode tests/full-six-candidate/browser.mjs[0m
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:56.2009784Z [36;1mnode tests/product-completion-20261108/browser.mjs[0m
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:56.2058321Z shell: /usr/bin/bash -e {0}
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:56.2058770Z env:
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:56.2059467Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.zijSh9/opt/google/chrome/chrome
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:56.2060609Z   SIX_CANDIDATE_BROWSER_RECEIPT: /home/runner/work/_temp/six-candidate-closure
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:56.2061384Z   PRODUCT_COMPLETION_BROWSER: /home/runner/work/_temp/six-candidate-closure/product-completion
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:56.2061875Z ##[endgroup]
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:59.1332401Z Reading package lists...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:59.2818025Z Building dependency tree...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:59.2825467Z Reading state information...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:59.3651076Z Solving dependencies...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:59.4470487Z The following additional packages will be installed:
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:59.4476041Z   libgpgmepp7 libpoppler156
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:59.4482416Z Recommended packages:
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:59.4483017Z   poppler-data
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:59.4668698Z The following NEW packages will be installed:
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:59.4673537Z   libgpgmepp7 libpoppler156 poppler-utils
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:59.4878035Z 0 upgraded, 3 newly installed, 0 to remove and 24 not upgraded.
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:59.4879118Z Need to get 1607 kB of archives.
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:59.4879904Z After this operation, 5354 kB of additional disk space will be used.
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:59.4880799Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:59.5826068Z Get:2 http://azure.archive.ubuntu.com/ubuntu resolute/main amd64v3 libgpgmepp7 amd64 2.0.0-2 [132 kB]
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:59.6622853Z Get:3 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64v3 libpoppler156 amd64 26.01.0-2ubuntu0.3 [1243 kB]
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:25:59.7599886Z Get:4 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64v3 poppler-utils amd64 26.01.0-2ubuntu0.3 [231 kB]
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:00.0627107Z Fetched 1607 kB in 0s (5574 kB/s)
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:00.0861269Z Selecting previously unselected package libgpgmepp7:amd64.
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:00.1146274Z (Reading database ... 
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:00.1146694Z (Reading database ... 5%
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:00.1146984Z (Reading database ... 10%
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:00.1147301Z (Reading database ... 15%
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:00.1147568Z (Reading database ... 20%
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:00.1147901Z (Reading database ... 25%
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:00.1149209Z (Reading database ... 30%
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:00.1149646Z (Reading database ... 35%
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:00.1149911Z (Reading database ... 40%
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:00.1150179Z (Reading database ... 45%
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:00.1150445Z (Reading database ... 50%
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:00.1947493Z (Reading database ... 55%
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:00.3929983Z (Reading database ... 60%
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:00.4958458Z (Reading database ... 65%
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:00.6964926Z (Reading database ... 70%
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:00.8434423Z (Reading database ... 75%
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:01.0445810Z (Reading database ... 80%
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:01.2527856Z (Reading database ... 85%
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:01.4423871Z (Reading database ... 90%
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:01.6103325Z (Reading database ... 95%
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:01.6103936Z (Reading database ... 100%
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:01.6104809Z (Reading database ... 213946 files and directories currently installed.)
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:01.6147093Z Preparing to unpack .../libgpgmepp7_2.0.0-2_amd64v3.deb ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:01.6235177Z Unpacking libgpgmepp7:amd64 (2.0.0-2) ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:01.6493205Z Selecting previously unselected package libpoppler156:amd64.
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:01.6631655Z Preparing to unpack .../libpoppler156_26.01.0-2ubuntu0.3_amd64v3.deb ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:01.6638628Z Unpacking libpoppler156:amd64 (26.01.0-2ubuntu0.3) ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:01.7007103Z Selecting previously unselected package poppler-utils.
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:01.7143977Z Preparing to unpack .../poppler-utils_26.01.0-2ubuntu0.3_amd64v3.deb ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:01.7150385Z Unpacking poppler-utils (26.01.0-2ubuntu0.3) ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:01.7671096Z Setting up libgpgmepp7:amd64 (2.0.0-2) ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:01.7687341Z Setting up libpoppler156:amd64 (26.01.0-2ubuntu0.3) ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:01.7704970Z Setting up poppler-utils (26.01.0-2ubuntu0.3) ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:01.7722722Z Processing triggers for man-db (2.13.1-1build1) ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:01.7810982Z Not building database; man-db/auto-update is not 'true'.
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:01.7822964Z Processing triggers for libc-bin (2.43-2ubuntu2.4) ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:02.4622664Z 
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:02.4623558Z Running kernel seems to be up-to-date.
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:02.4624099Z 
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:02.4624366Z Restarting services...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:02.4715586Z 
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:02.4716048Z Service restarts being deferred:
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:02.4719401Z  systemctl restart hosted-compute-agent.service
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:02.4719837Z 
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:02.4720196Z No containers need to be restarted.
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:02.4720571Z 
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:02.4720896Z No user sessions are running outdated binaries.
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:02.4721281Z 
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:02.4721614Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:03.3849974Z {"independentPdfTools":{"pdftotext":"pdftotext version 26.01.0","pdffonts":"pdffonts version 26.01.0","pdftoppm":"pdftoppm version 26.01.0","pdfinfo":"pdfinfo version 26.01.0"}}
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:10.4185925Z PASS: 540 unique IDs; retained native catalog attestation matches exact repository triples; deterministic inventory outputs match. Native workbook bytes not reopened; retained attestation only.
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:10.5364764Z TAP version 13
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0882783Z # Subtest: retains both exact historical financial witness revisions
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0903963Z ok 1 - retains both exact historical financial witness revisions
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0923317Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0924119Z   duration_ms: 2.273952
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0925041Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0925804Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0927119Z # Subtest: admits exact guard successor and frozen historical source: src/calculators/finance/compound-interest.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0929050Z ok 2 - admits exact guard successor and frozen historical source: src/calculators/finance/compound-interest.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0930278Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0930840Z   duration_ms: 32.076216
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0931482Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0932051Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0934542Z # Subtest: rejects changed or reverted current bytes and false historical claim: src/calculators/finance/compound-interest.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0936755Z ok 3 - rejects changed or reverted current bytes and false historical claim: src/calculators/finance/compound-interest.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0937920Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0952895Z   duration_ms: 44.193554
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0954661Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0955305Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0957224Z # Subtest: rejects missing or substituted predecessor and successor objects: src/calculators/finance/compound-interest.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0959212Z ok 4 - rejects missing or substituted predecessor and successor objects: src/calculators/finance/compound-interest.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0960466Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0961067Z   duration_ms: 59.738177
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0961755Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0962372Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0964352Z # Subtest: admits exact guard successor and frozen historical source: src/calculators/finance/loan-payment.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0966279Z ok 5 - admits exact guard successor and frozen historical source: src/calculators/finance/loan-payment.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0967419Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0968006Z   duration_ms: 30.352184
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0968679Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0969285Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0970607Z # Subtest: rejects changed or reverted current bytes and false historical claim: src/calculators/finance/loan-payment.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0972666Z ok 6 - rejects changed or reverted current bytes and false historical claim: src/calculators/finance/loan-payment.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0973997Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0974630Z   duration_ms: 45.814948
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0975227Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0975810Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0977089Z # Subtest: rejects missing or substituted predecessor and successor objects: src/calculators/finance/loan-payment.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0979123Z ok 7 - rejects missing or substituted predecessor and successor objects: src/calculators/finance/loan-payment.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0980431Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0980997Z   duration_ms: 63.015428
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0981648Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0982329Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0983832Z # Subtest: admits exact guard successor and frozen historical source: src/calculators/precision.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0985466Z ok 8 - admits exact guard successor and frozen historical source: src/calculators/precision.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0986511Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0987069Z   duration_ms: 28.153001
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0987690Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0988234Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0989461Z # Subtest: rejects changed or reverted current bytes and false historical claim: src/calculators/precision.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0991176Z ok 9 - rejects changed or reverted current bytes and false historical claim: src/calculators/precision.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0992719Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0993303Z   duration_ms: 43.16767
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0993914Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0994443Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0995938Z # Subtest: rejects missing or substituted predecessor and successor objects: src/calculators/precision.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0997696Z ok 10 - rejects missing or substituted predecessor and successor objects: src/calculators/precision.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0998753Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0999259Z   duration_ms: 61.435637
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.0999819Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.1000352Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.1001213Z # Subtest: unknown and unsafe paths cannot invoke the successor exception
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.1002359Z ok 11 - unknown and unsafe paths cannot invoke the successor exception
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.1003443Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.1003982Z   duration_ms: 0.301352
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.1004566Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:11.1008068Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:17.3881654Z # Subtest: frozen comparison admits only exact financial successors and still rejects unrelated edits
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:17.3892226Z ok 12 - frozen comparison admits only exact financial successors and still rejects unrelated edits
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:17.3897739Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:17.3898371Z   duration_ms: 105.857436
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:17.3899310Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:17.3899937Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:17.3900932Z # Subtest: both publication caller comparisons accept exact pinned precision successor
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:17.3902355Z ok 13 - both publication caller comparisons accept exact pinned precision successor
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:17.3904520Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:17.3905185Z   duration_ms: 6201.509526
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:17.3905919Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:17.3906516Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:21.6652849Z # {"candidateIds":[235,251,275,276,282,283],"exactSourceBindings":41,"canonicalAccepted":0,"publicationEligible":0,"releaseHold":true}
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5094689Z # Subtest: admits exact committed successor: src/calculators/finance/compound-interest.test.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5111714Z ok 14 - admits exact committed successor: src/calculators/finance/compound-interest.test.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5143559Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5162231Z   duration_ms: 76.897664
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5163363Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5164072Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5165340Z # Subtest: rejects uncommitted successor tamper: src/calculators/finance/compound-interest.test.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5167124Z ok 15 - rejects uncommitted successor tamper: src/calculators/finance/compound-interest.test.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5168378Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5193341Z   duration_ms: 0.738208
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5223024Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5243133Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5253757Z # Subtest: rejects rewritten historical claim: src/calculators/finance/compound-interest.test.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5259347Z ok 16 - rejects rewritten historical claim: src/calculators/finance/compound-interest.test.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5260230Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5260572Z   duration_ms: 0.227664
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5260954Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5261292Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5262143Z # Subtest: rejects silent predecessor reversion: src/calculators/finance/compound-interest.test.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5280235Z ok 17 - rejects silent predecessor reversion: src/calculators/finance/compound-interest.test.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5281094Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5281417Z   duration_ms: 0.223827
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5281793Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5282120Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5313341Z # Subtest: rejects unavailable or replaced Git provenance: src/calculators/finance/compound-interest.test.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5314878Z ok 18 - rejects unavailable or replaced Git provenance: src/calculators/finance/compound-interest.test.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5315784Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5316124Z   duration_ms: 0.241811
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5316503Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5317261Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5318096Z # Subtest: rejects corrupted source object: src/calculators/finance/compound-interest.test.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5319323Z ok 19 - rejects corrupted source object: src/calculators/finance/compound-interest.test.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5320090Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5320418Z   duration_ms: 30.528794
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5320808Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5321138Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5321955Z # Subtest: admits exact committed successor: src/components/full-six/candidate-workbench.tsx
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5323385Z ok 20 - admits exact committed successor: src/components/full-six/candidate-workbench.tsx
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5324144Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5324468Z   duration_ms: 162.405304
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5324848Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5325168Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5326002Z # Subtest: rejects uncommitted successor tamper: src/components/full-six/candidate-workbench.tsx
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5327281Z ok 21 - rejects uncommitted successor tamper: src/components/full-six/candidate-workbench.tsx
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5328053Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5328369Z   duration_ms: 0.513157
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5328752Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5329084Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5329954Z # Subtest: rejects rewritten historical claim: src/components/full-six/candidate-workbench.tsx
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5331480Z ok 22 - rejects rewritten historical claim: src/components/full-six/candidate-workbench.tsx
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5332250Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5332748Z   duration_ms: 0.381501
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5333149Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5333714Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5334628Z # Subtest: rejects silent predecessor reversion: src/components/full-six/candidate-workbench.tsx
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5335947Z ok 23 - rejects silent predecessor reversion: src/components/full-six/candidate-workbench.tsx
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5336720Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5337041Z   duration_ms: 0.70776
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5337415Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5337743Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5338734Z # Subtest: rejects unavailable or replaced Git provenance: src/components/full-six/candidate-workbench.tsx
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5340148Z ok 24 - rejects unavailable or replaced Git provenance: src/components/full-six/candidate-workbench.tsx
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5340990Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5341312Z   duration_ms: 0.227304
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5341704Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5342029Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5373030Z # Subtest: rejects corrupted source object: src/components/full-six/candidate-workbench.tsx
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5374613Z ok 25 - rejects corrupted source object: src/components/full-six/candidate-workbench.tsx
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5375370Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5375698Z   duration_ms: 24.502684
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5376081Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5376416Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5377057Z # Subtest: admits exact committed successor: .github/workflows/ci.yml
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5377984Z ok 26 - admits exact committed successor: .github/workflows/ci.yml
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5378595Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5378924Z   duration_ms: 366.79345
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5379317Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5379651Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5380326Z # Subtest: rejects uncommitted successor tamper: .github/workflows/ci.yml
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5381314Z ok 27 - rejects uncommitted successor tamper: .github/workflows/ci.yml
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5381943Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5382279Z   duration_ms: 0.85239
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5382821Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5383157Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5383807Z # Subtest: rejects rewritten historical claim: .github/workflows/ci.yml
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5384754Z ok 28 - rejects rewritten historical claim: .github/workflows/ci.yml
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5385349Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5385670Z   duration_ms: 0.101048
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5386051Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5386371Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5387046Z # Subtest: rejects silent predecessor reversion: .github/workflows/ci.yml
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5388378Z ok 29 - rejects silent predecessor reversion: .github/workflows/ci.yml
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5389012Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5389344Z   duration_ms: 0.768343
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5389720Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5390053Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5390800Z # Subtest: rejects unavailable or replaced Git provenance: .github/workflows/ci.yml
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5391933Z ok 30 - rejects unavailable or replaced Git provenance: .github/workflows/ci.yml
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5392801Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5393126Z   duration_ms: 0.139471
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5393515Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5393836Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5394472Z # Subtest: rejects corrupted source object: .github/workflows/ci.yml
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5395373Z ok 31 - rejects corrupted source object: .github/workflows/ci.yml
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5395946Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5396278Z   duration_ms: 31.054564
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5396675Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5397000Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5397577Z # Subtest: does not admit any unrelated engine, UI or unsafe path
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5398419Z ok 32 - does not admit any unrelated engine, UI or unsafe path
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5398974Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5399297Z   duration_ms: 0.303997
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5399673Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5399998Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5401134Z # Subtest: integrated checker rejects a predecessor reversion even with its valid old hash: src/calculators/finance/compound-interest.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5433077Z ok 33 - integrated checker rejects a predecessor reversion even with its valid old hash: src/calculators/finance/compound-interest.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5433934Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5434157Z   duration_ms: 63.696038
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5434415Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5434633Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5435345Z # Subtest: integrated checker rejects a predecessor reversion even with its valid old hash: src/components/full-six/candidate-workbench.tsx
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5436444Z ok 34 - integrated checker rejects a predecessor reversion even with its valid old hash: src/components/full-six/candidate-workbench.tsx
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5437039Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5437247Z   duration_ms: 9.410057
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5437498Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5437705Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5438292Z # Subtest: integrated checker rejects a predecessor reversion even with its valid old hash: .github/workflows/ci.yml
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5439206Z ok 35 - integrated checker rejects a predecessor reversion even with its valid old hash: .github/workflows/ci.yml
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5439724Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5440102Z   duration_ms: 9.35482
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5440350Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5440559Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5440988Z # Subtest: integrated checker rejects unrelated source tamper without new approval
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5441630Z ok 36 - integrated checker rejects unrelated source tamper without new approval
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5442033Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5442754Z   duration_ms: 0.350624
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5443214Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5443554Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5444572Z # Subtest: workbench binding rejects supplemental comparison tamper: src/lib/full-six/candidate/scenario-comparison.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5446199Z ok 37 - workbench binding rejects supplemental comparison tamper: src/lib/full-six/candidate/scenario-comparison.ts
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5447105Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5447476Z   duration_ms: 9.195893
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5447853Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5448190Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5449257Z # Subtest: workbench binding rejects supplemental comparison tamper: src/components/full-six/candidate-scenario-comparison.tsx
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5451019Z ok 38 - workbench binding rejects supplemental comparison tamper: src/components/full-six/candidate-scenario-comparison.tsx
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5451975Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5452779Z   duration_ms: 9.094643
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5453172Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:22.5453484Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2024960Z # Subtest: reuses verified revisions without redundant network fetch
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2033666Z ok 39 - reuses verified revisions without redundant network fetch
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2034663Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2035222Z   duration_ms: 4.399246
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2035657Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2036057Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2036796Z # Subtest: fetches only exact missing commits and re-verifies them
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2037859Z ok 40 - fetches only exact missing commits and re-verifies them
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2038601Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2038983Z   duration_ms: 5.466287
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2039470Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2039895Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2073332Z # Subtest: fails closed on absent or substituted revisions after fetch
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2074807Z ok 41 - fails closed on absent or substituted revisions after fetch
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2089013Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2089552Z   duration_ms: 5.533651
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2090124Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2090598Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2091764Z # Subtest: standalone exact bootstrap source capture preserves frozen manifest and governing verifier sources
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2093782Z not ok 42 - standalone exact bootstrap source capture preserves frozen manifest and governing verifier sources
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2094881Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2095281Z   duration_ms: 13940.006227
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2095731Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2096783Z   location: '/home/runner/work/calcumint.com/calcumint.com/tests/source-lineage-bootstrap.test.mjs:45:1'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2098268Z   failureType: 'testCodeFailure'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2098775Z   error: |-
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2099219Z     Expected values to be strictly equal:
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2099756Z     + actual - expected
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2100161Z     
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2100609Z     + '174c42d16f0eaad9ced52069a17c239d73337b4d'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2101167Z     - '1f4b9885c7f483c5ec2282e50d72a1fefe3e4a19'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2101484Z     
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2101702Z   code: 'ERR_ASSERTION'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2101961Z   name: 'AssertionError'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2102303Z   expected: '1f4b9885c7f483c5ec2282e50d72a1fefe3e4a19'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2102971Z   actual: '174c42d16f0eaad9ced52069a17c239d73337b4d'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2103311Z   operator: 'strictEqual'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2103563Z   stack: |-
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2104329Z     proveSourcePreflightAndHistoricalInputs (file:///home/runner/work/calcumint.com/calcumint.com/tests/milestone100-20261114/source-preflight-stage8.mjs:51:870)
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2105509Z     verifyBootstrapSuccession (file:///home/runner/work/calcumint.com/calcumint.com/tests/source-lineage-bootstrap.test.mjs:26:15)
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2106575Z     TestContext.<anonymous> (file:///home/runner/work/calcumint.com/calcumint.com/tests/source-lineage-bootstrap.test.mjs:45:124)
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2107259Z     Test.runInAsyncScope (node:async_hooks:214:14)
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2107667Z     Test.run (node:internal/test_runner/test:1047:25)
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2108143Z     Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2108628Z     Test.postRun (node:internal/test_runner/test:1173:19)
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2109058Z     Test.run (node:internal/test_runner/test:1101:12)
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2109597Z     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2110055Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2110626Z # Subtest: bootstrap source audit refuses old-valid reversion, arbitrary tamper and missing Git proof
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2111476Z ok 43 - bootstrap source audit refuses old-valid reversion, arbitrary tamper and missing Git proof
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2111981Z   ---
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2112228Z   duration_ms: 7597.360413
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2112744Z   type: 'test'
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2112974Z   ...
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2205562Z 1..43
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2206109Z # tests 43
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2206863Z # suites 0
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2207540Z # pass 42
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2208142Z # fail 1
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2208752Z # cancelled 0
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2209346Z # skipped 0
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2209976Z # todo 0
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2210576Z # duration_ms 21703.133964
+publication-factory	Approved six-candidate worker, workflow and replay acceptance	2026-11-15T16:26:32.2282017Z ##[error]Process completed with exit code 1.
+validate	Require every verification job to succeed	﻿2026-11-15T16:37:36.7750756Z ##[group]Run test "$CHECKS_RESULT" = success
+validate	Require every verification job to succeed	2026-11-15T16:37:36.7752323Z [36;1mtest "$CHECKS_RESULT" = success[0m
+validate	Require every verification job to succeed	2026-11-15T16:37:36.7753912Z [36;1mtest "$BUILD_RESULT" = success[0m
+validate	Require every verification job to succeed	2026-11-15T16:37:36.7755509Z [36;1mtest "$FULL_PRODUCT_RESULT" = success[0m
+validate	Require every verification job to succeed	2026-11-15T16:37:36.7757157Z [36;1mtest "$SOURCE_ACCEPTANCE_RESULT" = success[0m
+validate	Require every verification job to succeed	2026-11-15T16:37:36.7758918Z [36;1mtest "$PUBLICATION_FACTORY_RESULT" = success[0m
+validate	Require every verification job to succeed	2026-11-15T16:37:36.8306510Z shell: /usr/bin/bash -e {0}
+validate	Require every verification job to succeed	2026-11-15T16:37:36.8307901Z env:
+validate	Require every verification job to succeed	2026-11-15T16:37:36.8308570Z   CHECKS_RESULT: success
+validate	Require every verification job to succeed	2026-11-15T16:37:36.8309239Z   BUILD_RESULT: success
+validate	Require every verification job to succeed	2026-11-15T16:37:36.8309858Z   FULL_PRODUCT_RESULT: success
+validate	Require every verification job to succeed	2026-11-15T16:37:36.8310583Z   SOURCE_ACCEPTANCE_RESULT: cancelled
+validate	Require every verification job to succeed	2026-11-15T16:37:36.8311331Z   PUBLICATION_FACTORY_RESULT: failure
+validate	Require every verification job to succeed	2026-11-15T16:37:36.8311997Z ##[endgroup]
+validate	Require every verification job to succeed	2026-11-15T16:37:36.8547599Z ##[error]Process completed with exit code 1.
