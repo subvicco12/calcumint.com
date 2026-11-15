@@ -1,3 +1,4 @@
+import {completionGitReader} from './git-reader.mjs';
 import {workflowSourceEvidenceClaims} from '../milestone100-20261114/workflow-source-evidence-claims.mjs';
 import {negativeReject as rejectWrongWorkflowClaim} from '../milestone100-20261114/source-stage8-negative-workflow-claim.mjs';
 import {runCompositionSourceEvidenceBatch} from '../milestone100-20261114/composition-source-evidence-batch.mjs';
@@ -45,7 +46,7 @@ import {testStagePolicy} from '../completion-first-20261112/test-stage-policy.mj
 import {testStageRecords,proveTestStageAndHistoricalInputs} from '../completion-first-20261112/test-stage.mjs';
 import {ensureTestStageObjects} from './bootstrap.mjs';
 import {personalPolicy,personalCapturePath} from '../completion-first-20261112/personal-policy.mjs';
-import {personalRecords,personalAuxiliaryRecords,verifyPersonalAndHistoricalWorkflow} from '../completion-first-20261112/personal-stage.mjs';
+import {personalRecords,personalAuxiliaryRecords,verifyPersonalAndHistoricalWorkflow,rejectChangedPersonalWorkflowSourceBytes} from '../completion-first-20261112/personal-stage.mjs';
 const personalPaths=new Set(personalPolicy.paths),personalAuxiliaryPaths=new Set(personalPolicy.auxiliaryPaths);
 export const appRef='f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5';
 export const applicationBaselineRef='cef0352fca135b252b981b959c3529170b1f0c81';
@@ -56,7 +57,7 @@ export const retainedStage7V6CapturePath='docs/parallel-source-20261110/capture-
 export const retainedStage7V7CapturePath='docs/parallel-source-20261110/capture-revision66.json';
 export const retainedStage7V8CapturePath='docs/parallel-source-20261110/capture-revision67.json';
 const retainedStage8CapturePath='docs/parallel-source-20261110/capture-revision68.json';
-export const capturePath='docs/next-engineering-20261115/source/guard-capture-native-batch.json';
+export const capturePath='docs/next-engineering-20261115/source/guard-capture-fresh-adapter.json';
 const root=resolve(fileURLToPath(new URL('../../',import.meta.url))),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -366,8 +367,15 @@ function rejectChangedCurrentAuthorityBytes(read,git){
  rejectChangedUnchangedFactoryBytes(currentRead);
 }
 export function verifyParallelSource(read=readFileSync,git=sourceGit,suppliedRows){rejectChangedCurrentAuthorityBytes(read,git);const p=currentStage8Input(read,git);return completeStage8(p,()=>retainedVerifyParallelSource(p.historicalInput.read,p.historicalInput.git,suppliedRows));}
-export function proveNamedCurrentContext(read=readFileSync,git=sourceGit){const p=currentStage8Input(read,git);return completeStage8(p,()=>{const rows=retainedProveNamedCurrentContext(p.historicalInput.read,p.historicalInput.git);for(const [path,row]of [...p.live,...p.stage9Live,...p.stage10Live]){const prior=rows.get(path);rows.set(path,{current:row.current,recordedSHA256:prior?.recordedSHA256??row.predecessor?.sha256});}return rows;});}
-export function assertNamedApplicationSuccessor(file,recordedSHA256,currentBytes,read=readFileSync,git=sourceGit){if(read===readFileSync&&git===sourceGit)rejectWrongWorkflowClaim(file,recordedSHA256,read);const p=currentStage8Input(read,git);return completeStage8(p,()=>{const row=p.stage10Live.get(file)??p.stage9Live.get(file)??p.live.get(file);if(!row)return retainedAssertNamedApplicationSuccessor(file,recordedSHA256,currentBytes,p.historicalInput.read,p.historicalInput.git);const prior=retainedProveNamedCurrentContext(p.historicalInput.read,p.historicalInput.git).get(file);if(prior)assert.equal(recordedSHA256,prior.recordedSHA256);else if(file===apiRuntimeAnchor.fixed.path)assertApiRuntimeHistoricalObjectJoin({file,recordedSHA256,row,currentBytes,git});else proveSavedActionsClaim({file,recordedSHA256,row,currentBytes,git});assert(currentBytes.equals(git(['cat-file','blob',row.current.blob])),'Current named application successor differs');return {file,recordedApplicationGit:appRef,currentApplicationGit:row.current.ref,historicalEvidenceOnly:true};});}
+function rejectNamedInputBytes(read,git,file,currentBytes){
+ const view=sourceStage8HistoricalView(git);
+ if(view){assert.equal(read,view.historicalInput.read,'Historical Stage8 reader capability differs');assert.equal(resolve(view.historicalInput.root),root,'Historical Stage8 root capability differs');read=view.actualInput.read;}
+ else if(git!==sourceGit&&(typeof git!=='function'||completionGitReader(git)!==git))return;
+ // Memo identity selects only a negative fast path; it grants no source verdict.
+ rejectChangedPersonalWorkflowSourceBytes(read,file,currentBytes);
+}
+export function proveNamedCurrentContext(read=readFileSync,git=sourceGit){rejectNamedInputBytes(read,git);const p=currentStage8Input(read,git);return completeStage8(p,()=>{const rows=retainedProveNamedCurrentContext(p.historicalInput.read,p.historicalInput.git);for(const [path,row]of [...p.live,...p.stage9Live,...p.stage10Live]){const prior=rows.get(path);rows.set(path,{current:row.current,recordedSHA256:prior?.recordedSHA256??row.predecessor?.sha256});}return rows;});}
+export function assertNamedApplicationSuccessor(file,recordedSHA256,currentBytes,read=readFileSync,git=sourceGit){if(read===readFileSync&&git===sourceGit)rejectWrongWorkflowClaim(file,recordedSHA256,read);rejectNamedInputBytes(read,git,file,currentBytes);const p=currentStage8Input(read,git);return completeStage8(p,()=>{const row=p.stage10Live.get(file)??p.stage9Live.get(file)??p.live.get(file);if(!row)return retainedAssertNamedApplicationSuccessor(file,recordedSHA256,currentBytes,p.historicalInput.read,p.historicalInput.git);const prior=retainedProveNamedCurrentContext(p.historicalInput.read,p.historicalInput.git).get(file);if(prior)assert.equal(recordedSHA256,prior.recordedSHA256);else if(file===apiRuntimeAnchor.fixed.path)assertApiRuntimeHistoricalObjectJoin({file,recordedSHA256,row,currentBytes,git});else proveSavedActionsClaim({file,recordedSHA256,row,currentBytes,git});assert(currentBytes.equals(git(['cat-file','blob',row.current.blob])),'Current named application successor differs');return {file,recordedApplicationGit:appRef,currentApplicationGit:row.current.ref,historicalEvidenceOnly:true};});}
 export function assertSevenTestSuccessor(file,claim,currentBytes,read=readFileSync,git=sourceGit){const p=currentStage8Input(read,git);return completeStage8(p,()=>retainedAssertSevenTestSuccessor(file,claim,currentBytes,p.historicalInput.read,p.historicalInput.git));}
 export function assertFinalTwoScopeTestSuccessor(file,intermediateBytes,currentBytes,git=sourceGit){const p=currentStage8Input(readFileSync,git);return completeStage8(p,()=>retainedAssertFinalTwoScopeTestSuccessor(file,intermediateBytes,currentBytes,p.historicalInput.git,p.historicalInput.read));}
 

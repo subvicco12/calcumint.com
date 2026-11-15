@@ -1,3 +1,5 @@
+import {accepted} from '../parallel-source-20261110/authority.mjs';
+import {nonSourcePolicy} from './non-source-policy.mjs';
 import {sourceGit} from '../parallel-source-20261110/baseline-runtime.mjs';
 import {sourceStage8HistoricalView} from '../milestone100-20261114/source-stage8.mjs';
 import {proveRuntimeAuxiliarySuccessor} from '../milestone100-20261114/source-stage8-runtime-auxiliary.mjs';
@@ -37,6 +39,19 @@ function preflightCurrentWorkflowBytes(input){
  for(const [path,row]of currentWorkflowPreflightRows(read)){const bytes=read(path);assert(Buffer.isBuffer(bytes)&&bytes.length===row.bytes&&hash(bytes)===row.sha256,'Current factory bytes differ: '+path);}
 }
 // End private negative workflow preflight.
+
+/** Negative-only fixed53 preflight. Every successful public caller still executes its full proof. */
+export function rejectChangedPersonalWorkflowSourceBytes(read,file,currentBytes){
+ assert.equal(typeof read,'function','Explicit current source reader required');
+ const rows=new Map(currentWorkflowPreflightRows(read));assert.equal(rows.size,47);
+ for(const [path,row]of personalRecords(read)){assert(!rows.has(path),'Personal source roster overlaps workflow');rows.set(path,row.current);}
+ assert.equal(rows.size,49,'Exact personal/workflow49 required');
+ for(const path of nonSourcePolicy.paths){const row=accepted.find(row=>row.path===path);assert(row,'Latest NS authority required: '+path);assert(!rows.has(path),'NS source roster overlaps SRC');assert.match(row.sha256,/^[a-f0-9]{64}$/);rows.set(path,row);}
+ assert.equal(rows.size,53,'Exact personal/workflow/NS53 required');
+ for(const [path,row]of rows){const bytes=read(path);assert(Buffer.isBuffer(bytes)&&hash(bytes)===row.sha256,(path.startsWith('src/')?'Current factory bytes differ: ':'Current NS source bytes differ: ')+path);}
+ if(typeof file==='string'&&rows.has(file))assert(Buffer.isBuffer(currentBytes)&&hash(currentBytes)===rows.get(file).sha256,'Current named application successor differs');
+}
+
 export function provePersonalAndHistoricalInputs(input,witness){
  preflightCurrentWorkflowBytes(input);
  const {historicalInput:{read,git,root}}=proveTestStageAndHistoricalInputs(input);
