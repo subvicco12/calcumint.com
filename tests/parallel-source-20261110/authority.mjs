@@ -12641,8 +12641,49 @@ export const acceptedStage10Deadline=Object.freeze([
   }
 ]);
 export const additionalStage10DeadlineBootstrapRefs=Object.freeze(["8f8b9b03f070d3279351c02d6573ce528e99a1b4","955f860712e938c9d1140e4fda41ff1535c53272"]);
-export const acceptedStage10Lint=Object.freeze([]);
-export const additionalStage10LintBootstrapRefs=Object.freeze([]);
+export const acceptedStage10Lint=Object.freeze([
+  {
+    "path": "scripts/fetch-source-lineage.mjs",
+    "blob": "8bd29f814474610b395a44c22ae1a51d0efb0a50",
+    "sha256": "71ba9e039104f92ef8a35a904cee5371b06b9219874fce4ceb15afd67ff1f8d5"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-preflight-stage8.mjs",
+    "blob": "2981bad70d492bbf3beef49348cd87b98eaada83",
+    "sha256": "b28589c222aa6f751a862f48ce5fa6ea1b93fe1e4ad4fbc9c52a38dcae858a98"
+  },
+  {
+    "path": "tests/next-engineering-20261115/source-admission-lint.mjs",
+    "blob": "77642faa9fad85c39f285d9f153383c1e16b0888",
+    "sha256": "9bd55d9c942c916622a83de91fe0c92a9fc0f20d8783e8dd87d82479f7241b79"
+  },
+  {
+    "path": "tests/next-engineering-20261115/source-availability.test.mjs",
+    "blob": "5d6dafb0d6cc2126d2094aef7aaa7090d5ee9055",
+    "sha256": "d50a54a3be6b4d77be148db2f9b41a687fd24f8cd0311b48acbde183f49d2d2e"
+  },
+  {
+    "path": "tests/next-engineering-20261115/source-stage10.test.mjs",
+    "blob": "810e9559da00254048a88127bc726876037268b1",
+    "sha256": "92d7b3ca5f209ca68ccb2e3baf2adf317cee77edbcac43a08655afa47b193b9b"
+  },
+  {
+    "path": "tests/parallel-source-20261110/bootstrap.mjs",
+    "blob": "601b22d4f9f908cad260203389992a2469e9cbb4",
+    "sha256": "696818e4b419c1a790474d3524d5656412dbf8dc375412f799cf6cc934e799e2"
+  },
+  {
+    "path": "tests/parallel-source-20261110/core.mjs",
+    "blob": "1fe70360315d3601c128827dab4f0d6ce6715cb9",
+    "sha256": "3dbd75ce86f1a21bfecf18e8ee2f881c5c05a25be6c25b821f71e6d1efbeb2d2"
+  },
+  {
+    "path": "docs/next-engineering-20261115/source/guard-capture-lint.json",
+    "blob": "88052ef2b17951873a4cdf656231fdf5d6b187dd",
+    "sha256": "bb090db0fbd62b285d04cfbad6b938c135be695b0c785f471f4d9e016ff398c6"
+  }
+]);
+export const additionalStage10LintBootstrapRefs=Object.freeze(["e8b7fb2df91dbd1b0efc77ae3a120754295c68e3","13298943d7357e4593c25772c3e7d9db118db623"]);
 export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8,...acceptedStage8V3,...acceptedStage8V4,...acceptedStage8V5,...acceptedStage8V6,...acceptedStage8V7,...acceptedStage8V8,...acceptedStage8V9,...acceptedStage8V10,...acceptedStage8V11,...acceptedStage8V12,...acceptedStage8V13,...acceptedStage8V14,...acceptedStage8V15,...acceptedStage8V16,...acceptedStage8V17,...acceptedStage8V18,...acceptedStage8V19,...acceptedStage8V20,...acceptedStage8V21,...acceptedStage8V22,...acceptedStage8V23,...acceptedStage8V24,...acceptedStage8V25,...acceptedStage8V26,...acceptedStage8V27,...acceptedStage8V28,...acceptedStage8V29,...acceptedStage8V30,...acceptedStage8V31,...acceptedStage8V32,...acceptedStage8V33,...acceptedStage8V34,...acceptedStage8V35,...acceptedStage8V36,...acceptedStage8V37,...acceptedStage8V38,...acceptedStage8V39,...acceptedStage8V40,...acceptedStage8V41,...acceptedStage8V42,...acceptedStage8V43,...acceptedStage8V44,...acceptedStage8V45,...acceptedStage10,...acceptedStage10Review2,...acceptedStage10Availability,...acceptedStage10Deadline,...acceptedStage10Lint].map(row=>[row.path,row])).values()]);
 for(const record of accepted)Object.freeze(record);
 export function verifyParallelAuthority(read,git){
