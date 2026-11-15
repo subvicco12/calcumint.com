@@ -36,14 +36,17 @@ function native(input){
  const root=run(['rev-parse','--show-toplevel']).toString().trim();assert.equal(resolve(root),input.root,'Native Git workspace root differs');
  // Native porcelain v2 reports current HEAD and source status in one fresh observation; never cached.
  const head=nativeStatusHead(run(['status','--porcelain=v2','--branch','--ignored=matching','--untracked-files=all','--','src']));
- assert.equal(input.git(headArgs).toString().trim(),head,'Native HEAD moved or supplied HEAD differs');
  const statusArgs=['status','--porcelain','--untracked-files=all','--','src'];assert(input.git(statusArgs).equals(Buffer.alloc(0)),'Committed current src required; Dirty or unknown current source; Native source status differs');
  const tracked=run(['ls-files','-v','-z','--','src']).toString().split('\0').filter(Boolean);assert(tracked.length>0,'Native source index required');
  for(const entry of tracked)assert(entry.startsWith('H '),'Unsupported native source index flag: '+entry);
  const deltaArgs=['diff','--name-only','-z',policy.codeRef,head,'--','src'];const delta=run(deltaArgs);assert.equal(delta.length,0,'Unreviewed native current source delta');assert(input.git(deltaArgs).equals(delta),'Native source delta differs');
+ assert.equal(input.git(headArgs).toString().trim(),head,'Native HEAD moved or supplied HEAD differs');
  return head;
 }
-function exact(input){
+function exact(input,expectedHead){
+ let before;
+ // A stable private view must observe a pre-existing HEAD move before any supplied read callback.
+ if(expectedHead!==undefined){before=native(input);assert.equal(before,expectedHead,'Native HEAD moved during Stage10 proof');}
  // Negative-only preflight: these fixed independently hashed captures cannot grant a capability.
  // All immutable/native/physical proofs below still execute for every successful invocation.
  const current=new Map();
@@ -52,7 +55,7 @@ function exact(input){
   for(const row of JSON.parse(bytes).rows)current.set(row.path,row.current);
  }
  for(const [path,row]of current){const bytes=input.read(path);assert(Buffer.isBuffer(bytes)&&bytes.length===row.bytes&&sha(bytes)===row.sha256,'Current factory bytes differ: '+path);}
- const before=native(input);
+ before??=native(input);
  const bytes=input.read(capturePath);assert(Buffer.isBuffer(bytes)&&sha(bytes)===policy.captureSHA256,'Independent Stage10 capture digest differs');
  const capture=JSON.parse(bytes);assert.deepEqual(capture.ancestry,policy.ancestry,'Stage10 exact ancestry differs');
  const target=resolve(input.root,capturePath);assert(lstatSync(target).isFile()&&!lstatSync(target).isSymbolicLink()&&realpathSync(target)===target,'Redirected Stage10 capture');assert(readFileSync(target).equals(bytes),'Physical Stage10 capture differs');
@@ -72,7 +75,7 @@ function exact(input){
  // A supplied reader must describe the actual physical workspace, not an alternative tree.
  for(const [path,row]of rows){const physical=readFileSync(resolve(input.root,path));assert.equal(sha(physical),row.current.sha256,'Physical current source differs: '+path);}
  assert.equal(native(input),before,'Native HEAD moved during exact Stage10 proof');
- return rows;
+ return {rows,nativeHead:before};
 }
 export function proveSourceStage10(input){
  assert.deepEqual(Object.keys(input).sort(),['git','read','root'],'Only explicit Stage10 read/Git/root inputs allowed');
@@ -82,7 +85,7 @@ export function proveSourceStage10(input){
  const actual=Object.freeze({...input,root:resolve(input.root),git:immutableTreeQueryReader(input.git)});
  assert.equal(resolve(actual.git(['rev-parse','--show-toplevel']).toString().trim()),actual.root,'Actual Git workspace root differs');
  const nativeHead=actual.git(headArgs).toString().trim();assert.match(nativeHead,/^[a-f0-9]{40}$/);
- const live=exact(actual);assert.equal(actual.git(headArgs).toString().trim(),nativeHead,'Native HEAD moved during Stage10 verification');
+ const {rows:live}=exact(actual);assert.equal(actual.git(headArgs).toString().trim(),nativeHead,'Native HEAD moved during Stage10 verification');
  const rows=new Map([...live].map(([p,r])=>[p,Object.freeze({predecessor:r.predecessor?Object.freeze({...r.predecessor}):null,current:Object.freeze({...r.current})})]));
  const read=path=>{const row=rows.get(path);if(!row)return actual.read(path);assert(row.predecessor,'Added Stage10 source has no historical bytes: '+path);return actual.git(['cat-file','blob',row.predecessor.blob]);};
  const git=(args,options)=>{
@@ -94,4 +97,4 @@ export function proveSourceStage10(input){
  const view=Object.freeze({actualInput:actual,historicalInput:Object.freeze({read,git,root:actual.root}),nativeHead,get live(){return new Map(rows);}});
  proved.add(view);historical.set(git,view);historical.set(immutableTreeQueryReader(git),view);return view;
 }
-export function assertSourceStage10Stable(view){assert(proved.has(view),'Private verified Stage10 capability required');assert.equal(view.actualInput.git(headArgs).toString().trim(),view.nativeHead,'Native HEAD moved during Stage10 proof');exact(view.actualInput);assert.equal(view.actualInput.git(headArgs).toString().trim(),view.nativeHead,'Native HEAD moved during final Stage10 proof');}
+export function assertSourceStage10Stable(view){assert(proved.has(view),'Private verified Stage10 capability required');return exact(view.actualInput,view.nativeHead).nativeHead;}

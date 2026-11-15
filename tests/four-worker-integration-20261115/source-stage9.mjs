@@ -45,9 +45,7 @@ export function proveSourceStage9(input){
 }
 export function assertSourceStage9Stable(view){
  assert(proved.has(view),'Private verified Stage9 capability required');
- assert.equal(view.actualInput.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),view.nativeHead,'Native HEAD moved during nested proof');
- // Immutable historical projection facts are private and already proved. Recheck every
- // actual source/capture/native observation freshly without minting a throwaway projection.
- assertSourceStage10Stable(successors.get(view));
- assert.equal(view.actualInput.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),view.nativeHead,'Native HEAD moved during final Stage9 proof');
+ // The complete successor check freshly observes delegated/native HEAD before reads and after the body.
+ const current=assertSourceStage10Stable(successors.get(view));
+ assert.equal(current,view.nativeHead,'Native HEAD moved during final Stage9 proof');return current;
 }

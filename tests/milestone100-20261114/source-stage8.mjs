@@ -72,6 +72,8 @@ export function proveCurrentStage8AndHistoricalInputs(input,retainedProver){
 /** Verify a fresh public proof did not straddle even a metadata-only HEAD move. */
 export function assertSourceStage8HeadStable(view){
  assert(observedHeads.has(view),'Private fresh Stage8 view required');
+ const bound=incrementalViews.get(view);
+ if(view.stage9Active&&bound){const current=assertSourceStage9Stable(bound);assert.equal(current,observedHeads.get(view),'Actual HEAD moved during public source proof');assert.equal(bound.nativeHead,current,'Native HEAD moved during Stage9 end proof');return;}
  const current=view.actualInput.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim();
  assert.equal(current,observedHeads.get(view),'Actual HEAD moved during public source proof');
  if(view.stage9Active){
