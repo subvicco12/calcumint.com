@@ -11,7 +11,11 @@ const claim=createHash('sha256').update(original).digest('hex');
 test('admits only the exact captured caller successor',()=>assert.equal(verifyCompletionBinding(path,readFileSync(path),claim,git),true));
 test('rejects silent valid-hash historical caller reversion',()=>assert.throws(()=>verifyCompletionBinding(path,original,claim,git),/current successor differs/));
 test('rejects unreviewed caller bytes',()=>assert.throws(()=>verifyCompletionBinding(path,Buffer.concat([readFileSync(path),Buffer.from('//tamper')]),claim,git),/current successor differs/));
-test('rejects unavailable provenance',()=>assert.throws(()=>verifyCompletionBinding(path,readFileSync(path),claim,()=>Buffer.from('0'.repeat(40))),error=>error instanceof Error&&error.message==='Git commit identity differs'));
+test('rejects unavailable provenance',()=>{
+ let missingCommits=0;const unavailable=args=>{if(args.length===3&&args[0]==='rev-parse'&&args[1]==='--verify'&&/^[0-9a-f]{40}\^\{commit\}$/.test(args[2])){missingCommits++;return Buffer.from('0'.repeat(40)+'\n');}return git(args);};
+ assert.throws(()=>verifyCompletionBinding(path,readFileSync(path),claim,unavailable),error=>error instanceof Error&&error.message==='Git commit identity differs');assert(missingCommits>0,'The immutable commit provenance lookup must actually be exercised');
+ if(path==='src/components/catalog-engineering-review.tsx')assert.throws(()=>verifyCompletionBinding(path,readFileSync(path),claim,()=>Buffer.from('0'.repeat(40))),/Actual Git workspace root differs/);
+});
 for(const dependency of ['src/lib/final-private-snapshot-text.ts','src/lib/publication-factory-contracts-input.ts'])test('rejects altered serialized-boundary dependency: '+dependency,()=>assert.throws(()=>verifyCompletionBinding(path,readFileSync(path),claim,git,name=>name===dependency?Buffer.from('tamper'):readFileSync(name)),/supplemental source bytes differ/));
 
 }
