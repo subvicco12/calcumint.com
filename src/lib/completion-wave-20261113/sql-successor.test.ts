@@ -3,6 +3,7 @@ import {createHash} from 'node:crypto';
 import {it,expect} from 'vitest';
 import frozenCatalog44 from '../../../docs/milestone100-20261114/retained-catalog44.json';
 import newCases from '../../../docs/milestone100-20261114/business-account-cases.json';
+import nextCases from '../../../docs/next-engineering-20261115/business/immutable-engine-cases.json';
 import {factoryDeliveryCatalog as liveFactoryDeliveryCatalog} from '@/lib/native-delivery/factory-delivery-catalog';
 import {execFileSync} from 'node:child_process';
 import {retainedFactoryNineTuples,retainedTechnologyTwentyTuples} from './retained-nine-tuples';
@@ -202,8 +203,16 @@ it('parser refuses duplicate or conflicting IDs and exposes unknown tuple additi
  expect(values("FROM(VALUES(999,'unknown'))t(id,engine)",'id,engine')).toEqual([{id:999,engine:'unknown'}]);
 });
 
-it('closes the entire current roster against literal44 plus all25 exact successor witnesses without filtering',()=>{
- expect(liveFactoryDeliveryCatalog).toEqual([...currentFactoryDeliveryCatalog,...newCases.map(row=>({catalogId:row.id,engineId:row.engine,slug:row.slug,version:row.version}))]);expect(liveFactoryDeliveryCatalog).toHaveLength(69);expect(new Set(liveFactoryDeliveryCatalog.map(row=>row.catalogId)).size).toBe(69);
- const sql=functions(readFileSync('docs/milestone100-20261114/business-held-successor.sql','utf8')),complete=[...retainedTechnologyTwentyTuples,...liveFactoryDeliveryCatalog];
+it('closes the entire current roster against retained69 plus all20 exact new witnesses without filtering',()=>{
+ const retained69=[...currentFactoryDeliveryCatalog,...newCases.map(row=>({catalogId:row.id,engineId:row.engine,slug:row.slug,version:row.version}))];
+ expect(retained69).toHaveLength(69);expect(new Set(retained69.map(row=>row.catalogId)).size).toBe(69);
+ const prior=functions(readFileSync('docs/milestone100-20261114/business-held-successor.sql','utf8')),priorComplete=[...retainedTechnologyTwentyTuples,...retained69];
+ expect(values(prior.factory_native_embed_publication_v1,'catalog,engine,slug')).toEqual(publication(retained69).map(({version,...row})=>row));expect(values(prior.submit_technology_five_job_v1,'id,engine')).toEqual(sorted(priorComplete).map(row=>({id:row.catalogId,engine:row.engineId})));expect(values(prior.technology_five_require_publication_v1,'catalog,engine,slug,version')).toEqual(publication(priorComplete));
+ const additions=nextCases.cases.map(({catalogId,engineId,slug,version})=>({catalogId,engineId,slug,version}));
+ expect(additions).toHaveLength(20);expect(additions.map(row=>row.catalogId)).toEqual([284,285,286,287,288,289,290,291,300,329,333,334,335,336,337,338,339,340,341,342]);
+ expect(liveFactoryDeliveryCatalog).toEqual([...retained69,...additions]);expect(liveFactoryDeliveryCatalog).toHaveLength(89);expect(new Set(liveFactoryDeliveryCatalog.map(row=>row.catalogId)).size).toBe(89);
+ const sql=functions(readFileSync('docs/next-engineering-20261115/business/held-successor.sql','utf8')),complete=[...retainedTechnologyTwentyTuples,...liveFactoryDeliveryCatalog];
+ expect(Object.keys(sql).sort()).toEqual(names);
  expect(values(sql.factory_native_embed_publication_v1,'catalog,engine,slug')).toEqual(publication(liveFactoryDeliveryCatalog).map(({version,...row})=>row));expect(values(sql.submit_technology_five_job_v1,'id,engine')).toEqual(sorted(complete).map(row=>({id:row.catalogId,engine:row.engineId})));expect(values(sql.technology_five_require_publication_v1,'catalog,engine,slug,version')).toEqual(publication(complete));
+ const slugs=sql.share_factory_nine_snapshot.match(/item->>'calculatorSlug' NOT IN\(([^)]*)\)/)![1].split(',').map(value=>value.trim().slice(1,-1));expect(slugs.sort()).toEqual(liveFactoryDeliveryCatalog.map(row=>row.slug).sort());
 });

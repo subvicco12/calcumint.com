@@ -5,12 +5,12 @@ import {readFileSync,mkdtempSync,symlinkSync,rmSync,writeFileSync} from 'node:fs
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {proveSourceStage10,assertSourceStage10Stable} from './source-stage10.mjs';
-import {sourceStage10Policy as policy,sourceStage10CapturePath} from './source-stage10-policy.mjs';
+import {sourceStage10Policy as policy,sourceStage10CapturePath} from './source-stage10-current-policy.mjs';
 import {proveSourceStage9,assertSourceStage9Stable} from '../four-worker-integration-20261115/source-stage9.mjs';
 const root=process.cwd(),git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:64*1024*1024}),read=readFileSync;
 const input={root,read,git};
-test('exact23 immutable source rows precede historical projection; final nested proofs retain current HEAD',()=>{
- const p=proveSourceStage10(input);assert.equal(p.live.size,23);const copy=p.live;copy.clear();assert.equal(p.live.size,23);
+test('exact24 immutable source rows precede historical projection; final nested proofs retain current HEAD',()=>{
+ const p=proveSourceStage10(input);assert.equal(p.live.size,24);const copy=p.live;copy.clear();assert.equal(p.live.size,24);
  for(const [path,row]of p.live){if(row.predecessor)assert(p.historicalInput.read(path).equals(git(['cat-file','blob',row.predecessor.blob])));else assert.throws(()=>p.historicalInput.read(path),/no historical bytes/);}
  assertSourceStage10Stable(p);assert.throws(()=>assertSourceStage10Stable({...p}),/Private verified/);
  const prior=proveSourceStage9(input);assert.equal(prior.nativeHead,p.nativeHead);assertSourceStage9Stable(prior);
@@ -54,9 +54,19 @@ test('isolated physical extra source, dirty tracked source and same-byte symlink
   const stage10Module=new URL('./source-stage10.mjs',import.meta.url).href;
   const script=`import assert from 'node:assert/strict';import {readFileSync,writeFileSync,rmSync,renameSync,symlinkSync} from 'node:fs';import {execFileSync} from 'node:child_process';import {proveSourceStage10} from ${JSON.stringify(stage10Module)};
    const root=process.cwd(),path='src/components/calculator-factory-portal.tsx',original=readFileSync(path),git=a=>execFileSync('git',a,{stdio:['ignore','pipe','pipe'],maxBuffer:64000000}),hidden=a=>a[0]==='status'?Buffer.alloc(0):git(a),input={root,git:hidden,read:p=>p===path?original:readFileSync(p)};
+   proveSourceStage10({root,git,read:readFileSync});
    writeFileSync('src/.unexpected-stage10-source','untracked');assert.throws(()=>proveSourceStage10(input),/native dirty or unknown source/);rmSync('src/.unexpected-stage10-source');
    writeFileSync(path,'changed actual tracked bytes');assert.throws(()=>proveSourceStage10(input),/native dirty or unknown source/);writeFileSync(path,original);
    renameSync(path,path+'.held');symlinkSync('calculator-factory-portal.tsx.held',path);assert.throws(()=>proveSourceStage10(input),/native dirty or unknown source/);rmSync(path);renameSync(path+'.held',path);`;
   execFileSync(process.execPath,['--input-type=module','-'],{cwd:tree,input:script,stdio:['pipe','pipe','pipe'],timeout:15000,maxBuffer:1000000});
  }finally{try{if(added)git(['worktree','remove','--force',tree]);}finally{rmSync(dir,{recursive:true,force:true});}}
+});
+
+test('current24 capture retains the original23 immutable source and policy records without engine changes',()=>{
+ const current=JSON.parse(read(sourceStage10CapturePath)),retained=JSON.parse(read('docs/next-engineering-20261115/source/stage10.json'));
+ assert.equal(current.rows.length,24);assert.equal(retained.rows.length,23);assert.equal(retained.codeRef,'550ae67dfdf8fcfa8fb0ac68ccbe2ac68e13fb0f');
+ for(const row of retained.rows)assert.equal(current.rows.find(value=>value.path===row.path).current.blob,row.current.blob);
+ assert.deepEqual(current.rows.filter(row=>!retained.rows.some(old=>old.path===row.path)).map(row=>row.path),['src/lib/completion-wave-20261113/sql-successor.test.ts']);
+ assert.deepEqual(git(['diff','--name-only',retained.codeRef,current.codeRef,'--','src']).toString().trim().split('\n'),['src/lib/completion-wave-20261113/sql-successor.test.ts']);
+ for(const record of Object.values(current.retainedStages[0]))assert(read(record.path).equals(git(['cat-file','blob',record.blob])));
 });

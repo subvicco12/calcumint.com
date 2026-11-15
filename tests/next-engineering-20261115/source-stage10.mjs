@@ -8,17 +8,36 @@ import {readFileSync,lstatSync,realpathSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {verifyExactStage} from '../calculator-factory-source-20261112/exact-stage.mjs';
 import {immutableTreeQueryReader} from '../milestone100-20261114/source-immutable-queries.mjs';
-import {sourceStage10Policy as policy,sourceStage10CapturePath as capturePath} from './source-stage10-policy.mjs';
+import {sourceStage10Policy as policy,sourceStage10CapturePath as capturePath} from './source-stage10-current-policy.mjs';
 const historical=new WeakMap(),proved=new WeakSet();
 const headArgs=['rev-parse','--verify','HEAD^{commit}'];
 const sha=b=>createHash('sha256').update(b).digest('hex');
+const nativeReaders=new Map();
+function nativeReader(root){
+ let reader=nativeReaders.get(root);if(reader)return reader;
+ // Only full immutable tree-query bytes enter this existing query cache.
+ reader=immutableTreeQueryReader(args=>execFileSync('git',args,{cwd:root,env:{...process.env,GIT_NO_REPLACE_OBJECTS:'1'},stdio:['ignore','pipe','pipe'],maxBuffer:64*1024*1024}));
+ if(nativeReaders.size>=32)nativeReaders.delete(nativeReaders.keys().next().value);nativeReaders.set(root,reader);return reader;
+}
 export const sourceStage10HistoricalView=git=>historical.get(git);
+function nativeStatusHead(bytes){
+ assert(Buffer.isBuffer(bytes),'Native status must be bytes');
+ const lines=bytes.toString().split('\n').filter(Boolean),headers=new Map();
+ for(const line of lines){
+  const match=/^# branch\.(oid|head|upstream|ab) (.+)$/.exec(line);assert(match,'Committed current src required; native dirty or unknown source');
+  const [,key,value]=match;assert(!headers.has(key),'Duplicate native branch header');
+  assert(key==='oid'?/^[a-f0-9]{40}$/.test(value):key==='ab'?/^\+[0-9]+ -[0-9]+$/.test(value):/^\S+$/.test(value),'Malformed native branch header');headers.set(key,value);
+ }
+ const head=headers.get('oid');assert.match(head??'',/^[a-f0-9]{40}$/,'Exact native branch commit required');assert(headers.has('head'),'Native branch identity required');
+ return head;
+}
 function native(input){
- const run=args=>execFileSync('git',args,{cwd:input.root,stdio:['ignore','pipe','pipe'],maxBuffer:64*1024*1024});
+ const run=nativeReader(input.root);
  const root=run(['rev-parse','--show-toplevel']).toString().trim();assert.equal(resolve(root),input.root,'Native Git workspace root differs');
- const head=run(headArgs).toString().trim();assert.match(head,/^[a-f0-9]{40}$/);
+ // Native porcelain v2 reports current HEAD and source status in one fresh observation; never cached.
+ const head=nativeStatusHead(run(['status','--porcelain=v2','--branch','--untracked-files=all','--','src']));
  assert.equal(input.git(headArgs).toString().trim(),head,'Native HEAD moved or supplied HEAD differs');
- const statusArgs=['status','--porcelain','--untracked-files=all','--','src'],status=run(statusArgs);assert.equal(status.length,0,'Committed current src required; native dirty or unknown source');assert(input.git(statusArgs).equals(status),'Committed current src required; Dirty or unknown current source; Native source status differs');
+ const statusArgs=['status','--porcelain','--untracked-files=all','--','src'];assert(input.git(statusArgs).equals(Buffer.alloc(0)),'Committed current src required; Dirty or unknown current source; Native source status differs');
  const deltaArgs=['diff','--name-only','-z',policy.codeRef,head,'--','src'];const delta=run(deltaArgs);assert.equal(delta.length,0,'Unreviewed native current source delta');assert(input.git(deltaArgs).equals(delta),'Native source delta differs');
  return head;
 }

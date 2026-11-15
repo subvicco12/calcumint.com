@@ -1,5 +1,5 @@
 import {proveSourceStage10} from '../next-engineering-20261115/source-stage10.mjs';
-import {sourceStage10Policy,sourceStage10CapturePath} from '../next-engineering-20261115/source-stage10-policy.mjs';
+import {sourceStage10Policy,sourceStage10CapturePath} from '../next-engineering-20261115/source-stage10-current-policy.mjs';
 import {sourceStage9Policy,sourceStage9CapturePath} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import {proveSourceStage9} from '../four-worker-integration-20261115/source-stage9.mjs';
 import {sourceStage8Policy as retainedOwnershipPolicy} from './source-stage8-policy-v2.mjs';
