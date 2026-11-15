@@ -1,0 +1,137 @@
+{
+  "workerBranch": "engineering/physics-qualification-20261115",
+  "remoteSHA": "9607925df1f4d5bedc765f3c607529d84b440821",
+  "workerBaseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+  "coordinatorPredecessor": "b08da690c219987230d8a5b83cb3a92e9a035254",
+  "localMerge": "0ab903ea3a5dda24506cc329c699cc7c2a837760",
+  "paths": 41,
+  "allPathsAdditive": true,
+  "ownershipOverlap": 0,
+  "workerSrcTreeEqualBaseline": true,
+  "coordinatorSrcTreeEqualPredecessor": true,
+  "centralAdmissionChanges": 0,
+  "standaloneHarnessFiles": 3,
+  "justification": "New immutable-byte, underflow/identity refusal and historical authenticated/RLS replay witnesses; evidence only. Explicit standalone config; existing workflow and default discovery unchanged.",
+  "workerManifestPayloadsVerified": 36,
+  "sourceFingerprintsVerified": 14,
+  "retainedNativeArtifactsVerified": 15,
+  "retainedPDFTextHashesVerified": 5,
+  "freshQualificationPassed": 15,
+  "freshNumericalReplayPassed": 131,
+  "freshAuthenticated": {
+    "observations": 15,
+    "scenarios": 10,
+    "nativeArtifacts": 15,
+    "pdfReadbacks": 5,
+    "allExportHashesEqualWorker": true,
+    "allSourceFingerprintsEqualWorker": true,
+    "cleanupCompleted": true,
+    "runtime": "v22.23.4",
+    "browserAcceptance": false,
+    "privateSuccessorAcceptance": false
+  },
+  "currentSourceGatePassed": 5,
+  "remainder226NinePathProof": "PASS",
+  "independentReview": {
+    "blockingFindings": 0,
+    "engineOrPhysicalCertification": false
+  },
+  "dispositions": [
+    {
+      "catalogId": 322,
+      "disposition": "PARTIAL",
+      "scopedEngineeringComplete": false,
+      "historicalIdentity": {
+        "id": "physics.capacitance",
+        "slug": "capacitance-calculator",
+        "version": 1
+      },
+      "privateRevision": null,
+      "freshAuthenticatedCoverage": "historical-v1-only",
+      "blockers": [
+        "Publisher-defined units and signed Q/V applicability are not admitted.",
+        "Final quotients below minimum subnormal cannot be represented by reordering."
+      ]
+    },
+    {
+      "catalogId": 323,
+      "disposition": "PARTIAL",
+      "scopedEngineeringComplete": false,
+      "historicalIdentity": {
+        "id": "physics.coulomb-force",
+        "slug": "coulomb-force-calculator",
+        "version": 1
+      },
+      "privateRevision": "private.physics-scaled.20261112.1",
+      "freshAuthenticatedCoverage": "historical-v1-only",
+      "blockers": [
+        "Medium, point-charge interpretation, signed-force convention, units and constant precision are unapproved.",
+        "Historical numerator underflow is preserved; private revision is unregistered with no exact-revision product/account/Business acceptance."
+      ]
+    },
+    {
+      "catalogId": 324,
+      "disposition": "PARTIAL",
+      "scopedEngineeringComplete": false,
+      "historicalIdentity": {
+        "id": "physics.projectile-motion",
+        "slug": "projectile-motion-calculator",
+        "version": 1
+      },
+      "privateRevision": "private.physics-scaled.20261112.1",
+      "freshAuthenticatedCoverage": "historical-v1-only",
+      "blockers": [
+        "Units, ideal launch/level-ground scope and endpoint policy are unapproved.",
+        "Private scaling recovers speed-squared underflow but not tiny-angle conversion underflow.",
+        "Private revision is unregistered with no exact-revision authenticated/product delivery acceptance."
+      ]
+    },
+    {
+      "catalogId": 325,
+      "disposition": "PARTIAL",
+      "scopedEngineeringComplete": false,
+      "historicalIdentity": {
+        "id": "physics.free-fall",
+        "slug": "free-fall-calculator",
+        "version": 1
+      },
+      "privateRevision": null,
+      "freshAuthenticatedCoverage": "historical-v1-only",
+      "blockers": [
+        "Units, from-rest/constant-gravity and zero-gravity applicability are unapproved.",
+        "Historical leading half-factor loses recoverable result 2^-875; no separately admitted adopted successor exists."
+      ]
+    },
+    {
+      "catalogId": 327,
+      "disposition": "PARTIAL",
+      "scopedEngineeringComplete": false,
+      "historicalIdentity": {
+        "id": "physics.angular-velocity",
+        "slug": "angular-velocity-calculator",
+        "version": 1
+      },
+      "privateRevision": null,
+      "freshAuthenticatedCoverage": "historical-v1-only",
+      "blockers": [
+        "Units and average signed angular velocity applicability are unapproved; radians cannot be inferred.",
+        "Final quotients below minimum subnormal cannot be represented by reordering."
+      ]
+    }
+  ],
+  "sharedBlockers": [
+    "Publisher/source mapping authority is unapproved; implementation provenance alone does not approve physical applicability or units.",
+    "All five retain independent full-domain precision and exact-identity product/visual-delivery acceptance requirements.",
+    "Historical-only RPC/serializer evidence cannot adopt private arithmetic successors; exact-revision product/account/Business acceptance remains missing."
+  ],
+  "newScopedCompletions": 0,
+  "canonicalPromotions": 0,
+  "certifications": 0,
+  "publicationEligible": 0,
+  "pr1538Modified": false,
+  "hostedExactHeadCI": "Not run; prior Git-only push approval block remains unresolved",
+  "releaseHold": true,
+  "priority": "Return to #226 and high-readiness cohort; no further open-ended physics investigation",
+  "coordinatorReadbackDiagnostic": "An initial coordinator PDF label check expected value:; actual exact label is output[\"value\"]. All artifact and extracted-text hashes matched; corrected label check passed without changing evidence.",
+  "focusedLintExit": 0
+}
