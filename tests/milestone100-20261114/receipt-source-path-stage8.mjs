@@ -1,4 +1,4 @@
-import {sourceStage10Policy} from '../next-engineering-20261115/source-stage10-policy.mjs';
+import {sourceStage10Policy} from '../next-engineering-20261115/source-stage10-current-policy.mjs';
 import {sourceStage9Policy} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import {savedActionsClaim,savedActionsReceiptHistoricalClaim} from './source-stage8-saved-actions-claim.mjs';
 import {assertNamedApplicationSuccessor} from '../parallel-source-20261110/core.mjs';

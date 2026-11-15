@@ -7,7 +7,7 @@ import {createHash} from 'node:crypto';
 import {verifyExactStage} from '../calculator-factory-source-20261112/exact-stage.mjs';
 import {immutableTreeQueryReader} from '../milestone100-20261114/source-immutable-queries.mjs';
 import {sourceStage9Policy as policy,sourceStage9CapturePath as capturePath} from './source-stage9-policy.mjs';
-const historical=new WeakMap(),proved=new WeakSet();
+const historical=new WeakMap(),proved=new WeakSet(),successors=new WeakMap();
 export const sourceStage9HistoricalView=git=>historical.get(git);
 const sha=b=>createHash('sha256').update(b).digest('hex');
 function currentBytesFirst(input,bytes){const priorBytes=input.read(sourceStage8CapturePath);assert.equal(sha(priorBytes),sourceStage8Policy.captureSHA256,'Independent Stage8 capture digest differs');const prior=JSON.parse(priorBytes);assert.deepEqual(prior.rows.map(row=>row.path),sourceStage8Policy.paths);for(const row of new Map([...prior.rows,...JSON.parse(bytes).rows].map(row=>[row.path,row])).values()){const value=input.read(row.path);assert(Buffer.isBuffer(value)&&value.length===row.current.bytes&&sha(value)===row.current.sha256,'Current factory bytes differ: '+row.path);}}
@@ -41,11 +41,13 @@ export function proveSourceStage9(input){
  const historicalInput=Object.freeze({read,git,root:actual.root});
  assertSourceStage10Stable(successor);
  const view=Object.freeze({actualInput:successor.actualInput,historicalInput,nativeHead:successor.nativeHead,get live(){return new Map(live);},get stage10Live(){return successor.live;}});
- proved.add(view);historical.set(git,view);historical.set(immutableTreeQueryReader(git),view);return view;
+ proved.add(view);successors.set(view,successor);historical.set(git,view);historical.set(immutableTreeQueryReader(git),view);return view;
 }
 export function assertSourceStage9Stable(view){
  assert(proved.has(view),'Private verified Stage9 capability required');
  assert.equal(view.actualInput.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),view.nativeHead,'Native HEAD moved during nested proof');
- proveSourceStage9(view.actualInput); // fresh Stage10 and Stage9 proofs, dirty/untracked SRC, lstat and realpath checks
+ // Immutable historical projection facts are private and already proved. Recheck every
+ // actual source/capture/native observation freshly without minting a throwaway projection.
+ assertSourceStage10Stable(successors.get(view));
  assert.equal(view.actualInput.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),view.nativeHead,'Native HEAD moved during final Stage9 proof');
 }

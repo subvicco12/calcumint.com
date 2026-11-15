@@ -5,7 +5,7 @@ import {immutableTreeQueryReader} from './source-immutable-queries.mjs';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {verifyExactStage} from '../calculator-factory-source-20261112/exact-stage.mjs';
-const historicalViews=new WeakMap(),observedHeads=new WeakMap();
+const historicalViews=new WeakMap(),observedHeads=new WeakMap(),incrementalViews=new WeakMap();
 export const sourceStage8HistoricalView=git=>historicalViews.get(git);
 export const predecessorRef='eac9a6c23ae4d8f1abb607e32f57ce0d422a3cb8';
 export function proveSourceStage8AndHistoricalInputs({read,git,root,policy,capturePath}) {
@@ -47,7 +47,7 @@ export function proveSourceStage8AndHistoricalInputs({read,git,root,policy,captu
  for(const name of ['preloadCommits','preloadBlobs','preloadPaths'])if(typeof git[name]==='function')historicalGit[name]=values=>git[name](values);
  const view=Object.freeze({live,actualInput:incremental?.actualInput??Object.freeze({read,git,root}),historicalInput:Object.freeze({read:historicalRead,git:historicalGit,root}),stage9Active:!!incremental,get stage9Live(){return incremental?.live??new Map();},get stage10Live(){return incremental?.stage10Live??new Map();}});
  if(incremental)assertSourceStage9Stable(incremental);
- historicalViews.set(historicalGit,view);observedHeads.set(view,nativeHead);
+ historicalViews.set(historicalGit,view);observedHeads.set(view,nativeHead);if(incremental)incrementalViews.set(view,incremental);
  return view;
 }
 export function proveCurrentStage8AndHistoricalInputs(input,retainedProver){
@@ -64,7 +64,15 @@ export function assertSourceStage8HeadStable(view){
  assert(observedHeads.has(view),'Private fresh Stage8 view required');
  const current=view.actualInput.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim();
  assert.equal(current,observedHeads.get(view),'Actual HEAD moved during public source proof');
- if(view.stage9Active){const fresh=proveSourceStage9(view.actualInput);assert.equal(fresh.nativeHead,current,'Native HEAD moved during Stage9 end proof');}
+ if(view.stage9Active){
+  const incremental=incrementalViews.get(view);
+  if(incremental){assertSourceStage9Stable(incremental);assert.equal(incremental.nativeHead,current,'Native HEAD moved during Stage9 end proof');}
+  else {
+   // Observation aliases deliberately have no private predecessor association:
+   // their closing proof must record operations through the observed providers.
+   const fresh=proveSourceStage9(view.actualInput);assert.equal(fresh.nativeHead,current,'Native HEAD moved during Stage9 end proof');
+  }
+ }
 }
 
 /** Observation aliases only. Every operation still invokes the original supplied provider. */

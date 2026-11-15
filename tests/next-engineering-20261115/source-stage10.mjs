@@ -8,7 +8,7 @@ import {readFileSync,lstatSync,realpathSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {verifyExactStage} from '../calculator-factory-source-20261112/exact-stage.mjs';
 import {immutableTreeQueryReader} from '../milestone100-20261114/source-immutable-queries.mjs';
-import {sourceStage10Policy as policy,sourceStage10CapturePath as capturePath} from './source-stage10-policy.mjs';
+import {sourceStage10Policy as policy,sourceStage10CapturePath as capturePath} from './source-stage10-current-policy.mjs';
 const historical=new WeakMap(),proved=new WeakSet();
 const headArgs=['rev-parse','--verify','HEAD^{commit}'];
 const sha=b=>createHash('sha256').update(b).digest('hex');
