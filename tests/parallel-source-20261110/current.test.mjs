@@ -196,13 +196,13 @@ test('mandatory source guard regressions exercise exact source and immutable ava
  // The original eight-worker availability case owns its entire window alone.
  results.set(cold[0],(await Promise.allSettled([run(cold)]))[0]);
  const remaining=files.filter(row=>row!==cold),scope=remaining.find(([file])=>file==='tests/milestone100-20261114/source-stage8-authority-scope.test.mjs');
- const heavy=remaining.filter(([file])=>file==='source-authority-preload.test.mjs'||file==='tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs');assert(scope&&heavy.length===2,'Fixed source guard workload required');
+ const heavy=['tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs','source-authority-preload.test.mjs'].map(file=>remaining.find(row=>row[0]===file));assert(scope&&heavy.every(Boolean),'Fixed source guard workload required');
  const companion=remaining.filter(row=>row!==scope&&!heavy.includes(row));
  const record=async row=>{results.set(row[0],(await Promise.allSettled([run(row)]))[0]);};
- // Avoid pairing the observation-heavy scope with either large authority workload.
- // Every declared job is attempted; the original report order and max two children remain fixed.
- await Promise.all([record(scope),(async()=>{for(const row of companion)await record(row);})()]);
- await Promise.all(heavy.map(record));
+ let scopeSettled=false,nextCompanion=0,nextHeavy=0,releaseScope;const scopeDone=new Promise(resolve=>{releaseScope=resolve;});
+ // Exactly two workers. Only the scope must settle before either large authority child starts.
+ const worker=async()=>{for(;;){let row;if(scopeSettled&&nextHeavy<heavy.length)row=heavy[nextHeavy++];else if(nextCompanion<companion.length)row=companion[nextCompanion++];else if(!scopeSettled){await scopeDone;continue;}else return;await record(row);}};
+ await Promise.all([(async()=>{await record(scope);scopeSettled=true;releaseScope();await worker();})(),worker()]);
  const failures=[];
  // Report every child in the original declared order, even when an earlier child failed.
  for(const [file,count]of files){
