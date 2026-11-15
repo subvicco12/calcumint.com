@@ -1,3 +1,4 @@
+import {proveSourceStage10} from '../next-engineering-20261115/source-stage10.mjs';
 import {sourceGit} from '../parallel-source-20261110/baseline-runtime.mjs';
 import {sourceStage8HistoricalView} from '../milestone100-20261114/source-stage8.mjs';
 import {proveRuntimeAuxiliarySuccessor} from '../milestone100-20261114/source-stage8-runtime-auxiliary.mjs';
@@ -26,12 +27,12 @@ function currentWorkflowPreflightRows(read){
  assert.equal(current.size,47,'Only the literal workflow47 enters the negative preflight');return current;
 }
 function preflightCurrentWorkflowBytes(input){
- const view=sourceStage8HistoricalView(input.git);let read;
- if(view){assert.equal(input.read,view.historicalInput.read,'Historical source reader capability differs');assert.equal(input.root,view.historicalInput.root,'Historical source root capability differs');read=view.actualInput.read;}
- else if(input.git===sourceGit)read=input.read;
+ const view=sourceStage8HistoricalView(input.git);let read,successors;
+ if(view){assert.equal(input.read,view.historicalInput.read,'Historical source reader capability differs');assert.equal(input.root,view.historicalInput.root,'Historical source root capability differs');read=view.actualInput.read;successors=view.stage10Live;}
+ else if(input.git===sourceGit){read=input.read;successors=proveSourceStage10(input).live;}
  else return;
  assert.equal(typeof read,'function','Explicit negative workflow source reader required');
- for(const [path,row]of currentWorkflowPreflightRows(read)){const bytes=read(path);assert(Buffer.isBuffer(bytes)&&bytes.length===row.bytes&&hash(bytes)===row.sha256,'Current factory bytes differ: '+path);}
+ for(const [path,retained]of currentWorkflowPreflightRows(read)){const row=successors?.get(path)?.current??retained,bytes=read(path);assert(Buffer.isBuffer(bytes)&&bytes.length===row.bytes&&hash(bytes)===row.sha256,'Current factory bytes differ: '+path);}
 }
 // End private negative workflow preflight.
 export function provePersonalAndHistoricalInputs(input,witness){
