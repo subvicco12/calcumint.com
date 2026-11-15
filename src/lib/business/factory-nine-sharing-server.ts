@@ -24,7 +24,7 @@ export async function loadFactoryNineWorkspace(raw:{expectedOwnerId:string;organ
  let recordsQuery=ctx.client.from('technology_next_shared_snapshots').select('id,title,calculator_slug,calculator_version,input_data,output_data,client_workspace_id,created_at').eq('organization_id',scope.organizationId).eq('project_id',scope.projectId).in('calculator_slug',[...factoryNineShareSlugs]);
  if(cursor)recordsQuery=recordsQuery.or(draftHistorySeekFilter(cursor));
  const [clients,records]=await Promise.all([
-  ctx.client.from('client_workspaces').select('id,name,project_id').eq('organization_id',scope.organizationId).order('created_at',{ascending:false}).limit(100),
+  ctx.client.from('client_workspaces').select('id,name,project_id').eq('organization_id',scope.organizationId).or(`project_id.is.null,project_id.eq.${scope.projectId}`).order('created_at',{ascending:false}).limit(100),
   recordsQuery.order('created_at',{ascending:false}).order('id',{ascending:false}).limit(51)
  ]);
  if(clients.error||records.error)throw Error('Business shared records unavailable');
