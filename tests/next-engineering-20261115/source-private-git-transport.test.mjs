@@ -69,7 +69,7 @@ test('Worker bootstrap excludes owner NODE_OPTIONS while each Git request retain
 // Exercise the real broker run loop with real subprocesses. Only selector waiting
 // is observed: stdout/stderr, exit status, deadlines and process cleanup stay real.
 const emptyWaitFixture=String.raw`
-import pathlib, os, json, selectors, tempfile, signal, shutil, sys
+import pathlib, os, json, selectors, tempfile, signal, shutil, sys, time
 source=pathlib.Path(sys.argv[1]).read_text().split('\ntry:\n    parent_death')
 assert len(source)==2, 'Exact broker bootstrap separator required'
 namespace={}
@@ -92,27 +92,45 @@ class ObservedSelector(original_selector):
 def spawn(*args,**kwargs):
     child=original_popen(*args,**kwargs)
     pids.append(child.pid)
+    until=time.monotonic()+10
+    while not pathlib.Path(root,'ready').exists():
+        assert child.poll() is None, 'Fixture exited before readiness'
+        assert time.monotonic()<until, 'Fixture readiness exceeded test watchdog'
+        time.sleep(.001)
+    if case=='closed':
+        original_wait=child.wait
+        def release_and_wait(*args,**kwargs):
+            pathlib.Path(root,'release').touch()
+            return original_wait(*args,**kwargs)
+        child.wait=release_and_wait
     return child
-namespace['frame']=lambda sequence,kind,data=b'':frames.append((kind,list(data)))
+def observe_frame(sequence,kind,data=b''):
+    frames.append((kind,list(data)))
+    if case=='interrupted' and {kind for kind,data in frames}=={1,2}:
+        signal.setitimer(signal.ITIMER_REAL,.05)
+namespace['frame']=observe_frame
 namespace['metadata']=lambda sequence,kind,value:results.append((kind,value))
 namespace['subprocess'].Popen=spawn
 selectors.DefaultSelector=ObservedSelector
 previous=signal.signal(signal.SIGALRM,namespace['stopped'])
 try:
-    body='import os,time,signal,sys\nos.write(1,b"abc\\x00")\nos.write(2,b"err")\n'
+    body='import os,time,signal,sys,pathlib\n'
+    if case=='positive':
+        body+='signal.signal(signal.SIGTERM,lambda signum,frame:sys.exit(7))\n'
+    body+='os.write(1,b"abc\\x00")\nos.write(2,b"err")\npathlib.Path("ready").touch()\n'
     if case=='inherited':
         body+='if os.fork()==0:\n time.sleep(.04)\n os._exit(0)\nsys.exit(7)\n'
     else:
-        if case=='positive':
-            body+='signal.signal(signal.SIGTERM,signal.SIG_IGN)\n'
-        body+='os.close(1)\nos.close(2)\ntime.sleep(.20)\nsys.exit(7)\n'
+        body+='os.close(1)\nos.close(2)\n'
+        if case=='closed':
+            body+='while not pathlib.Path("release").exists():\n time.sleep(.001)\nsys.exit(7)\n'
+        else:
+            body+='while True:\n time.sleep(.01)\n'
     executable=pathlib.Path(root,'git')
     executable.write_text('#!/usr/bin/python3\n'+body)
     executable.chmod(0o700)
     request={'sequence':1,'argv':['rev-parse','--show-toplevel'],'cwd':root,'env':{**os.environ,'PATH':root+':/usr/bin:/bin'},'inputPresent':False,'timeout':50 if case=='positive' else 0,'maxBuffer':134217728,'killSignal':'SIGTERM'}
     interrupted=False
-    if case=='interrupted':
-        signal.setitimer(signal.ITIMER_REAL,.05)
     try:
         namespace['run'](request,b'')
     except SystemExit as error:
