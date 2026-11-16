@@ -71,7 +71,15 @@ test('an overlapping historical Business source discloses the actual latest immu
  const nsPath='tests/gotrue-runtime/acceptance.mjs',nsOld=sourceGit(['show',workflowPolicy.predecessorRef+':'+nsPath]);assert(retainedRuntimeBytes(nsPath).equals(nsOld));assert.throws(()=>retainedRuntimeBytes(nsPath,p=>p===nsPath?nsOld:readFileSync(p)),/Current NS source bytes differ|Independent current target bytes differ: tests\/gotrue-runtime\/acceptance\.mjs/);assert.throws(()=>retainedRuntimeBytes(nsPath,readFileSync,()=>{throw Error('Missing NS provenance');}),/Missing NS provenance/);
  withWorkflowSourceEvidenceBatch(verify=>{for(const row of currentCapture.workflowHistoricalClaims){assert.equal(row.ref,'f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5');assert.equal(verify(row.path,row.sha256,readFileSync(row.path)).currentApplicationGit,workflowPolicy.codeRef);}});
  for(const row of currentCapture.workflowHistoricalClaims){assert.throws(()=>assertNamedApplicationSuccessor(row.path,'0'.repeat(64),readFileSync(row.path)),/Exact original F042 source claim required/);}
- for(const row of JSON.parse(readFileSync(personalCapturePath)).rows){const path=row.path;retainedRuntimeBytes('tests/gotrue-runtime/acceptance.mjs');for(const bytes of [Buffer.from('changed after immutable warm'),sourceGit(['cat-file','blob',row.predecessor.blob])])assert.throws(()=>retainedRuntimeBytes('tests/gotrue-runtime/acceptance.mjs',p=>p===path?bytes:readFileSync(p)),/Current factory bytes differ/);}
+ for(const row of JSON.parse(readFileSync(personalCapturePath)).rows){
+  const path=row.path;
+  for(const bytes of [Buffer.from('changed after immutable warm'),sourceGit(['cat-file','blob',row.predecessor.blob])]){
+   let visited=false;
+   assert.throws(()=>retainedRuntimeBytes('tests/gotrue-runtime/acceptance.mjs',p=>{if(p===path){visited=true;return bytes;}return readFileSync(p);}),error=>error instanceof Error&&/Current factory bytes differ/.test(error.message)&&error.message.includes(path),'Each personal source must fail at its exact changed path');
+   assert.equal(visited,true,'Personal source substitution was not observed: '+path);
+  }
+ }
+ assert(retainedRuntimeBytes(nsPath).equals(nsOld),'Default NS historical bytes recover after every personal source refusal');
  verifyCurrentRuntimeContext();
 
  const overlaps=currentCapture.applicationSuccessors.filter(row=>row.historical&&workflowPolicy.paths.includes(row.path));
