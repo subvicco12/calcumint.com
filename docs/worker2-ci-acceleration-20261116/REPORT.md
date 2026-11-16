@@ -8,6 +8,8 @@ Worktree `/workspace/worker2-ci-acceleration`, branch `engineering/worker2-ci-ac
 
 No Worker3 branch, PR1538, calculator implementation, exact source/version binding, historical engine, deadline, negative security/auth assertion, Git source guard, genuine-auth source or canonical count was modified. No full local suite, hosted CI dispatch, auth/browser acceptance, production operation, merge or deployment was launched.
 
+Raw hosted logs retain original ANSI and trailing whitespace. The Worker2-local `.gitattributes` marks receipt logs as binary archives to preserve their exact bytes and avoid whitespace normalization; no source-file or shared attribute rule changes.
+
 ## Root causes and exact affected files
 
 | Failure | Reproduction and cause | Exact relevant files |
