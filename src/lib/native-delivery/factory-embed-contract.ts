@@ -1,5 +1,5 @@
 import {conversionCompletionContracts} from '@/lib/calculator-factory/completion/conversion-contracts';
-import {factoryResult,getFactoryContract,runFactoryCalculation} from '@/lib/calculator-factory/registry';
+import {factoryResult,getFactoryContract,getFactoryWorkflows,runFactoryCalculation} from '@/lib/calculator-factory/registry';
 import {factoryDeliveryIdentity} from './factory-delivery-catalog';
 import {NativeDeliveryError,runNativeCalculation} from './contract';
 import {calculatorRegistry} from '@/calculators/registry';
@@ -14,6 +14,7 @@ export function runFactoryEmbedCalculation(catalogId:number,version:number,input
  try{
   const packet=runFactoryCalculation(catalogId,version,input as Record<string,string>);
   const unit=factoryResult(catalogId,packet.raw).primaryResult.unit,scoped=conversionCompletionContracts.find(row=>row.catalogId===catalogId);
-  return {...identity,input:packet.snapshot.input,output:packet.snapshot.output,packet,...(unit?{unit}:{}),...(scoped?{applicability:scoped.applicability,numericalPolicy:scoped.numericalPolicy,refusalPolicy:scoped.refusalPolicy}:{}),methodology:definition.formulas,sources:definition.sources,limitations:contract.scope,warnings:['Binary64 range and precision limits apply. Display rounding does not change the native result or recorded packet.']};
+  const scopedMetadata=getFactoryWorkflows(catalogId).scopedMetadata;
+  return {...identity,...(scopedMetadata?{scopedMetadata}:{}),input:packet.snapshot.input,output:packet.snapshot.output,packet,...(unit?{unit}:{}),...(scoped?{applicability:scoped.applicability,numericalPolicy:scoped.numericalPolicy,refusalPolicy:scoped.refusalPolicy}:{}),methodology:definition.formulas,sources:scopedMetadata?[...definition.sources,...scopedMetadata.publisherSources.map(url=>({label:url,url}))]:definition.sources,limitations:contract.scope,warnings:['Binary64 range and precision limits apply. Display rounding does not change the native result or recorded packet.']};
  }catch{throw new NativeDeliveryError(422,'Value is outside the supported range, precision or exact input contract.');}
 }
