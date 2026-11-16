@@ -74,6 +74,7 @@ function dispose(state) {
     if (state.closed)
         return;
     state.closed = true;
+    state.child?.ref();
     if (state.process && same(state.process))
         try {
             process.kill(state.process.pid, 'SIGSTOP');
@@ -134,6 +135,7 @@ export function nativeGitProcessState() {
 }
 if (!holder.exitInstalled) {
     holder.exitInstalled = true;
+    process.on('beforeExit',()=>{if(holder.state)closeNativeGitProcess();});
     process.once('exit', () => {
         try {
             closeNativeGitProcess();
@@ -153,12 +155,12 @@ function transfer(state, fd, b, write, deadline) {
             if (n)
                 at += n;
             else
-                Atomics.wait(pause, 0, 0, 1);
+                Atomics.wait(pause, 0, 0, 0.05);
         }
         catch (e) {
             if (e.code !== 'EAGAIN' && e.code !== 'EINTR')
                 throw e;
-            Atomics.wait(pause, 0, 0, 1);
+            Atomics.wait(pause, 0, 0, 0.05);
         }
     }
     return b;

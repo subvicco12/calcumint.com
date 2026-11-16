@@ -1,5 +1,5 @@
 /** Private native-Git executor. Every request executes Git; no query cache exists. */
-import { openSync, closeSync, readSync, writeSync, readFileSync, lstatSync } from 'node:fs';
+import { openSync, closeSync, readSync, writeSync, readFileSync, lstatSync, constants } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { join } from 'node:path';
 const [directory, ownerText, ownerStart] = process.argv.slice(2), owner = Number(ownerText), pause = new Int32Array(new SharedArrayBuffer(4)), limit = 128 * 1024 * 1024;
@@ -20,7 +20,7 @@ function owned(path, fifo = false) {
 owned(directory);
 for (const name of ['request', 'response'])
     owned(join(directory, name), true);
-const flags = (await import('node:fs')).constants.O_RDWR | (await import('node:fs')).constants.O_NONBLOCK, input = openSync(join(directory, 'request'), flags), output = openSync(join(directory, 'response'), flags);
+const input=openSync(join(directory,'request'),constants.O_RDONLY),output=openSync(join(directory,'response'),constants.O_WRONLY);
 function transfer(fd, b, write) {
     let at = 0;
     while (at < b.length) {
@@ -30,8 +30,7 @@ function transfer(fd, b, write) {
             const n = write ? writeSync(fd, b, at, b.length - at) : readSync(fd, b, at, b.length - at, null);
             if (n)
                 at += n;
-            else
-                Atomics.wait(pause, 0, 0, 1);
+            else throw Error('Native Git owner request channel closed');
         }
         catch (e) {
             if (e.code !== 'EAGAIN' && e.code !== 'EINTR')
