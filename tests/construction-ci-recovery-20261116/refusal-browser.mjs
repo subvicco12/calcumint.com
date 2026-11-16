@@ -80,7 +80,7 @@ try{
     await browser.until('document.body.innerText.includes("Verified historical snapshot opened read-only")');assert.deepEqual(await historical(),snapshot);row.scenario199ReadOnly=true;
    }
    for(const [key,value]of Object.entries(c.raw))await browser.field('input[name='+key+']',value);
-   await browser.click('Calculate');await browser.until('!!document.querySelector("[aria-label=\"Calculation result\"]")');assert.equal(await browser.js(q("[aria-label=\"Calculation result\"]")),false);
+   await browser.click('Calculate');await browser.until(q('[aria-label="Calculation result"]'));assert.equal(await browser.js('!!document.querySelector("[role=alert]")'),false);
    const stored=await ok(user.sdk.from('calculation_history').select('input_data,output_data').eq('id',historyId).single());assert.deepEqual(stored,{input_data:input,output_data:output});row.validInputRecovery=true;row.historyUnmodified=true;
    assert(await browser.js('document.documentElement.scrollWidth<=innerWidth'));report.rows.push(row);console.log('PASS refusal/read-only '+plan+' #'+c.id);
   }
