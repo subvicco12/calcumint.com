@@ -7,6 +7,8 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {completionGitReader} from '../tests/parallel-source-20261110/git-reader.mjs';
 import {proveSourceStage10,assertSourceStage10Stable} from '../tests/next-engineering-20261115/source-stage10.mjs';
+import {sourceStage10Policy as current32Policy} from '../tests/next-engineering-20261115/source-stage10-current32-policy.mjs';
+import {sourceStage10Policy as retained26Policy,sourceStage10CapturePath as retained26CapturePath} from '../tests/next-engineering-20261115/source-stage10-current26-policy.mjs';
 import {verifyFinancialSafetyBinding} from './financial-safety-lineage.mjs';
 import {verifyCompletionBinding} from './product-completion-stage8.mjs';
 
@@ -25,7 +27,24 @@ export function verifyPreservedSource(name,current,historical,git){
  const proof=proveSourceStage10({root:process.cwd(),read:readFileSync,git:proofGit});
  try{
   const row=proof.live.get(name);
-  assert.equal(row?.current.ref,'29bbd941128fe79c825450f0541f630b45b995d8','Fixed current26 diagnostic source required');
+  // The diagnostic bytes did not change during the exact32 delivery succession.
+  // Retain the original26 identity independently; only this fixed ref-only join is allowed.
+  const retainedCaptureRef='41dd08636532c4930666c76b109526d293186699';
+  const captureBlob=objects(['rev-parse',retainedCaptureRef+':'+retained26CapturePath]).toString().trim();assert.match(captureBlob,/^[a-f0-9]{40}$/);
+  const captureBytes=objects(['cat-file','blob',captureBlob]);assert.equal(hash(captureBytes),retained26Policy.captureSHA256,'Independent retained26 diagnostic capture differs');
+  assert.equal(createHash('sha1').update(Buffer.from('blob '+captureBytes.length+'\0')).update(captureBytes).digest('hex'),captureBlob,'Retained26 diagnostic capture object differs');
+  const capture=JSON.parse(captureBytes);assert.equal(capture.codeRef,retained26Policy.codeRef);assert.equal(capture.predecessorRef,retained26Policy.predecessorRef);assert.deepEqual(capture.rows.map(row=>row.path),retained26Policy.paths);
+  const retainedRows=capture.rows.filter(row=>row.path===name);assert.equal(retainedRows.length,1);const retained=retainedRows[0];
+  assert.equal(retained.current.ref,'29bbd941128fe79c825450f0541f630b45b995d8','Fixed current26 diagnostic source required');
+  assert.equal(current32Policy.codeRef,'50240fb1d59a1f8d298718f85e58bd55b4b990c2');
+  assert.deepEqual(row?.current,{...retained.current,ref:current32Policy.codeRef},'Only the fixed current32 diagnostic ref-only join is allowed');
+  assert.equal(retained.predecessor.sha256,claim,'Catalog diagnostic historical claim differs');
+  for(const record of [retained.current,row.current]){
+   assert.equal(record.path,name);assert.equal(objects(['rev-parse',record.ref+':'+name]).toString().trim(),record.blob,'Catalog diagnostic immutable path differs');
+   const bytes=objects(['cat-file','blob',record.blob]);assert.equal(bytes.length,record.bytes);assert.equal(hash(bytes),record.sha256,'Catalog diagnostic immutable bytes differ');
+   assert.equal(createHash('sha1').update(Buffer.from('blob '+bytes.length+'\0')).update(bytes).digest('hex'),record.blob,'Catalog diagnostic immutable object differs');
+   assert(bytes.equals(current),'Catalog diagnostic current successor differs');
+  }
   assert.equal(row.current.sha256,hash(current),'Catalog diagnostic current successor differs');
   assert.equal(row.predecessor.sha256,claim,'Catalog diagnostic historical claim differs');
   assert(current.equals(readFileSync(name)),'Catalog diagnostic current successor differs');
