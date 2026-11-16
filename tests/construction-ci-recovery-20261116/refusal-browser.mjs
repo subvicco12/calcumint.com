@@ -71,6 +71,11 @@ try{
     report.downloads.push({id:c.id,plan,format:'recorded-json',file:path.relative(out,d.file),bytes:d.bytes.length,sha256:sha(d.bytes)});
     const scenarioId=randomUUID();await db.sql(`INSERT INTO public.saved_scenarios(id,user_id,project_id,name,calculator_slug,calculator_version,input_data,output_data) VALUES('${scenarioId}','${user.id}','${user.project.id}','Retained v1 witness','${c.slug}',1,${sqlJSON(input)},${sqlJSON(output)});`);
     assert.equal((await ok(users.outsider.sdk.from('saved_scenarios').select('id').eq('id',scenarioId))).length,0);
+    // A fresh document prevents the preceding identical history199 pane/status
+    // from satisfying a scenario operation that never executed.
+    await visit('/admin/worker1-construction-20261116');await choose(c.id);
+    assert.equal(await browser.js('!!document.querySelector("[aria-label=\"Verified historical construction snapshot\"]")'),false);
+    assert(!/Verified historical snapshot opened read-only/.test(await browser.text()));
     await browser.field(await fieldForLabel('Saved scenario ID'),scenarioId);await browser.click('Restore saved scenario');
     await browser.until('document.body.innerText.includes("Verified historical snapshot opened read-only")');assert.deepEqual(await historical(),snapshot);row.scenario199ReadOnly=true;
    }
