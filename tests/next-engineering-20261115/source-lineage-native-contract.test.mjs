@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
-import {readFileSync,writeFileSync,mkdtempSync,rmSync,symlinkSync} from 'node:fs';
+import {readFileSync,writeFileSync,mkdtempSync,rmSync} from 'node:fs';
 import {join} from 'node:path';
 import {tmpdir} from 'node:os';
 import {makeGitReader} from '../parallel-source-20261110/git-reader.mjs';
@@ -68,10 +68,40 @@ test('registered history recovers actual inputs while mismatched readers and unr
 });
 
 test('a same-byte physical symlink cannot be hidden by an approved supplied reader',()=>{
- const original=read(lineageNativePath),directory=mkdtempSync(join(tmpdir(),'lineage-contract-')),copy=join(directory,'same-bytes.mjs');
- writeFileSync(copy,original);
+ const root=process.cwd(),fixedRef='6b013fbf483e69b1016d238f84cc55e5057bb717';
+ const actual=args=>execFileSync('git',args,{cwd:root,stdio:['ignore','pipe','pipe']});
+ const original=read(lineageNativePath),head=actual(['rev-parse','--verify','HEAD^{commit}']);
+ const indexPath=actual(['rev-parse','--path-format=absolute','--git-path','index']).toString().trim(),index=readFileSync(indexPath);
+ const directory=mkdtempSync(join(tmpdir(),'lineage-contract-')),tree=join(directory,'tree');
  try{
-  rmSync(lineageNativePath);symlinkSync(copy,lineageNativePath);
-  assert.throws(()=>proveLineageNativeSuccessor(native,p=>p===lineageNativePath?Buffer.from(original):read(p)),/Regular current lineage source required/);
- }finally{rmSync(lineageNativePath,{force:true});writeFileSync(lineageNativePath,original);rmSync(directory,{recursive:true,force:true});}
+  // Share immutable objects only; the checkout, HEAD, index and mutated guard belong to this clone.
+  actual(['clone','--shared','--no-checkout',root,tree]);
+  const isolated=args=>execFileSync('git',args,{cwd:tree,stdio:['ignore','pipe','pipe']});
+  isolated(['checkout','--detach',fixedRef]);
+  assert.equal(isolated(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),fixedRef);
+  isolated(['remote','set-url','origin','https://github.com/subvicco12/calcumint.com.git']);
+  const child=String.raw`import assert from 'node:assert/strict';
+import {execFileSync} from 'node:child_process';
+import {readFileSync,writeFileSync,rmSync,symlinkSync} from 'node:fs';
+import {join} from 'node:path';
+import {lineageNativePath,proveLineageNativeSuccessor} from './tests/next-engineering-20261115/source-lineage-native-contract.mjs';
+const native=(args,options={})=>execFileSync('git',args,{cwd:process.cwd(),stdio:['ignore','pipe','pipe'],maxBuffer:64*1024*1024,...options});
+assert.equal(native(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),${JSON.stringify(fixedRef)});
+const read=p=>readFileSync(p),original=read(lineageNativePath),copy=join(process.cwd(),'same-bytes.mjs');
+writeFileSync(copy,original);
+try{
+ rmSync(lineageNativePath);symlinkSync(copy,lineageNativePath);
+ assert.throws(()=>proveLineageNativeSuccessor(native,p=>p===lineageNativePath?Buffer.from(original):read(p)),/Regular current lineage source required/);
+}finally{rmSync(lineageNativePath,{force:true});writeFileSync(lineageNativePath,original);rmSync(copy,{force:true});}
+process.stdout.write('PASS isolated lineage symlink refusal\n');`;
+  const env={...process.env};delete env.NODE_TEST_CONTEXT;
+  const childPath=join(tree,'lineage-symlink-negative.mjs');writeFileSync(childPath,child);
+  const output=execFileSync(process.execPath,[childPath],{cwd:tree,env,encoding:'utf8',timeout:15000,maxBuffer:1000000});
+  assert.match(output,/^PASS isolated lineage symlink refusal$/m);
+ }finally{
+  rmSync(directory,{recursive:true,force:true});
+  assert(read(lineageNativePath).equals(original),'Parent lineage source changed during isolated negative');
+  assert(actual(['rev-parse','--verify','HEAD^{commit}']).equals(head),'Parent HEAD changed during isolated negative');
+  assert(readFileSync(indexPath).equals(index),'Parent index changed during isolated negative');
+ }
 });
