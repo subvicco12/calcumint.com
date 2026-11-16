@@ -55,15 +55,15 @@ try{
    assert.deepEqual(api.verifyConstructionSnapshot(snapshot).snapshot,snapshot);assert.throws(()=>api.constructionWorkflows(c.id).execute(raw),/Whole-unit rounding/);
    for(const [key,value]of Object.entries(raw))await browser.field('input[name='+key+']',value);
    await browser.click('Calculate');await browser.until('document.querySelector("[role=alert]")?.textContent.includes("Whole-unit rounding")');
-   assert.equal(await browser.js('!!document.querySelector("[aria-label=\"Calculation result\"]")'),false);
+   assert.equal(await browser.js(q("[aria-label=\"Calculation result\"]")),false);
    assert.equal(await browser.js('[...document.querySelectorAll("button")].some(b=>["Save calculation","Export JSON","Download JSON"].includes(b.textContent.trim()))'),false,'Refused capture exposes no save or export');
    const historyId=randomUUID();await db.sql(`INSERT INTO public.calculation_history(id,user_id,calculator_slug,calculator_version,input_data,output_data) VALUES('${historyId}','${user.id}','${c.slug}',1,${sqlJSON(input)},${sqlJSON(output)});`);
    assert.equal((await ok(users.outsider.sdk.from('calculation_history').select('id').eq('id',historyId))).length,0);
    await browser.field(await fieldForLabel('Saved history ID'),historyId);await browser.click('Restore owned history');
-   await browser.until('document.querySelector("[aria-label=\"Verified historical construction snapshot\"]")?.textContent.includes("199")');
-   const historical=()=>browser.js('JSON.parse(document.querySelector("[aria-label=\"Verified historical construction snapshot\"]").textContent)');
+   await browser.until(q('[aria-label="Verified historical construction snapshot"]','?.textContent.includes("199")'));
+   const historical=()=>browser.js('JSON.parse(document.querySelector('+JSON.stringify('[aria-label="Verified historical construction snapshot"]')+').textContent)');
    assert.deepEqual(await historical(),snapshot);assert.match(await browser.text(),/read-only.*original v1 result is preserved/);
-   assert.equal(await browser.js('!!document.querySelector("[aria-label=\"Calculation result\"]")'),false,'Historical199 must not become a new capture');
+   assert.equal(await browser.js(q("[aria-label=\"Calculation result\"]")),false,'Historical199 must not become a new capture');
    const row={id:c.id,plan,refusal:'EXACT_NORMALIZED_CEILING198_RETAINED_V1_199',historical199ReadOnly:true,foreignHistoryDenied:true};
    if(plan==='free')assert.equal(await browser.js('[...document.querySelectorAll("button")].some(b=>b.textContent==="Export recorded construction JSON")'),false);
    else{
@@ -74,13 +74,13 @@ try{
     // A fresh document prevents the preceding identical history199 pane/status
     // from satisfying a scenario operation that never executed.
     await visit('/admin/worker1-construction-20261116');await choose(c.id);
-    assert.equal(await browser.js('!!document.querySelector("[aria-label=\"Verified historical construction snapshot\"]")'),false);
+    assert.equal(await browser.js(q("[aria-label=\"Verified historical construction snapshot\"]")),false);
     assert(!/Verified historical snapshot opened read-only/.test(await browser.text()));
     await browser.field(await fieldForLabel('Saved scenario ID'),scenarioId);await browser.click('Restore saved scenario');
     await browser.until('document.body.innerText.includes("Verified historical snapshot opened read-only")');assert.deepEqual(await historical(),snapshot);row.scenario199ReadOnly=true;
    }
    for(const [key,value]of Object.entries(c.raw))await browser.field('input[name='+key+']',value);
-   await browser.click('Calculate');await browser.until('!!document.querySelector("[aria-label=\"Calculation result\"]")');assert.equal(await browser.js('!!document.querySelector("[role=alert]")'),false);
+   await browser.click('Calculate');await browser.until('!!document.querySelector("[aria-label=\"Calculation result\"]")');assert.equal(await browser.js(q("[aria-label=\"Calculation result\"]")),false);
    const stored=await ok(user.sdk.from('calculation_history').select('input_data,output_data').eq('id',historyId).single());assert.deepEqual(stored,{input_data:input,output_data:output});row.validInputRecovery=true;row.historyUnmodified=true;
    assert(await browser.js('document.documentElement.scrollWidth<=innerWidth'));report.rows.push(row);console.log('PASS refusal/read-only '+plan+' #'+c.id);
   }
