@@ -1,0 +1,1385 @@
+﻿2026-11-16T06:09:35.6125637Z Current runner version: '2.338.2'
+2026-11-16T06:09:35.6166918Z ##[group]Runner Image Provisioner
+2026-11-16T06:09:35.6168495Z Hosted Compute Agent
+2026-11-16T06:09:35.6169510Z Version: 20261103.629
+2026-11-16T06:09:35.6170680Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+2026-11-16T06:09:35.6172127Z Build Date: 2026-11-03T17:26:59Z
+2026-11-16T06:09:35.6173438Z Worker ID: {99de7c95-35b0-40e6-80ab-48d2f56a8aef}
+2026-11-16T06:09:35.6174805Z Region: eastus
+2026-11-16T06:09:35.6176243Z Cloud: Azure
+2026-11-16T06:09:35.6177379Z ##[endgroup]
+2026-11-16T06:09:35.6179809Z ##[group]Operating System
+2026-11-16T06:09:35.6181186Z Ubuntu
+2026-11-16T06:09:35.6182074Z 26.04.1
+2026-11-16T06:09:35.6183021Z LTS
+2026-11-16T06:09:35.6183880Z ##[endgroup]
+2026-11-16T06:09:35.6185125Z ##[group]Runner Image
+2026-11-16T06:09:35.6186235Z Image: ubuntu-26.04
+2026-11-16T06:09:35.6187205Z Version: 20261111.196.1
+2026-11-16T06:09:35.6189626Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261111.196/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-16T06:09:35.6192660Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261111.196
+2026-11-16T06:09:35.6194351Z ##[endgroup]
+2026-11-16T06:09:35.6196697Z ##[group]GITHUB_TOKEN Permissions
+2026-11-16T06:09:35.6199572Z Contents: read
+2026-11-16T06:09:35.6200659Z Metadata: read
+2026-11-16T06:09:35.6201589Z ##[endgroup]
+2026-11-16T06:09:35.6204797Z Secret source: Actions
+2026-11-16T06:09:35.6206696Z Cache mode: write
+2026-11-16T06:09:35.6207990Z Prepare workflow directory
+2026-11-16T06:09:35.6718395Z Prepare all required actions
+2026-11-16T06:09:35.6769073Z Getting action download info
+2026-11-16T06:09:35.8445410Z Download action repository 'actions/checkout@v5' (SHA:fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09)
+2026-11-16T06:09:35.9667856Z Download action repository 'actions/setup-node@v5' (SHA:a0853c24544627f65ddf259abe73b1d18a591444)
+2026-11-16T06:09:36.2004550Z Complete job name: source-acceptance
+2026-11-16T06:09:36.2983459Z ##[group]Run actions/checkout@v5
+2026-11-16T06:09:36.2984395Z with:
+2026-11-16T06:09:36.2985119Z   repository: subvicco12/calcumint.com
+2026-11-16T06:09:36.2988934Z   token: ***
+2026-11-16T06:09:36.2989366Z   ssh-strict: true
+2026-11-16T06:09:36.2989795Z   ssh-user: git
+2026-11-16T06:09:36.2990229Z   persist-credentials: true
+2026-11-16T06:09:36.2990706Z   clean: true
+2026-11-16T06:09:36.2991144Z   sparse-checkout-cone-mode: true
+2026-11-16T06:09:36.2991656Z   fetch-depth: 1
+2026-11-16T06:09:36.2992080Z   fetch-tags: false
+2026-11-16T06:09:36.2992525Z   show-progress: true
+2026-11-16T06:09:36.2992956Z   lfs: false
+2026-11-16T06:09:36.2993355Z   submodules: false
+2026-11-16T06:09:36.2993784Z   set-safe-directory: true
+2026-11-16T06:09:36.2994281Z   allow-unsafe-pr-checkout: false
+2026-11-16T06:09:36.2995237Z ##[endgroup]
+2026-11-16T06:09:36.6258879Z Syncing repository: subvicco12/calcumint.com
+2026-11-16T06:09:36.6262482Z ##[group]Getting Git version info
+2026-11-16T06:09:36.6264100Z Working directory is '/home/runner/work/calcumint.com/calcumint.com'
+2026-11-16T06:09:36.6266026Z [command]/usr/bin/git version
+2026-11-16T06:09:36.6300629Z git version 2.56.1
+2026-11-16T06:09:36.6325318Z ##[endgroup]
+2026-11-16T06:09:36.6380169Z Temporarily overriding HOME='/home/runner/work/_temp/31b6b074-b999-4327-a38e-50badd1208e3' before making global git config changes
+2026-11-16T06:09:36.6383500Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-16T06:09:36.6388838Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/calcumint.com/calcumint.com
+2026-11-16T06:09:36.6480453Z Deleting the contents of '/home/runner/work/calcumint.com/calcumint.com'
+2026-11-16T06:09:36.6485089Z ##[group]Initializing the repository
+2026-11-16T06:09:36.6496484Z [command]/usr/bin/git init /home/runner/work/calcumint.com/calcumint.com
+2026-11-16T06:09:36.6650404Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-16T06:09:36.6652468Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-16T06:09:36.6654774Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-16T06:09:36.6656531Z hint: call:
+2026-11-16T06:09:36.6657680Z hint:
+2026-11-16T06:09:36.6658580Z hint: 	git config --global init.defaultBranch <name>
+2026-11-16T06:09:36.6659661Z hint:
+2026-11-16T06:09:36.6660704Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-16T06:09:36.6662453Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-16T06:09:36.6663862Z hint:
+2026-11-16T06:09:36.6664634Z hint: 	git branch -m <name>
+2026-11-16T06:09:36.6665664Z hint:
+2026-11-16T06:09:36.6666761Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-16T06:09:36.6668723Z Initialized empty Git repository in /home/runner/work/calcumint.com/calcumint.com/.git/
+2026-11-16T06:09:36.6679446Z [command]/usr/bin/git remote add origin https://github.com/subvicco12/calcumint.com
+2026-11-16T06:09:36.6775059Z ##[endgroup]
+2026-11-16T06:09:36.6787060Z ##[group]Disabling automatic garbage collection
+2026-11-16T06:09:36.6801748Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-16T06:09:36.6837558Z ##[endgroup]
+2026-11-16T06:09:36.6839370Z ##[group]Setting up auth
+2026-11-16T06:09:36.6841062Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-16T06:09:36.6881313Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-16T06:09:36.7457917Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-16T06:09:36.7498850Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-16T06:09:36.7788123Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-16T06:09:36.7826755Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-16T06:09:36.8101412Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-16T06:09:36.8141641Z ##[endgroup]
+2026-11-16T06:09:36.8142700Z ##[group]Fetching the repository
+2026-11-16T06:09:36.8152057Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +4e52927bdd8c5d7f3bbce1f5f7d9bac0a4faf2f7:refs/remotes/origin/engineering/worker3-recovery-20261116
+2026-11-16T06:09:38.9417122Z From https://github.com/subvicco12/calcumint.com
+2026-11-16T06:09:38.9420337Z  * [new ref]         4e52927bdd8c5d7f3bbce1f5f7d9bac0a4faf2f7 -> origin/engineering/worker3-recovery-20261116
+2026-11-16T06:09:38.9424106Z ##[endgroup]
+2026-11-16T06:09:38.9425745Z ##[group]Determining the checkout info
+2026-11-16T06:09:38.9427210Z ##[endgroup]
+2026-11-16T06:09:38.9433156Z [command]/usr/bin/git sparse-checkout disable
+2026-11-16T06:09:38.9495071Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-16T06:09:38.9527163Z ##[group]Checking out the ref
+2026-11-16T06:09:38.9533329Z [command]/usr/bin/git checkout --progress --force -B engineering/worker3-recovery-20261116 refs/remotes/origin/engineering/worker3-recovery-20261116
+2026-11-16T06:09:39.8216682Z Switched to a new branch 'engineering/worker3-recovery-20261116'
+2026-11-16T06:09:39.8221131Z branch 'engineering/worker3-recovery-20261116' set up to track 'origin/engineering/worker3-recovery-20261116'.
+2026-11-16T06:09:39.8297184Z ##[endgroup]
+2026-11-16T06:09:39.8356661Z [command]/usr/bin/git log -1 --format=%H
+2026-11-16T06:09:39.8384454Z 4e52927bdd8c5d7f3bbce1f5f7d9bac0a4faf2f7
+2026-11-16T06:09:39.8682569Z ##[group]Run actions/setup-node@v5
+2026-11-16T06:09:39.8682913Z with:
+2026-11-16T06:09:39.8683117Z   node-version: 22
+2026-11-16T06:09:39.8683606Z   cache: npm
+2026-11-16T06:09:39.8683843Z   cache-dependency-path: package-lock.json
+2026-11-16T06:09:39.8684147Z   always-auth: false
+2026-11-16T06:09:39.8684365Z   check-latest: false
+2026-11-16T06:09:39.8687016Z   token: ***
+2026-11-16T06:09:39.8687247Z   package-manager-cache: true
+2026-11-16T06:09:39.8687502Z ##[endgroup]
+2026-11-16T06:09:40.0262904Z (node:2500) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-16T06:09:40.0263898Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-16T06:09:40.0273233Z Found in cache @ /opt/hostedtoolcache/node/22.23.4/x64
+2026-11-16T06:09:40.0274282Z ##[group]Environment details
+2026-11-16T06:09:40.5115912Z node: v22.23.4
+2026-11-16T06:09:40.5116366Z npm: 10.9.9
+2026-11-16T06:09:40.5116792Z yarn: 1.22.22
+2026-11-16T06:09:40.5117577Z ##[endgroup]
+2026-11-16T06:09:40.5143723Z [command]/opt/hostedtoolcache/node/22.23.4/x64/bin/npm config get cache
+2026-11-16T06:09:40.6389208Z /home/runner/.npm
+2026-11-16T06:09:40.7458106Z Cache hit for: node-cache-Linux-x64-npm-5eacf253a5c985e02ae9c7b30a0a41613201d617384801131cf346d486c03931
+2026-11-16T06:09:40.7573694Z (node:2500) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-16T06:09:41.7861371Z Received 176160768 of 222636897 (79.1%), 167.8 MBs/sec
+2026-11-16T06:09:41.9921337Z Received 222636897 of 222636897 (100.0%), 175.9 MBs/sec
+2026-11-16T06:09:41.9922708Z Cache Size: ~212 MB (222636897 B)
+2026-11-16T06:09:42.0042301Z [command]/usr/bin/tar -xf /home/runner/work/_temp/8eacd213-32c7-4de0-9ba8-3387acf9cb7d/cache.tzst -P -C /home/runner/work/calcumint.com/calcumint.com --use-compress-program unzstd
+2026-11-16T06:09:42.6427112Z Cache restored successfully
+2026-11-16T06:09:42.6529623Z Cache restored from key: node-cache-Linux-x64-npm-5eacf253a5c985e02ae9c7b30a0a41613201d617384801131cf346d486c03931
+2026-11-16T06:09:42.6768045Z ##[group]Run node scripts/fetch-source-lineage.mjs
+2026-11-16T06:09:42.6768536Z [36;1mnode scripts/fetch-source-lineage.mjs[0m
+2026-11-16T06:09:42.6830719Z shell: /usr/bin/bash -e {0}
+2026-11-16T06:09:42.6830997Z ##[endgroup]
+2026-11-16T06:09:46.6079834Z {"sourceRevisions":539,"fetched":539,"releaseHold":true,"productionWrites":false}
+2026-11-16T06:09:46.6170345Z ##[group]Run npm ci --no-audit --no-fund
+2026-11-16T06:09:46.6170727Z [36;1mnpm ci --no-audit --no-fund[0m
+2026-11-16T06:09:46.6223208Z shell: /usr/bin/bash -e {0}
+2026-11-16T06:09:46.6223497Z ##[endgroup]
+2026-11-16T06:10:00.2972610Z 
+2026-11-16T06:10:00.2973664Z added 477 packages in 14s
+2026-11-16T06:10:00.4081187Z ##[group]Run docker pull postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94
+2026-11-16T06:10:00.4082197Z [36;1mdocker pull postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94[0m
+2026-11-16T06:10:00.4083549Z [36;1mdocker pull postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401[0m
+2026-11-16T06:10:00.4137600Z shell: /usr/bin/bash -e {0}
+2026-11-16T06:10:00.4137943Z ##[endgroup]
+2026-11-16T06:10:00.8192431Z docker.io/library/postgres@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94: Pulling from library/postgres
+2026-11-16T06:10:01.0627969Z 5b6f078adbb9: Pulling fs layer
+2026-11-16T06:10:01.0629404Z 82e3b18698cd: Pulling fs layer
+2026-11-16T06:10:01.0630553Z 1d12e864e19a: Pulling fs layer
+2026-11-16T06:10:01.0633613Z 10c02ef94427: Pulling fs layer
+2026-11-16T06:10:01.0634265Z 11e80b5eea53: Pulling fs layer
+2026-11-16T06:10:01.0638327Z 2d35ebdb57d9: Pulling fs layer
+2026-11-16T06:10:01.0641692Z aabce23918dc: Pulling fs layer
+2026-11-16T06:10:01.0642403Z a5bd5a0b8636: Pulling fs layer
+2026-11-16T06:10:01.0643000Z 3cecdd37f6f2: Pulling fs layer
+2026-11-16T06:10:01.0643568Z ac28590ba464: Pulling fs layer
+2026-11-16T06:10:01.1612895Z 5b6f078adbb9: Download complete
+2026-11-16T06:10:01.1621798Z 82e3b18698cd: Download complete
+2026-11-16T06:10:01.1633136Z 10c02ef94427: Download complete
+2026-11-16T06:10:01.1639020Z 2d35ebdb57d9: Download complete
+2026-11-16T06:10:01.1736251Z a5bd5a0b8636: Download complete
+2026-11-16T06:10:01.1747074Z aabce23918dc: Download complete
+2026-11-16T06:10:01.1815282Z 11e80b5eea53: Download complete
+2026-11-16T06:10:01.1816889Z 3cecdd37f6f2: Download complete
+2026-11-16T06:10:01.2522246Z 0077bac36ee7: Download complete
+2026-11-16T06:10:01.2525537Z 9a2b4c80ac9f: Download complete
+2026-11-16T06:10:01.4557740Z 1d12e864e19a: Download complete
+2026-11-16T06:10:01.4689315Z 2d35ebdb57d9: Pull complete
+2026-11-16T06:10:01.6562751Z 82e3b18698cd: Pull complete
+2026-11-16T06:10:01.9593335Z 1d12e864e19a: Pull complete
+2026-11-16T06:10:02.2526742Z ac28590ba464: Download complete
+2026-11-16T06:10:02.2566731Z 10c02ef94427: Pull complete
+2026-11-16T06:10:03.9537174Z a5bd5a0b8636: Pull complete
+2026-11-16T06:10:03.9547723Z aabce23918dc: Pull complete
+2026-11-16T06:10:03.9574084Z 11e80b5eea53: Pull complete
+2026-11-16T06:10:03.9603691Z ac28590ba464: Pull complete
+2026-11-16T06:10:03.9857079Z 5b6f078adbb9: Pull complete
+2026-11-16T06:10:03.9868743Z 3cecdd37f6f2: Pull complete
+2026-11-16T06:10:03.9870099Z Digest: sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94
+2026-11-16T06:10:03.9871498Z Status: Downloaded newer image for postgres@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94
+2026-11-16T06:10:03.9877916Z docker.io/library/postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94
+2026-11-16T06:10:04.2022936Z docker.io/postgrest/postgrest@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401: Pulling from postgrest/postgrest
+2026-11-16T06:10:04.3021890Z 2512fbf9bcfc: Pulling fs layer
+2026-11-16T06:10:04.4156324Z 2512fbf9bcfc: Download complete
+2026-11-16T06:10:04.4315928Z 2512fbf9bcfc: Pull complete
+2026-11-16T06:10:04.4316982Z Digest: sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401
+2026-11-16T06:10:04.4318268Z Status: Downloaded newer image for postgrest/postgrest@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401
+2026-11-16T06:10:04.4324313Z docker.io/postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401
+2026-11-16T06:10:04.4412521Z ##[group]Run browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")
+2026-11-16T06:10:04.4413427Z [36;1mbrowser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")[0m
+2026-11-16T06:10:04.4414160Z [36;1mecho "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"[0m
+2026-11-16T06:10:04.4414500Z [36;1m"$browser" --version[0m
+2026-11-16T06:10:04.4465872Z shell: /usr/bin/bash -e {0}
+2026-11-16T06:10:04.4466138Z ##[endgroup]
+2026-11-16T06:10:12.2189071Z [1116/061012.218527:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /home/runner/work/_temp/calcumint-ci-browser.vTs2Up/opt/google/chrome/CHROME_VERSION_EXTRA
+2026-11-16T06:10:12.2197427Z Google Chrome 156.0.8078.47 
+2026-11-16T06:10:12.2449860Z ##[group]Run if ! command -v pdftotext >/dev/null || ! command -v pdffonts >/dev/null || ! command -v pdftoppm >/dev/null || ! command -v pdfinfo >/dev/null; then
+2026-11-16T06:10:12.2450967Z [36;1mif ! command -v pdftotext >/dev/null || ! command -v pdffonts >/dev/null || ! command -v pdftoppm >/dev/null || ! command -v pdfinfo >/dev/null; then[0m
+2026-11-16T06:10:12.2451609Z [36;1m  sudo apt-get update -qq[0m
+2026-11-16T06:10:12.2451990Z [36;1m  sudo apt-get install -y --no-install-recommends poppler-utils[0m
+2026-11-16T06:10:12.2452365Z [36;1mfi[0m
+2026-11-16T06:10:12.2452595Z [36;1mnode scripts/assert-pdf-tools.mjs[0m
+2026-11-16T06:10:12.2501511Z shell: /usr/bin/bash -e {0}
+2026-11-16T06:10:12.2501767Z env:
+2026-11-16T06:10:12.2502156Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.vTs2Up/opt/google/chrome/chrome
+2026-11-16T06:10:12.2502614Z ##[endgroup]
+2026-11-16T06:10:15.6841485Z Reading package lists...
+2026-11-16T06:10:15.8747189Z Building dependency tree...
+2026-11-16T06:10:15.8755339Z Reading state information...
+2026-11-16T06:10:15.9751483Z Solving dependencies...
+2026-11-16T06:10:16.0658065Z The following additional packages will be installed:
+2026-11-16T06:10:16.0663049Z   libgpgmepp7 libpoppler156
+2026-11-16T06:10:16.0669608Z Recommended packages:
+2026-11-16T06:10:16.0670044Z   poppler-data
+2026-11-16T06:10:16.0860908Z The following NEW packages will be installed:
+2026-11-16T06:10:16.0865218Z   libgpgmepp7 libpoppler156 poppler-utils
+2026-11-16T06:10:16.1072697Z 0 upgraded, 3 newly installed, 0 to remove and 24 not upgraded.
+2026-11-16T06:10:16.1073475Z Need to get 1607 kB of archives.
+2026-11-16T06:10:16.1074246Z After this operation, 5354 kB of additional disk space will be used.
+2026-11-16T06:10:16.1075517Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-11-16T06:10:16.2062834Z Get:2 http://azure.archive.ubuntu.com/ubuntu resolute/main amd64v3 libgpgmepp7 amd64 2.0.0-2 [132 kB]
+2026-11-16T06:10:16.2953043Z Get:3 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64v3 libpoppler156 amd64 26.01.0-2ubuntu0.3 [1243 kB]
+2026-11-16T06:10:16.3970427Z Get:4 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64v3 poppler-utils amd64 26.01.0-2ubuntu0.3 [231 kB]
+2026-11-16T06:10:16.7560101Z Fetched 1607 kB in 0s (5233 kB/s)
+2026-11-16T06:10:16.7804674Z Selecting previously unselected package libgpgmepp7:amd64.
+2026-11-16T06:10:16.8154518Z (Reading database ... 
+2026-11-16T06:10:16.8155231Z (Reading database ... 5%
+2026-11-16T06:10:16.8155721Z (Reading database ... 10%
+2026-11-16T06:10:16.8156020Z (Reading database ... 15%
+2026-11-16T06:10:16.8156302Z (Reading database ... 20%
+2026-11-16T06:10:16.8156736Z (Reading database ... 25%
+2026-11-16T06:10:16.8157196Z (Reading database ... 30%
+2026-11-16T06:10:16.8157627Z (Reading database ... 35%
+2026-11-16T06:10:16.8158065Z (Reading database ... 40%
+2026-11-16T06:10:16.8158521Z (Reading database ... 45%
+2026-11-16T06:10:16.8159003Z (Reading database ... 50%
+2026-11-16T06:10:16.9257724Z (Reading database ... 55%
+2026-11-16T06:10:17.0723931Z (Reading database ... 60%
+2026-11-16T06:10:17.2281027Z (Reading database ... 65%
+2026-11-16T06:10:17.3752459Z (Reading database ... 70%
+2026-11-16T06:10:17.5759444Z (Reading database ... 75%
+2026-11-16T06:10:17.7168166Z (Reading database ... 80%
+2026-11-16T06:10:17.8829531Z (Reading database ... 85%
+2026-11-16T06:10:18.0651918Z (Reading database ... 90%
+2026-11-16T06:10:18.2202913Z (Reading database ... 95%
+2026-11-16T06:10:18.2203381Z (Reading database ... 100%
+2026-11-16T06:10:18.2204014Z (Reading database ... 213946 files and directories currently installed.)
+2026-11-16T06:10:18.2247121Z Preparing to unpack .../libgpgmepp7_2.0.0-2_amd64v3.deb ...
+2026-11-16T06:10:18.2332184Z Unpacking libgpgmepp7:amd64 (2.0.0-2) ...
+2026-11-16T06:10:18.2606479Z Selecting previously unselected package libpoppler156:amd64.
+2026-11-16T06:10:18.2747565Z Preparing to unpack .../libpoppler156_26.01.0-2ubuntu0.3_amd64v3.deb ...
+2026-11-16T06:10:18.2754293Z Unpacking libpoppler156:amd64 (26.01.0-2ubuntu0.3) ...
+2026-11-16T06:10:18.3163821Z Selecting previously unselected package poppler-utils.
+2026-11-16T06:10:18.3303230Z Preparing to unpack .../poppler-utils_26.01.0-2ubuntu0.3_amd64v3.deb ...
+2026-11-16T06:10:18.3310889Z Unpacking poppler-utils (26.01.0-2ubuntu0.3) ...
+2026-11-16T06:10:18.3863423Z Setting up libgpgmepp7:amd64 (2.0.0-2) ...
+2026-11-16T06:10:18.3882810Z Setting up libpoppler156:amd64 (26.01.0-2ubuntu0.3) ...
+2026-11-16T06:10:18.3902783Z Setting up poppler-utils (26.01.0-2ubuntu0.3) ...
+2026-11-16T06:10:18.3923646Z Processing triggers for man-db (2.13.1-1build1) ...
+2026-11-16T06:10:18.3949760Z Not building database; man-db/auto-update is not 'true'.
+2026-11-16T06:10:18.3962570Z Processing triggers for libc-bin (2.43-2ubuntu2.4) ...
+2026-11-16T06:10:19.1357467Z 
+2026-11-16T06:10:19.1358433Z Running kernel seems to be up-to-date.
+2026-11-16T06:10:19.1358870Z 
+2026-11-16T06:10:19.1359518Z Restarting services...
+2026-11-16T06:10:19.1457186Z 
+2026-11-16T06:10:19.1457748Z Service restarts being deferred:
+2026-11-16T06:10:19.1462233Z  systemctl restart hosted-compute-agent.service
+2026-11-16T06:10:19.1462742Z 
+2026-11-16T06:10:19.1463422Z No containers need to be restarted.
+2026-11-16T06:10:19.1463834Z 
+2026-11-16T06:10:19.1464242Z No user sessions are running outdated binaries.
+2026-11-16T06:10:19.1464694Z 
+2026-11-16T06:10:19.1465483Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-11-16T06:10:20.1961272Z {"independentPdfTools":{"pdftotext":"pdftotext version 26.01.0","pdffonts":"pdffonts version 26.01.0","pdftoppm":"pdftoppm version 26.01.0","pdfinfo":"pdfinfo version 26.01.0"}}
+2026-11-16T06:10:20.2073137Z ##[group]Run npm test
+2026-11-16T06:10:20.2073428Z [36;1mnpm test[0m
+2026-11-16T06:10:20.2123690Z shell: /usr/bin/bash -e {0}
+2026-11-16T06:10:20.2123983Z env:
+2026-11-16T06:10:20.2124420Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.vTs2Up/opt/google/chrome/chrome
+2026-11-16T06:10:20.2125201Z ##[endgroup]
+2026-11-16T06:10:20.3208902Z 
+2026-11-16T06:10:20.3209532Z > calcumint@0.1.0 test
+2026-11-16T06:10:20.3210064Z > vitest run
+2026-11-16T06:10:20.3210297Z 
+2026-11-16T06:10:20.6503900Z 
+2026-11-16T06:10:20.6507289Z [1m[46m RUN [49m[22m [36mv3.2.7 [39m[90m/home/runner/work/calcumint.com/calcumint.com[39m
+2026-11-16T06:10:20.6508025Z 
+2026-11-16T06:10:31.2692705Z  [32m✓[39m src/components/draft-calculator-preview.test.tsx [2m([22m[2m78 tests[22m[2m)[22m[33m 7834[2mms[22m[39m
+2026-11-16T06:10:31.2693756Z    [33m[2m✓[22m[39m completes private workflow for 517 across all plans [33m 372[2mms[22m[39m
+2026-11-16T06:10:36.1737152Z  [32m✓[39m src/components/calculator-account-lifecycle.test.tsx [2m([22m[2m58 tests[22m[2m)[22m[33m 3738[2mms[22m[39m
+2026-11-16T06:10:38.7899480Z  [32m✓[39m src/components/calculator-scenario-workspace.test.tsx [2m([22m[2m24 tests[22m[2m)[22m[33m 1555[2mms[22m[39m
+2026-11-16T06:10:41.1600793Z  [32m✓[39m src/components/pro-checkout-button.test.tsx [2m([22m[2m29 tests[22m[2m)[22m[33m 1595[2mms[22m[39m
+2026-11-16T06:10:42.2370029Z  [32m✓[39m src/lib/supabase/browser-session-recovery.test.ts [2m([22m[2m22 tests[22m[2m)[22m[33m 475[2mms[22m[39m
+2026-11-16T06:10:45.3626050Z  [32m✓[39m src/components/calculator-account-auth-identity.test.tsx [2m([22m[2m32 tests[22m[2m)[22m[33m 2019[2mms[22m[39m
+2026-11-16T06:10:48.7686038Z  [32m✓[39m src/app/account/form-recovery.test.tsx [2m([22m[2m22 tests[22m[2m)[22m[33m 2295[2mms[22m[39m
+2026-11-16T06:10:51.5263004Z  [32m✓[39m src/components/calculator-account-snapshot.test.tsx [2m([22m[2m20 tests[22m[2m)[22m[33m 1584[2mms[22m[39m
+2026-11-16T06:10:52.5903626Z  [32m✓[39m src/components/public-embed-calculator.test.tsx [2m([22m[2m11 tests[22m[2m)[22m[33m 312[2mms[22m[39m
+2026-11-16T06:10:57.1941429Z  [32m✓[39m src/components/final-framework-combined-integration.test.tsx [2m([22m[2m14 tests[22m[2m)[22m[33m 2650[2mms[22m[39m
+2026-11-16T06:10:57.1943344Z    [33m[2m✓[22m[39m combined Reference Six route workflow boundaries[2m > [22mreconciles 'loan-emi-calculator' core, analysis, applicable schedules and actual downloads across plans [33m 561[2mms[22m[39m
+2026-11-16T06:10:57.1946290Z    [33m[2m✓[22m[39m combined Reference Six route workflow boundaries[2m > [22mreconciles 'sip-calculator' core, analysis, applicable schedules and actual downloads across plans [33m 429[2mms[22m[39m
+2026-11-16T06:10:59.2201240Z  [32m✓[39m src/components/calculator-account-recovery-integration.test.tsx [2m([22m[2m17 tests[22m[2m)[22m[33m 930[2mms[22m[39m
+2026-11-16T06:11:00.3235168Z  [32m✓[39m src/components/account-session-boundary.test.tsx [2m([22m[2m19 tests[22m[2m)[22m[33m 356[2mms[22m[39m
+2026-11-16T06:11:02.9193484Z  [32m✓[39m src/components/private-fixed-factor-review.test.tsx [2m([22m[2m15 tests[22m[2m)[22m[33m 1760[2mms[22m[39m
+2026-11-16T06:11:02.9197077Z    [33m[2m✓[22m[39m preserves detached A/B scenarios, raw history and atomic export/recovery after malformed or tampered JSON [33m 391[2mms[22m[39m
+2026-11-16T06:11:06.0479417Z  [32m✓[39m src/components/investment-period-integration.test.tsx [2m([22m[2m8 tests[22m[2m)[22m[33m 1909[2mms[22m[39m
+2026-11-16T06:11:06.0481966Z    [33m[2m✓[22m[39m actual investment route projection and download boundaries[2m > [22mpreserves 'sip-calculator' headline and projection/export policy on all plans [33m 675[2mms[22m[39m
+2026-11-16T06:11:06.0485899Z    [33m[2m✓[22m[39m actual investment route projection and download boundaries[2m > [22mpreserves 'compound-interest-calculator' headline and projection/export policy on all plans [33m 375[2mms[22m[39m
+2026-11-16T06:11:09.3830090Z  [32m✓[39m src/lib/post1518-applicability-evidence.test.ts [2m([22m[2m31 tests[22m[2m)[22m[33m 2173[2mms[22m[39m
+2026-11-16T06:11:09.3831398Z    [33m[2m✓[22m[39m private.component.3@1:visualization-reconciliation [33m 319[2mms[22m[39m
+2026-11-16T06:11:11.6580495Z  [32m✓[39m src/components/use-calculator-plan.test.tsx [2m([22m[2m16 tests[22m[2m)[22m[33m 1493[2mms[22m[39m
+2026-11-16T06:11:11.6582034Z    [33m[2m✓[22m[39m gates scenario exports during same-account downgrade/recovery without changing captured mathematics [33m 620[2mms[22m[39m
+2026-11-16T06:11:14.4045577Z  [32m✓[39m src/components/publication20-tool.test.tsx [2m([22m[2m16 tests[22m[2m)[22m[33m 1532[2mms[22m[39m
+2026-11-16T06:11:14.4047571Z    [33m[2m✓[22m[39m exact existing converter interfaces[2m > [22mwires all15 immutable engines, methodology, sources and account/scenario units on free [33m 472[2mms[22m[39m
+2026-11-16T06:11:14.4048999Z    [33m[2m✓[22m[39m exact existing converter interfaces[2m > [22mwires all15 immutable engines, methodology, sources and account/scenario units on pro [33m 327[2mms[22m[39m
+2026-11-16T06:11:15.9932798Z  [32m✓[39m src/components/full-six/statistics-workbench.test.tsx [2m([22m[2m8 tests[22m[2m)[22m[33m 734[2mms[22m[39m
+2026-11-16T06:11:17.1507053Z  [32m✓[39m src/components/scenario-set-recovery.test.tsx [2m([22m[2m10 tests[22m[2m)[22m[32m 256[2mms[22m[39m
+2026-11-16T06:11:18.8402624Z  [32m✓[39m src/components/saved-calculation-actions.test.tsx [2m([22m[2m15 tests[22m[2m)[22m[33m 638[2mms[22m[39m
+2026-11-16T06:11:19.6079890Z  [32m✓[39m src/lib/supabase/session-bound-fetch.test.ts [2m([22m[2m22 tests[22m[2m)[22m[32m 130[2mms[22m[39m
+2026-11-16T06:11:20.9398356Z  [32m✓[39m src/components/calculator-factory-persisted-scenario.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[33m 311[2mms[22m[39m
+2026-11-16T06:11:24.7144595Z  [32m✓[39m src/components/calculator-professional-pdf.test.tsx [2m([22m[2m29 tests[22m[2m)[22m[33m 2519[2mms[22m[39m
+2026-11-16T06:11:26.4773844Z  [32m✓[39m src/components/calculator-interactive.test.tsx [2m([22m[2m18 tests[22m[2m)[22m[33m 593[2mms[22m[39m
+2026-11-16T06:11:28.8380600Z  [32m✓[39m src/components/scaled-contract-review-functional.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[33m 1275[2mms[22m[39m
+2026-11-16T06:11:28.8381716Z    [33m[2m✓[22m[39m runs the existing loan through real controls and renders actual schedule/balance data [33m 362[2mms[22m[39m
+2026-11-16T06:11:28.8382899Z    [33m[2m✓[22m[39m exports, restores and atomically recovers complete original private scenarios without overwriting a valid set on tamper [33m 587[2mms[22m[39m
+2026-11-16T06:11:30.0077299Z  [32m✓[39m src/app/account/history/page.test.tsx [2m([22m[2m26 tests[22m[2m)[22m[32m 154[2mms[22m[39m
+2026-11-16T06:11:32.1957111Z  [32m✓[39m src/components/mortgage-release-integration.test.tsx [2m([22m[2m15 tests[22m[2m)[22m[33m 1005[2mms[22m[39m
+2026-11-16T06:11:38.0710985Z  [32m✓[39m src/components/batch21-required-inputs.test.tsx [2m([22m[2m290 tests[22m[2m)[22m[33m 4640[2mms[22m[39m
+2026-11-16T06:11:40.7024782Z  [32m✓[39m src/components/unpublished-finance-readiness.test.tsx [2m([22m[2m13 tests[22m[2m)[22m[33m 1395[2mms[22m[39m
+2026-11-16T06:11:41.7218066Z  [32m✓[39m src/components/final-analysis-panels.test.tsx [2m([22m[2m14 tests[22m[2m)[22m[32m 237[2mms[22m[39m
+2026-11-16T06:11:44.1539856Z  [32m✓[39m src/components/publication20-workflow-regression.test.tsx [2m([22m[2m39 tests[22m[2m)[22m[33m 1236[2mms[22m[39m
+2026-11-16T06:11:46.2787808Z  [32m✓[39m src/components/registered-value-trust-integration.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[33m 950[2mms[22m[39m
+2026-11-16T06:11:46.2793087Z    [33m[2m✓[22m[39m binds the51 changed generic paths to their exact registered output/version/formula/source metadata [33m 589[2mms[22m[39m
+2026-11-16T06:11:47.9727124Z  [32m✓[39m src/components/calculator-factory-shared-workspace.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[33m 551[2mms[22m[39m
+2026-11-16T06:11:49.8403121Z  [32m✓[39m src/components/contract-input-form.test.tsx [2m([22m[2m86 tests[22m[2m)[22m[33m 826[2mms[22m[39m
+2026-11-16T06:11:51.4877583Z  [32m✓[39m src/components/completion-wave-analysis.test.tsx [2m([22m[2m24 tests[22m[2m)[22m[33m 660[2mms[22m[39m
+2026-11-16T06:11:52.5599572Z  [32m✓[39m src/components/technology-five-delivery.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[33m 339[2mms[22m[39m
+2026-11-16T06:11:53.5495136Z  [32m✓[39m src/app/account/projects/page.test.tsx [2m([22m[2m10 tests[22m[2m)[22m[32m 183[2mms[22m[39m
+2026-11-16T06:11:54.6043361Z  [32m✓[39m src/components/calculator-factory-workbench.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[32m 224[2mms[22m[39m
+2026-11-16T06:11:59.4645353Z  [32m✓[39m src/components/technology-final-recovery.test.tsx [2m([22m[2m61 tests[22m[2m)[22m[33m 3657[2mms[22m[39m
+2026-11-16T06:12:01.3573572Z  [32m✓[39m src/components/calculator-scenario-report.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[33m 819[2mms[22m[39m
+2026-11-16T06:12:01.3575186Z    [33m[2m✓[22m[39m reports compatible A/B/C values, differences, charts and real PDF bytes on pro [33m 347[2mms[22m[39m
+2026-11-16T06:12:04.0043780Z  [32m✓[39m src/components/private-review-sensitivity.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[33m 1609[2mms[22m[39m
+2026-11-16T06:12:04.0046122Z    [33m[2m✓[22m[39m offers paid immutable previews while preserving Free mathematics and original captures [33m 531[2mms[22m[39m
+2026-11-16T06:12:04.0047555Z    [33m[2m✓[22m[39m clears stale results after candidate, calculator input and profile edits and reports atomic invalid domains [33m 398[2mms[22m[39m
+2026-11-16T06:12:04.0048979Z    [33m[2m✓[22m[39m uses independent zero-rate monthly payments and rejects blank or oversized supplied candidates [33m 388[2mms[22m[39m
+2026-11-16T06:12:05.5524196Z  [32m✓[39m src/components/contract-result-details.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[33m 502[2mms[22m[39m
+2026-11-16T06:12:06.6883850Z  [32m✓[39m src/components/ai-finder.test.tsx [2m([22m[2m13 tests[22m[2m)[22m[33m 404[2mms[22m[39m
+2026-11-16T06:12:10.9048450Z  [32m✓[39m src/components/calculator-scenario-reference-integration.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[33m 2999[2mms[22m[39m
+2026-11-16T06:12:10.9050453Z    [33m[2m✓[22m[39m captures complete actual calculator snapshots and keeps raw math equal on free [33m 363[2mms[22m[39m
+2026-11-16T06:12:10.9051503Z    [33m[2m✓[22m[39m captures complete actual calculator snapshots and keeps raw math equal on pro [33m 1238[2mms[22m[39m
+2026-11-16T06:12:10.9052992Z    [33m[2m✓[22m[39m captures complete actual calculator snapshots and keeps raw math equal on business [33m 1085[2mms[22m[39m
+2026-11-16T06:12:13.1933100Z  [32m✓[39m src/components/canonical-calculus-recovery.test.tsx [2m([22m[2m9 tests[22m[2m)[22m[33m 1460[2mms[22m[39m
+2026-11-16T06:12:13.1934823Z    [33m[2m✓[22m[39m keeps the actual verified result when import is rejected: { [33m 329[2mms[22m[39m
+2026-11-16T06:12:14.7307070Z  [32m✓[39m src/app/public-discovery-integration.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[32m 199[2mms[22m[39m
+2026-11-16T06:12:17.2717337Z  [32m✓[39m src/components/final-analysis-reference-integration.test.tsx [2m([22m[2m10 tests[22m[2m)[22m[33m 1341[2mms[22m[39m
+2026-11-16T06:12:17.2718783Z    [33m[2m✓[22m[39m Reference Six shared analysis integration[2m > [22mkeeps 'loan-emi-calculator' core and required trust equal across plans [33m 346[2mms[22m[39m
+2026-11-16T06:12:19.2898518Z  [32m✓[39m src/lib/full-six/candidate/statistics-pdf-report-ui.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[33m 1025[2mms[22m[39m
+2026-11-16T06:12:20.4937308Z  [32m✓[39m src/components/technology-five-share-form.test.tsx [2m([22m[2m8 tests[22m[2m)[22m[32m 259[2mms[22m[39m
+2026-11-16T06:12:21.7525106Z  [32m✓[39m src/components/analytical-result-boundaries.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[33m 537[2mms[22m[39m
+2026-11-16T06:12:23.2538440Z  [32m✓[39m src/calculators/final-framework/schedule-metadata-integration.test.tsx [2m([22m[2m9 tests[22m[2m)[22m[33m 762[2mms[22m[39m
+2026-11-16T06:12:23.2541627Z    [33m[2m✓[22m[39m governed schedule metadata integration[2m > [22mbounds initial large-result DOM and reveals every raw row on keyboard-operable demand [33m 604[2mms[22m[39m
+2026-11-16T06:12:25.0633592Z  [32m✓[39m src/lib/full-six/candidate/statistics-report-ui.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[33m 959[2mms[22m[39m
+2026-11-16T06:12:26.5889855Z  [32m✓[39m src/components/full-six/candidate-workbench.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[33m 717[2mms[22m[39m
+2026-11-16T06:12:27.8107592Z  [32m✓[39m src/components/calculator-factory-math-analysis.test.tsx [2m([22m[2m10 tests[22m[2m)[22m[33m 428[2mms[22m[39m
+2026-11-16T06:12:31.9511631Z  [32m✓[39m src/components/technology-worked-example.test.tsx [2m([22m[2m90 tests[22m[2m)[22m[33m 2993[2mms[22m[39m
+2026-11-16T06:12:33.4103740Z  [32m✓[39m src/components/result-composition-range-reconciliation.test.tsx [2m([22m[2m11 tests[22m[2m)[22m[33m 626[2mms[22m[39m
+2026-11-16T06:12:34.3193544Z  [32m✓[39m src/components/final-entitlements.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[32m 170[2mms[22m[39m
+2026-11-16T06:12:37.0923836Z  [32m✓[39m src/components/reference-input-reconciliation.test.tsx [2m([22m[2m13 tests[22m[2m)[22m[33m 1578[2mms[22m[39m
+2026-11-16T06:12:44.4088751Z  [32m✓[39m src/components/remaining-engineering-review.lossless.test.tsx [2m([22m[2m56 tests[22m[2m)[22m[33m 6290[2mms[22m[39m
+2026-11-16T06:12:44.4090436Z    [33m[2m✓[22m[39m 51 remaining private review numeric text boundaries[2m > [22mrejects changed raw numeric digits before calculating #25 [33m 306[2mms[22m[39m
+2026-11-16T06:12:44.4092063Z    [33m[2m✓[22m[39m 51 remaining private review numeric text boundaries[2m > [22mkeeps saved history, recovers canonical artifacts and retains plan math after a rejected draft [33m 493[2mms[22m[39m
+2026-11-16T06:12:45.8395944Z  [32m✓[39m src/components/technology-five-shared-comparison.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[33m 334[2mms[22m[39m
+2026-11-16T06:12:47.3134309Z  [32m✓[39m src/components/calculator-schedule-export.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[33m 316[2mms[22m[39m
+2026-11-16T06:12:49.2048847Z  [32m✓[39m src/components/final-cumulative-analysis-integration.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[33m 694[2mms[22m[39m
+2026-11-16T06:12:52.5544807Z  [32m✓[39m src/components/batch22-live-interfaces.test.tsx [2m([22m[2m55 tests[22m[2m)[22m[33m 2139[2mms[22m[39m
+2026-11-16T06:12:53.8167178Z  [32m✓[39m src/components/wave100-calculator-analysis.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[32m 279[2mms[22m[39m
+2026-11-16T06:12:54.8796576Z  [32m✓[39m src/components/business-credential-form.test.tsx [2m([22m[2m8 tests[22m[2m)[22m[33m 302[2mms[22m[39m
+2026-11-16T06:12:55.9589010Z  [32m✓[39m src/components/technology-bounded-analysis.test.tsx [2m([22m[2m8 tests[22m[2m)[22m[33m 316[2mms[22m[39m
+2026-11-16T06:13:00.0674800Z  [32m✓[39m src/components/sip-v2-draft-workspace.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[33m 3297[2mms[22m[39m
+2026-11-16T06:13:00.0676738Z    [33m[2m✓[22m[39m renders authoritative draft v2 across free without changing export math [33m 371[2mms[22m[39m
+2026-11-16T06:13:00.0678253Z    [33m[2m✓[22m[39m renders authoritative draft v2 across pro without changing export math [33m 1553[2mms[22m[39m
+2026-11-16T06:13:00.0679796Z    [33m[2m✓[22m[39m renders authoritative draft v2 across business without changing export math [33m 1361[2mms[22m[39m
+2026-11-16T06:13:01.8427422Z  [32m✓[39m src/components/batch21-six-calculators.test.tsx [2m([22m[2m12 tests[22m[2m)[22m[33m 604[2mms[22m[39m
+2026-11-16T06:13:03.2063144Z  [32m✓[39m src/components/technology-five-analysis.test.tsx [2m([22m[2m10 tests[22m[2m)[22m[33m 476[2mms[22m[39m
+2026-11-16T06:13:07.8638402Z  [32m✓[39m src/components/component-engineering-review.lossless.test.tsx [2m([22m[2m29 tests[22m[2m)[22m[33m 3630[2mms[22m[39m
+2026-11-16T06:13:07.8641075Z    [33m[2m✓[22m[39m 25 component private review numeric text boundaries[2m > [22mpreserves detached history, canonical downloads, quoted digits and all-plan math after refusal [33m 515[2mms[22m[39m
+2026-11-16T06:13:09.7186019Z  [32m✓[39m src/components/batch21-workflow-capture.test.tsx [2m([22m[2m36 tests[22m[2m)[22m[33m 656[2mms[22m[39m
+2026-11-16T06:13:10.8711528Z  [32m✓[39m src/calculators/final-framework/reference-six-schedule-parity.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[33m 320[2mms[22m[39m
+2026-11-16T06:13:13.4864374Z  [32m✓[39m src/components/calculator-first-required-inputs.test.tsx [2m([22m[2m39 tests[22m[2m)[22m[33m 1449[2mms[22m[39m
+2026-11-16T06:13:14.7228395Z  [32m✓[39m src/components/final-result-accessible-data.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[33m 469[2mms[22m[39m
+2026-11-16T06:13:15.7209677Z  [32m✓[39m src/components/password-recovery-form.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[32m 223[2mms[22m[39m
+2026-11-16T06:13:16.6753719Z  [32m✓[39m src/components/calculator-search.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[32m 228[2mms[22m[39m
+2026-11-16T06:13:18.4224561Z  [32m✓[39m src/calculators/verification/pending-specialist-mode-parity.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[33m 566[2mms[22m[39m
+2026-11-16T06:13:20.0339479Z  [32m✓[39m src/components/calculator-account-context.independent.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 467[2mms[22m[39m
+2026-11-16T06:13:23.1549319Z  [32m✓[39m src/components/publication20-final-renderer.test.tsx [2m([22m[2m46 tests[22m[2m)[22m[33m 2188[2mms[22m[39m
+2026-11-16T06:13:24.6681232Z  [32m✓[39m src/components/private-workflow-review.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[33m 689[2mms[22m[39m
+2026-11-16T06:13:24.6683797Z    [33m[2m✓[22m[39m private workflow reviewer[2m > [22mclears saved history and caps the session at 20 snapshots [33m 432[2mms[22m[39m
+2026-11-16T06:13:25.6367227Z  [32m✓[39m src/components/final-acceptance-schedule.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[32m 230[2mms[22m[39m
+2026-11-16T06:13:26.7472578Z  [32m✓[39m src/components/publication20-batch.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[32m 245[2mms[22m[39m
+2026-11-16T06:13:27.7636520Z  [32m✓[39m src/components/auth-panel.test.tsx [2m([22m[2m10 tests[22m[2m)[22m[32m 264[2mms[22m[39m
+2026-11-16T06:13:29.8077014Z  [32m✓[39m src/components/technology-next-integration.test.tsx [2m([22m[2m10 tests[22m[2m)[22m[33m 856[2mms[22m[39m
+2026-11-16T06:13:31.4261220Z  [32m✓[39m src/components/full-six/candidate-scenario-comparison.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[33m 786[2mms[22m[39m
+2026-11-16T06:13:31.4262414Z    [33m[2m✓[22m[39m keeps # 282 captures independent, warns for incompatible units, and restores exact values [33m 332[2mms[22m[39m
+2026-11-16T06:13:33.1637756Z  [32m✓[39m src/components/calculator-factory-portal.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[33m 435[2mms[22m[39m
+2026-11-16T06:13:35.0309788Z  [32m✓[39m src/components/private-review-history-recovery.test.tsx [2m([22m[2m15 tests[22m[2m)[22m[33m 1023[2mms[22m[39m
+2026-11-16T06:13:36.3191777Z  [32m✓[39m src/components/launch-caller-recovery.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[32m 120[2mms[22m[39m
+2026-11-16T06:13:38.0171498Z  [32m✓[39m src/components/break-even-final-experience.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[33m 487[2mms[22m[39m
+2026-11-16T06:13:39.7752007Z  [32m✓[39m src/components/post1518-six-workflow.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[33m 528[2mms[22m[39m
+2026-11-16T06:13:39.7753851Z    [33m[2m✓[22m[39m graphing-calculator preserves subnormal raw samples, discloses unavailable chart, permits raw exports and recovers [33m 345[2mms[22m[39m
+2026-11-16T06:13:40.9040765Z  [32m✓[39m src/calculators/final-framework/analysis-reference-golden-parity.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[33m 352[2mms[22m[39m
+2026-11-16T06:13:42.0407190Z  [32m✓[39m src/calculators/verification/sip-v2-history-parity.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[32m 152[2mms[22m[39m
+2026-11-16T06:13:42.8560686Z  [32m✓[39m src/app/admin/calculator-factory/page.test.tsx [2m([22m[2m9 tests[22m[2m)[22m[32m 49[2mms[22m[39m
+2026-11-16T06:13:43.8021307Z  [32m✓[39m src/components/native-factory-embed.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[32m 224[2mms[22m[39m
+2026-11-16T06:13:45.3492338Z  [32m✓[39m src/components/technology-final-two-integration.test.tsx [2m([22m[2m8 tests[22m[2m)[22m[33m 390[2mms[22m[39m
+2026-11-16T06:13:46.5937151Z  [32m✓[39m src/components/technology-next-analysis.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[33m 353[2mms[22m[39m
+2026-11-16T06:13:47.5519978Z  [32m✓[39m src/components/technology-next-native.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 232[2mms[22m[39m
+2026-11-16T06:13:48.5696812Z  [32m✓[39m src/calculators/final-framework/draft-four-contracts.test.tsx [2m([22m[2m12 tests[22m[2m)[22m[32m 54[2mms[22m[39m
+2026-11-16T06:13:49.9154120Z  [32m✓[39m src/components/calculator-review-workbench.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[32m 215[2mms[22m[39m
+2026-11-16T06:14:02.8175806Z  [32m✓[39m src/components/publication-factory-input-boundary.test.tsx [2m([22m[2m77 tests[22m[2m)[22m[33m 11836[2mms[22m[39m
+2026-11-16T06:14:02.8177919Z    [33m[2m✓[22m[39m 'private.component.3' refuses lossy new input while retaining original history and recovery [33m 376[2mms[22m[39m
+2026-11-16T06:14:04.0406282Z  [32m✓[39m src/components/final-private-workbench.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 369[2mms[22m[39m
+2026-11-16T06:14:05.5200295Z  [32m✓[39m src/components/registered-batch12-integration.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[32m 288[2mms[22m[39m
+2026-11-16T06:14:06.6790533Z  [32m✓[39m src/app/draft-publication-exclusion.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 115[2mms[22m[39m
+2026-11-16T06:14:08.1328763Z  [32m✓[39m src/components/saved-calculation-boundary.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 365[2mms[22m[39m
+2026-11-16T06:14:10.0239472Z  [32m✓[39m src/components/registered-value-export.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 672[2mms[22m[39m
+2026-11-16T06:14:11.7499641Z  [32m✓[39m src/components/live-snapshot-csv.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[33m 625[2mms[22m[39m
+2026-11-16T06:14:11.7500929Z    [33m[2m✓[22m[39m live pro CSV retains exact technical identity and values for all nine witnessed forward engines [33m 401[2mms[22m[39m
+2026-11-16T06:14:12.7664345Z  [32m✓[39m src/calculators/final-framework/draft-applied-quantities.test.tsx [2m([22m[2m12 tests[22m[2m)[22m[32m 57[2mms[22m[39m
+2026-11-16T06:14:13.7761725Z  [32m✓[39m src/calculators/final-framework/draft-math-conversion.test.tsx [2m([22m[2m12 tests[22m[2m)[22m[32m 40[2mms[22m[39m
+2026-11-16T06:14:14.6276063Z  [32m✓[39m src/components/technology-five-embed.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 152[2mms[22m[39m
+2026-11-16T06:14:17.1709412Z  [32m✓[39m src/components/calculator-scenario-numeric-boundary.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[33m 1543[2mms[22m[39m
+2026-11-16T06:14:17.1711556Z    [33m[2m✓[22m[39m rejects lossy numeric scenario drafts and permits retry for 'percentage-of-value-calculator' on 'pro' [33m 542[2mms[22m[39m
+2026-11-16T06:14:17.1714434Z    [33m[2m✓[22m[39m rejects lossy numeric scenario drafts and permits retry for 'percentage-of-value-calculator' on 'business' [33m 347[2mms[22m[39m
+2026-11-16T06:14:17.1716009Z    [33m[2m✓[22m[39m rejects lossy numeric scenario drafts and permits retry for 'unit-conversion-calculator' on 'pro' [33m 340[2mms[22m[39m
+2026-11-16T06:14:17.1717142Z    [33m[2m✓[22m[39m rejects lossy numeric scenario drafts and permits retry for 'unit-conversion-calculator' on 'business' [33m 313[2mms[22m[39m
+2026-11-16T06:14:18.3011700Z  [32m✓[39m src/components/remainder-capture-successor.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 289[2mms[22m[39m
+2026-11-16T06:14:20.1260283Z  [32m✓[39m src/components/remaining-engineering-review.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[33m 875[2mms[22m[39m
+2026-11-16T06:14:20.1261591Z    [33m[2m✓[22m[39m discovers540 identities and restores detached calendar scenarios [33m 413[2mms[22m[39m
+2026-11-16T06:14:22.0875694Z  [32m✓[39m src/components/component-engineering-review.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[33m 991[2mms[22m[39m
+2026-11-16T06:14:22.0877315Z    [33m[2m✓[22m[39m discovers540 identities and restores detached private loan scenarios [33m 405[2mms[22m[39m
+2026-11-16T06:14:22.0878205Z    [33m[2m✓[22m[39m restores a named-unit snapshot and rejects tampering [33m 309[2mms[22m[39m
+2026-11-16T06:14:23.0340003Z  [32m✓[39m src/components/structured-result-validation.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[32m 239[2mms[22m[39m
+2026-11-16T06:14:24.1357484Z  [32m✓[39m src/components/milestone-calculator-analysis.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 193[2mms[22m[39m
+2026-11-16T06:14:26.2485084Z  [32m✓[39m src/calculators/verification/sip-numerical-recovery.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 972[2mms[22m[39m
+2026-11-16T06:14:26.2486420Z    [33m[2m✓[22m[39m free SIP suppresses invalid results and account captures, then recovers in both modes [33m 372[2mms[22m[39m
+2026-11-16T06:14:26.2487636Z    [33m[2m✓[22m[39m pro SIP suppresses invalid results and account captures, then recovers in both modes [33m 325[2mms[22m[39m
+2026-11-16T06:14:27.5640948Z  [32m✓[39m src/components/calculator-history-atomic.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 239[2mms[22m[39m
+2026-11-16T06:14:28.7677051Z  [32m✓[39m src/app/calculators/directory-search.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[32m 226[2mms[22m[39m
+2026-11-16T06:14:30.7818677Z  [32m✓[39m src/components/catalog-engineering-review.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 966[2mms[22m[39m
+2026-11-16T06:14:30.7820227Z    [33m[2m✓[22m[39m calculates a private business scope, invalidates edits and restores immutable scenarios [33m 400[2mms[22m[39m
+2026-11-16T06:14:31.6910885Z  [32m✓[39m src/components/native-frequency-embed.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 208[2mms[22m[39m
+2026-11-16T06:14:32.7957182Z  [32m✓[39m src/components/calculator-factory-sensitivity.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 209[2mms[22m[39m
+2026-11-16T06:14:33.6029805Z  [32m✓[39m src/app/account/drafts/page.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 86[2mms[22m[39m
+2026-11-16T06:14:34.6198480Z  [32m✓[39m src/components/source-profile-review.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 269[2mms[22m[39m
+2026-11-16T06:14:35.5432499Z  [32m✓[39m src/calculators/final-framework/renderer-schedule-column-reconciliation.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[32m 200[2mms[22m[39m
+2026-11-16T06:14:37.2691185Z  [32m✓[39m src/components/technology-five-integration.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[33m 577[2mms[22m[39m
+2026-11-16T06:14:38.7028651Z  [32m✓[39m src/components/geometry-worker-b.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[33m 519[2mms[22m[39m
+2026-11-16T06:14:40.3430810Z  [32m✓[39m src/components/technology-next-five-integration.test.tsx [2m([22m[2m16 tests[22m[2m)[22m[33m 489[2mms[22m[39m
+2026-11-16T06:14:41.9412684Z  [32m✓[39m src/components/parallel-completion-integration.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[33m 545[2mms[22m[39m
+2026-11-16T06:14:41.9414095Z    [33m[2m✓[22m[39m uses guided real business calculation, invalidates edits and restores an immutable scenario [33m 400[2mms[22m[39m
+2026-11-16T06:14:42.9994229Z  [32m✓[39m src/components/next-engineering-analysis.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 162[2mms[22m[39m
+2026-11-16T06:14:44.0156221Z  [32m✓[39m src/components/uk-2026-electricity-review.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 228[2mms[22m[39m
+2026-11-16T06:14:44.8515560Z  [32m✓[39m src/components/ai-result-explanation.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 146[2mms[22m[39m
+2026-11-16T06:14:46.0630520Z  [32m✓[39m src/components/science-worker-c.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 324[2mms[22m[39m
+2026-11-16T06:14:47.4408046Z  [32m✓[39m src/components/six-publication-boundaries.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[32m 236[2mms[22m[39m
+2026-11-16T06:14:48.5269568Z  [32m✓[39m src/components/technology-five-batch.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 198[2mms[22m[39m
+2026-11-16T06:14:49.3535128Z  [32m✓[39m src/components/authenticated-draft-workspace.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 20[2mms[22m[39m
+2026-11-16T06:14:50.6604696Z  [32m✓[39m src/components/calculator-factory-conversion-methodology.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[33m 424[2mms[22m[39m
+2026-11-16T06:14:53.0947155Z  [32m✓[39m src/components/launch-history-recovery.test.tsx [2m([22m[2m22 tests[22m[2m)[22m[33m 1416[2mms[22m[39m
+2026-11-16T06:14:54.5659386Z  [32m✓[39m src/components/cidr-tool.test.tsx [2m([22m[2m8 tests[22m[2m)[22m[32m 288[2mms[22m[39m
+2026-11-16T06:14:56.3844081Z  [32m✓[39m src/lib/registered-input-successor.actions.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 591[2mms[22m[39m
+2026-11-16T06:14:57.2148087Z  [32m✓[39m src/calculators/final-framework/final-renderer-accessibility.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 124[2mms[22m[39m
+2026-11-16T06:14:58.0790052Z  [32m✓[39m src/calculators/final-framework/structured-result-cross-plan-parity.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 137[2mms[22m[39m
+2026-11-16T06:14:58.9790935Z  [32m✓[39m src/components/account-mutation-form-request.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 149[2mms[22m[39m
+2026-11-16T06:15:00.0565351Z  [32m✓[39m src/components/native-embed-grant-form.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 176[2mms[22m[39m
+2026-11-16T06:15:01.0909330Z  [32m✓[39m src/components/calculator-factory-downloads.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 136[2mms[22m[39m
+2026-11-16T06:15:02.1015992Z  [32m✓[39m src/components/financial-contract-review.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 227[2mms[22m[39m
+2026-11-16T06:15:03.2837001Z  [32m✓[39m src/components/wave100-history-recovery.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 150[2mms[22m[39m
+2026-11-16T06:15:04.1171914Z  [32m✓[39m src/components/publication-factory-number-control.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[32m 89[2mms[22m[39m
+2026-11-16T06:15:05.3992288Z  [32m✓[39m src/lib/registered-input-successor.regression.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 149[2mms[22m[39m
+2026-11-16T06:15:06.8873845Z  [32m✓[39m src/components/reference-six-bmi-recovery.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[32m 287[2mms[22m[39m
+2026-11-16T06:15:07.7398946Z  [32m✓[39m src/app/business/error.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 115[2mms[22m[39m
+2026-11-16T06:15:08.5324555Z  [32m✓[39m src/calculators/final-framework/renderer-schedule-accessibility.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 102[2mms[22m[39m
+2026-11-16T06:15:09.3103159Z  [32m✓[39m src/components/frequency-worked-example.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 33[2mms[22m[39m
+2026-11-16T06:15:10.1183865Z  [32m✓[39m src/components/billing-portal-button.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 128[2mms[22m[39m
+2026-11-16T06:15:10.9293847Z  [32m✓[39m src/calculators/final-framework/legacy-final-presentation-shared-semantics.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 104[2mms[22m[39m
+2026-11-16T06:15:11.7797926Z  [32m✓[39m src/components/contract-input-form.independent.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 112[2mms[22m[39m
+2026-11-16T06:15:12.5782728Z  [32m✓[39m src/components/full-six/candidate-charts.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 33[2mms[22m[39m
+2026-11-16T06:15:13.5489636Z  [32m✓[39m src/components/parallel-converters-evidence.test.tsx [2m([22m[2m17 tests[22m[2m)[22m[32m 106[2mms[22m[39m
+2026-11-16T06:15:14.6883905Z  [32m✓[39m src/components/parallel-guided-business-evidence.test.tsx [2m([22m[2m32 tests[22m[2m)[22m[32m 149[2mms[22m[39m
+2026-11-16T06:15:15.5235944Z  [32m✓[39m src/lib/completion-wave-20261113/sql-successor.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 82[2mms[22m[39m
+2026-11-16T06:15:15.7692093Z  [32m✓[39m src/lib/final-certification-database-gate.test.ts [2m([22m[2m24 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+2026-11-16T06:15:17.1577910Z  [32m✓[39m src/calculators/launch-portfolio.test.ts [2m([22m[2m33 tests[22m[2m)[22m[32m 68[2mms[22m[39m
+2026-11-16T06:15:17.5802951Z  [32m✓[39m src/lib/embeds/embed-api-behavior.test.ts [2m([22m[2m19 tests[22m[2m)[22m[32m 87[2mms[22m[39m
+2026-11-16T06:15:18.0296501Z  [32m✓[39m src/calculators/sanitized-db-evidence.test.ts [2m([22m[2m19 tests[22m[2m)[22m[32m 137[2mms[22m[39m
+2026-11-16T06:15:19.3428073Z  [32m✓[39m src/lib/financial-successor/decimal-rounding-private.test.ts [2m([22m[2m93 tests[22m[2m)[22m[33m 887[2mms[22m[39m
+2026-11-16T06:15:19.3430221Z    [33m[2m✓[22m[39m private decimal successor safety and immutable adoption preview[2m > [22mmatches independent high-precision formula witnesses with explicit comparison bounds [33m 483[2mms[22m[39m
+2026-11-16T06:15:19.3432535Z    [33m[2m✓[22m[39m bounded exact financial domain and explicit refusal[2m > [22mproves fractional-period half-cent equality and negative interest exactly [33m 325[2mms[22m[39m
+2026-11-16T06:15:21.0644574Z  [32m✓[39m src/lib/calculator-factory/completion/scoped-engineering-delivery.test.ts [2m([22m[2m131 tests[22m[2m)[22m[33m 982[2mms[22m[39m
+2026-11-16T06:15:21.5588594Z  [32m✓[39m src/lib/supabase/server-auth-cookie-integration.test.ts [2m([22m[2m28 tests[22m[2m)[22m[32m 104[2mms[22m[39m
+2026-11-16T06:15:22.0482718Z  [32m✓[39m src/lib/calculation-export-pdf.test.ts [2m([22m[2m22 tests[22m[2m)[22m[32m 234[2mms[22m[39m
+2026-11-16T06:15:22.4543976Z  [32m✓[39m src/app/account/history-compatibility.test.ts [2m([22m[2m43 tests[22m[2m)[22m[32m 39[2mms[22m[39m
+2026-11-16T06:15:22.8421774Z  [32m✓[39m src/lib/publication20/release-preflight.test.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 72[2mms[22m[39m
+2026-11-16T06:15:23.2506664Z  [32m✓[39m src/lib/full-six/statistics/advanced.test.ts [2m([22m[2m27 tests[22m[2m)[22m[32m 64[2mms[22m[39m
+2026-11-16T06:15:23.5878579Z  [32m✓[39m src/lib/billing/atomic-webhook.test.ts [2m([22m[2m32 tests[22m[2m)[22m[32m 23[2mms[22m[39m
+2026-11-16T06:15:23.9091104Z  [32m✓[39m src/calculators/certification-review-policy.test.ts [2m([22m[2m24 tests[22m[2m)[22m[32m 30[2mms[22m[39m
+2026-11-16T06:15:24.2436468Z  [32m✓[39m src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts [2m([22m[2m63 tests[22m[2m)[22m[32m 41[2mms[22m[39m
+2026-11-16T06:15:25.0627614Z  [32m✓[39m src/calculators/remaining-authority.independent.test.ts [2m([22m[2m33 tests[22m[2m)[22m[33m 466[2mms[22m[39m
+2026-11-16T06:15:25.7334393Z [90mstdout[2m | src/calculators/catalog-reviewed-standard-evidence.test.ts[2m > [22m[2mexports reviewed-identity shortlist and packet readiness without granting certification
+2026-11-16T06:15:25.7339164Z [22m[39mREGISTRY_IDENTITY_SNAPSHOT {"records":574,"bytes":114691,"sha256":"681045f70188d2bca643c0f0ed05abe700dac2ce1cab2da2d17b0001a06e97a3","runLocalPath":"/tmp/calcumint-catalog-reviewed-Z5CMjs/registry-identity-snapshot.json"}
+2026-11-16T06:15:25.7358371Z STANDARD_RISK_REGISTRY_AUDIT {"totalRegistered":574,"standardCertified":215,"standardReviewed":37,"certifiedFirst25":[{"id":"core.percentage-of-value","slug":"percentage-of-value-calculator","version":1,"category":"math"},{"id":"core.unit-conversion","slug":"unit-conversion-calculator","version":1,"category":"unit-conversions"},{"id":"launch-percentage-change-calculator","slug":"percentage-change-calculator","version":1,"category":"math"},{"id":"launch-percentage-increase-calculator","slug":"percentage-increase-calculator","version":1,"category":"math"},{"id":"launch-percentage-decrease-calculator","slug":"percentage-decrease-calculator","version":1,"category":"math"},{"id":"launch-percent-error-calculator","slug":"percent-error-calculator","version":1,"category":"math"},{"id":"launch-ratio-calculator","slug":"ratio-calculator","version":1,"category":"math"},{"id":"launch-proportion-calculator","slug":"proportion-calculator","version":1,"category":"math"},{"id":"launch-average-two-numbers-calculator","slug":"average-two-numbers-calculator","version":1,"category":"statistics"},{"id":"launch-weighted-average-two-values-calculator","slug":"weighted-average-two-values-calculator","version":1,"category":"statistics"},{"id":"launch-square-calculator","slug":"square-calculator","version":1,"category":"math"},{"id":"launch-cube-calculator","slug":"cube-calculator","version":1,"category":"math"},{"id":"launch-square-root-calculator","slug":"square-root-calculator","version":1,"category":"math"},{"id":"launch-cube-root-calculator","slug":"cube-root-calculator","version":1,"category":"math"},{"id":"launch-exponent-calculator","slug":"exponent-calculator","version":1,"category":"math"},{"id":"launch-logarithm-calculator","slug":"logarithm-calculator","version":1,"category":"math"},{"id":"launch-scientific-notation-calculator","slug":"scientific-notation-calculator","version":1,"category":"math"},{"id":"launch-rounding-calculator","slug":"rounding-calculator","version":1,"category":"math"},{"id":"launch-reciprocal-calculator","slug":"reciprocal-calculator","version":1,"category":"math"},{"id":"launch-remainder-calculator","slug":"remainder-calculator","version":1,"category":"math"},{"id":"launch-fraction-to-decimal-calculator","slug":"fraction-to-decimal-calculator","version":1,"category":"math"},{"id":"launch-fraction-calculator","slug":"fraction-calculator","version":1,"category":"math"},{"id":"launch-decimal-to-fraction-calculator","slug":"decimal-to-fraction-calculator","version":1,"category":"math"},{"id":"launch-factor-calculator","slug":"factor-calculator","version":1,"category":"math"},{"id":"launch-lcm-calculator","slug":"lcm-calculator","version":1,"category":"math"}],"categoryRiskReviewCounts":[["advanced-math-graphing|standard|certified",20],["astronomy|standard|draft",6],["biology|standard|draft",15],["business|standard|draft",13],["date-time|standard|draft",15],["earth-science|standard|draft",15],["engineering-construction|standard|certified",8],["engineering-construction|standard|reviewed",17],["engineering|standard|draft",70],["everyday|standard|certified",28],["everyday|standard|draft",43],["finance-investment|financial|certified",8],["finance-investment|financial|draft",6],["geometry|standard|certified",23],["geometry|standard|draft",75],["health|health|draft",15],["loans-mortgages|financial|certified",3],["loans-mortgages|financial|draft",6],["math|standard|certified",39],["science|standard|certified",59],["science|standard|draft",10],["statistics|standard|certified",37],["technology-computing|standard|draft",6],["technology-computing|standard|reviewed",20],["unit-conversions|standard|certified",1],["unit-conversions|standard|draft",16]],"databaseManifestCrossCheckPending":true}
+2026-11-16T06:15:25.7395516Z REVIEWED_STANDARD_CERTIFICATION_PACKET_QUEUE {"totalCatalog":540,"reviewedMixedCategoryApproved":73,"heldMixedCategory":67,"missingMixedCategoryReviews":0,"candidates":0,"evidenceReady":0,"blocked":0,"first25":[],"databaseCertificationVerified":false,"publicationVerified":false}
+2026-11-16T06:15:25.7397867Z SLOPE_DRAFT_IDENTITY {"activeId":"geometry.slope","activeCategory":"geometry","activeVersion":2,"registryDuplicate":false,"masterCatalogId":276,"masterDomain":"Geometry","databaseCertificationVerified":false,"publicationApproved":false}
+2026-11-16T06:15:25.7399965Z SIX_STANDARD_CANDIDATE_EVIDENCE {"records":6,"bytes":29292,"sha256":"773e9bf7650f1750134c44842653996ec9b3fcb37c1389bc63fb2bebbadc2e66","runLocalPath":"/tmp/calcumint-catalog-reviewed-Z5CMjs/six-standard-candidate-evidence.json"}
+2026-11-16T06:15:25.7400925Z 
+2026-11-16T06:15:25.7401705Z  [32m✓[39m src/calculators/catalog-reviewed-standard-evidence.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 46[2mms[22m[39m
+2026-11-16T06:15:26.4561513Z  [32m✓[39m src/calculators/remaining-contracts-independent.test.ts [2m([22m[2m68 tests[22m[2m)[22m[32m 130[2mms[22m[39m
+2026-11-16T06:15:26.7707292Z  [32m✓[39m src/lib/scenario-set.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 53[2mms[22m[39m
+2026-11-16T06:16:21.5231996Z  [32m✓[39m src/lib/thirteen-program-evidence.test.ts [2m([22m[2m9 tests[22m[2m)[22m[33m 54114[2mms[22m[39m
+2026-11-16T06:16:21.5233829Z    [33m[2m✓[22m[39m RETAINED A7 — retains thirteen unsigned exact-version packets, original clause associations and genuine approval gaps [33m 29764[2mms[22m[39m
+2026-11-16T06:16:21.5235303Z    [33m[2m✓[22m[39m keeps async verifier exit, bounded output, cancellation and descendant cleanup fail closed [33m 558[2mms[22m[39m
+2026-11-16T06:16:21.5236472Z    [33m[2m✓[22m[39m retains actual-five execution and separately proves current caller, plan parity and export provenance [33m 17401[2mms[22m[39m
+2026-11-16T06:16:21.5237692Z    [33m[2m✓[22m[39m retains inherited-eight execution and proves current succession without relabelling authentication receipts [33m 4158[2mms[22m[39m
+2026-11-16T06:16:21.5238881Z    [33m[2m✓[22m[39m preserves the earlier R4 UI evidence as historical exact Git evidence, never as proof of the corrected caller [33m 1327[2mms[22m[39m
+2026-11-16T06:16:21.9952059Z  [32m✓[39m src/calculators/completion-contracts.test.ts [2m([22m[2m46 tests[22m[2m)[22m[32m 103[2mms[22m[39m
+2026-11-16T06:16:22.4119736Z  [32m✓[39m src/lib/conversion-successor/fixed-factor-private.test.ts [2m([22m[2m81 tests[22m[2m)[22m[32m 101[2mms[22m[39m
+2026-11-16T06:16:23.1159199Z  [32m✓[39m src/lib/ai/access-security.test.ts [2m([22m[2m41 tests[22m[2m)[22m[32m 42[2mms[22m[39m
+2026-11-16T06:16:23.7985639Z  [32m✓[39m src/calculators/source-acceptance-evidence.test.ts [2m([22m[2m7 tests[22m[2m)[22m[33m 448[2mms[22m[39m
+2026-11-16T06:16:24.1619659Z  [32m✓[39m src/lib/full-six/volume.test.ts [2m([22m[2m40 tests[22m[2m)[22m[32m 33[2mms[22m[39m
+2026-11-16T06:16:24.4520139Z  [32m✓[39m src/calculators/source-driven-components.test.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+2026-11-16T06:16:24.8028900Z  [32m✓[39m src/calculators/source-bound-profiles.test.ts [2m([22m[2m53 tests[22m[2m)[22m[32m 44[2mms[22m[39m
+2026-11-16T06:16:25.2590865Z  [32m✓[39m src/calculators/private-scenario-workflows.test.ts [2m([22m[2m42 tests[22m[2m)[22m[32m 153[2mms[22m[39m
+2026-11-16T06:16:25.8526514Z  [32m✓[39m src/lib/publication-batch-plan.test.ts [2m([22m[2m18 tests[22m[2m)[22m[32m 57[2mms[22m[39m
+2026-11-16T06:16:28.2590225Z  [32m✓[39m src/lib/publication20/export-acceptance.test.ts [2m([22m[2m40 tests[22m[2m)[22m[33m 1731[2mms[22m[39m
+2026-11-16T06:16:29.0815607Z  [32m✓[39m src/calculators/final-framework/draft-persistence-acceptance.test.ts [2m([22m[2m53 tests[22m[2m)[22m[32m 70[2mms[22m[39m
+2026-11-16T06:16:29.8973719Z  [32m✓[39m src/app/account/page-recovery.test.tsx [2m([22m[2m21 tests[22m[2m)[22m[32m 96[2mms[22m[39m
+2026-11-16T06:16:30.2471515Z  [32m✓[39m src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts [2m([22m[2m62 tests[22m[2m)[22m[32m 42[2mms[22m[39m
+2026-11-16T06:16:30.5687209Z  [32m✓[39m src/lib/calculator-factory/completion/next-engineering-statistics-b.test.ts [2m([22m[2m20 tests[22m[2m)[22m[32m 31[2mms[22m[39m
+2026-11-16T06:16:30.8536811Z  [32m✓[39m src/app/business/actions.test.ts [2m([22m[2m41 tests[22m[2m)[22m[32m 27[2mms[22m[39m
+2026-11-16T06:16:48.5757359Z  [31m❯[39m src/lib/five-full-contract-evidence.test.ts [2m([22m[2m6 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[33m 16290[2mms[22m[39m
+2026-11-16T06:16:48.5759529Z    [33m[2m✓[22m[39m verifies all five finite native batch receipts and every exact downloaded JSON/CSV field [33m 6296[2mms[22m[39m
+2026-11-16T06:16:48.5760705Z    [32m✓[39m retains finite full-size batch measurements without inventing a production SLA[32m 4[2mms[22m[39m
+2026-11-16T06:16:48.5762141Z [31m   [31m×[31m retains genuine five API execution source and requires reviewed current runtime successors separately[39m[33m 5222[2mms[22m[39m
+2026-11-16T06:16:48.5763007Z [31m     → Test timed out in 5000ms.
+2026-11-16T06:16:48.5763903Z If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".[39m
+2026-11-16T06:16:48.5765463Z    [33m[2m✓[22m[39m retains visible-interface and paragraph-PDF accessibility proof without asserting formal conformance [33m 4274[2mms[22m[39m
+2026-11-16T06:16:48.5766701Z    [32m✓[39m keeps credential redaction from corrupting canonical Base64 identity evidence[32m 101[2mms[22m[39m
+2026-11-16T06:16:48.5767902Z    [33m[2m✓[22m[39m requires completed genuine team-template/comparison artifacts and the non-promoting540 overlay [33m 392[2mms[22m[39m
+2026-11-16T06:16:48.9250243Z  [32m✓[39m src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts [2m([22m[2m27 tests[22m[2m)[22m[32m 32[2mms[22m[39m
+2026-11-16T06:16:49.3691114Z  [32m✓[39m src/app/account/drafts/actions-integration.test.ts [2m([22m[2m21 tests[22m[2m)[22m[32m 57[2mms[22m[39m
+2026-11-16T06:16:49.7633157Z  [32m✓[39m src/calculators/financial-contracts.test.ts [2m([22m[2m36 tests[22m[2m)[22m[32m 75[2mms[22m[39m
+2026-11-16T06:16:50.1179383Z  [32m✓[39m src/lib/batch21-six-calculators.test.ts [2m([22m[2m15 tests[22m[2m)[22m[32m 44[2mms[22m[39m
+2026-11-16T06:16:50.7605920Z  [32m✓[39m src/calculators/component-contracts-independent.test.ts [2m([22m[2m34 tests[22m[2m)[22m[32m 64[2mms[22m[39m
+2026-11-16T06:16:51.0955547Z  [32m✓[39m src/calculators/finance/catalog-metadata.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+2026-11-16T06:16:51.4972264Z  [32m✓[39m src/app/account/drafts/actions.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 21[2mms[22m[39m
+2026-11-16T06:16:52.1432972Z [90mstdout[2m | src/calculators/sanitized-db-evidence-export.test.ts[2m > [22m[2mreuses the prior 540-row audit without granting approvals or canonical mappings
+2026-11-16T06:16:52.1444334Z [22m[39mINDEPENDENT_EVIDENCE_COUNTS {"scope":"complete-published-population","provenance":{"evidenceId":"codex-e-sanitized-row-export-2026-10-15","sourceKind":"independent-read-only-db-export","receivedOn":"2026-10-15","observedAt":null,"payloadSha256":"c4ad1110d6db0ce1c31ef0279283fd123fec9b8dea1fb60618f1d36d2ca1f0f5"},"aggregateObservations":{"publishedIdentities":209,"riskClass":"standard","version":1,"qaIdentities":209,"qaChecks":3135,"qaPassed":2299,"qaWaived":836,"passedPerIdentity":11,"waivedPerIdentity":4,"sourceRecords":210,"sourceIdentities":209},"importedIdentities":209,"registryIdentityMatches":209,"registryIdentityConflicts":0,"masterRowsWithImportedIdentity":140,"rowLevelWaiversObserved":836,"importedRowsWithUnknownQa":0,"importedRowsWithUnknownSources":0,"populationIdentityCoverage":"COMPLETE_DECLARED","anonymousAggregateCountComparison":"COUNTS_AGREE_IDENTITIES_UNPROVEN","recordedHoldIdentities":0,"waiverAuthorityConflicts":0,"missingRowExport":false,"approvalsGranted":false,"aggregateWaiverChecksRequiringDecisionEvidence":836}
+2026-11-16T06:16:52.1451829Z 
+2026-11-16T06:16:52.1452603Z  [32m✓[39m src/calculators/sanitized-db-evidence-export.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 118[2mms[22m[39m
+2026-11-16T06:23:30.0934131Z  [31m❯[39m src/lib/parallel-source-evidence.test.ts [2m([22m[2m6 tests[22m[2m | [22m[31m3 failed[39m[2m)[22m[33m 397689[2mms[22m[39m
+2026-11-16T06:23:30.0936092Z [31m   [31m×[31m executes fresh current-source, full-authority, reader, reversion and nomination negatives[39m[33m 150109[2mms[22m[39m
+2026-11-16T06:23:30.0937587Z [31m     → Exact source Node suite failed; retained TAP follows:
+2026-11-16T06:23:30.0938156Z TAP version 13
+2026-11-16T06:23:30.0938991Z # Subtest: the exact reviewed final-two app is current while mathematical engines remain immutable
+2026-11-16T06:23:30.0940214Z ok 1 - the exact reviewed final-two app is current while mathematical engines remain immutable
+2026-11-16T06:23:30.0940701Z   ---
+2026-11-16T06:23:30.0940933Z   duration_ms: 43609.569275
+2026-11-16T06:23:30.0941195Z   type: 'test'
+2026-11-16T06:23:30.0941401Z   ...
+2026-11-16T06:23:30.0941896Z # Subtest: original valid F042 application bytes cannot masquerade as the new current app
+2026-11-16T06:23:30.0942650Z ok 2 - original valid F042 application bytes cannot masquerade as the new current app
+2026-11-16T06:23:30.0943101Z   ---
+2026-11-16T06:23:30.0943310Z   duration_ms: 72.155812
+2026-11-16T06:23:30.0943550Z   type: 'test'
+2026-11-16T06:23:30.0943757Z   ...
+2026-11-16T06:23:30.0944290Z # Subtest: the newly introduced native catalog is a live source requirement, not an unbound addition
+2026-11-16T06:23:30.0945685Z ok 3 - the newly introduced native catalog is a live source requirement, not an unbound addition
+2026-11-16T06:23:30.0946204Z   ---
+2026-11-16T06:23:30.0946417Z   duration_ms: 14.638453
+2026-11-16T06:23:30.0946662Z   type: 'test'
+2026-11-16T06:23:30.0946882Z   ...
+2026-11-16T06:23:30.0947404Z # Subtest: coordinated app succession nomination cannot replace the independently fixed capture
+2026-11-16T06:23:30.0948211Z ok 4 - coordinated app succession nomination cannot replace the independently fixed capture
+2026-11-16T06:23:30.0948658Z   ---
+2026-11-16T06:23:30.0948864Z   duration_ms: 127.266803
+2026-11-16T06:23:30.0949098Z   type: 'test'
+2026-11-16T06:23:30.0949291Z   ...
+2026-11-16T06:23:30.0949751Z # Subtest: current mathematical dependencies outside the approved app delta remain checked
+2026-11-16T06:23:30.0950429Z ok 5 - current mathematical dependencies outside the approved app delta remain checked
+2026-11-16T06:23:30.0950836Z   ---
+2026-11-16T06:23:30.0951036Z   duration_ms: 4424.739903
+2026-11-16T06:23:30.0951266Z   type: 'test'
+2026-11-16T06:23:30.0951460Z   ...
+2026-11-16T06:23:30.0951965Z # Subtest: mutable current-source cleanliness is rechecked rather than cached as an immutable object
+2026-11-16T06:23:30.0952726Z ok 6 - mutable current-source cleanliness is rechecked rather than cached as an immutable object
+2026-11-16T06:23:30.0953169Z   ---
+2026-11-16T06:23:30.0953360Z   duration_ms: 4093.042374
+2026-11-16T06:23:30.0953590Z   type: 'test'
+2026-11-16T06:23:30.0953781Z   ...
+2026-11-16T06:23:30.0954323Z # Subtest: retained genuine artifacts keep their original application claim and disclose the current successor
+2026-11-16T06:23:30.0955930Z ok 7 - retained genuine artifacts keep their original application claim and disclose the current successor
+2026-11-16T06:23:30.0956416Z   ---
+2026-11-16T06:23:30.0956613Z   duration_ms: 33735.582069
+2026-11-16T06:23:30.0956847Z   type: 'test'
+2026-11-16T06:23:30.0957038Z   ...
+2026-11-16T06:23:30.0957530Z # Subtest: the entire populated independent authority is fixed before any candidate can attest itself
+2026-11-16T06:23:30.0958297Z ok 8 - the entire populated independent authority is fixed before any candidate can attest itself
+2026-11-16T06:23:30.0959010Z   ---
+2026-11-16T06:23:30.0959580Z   duration_ms: 3153.440053
+2026-11-16T06:23:30.0959842Z   type: 'test'
+2026-11-16T06:23:30.0960033Z   ...
+2026-11-16T06:23:30.0960455Z # Subtest: actual current execution passes while unchanged R5 executes at literal A7
+2026-11-16T06:23:30.0961071Z ok 9 - actual current execution passes while unchanged R5 executes at literal A7
+2026-11-16T06:23:30.0961468Z   ---
+2026-11-16T06:23:30.0961659Z   duration_ms: 44671.443397
+2026-11-16T06:23:30.0961888Z   type: 'test'
+2026-11-16T06:23:30.0962082Z   ...
+2026-11-16T06:23:30.0962669Z # Subtest: current source reader rejects changed exact app bytes src/app/api/business/technology-five-shares/route.test.ts
+2026-11-16T06:23:30.0963609Z ok 10 - current source reader rejects changed exact app bytes src/app/api/business/technology-five-shares/route.test.ts
+2026-11-16T06:23:30.0964126Z   ---
+2026-11-16T06:23:30.0964313Z   duration_ms: 4.509665
+2026-11-16T06:23:30.0964537Z   type: 'test'
+2026-11-16T06:23:30.0964722Z   ...
+2026-11-16T06:23:30.0965507Z # Subtest: current source reader rejects changed exact app bytes src/app/business/projects/[id]/page.test.tsx
+2026-11-16T06:23:30.0966419Z ok 11 - current source reader rejects changed exact app bytes src/app/business/projects/[id]/page.test.tsx
+2026-11-16T06:23:30.0966924Z   ---
+2026-11-16T06:23:30.0967116Z   duration_ms: 3.561587
+2026-11-16T06:23:30.0967344Z   type: 'test'
+2026-11-16T06:23:30.0967533Z   ...
+2026-11-16T06:23:30.0968029Z # Subtest: current source reader rejects changed exact app bytes src/app/business/projects/[id]/page.tsx
+2026-11-16T06:23:30.0968797Z ok 12 - current source reader rejects changed exact app bytes src/app/business/projects/[id]/page.tsx
+2026-11-16T06:23:30.0969248Z   ---
+2026-11-16T06:23:30.0969433Z   duration_ms: 3.49838
+2026-11-16T06:23:30.0969656Z   type: 'test'
+2026-11-16T06:23:30.0969899Z   ...
+2026-11-16T06:23:30.0970453Z # Subtest: current source reader rejects changed exact app bytes src/components/catalog-engineering-review.tsx
+2026-11-16T06:23:30.0971290Z ok 13 - current source reader rejects changed exact app bytes src/components/catalog-engineering-review.tsx
+2026-11-16T06:23:30.0971767Z   ---
+2026-11-16T06:23:30.0971953Z   duration_ms: 3.539096
+2026-11-16T06:23:30.0972256Z   type: 'test'
+2026-11-16T06:23:30.0972446Z   ...
+2026-11-16T06:23:30.0973007Z # Subtest: current source reader rejects changed exact app bytes src/components/converter-cohort-20261110-examples.tsx
+2026-11-16T06:23:30.0973908Z ok 14 - current source reader rejects changed exact app bytes src/components/converter-cohort-20261110-examples.tsx
+2026-11-16T06:23:30.0974406Z   ---
+2026-11-16T06:23:30.0974596Z   duration_ms: 3.665442
+2026-11-16T06:23:30.0974810Z   type: 'test'
+2026-11-16T06:23:30.0975398Z   ...
+2026-11-16T06:23:30.0975997Z # Subtest: current source reader rejects changed exact app bytes src/components/parallel-completion-integration.test.tsx
+2026-11-16T06:23:30.0976919Z ok 15 - current source reader rejects changed exact app bytes src/components/parallel-completion-integration.test.tsx
+2026-11-16T06:23:30.0977439Z   ---
+2026-11-16T06:23:30.0977637Z   duration_ms: 3.746111
+2026-11-16T06:23:30.0977855Z   type: 'test'
+2026-11-16T06:23:30.0978055Z   ...
+2026-11-16T06:23:30.0978613Z # Subtest: current source reader rejects changed exact app bytes src/components/parallel-converters-evidence.test.tsx
+2026-11-16T06:23:30.0979708Z ok 16 - current source reader rejects changed exact app bytes src/components/parallel-converters-evidence.test.tsx
+2026-11-16T06:23:30.0980236Z   ---
+2026-11-16T06:23:30.0980430Z   duration_ms: 3.793029
+2026-11-16T06:23:30.0980649Z   type: 'test'
+2026-11-16T06:23:30.0980837Z   ...
+2026-11-16T06:23:30.0981437Z # Subtest: current source reader rejects changed exact app bytes src/components/parallel-guided-business-evidence.test.tsx
+2026-11-16T06:23:30.0982375Z ok 17 - current source reader rejects changed exact app bytes src/components/parallel-guided-business-evidence.test.tsx
+2026-11-16T06:23:30.0982909Z   ---
+2026-11-16T06:23:30.0983098Z   duration_ms: 8.739297
+2026-11-16T06:23:30.0983317Z   type: 'test'
+2026-11-16T06:23:30.0983650Z   ...
+2026-11-16T06:23:30.0984163Z # Subtest: current source reader rejects changed exact app bytes src/components/publication20-tool.tsx
+2026-11-16T06:23:30.0985157Z ok 18 - current source reader rejects changed exact app bytes src/components/publication20-tool.tsx
+2026-11-16T06:23:30.0985623Z   ---
+2026-11-16T06:23:30.0985828Z   duration_ms: 5.278898
+2026-11-16T06:23:30.0986044Z   type: 'test'
+2026-11-16T06:23:30.0986230Z   ...
+2026-11-16T06:23:30.0986844Z # Subtest: current source reader rejects changed exact app bytes src/components/specialist-general-20261110-business-input.tsx
+2026-11-16T06:23:30.0987806Z ok 19 - current source reader rejects changed exact app bytes src/components/specialist-general-20261110-business-input.tsx
+2026-11-16T06:23:30.0988341Z   ---
+2026-11-16T06:23:30.0988531Z   duration_ms: 3.480817
+2026-11-16T06:23:30.0988740Z   type: 'test'
+2026-11-16T06:23:30.0988923Z   ...
+2026-11-16T06:23:30.0989464Z # Subtest: current source reader rejects changed exact app bytes src/components/technology-five-share-form.tsx
+2026-11-16T06:23:30.0990353Z ok 20 - current source reader rejects changed exact app bytes src/components/technology-five-share-form.tsx
+2026-11-16T06:23:30.0990848Z   ---
+2026-11-16T06:23:30.0991034Z   duration_ms: 3.199373
+2026-11-16T06:23:30.0991259Z   type: 'test'
+2026-11-16T06:23:30.0991446Z   ...
+2026-11-16T06:23:30.0991979Z # Subtest: current source reader rejects changed exact app bytes src/lib/business/technology-next-sharing.test.ts
+2026-11-16T06:23:30.0992824Z ok 21 - current source reader rejects changed exact app bytes src/lib/business/technology-next-sharing.test.ts
+2026-11-16T06:23:30.0993307Z   ---
+2026-11-16T06:23:30.0993493Z   duration_ms: 3.260206
+2026-11-16T06:23:30.0993716Z   type: 'test'
+2026-11-16T06:23:30.0993902Z   ...
+2026-11-16T06:23:30.0994418Z # Subtest: current source reader rejects changed exact app bytes src/lib/business/technology-next-sharing.ts
+2026-11-16T06:23:30.0995462Z ok 22 - current source reader rejects changed exact app bytes src/lib/business/technology-next-sharing.ts
+2026-11-16T06:23:30.0995940Z   ---
+2026-11-16T06:23:30.0996131Z   duration_ms: 3.313145
+2026-11-16T06:23:30.0996353Z   type: 'test'
+2026-11-16T06:23:30.0996541Z   ...
+2026-11-16T06:23:30.0997029Z # Subtest: current source reader rejects changed exact app bytes src/lib/converter-cohort-20261110.ts
+2026-11-16T06:23:30.0997793Z ok 23 - current source reader rejects changed exact app bytes src/lib/converter-cohort-20261110.ts
+2026-11-16T06:23:30.0998250Z   ---
+2026-11-16T06:23:30.0998438Z   duration_ms: 3.199082
+2026-11-16T06:23:30.0998652Z   type: 'test'
+2026-11-16T06:23:30.0998849Z   ...
+2026-11-16T06:23:30.0999367Z # Subtest: current source reader rejects changed exact app bytes src/lib/finance-cohort-20261110-annuity.ts
+2026-11-16T06:23:30.1000165Z ok 24 - current source reader rejects changed exact app bytes src/lib/finance-cohort-20261110-annuity.ts
+2026-11-16T06:23:30.1000638Z   ---
+2026-11-16T06:23:30.1000827Z   duration_ms: 3.977182
+2026-11-16T06:23:30.1001043Z   type: 'test'
+2026-11-16T06:23:30.1001231Z   ...
+2026-11-16T06:23:30.1001776Z # Subtest: current source reader rejects changed exact app bytes src/lib/native-delivery/technology-five-catalog.ts
+2026-11-16T06:23:30.1002628Z ok 25 - current source reader rejects changed exact app bytes src/lib/native-delivery/technology-five-catalog.ts
+2026-11-16T06:23:30.1003307Z   ---
+2026-11-16T06:23:30.1003490Z   duration_ms: 4.863434
+2026-11-16T06:23:30.1003700Z   type: 'test'
+2026-11-16T06:23:30.1003887Z   ...
+2026-11-16T06:23:30.1004447Z # Subtest: current source reader rejects changed exact app bytes src/lib/native-delivery/technology-five-contract.ts
+2026-11-16T06:23:30.1005526Z ok 26 - current source reader rejects changed exact app bytes src/lib/native-delivery/technology-five-contract.ts
+2026-11-16T06:23:30.1006030Z   ---
+2026-11-16T06:23:30.1006220Z   duration_ms: 4.493795
+2026-11-16T06:23:30.1006434Z   type: 'test'
+2026-11-16T06:23:30.1006620Z   ...
+2026-11-16T06:23:30.1007378Z # Subtest: current source reader rejects changed exact app bytes src/lib/native-delivery/technology-five-publication.test.ts
+2026-11-16T06:23:30.1008344Z ok 27 - current source reader rejects changed exact app bytes src/lib/native-delivery/technology-five-publication.test.ts
+2026-11-16T06:23:30.1008878Z   ---
+2026-11-16T06:23:30.1009069Z   duration_ms: 3.618775
+2026-11-16T06:23:30.1009281Z   type: 'test'
+2026-11-16T06:23:30.1009468Z   ...
+2026-11-16T06:23:30.1010034Z # Subtest: current source reader rejects changed exact app bytes src/lib/native-delivery/technology-native-schema.ts
+2026-11-16T06:23:30.1010898Z ok 28 - current source reader rejects changed exact app bytes src/lib/native-delivery/technology-native-schema.ts
+2026-11-16T06:23:30.1011388Z   ---
+2026-11-16T06:23:30.1011582Z   duration_ms: 3.701639
+2026-11-16T06:23:30.1011796Z   type: 'test'
+2026-11-16T06:23:30.1011985Z   ...
+2026-11-16T06:23:30.1012571Z # Subtest: current source reader rejects changed exact app bytes src/lib/native-delivery/technology-next-composition.test.ts
+2026-11-16T06:23:30.1013518Z ok 29 - current source reader rejects changed exact app bytes src/lib/native-delivery/technology-next-composition.test.ts
+2026-11-16T06:23:30.1014040Z   ---
+2026-11-16T06:23:30.1014337Z   duration_ms: 7.111594
+2026-11-16T06:23:30.1014584Z   type: 'test'
+2026-11-16T06:23:30.1014785Z   ...
+2026-11-16T06:23:30.1015650Z # Subtest: current source reader rejects changed exact app bytes src/lib/native-delivery/technology-next-five-composition.test.ts
+2026-11-16T06:23:30.1017030Z ok 30 - current source reader rejects changed exact app bytes src/lib/native-delivery/technology-next-five-composition.test.ts
+2026-11-16T06:23:30.1017705Z   ---
+2026-11-16T06:23:30.1017967Z   duration_ms: 3.955863
+2026-11-16T06:23:30.1018282Z   type: 'test'
+2026-11-16T06:23:30.1018483Z   ...
+2026-11-16T06:23:30.1019027Z # Subtest: current source reader rejects changed exact app bytes src/lib/parallel-finance-qualification.test.ts
+2026-11-16T06:23:30.1019883Z ok 31 - current source reader rejects changed exact app bytes src/lib/parallel-finance-qualification.test.ts
+2026-11-16T06:23:30.1020368Z   ---
+2026-11-16T06:23:30.1020550Z   duration_ms: 3.331569
+2026-11-16T06:23:30.1020880Z   type: 'test'
+2026-11-16T06:23:30.1021196Z   ...
+2026-11-16T06:23:30.1022118Z # Subtest: current source reader rejects changed exact app bytes src/lib/parallel-readiness-evidence.test.ts
+2026-11-16T06:23:30.1023728Z ok 32 - current source reader rejects changed exact app bytes src/lib/parallel-readiness-evidence.test.ts
+2026-11-16T06:23:30.1024620Z   ---
+2026-11-16T06:23:30.1025320Z   duration_ms: 3.627771
+2026-11-16T06:23:30.1025725Z   type: 'test'
+2026-11-16T06:23:30.1026069Z   ...
+2026-11-16T06:23:30.1027073Z # Subtest: current source reader rejects changed exact app bytes src/lib/registered-snapshot-verification.ts
+2026-11-16T06:23:30.1028181Z ok 33 - current source reader rejects changed exact app bytes src/lib/registered-snapshot-verification.ts
+2026-11-16T06:23:30.1028665Z   ---
+2026-11-16T06:23:30.1028859Z   duration_ms: 3.383756
+2026-11-16T06:23:30.1029096Z   type: 'test'
+2026-11-16T06:23:30.1029288Z   ...
+2026-11-16T06:23:30.1029863Z # Subtest: current source reader rejects changed exact app bytes src/lib/specialist-general-20261110-business-input.ts
+2026-11-16T06:23:30.1030767Z ok 34 - current source reader rejects changed exact app bytes src/lib/specialist-general-20261110-business-input.ts
+2026-11-16T06:23:30.1031507Z   ---
+2026-11-16T06:23:30.1031697Z   duration_ms: 3.470027
+2026-11-16T06:23:30.1031926Z   type: 'test'
+2026-11-16T06:23:30.1032117Z   ...
+2026-11-16T06:23:30.1032687Z # Subtest: current source reader rejects changed exact app bytes src/lib/technology-cidr-snapshot-verification.test.ts
+2026-11-16T06:23:30.1033588Z ok 35 - current source reader rejects changed exact app bytes src/lib/technology-cidr-snapshot-verification.test.ts
+2026-11-16T06:23:30.1034094Z   ---
+2026-11-16T06:23:30.1034281Z   duration_ms: 3.552872
+2026-11-16T06:23:30.1034501Z   type: 'test'
+2026-11-16T06:23:30.1034705Z   ...
+2026-11-16T06:23:30.1035781Z # Subtest: current source reader rejects changed exact app bytes src/lib/technology-cidr-snapshot-verification.ts
+2026-11-16T06:23:30.1036684Z ok 36 - current source reader rejects changed exact app bytes src/lib/technology-cidr-snapshot-verification.ts
+2026-11-16T06:23:30.1037198Z   ---
+2026-11-16T06:23:30.1037391Z   duration_ms: 3.431455
+2026-11-16T06:23:30.1037613Z   type: 'test'
+2026-11-16T06:23:30.1037814Z   ...
+2026-11-16T06:23:30.1038260Z # Subtest: no-op validator cannot nominate itself tests/parallel-source-20261110/core.mjs
+2026-11-16T06:23:30.1038920Z ok 37 - no-op validator cannot nominate itself tests/parallel-source-20261110/core.mjs
+2026-11-16T06:23:30.1039332Z   ---
+2026-11-16T06:23:30.1039518Z   duration_ms: 6.987883
+2026-11-16T06:23:30.1039735Z   type: 'test'
+2026-11-16T06:23:30.1039927Z   ...
+2026-11-16T06:23:30.1040392Z # Subtest: no-op validator cannot nominate itself tests/parallel-source-20261110/bootstrap.mjs
+2026-11-16T06:23:30.1041095Z ok 38 - no-op validator cannot nominate itself tests/parallel-source-20261110/bootstrap.mjs
+2026-11-16T06:23:30.1041518Z   ---
+2026-11-16T06:23:30.1041706Z   duration_ms: 7.195811
+2026-11-16T06:23:30.1041925Z   type: 'test'
+2026-11-16T06:23:30.1042115Z   ...
+2026-11-16T06:23:30.1042603Z # Subtest: no-op validator cannot nominate itself tests/parallel-source-20261110/baseline-probe.mjs
+2026-11-16T06:23:30.1043351Z ok 39 - no-op validator cannot nominate itself tests/parallel-source-20261110/baseline-probe.mjs
+2026-11-16T06:23:30.1043785Z   ---
+2026-11-16T06:23:30.1043978Z   duration_ms: 6.792339
+2026-11-16T06:23:30.1044192Z   type: 'test'
+2026-11-16T06:23:30.1044387Z   ...
+2026-11-16T06:23:30.1045106Z # Subtest: no-op validator cannot nominate itself tests/parallel-source-20261110/historical-tests.mjs
+2026-11-16T06:23:30.1045870Z ok 40 - no-op validator cannot nominate itself tests/parallel-source-20261110/historical-tests.mjs
+2026-11-16T06:23:30.1046312Z   ---
+2026-11-16T06:23:30.1046509Z   duration_ms: 6.177503
+2026-11-16T06:23:30.1046726Z   type: 'test'
+2026-11-16T06:23:30.1046922Z   ...
+2026-11-16T06:23:30.1047379Z # Subtest: no-op validator cannot nominate itself tests/parallel-source-20261110/git-reader.mjs
+2026-11-16T06:23:30.1048098Z ok 41 - no-op validator cannot nominate itself tests/parallel-source-20261110/git-reader.mjs
+2026-11-16T06:23:30.1048556Z   ---
+2026-11-16T06:23:30.1048785Z   duration_ms: 22.354843
+2026-11-16T06:23:30.1049059Z   type: 'test'
+2026-11-16T06:23:30.1049292Z   ...
+2026-11-16T06:23:30.1050346Z # Subtest: no-op validator cannot nominate itself tests/parallel-source-20261110/source-object-lock.mjs
+2026-11-16T06:23:30.1052392Z ok 42 - no-op validator cannot nominate itself tests/parallel-source-20261110/source-object-lock.mjs
+2026-11-16T06:23:30.1053569Z   ---
+2026-11-16T06:23:30.1054100Z   duration_ms: 6.179777
+2026-11-16T06:23:30.1054621Z   type: 'test'
+2026-11-16T06:23:30.1055269Z   ...
+2026-11-16T06:23:30.1056305Z # Subtest: no-op validator cannot nominate itself scripts/product-completion-lineage.mjs
+2026-11-16T06:23:30.1057931Z ok 43 - no-op validator cannot nominate itself scripts/product-completion-lineage.mjs
+2026-11-16T06:23:30.1058848Z   ---
+2026-11-16T06:23:30.1059244Z   duration_ms: 5.942465
+2026-11-16T06:23:30.1059681Z   type: 'test'
+2026-11-16T06:23:30.1060117Z   ...
+2026-11-16T06:23:30.1061753Z # Subtest: a closed asynchronous-style target map supplies every current byte without a workspace fallback
+2026-11-16T06:23:30.1063540Z ok 44 - a closed asynchronous-style target map supplies every current byte without a workspace fallback
+2026-11-16T06:23:30.1064682Z   ---
+2026-11-16T06:23:30.1065303Z   duration_ms: 4692.789744
+2026-11-16T06:23:30.1065897Z   type: 'test'
+2026-11-16T06:23:30.1066328Z   ...
+2026-11-16T06:23:30.1067073Z # Subtest: old valid app bytes cannot replace the reviewed source
+2026-11-16T06:23:30.1068042Z ok 45 - old valid app bytes cannot replace the reviewed source
+2026-11-16T06:23:30.1068627Z   ---
+2026-11-16T06:23:30.1068945Z   duration_ms: 34.291472
+2026-11-16T06:23:30.1069322Z   type: 'test'
+2026-11-16T06:23:30.1069934Z   ...
+2026-11-16T06:23:30.1070909Z # Subtest: coordinated capture edits, removed dependencies and unsafe paths are not admission authority
+2026-11-16T06:23:30.1072363Z ok 46 - coordinated capture edits, removed dependencies and unsafe paths are not admission authority
+2026-11-16T06:23:30.1073207Z   ---
+2026-11-16T06:23:30.1073547Z   duration_ms: 460.499633
+2026-11-16T06:23:30.1073941Z   type: 'test'
+2026-11-16T06:23:30.1074285Z   ...
+2026-11-16T06:23:30.1075284Z # Subtest: missing or substituted actual Git provenance is never supplied by a receipt
+2026-11-16T06:23:30.1076494Z ok 47 - missing or substituted actual Git provenance is never supplied by a receipt
+2026-11-16T06:23:30.1077217Z   ---
+2026-11-16T06:23:30.1077559Z   duration_ms: 174.789977
+2026-11-16T06:23:30.1077944Z   type: 'test'
+2026-11-16T06:23:30.1078260Z   ...
+2026-11-16T06:23:30.1078966Z # Subtest: the complete binding graph cannot be truncated by a supplied caller
+2026-11-16T06:23:30.1080043Z ok 48 - the complete binding graph cannot be truncated by a supplied caller
+2026-11-16T06:23:30.1080710Z   ---
+2026-11-16T06:23:30.1081044Z   duration_ms: 4650.411879
+2026-11-16T06:23:30.1081449Z   type: 'test'
+2026-11-16T06:23:30.1081765Z   ...
+2026-11-16T06:23:30.1082694Z # Subtest: source availability refuses unsafe or multiple origins and substituted commits before fetching
+2026-11-16T06:23:30.1084189Z ok 49 - source availability refuses unsafe or multiple origins and substituted commits before fetching
+2026-11-16T06:23:30.1085421Z   ---
+2026-11-16T06:23:30.1085769Z   duration_ms: 114.381759
+2026-11-16T06:23:30.1086205Z   type: 'test'
+2026-11-16T06:23:30.1086538Z   ...
+2026-11-16T06:23:30.1087539Z # Subtest: finite factory stage rejects altered or reverted bytes src/app/admin/calculator-factory/page.test.tsx
+2026-11-16T06:23:30.1089073Z ok 50 - finite factory stage rejects altered or reverted bytes src/app/admin/calculator-factory/page.test.tsx
+2026-11-16T06:23:30.1089656Z   ---
+2026-11-16T06:23:30.1089862Z   duration_ms: 15.395112
+2026-11-16T06:23:30.1090105Z   type: 'test'
+2026-11-16T06:23:30.1090305Z   ...
+2026-11-16T06:23:30.1090829Z # Subtest: finite factory stage rejects altered or reverted bytes src/app/admin/calculator-factory/page.tsx
+2026-11-16T06:23:30.1091636Z ok 51 - finite factory stage rejects altered or reverted bytes src/app/admin/calculator-factory/page.tsx
+2026-11-16T06:23:30.1092129Z   ---
+2026-11-16T06:23:30.1092327Z   duration_ms: 8.949059
+2026-11-16T06:23:30.1092553Z   type: 'test'
+2026-11-16T06:23:30.1092753Z   ...
+2026-11-16T06:23:30.1093747Z # Subtest: finite factory stage rejects altered or reverted bytes src/app/api/v1/calculator-factory/calculate/route.test.ts
+2026-11-16T06:23:30.1095480Z ok 52 - finite factory stage rejects altered or reverted bytes src/app/api/v1/calculator-factory/calculate/route.test.ts
+2026-11-16T06:23:30.1096051Z   ---
+2026-11-16T06:23:30.1096252Z   duration_ms: 9.630439
+2026-11-16T06:23:30.1096477Z   type: 'test'
+2026-11-16T06:23:30.1096670Z   ...
+2026-11-16T06:23:30.1097288Z # Subtest: finite factory stage rejects altered or reverted bytes src/app/api/v1/calculator-factory/calculate/route.ts
+2026-11-16T06:23:30.1098781Z ok 53 - finite factory stage rejects altered or reverted bytes src/app/api/v1/calculator-factory/calculate/route.ts
+2026-11-16T06:23:30.1100082Z   ---
+2026-11-16T06:23:30.1100431Z   duration_ms: 9.923034
+2026-11-16T06:23:30.1100799Z   type: 'test'
+2026-11-16T06:23:30.1101129Z   ...
+2026-11-16T06:23:30.1102160Z # Subtest: finite factory stage rejects altered or reverted bytes src/components/calculator-factory-portal.test.tsx
+2026-11-16T06:23:30.1103796Z ok 54 - finite factory stage rejects altered or reverted bytes src/components/calculator-factory-portal.test.tsx
+2026-11-16T06:23:30.1104737Z   ---
+2026-11-16T06:23:30.1105273Z   duration_ms: 8.824207
+2026-11-16T06:23:30.1105672Z   type: 'test'
+2026-11-16T06:23:30.1105999Z   ...
+2026-11-16T06:23:30.1106970Z # Subtest: finite factory stage rejects altered or reverted bytes src/components/calculator-factory-portal.tsx
+2026-11-16T06:23:30.1108826Z ok 55 - finite factory stage rejects altered or reverted bytes src/components/calculator-factory-portal.tsx
+2026-11-16T06:23:30.1109736Z   ---
+2026-11-16T06:23:30.1110083Z   duration_ms: 8.76185
+2026-11-16T06:23:30.1110474Z   type: 'test'
+2026-11-16T06:23:30.1110821Z   ...
+2026-11-16T06:23:30.1111903Z # Subtest: finite factory stage rejects altered or reverted bytes src/components/calculator-factory-workbench.test.tsx
+2026-11-16T06:23:30.1113534Z ok 56 - finite factory stage rejects altered or reverted bytes src/components/calculator-factory-workbench.test.tsx
+2026-11-16T06:23:30.1114430Z   ---
+2026-11-16T06:23:30.1114740Z   duration_ms: 12.43742
+2026-11-16T06:23:30.1115324Z   type: 'test'
+2026-11-16T06:23:30.1115632Z   ...
+2026-11-16T06:23:30.1116560Z # Subtest: finite factory stage rejects altered or reverted bytes src/components/calculator-factory-workbench.tsx
+2026-11-16T06:23:30.1118031Z ok 57 - finite factory stage rejects altered or reverted bytes src/components/calculator-factory-workbench.tsx
+2026-11-16T06:23:30.1118833Z   ---
+2026-11-16T06:23:30.1119126Z   duration_ms: 7.968651
+2026-11-16T06:23:30.1119352Z   type: 'test'
+2026-11-16T06:23:30.1119544Z   ...
+2026-11-16T06:23:30.1120114Z # Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/basic-math.test.ts
+2026-11-16T06:23:30.1121026Z ok 58 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/basic-math.test.ts
+2026-11-16T06:23:30.1121527Z   ---
+2026-11-16T06:23:30.1121715Z   duration_ms: 7.783306
+2026-11-16T06:23:30.1121930Z   type: 'test'
+2026-11-16T06:23:30.1122124Z   ...
+2026-11-16T06:23:30.1122673Z # Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/basic-math.ts
+2026-11-16T06:23:30.1123574Z ok 59 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/basic-math.ts
+2026-11-16T06:23:30.1124072Z   ---
+2026-11-16T06:23:30.1124261Z   duration_ms: 7.855401
+2026-11-16T06:23:30.1124481Z   type: 'test'
+2026-11-16T06:23:30.1124685Z   ...
+2026-11-16T06:23:30.1125606Z # Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/conversions.test.ts
+2026-11-16T06:23:30.1126519Z ok 60 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/conversions.test.ts
+2026-11-16T06:23:30.1127039Z   ---
+2026-11-16T06:23:30.1127230Z   duration_ms: 7.829012
+2026-11-16T06:23:30.1127446Z   type: 'test'
+2026-11-16T06:23:30.1127642Z   ...
+2026-11-16T06:23:30.1128185Z # Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/conversions.ts
+2026-11-16T06:23:30.1129046Z ok 61 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/conversions.ts
+2026-11-16T06:23:30.1129539Z   ---
+2026-11-16T06:23:30.1129753Z   duration_ms: 7.770171
+2026-11-16T06:23:30.1129974Z   type: 'test'
+2026-11-16T06:23:30.1130167Z   ...
+2026-11-16T06:23:30.1130731Z # Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/physics.test.ts
+2026-11-16T06:23:30.1131596Z ok 62 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/physics.test.ts
+2026-11-16T06:23:30.1132401Z   ---
+2026-11-16T06:23:30.1132596Z   duration_ms: 11.29969
+2026-11-16T06:23:30.1132816Z   type: 'test'
+2026-11-16T06:23:30.1133006Z   ...
+2026-11-16T06:23:30.1133612Z # Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/physics.ts
+2026-11-16T06:23:30.1134758Z ok 63 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/physics.ts
+2026-11-16T06:23:30.1135517Z   ---
+2026-11-16T06:23:30.1135719Z   duration_ms: 8.816953
+2026-11-16T06:23:30.1135934Z   type: 'test'
+2026-11-16T06:23:30.1136121Z   ...
+2026-11-16T06:23:30.1136768Z # Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/experimental/physics-scaled.test.ts
+2026-11-16T06:23:30.1138042Z ok 64 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/experimental/physics-scaled.test.ts
+2026-11-16T06:23:30.1138599Z   ---
+2026-11-16T06:23:30.1138795Z   duration_ms: 7.786652
+2026-11-16T06:23:30.1139020Z   type: 'test'
+2026-11-16T06:23:30.1139209Z   ...
+2026-11-16T06:23:30.1139805Z # Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/experimental/physics-scaled.ts
+2026-11-16T06:23:30.1140737Z ok 65 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/experimental/physics-scaled.ts
+2026-11-16T06:23:30.1141258Z   ---
+2026-11-16T06:23:30.1141444Z   duration_ms: 7.727713
+2026-11-16T06:23:30.1141667Z   type: 'test'
+2026-11-16T06:23:30.1141856Z   ...
+2026-11-16T06:23:30.1142396Z # Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/publication.test.ts
+2026-11-16T06:23:30.1143247Z ok 66 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/publication.test.ts
+2026-11-16T06:23:30.1143735Z   ---
+2026-11-16T06:23:30.1143926Z   duration_ms: 7.757468
+2026-11-16T06:23:30.1144147Z   type: 'test'
+2026-11-16T06:23:30.1144335Z   ...
+2026-11-16T06:23:30.1144970Z # Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/publication.ts
+2026-11-16T06:23:30.1146062Z ok 67 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/publication.ts
+2026-11-16T06:23:30.1146778Z   ---
+2026-11-16T06:23:30.1146975Z   duration_ms: 8.504761
+2026-11-16T06:23:30.1147192Z   type: 'test'
+2026-11-16T06:23:30.1147390Z   ...
+2026-11-16T06:23:30.1147915Z # Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/registry.test.ts
+2026-11-16T06:23:30.1148737Z ok 68 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/registry.test.ts
+2026-11-16T06:23:30.1149217Z   ---
+2026-11-16T06:23:30.1149415Z   duration_ms: 12.405861
+2026-11-16T06:23:30.1149652Z   type: 'test'
+2026-11-16T06:23:30.1149853Z   ...
+2026-11-16T06:23:30.1150360Z # Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/registry.ts
+2026-11-16T06:23:30.1151142Z ok 69 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/registry.ts
+2026-11-16T06:23:30.1151613Z   ---
+2026-11-16T06:23:30.1151809Z   duration_ms: 7.983239
+2026-11-16T06:23:30.1152022Z   type: 'test'
+2026-11-16T06:23:30.1152214Z   ...
+2026-11-16T06:23:30.1152739Z # Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/workflows.test.ts
+2026-11-16T06:23:30.1153557Z ok 70 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/workflows.test.ts
+2026-11-16T06:23:30.1154041Z   ---
+2026-11-16T06:23:30.1154225Z   duration_ms: 8.1016
+2026-11-16T06:23:30.1154441Z   type: 'test'
+2026-11-16T06:23:30.1154628Z   ...
+2026-11-16T06:23:30.1155373Z # Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/workflows.ts
+2026-11-16T06:23:30.1156158Z ok 71 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/workflows.ts
+2026-11-16T06:23:30.1156611Z   ---
+2026-11-16T06:23:30.1156806Z   duration_ms: 8.515751
+2026-11-16T06:23:30.1157218Z   type: 'test'
+2026-11-16T06:23:30.1157406Z   ...
+2026-11-16T06:23:30.1157923Z # Subtest: finite factory stage rejects altered or reverted bytes src/lib/parallel-source-evidence.test.ts
+2026-11-16T06:23:30.1158730Z ok 72 - finite factory stage rejects altered or reverted bytes src/lib/parallel-source-evidence.test.ts
+2026-11-16T06:23:30.1159195Z   ---
+2026-11-16T06:23:30.1159392Z   duration_ms: 8.169917
+2026-11-16T06:23:30.1159607Z   type: 'test'
+2026-11-16T06:23:30.1159796Z   ...
+2026-11-16T06:23:30.1160167Z # Subtest: factory capture and literal policy are independently governed
+2026-11-16T06:23:30.1160736Z not ok 73 - factory capture and literal policy are independently governed
+2026-11-16T06:23:30.1161239Z   ---
+2026-11-16T06:23:30.1161441Z   duration_ms: 60204.351936
+2026-11-16T06:23:30.1161686Z   type: 'test'
+2026-11-16T06:23:30.1162216Z   location: '/home/runner/work/calcumint.com/calcumint.com/tests/parallel-source-20261110/current.test.mjs:166:1'
+2026-11-16T06:23:30.1162784Z   failureType: 'testCodeFailure'
+2026-11-16T06:23:30.1163053Z   error: |-
+2026-11-16T06:23:30.1163304Z     Factory source child failed: personal
+2026-11-16T06:23:30.1163574Z     stdout:
+2026-11-16T06:23:30.1163776Z     TAP version 13
+2026-11-16T06:23:30.1163978Z     
+2026-11-16T06:23:30.1164159Z     stderr:
+2026-11-16T06:23:30.1164412Z     
+2026-11-16T06:23:30.1164615Z   code: 'ERR_TEST_FAILURE'
+2026-11-16T06:23:30.1164967Z   stack: |-
+2026-11-16T06:23:30.1165520Z     output (file:///home/runner/work/calcumint.com/calcumint.com/tests/parallel-source-20261110/current.test.mjs:183:114)
+2026-11-16T06:23:30.1166371Z     file:///home/runner/work/calcumint.com/calcumint.com/tests/parallel-source-20261110/current.test.mjs:186:21
+2026-11-16T06:23:30.1167299Z     TestContext.<anonymous> (file:///home/runner/work/calcumint.com/calcumint.com/tests/parallel-source-20261110/current.test.mjs:191:50)
+2026-11-16T06:23:30.1168103Z     process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+2026-11-16T06:23:30.1168616Z     async Test.run (node:internal/test_runner/test:1054:7)
+2026-11-16T06:23:30.1169103Z     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+2026-11-16T06:23:30.1169490Z   ...
+2026-11-16T06:23:30.1169853Z # Subtest: exact Stage5 actual application source is live and finite
+2026-11-16T06:23:30.1170360Z ok 74 - exact Stage5 actual application source is live and finite
+2026-11-16T06:23:30.1170692Z   ---
+2026-11-16T06:23:30.1170896Z   duration_ms: 1116.874494
+2026-11-16T06:23:30.1171125Z   type: 'test'
+2026-11-16T06:23:30.1171315Z   ...
+2026-11-16T06:23:30.1171865Z # Subtest: Stage5 refuses altered actual current application bytes src/components/calculator-factory-portal.tsx
+2026-11-16T06:23:30.1172724Z ok 75 - Stage5 refuses altered actual current application bytes src/components/calculator-factory-portal.tsx
+2026-11-16T06:23:30.1173219Z   ---
+2026-11-16T06:23:30.1173416Z   duration_ms: 0.877064
+2026-11-16T06:23:30.1173635Z   type: 'test'
+2026-11-16T06:23:30.1173830Z   ...
+2026-11-16T06:23:30.1174454Z # Subtest: Stage5 refuses altered actual current application bytes src/components/calculator-factory-shared-workspace.test.tsx
+2026-11-16T06:23:30.1175733Z ok 76 - Stage5 refuses altered actual current application bytes src/components/calculator-factory-shared-workspace.test.tsx
+2026-11-16T06:23:30.1176295Z   ---
+2026-11-16T06:23:30.1176494Z   duration_ms: 1345.914743
+2026-11-16T06:23:30.1176734Z   type: 'test'
+2026-11-16T06:23:30.1176936Z   ...
+2026-11-16T06:23:30.1177538Z # Subtest: Stage5 refuses altered actual current application bytes src/components/calculator-factory-shared-workspace.tsx
+2026-11-16T06:23:30.1178496Z ok 77 - Stage5 refuses altered actual current application bytes src/components/calculator-factory-shared-workspace.tsx
+2026-11-16T06:23:30.1179024Z   ---
+2026-11-16T06:23:30.1179218Z   duration_ms: 956.816584
+2026-11-16T06:23:30.1179450Z   type: 'test'
+2026-11-16T06:23:30.1179646Z   ...
+2026-11-16T06:23:30.1180217Z # Subtest: Stage5 refuses altered actual current application bytes src/components/completion-wave-analysis.test.tsx
+2026-11-16T06:23:30.1181359Z ok 78 - Stage5 refuses altered actual current application bytes src/components/completion-wave-analysis.test.tsx
+2026-11-16T06:23:30.1181860Z   ---
+2026-11-16T06:23:30.1182055Z   duration_ms: 0.448816
+2026-11-16T06:23:30.1182285Z   type: 'test'
+2026-11-16T06:23:30.1182473Z   ...
+2026-11-16T06:23:30.1183175Z # Subtest: Stage5 refuses altered actual current application bytes src/components/completion-wave-analysis.tsx
+2026-11-16T06:23:30.1184138Z ok 79 - Stage5 refuses altered actual current application bytes src/components/completion-wave-analysis.tsx
+2026-11-16T06:23:30.1184625Z   ---
+2026-11-16T06:23:30.1184821Z   duration_ms: 0.399274
+2026-11-16T06:23:30.1185442Z   type: 'test'
+2026-11-16T06:23:30.1185662Z   ...
+2026-11-16T06:23:30.1186212Z # Subtest: Stage5 refuses altered actual current application bytes src/lib/business/factory-nine-sharing.test.ts
+2026-11-16T06:23:30.1187063Z ok 80 - Stage5 refuses altered actual current application bytes src/lib/business/factory-nine-sharing.test.ts
+2026-11-16T06:23:30.1187560Z   ---
+2026-11-16T06:23:30.1187747Z   duration_ms: 0.402109
+2026-11-16T06:23:30.1187963Z   type: 'test'
+2026-11-16T06:23:30.1188155Z   ...
+2026-11-16T06:23:30.1188741Z # Subtest: Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/business-cases.test.ts
+2026-11-16T06:23:30.1189672Z ok 81 - Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/business-cases.test.ts
+2026-11-16T06:23:30.1190204Z   ---
+2026-11-16T06:23:30.1190399Z   duration_ms: 0.41288
+2026-11-16T06:23:30.1190621Z   type: 'test'
+2026-11-16T06:23:30.1190814Z   ...
+2026-11-16T06:23:30.1191385Z # Subtest: Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/business-cases.ts
+2026-11-16T06:23:30.1192272Z ok 82 - Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/business-cases.ts
+2026-11-16T06:23:30.1192781Z   ---
+2026-11-16T06:23:30.1192976Z   duration_ms: 0.403351
+2026-11-16T06:23:30.1193198Z   type: 'test'
+2026-11-16T06:23:30.1193392Z   ...
+2026-11-16T06:23:30.1193996Z # Subtest: Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/conversion-workflows.ts
+2026-11-16T06:23:30.1195206Z ok 83 - Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/conversion-workflows.ts
+2026-11-16T06:23:30.1195764Z   ---
+2026-11-16T06:23:30.1195969Z   duration_ms: 0.407099
+2026-11-16T06:23:30.1196190Z   type: 'test'
+2026-11-16T06:23:30.1196383Z   ...
+2026-11-16T06:23:30.1196984Z # Subtest: Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/engine-evidence.test.ts
+2026-11-16T06:23:30.1197927Z ok 84 - Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/engine-evidence.test.ts
+2026-11-16T06:23:30.1198479Z   ---
+2026-11-16T06:23:30.1198681Z   duration_ms: 0.501074
+2026-11-16T06:23:30.1198907Z   type: 'test'
+2026-11-16T06:23:30.1199100Z   ...
+2026-11-16T06:23:30.1199657Z # Subtest: Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/math-analysis.ts
+2026-11-16T06:23:30.1200546Z ok 85 - Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/math-analysis.ts
+2026-11-16T06:23:30.1201047Z   ---
+2026-11-16T06:23:30.1201344Z   duration_ms: 0.427366
+2026-11-16T06:23:30.1201712Z   type: 'test'
+2026-11-16T06:23:30.1216121Z   ...
+2026-11-16T06:23:30.1217130Z # Subtest: Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/native-wave.test.ts
+2026-11-16T06:23:30.1218125Z ok 86 - Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/native-wave.test.ts
+2026-11-16T06:23:30.1218662Z   ---
+2026-11-16T06:23:30.1218872Z   duration_ms: 0.500362
+2026-11-16T06:23:30.1219113Z   type: 'test'
+2026-11-16T06:23:30.1219314Z   ...
+2026-11-16T06:23:30.1219875Z # Subtest: Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/physics.ts
+2026-11-16T06:23:30.1221013Z ok 87 - Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/physics.ts
+2026-11-16T06:23:30.1221494Z   ---
+2026-11-16T06:23:30.1221692Z   duration_ms: 0.452423
+2026-11-16T06:23:30.1221918Z   type: 'test'
+2026-11-16T06:23:30.1222124Z   ...
+2026-11-16T06:23:30.1222720Z # Subtest: Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/retained-nine-tuples.ts
+2026-11-16T06:23:30.1223712Z ok 88 - Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/retained-nine-tuples.ts
+2026-11-16T06:23:30.1224244Z   ---
+2026-11-16T06:23:30.1224646Z   duration_ms: 0.53663
+2026-11-16T06:23:30.1225109Z   type: 'test'
+2026-11-16T06:23:30.1225337Z   ...
+2026-11-16T06:23:30.1225945Z # Subtest: Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/sql-successor.test.ts
+2026-11-16T06:23:30.1226884Z ok 89 - Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/sql-successor.test.ts
+2026-11-16T06:23:30.1227404Z   ---
+2026-11-16T06:23:30.1227599Z   duration_ms: 0.787077
+2026-11-16T06:23:30.1227827Z   type: 'test'
+2026-11-16T06:23:30.1228027Z   ...
+2026-11-16T06:23:30.1228646Z # Subtest: Stage5 refuses altered actual current application bytes src/lib/native-delivery/factory-automation-contract.test.ts
+2026-11-16T06:23:30.1229620Z ok 90 - Stage5 refuses altered actual current application bytes src/lib/native-delivery/factory-automation-contract.test.ts
+2026-11-16T06:23:30.1230168Z   ---
+2026-11-16T06:23:30.1230361Z   duration_ms: 0.808376
+2026-11-16T06:23:30.1230589Z   type: 'test'
+2026-11-16T06:23:30.1230795Z   ...
+2026-11-16T06:23:30.1231376Z # Subtest: Stage5 refuses altered actual current application bytes src/lib/native-delivery/factory-automation-sql.test.ts
+2026-11-16T06:23:30.1232290Z ok 91 - Stage5 refuses altered actual current application bytes src/lib/native-delivery/factory-automation-sql.test.ts
+2026-11-16T06:23:30.1232828Z   ---
+2026-11-16T06:23:30.1233026Z   duration_ms: 905.298426
+2026-11-16T06:23:30.1233258Z   type: 'test'
+2026-11-16T06:23:30.1233448Z   ...
+2026-11-16T06:23:30.1234022Z # Subtest: Stage5 refuses altered actual current application bytes src/lib/native-delivery/factory-delivery-catalog.ts
+2026-11-16T06:23:30.1235122Z ok 92 - Stage5 refuses altered actual current application bytes src/lib/native-delivery/factory-delivery-catalog.ts
+2026-11-16T06:23:30.1235937Z   ---
+2026-11-16T06:23:30.1236269Z   duration_ms: 1.012107
+2026-11-16T06:23:30.1236629Z   type: 'test'
+2026-11-16T06:23:30.1236838Z   ...
+2026-11-16T06:23:30.1237459Z # Subtest: Stage5 refuses altered actual current application bytes src/lib/native-delivery/factory-embed-contract.test.ts
+2026-11-16T06:23:30.1238392Z ok 93 - Stage5 refuses altered actual current application bytes src/lib/native-delivery/factory-embed-contract.test.ts
+2026-11-16T06:23:30.1238919Z   ---
+2026-11-16T06:23:30.1239127Z   duration_ms: 0.779292
+2026-11-16T06:23:30.1239346Z   type: 'test'
+2026-11-16T06:23:30.1239533Z   ...
+2026-11-16T06:23:30.1240181Z # Subtest: Stage5 proof imports and finite capture remain independent authority tests/completion-wave-20261113/source-app-stage5.mjs
+2026-11-16T06:23:30.1241208Z ok 94 - Stage5 proof imports and finite capture remain independent authority tests/completion-wave-20261113/source-app-stage5.mjs
+2026-11-16T06:23:30.1241775Z   ---
+2026-11-16T06:23:30.1241978Z   duration_ms: 18.948192
+2026-11-16T06:23:30.1242200Z   type: 'test'
+2026-11-16T06:23:30.1242388Z   ...
+2026-11-16T06:23:30.1243072Z # Subtest: Stage5 proof imports and finite capture remain independent authority tests/completion-wave-20261113/source-app-stage5-policy.mjs
+2026-11-16T06:23:30.1244160Z ok 95 - Stage5 proof imports and finite capture remain independent authority tests/completion-wave-20261113/source-app-stage5-policy.mjs
+2026-11-16T06:23:30.1244740Z   ---
+2026-11-16T06:23:30.1245417Z   duration_ms: 18.702614
+2026-11-16T06:23:30.1245665Z   type: 'test'
+2026-11-16T06:23:30.1245859Z   ...
+2026-11-16T06:23:30.1246561Z # Subtest: Stage5 proof imports and finite capture remain independent authority docs/completion-wave-20261113/source-app-stage5-revision2.json
+2026-11-16T06:23:30.1247687Z ok 96 - Stage5 proof imports and finite capture remain independent authority docs/completion-wave-20261113/source-app-stage5-revision2.json
+2026-11-16T06:23:30.1248291Z   ---
+2026-11-16T06:23:30.1248481Z   duration_ms: 18.752252
+2026-11-16T06:23:30.1248714Z   type: 'test'
+2026-11-16T06:23:30.1248909Z   ...
+2026-11-16T06:23:30.1249301Z [39m
+2026-11-16T06:23:30.1250258Z [31m   [31m×[31m executes the actual shortest-publication CI consumer with current immutable graph edges[39m[33m 65009[2mms[22m[39m
+2026-11-16T06:23:30.1250966Z [31m     → Test timed out in 65000ms.
+2026-11-16T06:23:30.1251716Z If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".[39m
+2026-11-16T06:23:30.1252727Z    [33m[2m✓[22m[39m executes the actual six-candidate CI lineage consumer with exact tamper refusals [33m 42452[2mms[22m[39m
+2026-11-16T06:23:30.1253788Z [31m   [31m×[31m executes the actual first20 publication manifest consumer and successor refusal cases[39m[33m 65006[2mms[22m[39m
+2026-11-16T06:23:30.1254433Z [31m     → Test timed out in 65000ms.
+2026-11-16T06:23:30.1255322Z If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".[39m
+2026-11-16T06:23:30.1256342Z    [33m[2m✓[22m[39m executes the actual calculator-sprint source consumers with strict Git refusal diagnostics [33m 19737[2mms[22m[39m
+2026-11-16T06:23:30.1257442Z    [33m[2m✓[22m[39m executes retained and exact-current authenticated receipt source claims with provenance refusals [33m 55374[2mms[22m[39m
+2026-11-16T06:23:30.9354794Z  [32m✓[39m src/calculators/business-contracts.test.ts [2m([22m[2m86 tests[22m[2m)[22m[32m 156[2mms[22m[39m
+2026-11-16T06:23:31.3104224Z  [32m✓[39m src/lib/full-six/slope.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 33[2mms[22m[39m
+2026-11-16T06:23:31.7270766Z  [32m✓[39m src/app/api/billing/webhook/route.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 34[2mms[22m[39m
+2026-11-16T06:23:32.2564790Z  [32m✓[39m src/lib/conversion-successor/fixed-factor-workspace.test.ts [2m([22m[2m20 tests[22m[2m)[22m[32m 202[2mms[22m[39m
+2026-11-16T06:23:32.8549025Z  [32m✓[39m src/calculators/final-framework/final-framework.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+2026-11-16T06:23:33.2112317Z  [32m✓[39m src/calculators/standard-risk-numeric-boundaries.test.ts [2m([22m[2m31 tests[22m[2m)[22m[32m 23[2mms[22m[39m
+2026-11-16T06:23:34.0486868Z  [32m✓[39m src/app/business/projects/[id]/page.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[32m 44[2mms[22m[39m
+2026-11-16T06:23:34.7597217Z  [32m✓[39m src/app/api/ai/routes-security.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 28[2mms[22m[39m
+2026-11-16T06:23:35.1003258Z  [32m✓[39m src/calculators/final-framework/analysis.test.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 25[2mms[22m[39m
+2026-11-16T06:23:35.6938709Z  [32m✓[39m src/calculators/verification/debt-aggregate-goldens.test.ts [2m([22m[2m32 tests[22m[2m)[22m[32m 35[2mms[22m[39m
+2026-11-16T06:23:36.3107430Z  [32m✓[39m src/calculators/verification/debt-payoff-goldens.test.ts [2m([22m[2m43 tests[22m[2m)[22m[32m 57[2mms[22m[39m
+2026-11-16T06:23:36.6649350Z  [32m✓[39m src/calculators/final-framework/adapters.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+2026-11-16T06:23:37.0028385Z  [32m✓[39m src/lib/financial-successor/exact-grid-private.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 26[2mms[22m[39m
+2026-11-16T06:23:37.7489844Z  [32m✓[39m src/app/api/business/technology-five-shares/route.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 39[2mms[22m[39m
+2026-11-16T06:23:38.1088652Z  [32m✓[39m src/app/login/password-recovery-actions.test.ts [2m([22m[2m19 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+2026-11-16T06:23:38.6789461Z  [32m✓[39m src/lib/calculator-factory/completion/conversion-next.test.ts [2m([22m[2m18 tests[22m[2m)[22m[32m 194[2mms[22m[39m
+2026-11-16T06:23:39.4655539Z  [32m✓[39m src/lib/native-delivery/technology-final-two-composition.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 42[2mms[22m[39m
+2026-11-16T06:23:39.8227928Z  [32m✓[39m src/calculators/completion-contracts-independent.test.ts [2m([22m[2m14 tests[22m[2m)[22m[32m 34[2mms[22m[39m
+2026-11-16T06:23:40.1685449Z  [32m✓[39m src/app/business/page-recovery.test.tsx [2m([22m[2m16 tests[22m[2m)[22m[32m 33[2mms[22m[39m
+2026-11-16T06:23:40.4786847Z  [32m✓[39m src/calculators/energy/draft-master-481.test.ts [2m([22m[2m33 tests[22m[2m)[22m[32m 21[2mms[22m[39m
+2026-11-16T06:23:42.7526067Z  [32m✓[39m src/lib/full-six/candidate/statistics-pdf-report.test.ts [2m([22m[2m6 tests[22m[2m)[22m[33m 1791[2mms[22m[39m
+2026-11-16T06:23:42.7528223Z    [33m[2m✓[22m[39m verified private statistics PDF with shared production writer[2m > [22mserializes exact sample/frequency goldens, bound provenance and complete tagged tables [33m 1466[2mms[22m[39m
+2026-11-16T06:23:43.2950473Z  [32m✓[39m src/calculators/conditional-authority.independent.test.ts [2m([22m[2m29 tests[22m[2m)[22m[32m 183[2mms[22m[39m
+2026-11-16T06:23:48.4201469Z [90mstderr[2m | src/lib/draft-preview-server.test.ts[2m > [22m[2mkeeps environment files, repository metadata and external filesystem paths denied after authorization
+2026-11-16T06:23:48.4202999Z [22m[39mThe request id "/home/runner/work/calcumint.com/calcumint.com/.git/config" is outside of Vite serving allow list.
+2026-11-16T06:23:48.4203525Z 
+2026-11-16T06:23:48.4203732Z - /home/runner/work/calcumint.com/calcumint.com
+2026-11-16T06:23:48.4203975Z 
+2026-11-16T06:23:48.4204516Z Refer to docs https://vite.dev/config/server-options.html#server-fs-allow for configurations and more details.
+2026-11-16T06:23:48.4205391Z 
+2026-11-16T06:23:48.4205398Z 
+2026-11-16T06:23:48.4424571Z [90mstderr[2m | src/lib/draft-preview-server.test.ts[2m > [22m[2mkeeps environment files, repository metadata and external filesystem paths denied after authorization
+2026-11-16T06:23:48.4427055Z [22m[39mThe request id "/etc/passwd" is outside of Vite serving allow list.
+2026-11-16T06:23:48.4427679Z 
+2026-11-16T06:23:49.8333734Z  [32m✓[39m src/lib/draft-preview-server.test.ts [2m([22m[2m9 tests[22m[2m)[22m[33m 6296[2mms[22m[39m
+2026-11-16T06:23:49.8336415Z    [33m[2m✓[22m[39m requires explicit private reviewer authorization before serving calculator UI or source [33m 367[2mms[22m[39m
+2026-11-16T06:23:49.8338539Z    [33m[2m✓[22m[39m rejects foreign origins, non-loopback hosts and write methods even with a valid credential [33m 315[2mms[22m[39m
+2026-11-16T06:23:49.8340219Z    [33m[2m✓[22m[39m does not authorize a new server with a previous server credential [33m 3187[2mms[22m[39m
+2026-11-16T06:23:49.8341917Z    [33m[2m✓[22m[39m CLI creates an owner-only per-run password without printing it and removes it on shutdown [33m 1386[2mms[22m[39m
+2026-11-16T06:23:50.2962235Z  [32m✓[39m src/app/api/v1/batch/route.test.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 35[2mms[22m[39m
+2026-11-16T06:23:50.8788534Z  [32m✓[39m src/calculators/verification/investment-cashflow-goldens.test.ts [2m([22m[2m37 tests[22m[2m)[22m[32m 43[2mms[22m[39m
+2026-11-16T06:23:51.3839037Z  [32m✓[39m src/lib/calculator-factory/cohorts/basic-math.test.ts [2m([22m[2m21 tests[22m[2m)[22m[32m 26[2mms[22m[39m
+2026-11-16T06:23:54.6346628Z  [32m✓[39m src/calculators/final-framework/sip-v2-projection.test.ts [2m([22m[2m75 tests[22m[2m)[22m[33m 2910[2mms[22m[39m
+2026-11-16T06:24:39.4838158Z  [32m✓[39m src/lib/next-cohort-evidence.test.ts [2m([22m[2m7 tests[22m[2m)[22m[33m 44341[2mms[22m[39m
+2026-11-16T06:24:39.4841055Z    [33m[2m✓[22m[39m RETAINED23 preserves exact-eight actual UI journeys and independently literal-valued native batch artifacts [33m 33943[2mms[22m[39m
+2026-11-16T06:24:39.4842529Z    [33m[2m✓[22m[39m requires exact-three current team artifacts and the separate current storage/DPI personal successor [33m 641[2mms[22m[39m
+2026-11-16T06:24:39.4843603Z    [33m[2m✓[22m[39m RETAINED23 preserves original native and responsive proof after current R4 proof [33m 4839[2mms[22m[39m
+2026-11-16T06:24:39.4844668Z    [33m[2m✓[22m[39m RETAINED23 preserves original mobile boundaries and full numerical text after current R4 proof [33m 4779[2mms[22m[39m
+2026-11-16T06:24:39.9000489Z  [32m✓[39m src/lib/scenario-sensitivity-presentation.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 41[2mms[22m[39m
+2026-11-16T06:24:40.2399685Z  [32m✓[39m src/calculators/private-owner-business-impact.test.ts [2m([22m[2m22 tests[22m[2m)[22m[32m 21[2mms[22m[39m
+2026-11-16T06:24:40.8214734Z  [32m✓[39m src/calculators/final-framework/sip-v2-analytics.test.ts [2m([22m[2m46 tests[22m[2m)[22m[32m 221[2mms[22m[39m
+2026-11-16T06:24:41.1585935Z  [32m✓[39m src/calculators/private-owner-business-core.test.ts [2m([22m[2m14 tests[22m[2m)[22m[32m 23[2mms[22m[39m
+2026-11-16T06:24:42.3393951Z [90mstdout[2m | src/calculators/finance/sip-v2-candidate.test.ts[2m > [22m[2munregistered SIP v2 candidate[2m > [22m[2mmeasures bounded maximum-term work locally
+2026-11-16T06:24:42.3396375Z [22m[39mSIP v2 benchmark: 100 max-term evaluations 615.2ms (local observation, no latency guarantee)
+2026-11-16T06:24:42.3396931Z 
+2026-11-16T06:24:42.4219369Z  [32m✓[39m src/calculators/finance/sip-v2-candidate.test.ts [2m([22m[2m75 tests[22m[2m)[22m[33m 950[2mms[22m[39m
+2026-11-16T06:24:42.4220646Z    [33m[2m✓[22m[39m unregistered SIP v2 candidate[2m > [22mmeasures bounded maximum-term work locally [33m 616[2mms[22m[39m
+2026-11-16T06:24:43.0923947Z  [32m✓[39m src/calculators/master-identity-contract-evidence.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 115[2mms[22m[39m
+2026-11-16T06:24:43.4216628Z  [32m✓[39m src/calculators/private-case-witnesses.test.ts [2m([22m[2m24 tests[22m[2m)[22m[32m 26[2mms[22m[39m
+2026-11-16T06:24:44.0556760Z  [32m✓[39m src/lib/calculation-export-pdf-graphemes.test.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 330[2mms[22m[39m
+2026-11-16T06:25:28.6717374Z JSON report written to /tmp/calcumint-execution-a7-9bHGZV/original-vitest.json
+2026-11-16T06:25:39.7289519Z  [32m✓[39m src/lib/remaining-five-evidence.test.ts [2m([22m[2m7 tests[22m[2m)[22m[33m 55295[2mms[22m[39m
+2026-11-16T06:25:39.7291378Z    [33m[2m✓[22m[39m RETAINED23 binds three unsigned canonical packets and every unchanged original-five association [33m 38195[2mms[22m[39m
+2026-11-16T06:25:39.7293147Z    [33m[2m✓[22m[39m RETAINED A7 — requires actual five-specific authenticated team artifacts before engineering closure [33m 6133[2mms[22m[39m
+2026-11-16T06:25:39.7295070Z    [33m[2m✓[22m[39m RETAINED23 preserves actual five-specific metered batch and signed worker acceptance [33m 4857[2mms[22m[39m
+2026-11-16T06:25:39.7296725Z    [33m[2m✓[22m[39m RETAINED23 exercises canonical negatives while retaining current bootstrap negatives [33m 5569[2mms[22m[39m
+2026-11-16T06:27:44.3284696Z  [31m❯[39m src/lib/first-five-engineering-evidence.test.ts [2m([22m[2m5 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[33m 124063[2mms[22m[39m
+2026-11-16T06:27:44.3287904Z    [32m✓[39m retains all540 identities and inherited criteria while recording only five individually scoped engineering deltas[32m 96[2mms[22m[39m
+2026-11-16T06:27:44.3290453Z    [33m[2m✓[22m[39m binds all15 actual analytical browser journeys without authenticated or production claims [33m 7614[2mms[22m[39m
+2026-11-16T06:27:44.3292874Z [31m   [31m×[31m runs all twenty-one new exact-source and unchanged-verification CI budget checks in mandatory unit discovery[39m[33m 45121[2mms[22m[39m
+2026-11-16T06:27:44.3295186Z [31m     → Command failed: /opt/hostedtoolcache/node/22.23.4/x64/bin/node tests/parallel-source-20261110/historical-tests.mjs --first-five-group
+2026-11-16T06:27:44.3295901Z [39m
+2026-11-16T06:27:44.3296740Z    [33m[2m✓[22m[39m binds fifteen genuine authenticated existing-route journeys and independently reads fifty native completed downloads [33m 26182[2mms[22m[39m
+2026-11-16T06:27:44.3298036Z [31m   [31m×[31m runs the complete coupled source-evolution guard before a late publication campaign can reach it[39m[33m 45048[2mms[22m[39m
+2026-11-16T06:27:44.3299684Z [31m     → Command failed: /opt/hostedtoolcache/node/22.23.4/x64/bin/node --test --test-reporter=tap tests/acceptance-closure-20261108/converter-final-source.test.mjs
+2026-11-16T06:27:44.3300429Z [39m
+2026-11-16T06:27:45.3315905Z  [32m✓[39m src/lib/calculator-factory/completion/geometry-worker-b.integration.test.ts [2m([22m[2m9 tests[22m[2m)[22m[33m 348[2mms[22m[39m
+2026-11-16T06:27:46.1369752Z  [32m✓[39m src/calculators/authority-evidence.test.ts [2m([22m[2m7 tests[22m[2m)[22m[33m 368[2mms[22m[39m
+2026-11-16T06:27:46.5162694Z  [32m✓[39m src/calculators/source-driven-existing-engines.test.ts [2m([22m[2m39 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+2026-11-16T06:27:47.5614249Z  [32m✓[39m src/app/account/saved/page.test.tsx [2m([22m[2m17 tests[22m[2m)[22m[32m 46[2mms[22m[39m
+2026-11-16T06:27:48.2566509Z  [32m✓[39m src/app/admin/catalog-draft-safety.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+2026-11-16T06:27:48.8125897Z  [32m✓[39m src/calculators/verification/nonstandard-accumulation-goldens.test.ts [2m([22m[2m44 tests[22m[2m)[22m[32m 46[2mms[22m[39m
+2026-11-16T06:27:49.4379237Z  [32m✓[39m src/calculators/master-identity-crosswalk.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 70[2mms[22m[39m
+2026-11-16T06:27:50.0531029Z  [32m✓[39m src/lib/calculator-factory/completion/science-worker-c.integration.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 162[2mms[22m[39m
+2026-11-16T06:27:50.3935962Z  [32m✓[39m src/calculators/final-framework/investment-periods.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 38[2mms[22m[39m
+2026-11-16T06:27:50.6275418Z  [32m✓[39m src/lib/calculator-factory/completion/acceptance.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+2026-11-16T06:27:51.1622552Z  [32m✓[39m src/calculators/verification/codex-a-numeric-defects.test.ts [2m([22m[2m19 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+2026-11-16T06:27:52.6727972Z  [32m✓[39m src/calculators/implementation-reconciliation.test.ts [2m([22m[2m6 tests[22m[2m)[22m[33m 568[2mms[22m[39m
+2026-11-16T06:27:52.9956566Z  [32m✓[39m src/lib/scenario-reevaluation.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+2026-11-16T06:27:53.5472129Z  [32m✓[39m src/calculators/geometry/solid-geometry-explicit-batches.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+2026-11-16T06:27:53.8630752Z  [32m✓[39m src/lib/calculator-factory/experimental/physics-scaled.test.ts [2m([22m[2m27 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+2026-11-16T06:27:54.3890716Z  [32m✓[39m src/lib/calculator-factory/completion/remainder-capture-successor.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 57[2mms[22m[39m
+2026-11-16T06:27:54.7909189Z  [32m✓[39m src/calculators/technology-computing/network-storage-contract.test.ts [2m([22m[2m60 tests[22m[2m)[22m[32m 92[2mms[22m[39m
+2026-11-16T06:27:55.3852747Z  [32m✓[39m src/calculators/verification/nonstandard-planning-goldens.test.ts [2m([22m[2m45 tests[22m[2m)[22m[32m 44[2mms[22m[39m
+2026-11-16T06:27:57.1917318Z  [32m✓[39m src/lib/private-review-sensitivity.test.ts [2m([22m[2m7 tests[22m[2m)[22m[33m 1105[2mms[22m[39m
+2026-11-16T06:27:57.1926971Z    [33m[2m✓[22m[39m replays every eligible supplied numeric field against its unchanged original packet [33m 700[2mms[22m[39m
+2026-11-16T06:27:57.5420389Z  [32m✓[39m src/calculators/annual-heat-comparison.test.ts [2m([22m[2m34 tests[22m[2m)[22m[32m 25[2mms[22m[39m
+2026-11-16T06:27:57.9017848Z  [32m✓[39m src/lib/calculator-factory/completion/math-next.test.ts [2m([22m[2m19 tests[22m[2m)[22m[32m 31[2mms[22m[39m
+2026-11-16T06:27:58.3320242Z  [32m✓[39m src/calculators/remaining-authority.test.ts [2m([22m[2m65 tests[22m[2m)[22m[32m 115[2mms[22m[39m
+2026-11-16T06:27:59.0663099Z  [32m✓[39m src/lib/calculator-factory/registry.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 279[2mms[22m[39m
+2026-11-16T06:27:59.7917701Z  [32m✓[39m src/app/business/api/page-recovery.test.tsx [2m([22m[2m10 tests[22m[2m)[22m[32m 96[2mms[22m[39m
+2026-11-16T06:28:00.0539768Z  [32m✓[39m src/calculators/master-publication-audit.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+2026-11-16T06:28:00.3599504Z  [32m✓[39m src/calculators/energy/draft-master-487.test.ts [2m([22m[2m25 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+2026-11-16T06:28:01.2718671Z  [32m✓[39m src/lib/native-delivery/factory-embed-contract.test.ts [2m([22m[2m185 tests[22m[2m)[22m[32m 237[2mms[22m[39m
+2026-11-16T06:28:01.9354275Z  [32m✓[39m src/calculators/business-contracts-independent.test.ts [2m([22m[2m46 tests[22m[2m)[22m[32m 75[2mms[22m[39m
+2026-11-16T06:28:02.2497378Z  [32m✓[39m src/calculators/verification/sip-numerical-compatibility.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 14[2mms[22m[39m
+2026-11-16T06:28:03.1331921Z  [32m✓[39m src/calculators/remaining-contracts.test.ts [2m([22m[2m57 tests[22m[2m)[22m[33m 320[2mms[22m[39m
+2026-11-16T06:28:03.5453714Z  [32m✓[39m src/lib/full-six-snapshot.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 111[2mms[22m[39m
+2026-11-16T06:28:04.0723344Z  [32m✓[39m src/app/business/shared/[id]/page.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[32m 29[2mms[22m[39m
+2026-11-16T06:28:04.4066615Z  [32m✓[39m src/lib/full-six/statistics/worker-runner.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 39[2mms[22m[39m
+2026-11-16T06:28:04.6456690Z  [32m✓[39m src/lib/calculator-first-readiness.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+2026-11-16T06:28:05.2240315Z  [32m✓[39m src/calculators/risk-review-reassessment.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 33[2mms[22m[39m
+2026-11-16T06:28:05.5833405Z  [32m✓[39m src/app/login/actions.test.ts [2m([22m[2m18 tests[22m[2m)[22m[32m 14[2mms[22m[39m
+2026-11-16T06:28:06.3439787Z  [32m✓[39m src/calculators/component-contracts.test.ts [2m([22m[2m32 tests[22m[2m)[22m[32m 206[2mms[22m[39m
+2026-11-16T06:28:06.6747871Z  [32m✓[39m src/lib/calculator-factory/completion/physics.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+2026-11-16T06:28:07.2386212Z [90mstdout[2m | src/calculators/master-publication-audit-export.test.ts[2m > [22m[2mreproduces all 540 rows from existing identity evidence and the anonymous observation
+2026-11-16T06:28:07.2392995Z [22m[39mMASTER_AUDIT_COUNTS {"totalMaster":540,"totalRegistered":574,"counts":{"verified":0,"missing":245,"ambiguous":174,"version conflict":0,"approval pending":121},"observedPublished":209,"registryPublishedMatches":209,"registryPublishedCodeCertified":209,"masterRowsWithPublishedCandidate":136,"protectedCertificationUnknown":540,"specialistApprovalUnknown":540,"explicitHolds":6,"candidateHoldRows":6,"rowsWithAnyHold":12,"mismatches":{"databaseOnly":[],"keyConflicts":[],"versionConflicts":[],"codeNotCertified":[]},"publicationAuthority":false,"certificationAuthority":false}
+2026-11-16T06:28:07.2397153Z 
+2026-11-16T06:28:07.2398595Z  [32m✓[39m src/calculators/master-publication-audit-export.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 45[2mms[22m[39m
+2026-11-16T06:28:07.6866238Z  [32m✓[39m src/calculators/canonical-calculus-workflow.independent.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 121[2mms[22m[39m
+2026-11-16T06:28:08.0103520Z  [32m✓[39m src/calculators/verification/pending-specialist-arithmetic.test.ts [2m([22m[2m36 tests[22m[2m)[22m[32m 22[2mms[22m[39m
+2026-11-16T06:28:08.6615175Z  [32m✓[39m src/lib/native-delivery/technology-five-routes.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 24[2mms[22m[39m
+2026-11-16T06:28:09.2201999Z  [32m✓[39m src/calculators/worked-example-display.test.ts [2m([22m[2m20 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+2026-11-16T06:28:09.8268877Z  [32m✓[39m src/calculators/final-framework/sip-versioned-draft.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 78[2mms[22m[39m
+2026-11-16T06:28:10.2093729Z  [32m✓[39m src/lib/technology-next-five-analysis.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 83[2mms[22m[39m
+2026-11-16T06:28:10.7733593Z  [32m✓[39m src/calculators/private-supplied-contracts.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 46[2mms[22m[39m
+2026-11-16T06:28:11.1809682Z [90mstdout[2m | src/calculators/verification/sip-high-precision.test.ts[2m > [22m[2memits version-bound known-issue diagnostics without blessing incorrect output
+2026-11-16T06:28:11.1900596Z [22m[39mSIP_HIGH_PRECISION_V1_DIAGNOSTIC [{"label":"1e-12/1/end","exactCents":"1000000","observed":10658.141036401503,"observedErrorCents":["65814","65815"],"outputCents":"1065814","stableErrorCents":["0","0"]},{"label":"1e-12/1/beginning","exactCents":"1000000","observed":10658.141036401512,"observedErrorCents":["65814","65815"],"outputCents":"1065814","stableErrorCents":["0","1"]},{"label":"1e-12/2/end","exactCents":"2000000","observed":21316.282072803006,"observedErrorCents":["131628","131629"],"outputCents":"2131628","stableErrorCents":["-1","0"]},{"label":"1e-12/2/beginning","exactCents":"2000000","observed":21316.282072803024,"observedErrorCents":["131628","131629"],"outputCents":"2131628","stableErrorCents":["-1","0"]},{"label":"1e-12/1200/end","exactCents":"1200000000","observed":12789769.243681803,"observedErrorCents":["78976924","78976925"],"outputCents":"1278976924","stableErrorCents":["0","1"]},{"label":"1e-12/1200/beginning","exactCents":"1200000000","observed":12789769.243681815,"observedErrorCents":["78976924","78976925"],"outputCents":"1278976924","stableErrorCents":["0","1"]},{"label":"-1e-12/1/end","exactCents":"1000000","observed":10658.141036401503,"observedErrorCents":["65814","65815"],"outputCents":"1065814","stableErrorCents":["0","0"]},{"label":"-1e-12/1/beginning","exactCents":"1000000","observed":10658.141036401494,"observedErrorCents":["65814","65815"],"outputCents":"1065814","stableErrorCents":["-1","0"]},{"label":"-1e-12/2/end","exactCents":"2000000","observed":21316.282072803006,"observedErrorCents":["131628","131629"],"outputCents":"2131628","stableErrorCents":["0","1"]},{"label":"-1e-12/2/beginning","exactCents":"2000000","observed":21316.282072802987,"observedErrorCents":["131628","131629"],"outputCents":"2131628","stableErrorCents":["-1","0"]},{"label":"-1e-12/1200/end","exactCents":"1200000000","observed":12789769.243681803,"observedErrorCents":["78976924","78976925"],"outputCents":"1278976924","stableErrorCents":["-1","0"]},{"label":"-1e-12/1200/beginning","exactCents":"1200000000","observed":12789769.243681792,"observedErrorCents":["78976924","78976925"],"outputCents":"1278976924","stableErrorCents":["-1","0"]},{"label":"1e-10/1/end","exactCents":"1000000","observed":9992.007221626409,"observedErrorCents":["-800","-799"],"outputCents":"999201","stableErrorCents":["0","0"]},{"label":"1e-10/1/beginning","exactCents":"1000000","observed":9992.00722162724,"observedErrorCents":["-800","-799"],"outputCents":"999201","stableErrorCents":["-1","0"]},{"label":"1e-10/2/end","exactCents":"2000000","observed":19984.014443252818,"observedErrorCents":["-1599","-1598"],"outputCents":"1998401","stableErrorCents":["-1","0"]},{"label":"1e-10/2/beginning","exactCents":"2000000","observed":19984.01444325448,"observedErrorCents":["-1599","-1598"],"outputCents":"1998401","stableErrorCents":["-1","0"]},{"label":"1e-10/1200/end","exactCents":"1200000000","observed":11990408.665951692,"observedErrorCents":["-959134","-959133"],"outputCents":"1199040867","stableErrorCents":["-1","0"]},{"label":"1e-10/1200/beginning","exactCents":"1200000000","observed":11990408.66595269,"observedErrorCents":["-959134","-959133"],"outputCents":"1199040867","stableErrorCents":["-1","0"]},{"label":"-1e-10/1/end","exactCents":"1000000","observed":10005.32989792191,"observedErrorCents":["532","533"],"outputCents":"1000533","stableErrorCents":["0","0"]},{"label":"-1e-10/1/beginning","exactCents":"1000000","observed":10005.329897921076,"observedErrorCents":["532","533"],"outputCents":"1000533","stableErrorCents":["0","1"]},{"label":"-1e-10/2/end","exactCents":"2000000","observed":20010.65979584382,"observedErrorCents":["1065","1066"],"outputCents":"2001066","stableErrorCents":["0","1"]},{"label":"-1e-10/2/beginning","exactCents":"2000000","observed":20010.65979584215,"observedErrorCents":["1065","1066"],"outputCents":"2001066","stableErrorCents":["-1","0"]},{"label":"-1e-10/1200/end","exactCents":"1200000000","observed":12006395.877506293,"observedErrorCents":["639587","639588"],"outputCents":"1200639588","stableErrorCents":["-1","0"]},{"label":"-1e-10/1200/beginning","exactCents":"1200000000","observed":12006395.877505293,"observedErrorCents":["639587","639588"],"outputCents":"1200639588","stableErrorCents":["-1","0"]},{"label":"0/1/end","exactCents":"1000000","observed":10000,"observedErrorCents":["0","0"],"outputCents":"1000000","stableErrorCents":["0","0"]},{"label":"0/1/beginning","exactCents":"1000000","observed":10000,"observedErrorCents":["0","0"],"outputCents":"1000000","stableErrorCents":["0","0"]},{"label":"0/2/end","exactCents":"2000000","observed":20000,"observedErrorCents":["0","0"],"outputCents":"2000000","stableErrorCents":["0","0"]},{"label":"0/2/beginning","exactCents":"2000000","observed":20000,"observedErrorCents":["0","0"],"outputCents":"2000000","stableErrorCents":["0","0"]},{"label":"0/1200/end","exactCents":"1200000000","observed":12000000,"observedErrorCents":["0","0"],"outputCents":"1200000000","stableErrorCents":["0","0"]},{"label":"0/1200/beginning","exactCents":"1200000000","observed":12000000,"observedErrorCents":["0","0"],"outputCents":"1200000000","stableErrorCents":["0","0"]},{"label":"-99/1/end","exactCents":"1000000","observed":10000.000000000002,"observedErrorCents":["0","1"],"outputCents":"1000000","stableErrorCents":["0","0"]},{"label":"-99/1/beginning","exactCents":"917500","observed":9175.000000000002,"observedErrorCents":["0","1"],"outputCents":"917500","stableErrorCents":["0","0"]},{"label":"-99/2/end","exactCents":"1917500","observed":19175.000000000004,"observedErrorCents":["0","1"],"outputCents":"1917500","stableErrorCents":["0","1"]},{"label":"-99/2/beginning","exactCents":"1759306","observed":17593.062500000004,"observedErrorCents":["0","1"],"outputCents":"1759306","stableErrorCents":["0","1"]},{"label":"-99/1200/end","exactCents":"12121212","observed":121212.12121212122,"observedErrorCents":["0","1"],"outputCents":"12121212","stableErrorCents":["0","1"]},{"label":"-99/1200/beginning","exactCents":"11121212","observed":111212.12121212122,"observedErrorCents":["0","1"],"outputCents":"11121212","stableErrorCents":["0","1"]},{"label":"1000/1/end","exactCents":"1000000","observed":10000.000000000002,"observedErrorCents":["0","1"],"outputCents":"1000000","stableErrorCents":["0","1"]},{"label":"1000/1/beginning","exactCents":"1833333","observed":18333.33333333334,"observedErrorCents":["0","1"],"outputCents":"1833333","stableErrorCents":["0","1"]},{"label":"1000/2/end","exactCents":"2833333","observed":28333.33333333334,"observedErrorCents":["0","1"],"outputCents":"2833333","stableErrorCents":["0","1"]},{"label":"1000/2/beginning","exactCents":"5194444","observed":51944.44444444446,"observedErrorCents":["0","1"],"outputCents":"5194444","stableErrorCents":["0","1"]},{"label":"1000/1200/end","exactCents":"9308998826264226711583720209017199372790898353305073338661422368762471899770226073540758217044460023617488382924898124564725197913165963470486157144824125208500952455305594903586534464155409624017920656869557905365668775940481221040953296479063662779204261318189950004638534765219125381324394970947539608003849744923971988","rejected":"SIP future value exceeds supported numeric range"},{"label":"1000/1200/beginning","exactCents":"17066497848151082304570153716531532183449980314392634454212607676064531816245414468158056731248176709965395368695646561701996196174137599695891288098844229548918412834726923989908646517618250977366187870927522826503726089224215571908414376878283381761874479083348241675170647069568396532428057446737155948007057865693948645","rejected":"SIP future value exceeds supported numeric range"},{"label":"10/1/end","exactCents":"1000000","observed":9999.999999999964,"observedErrorCents":["-1","0"],"outputCents":"1000000","stableErrorCents":["0","0"]},{"label":"10/1/beginning","exactCents":"1008333","observed":10083.333333333296,"observedErrorCents":["-1","0"],"outputCents":"1008333","stableErrorCents":["0","1"]},{"label":"10/2/end","exactCents":"2008333","observed":20083.333333333274,"observedErrorCents":["-1","0"],"outputCents":"2008333","stableErrorCents":["-1","0"]},{"label":"10/2/beginning","exactCents":"2025069","observed":20250.694444444383,"observedErrorCents":["-1","0"],"outputCents":"2025069","stableErrorCents":["-1","0"]},{"label":"10/1200/end","exactCents":"2535769752020","observed":25357697520.202263,"observedErrorCents":["-1","0"],"outputCents":"2535769752020","stableErrorCents":["-1","0"]},{"label":"10/1200/beginning","exactCents":"2556901166620","observed":25569011666.20395,"observedErrorCents":["-1","0"],"outputCents":"2556901166620","stableErrorCents":["-1","0"]},{"label":"rounding/integer/0.005","exactCents":"1","observed":0.005,"observedErrorCents":["0","0"],"outputCents":"1","stableErrorCents":["0","0"]},{"label":"rounding/integer/0.004999999999999999","exactCents":"0","observed":0.004999999999999999,"observedErrorCents":["0","0"],"outputCents":"1","stableErrorCents":["0","0"]},{"label":"rounding/integer/0.005000000000000001","exactCents":"1","observed":0.005000000000000001,"observedErrorCents":["0","0"],"outputCents":"1","stableErrorCents":["0","0"]},{"label":"rounding/integer/9007199254740991","exactCents":"900719925474099100","observed":9007199254740991,"observedErrorCents":["0","0"],"outputCents":"900719925474099100","stableErrorCents":["0","0"]},{"label":"rounding/integer/9007199254740992","exactCents":"900719925474099200","observed":9007199254740992,"observedErrorCents":["0","0"],"outputCents":"900719925474099200","stableErrorCents":["0","0"]},{"label":"rounding/integer/1e+100","exactCents":"1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000","observed":1e+100,"observedErrorCents":["0","0"],"outputCents":"1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000","stableErrorCents":["0","0"]},{"label":"rounding/integer/1e+300","exactCents":"100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000","observed":1e+300,"observedErrorCents":["0","0"],"outputCents":"100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000","stableErrorCents":["0","0"]}]
+2026-11-16T06:28:11.1948853Z 
+2026-11-16T06:28:11.1949710Z  [32m✓[39m src/calculators/verification/sip-high-precision.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 122[2mms[22m[39m
+2026-11-16T06:28:17.9627404Z  [32m✓[39m src/lib/historical-canonical-evidence.test.ts [2m([22m[2m5 tests[22m[2m)[22m[33m 5450[2mms[22m[39m
+2026-11-16T06:28:17.9630481Z    [33m[2m✓[22m[39m immutable historical canonical evidence with exact guard succession[2m > [22mreproduces the original without advancing acceptance or source claims [33m 717[2mms[22m[39m
+2026-11-16T06:28:17.9632778Z    [33m[2m✓[22m[39m immutable historical canonical evidence with exact guard succession[2m > [22mrejects artifact identity, source hash and authority tampering [33m 424[2mms[22m[39m
+2026-11-16T06:28:17.9634555Z    [33m[2m✓[22m[39m immutable historical canonical evidence with exact guard succession[2m > [22mrejects unrelated current metadata and source membership drift [33m 803[2mms[22m[39m
+2026-11-16T06:28:17.9636814Z    [33m[2m✓[22m[39m historical Batch16 retains fresh witness comparison[2m > [22madmits exact caller transitions but rejects changed witnesses and unrelated source claims [33m 2163[2mms[22m[39m
+2026-11-16T06:28:17.9638866Z    [33m[2m✓[22m[39m exact supplemental technology presentation preserves historical membership[2m > [22mrejects missing, duplicate, unknown and stale supplemental membership without rewriting historical412 [33m 1340[2mms[22m[39m
+2026-11-16T06:28:18.3789481Z  [32m✓[39m src/lib/publication20/conversions.independent.test.ts [2m([22m[2m22 tests[22m[2m)[22m[32m 31[2mms[22m[39m
+2026-11-16T06:28:18.6968905Z  [32m✓[39m src/calculators/science/solar/solar.test.ts [2m([22m[2m19 tests[22m[2m)[22m[32m 77[2mms[22m[39m
+2026-11-16T06:28:19.0007243Z  [32m✓[39m src/lib/scenario-display-metadata.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+2026-11-16T06:28:19.6260462Z  [32m✓[39m src/lib/business/technology-next-sharing.test.ts [2m([22m[2m28 tests[22m[2m)[22m[32m 43[2mms[22m[39m
+2026-11-16T06:28:19.9458093Z  [32m✓[39m src/calculators/geometry/geometry-direct-domain-validation.test.ts [2m([22m[2m25 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+2026-11-16T06:28:20.1757729Z  [32m✓[39m src/lib/launch/hardening.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+2026-11-16T06:28:20.7559900Z  [32m✓[39m src/lib/draft-preview-history.test.ts [2m([22m[2m23 tests[22m[2m)[22m[32m 40[2mms[22m[39m
+2026-11-16T06:28:22.1209840Z  [32m✓[39m src/lib/full-six/graph-plot.test.ts [2m([22m[2m16 tests[22m[2m)[22m[33m 1071[2mms[22m[39m
+2026-11-16T06:28:22.1211586Z    [33m[2m✓[22m[39m private shared graph plot domain-aware cells[2m > [22mretains complete interval coverage when a deterministic budget stops refinement [33m 349[2mms[22m[39m
+2026-11-16T06:28:22.4164257Z  [32m✓[39m src/calculators/date-time/catalog-batch-2.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+2026-11-16T06:28:22.7133744Z  [32m✓[39m src/calculators/geometry/slope-versioned-compatibility.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+2026-11-16T06:28:23.2358849Z  [32m✓[39m src/calculators/regulatory-metadata.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+2026-11-16T06:28:23.6431421Z  [32m✓[39m src/app/account/drafts/actions-pagination.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 26[2mms[22m[39m
+2026-11-16T06:28:23.9739462Z  [32m✓[39m src/calculators/ui-metadata.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+2026-11-16T06:28:24.5399903Z  [32m✓[39m src/app/admin/calculator-factory/actions.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+2026-11-16T06:29:01.6527637Z JSON report written to /tmp/calcumint-execution-a7-DuLdwb/original-vitest.json
+2026-11-16T06:29:03.1023671Z  [32m✓[39m src/lib/cohort22-closure-evidence.test.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 38196[2mms[22m[39m
+2026-11-16T06:29:03.1026704Z    [33m[2m✓[22m[39m RETAINED A7 — binds57 actual source browser journeys,30refusals and distinct A/B without authenticated-browser claims [33m 36789[2mms[22m[39m
+2026-11-16T06:29:03.1028022Z    [33m[2m✓[22m[39m independently reads38 retained PDF and CSV export byte records with exact identity/version/value [33m 958[2mms[22m[39m
+2026-11-16T06:29:03.5470967Z  [32m✓[39m src/calculators/conditional-authority.test.ts [2m([22m[2m56 tests[22m[2m)[22m[32m 74[2mms[22m[39m
+2026-11-16T06:29:03.8150668Z  [32m✓[39m src/lib/billing/billing.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+2026-11-16T06:29:04.1198603Z  [32m✓[39m src/calculators/finance/loan-prepayment.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+2026-11-16T06:29:04.8349610Z  [32m✓[39m src/app/account/regionalpage.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[32m 50[2mms[22m[39m
+2026-11-16T06:29:05.1402085Z  [32m✓[39m src/calculators/date-time/catalog-batch-1.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+2026-11-16T06:29:05.4495120Z  [32m✓[39m src/calculators/conversion/catalog-batch-1.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+2026-11-16T06:29:05.7932734Z  [32m✓[39m src/lib/technology-five-numerical-envelope.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 33[2mms[22m[39m
+2026-11-16T06:29:06.1152826Z  [32m✓[39m src/lib/financial-exact-grid.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 20[2mms[22m[39m
+2026-11-16T06:29:06.8105750Z [90mstdout[2m | src/calculators/master-identity-crosswalk-export.test.ts[2m > [22m[2mexports all 540 live-registry crosswalk rows and 27 bounded domain queues from existing evidence
+2026-11-16T06:29:06.8107602Z [22m[39mIdentity evidence triage {
+2026-11-16T06:29:06.8108325Z   unresolvedMasterIds: [33m249[39m,
+2026-11-16T06:29:06.8108943Z   reviewCases: [33m248[39m,
+2026-11-16T06:29:06.8109629Z   missingLinkageWithLabelHints: [33m3[39m,
+2026-11-16T06:29:06.8110444Z   missingLinkageWithoutLabelHints: [33m242[39m,
+2026-11-16T06:29:06.8111221Z   multiCandidateMasterIds: [33m4[39m,
+2026-11-16T06:29:06.8111959Z   aliasesResolved: [33m0[39m,
+2026-11-16T06:29:06.8112577Z   approvedMappings: [33m0[39m,
+2026-11-16T06:29:06.8113198Z   provenMissingEngines: [33m0[39m
+2026-11-16T06:29:06.8113686Z }
+2026-11-16T06:29:06.8113874Z 
+2026-11-16T06:29:06.8121052Z  [32m✓[39m src/calculators/master-identity-crosswalk-export.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 155[2mms[22m[39m
+2026-11-16T06:29:07.1461257Z  [32m✓[39m src/calculators/geometry/solid-geometry-batches-6-10-direct-validation.test.ts [2m([22m[2m25 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+2026-11-16T06:29:07.3961846Z  [32m✓[39m src/calculators/catalog-reconciliation.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+2026-11-16T06:29:08.5062966Z  [32m✓[39m src/calculators/master-identity-triage.test.ts [2m([22m[2m6 tests[22m[2m)[22m[33m 544[2mms[22m[39m
+2026-11-16T06:29:09.0795656Z  [32m✓[39m src/lib/registered-snapshot-replay.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 31[2mms[22m[39m
+2026-11-16T06:29:10.2297728Z  [32m✓[39m src/lib/calculator-factory/completion/conversion-contracts.test.ts [2m([22m[2m9 tests[22m[2m)[22m[33m 707[2mms[22m[39m
+2026-11-16T06:29:10.5362548Z  [32m✓[39m src/lib/scenario-report.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+2026-11-16T06:29:10.8495506Z  [32m✓[39m src/calculators/geometry/solid-geometry-direct-domain-validation.test.ts [2m([22m[2m25 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+2026-11-16T06:29:11.1687360Z  [32m✓[39m src/calculators/financial-contracts-independent.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 24[2mms[22m[39m
+2026-11-16T06:29:11.4683784Z  [32m✓[39m src/calculators/final-framework/chemistry-numeric-final-renderer-migration.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 15[2mms[22m[39m
+2026-11-16T06:29:11.7547017Z  [32m✓[39m src/app/business/api/credential-actions.test.ts [2m([22m[2m21 tests[22m[2m)[22m[32m 15[2mms[22m[39m
+2026-11-16T06:29:12.2900920Z  [32m✓[39m src/calculators/master-identity-proposals.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 207[2mms[22m[39m
+2026-11-16T06:29:13.2317309Z  [32m✓[39m src/lib/calculator-factory/completion/math-worker-a.integration.test.ts [2m([22m[2m11 tests[22m[2m)[22m[33m 486[2mms[22m[39m
+2026-11-16T06:29:17.3858408Z  [32m✓[39m src/lib/canonical-evidence-preparation.test.ts [2m([22m[2m14 tests[22m[2m)[22m[33m 3219[2mms[22m[39m
+2026-11-16T06:29:17.3860653Z    [33m[2m✓[22m[39m all 540 source-preserving evidence[2m > [22mpins exact identities and preserves private, component, source/applicability restrictions [33m 642[2mms[22m[39m
+2026-11-16T06:29:17.3862615Z    [33m[2m✓[22m[39m all 540 source-preserving evidence[2m > [22mrejects changed identity, stale digest, acceptance and applicability tampering [33m 1695[2mms[22m[39m
+2026-11-16T06:29:47.5848410Z ##[error]The operation was canceled.
+2026-11-16T06:29:47.6000365Z Post job cleanup.
+2026-11-16T06:29:47.7126441Z [command]/usr/bin/git version
+2026-11-16T06:29:47.7185875Z git version 2.56.1
+2026-11-16T06:29:47.7293741Z Temporarily overriding HOME='/home/runner/work/_temp/98736a08-7ad2-4056-b227-64f6ce848f6a' before making global git config changes
+2026-11-16T06:29:47.7296027Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-16T06:29:47.7307021Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/calcumint.com/calcumint.com
+2026-11-16T06:29:47.7365024Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-16T06:29:47.7415944Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-16T06:29:47.8258973Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-16T06:29:47.8305075Z http.https://github.com/.extraheader
+2026-11-16T06:29:47.8356914Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-16T06:29:47.8428918Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-16T06:29:47.8926970Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-16T06:29:47.8970538Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-16T06:29:47.9888866Z Cleaning up orphan processes
+2026-11-16T06:29:48.0169006Z Terminate orphan process: pid (4027) (npm test)
+2026-11-16T06:29:48.0230739Z Terminate orphan process: pid (4038) (sh)
+2026-11-16T06:29:48.0275758Z Terminate orphan process: pid (4039) (node (vitest))
+2026-11-16T06:29:48.0319404Z Terminate orphan process: pid (4073) (esbuild)
+2026-11-16T06:29:48.0657454Z Terminate orphan process: pid (182244) (node (vitest 1))
+

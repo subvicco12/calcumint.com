@@ -1,0 +1,128 @@
+{
+  "kind": "LOCAL_PUBLICATION_PREFLIGHT_JOIN_RECOVERY_REVIEW",
+  "base": "419d56c17ca72dae58132aa00c7424b07477aa6c",
+  "head": "41dd08636532c4930666c76b109526d293186699",
+  "branch": "engineering/worker3-publication-recovery-20261116",
+  "worktree": "/workspace/calcumint-worker3-publication",
+  "commits": [
+    "df2e0543901caa55886c87980049a38d737c6a96",
+    "d4267f2011fbfc3f36ac0e10b277dbf42c27a9c3",
+    "41dd08636532c4930666c76b109526d293186699"
+  ],
+  "files": [
+    "docs/next-engineering-20261115/source/guard-capture-preflight-join.json",
+    "scripts/fetch-source-lineage.mjs",
+    "tests/milestone100-20261114/source-preflight-stage8.mjs",
+    "tests/next-engineering-20261115/source-admission-preflight-join.mjs",
+    "tests/next-engineering-20261115/source-availability.test.mjs",
+    "tests/next-engineering-20261115/source-preflight-join.test.mjs",
+    "tests/parallel-source-20261110/authority.mjs",
+    "tests/parallel-source-20261110/bootstrap.mjs",
+    "tests/parallel-source-20261110/core.mjs",
+    "tests/parallel-source-20261110/current.test.mjs"
+  ],
+  "greenSuites": [
+    {
+      "receipt": "green-hosted-command.log",
+      "tests": 43,
+      "pass": 43,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "receipt": "green-bootstrap-preflight.log",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "receipt": "green-cold-receipt.log",
+      "tests": 16,
+      "pass": 16,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "receipt": "green-join-availability.log",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "receipt": "green-independent-authority.log",
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "skipped": 0,
+      "selection": "entire populated independent authority"
+    }
+  ],
+  "redRegression": "red-join-direct.log",
+  "sandboxInterference": "Initial sandboxed node --test logs show outer exit1 without inner details; sandboxed execFileSync git returned stdout/status0 with EPERM. Native provenance and green suites executed using require_escalated.",
+  "receipts": [
+    {
+      "path": "/tmp/worker3-publication-receipts/admission.log",
+      "sha256": "f8310bb4d59eacccb1ee6dfe5469b1c9ea635e08a9f573b59ecf40163afd007d",
+      "bytes": 547
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/green-bootstrap-preflight.log",
+      "sha256": "c4b329717aa6c8e90d27c2608e947c75b274542f19e16c41fe0233e7a953458b",
+      "bytes": 2180
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/green-cold-receipt.log",
+      "sha256": "7694846a1d4f5479d21d0e015737f0c3ed977548e6110a97d465cf702133b6b4",
+      "bytes": 3949
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/green-hosted-command.log",
+      "sha256": "e5186a4e9fbe81af05ec7be41f8bc0e78b37422e1651a251d8afbaeaf81610a3",
+      "bytes": 10709
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/green-independent-authority.log",
+      "sha256": "093e60342fd6db359fa2473034d3b5a1c43df9a03da142f4cc82bfa07ecdf617",
+      "bytes": 374
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/green-join-availability.log",
+      "sha256": "d2e557b0efacfde9b40eb51fce2d96d0dfbd74fe20ee6fd8ed93ce2a49f097a2",
+      "bytes": 781
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/green-join.log",
+      "sha256": "9a21f93e5d5dc6360af55a8407e869dd3c53265e80577d563d88717231e46067",
+      "bytes": 540
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/preservation.json",
+      "sha256": "1071ea7a2665f6679fff1d7b643c0ead205a5c52152ae04e91d4e45d3edf8d1c",
+      "bytes": 256
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/red-join-direct.log",
+      "sha256": "b45542525692ae18848fda2c26ea1ef49c7d5de07d3f2d3f8b93b1a18422f920",
+      "bytes": 1459
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/red-join.log",
+      "sha256": "95b2d4062e870a7ca3646e6394401d385ac2088f4fa6d192eed101f7df423ff4",
+      "bytes": 550
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/red.log",
+      "sha256": "60ddbe48c95c53a2f5c6c94f627afe137f6154a89c7054f5392cb6bcc156c865",
+      "bytes": 555
+    }
+  ],
+  "qualificationGranted": false,
+  "all20Disposition": "IMPLEMENTED_NOT_QUALIFIED",
+  "confirmedEngineeringBaseline": 81,
+  "potentialEngineeringAfterQualification": 101,
+  "releaseHold": true,
+  "pushed": false,
+  "integrated": false
+}

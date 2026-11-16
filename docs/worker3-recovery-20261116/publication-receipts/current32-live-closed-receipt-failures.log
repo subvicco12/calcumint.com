@@ -1,0 +1,496 @@
+TAP version 13
+# Subtest: verifies the retained cache capture against the same canonical dependency bytes
+ok 1 - verifies the retained cache capture against the same canonical dependency bytes
+  ---
+  duration_ms: 1.939899
+  type: 'test'
+  ...
+# Subtest: retains byte-for-byte hash rejection after cache relocation
+ok 2 - retains byte-for-byte hash rejection after cache relocation
+  ---
+  duration_ms: 0.708699
+  type: 'test'
+  ...
+# Subtest: canonical repository and dependency paths remain exact
+ok 3 - canonical repository and dependency paths remain exact
+  ---
+  duration_ms: 0.245314
+  type: 'test'
+  ...
+# Subtest: unknown cache aliases, traversal and absolute paths fail before any read
+ok 4 - unknown cache aliases, traversal and absolute paths fail before any read
+  ---
+  duration_ms: 0.490229
+  type: 'test'
+  ...
+# Subtest: clean checkout reads canonical dependency file without the historical cache directory
+ok 5 - clean checkout reads canonical dependency file without the historical cache directory
+  ---
+  duration_ms: 8.602289
+  type: 'test'
+  ...
+# Subtest: original receipt and dependency lock retain their exact immutable capture bytes
+ok 6 - original receipt and dependency lock retain their exact immutable capture bytes
+  ---
+  duration_ms: 15.538143
+  type: 'test'
+  ...
+# Subtest: the exact F042 verifier claim preserves BASE2 history and proves the reviewed clean Stage7 successor and every dependency
+ok 7 - the exact F042 verifier claim preserves BASE2 history and proves the reviewed clean Stage7 successor and every dependency
+  ---
+  duration_ms: 7513.073665
+  type: 'test'
+  ...
+# Subtest: both original immutable verifier receipt claims still require the current complete binding
+ok 8 - both original immutable verifier receipt claims still require the current complete binding
+  ---
+  duration_ms: 3973.425138
+  type: 'test'
+  ...
+# Subtest: an arbitrary registered verifier claim is refused before dependency resolution
+ok 9 - an arbitrary registered verifier claim is refused before dependency resolution
+  ---
+  duration_ms: 9.628523
+  type: 'test'
+  ...
+# Subtest: the exact F042 claim cannot admit changed current verifier bytes
+ok 10 - the exact F042 claim cannot admit changed current verifier bytes
+  ---
+  duration_ms: 894.000565
+  type: 'test'
+  ...
+# Subtest: the exact F042 claim cannot admit a valid historical verifier reversion
+ok 11 - the exact F042 claim cannot admit a valid historical verifier reversion
+  ---
+  duration_ms: 876.234197
+  type: 'test'
+  ...
+# Subtest: the exact F042 claim rejects altered dependency bytes from the same supplied reader
+ok 12 - the exact F042 claim rejects altered dependency bytes from the same supplied reader
+  ---
+  duration_ms: 6333.660843
+  type: 'test'
+  ...
+# Subtest: a missing supplied F042 dependency never falls back to the existing workspace file
+ok 13 - a missing supplied F042 dependency never falls back to the existing workspace file
+  ---
+  duration_ms: 252.40176
+  type: 'test'
+  ...
+# Subtest: only static accepted IDs preload before the first per-record Git read
+not ok 14 - only static accepted IDs preload before the first per-record Git read
+  ---
+  duration_ms: 246.485302
+  type: 'test'
+  location: '/workspace/calcumint-worker3-publication/tests/completion-wave-20261113/source-authority-preload.test.mjs:62:1'
+  failureType: 'testCodeFailure'
+  error: 'Only exact independently pinned source blob IDs may preload'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    git.preloadBlobs (file:///workspace/calcumint-worker3-publication/tests/completion-wave-20261113/source-authority-preload.test.mjs:52:33)
+    reader.<computed> [as preloadBlobs] (file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)
+    exact (file:///workspace/calcumint-worker3-publication/tests/next-engineering-20261115/source-stage10.mjs:71:13)
+    proveSourceStage10 (file:///workspace/calcumint-worker3-publication/tests/next-engineering-20261115/source-stage10.mjs:88:20)
+    proveSourceStage9 (file:///workspace/calcumint-worker3-publication/tests/four-worker-integration-20261115/source-stage9.mjs:21:18)
+    provePinnedCurrentStage8 (file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8.mjs:18:14)
+    provePinnedSourceStage8 (file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8-activation.mjs:10:9)
+    verifyParallelAuthority (file:///workspace/calcumint-worker3-publication/tests/parallel-source-20261110/authority.mjs:16936:2)
+    TestContext.<anonymous> (file:///workspace/calcumint-worker3-publication/tests/completion-wave-20261113/source-authority-preload.test.mjs:62:114)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+  ...
+# Subtest: malformed or wrong-content batch cannot establish authority
+ok 15 - malformed or wrong-content batch cannot establish authority
+  ---
+  duration_ms: 1205.306105
+  type: 'test'
+  ...
+# Subtest: successful preload never admits mutated or retained-valid reverted current files
+not ok 16 - successful preload never admits mutated or retained-valid reverted current files
+  ---
+  duration_ms: 298.556482
+  type: 'test'
+  location: '/workspace/calcumint-worker3-publication/tests/completion-wave-20261113/source-authority-preload.test.mjs:64:1'
+  failureType: 'testCodeFailure'
+  error: 'Only exact independently pinned source blob IDs may preload'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    git.preloadBlobs (file:///workspace/calcumint-worker3-publication/tests/completion-wave-20261113/source-authority-preload.test.mjs:52:33)
+    reader.<computed> [as preloadBlobs] (file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)
+    exact (file:///workspace/calcumint-worker3-publication/tests/next-engineering-20261115/source-stage10.mjs:71:13)
+    proveSourceStage10 (file:///workspace/calcumint-worker3-publication/tests/next-engineering-20261115/source-stage10.mjs:88:20)
+    proveSourceStage9 (file:///workspace/calcumint-worker3-publication/tests/four-worker-integration-20261115/source-stage9.mjs:21:18)
+    provePinnedCurrentStage8 (file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8.mjs:18:14)
+    provePinnedSourceStage8 (file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8-activation.mjs:10:9)
+    verifyParallelAuthority (file:///workspace/calcumint-worker3-publication/tests/parallel-source-20261110/authority.mjs:16936:2)
+    TestContext.<anonymous> (file:///workspace/calcumint-worker3-publication/tests/completion-wave-20261113/source-authority-preload.test.mjs:64:112)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+  ...
+# Subtest: fresh HEAD path and raw object checks still reject substitutions after success
+not ok 17 - fresh HEAD path and raw object checks still reject substitutions after success
+  ---
+  duration_ms: 273.28302
+  type: 'test'
+  location: '/workspace/calcumint-worker3-publication/tests/completion-wave-20261113/source-authority-preload.test.mjs:65:1'
+  failureType: 'testCodeFailure'
+  error: 'Only exact independently pinned source blob IDs may preload'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    git.preloadBlobs (file:///workspace/calcumint-worker3-publication/tests/completion-wave-20261113/source-authority-preload.test.mjs:52:33)
+    reader.<computed> [as preloadBlobs] (file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)
+    exact (file:///workspace/calcumint-worker3-publication/tests/next-engineering-20261115/source-stage10.mjs:71:13)
+    proveSourceStage10 (file:///workspace/calcumint-worker3-publication/tests/next-engineering-20261115/source-stage10.mjs:88:20)
+    proveSourceStage9 (file:///workspace/calcumint-worker3-publication/tests/four-worker-integration-20261115/source-stage9.mjs:21:18)
+    provePinnedCurrentStage8 (file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8.mjs:18:14)
+    provePinnedSourceStage8 (file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8-activation.mjs:10:9)
+    verifyParallelAuthority (file:///workspace/calcumint-worker3-publication/tests/parallel-source-20261110/authority.mjs:16936:2)
+    TestContext.<anonymous> (file:///workspace/calcumint-worker3-publication/tests/completion-wave-20261113/source-authority-preload.test.mjs:65:110)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+  ...
+# Subtest: preload failure never becomes success and a fresh retry validates every live read
+not ok 18 - preload failure never becomes success and a fresh retry validates every live read
+  ---
+  duration_ms: 272.29813
+  type: 'test'
+  location: '/workspace/calcumint-worker3-publication/tests/completion-wave-20261113/source-authority-preload.test.mjs:66:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /preload rejected/. Input:
+    
+    'AssertionError [ERR_ASSERTION]: Only exact independently pinned source blob IDs may preload'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: 'Only exact independently pinned source blob IDs may preload'
+  stack: |-
+    git.preloadBlobs (file:///workspace/calcumint-worker3-publication/tests/completion-wave-20261113/source-authority-preload.test.mjs:52:33)
+    reader.<computed> [as preloadBlobs] (file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)
+    exact (file:///workspace/calcumint-worker3-publication/tests/next-engineering-20261115/source-stage10.mjs:71:13)
+    proveSourceStage10 (file:///workspace/calcumint-worker3-publication/tests/next-engineering-20261115/source-stage10.mjs:88:20)
+    proveSourceStage9 (file:///workspace/calcumint-worker3-publication/tests/four-worker-integration-20261115/source-stage9.mjs:21:18)
+    provePinnedCurrentStage8 (file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8.mjs:18:14)
+    provePinnedSourceStage8 (file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8-activation.mjs:10:9)
+    verifyParallelAuthority (file:///workspace/calcumint-worker3-publication/tests/parallel-source-20261110/authority.mjs:16936:2)
+    file:///workspace/calcumint-worker3-publication/tests/completion-wave-20261113/source-authority-preload.test.mjs:66:153
+    getActual (node:assert:609:5)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/calcumint-worker3-publication/tests/completion-wave-20261113/source-authority-preload.test.mjs:66:142)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: opaque transports without preload preserve the original fresh per-record behavior
+ok 19 - opaque transports without preload preserve the original fresh per-record behavior
+  ---
+  duration_ms: 2176.078291
+  type: 'test'
+  ...
+# Subtest: preflight successor changes only the exact policy import and finite ancestry union
+ok 20 - preflight successor changes only the exact policy import and finite ancestry union
+  ---
+  duration_ms: 55.679634
+  type: 'test'
+  ...
+# Subtest: all five original bootstrap assertions remain literal below a single import successor
+ok 21 - all five original bootstrap assertions remain literal below a single import successor
+  ---
+  duration_ms: 12.197434
+  type: 'test'
+  ...
+# Subtest: current preflight and original five-case audit both execute before historical projection
+ok 22 - current preflight and original five-case audit both execute before historical projection
+  ---
+  duration_ms: 8704.089593
+  type: 'test'
+  ...
+# Subtest: current preflight rejects original-valid reversion, tamper and missing immutable Git proof
+ok 23 - current preflight rejects original-valid reversion, tamper and missing immutable Git proof
+  ---
+  duration_ms: 1107.744233
+  type: 'test'
+  ...
+# Subtest: exact Stage8 rows prove current bytes and historical reads only after full Git proof
+ok 24 - exact Stage8 rows prove current bytes and historical reads only after full Git proof
+  ---
+  duration_ms: 937.127723
+  type: 'test'
+  ...
+# Subtest: closed supplied reader provides capture and every current source with no reader fallback
+ok 25 - closed supplied reader provides capture and every current source with no reader fallback
+  ---
+  duration_ms: 611.24032
+  type: 'test'
+  ...
+# Subtest: each Stage8 row rejects mutation and every retained valid reversion before projection
+ok 26 - each Stage8 row rejects mutation and every retained valid reversion before projection
+  ---
+  duration_ms: 308.469114
+  type: 'test'
+  ...
+# Subtest: capture and application identity substitution refuse
+ok 27 - capture and application identity substitution refuse
+  ---
+  duration_ms: 7.759089
+  type: 'test'
+  ...
+# Subtest: unknown current source is rejected before any projection
+ok 28 - unknown current source is rejected before any projection
+  ---
+  duration_ms: 25.533104
+  type: 'test'
+  ...
+# Subtest: a retained historical transport cannot cache a current proof across source mutation
+ok 29 - a retained historical transport cannot cache a current proof across source mutation
+  ---
+  duration_ms: 426.747424
+  type: 'test'
+  ...
+# Subtest: exported current maps cannot mutate the private historical projection
+not ok 30 - exported current maps cannot mutate the private historical projection
+  ---
+  duration_ms: 404.315144
+  type: 'test'
+  location: '/workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8-live.test.mjs:50:1'
+  failureType: 'testCodeFailure'
+  error: "Cannot assign to read only property 'blob' of object '#<Object>'"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8-live.test.mjs:52:53)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: historical capability reuse rechecks live HEAD and source status
+ok 31 - historical capability reuse rechecks live HEAD and source status
+  ---
+  duration_ms: 1220.251167
+  type: 'test'
+  ...
+# Subtest: historical capability cannot nominate a substituted source reader
+ok 32 - historical capability cannot nominate a substituted source reader
+  ---
+  duration_ms: 470.130498
+  type: 'test'
+  ...
+# Subtest: metadata HEAD paths share only a per-proof observation and movement refuses at return
+ok 33 - metadata HEAD paths share only a per-proof observation and movement refuses at return
+  ---
+  duration_ms: 1107.253342
+  type: 'test'
+  ...
+# Subtest: a metadata-only HEAD switch inside the retained callback is rejected before return
+not ok 34 - a metadata-only HEAD switch inside the retained callback is rejected before return
+  ---
+  duration_ms: 600.247226
+  type: 'test'
+  location: '/workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8-live.test.mjs:82:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /HEAD moved during public source proof/. Input:
+    
+    'AssertionError [ERR_ASSERTION]: Native HEAD moved or supplied HEAD differs\n' +
+      '+ actual - expected\n' +
+      '\n' +
+      "+ '0eb375bc79c8331f4b6250848c64d9036831e20c'\n" +
+      "- '7daa22baccfcb52761d43ad8bd6f58636a977def'\n"
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: |-
+    Native HEAD moved or supplied HEAD differs
+    + actual - expected
+    
+    + '0eb375bc79c8331f4b6250848c64d9036831e20c'
+    - '7daa22baccfcb52761d43ad8bd6f58636a977def'
+    
+  stack: |-
+    native (file:///workspace/calcumint-worker3-publication/tests/next-engineering-20261115/source-stage10.mjs:43:9)
+    exact (file:///workspace/calcumint-worker3-publication/tests/next-engineering-20261115/source-stage10.mjs:49:38)
+    assertSourceStage10Stable (file:///workspace/calcumint-worker3-publication/tests/next-engineering-20261115/source-stage10.mjs:100:128)
+    assertSourceStage9Stable (file:///workspace/calcumint-worker3-publication/tests/four-worker-integration-20261115/source-stage9.mjs:49:16)
+    assertSourceStage8HeadStable (file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8.mjs:76:45)
+    proveCurrentStage8AndHistoricalInputs (file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8.mjs:69:2)
+    file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8-live.test.mjs:85:20
+    getActual (node:assert:609:5)
+    Function.throws (node:assert:757:24)
+    TestContext.<anonymous> (file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8-live.test.mjs:85:9)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8-live.test.mjs:85:9)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: actual pre-npm cold prerequisite set retains original286 and adds every independently pinned Stage7 source and guard ref
+ok 35 - actual pre-npm cold prerequisite set retains original286 and adds every independently pinned Stage7 source and guard ref
+  ---
+  duration_ms: 9.068719
+  type: 'test'
+  ...
+# Subtest: actual warm prerequisites perform both full presence passes and refuse any missing post-fetch identity
+ok 36 - actual warm prerequisites perform both full presence passes and refuse any missing post-fetch identity
+  ---
+  duration_ms: 7.572511
+  type: 'test'
+  ...
+# Subtest: actual cold preflight rejects substituted identities and propagates one bounded fetch failure
+ok 37 - actual cold preflight rejects substituted identities and propagates one bounded fetch failure
+  ---
+  duration_ms: 2.730827
+  type: 'test'
+  ...
+# Subtest: actual Stage7 rows match the finite exact policy while historical Stage6 retains literal20
+ok 38 - actual Stage7 rows match the finite exact policy while historical Stage6 retains literal20
+  ---
+  duration_ms: 1761.33457
+  type: 'test'
+  ...
+# Subtest: every new live row rejects current mutation or retained-valid reversion before projection
+ok 39 - every new live row rejects current mutation or retained-valid reversion before projection
+  ---
+  duration_ms: 8634.088916
+  type: 'test'
+  ...
+# Subtest: only the fixed synchronous canonical composition shares its immediately closed Stage9 entry
+ok 40 - only the fixed synchronous canonical composition shares its immediately closed Stage9 entry
+  ---
+  duration_ms: 3061.335053
+  type: 'test'
+  ...
+# Subtest: a source mutation during canonical Stage8 construction is refused by its unchanged closing proof
+ok 41 - a source mutation during canonical Stage8 construction is refused by its unchanged closing proof
+  ---
+  duration_ms: 518.647426
+  type: 'test'
+  ...
+# Subtest: observation aliases still build through their actual providers and replay every current Stage10 path
+ok 42 - observation aliases still build through their actual providers and replay every current Stage10 path
+  ---
+  duration_ms: 1275.427536
+  type: 'test'
+  ...
+# Subtest: actual32 source rows survive every historical layer without changing old recorded claim hashes
+ok 43 - actual32 source rows survive every historical layer without changing old recorded claim hashes
+  ---
+  duration_ms: 12406.811867
+  type: 'test'
+  ...
+# Subtest: canonical bound projection facts cannot be changed through public maps and refresh still checks live sources
+ok 44 - canonical bound projection facts cannot be changed through public maps and refresh still checks live sources
+  ---
+  duration_ms: 1090.489869
+  type: 'test'
+  ...
+# Subtest: generic policy identity cannot use the canonical private refresh path
+ok 45 - generic policy identity cannot use the canonical private refresh path
+  ---
+  duration_ms: 1196.052893
+  type: 'test'
+  ...
+# Subtest: observation aliases always rebuild through observed providers and retain all actual current-source reads
+ok 46 - observation aliases always rebuild through observed providers and retain all actual current-source reads
+  ---
+  duration_ms: 1111.660626
+  type: 'test'
+  ...
+# Subtest: bound refresh preserves delegated HEAD and status refusals
+ok 47 - bound refresh preserves delegated HEAD and status refusals
+  ---
+  duration_ms: 906.434594
+  type: 'test'
+  ...
+# Subtest: bound Stage8 refresh rejects ignored and index-suppressed source in an isolated clone
+ok 48 - bound Stage8 refresh rejects ignored and index-suppressed source in an isolated clone
+  ---
+  duration_ms: 5418.263195
+  type: 'test'
+  ...
+# Subtest: fixed three original claims use the latest exact current bytes and can only refuse
+ok 49 - fixed three original claims use the latest exact current bytes and can only refuse
+  ---
+  duration_ms: 20.437764
+  type: 'test'
+  ...
+# Subtest: capture substitution refuses before parsing, while opaque transports preserve full original Git-first proof
+ok 50 - capture substitution refuses before parsing, while opaque transports preserve full original Git-first proof
+  ---
+  duration_ms: 16.622954
+  type: 'test'
+  ...
+# Subtest: private historical inputs retain their same actual capture reader and root bindings
+ok 51 - private historical inputs retain their same actual capture reader and root bindings
+  ---
+  duration_ms: 772.230284
+  type: 'test'
+  ...
+# Subtest: private bound stability freshly checks old captures, non24 source and all current bytes
+ok 52 - private bound stability freshly checks old captures, non24 source and all current bytes
+  ---
+  duration_ms: 1142.343329
+  type: 'test'
+  ...
+# Subtest: Stage8 private closing checks retain fresh source status and actual HEAD refusals
+ok 53 - Stage8 private closing checks retain fresh source status and actual HEAD refusals
+  ---
+  duration_ms: 1390.918457
+  type: 'test'
+  ...
+# Subtest: observation aliases closing checks record and replay every actual24 source path
+ok 54 - observation aliases closing checks record and replay every actual24 source path
+  ---
+  duration_ms: 960.729655
+  type: 'test'
+  ...
+# Subtest: only known actual Stage5 bytes refuse early and opaque transports retain their original proof entry
+ok 55 - only known actual Stage5 bytes refuse early and opaque transports retain their original proof entry
+  ---
+  duration_ms: 4.591555
+  type: 'test'
+  ...
+# Subtest: valid Stage5 negatives never grant admission and still reach the complete supplied source proof
+ok 56 - valid Stage5 negatives never grant admission and still reach the complete supplied source proof
+  ---
+  duration_ms: 16.820879
+  type: 'test'
+  ...
+# Subtest: registered Stage8 inputs retain their actual reader and root capability bindings
+ok 57 - registered Stage8 inputs retain their actual reader and root capability bindings
+  ---
+  duration_ms: 1051.095732
+  type: 'test'
+  ...
+1..57
+# tests 57
+# suites 0
+# pass 51
+# fail 6
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 85647.929968

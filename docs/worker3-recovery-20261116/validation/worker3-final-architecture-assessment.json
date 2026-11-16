@@ -1,0 +1,57 @@
+{
+  "kind": "FINAL_READ_ONLY_COMPOSITION_AND_POSITIVE_TIMEOUT_ASSESSMENT",
+  "profileHead": "aaf369e67096718fd3bfff3d86c9c8e861a1cd42",
+  "rootHeadAtAssessment": "aaf369e67096718fd3bfff3d86c9c8e861a1cd42",
+  "decision": "NO_ADVANCEMENT: retain all existing proof observations and positive-timeout direct fallback. No implementation, benchmark or qualification claim follows this assessment.",
+  "broadDefaultComposition": {
+    "proposedChange": "Run full Stage10 only at default-native public composition opening/closing, while opaque providers retain the existing internal checks.",
+    "assessment": "Not established as contract preserving. It removes existing live native observation points even if generic provider negatives remain on a slow path.",
+    "concreteBarriers": [
+      {
+        "barrier": "Identity is not transitive purity",
+        "evidence": "source-stage10.mjs forwards preload methods via values=>actual.git[name](values); the inner method is dynamically obtained. Freezing or branding an outer wrapper does not seal the referenced provider graph or mutable method tables."
+      },
+      {
+        "barrier": "The default native transport still exposes ambient effects",
+        "evidence": "runtimeNativeGit snapshots live process.env and options; the broker executes PATH-resolved Git with each request environment. Git configuration, fsmonitor/promisor/helper execution and mutable module/builtin dependencies are not made pure by a function brand."
+      },
+      {
+        "barrier": "Pure JavaScript does not freeze live workspace state",
+        "evidence": "Even with no synchronous JS callback, another process can move HEAD/index/root and restore it between the proposed public fences. An original internal native observation can detect an excursion that the reduced observation set misses."
+      },
+      {
+        "barrier": "Existing negative tests are necessary but insufficient for specialization",
+        "evidence": "Sending explicitly wrapped/opaque providers through the old path preserves those cases but does not prove the fast default path retains its original native mutation/refusal contract. Freezing formerly mutable exported methods would itself change supported behavior."
+      }
+    ],
+    "requiredBeforeAnyDifferentContract": "A separately audited internal kernel would need transitive capability/intrinsic/IO proofs and an explicit treatment of concurrent filesystem/configuration effects. That is a new proof contract/backend design, not an authorized narrow removal of existing checks. No such redesign is proposed."
+  },
+  "positiveTimeoutRouting": {
+    "assessment": "Exact positive-timeout brokering is not inherently impossible, but cannot be obtained by only lifting requestFor rejection. Existing timeout+5000 main watchdog would change ignored-SIGTERM behavior; Node22 timeout/error/overflow precedence, partial bytes, send-once signal then wait/drain, and original outer-PGID cleanup need explicit equivalence work. No such work is justified as the next recovery guess by the measured opportunity.",
+    "timedOpeningPathBatches": {
+      "calls": 5,
+      "milliseconds": 314.75617599952966
+    },
+    "timedOpeningBlobBatches": {
+      "calls": 2,
+      "milliseconds": 39.91800499986857
+    },
+    "totalTimedPositiveBatchCeilingMilliseconds": 354.67418099939823,
+    "timedClosingPositiveBatches": 0,
+    "allDirectOpeningClosingMilliseconds": 1356.9239550027996,
+    "collectionBlobBatchOutsideApiTimer": {
+      "calls": 1,
+      "milliseconds": 1683.6331259999424,
+      "outputBytes": 96547294
+    },
+    "criticalDistinction": "The approximately1.35s direct opening/closing total includes zero-timeout common-dir, origin, raw state and HEAD work. Only approximately354ms is positive-timeout batch work, and its Git execution remains necessary; achievable savings are below that ceiling.",
+    "memoryRisk": "Routing the96.5MB collection blob output through the fixed shared output buffer touches an additional large main-process mapping; that work occurs outside the API timer but can enlarge later direct-fork RSS.",
+    "decision": "Do not run the proposed positive-timeout advisory variant or implement it. Preserve current native positive-timeout fallback and all existing tests/checks."
+  },
+  "performanceStatus": "Original five-second API qualification remains failed. This assessment does not relax the150s source child,65s shortest wrapper,20min source-unit job or any other original gate.",
+  "artifact": {
+    "path": "/tmp/worker3-admitted-profile-143965.json",
+    "bytes": 2729484,
+    "sha256": "287d7ce8018e44e209250e2038c115b49dae50ec0cba323e4980f3fb422ebdf0"
+  }
+}

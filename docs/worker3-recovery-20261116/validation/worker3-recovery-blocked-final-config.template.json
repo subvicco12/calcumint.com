@@ -1,0 +1,81 @@
+{
+  "kind": "WORKER3_BLOCKED_FINAL_CONFIGURATION_SCHEMA_NOT_FINAL_EVIDENCE",
+  "mode": "BLOCKED_FINAL",
+  "rootFreezeConfirmed": false,
+  "observedImplementationHead": "ROOT_SUPPLIES_FINAL_SOURCE_HEAD",
+  "exactHostedHead": "ROOT_SUPPLIES_HOSTED_HEAD",
+  "qualifiedTestedHead": null,
+  "candidateBranch": "engineering/worker3-recovery-20261116",
+  "evidenceBranch": "engineering/worker3-recovery-evidence-20261116",
+  "finalSourceCommits": [],
+  "ci": {
+    "repository": "subvicco12/calcumint.com",
+    "workflowId": 357576907,
+    "workflowPath": ".github/workflows/ci.yml",
+    "runId": null,
+    "runAttempt": null,
+    "runMetadataPath": null,
+    "jobsMetadataPath": null,
+    "workflowMetadataPath": null,
+    "requiredJobs": [
+      "checks",
+      "build",
+      "full-product",
+      "source-acceptance",
+      "publication-factory",
+      "validate"
+    ],
+    "logs": {},
+    "actualConclusion": null,
+    "failedReasons": []
+  },
+  "remoteProofs": {
+    "candidate": {
+      "path": null,
+      "sha256": null,
+      "remoteHead": null
+    },
+    "evidence": {
+      "path": null,
+      "sha256": null,
+      "remoteHead": null,
+      "note": "Evidence commit will follow tested implementation head; preserve separate source/evidence refs."
+    }
+  },
+  "reviewReceiptsAfterFreeze": [
+    {
+      "name": "binding939",
+      "path": "/tmp/worker3-binding-independent-review.json",
+      "copyInto": "validation/",
+      "reviewedCommit": null,
+      "sha256": null,
+      "verifyFinalHeadFileBindings": true
+    },
+    {
+      "name": "stage9b3f",
+      "path": "/tmp/worker3-stage9-fixture-independent-review.json",
+      "copyInto": "validation/",
+      "reviewedCommit": "b3f19a897bc564e0bee079ae5d7c80b6b6a5e8ae",
+      "sha256": null,
+      "verifyFinalHeadFileBindings": true
+    }
+  ],
+  "observedGates": {},
+  "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+  "confirmedEngineeringBaseline": 81,
+  "newConfirmedEngineering": 0,
+  "engineeringTotal": 81,
+  "potentialEngineeringTotal": 101,
+  "qualificationGranted": false,
+  "publicationEligible": false,
+  "canonicalAccepted": false,
+  "releaseHold": true,
+  "requirements": [
+    "Bind actual final published candidate even if CI fails. Never require invented passing gates to record failure.",
+    "Every per-ID row separates observedImplementationHead, exactHostedHead and qualifiedTestedHead(null).",
+    "Verify exact repository/head/branch/workflow/run ID/attempt and exactly six unique jobs before reporting hosted observations. Preserve actual status/conclusion for each job.",
+    "Copy review receipts only after freeze; verify their reviewed file hashes against final candidate. Retain historical reviewed commits separately.",
+    "BLOCKED_FINAL must never promote any calculator, increment engineering baseline, or set qualifiedTestedHead.",
+    "No generation, commit or push before root supplies actual freeze and results."
+  ]
+}

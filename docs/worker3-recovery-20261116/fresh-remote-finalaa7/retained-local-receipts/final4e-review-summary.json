@@ -1,0 +1,206 @@
+{
+  "kind": "FINAL4E_ISOLATED_TEST_ADMISSION_WITH_HONEST_BUDGET_FAILURES",
+  "head": "4e52927bdd8c5d7f3bbce1f5f7d9bac0a4faf2f7",
+  "base": "6b013fbf483e69b1016d238f84cc55e5057bb717",
+  "peerPatch": "3c8a16661d60738726b3746abce29024c1b9f948",
+  "guard": "e1147ac09acf75ba60d1fa255ebc4663584da571",
+  "authority": "4739f2423bb69a5ee1633c612ef284c890c752f2",
+  "guardPaths": [
+    "scripts/fetch-source-lineage.mjs",
+    "tests/milestone100-20261114/source-preflight-stage8.mjs",
+    "tests/next-engineering-20261115/source-admission-lineage-isolation.mjs",
+    "tests/next-engineering-20261115/source-availability.test.mjs",
+    "tests/next-engineering-20261115/source-lineage-native-contract.test.mjs",
+    "tests/parallel-source-20261110/bootstrap.mjs",
+    "tests/parallel-source-20261110/core.mjs"
+  ],
+  "guardCaptureSHA256": "f4076e8b4d21933591d8a77f1cfe585f4b5ab6bb56de7284fd6d12e336debb2c",
+  "retainedOldAuthorityDeclarationsBytePreserved": 167,
+  "productionHelperScriptRawCurrent32SRCWorkflowsPackageAndFortyJobManifestUnchanged": true,
+  "oldOriginal29TableByteIdentical": true,
+  "focusedResults": [
+    {
+      "receipt": "lineage-isolation-full7.log",
+      "tests": 7,
+      "pass": 7,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "duration_ms": 6933.504905
+    },
+    {
+      "receipt": "lineage-contract-focused27.log",
+      "tests": 27,
+      "pass": 27,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "duration_ms": 15543.04628
+    }
+  ],
+  "focused27Scope": "At6b sequential beforeisolation; actual3c8 isolation changesonlytest7, firstsix bodies/alltitles/count intact; focused7rerunatfinal4e.",
+  "actualOriginal150Plus65": {
+    "head": "4e52927bdd8c5d7f3bbce1f5f7d9bac0a4faf2f7",
+    "command": [
+      "/workspace/.pr1467/sprint/node-v22.23.4-linux-x64/bin/node",
+      "node_modules/vitest/vitest.mjs",
+      "run",
+      "src/lib/parallel-source-evidence.test.ts",
+      "--testNamePattern",
+      "^(executes fresh current-source, full-authority, reader, reversion and nomination negatives|executes the actual shortest-publication CI consumer with current immutable graph edges)$",
+      "--reporter=verbose"
+    ],
+    "startedAt": "2026-11-16T06:02:06.999440+00:00",
+    "testRootPID": 276092,
+    "observerPID": 276093,
+    "monitorScope": "externalread-only/proc1Hz/nice19; filenameargs only; no env/codepayload/kill/retry; overheadadvisory",
+    "originalChildTimeoutMilliseconds": 150000,
+    "originalOuterFirstCaseTimeoutMilliseconds": 160000,
+    "originalShortestCaseTimeoutMilliseconds": 65000,
+    "timersChanged": false,
+    "endedAt": "2026-11-16T06:05:43.189509+00:00",
+    "testProcessSeconds": 216.19012833000124,
+    "exitCode": 1,
+    "observerExitCode": 0,
+    "observerNeverKilledOrRetried": true,
+    "closingHead": "4e52927bdd8c5d7f3bbce1f5f7d9bac0a4faf2f7",
+    "closingStatus": "",
+    "qualificationGranted": false,
+    "releaseHold": true,
+    "observedCases": [
+      {
+        "name": "original115-source firstcase",
+        "status": "FAIL",
+        "observedVitestMilliseconds": 150123,
+        "cause": "Source verifier exceeded unchanged150000ms deadline"
+      },
+      {
+        "name": "originalshortest-publicationcase",
+        "status": "FAIL",
+        "observedVitestMilliseconds": 65034,
+        "cause": "Outer65000ms timeout"
+      }
+    ],
+    "selectedCount": 2,
+    "unselectedFilteredCases": 4
+  },
+  "priorOriginal60FailureReusable": {
+    "head": "6b013fbf483e69b1016d238f84cc55e5057bb717",
+    "args": [
+      "--test",
+      "--test-reporter=tap",
+      "tests/execution-recovery-20261109/source-lineage.test.mjs"
+    ],
+    "timeout": 60000,
+    "maxBuffer": 4000000,
+    "startedAt": "2026-11-16T05:48:54.464Z",
+    "qualificationGranted": false,
+    "releaseHold": true,
+    "status": "failure",
+    "error": {
+      "name": "Error",
+      "message": "spawnSync /workspace/.pr1467/sprint/node-v22.23.4-linux-x64/bin/node ETIMEDOUT",
+      "code": "ETIMEDOUT",
+      "signal": null,
+      "pid": 255871
+    },
+    "endedAt": "2026-11-16T05:49:54.498Z",
+    "milliseconds": 60034.439899
+  },
+  "prior60Scope": "Exact6bfull60once:12partialpasses,unchanged60000msETIMEDOUT60034.44ms. Productionhelper/script/lineagefixtureunchangedbyisolation; no60developmentrepeat.",
+  "monitor": {
+    "raw": "lineage-isolation-observer.jsonl",
+    "summary": "lineage-isolation-observer-summary.json",
+    "mode": "externalread-only/proc1Hz;ownnice19;filenamesonly/noenv/inlinepayload/kill/retry",
+    "interpretation": "ADVISORYsampledprocesswitnesses; notcompleteexecutioncoverage; visibleTAPprefix/unobservedfilenamesneverprovejobsunexecuted.",
+    "samples": 216,
+    "distinctObservedNodeIdentities": 54
+  },
+  "innerCase73": "Factorysource childpersonal failed after60163ms withonlyTAPheader; observer sampled59.08s live span. Timeout-compatible childfailure, notnewsource-byte assertion.",
+  "source32CodeRef": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+  "sourcePaths": 32,
+  "sourceAncestryCommits": 35,
+  "publication": {
+    "nonForcePush": "77eb196e\u21924e52927b",
+    "remoteRef": "refs/heads/engineering/worker3-publication-recovery-20261116",
+    "lsRemoteVerified": "4e52927bdd8c5d7f3bbce1f5f7d9bac0a4faf2f7"
+  },
+  "noFurtherSourceChanges": true,
+  "qualificationGranted": false,
+  "all20Disposition": "IMPLEMENTED_NOT_QUALIFIED",
+  "confirmedEngineeringBaseline": 81,
+  "potentialAfterQualification": 101,
+  "releaseHold": true,
+  "receipts": [
+    {
+      "path": "/tmp/worker3-publication-receipts/admission-lineage-isolation.log",
+      "bytes": 559,
+      "sha256": "a6a74ab2291044ce159abe7033f6fc6ad82182ecb3cdab0a4b9906c112e9987e"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/lineage-isolation-full7.log",
+      "bytes": 1837,
+      "sha256": "a0643fabaff189283974a194e53b2a1a712bf923632585fa5c4ef31c5dad7343"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/lineage-contract-focused27.log",
+      "bytes": 6599,
+      "sha256": "16bd5c903ade305596a1c321f53fa6f0900e2bb6b652ab9247c1e006c7f08f0d"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/lineage-isolation-original150-65-running.json",
+      "bytes": 881,
+      "sha256": "96afd9af5f1bee80825ee27f33ef0ee757da1e0ffeaafc79b68cb1eda0f2905f"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/lineage-isolation-original150-65.json",
+      "bytes": 1196,
+      "sha256": "99fe17de854ef9acb43f9ea527187189685ef2421af338f04af07db2dbbf6ecb"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/lineage-isolation-original150-65.log",
+      "bytes": 56902,
+      "sha256": "19970a8596dae391dd6e64b71836f0c9b6da820fbf2436a4cdea7e971b0a34c4"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/lineage-isolation-observer.jsonl",
+      "bytes": 924255,
+      "sha256": "8c31d10a069f0125041d7b8c4704a6bcc16f94cd625ee97ddd87adcb14bfcc50"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/lineage-isolation-observer-summary.json",
+      "bytes": 34775,
+      "sha256": "bc1c11fe5ebac4a8abc99adb1be95b14128f527a46f1a2e6c164fee0ab550ba9"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/lineage-isolation-observer.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/lineage-contract-original60.json",
+      "bytes": 617,
+      "sha256": "036dbfadb26becf04cd940f66e3ac4b156b08cb3d7a531523631f758db2a0f86"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/lineage-contract-original60.stdout",
+      "bytes": 2968,
+      "sha256": "f18f18ff2f901e21b1e950564fd59e55b720f68d2e04f2f9e551de6ecc3f14a9"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/lineage-contract-original60.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/lineage-contract-review-summary.json",
+      "bytes": 4571,
+      "sha256": "902a9eceedd310849aa0a7a61093bef87d5618be0b8b76d21780962f46d3fa75"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/fixture-bindings-focused20.log",
+      "bytes": 7708,
+      "sha256": "87055933420f55549d89c02fd42565a41112c542c21ca1fc59e3058fa9252508"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "base": "7daa22baccfcb52761d43ad8bd6f58636a977def",
+  "status": "PEER_REVIEW_PASS_NOT_YET_ADMITTED_OR_TIMED_GREEN",
+  "reviewer": "/root/recovery_integration_design",
+  "patch": "/tmp/worker3-publication-receipts/reviewed-fixture-corrections.patch",
+  "patchSHA256": "ec8a87b5e2d249631c27fbd28b8cf6eb97a2deb5faee37c923fd21e011e97b4c",
+  "files": [
+    "tests/completion-wave-20261113/source-authority-preload.test.mjs",
+    "tests/milestone100-20261114/source-stage8-live.test.mjs"
+  ],
+  "findings": [],
+  "independentChecks": [
+    "Original three preload ID arrays unchanged; exact fourth JSON-equal array permits55\u219257 OIDs only.",
+    "Fixed32 digest checked first; retained capture/metadata/source objects authenticated by native ref:path, length, SHA256 and SHA1.",
+    "Frozen row mutation must throw TypeError; private historical bytes must remain unchanged after returned-map mutation.",
+    "Original late HEAD refusal retained; only added alternative is AssertionError with exact native message/operator/actual Stage9ref/expected original physicalHEAD.",
+    "No implementation, discovery, skip or timer changes."
+  ],
+  "timedVerification": "Pending infra releases CPU slot and reviewed broker overlay admission."
+}

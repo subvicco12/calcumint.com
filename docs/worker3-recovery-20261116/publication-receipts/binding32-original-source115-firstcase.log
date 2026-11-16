@@ -1,0 +1,124 @@
+
+ RUN  v3.2.7 /workspace/calcumint-worker3-publication
+
+ × src/lib/parallel-source-evidence.test.ts > executes fresh current-source, full-authority, reader, reversion and nomination negatives 150066ms
+   → Exact source Node suite failed; retained TAP follows:
+TAP version 13
+# Subtest: the exact reviewed final-two app is current while mathematical engines remain immutable
+ok 1 - the exact reviewed final-two app is current while mathematical engines remain immutable
+  ---
+  duration_ms: 40470.748009
+  type: 'test'
+  ...
+# Subtest: original valid F042 application bytes cannot masquerade as the new current app
+ok 2 - original valid F042 application bytes cannot masquerade as the new current app
+  ---
+  duration_ms: 112.541161
+  type: 'test'
+  ...
+# Subtest: the newly introduced native catalog is a live source requirement, not an unbound addition
+ok 3 - the newly introduced native catalog is a live source requirement, not an unbound addition
+  ---
+  duration_ms: 3.630534
+  type: 'test'
+  ...
+# Subtest: coordinated app succession nomination cannot replace the independently fixed capture
+ok 4 - coordinated app succession nomination cannot replace the independently fixed capture
+  ---
+  duration_ms: 136.67408
+  type: 'test'
+  ...
+# Subtest: current mathematical dependencies outside the approved app delta remain checked
+ok 5 - current mathematical dependencies outside the approved app delta remain checked
+  ---
+  duration_ms: 5728.44707
+  type: 'test'
+  ...
+# Subtest: mutable current-source cleanliness is rechecked rather than cached as an immutable object
+ok 6 - mutable current-source cleanliness is rechecked rather than cached as an immutable object
+  ---
+  duration_ms: 4159.287747
+  type: 'test'
+  ...
+# Subtest: retained genuine artifacts keep their original application claim and disclose the current successor
+ok 7 - retained genuine artifacts keep their original application claim and disclose the current successor
+  ---
+  duration_ms: 34553.577506
+  type: 'test'
+  ...
+
+ ↓ src/lib/parallel-source-evidence.test.ts > executes the actual shortest-publication CI consumer with current immutable graph edges
+ ↓ src/lib/parallel-source-evidence.test.ts > executes the actual six-candidate CI lineage consumer with exact tamper refusals
+ ↓ src/lib/parallel-source-evidence.test.ts > executes the actual first20 publication manifest consumer and successor refusal cases
+ ↓ src/lib/parallel-source-evidence.test.ts > executes the actual calculator-sprint source consumers with strict Git refusal diagnostics
+ ↓ src/lib/parallel-source-evidence.test.ts > executes retained and exact-current authenticated receipt source claims with provenance refusals
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/parallel-source-evidence.test.ts > executes fresh current-source, full-authority, reader, reversion and nomination negatives
+Error: Exact source Node suite failed; retained TAP follows:
+TAP version 13
+# Subtest: the exact reviewed final-two app is current while mathematical engines remain immutable
+ok 1 - the exact reviewed final-two app is current while mathematical engines remain immutable
+  ---
+  duration_ms: 40470.748009
+  type: 'test'
+  ...
+# Subtest: original valid F042 application bytes cannot masquerade as the new current app
+ok 2 - original valid F042 application bytes cannot masquerade as the new current app
+  ---
+  duration_ms: 112.541161
+  type: 'test'
+  ...
+# Subtest: the newly introduced native catalog is a live source requirement, not an unbound addition
+ok 3 - the newly introduced native catalog is a live source requirement, not an unbound addition
+  ---
+  duration_ms: 3.630534
+  type: 'test'
+  ...
+# Subtest: coordinated app succession nomination cannot replace the independently fixed capture
+ok 4 - coordinated app succession nomination cannot replace the independently fixed capture
+  ---
+  duration_ms: 136.67408
+  type: 'test'
+  ...
+# Subtest: current mathematical dependencies outside the approved app delta remain checked
+ok 5 - current mathematical dependencies outside the approved app delta remain checked
+  ---
+  duration_ms: 5728.44707
+  type: 'test'
+  ...
+# Subtest: mutable current-source cleanliness is rechecked rather than cached as an immutable object
+ok 6 - mutable current-source cleanliness is rechecked rather than cached as an immutable object
+  ---
+  duration_ms: 4159.287747
+  type: 'test'
+  ...
+# Subtest: retained genuine artifacts keep their original application claim and disclose the current successor
+ok 7 - retained genuine artifacts keep their original application claim and disclose the current successor
+  ---
+  duration_ms: 34553.577506
+  type: 'test'
+  ...
+
+ ❯ src/lib/parallel-source-evidence.test.ts:17:11
+     15|     let diagnostic='TAP report unavailable';
+     16|     try{diagnostic=readFileSync(output,'utf8');}catch{}
+     17|     throw new Error('Exact source Node suite failed; retained TAP foll…
+       |           ^
+     18|   }
+     19|   expect(eventLoopTicks).toBeGreaterThan(0);
+
+Caused by: Error: Source verifier exceeded unchanged 150000ms deadline
+ ❯ Timeout.<anonymous> tests/ci-rpc-recovery-20261113/source-node.mjs:40:56
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'ETIMEDOUT', stdout: '', stderr: '', signal: 'SIGKILL', killed: true, sourceLockCleanup: { removed: [ '/workspace/calcumint.com/.git/calcumint-source-object-availability.lock' ], preserved: [] } }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 skipped (6)
+   Start at  04:43:20
+   Duration  150.84s (transform 71ms, setup 0ms, collect 102ms, tests 150.07s, environment 0ms, prepare 190ms)
+

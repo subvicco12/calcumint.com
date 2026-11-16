@@ -1,0 +1,1871 @@
+﻿2026-11-16T04:17:06.8808910Z Current runner version: '2.338.2'
+2026-11-16T04:17:06.8829792Z ##[group]Runner Image Provisioner
+2026-11-16T04:17:06.8830518Z Hosted Compute Agent
+2026-11-16T04:17:06.8831073Z Version: 20261103.629
+2026-11-16T04:17:06.8831610Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+2026-11-16T04:17:06.8832229Z Build Date: 2026-11-03T17:26:59Z
+2026-11-16T04:17:06.8833135Z Worker ID: {9980feae-29cf-4514-a2f6-16350101b64e}
+2026-11-16T04:17:06.8833709Z Region: westus2
+2026-11-16T04:17:06.8834185Z Cloud: Azure
+2026-11-16T04:17:06.8834644Z ##[endgroup]
+2026-11-16T04:17:06.8835787Z ##[group]Operating System
+2026-11-16T04:17:06.8836420Z Ubuntu
+2026-11-16T04:17:06.8836851Z 26.04.1
+2026-11-16T04:17:06.8837333Z LTS
+2026-11-16T04:17:06.8837769Z ##[endgroup]
+2026-11-16T04:17:06.8838226Z ##[group]Runner Image
+2026-11-16T04:17:06.8838791Z Image: ubuntu-26.04
+2026-11-16T04:17:06.8839251Z Version: 20261111.196.1
+2026-11-16T04:17:06.8840322Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261111.196/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-16T04:17:06.8841520Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261111.196
+2026-11-16T04:17:06.8842360Z ##[endgroup]
+2026-11-16T04:17:06.8843526Z ##[group]GITHUB_TOKEN Permissions
+2026-11-16T04:17:06.8845139Z Contents: read
+2026-11-16T04:17:06.8845622Z Metadata: read
+2026-11-16T04:17:06.8846068Z ##[endgroup]
+2026-11-16T04:17:06.8847837Z Secret source: Actions
+2026-11-16T04:17:06.8848563Z Cache mode: write
+2026-11-16T04:17:06.8849198Z Prepare workflow directory
+2026-11-16T04:17:06.9113788Z Prepare all required actions
+2026-11-16T04:17:06.9152890Z Getting action download info
+2026-11-16T04:17:07.2087238Z Download action repository 'actions/checkout@v5' (SHA:fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09)
+2026-11-16T04:17:07.3084003Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-11-16T04:17:07.4065972Z Download action repository 'actions/setup-node@v5' (SHA:a0853c24544627f65ddf259abe73b1d18a591444)
+2026-11-16T04:17:07.6002723Z Complete job name: publication-factory
+2026-11-16T04:17:07.6838921Z ##[group]Run actions/checkout@v5
+2026-11-16T04:17:07.6839564Z with:
+2026-11-16T04:17:07.6839937Z   repository: subvicco12/calcumint.com
+2026-11-16T04:17:07.6843284Z   token: ***
+2026-11-16T04:17:07.6843633Z   ssh-strict: true
+2026-11-16T04:17:07.6843990Z   ssh-user: git
+2026-11-16T04:17:07.6844343Z   persist-credentials: true
+2026-11-16T04:17:07.6844726Z   clean: true
+2026-11-16T04:17:07.6845086Z   sparse-checkout-cone-mode: true
+2026-11-16T04:17:07.6845500Z   fetch-depth: 1
+2026-11-16T04:17:07.6845843Z   fetch-tags: false
+2026-11-16T04:17:07.6846204Z   show-progress: true
+2026-11-16T04:17:07.6846564Z   lfs: false
+2026-11-16T04:17:07.6846888Z   submodules: false
+2026-11-16T04:17:07.6847240Z   set-safe-directory: true
+2026-11-16T04:17:07.6847630Z   allow-unsafe-pr-checkout: false
+2026-11-16T04:17:07.6848202Z ##[endgroup]
+2026-11-16T04:17:07.9318470Z Syncing repository: subvicco12/calcumint.com
+2026-11-16T04:17:07.9320900Z ##[group]Getting Git version info
+2026-11-16T04:17:07.9322144Z Working directory is '/home/runner/work/calcumint.com/calcumint.com'
+2026-11-16T04:17:07.9324032Z [command]/usr/bin/git version
+2026-11-16T04:17:07.9324838Z git version 2.56.1
+2026-11-16T04:17:07.9341691Z ##[endgroup]
+2026-11-16T04:17:07.9357049Z Temporarily overriding HOME='/home/runner/work/_temp/1dd8fd2d-feac-4d1c-bba0-5184d54aae5a' before making global git config changes
+2026-11-16T04:17:07.9359337Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-16T04:17:07.9364009Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/calcumint.com/calcumint.com
+2026-11-16T04:17:07.9440354Z Deleting the contents of '/home/runner/work/calcumint.com/calcumint.com'
+2026-11-16T04:17:07.9444739Z ##[group]Initializing the repository
+2026-11-16T04:17:07.9450942Z [command]/usr/bin/git init /home/runner/work/calcumint.com/calcumint.com
+2026-11-16T04:17:07.9561431Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-16T04:17:07.9563792Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-16T04:17:07.9565740Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-16T04:17:07.9567020Z hint: call:
+2026-11-16T04:17:07.9567812Z hint:
+2026-11-16T04:17:07.9569003Z hint: 	git config --global init.defaultBranch <name>
+2026-11-16T04:17:07.9570090Z hint:
+2026-11-16T04:17:07.9571442Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-16T04:17:07.9573169Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-16T04:17:07.9579360Z hint:
+2026-11-16T04:17:07.9580189Z hint: 	git branch -m <name>
+2026-11-16T04:17:07.9581164Z hint:
+2026-11-16T04:17:07.9582237Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-16T04:17:07.9584388Z Initialized empty Git repository in /home/runner/work/calcumint.com/calcumint.com/.git/
+2026-11-16T04:17:07.9590071Z [command]/usr/bin/git remote add origin https://github.com/subvicco12/calcumint.com
+2026-11-16T04:17:07.9648613Z ##[endgroup]
+2026-11-16T04:17:07.9649894Z ##[group]Disabling automatic garbage collection
+2026-11-16T04:17:07.9652013Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-16T04:17:07.9691192Z ##[endgroup]
+2026-11-16T04:17:07.9692303Z ##[group]Setting up auth
+2026-11-16T04:17:07.9698212Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-16T04:17:07.9737419Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-16T04:17:08.0141402Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-16T04:17:08.0171416Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-16T04:17:08.0406880Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-16T04:17:08.0437954Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-16T04:17:08.0679286Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-16T04:17:08.0718515Z ##[endgroup]
+2026-11-16T04:17:08.0719243Z ##[group]Fetching the repository
+2026-11-16T04:17:08.0726635Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +aaf369e67096718fd3bfff3d86c9c8e861a1cd42:refs/remotes/origin/engineering/worker3-recovery-20261116
+2026-11-16T04:17:10.4462309Z From https://github.com/subvicco12/calcumint.com
+2026-11-16T04:17:10.4464336Z  * [new ref]         aaf369e67096718fd3bfff3d86c9c8e861a1cd42 -> origin/engineering/worker3-recovery-20261116
+2026-11-16T04:17:10.4466872Z ##[endgroup]
+2026-11-16T04:17:10.4467595Z ##[group]Determining the checkout info
+2026-11-16T04:17:10.4468395Z ##[endgroup]
+2026-11-16T04:17:10.4473614Z [command]/usr/bin/git sparse-checkout disable
+2026-11-16T04:17:10.4529183Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-16T04:17:10.4556610Z ##[group]Checking out the ref
+2026-11-16T04:17:10.4560404Z [command]/usr/bin/git checkout --progress --force -B engineering/worker3-recovery-20261116 refs/remotes/origin/engineering/worker3-recovery-20261116
+2026-11-16T04:17:11.1966674Z Switched to a new branch 'engineering/worker3-recovery-20261116'
+2026-11-16T04:17:11.1976473Z branch 'engineering/worker3-recovery-20261116' set up to track 'origin/engineering/worker3-recovery-20261116'.
+2026-11-16T04:17:11.2038095Z ##[endgroup]
+2026-11-16T04:17:11.2117657Z [command]/usr/bin/git log -1 --format=%H
+2026-11-16T04:17:11.2139968Z aaf369e67096718fd3bfff3d86c9c8e861a1cd42
+2026-11-16T04:17:11.2525304Z ##[group]Run python3 -m unittest discover -s tests/publication-fourday/routes -p 'test_*.py'
+2026-11-16T04:17:11.2525942Z [36;1mpython3 -m unittest discover -s tests/publication-fourday/routes -p 'test_*.py'[0m
+2026-11-16T04:17:11.2526566Z [36;1mpython3 tests/publication-fourday/routes/ci_probe.py --output "$RUNNER_TEMP/publication-fourday-routes/observations.json"[0m
+2026-11-16T04:17:11.2580729Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:17:11.2580978Z env:
+2026-11-16T04:17:11.2581215Z   AUDIT_HEAD_SHA: aaf369e67096718fd3bfff3d86c9c8e861a1cd42
+2026-11-16T04:17:11.2581492Z ##[endgroup]
+2026-11-16T04:17:11.8918936Z .........
+2026-11-16T04:17:11.8919327Z ----------------------------------------------------------------------
+2026-11-16T04:17:11.8919649Z Ran 9 tests in 0.485s
+2026-11-16T04:17:11.8919773Z 
+2026-11-16T04:17:11.8919843Z OK
+2026-11-16T04:17:45.0167013Z ##[group]Run actions/upload-artifact@v4
+2026-11-16T04:17:45.0167284Z with:
+2026-11-16T04:17:45.0167578Z   name: publication-fourday-routes-aaf369e67096718fd3bfff3d86c9c8e861a1cd42
+2026-11-16T04:17:45.0168066Z   path: /home/runner/work/_temp/publication-fourday-routes/observations.json
+2026-11-16T04:17:45.0168392Z   if-no-files-found: error
+2026-11-16T04:17:45.0168605Z   retention-days: 7
+2026-11-16T04:17:45.0168787Z   compression-level: 6
+2026-11-16T04:17:45.0168969Z   overwrite: false
+2026-11-16T04:17:45.0169151Z   include-hidden-files: false
+2026-11-16T04:17:45.0169353Z ##[endgroup]
+2026-11-16T04:17:45.1516563Z (node:2223) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-16T04:17:45.1517520Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-16T04:17:45.1573244Z With the provided path, there will be 1 file uploaded
+2026-11-16T04:17:45.1574382Z Artifact name is valid!
+2026-11-16T04:17:45.1574804Z Root directory input is valid!
+2026-11-16T04:17:45.5577893Z Beginning upload of artifact content to blob storage
+2026-11-16T04:17:45.5796336Z (node:2223) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-16T04:17:45.9149490Z Uploaded bytes 28809
+2026-11-16T04:17:45.9868537Z Finished uploading artifact content to blob storage!
+2026-11-16T04:17:45.9869291Z SHA256 digest of uploaded artifact zip is 53be197f12d97da5c87847246c57ffcbe7f7982eb22c7365bb0ccd5d4ff6bcc0
+2026-11-16T04:17:45.9870589Z Finalizing artifact upload
+2026-11-16T04:17:46.3746713Z Artifact publication-fourday-routes-aaf369e67096718fd3bfff3d86c9c8e861a1cd42.zip successfully finalized. Artifact ID 14197017163
+2026-11-16T04:17:46.3748121Z Artifact publication-fourday-routes-aaf369e67096718fd3bfff3d86c9c8e861a1cd42 has been successfully uploaded! Final size is 28809 bytes. Artifact ID is 14197017163
+2026-11-16T04:17:46.3753158Z Artifact download URL: https://github.com/subvicco12/calcumint.com/actions/runs/43803149184/artifacts/14197017163
+2026-11-16T04:17:46.3958662Z ##[group]Run actions/setup-node@v5
+2026-11-16T04:17:46.3958910Z with:
+2026-11-16T04:17:46.3959078Z   node-version: 22
+2026-11-16T04:17:46.3959251Z   cache: npm
+2026-11-16T04:17:46.3959449Z   cache-dependency-path: package-lock.json
+2026-11-16T04:17:46.3959683Z   always-auth: false
+2026-11-16T04:17:46.3959867Z   check-latest: false
+2026-11-16T04:17:46.3961890Z   token: ***
+2026-11-16T04:17:46.3962081Z   package-manager-cache: true
+2026-11-16T04:17:46.3962292Z ##[endgroup]
+2026-11-16T04:17:46.5537910Z (node:2238) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-16T04:17:46.5538600Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-16T04:17:46.5539358Z Found in cache @ /opt/hostedtoolcache/node/22.23.4/x64
+2026-11-16T04:17:46.5540309Z ##[group]Environment details
+2026-11-16T04:17:46.9788799Z node: v22.23.4
+2026-11-16T04:17:46.9789120Z npm: 10.9.9
+2026-11-16T04:17:46.9789742Z yarn: 1.22.22
+2026-11-16T04:17:46.9790253Z ##[endgroup]
+2026-11-16T04:17:46.9809092Z [command]/opt/hostedtoolcache/node/22.23.4/x64/bin/npm config get cache
+2026-11-16T04:17:47.1150297Z /home/runner/.npm
+2026-11-16T04:17:47.3506455Z npm cache is not found
+2026-11-16T04:17:47.3638120Z ##[group]Run node scripts/fetch-source-lineage.mjs
+2026-11-16T04:17:47.3638464Z [36;1mnode scripts/fetch-source-lineage.mjs[0m
+2026-11-16T04:17:47.3688696Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:17:47.3688919Z ##[endgroup]
+2026-11-16T04:17:50.6189874Z {"sourceRevisions":517,"fetched":517,"releaseHold":true,"productionWrites":false}
+2026-11-16T04:17:50.6262836Z ##[group]Run npm ci --no-audit --no-fund
+2026-11-16T04:17:50.6263153Z [36;1mnpm ci --no-audit --no-fund[0m
+2026-11-16T04:17:50.6306975Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:17:50.6307199Z ##[endgroup]
+2026-11-16T04:18:02.8343095Z 
+2026-11-16T04:18:02.8344088Z added 477 packages in 12s
+2026-11-16T04:18:02.8939949Z ##[group]Run node_modules/.bin/vite-node --config vitest.config.ts scripts/publication-factory/contracts-evidence.ts --check
+2026-11-16T04:18:02.8940663Z [36;1mnode_modules/.bin/vite-node --config vitest.config.ts scripts/publication-factory/contracts-evidence.ts --check[0m
+2026-11-16T04:18:02.8941175Z [36;1mnode scripts/publication-factory/identities.mjs --check[0m
+2026-11-16T04:18:02.8941662Z [36;1mnode_modules/.bin/vite-node --config vitest.config.ts scripts/publication-factory/prepare.ts --check[0m
+2026-11-16T04:18:02.8942159Z [36;1mnode --experimental-strip-types tests/publication-factory/gates.test.ts[0m
+2026-11-16T04:18:02.8942718Z [36;1mnode tests/publication-factory/identities.test.mjs[0m
+2026-11-16T04:18:02.8987935Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:18:02.8988154Z ##[endgroup]
+2026-11-16T04:18:04.4720006Z {"identities":76,"witnesses":152,"canonicalAccepted":0,"publicationAuthorized":0}
+2026-11-16T04:18:04.6331437Z {"identity":{"observedLegacyBindings":136,"ambiguousIdentities":14,"ambiguityGroups":7,"newlyApprovedMappings":0},"authority":{"authorityBlocks":43,"additionalRetainedQualifiedCases":11,"newlyApprovedMappings":0}}
+2026-11-16T04:18:05.3888808Z {"catalogIdentities":540,"requirements":14293,"cohortIdentities":76,"retainedNumericalWitnesses":152,"technicalGroups":46,"largestTechnicalGroup":8,"pendingCoreAndRiskQaSubmissions":1207,"previouslyObservedLegacyBindings":136,"approvedCanonicalLiveBindings":0,"priorDispositions":{"CERTIFICATION_BLOCKED":12,"ENGINEERING_BLOCKED":335,"AUTHORITY_BLOCKED":43,"LIVE_VERIFIED":136,"UNKNOWN":14},"newlyPublicationEligible":0,"preparedForAuthorizedRelease":0}
+2026-11-16T04:18:06.5135219Z (node:3425) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/runner/work/calcumint.com/calcumint.com/tests/publication-factory/gates.test.ts is not specified and it doesn't parse as CommonJS.
+2026-11-16T04:18:06.5136549Z Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+2026-11-16T04:18:06.5137207Z To eliminate this warning, add "type": "module" to /home/runner/work/calcumint.com/calcumint.com/package.json.
+2026-11-16T04:18:06.5137777Z (Use `node --trace-warnings ...` to show where the warning was created)
+2026-11-16T04:18:06.5143267Z TAP version 13
+2026-11-16T04:18:06.5152624Z # Subtest: joins real 540 register and 14293 requirements and six exact closure identities without granting authority
+2026-11-16T04:18:06.5157143Z ok 1 - joins real 540 register and 14293 requirements and six exact closure identities without granting authority
+2026-11-16T04:18:06.5163124Z   ---
+2026-11-16T04:18:06.5173250Z   duration_ms: 56.039488
+2026-11-16T04:18:06.5173614Z   type: 'test'
+2026-11-16T04:18:06.5173918Z   ...
+2026-11-16T04:18:06.5174488Z # Subtest: rejects nonexistent and substituted identity pointers within trusted bytes
+2026-11-16T04:18:06.5175324Z ok 2 - rejects nonexistent and substituted identity pointers within trusted bytes
+2026-11-16T04:18:06.5175867Z   ---
+2026-11-16T04:18:06.5176151Z   duration_ms: 80.875782
+2026-11-16T04:18:06.5176472Z   type: 'test'
+2026-11-16T04:18:06.5177190Z   ...
+2026-11-16T04:18:06.5177733Z # Subtest: rejects version drift and family evidence used for canonical preparation
+2026-11-16T04:18:06.5178541Z ok 3 - rejects version drift and family evidence used for canonical preparation
+2026-11-16T04:18:06.5179024Z   ---
+2026-11-16T04:18:06.5179305Z   duration_ms: 90.495488
+2026-11-16T04:18:06.5179665Z   type: 'test'
+2026-11-16T04:18:06.5179925Z   ...
+2026-11-16T04:18:06.5180456Z # Subtest: rejects missing requirement, duplicate identity and raw-byte drift
+2026-11-16T04:18:06.5181236Z ok 4 - rejects missing requirement, duplicate identity and raw-byte drift
+2026-11-16T04:18:06.5181827Z   ---
+2026-11-16T04:18:06.5182096Z   duration_ms: 120.127655
+2026-11-16T04:18:06.5182568Z   type: 'test'
+2026-11-16T04:18:06.5182838Z   ...
+2026-11-16T04:18:06.5183376Z # Subtest: untrusted asserted approval fields cannot remove authority blockers
+2026-11-16T04:18:06.5184494Z ok 5 - untrusted asserted approval fields cannot remove authority blockers
+2026-11-16T04:18:06.5185004Z   ---
+2026-11-16T04:18:06.5185263Z   duration_ms: 41.567778
+2026-11-16T04:18:06.5185574Z   type: 'test'
+2026-11-16T04:18:06.5185823Z   ...
+2026-11-16T04:18:06.5186388Z # Subtest: role labels cannot turn identity-only payloads into complete preparation
+2026-11-16T04:18:06.5187192Z ok 6 - role labels cannot turn identity-only payloads into complete preparation
+2026-11-16T04:18:06.5187707Z   ---
+2026-11-16T04:18:06.5187958Z   duration_ms: 78.953899
+2026-11-16T04:18:06.5188251Z   type: 'test'
+2026-11-16T04:18:06.5188511Z   ...
+2026-11-16T04:18:06.5189135Z # Subtest: self-consistent forged packet and pinned evidence must still match register candidate
+2026-11-16T04:18:06.5190068Z ok 7 - self-consistent forged packet and pinned evidence must still match register candidate
+2026-11-16T04:18:06.5190640Z   ---
+2026-11-16T04:18:06.5190901Z   duration_ms: 42.11216
+2026-11-16T04:18:06.5191191Z   type: 'test'
+2026-11-16T04:18:06.5191453Z   ...
+2026-11-16T04:18:06.5192089Z # Subtest: private candidate requires exact ledger adapter and support candidate cannot substitute
+2026-11-16T04:18:06.5193299Z ok 8 - private candidate requires exact ledger adapter and support candidate cannot substitute
+2026-11-16T04:18:06.5193886Z   ---
+2026-11-16T04:18:06.5194156Z   duration_ms: 90.918091
+2026-11-16T04:18:06.5194453Z   type: 'test'
+2026-11-16T04:18:06.5194714Z   ...
+2026-11-16T04:18:06.5195258Z # Subtest: risk and rule-pack applicability require complete pending QA preparation
+2026-11-16T04:18:06.5196085Z ok 9 - risk and rule-pack applicability require complete pending QA preparation
+2026-11-16T04:18:06.5196590Z   ---
+2026-11-16T04:18:06.5196856Z   duration_ms: 235.057199
+2026-11-16T04:18:06.5197155Z   type: 'test'
+2026-11-16T04:18:06.5197406Z   ...
+2026-11-16T04:18:06.5197924Z # Subtest: source preparation requires real publisher and revision metadata
+2026-11-16T04:18:06.5198683Z ok 10 - source preparation requires real publisher and revision metadata
+2026-11-16T04:18:06.5199090Z   ---
+2026-11-16T04:18:06.5199314Z   duration_ms: 192.695516
+2026-11-16T04:18:06.5199601Z   type: 'test'
+2026-11-16T04:18:06.5199846Z   ...
+2026-11-16T04:18:06.5200084Z 1..10
+2026-11-16T04:18:06.5200348Z # tests 10
+2026-11-16T04:18:06.5200575Z # suites 0
+2026-11-16T04:18:06.5200818Z # pass 10
+2026-11-16T04:18:06.5201025Z # fail 0
+2026-11-16T04:18:06.5201240Z # cancelled 0
+2026-11-16T04:18:06.5201463Z # skipped 0
+2026-11-16T04:18:06.5201697Z # todo 0
+2026-11-16T04:18:06.5201945Z # duration_ms 1039.008024
+2026-11-16T04:18:07.5638193Z TAP version 13
+2026-11-16T04:18:07.5644875Z # Subtest: projects exact retained populations without approvals and preserves unpublished alternatives
+2026-11-16T04:18:07.5648961Z ok 1 - projects exact retained populations without approvals and preserves unpublished alternatives
+2026-11-16T04:18:07.5649726Z   ---
+2026-11-16T04:18:07.5650056Z   duration_ms: 100.773739
+2026-11-16T04:18:07.5650415Z   type: 'test'
+2026-11-16T04:18:07.5650671Z   ...
+2026-11-16T04:18:07.5651599Z # Subtest: rejects deleted or altered additional retained qualified obligation
+2026-11-16T04:18:07.5653048Z ok 2 - rejects deleted or altered additional retained qualified obligation
+2026-11-16T04:18:07.5653644Z   ---
+2026-11-16T04:18:07.5653928Z   duration_ms: 134.974544
+2026-11-16T04:18:07.5654314Z   type: 'test'
+2026-11-16T04:18:07.5654567Z   ...
+2026-11-16T04:18:07.5655138Z # Subtest: rejects deletion of original-case qualified obligation outside additional eleven
+2026-11-16T04:18:07.5658308Z ok 3 - rejects deletion of original-case qualified obligation outside additional eleven
+2026-11-16T04:18:07.5659270Z   ---
+2026-11-16T04:18:07.5659899Z   duration_ms: 78.836024
+2026-11-16T04:18:07.5660201Z   type: 'test'
+2026-11-16T04:18:07.5660561Z   ...
+2026-11-16T04:18:07.5661034Z # Subtest: rejects wrong43 membership even when row count remains43
+2026-11-16T04:18:07.5661748Z ok 4 - rejects wrong43 membership even when row count remains43
+2026-11-16T04:18:07.5662263Z   ---
+2026-11-16T04:18:07.5662962Z   duration_ms: 58.841354
+2026-11-16T04:18:07.5663432Z   type: 'test'
+2026-11-16T04:18:07.5663704Z   ...
+2026-11-16T04:18:07.5664162Z # Subtest: rejects broken and valid-but-wrong evidence pointers
+2026-11-16T04:18:07.5664854Z ok 5 - rejects broken and valid-but-wrong evidence pointers
+2026-11-16T04:18:07.5665334Z   ---
+2026-11-16T04:18:07.5665622Z   duration_ms: 127.498429
+2026-11-16T04:18:07.5666085Z   type: 'test'
+2026-11-16T04:18:07.5666405Z   ...
+2026-11-16T04:18:07.5666915Z # Subtest: rejects hosted, registry and displayed immutable version drift
+2026-11-16T04:18:07.5667703Z ok 6 - rejects hosted, registry and displayed immutable version drift
+2026-11-16T04:18:07.5668228Z   ---
+2026-11-16T04:18:07.5668492Z   duration_ms: 184.443697
+2026-11-16T04:18:07.5668780Z   type: 'test'
+2026-11-16T04:18:07.5669024Z   ...
+2026-11-16T04:18:07.5669432Z # Subtest: rejects duplicate slugs and contradictory URLs
+2026-11-16T04:18:07.5669986Z ok 7 - rejects duplicate slugs and contradictory URLs
+2026-11-16T04:18:07.5670366Z   ---
+2026-11-16T04:18:07.5670594Z   duration_ms: 131.952627
+2026-11-16T04:18:07.5670872Z   type: 'test'
+2026-11-16T04:18:07.5671125Z   ...
+2026-11-16T04:18:07.5671455Z # Subtest: rejects source hash drift
+2026-11-16T04:18:07.5671862Z ok 8 - rejects source hash drift
+2026-11-16T04:18:07.5672177Z   ---
+2026-11-16T04:18:07.5672580Z   duration_ms: 82.231081
+2026-11-16T04:18:07.5672846Z   type: 'test'
+2026-11-16T04:18:07.5673077Z   ...
+2026-11-16T04:18:07.5678164Z 1..8
+2026-11-16T04:18:07.5678441Z # tests 8
+2026-11-16T04:18:07.5678699Z # suites 0
+2026-11-16T04:18:07.5679024Z # pass 8
+2026-11-16T04:18:07.5679381Z # fail 0
+2026-11-16T04:18:07.5679730Z # cancelled 0
+2026-11-16T04:18:07.5680078Z # skipped 0
+2026-11-16T04:18:07.5680500Z # todo 0
+2026-11-16T04:18:07.5680783Z # duration_ms 909.150611
+2026-11-16T04:18:07.6659966Z ##[group]Run browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")
+2026-11-16T04:18:07.6660417Z [36;1mbrowser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")[0m
+2026-11-16T04:18:07.6660751Z [36;1mecho "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"[0m
+2026-11-16T04:18:07.6661037Z [36;1m"$browser" --version[0m
+2026-11-16T04:18:07.6704005Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:18:07.6704224Z ##[endgroup]
+2026-11-16T04:18:13.0023002Z [1116/041813.001927:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /home/runner/work/_temp/calcumint-ci-browser.s7W8IQ/opt/google/chrome/CHROME_VERSION_EXTRA
+2026-11-16T04:18:13.0029780Z Google Chrome 156.0.8078.47 
+2026-11-16T04:18:13.0153420Z ##[group]Run trap 'rm -f .qa1517-proofs.mjs .qa1517-proofs.css .qa1517-proofs.test.mjs .qa1517-proofs.test.css' EXIT
+2026-11-16T04:18:13.0154782Z [36;1mtrap 'rm -f .qa1517-proofs.mjs .qa1517-proofs.css .qa1517-proofs.test.mjs .qa1517-proofs.test.css' EXIT[0m
+2026-11-16T04:18:13.0156245Z [36;1mnode_modules/.bin/esbuild scripts/publication-qa1517/proofs.ts --bundle --platform=node --format=esm --packages=external --outfile=.qa1517-proofs.mjs[0m
+2026-11-16T04:18:13.0157108Z [36;1mnode .qa1517-proofs.mjs --check[0m
+2026-11-16T04:18:13.0158091Z [36;1mnode_modules/.bin/esbuild tests/publication-qa1517/proofs.test.ts --bundle --platform=node --format=esm --packages=external --outfile=.qa1517-proofs.test.mjs[0m
+2026-11-16T04:18:13.0158888Z [36;1mnode .qa1517-proofs.test.mjs[0m
+2026-11-16T04:18:13.0159316Z [36;1mnode scripts/publication-qa1517/decisions.mjs --check[0m
+2026-11-16T04:18:13.0159855Z [36;1mnode tests/publication-qa1517/decisions.test.mjs[0m
+2026-11-16T04:18:13.0208768Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:18:13.0209100Z env:
+2026-11-16T04:18:13.0209443Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.s7W8IQ/opt/google/chrome/chrome
+2026-11-16T04:18:13.0209815Z ##[endgroup]
+2026-11-16T04:18:13.0794338Z 
+2026-11-16T04:18:13.0795050Z   .qa1517-proofs.mjs  1.3mb ⚠️
+2026-11-16T04:18:13.0795377Z   .qa1517-proofs.css  1.6kb
+2026-11-16T04:18:13.0795526Z 
+2026-11-16T04:18:13.0795629Z ⚡ Done in 41ms
+2026-11-16T04:18:13.2700049Z {"profiles":76,"pendingRequests":228,"newApprovals":0,"newPublicationEligible":0,"retainedMathWitnesses":152,"retainedBrowserJourneys":152}
+2026-11-16T04:18:13.3332912Z 
+2026-11-16T04:18:13.3363719Z   .qa1517-proofs.test.mjs  1.3mb ⚠️
+2026-11-16T04:18:13.3364149Z   .qa1517-proofs.test.css  1.6kb
+2026-11-16T04:18:13.3364310Z 
+2026-11-16T04:18:13.5523561Z ⚡ Done in 41ms
+2026-11-16T04:18:13.5523865Z TAP version 13
+2026-11-16T04:18:13.5529663Z # Subtest: retains all exact pending tuples and existing artifact receipts
+2026-11-16T04:18:13.5534688Z ok 1 - retains all exact pending tuples and existing artifact receipts
+2026-11-16T04:18:13.5536085Z   ---
+2026-11-16T04:18:13.5536363Z   duration_ms: 7.075221
+2026-11-16T04:18:13.5536653Z   type: 'test'
+2026-11-16T04:18:13.5536889Z   ...
+2026-11-16T04:18:13.5539056Z # Subtest: rejects promotions, invented canonical URL, deleted and substituted evidence
+2026-11-16T04:18:13.5540190Z ok 2 - rejects promotions, invented canonical URL, deleted and substituted evidence
+2026-11-16T04:18:13.5540694Z   ---
+2026-11-16T04:18:13.5540950Z   duration_ms: 13.482427
+2026-11-16T04:18:13.5541250Z   type: 'test'
+2026-11-16T04:18:13.5541485Z   ...
+2026-11-16T04:18:13.5542097Z # Subtest: shared actual local handler receipts cover quota boundaries and preserve denied bytes
+2026-11-16T04:18:13.5543130Z ok 3 - shared actual local handler receipts cover quota boundaries and preserve denied bytes
+2026-11-16T04:18:13.5543802Z   ---
+2026-11-16T04:18:13.5544045Z   duration_ms: 0.933706
+2026-11-16T04:18:13.5544319Z   type: 'test'
+2026-11-16T04:18:13.5544819Z   ...
+2026-11-16T04:18:13.5545440Z # Subtest: retains exact eight declared loan-term-bound workloads and rejects stress substitutions
+2026-11-16T04:18:13.5546367Z ok 4 - retains exact eight declared loan-term-bound workloads and rejects stress substitutions
+2026-11-16T04:18:13.5546896Z   ---
+2026-11-16T04:18:13.5547143Z   duration_ms: 12.657711
+2026-11-16T04:18:13.5547418Z   type: 'test'
+2026-11-16T04:18:13.5547649Z   ...
+2026-11-16T04:18:13.5662106Z 1..4
+2026-11-16T04:18:13.5662561Z # tests 4
+2026-11-16T04:18:13.5662808Z # suites 0
+2026-11-16T04:18:13.5663079Z # pass 4
+2026-11-16T04:18:13.5663316Z # fail 0
+2026-11-16T04:18:13.5663554Z # cancelled 0
+2026-11-16T04:18:13.5663800Z # skipped 0
+2026-11-16T04:18:13.5664035Z # todo 0
+2026-11-16T04:18:13.5664299Z # duration_ms 51.968846
+2026-11-16T04:18:13.7069467Z {"requests":1207,"pending":1207,"newSupplements":228,"retainedPartial":380,"applicabilitySensitive":304,"mathReviewerDecisionsPending":76,"ymylDecisionsPending":67,"sourceDecisionsPending":76,"ownerDecisionsPending":76,"newApprovals":0,"newlyPublicationEligible":0}
+2026-11-16T04:18:13.8815234Z TAP version 13
+2026-11-16T04:18:13.8821622Z # Subtest: all1207 exact pending requests retain original decisions and gaps
+2026-11-16T04:18:13.8826425Z ok 1 - all1207 exact pending requests retain original decisions and gaps
+2026-11-16T04:18:13.8827915Z   ---
+2026-11-16T04:18:13.8828166Z   duration_ms: 26.704749
+2026-11-16T04:18:13.8828462Z   type: 'test'
+2026-11-16T04:18:13.8828708Z   ...
+2026-11-16T04:18:13.8830220Z # Subtest: rejects tuple substitution, removal, fabricated approval and N/A
+2026-11-16T04:18:13.8831240Z ok 2 - rejects tuple substitution, removal, fabricated approval and N/A
+2026-11-16T04:18:13.8831554Z   ---
+2026-11-16T04:18:13.8831742Z   duration_ms: 86.489388
+2026-11-16T04:18:13.8831945Z   type: 'test'
+2026-11-16T04:18:13.8832125Z   ...
+2026-11-16T04:18:13.8833184Z # Subtest: source pointers resolve exact own fields and reject prototype, escaped substitution and missing indexes
+2026-11-16T04:18:13.8834525Z ok 3 - source pointers resolve exact own fields and reject prototype, escaped substitution and missing indexes
+2026-11-16T04:18:13.8835164Z   ---
+2026-11-16T04:18:13.8835413Z   duration_ms: 1.392423
+2026-11-16T04:18:13.8835698Z   type: 'test'
+2026-11-16T04:18:13.8835933Z   ...
+2026-11-16T04:18:13.8836587Z # Subtest: source metadata cannot select files outside repository evidence roots
+2026-11-16T04:18:13.8837330Z ok 4 - source metadata cannot select files outside repository evidence roots
+2026-11-16T04:18:13.8837799Z   ---
+2026-11-16T04:18:13.8838045Z   duration_ms: 0.381403
+2026-11-16T04:18:13.8838276Z   type: 'test'
+2026-11-16T04:18:13.8838456Z   ...
+2026-11-16T04:18:13.8883997Z 1..4
+2026-11-16T04:18:13.8884247Z # tests 4
+2026-11-16T04:18:13.8884496Z # suites 0
+2026-11-16T04:18:13.8884779Z # pass 4
+2026-11-16T04:18:13.8885108Z # fail 0
+2026-11-16T04:18:13.8885385Z # cancelled 0
+2026-11-16T04:18:13.8885686Z # skipped 0
+2026-11-16T04:18:13.8885969Z # todo 0
+2026-11-16T04:18:13.8886326Z # duration_ms 125.865529
+2026-11-16T04:18:13.9033009Z ##[group]Run git fetch --no-tags --depth=1 origin c1c7371ac4f284ff7b6371a90fb3296c632396f9 af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5 4796b3d7679a06f0751cac8cfec687c88f386ae5 2f088187dd395fd26262c32195b427258f44fa44 761b850479ea36b2b4ebf8039664d8400c762555 ee3d0a70cf5a908ce3588bb02b67bbb86576a8a7 6d2960c2fac7817741b08877ebd3b611720923b7 815fa75177ff4348b64502d6745a8fc294c65fed
+2026-11-16T04:18:13.9036601Z [36;1mgit fetch --no-tags --depth=1 origin c1c7371ac4f284ff7b6371a90fb3296c632396f9 af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5 4796b3d7679a06f0751cac8cfec687c88f386ae5 2f088187dd395fd26262c32195b427258f44fa44 761b850479ea36b2b4ebf8039664d8400c762555 ee3d0a70cf5a908ce3588bb02b67bbb86576a8a7 6d2960c2fac7817741b08877ebd3b611720923b7 815fa75177ff4348b64502d6745a8fc294c65fed[0m
+2026-11-16T04:18:13.9038744Z [36;1mnode scripts/check-calculator-closure-history.mjs --full-six-only[0m
+2026-11-16T04:18:13.9039374Z [36;1mnode scripts/fast-publication-20261102/queue.mjs --check[0m
+2026-11-16T04:18:13.9039946Z [36;1mnode tests/fast-publication-20261102/queue.test.mjs[0m
+2026-11-16T04:18:13.9040411Z [36;1mnode tests/full-six/registered-input.browser.mjs[0m
+2026-11-16T04:18:13.9097499Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:18:13.9097740Z env:
+2026-11-16T04:18:13.9098078Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.s7W8IQ/opt/google/chrome/chrome
+2026-11-16T04:18:13.9098555Z   FULL_SIX_BROWSER_RECEIPT: /home/runner/work/_temp/full-six-input-browser
+2026-11-16T04:18:13.9098868Z ##[endgroup]
+2026-11-16T04:18:14.4122636Z From https://github.com/subvicco12/calcumint.com
+2026-11-16T04:18:14.4123413Z  * branch            c1c7371ac4f284ff7b6371a90fb3296c632396f9 -> FETCH_HEAD
+2026-11-16T04:18:14.4124056Z  * branch            af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5 -> FETCH_HEAD
+2026-11-16T04:18:14.4124653Z  * branch            4796b3d7679a06f0751cac8cfec687c88f386ae5 -> FETCH_HEAD
+2026-11-16T04:18:14.4125199Z  * branch            2f088187dd395fd26262c32195b427258f44fa44 -> FETCH_HEAD
+2026-11-16T04:18:14.4125589Z  * branch            761b850479ea36b2b4ebf8039664d8400c762555 -> FETCH_HEAD
+2026-11-16T04:18:14.4125968Z  * branch            ee3d0a70cf5a908ce3588bb02b67bbb86576a8a7 -> FETCH_HEAD
+2026-11-16T04:18:14.4126339Z  * branch            6d2960c2fac7817741b08877ebd3b611720923b7 -> FETCH_HEAD
+2026-11-16T04:18:14.4126698Z  * branch            815fa75177ff4348b64502d6745a8fc294c65fed -> FETCH_HEAD
+2026-11-16T04:18:18.7368491Z {"callerSuccessorVerified":true,"bindingsVerified":6,"browserSuccessorRef":"815fa75177ff4348b64502d6745a8fc294c65fed","browserPredecessorRef":"6d2960c2fac7817741b08877ebd3b611720923b7","browserBindingsVerified":4,"frozenFullSix":{"retainedFiles":25,"contracts":6,"sourceBindings":24,"publicationEligible":0},"scope":"Original full-six guard and 24 source bindings, including the exact predecessor caller; current caller and four-file Batch21 browser successor verified separately. No acceptance promotion."}
+2026-11-16T04:18:19.3153503Z TAP version 13
+2026-11-16T04:18:19.3162372Z # Subtest: retains exact registered tuples, unmet evidence, and no eligibility
+2026-11-16T04:18:19.3167061Z ok 1 - retains exact registered tuples, unmet evidence, and no eligibility
+2026-11-16T04:18:19.3168145Z   ---
+2026-11-16T04:18:19.3168652Z   duration_ms: 66.950703
+2026-11-16T04:18:19.3168927Z   type: 'test'
+2026-11-16T04:18:19.3169112Z   ...
+2026-11-16T04:18:19.3169539Z # Subtest: refuses wrong version
+2026-11-16T04:18:19.3170974Z ok 2 - refuses wrong version
+2026-11-16T04:18:19.3171368Z   ---
+2026-11-16T04:18:19.3171658Z   duration_ms: 56.717376
+2026-11-16T04:18:19.3171885Z   type: 'test'
+2026-11-16T04:18:19.3172058Z   ...
+2026-11-16T04:18:19.3173284Z # Subtest: refuses family substitution
+2026-11-16T04:18:19.3175477Z ok 3 - refuses family substitution
+2026-11-16T04:18:19.3176559Z   ---
+2026-11-16T04:18:19.3176836Z   duration_ms: 58.698984
+2026-11-16T04:18:19.3177156Z   type: 'test'
+2026-11-16T04:18:19.3177417Z   ...
+2026-11-16T04:18:19.3177782Z # Subtest: refuses wrong ledger mapping
+2026-11-16T04:18:19.3179196Z ok 4 - refuses wrong ledger mapping
+2026-11-16T04:18:19.3179665Z   ---
+2026-11-16T04:18:19.3179997Z   duration_ms: 67.286297
+2026-11-16T04:18:19.3180379Z   type: 'test'
+2026-11-16T04:18:19.3180688Z   ...
+2026-11-16T04:18:19.3181081Z # Subtest: refuses missing requirement
+2026-11-16T04:18:19.3181577Z ok 5 - refuses missing requirement
+2026-11-16T04:18:19.3181962Z   ---
+2026-11-16T04:18:19.3182271Z   duration_ms: 56.43483
+2026-11-16T04:18:19.3182820Z   type: 'test'
+2026-11-16T04:18:19.3183131Z   ...
+2026-11-16T04:18:19.3183516Z # Subtest: refuses missing identity
+2026-11-16T04:18:19.3184111Z ok 6 - refuses missing identity
+2026-11-16T04:18:19.3184555Z   ---
+2026-11-16T04:18:19.3184751Z   duration_ms: 49.552064
+2026-11-16T04:18:19.3184958Z   type: 'test'
+2026-11-16T04:18:19.3185124Z   ...
+2026-11-16T04:18:19.3185568Z # Subtest: refuses pointer drift
+2026-11-16T04:18:19.3186255Z ok 7 - refuses pointer drift
+2026-11-16T04:18:19.3186586Z   ---
+2026-11-16T04:18:19.3186759Z   duration_ms: 48.705111
+2026-11-16T04:18:19.3193524Z   type: 'test'
+2026-11-16T04:18:19.3193796Z   ...
+2026-11-16T04:18:19.3194047Z 1..7
+2026-11-16T04:18:19.3194288Z # tests 7
+2026-11-16T04:18:19.3194524Z # suites 0
+2026-11-16T04:18:19.3194779Z # pass 7
+2026-11-16T04:18:19.3195011Z # fail 0
+2026-11-16T04:18:19.3195255Z # cancelled 0
+2026-11-16T04:18:19.3195520Z # skipped 0
+2026-11-16T04:18:19.3195791Z # todo 0
+2026-11-16T04:18:19.3196168Z # duration_ms 412.592627
+2026-11-16T04:18:27.3271217Z {"passed":true,"journeys":18,"directory":"/home/runner/work/_temp/full-six-input-browser"}
+2026-11-16T04:18:27.5129483Z ##[group]Run node scripts/check-shortest-publication20.mjs
+2026-11-16T04:18:27.5130076Z [36;1mnode scripts/check-shortest-publication20.mjs[0m
+2026-11-16T04:18:27.5131292Z [36;1mnode --test tests/shortest-publication-20/caller-lineage.test.mjs tests/shortest-publication-20/frequency-presentation-lineage.test.mjs tests/shortest-publication-20/completion-lineage.test.mjs[0m
+2026-11-16T04:18:27.5133231Z [36;1mpython3 -m unittest discover -s tests/shortest-publication-20 -p 'test_*.py'[0m
+2026-11-16T04:18:27.5134202Z [36;1mpython3 scripts/shortest-publication-routes.py --output "$RUNNER_TEMP/shortest-publication-20/production-routes.json"[0m
+2026-11-16T04:18:27.5135041Z [36;1mnode tests/shortest-publication-20/browser.mjs[0m
+2026-11-16T04:18:27.5135516Z [36;1mnode tests/critical440-browser/acceptance.mjs[0m
+2026-11-16T04:18:27.5190796Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:18:27.5191120Z env:
+2026-11-16T04:18:27.5191658Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.s7W8IQ/opt/google/chrome/chrome
+2026-11-16T04:18:27.5192750Z   SHORTEST_PUBLICATION_RECEIPT: /home/runner/work/_temp/shortest-publication-20
+2026-11-16T04:18:27.5193455Z   CRITICAL440_BROWSER_ARTIFACTS: /home/runner/work/_temp/critical440-browser
+2026-11-16T04:18:27.5194037Z   AUDIT_HEAD_SHA: aaf369e67096718fd3bfff3d86c9c8e861a1cd42
+2026-11-16T04:18:27.5194446Z ##[endgroup]
+2026-11-16T04:18:52.2651907Z {"identities":20,"callerBindings":20,"sourceBindings":41,"canonicalAccepted":0,"publicationEligible":0,"releaseHold":true}
+2026-11-16T04:18:52.3684067Z TAP version 13
+2026-11-16T04:19:27.8839913Z # Subtest: binds exact original math/parser and append-only UI successor
+2026-11-16T04:19:27.8881810Z ok 1 - binds exact original math/parser and append-only UI successor
+2026-11-16T04:19:27.8912989Z   ---
+2026-11-16T04:19:27.8915235Z   duration_ms: 13596.719638
+2026-11-16T04:19:27.8915706Z   type: 'test'
+2026-11-16T04:19:27.8917398Z   ...
+2026-11-16T04:19:27.8918293Z # Subtest: rejects changed source even when a new metadata hash claims it is authorized
+2026-11-16T04:19:27.8919344Z ok 2 - rejects changed source even when a new metadata hash claims it is authorized
+2026-11-16T04:19:27.8933402Z   ---
+2026-11-16T04:19:27.8933691Z   duration_ms: 829.085948
+2026-11-16T04:19:27.8934002Z   type: 'test'
+2026-11-16T04:19:27.8934262Z   ...
+2026-11-16T04:19:27.8934675Z # Subtest: rejects an altered original evidence manifest
+2026-11-16T04:19:27.8935253Z ok 3 - rejects an altered original evidence manifest
+2026-11-16T04:19:27.8935631Z   ---
+2026-11-16T04:19:27.8935877Z   duration_ms: 671.512393
+2026-11-16T04:19:27.8936166Z   type: 'test'
+2026-11-16T04:19:27.8936400Z   ...
+2026-11-16T04:19:27.8936743Z # Subtest: rejects wrong predecessor identity
+2026-11-16T04:19:27.8937199Z ok 4 - rejects wrong predecessor identity
+2026-11-16T04:19:27.8937562Z   ---
+2026-11-16T04:19:27.8937799Z   duration_ms: 646.77713
+2026-11-16T04:19:27.8938100Z   type: 'test'
+2026-11-16T04:19:27.8938337Z   ...
+2026-11-16T04:19:27.8938695Z # Subtest: rejects release authority promotion
+2026-11-16T04:19:27.8939091Z ok 5 - rejects release authority promotion
+2026-11-16T04:19:27.8939324Z   ---
+2026-11-16T04:19:27.8939514Z   duration_ms: 619.679166
+2026-11-16T04:19:27.8939713Z   type: 'test'
+2026-11-16T04:19:27.8939882Z   ...
+2026-11-16T04:19:27.8940178Z # Subtest: rejects source member omission and traversal substitution
+2026-11-16T04:19:27.8940582Z ok 6 - rejects source member omission and traversal substitution
+2026-11-16T04:19:27.8940854Z   ---
+2026-11-16T04:19:27.8941013Z   duration_ms: 648.567505
+2026-11-16T04:19:27.8941202Z   type: 'test'
+2026-11-16T04:19:27.8941366Z   ...
+2026-11-16T04:19:27.8941568Z # Subtest: rejects unbound caller edits
+2026-11-16T04:19:27.8941839Z ok 7 - rejects unbound caller edits
+2026-11-16T04:19:27.8942042Z   ---
+2026-11-16T04:19:27.8942205Z   duration_ms: 792.692809
+2026-11-16T04:19:27.8942549Z   type: 'test'
+2026-11-16T04:19:27.8942790Z   ...
+2026-11-16T04:19:27.8943005Z # Subtest: rejects symlinked dependencies
+2026-11-16T04:19:27.8943694Z ok 8 - rejects symlinked dependencies
+2026-11-16T04:19:27.8943907Z   ---
+2026-11-16T04:19:27.8944076Z   duration_ms: 614.961309
+2026-11-16T04:19:27.8944351Z   type: 'test'
+2026-11-16T04:19:27.8944597Z   ...
+2026-11-16T04:19:27.8945210Z # Subtest: rejects unbound shared batch dependency src/components/publication20-batch.tsx
+2026-11-16T04:19:27.8945981Z ok 9 - rejects unbound shared batch dependency src/components/publication20-batch.tsx
+2026-11-16T04:19:27.8946313Z   ---
+2026-11-16T04:19:27.8946490Z   duration_ms: 593.609075
+2026-11-16T04:19:27.8946684Z   type: 'test'
+2026-11-16T04:19:27.8946852Z   ...
+2026-11-16T04:19:27.8947197Z # Subtest: rejects unbound shared batch dependency src/lib/publication20/batch.ts
+2026-11-16T04:19:27.8947681Z ok 10 - rejects unbound shared batch dependency src/lib/publication20/batch.ts
+2026-11-16T04:19:27.8947979Z   ---
+2026-11-16T04:19:27.8948148Z   duration_ms: 598.371843
+2026-11-16T04:19:27.8948341Z   type: 'test'
+2026-11-16T04:19:27.8948696Z   ...
+2026-11-16T04:19:27.8949060Z # Subtest: rejects presentation successor tamper src/components/publication20-tool.tsx
+2026-11-16T04:19:27.8949612Z ok 11 - rejects presentation successor tamper src/components/publication20-tool.tsx
+2026-11-16T04:19:27.8949933Z   ---
+2026-11-16T04:19:27.8950097Z   duration_ms: 599.478625
+2026-11-16T04:19:27.8950386Z   type: 'test'
+2026-11-16T04:19:27.8950605Z   ...
+2026-11-16T04:19:27.8951129Z # Subtest: rejects symlinked presentation successor src/components/publication20-tool.tsx
+2026-11-16T04:19:27.8951806Z ok 12 - rejects symlinked presentation successor src/components/publication20-tool.tsx
+2026-11-16T04:19:27.8952135Z   ---
+2026-11-16T04:19:27.8952294Z   duration_ms: 730.404437
+2026-11-16T04:19:27.8952704Z   type: 'test'
+2026-11-16T04:19:27.8952869Z   ...
+2026-11-16T04:19:27.8953353Z # Subtest: rejects rewritten presentation historical claim src/components/publication20-tool.tsx
+2026-11-16T04:19:27.8954219Z ok 13 - rejects rewritten presentation historical claim src/components/publication20-tool.tsx
+2026-11-16T04:19:27.8954595Z   ---
+2026-11-16T04:19:27.8954765Z   duration_ms: 5508.756382
+2026-11-16T04:19:27.8954953Z   type: 'test'
+2026-11-16T04:19:27.8955120Z   ...
+2026-11-16T04:19:27.8955484Z # Subtest: rejects presentation successor tamper src/components/publication20-batch.tsx
+2026-11-16T04:19:27.8956023Z ok 14 - rejects presentation successor tamper src/components/publication20-batch.tsx
+2026-11-16T04:19:27.8956349Z   ---
+2026-11-16T04:19:27.8956522Z   duration_ms: 571.895983
+2026-11-16T04:19:27.8956712Z   type: 'test'
+2026-11-16T04:19:27.8956874Z   ...
+2026-11-16T04:19:27.8957246Z # Subtest: rejects symlinked presentation successor src/components/publication20-batch.tsx
+2026-11-16T04:19:27.8957789Z ok 15 - rejects symlinked presentation successor src/components/publication20-batch.tsx
+2026-11-16T04:19:27.8958111Z   ---
+2026-11-16T04:19:27.8958280Z   duration_ms: 575.836208
+2026-11-16T04:19:27.8958462Z   type: 'test'
+2026-11-16T04:19:27.8958621Z   ...
+2026-11-16T04:19:27.8959035Z # Subtest: rejects rewritten presentation historical claim src/components/publication20-batch.tsx
+2026-11-16T04:19:27.8959616Z ok 16 - rejects rewritten presentation historical claim src/components/publication20-batch.tsx
+2026-11-16T04:19:27.8959958Z   ---
+2026-11-16T04:19:27.8960116Z   duration_ms: 616.535814
+2026-11-16T04:19:27.8960301Z   type: 'test'
+2026-11-16T04:19:27.8960460Z   ...
+2026-11-16T04:19:27.8960800Z # Subtest: rejects presentation successor tamper src/lib/frequency-presentation.ts
+2026-11-16T04:19:27.8961303Z ok 17 - rejects presentation successor tamper src/lib/frequency-presentation.ts
+2026-11-16T04:19:27.8961608Z   ---
+2026-11-16T04:19:27.8961766Z   duration_ms: 579.199943
+2026-11-16T04:19:27.8961950Z   type: 'test'
+2026-11-16T04:19:27.8962109Z   ...
+2026-11-16T04:19:27.8962606Z # Subtest: rejects symlinked presentation successor src/lib/frequency-presentation.ts
+2026-11-16T04:19:27.8963167Z ok 18 - rejects symlinked presentation successor src/lib/frequency-presentation.ts
+2026-11-16T04:19:27.8963653Z   ---
+2026-11-16T04:19:27.8963827Z   duration_ms: 685.515759
+2026-11-16T04:19:27.8964016Z   type: 'test'
+2026-11-16T04:19:27.8964189Z   ...
+2026-11-16T04:19:27.8964540Z # Subtest: retains twenty original bindings with two supplemental presentation bindings
+2026-11-16T04:19:27.8965042Z ok 19 - retains twenty original bindings with two supplemental presentation bindings
+2026-11-16T04:19:27.8965357Z   ---
+2026-11-16T04:19:27.8965522Z   duration_ms: 5957.957959
+2026-11-16T04:19:27.8965713Z   type: 'test'
+2026-11-16T04:19:27.8965885Z   ...
+2026-11-16T04:19:31.4729934Z # {"identities":20,"callerBindings":20,"sourceBindings":41,"canonicalAccepted":0,"publicationEligible":0,"releaseHold":true}
+2026-11-16T04:19:31.4741450Z # Subtest: exact current committed source accepted: .github/workflows/ci.yml
+2026-11-16T04:19:31.4742800Z ok 20 - exact current committed source accepted: .github/workflows/ci.yml
+2026-11-16T04:19:31.4743448Z   ---
+2026-11-16T04:19:31.4743715Z   duration_ms: 1602.053528
+2026-11-16T04:19:31.4744474Z   type: 'test'
+2026-11-16T04:19:31.4744740Z   ...
+2026-11-16T04:19:31.4746081Z # Subtest: predecessor reversion denied even with original hash: .github/workflows/ci.yml
+2026-11-16T04:19:31.4747035Z ok 21 - predecessor reversion denied even with original hash: .github/workflows/ci.yml
+2026-11-16T04:19:31.4747674Z   ---
+2026-11-16T04:19:31.4747943Z   duration_ms: 35.508572
+2026-11-16T04:19:31.4748320Z   type: 'test'
+2026-11-16T04:19:31.4748638Z   ...
+2026-11-16T04:19:31.4749053Z # Subtest: tampering denied: .github/workflows/ci.yml
+2026-11-16T04:19:31.4750733Z ok 22 - tampering denied: .github/workflows/ci.yml
+2026-11-16T04:19:31.4751468Z   ---
+2026-11-16T04:19:31.4751935Z   duration_ms: 0.963641
+2026-11-16T04:19:31.4752596Z   type: 'test'
+2026-11-16T04:19:31.4753064Z   ...
+2026-11-16T04:19:31.4753719Z # Subtest: provenance loss denied: .github/workflows/ci.yml
+2026-11-16T04:19:31.4754509Z ok 23 - provenance loss denied: .github/workflows/ci.yml
+2026-11-16T04:19:31.4755121Z   ---
+2026-11-16T04:19:31.4755577Z   duration_ms: 0.239032
+2026-11-16T04:19:31.4756059Z   type: 'test'
+2026-11-16T04:19:31.4756495Z   ...
+2026-11-16T04:19:31.4757331Z # Subtest: exact current committed source accepted: scripts/publication20-caller-lineage.mjs
+2026-11-16T04:19:31.4758463Z ok 24 - exact current committed source accepted: scripts/publication20-caller-lineage.mjs
+2026-11-16T04:19:31.4759268Z   ---
+2026-11-16T04:19:31.4759556Z   duration_ms: 1516.249508
+2026-11-16T04:19:31.4759867Z   type: 'test'
+2026-11-16T04:19:31.4760139Z   ...
+2026-11-16T04:19:31.4760813Z # Subtest: predecessor reversion denied even with original hash: scripts/publication20-caller-lineage.mjs
+2026-11-16T04:19:31.4761875Z ok 25 - predecessor reversion denied even with original hash: scripts/publication20-caller-lineage.mjs
+2026-11-16T04:19:31.4783178Z   ---
+2026-11-16T04:19:31.4783508Z   duration_ms: 15.321219
+2026-11-16T04:19:31.4783827Z   type: 'test'
+2026-11-16T04:19:31.4784189Z   ...
+2026-11-16T04:19:31.4784732Z # Subtest: tampering denied: scripts/publication20-caller-lineage.mjs
+2026-11-16T04:19:31.4785538Z ok 26 - tampering denied: scripts/publication20-caller-lineage.mjs
+2026-11-16T04:19:31.4786173Z   ---
+2026-11-16T04:19:31.4786449Z   duration_ms: 0.355163
+2026-11-16T04:19:31.4795245Z   type: 'test'
+2026-11-16T04:19:31.4795534Z   ...
+2026-11-16T04:19:31.4796110Z # Subtest: provenance loss denied: scripts/publication20-caller-lineage.mjs
+2026-11-16T04:19:31.4796845Z ok 27 - provenance loss denied: scripts/publication20-caller-lineage.mjs
+2026-11-16T04:19:31.4797290Z   ---
+2026-11-16T04:19:31.4797543Z   duration_ms: 0.132445
+2026-11-16T04:19:31.4797820Z   type: 'test'
+2026-11-16T04:19:31.4798059Z   ...
+2026-11-16T04:19:31.4798641Z # Subtest: exact current committed source accepted: scripts/check-shortest-publication20.mjs
+2026-11-16T04:19:31.4799551Z ok 28 - exact current committed source accepted: scripts/check-shortest-publication20.mjs
+2026-11-16T04:19:31.4800069Z   ---
+2026-11-16T04:19:31.4800325Z   duration_ms: 1456.270449
+2026-11-16T04:19:31.4800852Z   type: 'test'
+2026-11-16T04:19:31.4801106Z   ...
+2026-11-16T04:19:31.4801768Z # Subtest: predecessor reversion denied even with original hash: scripts/check-shortest-publication20.mjs
+2026-11-16T04:19:31.4802986Z ok 29 - predecessor reversion denied even with original hash: scripts/check-shortest-publication20.mjs
+2026-11-16T04:19:31.4803617Z   ---
+2026-11-16T04:19:31.4803876Z   duration_ms: 14.769155
+2026-11-16T04:19:31.4804171Z   type: 'test'
+2026-11-16T04:19:31.4804423Z   ...
+2026-11-16T04:19:31.4804913Z # Subtest: tampering denied: scripts/check-shortest-publication20.mjs
+2026-11-16T04:19:31.4805432Z ok 30 - tampering denied: scripts/check-shortest-publication20.mjs
+2026-11-16T04:19:31.4805714Z   ---
+2026-11-16T04:19:31.4805884Z   duration_ms: 0.241256
+2026-11-16T04:19:31.4806079Z   type: 'test'
+2026-11-16T04:19:31.4806245Z   ...
+2026-11-16T04:19:31.4806555Z # Subtest: provenance loss denied: scripts/check-shortest-publication20.mjs
+2026-11-16T04:19:31.4807014Z ok 31 - provenance loss denied: scripts/check-shortest-publication20.mjs
+2026-11-16T04:19:31.4807461Z   ---
+2026-11-16T04:19:31.4807623Z   duration_ms: 0.121218
+2026-11-16T04:19:31.4807808Z   type: 'test'
+2026-11-16T04:19:31.4807981Z   ...
+2026-11-16T04:19:31.4808232Z # Subtest: unrelated historical binding remains strict
+2026-11-16T04:19:31.4808572Z ok 32 - unrelated historical binding remains strict
+2026-11-16T04:19:31.4808834Z   ---
+2026-11-16T04:19:31.4809002Z   duration_ms: 0.194597
+2026-11-16T04:19:31.4809190Z   type: 'test'
+2026-11-16T04:19:31.4809358Z   ...
+2026-11-16T04:19:31.4809671Z # Subtest: historical manifest cannot silently rewrite current source claims
+2026-11-16T04:19:31.4810144Z ok 33 - historical manifest cannot silently rewrite current source claims
+2026-11-16T04:19:31.4810451Z   ---
+2026-11-16T04:19:31.4810622Z   duration_ms: 0.197861
+2026-11-16T04:19:31.4810812Z   type: 'test'
+2026-11-16T04:19:31.4810980Z   ...
+2026-11-16T04:19:31.5506185Z # Subtest: requires independent successor Git object bytes even when current file matches its pinned SHA
+2026-11-16T04:19:31.5507572Z ok 34 - requires independent successor Git object bytes even when current file matches its pinned SHA
+2026-11-16T04:19:31.5508293Z   ---
+2026-11-16T04:19:31.5508850Z   duration_ms: 30.780425
+2026-11-16T04:19:31.5509334Z   type: 'test'
+2026-11-16T04:19:31.5509780Z   ...
+2026-11-16T04:19:31.5510613Z # Subtest: requires exact predecessor path object even when historical SHA claim is unchanged
+2026-11-16T04:19:31.5575833Z ok 35 - requires exact predecessor path object even when historical SHA claim is unchanged
+2026-11-16T04:19:31.5576531Z   ---
+2026-11-16T04:19:31.5576794Z   duration_ms: 0.245162
+2026-11-16T04:19:31.5577000Z   type: 'test'
+2026-11-16T04:19:31.5577169Z   ...
+2026-11-16T04:19:31.5577625Z # Subtest: full shortest-publication guard binds the current verifier and preserves historical caller claims
+2026-11-16T04:19:31.5578356Z ok 36 - full shortest-publication guard binds the current verifier and preserves historical caller claims
+2026-11-16T04:19:31.5578939Z   ---
+2026-11-16T04:19:31.5579190Z   duration_ms: 34614.117047
+2026-11-16T04:19:31.5579481Z   type: 'test'
+2026-11-16T04:19:31.5579711Z   ...
+2026-11-16T04:19:31.5579934Z 1..36
+2026-11-16T04:19:31.5580158Z # tests 36
+2026-11-16T04:19:31.5580353Z # suites 0
+2026-11-16T04:19:31.5580544Z # pass 36
+2026-11-16T04:19:31.5580728Z # fail 0
+2026-11-16T04:19:31.5580941Z # cancelled 0
+2026-11-16T04:19:31.5581137Z # skipped 0
+2026-11-16T04:19:31.5581335Z # todo 0
+2026-11-16T04:19:31.5581550Z # duration_ms 39197.399575
+2026-11-16T04:19:31.6219920Z ....
+2026-11-16T04:19:31.6220399Z ----------------------------------------------------------------------
+2026-11-16T04:19:31.6220743Z Ran 4 tests in 0.004s
+2026-11-16T04:19:31.6220874Z 
+2026-11-16T04:19:31.6220947Z OK
+2026-11-16T04:19:36.9898794Z {"id":423,"plan":"free","width":360}
+2026-11-16T04:19:40.0292128Z {"id":423,"plan":"pro","width":360}
+2026-11-16T04:19:40.9899737Z {"id":423,"plan":"business","width":1440}
+2026-11-16T04:19:41.9064243Z {"id":424,"plan":"free","width":360}
+2026-11-16T04:19:42.5628726Z {"id":424,"plan":"pro","width":360}
+2026-11-16T04:19:43.5222525Z {"id":424,"plan":"business","width":1440}
+2026-11-16T04:19:44.3144081Z {"id":425,"plan":"free","width":360}
+2026-11-16T04:19:45.0837910Z {"id":425,"plan":"pro","width":360}
+2026-11-16T04:19:46.0369757Z {"id":425,"plan":"business","width":1440}
+2026-11-16T04:19:46.9361045Z {"id":427,"plan":"free","width":360}
+2026-11-16T04:19:47.5778889Z {"id":427,"plan":"pro","width":360}
+2026-11-16T04:19:48.5456436Z {"id":427,"plan":"business","width":1440}
+2026-11-16T04:19:49.4782006Z {"id":428,"plan":"free","width":360}
+2026-11-16T04:19:50.3077315Z {"id":428,"plan":"pro","width":360}
+2026-11-16T04:19:51.1463897Z {"id":428,"plan":"business","width":1440}
+2026-11-16T04:19:52.0215390Z {"id":429,"plan":"free","width":360}
+2026-11-16T04:19:52.6536947Z {"id":429,"plan":"pro","width":360}
+2026-11-16T04:19:53.5879392Z {"id":429,"plan":"business","width":1440}
+2026-11-16T04:19:54.3822223Z {"id":430,"plan":"free","width":360}
+2026-11-16T04:19:55.1401772Z {"id":430,"plan":"pro","width":360}
+2026-11-16T04:19:55.9841030Z {"id":430,"plan":"business","width":1440}
+2026-11-16T04:19:56.8476781Z {"id":431,"plan":"free","width":360}
+2026-11-16T04:19:57.4638330Z {"id":431,"plan":"pro","width":360}
+2026-11-16T04:19:58.3813969Z {"id":431,"plan":"business","width":1440}
+2026-11-16T04:19:59.0961090Z {"id":432,"plan":"free","width":360}
+2026-11-16T04:19:59.8736752Z {"id":432,"plan":"pro","width":360}
+2026-11-16T04:20:00.7285854Z {"id":432,"plan":"business","width":1440}
+2026-11-16T04:20:01.5896194Z {"id":433,"plan":"free","width":360}
+2026-11-16T04:20:02.2386146Z {"id":433,"plan":"pro","width":360}
+2026-11-16T04:20:03.2860228Z {"id":433,"plan":"business","width":1440}
+2026-11-16T04:20:04.0484497Z {"id":434,"plan":"free","width":360}
+2026-11-16T04:20:04.8655286Z {"id":434,"plan":"pro","width":360}
+2026-11-16T04:20:05.6942796Z {"id":434,"plan":"business","width":1440}
+2026-11-16T04:20:06.5745743Z {"id":437,"plan":"free","width":360}
+2026-11-16T04:20:07.2337966Z {"id":437,"plan":"pro","width":360}
+2026-11-16T04:20:08.1453324Z {"id":437,"plan":"business","width":1440}
+2026-11-16T04:20:08.8539924Z {"id":438,"plan":"free","width":360}
+2026-11-16T04:20:09.6464664Z {"id":438,"plan":"pro","width":360}
+2026-11-16T04:20:10.4360108Z {"id":438,"plan":"business","width":1440}
+2026-11-16T04:20:11.2323216Z {"id":439,"plan":"free","width":360}
+2026-11-16T04:20:11.9874214Z {"id":439,"plan":"pro","width":360}
+2026-11-16T04:20:12.9305462Z {"id":439,"plan":"business","width":1440}
+2026-11-16T04:20:13.6911410Z {"id":440,"plan":"free","width":360}
+2026-11-16T04:20:14.4567203Z {"id":440,"plan":"pro","width":360}
+2026-11-16T04:20:15.2772245Z {"id":440,"plan":"business","width":1440}
+2026-11-16T04:20:16.1003090Z {"id":370,"plan":"free","width":360}
+2026-11-16T04:20:16.7305944Z {"id":370,"plan":"pro","width":360}
+2026-11-16T04:20:17.5943740Z {"id":370,"plan":"business","width":1440}
+2026-11-16T04:20:18.3013367Z {"id":371,"plan":"free","width":360}
+2026-11-16T04:20:19.1373710Z {"id":371,"plan":"pro","width":360}
+2026-11-16T04:20:19.9247461Z {"id":371,"plan":"business","width":1440}
+2026-11-16T04:20:20.8588006Z {"id":372,"plan":"free","width":360}
+2026-11-16T04:20:21.4873884Z {"id":372,"plan":"pro","width":360}
+2026-11-16T04:20:22.5275735Z {"id":372,"plan":"business","width":1440}
+2026-11-16T04:20:23.2804192Z {"id":373,"plan":"free","width":360}
+2026-11-16T04:20:24.0912310Z {"id":373,"plan":"pro","width":360}
+2026-11-16T04:20:24.9454311Z {"id":373,"plan":"business","width":1440}
+2026-11-16T04:20:25.8104442Z {"id":374,"plan":"free","width":360}
+2026-11-16T04:20:26.4813802Z {"id":374,"plan":"pro","width":360}
+2026-11-16T04:20:27.4729149Z {"id":374,"plan":"business","width":1440}
+2026-11-16T04:20:47.7312747Z {"passed":true,"journeys":60,"directory":"/home/runner/work/_temp/shortest-publication-20"}
+2026-11-16T04:20:54.1023067Z {"scope":"Actual private caller and engine; synthetic account/plan transport. No production or reviewer approval.","checks":[{"plan":"free","batchDenied":true},{"plan":"pro","keyboardCalculateAndSelect":true,"rawExportReplay":true,"tamperRejected":true,"invalidRowDenied":true,"dirtyExportDenied":true,"mobile320":true,"desktop1440":true},{"plan":"business","keyboardCalculateAndSelect":true,"rawExportReplay":true,"tamperRejected":true,"invalidRowDenied":true,"dirtyExportDenied":true,"mobile320":true,"desktop1440":true}],"passed":true}
+2026-11-16T04:20:54.2680278Z ##[group]Run node --test tests/sprint20-publication/ci-images.test.mjs
+2026-11-16T04:20:54.2680747Z [36;1mnode --test tests/sprint20-publication/ci-images.test.mjs[0m
+2026-11-16T04:20:54.2681541Z [36;1mnode --input-type=module -e 'import {images} from "./tests/gotrue-runtime/fixture.mjs"; import {execFileSync} from "node:child_process"; for (const image of Object.values(images)) execFileSync("docker", ["pull", image], {stdio:"inherit"});'[0m
+2026-11-16T04:20:54.2725631Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:20:54.2725843Z env:
+2026-11-16T04:20:54.2726175Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.s7W8IQ/opt/google/chrome/chrome
+2026-11-16T04:20:54.2726706Z ##[endgroup]
+2026-11-16T04:20:54.3127485Z TAP version 13
+2026-11-16T04:20:54.3584563Z # Subtest: fresh publication-factory runner provisions every fixture image before acceptance
+2026-11-16T04:20:54.3595087Z ok 1 - fresh publication-factory runner provisions every fixture image before acceptance
+2026-11-16T04:20:54.3595999Z   ---
+2026-11-16T04:20:54.3604699Z   duration_ms: 1.111499
+2026-11-16T04:20:54.3605017Z   type: 'test'
+2026-11-16T04:20:54.3605294Z   ...
+2026-11-16T04:20:54.3698215Z 1..1
+2026-11-16T04:20:54.3698863Z # tests 1
+2026-11-16T04:20:54.3699585Z # suites 0
+2026-11-16T04:20:54.3700170Z # pass 1
+2026-11-16T04:20:54.3713405Z # fail 0
+2026-11-16T04:20:54.3713858Z # cancelled 0
+2026-11-16T04:20:54.3714426Z # skipped 0
+2026-11-16T04:20:54.3714932Z # todo 0
+2026-11-16T04:20:54.3715416Z # duration_ms 65.986561
+2026-11-16T04:20:55.3374245Z docker.io/library/postgres@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94: Pulling from library/postgres
+2026-11-16T04:20:55.6039856Z 82e3b18698cd: Pulling fs layer
+2026-11-16T04:20:55.6040591Z aabce23918dc: Pulling fs layer
+2026-11-16T04:20:55.6041372Z 3cecdd37f6f2: Pulling fs layer
+2026-11-16T04:20:55.6041896Z 10c02ef94427: Pulling fs layer
+2026-11-16T04:20:55.6042599Z 11e80b5eea53: Pulling fs layer
+2026-11-16T04:20:55.6043104Z 5b6f078adbb9: Pulling fs layer
+2026-11-16T04:20:55.6043469Z 2d35ebdb57d9: Pulling fs layer
+2026-11-16T04:20:55.6043809Z ac28590ba464: Pulling fs layer
+2026-11-16T04:20:55.6044097Z 1d12e864e19a: Pulling fs layer
+2026-11-16T04:20:55.6044327Z a5bd5a0b8636: Pulling fs layer
+2026-11-16T04:20:55.8657781Z 11e80b5eea53: Download complete
+2026-11-16T04:20:55.8660686Z 2d35ebdb57d9: Download complete
+2026-11-16T04:20:55.8664448Z 5b6f078adbb9: Download complete
+2026-11-16T04:20:55.8666362Z 82e3b18698cd: Download complete
+2026-11-16T04:20:55.8668296Z 10c02ef94427: Download complete
+2026-11-16T04:20:55.8672227Z 3cecdd37f6f2: Download complete
+2026-11-16T04:20:55.8678958Z a5bd5a0b8636: Download complete
+2026-11-16T04:20:55.8679647Z aabce23918dc: Download complete
+2026-11-16T04:20:55.9663600Z 1d12e864e19a: Download complete
+2026-11-16T04:20:56.0656828Z 0077bac36ee7: Download complete
+2026-11-16T04:20:56.0674682Z 2d35ebdb57d9: Pull complete
+2026-11-16T04:20:56.0701305Z 82e3b18698cd: Pull complete
+2026-11-16T04:20:56.0715370Z 10c02ef94427: Pull complete
+2026-11-16T04:20:56.0749815Z 1d12e864e19a: Pull complete
+2026-11-16T04:20:56.1656965Z 9a2b4c80ac9f: Download complete
+2026-11-16T04:20:56.5664612Z ac28590ba464: Download complete
+2026-11-16T04:20:57.7659361Z 11e80b5eea53: Pull complete
+2026-11-16T04:20:57.7689650Z a5bd5a0b8636: Pull complete
+2026-11-16T04:20:57.7701572Z aabce23918dc: Pull complete
+2026-11-16T04:20:57.7707207Z ac28590ba464: Pull complete
+2026-11-16T04:20:57.7910287Z 5b6f078adbb9: Pull complete
+2026-11-16T04:20:57.7918972Z 3cecdd37f6f2: Pull complete
+2026-11-16T04:20:57.7919656Z Digest: sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94
+2026-11-16T04:20:57.7920757Z Status: Downloaded newer image for postgres@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94
+2026-11-16T04:20:57.7927679Z docker.io/library/postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94
+2026-11-16T04:20:58.5156832Z docker.io/postgrest/postgrest@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401: Pulling from postgrest/postgrest
+2026-11-16T04:20:58.8554804Z 2512fbf9bcfc: Pulling fs layer
+2026-11-16T04:20:59.1134137Z 2512fbf9bcfc: Download complete
+2026-11-16T04:20:59.1145453Z 2512fbf9bcfc: Pull complete
+2026-11-16T04:20:59.1146390Z Digest: sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401
+2026-11-16T04:20:59.1147846Z Status: Downloaded newer image for postgrest/postgrest@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401
+2026-11-16T04:20:59.1150774Z docker.io/postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401
+2026-11-16T04:20:59.8306624Z docker.io/supabase/gotrue@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b: Pulling from supabase/gotrue
+2026-11-16T04:21:00.1061410Z c0cb7126d877: Pulling fs layer
+2026-11-16T04:21:00.1062161Z 55afa1ecc21d: Pulling fs layer
+2026-11-16T04:21:00.1062674Z e5d190db8191: Pulling fs layer
+2026-11-16T04:21:00.1062945Z 74c409e3506a: Pulling fs layer
+2026-11-16T04:21:00.1063246Z f30f4fcb85f4: Pulling fs layer
+2026-11-16T04:21:00.1063583Z 71eb50013731: Pulling fs layer
+2026-11-16T04:21:00.3345321Z f30f4fcb85f4: Download complete
+2026-11-16T04:21:00.4346864Z c0cb7126d877: Download complete
+2026-11-16T04:21:00.4351611Z 74c409e3506a: Download complete
+2026-11-16T04:21:00.4353747Z 55afa1ecc21d: Download complete
+2026-11-16T04:21:00.4358280Z 71eb50013731: Download complete
+2026-11-16T04:21:00.5344862Z e5d190db8191: Download complete
+2026-11-16T04:21:00.5346599Z 44136fa355b3: Already exists
+2026-11-16T04:21:00.5378505Z 74c409e3506a: Pull complete
+2026-11-16T04:21:00.5388761Z 55afa1ecc21d: Pull complete
+2026-11-16T04:21:00.5407919Z 71eb50013731: Pull complete
+2026-11-16T04:21:00.6349745Z 41e9f49dd3b3: Download complete
+2026-11-16T04:21:00.7110326Z f30f4fcb85f4: Pull complete
+2026-11-16T04:21:00.7120045Z c0cb7126d877: Pull complete
+2026-11-16T04:21:00.7131355Z e5d190db8191: Pull complete
+2026-11-16T04:21:00.7132204Z Digest: sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b
+2026-11-16T04:21:00.7133936Z Status: Downloaded newer image for supabase/gotrue@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b
+2026-11-16T04:21:00.7137157Z docker.io/supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b
+2026-11-16T04:21:00.7351826Z ##[group]Run node tests/sprint20-publication/acceptance.mjs
+2026-11-16T04:21:00.7352668Z [36;1mnode tests/sprint20-publication/acceptance.mjs[0m
+2026-11-16T04:21:00.7418082Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:21:00.7418412Z env:
+2026-11-16T04:21:00.7418919Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.s7W8IQ/opt/google/chrome/chrome
+2026-11-16T04:21:00.7419477Z ##[endgroup]
+2026-11-16T04:21:08.3339187Z PREDECESSOR_SHA256 d2d7a27c14c06c02b8682a7ab755bbd64612044780c500db5bfe5b7267bbd28b
+2026-11-16T04:21:09.4194274Z PASS unexpected existing RPC and installation replay refuse without replacing definitions
+2026-11-16T04:21:10.2387615Z PASS actual JWT reviewer/nonadmin/anon denial
+2026-11-16T04:21:10.4115479Z RED reproduced old bulk completion remains processing under real RLS
+2026-11-16T04:21:10.6087387Z PASS create and idempotent retry audit/QA
+2026-11-16T04:21:10.7931708Z PASS missing draft QA healed only
+2026-11-16T04:21:11.5078621Z PASS malformed/conflicting/version/duplicate boundaries rollback
+2026-11-16T04:21:11.8816655Z PASS existing binding/slug conflict and later batch conflict rollback
+2026-11-16T04:21:12.5813414Z PASS QA/audit/job injected failures roll back entire batch
+2026-11-16T04:21:12.6001424Z PASS concurrent identical imports serialize
+2026-11-16T04:21:12.7222350Z PASS all 209 synthetic published preservation sentinels untouched
+2026-11-16T04:21:12.7753959Z PASS isolated provisioning acceptance; proposal remains guarded outside active migrations
+2026-11-16T04:21:13.2517230Z ##[group]Run node --test tests/adoption1528/bundle.test.mjs
+2026-11-16T04:21:13.2517618Z [36;1mnode --test tests/adoption1528/bundle.test.mjs[0m
+2026-11-16T04:21:13.2517903Z [36;1mnode tests/adoption1528/acceptance.mjs[0m
+2026-11-16T04:21:13.2561435Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:21:13.2561646Z env:
+2026-11-16T04:21:13.2561971Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.s7W8IQ/opt/google/chrome/chrome
+2026-11-16T04:21:13.2562349Z ##[endgroup]
+2026-11-16T04:21:13.2950503Z TAP version 13
+2026-11-16T04:21:13.3348039Z # Subtest: Source hash drift refuses composition
+2026-11-16T04:21:13.3354070Z ok 1 - Source hash drift refuses composition
+2026-11-16T04:21:13.3354468Z   ---
+2026-11-16T04:21:13.3354725Z   duration_ms: 4.511672
+2026-11-16T04:21:13.3355437Z   type: 'test'
+2026-11-16T04:21:13.3355684Z   ...
+2026-11-16T04:21:13.3405240Z # Subtest: Absent names include foreign overloads
+2026-11-16T04:21:13.3412355Z ok 2 - Absent names include foreign overloads
+2026-11-16T04:21:13.3412896Z   ---
+2026-11-16T04:21:13.3413139Z   duration_ms: 3.463647
+2026-11-16T04:21:13.3413437Z   type: 'test'
+2026-11-16T04:21:13.3413680Z   ...
+2026-11-16T04:21:13.3414072Z # Subtest: Capture raw bytes cannot be relabeled or tampered
+2026-11-16T04:21:13.3414668Z ok 3 - Capture raw bytes cannot be relabeled or tampered
+2026-11-16T04:21:13.3415073Z   ---
+2026-11-16T04:21:13.3415322Z   duration_ms: 4.007499
+2026-11-16T04:21:13.3415602Z   type: 'test'
+2026-11-16T04:21:13.3415863Z   ...
+2026-11-16T04:21:13.3459917Z # Subtest: Review SQL remains held and excludes unrelated correction scopes
+2026-11-16T04:21:13.3463344Z ok 4 - Review SQL remains held and excludes unrelated correction scopes
+2026-11-16T04:21:13.3463824Z   ---
+2026-11-16T04:21:13.3464113Z   duration_ms: 6.065473
+2026-11-16T04:21:13.3464410Z   type: 'test'
+2026-11-16T04:21:13.3464665Z   ...
+2026-11-16T04:21:13.3549515Z 1..4
+2026-11-16T04:21:13.3549765Z # tests 4
+2026-11-16T04:21:13.3550020Z # suites 0
+2026-11-16T04:21:13.3550339Z # pass 4
+2026-11-16T04:21:13.3550806Z # fail 0
+2026-11-16T04:21:13.3551121Z # cancelled 0
+2026-11-16T04:21:13.3551447Z # skipped 0
+2026-11-16T04:21:13.3551802Z # todo 0
+2026-11-16T04:21:13.3552204Z # duration_ms 69.020702
+2026-11-16T04:21:16.0990198Z PASS Isolated reconstruction matches all scoped metadata with explicitly enumerated PG parser check-parenthesis formatting difference
+2026-11-16T04:21:16.3021009Z PASS Unconditional transaction hold survives continuing SQL clients
+2026-11-16T04:21:16.7463272Z PASS Isolation, incompatible metadata and injected late failure refuse atomically
+2026-11-16T04:21:16.9599996Z PASS Historical RED: authentic default ACLs make all six new trigger-only functions client-callable before narrow correction
+2026-11-16T04:21:17.4801876Z PASS Nine source constituents enforce six trigger-only client EXECUTE denials while retaining service_role and unchanged default ACLs
+2026-11-16T04:21:17.6196725Z PASS Replay and guarded reverse refuse
+2026-11-16T04:21:18.3271659Z PASS Combined genuine JWT reviewer/nonadmin/anon bulk denial
+2026-11-16T04:21:18.4918999Z PASS Historical RED: caller jobs UPDATE still leaves old processing row unchanged
+2026-11-16T04:21:19.0025965Z PASS Exact selected20 current-v1 identities create pending-only drafts and retry without duplicate audit
+2026-11-16T04:21:19.2658049Z PASS Concurrent identical selected20 requests serialize without duplicate rows
+2026-11-16T04:21:19.7775741Z PASS Injected QA and audit failures roll back entire composed batch
+2026-11-16T04:21:19.9756759Z PASS Composed assignment, audited QA failure/alert and review transition RPCs execute under genuine JWTs
+2026-11-16T04:21:20.1541830Z PASS Composed direct-published INSERT and unready certification refuse; all209 synthetic published sentinels preserved
+2026-11-16T04:21:20.4930188Z PASS Reverse restores exact isolated scoped metadata preimage and retains every scoped application row without CASCADE
+2026-11-16T04:21:20.6895150Z PASS Reapply reproduces exact postimage
+2026-11-16T04:21:21.1458041Z PASS Final apply postcondition reproduces exact isolated postimage with rows retained
+2026-11-16T04:21:21.5017880Z ##[group]Run node --test tests/critical440-audit/preflight.test.mjs
+2026-11-16T04:21:21.5018287Z [36;1mnode --test tests/critical440-audit/preflight.test.mjs[0m
+2026-11-16T04:21:21.5018594Z [36;1mnode tests/critical440-auth/acceptance.mjs[0m
+2026-11-16T04:21:21.5018866Z [36;1mnode tests/critical440-audit/privileges.mjs[0m
+2026-11-16T04:21:21.5075400Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:21:21.5075618Z env:
+2026-11-16T04:21:21.5075945Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.s7W8IQ/opt/google/chrome/chrome
+2026-11-16T04:21:21.5076414Z   CRITICAL440_AUTH_ARTIFACTS: /home/runner/work/_temp/critical440-auth
+2026-11-16T04:21:21.5076960Z   CRITICAL440_AUDIT_ARTIFACTS: /home/runner/work/_temp/critical440-audit
+2026-11-16T04:21:21.5077245Z ##[endgroup]
+2026-11-16T04:21:21.5477411Z TAP version 13
+2026-11-16T04:21:21.5883261Z # Subtest: Observed exact projection matches preserved predecessor and missing workflows remain explicit
+2026-11-16T04:21:21.5888170Z ok 1 - Observed exact projection matches preserved predecessor and missing workflows remain explicit
+2026-11-16T04:21:21.5893169Z   ---
+2026-11-16T04:21:21.5900549Z   duration_ms: 1.535253
+2026-11-16T04:21:21.5900892Z   type: 'test'
+2026-11-16T04:21:21.5901162Z   ...
+2026-11-16T04:21:21.5901707Z # Subtest: Passive quiet endpoints cannot authorize DDL or complete writer coverage
+2026-11-16T04:21:21.5902669Z ok 2 - Passive quiet endpoints cannot authorize DDL or complete writer coverage
+2026-11-16T04:21:21.5903161Z   ---
+2026-11-16T04:21:21.5903431Z   duration_ms: 0.35938
+2026-11-16T04:21:21.5903708Z   type: 'test'
+2026-11-16T04:21:21.5903964Z   ...
+2026-11-16T04:21:21.5904481Z # Subtest: Changed metadata, data, transaction and locks are independently detected
+2026-11-16T04:21:21.5905326Z ok 3 - Changed metadata, data, transaction and locks are independently detected
+2026-11-16T04:21:21.5905818Z   ---
+2026-11-16T04:21:21.5906075Z   duration_ms: 1.6479
+2026-11-16T04:21:21.5906366Z   type: 'test'
+2026-11-16T04:21:21.5906627Z   ...
+2026-11-16T04:21:21.5959125Z 1..3
+2026-11-16T04:21:21.5959481Z # tests 3
+2026-11-16T04:21:21.5959726Z # suites 0
+2026-11-16T04:21:21.5960532Z # pass 3
+2026-11-16T04:21:21.5960914Z # fail 0
+2026-11-16T04:21:21.5961291Z # cancelled 0
+2026-11-16T04:21:21.5961611Z # skipped 0
+2026-11-16T04:21:21.5961941Z # todo 0
+2026-11-16T04:21:21.5962314Z # duration_ms 57.352482
+2026-11-16T04:21:27.7262301Z PASS free: twenty actual v1 engine snapshots saved, exact request retry, owned read and registered replay
+2026-11-16T04:21:27.8665561Z PASS pro: twenty actual v1 engine snapshots saved, exact request retry, owned read and registered replay
+2026-11-16T04:21:28.0064050Z PASS business: twenty actual v1 engine snapshots saved, exact request retry, owned read and registered replay
+2026-11-16T04:21:28.0065154Z PASS Free/Pro/Business mathematical artifacts are identical for each of twenty engines
+2026-11-16T04:21:28.0244912Z PASS Free twenty-history quota enforced; paid twenty-first history accepted
+2026-11-16T04:21:28.0336787Z PASS #440 immutable retry conflict, stale owner/account-switch denial, foreign read/update isolation
+2026-11-16T04:21:28.0715888Z PASS #440 Pro/Business atomic scenario exact retry/copy/replay; Free and foreign scenario denial
+2026-11-16T04:21:28.1320694Z PASS Entitlement revocation denies new paid workspace while existing owned scenario remains readable
+2026-11-16T04:21:28.1883417Z PASS SDK logout clears session and denies anonymous saves; revoked refresh rejected; retained JWT lifetime explicitly observed
+2026-11-16T04:21:32.4079577Z {"passed":true,"checks":["anon: SELECT denied or RLS hides synthetic alert; captured TRUNCATE privilege bypasses row filtering; rollback restores row","authenticated: SELECT denied or RLS hides synthetic alert; captured TRUNCATE privilege bypasses row filtering; rollback restores row","anon: isolated narrow revocation denies TRUNCATE without changing SELECT/INSERT/UPDATE/DELETE grants","authenticated: isolated narrow revocation denies TRUNCATE without changing SELECT/INSERT/UPDATE/DELETE grants"]}
+2026-11-16T04:21:32.7214723Z ##[group]Run node --test tests/account-adoption1530/bundle.test.mjs
+2026-11-16T04:21:32.7215132Z [36;1mnode --test tests/account-adoption1530/bundle.test.mjs[0m
+2026-11-16T04:21:32.7215447Z [36;1mnode tests/account-adoption1530/acceptance.mjs[0m
+2026-11-16T04:21:32.7215742Z [36;1mnode tests/account-adoption1530/composition.mjs[0m
+2026-11-16T04:21:32.7216048Z [36;1mnode tests/frequency440-acceptance/run-numerics.mjs[0m
+2026-11-16T04:21:32.7259608Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:21:32.7259828Z env:
+2026-11-16T04:21:32.7260141Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.s7W8IQ/opt/google/chrome/chrome
+2026-11-16T04:21:32.7260750Z   ACCOUNT1530_ARTIFACTS: /home/runner/work/_temp/account-adoption1530
+2026-11-16T04:21:32.7261115Z   FREQUENCY440_ARTIFACTS: /home/runner/work/_temp/frequency440
+2026-11-16T04:21:32.7261384Z ##[endgroup]
+2026-11-16T04:21:32.7671192Z TAP version 13
+2026-11-16T04:21:32.8104242Z # Subtest: Held apply preserves exact reviewed source, grants and RLS
+2026-11-16T04:21:32.8108160Z ok 1 - Held apply preserves exact reviewed source, grants and RLS
+2026-11-16T04:21:32.8108807Z   ---
+2026-11-16T04:21:32.8119459Z   duration_ms: 5.732802
+2026-11-16T04:21:32.8119910Z   type: 'test'
+2026-11-16T04:21:32.8120232Z   ...
+2026-11-16T04:21:32.8120680Z # Subtest: Captured metadata cannot be relabelled or tampered
+2026-11-16T04:21:32.8121253Z ok 2 - Captured metadata cannot be relabelled or tampered
+2026-11-16T04:21:32.8121546Z   ---
+2026-11-16T04:21:32.8121719Z   duration_ms: 1.471019
+2026-11-16T04:21:32.8122021Z   type: 'test'
+2026-11-16T04:21:32.8122305Z   ...
+2026-11-16T04:21:32.8122958Z # Subtest: Any function overload or proposed trigger/index collision refuses
+2026-11-16T04:21:32.8123662Z ok 3 - Any function overload or proposed trigger/index collision refuses
+2026-11-16T04:21:32.8124132Z   ---
+2026-11-16T04:21:32.8124644Z   duration_ms: 2.589889
+2026-11-16T04:21:32.8125209Z   type: 'test'
+2026-11-16T04:21:32.8125655Z   ...
+2026-11-16T04:21:32.8126363Z # Subtest: Source mismatch and fabricated reverse postimage refuse
+2026-11-16T04:21:32.8127245Z ok 4 - Source mismatch and fabricated reverse postimage refuse
+2026-11-16T04:21:32.8127875Z   ---
+2026-11-16T04:21:32.8128312Z   duration_ms: 2.928428
+2026-11-16T04:21:32.8128734Z   type: 'test'
+2026-11-16T04:21:32.8129024Z   ...
+2026-11-16T04:21:32.8191618Z # Subtest: Rejects altered new functions even with rewritten raw bytes
+2026-11-16T04:21:32.8192828Z ok 5 - Rejects altered new functions even with rewritten raw bytes
+2026-11-16T04:21:32.8193463Z   ---
+2026-11-16T04:21:32.8193900Z   duration_ms: 2.919134
+2026-11-16T04:21:32.8194383Z   type: 'test'
+2026-11-16T04:21:32.8194808Z   ...
+2026-11-16T04:21:32.8195498Z # Subtest: Rejects altered new triggers even with rewritten raw bytes
+2026-11-16T04:21:32.8198984Z ok 6 - Rejects altered new triggers even with rewritten raw bytes
+2026-11-16T04:21:32.8199628Z   ---
+2026-11-16T04:21:32.8200067Z   duration_ms: 2.062581
+2026-11-16T04:21:32.8200543Z   type: 'test'
+2026-11-16T04:21:32.8200963Z   ...
+2026-11-16T04:21:32.8201654Z # Subtest: Rejects altered new indexes even with rewritten raw bytes
+2026-11-16T04:21:32.8202628Z ok 7 - Rejects altered new indexes even with rewritten raw bytes
+2026-11-16T04:21:32.8203201Z   ---
+2026-11-16T04:21:32.8203629Z   duration_ms: 2.079166
+2026-11-16T04:21:32.8204081Z   type: 'test'
+2026-11-16T04:21:32.8204496Z   ...
+2026-11-16T04:21:32.8314323Z 1..7
+2026-11-16T04:21:32.8314673Z # tests 7
+2026-11-16T04:21:32.8314939Z # suites 0
+2026-11-16T04:21:32.8315244Z # pass 7
+2026-11-16T04:21:32.8315498Z # fail 0
+2026-11-16T04:21:32.8315791Z # cancelled 0
+2026-11-16T04:21:32.8316133Z # skipped 0
+2026-11-16T04:21:32.8316409Z # todo 0
+2026-11-16T04:21:32.8316725Z # duration_ms 74.152747
+2026-11-16T04:21:35.6727920Z PASS Exact four-table hosted predecessor including column ACL and retained quota triggers reproduced on PG17.6
+2026-11-16T04:21:35.8651688Z PASS Held apply cannot activate even in continuing SQL client
+2026-11-16T04:21:36.2261700Z PASS Apply rollback is atomic; expected postimage binds exact new functions/index/triggers without altering RLS/grants
+2026-11-16T04:21:36.8763844Z PASS Concurrent last Free history slot has exactly one winner with retained quota triggers
+2026-11-16T04:21:36.9468287Z PASS Genuine JWT concurrent exact retry, conflicting retry and foreign owner/read denials
+2026-11-16T04:21:37.0238678Z PASS Business scenario copy/retry is immutable and cross-account denied
+2026-11-16T04:21:37.3763692Z PASS Injected late reversal failure rolls back every schema change and preserves saved rows
+2026-11-16T04:21:38.2009007Z PASS Exact reverse/reapply restores metadata, preserves rows and recovers same request; rollback authority remains separate
+2026-11-16T04:21:43.8560530Z PASS Both apply/reverse orders preserve the independent captured metadata scopes
+2026-11-16T04:21:44.6355579Z {"passed":true,"vectors":634,"refusals":6,"p95Ms":1.573599999999999}
+2026-11-16T04:21:44.6489852Z ##[group]Run node --test tests/next-runtime/recorded-download.test.mjs
+2026-11-16T04:21:44.6490288Z [36;1mnode --test tests/next-runtime/recorded-download.test.mjs[0m
+2026-11-16T04:21:44.6490619Z [36;1mnode tests/frequency440-acceptance/next.mjs[0m
+2026-11-16T04:21:44.6534479Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:21:44.6534700Z env:
+2026-11-16T04:21:44.6535020Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.s7W8IQ/opt/google/chrome/chrome
+2026-11-16T04:21:44.6535474Z   FREQUENCY440_NEXT_ARTIFACTS: /home/runner/work/_temp/frequency440-next
+2026-11-16T04:21:44.6535779Z ##[endgroup]
+2026-11-16T04:21:44.6925586Z TAP version 13
+2026-11-16T04:21:45.5808619Z # Subtest: native download waits for hydrated enabled control and verifies its own GUID bytes
+2026-11-16T04:21:45.5814177Z ok 1 - native download waits for hydrated enabled control and verifies its own GUID bytes
+2026-11-16T04:21:45.5815002Z   ---
+2026-11-16T04:21:45.5815283Z   duration_ms: 843.62201
+2026-11-16T04:21:45.5815583Z   type: 'test'
+2026-11-16T04:21:45.5815763Z   ...
+2026-11-16T04:21:45.6099319Z # Subtest: observer setup rejects an unanswered command or socket failure within its bound
+2026-11-16T04:21:45.6100212Z ok 2 - observer setup rejects an unanswered command or socket failure within its bound
+2026-11-16T04:21:45.6100914Z   ---
+2026-11-16T04:21:45.6101234Z   duration_ms: 29.370725
+2026-11-16T04:21:45.6101576Z   type: 'test'
+2026-11-16T04:21:45.6102046Z   ...
+2026-11-16T04:21:45.6213352Z 1..2
+2026-11-16T04:21:45.6214345Z # tests 2
+2026-11-16T04:21:45.6214864Z # suites 0
+2026-11-16T04:21:45.6215369Z # pass 2
+2026-11-16T04:21:45.6215753Z # fail 0
+2026-11-16T04:21:45.6216655Z # cancelled 0
+2026-11-16T04:21:45.6217072Z # skipped 0
+2026-11-16T04:21:45.6217443Z # todo 0
+2026-11-16T04:21:45.6217873Z # duration_ms 937.820348
+2026-11-16T04:22:15.0949730Z PASS free: genuine browser save via real SDK/RPC, actual authenticated Next history and saved-record rendering
+2026-11-16T04:22:18.4663884Z PASS business: genuine browser save via real SDK/RPC, actual authenticated Next history and saved-record rendering
+2026-11-16T04:22:26.1727510Z PASS Business real Next server-action project/scenario creation and owned saved replay
+2026-11-16T04:22:26.2254022Z PASS Genuine authenticated saved-record exact engine verification and completed JSON/CSV export bytes
+2026-11-16T04:22:27.0446866Z PASS Actual Next SSR cross-account saved-scenario denial
+2026-11-16T04:22:28.2623118Z ##[group]Run node --test tests/native440/quota-bindings.test.mjs tests/native440/schema-readiness.test.mjs tests/full-product-batch17/workflow.test.mjs
+2026-11-16T04:22:28.2624252Z [36;1mnode --test tests/native440/quota-bindings.test.mjs tests/native440/schema-readiness.test.mjs tests/full-product-batch17/workflow.test.mjs[0m
+2026-11-16T04:22:28.2624781Z [36;1mnode tests/native440/quota.mjs[0m
+2026-11-16T04:22:28.2625068Z [36;1mnode tests/native440-remediation/embed.postgres.mjs[0m
+2026-11-16T04:22:28.2625364Z [36;1mnode tests/native440/acceptance.mjs[0m
+2026-11-16T04:22:28.2668983Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:22:28.2669202Z env:
+2026-11-16T04:22:28.2669520Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.s7W8IQ/opt/google/chrome/chrome
+2026-11-16T04:22:28.2669973Z   NATIVE440_QUOTA_ARTIFACTS: /home/runner/work/_temp/native440-quota
+2026-11-16T04:22:28.2670314Z   NATIVE440_ARTIFACTS: /home/runner/work/_temp/native440
+2026-11-16T04:22:28.2670672Z   EMBED_METER_ARTIFACTS: /home/runner/work/_temp/native440-meter
+2026-11-16T04:22:28.2670948Z ##[endgroup]
+2026-11-16T04:22:28.3118745Z TAP version 13
+2026-11-16T04:22:28.9268251Z # Subtest: the three exact independent task campaigns and receipt checks are mandatory and bounded
+2026-11-16T04:22:28.9274947Z ok 1 - the three exact independent task campaigns and receipt checks are mandatory and bounded
+2026-11-16T04:22:28.9275571Z   ---
+2026-11-16T04:22:28.9275874Z   duration_ms: 2.850854
+2026-11-16T04:22:28.9276215Z   type: 'test'
+2026-11-16T04:22:28.9276465Z   ...
+2026-11-16T04:22:28.9279357Z # Subtest: strict aggregate outcomes and bounded native acceptance budget remain intact
+2026-11-16T04:22:28.9281154Z ok 2 - strict aggregate outcomes and bounded native acceptance budget remain intact
+2026-11-16T04:22:28.9281728Z   ---
+2026-11-16T04:22:28.9285040Z   duration_ms: 377.739776
+2026-11-16T04:22:28.9285518Z   type: 'test'
+2026-11-16T04:22:28.9285754Z   ...
+2026-11-16T04:22:28.9436603Z # Subtest: accepts exact captured predecessor and reviewed sources
+2026-11-16T04:22:28.9437494Z ok 3 - accepts exact captured predecessor and reviewed sources
+2026-11-16T04:22:28.9438067Z   ---
+2026-11-16T04:22:28.9438373Z   duration_ms: 6.19928
+2026-11-16T04:22:28.9438683Z   type: 'test'
+2026-11-16T04:22:28.9438941Z   ...
+2026-11-16T04:22:28.9439441Z # Subtest: rejects rewritten functions even with matching raw
+2026-11-16T04:22:28.9440061Z ok 4 - rejects rewritten functions even with matching raw
+2026-11-16T04:22:28.9440459Z   ---
+2026-11-16T04:22:28.9440713Z   duration_ms: 1.557967
+2026-11-16T04:22:28.9441012Z   type: 'test'
+2026-11-16T04:22:28.9441259Z   ...
+2026-11-16T04:22:28.9441698Z # Subtest: rejects rewritten policies even with matching raw
+2026-11-16T04:22:28.9442289Z ok 5 - rejects rewritten policies even with matching raw
+2026-11-16T04:22:28.9442825Z   ---
+2026-11-16T04:22:28.9443069Z   duration_ms: 0.932615
+2026-11-16T04:22:28.9443357Z   type: 'test'
+2026-11-16T04:22:28.9443602Z   ...
+2026-11-16T04:22:28.9444038Z # Subtest: rejects rewritten relations even with matching raw
+2026-11-16T04:22:28.9444639Z ok 6 - rejects rewritten relations even with matching raw
+2026-11-16T04:22:28.9445023Z   ---
+2026-11-16T04:22:28.9445268Z   duration_ms: 1.711584
+2026-11-16T04:22:28.9445553Z   type: 'test'
+2026-11-16T04:22:28.9445798Z   ...
+2026-11-16T04:22:28.9446222Z # Subtest: rejects rewritten columns even with matching raw
+2026-11-16T04:22:28.9446797Z ok 7 - rejects rewritten columns even with matching raw
+2026-11-16T04:22:28.9447188Z   ---
+2026-11-16T04:22:28.9447435Z   duration_ms: 1.215623
+2026-11-16T04:22:28.9447735Z   type: 'test'
+2026-11-16T04:22:28.9447994Z   ...
+2026-11-16T04:22:28.9448441Z # Subtest: rejects rewritten defaultAcls even with matching raw
+2026-11-16T04:22:28.9449047Z ok 8 - rejects rewritten defaultAcls even with matching raw
+2026-11-16T04:22:28.9449458Z   ---
+2026-11-16T04:22:28.9449698Z   duration_ms: 1.500713
+2026-11-16T04:22:28.9449986Z   type: 'test'
+2026-11-16T04:22:28.9450237Z   ...
+2026-11-16T04:22:28.9451094Z # Subtest: rejects false provenance and arbitrary postimage
+2026-11-16T04:22:28.9451698Z ok 9 - rejects false provenance and arbitrary postimage
+2026-11-16T04:22:28.9473108Z   ---
+2026-11-16T04:22:28.9473366Z   duration_ms: 0.496422
+2026-11-16T04:22:28.9473655Z   type: 'test'
+2026-11-16T04:22:28.9473924Z   ...
+2026-11-16T04:22:28.9474283Z # Subtest: rejects changed proposal and wrapper bytes
+2026-11-16T04:22:28.9474725Z ok 10 - rejects changed proposal and wrapper bytes
+2026-11-16T04:22:28.9475050Z   ---
+2026-11-16T04:22:28.9475264Z   duration_ms: 8.316862
+2026-11-16T04:22:28.9475503Z   type: 'test'
+2026-11-16T04:22:28.9475713Z   ...
+2026-11-16T04:22:28.9476201Z # Subtest: waits for cached tables, every grant/usage column and RPC signature using GET only
+2026-11-16T04:22:28.9476929Z ok 11 - waits for cached tables, every grant/usage column and RPC signature using GET only
+2026-11-16T04:22:28.9477362Z   ---
+2026-11-16T04:22:28.9477595Z   duration_ms: 2.586103
+2026-11-16T04:22:28.9477867Z   type: 'test'
+2026-11-16T04:22:28.9478086Z   ...
+2026-11-16T04:22:28.9478554Z # Subtest: bounds missing-schema waiting and reports absent cache contract
+2026-11-16T04:22:28.9479256Z ok 12 - bounds missing-schema waiting and reports absent cache contract
+2026-11-16T04:22:28.9479725Z   ---
+2026-11-16T04:22:28.9479988Z   duration_ms: 1.046813
+2026-11-16T04:22:28.9480563Z   type: 'test'
+2026-11-16T04:22:28.9480831Z   ...
+2026-11-16T04:22:28.9481178Z # Subtest: fails immediately on HTTP 400
+2026-11-16T04:22:28.9481610Z ok 13 - fails immediately on HTTP 400
+2026-11-16T04:22:28.9481950Z   ---
+2026-11-16T04:22:28.9482204Z   duration_ms: 0.303397
+2026-11-16T04:22:28.9482660Z   type: 'test'
+2026-11-16T04:22:28.9482910Z   ...
+2026-11-16T04:22:28.9483232Z # Subtest: fails immediately on HTTP 401
+2026-11-16T04:22:28.9483661Z ok 14 - fails immediately on HTTP 401
+2026-11-16T04:22:28.9483992Z   ---
+2026-11-16T04:22:28.9484223Z   duration_ms: 0.323287
+2026-11-16T04:22:28.9484517Z   type: 'test'
+2026-11-16T04:22:28.9484774Z   ...
+2026-11-16T04:22:28.9485107Z # Subtest: fails immediately on HTTP 403
+2026-11-16T04:22:28.9485557Z ok 15 - fails immediately on HTTP 403
+2026-11-16T04:22:28.9485793Z   ---
+2026-11-16T04:22:28.9485966Z   duration_ms: 0.214997
+2026-11-16T04:22:28.9486177Z   type: 'test'
+2026-11-16T04:22:28.9486352Z   ...
+2026-11-16T04:22:28.9486590Z # Subtest: fails immediately on HTTP 404
+2026-11-16T04:22:28.9486894Z ok 16 - fails immediately on HTTP 404
+2026-11-16T04:22:28.9487137Z   ---
+2026-11-16T04:22:28.9487307Z   duration_ms: 0.182349
+2026-11-16T04:22:28.9487512Z   type: 'test'
+2026-11-16T04:22:28.9487688Z   ...
+2026-11-16T04:22:28.9487897Z # Subtest: fails immediately on HTTP 500
+2026-11-16T04:22:28.9488174Z ok 17 - fails immediately on HTTP 500
+2026-11-16T04:22:28.9488392Z   ---
+2026-11-16T04:22:28.9488555Z   duration_ms: 0.206123
+2026-11-16T04:22:28.9488761Z   type: 'test'
+2026-11-16T04:22:28.9488921Z   ...
+2026-11-16T04:22:28.9489154Z # Subtest: does not hide transport failures
+2026-11-16T04:22:28.9489445Z ok 18 - does not hide transport failures
+2026-11-16T04:22:28.9489659Z   ---
+2026-11-16T04:22:28.9489832Z   duration_ms: 0.298139
+2026-11-16T04:22:28.9490013Z   type: 'test'
+2026-11-16T04:22:28.9490184Z   ...
+2026-11-16T04:22:28.9490388Z # Subtest: rejects hosted destinations
+2026-11-16T04:22:28.9490670Z ok 19 - rejects hosted destinations
+2026-11-16T04:22:28.9490881Z   ---
+2026-11-16T04:22:28.9491037Z   duration_ms: 0.403034
+2026-11-16T04:22:28.9491234Z   type: 'test'
+2026-11-16T04:22:28.9491397Z   ...
+2026-11-16T04:22:28.9491546Z 1..19
+2026-11-16T04:22:28.9491705Z # tests 19
+2026-11-16T04:22:28.9491870Z # suites 0
+2026-11-16T04:22:28.9492072Z # pass 19
+2026-11-16T04:22:28.9492296Z # fail 0
+2026-11-16T04:22:28.9492660Z # cancelled 0
+2026-11-16T04:22:28.9492903Z # skipped 0
+2026-11-16T04:22:28.9493176Z # todo 0
+2026-11-16T04:22:28.9493394Z # duration_ms 646.926148
+2026-11-16T04:22:32.3761162Z PASS Captured hosted count-then-insert quota deterministically overshoots1 with two writers held after counting
+2026-11-16T04:22:33.1102892Z PASS Existing guarded atomic successor serializes the same quota callers without changing grants/RLS/objects
+2026-11-16T04:22:34.1914292Z PASS Guarded reverse/rollback/reapply preserve usage and both quota/account adoption orders compose without metadata drift
+2026-11-16T04:22:40.8694348Z PASS Shared configured key limit, durable exact attribution and idempotent retry/conflict
+2026-11-16T04:22:41.1166661Z PASS Native API and embed share the existing quota lock under concurrent last-slot requests
+2026-11-16T04:22:41.5340357Z PASS Concurrent duplicate redemption produces one debit and one durable audit
+2026-11-16T04:22:41.8276092Z PASS Audit persistence failure rolls back the quota debit atomically
+2026-11-16T04:22:42.3093572Z PASS Cross-tenant attribution, revoked/expired grants and Business downgrade fail closed
+2026-11-16T04:22:42.5324007Z PASS RLS and caller privileges deny direct grant/audit access and metering RPC to untrusted roles
+2026-11-16T04:22:43.2125396Z PASS A committed revocation wins against waiting redemption with no quota or audit debit
+2026-11-16T04:22:43.6047011Z PASS Source-bound disable retains audit, denies calls, and isolated re-enable preserves current authority checks
+2026-11-16T04:24:24.0728845Z PASS Actual Next native API requires genuine scoped Business key and real publication gate denies unapproved440
+2026-11-16T04:24:24.2739657Z PASS Actual authenticated grant issuance denies unapproved publication, foreign organization and cross-origin POST
+2026-11-16T04:24:24.5889390Z PASS Real native gate composes lower repository reader with exact hosted engine, slug and version identity
+2026-11-16T04:24:24.7414725Z PASS Conditional native API executes exact originalv1 engine with strict decimal provenance and domain refusal
+2026-11-16T04:24:24.9621431Z PASS Native quota readiness rejects missing or source-drifted metering without unsafe fallback
+2026-11-16T04:24:25.6425013Z PASS Real authenticated Owner/Admin grant, conditional server-side native embed parity and same-origin calculation denial
+2026-11-16T04:24:26.5190778Z PASS Authorized malformed and missing-id attempts debit existing two-request quota and audit; third attempt and shared-key API refuse429
+2026-11-16T04:24:26.5191711Z PASS Real durable grant expiry, cross-account revocation denial, committed revocation and idempotent replay/conflict with exactly one audit row
+2026-11-16T04:24:26.5733179Z PASS Embed page enforces permitted ancestor CSP, frame/referrer context and preserves base CSP
+2026-11-16T04:24:27.0251278Z PASS Unmodified production CSP blocks a genuine unlisted third-party iframe origin
+2026-11-16T04:24:28.0020178Z PASS Unmodified production CSP admits exact third-party iframe; local AX names/live status and 320px layout verified
+2026-11-16T04:24:33.2320474Z PASS Genuine authenticated Business client/project forms, team/tenant boundaries and frequency history/scenarios with SI presentation
+2026-11-16T04:24:33.6594173Z PASS Committed issuer removal, Business downgrade and API key revocation deny subsequent delivery
+2026-11-16T04:24:34.4012722Z ##[group]Run actions/upload-artifact@v4
+2026-11-16T04:24:34.4012995Z with:
+2026-11-16T04:24:34.4013274Z   name: shortest-publication-20-aaf369e67096718fd3bfff3d86c9c8e861a1cd42
+2026-11-16T04:24:34.4014947Z   path: /home/runner/work/_temp/shortest-publication-20/receipt.json
+/home/runner/work/_temp/shortest-publication-20/production-routes.json
+/home/runner/work/_temp/critical440-browser/receipt.json
+/home/runner/work/_temp/critical440-auth/receipt.json
+/home/runner/work/_temp/critical440-audit/privilege-receipt.json
+/home/runner/work/_temp/account-adoption1530/
+/home/runner/work/_temp/frequency440/
+/home/runner/work/_temp/frequency440-next/
+/home/runner/work/_temp/native440/
+/home/runner/work/_temp/native440-quota/
+/home/runner/work/_temp/native440-meter/
+
+2026-11-16T04:24:34.4016500Z   if-no-files-found: error
+2026-11-16T04:24:34.4016698Z   retention-days: 7
+2026-11-16T04:24:34.4016872Z   compression-level: 6
+2026-11-16T04:24:34.4017067Z   overwrite: false
+2026-11-16T04:24:34.4017285Z   include-hidden-files: false
+2026-11-16T04:24:34.4017487Z env:
+2026-11-16T04:24:34.4017783Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.s7W8IQ/opt/google/chrome/chrome
+2026-11-16T04:24:34.4018135Z ##[endgroup]
+2026-11-16T04:24:34.5384388Z (node:65039) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-16T04:24:34.5385061Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-16T04:24:34.5518998Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-11-16T04:24:34.5522131Z The least common ancestor is /home/runner/work/_temp. This will be the root directory of the artifact
+2026-11-16T04:24:34.5523099Z With the provided path, there will be 32 files uploaded
+2026-11-16T04:24:34.5525676Z Artifact name is valid!
+2026-11-16T04:24:34.5526319Z Root directory input is valid!
+2026-11-16T04:24:34.9175610Z Beginning upload of artifact content to blob storage
+2026-11-16T04:24:34.9715219Z (node:65039) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-16T04:24:35.4674408Z Uploaded bytes 141532
+2026-11-16T04:24:35.5459955Z Finished uploading artifact content to blob storage!
+2026-11-16T04:24:35.5460905Z SHA256 digest of uploaded artifact zip is 5c00a9512d8df1f6a46707341f5933de801a8e8cb01edede8db9f45eacf61f31
+2026-11-16T04:24:35.5461622Z Finalizing artifact upload
+2026-11-16T04:24:35.9403502Z Artifact shortest-publication-20-aaf369e67096718fd3bfff3d86c9c8e861a1cd42.zip successfully finalized. Artifact ID 14197597545
+2026-11-16T04:24:35.9404518Z Artifact shortest-publication-20-aaf369e67096718fd3bfff3d86c9c8e861a1cd42 has been successfully uploaded! Final size is 141532 bytes. Artifact ID is 14197597545
+2026-11-16T04:24:35.9409480Z Artifact download URL: https://github.com/subvicco12/calcumint.com/actions/runs/43803149184/artifacts/14197597545
+2026-11-16T04:24:35.9568825Z ##[group]Run if ! command -v pdftotext >/dev/null || ! command -v pdffonts >/dev/null || ! command -v pdftoppm >/dev/null || ! command -v pdfinfo >/dev/null; then
+2026-11-16T04:24:35.9569676Z [36;1mif ! command -v pdftotext >/dev/null || ! command -v pdffonts >/dev/null || ! command -v pdftoppm >/dev/null || ! command -v pdfinfo >/dev/null; then[0m
+2026-11-16T04:24:35.9570181Z [36;1m  sudo apt-get update -qq[0m
+2026-11-16T04:24:35.9570489Z [36;1m  sudo apt-get install -y --no-install-recommends poppler-utils[0m
+2026-11-16T04:24:35.9570783Z [36;1mfi[0m
+2026-11-16T04:24:35.9570985Z [36;1mnode scripts/assert-pdf-tools.mjs[0m
+2026-11-16T04:24:35.9571319Z [36;1mpython3 scripts/product-completion-20261108/inventory.py --check[0m
+2026-11-16T04:24:35.9571921Z [36;1mnode --test tests/financial-safety-lineage.test.mjs tests/product-completion-lineage.test.mjs tests/source-lineage-bootstrap.test.mjs[0m
+2026-11-16T04:24:35.9572746Z [36;1mnode scripts/check-current-six-candidate-evidence.mjs[0m
+2026-11-16T04:24:35.9573090Z [36;1mnode --test tests/full-six-candidate/preview.test.mjs[0m
+2026-11-16T04:24:35.9573395Z [36;1mnode tests/full-six-candidate/browser.mjs[0m
+2026-11-16T04:24:35.9573698Z [36;1mnode tests/product-completion-20261108/browser.mjs[0m
+2026-11-16T04:24:35.9617282Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:24:35.9617516Z env:
+2026-11-16T04:24:35.9617843Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.s7W8IQ/opt/google/chrome/chrome
+2026-11-16T04:24:35.9618325Z   SIX_CANDIDATE_BROWSER_RECEIPT: /home/runner/work/_temp/six-candidate-closure
+2026-11-16T04:24:35.9618804Z   PRODUCT_COMPLETION_BROWSER: /home/runner/work/_temp/six-candidate-closure/product-completion
+2026-11-16T04:24:35.9619163Z ##[endgroup]
+2026-11-16T04:24:39.3272636Z Reading package lists...
+2026-11-16T04:24:39.4891794Z Building dependency tree...
+2026-11-16T04:24:39.4898302Z Reading state information...
+2026-11-16T04:24:39.5658658Z Solving dependencies...
+2026-11-16T04:24:39.6429119Z The following additional packages will be installed:
+2026-11-16T04:24:39.6434898Z   libgpgmepp7 libpoppler156
+2026-11-16T04:24:39.6439967Z Recommended packages:
+2026-11-16T04:24:39.6440282Z   poppler-data
+2026-11-16T04:24:39.6617451Z The following NEW packages will be installed:
+2026-11-16T04:24:39.6621068Z   libgpgmepp7 libpoppler156 poppler-utils
+2026-11-16T04:24:39.6796066Z 0 upgraded, 3 newly installed, 0 to remove and 24 not upgraded.
+2026-11-16T04:24:39.6796614Z Need to get 1607 kB of archives.
+2026-11-16T04:24:39.6796977Z After this operation, 5354 kB of additional disk space will be used.
+2026-11-16T04:24:39.6797389Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-11-16T04:24:39.7770969Z Get:2 http://azure.archive.ubuntu.com/ubuntu resolute/main amd64v3 libgpgmepp7 amd64 2.0.0-2 [132 kB]
+2026-11-16T04:24:39.8574649Z Get:3 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64v3 libpoppler156 amd64 26.01.0-2ubuntu0.3 [1243 kB]
+2026-11-16T04:24:40.1402163Z Get:4 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64v3 poppler-utils amd64 26.01.0-2ubuntu0.3 [231 kB]
+2026-11-16T04:24:40.4425556Z Fetched 1607 kB in 0s (3356 kB/s)
+2026-11-16T04:24:40.4627212Z Selecting previously unselected package libgpgmepp7:amd64.
+2026-11-16T04:24:40.4852816Z (Reading database ... 
+2026-11-16T04:24:40.4853430Z (Reading database ... 5%
+2026-11-16T04:24:40.4853679Z (Reading database ... 10%
+2026-11-16T04:24:40.4853902Z (Reading database ... 15%
+2026-11-16T04:24:40.4854123Z (Reading database ... 20%
+2026-11-16T04:24:40.4854702Z (Reading database ... 25%
+2026-11-16T04:24:40.4855180Z (Reading database ... 30%
+2026-11-16T04:24:40.4855564Z (Reading database ... 35%
+2026-11-16T04:24:40.4855798Z (Reading database ... 40%
+2026-11-16T04:24:40.4856005Z (Reading database ... 45%
+2026-11-16T04:24:40.4856203Z (Reading database ... 50%
+2026-11-16T04:24:40.5844559Z (Reading database ... 55%
+2026-11-16T04:24:40.7401771Z (Reading database ... 60%
+2026-11-16T04:24:40.9836506Z (Reading database ... 65%
+2026-11-16T04:24:41.1265286Z (Reading database ... 70%
+2026-11-16T04:24:41.2863397Z (Reading database ... 75%
+2026-11-16T04:24:41.4886824Z (Reading database ... 80%
+2026-11-16T04:24:41.7004678Z (Reading database ... 85%
+2026-11-16T04:24:41.8828032Z (Reading database ... 90%
+2026-11-16T04:24:42.0466720Z (Reading database ... 95%
+2026-11-16T04:24:42.0467047Z (Reading database ... 100%
+2026-11-16T04:24:42.0467428Z (Reading database ... 213946 files and directories currently installed.)
+2026-11-16T04:24:42.0511749Z Preparing to unpack .../libgpgmepp7_2.0.0-2_amd64v3.deb ...
+2026-11-16T04:24:42.0578909Z Unpacking libgpgmepp7:amd64 (2.0.0-2) ...
+2026-11-16T04:24:42.0977389Z Selecting previously unselected package libpoppler156:amd64.
+2026-11-16T04:24:42.1107250Z Preparing to unpack .../libpoppler156_26.01.0-2ubuntu0.3_amd64v3.deb ...
+2026-11-16T04:24:42.1128572Z Unpacking libpoppler156:amd64 (26.01.0-2ubuntu0.3) ...
+2026-11-16T04:24:42.1682899Z Selecting previously unselected package poppler-utils.
+2026-11-16T04:24:42.1812757Z Preparing to unpack .../poppler-utils_26.01.0-2ubuntu0.3_amd64v3.deb ...
+2026-11-16T04:24:42.1818918Z Unpacking poppler-utils (26.01.0-2ubuntu0.3) ...
+2026-11-16T04:24:42.2322880Z Setting up libgpgmepp7:amd64 (2.0.0-2) ...
+2026-11-16T04:24:42.2338887Z Setting up libpoppler156:amd64 (26.01.0-2ubuntu0.3) ...
+2026-11-16T04:24:42.2353013Z Setting up poppler-utils (26.01.0-2ubuntu0.3) ...
+2026-11-16T04:24:42.2369161Z Processing triggers for man-db (2.13.1-1build1) ...
+2026-11-16T04:24:42.2387145Z Not building database; man-db/auto-update is not 'true'.
+2026-11-16T04:24:42.2396988Z Processing triggers for libc-bin (2.43-2ubuntu2.4) ...
+2026-11-16T04:24:43.0686946Z 
+2026-11-16T04:24:43.0687752Z Running kernel seems to be up-to-date.
+2026-11-16T04:24:43.0688078Z 
+2026-11-16T04:24:43.0688220Z Restarting services...
+2026-11-16T04:24:43.0773428Z 
+2026-11-16T04:24:43.0774404Z Service restarts being deferred:
+2026-11-16T04:24:43.0776077Z  systemctl restart hosted-compute-agent.service
+2026-11-16T04:24:43.0776368Z 
+2026-11-16T04:24:43.0777101Z No containers need to be restarted.
+2026-11-16T04:24:43.0777328Z 
+2026-11-16T04:24:43.0777588Z No user sessions are running outdated binaries.
+2026-11-16T04:24:43.0777859Z 
+2026-11-16T04:24:43.0778216Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-11-16T04:24:44.0298693Z {"independentPdfTools":{"pdftotext":"pdftotext version 26.01.0","pdffonts":"pdffonts version 26.01.0","pdftoppm":"pdftoppm version 26.01.0","pdfinfo":"pdfinfo version 26.01.0"}}
+2026-11-16T04:24:49.2189353Z PASS: 540 unique IDs; retained native catalog attestation matches exact repository triples; deterministic inventory outputs match. Native workbook bytes not reopened; retained attestation only.
+2026-11-16T04:24:49.3180824Z TAP version 13
+2026-11-16T04:24:49.7646180Z # Subtest: retains both exact historical financial witness revisions
+2026-11-16T04:24:49.7668114Z ok 1 - retains both exact historical financial witness revisions
+2026-11-16T04:24:49.7673462Z   ---
+2026-11-16T04:24:49.7684548Z   duration_ms: 1.36342
+2026-11-16T04:24:49.7684943Z   type: 'test'
+2026-11-16T04:24:49.7685297Z   ...
+2026-11-16T04:24:49.7686016Z # Subtest: admits exact guard successor and frozen historical source: src/calculators/finance/compound-interest.ts
+2026-11-16T04:24:49.7687184Z ok 2 - admits exact guard successor and frozen historical source: src/calculators/finance/compound-interest.ts
+2026-11-16T04:24:49.7687699Z   ---
+2026-11-16T04:24:49.7688001Z   duration_ms: 25.77338
+2026-11-16T04:24:49.7688353Z   type: 'test'
+2026-11-16T04:24:49.7688660Z   ...
+2026-11-16T04:24:49.7689320Z # Subtest: rejects changed or reverted current bytes and false historical claim: src/calculators/finance/compound-interest.ts
+2026-11-16T04:24:49.7690249Z ok 3 - rejects changed or reverted current bytes and false historical claim: src/calculators/finance/compound-interest.ts
+2026-11-16T04:24:49.7690762Z   ---
+2026-11-16T04:24:49.7691060Z   duration_ms: 44.255645
+2026-11-16T04:24:49.7691415Z   type: 'test'
+2026-11-16T04:24:49.7691900Z   ...
+2026-11-16T04:24:49.7692857Z # Subtest: rejects missing or substituted predecessor and successor objects: src/calculators/finance/compound-interest.ts
+2026-11-16T04:24:49.7694053Z ok 4 - rejects missing or substituted predecessor and successor objects: src/calculators/finance/compound-interest.ts
+2026-11-16T04:24:49.7694723Z   ---
+2026-11-16T04:24:49.7694967Z   duration_ms: 51.318313
+2026-11-16T04:24:49.7695264Z   type: 'test'
+2026-11-16T04:24:49.7695506Z   ...
+2026-11-16T04:24:49.7696180Z # Subtest: admits exact guard successor and frozen historical source: src/calculators/finance/loan-payment.ts
+2026-11-16T04:24:49.7696828Z ok 5 - admits exact guard successor and frozen historical source: src/calculators/finance/loan-payment.ts
+2026-11-16T04:24:49.7697199Z   ---
+2026-11-16T04:24:49.7697363Z   duration_ms: 25.78405
+2026-11-16T04:24:49.7697566Z   type: 'test'
+2026-11-16T04:24:49.7697742Z   ...
+2026-11-16T04:24:49.7698221Z # Subtest: rejects changed or reverted current bytes and false historical claim: src/calculators/finance/loan-payment.ts
+2026-11-16T04:24:49.7698924Z ok 6 - rejects changed or reverted current bytes and false historical claim: src/calculators/finance/loan-payment.ts
+2026-11-16T04:24:49.7699518Z   ---
+2026-11-16T04:24:49.7699769Z   duration_ms: 35.440102
+2026-11-16T04:24:49.7700045Z   type: 'test'
+2026-11-16T04:24:49.7700281Z   ...
+2026-11-16T04:24:49.7701009Z # Subtest: rejects missing or substituted predecessor and successor objects: src/calculators/finance/loan-payment.ts
+2026-11-16T04:24:49.7702090Z ok 7 - rejects missing or substituted predecessor and successor objects: src/calculators/finance/loan-payment.ts
+2026-11-16T04:24:49.7702832Z   ---
+2026-11-16T04:24:49.7703077Z   duration_ms: 51.020629
+2026-11-16T04:24:49.7703354Z   type: 'test'
+2026-11-16T04:24:49.7703593Z   ...
+2026-11-16T04:24:49.7704177Z # Subtest: admits exact guard successor and frozen historical source: src/calculators/precision.ts
+2026-11-16T04:24:49.7705074Z ok 8 - admits exact guard successor and frozen historical source: src/calculators/precision.ts
+2026-11-16T04:24:49.7705592Z   ---
+2026-11-16T04:24:49.7705834Z   duration_ms: 25.591242
+2026-11-16T04:24:49.7706118Z   type: 'test'
+2026-11-16T04:24:49.7706361Z   ...
+2026-11-16T04:24:49.7707030Z # Subtest: rejects changed or reverted current bytes and false historical claim: src/calculators/precision.ts
+2026-11-16T04:24:49.7707918Z ok 9 - rejects changed or reverted current bytes and false historical claim: src/calculators/precision.ts
+2026-11-16T04:24:49.7708300Z   ---
+2026-11-16T04:24:49.7708473Z   duration_ms: 36.294646
+2026-11-16T04:24:49.7708670Z   type: 'test'
+2026-11-16T04:24:49.7708850Z   ...
+2026-11-16T04:24:49.7709259Z # Subtest: rejects missing or substituted predecessor and successor objects: src/calculators/precision.ts
+2026-11-16T04:24:49.7709868Z ok 10 - rejects missing or substituted predecessor and successor objects: src/calculators/precision.ts
+2026-11-16T04:24:49.7710365Z   ---
+2026-11-16T04:24:49.7710745Z   duration_ms: 50.244921
+2026-11-16T04:24:49.7711078Z   type: 'test'
+2026-11-16T04:24:49.7711324Z   ...
+2026-11-16T04:24:49.7711795Z # Subtest: unknown and unsafe paths cannot invoke the successor exception
+2026-11-16T04:24:49.7712797Z ok 11 - unknown and unsafe paths cannot invoke the successor exception
+2026-11-16T04:24:49.7713326Z   ---
+2026-11-16T04:24:49.7713503Z   duration_ms: 0.314423
+2026-11-16T04:24:49.7713697Z   type: 'test'
+2026-11-16T04:24:49.7713863Z   ...
+2026-11-16T04:24:55.9997329Z # Subtest: frozen comparison admits only exact financial successors and still rejects unrelated edits
+2026-11-16T04:24:56.0006035Z ok 12 - frozen comparison admits only exact financial successors and still rejects unrelated edits
+2026-11-16T04:24:56.0007122Z   ---
+2026-11-16T04:24:56.0007607Z   duration_ms: 73.107278
+2026-11-16T04:24:56.0008108Z   type: 'test'
+2026-11-16T04:24:56.0008558Z   ...
+2026-11-16T04:24:56.0009334Z # Subtest: both publication caller comparisons accept exact pinned precision successor
+2026-11-16T04:24:56.0010882Z ok 13 - both publication caller comparisons accept exact pinned precision successor
+2026-11-16T04:24:56.0013695Z   ---
+2026-11-16T04:24:56.0014177Z   duration_ms: 6166.824023
+2026-11-16T04:24:56.0014667Z   type: 'test'
+2026-11-16T04:24:56.0015117Z   ...
+2026-11-16T04:24:59.7840995Z # {"candidateIds":[235,251,275,276,282,283],"exactSourceBindings":41,"canonicalAccepted":0,"publicationEligible":0,"releaseHold":true}
+2026-11-16T04:25:00.5887064Z # Subtest: admits exact committed successor: src/calculators/finance/compound-interest.test.ts
+2026-11-16T04:25:00.5893784Z ok 14 - admits exact committed successor: src/calculators/finance/compound-interest.test.ts
+2026-11-16T04:25:00.5894589Z   ---
+2026-11-16T04:25:00.5895048Z   duration_ms: 66.175622
+2026-11-16T04:25:00.5895572Z   type: 'test'
+2026-11-16T04:25:00.5896029Z   ...
+2026-11-16T04:25:00.5896822Z # Subtest: rejects uncommitted successor tamper: src/calculators/finance/compound-interest.test.ts
+2026-11-16T04:25:00.5898042Z ok 15 - rejects uncommitted successor tamper: src/calculators/finance/compound-interest.test.ts
+2026-11-16T04:25:00.5898817Z   ---
+2026-11-16T04:25:00.5899219Z   duration_ms: 0.622458
+2026-11-16T04:25:00.5899673Z   type: 'test'
+2026-11-16T04:25:00.5900074Z   ...
+2026-11-16T04:25:00.5900883Z # Subtest: rejects rewritten historical claim: src/calculators/finance/compound-interest.test.ts
+2026-11-16T04:25:00.5902017Z ok 16 - rejects rewritten historical claim: src/calculators/finance/compound-interest.test.ts
+2026-11-16T04:25:00.5902966Z   ---
+2026-11-16T04:25:00.5903524Z   duration_ms: 0.168378
+2026-11-16T04:25:00.5903979Z   type: 'test'
+2026-11-16T04:25:00.5904380Z   ...
+2026-11-16T04:25:00.5905162Z # Subtest: rejects silent predecessor reversion: src/calculators/finance/compound-interest.test.ts
+2026-11-16T04:25:00.5906351Z ok 17 - rejects silent predecessor reversion: src/calculators/finance/compound-interest.test.ts
+2026-11-16T04:25:00.5907089Z   ---
+2026-11-16T04:25:00.5907469Z   duration_ms: 0.173335
+2026-11-16T04:25:00.5907898Z   type: 'test'
+2026-11-16T04:25:00.5908303Z   ...
+2026-11-16T04:25:00.5909155Z # Subtest: rejects unavailable or replaced Git provenance: src/calculators/finance/compound-interest.test.ts
+2026-11-16T04:25:00.5910384Z ok 18 - rejects unavailable or replaced Git provenance: src/calculators/finance/compound-interest.test.ts
+2026-11-16T04:25:00.5911169Z   ---
+2026-11-16T04:25:00.5911581Z   duration_ms: 0.18982
+2026-11-16T04:25:00.5912028Z   type: 'test'
+2026-11-16T04:25:00.5912562Z   ...
+2026-11-16T04:25:00.5913318Z # Subtest: rejects corrupted source object: src/calculators/finance/compound-interest.test.ts
+2026-11-16T04:25:00.5914427Z ok 19 - rejects corrupted source object: src/calculators/finance/compound-interest.test.ts
+2026-11-16T04:25:00.5915179Z   ---
+2026-11-16T04:25:00.5915573Z   duration_ms: 25.493378
+2026-11-16T04:25:00.5916003Z   type: 'test'
+2026-11-16T04:25:00.5916388Z   ...
+2026-11-16T04:25:00.5917116Z # Subtest: admits exact committed successor: src/components/full-six/candidate-workbench.tsx
+2026-11-16T04:25:00.5918180Z ok 20 - admits exact committed successor: src/components/full-six/candidate-workbench.tsx
+2026-11-16T04:25:00.5918893Z   ---
+2026-11-16T04:25:00.5919279Z   duration_ms: 153.085528
+2026-11-16T04:25:00.5919713Z   type: 'test'
+2026-11-16T04:25:00.5920098Z   ...
+2026-11-16T04:25:00.5921193Z # Subtest: rejects uncommitted successor tamper: src/components/full-six/candidate-workbench.tsx
+2026-11-16T04:25:00.5922276Z ok 21 - rejects uncommitted successor tamper: src/components/full-six/candidate-workbench.tsx
+2026-11-16T04:25:00.5923130Z   ---
+2026-11-16T04:25:00.5923518Z   duration_ms: 0.544844
+2026-11-16T04:25:00.5923941Z   type: 'test'
+2026-11-16T04:25:00.5924337Z   ...
+2026-11-16T04:25:00.5925062Z # Subtest: rejects rewritten historical claim: src/components/full-six/candidate-workbench.tsx
+2026-11-16T04:25:00.5926143Z ok 22 - rejects rewritten historical claim: src/components/full-six/candidate-workbench.tsx
+2026-11-16T04:25:00.5926959Z   ---
+2026-11-16T04:25:00.5927384Z   duration_ms: 0.327032
+2026-11-16T04:25:00.5945767Z   type: 'test'
+2026-11-16T04:25:00.5965736Z   ...
+2026-11-16T04:25:00.5966644Z # Subtest: rejects silent predecessor reversion: src/components/full-six/candidate-workbench.tsx
+2026-11-16T04:25:00.5967774Z ok 23 - rejects silent predecessor reversion: src/components/full-six/candidate-workbench.tsx
+2026-11-16T04:25:00.5968504Z   ---
+2026-11-16T04:25:00.5968894Z   duration_ms: 0.687143
+2026-11-16T04:25:00.5969316Z   type: 'test'
+2026-11-16T04:25:00.5969700Z   ...
+2026-11-16T04:25:00.5970485Z # Subtest: rejects unavailable or replaced Git provenance: src/components/full-six/candidate-workbench.tsx
+2026-11-16T04:25:00.5971596Z ok 24 - rejects unavailable or replaced Git provenance: src/components/full-six/candidate-workbench.tsx
+2026-11-16T04:25:00.5972280Z   ---
+2026-11-16T04:25:00.5972829Z   duration_ms: 0.147177
+2026-11-16T04:25:00.5973244Z   type: 'test'
+2026-11-16T04:25:00.5973637Z   ...
+2026-11-16T04:25:00.5974428Z # Subtest: rejects corrupted source object: src/components/full-six/candidate-workbench.tsx
+2026-11-16T04:25:00.5975430Z ok 25 - rejects corrupted source object: src/components/full-six/candidate-workbench.tsx
+2026-11-16T04:25:00.5976084Z   ---
+2026-11-16T04:25:00.5976462Z   duration_ms: 28.475404
+2026-11-16T04:25:00.5976882Z   type: 'test'
+2026-11-16T04:25:00.5977273Z   ...
+2026-11-16T04:25:00.5977849Z # Subtest: admits exact committed successor: .github/workflows/ci.yml
+2026-11-16T04:25:00.5978637Z ok 26 - admits exact committed successor: .github/workflows/ci.yml
+2026-11-16T04:25:00.5979188Z   ---
+2026-11-16T04:25:00.5979574Z   duration_ms: 364.568015
+2026-11-16T04:25:00.5980000Z   type: 'test'
+2026-11-16T04:25:00.5980378Z   ...
+2026-11-16T04:25:00.5980991Z # Subtest: rejects uncommitted successor tamper: .github/workflows/ci.yml
+2026-11-16T04:25:00.5981797Z ok 27 - rejects uncommitted successor tamper: .github/workflows/ci.yml
+2026-11-16T04:25:00.5982544Z   ---
+2026-11-16T04:25:00.5983024Z   duration_ms: 0.86204
+2026-11-16T04:25:00.5983436Z   type: 'test'
+2026-11-16T04:25:00.5983834Z   ...
+2026-11-16T04:25:00.5984432Z # Subtest: rejects rewritten historical claim: .github/workflows/ci.yml
+2026-11-16T04:25:00.5985229Z ok 28 - rejects rewritten historical claim: .github/workflows/ci.yml
+2026-11-16T04:25:00.5985804Z   ---
+2026-11-16T04:25:00.5986176Z   duration_ms: 0.080969
+2026-11-16T04:25:00.5986602Z   type: 'test'
+2026-11-16T04:25:00.5986984Z   ...
+2026-11-16T04:25:00.5987599Z # Subtest: rejects silent predecessor reversion: .github/workflows/ci.yml
+2026-11-16T04:25:00.5988420Z ok 29 - rejects silent predecessor reversion: .github/workflows/ci.yml
+2026-11-16T04:25:00.5988992Z   ---
+2026-11-16T04:25:00.5989380Z   duration_ms: 0.68518
+2026-11-16T04:25:00.5989789Z   type: 'test'
+2026-11-16T04:25:00.5990168Z   ...
+2026-11-16T04:25:00.5990858Z # Subtest: rejects unavailable or replaced Git provenance: .github/workflows/ci.yml
+2026-11-16T04:25:00.5991806Z ok 30 - rejects unavailable or replaced Git provenance: .github/workflows/ci.yml
+2026-11-16T04:25:00.5992636Z   ---
+2026-11-16T04:25:00.5993045Z   duration_ms: 0.110654
+2026-11-16T04:25:00.5993470Z   type: 'test'
+2026-11-16T04:25:00.5993861Z   ...
+2026-11-16T04:25:00.5994450Z # Subtest: rejects corrupted source object: .github/workflows/ci.yml
+2026-11-16T04:25:00.5995223Z ok 31 - rejects corrupted source object: .github/workflows/ci.yml
+2026-11-16T04:25:00.5996095Z   ---
+2026-11-16T04:25:00.5996498Z   duration_ms: 21.492756
+2026-11-16T04:25:00.5996937Z   type: 'test'
+2026-11-16T04:25:00.5997336Z   ...
+2026-11-16T04:25:00.5997923Z # Subtest: does not admit any unrelated engine, UI or unsafe path
+2026-11-16T04:25:00.5998690Z ok 32 - does not admit any unrelated engine, UI or unsafe path
+2026-11-16T04:25:00.5999235Z   ---
+2026-11-16T04:25:00.5999637Z   duration_ms: 0.206284
+2026-11-16T04:25:00.6000075Z   type: 'test'
+2026-11-16T04:25:00.6000472Z   ...
+2026-11-16T04:25:00.6001452Z # Subtest: integrated checker rejects a predecessor reversion even with its valid old hash: src/calculators/finance/compound-interest.ts
+2026-11-16T04:25:00.6003307Z ok 33 - integrated checker rejects a predecessor reversion even with its valid old hash: src/calculators/finance/compound-interest.ts
+2026-11-16T04:25:00.6004217Z   ---
+2026-11-16T04:25:00.6004701Z   duration_ms: 54.998681
+2026-11-16T04:25:00.6005125Z   type: 'test'
+2026-11-16T04:25:00.6005514Z   ...
+2026-11-16T04:25:00.6006508Z # Subtest: integrated checker rejects a predecessor reversion even with its valid old hash: src/components/full-six/candidate-workbench.tsx
+2026-11-16T04:25:00.6008026Z ok 34 - integrated checker rejects a predecessor reversion even with its valid old hash: src/components/full-six/candidate-workbench.tsx
+2026-11-16T04:25:00.6008894Z   ---
+2026-11-16T04:25:00.6009280Z   duration_ms: 8.495312
+2026-11-16T04:25:00.6009694Z   type: 'test'
+2026-11-16T04:25:00.6010076Z   ...
+2026-11-16T04:25:00.6010943Z # Subtest: integrated checker rejects a predecessor reversion even with its valid old hash: .github/workflows/ci.yml
+2026-11-16T04:25:00.6012223Z ok 35 - integrated checker rejects a predecessor reversion even with its valid old hash: .github/workflows/ci.yml
+2026-11-16T04:25:00.6013120Z   ---
+2026-11-16T04:25:00.6013698Z   duration_ms: 16.760386
+2026-11-16T04:25:00.6014163Z   type: 'test'
+2026-11-16T04:25:00.6014569Z   ...
+2026-11-16T04:25:00.6015329Z # Subtest: integrated checker rejects unrelated source tamper without new approval
+2026-11-16T04:25:00.6016240Z ok 36 - integrated checker rejects unrelated source tamper without new approval
+2026-11-16T04:25:00.6016853Z   ---
+2026-11-16T04:25:00.6017381Z   duration_ms: 0.366861
+2026-11-16T04:25:00.6020405Z   type: 'test'
+2026-11-16T04:25:00.6020804Z   ...
+2026-11-16T04:25:00.6021672Z # Subtest: workbench binding rejects supplemental comparison tamper: src/lib/full-six/candidate/scenario-comparison.ts
+2026-11-16T04:25:00.6023144Z ok 37 - workbench binding rejects supplemental comparison tamper: src/lib/full-six/candidate/scenario-comparison.ts
+2026-11-16T04:25:00.6023946Z   ---
+2026-11-16T04:25:00.6024320Z   duration_ms: 9.985479
+2026-11-16T04:25:00.6024732Z   type: 'test'
+2026-11-16T04:25:00.6025079Z   ...
+2026-11-16T04:25:00.6025999Z # Subtest: workbench binding rejects supplemental comparison tamper: src/components/full-six/candidate-scenario-comparison.tsx
+2026-11-16T04:25:00.6027374Z ok 38 - workbench binding rejects supplemental comparison tamper: src/components/full-six/candidate-scenario-comparison.tsx
+2026-11-16T04:25:00.6028224Z   ---
+2026-11-16T04:25:00.6028591Z   duration_ms: 9.29744
+2026-11-16T04:25:00.6029002Z   type: 'test'
+2026-11-16T04:25:00.6029366Z   ...
+2026-11-16T04:25:16.0198904Z # Subtest: reuses verified revisions without redundant network fetch
+2026-11-16T04:25:16.0199783Z ok 39 - reuses verified revisions without redundant network fetch
+2026-11-16T04:25:16.0200365Z   ---
+2026-11-16T04:25:16.0200653Z   duration_ms: 3.016678
+2026-11-16T04:25:16.0200970Z   type: 'test'
+2026-11-16T04:25:16.0201233Z   ...
+2026-11-16T04:25:16.0202811Z # Subtest: fetches only exact missing commits and re-verifies them
+2026-11-16T04:25:16.0204854Z ok 40 - fetches only exact missing commits and re-verifies them
+2026-11-16T04:25:16.0205337Z   ---
+2026-11-16T04:25:16.0205600Z   duration_ms: 4.634854
+2026-11-16T04:25:16.0205912Z   type: 'test'
+2026-11-16T04:25:16.0206164Z   ...
+2026-11-16T04:25:16.0226665Z # Subtest: fails closed on absent or substituted revisions after fetch
+2026-11-16T04:25:16.0229317Z ok 41 - fails closed on absent or substituted revisions after fetch
+2026-11-16T04:25:16.0229786Z   ---
+2026-11-16T04:25:16.0230062Z   duration_ms: 3.816297
+2026-11-16T04:25:16.0230358Z   type: 'test'
+2026-11-16T04:25:16.0230632Z   ...
+2026-11-16T04:25:16.0231363Z # Subtest: standalone exact bootstrap source capture preserves frozen manifest and governing verifier sources
+2026-11-16T04:25:16.0232639Z ok 42 - standalone exact bootstrap source capture preserves frozen manifest and governing verifier sources
+2026-11-16T04:25:16.0233285Z   ---
+2026-11-16T04:25:16.0233542Z   duration_ms: 17963.845776
+2026-11-16T04:25:16.0233865Z   type: 'test'
+2026-11-16T04:25:16.0234335Z   ...
+2026-11-16T04:25:16.0234962Z # Subtest: bootstrap source audit refuses old-valid reversion, arbitrary tamper and missing Git proof
+2026-11-16T04:25:16.0235577Z ok 43 - bootstrap source audit refuses old-valid reversion, arbitrary tamper and missing Git proof
+2026-11-16T04:25:16.0235954Z   ---
+2026-11-16T04:25:16.0236129Z   duration_ms: 8637.080321
+2026-11-16T04:25:16.0236340Z   type: 'test'
+2026-11-16T04:25:16.0236507Z   ...
+2026-11-16T04:25:16.0442284Z 1..43
+2026-11-16T04:25:16.0442857Z # tests 43
+2026-11-16T04:25:16.0443116Z # suites 0
+2026-11-16T04:25:16.0443376Z # pass 43
+2026-11-16T04:25:16.0443625Z # fail 0
+2026-11-16T04:25:16.0443881Z # cancelled 0
+2026-11-16T04:25:16.0444419Z # skipped 0
+2026-11-16T04:25:16.0444741Z # todo 0
+2026-11-16T04:25:16.0445307Z # duration_ms 26740.94391
+2026-11-16T04:25:23.9702200Z {"candidateIds":[235,251,275,276,282,283],"exactSourceBindings":41,"canonicalAccepted":0,"publicationEligible":0,"releaseHold":true}
+2026-11-16T04:25:24.0441520Z TAP version 13
+2026-11-16T04:25:25.2459788Z # The request id "/tmp/candidate-outside-ThihXc/synthetic.txt" is outside of Vite serving allow list.
+2026-11-16T04:25:25.2462692Z # - /home/runner/work/calcumint.com/calcumint.com
+2026-11-16T04:25:25.2465962Z # Refer to docs https://vite.dev/config/server-options.html\#server-fs-allow for configurations and more details.
+2026-11-16T04:25:25.3479605Z # Subtest: private six-candidate fixture requires authentication, exact origin and read-only methods
+2026-11-16T04:25:25.3484701Z ok 1 - private six-candidate fixture requires authentication, exact origin and read-only methods
+2026-11-16T04:25:25.3485366Z   ---
+2026-11-16T04:25:25.3485641Z   duration_ms: 1182.669917
+2026-11-16T04:25:25.3486209Z   type: 'test'
+2026-11-16T04:25:25.3486546Z   ...
+2026-11-16T04:25:25.3819523Z 1..1
+2026-11-16T04:25:25.3819873Z # tests 1
+2026-11-16T04:25:25.3820617Z # suites 0
+2026-11-16T04:25:25.3821136Z # pass 1
+2026-11-16T04:25:25.3821998Z # fail 0
+2026-11-16T04:25:25.3822549Z # cancelled 0
+2026-11-16T04:25:25.3823059Z # skipped 0
+2026-11-16T04:25:25.3823377Z # todo 0
+2026-11-16T04:25:25.3823778Z # duration_ms 1346.964064
+2026-11-16T04:25:26.7053973Z {"id":276,"plan":"free","stage":"begin"}
+2026-11-16T04:25:28.8345230Z {"id":276,"plan":"pro","stage":"begin"}
+2026-11-16T04:25:29.2728991Z {"id":276,"plan":"business","stage":"begin"}
+2026-11-16T04:25:29.7446376Z {"id":275,"plan":"free","stage":"begin"}
+2026-11-16T04:25:30.0486516Z {"id":275,"plan":"pro","stage":"begin"}
+2026-11-16T04:25:30.4769891Z {"id":275,"plan":"business","stage":"begin"}
+2026-11-16T04:25:30.9046764Z {"id":282,"plan":"free","stage":"begin"}
+2026-11-16T04:25:31.1545778Z {"id":282,"plan":"pro","stage":"begin"}
+2026-11-16T04:25:31.6246803Z {"id":282,"plan":"business","stage":"begin"}
+2026-11-16T04:25:32.1337106Z {"id":283,"plan":"free","stage":"begin"}
+2026-11-16T04:25:32.3807484Z {"id":283,"plan":"pro","stage":"begin"}
+2026-11-16T04:25:32.8503572Z {"id":283,"plan":"business","stage":"begin"}
+2026-11-16T04:25:33.4041467Z {"id":251,"plan":"free","stage":"begin"}
+2026-11-16T04:25:33.7075100Z {"id":251,"plan":"pro","stage":"begin"}
+2026-11-16T04:25:34.3211802Z {"id":251,"plan":"business","stage":"begin"}
+2026-11-16T04:25:35.0077825Z {"id":235,"plan":"free","stage":"begin"}
+2026-11-16T04:25:35.2611938Z {"id":235,"plan":"pro","stage":"begin"}
+2026-11-16T04:25:35.9383940Z {"id":235,"plan":"business","stage":"begin"}
+2026-11-16T04:25:37.8401198Z {"passed":true,"journeys":18,"directory":"/home/runner/work/_temp/six-candidate-closure"}
+2026-11-16T04:25:44.5857340Z {"passed":true,"journeys":6,"output":"/home/runner/work/_temp/six-candidate-closure/product-completion"}
+2026-11-16T04:25:44.7602267Z ##[group]Run actions/upload-artifact@v4
+2026-11-16T04:25:44.7603030Z with:
+2026-11-16T04:25:44.7603460Z   name: six-candidate-closure-aaf369e67096718fd3bfff3d86c9c8e861a1cd42
+2026-11-16T04:25:44.7604398Z   path: /home/runner/work/_temp/six-candidate-closure/receipt.json
+/home/runner/work/_temp/six-candidate-closure/product-completion/
+
+2026-11-16T04:25:44.7605185Z   if-no-files-found: error
+2026-11-16T04:25:44.7605492Z   retention-days: 7
+2026-11-16T04:25:44.7605772Z   compression-level: 6
+2026-11-16T04:25:44.7606065Z   overwrite: false
+2026-11-16T04:25:44.7606340Z   include-hidden-files: false
+2026-11-16T04:25:44.7606653Z env:
+2026-11-16T04:25:44.7607156Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.s7W8IQ/opt/google/chrome/chrome
+2026-11-16T04:25:44.7607721Z ##[endgroup]
+2026-11-16T04:25:44.8987350Z (node:82631) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-16T04:25:44.8988100Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-16T04:25:44.9064987Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-11-16T04:25:44.9067489Z The least common ancestor is /home/runner/work/_temp/six-candidate-closure. This will be the root directory of the artifact
+2026-11-16T04:25:44.9068624Z With the provided path, there will be 18 files uploaded
+2026-11-16T04:25:44.9071969Z Artifact name is valid!
+2026-11-16T04:25:44.9072892Z Root directory input is valid!
+2026-11-16T04:25:45.2701285Z Beginning upload of artifact content to blob storage
+2026-11-16T04:25:45.3079862Z (node:82631) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-16T04:25:45.7310637Z Uploaded bytes 90469
+2026-11-16T04:25:45.8102737Z Finished uploading artifact content to blob storage!
+2026-11-16T04:25:45.8103472Z SHA256 digest of uploaded artifact zip is 2295136021be2741c10e6550a8b808da92800c7d804b240bc947ad4b1cc5e6ac
+2026-11-16T04:25:45.8104725Z Finalizing artifact upload
+2026-11-16T04:25:46.2207418Z Artifact six-candidate-closure-aaf369e67096718fd3bfff3d86c9c8e861a1cd42.zip successfully finalized. Artifact ID 14197488348
+2026-11-16T04:25:46.2208573Z Artifact six-candidate-closure-aaf369e67096718fd3bfff3d86c9c8e861a1cd42 has been successfully uploaded! Final size is 90469 bytes. Artifact ID is 14197488348
+2026-11-16T04:25:46.2212674Z Artifact download URL: https://github.com/subvicco12/calcumint.com/actions/runs/43803149184/artifacts/14197488348
+2026-11-16T04:25:46.2370303Z ##[group]Run node scripts/check-decimal50-statistics.mjs
+2026-11-16T04:25:46.2370686Z [36;1mnode scripts/check-decimal50-statistics.mjs[0m
+2026-11-16T04:25:46.2370994Z [36;1mnode tests/statistics-workbench/browser.mjs[0m
+2026-11-16T04:25:46.2418602Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:25:46.2418838Z env:
+2026-11-16T04:25:46.2419182Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.s7W8IQ/opt/google/chrome/chrome
+2026-11-16T04:25:46.2419674Z   DECIMAL50_BROWSER_RECEIPT: /home/runner/work/_temp/decimal50-statistics-browser
+2026-11-16T04:25:46.2420020Z ##[endgroup]
+2026-11-16T04:25:46.2767176Z {"catalogIds":[282,283],"sourceBindings":23,"publicationEligible":0,"releaseHold":true}
+2026-11-16T04:25:47.5963852Z {"width":320,"id":282,"plan":"free"}
+2026-11-16T04:25:49.9179283Z {"width":320,"id":282,"plan":"pro"}
+2026-11-16T04:25:50.6573874Z {"width":320,"id":282,"plan":"business"}
+2026-11-16T04:25:51.3771576Z {"width":320,"id":283,"plan":"free"}
+2026-11-16T04:25:51.7796207Z {"width":320,"id":283,"plan":"pro"}
+2026-11-16T04:25:52.4943873Z {"width":320,"id":283,"plan":"business"}
+2026-11-16T04:25:53.1692693Z {"width":1440,"id":282,"plan":"free"}
+2026-11-16T04:25:53.5886943Z {"width":1440,"id":282,"plan":"pro"}
+2026-11-16T04:25:54.2947850Z {"width":1440,"id":282,"plan":"business"}
+2026-11-16T04:25:55.0068906Z {"width":1440,"id":283,"plan":"free"}
+2026-11-16T04:25:55.4040241Z {"width":1440,"id":283,"plan":"pro"}
+2026-11-16T04:25:56.0717624Z {"width":1440,"id":283,"plan":"business"}
+2026-11-16T04:25:57.0680336Z {"passed":true,"journeys":12,"directory":"/home/runner/work/_temp/decimal50-statistics-browser"}
+2026-11-16T04:25:57.2304332Z ##[group]Run node_modules/.bin/vite-node --config vitest.config.ts scripts/first20-publication/polygon-evidence.ts --check
+2026-11-16T04:25:57.2305029Z [36;1mnode_modules/.bin/vite-node --config vitest.config.ts scripts/first20-publication/polygon-evidence.ts --check[0m
+2026-11-16T04:25:57.2305515Z [36;1mnode scripts/first20-publication/evidence.mjs --check[0m
+2026-11-16T04:25:57.2305870Z [36;1mnode tests/first20-publication/evidence.test.mjs[0m
+2026-11-16T04:25:57.2306178Z [36;1mnode tests/first20-publication/browser.mjs[0m
+2026-11-16T04:25:57.2349833Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:25:57.2350061Z env:
+2026-11-16T04:25:57.2350380Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.s7W8IQ/opt/google/chrome/chrome
+2026-11-16T04:25:57.2350858Z   FIRST20_BROWSER_RECEIPT: /home/runner/work/_temp/first20-publication-browser
+2026-11-16T04:25:57.2351185Z ##[endgroup]
+2026-11-16T04:25:58.2171437Z {"cases":23,"legacyFalseOverflowsCorrected":11,"unrepresentableRejected":2}
+2026-11-16T04:25:58.4249098Z node:internal/modules/run_main:123
+2026-11-16T04:25:58.4249582Z     triggerUncaughtException(
+2026-11-16T04:25:58.4249889Z     ^
+2026-11-16T04:25:58.4250016Z 
+2026-11-16T04:25:58.4251037Z AssertionError [ERR_ASSERTION]: Current factory bytes differ: src/lib/calculator-factory/workflows.ts
+2026-11-16T04:25:58.4252211Z     at rejectChangedUnchangedFactoryBytes (file:///home/runner/work/calcumint.com/calcumint.com/tests/parallel-source-20261110/core.mjs:357:35)
+2026-11-16T04:25:58.4253985Z     at rejectChangedCurrentAuthorityBytes (file:///home/runner/work/calcumint.com/calcumint.com/tests/parallel-source-20261110/core.mjs:370:2)
+2026-11-16T04:25:58.4255302Z     at verifyParallelSource (file:///home/runner/work/calcumint.com/calcumint.com/tests/parallel-source-20261110/core.mjs:372:84)
+2026-11-16T04:25:58.4256452Z     at verifyExecutionManifest (file:///home/runner/work/calcumint.com/calcumint.com/scripts/first20-publication/evidence.mjs:22:15)
+2026-11-16T04:25:58.4257508Z     at file:///home/runner/work/calcumint.com/calcumint.com/scripts/first20-publication/evidence.mjs:55:44
+2026-11-16T04:25:58.4258216Z     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+2026-11-16T04:25:58.4258864Z     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+2026-11-16T04:25:58.4259627Z     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+2026-11-16T04:25:58.4260176Z   generatedMessage: false,
+2026-11-16T04:25:58.4260476Z   code: 'ERR_ASSERTION',
+2026-11-16T04:25:58.4261075Z   actual: false,
+2026-11-16T04:25:58.4272151Z   expected: true,
+2026-11-16T04:25:58.4272639Z   operator: '==',
+2026-11-16T04:25:58.4272934Z   diff: 'simple'
+2026-11-16T04:25:58.4273205Z }
+2026-11-16T04:25:58.4273332Z 
+2026-11-16T04:25:58.4273451Z Node.js v22.23.4
+2026-11-16T04:25:58.4336017Z ##[error]Process completed with exit code 1.
+2026-11-16T04:25:58.4409122Z ##[group]Run actions/upload-artifact@v4
+2026-11-16T04:25:58.4409375Z with:
+2026-11-16T04:25:58.4409632Z   name: calculator-sprint-aaf369e67096718fd3bfff3d86c9c8e861a1cd42
+2026-11-16T04:25:58.4410329Z   path: /home/runner/work/_temp/calculator-sprint-cohort-browser-report.json
+/home/runner/work/_temp/calculator-sprint-cohort-business-browser-report.json
+
+2026-11-16T04:25:58.4410877Z   if-no-files-found: warn
+2026-11-16T04:25:58.4411091Z   retention-days: 7
+2026-11-16T04:25:58.4411275Z   compression-level: 6
+2026-11-16T04:25:58.4411626Z   overwrite: false
+2026-11-16T04:25:58.4411816Z   include-hidden-files: false
+2026-11-16T04:25:58.4412028Z env:
+2026-11-16T04:25:58.4412327Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.s7W8IQ/opt/google/chrome/chrome
+2026-11-16T04:25:58.4412939Z ##[endgroup]
+2026-11-16T04:25:58.5809318Z (node:82960) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-16T04:25:58.5810062Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-16T04:25:58.5843617Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-11-16T04:25:58.5846445Z The least common ancestor is /home/runner/work/_temp. This will be the root directory of the artifact
+2026-11-16T04:25:58.5859939Z ##[warning]No files were found with the provided path: /home/runner/work/_temp/calculator-sprint-cohort-browser-report.json
+/home/runner/work/_temp/calculator-sprint-cohort-business-browser-report.json. No artifacts will be uploaded.
+2026-11-16T04:25:58.6026036Z ##[group]Run actions/upload-artifact@v4
+2026-11-16T04:25:58.6026422Z with:
+2026-11-16T04:25:58.6026818Z   name: acceptance-closure-aaf369e67096718fd3bfff3d86c9c8e861a1cd42
+2026-11-16T04:25:58.6027696Z   path: /home/runner/work/_temp/acceptance-closure/
+docs/acceptance-closure-20261108/financial-rounding-witnesses.json
+
+2026-11-16T04:25:58.6028425Z   if-no-files-found: warn
+2026-11-16T04:25:58.6028724Z   retention-days: 7
+2026-11-16T04:25:58.6029005Z   compression-level: 6
+2026-11-16T04:25:58.6029287Z   overwrite: false
+2026-11-16T04:25:58.6029579Z   include-hidden-files: false
+2026-11-16T04:25:58.6029893Z env:
+2026-11-16T04:25:58.6030385Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.s7W8IQ/opt/google/chrome/chrome
+2026-11-16T04:25:58.6030963Z ##[endgroup]
+2026-11-16T04:25:58.7507399Z (node:82972) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-16T04:25:58.7508158Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-16T04:25:58.7550279Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-11-16T04:25:58.7555765Z The least common ancestor is /home/runner/work. This will be the root directory of the artifact
+2026-11-16T04:25:58.7556725Z With the provided path, there will be 1 file uploaded
+2026-11-16T04:25:58.7557673Z Artifact name is valid!
+2026-11-16T04:25:58.7558037Z Root directory input is valid!
+2026-11-16T04:25:59.1276932Z Beginning upload of artifact content to blob storage
+2026-11-16T04:25:59.1420211Z (node:82972) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-16T04:25:59.4144901Z Uploaded bytes 2741
+2026-11-16T04:25:59.4878123Z Finished uploading artifact content to blob storage!
+2026-11-16T04:25:59.4878805Z SHA256 digest of uploaded artifact zip is c417ca1f17ecd61e2c4d88c4a6123ae7dfd46f3a820f026784b6ddfaf6a974ab
+2026-11-16T04:25:59.4879899Z Finalizing artifact upload
+2026-11-16T04:25:59.8546702Z Artifact acceptance-closure-aaf369e67096718fd3bfff3d86c9c8e861a1cd42.zip successfully finalized. Artifact ID 14197178979
+2026-11-16T04:25:59.8547672Z Artifact acceptance-closure-aaf369e67096718fd3bfff3d86c9c8e861a1cd42 has been successfully uploaded! Final size is 2741 bytes. Artifact ID is 14197178979
+2026-11-16T04:25:59.8553360Z Artifact download URL: https://github.com/subvicco12/calcumint.com/actions/runs/43803149184/artifacts/14197178979
+2026-11-16T04:25:59.8733943Z Post job cleanup.
+2026-11-16T04:25:59.9446156Z [command]/usr/bin/git version
+2026-11-16T04:25:59.9485185Z git version 2.56.1
+2026-11-16T04:25:59.9516374Z Temporarily overriding HOME='/home/runner/work/_temp/7de2ebbf-c069-496a-806d-c42f3871586a' before making global git config changes
+2026-11-16T04:25:59.9517545Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-16T04:25:59.9521088Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/calcumint.com/calcumint.com
+2026-11-16T04:25:59.9558748Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-16T04:25:59.9599763Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-16T04:25:59.9881208Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-16T04:25:59.9909819Z http.https://github.com/.extraheader
+2026-11-16T04:25:59.9928133Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-16T04:25:59.9967139Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-16T04:26:00.0254347Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-16T04:26:00.0286126Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-16T04:26:00.0712154Z Cleaning up orphan processes
+2026-11-16T04:26:00.1059680Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

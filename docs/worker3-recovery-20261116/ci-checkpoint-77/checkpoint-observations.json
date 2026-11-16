@@ -1,0 +1,106 @@
+{
+  "kind": "HISTORICAL77_TERMINAL_CI_CHECKPOINT_NOT_FINAL_CANDIDATE",
+  "head": "77eb196e5606bf87ee3cf67326d9fc4354cfef45",
+  "runId": 43806808474,
+  "runAttempt": 1,
+  "status": "completed",
+  "conclusion": "cancelled",
+  "jobs": [
+    {
+      "id": 133099357670,
+      "name": "publication-factory",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 133099357763,
+      "name": "checks",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 133099357812,
+      "name": "full-product",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 133099357846,
+      "name": "source-acceptance",
+      "status": "completed",
+      "conclusion": "cancelled"
+    },
+    {
+      "id": 133099357874,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 133105838370,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "failure"
+    }
+  ],
+  "hostedOriginalApiUiNativeCases": {
+    "scope": "Actual hosted original six-case suite on head77",
+    "allSixPassed": true,
+    "apiMs": 3739,
+    "uiMs": 3075,
+    "nativeMs": 4203,
+    "fileMs": 11314,
+    "budgetUnchanged": true
+  },
+  "olderLocalApiFailure": {
+    "head": "aaf369e67096718fd3bfff3d86c9c8e861a1cd42",
+    "apiMs": 6305,
+    "budgetMs": 5000,
+    "passed": false,
+    "scope": "Historical local environment and different implementation head; not a claim that head77 hosted API failed"
+  },
+  "sourceJob": {
+    "conclusion": "cancelled",
+    "elapsedUnitSeconds": 1172.13,
+    "unitSummaryFiles": 1087,
+    "operationCancelledNearJobBudgetMinutes": 20,
+    "explicitCancelActorEstablished": false,
+    "sourceVisibleCaseCount": {
+      "emittedContiguousResults": 96,
+      "visiblePassed": 95,
+      "visibleFailed": 1,
+      "expectedOverallCases": 115,
+      "finalPlanOrCountPresent": false,
+      "interpretation": "Emitted minimum only; no assertion that remaining cases never executed."
+    },
+    "nestedCount60": {
+      "passed": 58,
+      "failed": 2
+    }
+  },
+  "remainingObservedFailures": [
+    "Three failed unit tests: lineage 60000 ms timeout, whole-source 150000 ms deadline, shortest consumer 65000 ms timeout; one additional unhandled RPC error. See exact failure inventory.",
+    "Source job cancelled after long unit execution; mandatory source gate incomplete.",
+    "Static historical/current runtime and shortest fixture assertions await separately reviewed successor."
+  ],
+  "qualificationGranted": false,
+  "selected20": "IMPLEMENTED_NOT_QUALIFIED",
+  "engineeringBaseline": 81,
+  "newConfirmedEngineering": 0,
+  "notFinalGeneration": true,
+  "unitSummary": {
+    "files": {
+      "failed": 2,
+      "passed": 1083,
+      "skipped": 2,
+      "total": 1087
+    },
+    "tests": {
+      "failed": 3,
+      "passed": 10492,
+      "skipped": 4,
+      "total": 10499
+    },
+    "unhandledErrors": 1
+  }
+}

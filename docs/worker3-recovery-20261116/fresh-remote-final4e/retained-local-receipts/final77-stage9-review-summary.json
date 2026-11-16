@@ -1,0 +1,160 @@
+{
+  "kind": "FINAL77_STAGE9_FIXTURE_EXACT_ADMISSION_NOT_QUALIFICATION",
+  "head": "77eb196e5606bf87ee3cf67326d9fc4354cfef45",
+  "base": "b809c807f645029814921b51f015a998e86869a8",
+  "peerReviewedPatch": "b3f19a897bc564e0bee079ae5d7c80b6b6a5e8ae",
+  "cherryPick": "b7028089",
+  "guard": "50c282932739f2eef6885a0929f8aaf87f1d0abb",
+  "authority": "8bcca5a9b3e9eab62f77a7051c0e4f532d35ddfa",
+  "pin": "77eb196e5606bf87ee3cf67326d9fc4354cfef45",
+  "guardPaths": [
+    "scripts/fetch-source-lineage.mjs",
+    "tests/four-worker-integration-20261115/source-stage9.test.mjs",
+    "tests/milestone100-20261114/source-preflight-stage8.mjs",
+    "tests/next-engineering-20261115/source-admission-stage9-fixture.mjs",
+    "tests/next-engineering-20261115/source-availability.test.mjs",
+    "tests/next-engineering-20261115/source-fresh-git-mandatory-children.mjs",
+    "tests/next-engineering-20261115/source-stage9-fixture.test.mjs",
+    "tests/parallel-source-20261110/bootstrap.mjs",
+    "tests/parallel-source-20261110/core.mjs"
+  ],
+  "guardCaptureSHA256": "727c4a68dd6473d5ced8d1b1b6f54613af7119a978e21923050df8d334601bdd",
+  "retainedAuthorityArraysBytePreserved": 161,
+  "original29TableUnchanged": true,
+  "priorFreshGit5AndBinding7JobsUnchangedPrefix": true,
+  "newMandatoryJob": [
+    "tests/next-engineering-20261115/source-stage9-fixture.test.mjs",
+    4
+  ],
+  "rawCurrent32FourCaseSHA256": "dce9ab31f02577cc410559d559fcec9bbb376ccc1326c513412c69d2677de52d",
+  "rawCurrent32FourCasesUnchangedAndMandatory": true,
+  "originalStage9Five": {
+    "args": [
+      "--test",
+      "tests/four-worker-integration-20261115/source-stage9.test.mjs"
+    ],
+    "timeout": 15000,
+    "milliseconds": 3094.6605170000003,
+    "status": "pass"
+  },
+  "newControlsFour": {
+    "tests": 4,
+    "pass": 4,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 71.708239
+  },
+  "newIndependentAuthorityPin": {
+    "tests": 1,
+    "pass": 1,
+    "fail": 0,
+    "skipped": 0,
+    "durationMs": 4549.201456
+  },
+  "actualDefaultProofOnce": {
+    "command": "actual default verifyParallelSource()",
+    "invocations": 1,
+    "head": "77eb196e5606bf87ee3cf67326d9fc4354cfef45",
+    "qualificationGranted": false,
+    "releaseHold": true,
+    "returnValue": true,
+    "status": "pass",
+    "milliseconds": 25422.811028,
+    "closingHead": "77eb196e5606bf87ee3cf67326d9fc4354cfef45",
+    "closingStatus": ""
+  },
+  "priorOriginal115FailureUnresolved": {
+    "head": "b809c807f645029814921b51f015a998e86869a8",
+    "command": [
+      "/workspace/.pr1467/sprint/node-v22.23.4-linux-x64/bin/node",
+      "node_modules/vitest/vitest.mjs",
+      "run",
+      "src/lib/parallel-source-evidence.test.ts",
+      "--testNamePattern",
+      "^executes fresh current-source, full-authority, reader, reversion and nomination negatives$",
+      "--reporter=verbose"
+    ],
+    "selectedOriginalCase": "executes fresh current-source, full-authority, reader, reversion and nomination negatives",
+    "startedAt": "2026-11-16T04:43:19.708245+00:00",
+    "endedAt": "2026-11-16T04:45:51.165715+00:00",
+    "seconds": 151.4575453590005,
+    "exitCode": 1,
+    "childTimeoutMilliseconds": 150000,
+    "originalOuterCaseTimeoutMilliseconds": 160000,
+    "timersChanged": false,
+    "qualificationGranted": false,
+    "releaseHold": true
+  },
+  "priorFailureScope": "Only requested firstcase at b809; child exceeded unchanged150000ms, outer160000ms unchanged. No115repeat after Stage9 change.",
+  "publication": {
+    "push": "nonforce fastforward f94521a5\u219277eb196e",
+    "remote": "https://github.com/subvicco12/calcumint.com.git",
+    "ref": "refs/heads/engineering/worker3-publication-recovery-20261116",
+    "lsRemoteVerified": "77eb196e5606bf87ee3cf67326d9fc4354cfef45"
+  },
+  "sourceFreeze": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+  "srcPackageWorkflowChanges": false,
+  "timersChanged": false,
+  "qualificationGranted": false,
+  "all20Disposition": "IMPLEMENTED_NOT_QUALIFIED",
+  "confirmedEngineeringBaseline": 81,
+  "potentialAfterQualification": 101,
+  "releaseHold": true,
+  "receipts": [
+    {
+      "path": "/tmp/worker3-publication-receipts/admission-stage9-fixture.log",
+      "bytes": 685,
+      "sha256": "6d996e51a8e4841320363166b6c97e28ef25c9602faadcab7f33cfad2fe7eee9"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/stage9-original5-exact15.json",
+      "bytes": 180,
+      "sha256": "3ee290bbc1c27b69bdde8dd30161bcbc4036d259fdea70392f6f188143907136"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/stage9-original5-exact15.stdout",
+      "bytes": 1176,
+      "sha256": "1aad5596c7e34d89e941a925375e2edac6e3a03897d96998e509efc3c93a0a2a"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/stage9-original5-exact15.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/stage9-fixture-controls4.log",
+      "bytes": 1108,
+      "sha256": "ff547ae57a31a19c14e56b64a12207f7714179e496024457eed89de49a8e5cbc"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/stage9-fixture-independent-pin.log",
+      "bytes": 374,
+      "sha256": "b486079883518d1720fbfb017420daf4876cccbee176a8626cefa6586c325390"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/stage9-fixture-default-proof.json",
+      "bytes": 346,
+      "sha256": "fc94603addf53aa324add6e343c1d8053b5683c93b8f9ccd27db8f898387bf9d"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/stage9-fixture-default-proof.log",
+      "bytes": 305,
+      "sha256": "8624623006916f0da5843fe9a366f590087edeb667799821aaf85d7ec23cf526"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/binding32-original-source115-firstcase.json",
+      "bytes": 827,
+      "sha256": "2c0006f3e0888099f3eaae134cfbec31288588e8984646f12d9b32f4d038804a"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/binding32-original-source115-firstcase.log",
+      "bytes": 5774,
+      "sha256": "86ad0c0490696859de21943e3cb58825e3b15febd6e2e8489b8e6feea51b9616"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/binding32-review-summary.json",
+      "bytes": 7028,
+      "sha256": "396ab115434a3403903b5982d8f6314baa8f84518ccd9373711f84d26896ef01"
+    }
+  ]
+}

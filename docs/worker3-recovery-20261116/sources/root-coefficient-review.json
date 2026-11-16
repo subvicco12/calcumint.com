@@ -1,0 +1,29 @@
+{
+  "kind": "ROOT_INDEPENDENT_PRIMARY_SCAN_COEFFICIENT_REVIEW",
+  "catalogId": 291,
+  "reviewer": "root coordinator",
+  "reportedVia": "parent task instruction on 2026-11-16",
+  "sourceImage": "docs/worker3-recovery-20261116/sources/ams55-page299-mirror.jpg",
+  "sourceImageSHA256": "ec184caf269b7905c640c2bba439b0f93ceeabd46cdbfead478a80efe78a90b5",
+  "formula": "AMS55 printed page299,7.1.26",
+  "allSixCoefficientLiteralsAndSignsMatch": true,
+  "rootIndependentlyViewedImage": true,
+  "publisherHostClaim": false,
+  "hosting": "University of British Columbia mirror of original primary printed source",
+  "algebraMatch": "With x=abs(z)/sqrt(2), engine Horner polynomial equals the printed degree-five polynomial in t; erfc approximation is polynomial*exp(-x*x), and small normal tail is half.",
+  "publishedRealErfErrorBound": {
+    "absoluteMax": 1.5e-07,
+    "domain": "real x>=0",
+    "claimType": "As printed in original handbook formula7.1.26"
+  },
+  "conditionalExactRealCdfErrorBound": {
+    "absoluteMax": 7.5e-08,
+    "condition": "Exact-real arithmetic, exact normal relation, and the printed real-erf approximation bound; divide by two.",
+    "claimType": "Derived conditional real-arithmetic consequence; not new IEEE754 implementation bound"
+  },
+  "globalJavaScriptFloatingPointErrorCertified": false,
+  "finiteGridEvidence": "Existing finite |z|<=4 grid retained as finite-grid evidence only",
+  "qualificationGranted": false,
+  "selected20": "IMPLEMENTED_NOT_QUALIFIED",
+  "engineeringBaseline": 81
+}

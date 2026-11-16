@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: verifies the retained cache capture against the same canonical dependency bytes
+ok 1 - verifies the retained cache capture against the same canonical dependency bytes
+  ---
+  duration_ms: 18.55902
+  type: 'test'
+  ...
+# Subtest: retains byte-for-byte hash rejection after cache relocation
+ok 2 - retains byte-for-byte hash rejection after cache relocation
+  ---
+  duration_ms: 4.093472
+  type: 'test'
+  ...
+# Subtest: canonical repository and dependency paths remain exact
+ok 3 - canonical repository and dependency paths remain exact
+  ---
+  duration_ms: 0.346954
+  type: 'test'
+  ...
+# Subtest: unknown cache aliases, traversal and absolute paths fail before any read
+ok 4 - unknown cache aliases, traversal and absolute paths fail before any read
+  ---
+  duration_ms: 4.837933
+  type: 'test'
+  ...
+# Subtest: clean checkout reads canonical dependency file without the historical cache directory
+ok 5 - clean checkout reads canonical dependency file without the historical cache directory
+  ---
+  duration_ms: 29.37921
+  type: 'test'
+  ...
+# Subtest: original receipt and dependency lock retain their exact immutable capture bytes
+ok 6 - original receipt and dependency lock retain their exact immutable capture bytes
+  ---
+  duration_ms: 23.890845
+  type: 'test'
+  ...
+# Subtest: the exact F042 verifier claim preserves BASE2 history and proves the reviewed clean Stage7 successor and every dependency
+ok 7 - the exact F042 verifier claim preserves BASE2 history and proves the reviewed clean Stage7 successor and every dependency
+  ---
+  duration_ms: 10565.472478
+  type: 'test'
+  ...
+# Subtest: both original immutable verifier receipt claims still require the current complete binding
+ok 8 - both original immutable verifier receipt claims still require the current complete binding
+  ---
+  duration_ms: 5525.23837
+  type: 'test'
+  ...
+# Subtest: an arbitrary registered verifier claim is refused before dependency resolution
+ok 9 - an arbitrary registered verifier claim is refused before dependency resolution
+  ---
+  duration_ms: 8.093817
+  type: 'test'
+  ...
+# Subtest: the exact F042 claim cannot admit changed current verifier bytes
+ok 10 - the exact F042 claim cannot admit changed current verifier bytes
+  ---
+  duration_ms: 437.490447
+  type: 'test'
+  ...
+# Subtest: the exact F042 claim cannot admit a valid historical verifier reversion
+ok 11 - the exact F042 claim cannot admit a valid historical verifier reversion
+  ---
+  duration_ms: 632.497962
+  type: 'test'
+  ...
+# Subtest: the exact F042 claim rejects altered dependency bytes from the same supplied reader
+ok 12 - the exact F042 claim rejects altered dependency bytes from the same supplied reader
+  ---
+  duration_ms: 4640.648432
+  type: 'test'
+  ...
+# Subtest: a missing supplied F042 dependency never falls back to the existing workspace file
+ok 13 - a missing supplied F042 dependency never falls back to the existing workspace file
+  ---
+  duration_ms: 228.087229
+  type: 'test'
+  ...
+# Subtest: actual pre-npm cold prerequisite set retains original286 and adds every independently pinned Stage7 source and guard ref
+ok 14 - actual pre-npm cold prerequisite set retains original286 and adds every independently pinned Stage7 source and guard ref
+  ---
+  duration_ms: 17.638918
+  type: 'test'
+  ...
+# Subtest: actual warm prerequisites perform both full presence passes and refuse any missing post-fetch identity
+ok 15 - actual warm prerequisites perform both full presence passes and refuse any missing post-fetch identity
+  ---
+  duration_ms: 12.112034
+  type: 'test'
+  ...
+# Subtest: actual cold preflight rejects substituted identities and propagates one bounded fetch failure
+ok 16 - actual cold preflight rejects substituted identities and propagates one bounded fetch failure
+  ---
+  duration_ms: 5.392951
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 22691.808542

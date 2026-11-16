@@ -1,0 +1,55 @@
+{
+  "base": "419d56c17ca72dae58132aa00c7424b07477aa6c",
+  "scope": "20 scoped metadata delivery only",
+  "red": {
+    "log": "/tmp/calcumint-delivery-red.log",
+    "observedResult": "41 expected metadata failures,70 passed,111 total",
+    "processExitCode": null,
+    "statusCaveat": "Initial command ended in tail; Vitest exit status not separately captured. Failure summary retained."
+  },
+  "green": {
+    "log": "/tmp/calcumint-delivery-green.log",
+    "observedResult": "111/111 passed",
+    "wrapperExitCode": 0,
+    "processExitCode": null
+  },
+  "affected": {
+    "log": "/tmp/calcumint-delivery-affected.log",
+    "observedResult": "8 files433/433 passed",
+    "wrapperExitCode": 0,
+    "processExitCode": null
+  },
+  "typecheck": {
+    "log": "/tmp/calcumint-delivery-tsc.log",
+    "observedResult": "Completed with no diagnostic output; no process remained at stop check",
+    "wrapperExitCode": 0,
+    "processExitCode": null,
+    "statusCaveat": "Command ended in head; tsc exit status not separately captured. No claim exact standalone tsc exit receipt."
+  },
+  "eslint": {
+    "log": "/tmp/calcumint-delivery-eslint.log",
+    "processExitCode": 0,
+    "result": "8 changed files, no errors/warnings"
+  },
+  "diffCheck": {
+    "exitCode": 0
+  },
+  "furtherTests": "None after root granted lint-only slot. Full/provenance/Business runs remain root-controlled.",
+  "followup": {
+    "red": {
+      "log": "/tmp/calcumint-delivery-followup-red.log",
+      "exitCode": 1,
+      "result": "20 expected actual FinalResult/native source gaps failed;111 passed"
+    },
+    "green": {
+      "log": "/tmp/calcumint-delivery-followup-green.log",
+      "exitCode": 0,
+      "result": "131 passed including20 actual result/source/unit behavior and69 original fullresponse/export hashes"
+    },
+    "eslint": {
+      "log": "/tmp/calcumint-delivery-followup-eslint.log",
+      "exitCode": 0,
+      "result": "3 followup changed files;0 errors/warnings"
+    }
+  }
+}

@@ -1,0 +1,1027 @@
+﻿2026-11-16T04:53:54.8666986Z Current runner version: '2.338.2'
+2026-11-16T04:53:54.8688699Z ##[group]Runner Image Provisioner
+2026-11-16T04:53:54.8689624Z Hosted Compute Agent
+2026-11-16T04:53:54.8690343Z Version: 20261103.629
+2026-11-16T04:53:54.8690948Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+2026-11-16T04:53:54.8691778Z Build Date: 2026-11-03T17:26:59Z
+2026-11-16T04:53:54.8692768Z Worker ID: {4f7f413f-2e2c-49a0-b6e0-d8363a65c138}
+2026-11-16T04:53:54.8693637Z Region: centralus
+2026-11-16T04:53:54.8694270Z Cloud: Azure
+2026-11-16T04:53:54.8695010Z ##[endgroup]
+2026-11-16T04:53:54.8696596Z ##[group]Operating System
+2026-11-16T04:53:54.8697420Z Ubuntu
+2026-11-16T04:53:54.8698053Z 26.04.1
+2026-11-16T04:53:54.8698754Z LTS
+2026-11-16T04:53:54.8699423Z ##[endgroup]
+2026-11-16T04:53:54.8700087Z ##[group]Runner Image
+2026-11-16T04:53:54.8701037Z Image: ubuntu-26.04
+2026-11-16T04:53:54.8701691Z Version: 20261111.196.1
+2026-11-16T04:53:54.8703320Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261111.196/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-16T04:53:54.8704592Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261111.196
+2026-11-16T04:53:54.8705424Z ##[endgroup]
+2026-11-16T04:53:54.8706677Z ##[group]GITHUB_TOKEN Permissions
+2026-11-16T04:53:54.8708916Z Contents: read
+2026-11-16T04:53:54.8709405Z Metadata: read
+2026-11-16T04:53:54.8709866Z ##[endgroup]
+2026-11-16T04:53:54.8711669Z Secret source: Actions
+2026-11-16T04:53:54.8712858Z Cache mode: write
+2026-11-16T04:53:54.8713565Z Prepare workflow directory
+2026-11-16T04:53:54.8985952Z Prepare all required actions
+2026-11-16T04:53:54.9027459Z Getting action download info
+2026-11-16T04:53:55.1069879Z Download action repository 'actions/checkout@v5' (SHA:fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09)
+2026-11-16T04:53:55.2106454Z Download action repository 'actions/setup-node@v5' (SHA:a0853c24544627f65ddf259abe73b1d18a591444)
+2026-11-16T04:53:55.4383438Z Complete job name: build
+2026-11-16T04:53:55.5106416Z ##[group]Run actions/checkout@v5
+2026-11-16T04:53:55.5107176Z with:
+2026-11-16T04:53:55.5107616Z   repository: subvicco12/calcumint.com
+2026-11-16T04:53:55.5111232Z   token: ***
+2026-11-16T04:53:55.5111709Z   ssh-strict: true
+2026-11-16T04:53:55.5112132Z   ssh-user: git
+2026-11-16T04:53:55.5112803Z   persist-credentials: true
+2026-11-16T04:53:55.5113275Z   clean: true
+2026-11-16T04:53:55.5113703Z   sparse-checkout-cone-mode: true
+2026-11-16T04:53:55.5114276Z   fetch-depth: 1
+2026-11-16T04:53:55.5114693Z   fetch-tags: false
+2026-11-16T04:53:55.5115166Z   show-progress: true
+2026-11-16T04:53:55.5115615Z   lfs: false
+2026-11-16T04:53:55.5116000Z   submodules: false
+2026-11-16T04:53:55.5116473Z   set-safe-directory: true
+2026-11-16T04:53:55.5116946Z   allow-unsafe-pr-checkout: false
+2026-11-16T04:53:55.5117670Z ##[endgroup]
+2026-11-16T04:53:55.7751195Z Syncing repository: subvicco12/calcumint.com
+2026-11-16T04:53:55.7754331Z ##[group]Getting Git version info
+2026-11-16T04:53:55.7755585Z Working directory is '/home/runner/work/calcumint.com/calcumint.com'
+2026-11-16T04:53:55.7757212Z [command]/usr/bin/git version
+2026-11-16T04:53:55.7757786Z git version 2.56.1
+2026-11-16T04:53:55.7760037Z ##[endgroup]
+2026-11-16T04:53:55.7766141Z Temporarily overriding HOME='/home/runner/work/_temp/6e4d7d1a-8dbc-4165-a0b4-3593a5cca1af' before making global git config changes
+2026-11-16T04:53:55.7767628Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-16T04:53:55.7769843Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/calcumint.com/calcumint.com
+2026-11-16T04:53:55.7830556Z Deleting the contents of '/home/runner/work/calcumint.com/calcumint.com'
+2026-11-16T04:53:55.7836790Z ##[group]Initializing the repository
+2026-11-16T04:53:55.7841138Z [command]/usr/bin/git init /home/runner/work/calcumint.com/calcumint.com
+2026-11-16T04:53:55.7972577Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-16T04:53:55.7974382Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-16T04:53:55.7975562Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-16T04:53:55.7976358Z hint: call:
+2026-11-16T04:53:55.7976908Z hint:
+2026-11-16T04:53:55.7977600Z hint: 	git config --global init.defaultBranch <name>
+2026-11-16T04:53:55.7978287Z hint:
+2026-11-16T04:53:55.7978891Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-16T04:53:55.7980087Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-16T04:53:55.7980880Z hint:
+2026-11-16T04:53:55.7981342Z hint: 	git branch -m <name>
+2026-11-16T04:53:55.7981862Z hint:
+2026-11-16T04:53:55.7982772Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-16T04:53:55.7987014Z Initialized empty Git repository in /home/runner/work/calcumint.com/calcumint.com/.git/
+2026-11-16T04:53:55.7996405Z [command]/usr/bin/git remote add origin https://github.com/subvicco12/calcumint.com
+2026-11-16T04:53:55.8064408Z ##[endgroup]
+2026-11-16T04:53:55.8065768Z ##[group]Disabling automatic garbage collection
+2026-11-16T04:53:55.8068319Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-16T04:53:55.8108442Z ##[endgroup]
+2026-11-16T04:53:55.8109764Z ##[group]Setting up auth
+2026-11-16T04:53:55.8110849Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-16T04:53:55.8130731Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-16T04:53:55.8531820Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-16T04:53:55.8560718Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-16T04:53:55.8756903Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-16T04:53:55.8785527Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-16T04:53:55.8975434Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-16T04:53:55.9017219Z ##[endgroup]
+2026-11-16T04:53:55.9018655Z ##[group]Fetching the repository
+2026-11-16T04:53:55.9026271Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +77eb196e5606bf87ee3cf67326d9fc4354cfef45:refs/remotes/origin/engineering/worker3-recovery-20261116
+2026-11-16T04:53:58.2693154Z From https://github.com/subvicco12/calcumint.com
+2026-11-16T04:53:58.2696693Z  * [new ref]         77eb196e5606bf87ee3cf67326d9fc4354cfef45 -> origin/engineering/worker3-recovery-20261116
+2026-11-16T04:53:58.2701913Z ##[endgroup]
+2026-11-16T04:53:58.2704327Z ##[group]Determining the checkout info
+2026-11-16T04:53:58.2706149Z ##[endgroup]
+2026-11-16T04:53:58.2707057Z [command]/usr/bin/git sparse-checkout disable
+2026-11-16T04:53:58.2751764Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-16T04:53:58.2776131Z ##[group]Checking out the ref
+2026-11-16T04:53:58.2779754Z [command]/usr/bin/git checkout --progress --force -B engineering/worker3-recovery-20261116 refs/remotes/origin/engineering/worker3-recovery-20261116
+2026-11-16T04:53:58.8922572Z Switched to a new branch 'engineering/worker3-recovery-20261116'
+2026-11-16T04:53:58.8924594Z branch 'engineering/worker3-recovery-20261116' set up to track 'origin/engineering/worker3-recovery-20261116'.
+2026-11-16T04:53:58.8965178Z ##[endgroup]
+2026-11-16T04:53:58.8998723Z [command]/usr/bin/git log -1 --format=%H
+2026-11-16T04:53:58.9018696Z 77eb196e5606bf87ee3cf67326d9fc4354cfef45
+2026-11-16T04:53:58.9255690Z ##[group]Run actions/setup-node@v5
+2026-11-16T04:53:58.9256099Z with:
+2026-11-16T04:53:58.9256360Z   node-version: 22
+2026-11-16T04:53:58.9256892Z   cache: npm
+2026-11-16T04:53:58.9257213Z   cache-dependency-path: package-lock.json
+2026-11-16T04:53:58.9257739Z   always-auth: false
+2026-11-16T04:53:58.9258008Z   check-latest: false
+2026-11-16T04:53:58.9259952Z   token: ***
+2026-11-16T04:53:58.9260233Z   package-manager-cache: true
+2026-11-16T04:53:58.9260524Z ##[endgroup]
+2026-11-16T04:53:59.0674271Z Found in cache @ /opt/hostedtoolcache/node/22.23.4/x64
+2026-11-16T04:53:59.0677546Z ##[group]Environment details
+2026-11-16T04:53:59.0683132Z (node:2189) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-16T04:53:59.0699568Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-16T04:53:59.4098571Z node: v22.23.4
+2026-11-16T04:53:59.4099010Z npm: 10.9.9
+2026-11-16T04:53:59.4099524Z yarn: 1.22.22
+2026-11-16T04:53:59.4100163Z ##[endgroup]
+2026-11-16T04:53:59.4118391Z [command]/opt/hostedtoolcache/node/22.23.4/x64/bin/npm config get cache
+2026-11-16T04:53:59.5067626Z /home/runner/.npm
+2026-11-16T04:53:59.6627865Z Cache hit for: node-cache-Linux-x64-npm-5eacf253a5c985e02ae9c7b30a0a41613201d617384801131cf346d486c03931
+2026-11-16T04:53:59.6713179Z (node:2189) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-16T04:54:00.8023967Z Received 134217728 of 222636897 (60.3%), 127.9 MBs/sec
+2026-11-16T04:54:01.2810887Z Received 222636897 of 222636897 (100.0%), 143.6 MBs/sec
+2026-11-16T04:54:01.2811573Z Cache Size: ~212 MB (222636897 B)
+2026-11-16T04:54:01.2933372Z [command]/usr/bin/tar -xf /home/runner/work/_temp/6e49d0da-cf98-4187-9c32-c60ffd2056af/cache.tzst -P -C /home/runner/work/calcumint.com/calcumint.com --use-compress-program unzstd
+2026-11-16T04:54:01.7402996Z Cache restored successfully
+2026-11-16T04:54:01.7478430Z Cache restored from key: node-cache-Linux-x64-npm-5eacf253a5c985e02ae9c7b30a0a41613201d617384801131cf346d486c03931
+2026-11-16T04:54:01.7639314Z ##[group]Run node scripts/fetch-source-lineage.mjs
+2026-11-16T04:54:01.7639810Z [36;1mnode scripts/fetch-source-lineage.mjs[0m
+2026-11-16T04:54:01.7679277Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:54:01.7679617Z ##[endgroup]
+2026-11-16T04:54:04.7886568Z {"sourceRevisions":526,"fetched":526,"releaseHold":true,"productionWrites":false}
+2026-11-16T04:54:04.8690180Z ##[group]Run npm ci --no-audit --no-fund
+2026-11-16T04:54:04.8690545Z [36;1mnpm ci --no-audit --no-fund[0m
+2026-11-16T04:54:04.8721318Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:54:04.8721650Z ##[endgroup]
+2026-11-16T04:54:15.5114796Z 
+2026-11-16T04:54:15.5115726Z added 477 packages in 11s
+2026-11-16T04:54:15.5793987Z ##[group]Run npm run build
+2026-11-16T04:54:15.5794329Z [36;1mnpm run build[0m
+2026-11-16T04:54:15.5822845Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:54:15.5823257Z env:
+2026-11-16T04:54:15.5823557Z   NEXT_PUBLIC_SITE_URL: https://calcumint.com
+2026-11-16T04:54:15.5823931Z ##[endgroup]
+2026-11-16T04:54:15.6812906Z 
+2026-11-16T04:54:15.6814023Z > calcumint@0.1.0 build
+2026-11-16T04:54:15.6814686Z > next build --webpack
+2026-11-16T04:54:15.6814980Z 
+2026-11-16T04:54:15.9934950Z ▲ Next.js 16.3.5 (webpack)
+2026-11-16T04:54:16.0173983Z ✓ Running next.config.ts took 23ms
+2026-11-16T04:54:16.0174905Z ⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
+2026-11-16T04:54:16.0495932Z Attention: Next.js now collects completely anonymous telemetry regarding usage.
+2026-11-16T04:54:16.0497247Z This information is used to shape Next.js' roadmap and prioritize features.
+2026-11-16T04:54:16.0499046Z You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+2026-11-16T04:54:16.0500101Z https://nextjs.org/telemetry
+2026-11-16T04:54:16.0500500Z 
+2026-11-16T04:54:16.0743798Z - Experiments (use with caution):
+2026-11-16T04:54:16.0744904Z   · optimizePackageImports
+2026-11-16T04:54:16.0745109Z 
+2026-11-16T04:54:16.1393456Z   Creating an optimized production build ...
+2026-11-16T04:54:40.4637831Z ✓ Compiled successfully in 22.2s
+2026-11-16T04:54:40.4680085Z   Running TypeScript ...
+2026-11-16T04:55:40.0028533Z   Finished TypeScript in 60s ...
+2026-11-16T04:55:40.0050582Z   Collecting page data using 3 workers ...
+2026-11-16T04:55:42.7699879Z   Generating static pages using 3 workers (0/47) ...
+2026-11-16T04:55:43.1514483Z   Generating static pages using 3 workers (11/47) 
+2026-11-16T04:55:43.1537139Z   Generating static pages using 3 workers (23/47) 
+2026-11-16T04:55:43.1537780Z   Generating static pages using 3 workers (35/47) 
+2026-11-16T04:55:43.2971202Z ✓ Generating static pages using 3 workers (47/47) in 527ms
+2026-11-16T04:55:44.0990644Z   Finalizing page optimization ...
+2026-11-16T04:55:44.1004092Z   Collecting build traces ...
+2026-11-16T04:55:50.7787862Z 
+2026-11-16T04:55:50.7809550Z Route (app)
+2026-11-16T04:55:50.7810419Z ┌ ƒ /
+2026-11-16T04:55:50.7810854Z ├ ○ /_not-found
+2026-11-16T04:55:50.7811310Z ├ ○ /about
+2026-11-16T04:55:50.7811741Z ├ ○ /acceptable-use
+2026-11-16T04:55:50.7812240Z ├ ○ /account
+2026-11-16T04:55:50.7812800Z ├ ƒ /account/calculators
+2026-11-16T04:55:50.7813420Z ├ ƒ /account/calculators/[slug]
+2026-11-16T04:55:50.7813854Z ├ ƒ /account/drafts
+2026-11-16T04:55:50.7814282Z ├ ƒ /account/history
+2026-11-16T04:55:50.7814754Z ├ ƒ /account/projects
+2026-11-16T04:55:50.7815164Z ├ ƒ /account/projects/[id]
+2026-11-16T04:55:50.7815644Z ├ ƒ /account/saved
+2026-11-16T04:55:50.7816107Z ├ ○ /admin
+2026-11-16T04:55:50.7816570Z ├ ○ /admin/calculator-factory
+2026-11-16T04:55:50.7817047Z ├ ○ /admin/calculators
+2026-11-16T04:55:50.7817603Z ├ ƒ /admin/calculators/[id]
+2026-11-16T04:55:50.7818032Z ├ ○ /ai
+2026-11-16T04:55:50.7818463Z ├ ƒ /api/ai/builder-assist
+2026-11-16T04:55:50.7818958Z ├ ƒ /api/ai/explain
+2026-11-16T04:55:50.7819389Z ├ ƒ /api/ai/find
+2026-11-16T04:55:50.7819841Z ├ ƒ /api/billing/checkout
+2026-11-16T04:55:50.7820385Z ├ ƒ /api/billing/checkout/status
+2026-11-16T04:55:50.7820930Z ├ ƒ /api/billing/portal
+2026-11-16T04:55:50.7821424Z ├ ƒ /api/billing/webhook
+2026-11-16T04:55:50.7821929Z ├ ƒ /api/business/native-embeds
+2026-11-16T04:55:50.7823169Z ├ ƒ /api/business/technology-embeds
+2026-11-16T04:55:50.7823764Z ├ ƒ /api/business/technology-five-shares
+2026-11-16T04:55:50.7824317Z ├ ƒ /api/embed/[key]/events
+2026-11-16T04:55:50.7824972Z ├ ƒ /api/embed/[key]/leads
+2026-11-16T04:55:50.7825798Z ├ ƒ /api/embed/[key]/session
+2026-11-16T04:55:50.7826746Z ├ ƒ /api/internal/admin/publish
+2026-11-16T04:55:50.7827475Z ├ ƒ /api/internal/readiness
+2026-11-16T04:55:50.7828135Z ├ ƒ /api/internal/technology-webhooks/process
+2026-11-16T04:55:50.7829037Z ├ ƒ /api/internal/webhooks/process
+2026-11-16T04:55:50.7829533Z ├ ƒ /api/native-embed/[grant]/calculate
+2026-11-16T04:55:50.7830086Z ├ ƒ /api/technology-embed/[grant]/calculate
+2026-11-16T04:55:50.7830582Z ├ ƒ /api/v1/batch
+2026-11-16T04:55:50.7831050Z ├ ƒ /api/v1/calculator-factory/batch
+2026-11-16T04:55:50.7831652Z ├ ƒ /api/v1/calculator-factory/calculate
+2026-11-16T04:55:50.7832174Z ├ ƒ /api/v1/custom/[calculatorId]/calculate
+2026-11-16T04:55:50.7834204Z ├ ƒ /api/v1/native/calculate
+2026-11-16T04:55:50.7834776Z ├ ƒ /api/v1/technology/batch
+2026-11-16T04:55:50.7835384Z ├ ƒ /api/v1/technology/calculate
+2026-11-16T04:55:50.7835943Z ├ ○ /apple-icon.png
+2026-11-16T04:55:50.7836537Z ├ ƒ /auth/callback
+2026-11-16T04:55:50.7836961Z ├ ƒ /business
+2026-11-16T04:55:50.7837382Z ├ ○ /business-platform
+2026-11-16T04:55:50.7837834Z ├ ○ /business/api
+2026-11-16T04:55:50.7838302Z ├ ○ /business/builder
+2026-11-16T04:55:50.7838752Z ├ ƒ /business/builder/[id]
+2026-11-16T04:55:50.7839252Z ├ ○ /business/builder/ai
+2026-11-16T04:55:50.7839771Z ├ ƒ /business/delivery/[id]
+2026-11-16T04:55:50.7840275Z ├ ƒ /business/invite/[token]
+2026-11-16T04:55:50.7840742Z ├ ƒ /business/projects/[id]
+2026-11-16T04:55:50.7841308Z ├ ƒ /business/shared/[id]
+2026-11-16T04:55:50.7841744Z ├ ƒ /calculators
+2026-11-16T04:55:50.7842670Z ├ ƒ /calculators/[category]
+2026-11-16T04:55:50.7843285Z ├ ƒ /calculators/[category]/[slug]
+2026-11-16T04:55:50.7843735Z ├ ○ /contact
+2026-11-16T04:55:50.7844208Z ├ ○ /cookie-policy
+2026-11-16T04:55:50.7844629Z ├ ○ /data-deletion
+2026-11-16T04:55:50.7845084Z ├ ○ /disclaimer
+2026-11-16T04:55:50.7845496Z ├ ƒ /embed/[key]
+2026-11-16T04:55:50.7845904Z ├ ƒ /embed/native/[grant]
+2026-11-16T04:55:50.7846497Z ├ ƒ /embed/technology/[grant]
+2026-11-16T04:55:50.7847013Z ├ ƒ /health
+2026-11-16T04:55:50.7847458Z ├ ○ /icon.png
+2026-11-16T04:55:50.7847835Z ├ ƒ /login
+2026-11-16T04:55:50.7848234Z ├ ○ /login/forgot
+2026-11-16T04:55:50.7848672Z ├ ƒ /login/reset
+2026-11-16T04:55:50.7849104Z ├ ○ /pricing
+2026-11-16T04:55:50.7849490Z ├ ○ /privacy
+2026-11-16T04:55:50.7849879Z ├ ○ /refund-policy
+2026-11-16T04:55:50.7850310Z ├ ○ /robots.txt
+2026-11-16T04:55:50.7850814Z ├ ƒ /share/[token]
+2026-11-16T04:55:50.7851187Z ├ ƒ /sitemap.xml
+2026-11-16T04:55:50.7851607Z └ ○ /terms
+2026-11-16T04:55:50.7851774Z 
+2026-11-16T04:55:50.7851812Z 
+2026-11-16T04:55:50.7852075Z ƒ Proxy (Middleware)
+2026-11-16T04:55:50.7852456Z 
+2026-11-16T04:55:50.7852774Z ○  (Static)   prerendered as static content
+2026-11-16T04:55:50.7853428Z ƒ  (Dynamic)  server-rendered on demand
+2026-11-16T04:55:50.7853685Z 
+2026-11-16T04:55:50.8259224Z ##[group]Run browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")
+2026-11-16T04:55:50.8259777Z [36;1mbrowser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")[0m
+2026-11-16T04:55:50.8260200Z [36;1mecho "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"[0m
+2026-11-16T04:55:50.8260536Z [36;1m"$browser" --version[0m
+2026-11-16T04:55:50.8289598Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:55:50.8290072Z ##[endgroup]
+2026-11-16T04:55:56.6566425Z [1116/045556.656285:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /home/runner/work/_temp/calcumint-ci-browser.RWladE/opt/google/chrome/CHROME_VERSION_EXTRA
+2026-11-16T04:55:56.6577951Z Google Chrome 156.0.8078.47 
+2026-11-16T04:55:56.6861593Z ##[group]Run python3 scripts/canonical-validation-source.py --check
+2026-11-16T04:55:56.6862135Z [36;1mpython3 scripts/canonical-validation-source.py --check[0m
+2026-11-16T04:55:56.6862934Z [36;1mnode scripts/canonical-validation-evidence.mjs --check[0m
+2026-11-16T04:55:56.6863349Z [36;1mnode tests/canonical-validation/browser.mjs[0m
+2026-11-16T04:55:56.6863735Z [36;1mnode tests/canonical-validation/workflow-browser.mjs[0m
+2026-11-16T04:55:56.6892016Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:55:56.6892464Z env:
+2026-11-16T04:55:56.6892901Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.RWladE/opt/google/chrome/chrome
+2026-11-16T04:55:56.6893382Z   VALIDATION_EVIDENCE: /home/runner/work/_temp
+2026-11-16T04:55:56.6893783Z ##[endgroup]
+2026-11-16T04:55:56.8780465Z PASS exact technical source binding; no authority/canonical acceptance inferred
+2026-11-16T04:55:58.3323543Z {"catalogIdentities":540,"evaluatedPrivateContracts":28,"witnessChecks":392,"canonicalAccepted":0,"reviewRequired":497,"authorityBlocked":43,"implementationCounts":{"REGISTERED_IMPLEMENTED":305,"PRIVATE_COMPLETE":192,"CONTRACT_BLOCKED":43}}
+2026-11-16T04:56:43.7223038Z {"journeys":66,"issues":0,"directory":"/home/runner/work/_temp/contract-validation-TOhmAf"}
+2026-11-16T04:56:47.0831624Z {"journeys":3,"discovery":true,"scenarioABC":true,"downgradeRetains21":true,"corruptStorageRetained":true,"issues":0}
+2026-11-16T04:56:47.1892633Z ##[group]Run python3 scripts/scale-validation-source.py --check
+2026-11-16T04:56:47.1893415Z [36;1mpython3 scripts/scale-validation-source.py --check[0m
+2026-11-16T04:56:47.1894136Z [36;1mpython3 tests/validation-scale/source.test.py[0m
+2026-11-16T04:56:47.1894740Z [36;1mnode scripts/scale-validation-evidence.mjs --check[0m
+2026-11-16T04:56:47.1895385Z [36;1mnode tests/validation-scale/browser.mjs[0m
+2026-11-16T04:56:47.1895934Z [36;1mnode tests/validation-scale/workflow-browser.mjs[0m
+2026-11-16T04:56:47.1930252Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:56:47.1930599Z env:
+2026-11-16T04:56:47.1931121Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.RWladE/opt/google/chrome/chrome
+2026-11-16T04:56:47.1931733Z   SCALE_EVIDENCE: /home/runner/work/_temp
+2026-11-16T04:56:47.1932076Z ##[endgroup]
+2026-11-16T04:56:47.3804277Z PASS exact technical source binding; no authority/canonical acceptance inferred
+2026-11-16T04:56:52.2275749Z ......
+2026-11-16T04:56:52.2276716Z ----------------------------------------------------------------------
+2026-11-16T04:56:52.2277420Z Ran 6 tests in 4.763s
+2026-11-16T04:56:52.2277687Z 
+2026-11-16T04:56:52.2277886Z OK
+2026-11-16T04:56:53.6464189Z {"catalogIdentities":540,"newPrivateAdapters":51,"evaluatedPrivateContracts":79,"newWitnessChecks":714,"cumulativeWitnessChecks":1106,"canonicalAccepted":0,"reviewRequired":497,"authorityBlocked":43,"implementationCounts":{"REGISTERED_IMPLEMENTED":305,"PRIVATE_COMPLETE":192,"CONTRACT_BLOCKED":43}}
+2026-11-16T04:58:42.6370980Z {"journeys":114,"issues":0,"directory":"/home/runner/work/_temp/scaled-validation-1aqU7G"}
+2026-11-16T04:58:47.9655933Z {"journeys":3,"discovery":true,"scenarioABC":true,"downgradeRetains21":true,"corruptStorageRetained":true,"originalV1StorageUnchanged":true,"revision2History":true,"issues":0}
+2026-11-16T04:58:48.0741681Z ##[group]Run if ! command -v pdftotext >/dev/null || ! command -v pdffonts >/dev/null || ! command -v pdftoppm >/dev/null || ! command -v pdfinfo >/dev/null; then
+2026-11-16T04:58:48.0742940Z [36;1mif ! command -v pdftotext >/dev/null || ! command -v pdffonts >/dev/null || ! command -v pdftoppm >/dev/null || ! command -v pdfinfo >/dev/null; then[0m
+2026-11-16T04:58:48.0743521Z [36;1m  sudo apt-get update -qq[0m
+2026-11-16T04:58:48.0743964Z [36;1m  sudo apt-get install -y --no-install-recommends poppler-utils[0m
+2026-11-16T04:58:48.0744339Z [36;1mfi[0m
+2026-11-16T04:58:48.0744608Z [36;1mnode scripts/assert-pdf-tools.mjs[0m
+2026-11-16T04:58:48.0773780Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:58:48.0774202Z env:
+2026-11-16T04:58:48.0774624Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.RWladE/opt/google/chrome/chrome
+2026-11-16T04:58:48.0775097Z ##[endgroup]
+2026-11-16T04:58:51.2867525Z Reading package lists...
+2026-11-16T04:58:51.4231809Z Building dependency tree...
+2026-11-16T04:58:51.4236829Z Reading state information...
+2026-11-16T04:58:51.4988881Z Solving dependencies...
+2026-11-16T04:58:51.5843704Z The following additional packages will be installed:
+2026-11-16T04:58:51.5851152Z   libgpgmepp7 libpoppler156
+2026-11-16T04:58:51.5858141Z Recommended packages:
+2026-11-16T04:58:51.5858846Z   poppler-data
+2026-11-16T04:58:51.6036621Z The following NEW packages will be installed:
+2026-11-16T04:58:51.6041339Z   libgpgmepp7 libpoppler156 poppler-utils
+2026-11-16T04:58:51.6215927Z 0 upgraded, 3 newly installed, 0 to remove and 24 not upgraded.
+2026-11-16T04:58:51.6216774Z Need to get 1607 kB of archives.
+2026-11-16T04:58:51.6217394Z After this operation, 5354 kB of additional disk space will be used.
+2026-11-16T04:58:51.6217947Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-11-16T04:58:51.6806236Z Get:2 http://azure.archive.ubuntu.com/ubuntu resolute/main amd64v3 libgpgmepp7 amd64 2.0.0-2 [132 kB]
+2026-11-16T04:58:51.7158498Z Get:3 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64v3 libpoppler156 amd64 26.01.0-2ubuntu0.3 [1243 kB]
+2026-11-16T04:58:51.7537676Z Get:4 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64v3 poppler-utils amd64 26.01.0-2ubuntu0.3 [231 kB]
+2026-11-16T04:58:52.0367954Z Fetched 1607 kB in 0s (11.2 MB/s)
+2026-11-16T04:58:52.0554111Z Selecting previously unselected package libgpgmepp7:amd64.
+2026-11-16T04:58:52.0766680Z (Reading database ... 
+2026-11-16T04:58:52.0767534Z (Reading database ... 5%
+2026-11-16T04:58:52.0768346Z (Reading database ... 10%
+2026-11-16T04:58:52.0768887Z (Reading database ... 15%
+2026-11-16T04:58:52.0769437Z (Reading database ... 20%
+2026-11-16T04:58:52.0769944Z (Reading database ... 25%
+2026-11-16T04:58:52.0770509Z (Reading database ... 30%
+2026-11-16T04:58:52.0771331Z (Reading database ... 35%
+2026-11-16T04:58:52.0772100Z (Reading database ... 40%
+2026-11-16T04:58:52.0772915Z (Reading database ... 45%
+2026-11-16T04:58:52.0773523Z (Reading database ... 50%
+2026-11-16T04:58:52.1473297Z (Reading database ... 55%
+2026-11-16T04:58:52.3437763Z (Reading database ... 60%
+2026-11-16T04:58:52.4989957Z (Reading database ... 65%
+2026-11-16T04:58:52.6445859Z (Reading database ... 70%
+2026-11-16T04:58:52.8444982Z (Reading database ... 75%
+2026-11-16T04:58:52.9939965Z (Reading database ... 80%
+2026-11-16T04:58:53.1982908Z (Reading database ... 85%
+2026-11-16T04:58:53.4002237Z (Reading database ... 90%
+2026-11-16T04:58:53.5556437Z (Reading database ... 95%
+2026-11-16T04:58:53.5557489Z (Reading database ... 100%
+2026-11-16T04:58:53.5558348Z (Reading database ... 213946 files and directories currently installed.)
+2026-11-16T04:58:53.5600082Z Preparing to unpack .../libgpgmepp7_2.0.0-2_amd64v3.deb ...
+2026-11-16T04:58:53.5627761Z Unpacking libgpgmepp7:amd64 (2.0.0-2) ...
+2026-11-16T04:58:53.5843775Z Selecting previously unselected package libpoppler156:amd64.
+2026-11-16T04:58:53.5956897Z Preparing to unpack .../libpoppler156_26.01.0-2ubuntu0.3_amd64v3.deb ...
+2026-11-16T04:58:53.5967946Z Unpacking libpoppler156:amd64 (26.01.0-2ubuntu0.3) ...
+2026-11-16T04:58:53.6322199Z Selecting previously unselected package poppler-utils.
+2026-11-16T04:58:53.6436066Z Preparing to unpack .../poppler-utils_26.01.0-2ubuntu0.3_amd64v3.deb ...
+2026-11-16T04:58:53.6444803Z Unpacking poppler-utils (26.01.0-2ubuntu0.3) ...
+2026-11-16T04:58:53.6867144Z Setting up libgpgmepp7:amd64 (2.0.0-2) ...
+2026-11-16T04:58:53.6887496Z Setting up libpoppler156:amd64 (26.01.0-2ubuntu0.3) ...
+2026-11-16T04:58:53.6904682Z Setting up poppler-utils (26.01.0-2ubuntu0.3) ...
+2026-11-16T04:58:53.6924314Z Processing triggers for man-db (2.13.1-1build1) ...
+2026-11-16T04:58:53.6943451Z Not building database; man-db/auto-update is not 'true'.
+2026-11-16T04:58:53.6954465Z Processing triggers for libc-bin (2.43-2ubuntu2.4) ...
+2026-11-16T04:58:54.3874322Z 
+2026-11-16T04:58:54.3875353Z Running kernel seems to be up-to-date.
+2026-11-16T04:58:54.3875845Z 
+2026-11-16T04:58:54.3876045Z Restarting services...
+2026-11-16T04:58:54.3947890Z 
+2026-11-16T04:58:54.3948807Z Service restarts being deferred:
+2026-11-16T04:58:54.3951221Z  systemctl restart hosted-compute-agent.service
+2026-11-16T04:58:54.3951594Z 
+2026-11-16T04:58:54.3951795Z No containers need to be restarted.
+2026-11-16T04:58:54.3952002Z 
+2026-11-16T04:58:54.3952201Z No user sessions are running outdated binaries.
+2026-11-16T04:58:54.3952625Z 
+2026-11-16T04:58:54.3952871Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-11-16T04:58:55.2282860Z {"independentPdfTools":{"pdftotext":"pdftotext version 26.01.0","pdffonts":"pdffonts version 26.01.0","pdftoppm":"pdftoppm version 26.01.0","pdfinfo":"pdfinfo version 26.01.0"}}
+2026-11-16T04:58:55.2365997Z ##[group]Run test -x "$CHROMIUM_PATH"
+2026-11-16T04:58:55.2366385Z [36;1mtest -x "$CHROMIUM_PATH"[0m
+2026-11-16T04:58:55.2366759Z [36;1mnpm run test:final-reference-browser[0m
+2026-11-16T04:58:55.2394825Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:58:55.2395206Z env:
+2026-11-16T04:58:55.2395622Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.RWladE/opt/google/chrome/chrome
+2026-11-16T04:58:55.2396189Z   FINAL_REFERENCE_ARTIFACTS: /home/runner/work/_temp/final-reference-browser
+2026-11-16T04:58:55.2396577Z ##[endgroup]
+2026-11-16T04:58:55.3178488Z 
+2026-11-16T04:58:55.3179482Z > calcumint@0.1.0 test:final-reference-browser
+2026-11-16T04:58:55.3180033Z > node scripts/test-final-reference-browser.mjs
+2026-11-16T04:58:55.3180263Z 
+2026-11-16T04:59:00.0448879Z PASS journey loan-emi-calculator-free-320
+2026-11-16T04:59:01.2380160Z PASS journey sip-calculator-free-320
+2026-11-16T04:59:02.2617110Z PASS journey compound-interest-calculator-free-320
+2026-11-16T04:59:03.3499468Z PASS journey mortgage-payment-free-320
+2026-11-16T04:59:04.3618529Z PASS journey bmi-calculator-free-320
+2026-11-16T04:59:05.4504512Z PASS journey break-even-calculator-free-320
+2026-11-16T04:59:08.5444198Z PASS journey loan-emi-calculator-pro-320
+2026-11-16T04:59:11.7142775Z PASS journey sip-calculator-pro-320
+2026-11-16T04:59:14.7419896Z PASS journey compound-interest-calculator-pro-320
+2026-11-16T04:59:17.5862593Z PASS journey mortgage-payment-pro-320
+2026-11-16T04:59:20.4351990Z PASS journey bmi-calculator-pro-320
+2026-11-16T04:59:23.4227360Z PASS journey break-even-calculator-pro-320
+2026-11-16T04:59:26.4592642Z PASS journey loan-emi-calculator-business-320
+2026-11-16T04:59:29.5634345Z PASS journey sip-calculator-business-320
+2026-11-16T04:59:32.5251548Z PASS journey compound-interest-calculator-business-320
+2026-11-16T04:59:35.4693164Z PASS journey mortgage-payment-business-320
+2026-11-16T04:59:38.3701690Z PASS journey bmi-calculator-business-320
+2026-11-16T04:59:41.3409895Z PASS journey break-even-calculator-business-320
+2026-11-16T04:59:42.4444741Z PASS journey loan-emi-calculator-free-1280
+2026-11-16T04:59:43.5804411Z PASS journey sip-calculator-free-1280
+2026-11-16T04:59:44.5923406Z PASS journey compound-interest-calculator-free-1280
+2026-11-16T04:59:45.6979184Z PASS journey mortgage-payment-free-1280
+2026-11-16T04:59:46.8295866Z PASS journey bmi-calculator-free-1280
+2026-11-16T04:59:47.8322094Z PASS journey break-even-calculator-free-1280
+2026-11-16T04:59:50.9382003Z PASS journey loan-emi-calculator-pro-1280
+2026-11-16T04:59:54.0489712Z PASS journey sip-calculator-pro-1280
+2026-11-16T04:59:57.1029766Z PASS journey compound-interest-calculator-pro-1280
+2026-11-16T05:00:00.0568541Z PASS journey mortgage-payment-pro-1280
+2026-11-16T05:00:02.9530990Z PASS journey bmi-calculator-pro-1280
+2026-11-16T05:00:05.9057028Z PASS journey break-even-calculator-pro-1280
+2026-11-16T05:00:09.0549202Z PASS journey loan-emi-calculator-business-1280
+2026-11-16T05:00:12.1319558Z PASS journey sip-calculator-business-1280
+2026-11-16T05:00:15.2194654Z PASS journey compound-interest-calculator-business-1280
+2026-11-16T05:00:18.2079791Z PASS journey mortgage-payment-business-1280
+2026-11-16T05:00:21.1871203Z PASS journey bmi-calculator-business-1280
+2026-11-16T05:00:24.2691268Z PASS journey break-even-calculator-business-1280
+2026-11-16T05:00:26.0227468Z PASS 36 journeys; 0 issues; artifacts: /home/runner/work/_temp/final-reference-browser
+2026-11-16T05:00:26.2225750Z ##[group]Run test -x "$CHROMIUM_PATH"
+2026-11-16T05:00:26.2226120Z [36;1mtest -x "$CHROMIUM_PATH"[0m
+2026-11-16T05:00:26.2226573Z [36;1mnode scripts/test-business-browser.mjs[0m
+2026-11-16T05:00:26.2255833Z shell: /usr/bin/bash -e {0}
+2026-11-16T05:00:26.2256168Z env:
+2026-11-16T05:00:26.2256627Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.RWladE/opt/google/chrome/chrome
+2026-11-16T05:00:26.2257189Z   BUSINESS_BROWSER_ARTIFACTS: /home/runner/work/_temp/business-browser
+2026-11-16T05:00:26.2257572Z ##[endgroup]
+2026-11-16T05:00:28.7933912Z PASS owner workspace and automation controls
+2026-11-16T05:00:28.9115854Z PASS admin workspace and automation controls
+2026-11-16T05:00:29.0234854Z PASS manager workspace and automation controls
+2026-11-16T05:00:29.1301794Z PASS member workspace and automation controls
+2026-11-16T05:00:29.2401944Z PASS viewer workspace and automation controls
+2026-11-16T05:00:29.3194308Z PASS profiles /business rejected read and browser retry
+2026-11-16T05:00:29.3956105Z PASS organization_members /business rejected read and browser retry
+2026-11-16T05:00:29.4628215Z PASS organizations /business rejected read and browser retry
+2026-11-16T05:00:29.5376247Z PASS business_projects /business rejected read and browser retry
+2026-11-16T05:00:29.6059819Z PASS client_workspaces /business rejected read and browser retry
+2026-11-16T05:00:29.6778229Z PASS organization_audit_log /business rejected read and browser retry
+2026-11-16T05:00:29.7564950Z PASS profiles /business/api rejected read and browser retry
+2026-11-16T05:00:29.8409835Z PASS organization_members /business/api rejected read and browser retry
+2026-11-16T05:00:29.9262473Z PASS business_api_keys /business/api rejected read and browser retry
+2026-11-16T05:00:30.0091537Z PASS api_usage_events /business/api rejected read and browser retry
+2026-11-16T05:00:30.0942018Z PASS business_webhook_endpoints /business/api rejected read and browser retry
+2026-11-16T05:00:30.1763870Z PASS webhook_deliveries /business/api rejected read and browser retry
+2026-11-16T05:00:30.3053206Z PASS Business plan gate and organization setup
+2026-11-16T05:00:30.5231967Z PASS Actual project and client creation actions
+2026-11-16T05:00:30.6057787Z PASS Seat quota blocks invite without synthetic write
+2026-11-16T05:00:30.8455741Z PASS API key scope quota validation creation disclosure and revoke
+2026-11-16T05:00:30.9129976Z PASS Actual API action rejects bypassed quota and missing scope
+2026-11-16T05:00:30.9976412Z PASS API action rechecks downgraded role at submission
+2026-11-16T05:00:31.4139940Z PASS Actual Business stylesheet viewport 320
+2026-11-16T05:00:31.8615633Z PASS Actual Business stylesheet viewport 1280
+2026-11-16T05:00:32.1795181Z PASS Actual embed consent analytics and result 320
+2026-11-16T05:00:32.3620464Z PASS Actual embed consent analytics and result 1280
+2026-11-16T05:00:32.5879813Z PASS Actual embed uncertain lead retries original evidence and consent change fails closed
+2026-11-16T05:00:32.6791659Z PASS Actual embed renewal rejects stale published version
+2026-11-16T05:00:32.6794891Z PASS 29 Business journeys; report /home/runner/work/_temp/business-browser/business-browser-report.json
+2026-11-16T05:00:32.8222605Z ##[group]Run python3 scripts/verify-partial16-source.py --check
+2026-11-16T05:00:32.8223246Z [36;1mpython3 scripts/verify-partial16-source.py --check[0m
+2026-11-16T05:00:32.8223668Z [36;1mnode --test tests/ci-gate-recovery/*.test.mjs[0m
+2026-11-16T05:00:32.8251808Z shell: /usr/bin/bash -e {0}
+2026-11-16T05:00:32.8252156Z env:
+2026-11-16T05:00:32.8252863Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.RWladE/opt/google/chrome/chrome
+2026-11-16T05:00:32.8253400Z ##[endgroup]
+2026-11-16T05:00:32.9272988Z PASS 53 member hashes; exact16/10conditional/5partial;15supplied source captures,33omitted; zero calculator implementations admitted
+2026-11-16T05:00:32.9804215Z TAP version 13
+2026-11-16T05:00:33.2102472Z # Subtest: all existing campaigns relocate byte-for-byte while five jobs and deadlines remain mandatory
+2026-11-16T05:00:33.2144681Z ok 1 - all existing campaigns relocate byte-for-byte while five jobs and deadlines remain mandatory
+2026-11-16T05:00:33.2173537Z   ---
+2026-11-16T05:00:33.2184037Z   duration_ms: 162.300985
+2026-11-16T05:00:33.2185395Z   type: 'test'
+2026-11-16T05:00:33.2185972Z   ...
+2026-11-16T05:00:33.2186737Z # Subtest: campaign removal, weakening, duplicate, moved-unit and deadline changes fail closed
+2026-11-16T05:00:33.2187968Z ok 2 - campaign removal, weakening, duplicate, moved-unit and deadline changes fail closed
+2026-11-16T05:00:33.2188710Z   ---
+2026-11-16T05:00:33.2189143Z   duration_ms: 4.190968
+2026-11-16T05:00:33.2189738Z   type: 'test'
+2026-11-16T05:00:33.2190199Z   ...
+2026-11-16T05:00:33.2191117Z # Subtest: current workflow tamper, retained-valid reversion and substituted proof objects fail closed
+2026-11-16T05:00:33.2203343Z ok 3 - current workflow tamper, retained-valid reversion and substituted proof objects fail closed
+2026-11-16T05:00:33.2220793Z   ---
+2026-11-16T05:00:33.2221398Z   duration_ms: 25.803976
+2026-11-16T05:00:33.2222033Z   type: 'test'
+2026-11-16T05:00:33.2222770Z   ...
+2026-11-16T05:00:33.2223706Z # Subtest: legacy layout projection preserves unrelated verification mutations instead of approving them
+2026-11-16T05:00:33.2224954Z ok 4 - legacy layout projection preserves unrelated verification mutations instead of approving them
+2026-11-16T05:00:33.2225809Z   ---
+2026-11-16T05:00:33.2226281Z   duration_ms: 0.901319
+2026-11-16T05:00:33.2226769Z   type: 'test'
+2026-11-16T05:00:33.2227200Z   ...
+2026-11-16T05:00:33.2610018Z # Subtest: parsed YAML proves exact five-job graph and every original step/run/env/condition with exact tail relocation
+2026-11-16T05:00:33.2616356Z ok 5 - parsed YAML proves exact five-job graph and every original step/run/env/condition with exact tail relocation
+2026-11-16T05:00:33.2617587Z   ---
+2026-11-16T05:00:33.2617940Z   duration_ms: 20.117723
+2026-11-16T05:00:33.2618332Z   type: 'test'
+2026-11-16T05:00:33.2618709Z   ...
+2026-11-16T05:00:33.2619405Z # Subtest: parsed graph rejects the concatenated invalid YAML and skipped or weakened commands
+2026-11-16T05:00:33.2620417Z ok 6 - parsed graph rejects the concatenated invalid YAML and skipped or weakened commands
+2026-11-16T05:00:33.2621000Z   ---
+2026-11-16T05:00:33.2621417Z   duration_ms: 34.520038
+2026-11-16T05:00:33.2621832Z   type: 'test'
+2026-11-16T05:00:33.2622152Z   ...
+2026-11-16T05:00:48.8968772Z # Subtest: RETAINED A7 — exact current workflow admission rejects job, native-step and aggregate budget weakening
+2026-11-16T05:00:48.8970282Z ok 7 - RETAINED A7 — exact current workflow admission rejects job, native-step and aggregate budget weakening
+2026-11-16T05:00:48.8971045Z   ---
+2026-11-16T05:00:48.8971403Z   duration_ms: 0.915715
+2026-11-16T05:00:48.8971863Z   type: 'test'
+2026-11-16T05:00:48.8972228Z   ...
+2026-11-16T05:00:48.8975094Z # Subtest: RETAINED A7 — historical captured Batch17 test claim admits only exact successor and retains original validation bytes
+2026-11-16T05:00:48.8976374Z ok 8 - RETAINED A7 — historical captured Batch17 test claim admits only exact successor and retains original validation bytes
+2026-11-16T05:00:48.8977723Z   ---
+2026-11-16T05:00:48.8978019Z   duration_ms: 0.08691
+2026-11-16T05:00:48.8978283Z   type: 'test'
+2026-11-16T05:00:48.8978575Z   ...
+2026-11-16T05:00:48.9451833Z # Subtest: all mandatory jobs reuse npm downloads while always installing the exact lockfile
+2026-11-16T05:00:48.9453084Z ok 9 - all mandatory jobs reuse npm downloads while always installing the exact lockfile
+2026-11-16T05:00:48.9453633Z   ---
+2026-11-16T05:00:48.9453986Z   duration_ms: 2.688058
+2026-11-16T05:00:48.9454291Z   type: 'test'
+2026-11-16T05:00:48.9454593Z   ...
+2026-11-16T05:00:48.9455082Z # Subtest: historical comparison accepts only the exact reviewed cache substitution
+2026-11-16T05:00:48.9473634Z ok 10 - historical comparison accepts only the exact reviewed cache substitution
+2026-11-16T05:00:48.9474275Z   ---
+2026-11-16T05:00:48.9474591Z   duration_ms: 5.770477
+2026-11-16T05:00:48.9475120Z   type: 'test'
+2026-11-16T05:00:48.9475451Z   ...
+2026-11-16T05:00:48.9476062Z # Subtest: cache mutation is rejected for checks
+2026-11-16T05:00:48.9476594Z ok 11 - cache mutation is rejected for checks
+2026-11-16T05:00:48.9477049Z   ---
+2026-11-16T05:00:48.9477380Z   duration_ms: 2.544295
+2026-11-16T05:00:48.9477767Z   type: 'test'
+2026-11-16T05:00:48.9478154Z   ...
+2026-11-16T05:00:48.9478625Z # Subtest: cache mutation is rejected for build
+2026-11-16T05:00:48.9479227Z ok 12 - cache mutation is rejected for build
+2026-11-16T05:00:48.9479552Z   ---
+2026-11-16T05:00:48.9479832Z   duration_ms: 2.474525
+2026-11-16T05:00:48.9480115Z   type: 'test'
+2026-11-16T05:00:48.9480402Z   ...
+2026-11-16T05:00:48.9480726Z # Subtest: cache mutation is rejected for full-product
+2026-11-16T05:00:48.9481125Z ok 13 - cache mutation is rejected for full-product
+2026-11-16T05:00:48.9481523Z   ---
+2026-11-16T05:00:48.9481764Z   duration_ms: 1.877877
+2026-11-16T05:00:48.9482037Z   type: 'test'
+2026-11-16T05:00:48.9482767Z   ...
+2026-11-16T05:00:48.9483133Z # Subtest: cache mutation is rejected for source-acceptance
+2026-11-16T05:00:48.9483607Z ok 14 - cache mutation is rejected for source-acceptance
+2026-11-16T05:00:48.9483955Z   ---
+2026-11-16T05:00:48.9484226Z   duration_ms: 2.255254
+2026-11-16T05:00:48.9484482Z   type: 'test'
+2026-11-16T05:00:48.9484722Z   ...
+2026-11-16T05:00:48.9485132Z # Subtest: cache mutation is rejected for publication-factory
+2026-11-16T05:00:48.9485560Z ok 15 - cache mutation is rejected for publication-factory
+2026-11-16T05:00:48.9485914Z   ---
+2026-11-16T05:00:48.9486189Z   duration_ms: 2.780064
+2026-11-16T05:00:48.9486480Z   type: 'test'
+2026-11-16T05:00:48.9486726Z   ...
+2026-11-16T05:00:48.9487151Z # Subtest: unrecognized or ungated extra jobs cannot evade derived coverage
+2026-11-16T05:00:48.9487982Z ok 16 - unrecognized or ungated extra jobs cannot evade derived coverage
+2026-11-16T05:00:48.9488367Z   ---
+2026-11-16T05:00:48.9489104Z   duration_ms: 2.77888
+2026-11-16T05:00:48.9489372Z   type: 'test'
+2026-11-16T05:00:48.9489614Z   ...
+2026-11-16T05:00:48.9490084Z # Subtest: a future correctly cached and gated job is derived without a stale ordinal count
+2026-11-16T05:00:48.9490684Z ok 17 - a future correctly cached and gated job is derived without a stale ordinal count
+2026-11-16T05:00:48.9491114Z   ---
+2026-11-16T05:00:48.9491385Z   duration_ms: 3.974915
+2026-11-16T05:00:48.9491662Z   type: 'test'
+2026-11-16T05:00:48.9491900Z   ...
+2026-11-16T05:00:48.9492606Z # Subtest: independent PDF prerequisite is unconditional and precedes the full unit suite
+2026-11-16T05:00:48.9493489Z ok 18 - independent PDF prerequisite is unconditional and precedes the full unit suite
+2026-11-16T05:00:48.9494139Z   ---
+2026-11-16T05:00:48.9494500Z   duration_ms: 3.144246
+2026-11-16T05:00:48.9494986Z   type: 'test'
+2026-11-16T05:00:48.9495571Z   ...
+2026-11-16T05:00:48.9496128Z # Subtest: missing reader tools fail closed instead of silently skipping independent export checks
+2026-11-16T05:00:48.9497025Z ok 19 - missing reader tools fail closed instead of silently skipping independent export checks
+2026-11-16T05:00:48.9497448Z   ---
+2026-11-16T05:00:48.9497866Z   duration_ms: 38.734184
+2026-11-16T05:00:48.9498182Z   type: 'test'
+2026-11-16T05:00:48.9498411Z   ...
+2026-11-16T05:00:48.9498886Z # Subtest: exact additive source bootstrap is validated and removed without changing other bytes
+2026-11-16T05:00:48.9499556Z ok 20 - exact additive source bootstrap is validated and removed without changing other bytes
+2026-11-16T05:00:48.9499979Z   ---
+2026-11-16T05:00:48.9500218Z   duration_ms: 3.225181
+2026-11-16T05:00:48.9500519Z   type: 'test'
+2026-11-16T05:00:48.9500771Z   ...
+2026-11-16T05:00:48.9501258Z # Subtest: source bootstrap deletion, command change, duplicate and post-install movement fail closed
+2026-11-16T05:00:48.9502001Z ok 21 - source bootstrap deletion, command change, duplicate and post-install movement fail closed
+2026-11-16T05:00:48.9502713Z   ---
+2026-11-16T05:00:48.9502961Z   duration_ms: 6.159396
+2026-11-16T05:00:48.9503274Z   type: 'test'
+2026-11-16T05:00:48.9503528Z   ...
+2026-11-16T05:00:48.9503991Z # Subtest: bootstrap normalization never conceals changes to required verification commands
+2026-11-16T05:00:48.9504630Z ok 22 - bootstrap normalization never conceals changes to required verification commands
+2026-11-16T05:00:48.9505051Z   ---
+2026-11-16T05:00:48.9505296Z   duration_ms: 2.060024
+2026-11-16T05:00:48.9505613Z   type: 'test'
+2026-11-16T05:00:48.9505869Z   ...
+2026-11-16T05:00:48.9506284Z # Subtest: verifies the delivered package and preserves unverified source/adoption gates
+2026-11-16T05:00:48.9506897Z ok 23 - verifies the delivered package and preserves unverified source/adoption gates
+2026-11-16T05:00:48.9507310Z   ---
+2026-11-16T05:00:48.9507567Z   duration_ms: 148.299864
+2026-11-16T05:00:48.9507879Z   type: 'test'
+2026-11-16T05:00:48.9508110Z   ...
+2026-11-16T05:00:48.9508514Z # Subtest: rejects altered archive bytes before accepting source assertions
+2026-11-16T05:00:48.9509041Z ok 24 - rejects altered archive bytes before accepting source assertions
+2026-11-16T05:00:48.9509443Z   ---
+2026-11-16T05:00:48.9509682Z   duration_ms: 112.050759
+2026-11-16T05:00:48.9509940Z   type: 'test'
+2026-11-16T05:00:48.9510264Z   ...
+2026-11-16T05:00:48.9510661Z # Subtest: all original checks remain byte-for-byte with20minute per-job budgets
+2026-11-16T05:00:48.9511220Z ok 25 - all original checks remain byte-for-byte with20minute per-job budgets
+2026-11-16T05:00:48.9511618Z   ---
+2026-11-16T05:00:48.9511910Z   duration_ms: 2.439732
+2026-11-16T05:00:48.9512381Z   type: 'test'
+2026-11-16T05:00:48.9512701Z   ...
+2026-11-16T05:00:48.9513286Z # Subtest: required validate checks every workflow verification job including the publication factory
+2026-11-16T05:00:48.9514085Z ok 26 - required validate checks every workflow verification job including the publication factory
+2026-11-16T05:00:48.9514574Z   ---
+2026-11-16T05:00:48.9514846Z   duration_ms: 0.378452
+2026-11-16T05:00:48.9515223Z   type: 'test'
+2026-11-16T05:00:48.9515598Z   ...
+2026-11-16T05:00:48.9516047Z # Subtest: actual aggregate succeeds only when every required job succeeds
+2026-11-16T05:00:48.9516721Z ok 27 - actual aggregate succeeds only when every required job succeeds
+2026-11-16T05:00:48.9517232Z   ---
+2026-11-16T05:00:48.9517550Z   duration_ms: 8.033733
+2026-11-16T05:00:48.9517896Z   type: 'test'
+2026-11-16T05:00:48.9518182Z   ...
+2026-11-16T05:00:48.9518648Z # Subtest: actual aggregate refuses checks=failure
+2026-11-16T05:00:48.9519160Z ok 28 - actual aggregate refuses checks=failure
+2026-11-16T05:00:48.9519595Z   ---
+2026-11-16T05:00:48.9520111Z   duration_ms: 1.787464
+2026-11-16T05:00:48.9520575Z   type: 'test'
+2026-11-16T05:00:48.9520900Z   ...
+2026-11-16T05:00:48.9521262Z # Subtest: actual aggregate refuses checks=cancelled
+2026-11-16T05:00:48.9521775Z ok 29 - actual aggregate refuses checks=cancelled
+2026-11-16T05:00:48.9522110Z   ---
+2026-11-16T05:00:48.9522554Z   duration_ms: 1.680069
+2026-11-16T05:00:48.9522884Z   type: 'test'
+2026-11-16T05:00:48.9523240Z   ...
+2026-11-16T05:00:48.9523671Z # Subtest: actual aggregate refuses checks=skipped
+2026-11-16T05:00:48.9524410Z ok 30 - actual aggregate refuses checks=skipped
+2026-11-16T05:00:48.9524944Z   ---
+2026-11-16T05:00:48.9525335Z   duration_ms: 1.654212
+2026-11-16T05:00:48.9525605Z   type: 'test'
+2026-11-16T05:00:48.9525896Z   ...
+2026-11-16T05:00:48.9526219Z # Subtest: actual aggregate refuses checks=timed_out
+2026-11-16T05:00:48.9526733Z ok 31 - actual aggregate refuses checks=timed_out
+2026-11-16T05:00:48.9527143Z   ---
+2026-11-16T05:00:48.9527403Z   duration_ms: 1.659864
+2026-11-16T05:00:48.9527663Z   type: 'test'
+2026-11-16T05:00:48.9527911Z   ...
+2026-11-16T05:00:48.9528262Z # Subtest: actual aggregate refuses checks=empty
+2026-11-16T05:00:48.9528647Z ok 32 - actual aggregate refuses checks=empty
+2026-11-16T05:00:48.9528963Z   ---
+2026-11-16T05:00:48.9529232Z   duration_ms: 1.54694
+2026-11-16T05:00:48.9529511Z   type: 'test'
+2026-11-16T05:00:48.9529766Z   ...
+2026-11-16T05:00:48.9530146Z # Subtest: actual aggregate refuses checks=unknown
+2026-11-16T05:00:48.9530577Z ok 33 - actual aggregate refuses checks=unknown
+2026-11-16T05:00:48.9530905Z   ---
+2026-11-16T05:00:48.9531163Z   duration_ms: 1.757167
+2026-11-16T05:00:48.9531425Z   type: 'test'
+2026-11-16T05:00:48.9531706Z   ...
+2026-11-16T05:00:48.9532024Z # Subtest: actual aggregate refuses build=failure
+2026-11-16T05:00:48.9532666Z ok 34 - actual aggregate refuses build=failure
+2026-11-16T05:00:48.9533020Z   ---
+2026-11-16T05:00:48.9533260Z   duration_ms: 1.725431
+2026-11-16T05:00:48.9533525Z   type: 'test'
+2026-11-16T05:00:48.9533836Z   ...
+2026-11-16T05:00:48.9534130Z # Subtest: actual aggregate refuses build=cancelled
+2026-11-16T05:00:48.9534549Z ok 35 - actual aggregate refuses build=cancelled
+2026-11-16T05:00:48.9534893Z   ---
+2026-11-16T05:00:48.9535147Z   duration_ms: 1.67018
+2026-11-16T05:00:48.9535431Z   type: 'test'
+2026-11-16T05:00:48.9535703Z   ...
+2026-11-16T05:00:48.9536013Z # Subtest: actual aggregate refuses build=skipped
+2026-11-16T05:00:48.9536388Z ok 36 - actual aggregate refuses build=skipped
+2026-11-16T05:00:48.9536704Z   ---
+2026-11-16T05:00:48.9536996Z   duration_ms: 1.481023
+2026-11-16T05:00:48.9537258Z   type: 'test'
+2026-11-16T05:00:48.9537505Z   ...
+2026-11-16T05:00:48.9537829Z # Subtest: actual aggregate refuses build=timed_out
+2026-11-16T05:00:48.9538237Z ok 37 - actual aggregate refuses build=timed_out
+2026-11-16T05:00:48.9538570Z   ---
+2026-11-16T05:00:48.9538855Z   duration_ms: 1.51606
+2026-11-16T05:00:48.9539117Z   type: 'test'
+2026-11-16T05:00:48.9539344Z   ...
+2026-11-16T05:00:48.9539754Z # Subtest: actual aggregate refuses build=empty
+2026-11-16T05:00:48.9540153Z ok 38 - actual aggregate refuses build=empty
+2026-11-16T05:00:48.9540478Z   ---
+2026-11-16T05:00:48.9540884Z   duration_ms: 1.443544
+2026-11-16T05:00:48.9541177Z   type: 'test'
+2026-11-16T05:00:48.9541505Z   ...
+2026-11-16T05:00:48.9541817Z # Subtest: actual aggregate refuses build=unknown
+2026-11-16T05:00:48.9542383Z ok 39 - actual aggregate refuses build=unknown
+2026-11-16T05:00:48.9542748Z   ---
+2026-11-16T05:00:48.9543010Z   duration_ms: 1.477892
+2026-11-16T05:00:48.9543420Z   type: 'test'
+2026-11-16T05:00:48.9543664Z   ...
+2026-11-16T05:00:48.9544024Z # Subtest: actual aggregate refuses full-product=failure
+2026-11-16T05:00:48.9544475Z ok 40 - actual aggregate refuses full-product=failure
+2026-11-16T05:00:48.9544832Z   ---
+2026-11-16T05:00:48.9545114Z   duration_ms: 1.507235
+2026-11-16T05:00:48.9545410Z   type: 'test'
+2026-11-16T05:00:48.9545990Z   ...
+2026-11-16T05:00:48.9546478Z # Subtest: actual aggregate refuses full-product=cancelled
+2026-11-16T05:00:48.9547062Z ok 41 - actual aggregate refuses full-product=cancelled
+2026-11-16T05:00:48.9547508Z   ---
+2026-11-16T05:00:48.9547921Z   duration_ms: 2.734611
+2026-11-16T05:00:48.9548191Z   type: 'test'
+2026-11-16T05:00:48.9548577Z   ...
+2026-11-16T05:00:48.9548904Z # Subtest: actual aggregate refuses full-product=skipped
+2026-11-16T05:00:48.9549362Z ok 42 - actual aggregate refuses full-product=skipped
+2026-11-16T05:00:48.9549684Z   ---
+2026-11-16T05:00:48.9549923Z   duration_ms: 1.433404
+2026-11-16T05:00:48.9550275Z   type: 'test'
+2026-11-16T05:00:48.9550610Z   ...
+2026-11-16T05:00:48.9550950Z # Subtest: actual aggregate refuses full-product=timed_out
+2026-11-16T05:00:48.9551363Z ok 43 - actual aggregate refuses full-product=timed_out
+2026-11-16T05:00:48.9551739Z   ---
+2026-11-16T05:00:48.9551991Z   duration_ms: 1.557488
+2026-11-16T05:00:48.9552539Z   type: 'test'
+2026-11-16T05:00:48.9552999Z   ...
+2026-11-16T05:00:48.9553326Z # Subtest: actual aggregate refuses full-product=empty
+2026-11-16T05:00:48.9553751Z ok 44 - actual aggregate refuses full-product=empty
+2026-11-16T05:00:48.9554123Z   ---
+2026-11-16T05:00:48.9554352Z   duration_ms: 1.480488
+2026-11-16T05:00:48.9554643Z   type: 'test'
+2026-11-16T05:00:48.9554939Z   ...
+2026-11-16T05:00:48.9555277Z # Subtest: actual aggregate refuses full-product=unknown
+2026-11-16T05:00:48.9555677Z ok 45 - actual aggregate refuses full-product=unknown
+2026-11-16T05:00:48.9556022Z   ---
+2026-11-16T05:00:48.9556272Z   duration_ms: 1.43001
+2026-11-16T05:00:48.9556554Z   type: 'test'
+2026-11-16T05:00:48.9556806Z   ...
+2026-11-16T05:00:48.9557184Z # Subtest: actual aggregate refuses source-acceptance=failure
+2026-11-16T05:00:48.9557625Z ok 46 - actual aggregate refuses source-acceptance=failure
+2026-11-16T05:00:48.9557960Z   ---
+2026-11-16T05:00:48.9558238Z   duration_ms: 1.409413
+2026-11-16T05:00:48.9558579Z   type: 'test'
+2026-11-16T05:00:48.9558822Z   ...
+2026-11-16T05:00:48.9559213Z # Subtest: actual aggregate refuses source-acceptance=cancelled
+2026-11-16T05:00:48.9559664Z ok 47 - actual aggregate refuses source-acceptance=cancelled
+2026-11-16T05:00:48.9560001Z   ---
+2026-11-16T05:00:48.9560296Z   duration_ms: 1.505337
+2026-11-16T05:00:48.9560567Z   type: 'test'
+2026-11-16T05:00:48.9560826Z   ...
+2026-11-16T05:00:48.9561213Z # Subtest: actual aggregate refuses source-acceptance=skipped
+2026-11-16T05:00:48.9561646Z ok 48 - actual aggregate refuses source-acceptance=skipped
+2026-11-16T05:00:48.9561988Z   ---
+2026-11-16T05:00:48.9562246Z   duration_ms: 1.448434
+2026-11-16T05:00:48.9562670Z   type: 'test'
+2026-11-16T05:00:48.9562954Z   ...
+2026-11-16T05:00:48.9563306Z # Subtest: actual aggregate refuses source-acceptance=timed_out
+2026-11-16T05:00:48.9563799Z ok 49 - actual aggregate refuses source-acceptance=timed_out
+2026-11-16T05:00:48.9564110Z   ---
+2026-11-16T05:00:48.9564377Z   duration_ms: 1.522985
+2026-11-16T05:00:48.9564688Z   type: 'test'
+2026-11-16T05:00:48.9564941Z   ...
+2026-11-16T05:00:48.9565283Z # Subtest: actual aggregate refuses source-acceptance=empty
+2026-11-16T05:00:48.9565744Z ok 50 - actual aggregate refuses source-acceptance=empty
+2026-11-16T05:00:48.9566099Z   ---
+2026-11-16T05:00:48.9566434Z   duration_ms: 1.436387
+2026-11-16T05:00:48.9566743Z   type: 'test'
+2026-11-16T05:00:48.9566985Z   ...
+2026-11-16T05:00:48.9567325Z # Subtest: actual aggregate refuses source-acceptance=unknown
+2026-11-16T05:00:48.9567825Z ok 51 - actual aggregate refuses source-acceptance=unknown
+2026-11-16T05:00:48.9568135Z   ---
+2026-11-16T05:00:48.9568399Z   duration_ms: 1.50638
+2026-11-16T05:00:48.9568657Z   type: 'test'
+2026-11-16T05:00:48.9568976Z   ...
+2026-11-16T05:00:48.9569321Z # Subtest: actual aggregate refuses publication-factory=failure
+2026-11-16T05:00:48.9569753Z ok 52 - actual aggregate refuses publication-factory=failure
+2026-11-16T05:00:48.9570142Z   ---
+2026-11-16T05:00:48.9570381Z   duration_ms: 1.435859
+2026-11-16T05:00:48.9570673Z   type: 'test'
+2026-11-16T05:00:48.9570943Z   ...
+2026-11-16T05:00:48.9571296Z # Subtest: actual aggregate refuses publication-factory=cancelled
+2026-11-16T05:00:48.9571770Z ok 53 - actual aggregate refuses publication-factory=cancelled
+2026-11-16T05:00:48.9572126Z   ---
+2026-11-16T05:00:48.9572828Z   duration_ms: 1.513358
+2026-11-16T05:00:48.9573106Z   type: 'test'
+2026-11-16T05:00:48.9573400Z   ...
+2026-11-16T05:00:48.9573744Z # Subtest: actual aggregate refuses publication-factory=skipped
+2026-11-16T05:00:48.9574178Z ok 54 - actual aggregate refuses publication-factory=skipped
+2026-11-16T05:00:48.9574595Z   ---
+2026-11-16T05:00:48.9574839Z   duration_ms: 1.444584
+2026-11-16T05:00:48.9575194Z   type: 'test'
+2026-11-16T05:00:48.9575439Z   ...
+2026-11-16T05:00:48.9575847Z # Subtest: actual aggregate refuses publication-factory=timed_out
+2026-11-16T05:00:48.9576318Z ok 55 - actual aggregate refuses publication-factory=timed_out
+2026-11-16T05:00:48.9576653Z   ---
+2026-11-16T05:00:48.9576937Z   duration_ms: 1.479352
+2026-11-16T05:00:48.9577219Z   type: 'test'
+2026-11-16T05:00:48.9577463Z   ...
+2026-11-16T05:00:48.9577839Z # Subtest: actual aggregate refuses publication-factory=empty
+2026-11-16T05:00:48.9578255Z ok 56 - actual aggregate refuses publication-factory=empty
+2026-11-16T05:00:48.9578613Z   ---
+2026-11-16T05:00:48.9578905Z   duration_ms: 1.438737
+2026-11-16T05:00:48.9579180Z   type: 'test'
+2026-11-16T05:00:48.9579421Z   ...
+2026-11-16T05:00:48.9579800Z # Subtest: actual aggregate refuses publication-factory=unknown
+2026-11-16T05:00:48.9580255Z ok 57 - actual aggregate refuses publication-factory=unknown
+2026-11-16T05:00:48.9580606Z   ---
+2026-11-16T05:00:48.9580891Z   duration_ms: 1.501279
+2026-11-16T05:00:48.9581146Z   type: 'test'
+2026-11-16T05:00:48.9581389Z   ...
+2026-11-16T05:00:48.9581727Z # Subtest: aggregate rejects deletion of the checks guard
+2026-11-16T05:00:48.9582181Z ok 58 - aggregate rejects deletion of the checks guard
+2026-11-16T05:00:48.9582738Z   ---
+2026-11-16T05:00:48.9583047Z   duration_ms: 2.100115
+2026-11-16T05:00:48.9583354Z   type: 'test'
+2026-11-16T05:00:48.9583612Z   ...
+2026-11-16T05:00:48.9583921Z # Subtest: aggregate rejects deletion of the build guard
+2026-11-16T05:00:48.9584386Z ok 59 - aggregate rejects deletion of the build guard
+2026-11-16T05:00:48.9584707Z   ---
+2026-11-16T05:00:48.9584962Z   duration_ms: 1.126556
+2026-11-16T05:00:48.9585274Z   type: 'test'
+2026-11-16T05:00:48.9585511Z   ...
+2026-11-16T05:00:48.9585863Z # Subtest: aggregate rejects deletion of the full-product guard
+2026-11-16T05:00:48.9586301Z ok 60 - aggregate rejects deletion of the full-product guard
+2026-11-16T05:00:48.9586699Z   ---
+2026-11-16T05:00:48.9586938Z   duration_ms: 0.88568
+2026-11-16T05:00:48.9587211Z   type: 'test'
+2026-11-16T05:00:48.9587501Z   ...
+2026-11-16T05:00:48.9587851Z # Subtest: aggregate rejects deletion of the source-acceptance guard
+2026-11-16T05:00:48.9588382Z ok 61 - aggregate rejects deletion of the source-acceptance guard
+2026-11-16T05:00:48.9588756Z   ---
+2026-11-16T05:00:48.9589006Z   duration_ms: 0.816501
+2026-11-16T05:00:48.9589272Z   type: 'test'
+2026-11-16T05:00:48.9589547Z   ...
+2026-11-16T05:00:48.9589943Z # Subtest: aggregate rejects deletion of the publication-factory guard
+2026-11-16T05:00:48.9590430Z ok 62 - aggregate rejects deletion of the publication-factory guard
+2026-11-16T05:00:48.9590918Z   ---
+2026-11-16T05:00:48.9591157Z   duration_ms: 0.886665
+2026-11-16T05:00:48.9591443Z   type: 'test'
+2026-11-16T05:00:48.9591727Z   ...
+2026-11-16T05:00:48.9592164Z # Subtest: full-product job requires both functional browser campaigns and exact aggregate result
+2026-11-16T05:00:48.9593011Z ok 63 - full-product job requires both functional browser campaigns and exact aggregate result
+2026-11-16T05:00:48.9593469Z   ---
+2026-11-16T05:00:48.9593745Z   duration_ms: 0.344656
+2026-11-16T05:00:48.9594004Z   type: 'test'
+2026-11-16T05:00:48.9594229Z   ...
+2026-11-16T05:00:48.9594524Z 1..63
+2026-11-16T05:00:48.9594756Z # tests 63
+2026-11-16T05:00:48.9595034Z # suites 0
+2026-11-16T05:00:48.9595306Z # pass 63
+2026-11-16T05:00:48.9595550Z # fail 0
+2026-11-16T05:00:48.9595807Z # cancelled 0
+2026-11-16T05:00:48.9596100Z # skipped 0
+2026-11-16T05:00:48.9596363Z # todo 0
+2026-11-16T05:00:48.9596623Z # duration_ms 15984.307081
+2026-11-16T05:00:48.9749140Z ##[group]Run python3 scripts/verify-conditional-source.py
+2026-11-16T05:00:48.9749517Z [36;1mpython3 scripts/verify-conditional-source.py[0m
+2026-11-16T05:00:48.9749831Z [36;1mnode tests/conditional-authority-review/browser.mjs[0m
+2026-11-16T05:00:48.9777725Z shell: /usr/bin/bash -e {0}
+2026-11-16T05:00:48.9777947Z env:
+2026-11-16T05:00:48.9778266Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.RWladE/opt/google/chrome/chrome
+2026-11-16T05:00:48.9778728Z   CONDITIONAL_EVIDENCE: /home/runner/work/_temp/conditional-source-contracts
+2026-11-16T05:00:48.9779038Z ##[endgroup]
+2026-11-16T05:00:49.0313406Z PASS six delivered source hashes and selected clauses; no publisher-byte authentication or applicability approval inferred
+2026-11-16T05:00:54.4780972Z {"journeys":24,"issues":0,"directory":"/home/runner/work/_temp/conditional-source-contracts/run-kxey9m"}
+2026-11-16T05:00:54.5844973Z ##[group]Run python3 scripts/verify-remaining-six-source.py
+2026-11-16T05:00:54.5845363Z [36;1mpython3 scripts/verify-remaining-six-source.py[0m
+2026-11-16T05:00:54.5845718Z [36;1mnode tests/remaining-authority-review/browser.mjs[0m
+2026-11-16T05:00:54.5873646Z shell: /usr/bin/bash -e {0}
+2026-11-16T05:00:54.5873887Z env:
+2026-11-16T05:00:54.5874222Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.RWladE/opt/google/chrome/chrome
+2026-11-16T05:00:54.5874698Z   REMAINING_SIX_EVIDENCE: /home/runner/work/_temp/remaining-six-source-contracts
+2026-11-16T05:00:54.5875020Z ##[endgroup]
+2026-11-16T05:00:54.6243376Z PASS11pinned returned-source hashes,11normalized text hashes/status/URL bindings and selected clauses; no original publisher bytes or real-account eligibility claimed
+2026-11-16T05:01:01.9627706Z {"journeys":36,"issues":0,"directory":"/home/runner/work/_temp/remaining-six-source-contracts/run-1RgW8x"}
+2026-11-16T05:01:02.0680250Z ##[group]Run git fetch --no-tags --depth=1 origin 50f307c67e3a5e5d289d2b83e2a285029151f866
+2026-11-16T05:01:02.0680742Z [36;1mgit fetch --no-tags --depth=1 origin 50f307c67e3a5e5d289d2b83e2a285029151f866[0m
+2026-11-16T05:01:02.0709280Z shell: /usr/bin/bash -e {0}
+2026-11-16T05:01:02.0709521Z env:
+2026-11-16T05:01:02.0709857Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.RWladE/opt/google/chrome/chrome
+2026-11-16T05:01:02.0710220Z ##[endgroup]
+2026-11-16T05:01:02.5487519Z From https://github.com/subvicco12/calcumint.com
+2026-11-16T05:01:02.5487976Z  * branch            50f307c67e3a5e5d289d2b83e2a285029151f866 -> FETCH_HEAD
+2026-11-16T05:01:02.5518475Z ##[group]Run python3 scripts/reconcile-native-blueprint.py --check
+2026-11-16T05:01:02.5518884Z [36;1mpython3 scripts/reconcile-native-blueprint.py --check[0m
+2026-11-16T05:01:02.5519238Z [36;1mpython3 tests/blueprint-reconciliation/native.test.py[0m
+2026-11-16T05:01:02.5519571Z [36;1mnode --test tests/blueprint-reconciliation/*.test.mjs[0m
+2026-11-16T05:01:02.5547613Z shell: /usr/bin/bash -e {0}
+2026-11-16T05:01:02.5547851Z env:
+2026-11-16T05:01:02.5548194Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.RWladE/opt/google/chrome/chrome
+2026-11-16T05:01:02.5548820Z ##[endgroup]
+2026-11-16T05:01:02.7713818Z PASS originalDOCXCRC/SHA;1116paragraphs/33tables;410exacthistoricalmatches/14RCrecords;316additionalparagraphs preserved;540identitytraces;noacceptancepromoted
+2026-11-16T05:01:03.1285199Z .....
+2026-11-16T05:01:03.1285806Z ----------------------------------------------------------------------
+2026-11-16T05:01:03.1286343Z Ran 5 tests in 0.298s
+2026-11-16T05:01:03.1286768Z 
+2026-11-16T05:01:03.1286915Z OK
+2026-11-16T05:01:03.1951812Z TAP version 13
+2026-11-16T05:01:03.5731794Z # Subtest: native Blueprint historical candidate hashes remain reproducible after independent fixture engineering
+2026-11-16T05:01:03.5737783Z ok 1 - native Blueprint historical candidate hashes remain reproducible after independent fixture engineering
+2026-11-16T05:01:03.5738691Z   ---
+2026-11-16T05:01:03.5739252Z   duration_ms: 336.493693
+2026-11-16T05:01:03.5739740Z   type: 'test'
+2026-11-16T05:01:03.5740042Z   ...
+2026-11-16T05:01:03.5822626Z # Subtest: independent wrong postimage and final digest cannot pass exact receipts
+2026-11-16T05:01:03.5824133Z ok 2 - independent wrong postimage and final digest cannot pass exact receipts
+2026-11-16T05:01:03.5824883Z   ---
+2026-11-16T05:01:03.5825678Z   duration_ms: 230.122831
+2026-11-16T05:01:03.5826001Z   type: 'test'
+2026-11-16T05:01:03.5826339Z   ...
+2026-11-16T05:01:03.5983543Z # Subtest: Node24 preserves original byte expectations and Node22 changes only four exact recorded output hashes
+2026-11-16T05:01:03.5984796Z ok 3 - Node24 preserves original byte expectations and Node22 changes only four exact recorded output hashes
+2026-11-16T05:01:03.5985502Z   ---
+2026-11-16T05:01:03.5985873Z   duration_ms: 355.178205
+2026-11-16T05:01:03.5986214Z   type: 'test'
+2026-11-16T05:01:03.5990044Z   ...
+2026-11-16T05:01:03.5990480Z # Subtest: unknown runtimes/platforms fail closed
+2026-11-16T05:01:03.5990982Z ok 4 - unknown runtimes/platforms fail closed
+2026-11-16T05:01:03.5991342Z   ---
+2026-11-16T05:01:03.5991602Z   duration_ms: 0.381757
+2026-11-16T05:01:03.5991878Z   type: 'test'
+2026-11-16T05:01:03.5992245Z   ...
+2026-11-16T05:01:03.6778252Z # Subtest: source drift, approval patches and duplicate paths reject without modifying frozen artifacts
+2026-11-16T05:01:03.6779756Z ok 5 - source drift, approval patches and duplicate paths reject without modifying frozen artifacts
+2026-11-16T05:01:03.6780577Z   ---
+2026-11-16T05:01:03.6781566Z   duration_ms: 82.72397
+2026-11-16T05:01:03.6781846Z   type: 'test'
+2026-11-16T05:01:03.6782028Z   ...
+2026-11-16T05:01:03.6928387Z 1..5
+2026-11-16T05:01:03.6928701Z # tests 5
+2026-11-16T05:01:03.6928980Z # suites 0
+2026-11-16T05:01:03.6929239Z # pass 5
+2026-11-16T05:01:03.6929472Z # fail 0
+2026-11-16T05:01:03.6933501Z # cancelled 0
+2026-11-16T05:01:03.6933808Z # skipped 0
+2026-11-16T05:01:03.6934099Z # todo 0
+2026-11-16T05:01:03.6934304Z # duration_ms 514.524409
+2026-11-16T05:01:03.6991985Z ##[group]Run git fetch --no-tags --depth=1 origin 7eff39b23a52953c028852d50d5571211a3f8a44
+2026-11-16T05:01:03.6992976Z [36;1mgit fetch --no-tags --depth=1 origin 7eff39b23a52953c028852d50d5571211a3f8a44[0m
+2026-11-16T05:01:03.7021818Z shell: /usr/bin/bash -e {0}
+2026-11-16T05:01:03.7022064Z env:
+2026-11-16T05:01:03.7022605Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.RWladE/opt/google/chrome/chrome
+2026-11-16T05:01:03.7022979Z ##[endgroup]
+2026-11-16T05:01:04.1015107Z From https://github.com/subvicco12/calcumint.com
+2026-11-16T05:01:04.1015669Z  * branch            7eff39b23a52953c028852d50d5571211a3f8a44 -> FETCH_HEAD
+2026-11-16T05:01:04.1051002Z ##[group]Run node scripts/canonical-acceptance-evidence.mjs docs/canonical-acceptance --check
+2026-11-16T05:01:04.1051912Z [36;1mnode scripts/canonical-acceptance-evidence.mjs docs/canonical-acceptance --check[0m
+2026-11-16T05:01:04.1052848Z [36;1mnode tests/canonical-acceptance-review/browser.mjs[0m
+2026-11-16T05:01:04.1083136Z shell: /usr/bin/bash -e {0}
+2026-11-16T05:01:04.1083441Z env:
+2026-11-16T05:01:04.1084089Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.RWladE/opt/google/chrome/chrome
+2026-11-16T05:01:04.1084755Z   CANONICAL_EVIDENCE: /home/runner/work/_temp/canonical-acceptance
+2026-11-16T05:01:04.1085178Z ##[endgroup]
+2026-11-16T05:01:06.4326162Z {"catalogIdentities":540,"canonicalAccepted":0,"postBatch09BoundedProfiles":11,"newPrivateSuccessorProfiles":3,"legacyImplementationClasses":{"REGISTERED_IMPLEMENTED":305,"PRIVATE_COMPLETE":192,"COMPONENT_ONLY":0,"CONTRACT_BLOCKED":43,"MISSING_ENGINE":0,"UNKNOWN":0},"declaredFixtureMismatchIdentities":16,"registeredEnginesAudited":574,"currentPublications":"UNKNOWN","releaseHold":true}
+2026-11-16T05:01:17.4887398Z {"journeys":60,"issues":0,"directory":"/home/runner/work/_temp/canonical-acceptance/run-SiIZeP","performance":[{"width":320,"privateFixtureLoadMs":440,"meaning":"Observed local dev fixture timing, not production/core-web-vitals acceptance"},{"width":1280,"privateFixtureLoadMs":153,"meaning":"Observed local dev fixture timing, not production/core-web-vitals acceptance"}]}
+2026-11-16T05:01:17.7165784Z ##[group]Run python3 scripts/reconcile-canonical-calculus.py --check
+2026-11-16T05:01:17.7166218Z [36;1mpython3 scripts/reconcile-canonical-calculus.py --check[0m
+2026-11-16T05:01:17.7166630Z [36;1mnode --test tests/canonical-calculus-workbench/frozen-source.test.mjs[0m
+2026-11-16T05:01:17.7167011Z [36;1mnode tests/canonical-calculus-workbench/browser.mjs[0m
+2026-11-16T05:01:17.7195142Z shell: /usr/bin/bash -e {0}
+2026-11-16T05:01:17.7195374Z env:
+2026-11-16T05:01:17.7195708Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.RWladE/opt/google/chrome/chrome
+2026-11-16T05:01:17.7196145Z   CALCULUS_EVIDENCE: /home/runner/work/_temp/canonical-calculus
+2026-11-16T05:01:17.7196420Z ##[endgroup]
+2026-11-16T05:01:17.7886797Z PASS: exact source binding, native clauses, 540 identities, 43 authority blockers; canonical acceptance remains zero
+2026-11-16T05:01:17.8279114Z TAP version 13
+2026-11-16T05:01:17.8665249Z # Subtest: rejects a different purported historical baseline before extraction
+2026-11-16T05:01:17.8670945Z ok 1 - rejects a different purported historical baseline before extraction
+2026-11-16T05:01:17.8671335Z   ---
+2026-11-16T05:01:17.8671545Z   duration_ms: 0.911401
+2026-11-16T05:01:17.8671753Z   type: 'test'
+2026-11-16T05:01:17.8671928Z   ...
+2026-11-16T05:01:17.8759495Z # Subtest: immutable dependency guard rejects changed and missing historical bytes
+2026-11-16T05:01:17.8760358Z ok 2 - immutable dependency guard rejects changed and missing historical bytes
+2026-11-16T05:01:17.8762913Z   ---
+2026-11-16T05:01:17.8763123Z   duration_ms: 8.1206
+2026-11-16T05:01:17.8763330Z   type: 'test'
+2026-11-16T05:01:17.8763504Z   ...
+2026-11-16T05:01:18.4068995Z # Subtest: actual pinned archive retains old code and excludes the new technical revision
+2026-11-16T05:01:18.4069896Z ok 3 - actual pinned archive retains old code and excludes the new technical revision
+2026-11-16T05:01:18.4070406Z   ---
+2026-11-16T05:01:18.4070633Z   duration_ms: 534.143434
+2026-11-16T05:01:18.4070938Z   type: 'test'
+2026-11-16T05:01:18.4071180Z   ...
+2026-11-16T05:01:18.4215733Z 1..3
+2026-11-16T05:01:18.4216072Z # tests 3
+2026-11-16T05:01:18.4216377Z # suites 0
+2026-11-16T05:01:18.4222968Z # pass 3
+2026-11-16T05:01:18.4233045Z # fail 0
+2026-11-16T05:01:18.4233347Z # cancelled 0
+2026-11-16T05:01:18.4233648Z # skipped 0
+2026-11-16T05:01:18.4233989Z # todo 0
+2026-11-16T05:01:18.4234251Z # duration_ms 602.667257
+2026-11-16T05:01:25.7571741Z {"journeys":20,"issues":0,"directory":"/home/runner/work/_temp/canonical-calculus/run-oiE0Fi"}
+2026-11-16T05:01:25.8782549Z Post job cleanup.
+2026-11-16T05:01:25.9873744Z (node:10668) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-16T05:01:25.9874385Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-16T05:01:25.9876625Z Cache hit occurred on the primary key node-cache-Linux-x64-npm-5eacf253a5c985e02ae9c7b30a0a41613201d617384801131cf346d486c03931, not saving cache.
+2026-11-16T05:01:25.9993656Z Post job cleanup.
+2026-11-16T05:01:26.0743538Z [command]/usr/bin/git version
+2026-11-16T05:01:26.0779746Z git version 2.56.1
+2026-11-16T05:01:26.0809621Z Temporarily overriding HOME='/home/runner/work/_temp/e743c063-2885-4823-a6c8-8586a1e17528' before making global git config changes
+2026-11-16T05:01:26.0810833Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-16T05:01:26.0814296Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/calcumint.com/calcumint.com
+2026-11-16T05:01:26.0847934Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-16T05:01:26.0876853Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-16T05:01:26.1100290Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-16T05:01:26.1122405Z http.https://github.com/.extraheader
+2026-11-16T05:01:26.1130300Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-16T05:01:26.1158212Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-16T05:01:26.1382795Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-16T05:01:26.1408552Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-16T05:01:26.1753428Z Cleaning up orphan processes
+

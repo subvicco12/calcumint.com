@@ -1,0 +1,475 @@
+{
+  "originalCode": "419d56c17ca72dae58132aa00c7424b07477aa6c",
+  "finalHead": "77eb196e5606bf87ee3cf67326d9fc4354cfef45",
+  "codeAncestor": true,
+  "commits": [
+    {
+      "sha": "1e0ba5baa2a437e44b625b15ac66f9a4f264df54",
+      "parents": [
+        "419d56c17ca72dae58132aa00c7424b07477aa6c"
+      ],
+      "subject": "docs: plan isolated Worker3 qualification recovery",
+      "changedFilesAgainstFirstParent": [
+        "docs/superpowers/plans/2026-11-16-worker3-qualification-recovery.md"
+      ]
+    },
+    {
+      "sha": "df2e0543901caa55886c87980049a38d737c6a96",
+      "parents": [
+        "419d56c17ca72dae58132aa00c7424b07477aa6c"
+      ],
+      "subject": "Prepare exact additive preflight guard join recovery",
+      "changedFilesAgainstFirstParent": [
+        "scripts/fetch-source-lineage.mjs",
+        "tests/milestone100-20261114/source-preflight-stage8.mjs",
+        "tests/next-engineering-20261115/source-admission-preflight-join.mjs",
+        "tests/next-engineering-20261115/source-availability.test.mjs",
+        "tests/next-engineering-20261115/source-preflight-join.test.mjs",
+        "tests/parallel-source-20261110/authority.mjs",
+        "tests/parallel-source-20261110/bootstrap.mjs",
+        "tests/parallel-source-20261110/core.mjs"
+      ]
+    },
+    {
+      "sha": "d4267f2011fbfc3f36ac0e10b277dbf42c27a9c3",
+      "parents": [
+        "df2e0543901caa55886c87980049a38d737c6a96"
+      ],
+      "subject": "Admit exact preflight join guard and retained receipt capture",
+      "changedFilesAgainstFirstParent": [
+        "docs/next-engineering-20261115/source/guard-capture-preflight-join.json",
+        "tests/parallel-source-20261110/authority.mjs"
+      ]
+    },
+    {
+      "sha": "41dd08636532c4930666c76b109526d293186699",
+      "parents": [
+        "d4267f2011fbfc3f36ac0e10b277dbf42c27a9c3"
+      ],
+      "subject": "Independently pin additive preflight join authority",
+      "changedFilesAgainstFirstParent": [
+        "tests/parallel-source-20261110/current.test.mjs"
+      ]
+    },
+    {
+      "sha": "d17bc8cc19bb45fcb8b9c3ed3ca34fc54f24b121",
+      "parents": [
+        "1e0ba5baa2a437e44b625b15ac66f9a4f264df54",
+        "41dd08636532c4930666c76b109526d293186699"
+      ],
+      "subject": "Integrate reviewed publication source-reference recovery",
+      "changedFilesAgainstFirstParent": [
+        "docs/next-engineering-20261115/source/guard-capture-preflight-join.json",
+        "scripts/fetch-source-lineage.mjs",
+        "tests/milestone100-20261114/source-preflight-stage8.mjs",
+        "tests/next-engineering-20261115/source-admission-preflight-join.mjs",
+        "tests/next-engineering-20261115/source-availability.test.mjs",
+        "tests/next-engineering-20261115/source-preflight-join.test.mjs",
+        "tests/parallel-source-20261110/authority.mjs",
+        "tests/parallel-source-20261110/bootstrap.mjs",
+        "tests/parallel-source-20261110/core.mjs",
+        "tests/parallel-source-20261110/current.test.mjs"
+      ]
+    },
+    {
+      "sha": "12b2730f3ad8ccf88d613db02ec3e88c0556b5f1",
+      "parents": [
+        "d17bc8cc19bb45fcb8b9c3ed3ca34fc54f24b121"
+      ],
+      "subject": "docs: retain independent Worker3 contract and recovery audits",
+      "changedFilesAgainstFirstParent": [
+        "docs/worker3-recovery-20261116/candidate-reconciliation.json",
+        "docs/worker3-recovery-20261116/review/calcumint-delivery-business-deltas.json",
+        "docs/worker3-recovery-20261116/review/calcumint-worker3-chemistry-audit.json",
+        "docs/worker3-recovery-20261116/review/calcumint-worker3-chemistry-audit.md",
+        "docs/worker3-recovery-20261116/review/calcumint-worker3-chemistry-delivery-witness.json",
+        "docs/worker3-recovery-20261116/review/calcumint-worker3-integration-design.json",
+        "docs/worker3-recovery-20261116/review/calcumint-worker3-integration-design.md",
+        "docs/worker3-recovery-20261116/review/calcumint-worker3-publication-independent-review.json",
+        "docs/worker3-recovery-20261116/review/calcumint-worker3-statistics-audit.json",
+        "docs/worker3-recovery-20261116/review/calcumint-worker3-statistics-audit.md",
+        "docs/worker3-recovery-20261116/review/calcumint-worker3-statistics-delivery-review.json"
+      ]
+    },
+    {
+      "sha": "128aefddb8409f3eff9b4e8f6e5e1ab82b631b9c",
+      "parents": [
+        "29bbd941128fe79c825450f0541f630b45b995d8"
+      ],
+      "subject": "fix: retain scoped engineering context across private delivery",
+      "changedFilesAgainstFirstParent": [
+        "src/lib/calculator-factory/completion/exports.ts",
+        "src/lib/calculator-factory/completion/scoped-engineering-delivery.test.ts",
+        "src/lib/calculator-factory/completion/scoped-engineering-metadata.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/calculator-factory/workflows.ts",
+        "src/lib/native-delivery/factory-automation-contract.ts",
+        "src/lib/native-delivery/factory-embed-contract.ts"
+      ]
+    },
+    {
+      "sha": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "parents": [
+        "128aefddb8409f3eff9b4e8f6e5e1ab82b631b9c"
+      ],
+      "subject": "fix: show scoped sources and units in final results",
+      "changedFilesAgainstFirstParent": [
+        "src/lib/calculator-factory/completion/scoped-engineering-delivery.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/native-delivery/factory-embed-contract.ts"
+      ]
+    },
+    {
+      "sha": "465c58aa2ec041b6e5be1e7cc4c247b4d1616327",
+      "parents": [
+        "41dd08636532c4930666c76b109526d293186699",
+        "50240fb1d59a1f8d298718f85e58bd55b4b990c2"
+      ],
+      "subject": "Merge commit '50240fb1d59a1f8d298718f85e58bd55b4b990c2' into engineering/worker3-publication-recovery-20261116",
+      "changedFilesAgainstFirstParent": [
+        "src/lib/calculator-factory/completion/exports.ts",
+        "src/lib/calculator-factory/completion/scoped-engineering-delivery.test.ts",
+        "src/lib/calculator-factory/completion/scoped-engineering-metadata.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/calculator-factory/workflows.ts",
+        "src/lib/native-delivery/factory-automation-contract.ts",
+        "src/lib/native-delivery/factory-embed-contract.ts"
+      ]
+    },
+    {
+      "sha": "baf80e18e0fb7a6a961006ee6fea507539363756",
+      "parents": [
+        "465c58aa2ec041b6e5be1e7cc4c247b4d1616327"
+      ],
+      "subject": "Prepare exact32 delivery source successor and preserve literal26 audit",
+      "changedFilesAgainstFirstParent": [
+        "docs/next-engineering-20261115/source/stage10-current32.json",
+        "scripts/fetch-source-lineage.mjs",
+        "tests/acceptance-closure-20261108/receipt-source-path.test.mjs",
+        "tests/completion-first-20261112/personal-stage.mjs",
+        "tests/completion-wave-20261113/source-authority-preload.test.mjs",
+        "tests/milestone100-20261114/receipt-source-path-stage8.mjs",
+        "tests/milestone100-20261114/source-preflight-stage8.mjs",
+        "tests/milestone100-20261114/source-stage8-live.test.mjs",
+        "tests/milestone100-20261114/source-stage8-negative-current-src.mjs",
+        "tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs",
+        "tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs",
+        "tests/milestone60-20261113/source-stage7-live.test.mjs",
+        "tests/next-engineering-20261115/source-admission-current32.mjs",
+        "tests/next-engineering-20261115/source-availability.test.mjs",
+        "tests/next-engineering-20261115/source-canonical-handoff.test.mjs",
+        "tests/next-engineering-20261115/source-current26-historical-audit.mjs",
+        "tests/next-engineering-20261115/source-current26.test.mjs",
+        "tests/next-engineering-20261115/source-current32.test.mjs",
+        "tests/next-engineering-20261115/source-exact-current32.mjs",
+        "tests/next-engineering-20261115/source-named-current.test.mjs",
+        "tests/next-engineering-20261115/source-private-stage8.test.mjs",
+        "tests/next-engineering-20261115/source-seven-test-negative.test.mjs",
+        "tests/next-engineering-20261115/source-stability-reuse.test.mjs",
+        "tests/next-engineering-20261115/source-stage10-current32-policy.mjs",
+        "tests/next-engineering-20261115/source-stage10-preload.test.mjs",
+        "tests/next-engineering-20261115/source-stage10.mjs",
+        "tests/next-engineering-20261115/source-stage10.test.mjs",
+        "tests/next-engineering-20261115/source-stage5-negative-current.test.mjs",
+        "tests/parallel-source-20261110/authority.mjs",
+        "tests/parallel-source-20261110/bootstrap.mjs",
+        "tests/parallel-source-20261110/core.mjs",
+        "tests/parallel-source-20261110/current.test.mjs"
+      ]
+    },
+    {
+      "sha": "d86baf8d3fb8def0d322a40949b883b89a17d18c",
+      "parents": [
+        "baf80e18e0fb7a6a961006ee6fea507539363756"
+      ],
+      "subject": "Admit exact current32 delivery source and proof guards",
+      "changedFilesAgainstFirstParent": [
+        "docs/next-engineering-20261115/source/guard-capture-current32.json",
+        "tests/parallel-source-20261110/authority.mjs"
+      ]
+    },
+    {
+      "sha": "7daa22baccfcb52761d43ad8bd6f58636a977def",
+      "parents": [
+        "d86baf8d3fb8def0d322a40949b883b89a17d18c"
+      ],
+      "subject": "Independently pin exact current32 delivery authority",
+      "changedFilesAgainstFirstParent": [
+        "tests/parallel-source-20261110/current.test.mjs"
+      ]
+    },
+    {
+      "sha": "67ecffa8397c7344888b68448ef4ee1d66d526e1",
+      "parents": [
+        "12b2730f3ad8ccf88d613db02ec3e88c0556b5f1",
+        "7daa22baccfcb52761d43ad8bd6f58636a977def"
+      ],
+      "subject": "Integrate reviewed scoped delivery and exact32 source admission",
+      "changedFilesAgainstFirstParent": [
+        "docs/next-engineering-20261115/source/guard-capture-current32.json",
+        "docs/next-engineering-20261115/source/stage10-current32.json",
+        "scripts/fetch-source-lineage.mjs",
+        "src/lib/calculator-factory/completion/exports.ts",
+        "src/lib/calculator-factory/completion/scoped-engineering-delivery.test.ts",
+        "src/lib/calculator-factory/completion/scoped-engineering-metadata.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/calculator-factory/workflows.ts",
+        "src/lib/native-delivery/factory-automation-contract.ts",
+        "src/lib/native-delivery/factory-embed-contract.ts",
+        "tests/acceptance-closure-20261108/receipt-source-path.test.mjs",
+        "tests/completion-first-20261112/personal-stage.mjs",
+        "tests/completion-wave-20261113/source-authority-preload.test.mjs",
+        "tests/milestone100-20261114/receipt-source-path-stage8.mjs",
+        "tests/milestone100-20261114/source-preflight-stage8.mjs",
+        "tests/milestone100-20261114/source-stage8-live.test.mjs",
+        "tests/milestone100-20261114/source-stage8-negative-current-src.mjs",
+        "tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs",
+        "tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs",
+        "tests/milestone60-20261113/source-stage7-live.test.mjs",
+        "tests/next-engineering-20261115/source-admission-current32.mjs",
+        "tests/next-engineering-20261115/source-availability.test.mjs",
+        "tests/next-engineering-20261115/source-canonical-handoff.test.mjs",
+        "tests/next-engineering-20261115/source-current26-historical-audit.mjs",
+        "tests/next-engineering-20261115/source-current26.test.mjs",
+        "tests/next-engineering-20261115/source-current32.test.mjs",
+        "tests/next-engineering-20261115/source-exact-current32.mjs",
+        "tests/next-engineering-20261115/source-named-current.test.mjs",
+        "tests/next-engineering-20261115/source-private-stage8.test.mjs",
+        "tests/next-engineering-20261115/source-seven-test-negative.test.mjs",
+        "tests/next-engineering-20261115/source-stability-reuse.test.mjs",
+        "tests/next-engineering-20261115/source-stage10-current32-policy.mjs",
+        "tests/next-engineering-20261115/source-stage10-preload.test.mjs",
+        "tests/next-engineering-20261115/source-stage10.mjs",
+        "tests/next-engineering-20261115/source-stage10.test.mjs",
+        "tests/next-engineering-20261115/source-stage5-negative-current.test.mjs",
+        "tests/parallel-source-20261110/authority.mjs",
+        "tests/parallel-source-20261110/bootstrap.mjs",
+        "tests/parallel-source-20261110/core.mjs",
+        "tests/parallel-source-20261110/current.test.mjs"
+      ]
+    },
+    {
+      "sha": "7610ac53d564a5e62bdad181d8368e76547ea4c2",
+      "parents": [
+        "41dd08636532c4930666c76b109526d293186699"
+      ],
+      "subject": "Add private fresh Git transport with bounded streaming and owned cleanup",
+      "changedFilesAgainstFirstParent": [
+        "tests/next-engineering-20261115/source-private-git-broker.py",
+        "tests/next-engineering-20261115/source-private-git-images.mjs",
+        "tests/next-engineering-20261115/source-private-git-lifecycle.test.mjs",
+        "tests/next-engineering-20261115/source-private-git-stream.test.mjs",
+        "tests/next-engineering-20261115/source-private-git-transport.mjs",
+        "tests/next-engineering-20261115/source-private-git-transport.test.mjs",
+        "tests/next-engineering-20261115/source-private-git-worker.mjs",
+        "tests/next-engineering-20261115/source-runtime-native-git.mjs",
+        "tests/next-engineering-20261115/source-stage10.mjs"
+      ]
+    },
+    {
+      "sha": "7db01d0744ce150154746a19b5f70d01271f4a29",
+      "parents": [
+        "7610ac53d564a5e62bdad181d8368e76547ea4c2"
+      ],
+      "subject": "Isolate private Worker bootstrap from main-owned Git request environment",
+      "changedFilesAgainstFirstParent": [
+        "tests/next-engineering-20261115/source-private-git-transport.mjs",
+        "tests/next-engineering-20261115/source-private-git-transport.test.mjs"
+      ]
+    },
+    {
+      "sha": "8b4980571023fbca03a21b5d696fd34ff4b175e1",
+      "parents": [
+        "7daa22baccfcb52761d43ad8bd6f58636a977def",
+        "7db01d0744ce150154746a19b5f70d01271f4a29"
+      ],
+      "subject": "Merge commit '7db01d0744ce150154746a19b5f70d01271f4a29' into engineering/worker3-publication-recovery-20261116",
+      "changedFilesAgainstFirstParent": [
+        "tests/next-engineering-20261115/source-private-git-broker.py",
+        "tests/next-engineering-20261115/source-private-git-images.mjs",
+        "tests/next-engineering-20261115/source-private-git-lifecycle.test.mjs",
+        "tests/next-engineering-20261115/source-private-git-stream.test.mjs",
+        "tests/next-engineering-20261115/source-private-git-transport.mjs",
+        "tests/next-engineering-20261115/source-private-git-transport.test.mjs",
+        "tests/next-engineering-20261115/source-private-git-worker.mjs",
+        "tests/next-engineering-20261115/source-runtime-native-git.mjs",
+        "tests/next-engineering-20261115/source-stage10.mjs"
+      ]
+    },
+    {
+      "sha": "2eec0252f1d9e948b8efd16fe65588d3dc96cb39",
+      "parents": [
+        "8b4980571023fbca03a21b5d696fd34ff4b175e1"
+      ],
+      "subject": "Prepare reviewed fresh Git transport and exact mandatory security guards",
+      "changedFilesAgainstFirstParent": [
+        "scripts/fetch-source-lineage.mjs",
+        "tests/completion-wave-20261113/source-authority-preload.test.mjs",
+        "tests/milestone100-20261114/source-preflight-stage8.mjs",
+        "tests/milestone100-20261114/source-stage8-live.test.mjs",
+        "tests/next-engineering-20261115/source-admission-fresh-git.mjs",
+        "tests/next-engineering-20261115/source-availability.test.mjs",
+        "tests/next-engineering-20261115/source-fresh-git-mandatory-children.mjs",
+        "tests/parallel-source-20261110/authority.mjs",
+        "tests/parallel-source-20261110/bootstrap.mjs",
+        "tests/parallel-source-20261110/core.mjs",
+        "tests/parallel-source-20261110/current.test.mjs"
+      ]
+    },
+    {
+      "sha": "33a13a926c8d0b15cf34a3ff8d5cb86ff150fb81",
+      "parents": [
+        "2eec0252f1d9e948b8efd16fe65588d3dc96cb39"
+      ],
+      "subject": "Admit exact reviewed FreshGit transport and mandatory child policy",
+      "changedFilesAgainstFirstParent": [
+        "docs/next-engineering-20261115/source/guard-capture-fresh-git.json",
+        "tests/parallel-source-20261110/authority.mjs"
+      ]
+    },
+    {
+      "sha": "f94521a5c3a038dfd725c870cc27061ecf3376b5",
+      "parents": [
+        "33a13a926c8d0b15cf34a3ff8d5cb86ff150fb81"
+      ],
+      "subject": "Independently pin FreshGit authority and retain current32 checkpoint",
+      "changedFilesAgainstFirstParent": [
+        "tests/parallel-source-20261110/current.test.mjs"
+      ]
+    },
+    {
+      "sha": "aaf369e67096718fd3bfff3d86c9c8e861a1cd42",
+      "parents": [
+        "67ecffa8397c7344888b68448ef4ee1d66d526e1",
+        "f94521a5c3a038dfd725c870cc27061ecf3376b5"
+      ],
+      "subject": "Integrate admitted fresh Git transport and preserved source controls",
+      "changedFilesAgainstFirstParent": [
+        "docs/next-engineering-20261115/source/guard-capture-fresh-git.json",
+        "scripts/fetch-source-lineage.mjs",
+        "tests/completion-wave-20261113/source-authority-preload.test.mjs",
+        "tests/milestone100-20261114/source-preflight-stage8.mjs",
+        "tests/milestone100-20261114/source-stage8-live.test.mjs",
+        "tests/next-engineering-20261115/source-admission-fresh-git.mjs",
+        "tests/next-engineering-20261115/source-availability.test.mjs",
+        "tests/next-engineering-20261115/source-fresh-git-mandatory-children.mjs",
+        "tests/next-engineering-20261115/source-private-git-broker.py",
+        "tests/next-engineering-20261115/source-private-git-images.mjs",
+        "tests/next-engineering-20261115/source-private-git-lifecycle.test.mjs",
+        "tests/next-engineering-20261115/source-private-git-stream.test.mjs",
+        "tests/next-engineering-20261115/source-private-git-transport.mjs",
+        "tests/next-engineering-20261115/source-private-git-transport.test.mjs",
+        "tests/next-engineering-20261115/source-private-git-worker.mjs",
+        "tests/next-engineering-20261115/source-runtime-native-git.mjs",
+        "tests/next-engineering-20261115/source-stage10.mjs",
+        "tests/parallel-source-20261110/authority.mjs",
+        "tests/parallel-source-20261110/bootstrap.mjs",
+        "tests/parallel-source-20261110/core.mjs",
+        "tests/parallel-source-20261110/current.test.mjs"
+      ]
+    },
+    {
+      "sha": "d4a8830ce00fc9a94ad0e9b02778a03a35a7e771",
+      "parents": [
+        "aaf369e67096718fd3bfff3d86c9c8e861a1cd42"
+      ],
+      "subject": "Repair retained factory and catalog bindings for exact current32",
+      "changedFilesAgainstFirstParent": [
+        "scripts/software-closure-evidence.mjs",
+        "tests/milestone100-20261114/source-stage8-negative-factory.test.mjs",
+        "tests/next-engineering-20261115/source-binding-current32.test.mjs",
+        "tests/parallel-source-20261110/core.mjs"
+      ]
+    },
+    {
+      "sha": "9331292abc6a342b2e8004e23ce8e40468aca045",
+      "parents": [
+        "d4a8830ce00fc9a94ad0e9b02778a03a35a7e771"
+      ],
+      "subject": "Prepare additive current32 binding guard and mandatory refusal cases",
+      "changedFilesAgainstFirstParent": [
+        "scripts/fetch-source-lineage.mjs",
+        "tests/milestone100-20261114/source-preflight-stage8.mjs",
+        "tests/next-engineering-20261115/source-admission-binding32.mjs",
+        "tests/next-engineering-20261115/source-availability.test.mjs",
+        "tests/next-engineering-20261115/source-fresh-git-mandatory-children.mjs",
+        "tests/parallel-source-20261110/authority.mjs",
+        "tests/parallel-source-20261110/bootstrap.mjs",
+        "tests/parallel-source-20261110/core.mjs"
+      ]
+    },
+    {
+      "sha": "5b2b88ca5d96a449e81172e248164762e6ae60ce",
+      "parents": [
+        "9331292abc6a342b2e8004e23ce8e40468aca045"
+      ],
+      "subject": "Admit exact current32 factory and retained catalog binding guards",
+      "changedFilesAgainstFirstParent": [
+        "docs/next-engineering-20261115/source/guard-capture-binding32.json",
+        "tests/parallel-source-20261110/authority.mjs"
+      ]
+    },
+    {
+      "sha": "b809c807f645029814921b51f015a998e86869a8",
+      "parents": [
+        "5b2b88ca5d96a449e81172e248164762e6ae60ce"
+      ],
+      "subject": "Independently pin binding-only authority and retain FreshGit checkpoint",
+      "changedFilesAgainstFirstParent": [
+        "tests/parallel-source-20261110/current.test.mjs"
+      ]
+    },
+    {
+      "sha": "b7028089980730cadd4d6a5fb8e9984fed123872",
+      "parents": [
+        "b809c807f645029814921b51f015a998e86869a8"
+      ],
+      "subject": "Cache immutable native Stage9 fixture objects while retaining opaque controls",
+      "changedFilesAgainstFirstParent": [
+        "tests/four-worker-integration-20261115/source-stage9.test.mjs",
+        "tests/next-engineering-20261115/source-stage9-fixture.test.mjs"
+      ]
+    },
+    {
+      "sha": "50c282932739f2eef6885a0929f8aaf87f1d0abb",
+      "parents": [
+        "b7028089980730cadd4d6a5fb8e9984fed123872"
+      ],
+      "subject": "Prepare exact Stage9 native fixture admission and mandatory controls",
+      "changedFilesAgainstFirstParent": [
+        "scripts/fetch-source-lineage.mjs",
+        "tests/milestone100-20261114/source-preflight-stage8.mjs",
+        "tests/next-engineering-20261115/source-admission-stage9-fixture.mjs",
+        "tests/next-engineering-20261115/source-availability.test.mjs",
+        "tests/next-engineering-20261115/source-fresh-git-mandatory-children.mjs",
+        "tests/parallel-source-20261110/authority.mjs",
+        "tests/parallel-source-20261110/bootstrap.mjs",
+        "tests/parallel-source-20261110/core.mjs"
+      ]
+    },
+    {
+      "sha": "8bcca5a9b3e9eab62f77a7051c0e4f532d35ddfa",
+      "parents": [
+        "50c282932739f2eef6885a0929f8aaf87f1d0abb"
+      ],
+      "subject": "Admit exact Stage9 fixture source and finite mandatory controls",
+      "changedFilesAgainstFirstParent": [
+        "docs/next-engineering-20261115/source/guard-capture-stage9-fixture.json",
+        "tests/parallel-source-20261110/authority.mjs"
+      ]
+    },
+    {
+      "sha": "77eb196e5606bf87ee3cf67326d9fc4354cfef45",
+      "parents": [
+        "8bcca5a9b3e9eab62f77a7051c0e4f532d35ddfa"
+      ],
+      "subject": "Independently pin Stage9 fixture authority and retain binding checkpoint",
+      "changedFilesAgainstFirstParent": [
+        "tests/parallel-source-20261110/current.test.mjs"
+      ]
+    }
+  ]
+}

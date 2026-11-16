@@ -1,0 +1,177 @@
+TAP version 13
+# Subtest: inherited retained-runtime row never overrides its original auxiliary successor
+ok 1 - inherited retained-runtime row never overrides its original auxiliary successor
+  ---
+  duration_ms: 481.239539
+  type: 'test'
+  ...
+# Subtest: only explicit Stage8 guard paths select their exact captured successor
+ok 2 - only explicit Stage8 guard paths select their exact captured successor
+  ---
+  duration_ms: 0.306248
+  type: 'test'
+  ...
+# Subtest: committed A2 capture69 and all115 installed authority records remain literal
+ok 3 - committed A2 capture69 and all115 installed authority records remain literal
+  ---
+  duration_ms: 43.725462
+  type: 'test'
+  ...
+# Subtest: only the independently captured V6 list adds new owned guard successors
+ok 4 - only the independently captured V6 list adds new owned guard successors
+  ---
+  duration_ms: 3.071985
+  type: 'test'
+  ...
+# Subtest: actual HEAD and physical bytes use the fixed admitted current row while historical95 stays immutable
+ok 5 - actual HEAD and physical bytes use the fixed admitted current row while historical95 stays immutable
+  ---
+  duration_ms: 206.197513
+  type: 'test'
+  ...
+# Subtest: capture tamper or nonbinary metadata refuses before nominated object or target reads
+ok 6 - capture tamper or nonbinary metadata refuses before nominated object or target reads
+  ---
+  duration_ms: 1.45388
+  type: 'test'
+  ...
+# Subtest: path ref or blob changes inside a same-size capture cannot nominate a successor
+ok 7 - path ref or blob changes inside a same-size capture cannot nominate a successor
+  ---
+  duration_ms: 17.784491
+  type: 'test'
+  ...
+# Subtest: either captured or canonical immutable ref path object substitution refuses
+ok 8 - either captured or canonical immutable ref path object substitution refuses
+  ---
+  duration_ms: 134.460394
+  type: 'test'
+  ...
+# Subtest: actual HEAD path cannot be replaced by valid historical95 bytes
+ok 9 - actual HEAD path cannot be replaced by valid historical95 bytes
+  ---
+  duration_ms: 92.981786
+  type: 'test'
+  ...
+# Subtest: current reader substitution and physical original95 reversion both refuse
+ok 10 - current reader substitution and physical original95 reversion both refuse
+  ---
+  duration_ms: 139.11638
+  type: 'test'
+  ...
+# Subtest: native HEAD movement during proof refuses before a current binding can return
+ok 11 - native HEAD movement during proof refuses before a current binding can return
+  ---
+  duration_ms: 56.332211
+  type: 'test'
+  ...
+# Subtest: the exact shortest guard import successor retains its original predecessor claim
+not ok 12 - the exact shortest guard import successor retains its original predecessor claim
+  ---
+  duration_ms: 4292.313553
+  type: 'test'
+  location: '/workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8-shortest-guard.test.mjs:9:1'
+  failureType: 'testCodeFailure'
+  error: 'Completion supplemental source bytes differ: tests/execution-recovery-20261109/source-lineage.test.mjs'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    verifyCompletionBinding (file:///workspace/calcumint-worker3-publication/scripts/product-completion-stage8.mjs:58:4)
+    TestContext.<anonymous> (file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8-shortest-guard.test.mjs:10:15)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: valid target readers cannot hide substituted argument bytes or predecessor reversion
+not ok 13 - valid target readers cannot hide substituted argument bytes or predecessor reversion
+  ---
+  duration_ms: 1575.634233
+  type: 'test'
+  location: '/workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8-shortest-guard.test.mjs:12:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /Completion current successor differs/. Input:
+    
+    'AssertionError [ERR_ASSERTION]: Completion supplemental source bytes differ: tests/execution-recovery-20261109/source-lineage.test.mjs'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: 'Completion supplemental source bytes differ: tests/execution-recovery-20261109/source-lineage.test.mjs'
+  stack: |-
+    verifyCompletionBinding (file:///workspace/calcumint-worker3-publication/scripts/product-completion-stage8.mjs:58:4)
+    file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8-shortest-guard.test.mjs:13:144
+    getActual (node:assert:609:5)
+    Function.throws (node:assert:757:24)
+    TestContext.<anonymous> (file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8-shortest-guard.test.mjs:13:133)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/calcumint-worker3-publication/tests/milestone100-20261114/source-stage8-shortest-guard.test.mjs:13:133)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: the historical verifier remains literal and unknown paths still cannot invoke Git
+ok 14 - the historical verifier remains literal and unknown paths still cannot invoke Git
+  ---
+  duration_ms: 10.483091
+  type: 'test'
+  ...
+# Subtest: only the exact availability wrapper projects to the literal retained verifier and graph
+ok 15 - only the exact availability wrapper projects to the literal retained verifier and graph
+  ---
+  duration_ms: 59.314963
+  type: 'test'
+  ...
+# Subtest: changed wrapper binding table or verifier tail never bypasses the unchanged historical predicate
+ok 16 - changed wrapper binding table or verifier tail never bypasses the unchanged historical predicate
+  ---
+  duration_ms: 62.112519
+  type: 'test'
+  ...
+# Subtest: only the native fixture import and provider change; every original body and cohort import remain literal
+ok 17 - only the native fixture import and provider change; every original body and cohort import remain literal
+  ---
+  duration_ms: 5.68293
+  type: 'test'
+  ...
+# Subtest: native immutable preload forwards binary stdin and its larger buffer without changing defaults
+ok 18 - native immutable preload forwards binary stdin and its larger buffer without changing defaults
+  ---
+  duration_ms: 1.390139
+  type: 'test'
+  ...
+# Subtest: HEAD status root and explicit options reach native invocation freshly in their original order
+ok 19 - HEAD status root and explicit options reach native invocation freshly in their original order
+  ---
+  duration_ms: 0.625178
+  type: 'test'
+  ...
+# Subtest: opaque providers observe each query and substitution before the native immutable fallback
+ok 20 - opaque providers observe each query and substitution before the native immutable fallback
+  ---
+  duration_ms: 0.255285
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 18
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7885.136912

@@ -1,0 +1,125 @@
+{
+  "kind": "READ_ONLY_TECHNOLOGY_SUPPLEMENTAL_NEGATIVE_PREFLIGHT",
+  "headAtAssessment": "77eb196e5606bf87ee3cf67326d9fc4354cfef45",
+  "decision": "NO_FIX_NOW: do not add a preflight to the399+a176 admission bundle before measuring the reviewed fixture corrections.",
+  "trackedSourceChangedByThisTask": false,
+  "testsOrTimingsRunByThisTask": false,
+  "selectedCaller": "src/components/calculator-interactive.tsx",
+  "legacySupplementalCount": 251,
+  "legacyPredecessorClaim": "46903cd272e5e8a9b7ff37e338a6d9e149bf8956c4d5bed7afec7f9539d2c123",
+  "capture68SHA256": "e9bc59cd40b54da57bef70ccba322b22fc2bab255b31261a3a65d72cd2744fd3",
+  "independentAuthorityPins": {
+    "capture68": {
+      "blob": "e2efd2425c1ac191ae95c8a96f0fbac7699932e7",
+      "sha256": "e9bc59cd40b54da57bef70ccba322b22fc2bab255b31261a3a65d72cd2744fd3"
+    },
+    "legacyVerifier": {
+      "path": "scripts/product-completion-lineage.mjs",
+      "blob": "5cfcfdd66ac2f937f3d9cc3d8b53b22c84786040",
+      "sha256": "62162e043d99153bbe4fc1077352ca14da0bf3307eea725b5916e8ab5508f588"
+    }
+  },
+  "exactRowsInOriginalSupplementalOrder": [
+    {
+      "path": "src/components/technology-worked-example.tsx",
+      "legacy": {
+        "path": "src/components/technology-worked-example.tsx",
+        "ref": "3c2b768ecc9e6e0821df8e74c779d134e99c4f48",
+        "blob": "3e00400a9f2a1523b3e69b0e39e87fc5a8df7c8e",
+        "sha256": "cb1a00a76008105dc439c803c8f2c8ea44fe59cd778affb0816dc2dacbc5abf7"
+      },
+      "captureCurrent": {
+        "path": "src/components/technology-worked-example.tsx",
+        "ref": "a7bab5b5534d51cea25ba5ffe4aa9b3630176909",
+        "blob": "3e00400a9f2a1523b3e69b0e39e87fc5a8df7c8e",
+        "bytes": 2731,
+        "sha256": "cb1a00a76008105dc439c803c8f2c8ea44fe59cd778affb0816dc2dacbc5abf7"
+      },
+      "physicalBytes": 2731,
+      "physicalSHA256": "cb1a00a76008105dc439c803c8f2c8ea44fe59cd778affb0816dc2dacbc5abf7"
+    },
+    {
+      "path": "src/lib/presentation-entitlements.ts",
+      "legacy": {
+        "path": "src/lib/presentation-entitlements.ts",
+        "ref": "3c2b768ecc9e6e0821df8e74c779d134e99c4f48",
+        "blob": "0f9cbc2bbf634ea5430a52b30877db556547bd1b",
+        "sha256": "ca2e6ccd90b731cd24c474eeafa7d16d6dc588e85881b8f8f68369b4a627c7dd"
+      },
+      "captureCurrent": {
+        "path": "src/lib/presentation-entitlements.ts",
+        "ref": "a7bab5b5534d51cea25ba5ffe4aa9b3630176909",
+        "blob": "0f9cbc2bbf634ea5430a52b30877db556547bd1b",
+        "bytes": 491,
+        "sha256": "ca2e6ccd90b731cd24c474eeafa7d16d6dc588e85881b8f8f68369b4a627c7dd"
+      },
+      "physicalBytes": 491,
+      "physicalSHA256": "ca2e6ccd90b731cd24c474eeafa7d16d6dc588e85881b8f8f68369b4a627c7dd"
+    },
+    {
+      "path": "src/lib/technology-capture-trust.ts",
+      "legacy": {
+        "path": "src/lib/technology-capture-trust.ts",
+        "ref": "3c2b768ecc9e6e0821df8e74c779d134e99c4f48",
+        "blob": "c167228a6cf2b5fce861d7abd3b913c6af592e1f",
+        "sha256": "364a0d58de1a63828128a8407e0a4ff58d2ae750ba72f11431124c8e12e3e408"
+      },
+      "captureCurrent": {
+        "path": "src/lib/technology-capture-trust.ts",
+        "ref": "a7bab5b5534d51cea25ba5ffe4aa9b3630176909",
+        "blob": "c167228a6cf2b5fce861d7abd3b913c6af592e1f",
+        "bytes": 2277,
+        "sha256": "364a0d58de1a63828128a8407e0a4ff58d2ae750ba72f11431124c8e12e3e408"
+      },
+      "physicalBytes": 2277,
+      "physicalSHA256": "364a0d58de1a63828128a8407e0a4ff58d2ae750ba72f11431124c8e12e3e408"
+    }
+  ],
+  "currentControlFlow": [
+    "Sync caller validates historical claim and existing caller-only negative filter, then enters full source proof before the retained verifier reads the three supplemental dependencies.",
+    "Async receipt caller already reads the declared dependency roster with Promise.all into a private target Map, then invokes the synchronous verifier through that map.",
+    "The retained historical verifier remains the final authority for exact ref/blob/SHA and same-target-reader equality of every supplemental source."
+  ],
+  "syncObstruction": "No supplied bytes for the three dependencies are available early. A new negative filter would have to call the opaque read provider earlier/additional times. Such a callback may consume counters, modify source or arm/restore another callback before original native probes. A negative-only return value does not make its successful side effects inert; preserving all original later reads does not restore original ordering.",
+  "narrowFutureCandidateOnly": "A pure rejection over already-materialized bytes in the async private target Map can avoid new provider reads. It must preserve historical-claim/refusal precedence, authenticate its exact fixed tuples, reject only and continue every original proof on matching bytes. This has not been implemented or timed and would accelerate only async halves.",
+  "timingCaution": "The first8 serialized lineage cases total16.875s; truncated output does not prove case9 consumed the remaining60s. The reviewed a176 native immutable fixture can address later expensive raw-Git proofs. Do not justify another admission cycle from truncated timing inference.",
+  "shortestAssessment": "No corresponding owned supplemental byte map was established in the synchronous shortest path. Existing argument bytes and existing argument guards can be rejected without new reads, but a general supplemental fast filter would face the same opaque-callback ordering obstruction.",
+  "recommendedNextAction": "Admit399+a176 and run the unchanged decisive wrappers. Consider a separately reviewed async-owned-map refusal only if a measured residual negative-case cost is material. No mathematical engines, historical verifier, deadline, source verdict cache or generic proof sharing changes.",
+  "artifacts": [
+    {
+      "path": "scripts/product-completion-stage8.mjs",
+      "bytes": 10690,
+      "sha256": "7cd569f2cb43d6d014844f30abacd838244c5e804f89a0d671bf070cb8dca64a"
+    },
+    {
+      "path": "scripts/product-completion-lineage.mjs",
+      "bytes": 280890,
+      "sha256": "62162e043d99153bbe4fc1077352ca14da0bf3307eea725b5916e8ab5508f588"
+    },
+    {
+      "path": "tests/milestone100-20261114/receipt-source-path-stage8.mjs",
+      "bytes": 7246,
+      "sha256": "40ca5391368283ebfd94c5562ed350bb7f4ce217579332287172ddbfaca0059a"
+    },
+    {
+      "path": "tests/cohort22-closure-20261109/caller-source.test.mjs",
+      "bytes": 2857,
+      "sha256": "5c4927b18bf93c529f72a6a1fc1bafe626f69e2f084691b5bd5f252ff5370793"
+    },
+    {
+      "path": "tests/execution-recovery-20261109/source-lineage.test.mjs",
+      "bytes": 3120,
+      "sha256": "525b189319aea2f96d44b8277a1cfa5561dbff2ed8696d4b2427be726446cc80"
+    },
+    {
+      "path": "tests/parallel-source-20261110/core.mjs",
+      "bytes": 52229,
+      "sha256": "bdb022726f8fea35ab7f6655d1df64ba28e8c48cc2048d22ccf197424aad663e"
+    },
+    {
+      "path": "docs/parallel-source-20261110/capture-revision68.json",
+      "bytes": 458490,
+      "sha256": "e9bc59cd40b54da57bef70ccba322b22fc2bab255b31261a3a65d72cd2744fd3"
+    }
+  ]
+}

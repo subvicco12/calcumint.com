@@ -1,0 +1,167 @@
+[
+  {
+    "key": "init",
+    "argv": [
+      "git",
+      "-c",
+      "protocol.file.allow=never",
+      "-c",
+      "protocol.ext.allow=never",
+      "init",
+      "--quiet"
+    ],
+    "exitCode": 0,
+    "seconds": 0.0029553399999713292
+  },
+  {
+    "key": "origin",
+    "argv": [
+      "git",
+      "-c",
+      "protocol.file.allow=never",
+      "-c",
+      "protocol.ext.allow=never",
+      "remote",
+      "add",
+      "origin",
+      "https://github.com/subvicco12/calcumint.com.git"
+    ],
+    "exitCode": 0,
+    "seconds": 0.0019694019993039547
+  },
+  {
+    "key": "fetch-head",
+    "argv": [
+      "git",
+      "-c",
+      "protocol.file.allow=never",
+      "-c",
+      "protocol.ext.allow=never",
+      "fetch",
+      "--no-tags",
+      "--depth=1",
+      "origin",
+      "77eb196e5606bf87ee3cf67326d9fc4354cfef45"
+    ],
+    "exitCode": 0,
+    "seconds": 2.9166767980004806
+  },
+  {
+    "key": "checkout",
+    "argv": [
+      "git",
+      "-c",
+      "protocol.file.allow=never",
+      "-c",
+      "protocol.ext.allow=never",
+      "checkout",
+      "--detach",
+      "77eb196e5606bf87ee3cf67326d9fc4354cfef45"
+    ],
+    "exitCode": 0,
+    "seconds": 1.9106420890002482
+  },
+  {
+    "key": "head",
+    "argv": [
+      "git",
+      "-c",
+      "protocol.file.allow=never",
+      "-c",
+      "protocol.ext.allow=never",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exitCode": 0,
+    "seconds": 0.014662948000477627
+  },
+  {
+    "key": "origin-readback",
+    "argv": [
+      "git",
+      "-c",
+      "protocol.file.allow=never",
+      "-c",
+      "protocol.ext.allow=never",
+      "remote",
+      "get-url",
+      "--all",
+      "origin"
+    ],
+    "exitCode": 0,
+    "seconds": 0.003577571998903295
+  },
+  {
+    "key": "initial-shallow",
+    "argv": [
+      "git",
+      "-c",
+      "protocol.file.allow=never",
+      "-c",
+      "protocol.ext.allow=never",
+      "rev-parse",
+      "--is-shallow-repository"
+    ],
+    "exitCode": 0,
+    "seconds": 0.0021283980004227487
+  },
+  {
+    "key": "initial-object-count",
+    "argv": [
+      "git",
+      "-c",
+      "protocol.file.allow=never",
+      "-c",
+      "protocol.ext.allow=never",
+      "count-objects",
+      "-v"
+    ],
+    "exitCode": 0,
+    "seconds": 0.00288883800021722
+  },
+  {
+    "key": "actual-source-bootstrap",
+    "argv": [
+      "/workspace/.pr1467/sprint/node-v22.23.4-linux-x64/bin/node",
+      "scripts/fetch-source-lineage.mjs"
+    ],
+    "exitCode": 0,
+    "seconds": 9.522162496999954
+  },
+  {
+    "key": "fetch-published-comparison-refs",
+    "argv": [
+      "git",
+      "-c",
+      "protocol.file.allow=never",
+      "-c",
+      "protocol.ext.allow=never",
+      "fetch",
+      "--no-tags",
+      "--depth=1",
+      "origin",
+      "aaf369e67096718fd3bfff3d86c9c8e861a1cd42",
+      "f94521a5c3a038dfd725c870cc27061ecf3376b5",
+      "7db01d0744ce150154746a19b5f70d01271f4a29",
+      "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "939ea3b6ab204b0b5c12d3724949f0d85b62e0c8",
+      "b3f19a897bc564e0bee079ae5d7c80b6b6a5e8ae"
+    ],
+    "exitCode": 0,
+    "seconds": 4.7772558119995665
+  },
+  {
+    "key": "post-bootstrap-object-count",
+    "argv": [
+      "git",
+      "-c",
+      "protocol.file.allow=never",
+      "-c",
+      "protocol.ext.allow=never",
+      "count-objects",
+      "-v"
+    ],
+    "exitCode": 0,
+    "seconds": 0.010191957000643015
+  }
+]

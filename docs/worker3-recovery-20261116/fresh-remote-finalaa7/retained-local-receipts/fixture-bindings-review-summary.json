@@ -1,0 +1,51 @@
+{
+  "kind": "REVIEWED_FIXTURE_BUNDLE_ADMITTED_FOCUSED_GATE_FAILURE",
+  "head": "1369c6d81f13ad1866c991b1ca53c6ff287a13c1",
+  "guard": "99e7bd0de151456e78fe49dfbf55511e7df98c5f",
+  "authority": "7f9aaef6bc37bd7791a83bb2b8a5b428d6427bcd",
+  "guardCaptureSHA256": "137bdb62b7fe11ff609b3121c74cc6ef9ec9ef280a80de337970e53dd31eab59",
+  "guardPaths": [
+    "scripts/fetch-source-lineage.mjs",
+    "tests/execution-recovery-20261109/source-lineage.test.mjs",
+    "tests/milestone100-20261114/source-preflight-stage8.mjs",
+    "tests/milestone100-20261114/source-stage8-guard-selection.test.mjs",
+    "tests/milestone100-20261114/source-stage8-runtime-current-selection.mjs",
+    "tests/milestone100-20261114/source-stage8-runtime-current-selection.test.mjs",
+    "tests/milestone100-20261114/source-stage8-shortest-guard.test.mjs",
+    "tests/next-engineering-20261115/source-admission-fixture-bindings.mjs",
+    "tests/next-engineering-20261115/source-availability.test.mjs",
+    "tests/next-engineering-20261115/source-fresh-git-mandatory-children.mjs",
+    "tests/next-engineering-20261115/source-lineage-fixture.test.mjs",
+    "tests/parallel-source-20261110/bootstrap.mjs",
+    "tests/parallel-source-20261110/core.mjs"
+  ],
+  "focused": {
+    "tests": 20,
+    "pass": 18,
+    "fail": 2,
+    "skipped": 0,
+    "cancelled": 0,
+    "durationMs": 7885.136912
+  },
+  "failure": "Completion supplemental source bytes differ: tests/execution-recovery-20261109/source-lineage.test.mjs at scripts/product-completion-stage8.mjs:58; originalshortest2cases",
+  "rootCause": "Separately immutable guardSuccessors5 retains11d/32eee oldlineage tuple; newly reviewed nativefixturetransform needs an exactnamed successor relation, independent of generalauthoritycapture.",
+  "longGates": "PAUSED_PENDING_ROOT_EXACT_BINDING_REPAIR_DIRECTION; not run60/150/65 atthishead.",
+  "monitor": "Prepared /tmp/worker3-proc-observer.py; externalnice19/1Hz/procreadonly; no source/argv/timer/callback changes. Not yet run.",
+  "sourceChangesAfterObservedFailure": false,
+  "qualificationGranted": false,
+  "all20Disposition": "IMPLEMENTED_NOT_QUALIFIED",
+  "confirmedEngineeringBaseline": 81,
+  "releaseHold": true,
+  "receipts": [
+    {
+      "path": "/tmp/worker3-publication-receipts/fixture-bindings-focused20.log",
+      "bytes": 7708,
+      "sha256": "87055933420f55549d89c02fd42565a41112c542c21ca1fc59e3058fa9252508"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/admission-fixture-bindings.log",
+      "bytes": 974,
+      "sha256": "d3552bf169a63ab7ff38b69a5a2e653839c58f4020feaa299ef3260959895188"
+    }
+  ]
+}

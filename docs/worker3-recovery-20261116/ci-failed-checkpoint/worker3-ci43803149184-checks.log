@@ -1,0 +1,704 @@
+﻿2026-11-16T04:17:06.0205578Z Current runner version: '2.338.2'
+2026-11-16T04:17:06.0224260Z ##[group]Runner Image Provisioner
+2026-11-16T04:17:06.0224850Z Hosted Compute Agent
+2026-11-16T04:17:06.0225199Z Version: 20261103.629
+2026-11-16T04:17:06.0225670Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+2026-11-16T04:17:06.0226107Z Build Date: 2026-11-03T17:26:59Z
+2026-11-16T04:17:06.0226572Z Worker ID: {4aa82157-5d87-4d16-bbe1-732a728f7b6a}
+2026-11-16T04:17:06.0226996Z Region: centralus
+2026-11-16T04:17:06.0227324Z Cloud: Azure
+2026-11-16T04:17:06.0227734Z ##[endgroup]
+2026-11-16T04:17:06.0228523Z ##[group]Operating System
+2026-11-16T04:17:06.0228916Z Ubuntu
+2026-11-16T04:17:06.0229248Z 26.04.1
+2026-11-16T04:17:06.0229564Z LTS
+2026-11-16T04:17:06.0229969Z ##[endgroup]
+2026-11-16T04:17:06.0230308Z ##[group]Runner Image
+2026-11-16T04:17:06.0230723Z Image: ubuntu-26.04
+2026-11-16T04:17:06.0231079Z Version: 20261111.196.1
+2026-11-16T04:17:06.0231860Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261111.196/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-16T04:17:06.0232920Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261111.196
+2026-11-16T04:17:06.0233679Z ##[endgroup]
+2026-11-16T04:17:06.0234356Z ##[group]GITHUB_TOKEN Permissions
+2026-11-16T04:17:06.0235862Z Contents: read
+2026-11-16T04:17:06.0236231Z Metadata: read
+2026-11-16T04:17:06.0236574Z ##[endgroup]
+2026-11-16T04:17:06.0237963Z Secret source: Actions
+2026-11-16T04:17:06.0238528Z Cache mode: write
+2026-11-16T04:17:06.0239030Z Prepare workflow directory
+2026-11-16T04:17:06.0464092Z Prepare all required actions
+2026-11-16T04:17:06.0506713Z Getting action download info
+2026-11-16T04:17:06.2496697Z Download action repository 'actions/checkout@v5' (SHA:fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09)
+2026-11-16T04:17:06.3299228Z Download action repository 'actions/setup-node@v5' (SHA:a0853c24544627f65ddf259abe73b1d18a591444)
+2026-11-16T04:17:06.4815101Z Complete job name: checks
+2026-11-16T04:17:06.5363030Z ##[group]Run actions/checkout@v5
+2026-11-16T04:17:06.5363476Z with:
+2026-11-16T04:17:06.5363727Z   repository: subvicco12/calcumint.com
+2026-11-16T04:17:06.5365879Z   token: ***
+2026-11-16T04:17:06.5366116Z   ssh-strict: true
+2026-11-16T04:17:06.5366357Z   ssh-user: git
+2026-11-16T04:17:06.5366608Z   persist-credentials: true
+2026-11-16T04:17:06.5366875Z   clean: true
+2026-11-16T04:17:06.5367123Z   sparse-checkout-cone-mode: true
+2026-11-16T04:17:06.5367409Z   fetch-depth: 1
+2026-11-16T04:17:06.5367646Z   fetch-tags: false
+2026-11-16T04:17:06.5367890Z   show-progress: true
+2026-11-16T04:17:06.5368141Z   lfs: false
+2026-11-16T04:17:06.5368376Z   submodules: false
+2026-11-16T04:17:06.5368626Z   set-safe-directory: true
+2026-11-16T04:17:06.5368904Z   allow-unsafe-pr-checkout: false
+2026-11-16T04:17:06.5369253Z ##[endgroup]
+2026-11-16T04:17:06.7612384Z Syncing repository: subvicco12/calcumint.com
+2026-11-16T04:17:06.7613995Z ##[group]Getting Git version info
+2026-11-16T04:17:06.7614593Z Working directory is '/home/runner/work/calcumint.com/calcumint.com'
+2026-11-16T04:17:06.7615311Z [command]/usr/bin/git version
+2026-11-16T04:17:06.7641773Z git version 2.56.1
+2026-11-16T04:17:06.7654487Z ##[endgroup]
+2026-11-16T04:17:06.7664341Z Temporarily overriding HOME='/home/runner/work/_temp/bfa1e2b2-3d3c-40eb-a9b9-6e7febd94073' before making global git config changes
+2026-11-16T04:17:06.7665807Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-16T04:17:06.7667560Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/calcumint.com/calcumint.com
+2026-11-16T04:17:06.7726601Z Deleting the contents of '/home/runner/work/calcumint.com/calcumint.com'
+2026-11-16T04:17:06.7728758Z ##[group]Initializing the repository
+2026-11-16T04:17:06.7731848Z [command]/usr/bin/git init /home/runner/work/calcumint.com/calcumint.com
+2026-11-16T04:17:06.7840184Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-16T04:17:06.7841607Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-16T04:17:06.7843140Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-16T04:17:06.7844055Z hint: call:
+2026-11-16T04:17:06.7844506Z hint:
+2026-11-16T04:17:06.7845112Z hint: 	git config --global init.defaultBranch <name>
+2026-11-16T04:17:06.7845830Z hint:
+2026-11-16T04:17:06.7846500Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-16T04:17:06.7847623Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-16T04:17:06.7848509Z hint:
+2026-11-16T04:17:06.7848978Z hint: 	git branch -m <name>
+2026-11-16T04:17:06.7849527Z hint:
+2026-11-16T04:17:06.7850257Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-16T04:17:06.7851643Z Initialized empty Git repository in /home/runner/work/calcumint.com/calcumint.com/.git/
+2026-11-16T04:17:06.7861383Z [command]/usr/bin/git remote add origin https://github.com/subvicco12/calcumint.com
+2026-11-16T04:17:06.7907462Z ##[endgroup]
+2026-11-16T04:17:06.7908327Z ##[group]Disabling automatic garbage collection
+2026-11-16T04:17:06.7910592Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-16T04:17:06.7941116Z ##[endgroup]
+2026-11-16T04:17:06.7941918Z ##[group]Setting up auth
+2026-11-16T04:17:06.7946006Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-16T04:17:06.7976502Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-16T04:17:06.8380647Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-16T04:17:06.8411353Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-16T04:17:06.8644751Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-16T04:17:06.8678527Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-16T04:17:06.8916495Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-16T04:17:06.8955141Z ##[endgroup]
+2026-11-16T04:17:06.8955763Z ##[group]Fetching the repository
+2026-11-16T04:17:06.8962138Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +aaf369e67096718fd3bfff3d86c9c8e861a1cd42:refs/remotes/origin/engineering/worker3-recovery-20261116
+2026-11-16T04:17:08.9432073Z From https://github.com/subvicco12/calcumint.com
+2026-11-16T04:17:08.9433687Z  * [new ref]         aaf369e67096718fd3bfff3d86c9c8e861a1cd42 -> origin/engineering/worker3-recovery-20261116
+2026-11-16T04:17:08.9437885Z ##[endgroup]
+2026-11-16T04:17:08.9438294Z ##[group]Determining the checkout info
+2026-11-16T04:17:08.9438651Z ##[endgroup]
+2026-11-16T04:17:08.9440825Z [command]/usr/bin/git sparse-checkout disable
+2026-11-16T04:17:08.9489061Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-16T04:17:08.9513977Z ##[group]Checking out the ref
+2026-11-16T04:17:08.9518116Z [command]/usr/bin/git checkout --progress --force -B engineering/worker3-recovery-20261116 refs/remotes/origin/engineering/worker3-recovery-20261116
+2026-11-16T04:17:09.5665524Z Switched to a new branch 'engineering/worker3-recovery-20261116'
+2026-11-16T04:17:09.5693884Z branch 'engineering/worker3-recovery-20261116' set up to track 'origin/engineering/worker3-recovery-20261116'.
+2026-11-16T04:17:09.5738601Z ##[endgroup]
+2026-11-16T04:17:09.5787926Z [command]/usr/bin/git log -1 --format=%H
+2026-11-16T04:17:09.5810438Z aaf369e67096718fd3bfff3d86c9c8e861a1cd42
+2026-11-16T04:17:09.6080541Z ##[group]Run actions/setup-node@v5
+2026-11-16T04:17:09.6080738Z with:
+2026-11-16T04:17:09.6080866Z   node-version: 22
+2026-11-16T04:17:09.6081159Z   cache: npm
+2026-11-16T04:17:09.6081296Z   cache-dependency-path: package-lock.json
+2026-11-16T04:17:09.6081466Z   always-auth: false
+2026-11-16T04:17:09.6081596Z   check-latest: false
+2026-11-16T04:17:09.6083130Z   token: ***
+2026-11-16T04:17:09.6083261Z   package-manager-cache: true
+2026-11-16T04:17:09.6083409Z ##[endgroup]
+2026-11-16T04:17:09.7065502Z Found in cache @ /opt/hostedtoolcache/node/22.23.4/x64
+2026-11-16T04:17:09.7070265Z (node:2203) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-16T04:17:09.7070871Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-16T04:17:09.7071334Z ##[group]Environment details
+2026-11-16T04:17:10.0064061Z node: v22.23.4
+2026-11-16T04:17:10.0064344Z npm: 10.9.9
+2026-11-16T04:17:10.0064579Z yarn: 1.22.22
+2026-11-16T04:17:10.0065052Z ##[endgroup]
+2026-11-16T04:17:10.0078539Z [command]/opt/hostedtoolcache/node/22.23.4/x64/bin/npm config get cache
+2026-11-16T04:17:10.0827815Z /home/runner/.npm
+2026-11-16T04:17:10.2354257Z npm cache is not found
+2026-11-16T04:17:10.2483381Z ##[group]Run node scripts/fetch-source-lineage.mjs
+2026-11-16T04:17:10.2483653Z [36;1mnode scripts/fetch-source-lineage.mjs[0m
+2026-11-16T04:17:10.2536614Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:17:10.2536769Z ##[endgroup]
+2026-11-16T04:17:13.4013835Z {"sourceRevisions":517,"fetched":517,"releaseHold":true,"productionWrites":false}
+2026-11-16T04:17:13.4085078Z ##[group]Run npm ci --no-audit --no-fund
+2026-11-16T04:17:13.4085299Z [36;1mnpm ci --no-audit --no-fund[0m
+2026-11-16T04:17:13.4128172Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:17:13.4128328Z ##[endgroup]
+2026-11-16T04:17:22.4069711Z 
+2026-11-16T04:17:22.4070258Z added 477 packages in 9s
+2026-11-16T04:17:22.4669239Z ##[group]Run node --check scripts/growthos-heartbeat.mjs
+2026-11-16T04:17:22.4669501Z [36;1mnode --check scripts/growthos-heartbeat.mjs[0m
+2026-11-16T04:17:22.4713384Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:17:22.4713555Z ##[endgroup]
+2026-11-16T04:17:22.4975507Z ##[group]Run npm run lint
+2026-11-16T04:17:22.4975685Z [36;1mnpm run lint[0m
+2026-11-16T04:17:22.5017858Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:17:22.5018013Z ##[endgroup]
+2026-11-16T04:17:22.5692354Z 
+2026-11-16T04:17:22.5693233Z > calcumint@0.1.0 lint
+2026-11-16T04:17:22.5693450Z > eslint .
+2026-11-16T04:17:22.5693560Z 
+2026-11-16T04:17:58.5525028Z 
+2026-11-16T04:17:58.5528479Z /home/runner/work/calcumint.com/calcumint.com/postcss.config.mjs
+2026-11-16T04:17:58.5555822Z ##[warning]  1:1  warning  Assign object to a variable before exporting as module default  import/no-anonymous-default-export
+2026-11-16T04:17:58.5562250Z 
+2026-11-16T04:17:58.5563132Z /home/runner/work/calcumint.com/calcumint.com/scripts/calculator-factory-20261112/generate.mjs
+2026-11-16T04:17:58.5564722Z ##[warning]  63:13  warning  'execute' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5565643Z 
+2026-11-16T04:17:58.5566393Z /home/runner/work/calcumint.com/calcumint.com/scripts/milestone100-20261114/browser-pro.mjs
+2026-11-16T04:17:58.5567619Z ##[warning]  39:395  warning  'renderedBefore' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5569025Z ##[warning]  39:522  warning  'rawBefore' is assigned a value but never used       @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5569739Z 
+2026-11-16T04:17:58.5570074Z /home/runner/work/calcumint.com/calcumint.com/scripts/milestone100-20261114/browser.mjs
+2026-11-16T04:17:58.5570885Z ##[warning]  15:9  warning  'recordedDownload' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5571426Z 
+2026-11-16T04:17:58.5571676Z /home/runner/work/calcumint.com/calcumint.com/scripts/milestone100-20261114/business-sql-acceptance.mjs
+2026-11-16T04:17:58.5572220Z ##[warning]  6:8  warning  'path' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5572635Z 
+2026-11-16T04:17:58.5573037Z /home/runner/work/calcumint.com/calcumint.com/scripts/milestone100-20261114/journeys.mjs
+2026-11-16T04:17:58.5574198Z ##[warning]   4:20  warning  'randomBytes' is defined but never used                @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5575353Z ##[warning]   5:8   warning  'http' is defined but never used                       @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5576450Z ##[warning]   8:9   warning  'createClient' is defined but never used               @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5577565Z ##[warning]   9:9   warning  'createServerClient' is defined but never used         @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5578749Z ##[warning]  10:9   warning  'startGoTrueFixture' is defined but never used         @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5579907Z ##[warning]  11:9   warning  'initializeFullSchema' is defined but never used       @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5581091Z ##[warning]  12:9   warning  'startProductionRuntime' is defined but never used     @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5582260Z ##[warning]  13:9   warning  'startBrowser' is defined but never used               @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5583608Z ##[warning]  15:53  warning  'captureFixtureDiagnostics' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5584873Z ##[warning]  15:79  warning  'waitForDeliveryReadiness' is defined but never used   @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5586072Z ##[warning]  16:7   warning  'out' is assigned a value but never used               @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5586789Z 
+2026-11-16T04:17:58.5587057Z /home/runner/work/calcumint.com/calcumint.com/src/app/admin/actions.ts
+2026-11-16T04:17:58.5587989Z ##[warning]   89:21  warning  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5589429Z ##[warning]  109:21  warning  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5590692Z ##[warning]  132:21  warning  'user' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5591354Z 
+2026-11-16T04:17:58.5591699Z /home/runner/work/calcumint.com/calcumint.com/src/calculators/advanced-math/catalog-batch-8.ts
+2026-11-16T04:17:58.5592674Z ##[warning]  2:281  warning  'evalCubic' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5593478Z 
+2026-11-16T04:17:58.5593797Z /home/runner/work/calcumint.com/calcumint.com/src/calculators/biology/catalog-batch-2.ts
+2026-11-16T04:17:58.5594601Z ##[warning]  4:6  warning  'Out' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5595243Z 
+2026-11-16T04:17:58.5595568Z /home/runner/work/calcumint.com/calcumint.com/src/calculators/conversion/catalog-batch-1.ts
+2026-11-16T04:17:58.5596489Z ##[warning]  23:7  warning  'sharedDefinition' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5597211Z 
+2026-11-16T04:17:58.5597541Z /home/runner/work/calcumint.com/calcumint.com/src/calculators/date-time/catalog-batch-2.ts
+2026-11-16T04:17:58.5598345Z ##[warning]  27:10  warning  'dateKey' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5598995Z 
+2026-11-16T04:17:58.5599332Z /home/runner/work/calcumint.com/calcumint.com/src/calculators/earth-science/catalog-batch-2.ts
+2026-11-16T04:17:58.5600205Z ##[warning]  3:7  warning  'nist' is assigned a value but only used as a type  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5600893Z 
+2026-11-16T04:17:58.5601277Z /home/runner/work/calcumint.com/calcumint.com/src/calculators/engineering-construction/catalog-batch-3.ts
+2026-11-16T04:17:58.5602194Z ##[warning]  6:7  warning  'nonnegative' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5603000Z 
+2026-11-16T04:17:58.5603379Z /home/runner/work/calcumint.com/calcumint.com/src/calculators/engineering/section-properties-batch-2.ts
+2026-11-16T04:17:58.5604379Z ##[warning]  2:55  warning  'pos' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5605043Z 
+2026-11-16T04:17:58.5605534Z /home/runner/work/calcumint.com/calcumint.com/src/calculators/final-framework/physics-batch3-final-renderer-migration.test.ts
+2026-11-16T04:17:58.5606527Z ##[warning]  1:99  warning  'runCalculator' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5607190Z 
+2026-11-16T04:17:58.5607517Z /home/runner/work/calcumint.com/calcumint.com/src/calculators/geometry/geometry-batch-2.ts
+2026-11-16T04:17:58.5608360Z ##[warning]  2:100  warning  'nonneg' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5609040Z 
+2026-11-16T04:17:58.5609361Z /home/runner/work/calcumint.com/calcumint.com/src/calculators/geometry/geometry-batch-3.ts
+2026-11-16T04:17:58.5610143Z ##[warning]  2:100  warning  'nonneg' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5610841Z 
+2026-11-16T04:17:58.5611162Z /home/runner/work/calcumint.com/calcumint.com/src/calculators/geometry/geometry-batch-5.ts
+2026-11-16T04:17:58.5611936Z ##[warning]  2:100  warning  'nonneg' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5612603Z 
+2026-11-16T04:17:58.5613074Z /home/runner/work/calcumint.com/calcumint.com/src/calculators/geometry/solid-geometry-batch-8.ts
+2026-11-16T04:17:58.5613877Z ##[warning]  2:55  warning  'pos' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5614542Z 
+2026-11-16T04:17:58.5614886Z /home/runner/work/calcumint.com/calcumint.com/src/calculators/geometry/solid-geometry-batch-9.ts
+2026-11-16T04:17:58.5615687Z ##[warning]  7:7  warning  'hexArea' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5616361Z 
+2026-11-16T04:17:58.5616674Z /home/runner/work/calcumint.com/calcumint.com/src/calculators/physics/catalog-batch-4.ts
+2026-11-16T04:17:58.5617636Z ##[warning]  2:146  warning  'finite' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5618311Z 
+2026-11-16T04:17:58.5618629Z /home/runner/work/calcumint.com/calcumint.com/src/calculators/statistics/catalog-batch-4.ts
+2026-11-16T04:17:58.5619474Z ##[warning]  3:7  warning  'dataset' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5620146Z 
+2026-11-16T04:17:58.5620515Z /home/runner/work/calcumint.com/calcumint.com/src/calculators/technology-computing/catalog-batch-1.ts
+2026-11-16T04:17:58.5621395Z ##[warning]  20:260  warning  'network' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5622066Z 
+2026-11-16T04:17:58.5622373Z /home/runner/work/calcumint.com/calcumint.com/src/components/calculator-interactive.tsx
+2026-11-16T04:17:58.5624133Z ##[warning]  310:374  warning  The 'input' conditional could make the dependencies of useMemo Hook (at line 310) change on every render. To fix this, wrap the initialization of 'input' in its own useMemo() Hook  react-hooks/exhaustive-deps
+2026-11-16T04:17:58.5626107Z ##[warning]  351:6    warning  'PhysicsKind' is defined but never used                                                                                                                                              @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5627803Z ##[warning]  352:7    warning  'physicsConfig' is assigned a value but never used                                                                                                                                   @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5629556Z ##[warning]  364:551  warning  'input' is assigned a value but never used                                                                                                                                           @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5630467Z 
+2026-11-16T04:17:58.5630951Z /home/runner/work/calcumint.com/calcumint.com/src/components/custom-calculator-preview.tsx
+2026-11-16T04:17:58.5633530Z ##[warning]  21:43  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+2026-11-16T04:17:58.5635109Z 
+2026-11-16T04:17:58.5635475Z /home/runner/work/calcumint.com/calcumint.com/src/components/pro-checkout-button.tsx
+2026-11-16T04:17:58.5637743Z ##[warning]  179:52  warning  Do not use `window.location.assign()` to navigate to internal Next.js pages. Use `redirect()` in the render phase, or `useRouter().push()` in Client Components' event handlers instead. See: https://nextjs.org/docs/messages/no-location-assign-relative-destination  @next/next/no-location-assign-relative-destination
+2026-11-16T04:17:58.5639109Z 
+2026-11-16T04:17:58.5639475Z /home/runner/work/calcumint.com/calcumint.com/src/components/public-embed-calculator.test.tsx
+2026-11-16T04:17:58.5640250Z ##[warning]  44:43  warning  '_options' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5640947Z 
+2026-11-16T04:17:58.5641287Z /home/runner/work/calcumint.com/calcumint.com/src/lib/calculator-factory/cohorts/physics.ts
+2026-11-16T04:17:58.5642288Z ##[warning]  12:31  warning  '_context' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5643508Z ##[warning]  18:31  warning  '_context' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5644161Z 
+2026-11-16T04:17:58.5644482Z /home/runner/work/calcumint.com/calcumint.com/src/lib/cohort22-closure-evidence.test.ts
+2026-11-16T04:17:58.5645355Z ##[warning]  4:9  warning  'verifyCapturedCurrentCaller' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5646080Z 
+2026-11-16T04:17:58.5646552Z /home/runner/work/calcumint.com/calcumint.com/src/lib/completion-wave-20261113/sql-successor.test.ts
+2026-11-16T04:17:58.5647422Z ##[warning]  141:128  warning  'version' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5648511Z ##[warning]  154:141  warning  'version' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5649581Z ##[warning]  196:135  warning  'version' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5650666Z ##[warning]  210:120  warning  'version' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5651752Z ##[warning]  216:134  warning  'version' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5652401Z 
+2026-11-16T04:17:58.5652744Z /home/runner/work/calcumint.com/calcumint.com/tests/completion-first-20261112/test-stage.mjs
+2026-11-16T04:17:58.5653859Z ##[warning]  4:9   warning  'appStage5Policy' is defined but never used       @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5655063Z ##[warning]  4:25  warning  'appStage5CapturePath' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5655762Z 
+2026-11-16T04:17:58.5656094Z /home/runner/work/calcumint.com/calcumint.com/tests/completion-wave-20261113/pro-gates.mjs
+2026-11-16T04:17:58.5656895Z ##[warning]  47:51  warning  'auth' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5657538Z 
+2026-11-16T04:17:58.5657885Z /home/runner/work/calcumint.com/calcumint.com/tests/five-native-auth-20261109/final-schema.mjs
+2026-11-16T04:17:58.5658759Z ##[warning]  1:83   warning  'createHmac' is defined but never used      @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5659897Z ##[warning]  6:504  warning  'other' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5660573Z 
+2026-11-16T04:17:58.5660984Z /home/runner/work/calcumint.com/calcumint.com/tests/milestone100-20261114/authority-observation-collector.mjs
+2026-11-16T04:17:58.5687757Z ##[warning]  73:87  warning  'disposition' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5688631Z 
+2026-11-16T04:17:58.5689087Z /home/runner/work/calcumint.com/calcumint.com/tests/milestone100-20261114/source-immutable-queries.test.mjs
+2026-11-16T04:17:58.5689984Z ##[warning]  21:16  warning  'args' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5690661Z 
+2026-11-16T04:17:58.5690977Z /home/runner/work/calcumint.com/calcumint.com/tests/milestone60-20261113/browser.mjs
+2026-11-16T04:17:58.5691937Z ##[warning]  14:9  warning  'recordedDownload' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5692660Z 
+2026-11-16T04:17:58.5693143Z /home/runner/work/calcumint.com/calcumint.com/tests/milestone60-20261113/business-sql-acceptance.mjs
+2026-11-16T04:17:58.5693945Z ##[warning]  3:8  warning  'path' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5694608Z 
+2026-11-16T04:17:58.5694927Z /home/runner/work/calcumint.com/calcumint.com/tests/milestone60-20261113/journeys.mjs
+2026-11-16T04:17:58.5695752Z ##[warning]   4:20  warning  'randomBytes' is defined but never used                @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5696947Z ##[warning]   5:8   warning  'http' is defined but never used                       @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5698142Z ##[warning]   8:9   warning  'createClient' is defined but never used               @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5699372Z ##[warning]   9:9   warning  'createServerClient' is defined but never used         @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5700604Z ##[warning]  10:9   warning  'startGoTrueFixture' is defined but never used         @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5701860Z ##[warning]  11:9   warning  'initializeFullSchema' is defined but never used       @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5703379Z ##[warning]  12:9   warning  'startProductionRuntime' is defined but never used     @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5704189Z ##[warning]  13:9   warning  'startBrowser' is defined but never used               @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5704978Z ##[warning]  15:53  warning  'captureFixtureDiagnostics' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5705773Z ##[warning]  15:79  warning  'waitForDeliveryReadiness' is defined but never used   @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5706534Z ##[warning]  26:7   warning  'out' is assigned a value but never used               @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5707284Z ##[warning]  29:7   warning  'unhold' is assigned a value but never used            @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5707728Z 
+2026-11-16T04:17:58.5707957Z /home/runner/work/calcumint.com/calcumint.com/tests/next-cohort-native-20261110/contract.postgres.mjs
+2026-11-16T04:17:58.5708535Z ##[warning]  1:153  warning  'createHash' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5708959Z 
+2026-11-16T04:17:58.5709216Z /home/runner/work/calcumint.com/calcumint.com/tests/next-engineering-20261115/source-admission-availability.mjs
+2026-11-16T04:17:58.5709839Z ##[warning]  6:9  warning  'sourceStage10Policy' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5710275Z 
+2026-11-16T04:17:58.5710519Z /home/runner/work/calcumint.com/calcumint.com/tests/next-engineering-20261115/source-admission-deadline.mjs
+2026-11-16T04:17:58.5711064Z ##[warning]  6:9  warning  'sourceStage10Policy' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5711500Z 
+2026-11-16T04:17:58.5711730Z /home/runner/work/calcumint.com/calcumint.com/tests/next-engineering-20261115/source-admission-lint.mjs
+2026-11-16T04:17:58.5712268Z ##[warning]  6:9  warning  'sourceStage10Policy' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5713000Z 
+2026-11-16T04:17:58.5713293Z /home/runner/work/calcumint.com/calcumint.com/tests/next-engineering-20261115/source-admission-review2.mjs
+2026-11-16T04:17:58.5713841Z ##[warning]  6:9  warning  'sourceStage10Policy' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5714284Z 
+2026-11-16T04:17:58.5714525Z /home/runner/work/calcumint.com/calcumint.com/tests/next-engineering-20261115/source-admission-selector.mjs
+2026-11-16T04:17:58.5715068Z ##[warning]  6:9  warning  'sourceStage10Policy' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5715508Z 
+2026-11-16T04:17:58.5715731Z /home/runner/work/calcumint.com/calcumint.com/tests/next-engineering-20261115/source-stage10.test.mjs
+2026-11-16T04:17:58.5716245Z ##[warning]  4:53  warning  'writeFileSync' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5716670Z 
+2026-11-16T04:17:58.5716873Z /home/runner/work/calcumint.com/calcumint.com/tests/parallel-five-20261110/batch-proof.mjs
+2026-11-16T04:17:58.5717442Z ##[warning]  1:58   warning  'mkdir' is defined but never used           @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5718166Z ##[warning]  1:107  warning  'appendFileSync' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5718597Z 
+2026-11-16T04:17:58.5718802Z /home/runner/work/calcumint.com/calcumint.com/tests/parallel-five-20261110/continuation.mjs
+2026-11-16T04:17:58.5719276Z ##[warning]  1:159  warning  'path' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5719688Z 
+2026-11-16T04:17:58.5719871Z /home/runner/work/calcumint.com/calcumint.com/tests/parallel-source-20261110/core.mjs
+2026-11-16T04:17:58.5720491Z ##[warning]   39:9    warning  'verifyExactStage' is defined but never used                       @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5721465Z ##[warning]   42:54   warning  'verifyCompletionAndHistoricalFactory' is defined but never used   @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5722344Z ##[warning]   44:46   warning  'verifyWorkflowAndHistoricalCompletion' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5723369Z ##[warning]  392:206  warning  'claim' is defined but never used                                  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5724152Z ##[warning]  392:212  warning  'bytes' is defined but never used                                  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5724595Z 
+2026-11-16T04:17:58.5724818Z /home/runner/work/calcumint.com/calcumint.com/tests/remaining-five-native-20261110/acceptance.mjs
+2026-11-16T04:17:58.5725374Z ##[warning]  3:379  warning  'q' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5725798Z 
+2026-11-16T04:17:58.5725992Z /home/runner/work/calcumint.com/calcumint.com/tests/schema-reconciliation/compare.mjs
+2026-11-16T04:17:58.5726526Z ##[warning]  8:10  warning  'id' is assigned a value but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5726944Z 
+2026-11-16T04:17:58.5727163Z /home/runner/work/calcumint.com/calcumint.com/tests/shortest-publication-20/caller-lineage.test.mjs
+2026-11-16T04:17:58.5727726Z ##[warning]  7:9  warning  'execFileSync' is defined but never used  @typescript-eslint/no-unused-vars
+2026-11-16T04:17:58.5728144Z 
+2026-11-16T04:17:58.5728513Z ✖ 90 problems (0 errors, 90 warnings)
+2026-11-16T04:17:58.5728629Z 
+2026-11-16T04:17:58.8959168Z ##[group]Run npm run typecheck
+2026-11-16T04:17:58.8959361Z [36;1mnpm run typecheck[0m
+2026-11-16T04:17:58.9001797Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:17:58.9001950Z ##[endgroup]
+2026-11-16T04:17:58.9702574Z 
+2026-11-16T04:17:58.9703131Z > calcumint@0.1.0 typecheck
+2026-11-16T04:17:58.9703426Z > tsc --noEmit
+2026-11-16T04:17:58.9703513Z 
+2026-11-16T04:18:46.7609496Z ##[group]Run docker pull postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94
+2026-11-16T04:18:46.7610191Z [36;1mdocker pull postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94[0m
+2026-11-16T04:18:46.7610631Z [36;1mdocker pull postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401[0m
+2026-11-16T04:18:46.7655536Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:18:46.7655699Z ##[endgroup]
+2026-11-16T04:18:47.3379951Z docker.io/library/postgres@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94: Pulling from library/postgres
+2026-11-16T04:18:47.5036869Z ac28590ba464: Pulling fs layer
+2026-11-16T04:18:47.5037361Z 2d35ebdb57d9: Pulling fs layer
+2026-11-16T04:18:47.5037623Z a5bd5a0b8636: Pulling fs layer
+2026-11-16T04:18:47.5037871Z 11e80b5eea53: Pulling fs layer
+2026-11-16T04:18:47.5038104Z aabce23918dc: Pulling fs layer
+2026-11-16T04:18:47.5038438Z 82e3b18698cd: Pulling fs layer
+2026-11-16T04:18:47.5038681Z 10c02ef94427: Pulling fs layer
+2026-11-16T04:18:47.5038920Z 5b6f078adbb9: Pulling fs layer
+2026-11-16T04:18:47.5039180Z 1d12e864e19a: Pulling fs layer
+2026-11-16T04:18:47.5039433Z 3cecdd37f6f2: Pulling fs layer
+2026-11-16T04:18:47.6673504Z 11e80b5eea53: Download complete
+2026-11-16T04:18:47.6674428Z aabce23918dc: Download complete
+2026-11-16T04:18:47.6675741Z 82e3b18698cd: Download complete
+2026-11-16T04:18:47.6677769Z 10c02ef94427: Download complete
+2026-11-16T04:18:47.6679540Z 5b6f078adbb9: Download complete
+2026-11-16T04:18:47.6681216Z a5bd5a0b8636: Download complete
+2026-11-16T04:18:47.6682595Z 3cecdd37f6f2: Download complete
+2026-11-16T04:18:47.7691566Z 1d12e864e19a: Download complete
+2026-11-16T04:18:47.7692165Z 2d35ebdb57d9: Download complete
+2026-11-16T04:18:47.8679099Z 0077bac36ee7: Download complete
+2026-11-16T04:18:47.8680752Z 9a2b4c80ac9f: Download complete
+2026-11-16T04:18:47.8701747Z 82e3b18698cd: Pull complete
+2026-11-16T04:18:47.8710510Z 10c02ef94427: Pull complete
+2026-11-16T04:18:47.8753674Z 1d12e864e19a: Pull complete
+2026-11-16T04:18:47.8779132Z 2d35ebdb57d9: Pull complete
+2026-11-16T04:18:48.5680502Z ac28590ba464: Download complete
+2026-11-16T04:18:49.6118586Z 11e80b5eea53: Pull complete
+2026-11-16T04:18:49.6134413Z aabce23918dc: Pull complete
+2026-11-16T04:18:49.6134746Z 5b6f078adbb9: Pull complete
+2026-11-16T04:18:49.6136288Z a5bd5a0b8636: Pull complete
+2026-11-16T04:18:49.6146509Z 3cecdd37f6f2: Pull complete
+2026-11-16T04:18:49.6153399Z ac28590ba464: Pull complete
+2026-11-16T04:18:49.6154065Z Digest: sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94
+2026-11-16T04:18:49.6154694Z Status: Downloaded newer image for postgres@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94
+2026-11-16T04:18:49.6160053Z docker.io/library/postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94
+2026-11-16T04:18:50.0433997Z docker.io/postgrest/postgrest@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401: Pulling from postgrest/postgrest
+2026-11-16T04:18:50.2138584Z 2512fbf9bcfc: Pulling fs layer
+2026-11-16T04:18:50.4157901Z 2512fbf9bcfc: Download complete
+2026-11-16T04:18:50.4174613Z 2512fbf9bcfc: Pull complete
+2026-11-16T04:18:50.4175047Z Digest: sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401
+2026-11-16T04:18:50.4175581Z Status: Downloaded newer image for postgrest/postgrest@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401
+2026-11-16T04:18:50.4187357Z docker.io/postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401
+2026-11-16T04:18:50.4260829Z ##[group]Run node tests/next-runtime/security.mjs
+2026-11-16T04:18:50.4261065Z [36;1mnode tests/next-runtime/security.mjs[0m
+2026-11-16T04:18:50.4302367Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:18:50.4302506Z env:
+2026-11-16T04:18:50.4302685Z   NEXT_RUNTIME_ARTIFACTS: /home/runner/work/_temp/next-runtime-security
+2026-11-16T04:18:50.4303049Z ##[endgroup]
+2026-11-16T04:18:54.1072285Z PASS repo schema dependencies: auth trigger, membership helper, member/outsider builder RLS, profile plan ACL
+2026-11-16T04:18:55.7175500Z PASS PostgREST rejects wrong JWT signature
+2026-11-16T04:18:55.7772516Z PASS Owner profile display update succeeds but plan update is denied
+2026-11-16T04:18:55.7906591Z PASS RLS prevents cross-account project reads and writes through real HTTP
+2026-11-16T04:18:55.8821258Z PASS Client roles cannot TRUNCATE tables or execute internal service RPC
+2026-11-16T04:18:55.9871186Z PASS Membership role and organization identity fencing survives HTTP writes
+2026-11-16T04:18:56.0939584Z PASS Identical concurrent HTTP lead requests persist one complete receipt
+2026-11-16T04:18:56.2803236Z PASS Late consent failure rolls back the complete HTTP transaction and retry recovers
+2026-11-16T04:18:56.3255636Z PASS Missing and inaccessible RPC signatures fail closed through HTTP
+2026-11-16T04:18:56.5381246Z ##[group]Run browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")
+2026-11-16T04:18:56.5381555Z [36;1mbrowser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")[0m
+2026-11-16T04:18:56.5381798Z [36;1mecho "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"[0m
+2026-11-16T04:18:56.5381989Z [36;1m"$browser" --version[0m
+2026-11-16T04:18:56.5423500Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:18:56.5423643Z ##[endgroup]
+2026-11-16T04:19:02.3688556Z [1116/041902.368567:WARNING:chrome/app/chrome_main_linux.cc:84] Read channel stable from /home/runner/work/_temp/calcumint-ci-browser.jNECY6/opt/google/chrome/CHROME_VERSION_EXTRA
+2026-11-16T04:19:02.3695663Z Google Chrome 156.0.8078.47 
+2026-11-16T04:19:02.3779003Z ##[group]Run test -x "$CHROMIUM_PATH"
+2026-11-16T04:19:02.3779212Z [36;1mtest -x "$CHROMIUM_PATH"[0m
+2026-11-16T04:19:02.3779558Z [36;1mnode --test --test-reporter=spec tests/next-runtime/browser-fixture.test.mjs tests/next-runtime/owner-preview-readiness.test.mjs[0m
+2026-11-16T04:19:02.3779952Z [36;1mnode --test --test-reporter=spec tests/next-runtime/cdp.test.mjs[0m
+2026-11-16T04:19:02.3826519Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:19:02.3826687Z env:
+2026-11-16T04:19:02.3826939Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.jNECY6/opt/google/chrome/chrome
+2026-11-16T04:19:02.3827202Z   CDP_STARTUP_DIAGNOSTICS: 1
+2026-11-16T04:19:02.3827342Z ##[endgroup]
+2026-11-16T04:19:02.4614151Z ✔ Browser fixture download failure rejects and removes partial installation (21.680005ms)
+2026-11-16T04:19:02.4790121Z ✔ Browser fixture checksum failure rejects and removes partial installation (18.275456ms)
+2026-11-16T04:19:06.1022980Z ✔ Browser fixture extraction failure rejects and removes partial installation (28.576849ms)
+2026-11-16T04:19:06.1024052Z ✔ browser transport recovers one truncated HTTP transfer and fails closed after bounded retry (3593.274168ms)
+2026-11-16T04:19:06.1077626Z ✔ directory submit and intermediate client-navigation states never satisfy owner calculation readiness (43.222204ms)
+2026-11-16T04:19:06.1078415Z ✔ only the target path heading and real calculation control satisfy readiness (13.50129ms)
+2026-11-16T04:19:06.1078807Z ℹ tests 6
+2026-11-16T04:19:06.1079020Z ℹ suites 0
+2026-11-16T04:19:06.1079205Z ℹ pass 6
+2026-11-16T04:19:06.1079383Z ℹ fail 0
+2026-11-16T04:19:06.1079572Z ℹ cancelled 0
+2026-11-16T04:19:06.1079783Z ℹ skipped 0
+2026-11-16T04:19:06.1079963Z ℹ todo 0
+2026-11-16T04:19:06.1080105Z ℹ duration_ms 3698.728757
+2026-11-16T04:19:07.6756236Z ✔ synthetic same-owner selection preserves SDK verification while owner replacement fails closed (1438.410942ms)
+2026-11-16T04:19:09.2393901Z ✔ trusted field edits wait for a visible non-inert account control and preserve outside focus data (1564.966747ms)
+2026-11-16T04:19:09.5817631Z ✔ headless CDP startup does not depend on the inherited desktop session bus (342.659556ms)
+2026-11-16T04:19:09.9274460Z ✔ Chromium startup uses its readiness file when stderr is quiet (345.238814ms)
+2026-11-16T04:19:09.9823249Z CDP startup diagnostics {"events":[{"phase":"profile-start","elapsedMs":0},{"phase":"profile-created","elapsedMs":0},{"phase":"spawn","elapsedMs":3,"pid":6190,"executable":"/opt/hostedtoolcache/node/22.23.4/x64/bin/node"},{"phase":"readiness-wait","elapsedMs":3,"startupTimeoutMs":1000},{"phase":"readiness-file","elapsedMs":3,"state":"absent"},{"phase":"readiness-file","elapsedMs":44,"state":"present"},{"phase":"endpoint-ready","elapsedMs":44},{"phase":"target-create","elapsedMs":44},{"phase":"startup-failed","elapsedMs":49,"name":"Error"},{"phase":"cleanup-start","elapsedMs":50},{"phase":"terminate","elapsedMs":50,"signal":"SIGTERM"},{"phase":"process-exit","elapsedMs":53,"code":null,"signal":"SIGTERM"},{"phase":"profile-removed","elapsedMs":53}],"samples":[{"elapsedMs":4,"load":[1.98,0.83,0.32],"freeMemory":14752198656,"files":{"/proc/pressure/cpu":"some avg10=5.78 avg60=3.89 avg300=1.61 total=7355158\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n","/proc/pressure/io":"some avg10=4.26 avg60=2.50 avg300=2.27 total=13272183\nfull avg10=3.14 avg60=2.18 avg300=2.10 total=12453562\n","/sys/fs/cgroup/cpu.stat":"usage_usec 204438000\nuser_usec 170770000\nsystem_usec 33668000\nnice_usec 42000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n","/sys/fs/cgroup/memory.events":null,"/proc/6190/stat":"6190 (node) R 5509 1963 1963 0 -1 4194304 165 0 0 0 0 0 0 0 20 0 1 0 27546 114089984 822 18446744073709551615 14909440 54527057 140737466904304 0 0 0 0 0 0 0 0 0 17 2 0 0 0 0 0 112294112 112475408 135577600 140737466907139 140737466907405 140737466907405 140737466912713 0\n","/proc/6190/wchan":"0"}},{"elapsedMs":50,"load":[1.98,0.83,0.32],"freeMemory":14751834112,"files":{"/proc/pressure/cpu":"some avg10=5.78 avg60=3.89 avg300=1.61 total=7355391\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n","/proc/pressure/io":"some avg10=4.26 avg60=2.50 avg300=2.27 total=13272183\nfull avg10=3.14 avg60=2.18 avg300=2.10 total=12453562\n","/sys/fs/cgroup/cpu.stat":"usage_usec 204493000\nuser_usec 170814000\nsystem_usec 33679000\nnice_usec 42000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n","/sys/fs/cgroup/memory.events":null,"/proc/6190/stat":"6190 (node) S 5509 1963 1963 0 -1 4194304 4431 0 0 0 3 0 0 0 20 0 7 0 27546 11906916352 14886 18446744073709551615 14909440 54527057 140737466904304 0 0 0 0 16781312 17922 0 0 0 17 0 0 0 0 0 0 112294112 112475408 135577600 140737466907139 140737466907405 140737466907405 140737466912713 0\n","/proc/6190/wchan":"ep_poll"}}],"pid":6190,"profile":"/tmp/actual-next-chromium-Gn7qFR"}
+2026-11-16T04:19:09.9831509Z ✔ failed target creation from a readiness file still cleans the child and profile (54.981398ms)
+2026-11-16T04:19:15.5401700Z CDP startup diagnostics {"events":[{"phase":"profile-start","elapsedMs":0},{"phase":"profile-created","elapsedMs":0},{"phase":"spawn","elapsedMs":3,"pid":6198,"executable":"/opt/hostedtoolcache/node/22.23.4/x64/bin/node"},{"phase":"readiness-wait","elapsedMs":4,"startupTimeoutMs":10000},{"phase":"readiness-file","elapsedMs":4,"state":"absent"},{"phase":"readiness-file","elapsedMs":44,"state":"present"},{"phase":"endpoint-ready","elapsedMs":44},{"phase":"target-create","elapsedMs":44},{"phase":"startup-failed","elapsedMs":5551,"name":"Error"},{"phase":"cleanup-start","elapsedMs":5552},{"phase":"terminate","elapsedMs":5552,"signal":"SIGTERM"},{"phase":"process-exit","elapsedMs":5555,"code":null,"signal":"SIGTERM"},{"phase":"profile-removed","elapsedMs":5556}],"samples":[{"elapsedMs":4,"load":[1.98,0.83,0.32],"freeMemory":14760062976,"files":{"/proc/pressure/cpu":"some avg10=5.78 avg60=3.89 avg300=1.61 total=7357068\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n","/proc/pressure/io":"some avg10=4.26 avg60=2.50 avg300=2.27 total=13272183\nfull avg10=3.14 avg60=2.18 avg300=2.10 total=12453562\n","/sys/fs/cgroup/cpu.stat":"usage_usec 204513000\nuser_usec 170827000\nsystem_usec 33686000\nnice_usec 42000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n","/sys/fs/cgroup/memory.events":null,"/proc/6198/stat":"6198 (node) R 5509 1963 1963 0 -1 4194304 169 0 0 0 0 0 0 0 20 0 1 0 27552 114089984 886 18446744073709551615 14909440 54527057 140726219616512 0 0 0 0 0 0 0 0 0 17 0 0 0 0 0 0 112294112 112475408 288636928 140726219618819 140726219619085 140726219619085 140726219624393 0\n","/proc/6198/wchan":"0"}},{"elapsedMs":1005,"load":[1.98,0.83,0.32],"freeMemory":14785675264,"files":{"/proc/pressure/cpu":"some avg10=7.81 avg60=4.32 avg300=1.71 total=7357766\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n","/proc/pressure/io":"some avg10=3.67 avg60=2.45 avg300=2.26 total=13272183\nfull avg10=2.57 avg60=2.11 avg300=2.09 total=12453562\n","/sys/fs/cgroup/cpu.stat":"usage_usec 204618000\nuser_usec 170897000\nsystem_usec 33721000\nnice_usec 42000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n","/sys/fs/cgroup/memory.events":null,"/proc/6198/stat":"6198 (node) S 5509 1963 1963 0 -1 4194304 4393 0 0 0 3 1 0 0 20 0 7 0 27552 11906883584 14921 18446744073709551615 14909440 54527057 140726219616512 0 0 0 0 16781312 17922 0 0 0 17 0 0 0 0 0 0 112294112 112475408 288636928 140726219618819 140726219619085 140726219619085 140726219624393 0\n","/proc/6198/wchan":"ep_poll"}},{"elapsedMs":2004,"load":[1.98,0.83,0.32],"freeMemory":14818705408,"files":{"/proc/pressure/cpu":"some avg10=7.81 avg60=4.32 avg300=1.71 total=7357991\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n","/proc/pressure/io":"some avg10=3.67 avg60=2.45 avg300=2.26 total=13272183\nfull avg10=2.57 avg60=2.11 avg300=2.09 total=12453562\n","/sys/fs/cgroup/cpu.stat":"usage_usec 204623000\nuser_usec 170899000\nsystem_usec 33724000\nnice_usec 42000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n","/sys/fs/cgroup/memory.events":null,"/proc/6198/stat":"6198 (node) S 5509 1963 1963 0 -1 4194304 4393 0 0 0 3 1 0 0 20 0 7 0 27552 11906883584 14921 18446744073709551615 14909440 54527057 140726219616512 0 0 0 0 16781312 17922 0 0 0 17 0 0 0 0 0 0 112294112 112475408 288636928 140726219618819 140726219619085 140726219619085 140726219624393 0\n","/proc/6198/wchan":"ep_poll"}},{"elapsedMs":3005,"load":[1.98,0.83,0.32],"freeMemory":14851735552,"files":{"/proc/pressure/cpu":"some avg10=6.39 avg60=4.18 avg300=1.70 total=7358155\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n","/proc/pressure/io":"some avg10=3.00 avg60=2.37 avg300=2.24 total=13272183\nfull avg10=2.10 avg60=2.04 avg300=2.07 total=12453562\n","/sys/fs/cgroup/cpu.stat":"usage_usec 204632000\nuser_usec 170903000\nsystem_usec 33729000\nnice_usec 42000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n","/sys/fs/cgroup/memory.events":null,"/proc/6198/stat":"6198 (node) S 5509 1963 1963 0 -1 4194304 4393 0 0 0 3 1 0 0 20 0 7 0 27552 11906883584 14921 18446744073709551615 14909440 54527057 140726219616512 0 0 0 0 16781312 17922 0 0 0 17 0 0 0 0 0 0 112294112 112475408 288636928 140726219618819 140726219619085 140726219619085 140726219624393 0\n","/proc/6198/wchan":"ep_poll"}},{"elapsedMs":4005,"load":[1.98,0.83,0.32],"freeMemory":14893023232,"files":{"/proc/pressure/cpu":"some avg10=6.39 avg60=4.18 avg300=1.70 total=7358422\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n","/proc/pressure/io":"some avg10=3.00 avg60=2.37 avg300=2.24 total=13272183\nfull avg10=2.10 avg60=2.04 avg300=2.07 total=12453562\n","/sys/fs/cgroup/cpu.stat":"usage_usec 204643000\nuser_usec 170907000\nsystem_usec 33736000\nnice_usec 42000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n","/sys/fs/cgroup/memory.events":null,"/proc/6198/stat":"6198 (node) S 5509 1963 1963 0 -1 4194304 4393 0 0 0 3 1 0 0 20 0 7 0 27552 11906883584 14921 18446744073709551615 14909440 54527057 140726219616512 0 0 0 0 16781312 17922 0 0 0 17 0 0 0 0 0 0 112294112 112475408 288636928 140726219618819 140726219619085 140726219619085 140726219624393 0\n","/proc/6198/wchan":"ep_poll"}},{"elapsedMs":5005,"load":[1.82,0.81,0.31],"freeMemory":14937739264,"files":{"/proc/pressure/cpu":"some avg10=5.23 avg60=4.04 avg300=1.69 total=7359364\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n","/proc/pressure/io":"some avg10=2.46 avg60=2.29 avg300=2.23 total=13272183\nfull avg10=1.72 avg60=1.97 avg300=2.06 total=12453562\n","/sys/fs/cgroup/cpu.stat":"usage_usec 204674000\nuser_usec 170925000\nsystem_usec 33749000\nnice_usec 42000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n","/sys/fs/cgroup/memory.events":null,"/proc/6198/stat":"6198 (node) S 5509 1963 1963 0 -1 4194304 4393 0 0 0 3 1 0 0 20 0 7 0 27552 11906883584 14921 18446744073709551615 14909440 54527057 140726219616512 0 0 0 0 16781312 17922 0 0 0 17 0 0 0 0 0 0 112294112 112475408 288636928 140726219618819 140726219619085 140726219619085 140726219624393 0\n","/proc/6198/wchan":"ep_poll"}},{"elapsedMs":5552,"load":[1.82,0.81,0.31],"freeMemory":14937739264,"files":{"/proc/pressure/cpu":"some avg10=5.23 avg60=4.04 avg300=1.69 total=7359564\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n","/proc/pressure/io":"some avg10=2.46 avg60=2.29 avg300=2.23 total=13272243\nfull avg10=1.72 avg60=1.97 avg300=2.06 total=12453618\n","/sys/fs/cgroup/cpu.stat":"usage_usec 204681000\nuser_usec 170931000\nsystem_usec 33750000\nnice_usec 42000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n","/sys/fs/cgroup/memory.events":null,"/proc/6198/stat":"6198 (node) S 5509 1963 1963 0 -1 4194304 4423 0 0 0 3 1 0 0 20 0 7 0 27552 11906883584 15145 18446744073709551615 14909440 54527057 140726219616512 0 0 0 0 16781312 17922 0 0 0 17 0 0 0 0 0 0 112294112 112475408 288636928 140726219618819 140726219619085 140726219619085 140726219624393 0\n","/proc/6198/wchan":"ep_poll"}}],"pid":6198,"profile":"/tmp/actual-next-chromium-bboXOG"}
+2026-11-16T04:19:15.5416383Z ✔ target creation can use the remaining startup budget beyond five seconds (5557.190526ms)
+2026-11-16T04:19:20.5519136Z CDP startup diagnostics {"events":[{"phase":"profile-start","elapsedMs":0},{"phase":"profile-created","elapsedMs":0},{"phase":"spawn","elapsedMs":3,"pid":6208,"executable":"/opt/hostedtoolcache/node/22.23.4/x64/bin/node"},{"phase":"readiness-wait","elapsedMs":3,"startupTimeoutMs":5000},{"phase":"readiness-file","elapsedMs":3,"state":"absent"},{"phase":"readiness-file","elapsedMs":43,"state":"present"},{"phase":"endpoint-ready","elapsedMs":43},{"phase":"target-create","elapsedMs":43},{"phase":"startup-failed","elapsedMs":5006,"name":"TimeoutError"},{"phase":"cleanup-start","elapsedMs":5007},{"phase":"terminate","elapsedMs":5007,"signal":"SIGTERM"},{"phase":"process-exit","elapsedMs":5010,"code":null,"signal":"SIGTERM"},{"phase":"profile-removed","elapsedMs":5011}],"samples":[{"elapsedMs":4,"load":[1.82,0.81,0.31],"freeMemory":14957207552,"files":{"/proc/pressure/cpu":"some avg10=5.23 avg60=4.04 avg300=1.69 total=7360689\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n","/proc/pressure/io":"some avg10=2.46 avg60=2.29 avg300=2.23 total=13272243\nfull avg10=1.72 avg60=1.97 avg300=2.06 total=12453618\n","/sys/fs/cgroup/cpu.stat":"usage_usec 204698000\nuser_usec 170938000\nsystem_usec 33760000\nnice_usec 42000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n","/sys/fs/cgroup/memory.events":null,"/proc/6208/stat":"6208 (node) R 5509 1963 1963 0 -1 4194304 157 0 0 0 0 0 0 0 20 0 1 0 28108 114089984 720 18446744073709551615 14909440 54527057 140724517934464 0 0 0 0 0 0 0 0 0 17 3 0 0 0 0 0 112294112 112475408 1105084416 140724517943811 140724517944077 140724517944077 140724517949385 0\n","/proc/6208/wchan":"0"}},{"elapsedMs":1004,"load":[1.82,0.81,0.31],"freeMemory":15000035328,"files":{"/proc/pressure/cpu":"some avg10=5.23 avg60=4.04 avg300=1.69 total=7362112\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n","/proc/pressure/io":"some avg10=2.46 avg60=2.29 avg300=2.23 total=13272243\nfull avg10=1.72 avg60=1.97 avg300=2.06 total=12453618\n","/sys/fs/cgroup/cpu.stat":"usage_usec 204793000\nuser_usec 171005000\nsystem_usec 33788000\nnice_usec 42000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n","/sys/fs/cgroup/memory.events":null,"/proc/6208/stat":"6208 (node) S 5509 1963 1963 0 -1 4194304 4397 0 0 0 3 1 0 0 20 0 7 0 28108 11906916352 14922 18446744073709551615 14909440 54527057 140724517934464 0 0 0 0 16781312 17922 0 0 0 17 3 0 0 0 0 0 112294112 112475408 1105084416 140724517943811 140724517944077 140724517944077 140724517949385 0\n","/proc/6208/wchan":"ep_poll"}},{"elapsedMs":2004,"load":[1.82,0.81,0.31],"freeMemory":15041323008,"files":{"/proc/pressure/cpu":"some avg10=4.29 avg60=3.91 avg300=1.68 total=7362321\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n","/proc/pressure/io":"some avg10=2.01 avg60=2.22 avg300=2.21 total=13272243\nfull avg10=1.41 avg60=1.91 avg300=2.04 total=12453618\n","/sys/fs/cgroup/cpu.stat":"usage_usec 204799000\nuser_usec 171006000\nsystem_usec 33793000\nnice_usec 42000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n","/sys/fs/cgroup/memory.events":null,"/proc/6208/stat":"6208 (node) S 5509 1963 1963 0 -1 4194304 4397 0 0 0 3 1 0 0 20 0 7 0 28108 11906916352 14922 18446744073709551615 14909440 54527057 140724517934464 0 0 0 0 16781312 17922 0 0 0 17 3 0 0 0 0 0 112294112 112475408 1105084416 140724517943811 140724517944077 140724517944077 140724517949385 0\n","/proc/6208/wchan":"ep_poll"}},{"elapsedMs":3003,"load":[1.82,0.81,0.31],"freeMemory":15074095104,"files":{"/proc/pressure/cpu":"some avg10=4.29 avg60=3.91 avg300=1.68 total=7362591\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n","/proc/pressure/io":"some avg10=2.01 avg60=2.22 avg300=2.21 total=13272243\nfull avg10=1.41 avg60=1.91 avg300=2.04 total=12453618\n","/sys/fs/cgroup/cpu.stat":"usage_usec 204811000\nuser_usec 171006000\nsystem_usec 33805000\nnice_usec 42000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n","/sys/fs/cgroup/memory.events":null,"/proc/6208/stat":"6208 (node) S 5509 1963 1963 0 -1 4194304 4397 0 0 0 3 1 0 0 20 0 7 0 28108 11906916352 14922 18446744073709551615 14909440 54527057 140724517934464 0 0 0 0 16781312 17922 0 0 0 17 3 0 0 0 0 0 112294112 112475408 1105084416 140724517943811 140724517944077 140724517944077 140724517949385 0\n","/proc/6208/wchan":"ep_poll"}},{"elapsedMs":4005,"load":[1.82,0.81,0.31],"freeMemory":15115583488,"files":{"/proc/pressure/cpu":"some avg10=3.51 avg60=3.78 avg300=1.67 total=7362847\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n","/proc/pressure/io":"some avg10=1.65 avg60=2.15 avg300=2.20 total=13272243\nfull avg10=1.15 avg60=1.84 avg300=2.03 total=12453618\n","/sys/fs/cgroup/cpu.stat":"usage_usec 204822000\nuser_usec 171010000\nsystem_usec 33812000\nnice_usec 42000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n","/sys/fs/cgroup/memory.events":null,"/proc/6208/stat":"6208 (node) S 5509 1963 1963 0 -1 4194304 4397 0 0 0 3 1 0 0 20 0 7 0 28108 11906916352 14922 18446744073709551615 14909440 54527057 140724517934464 0 0 0 0 16781312 17922 0 0 0 17 3 0 0 0 0 0 112294112 112475408 1105084416 140724517943811 140724517944077 140724517944077 140724517949385 0\n","/proc/6208/wchan":"ep_poll"}},{"elapsedMs":5004,"load":[1.67,0.8,0.31],"freeMemory":15147786240,"files":{"/proc/pressure/cpu":"some avg10=3.51 avg60=3.78 avg300=1.67 total=7363121\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n","/proc/pressure/io":"some avg10=1.65 avg60=2.15 avg300=2.20 total=13272243\nfull avg10=1.15 avg60=1.84 avg300=2.03 total=12453618\n","/sys/fs/cgroup/cpu.stat":"usage_usec 204828000\nuser_usec 171012000\nsystem_usec 33816000\nnice_usec 42000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n","/sys/fs/cgroup/memory.events":null,"/proc/6208/stat":"6208 (node) S 5509 1963 1963 0 -1 4194304 4397 0 0 0 3 1 0 0 20 0 7 0 28108 11906916352 14922 18446744073709551615 14909440 54527057 140724517934464 0 0 0 0 16781312 17922 0 0 0 17 3 0 0 0 0 0 112294112 112475408 1105084416 140724517943811 140724517944077 140724517944077 140724517949385 0\n","/proc/6208/wchan":"ep_poll"}},{"elapsedMs":5007,"load":[1.67,0.8,0.31],"freeMemory":15147786240,"files":{"/proc/pressure/cpu":"some avg10=3.51 avg60=3.78 avg300=1.67 total=7363126\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n","/proc/pressure/io":"some avg10=1.65 avg60=2.15 avg300=2.20 total=13272243\nfull avg10=1.15 avg60=1.84 avg300=2.03 total=12453618\n","/sys/fs/cgroup/cpu.stat":"usage_usec 204831000\nuser_usec 171015000\nsystem_usec 33816000\nnice_usec 42000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n","/sys/fs/cgroup/memory.events":null,"/proc/6208/stat":"6208 (node) R 5509 1963 1963 0 -1 4194304 4404 0 0 0 3 1 0 0 20 0 7 0 28108 11906916352 14922 18446744073709551615 14909440 54527057 140724517934464 0 0 0 0 16781312 17922 0 0 0 17 3 0 0 0 0 0 112294112 112475408 1105084416 140724517943811 140724517944077 140724517944077 140724517949385 0\n","/proc/6208/wchan":"0"}}],"pid":6208,"profile":"/tmp/actual-next-chromium-0VqxIX"}
+2026-11-16T04:19:20.5532262Z ✔ target creation still aborts at the shared startup deadline and cleans up (5012.058683ms)
+2026-11-16T04:19:21.8394565Z ✔ cleanup completes after Chromium has already exited (1287.582287ms)
+2026-11-16T04:19:22.2395714Z ✔ CDP commands time out and cleanup rejects outstanding commands (399.498709ms)
+2026-11-16T04:19:22.4636199Z CDP startup diagnostics {"events":[{"phase":"profile-start","elapsedMs":0},{"phase":"profile-created","elapsedMs":0},{"phase":"spawn","elapsedMs":3,"pid":6553,"executable":"/opt/hostedtoolcache/node/22.23.4/x64/bin/node"},{"phase":"readiness-wait","elapsedMs":3,"startupTimeoutMs":200},{"phase":"readiness-file","elapsedMs":4,"state":"absent"},{"phase":"startup-failed","elapsedMs":205,"name":"Error"},{"phase":"cleanup-start","elapsedMs":207},{"phase":"terminate","elapsedMs":207,"signal":"SIGTERM"},{"phase":"process-exit","elapsedMs":223,"code":null,"signal":"SIGTERM"},{"phase":"profile-removed","elapsedMs":223}],"samples":[{"elapsedMs":4,"load":[1.67,0.8,0.31],"freeMemory":15172014080,"files":{"/proc/pressure/cpu":"some avg10=3.05 avg60=3.69 avg300=1.66 total=7744986\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n","/proc/pressure/io":"some avg10=1.35 avg60=2.08 avg300=2.18 total=13301336\nfull avg10=0.94 avg60=1.78 avg300=2.01 total=12458040\n","/sys/fs/cgroup/cpu.stat":"usage_usec 207461000\nuser_usec 172516000\nsystem_usec 34945000\nnice_usec 42000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n","/sys/fs/cgroup/memory.events":null,"/proc/6553/stat":"6553 (node) R 5509 1963 1963 0 -1 4194304 168 0 0 0 0 0 0 0 20 0 1 0 28778 114089984 885 18446744073709551615 14909440 54527057 140731616672384 0 0 0 0 0 0 0 0 0 17 3 0 0 0 0 0 112294112 112475408 1176735744 140731616680452 140731616680717 140731616680717 140731616686025 0\n","/proc/6553/wchan":"0"}},{"elapsedMs":207,"load":[1.67,0.8,0.31],"freeMemory":15171649536,"files":{"/proc/pressure/cpu":"some avg10=3.05 avg60=3.69 avg300=1.66 total=7748090\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0\n","/proc/pressure/io":"some avg10=1.35 avg60=2.08 avg300=2.18 total=13301336\nfull avg10=0.94 avg60=1.78 avg300=2.01 total=12458040\n","/sys/fs/cgroup/cpu.stat":"usage_usec 207506000\nuser_usec 172554000\nsystem_usec 34952000\nnice_usec 42000\ncore_sched.force_idle_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n","/sys/fs/cgroup/memory.events":null,"/proc/6553/stat":"6553 (node) S 5509 1963 1963 0 -1 4194304 2567 0 0 0 1 0 0 0 20 0 7 0 28778 810229760 11634 18446744073709551615 14909440 54527057 140731616672384 0 0 0 0 16781312 17922 0 0 0 17 3 0 0 0 0 0 112294112 112475408 1176735744 140731616680452 140731616680717 140731616680717 140731616686025 0\n","/proc/6553/wchan":"ep_poll"}}],"pid":6553,"profile":"/tmp/actual-next-chromium-uckSaK"}
+2026-11-16T04:19:22.4642976Z ✔ failed startup terminates a launcher that never exposes CDP and removes its profile (225.327898ms)
+2026-11-16T04:19:22.4785013Z ℹ tests 10
+2026-11-16T04:19:22.4785225Z ℹ suites 0
+2026-11-16T04:19:22.4785713Z ℹ pass 10
+2026-11-16T04:19:22.4785873Z ℹ fail 0
+2026-11-16T04:19:22.4785998Z ℹ cancelled 0
+2026-11-16T04:19:22.4786132Z ℹ skipped 0
+2026-11-16T04:19:22.4786253Z ℹ todo 0
+2026-11-16T04:19:22.4786403Z ℹ duration_ms 16345.261293
+2026-11-16T04:19:22.4853122Z ##[group]Run test -x "$CHROMIUM_PATH"
+2026-11-16T04:19:22.4853340Z [36;1mtest -x "$CHROMIUM_PATH"[0m
+2026-11-16T04:19:22.4853524Z [36;1mnode scripts/test-next-runtime-browser.mjs[0m
+2026-11-16T04:19:22.4895940Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:19:22.4896083Z env:
+2026-11-16T04:19:22.4896304Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.jNECY6/opt/google/chrome/chrome
+2026-11-16T04:19:22.4896618Z   NEXT_RUNTIME_ARTIFACTS: /home/runner/work/_temp/next-runtime-browser
+2026-11-16T04:19:22.4896834Z   CDP_STARTUP_DIAGNOSTICS: 1
+2026-11-16T04:19:22.4896978Z ##[endgroup]
+2026-11-16T04:19:26.3116180Z PASS repo schema dependencies: auth trigger, membership helper, member/outsider builder RLS, profile plan ACL
+2026-11-16T04:19:38.1137378Z PASS Anonymous HTTP and malformed auth cookie fail closed
+2026-11-16T04:19:38.1151836Z ##[notice]PASS Anonymous HTTP and malformed auth cookie fail closed
+2026-11-16T04:19:38.1874209Z PASS Installed SDK rejects forged local JWT through HTTP auth verifier
+2026-11-16T04:19:38.1875715Z ##[notice]PASS Installed SDK rejects forged local JWT through HTTP auth verifier
+2026-11-16T04:19:42.2151258Z PASS RSC permission controls owner
+2026-11-16T04:19:42.2152708Z ##[notice]PASS RSC permission controls owner
+2026-11-16T04:19:45.3117149Z PASS RSC permission controls admin
+2026-11-16T04:19:45.3118254Z ##[notice]PASS RSC permission controls admin
+2026-11-16T04:19:46.8561355Z PASS RSC permission controls manager
+2026-11-16T04:19:46.8562552Z ##[notice]PASS RSC permission controls manager
+2026-11-16T04:19:48.3696845Z PASS RSC permission controls member
+2026-11-16T04:19:48.3697708Z ##[notice]PASS RSC permission controls member
+2026-11-16T04:19:49.7268896Z PASS RSC permission controls viewer
+2026-11-16T04:19:49.7269765Z ##[notice]PASS RSC permission controls viewer
+2026-11-16T04:19:50.6736608Z PASS Native Next server action persists project and client
+2026-11-16T04:19:50.6737791Z ##[notice]PASS Native Next server action persists project and client
+2026-11-16T04:19:53.3079467Z PASS Native invitation creation and acceptance persist membership
+2026-11-16T04:19:53.3080402Z ##[notice]PASS Native invitation creation and acceptance persist membership
+2026-11-16T04:19:56.7865972Z PASS Native API key action keeps disclosure out of URLs logs and refreshed HTML
+2026-11-16T04:19:56.7867630Z ##[notice]PASS Native API key action keeps disclosure out of URLs logs and refreshed HTML
+2026-11-16T04:19:57.9904398Z PASS Real Next client credential action rechecks stale role with generic recovery
+2026-11-16T04:19:57.9905507Z ##[notice]PASS Real Next client credential action rechecks stale role with generic recovery
+2026-11-16T04:19:58.9552622Z PASS Actual calculation HTTP auth scope metering and quota
+2026-11-16T04:19:58.9554218Z ##[notice]PASS Actual calculation HTTP auth scope metering and quota
+2026-11-16T04:20:00.1833283Z PASS Actual batch commit recovery conflict and owner isolation
+2026-11-16T04:20:00.1834757Z ##[notice]PASS Actual batch commit recovery conflict and owner isolation
+2026-11-16T04:20:07.9603990Z PASS Real RSC outage and retry profiles
+2026-11-16T04:20:07.9604990Z ##[notice]PASS Real RSC outage and retry profiles
+2026-11-16T04:20:15.7016419Z PASS Real RSC outage and retry organization_members
+2026-11-16T04:20:15.7017370Z ##[notice]PASS Real RSC outage and retry organization_members
+2026-11-16T04:20:23.4997216Z PASS Real RSC outage and retry business_projects
+2026-11-16T04:20:23.5037457Z ##[notice]PASS Real RSC outage and retry business_projects
+2026-11-16T04:20:31.5744439Z PASS Real RSC outage and retry business_api_keys
+2026-11-16T04:20:31.5764440Z ##[notice]PASS Real RSC outage and retry business_api_keys
+2026-11-16T04:20:39.4867899Z PASS Real RSC outage and retry api_usage_events
+2026-11-16T04:20:39.4869101Z ##[notice]PASS Real RSC outage and retry api_usage_events
+2026-11-16T04:20:40.5322249Z PASS Repeated synthetic owner selection preserves an in-flight SDK verification
+2026-11-16T04:20:40.5324145Z ##[notice]PASS Repeated synthetic owner selection preserves an in-flight SDK verification
+2026-11-16T04:20:44.3498951Z PASS Delayed JavaScript keeps SSR embed controls safe until hydration
+2026-11-16T04:20:44.3500207Z ##[notice]PASS Delayed JavaScript keeps SSR embed controls safe until hydration
+2026-11-16T04:20:48.0734284Z PASS Embed hydration consent persisted analytics and stale renewal
+2026-11-16T04:20:48.0735699Z ##[notice]PASS Embed hydration consent persisted analytics and stale renewal
+2026-11-16T04:20:50.8748089Z PASS Actual Next CSS and labeled forms 320
+2026-11-16T04:20:50.8749420Z ##[notice]PASS Actual Next CSS and labeled forms 320
+2026-11-16T04:20:53.5986084Z PASS Actual Next CSS and labeled forms 1280
+2026-11-16T04:20:53.5988095Z ##[notice]PASS Actual Next CSS and labeled forms 1280
+2026-11-16T04:20:54.8314221Z PASS Native revoke action invalidates real HTTP API key
+2026-11-16T04:20:54.8320568Z ##[notice]PASS Native revoke action invalidates real HTTP API key
+2026-11-16T04:20:56.0764442Z PASS Native browser stale-role failure offers safe workspace recovery
+2026-11-16T04:20:56.0765895Z ##[notice]PASS Native browser stale-role failure offers safe workspace recovery
+2026-11-16T04:20:59.7936439Z PASS Owned historical saved records reopen without recalculation after downgrade
+2026-11-16T04:20:59.7937682Z ##[notice]PASS Owned historical saved records reopen without recalculation after downgrade
+2026-11-16T04:21:01.1661654Z PASS Saved record owner isolation and session boundary in actual Next runtime
+2026-11-16T04:21:01.1663381Z ##[notice]PASS Saved record owner isolation and session boundary in actual Next runtime
+2026-11-16T04:21:04.9766192Z PASS Owned history browsing reaches older records without cursor gaps or cross-account leakage
+2026-11-16T04:21:04.9767459Z ##[notice]PASS Owned history browsing reaches older records without cursor gaps or cross-account leakage
+2026-11-16T04:21:06.7554979Z PASS Native owner-bound regional preference form persists explicit country defaults
+2026-11-16T04:21:06.7556290Z ##[notice]PASS Native owner-bound regional preference form persists explicit country defaults
+2026-11-16T04:21:10.3680798Z PASS Native projects browse reaches project26 and scopes older scenario pagination
+2026-11-16T04:21:10.3682504Z ##[notice]PASS Native projects browse reaches project26 and scopes older scenario pagination
+2026-11-16T04:21:13.9843790Z PASS Native project cursor replay owner isolation and session boundary fail closed
+2026-11-16T04:21:13.9845146Z ##[notice]PASS Native project cursor replay owner isolation and session boundary fail closed
+2026-11-16T04:21:16.5179432Z PASS Native oldest history capture traverses project pages and preserves atomic snapshot
+2026-11-16T04:21:16.5181274Z ##[notice]PASS Native oldest history capture traverses project pages and preserves atomic snapshot
+2026-11-16T04:21:18.1768232Z PASS Native downgraded account retains owned projects without paid scenario controls
+2026-11-16T04:21:18.1769844Z ##[notice]PASS Native downgraded account retains owned projects without paid scenario controls
+2026-11-16T04:21:20.5798747Z PASS Native regional locale survives full reload CA
+2026-11-16T04:21:20.5800080Z ##[notice]PASS Native regional locale survives full reload CA
+2026-11-16T04:21:22.3863651Z PASS Native regional locale survives full reload AU
+2026-11-16T04:21:22.3865104Z ##[notice]PASS Native regional locale survives full reload AU
+2026-11-16T04:21:26.5581207Z PASS Native project metadata remains readable with narrow layout and keyboard pagination
+2026-11-16T04:21:26.5583433Z ##[notice]PASS Native project metadata remains readable with narrow layout and keyboard pagination
+2026-11-16T04:21:33.2504984Z PASS Private calculator preview denies ordinary accounts before disclosing engine controls
+2026-11-16T04:21:33.2535317Z ##[notice]PASS Private calculator preview denies ordinary accounts before disclosing engine controls
+2026-11-16T04:21:38.1356913Z PASS Native reviewer navigates master catalog candidates and calculates the real engine
+2026-11-16T04:21:38.1359884Z ##[notice]PASS Native reviewer navigates master catalog candidates and calculates the real engine
+2026-11-16T04:21:38.3586763Z PASS Native reviewer preview exports immutable real JSON CSV PDF and fits mobile
+2026-11-16T04:21:38.3588148Z ##[notice]PASS Native reviewer preview exports immutable real JSON CSV PDF and fits mobile
+2026-11-16T04:21:41.2663777Z PASS Native reviewer private contracts use the pinned loan and ratio engines without public registration
+2026-11-16T04:21:41.2665219Z ##[notice]PASS Native reviewer private contracts use the pinned loan and ratio engines without public registration
+2026-11-16T04:21:46.6679873Z PASS Private scientific previews preserve duplicate identities, units and absent polar events
+2026-11-16T04:21:46.6681015Z ##[notice]PASS Private scientific previews preserve duplicate identities, units and absent polar events
+2026-11-16T04:21:47.8059021Z PASS Owner-approved bounded calculator #145 private modes and snapshots
+2026-11-16T04:21:47.8059987Z ##[notice]PASS Owner-approved bounded calculator #145 private modes and snapshots
+2026-11-16T04:21:48.9796895Z PASS Owner-approved bounded calculator #156 private modes and snapshots
+2026-11-16T04:21:48.9798086Z ##[notice]PASS Owner-approved bounded calculator #156 private modes and snapshots
+2026-11-16T04:21:50.0355869Z PASS Owner-approved bounded calculator #157 private modes and snapshots
+2026-11-16T04:21:50.0357056Z ##[notice]PASS Owner-approved bounded calculator #157 private modes and snapshots
+2026-11-16T04:21:51.1451209Z PASS Owner-approved bounded calculator #158 private modes and snapshots
+2026-11-16T04:21:51.1452100Z ##[notice]PASS Owner-approved bounded calculator #158 private modes and snapshots
+2026-11-16T04:21:52.2201105Z PASS Owner-approved bounded calculator #161 private modes and snapshots
+2026-11-16T04:21:52.2202066Z ##[notice]PASS Owner-approved bounded calculator #161 private modes and snapshots
+2026-11-16T04:21:53.7171549Z PASS Owner-approved bounded calculator #177 private modes and snapshots
+2026-11-16T04:21:53.7172559Z ##[notice]PASS Owner-approved bounded calculator #177 private modes and snapshots
+2026-11-16T04:21:54.7904937Z PASS Owner-approved bounded calculator #181 private modes and snapshots
+2026-11-16T04:21:54.7906029Z ##[notice]PASS Owner-approved bounded calculator #181 private modes and snapshots
+2026-11-16T04:21:55.8912678Z PASS Owner-approved bounded calculator #44 private modes and snapshots
+2026-11-16T04:21:55.8914193Z ##[notice]PASS Owner-approved bounded calculator #44 private modes and snapshots
+2026-11-16T04:21:56.8973916Z PASS Owner-approved bounded calculator #159 private modes and snapshots
+2026-11-16T04:21:56.8975110Z ##[notice]PASS Owner-approved bounded calculator #159 private modes and snapshots
+2026-11-16T04:21:57.9862648Z PASS Owner-approved bounded calculator #160 private modes and snapshots
+2026-11-16T04:21:57.9863994Z ##[notice]PASS Owner-approved bounded calculator #160 private modes and snapshots
+2026-11-16T04:21:59.0496550Z PASS Owner-approved bounded calculator #194 private modes and snapshots
+2026-11-16T04:21:59.0497883Z ##[notice]PASS Owner-approved bounded calculator #194 private modes and snapshots
+2026-11-16T04:22:00.1311753Z PASS Owner-approved bounded calculator #195 private modes and snapshots
+2026-11-16T04:22:00.1313049Z ##[notice]PASS Owner-approved bounded calculator #195 private modes and snapshots
+2026-11-16T04:22:01.2296205Z PASS Owner-approved bounded calculator #200 private modes and snapshots
+2026-11-16T04:22:01.2297291Z ##[notice]PASS Owner-approved bounded calculator #200 private modes and snapshots
+2026-11-16T04:22:02.3456700Z PASS Owner-approved bounded calculator #201 private modes and snapshots
+2026-11-16T04:22:02.3457586Z ##[notice]PASS Owner-approved bounded calculator #201 private modes and snapshots
+2026-11-16T04:22:03.4741640Z PASS Owner-approved bounded calculator #203 private modes and snapshots
+2026-11-16T04:22:03.4743478Z ##[notice]PASS Owner-approved bounded calculator #203 private modes and snapshots
+2026-11-16T04:22:04.5776252Z PASS Owner-approved bounded calculator #109 private modes and snapshots
+2026-11-16T04:22:04.5777966Z ##[notice]PASS Owner-approved bounded calculator #109 private modes and snapshots
+2026-11-16T04:22:05.7864395Z PASS Owner-approved bounded calculator #467 private modes and snapshots
+2026-11-16T04:22:05.7865308Z ##[notice]PASS Owner-approved bounded calculator #467 private modes and snapshots
+2026-11-16T04:22:06.8840964Z PASS Owner-approved bounded calculator #471 private modes and snapshots
+2026-11-16T04:22:06.8841933Z ##[notice]PASS Owner-approved bounded calculator #471 private modes and snapshots
+2026-11-16T04:22:08.0055929Z PASS Owner-approved bounded calculator #512 private modes and snapshots
+2026-11-16T04:22:08.0057830Z ##[notice]PASS Owner-approved bounded calculator #512 private modes and snapshots
+2026-11-16T04:22:09.0783603Z PASS Owner-approved bounded calculator #507 private modes and snapshots
+2026-11-16T04:22:09.0784837Z ##[notice]PASS Owner-approved bounded calculator #507 private modes and snapshots
+2026-11-16T04:22:11.8953053Z PASS Private reviewer navigation rejects role revocation and account replacement
+2026-11-16T04:22:11.8954395Z ##[notice]PASS Private reviewer navigation rejects role revocation and account replacement
+2026-11-16T04:22:11.8970388Z Cleanup: Chromium
+2026-11-16T04:22:11.8971094Z ##[notice]Cleanup: Chromium
+2026-11-16T04:22:12.0309002Z Cleanup: Next server
+2026-11-16T04:22:12.0323675Z ##[notice]Cleanup: Next server
+2026-11-16T04:22:12.5182094Z Cleanup: synthetic identity HTTP server
+2026-11-16T04:22:12.5183109Z ##[notice]Cleanup: synthetic identity HTTP server
+2026-11-16T04:22:12.5198410Z Cleanup: disposable PostgreSQL and PostgREST
+2026-11-16T04:22:12.5199069Z ##[notice]Cleanup: disposable PostgreSQL and PostgREST
+2026-11-16T04:22:12.7367195Z Cleanup complete
+2026-11-16T04:22:12.7367974Z ##[notice]Cleanup complete
+2026-11-16T04:22:12.7369056Z Actual Next runtime report: /home/runner/work/_temp/next-runtime-browser/next-runtime-report.json
+2026-11-16T04:22:12.7527185Z ##[group]Run node tests/workflow-review/browser.mjs
+2026-11-16T04:22:12.7527425Z [36;1mnode tests/workflow-review/browser.mjs[0m
+2026-11-16T04:22:12.7568711Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:22:12.7568861Z env:
+2026-11-16T04:22:12.7569082Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.jNECY6/opt/google/chrome/chrome
+2026-11-16T04:22:12.7569408Z   CALCUMINT_WORKFLOW_EVIDENCE: /home/runner/work/_temp/private-workflow-browser
+2026-11-16T04:22:12.7569629Z ##[endgroup]
+2026-11-16T04:22:15.5170841Z {"journeys":6,"issues":0,"directory":"/home/runner/work/_temp/private-workflow-browser/run-dSlXZk"}
+2026-11-16T04:22:15.6364698Z ##[group]Run node tests/source-profile-review/browser.mjs
+2026-11-16T04:22:15.6364968Z [36;1mnode tests/source-profile-review/browser.mjs[0m
+2026-11-16T04:22:15.6407427Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:22:15.6407574Z env:
+2026-11-16T04:22:15.6407812Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.jNECY6/opt/google/chrome/chrome
+2026-11-16T04:22:15.6408142Z   CALCUMINT_SOURCE_PROFILE_EVIDENCE: /home/runner/work/_temp/source-profile-browser
+2026-11-16T04:22:15.6408368Z ##[endgroup]
+2026-11-16T04:22:20.5584208Z {"journeys":18,"issues":0,"directory":"/home/runner/work/_temp/source-profile-browser/run-akS1db"}
+2026-11-16T04:22:20.6777681Z ##[group]Run node tests/financial-contract-review/browser.mjs
+2026-11-16T04:22:20.6777956Z [36;1mnode tests/financial-contract-review/browser.mjs[0m
+2026-11-16T04:22:20.6819342Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:22:20.6819493Z env:
+2026-11-16T04:22:20.6819708Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.jNECY6/opt/google/chrome/chrome
+2026-11-16T04:22:20.6820038Z   CALCUMINT_FINANCIAL_EVIDENCE: /home/runner/work/_temp/financial-contract-browser
+2026-11-16T04:22:20.6820263Z ##[endgroup]
+2026-11-16T04:22:33.3444379Z {"journeys":54,"issues":0,"directory":"/home/runner/work/_temp/financial-contract-browser/run-oQVmY2"}
+2026-11-16T04:22:33.4723222Z ##[group]Run node tests/final-private-workbench/browser.mjs
+2026-11-16T04:22:33.4723649Z [36;1mnode tests/final-private-workbench/browser.mjs[0m
+2026-11-16T04:22:33.4780093Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:22:33.4780341Z env:
+2026-11-16T04:22:33.4780690Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.jNECY6/opt/google/chrome/chrome
+2026-11-16T04:22:33.4781221Z   CALCUMINT_WORKBENCH_EVIDENCE: /home/runner/work/_temp/final-private-workbench
+2026-11-16T04:22:33.4781579Z ##[endgroup]
+2026-11-16T04:23:24.8221920Z {"journeys":174,"issues":0,"directory":"/home/runner/work/_temp/final-private-workbench/run-QBjYWK"}
+2026-11-16T04:23:25.0112426Z ##[group]Run node tests/catalog-engineering-review/browser.mjs
+2026-11-16T04:23:25.0112700Z [36;1mnode tests/catalog-engineering-review/browser.mjs[0m
+2026-11-16T04:23:25.0155553Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:23:25.0155697Z env:
+2026-11-16T04:23:25.0155925Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.jNECY6/opt/google/chrome/chrome
+2026-11-16T04:23:25.0156248Z   CALCUMINT_CATALOG_ENGINEERING_EVIDENCE: /home/runner/work/_temp/catalog-engineering
+2026-11-16T04:23:25.0156473Z ##[endgroup]
+2026-11-16T04:25:24.0814315Z {"journeys":216,"issues":0,"directory":"/home/runner/work/_temp/catalog-engineering/run-WiwHXm"}
+2026-11-16T04:25:24.4023887Z ##[group]Run node tests/component-engineering-review/browser.mjs
+2026-11-16T04:25:24.4024181Z [36;1mnode tests/component-engineering-review/browser.mjs[0m
+2026-11-16T04:25:24.4065522Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:25:24.4065673Z env:
+2026-11-16T04:25:24.4065900Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.jNECY6/opt/google/chrome/chrome
+2026-11-16T04:25:24.4066244Z   CALCUMINT_COMPONENT_ENGINEERING_EVIDENCE: /home/runner/work/_temp/component-engineering
+2026-11-16T04:25:24.4066488Z ##[endgroup]
+2026-11-16T04:26:47.9361450Z {"journeys":150,"issues":0,"directory":"/home/runner/work/_temp/component-engineering/run-wVubHa"}
+2026-11-16T04:26:48.2420505Z ##[group]Run node tests/remaining-engineering-review/browser.mjs
+2026-11-16T04:26:48.2420797Z [36;1mnode tests/remaining-engineering-review/browser.mjs[0m
+2026-11-16T04:26:48.2463032Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:26:48.2463190Z env:
+2026-11-16T04:26:48.2463413Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.jNECY6/opt/google/chrome/chrome
+2026-11-16T04:26:48.2463757Z   CALCUMINT_REMAINING_ENGINEERING_EVIDENCE: /home/runner/work/_temp/remaining-engineering
+2026-11-16T04:26:48.2463999Z ##[endgroup]
+2026-11-16T04:27:40.7230644Z {"journeys":306,"issues":0,"directory":"/home/runner/work/_temp/remaining-engineering/run-8vcS44"}
+2026-11-16T04:27:40.8930061Z ##[group]Run python3 scripts/verify-uk-2026-electricity-source.py --check
+2026-11-16T04:27:40.8930386Z [36;1mpython3 scripts/verify-uk-2026-electricity-source.py --check[0m
+2026-11-16T04:27:40.8930636Z [36;1mnode tests/uk-2026-electricity-review/browser.mjs[0m
+2026-11-16T04:27:40.8973349Z shell: /usr/bin/bash -e {0}
+2026-11-16T04:27:40.8973511Z env:
+2026-11-16T04:27:40.8973729Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.jNECY6/opt/google/chrome/chrome
+2026-11-16T04:27:40.8974046Z   CALCUMINT_ELECTRICITY_EVIDENCE: /home/runner/work/_temp/uk-2026-electricity
+2026-11-16T04:27:40.8974261Z ##[endgroup]
+2026-11-16T04:27:41.1231756Z PASS native workbook SHA/CRC, revisions, native cells/units, five-decimal factor, calendar period and missing!=zero
+2026-11-16T04:27:44.9029582Z {"journeys":18,"issues":0,"directory":"/home/runner/work/_temp/uk-2026-electricity/run-pylNuo"}
+2026-11-16T04:27:45.0228817Z Post job cleanup.
+2026-11-16T04:27:45.1072706Z (node:13398) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-16T04:27:45.1073622Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-16T04:27:45.1215506Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/calcumint.com/calcumint.com --files-from manifest.txt --use-compress-program zstdmt
+2026-11-16T04:27:45.7887130Z (node:13398) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-16T04:27:46.7711403Z Sent 88419169 of 222636897 (39.7%), 84.3 MBs/sec
+2026-11-16T04:27:47.0285427Z Sent 222636897 of 222636897 (100.0%), 168.8 MBs/sec
+2026-11-16T04:27:47.3050247Z Cache saved with the key: node-cache-Linux-x64-npm-5eacf253a5c985e02ae9c7b30a0a41613201d617384801131cf346d486c03931
+2026-11-16T04:27:47.3201535Z Post job cleanup.
+2026-11-16T04:27:47.3773838Z [command]/usr/bin/git version
+2026-11-16T04:27:47.3808242Z git version 2.56.1
+2026-11-16T04:27:47.3843916Z Temporarily overriding HOME='/home/runner/work/_temp/8be413fa-5856-44f5-9662-3d99d691c040' before making global git config changes
+2026-11-16T04:27:47.3853606Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-16T04:27:47.3855408Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/calcumint.com/calcumint.com
+2026-11-16T04:27:47.3874310Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-16T04:27:47.3907330Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-16T04:27:47.4186682Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-16T04:27:47.4208545Z http.https://github.com/.extraheader
+2026-11-16T04:27:47.4217311Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-16T04:27:47.4247129Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-16T04:27:47.4536716Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-16T04:27:47.4566630Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-16T04:27:47.4917759Z Cleaning up orphan processes
+

@@ -1,0 +1,158 @@
+{
+  "kind": "BINDING_ONLY_EXACT_ADMISSION_READY_FOR_FOCUSED_VERIFICATION",
+  "base": "aaf369e67096718fd3bfff3d86c9c8e861a1cd42",
+  "head": "b809c807f645029814921b51f015a998e86869a8",
+  "peerReviewedPatch": "939ea3b6ab204b0b5c12d3724949f0d85b62e0c8",
+  "cherryPick": "d4a8830ce00fc9a94ad0e9b02778a03a35a7e771",
+  "guard": "9331292abc6a342b2e8004e23ce8e40468aca045",
+  "authority": "5b2b88ca5d96a449e81172e248164762e6ae60ce",
+  "guardPaths": [
+    "scripts/fetch-source-lineage.mjs",
+    "scripts/software-closure-evidence.mjs",
+    "tests/milestone100-20261114/source-preflight-stage8.mjs",
+    "tests/milestone100-20261114/source-stage8-negative-factory.test.mjs",
+    "tests/next-engineering-20261115/source-admission-binding32.mjs",
+    "tests/next-engineering-20261115/source-availability.test.mjs",
+    "tests/next-engineering-20261115/source-binding-current32.test.mjs",
+    "tests/next-engineering-20261115/source-fresh-git-mandatory-children.mjs",
+    "tests/parallel-source-20261110/bootstrap.mjs",
+    "tests/parallel-source-20261110/core.mjs"
+  ],
+  "guardCaptureSHA256": "b3bca7842206e25f67760269a41da09b174ef53a2f8d5b98e12c7c073247e72c",
+  "retainedAuthorityArraysBytePreserved": 159,
+  "literalUnchangedFiles": [
+    "docs/next-engineering-20261115/source/stage10.json",
+    "tests/next-engineering-20261115/source-stage10-policy.mjs",
+    "docs/next-engineering-20261115/source/stage10-current24.json",
+    "tests/next-engineering-20261115/source-stage10-current-policy.mjs",
+    "docs/next-engineering-20261115/source/stage10-current26.json",
+    "tests/next-engineering-20261115/source-stage10-current26-policy.mjs",
+    "tests/next-engineering-20261115/source-exact-current26.mjs",
+    "docs/next-engineering-20261115/source/stage10-current32.json",
+    "tests/next-engineering-20261115/source-stage10-current32-policy.mjs",
+    "tests/next-engineering-20261115/source-exact-current32.mjs",
+    "docs/next-engineering-20261115/source/guard-capture-fresh-git.json",
+    "docs/next-engineering-20261115/source/guard-capture-current32.json"
+  ],
+  "original29MandatoryTableByteIdentical": true,
+  "originalFreshGit5ChildrenIdenticalPrefix": true,
+  "newMandatoryChild": [
+    "tests/next-engineering-20261115/source-binding-current32.test.mjs",
+    7
+  ],
+  "srcWorkflowsPackageChanges": false,
+  "installerFixed32ProofExit": 0,
+  "installerOverlapUTCStartBound": "2026-11-16T04:37:47.936724285Z",
+  "installerOverlapUTCEndBound": "2026-11-16T04:37:50.148701027Z",
+  "overlapQualification": "Root confirmed NO OVERLAP: installer finished04:37:50.148701027UTC; infra actual advisory test did not begin until04:38:45UTC. Initial caution was conservative and is retained only in communication history.",
+  "focusedTests": [
+    {
+      "receipt": "binding32-focused36.log",
+      "tests": 36,
+      "pass": 36,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "duration_ms": 5830.379858
+    },
+    {
+      "receipt": "binding32-independent-pin.log",
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "duration_ms": 3873.055282
+    }
+  ],
+  "plan": [
+    "Focused36(originalfactory9+catalog3+newbinding7+currentSrc9+readerOrder8).",
+    "New independent authority pin positive.",
+    "Actual default verifyParallelSource once after guard admission; retain all failures.",
+    "Actual src/lib/parallel-source-evidence firstcase, unchanged150000ms child bound and original source115 expectations; do not run unrelated cases/suites.",
+    "Root peer review, push exact needed refs including original939 reviewed patch, then fresh remote-only proof at final published head."
+  ],
+  "qualificationGranted": false,
+  "all20Disposition": "IMPLEMENTED_NOT_QUALIFIED",
+  "confirmedEngineeringBaseline": 81,
+  "potentialAfterQualification": 101,
+  "releaseHold": true,
+  "pushed": false,
+  "infraActualTestStartedUTC": "2026-11-16T04:38:45Z",
+  "cpuContaminationObserved": false,
+  "actualDefaultParallelProof": {
+    "command": "actual default verifyParallelSource()",
+    "invocations": 1,
+    "head": "b809c807f645029814921b51f015a998e86869a8",
+    "qualificationGranted": false,
+    "releaseHold": true,
+    "returnValue": true,
+    "status": "pass",
+    "milliseconds": 23987.857926,
+    "closingHead": "b809c807f645029814921b51f015a998e86869a8",
+    "closingStatus": ""
+  },
+  "originalSource115FirstCase": {
+    "head": "b809c807f645029814921b51f015a998e86869a8",
+    "command": [
+      "/workspace/.pr1467/sprint/node-v22.23.4-linux-x64/bin/node",
+      "node_modules/vitest/vitest.mjs",
+      "run",
+      "src/lib/parallel-source-evidence.test.ts",
+      "--testNamePattern",
+      "^executes fresh current-source, full-authority, reader, reversion and nomination negatives$",
+      "--reporter=verbose"
+    ],
+    "selectedOriginalCase": "executes fresh current-source, full-authority, reader, reversion and nomination negatives",
+    "startedAt": "2026-11-16T04:43:19.708245+00:00",
+    "endedAt": "2026-11-16T04:45:51.165715+00:00",
+    "seconds": 151.4575453590005,
+    "exitCode": 1,
+    "childTimeoutMilliseconds": 150000,
+    "originalOuterCaseTimeoutMilliseconds": 160000,
+    "timersChanged": false,
+    "qualificationGranted": false,
+    "releaseHold": true,
+    "status": "FAIL_UNCHANGED_150000MS_CHILD_DEADLINE",
+    "log": "binding32-original-source115-firstcase.log",
+    "outerVitestSelection": "1 selected case failed;5 unrelated cases skipped by requested name filter; not a full file run.",
+    "sourceLockCleanup": "Owned source availability lock removed afterSIGKILL; no preserved unrelated locks reported."
+  },
+  "receiptHashes": [
+    {
+      "path": "/tmp/worker3-publication-receipts/binding32-focused36.log",
+      "bytes": 8913,
+      "sha256": "ba9db867c53eb2f4733d0a62077e83314a16d42b81c9706ad1bd6dab4b629d3b"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/binding32-independent-pin.log",
+      "bytes": 374,
+      "sha256": "9676c82cec68ed7128eb8005659ddd498235630cf2f798b4628b439f657875ab"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/binding32-default-proof.json",
+      "bytes": 346,
+      "sha256": "b2972349a7d5efc374a11994e0a4a9f3efbaed86cd3a1653ecab67565b240690"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/binding32-default-proof.log",
+      "bytes": 305,
+      "sha256": "804b956b4e51db40f19b9871dfc934b293b754edc3f6a35aa3397a97d98d2cca"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/binding32-original-source115-firstcase.json",
+      "bytes": 827,
+      "sha256": "2c0006f3e0888099f3eaae134cfbec31288588e8984646f12d9b32f4d038804a"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/binding32-original-source115-firstcase.log",
+      "bytes": 5774,
+      "sha256": "86ad0c0490696859de21943e3cb58825e3b15febd6e2e8489b8e6feea51b9616"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/admission-binding32.log",
+      "bytes": 729,
+      "sha256": "a9347cec08067a24582c16178bb0a5656782cb3a749a8175346225f2f5650f6d"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "kind": "SUPPLEMENTARY_COEFFICIENT_PRIMARY_PRINTED_SCAN_EVIDENCE_NOT_QUALIFICATION",
+  "catalogId": 291,
+  "retrievedAtUTC": "2026-11-16T04:42:06.921983+00:00",
+  "publication": "M.Abramowitz and I.A.Stegun, eds., Handbook of Mathematical Functions, NBS Applied Mathematics Series55",
+  "printedPage": 299,
+  "formula": "7.1.26",
+  "publisher": "National Bureau of Standards",
+  "host": "University of British Columbia mirror; NOT publisher-hosted URL",
+  "scanURL": "https://personal.math.ubc.ca/~cbm/aands/page_299.jpg",
+  "landingURL": "https://personal.math.ubc.ca/~cbm/aands/page_299.htm",
+  "officialPublicationIdentityURL": "https://www.nist.gov/mathematics-statistics/handbook-mathematical-functions-abramowitz-and-stegun",
+  "formulaTranscription": "erf(x)=1-(a1*t+a2*t^2+a3*t^3+a4*t^4+a5*t^5)*exp(-x^2)+epsilon(x); t=1/(1+p*x)",
+  "domainAsPrinted": "0 <= x < infinity",
+  "publisherApproximationErrorAsPrinted": "|epsilon(x)| <= 1.5e-7",
+  "coefficients": {
+    "p": "0.3275911",
+    "a1": "0.254829592",
+    "a2": "-0.284496736",
+    "a3": "1.421413741",
+    "a4": "-1.453152027",
+    "a5": "1.061405429"
+  },
+  "allSixLiteralsPresentInUnchangedEngine": true,
+  "visualInspection": "Original image inspected directly; a2 printed as -.28449 6736. OCR omitted decimal; visual transcription restores it. All other six literals and signs match.",
+  "footnoteAsPrinted": "Approximations7.1.25\u20137.1.28 are from C.Hastings,Jr., Approximations for digital computers, Princeton Univ.Press, Princeton,N.J.,1955(with permission).",
+  "relationToEngine": "normalTails uses x=abs(z)/sqrt(2), evaluates the displayed polynomial in Horner form, multiplies exp(-x*x), and halves to the small normal tail. This is algebraic source identification only.",
+  "limitations": [
+    "Primary printed page retrieved through university mirror; original publisher-hosted exact-page URL not recovered. Official NIST landing confirms publication identity only.",
+    "Printed real-function approximation bound is not an established whole-domain binary64 JavaScript implementation bound, relative-tail guarantee, or application accuracy certification.",
+    "Existing finite |z|<=4 error-grid evidence remains finite-grid evidence. No engine, contract, old source ledger or sourceVersion changed.",
+    "Qualification decision remains root-owned; all20 remain IMPLEMENTED_NOT_QUALIFIED at baseline81."
+  ],
+  "engineBinding": {
+    "path": "src/calculators/statistics/catalog-batch-3.ts",
+    "bytes": 7675,
+    "sha256": "41df470fd871e6fd1779035805c1b96cb120c91aff7a3cce40bc7628e3c3dd8e"
+  },
+  "artifacts": [
+    {
+      "path": "docs/worker3-recovery-20261116/sources/ams55-page299-browser-verification.json",
+      "bytes": 3908,
+      "sha256": "d114d847e9695119a3e8454e2903deeacaea3c9e2ddc7819e8a66be1857fa7a0"
+    },
+    {
+      "path": "docs/worker3-recovery-20261116/sources/ams55-page299-mirror-ocr.json",
+      "bytes": 11200,
+      "sha256": "1ff593acf6c952bea02227d723f90800e4cf6e4b781f79566ad65a593ee28c6c"
+    },
+    {
+      "path": "docs/worker3-recovery-20261116/sources/ams55-page299-mirror.jpg",
+      "bytes": 102309,
+      "sha256": "ec184caf269b7905c640c2bba439b0f93ceeabd46cdbfead478a80efe78a90b5"
+    },
+    {
+      "path": "docs/worker3-recovery-20261116/sources/legacy-nist-page-dns-failure.json",
+      "bytes": 1176,
+      "sha256": "8d1f3b569ece599c6f9b9dee8f537846767d6b299ba539ed574eb1d69b485151"
+    },
+    {
+      "path": "docs/worker3-recovery-20261116/sources/nist-ams55-pdf-404.json",
+      "bytes": 3005,
+      "sha256": "932955029cc0f955096f5e33784d9786d85b2464fa995da02b885dbd26628083"
+    },
+    {
+      "path": "docs/worker3-recovery-20261116/sources/nist-handbook-publication.json",
+      "bytes": 25111,
+      "sha256": "9e4e10da91bf1d0afef0d49414b749928134c68861e6af197121748e1847c236"
+    }
+  ],
+  "rootReview": {
+    "path": "docs/worker3-recovery-20261116/sources/root-coefficient-review.json",
+    "sha256": "afe2433851dbfc70b7c7d1d285d8016d3762d16f7d2e6d7b61fcca4b2e99c8d2"
+  },
+  "newCoefficientSourceGate": "DOCUMENTED_PRIMARY_PRINTED_FORMULA_COEFFICIENTS_AND_ALGEBRA_MATCH_ROOT_INDEPENDENTLY_VIEWED",
+  "historicalAuditDisposition": "Coefficient provenance UNQUALIFIED in historical audit; preserved as history"
+}

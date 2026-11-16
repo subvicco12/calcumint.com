@@ -1,0 +1,42 @@
+TAP version 13
+# Subtest: preflight joins the admitted receipt guard in the real hosted capture
+not ok 1 - preflight joins the admitted receipt guard in the real hosted capture
+  ---
+  duration_ms: 1.447349
+  type: 'test'
+  location: '/workspace/calcumint-worker3-publication/tests/next-engineering-20261115/source-preflight-join.test.mjs:11:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + '1f4b9885c7f483c5ec2282e50d72a1fefe3e4a19'
+    - '174c42d16f0eaad9ced52069a17c239d73337b4d'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: '174c42d16f0eaad9ced52069a17c239d73337b4d'
+  actual: '1f4b9885c7f483c5ec2282e50d72a1fefe3e4a19'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/calcumint-worker3-publication/tests/next-engineering-20261115/source-preflight-join.test.mjs:14:9)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: preflight keeps the original bootstrap test at its V45 historical guard
+ok 2 - preflight keeps the original bootstrap test at its V45 historical guard
+  ---
+  duration_ms: 0.19693
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 1
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7.697372

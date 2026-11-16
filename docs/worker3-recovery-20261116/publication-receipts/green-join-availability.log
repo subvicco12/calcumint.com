@@ -1,0 +1,28 @@
+TAP version 13
+# Subtest: all retained Stage10 authority pins are explicitly available in a fresh shallow fetch
+ok 1 - all retained Stage10 authority pins are explicitly available in a fresh shallow fetch
+  ---
+  duration_ms: 5.784076
+  type: 'test'
+  ...
+# Subtest: preflight joins the admitted receipt guard in the real hosted capture
+ok 2 - preflight joins the admitted receipt guard in the real hosted capture
+  ---
+  duration_ms: 0.840425
+  type: 'test'
+  ...
+# Subtest: preflight keeps the original bootstrap test at its V45 historical guard
+ok 3 - preflight keeps the original bootstrap test at its V45 historical guard
+  ---
+  duration_ms: 2.25908
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 188.034532

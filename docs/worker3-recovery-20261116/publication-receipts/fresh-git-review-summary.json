@@ -1,0 +1,121 @@
+{
+  "kind": "EXACT_FRESH_GIT_ADMISSION_REVIEW_NOT_ENGINEERING_QUALIFICATION",
+  "base": "7daa22baccfcb52761d43ad8bd6f58636a977def",
+  "reviewedInfraFreeze": "7db01d0744ce150154746a19b5f70d01271f4a29",
+  "head": "f94521a5c3a038dfd725c870cc27061ecf3376b5",
+  "commits": [
+    "2eec0252f1d9e948b8efd16fe65588d3dc96cb39",
+    "33a13a926c8d0b15cf34a3ff8d5cb86ff150fb81",
+    "f94521a5c3a038dfd725c870cc27061ecf3376b5"
+  ],
+  "branch": "engineering/worker3-publication-recovery-20261116",
+  "worktree": "/workspace/calcumint-worker3-publication",
+  "sourceFreeze": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+  "sourceRows": 32,
+  "sourceAncestry": 35,
+  "guardRef": "2eec0252f1d9e948b8efd16fe65588d3dc96cb39",
+  "guardPaths": [
+    "scripts/fetch-source-lineage.mjs",
+    "tests/completion-wave-20261113/source-authority-preload.test.mjs",
+    "tests/milestone100-20261114/source-preflight-stage8.mjs",
+    "tests/milestone100-20261114/source-stage8-live.test.mjs",
+    "tests/next-engineering-20261115/source-admission-fresh-git.mjs",
+    "tests/next-engineering-20261115/source-availability.test.mjs",
+    "tests/next-engineering-20261115/source-fresh-git-mandatory-children.mjs",
+    "tests/next-engineering-20261115/source-private-git-broker.py",
+    "tests/next-engineering-20261115/source-private-git-images.mjs",
+    "tests/next-engineering-20261115/source-private-git-lifecycle.test.mjs",
+    "tests/next-engineering-20261115/source-private-git-stream.test.mjs",
+    "tests/next-engineering-20261115/source-private-git-transport.mjs",
+    "tests/next-engineering-20261115/source-private-git-transport.test.mjs",
+    "tests/next-engineering-20261115/source-private-git-worker.mjs",
+    "tests/next-engineering-20261115/source-runtime-native-git.mjs",
+    "tests/next-engineering-20261115/source-stage10.mjs",
+    "tests/parallel-source-20261110/bootstrap.mjs",
+    "tests/parallel-source-20261110/core.mjs"
+  ],
+  "guardCaptureSHA256": "37d2ed908f64ea6107e3f6734fb6356a77b5ff731c5b640674807a9e5e8f8f65",
+  "guardRecordActualByteBlobLengthSHA256Checks": true,
+  "loadedImagePolicyMatchesActualWorkerPython": true,
+  "mergedStage10": "Current32 policy/verifier imports retained; only native exec adapter changed to reviewed privateGitBuffer; original native/root/index/physical/source/callback fences retained.",
+  "mandatoryChildren": {
+    "original": 29,
+    "preservedOriginalRecordsOrderCountsCommands": true,
+    "appended": [
+      [
+        "tests/next-engineering-20261115/source-current32.test.mjs",
+        4
+      ],
+      [
+        "tests/next-engineering-20261115/source-current26.test.mjs",
+        1
+      ],
+      [
+        "tests/next-engineering-20261115/source-private-git-transport.test.mjs",
+        14
+      ],
+      [
+        "tests/next-engineering-20261115/source-private-git-lifecycle.test.mjs",
+        6
+      ],
+      [
+        "tests/next-engineering-20261115/source-private-git-stream.test.mjs",
+        1
+      ]
+    ],
+    "module": "tests/next-engineering-20261115/source-fresh-git-mandatory-children.mjs",
+    "childDeadlineMilliseconds": 30000,
+    "originalOuter115And150SecondsUnchanged": true
+  },
+  "finalHeadVerification": {
+    "installerCompleteFixed32NativeProof": "passed",
+    "affectedFixtureSuites": {
+      "tests": 17,
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationMs": 24608.29012
+    },
+    "diffCheck": "passed",
+    "worktree": "clean"
+  },
+  "reviewedInfraPriorResultsNotFinalHeadReruns": {
+    "transportCorrectness": 14,
+    "lifecycle": 6,
+    "stream": 1,
+    "oldOwnedLock": 5,
+    "oldLockScope": 9,
+    "lintExit": 0
+  },
+  "receipts": [
+    {
+      "path": "/tmp/worker3-publication-receipts/admission-fresh-git.log",
+      "bytes": 1264,
+      "sha256": "7cb7ae591bbd1f7ec0b752fa41895faeaa1f627c29437a995fa907f1cf922836"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/green-fresh-git-fixture-corrections.log",
+      "bytes": 3898,
+      "sha256": "c22f9df671f6d3da9a84e7d99fb431b376bdd7ef16d1546ceda480468801158c"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/fixture-peer-review.json",
+      "bytes": 1237,
+      "sha256": "35156fd3a9fe8a5b841c322142aa5c764b099fc1d76dd5f3d7b3b7ec02a231c0"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/reviewed-fixture-corrections.patch",
+      "bytes": 7752,
+      "sha256": "ec8a87b5e2d249631c27fbd28b8cf6eb97a2deb5faee37c923fd21e011e97b4c"
+    }
+  ],
+  "nextGate": "ROOT decisive API/UI under original5000ms gates, before any broad115/150 consumer run. CPUslot released. No5000ms pass claimed here.",
+  "qualificationGranted": false,
+  "all20Disposition": "IMPLEMENTED_NOT_QUALIFIED",
+  "confirmedEngineeringBaseline": 81,
+  "potentialAfterQualification": 101,
+  "releaseHold": true,
+  "pushed": false,
+  "integratedByThisAgent": false
+}

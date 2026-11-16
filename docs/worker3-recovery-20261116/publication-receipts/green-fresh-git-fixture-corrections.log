@@ -1,0 +1,112 @@
+TAP version 13
+# Subtest: only static accepted IDs preload before the first per-record Git read
+ok 1 - only static accepted IDs preload before the first per-record Git read
+  ---
+  duration_ms: 2677.940581
+  type: 'test'
+  ...
+# Subtest: malformed or wrong-content batch cannot establish authority
+ok 2 - malformed or wrong-content batch cannot establish authority
+  ---
+  duration_ms: 2541.774522
+  type: 'test'
+  ...
+# Subtest: successful preload never admits mutated or retained-valid reverted current files
+ok 3 - successful preload never admits mutated or retained-valid reverted current files
+  ---
+  duration_ms: 2387.85542
+  type: 'test'
+  ...
+# Subtest: fresh HEAD path and raw object checks still reject substitutions after success
+ok 4 - fresh HEAD path and raw object checks still reject substitutions after success
+  ---
+  duration_ms: 2716.245575
+  type: 'test'
+  ...
+# Subtest: preload failure never becomes success and a fresh retry validates every live read
+ok 5 - preload failure never becomes success and a fresh retry validates every live read
+  ---
+  duration_ms: 2787.222975
+  type: 'test'
+  ...
+# Subtest: opaque transports without preload preserve the original fresh per-record behavior
+ok 6 - opaque transports without preload preserve the original fresh per-record behavior
+  ---
+  duration_ms: 1612.549197
+  type: 'test'
+  ...
+# Subtest: exact Stage8 rows prove current bytes and historical reads only after full Git proof
+ok 7 - exact Stage8 rows prove current bytes and historical reads only after full Git proof
+  ---
+  duration_ms: 1269.935294
+  type: 'test'
+  ...
+# Subtest: closed supplied reader provides capture and every current source with no reader fallback
+ok 8 - closed supplied reader provides capture and every current source with no reader fallback
+  ---
+  duration_ms: 557.445689
+  type: 'test'
+  ...
+# Subtest: each Stage8 row rejects mutation and every retained valid reversion before projection
+ok 9 - each Stage8 row rejects mutation and every retained valid reversion before projection
+  ---
+  duration_ms: 417.176567
+  type: 'test'
+  ...
+# Subtest: capture and application identity substitution refuse
+ok 10 - capture and application identity substitution refuse
+  ---
+  duration_ms: 10.489767
+  type: 'test'
+  ...
+# Subtest: unknown current source is rejected before any projection
+ok 11 - unknown current source is rejected before any projection
+  ---
+  duration_ms: 94.119056
+  type: 'test'
+  ...
+# Subtest: a retained historical transport cannot cache a current proof across source mutation
+ok 12 - a retained historical transport cannot cache a current proof across source mutation
+  ---
+  duration_ms: 542.446792
+  type: 'test'
+  ...
+# Subtest: exported current maps cannot mutate the private historical projection
+ok 13 - exported current maps cannot mutate the private historical projection
+  ---
+  duration_ms: 429.76109
+  type: 'test'
+  ...
+# Subtest: historical capability reuse rechecks live HEAD and source status
+ok 14 - historical capability reuse rechecks live HEAD and source status
+  ---
+  duration_ms: 1512.661081
+  type: 'test'
+  ...
+# Subtest: historical capability cannot nominate a substituted source reader
+ok 15 - historical capability cannot nominate a substituted source reader
+  ---
+  duration_ms: 460.915261
+  type: 'test'
+  ...
+# Subtest: metadata HEAD paths share only a per-proof observation and movement refuses at return
+ok 16 - metadata HEAD paths share only a per-proof observation and movement refuses at return
+  ---
+  duration_ms: 998.362388
+  type: 'test'
+  ...
+# Subtest: a metadata-only HEAD switch inside the retained callback is rejected before return
+ok 17 - a metadata-only HEAD switch inside the retained callback is rejected before return
+  ---
+  duration_ms: 789.526439
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 24608.29012

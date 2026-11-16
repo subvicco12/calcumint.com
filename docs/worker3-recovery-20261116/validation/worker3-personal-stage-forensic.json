@@ -1,0 +1,709 @@
+{
+  "kind": "READ_ONLY_ESCALATED_PERSONAL_STAGE_CPU_FORENSIC",
+  "reported_run": "4e source150 lineage-isolation observation",
+  "source": {
+    "path": "/tmp/worker3-publication-receipts/lineage-isolation-observer.jsonl",
+    "bytes": 924255,
+    "sha256": "8c31d10a069f0125041d7b8c4704a6bcc16f94cd625ee97ddd87adcb14bfcc50"
+  },
+  "clock_ticks_per_second": 100,
+  "sampling_frequency_hz": 1,
+  "actual_test_body": {
+    "pid": 298124,
+    "start_ticks": 1373016,
+    "first_seconds": 54.075790043998495,
+    "last_seconds": 113.15505114999905,
+    "observed_executing_span_seconds": 59.07926110600056,
+    "samples": 60,
+    "states": {
+      "S": 41,
+      "R": 19
+    },
+    "self_cpu_delta_seconds": 21.32,
+    "reaped_child_cpu_delta_seconds": 19.76,
+    "self_plus_reaped_child_cpu_delta_seconds": 41.08,
+    "tree_accounted_cpu_delta_seconds": 53.34,
+    "tree_cpu_seconds_per_wall_second": 0.9028548936029663,
+    "positive_self_cpu_intervals": 59,
+    "total_intervals": 59,
+    "zero_self_cpu_intervals": 0,
+    "max_sampled_flat_self": {
+      "seconds": 0,
+      "start": null,
+      "end": null
+    },
+    "first_zombie": {
+      "seconds": 114.16239410799972,
+      "state": "Z"
+    }
+  },
+  "wrapper": {
+    "pid": 298107,
+    "start_ticks": 1373009,
+    "ppid_first": 276156,
+    "is_node": true,
+    "first_seconds": 54.075790043998495,
+    "last_seconds": 113.15505114999905,
+    "sampled_span_seconds": 59.07926110600056,
+    "samples": 60,
+    "states": {
+      "S": 60
+    },
+    "self_cpu_first_seconds": 0.06,
+    "self_cpu_last_seconds": 0.11,
+    "self_cpu_delta_seconds": 0.05,
+    "reaped_child_cpu_first_seconds": 0.0,
+    "reaped_child_cpu_last_seconds": 0.0,
+    "reaped_child_cpu_delta_seconds": 0.0,
+    "max_sampled_flat_self_plus_children": {
+      "seconds": 42.04722320200017,
+      "start": 71.10782794799889,
+      "end": 113.15505114999905
+    },
+    "node_file_args_first": [
+      "tests/completion-first-20261112/personal-stage.test.mjs"
+    ]
+  },
+  "long_lived_non_node_descendant": {
+    "pid": 298210,
+    "start_ticks": 1373061,
+    "ppid_first": 298124,
+    "is_node": false,
+    "first_seconds": 55.076024432999475,
+    "last_seconds": 113.15505114999905,
+    "sampled_span_seconds": 58.07902671699958,
+    "samples": 59,
+    "states": {
+      "S": 57,
+      "R": 2
+    },
+    "self_cpu_first_seconds": 0.06,
+    "self_cpu_last_seconds": 1.76,
+    "self_cpu_delta_seconds": 1.7,
+    "reaped_child_cpu_first_seconds": 0.11,
+    "reaped_child_cpu_last_seconds": 10.5,
+    "reaped_child_cpu_delta_seconds": 10.39,
+    "max_sampled_flat_self_plus_children": {
+      "seconds": 3.0144107500000246,
+      "start": 60.083844414999476,
+      "end": 63.0982551649995
+    },
+    "node_file_args_first": []
+  },
+  "observed_descendant_identities": 24,
+  "non_node_spans": [
+    {
+      "pid": 298210,
+      "start_ticks": 1373061,
+      "ppid_first": 298124,
+      "is_node": false,
+      "first_seconds": 55.076024432999475,
+      "last_seconds": 113.15505114999905,
+      "sampled_span_seconds": 58.07902671699958,
+      "samples": 59,
+      "states": {
+        "S": 57,
+        "R": 2
+      },
+      "self_cpu_first_seconds": 0.06,
+      "self_cpu_last_seconds": 1.76,
+      "self_cpu_delta_seconds": 1.7,
+      "reaped_child_cpu_first_seconds": 0.11,
+      "reaped_child_cpu_last_seconds": 10.5,
+      "reaped_child_cpu_delta_seconds": 10.39,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 3.0144107500000246,
+        "start": 60.083844414999476,
+        "end": 63.0982551649995
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 299629,
+      "start_ticks": 1373328,
+      "ppid_first": 298124,
+      "is_node": false,
+      "first_seconds": 57.08298267099963,
+      "last_seconds": 58.07828356899881,
+      "sampled_span_seconds": 0.9953008979991864,
+      "samples": 2,
+      "states": {
+        "R": 2
+      },
+      "self_cpu_first_seconds": 0.27,
+      "self_cpu_last_seconds": 1.15,
+      "self_cpu_delta_seconds": 0.88,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 298662,
+      "start_ticks": 1373157,
+      "ppid_first": 298210,
+      "is_node": false,
+      "first_seconds": 55.076024432999475,
+      "last_seconds": 55.076024432999475,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "S": 1
+      },
+      "self_cpu_first_seconds": 0.0,
+      "self_cpu_last_seconds": 0.0,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 298990,
+      "start_ticks": 1373257,
+      "ppid_first": 298124,
+      "is_node": false,
+      "first_seconds": 56.07717594699898,
+      "last_seconds": 56.07717594699898,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "R": 1
+      },
+      "self_cpu_first_seconds": 0.0,
+      "self_cpu_last_seconds": 0.0,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 300804,
+      "start_ticks": 1373658,
+      "ppid_first": 298124,
+      "is_node": false,
+      "first_seconds": 60.083844414999476,
+      "last_seconds": 60.083844414999476,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "R": 1
+      },
+      "self_cpu_first_seconds": 0.0,
+      "self_cpu_last_seconds": 0.0,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 301810,
+      "start_ticks": 1373858,
+      "ppid_first": 298124,
+      "is_node": false,
+      "first_seconds": 62.0832783879996,
+      "last_seconds": 62.0832783879996,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "R": 1
+      },
+      "self_cpu_first_seconds": 0.0,
+      "self_cpu_last_seconds": 0.0,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 305147,
+      "start_ticks": 1374353,
+      "ppid_first": 298210,
+      "is_node": false,
+      "first_seconds": 67.10187245899942,
+      "last_seconds": 67.10187245899942,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "Z": 1
+      },
+      "self_cpu_first_seconds": 0.02,
+      "self_cpu_last_seconds": 0.02,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 308576,
+      "start_ticks": 1374855,
+      "ppid_first": 298210,
+      "is_node": false,
+      "first_seconds": 72.10461839399977,
+      "last_seconds": 72.10461839399977,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "Z": 1
+      },
+      "self_cpu_first_seconds": 0.0,
+      "self_cpu_last_seconds": 0.0,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 312158,
+      "start_ticks": 1375361,
+      "ppid_first": 298124,
+      "is_node": false,
+      "first_seconds": 77.11143153299963,
+      "last_seconds": 77.11143153299963,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "S": 1
+      },
+      "self_cpu_first_seconds": 0.0,
+      "self_cpu_last_seconds": 0.0,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 312724,
+      "start_ticks": 1375460,
+      "ppid_first": 298210,
+      "is_node": false,
+      "first_seconds": 78.12136170599842,
+      "last_seconds": 78.12136170599842,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "R": 1
+      },
+      "self_cpu_first_seconds": 0.02,
+      "self_cpu_last_seconds": 0.02,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 313145,
+      "start_ticks": 1375561,
+      "ppid_first": 298124,
+      "is_node": false,
+      "first_seconds": 79.12249209899892,
+      "last_seconds": 79.12249209899892,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "R": 1
+      },
+      "self_cpu_first_seconds": 0.0,
+      "self_cpu_last_seconds": 0.0,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 313788,
+      "start_ticks": 1375661,
+      "ppid_first": 298210,
+      "is_node": false,
+      "first_seconds": 80.11615913999958,
+      "last_seconds": 80.11615913999958,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "R": 1
+      },
+      "self_cpu_first_seconds": 0.0,
+      "self_cpu_last_seconds": 0.0,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 314700,
+      "start_ticks": 1375861,
+      "ppid_first": 298124,
+      "is_node": false,
+      "first_seconds": 82.11687282799903,
+      "last_seconds": 82.11687282799903,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "R": 1
+      },
+      "self_cpu_first_seconds": 0.0,
+      "self_cpu_last_seconds": 0.0,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 315254,
+      "start_ticks": 1376057,
+      "ppid_first": 298124,
+      "is_node": false,
+      "first_seconds": 84.11902052699952,
+      "last_seconds": 84.11902052699952,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "R": 1
+      },
+      "self_cpu_first_seconds": 0.04,
+      "self_cpu_last_seconds": 0.04,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 315445,
+      "start_ticks": 1376159,
+      "ppid_first": 298124,
+      "is_node": false,
+      "first_seconds": 85.11764178799967,
+      "last_seconds": 85.11764178799967,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "R": 1
+      },
+      "self_cpu_first_seconds": 0.02,
+      "self_cpu_last_seconds": 0.02,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 316427,
+      "start_ticks": 1376762,
+      "ppid_first": 298124,
+      "is_node": false,
+      "first_seconds": 91.12338795299911,
+      "last_seconds": 91.12338795299911,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "R": 1
+      },
+      "self_cpu_first_seconds": 0.0,
+      "self_cpu_last_seconds": 0.0,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 318202,
+      "start_ticks": 1377472,
+      "ppid_first": 298124,
+      "is_node": false,
+      "first_seconds": 99.15625090499998,
+      "last_seconds": 99.15625090499998,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "R": 1
+      },
+      "self_cpu_first_seconds": 0.79,
+      "self_cpu_last_seconds": 0.79,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 318376,
+      "start_ticks": 1377836,
+      "ppid_first": 298124,
+      "is_node": false,
+      "first_seconds": 102.16214077199947,
+      "last_seconds": 102.16214077199947,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "R": 1
+      },
+      "self_cpu_first_seconds": 0.29,
+      "self_cpu_last_seconds": 0.29,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 318934,
+      "start_ticks": 1378065,
+      "ppid_first": 298124,
+      "is_node": false,
+      "first_seconds": 104.16466087899971,
+      "last_seconds": 104.16466087899971,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "R": 1
+      },
+      "self_cpu_first_seconds": 0.01,
+      "self_cpu_last_seconds": 0.01,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 319223,
+      "start_ticks": 1378165,
+      "ppid_first": 298210,
+      "is_node": false,
+      "first_seconds": 105.15478200899997,
+      "last_seconds": 105.15478200899997,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "R": 1
+      },
+      "self_cpu_first_seconds": 0.01,
+      "self_cpu_last_seconds": 0.01,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 319545,
+      "start_ticks": 1378265,
+      "ppid_first": 298124,
+      "is_node": false,
+      "first_seconds": 106.15306078100002,
+      "last_seconds": 106.15306078100002,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "S": 1
+      },
+      "self_cpu_first_seconds": 0.0,
+      "self_cpu_last_seconds": 0.0,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 319997,
+      "start_ticks": 1378364,
+      "ppid_first": 298210,
+      "is_node": false,
+      "first_seconds": 107.15150996400007,
+      "last_seconds": 107.15150996400007,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "R": 1
+      },
+      "self_cpu_first_seconds": 0.01,
+      "self_cpu_last_seconds": 0.01,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 321013,
+      "start_ticks": 1378665,
+      "ppid_first": 298210,
+      "is_node": false,
+      "first_seconds": 110.1598748669985,
+      "last_seconds": 110.1598748669985,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "Z": 1
+      },
+      "self_cpu_first_seconds": 0.0,
+      "self_cpu_last_seconds": 0.0,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    },
+    {
+      "pid": 321922,
+      "start_ticks": 1378965,
+      "ppid_first": 298210,
+      "is_node": false,
+      "first_seconds": 113.15505114999905,
+      "last_seconds": 113.15505114999905,
+      "sampled_span_seconds": 0.0,
+      "samples": 1,
+      "states": {
+        "R": 1
+      },
+      "self_cpu_first_seconds": 0.0,
+      "self_cpu_last_seconds": 0.0,
+      "self_cpu_delta_seconds": 0.0,
+      "reaped_child_cpu_first_seconds": 0.0,
+      "reaped_child_cpu_last_seconds": 0.0,
+      "reaped_child_cpu_delta_seconds": 0.0,
+      "max_sampled_flat_self_plus_children": {
+        "seconds": 0,
+        "start": null,
+        "end": null
+      },
+      "node_file_args_first": []
+    }
+  ],
+  "conclusion": "Genuine aggregate CPU work over the59.08s executing span, not evidence of a30s Native cat-file EOF stall. The body alone gains CPU in all59 consecutive sampled intervals; its subtree accounts for53.34CPU-seconds. The sole long-lived non-Node descendant has increasing own/reaped-child CPU and a longest sampled flat interval of3.01s, with transient child PID turnover.",
+  "limits": [
+    "The observer intentionally omitted non-Node executable names, syscall/wchan and FD state. PID298210 is broker-like by lifetime/ancestry/child CPU but cannot be positively named Python or Git from this file alone.",
+    "One-Hz process snapshots do not identify individual Git requests or exclude short waits. They do rule out the proposed30s branch-wide flat-wait signature in this span.",
+    "Child CPU counters cover reaped children. Tree accounting adds still-live descendants and their reaped CPU; endpoint sampling races are possible, but53.34CPU-seconds and positive body CPU in every interval are not consistent with a30s complete-stall explanation.",
+    "After114.1624s PID298124 is a zombie. Its later flat counters through215s are terminated-process retention, not a running test hang."
+  ],
+  "recommendation": "Treat this personal-stage interval as aggregate source-proof cost. Do not implement an EOF/FD/timeout transport fix based on the earlier separate sandbox artifact. Preserve all existing deadlines and proof controls.",
+  "witness_files": [
+    "/tmp/worker3-personal-stage-cpu-samples.csv",
+    "/tmp/worker3-personal-stage-pid-spans.csv"
+  ]
+}

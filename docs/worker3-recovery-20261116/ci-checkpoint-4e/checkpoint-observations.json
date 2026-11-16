@@ -1,0 +1,77 @@
+{
+  "kind": "HISTORICAL4E_TERMINAL_CI_CHECKPOINT_NOT_FINAL_CANDIDATE",
+  "head": "4e52927bdd8c5d7f3bbce1f5f7d9bac0a4faf2f7",
+  "runId": 43814850580,
+  "runAttempt": 1,
+  "status": "completed",
+  "conclusion": "cancelled",
+  "jobs": [
+    {
+      "id": 133124474317,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 133124474555,
+      "name": "checks",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 133124474569,
+      "name": "full-product",
+      "status": "completed",
+      "conclusion": "cancelled"
+    },
+    {
+      "id": 133124474588,
+      "name": "source-acceptance",
+      "status": "completed",
+      "conclusion": "cancelled"
+    },
+    {
+      "id": 133124474609,
+      "name": "publication-factory",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 133131653573,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "failure"
+    }
+  ],
+  "hostedApiUiNative": {
+    "apiMs": 5222,
+    "apiBudgetMs": 5000,
+    "apiPassed": false,
+    "uiMs": 4274,
+    "uiBudgetMs": 5000,
+    "uiPassed": true,
+    "nativeMs": 6296,
+    "nativeHasFiveSecondLimit": false,
+    "scope": "Exact 4e hosted checkpoint only. Earlier 77 hosted API 3739 ms passed and is historical, not current proof."
+  },
+  "cancellation": {
+    "jobs": [
+      "source-acceptance",
+      "full-product"
+    ],
+    "observedNearConfiguredBudgetMinutes": 20,
+    "explicitActorEstablished": false,
+    "completeUnitSummaryEstablished": false
+  },
+  "observedMaterialFailures": [
+    "API 5222 ms exceeds original 5000 ms budget.",
+    "Source 150-second contract, personal 60-second child timing, shortest 65-second and first20 consumer 65-second cases failed; first-five source-group unit runtime failures also observed.",
+    "Source and full-product jobs cancelled before complete unit summaries; no invented final counts.",
+    "Independent cold shallow case7 test exposed missing historical 6b tree; prior fresh default structural proof did not execute all seven isolation controls."
+  ],
+  "qualificationGranted": false,
+  "selected20": "IMPLEMENTED_NOT_QUALIFIED",
+  "engineeringBaseline": 81,
+  "newConfirmedEngineering": 0,
+  "notFinalGeneration": true
+}

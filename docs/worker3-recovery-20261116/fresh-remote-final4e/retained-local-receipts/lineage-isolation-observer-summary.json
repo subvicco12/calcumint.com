@@ -1,0 +1,1079 @@
+{
+  "kind": "ADVISORY_EXTERNAL_READONLY_PROCESS_OBSERVATION",
+  "begin": {
+    "event": "begin",
+    "root_pid": 276092,
+    "root_start_ticks": 1367648,
+    "monitor_pid": 276093,
+    "monitor_nice": 19,
+    "frequency_hz": 1,
+    "clock_ticks_per_second": 100,
+    "scope": "advisory external read-only proc observer; no env/inline-code/full-argv collection; no kill/retry"
+  },
+  "end": {
+    "event": "end",
+    "seconds": 216.29455839299953,
+    "reason": "test root disappeared or identity changed"
+  },
+  "samples": 216,
+  "distinctObservedProcessIdentities": 237,
+  "distinctObservedNodeIdentities": 54,
+  "nodeProcessWitnesses": [
+    {
+      "pid": 276155,
+      "ppid_first": 276145,
+      "pgid": 276145,
+      "first_seen_seconds": 2.007134994999433,
+      "last_seen_seconds": 80.11615913999958,
+      "last_alive_seconds": 80.11615913999958,
+      "node_file_args": [
+        "tests/parallel-source-20261110/application-successor.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276145,
+      "cpu_ticks_user": 1966,
+      "cpu_ticks_system": 1497,
+      "child_cpu_ticks_user": 1035,
+      "child_cpu_ticks_system": 1787,
+      "observed_alive_span_seconds": 78.10902414500015
+    },
+    {
+      "pid": 276156,
+      "ppid_first": 276145,
+      "pgid": 276145,
+      "first_seen_seconds": 2.007134994999433,
+      "last_seen_seconds": 215.29946682699847,
+      "last_alive_seconds": 150.23210878600003,
+      "node_file_args": [
+        "tests/parallel-source-20261110/current.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "Z",
+      "last_ppid": 1,
+      "cpu_ticks_user": 1464,
+      "cpu_ticks_system": 1111,
+      "child_cpu_ticks_user": 6220,
+      "child_cpu_ticks_system": 7134,
+      "observed_alive_span_seconds": 148.2249737910006
+    },
+    {
+      "pid": 298124,
+      "ppid_first": 298107,
+      "pgid": 276145,
+      "first_seen_seconds": 54.075790043998495,
+      "last_seen_seconds": 215.29946682699847,
+      "last_alive_seconds": 113.15505114999905,
+      "node_file_args": [
+        "tests/completion-first-20261112/personal-stage.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "Z",
+      "last_ppid": 1,
+      "cpu_ticks_user": 1258,
+      "cpu_ticks_system": 916,
+      "child_cpu_ticks_user": 702,
+      "child_cpu_ticks_system": 1293,
+      "observed_alive_span_seconds": 59.07926110600056
+    },
+    {
+      "pid": 337143,
+      "ppid_first": 276125,
+      "pgid": 337143,
+      "first_seen_seconds": 151.22710478299996,
+      "last_seen_seconds": 187.26000782199844,
+      "last_alive_seconds": 187.26000782199844,
+      "node_file_args": [
+        "scripts/check-shortest-publication20.mjs"
+      ],
+      "is_node": true,
+      "last_state": "R",
+      "last_ppid": 276125,
+      "cpu_ticks_user": 1145,
+      "cpu_ticks_system": 807,
+      "child_cpu_ticks_user": 496,
+      "child_cpu_ticks_system": 1027,
+      "observed_alive_span_seconds": 36.032903038998484
+    },
+    {
+      "pid": 324461,
+      "ppid_first": 276156,
+      "pgid": 276145,
+      "first_seen_seconds": 119.15860857299958,
+      "last_seen_seconds": 148.2235787919999,
+      "last_alive_seconds": 148.2235787919999,
+      "node_file_args": [
+        "tests/milestone100-20261114/source-stage8-authority-scope.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276156,
+      "cpu_ticks_user": 1053,
+      "cpu_ticks_system": 633,
+      "child_cpu_ticks_user": 222,
+      "child_cpu_ticks_system": 728,
+      "observed_alive_span_seconds": 29.064970219000315
+    },
+    {
+      "pid": 345309,
+      "ppid_first": 345298,
+      "pgid": 345298,
+      "first_seen_seconds": 188.26535435000005,
+      "last_seen_seconds": 215.29946682699847,
+      "last_alive_seconds": 215.29946682699847,
+      "node_file_args": [
+        "tests/shortest-publication-20/completion-lineage.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "R",
+      "last_ppid": 345298,
+      "cpu_ticks_user": 899,
+      "cpu_ticks_system": 588,
+      "child_cpu_ticks_user": 247,
+      "child_cpu_ticks_system": 538,
+      "observed_alive_span_seconds": 27.034112476998416
+    },
+    {
+      "pid": 345308,
+      "ppid_first": 345298,
+      "pgid": 345298,
+      "first_seen_seconds": 188.26535435000005,
+      "last_seen_seconds": 215.29946682699847,
+      "last_alive_seconds": 215.29946682699847,
+      "node_file_args": [
+        "tests/shortest-publication-20/caller-lineage.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "R",
+      "last_ppid": 345298,
+      "cpu_ticks_user": 714,
+      "cpu_ticks_system": 700,
+      "child_cpu_ticks_user": 328,
+      "child_cpu_ticks_system": 526,
+      "observed_alive_span_seconds": 27.034112476998416
+    },
+    {
+      "pid": 345330,
+      "ppid_first": 345310,
+      "pgid": 345298,
+      "first_seen_seconds": 188.26535435000005,
+      "last_seen_seconds": 215.29946682699847,
+      "last_alive_seconds": 215.29946682699847,
+      "node_file_args": [
+        "scripts/check-shortest-publication20.mjs"
+      ],
+      "is_node": true,
+      "last_state": "R",
+      "last_ppid": 345310,
+      "cpu_ticks_user": 773,
+      "cpu_ticks_system": 530,
+      "child_cpu_ticks_user": 309,
+      "child_cpu_ticks_system": 679,
+      "observed_alive_span_seconds": 27.034112476998416
+    },
+    {
+      "pid": 314096,
+      "ppid_first": 314039,
+      "pgid": 276145,
+      "first_seen_seconds": 81.11567421499967,
+      "last_seen_seconds": 125.1876896929989,
+      "last_alive_seconds": 125.1876896929989,
+      "node_file_args": [
+        "tests/parallel-source-20261110/historical-tests.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 314039,
+      "cpu_ticks_user": 456,
+      "cpu_ticks_system": 580,
+      "child_cpu_ticks_user": 727,
+      "child_cpu_ticks_system": 1263,
+      "observed_alive_span_seconds": 44.07201547799923
+    },
+    {
+      "pid": 282029,
+      "ppid_first": 276735,
+      "pgid": 276145,
+      "first_seen_seconds": 20.14434765199985,
+      "last_seen_seconds": 43.07064238699968,
+      "last_alive_seconds": 43.07064238699968,
+      "node_file_args": [
+        "tests/milestone100-20261114/source-stage8-saved-actions-claim.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276735,
+      "cpu_ticks_user": 533,
+      "cpu_ticks_system": 481,
+      "child_cpu_ticks_user": 301,
+      "child_cpu_ticks_system": 692,
+      "observed_alive_span_seconds": 22.92629473499983
+    },
+    {
+      "pid": 327380,
+      "ppid_first": 314039,
+      "pgid": 276145,
+      "first_seen_seconds": 126.18309224399854,
+      "last_seen_seconds": 215.29946682699847,
+      "last_alive_seconds": 150.23210878600003,
+      "node_file_args": [
+        "tests/parallel-source-20261110/historical-tests.mjs"
+      ],
+      "is_node": true,
+      "last_state": "Z",
+      "last_ppid": 1,
+      "cpu_ticks_user": 392,
+      "cpu_ticks_system": 472,
+      "child_cpu_ticks_user": 549,
+      "child_cpu_ticks_system": 990,
+      "observed_alive_span_seconds": 24.049016542001482
+    },
+    {
+      "pid": 278227,
+      "ppid_first": 276735,
+      "pgid": 276145,
+      "first_seen_seconds": 10.040661263999937,
+      "last_seen_seconds": 25.052857576998576,
+      "last_alive_seconds": 25.052857576998576,
+      "node_file_args": [
+        "tests/milestone100-20261114/source-stage8-named-dependencies.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276735,
+      "cpu_ticks_user": 399,
+      "cpu_ticks_system": 259,
+      "child_cpu_ticks_user": 150,
+      "child_cpu_ticks_system": 331,
+      "observed_alive_span_seconds": 15.01219631299864
+    },
+    {
+      "pid": 323585,
+      "ppid_first": 322455,
+      "pgid": 276145,
+      "first_seen_seconds": 117.15932116399927,
+      "last_seen_seconds": 137.25595280999914,
+      "last_alive_seconds": 137.25595280999914,
+      "node_file_args": [
+        "tests/first-five-20261109/source-lineage.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 322455,
+      "cpu_ticks_user": 196,
+      "cpu_ticks_system": 290,
+      "child_cpu_ticks_user": 753,
+      "child_cpu_ticks_system": 698,
+      "observed_alive_span_seconds": 20.096631645999878
+    },
+    {
+      "pid": 285927,
+      "ppid_first": 276735,
+      "pgid": 276145,
+      "first_seen_seconds": 27.047698980999485,
+      "last_seen_seconds": 38.08560271399983,
+      "last_alive_seconds": 38.08560271399983,
+      "node_file_args": [
+        "tests/milestone100-20261114/source-stage8-shortest-guard.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276735,
+      "cpu_ticks_user": 264,
+      "cpu_ticks_system": 183,
+      "child_cpu_ticks_user": 122,
+      "child_cpu_ticks_system": 208,
+      "observed_alive_span_seconds": 11.037903733000348
+    },
+    {
+      "pid": 298764,
+      "ppid_first": 298746,
+      "pgid": 276145,
+      "first_seen_seconds": 56.07717594699898,
+      "last_seen_seconds": 66.11111877599978,
+      "last_alive_seconds": 66.11111877599978,
+      "node_file_args": [
+        "tests/completion-first-20261112/current-stage.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 298746,
+      "cpu_ticks_user": 151,
+      "cpu_ticks_system": 157,
+      "child_cpu_ticks_user": 348,
+      "child_cpu_ticks_system": 354,
+      "observed_alive_span_seconds": 10.033942829000807
+    },
+    {
+      "pid": 276125,
+      "ppid_first": 276092,
+      "pgid": 276087,
+      "first_seen_seconds": 1.0042361830001028,
+      "last_seen_seconds": 215.29946682699847,
+      "last_alive_seconds": 215.29946682699847,
+      "node_file_args": [],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276092,
+      "cpu_ticks_user": 182,
+      "cpu_ticks_system": 49,
+      "child_cpu_ticks_user": 5265,
+      "child_cpu_ticks_system": 6125,
+      "observed_alive_span_seconds": 214.29523064399837
+    },
+    {
+      "pid": 276742,
+      "ppid_first": 276735,
+      "pgid": 276145,
+      "first_seen_seconds": 6.026618206999046,
+      "last_seen_seconds": 17.044709207999404,
+      "last_alive_seconds": 17.044709207999404,
+      "node_file_args": [
+        "tests/milestone100-20261114/source-preflight-stage8.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276735,
+      "cpu_ticks_user": 123,
+      "cpu_ticks_system": 90,
+      "child_cpu_ticks_user": 283,
+      "child_cpu_ticks_system": 387,
+      "observed_alive_span_seconds": 11.018091001000357
+    },
+    {
+      "pid": 276092,
+      "ppid_first": 276090,
+      "pgid": 276087,
+      "first_seen_seconds": 0.00424876199940627,
+      "last_seen_seconds": 215.29946682699847,
+      "last_alive_seconds": 215.29946682699847,
+      "node_file_args": [
+        "node_modules/vitest/vitest.mjs",
+        "src/lib/parallel-source-evidence.test.ts"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276090,
+      "cpu_ticks_user": 109,
+      "cpu_ticks_system": 28,
+      "child_cpu_ticks_user": 1,
+      "child_cpu_ticks_system": 3,
+      "observed_alive_span_seconds": 215.29521806499906
+    },
+    {
+      "pid": 336571,
+      "ppid_first": 276156,
+      "pgid": 276145,
+      "first_seen_seconds": 149.22444290400017,
+      "last_seen_seconds": 215.29946682699847,
+      "last_alive_seconds": 150.23210878600003,
+      "node_file_args": [
+        "tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "Z",
+      "last_ppid": 1,
+      "cpu_ticks_user": 77,
+      "cpu_ticks_system": 60,
+      "child_cpu_ticks_user": 28,
+      "child_cpu_ticks_system": 27,
+      "observed_alive_span_seconds": 1.0076658819998556
+    },
+    {
+      "pid": 285973,
+      "ppid_first": 276156,
+      "pgid": 276145,
+      "first_seen_seconds": 28.04140808899865,
+      "last_seen_seconds": 30.06464585499998,
+      "last_alive_seconds": 30.06464585499998,
+      "node_file_args": [
+        "/workspace/calcumint-worker3-publication/tests/parallel-source-20261110/baseline-probe.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276156,
+      "cpu_ticks_user": 92,
+      "cpu_ticks_system": 41,
+      "child_cpu_ticks_user": 55,
+      "child_cpu_ticks_system": 51,
+      "observed_alive_span_seconds": 2.02323776600133
+    },
+    {
+      "pid": 304898,
+      "ppid_first": 304846,
+      "pgid": 276145,
+      "first_seen_seconds": 67.10187245899942,
+      "last_seen_seconds": 70.10187968799983,
+      "last_alive_seconds": 70.10187968799983,
+      "node_file_args": [
+        "tests/four-worker-integration-20261115/source-stage9.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 304846,
+      "cpu_ticks_user": 81,
+      "cpu_ticks_system": 39,
+      "child_cpu_ticks_user": 56,
+      "child_cpu_ticks_system": 63,
+      "observed_alive_span_seconds": 3.0000072290004027
+    },
+    {
+      "pid": 284680,
+      "ppid_first": 276155,
+      "pgid": 276145,
+      "first_seen_seconds": 25.052857576998576,
+      "last_seen_seconds": 27.047698980999485,
+      "last_alive_seconds": 27.047698980999485,
+      "node_file_args": [
+        "/workspace/calcumint-worker3-publication/tests/parallel-source-20261110/baseline-probe.mjs"
+      ],
+      "is_node": true,
+      "last_state": "R",
+      "last_ppid": 276155,
+      "cpu_ticks_user": 77,
+      "cpu_ticks_system": 42,
+      "child_cpu_ticks_user": 65,
+      "child_cpu_ticks_system": 48,
+      "observed_alive_span_seconds": 1.9948414040009084
+    },
+    {
+      "pid": 336573,
+      "ppid_first": 276156,
+      "pgid": 276145,
+      "first_seen_seconds": 149.22444290400017,
+      "last_seen_seconds": 215.29946682699847,
+      "last_alive_seconds": 150.23210878600003,
+      "node_file_args": [
+        "tests/completion-wave-20261113/source-authority-preload.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "Z",
+      "last_ppid": 1,
+      "cpu_ticks_user": 37,
+      "cpu_ticks_system": 65,
+      "child_cpu_ticks_user": 34,
+      "child_cpu_ticks_system": 77,
+      "observed_alive_span_seconds": 1.0076658819998556
+    },
+    {
+      "pid": 318302,
+      "ppid_first": 314096,
+      "pgid": 276145,
+      "first_seen_seconds": 101.15695881600004,
+      "last_seen_seconds": 103.17433614899892,
+      "last_alive_seconds": 103.17433614899892,
+      "node_file_args": [
+        "/workspace/calcumint-worker3-publication/tests/parallel-source-20261110/baseline-probe.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 314096,
+      "cpu_ticks_user": 60,
+      "cpu_ticks_system": 37,
+      "child_cpu_ticks_user": 63,
+      "child_cpu_ticks_system": 67,
+      "observed_alive_span_seconds": 2.0173773329988762
+    },
+    {
+      "pid": 308558,
+      "ppid_first": 308496,
+      "pgid": 276145,
+      "first_seen_seconds": 72.10461839399977,
+      "last_seen_seconds": 73.11115477099884,
+      "last_alive_seconds": 73.11115477099884,
+      "node_file_args": [
+        "tests/full-product-batch17/workflow.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "R",
+      "last_ppid": 308496,
+      "cpu_ticks_user": 67,
+      "cpu_ticks_system": 22,
+      "child_cpu_ticks_user": 11,
+      "child_cpu_ticks_system": 13,
+      "observed_alive_span_seconds": 1.0065363769990654
+    },
+    {
+      "pid": 334596,
+      "ppid_first": 327380,
+      "pgid": 276145,
+      "first_seen_seconds": 143.22033291799926,
+      "last_seen_seconds": 144.23072392099857,
+      "last_alive_seconds": 144.23072392099857,
+      "node_file_args": [
+        "/workspace/calcumint-worker3-publication/tests/parallel-source-20261110/baseline-probe.mjs"
+      ],
+      "is_node": true,
+      "last_state": "R",
+      "last_ppid": 327380,
+      "cpu_ticks_user": 55,
+      "cpu_ticks_system": 31,
+      "child_cpu_ticks_user": 61,
+      "child_cpu_ticks_system": 60,
+      "observed_alive_span_seconds": 1.010391002999313
+    },
+    {
+      "pid": 278460,
+      "ppid_first": 278411,
+      "pgid": 276145,
+      "first_seen_seconds": 12.025390089998837,
+      "last_seen_seconds": 14.053008760000012,
+      "last_alive_seconds": 14.053008760000012,
+      "node_file_args": [
+        "tests/source-lineage-bootstrap.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "R",
+      "last_ppid": 278411,
+      "cpu_ticks_user": 27,
+      "cpu_ticks_system": 33,
+      "child_cpu_ticks_user": 93,
+      "child_cpu_ticks_system": 93,
+      "observed_alive_span_seconds": 2.027618670001175
+    },
+    {
+      "pid": 281157,
+      "ppid_first": 276735,
+      "pgid": 276145,
+      "first_seen_seconds": 18.036576830998456,
+      "last_seen_seconds": 18.036576830998456,
+      "last_alive_seconds": 18.036576830998456,
+      "node_file_args": [
+        "tests/milestone100-20261114/source-stage8-negative-authority.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276735,
+      "cpu_ticks_user": 35,
+      "cpu_ticks_system": 17,
+      "child_cpu_ticks_user": 5,
+      "child_cpu_ticks_system": 2,
+      "observed_alive_span_seconds": 0.0
+    },
+    {
+      "pid": 322455,
+      "ppid_first": 314096,
+      "pgid": 276145,
+      "first_seen_seconds": 115.15908933699939,
+      "last_seen_seconds": 215.29946682699847,
+      "last_alive_seconds": 137.25595280999914,
+      "node_file_args": [
+        "tests/ci-gate-recovery/batch17-budget-successor.test.mjs",
+        "tests/first-five-20261109/accepted-evolution-guard.test.mjs",
+        "tests/first-five-20261109/artifact-file.test.mjs",
+        "tests/first-five-20261109/crossed-dependency-source.test.mjs",
+        "tests/first-five-20261109/lineage-portability.test.mjs",
+        "tests/first-five-20261109/source-lineage.test.mjs",
+        "tests/first-five-20261109/workflow-budget.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "Z",
+      "last_ppid": 1,
+      "cpu_ticks_user": 28,
+      "cpu_ticks_system": 12,
+      "child_cpu_ticks_user": 1197,
+      "child_cpu_ticks_system": 1219,
+      "observed_alive_span_seconds": 22.096863472999758
+    },
+    {
+      "pid": 276145,
+      "ppid_first": 276125,
+      "pgid": 276145,
+      "first_seen_seconds": 1.0042361830001028,
+      "last_seen_seconds": 150.23210878600003,
+      "last_alive_seconds": 150.23210878600003,
+      "node_file_args": [
+        "tests/parallel-source-20261110/application-successor.test.mjs",
+        "tests/parallel-source-20261110/current.test.mjs",
+        "tests/parallel-source-20261110/git-reader.test.mjs",
+        "tests/parallel-source-20261110/historical-group.test.mjs",
+        "tests/parallel-source-20261110/retained-vitest-diagnostics.test.mjs",
+        "tests/parallel-source-20261110/retained-vitest.test.mjs",
+        "tests/parallel-source-20261110/source-object-lock.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276125,
+      "cpu_ticks_user": 24,
+      "cpu_ticks_system": 13,
+      "child_cpu_ticks_user": 3366,
+      "child_cpu_ticks_system": 3836,
+      "observed_alive_span_seconds": 149.22787260299992
+    },
+    {
+      "pid": 322563,
+      "ppid_first": 322455,
+      "pgid": 276145,
+      "first_seen_seconds": 115.15908933699939,
+      "last_seen_seconds": 116.15929150000011,
+      "last_alive_seconds": 116.15929150000011,
+      "node_file_args": [
+        "tests/ci-gate-recovery/batch17-budget-successor.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "R",
+      "last_ppid": 322455,
+      "cpu_ticks_user": 17,
+      "cpu_ticks_system": 17,
+      "child_cpu_ticks_user": 43,
+      "child_cpu_ticks_system": 45,
+      "observed_alive_span_seconds": 1.000202163000722
+    },
+    {
+      "pid": 278107,
+      "ppid_first": 276735,
+      "pgid": 276145,
+      "first_seen_seconds": 9.066357138999592,
+      "last_seen_seconds": 9.066357138999592,
+      "last_alive_seconds": 9.066357138999592,
+      "node_file_args": [
+        "tests/milestone100-20261114/source-stage8-guard-selection.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "R",
+      "last_ppid": 276735,
+      "cpu_ticks_user": 19,
+      "cpu_ticks_system": 14,
+      "child_cpu_ticks_user": 10,
+      "child_cpu_ticks_system": 4,
+      "observed_alive_span_seconds": 0.0
+    },
+    {
+      "pid": 322636,
+      "ppid_first": 322455,
+      "pgid": 276145,
+      "first_seen_seconds": 115.15908933699939,
+      "last_seen_seconds": 116.15929150000011,
+      "last_alive_seconds": 116.15929150000011,
+      "node_file_args": [
+        "tests/first-five-20261109/lineage-portability.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 322455,
+      "cpu_ticks_user": 18,
+      "cpu_ticks_system": 13,
+      "child_cpu_ticks_user": 38,
+      "child_cpu_ticks_system": 34,
+      "observed_alive_span_seconds": 1.000202163000722
+    },
+    {
+      "pid": 278411,
+      "ppid_first": 276742,
+      "pgid": 276145,
+      "first_seen_seconds": 11.024747185998422,
+      "last_seen_seconds": 14.053008760000012,
+      "last_alive_seconds": 14.053008760000012,
+      "node_file_args": [
+        "tests/source-lineage-bootstrap.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276742,
+      "cpu_ticks_user": 19,
+      "cpu_ticks_system": 7,
+      "child_cpu_ticks_user": 0,
+      "child_cpu_ticks_system": 0,
+      "observed_alive_span_seconds": 3.02826157400159
+    },
+    {
+      "pid": 322617,
+      "ppid_first": 322455,
+      "pgid": 276145,
+      "first_seen_seconds": 115.15908933699939,
+      "last_seen_seconds": 116.15929150000011,
+      "last_alive_seconds": 116.15929150000011,
+      "node_file_args": [
+        "tests/first-five-20261109/crossed-dependency-source.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 322455,
+      "cpu_ticks_user": 12,
+      "cpu_ticks_system": 13,
+      "child_cpu_ticks_user": 44,
+      "child_cpu_ticks_system": 41,
+      "observed_alive_span_seconds": 1.000202163000722
+    },
+    {
+      "pid": 291190,
+      "ppid_first": 276735,
+      "pgid": 276145,
+      "first_seen_seconds": 39.07749211999908,
+      "last_seen_seconds": 39.07749211999908,
+      "last_alive_seconds": 39.07749211999908,
+      "node_file_args": [
+        "tests/milestone100-20261114/source-stage8-test-only-successor.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276735,
+      "cpu_ticks_user": 20,
+      "cpu_ticks_system": 3,
+      "child_cpu_ticks_user": 4,
+      "child_cpu_ticks_system": 4,
+      "observed_alive_span_seconds": 0.0
+    },
+    {
+      "pid": 276735,
+      "ppid_first": 276156,
+      "pgid": 276145,
+      "first_seen_seconds": 6.026618206999046,
+      "last_seen_seconds": 43.07064238699968,
+      "last_alive_seconds": 43.07064238699968,
+      "node_file_args": [
+        "tests/ci-rpc-recovery-20261113/source-node.test.mjs",
+        "tests/milestone100-20261114/source-preflight-stage8.test.mjs",
+        "tests/milestone100-20261114/source-stage8-authority-availability.test.mjs",
+        "tests/milestone100-20261114/source-stage8-direct-commit-cache.test.mjs",
+        "tests/milestone100-20261114/source-stage8-guard-selection.test.mjs",
+        "tests/milestone100-20261114/source-stage8-named-dependencies.test.mjs",
+        "tests/milestone100-20261114/source-stage8-negative-authority.test.mjs",
+        "tests/milestone100-20261114/source-stage8-publication-transport.test.mjs",
+        "tests/milestone100-20261114/source-stage8-saved-actions-claim.test.mjs",
+        "tests/milestone100-20261114/source-stage8-shortest-fixture.test.mjs",
+        "tests/milestone100-20261114/source-stage8-shortest-guard.test.mjs",
+        "tests/milestone100-20261114/source-stage8-supplied-lock.test.mjs",
+        "tests/milestone100-20261114/source-stage8-test-only-successor.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276156,
+      "cpu_ticks_user": 16,
+      "cpu_ticks_system": 3,
+      "child_cpu_ticks_user": 1964,
+      "child_cpu_ticks_system": 2088,
+      "observed_alive_span_seconds": 37.04402418000063
+    },
+    {
+      "pid": 308075,
+      "ppid_first": 276156,
+      "pgid": 276145,
+      "first_seen_seconds": 71.10782794799889,
+      "last_seen_seconds": 71.10782794799889,
+      "last_alive_seconds": 71.10782794799889,
+      "node_file_args": [
+        "tests/gotrue-runtime/login-diagnostics.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "R",
+      "last_ppid": 276156,
+      "cpu_ticks_user": 11,
+      "cpu_ticks_system": 7,
+      "child_cpu_ticks_user": 0,
+      "child_cpu_ticks_system": 0,
+      "observed_alive_span_seconds": 0.0
+    },
+    {
+      "pid": 314039,
+      "ppid_first": 276145,
+      "pgid": 276145,
+      "first_seen_seconds": 81.11567421499967,
+      "last_seen_seconds": 215.29946682699847,
+      "last_alive_seconds": 150.23210878600003,
+      "node_file_args": [
+        "tests/parallel-source-20261110/historical-group.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "Z",
+      "last_ppid": 1,
+      "cpu_ticks_user": 13,
+      "cpu_ticks_system": 3,
+      "child_cpu_ticks_user": 1183,
+      "child_cpu_ticks_system": 1846,
+      "observed_alive_span_seconds": 69.11643457100035
+    },
+    {
+      "pid": 277243,
+      "ppid_first": 276735,
+      "pgid": 276145,
+      "first_seen_seconds": 7.021326762998797,
+      "last_seen_seconds": 8.020130835999225,
+      "last_alive_seconds": 8.020130835999225,
+      "node_file_args": [
+        "tests/milestone100-20261114/source-stage8-authority-availability.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276735,
+      "cpu_ticks_user": 9,
+      "cpu_ticks_system": 6,
+      "child_cpu_ticks_user": 16,
+      "child_cpu_ticks_system": 19,
+      "observed_alive_span_seconds": 0.9988040730004286
+    },
+    {
+      "pid": 276741,
+      "ppid_first": 276735,
+      "pgid": 276145,
+      "first_seen_seconds": 6.026618206999046,
+      "last_seen_seconds": 6.026618206999046,
+      "last_alive_seconds": 6.026618206999046,
+      "node_file_args": [
+        "tests/ci-rpc-recovery-20261113/source-node.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276735,
+      "cpu_ticks_user": 8,
+      "cpu_ticks_system": 5,
+      "child_cpu_ticks_user": 9,
+      "child_cpu_ticks_system": 9,
+      "observed_alive_span_seconds": 0.0
+    },
+    {
+      "pid": 298107,
+      "ppid_first": 276156,
+      "pgid": 276145,
+      "first_seen_seconds": 54.075790043998495,
+      "last_seen_seconds": 113.15505114999905,
+      "last_alive_seconds": 113.15505114999905,
+      "node_file_args": [
+        "tests/completion-first-20261112/personal-stage.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276156,
+      "cpu_ticks_user": 9,
+      "cpu_ticks_system": 2,
+      "child_cpu_ticks_user": 0,
+      "child_cpu_ticks_system": 0,
+      "observed_alive_span_seconds": 59.07926110600056
+    },
+    {
+      "pid": 298746,
+      "ppid_first": 298109,
+      "pgid": 276145,
+      "first_seen_seconds": 56.07717594699898,
+      "last_seen_seconds": 66.11111877599978,
+      "last_alive_seconds": 66.11111877599978,
+      "node_file_args": [
+        "tests/completion-first-20261112/current-stage.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 298109,
+      "cpu_ticks_user": 8,
+      "cpu_ticks_system": 3,
+      "child_cpu_ticks_user": 0,
+      "child_cpu_ticks_system": 0,
+      "observed_alive_span_seconds": 10.033942829000807
+    },
+    {
+      "pid": 308537,
+      "ppid_first": 308496,
+      "pgid": 276145,
+      "first_seen_seconds": 72.10461839399977,
+      "last_seen_seconds": 72.10461839399977,
+      "last_alive_seconds": 72.10461839399977,
+      "node_file_args": [
+        "tests/full-product-batch13/workflow.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 308496,
+      "cpu_ticks_user": 10,
+      "cpu_ticks_system": 1,
+      "child_cpu_ticks_user": 0,
+      "child_cpu_ticks_system": 0,
+      "observed_alive_span_seconds": 0.0
+    },
+    {
+      "pid": 324273,
+      "ppid_first": 276156,
+      "pgid": 276145,
+      "first_seen_seconds": 118.15969001299891,
+      "last_seen_seconds": 118.15969001299891,
+      "last_alive_seconds": 118.15969001299891,
+      "node_file_args": [
+        "tests/completion-wave-20261113/source-app-stage5-availability.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "R",
+      "last_ppid": 276156,
+      "cpu_ticks_user": 8,
+      "cpu_ticks_system": 3,
+      "child_cpu_ticks_user": 13,
+      "child_cpu_ticks_system": 9,
+      "observed_alive_span_seconds": 0.0
+    },
+    {
+      "pid": 345298,
+      "ppid_first": 276125,
+      "pgid": 345298,
+      "first_seen_seconds": 188.26535435000005,
+      "last_seen_seconds": 215.29946682699847,
+      "last_alive_seconds": 215.29946682699847,
+      "node_file_args": [
+        "tests/shortest-publication-20/caller-lineage.test.mjs",
+        "tests/shortest-publication-20/completion-lineage.test.mjs",
+        "tests/shortest-publication-20/frequency-presentation-lineage.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276125,
+      "cpu_ticks_user": 6,
+      "cpu_ticks_system": 2,
+      "child_cpu_ticks_user": 0,
+      "child_cpu_ticks_system": 0,
+      "observed_alive_span_seconds": 27.034112476998416
+    },
+    {
+      "pid": 308496,
+      "ppid_first": 276156,
+      "pgid": 276145,
+      "first_seen_seconds": 72.10461839399977,
+      "last_seen_seconds": 73.11115477099884,
+      "last_alive_seconds": 73.11115477099884,
+      "node_file_args": [
+        "tests/full-product-batch13/workflow.test.mjs",
+        "tests/full-product-batch14/workflow.test.mjs",
+        "tests/full-product-batch17/workflow.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276156,
+      "cpu_ticks_user": 5,
+      "cpu_ticks_system": 2,
+      "child_cpu_ticks_user": 38,
+      "child_cpu_ticks_system": 16,
+      "observed_alive_span_seconds": 1.0065363769990654
+    },
+    {
+      "pid": 276795,
+      "ppid_first": 276741,
+      "pgid": 276795,
+      "first_seen_seconds": 6.026618206999046,
+      "last_seen_seconds": 6.026618206999046,
+      "last_alive_seconds": 6.026618206999046,
+      "node_file_args": [],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276741,
+      "cpu_ticks_user": 2,
+      "cpu_ticks_system": 4,
+      "child_cpu_ticks_user": 0,
+      "child_cpu_ticks_system": 0,
+      "observed_alive_span_seconds": 0.0
+    },
+    {
+      "pid": 345310,
+      "ppid_first": 345298,
+      "pgid": 345298,
+      "first_seen_seconds": 188.26535435000005,
+      "last_seen_seconds": 215.29946682699847,
+      "last_alive_seconds": 215.29946682699847,
+      "node_file_args": [
+        "tests/shortest-publication-20/frequency-presentation-lineage.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 345298,
+      "cpu_ticks_user": 5,
+      "cpu_ticks_system": 1,
+      "child_cpu_ticks_user": 0,
+      "child_cpu_ticks_system": 0,
+      "observed_alive_span_seconds": 27.034112476998416
+    },
+    {
+      "pid": 276823,
+      "ppid_first": 276795,
+      "pgid": 276795,
+      "first_seen_seconds": 6.026618206999046,
+      "last_seen_seconds": 215.29946682699847,
+      "last_alive_seconds": 6.026618206999046,
+      "node_file_args": [],
+      "is_node": true,
+      "last_state": "Z",
+      "last_ppid": 1,
+      "cpu_ticks_user": 2,
+      "cpu_ticks_system": 3,
+      "child_cpu_ticks_user": 0,
+      "child_cpu_ticks_system": 0,
+      "observed_alive_span_seconds": 0.0
+    },
+    {
+      "pid": 298109,
+      "ppid_first": 276156,
+      "pgid": 276145,
+      "first_seen_seconds": 54.075790043998495,
+      "last_seen_seconds": 66.11111877599978,
+      "last_alive_seconds": 66.11111877599978,
+      "node_file_args": [
+        "tests/completion-first-20261112/retained-stage1-tests.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276156,
+      "cpu_ticks_user": 2,
+      "cpu_ticks_system": 3,
+      "child_cpu_ticks_user": 44,
+      "child_cpu_ticks_system": 109,
+      "observed_alive_span_seconds": 12.03532873200129
+    },
+    {
+      "pid": 304846,
+      "ppid_first": 276156,
+      "pgid": 276145,
+      "first_seen_seconds": 67.10187245899942,
+      "last_seen_seconds": 70.10187968799983,
+      "last_alive_seconds": 70.10187968799983,
+      "node_file_args": [
+        "tests/four-worker-integration-20261115/source-stage9.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "S",
+      "last_ppid": 276156,
+      "cpu_ticks_user": 3,
+      "cpu_ticks_system": 1,
+      "child_cpu_ticks_user": 0,
+      "child_cpu_ticks_system": 0,
+      "observed_alive_span_seconds": 3.0000072290004027
+    },
+    {
+      "pid": 285535,
+      "ppid_first": 276735,
+      "pgid": 276145,
+      "first_seen_seconds": 26.049129309998534,
+      "last_seen_seconds": 26.049129309998534,
+      "last_alive_seconds": 26.049129309998534,
+      "node_file_args": [
+        "tests/milestone100-20261114/source-stage8-shortest-fixture.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "R",
+      "last_ppid": 276735,
+      "cpu_ticks_user": 2,
+      "cpu_ticks_system": 0,
+      "child_cpu_ticks_user": 0,
+      "child_cpu_ticks_system": 0,
+      "observed_alive_span_seconds": 0.0
+    },
+    {
+      "pid": 281959,
+      "ppid_first": 276735,
+      "pgid": 276145,
+      "first_seen_seconds": 19.038133471000037,
+      "last_seen_seconds": 19.038133471000037,
+      "last_alive_seconds": 19.038133471000037,
+      "node_file_args": [
+        "tests/milestone100-20261114/source-stage8-publication-transport.test.mjs"
+      ],
+      "is_node": true,
+      "last_state": "R",
+      "last_ppid": 276735,
+      "cpu_ticks_user": 0,
+      "cpu_ticks_system": 0,
+      "child_cpu_ticks_user": 0,
+      "child_cpu_ticks_system": 0,
+      "observed_alive_span_seconds": 0.0
+    }
+  ],
+  "limits": [
+    "1Hz sampling misses short-lived processes and exact launch/exit times.",
+    "Process title rewriting or zombie cmdline clearing can remove filename arguments; witness filenames retain any earlier observed safe file arguments.",
+    "No inference that unobserved filename means unexecuted; mandatory children may run silently before aggregate reporting.",
+    "Lifetime CPUtick observations are perPID; do not sum childticks across ancestors without de-duplication.",
+    "Observer is advisory overhead, ownnice19; no environment/inlinecode/fullargv dumps, no source/callback/timeout changes, no kill/retry."
+  ]
+}

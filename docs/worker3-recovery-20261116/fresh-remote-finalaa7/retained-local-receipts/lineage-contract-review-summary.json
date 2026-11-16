@@ -1,0 +1,109 @@
+{
+  "kind": "EXACT_LINEAGE_CONTRACT_ADMITTED_FOCUSED_RESULTS_WITH_COORDINATOR_HOLD",
+  "head": "6b013fbf483e69b1016d238f84cc55e5057bb717",
+  "base": "1369c6d81f13ad1866c991b1ca53c6ff287a13c1",
+  "peerPatch": "eeaf7208cb6b6d76a34baeec27f684f860525c35",
+  "cherryPick": "8419e975",
+  "guard": "4758b24e09cfacd1df9018c259f1edfb5b5a8baa",
+  "authority": "88f41a3c98554ca0bbaab737e4268fd123cb8130",
+  "guardPaths": [
+    "scripts/fetch-source-lineage.mjs",
+    "scripts/product-completion-stage8.mjs",
+    "tests/milestone100-20261114/source-preflight-stage8.mjs",
+    "tests/next-engineering-20261115/source-admission-lineage-contract.mjs",
+    "tests/next-engineering-20261115/source-availability.test.mjs",
+    "tests/next-engineering-20261115/source-fresh-git-mandatory-children.mjs",
+    "tests/next-engineering-20261115/source-lineage-native-contract.mjs",
+    "tests/next-engineering-20261115/source-lineage-native-contract.test.mjs",
+    "tests/parallel-source-20261110/bootstrap.mjs",
+    "tests/parallel-source-20261110/core.mjs"
+  ],
+  "guardCaptureSHA256": "2a286aa804b30673d5cab37322f5e66c7fc54e8d1be541283268430fa2a14825",
+  "focusedSequential": {
+    "tests": 27,
+    "pass": 27,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "durationMs": 15543.04628,
+    "qualification": "Sequential focused result only; later confirmed test7 shared-FS race makes current helpertest unsafe for parallel mandatory execution."
+  },
+  "fullOriginalLineage60": {
+    "head": "6b013fbf483e69b1016d238f84cc55e5057bb717",
+    "args": [
+      "--test",
+      "--test-reporter=tap",
+      "tests/execution-recovery-20261109/source-lineage.test.mjs"
+    ],
+    "timeout": 60000,
+    "maxBuffer": 4000000,
+    "startedAt": "2026-11-16T05:48:54.464Z",
+    "qualificationGranted": false,
+    "releaseHold": true,
+    "status": "failure",
+    "error": {
+      "name": "Error",
+      "message": "spawnSync /workspace/.pr1467/sprint/node-v22.23.4-linux-x64/bin/node ETIMEDOUT",
+      "code": "ETIMEDOUT",
+      "signal": null,
+      "pid": 255871
+    },
+    "endedAt": "2026-11-16T05:49:54.498Z",
+    "milliseconds": 60034.439899
+  },
+  "fullOriginalLineage60Partial": "12passedTAP cases before exact60000ms timeout; no aggregatepass or typedsourceassertion observed.",
+  "original150Plus65": {
+    "status": "NOT_LAUNCHED_COORDINATOR_HOLD",
+    "reason": "Root confirmed newcontracttest7 temporarily replaces actual shared PUBlineage file with a symlink; must isolate in local clone before parallel mandatory run.",
+    "cancelledRunningTest": false,
+    "testRootPID": null,
+    "monitorPID": null,
+    "timersChanged": false
+  },
+  "externalMonitor": {
+    "path": "/tmp/worker3-proc-observer.py",
+    "sha256": "4d668cb248b51110fbca9cc0994bb9f8fa33bd55b5d6a186fed7c9966b8dcf11",
+    "status": "PREPARED_NOT_RUN",
+    "policy": "External1Hz/nice19/read-only/proc; PIDPPIDPGIDstateCPUticks+sanitizedNodefilenameargs only, noenv/codepayload/kill/retry."
+  },
+  "priorFailureReceipts": [
+    "fixture-bindings-focused20.log",
+    "fixture-bindings-review-summary.json",
+    "/tmp/worker3-lineage-contract-green.log",
+    "binding32-original-source115-firstcase.json",
+    "binding32-original-source115-firstcase.log"
+  ],
+  "followup": "Await one-new-test-file isolation fix, independent review and additive capture/pin before longgates. No helper/script/security assertion change authorized.",
+  "qualificationGranted": false,
+  "all20Disposition": "IMPLEMENTED_NOT_QUALIFIED",
+  "confirmedEngineeringBaseline": 81,
+  "releaseHold": true,
+  "pushed": false,
+  "receipts": [
+    {
+      "path": "/tmp/worker3-publication-receipts/admission-lineage-contract.log",
+      "bytes": 741,
+      "sha256": "48cac88541d84892206337b089ca3a7c46d99b53d88e2773fcd1e4991b05120b"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/lineage-contract-focused27.log",
+      "bytes": 6599,
+      "sha256": "16bd5c903ade305596a1c321f53fa6f0900e2bb6b652ab9247c1e006c7f08f0d"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/lineage-contract-original60.json",
+      "bytes": 617,
+      "sha256": "036dbfadb26becf04cd940f66e3ac4b156b08cb3d7a531523631f758db2a0f86"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/lineage-contract-original60.stdout",
+      "bytes": 2968,
+      "sha256": "f18f18ff2f901e21b1e950564fd59e55b720f68d2e04f2f9e551de6ecc3f14a9"
+    },
+    {
+      "path": "/tmp/worker3-publication-receipts/lineage-contract-original60.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

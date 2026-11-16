@@ -1,0 +1,190 @@
+[
+  {
+    "key": "init",
+    "argv": [
+      "git",
+      "-c",
+      "protocol.file.allow=never",
+      "-c",
+      "protocol.ext.allow=never",
+      "init",
+      "--quiet"
+    ],
+    "exitCode": 0,
+    "seconds": 0.0038569740008824738
+  },
+  {
+    "key": "origin",
+    "argv": [
+      "git",
+      "-c",
+      "protocol.file.allow=never",
+      "-c",
+      "protocol.ext.allow=never",
+      "remote",
+      "add",
+      "origin",
+      "https://github.com/subvicco12/calcumint.com.git"
+    ],
+    "exitCode": 0,
+    "seconds": 0.0023208500006148824
+  },
+  {
+    "key": "fetch-head",
+    "argv": [
+      "git",
+      "-c",
+      "protocol.file.allow=never",
+      "-c",
+      "protocol.ext.allow=never",
+      "fetch",
+      "--no-tags",
+      "--depth=1",
+      "origin",
+      "aa7b496a3b8bb4847a5d989d3c1e537f88296f9e"
+    ],
+    "exitCode": 0,
+    "seconds": 3.5967080159989564
+  },
+  {
+    "key": "checkout",
+    "argv": [
+      "git",
+      "-c",
+      "protocol.file.allow=never",
+      "-c",
+      "protocol.ext.allow=never",
+      "checkout",
+      "--detach",
+      "aa7b496a3b8bb4847a5d989d3c1e537f88296f9e"
+    ],
+    "exitCode": 0,
+    "seconds": 1.9138595359981991
+  },
+  {
+    "key": "head",
+    "argv": [
+      "git",
+      "-c",
+      "protocol.file.allow=never",
+      "-c",
+      "protocol.ext.allow=never",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exitCode": 0,
+    "seconds": 0.002759334001893876
+  },
+  {
+    "key": "origin-readback",
+    "argv": [
+      "git",
+      "-c",
+      "protocol.file.allow=never",
+      "-c",
+      "protocol.ext.allow=never",
+      "remote",
+      "get-url",
+      "--all",
+      "origin"
+    ],
+    "exitCode": 0,
+    "seconds": 0.002085356998577481
+  },
+  {
+    "key": "initial-shallow",
+    "argv": [
+      "git",
+      "-c",
+      "protocol.file.allow=never",
+      "-c",
+      "protocol.ext.allow=never",
+      "rev-parse",
+      "--is-shallow-repository"
+    ],
+    "exitCode": 0,
+    "seconds": 0.001999715997953899
+  },
+  {
+    "key": "initial-object-count",
+    "argv": [
+      "git",
+      "-c",
+      "protocol.file.allow=never",
+      "-c",
+      "protocol.ext.allow=never",
+      "count-objects",
+      "-v"
+    ],
+    "exitCode": 0,
+    "seconds": 0.0023119109973777086
+  },
+  {
+    "key": "actual-source-bootstrap",
+    "argv": [
+      "/workspace/.pr1467/sprint/node-v22.23.4-linux-x64/bin/node",
+      "scripts/fetch-source-lineage.mjs"
+    ],
+    "exitCode": 0,
+    "seconds": 8.08982407700023
+  },
+  {
+    "key": "fetch-published-comparison-refs",
+    "argv": [
+      "git",
+      "-c",
+      "protocol.file.allow=never",
+      "-c",
+      "protocol.ext.allow=never",
+      "fetch",
+      "--no-tags",
+      "--depth=1",
+      "origin",
+      "aaf369e67096718fd3bfff3d86c9c8e861a1cd42",
+      "f94521a5c3a038dfd725c870cc27061ecf3376b5",
+      "7db01d0744ce150154746a19b5f70d01271f4a29",
+      "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "939ea3b6ab204b0b5c12d3724949f0d85b62e0c8",
+      "b3f19a897bc564e0bee079ae5d7c80b6b6a5e8ae",
+      "77eb196e5606bf87ee3cf67326d9fc4354cfef45",
+      "3990380c589ee377a77f32cf3fc69703c679e8ec",
+      "a1763782389314a209be4fbf89f7224cd4faaf12",
+      "eeaf7208cb6b6d76a34baeec27f684f860525c35",
+      "3c8a16661d60738726b3746abce29024c1b9f948",
+      "7eb0ee931f8bf768f82bb938055c94ffe593e256",
+      "7cee765409a188ffa3a12e5e290302621dda075e",
+      "99e7bd0de151456e78fe49dfbf55511e7df98c5f",
+      "7f9aaef6bc37bd7791a83bb2b8a5b428d6427bcd",
+      "1369c6d81f13ad1866c991b1ca53c6ff287a13c1",
+      "8419e97557e42f8b407e5d89c93ff67d7ffdac4e",
+      "4758b24e09cfacd1df9018c259f1edfb5b5a8baa",
+      "88f41a3c98554ca0bbaab737e4268fd123cb8130",
+      "6b013fbf483e69b1016d238f84cc55e5057bb717",
+      "2a82ab54f24416b74a8e4bf0dc7544f16b010834",
+      "e1147ac09acf75ba60d1fa255ebc4663584da571",
+      "4739f2423bb69a5ee1633c612ef284c890c752f2",
+      "4e52927bdd8c5d7f3bbce1f5f7d9bac0a4faf2f7",
+      "6bfadb2a0ff0360415a4cc88ba67a49737bef259",
+      "62f43367fe504c1d7b588ac118179f0cdcadfce6",
+      "a498a2c803a31f69e8281a8c921b8859a3939862",
+      "aa7b496a3b8bb4847a5d989d3c1e537f88296f9e",
+      "999151e6715f4f892c7fec790f58cf49061e0e62"
+    ],
+    "exitCode": 0,
+    "seconds": 4.632783264001773
+  },
+  {
+    "key": "post-bootstrap-object-count",
+    "argv": [
+      "git",
+      "-c",
+      "protocol.file.allow=never",
+      "-c",
+      "protocol.ext.allow=never",
+      "count-objects",
+      "-v"
+    ],
+    "exitCode": 0,
+    "seconds": 0.0036504669988062233
+  }
+]
