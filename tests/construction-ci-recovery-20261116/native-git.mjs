@@ -192,7 +192,7 @@ function create(deadline) {
         state.process = info(state.child.pid);
         if (!state.process)
             throw Error('Native Git helper process did not start');
-        const ready = receive(state, Math.min(deadline, Date.now() + 5000));
+        const ready = receive(state, Math.min(deadline ?? Infinity, Date.now() + 5000));
         if (ready.id !== 0 || ready.ready !== true || ready.pid !== state.child.pid || ready.ownerPid !== process.pid)
             throw Error('Native Git helper protocol identity differs');
         holder.state = state;
@@ -280,7 +280,7 @@ function supported(args, options) {
 export function execNativeGit(args, options = {}) {
     if (!supported(args, options))
         return execFileSync('git', args, options);
-    const nativeDeadline = options.timeout > 0 ? Date.now() + options.timeout : null, deadline = nativeDeadline ? nativeDeadline + 100 : Date.now() + 5000;
+    const nativeDeadline = options.timeout > 0 ? Date.now() + options.timeout : null, deadline = nativeDeadline ? nativeDeadline + 100 : null;
     let state = holder.state, request, response;
     try {
         state ??= create(deadline);
