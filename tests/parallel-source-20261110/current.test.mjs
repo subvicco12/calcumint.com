@@ -227,9 +227,10 @@ test('mandatory source guard regressions exercise exact source and immutable ava
  const preload=heavy.find(([file])=>file==='source-authority-preload.test.mjs');assert(preload,'Fixed preload companion required');
  const rank=file=>priority.includes(file)?priority.indexOf(file):priority.length,pool=[...heavy,...companion].filter(row=>row!==preload).sort((a,b)=>rank(a[0])-rank(b[0]));let nextIndex=0;
  const planned=[scope,preload,...pool].map(([file])=>file);assert.equal(planned.length,remaining.length);assert.equal(new Set(planned).size,remaining.length);assert.deepEqual([...planned].sort(),remaining.map(([file])=>file).sort());
- // The measured independent pair retains both 30-second limits and the same two-child cap.
- await Promise.all([record(scope),record(preload)]);
- const worker=async()=>{while(nextIndex<pool.length)await record(pool[nextIndex++]);};await Promise.all([worker(),worker()]);assert.equal(results.size,files.length,'Every fixed source guard must return one result');
+ // Each independent lane continues directly into the fixed pool after its first child.
+ // Preserve both 30-second limits and the same two-child cap without an idle join.
+ const worker=async()=>{while(nextIndex<pool.length)await record(pool[nextIndex++]);};
+ await Promise.all([(async()=>{await record(scope);await worker();})(),(async()=>{await record(preload);await worker();})()]);assert.equal(results.size,files.length,'Every fixed source guard must return one result');
  const failures=[];
  // Report every child in the original declared order, even when an earlier child failed.
  for(const [file,count]of files){
