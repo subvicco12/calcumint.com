@@ -1,7 +1,7 @@
 import {sourceStage9Policy,sourceStage9CapturePath} from '../tests/four-worker-integration-20261115/source-stage9-policy.mjs';
 import {shortestNativeDriverPath,shortestNativeArgumentBytes,proveShortestNativeDriverSuccessor,shortestNativeTestRecords,shortestNativeSupplementalPredecessor,rejectShortestCallerArgument} from '../tests/milestone100-20261114/source-stage8-shortest-native-driver.mjs';
 import {runtimeAuxiliarySource,proveRuntimeAuxiliarySuccessor} from '../tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs';
-import {publicationTransportPath,publicationTransportArgumentBytes,provePublicationTransportSuccessor} from '../tests/milestone100-20261114/source-stage8-publication-transport.mjs';
+import {publicationTransportPath,publicationTransportArgumentBytes,expectedPublicationNativeProcessTransport,provePublicationTransportSuccessor} from '../tests/milestone100-20261114/source-stage8-publication-transport.mjs';
 import {expectedShortestFixtureSuccessor} from '../tests/milestone100-20261114/source-stage8-shortest-fixture.mjs';
 import {assertSourceStage8HeadStable} from '../tests/milestone100-20261114/source-stage8.mjs';
 import {immutableTreeQueryReader} from '../tests/milestone100-20261114/source-immutable-queries.mjs';
@@ -37,7 +37,7 @@ export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
  if(!affected){const valid=retainedVerify(name,bytes,claim,git,read);if(!valid)return false;}
  const supplied=git;git=immutableTreeQueryReader(completionGitReader(git));
  const argumentGuard=guardSuccessors.find(row=>row.path===name);
- if(argumentGuard){assert.equal(git(['rev-parse','--verify',argumentGuard.ref+'^{commit}']).toString().trim(),argumentGuard.ref);assert.equal(git(['rev-parse',argumentGuard.ref+':'+name]).toString().trim(),argumentGuard.blob);const expected=argumentGuard.path===publicationTransportPath?publicationTransportArgumentBytes(git):argumentGuard.path===shortestNativeDriverPath?shortestNativeArgumentBytes(git):git(['cat-file','blob',argumentGuard.blob]);if(argumentGuard.path!==publicationTransportPath&&argumentGuard.path!==shortestNativeDriverPath){assert.equal(expected.length,argumentGuard.bytes);assert.equal(sha(expected),argumentGuard.sha256);}assert(Buffer.isBuffer(bytes)&&bytes.equals(expected),'Completion current successor differs');}
+ if(argumentGuard){assert.equal(git(['rev-parse','--verify',argumentGuard.ref+'^{commit}']).toString().trim(),argumentGuard.ref);assert.equal(git(['rev-parse',argumentGuard.ref+':'+name]).toString().trim(),argumentGuard.blob);const expected=argumentGuard.path===publicationTransportPath?Buffer.from(expectedPublicationNativeProcessTransport(publicationTransportArgumentBytes(git).toString())):argumentGuard.path===shortestNativeDriverPath?shortestNativeArgumentBytes(git):git(['cat-file','blob',argumentGuard.blob]);if(argumentGuard.path!==publicationTransportPath&&argumentGuard.path!==shortestNativeDriverPath){assert.equal(expected.length,argumentGuard.bytes);assert.equal(sha(expected),argumentGuard.sha256);}assert(Buffer.isBuffer(bytes)&&bytes.equals(expected),'Completion current successor differs');}
  rejectShortestCallerArgument(name,bytes,supplied);
  const proofGit=(args,options)=>git(args,options);
  for(const name of ['preloadCommits','preloadBlobs','preloadPaths'])if(typeof supplied[name]==='function')proofGit[name]=values=>supplied[name](values);
