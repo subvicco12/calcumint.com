@@ -3,6 +3,6 @@
  */
 import {beforeEach,expect} from 'vitest';
 import {setImmediate} from 'node:timers/promises';
-import {fileURLToPath} from 'node:url';
-const target=fileURLToPath(new URL('../../src/lib/execution-recovery-evidence.test.ts',import.meta.url));
+import {resolve} from 'node:path';
+const target=resolve(process.cwd(),'src/lib/execution-recovery-evidence.test.ts');
 if(expect.getState().testPath===target)beforeEach(async()=>{await setImmediate();});
