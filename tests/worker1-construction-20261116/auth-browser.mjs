@@ -22,7 +22,7 @@ let db,next,browser;
 const pass=s=>{report.checks.push(s);console.log('PASS '+s);};
 try{
  await mkdir(out,{recursive:true});await build({entryPoints:[path.join(root,'src/lib/worker1-construction-20261116/cohort.ts')],outfile:path.join(out,'cohort.mjs'),platform:'node',format:'esm',bundle:true,alias:{'@':path.join(root,'src')},logLevel:'silent'});
- const api=await import(pathToFileURL(path.join(out,'cohort.mjs')));const cases=api.constructionContracts.map(c=>{const raw=Object.fromEntries(c.fields.map(f=>[f.key,String(f.defaultValue)]));return {id:c.catalogId,slug:c.slug,title:c.title,first:c.fields[0].key,raw,packet:api.constructionWorkflows(c.catalogId).execute(raw)};});
+ const api=await import(pathToFileURL(path.join(out,'cohort.mjs')));const cases=api.constructionContracts.map(c=>{const raw=Object.fromEntries(c.fields.map(f=>[f.key,String(f.defaultValue)]));return {id:c.catalogId,slug:c.slug,title:c.title,unit:c.unit,first:c.fields[0].key,raw,packet:api.constructionWorkflows(c.catalogId).execute(raw)};});
  assert.equal(cases.length,10);
  db=await startGoTrueFixture({initializeSchema:initializeFullSchema});registerCredentials(db.anonKey,db.serviceKey);
  const users={};for(const [name,plan] of [['free','free'],['pro','pro'],['business','business'],['outsider','business'],['member','business']]){
@@ -68,8 +68,8 @@ try{
     if(plan==='pro')for(const format of ['json','csv','pdf']){
      const d=await recordedDownload(browser,{label:'Download '+format.toUpperCase(),filename:c.slug+'-v1.'+format,directory:out});
      if(format==='json')assert.deepEqual(api.constructionWorkflows(c.id).replay(d.bytes.toString()),c.packet);
-     if(format==='csv')assert.match(d.bytes.toString(),/value/);
-     if(format==='pdf'){const text=execFileSync('pdftotext',['-','-'],{input:d.bytes,encoding:'utf8',timeout:10000});assert(text.includes(c.title));}
+     if(format==='csv'){assert.match(d.bytes.toString(),/outputUnit/);assert(d.bytes.toString().includes(c.unit));}
+     if(format==='pdf'){const text=execFileSync('pdftotext',['-','-'],{input:d.bytes,encoding:'utf8',timeout:10000});assert(text.includes(c.title));assert(text.replace(/\s+/g,' ').includes('Result unit: '+c.unit));}
      report.downloads.push({id:c.id,format,file:path.relative(out,d.file),bytes:d.bytes.length,sha256:sha(d.bytes)});
     }
     if(plan==='business'){

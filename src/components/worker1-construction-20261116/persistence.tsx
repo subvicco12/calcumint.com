@@ -1,5 +1,5 @@
 'use client';
-import {prepareConstructionRecovery} from '@/lib/worker1-construction-20261116/cohort';
+import {prepareConstructionRecovery,constructionContract} from '@/lib/worker1-construction-20261116/cohort';
 import {useLayoutEffect,useRef,useState} from 'react';
 import {loadProjects,saveScenario,restoreScenario,readHistory,loadBusiness} from '@/app/admin/worker1-construction-20261116/actions';
 import type {FactoryExecutionPacket} from '@/lib/calculator-factory/workflows';
@@ -37,7 +37,7 @@ export function ConstructionPersistence({catalogId,draftRevision,ownerId,plan,pa
  <label>Scenario name<input value={name} maxLength={120} onChange={e=>setName(e.target.value)} disabled={busy}/></label><button disabled={busy||!project||!packet||!name.trim()} onClick={save}>Save project scenario</button>
  <label>Saved scenario ID<input value={scenario} onChange={e=>setScenario(e.target.value)} disabled={busy}/></label><button disabled={busy||!scenario.trim()} onClick={()=>void run(async valid=>{const r=await restoreScenario({expectedOwnerId:ownerId,scenarioId:scenario.trim()});return recover(r,valid);})}>Restore saved scenario</button></>}
  {plan==='business'&&<><label>Business organization ID<input value={org} onChange={e=>setOrg(e.target.value)} disabled={busy}/></label><button disabled={busy||!org.trim()} onClick={()=>void run(async()=>{const r=await loadBusiness({expectedOwnerId:ownerId,organizationId:org.trim()});return `Verified Business role: ${r.role}. ${r.delivery.reason}`;})}>Check current Business capability</button><p>Team writes, API/embed grants, metered jobs and webhooks remain unavailable for these tuples until guarded capability adoption.</p></>}
- {historical&&<section aria-label="Read-only historical construction"><h4>Verified immutable historical record</h4><p>The original normalized input and output are preserved. Current capture limits are not applied to this read-only result. Original raw decimal entry was not retained.</p><pre aria-label="Verified historical construction snapshot" style={{whiteSpace:'pre-wrap',overflowWrap:'anywhere'}}>{JSON.stringify(historical,null,2)}</pre>{plan!=='free'&&<button onClick={downloadHistorical}>Export recorded construction JSON</button>}</section>}
+ {historical&&<section aria-label="Read-only historical construction"><h4>Verified immutable historical record</h4><p>Recorded result unit: {constructionContract(catalogId).unit}</p><p>The original normalized input and output are preserved. Current capture limits are not applied to this read-only result. Original raw decimal entry was not retained.</p><pre aria-label="Verified historical construction snapshot" style={{whiteSpace:'pre-wrap',overflowWrap:'anywhere'}}>{JSON.stringify(historical,null,2)}</pre>{plan!=='free'&&<button onClick={downloadHistorical}>Export recorded construction JSON</button>}</section>}
  {visible.message&&<p role="status">{visible.message}</p>}{busy&&<p role="status">Working…</p>}
  </section>;
 }

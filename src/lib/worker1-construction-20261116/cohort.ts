@@ -8,6 +8,8 @@ import {squareFootageResult} from '@/calculators/final-framework/square-footage-
 import {flooringResult} from '@/calculators/final-framework/flooring-adapter';
 import {lumberResult} from '@/calculators/final-framework/lumber-adapter';
 import {createFactoryWorkflows,type FactoryRaw,type FactoryExecutionPacket} from '@/lib/calculator-factory/workflows';
+import {serializeCalculationCsv} from '@/lib/calculation-export';
+import type {CalcuMintPlan} from '@/lib/entitlements';
 import {requiredCalculatorNumber} from '@/lib/registered-input-successor';
 import {copyCalculationData,createCalculationSnapshot} from '@/lib/calculation-snapshot';
 import {equalCompletionJson} from '@/calculators/completion-contracts';
@@ -40,7 +42,7 @@ function exactFields(input:Record<string,unknown>,fields:readonly FactoryWorkben
 }
 export function constructionWorkflows(id:number){
  const c=constructionContract(id);
- return createFactoryWorkflows({identity:{catalogId:id,engineId:c.engineId,calculatorSlug:c.slug,calculatorVersion:c.version,sourceVersion:`${constructionCaptureRevision}/${c.engineId}@${c.version}`},execute:(raw:FactoryRaw)=>{
+ const flow=createFactoryWorkflows({identity:{catalogId:id,engineId:c.engineId,calculatorSlug:c.slug,calculatorVersion:c.version,sourceVersion:`${constructionCaptureRevision}/${c.engineId}@${c.version}`},execute:(raw:FactoryRaw)=>{
   exactFields(raw,c.fields);
   const input=Object.fromEntries(c.fields.map(f=>{const value=requiredCalculatorNumber(raw[f.key]);if(!Number.isFinite(value)||(value!==0&&Math.abs(value)<2**-1022))throw Error('Complete finite normal decimal inputs required');return [f.key,value];}));
   const parsed=c.engine.inputSchema.parse(input),output=c.engine.calculate(parsed,{});
@@ -48,6 +50,12 @@ export function constructionWorkflows(id:number){
   // retain their original zero/underflow behavior in the separate verifier.
   if(!Number.isFinite(output.value)||output.value<2**-1022)throw Error('Quantity outside positive finite normal capture range');
   return createCalculationSnapshot({calculatorSlug:c.slug,calculatorVersion:c.version,input:parsed,output});
+ }});
+ return Object.freeze({...flow,exportPacket:(packet:FactoryExecutionPacket,format:'json'|'csv',plan:CalcuMintPlan):string=>{
+  const original=flow.exportPacket(packet,format,plan); // retained entitlement and exact packet checks
+  if(format==='json')return original;
+  const checked=flow.verify(packet);
+  return serializeCalculationCsv({identity:checked.identity,raw:checked.raw,input:checked.snapshot.input,inputUnits:Object.fromEntries(c.fields.map(f=>[f.key,f.unit??'']))},{...checked.snapshot.output,outputUnit:c.unit});
  }});
 }
 export function verifyConstructionPacket(value:unknown){
@@ -65,7 +73,7 @@ export function verifyConstructionSnapshot(value:unknown){
  exactFields(snapshot.input,c.fields);
  const parsed=c.engine.inputSchema.parse(snapshot.input),expected=c.engine.calculate(parsed,{});
  if(!equalCompletionJson(parsed,snapshot.input)||!equalCompletionJson(expected,snapshot.output))throw Error('Construction snapshot differs from immutable engine');
- return Object.freeze({catalogId:c.catalogId,engineId:c.engineId,engineVersion:c.version,snapshot});
+ return Object.freeze({catalogId:c.catalogId,engineId:c.engineId,engineVersion:c.version,scope:c.scope,snapshot});
 }
 export function constructionResult(packet:FactoryExecutionPacket):StructuredCalculationResult{
  const checked=verifyConstructionPacket(packet),c=constructionContract(checked.identity.catalogId!);

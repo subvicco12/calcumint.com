@@ -53,3 +53,7 @@ it('preserves valid zero allowances, strict quantities and every catalog mapping
  }
  expect(()=>verifyConstructionSnapshot(Object.defineProperty({calculatorSlug:'concrete-calculator'},'input',{enumerable:true,get(){throw Error('getter');}}))).toThrow(/Unsupported/);
 });
+it.each(witnesses)('CSV presentation retains explicit dimensional metadata #%s',(id,raw)=>{
+ const c=constructionContract(id),flow=constructionWorkflows(id),csv=flow.exportPacket(flow.execute(raw),'csv','pro');
+ expect(csv).toContain('outputUnit');expect(csv).toContain(c.unit);expect(csv).toContain('inputUnits');
+});

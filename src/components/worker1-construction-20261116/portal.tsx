@@ -12,7 +12,7 @@ export function ConstructionPortal({ownerId,plan}:{ownerId:string;plan:CalcuMint
  <label>Construction profile<select value={id} onChange={e=>setId(Number(e.target.value))}>{constructionContracts.map(c=><option key={c.catalogId} value={c.catalogId}>#{c.catalogId} {c.title}</option>)}</select></label>
  <p>{c.engineId}@{c.version}. {c.scope} {c.limitations}</p>
  <details><summary>Formula and assumptions</summary><ul>{c.engine.formulas.map(f=><li key={f.id}><code>{f.expression}</code> — {f.description}</li>)}</ul></details>
- <CalculatorFactoryWorkbench key={ownerId+':'+id} workflows={constructionWorkflows(id)} fields={c.fields} title={c.title+' — private review'} plan={plan} renderResult={packet=><FinalResultPresentation plan={plan} result={constructionResult(packet)}/>} onSave={async packet=>{
+ <CalculatorFactoryWorkbench key={ownerId+':'+id} workflows={constructionWorkflows(id)} fields={c.fields} title={c.title+' — Result unit: '+c.unit+' — private review'} plan={plan} renderResult={packet=><FinalResultPresentation plan={plan} result={constructionResult(packet)}/>} onSave={async packet=>{
   const key=JSON.stringify([ownerId,packet]);if(retry.current?.key!==key)retry.current={key,id:crypto.randomUUID()};
   const result=await saveHistory({expectedOwnerId:ownerId,requestId:retry.current.id,packet});return `Authenticated immutable history saved: ${result.id}`;
  }} renderWorkflows={(packet,restore)=><ConstructionPersistence catalogId={id} draftRevision={draftRevision} ownerId={ownerId} plan={plan} packet={packet} onRestore={(snapshot,restoredId)=>{if(restoredId!==id)throw Error('Choose the matching construction profile before restoring');restore(snapshot);}}/>}/>

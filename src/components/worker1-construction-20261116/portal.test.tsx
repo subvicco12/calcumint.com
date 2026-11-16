@@ -29,7 +29,7 @@ it('shows a verified historical underflow snapshot read-only without forcing a n
  render(<ConstructionPortal ownerId={owner} plan="free"/>);fireEvent.change(screen.getByLabelText('Construction profile'),{target:{value:'359'}});
  fireEvent.change(screen.getByLabelText('Saved history ID'),{target:{value:'history'}});fireEvent.click(screen.getByRole('button',{name:'Restore owned history'}));
  await waitFor(()=>expect(screen.getByLabelText('Verified historical construction snapshot').textContent).toContain('"value": 0'));
- expect(screen.queryByLabelText('Calculation result')).toBeNull();expect((screen.getByLabelText('Length',{exact:false}) as HTMLInputElement).value).toBe('10');
+ expect(screen.getByText('Recorded result unit: m³')).toBeTruthy();expect(screen.queryByLabelText('Calculation result')).toBeNull();expect((screen.getByLabelText('Length',{exact:false}) as HTMLInputElement).value).toBe('10');
 });
 it('does not overwrite an uncalculated draft with a late history response',async()=>{
  let resolve!:(v:unknown)=>void;api.read.mockImplementation(()=>new Promise(r=>resolve=r));
