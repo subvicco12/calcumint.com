@@ -99,6 +99,11 @@ def run(request, input_bytes):
     deadline = time.monotonic() + request['timeout']/1000 if request['timeout'] else None
     try:
         while watch.get_map() or child.poll() is None:
+            # No descriptors remain to drain. Reap directly instead of sleeping
+            # on an empty selector; positive deadlines retain their signal path.
+            if not watch.get_map() and deadline is None:
+                child.wait()
+                continue
             now = time.monotonic()
             if deadline is not None and now >= deadline and failure is None:
                 failure = {'code': 'ETIMEDOUT', 'message': 'Private Git command timed out'}

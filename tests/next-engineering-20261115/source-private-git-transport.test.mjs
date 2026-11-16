@@ -65,3 +65,88 @@ test('Worker bootstrap excludes owner NODE_OPTIONS while each Git request retain
   const observed=JSON.parse(channel.run(['rev-parse','--show-toplevel'],opts(process.cwd(),{env})));assert.deepEqual(observed,{NODE_OPTIONS:env.NODE_OPTIONS,CUSTOM_COMMAND_ENV:env.CUSTOM_COMMAND_ENV,PATH:env.PATH});assert.equal(existsSync(marker),false,'Owner preload executed in the supposedly verified Worker image');
  }finally{channel.close();if(saved===undefined)delete process.env.NODE_OPTIONS;else process.env.NODE_OPTIONS=saved;rmSync(directory,{recursive:true,force:true});}
 });
+
+// Exercise the real broker run loop with real subprocesses. Only selector waiting
+// is observed: stdout/stderr, exit status, deadlines and process cleanup stay real.
+const emptyWaitFixture=String.raw`
+import pathlib, os, json, selectors, tempfile, signal, shutil, sys
+source=pathlib.Path(sys.argv[1]).read_text().split('\ntry:\n    parent_death')
+assert len(source)==2, 'Exact broker bootstrap separator required'
+namespace={}
+exec(compile(source[0],sys.argv[1],'exec'),namespace)
+root=tempfile.mkdtemp(prefix='calcumint-empty-selector-')
+original_selector=selectors.DefaultSelector
+original_popen=namespace['subprocess'].Popen
+case=sys.argv[2]
+frames=[]
+results=[]
+pids=[]
+empty=[]
+class ObservedSelector(original_selector):
+    def select(self,timeout=None):
+        if not self.get_map():
+            empty.append(timeout)
+            if case=='closed':
+                raise AssertionError('Empty selector must not add a polling delay after pipes close')
+        return super().select(timeout)
+def spawn(*args,**kwargs):
+    child=original_popen(*args,**kwargs)
+    pids.append(child.pid)
+    return child
+namespace['frame']=lambda sequence,kind,data=b'':frames.append((kind,list(data)))
+namespace['metadata']=lambda sequence,kind,value:results.append((kind,value))
+namespace['subprocess'].Popen=spawn
+selectors.DefaultSelector=ObservedSelector
+previous=signal.signal(signal.SIGALRM,namespace['stopped'])
+try:
+    body='import os,time,signal,sys\nos.write(1,b"abc\\x00")\nos.write(2,b"err")\n'
+    if case=='inherited':
+        body+='if os.fork()==0:\n time.sleep(.04)\n os._exit(0)\nsys.exit(7)\n'
+    else:
+        if case=='positive':
+            body+='signal.signal(signal.SIGTERM,signal.SIG_IGN)\n'
+        body+='os.close(1)\nos.close(2)\ntime.sleep(.20)\nsys.exit(7)\n'
+    executable=pathlib.Path(root,'git')
+    executable.write_text('#!/usr/bin/python3\n'+body)
+    executable.chmod(0o700)
+    request={'sequence':1,'argv':['rev-parse','--show-toplevel'],'cwd':root,'env':{**os.environ,'PATH':root+':/usr/bin:/bin'},'inputPresent':False,'timeout':50 if case=='positive' else 0,'maxBuffer':134217728,'killSignal':'SIGTERM'}
+    interrupted=False
+    if case=='interrupted':
+        signal.setitimer(signal.ITIMER_REAL,.05)
+    try:
+        namespace['run'](request,b'')
+    except SystemExit as error:
+        assert case=='interrupted' and error.code==128+signal.SIGALRM
+        interrupted=True
+    finally:
+        signal.setitimer(signal.ITIMER_REAL,0)
+    assert interrupted==(case=='interrupted')
+    assert bytes(value for kind,data in frames if kind==1 for value in data)==b'abc\x00'
+    assert bytes(value for kind,data in frames if kind==2 for value in data)==b'err'
+    final=[value for kind,value in results if kind==3]
+    if case=='interrupted':
+        assert not final
+    else:
+        assert len(final)==1 and final[0]['status']==7 and final[0]['signal'] is None
+        assert final[0].get('code')==('ETIMEDOUT' if case=='positive' else None)
+    if case=='positive':
+        assert empty, 'Original positive-deadline polling path must remain in use'
+    for pid in pids:
+        try:
+            os.kill(pid,0)
+        except ProcessLookupError:
+            pass
+        else:
+            raise AssertionError('Owned Git child survived cleanup')
+    print(json.dumps({'case':case,'status':'passed','emptySelects':len(empty)}))
+finally:
+    signal.setitimer(signal.ITIMER_REAL,0)
+    signal.signal(signal.SIGALRM,previous)
+    selectors.DefaultSelector=original_selector
+    namespace['subprocess'].Popen=original_popen
+    shutil.rmtree(root)
+`;
+for(const kind of ['closed','inherited','interrupted','positive'])test('broker empty-pipe wait preserves '+kind+' subprocess semantics',()=>{
+ const output=execFileSync('/usr/bin/python3',['-I','-S','-c',emptyWaitFixture,new URL('./source-private-git-broker.py',import.meta.url).pathname,kind],{encoding:'utf8',timeout:15000});
+ assert.equal(JSON.parse(output).status,'passed');
+});
