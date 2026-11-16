@@ -168,3 +168,77 @@ for(const kind of ['closed','inherited','interrupted','positive'])test('broker e
  const output=execFileSync('/usr/bin/python3',['-I','-S','-c',emptyWaitFixture,new URL('./source-private-git-broker.py',import.meta.url).pathname,kind],{encoding:'utf8',timeout:15000});
  assert.equal(JSON.parse(output).status,'passed');
 });
+
+// The baseline provider keeps one immutable reader while each mutable command
+// crosses the same fresh native transport exercised above.
+async function baselineProviderFixture(){
+ const r=repository(),{copyFileSync}=await import('node:fs');
+ for(const directory of ['parallel-source-20261110','next-engineering-20261115','milestone100-20261114'])mkdirSync(join(r.root,'tests',directory),{recursive:true});
+ for(const name of ['baseline-runtime.mjs','git-reader.mjs'])copyFileSync(new URL('../parallel-source-20261110/'+name,import.meta.url),join(r.root,'tests/parallel-source-20261110',name));
+ for(const name of ['source-private-git-transport.mjs','source-private-git-worker.mjs','source-private-git-broker.py','source-private-git-images.mjs'])copyFileSync(new URL('./'+name,import.meta.url),join(r.root,'tests/next-engineering-20261115',name));
+ copyFileSync(new URL('../milestone100-20261114/source-immutable-queries.mjs',import.meta.url),join(r.root,'tests/milestone100-20261114/source-immutable-queries.mjs'));
+ const module=await import(pathToFileURL(join(r.root,'tests/parallel-source-20261110/baseline-runtime.mjs')));
+ const saved=new Map();
+ const environment=values=>{for(const[key,value]of Object.entries(values)){if(!saved.has(key))saved.set(key,process.env[key]);if(value===undefined)delete process.env[key];else process.env[key]=value;}};
+ const fake=(label='first')=>{
+  const directory=join(r.root,'bin-'+label);mkdirSync(directory);const executable=join(directory,'git');
+  writeFileSync(executable,`#!/usr/bin/python3\nimport os,sys,json\nwith open(os.environ['BASELINE_FIXTURE_LOG'],'a') as f:f.write(json.dumps(sys.argv[1:])+'\\n')\nmode=os.environ.get('BASELINE_FIXTURE_MODE','observe')\nif mode=='fail':\n sys.stderr.write('started failure\\n')\n sys.exit(7)\nif mode=='binary':\n sys.stdout.buffer.write(b'\\x00\\xff'*(5*1024*1024))\nelse:\n print(json.dumps({'ppid':os.getppid(),'cwd':os.getcwd(),'marker':os.environ.get('BASELINE_FIXTURE_MARKER'),'label':${JSON.stringify(label)},'argv':sys.argv[1:]}))\n`);chmodSync(executable,0o700);
+  return directory+':/usr/bin:/bin';
+ };
+ const cleanup=()=>{for(const[key,value]of saved){if(value===undefined)delete process.env[key];else process.env[key]=value;}r.cleanup();};
+ return{...r,sourceGit:module.sourceGit,environment,fake,log:join(r.root,'requests'),cleanup};
+}
+
+test('baseline provider keeps a shared broker while observing fresh default environment PATH and explicit cwd',async()=>{
+ const r=await baselineProviderFixture(),previous=process.cwd();
+ try{
+  const first=r.fake('first'),second=r.fake('second');r.environment({PATH:first,BASELINE_FIXTURE_LOG:r.log,BASELINE_FIXTURE_MARKER:'first default'});
+  const args=['rev-parse','--show-toplevel'];process.chdir(tmpdir());
+  const before=JSON.parse(r.sourceGit(args));assert.notEqual(before.ppid,process.pid,'Baseline Git must fork from the private broker rather than the loaded verifier');assert.equal(before.cwd,r.root);assert.equal(before.marker,'first default');assert.equal(before.label,'first');assert.deepEqual(before.argv,args);
+  r.environment({PATH:second,BASELINE_FIXTURE_MARKER:'second default'});
+  const after=JSON.parse(r.sourceGit(args));assert.equal(after.ppid,before.ppid,'Independent mutable observations use the same private command backend');assert.equal(after.marker,'second default');assert.equal(after.label,'second');
+  const overridden=JSON.parse(r.sourceGit(args,{cwd:tmpdir(),env:{...process.env,PATH:first,BASELINE_FIXTURE_MARKER:'explicit environment'}}));assert.equal(overridden.cwd,tmpdir());assert.equal(overridden.marker,'explicit environment');assert.equal(overridden.label,'first');assert.equal(overridden.ppid,before.ppid);
+ }finally{process.chdir(previous);r.cleanup();}
+});
+
+test('baseline provider observes a subsequent commit dirty source and changed index flags',async()=>{
+ const r=await baselineProviderFixture();
+ try{
+  const head=['rev-parse','--verify','HEAD^{commit}'],status=['status','--porcelain','--untracked-files=all','--','src'],flags=['ls-files','-v','-z','--','src'];
+  const before=r.sourceGit(head);assert.deepEqual(before,r.git(head));assert.deepEqual(r.sourceGit(status),Buffer.alloc(0));
+  writeFileSync(join(r.root,'src/source'),'second\n');assert.deepEqual(r.sourceGit(status),r.git(status));assert.match(r.sourceGit(status).toString(),/ M src\/source/);
+  r.git(['add','src/source']);r.git(['commit','-qm','second']);assert.notDeepEqual(r.sourceGit(head),before);assert.deepEqual(r.sourceGit(head),r.git(head));
+  r.git(['update-index','--assume-unchanged','src/source']);assert.deepEqual(r.sourceGit(flags),r.git(flags));assert.match(r.sourceGit(flags).toString(),/^h /);
+  r.git(['update-index','--no-assume-unchanged','src/source']);assert.match(r.sourceGit(flags).toString(),/^H /);
+ }finally{r.cleanup();}
+});
+
+test('baseline provider retains its sixteen MiB binary default and caller maxBuffer refusal',async()=>{
+ const r=await baselineProviderFixture();
+ try{
+  r.environment({PATH:r.fake(),BASELINE_FIXTURE_LOG:r.log,BASELINE_FIXTURE_MODE:'binary'});
+  const args=['rev-parse','--show-toplevel'],bytes=r.sourceGit(args);assert(Buffer.isBuffer(bytes));assert.equal(bytes.length,10*1024*1024);assert.deepEqual(bytes.subarray(0,4),Buffer.from([0,255,0,255]));assert.deepEqual(bytes.subarray(-4),Buffer.from([0,255,0,255]));
+  assert.throws(()=>r.sourceGit(args,{maxBuffer:8192}),error=>error.code==='ENOBUFS'&&Buffer.isBuffer(error.stdout)&&Buffer.isBuffer(error.stderr));
+  assert.equal(readFileSync(r.log,'utf8').trim().split('\n').length,2,'An overflowing started request is never retried');
+ }finally{r.cleanup();}
+});
+
+test('baseline provider preserves positive-timeout and unsupported-option direct dispatch',async()=>{
+ const r=await baselineProviderFixture();
+ try{
+  r.environment({PATH:r.fake(),BASELINE_FIXTURE_LOG:r.log});const args=['rev-parse','--show-toplevel'];
+  const positive=JSON.parse(r.sourceGit(args,{timeout:1000}));assert.equal(positive.ppid,process.pid,'Positive timeouts retain the original direct child process');
+  const encoded=r.sourceGit(args,{encoding:'utf8'});assert.equal(typeof encoded,'string');assert.equal(JSON.parse(encoded).ppid,process.pid,'Unsupported transport options dispatch directly before starting a broker');
+  assert.deepEqual(readFileSync(r.log,'utf8').trim().split('\n').map(JSON.parse),[args,args]);
+ }finally{r.cleanup();}
+});
+
+test('baseline provider never retries a failed started command and recovers on a new request',async()=>{
+ const r=await baselineProviderFixture();
+ try{
+  r.environment({PATH:r.fake(),BASELINE_FIXTURE_LOG:r.log,BASELINE_FIXTURE_MODE:'fail'});
+  const failure=['rev-parse','--verify','HEAD^{commit}'];assert.throws(()=>r.sourceGit(failure),error=>error.status===7&&error.stderr.toString()==='started failure\n');
+  r.environment({BASELINE_FIXTURE_MODE:'observe'});const next=['rev-parse','--show-toplevel'],observed=JSON.parse(r.sourceGit(next));assert.notEqual(observed.ppid,process.pid);
+  assert.deepEqual(readFileSync(r.log,'utf8').trim().split('\n').map(JSON.parse),[failure,next]);
+ }finally{r.cleanup();}
+});
