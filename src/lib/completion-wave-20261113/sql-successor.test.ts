@@ -1,3 +1,4 @@
+import constructionCases from '../../../docs/construction-qualification-20261116/construction-cases.json';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {it,expect} from 'vitest';
@@ -203,7 +204,8 @@ it('parser refuses duplicate or conflicting IDs and exposes unknown tuple additi
 });
 
 it('closes the entire current roster against literal44 plus all25 exact successor witnesses without filtering',()=>{
- expect(liveFactoryDeliveryCatalog).toEqual([...currentFactoryDeliveryCatalog,...newCases.map(row=>({catalogId:row.id,engineId:row.engine,slug:row.slug,version:row.version}))]);expect(liveFactoryDeliveryCatalog).toHaveLength(69);expect(new Set(liveFactoryDeliveryCatalog.map(row=>row.catalogId)).size).toBe(69);
- const sql=functions(readFileSync('docs/milestone100-20261114/business-held-successor.sql','utf8')),complete=[...retainedTechnologyTwentyTuples,...liveFactoryDeliveryCatalog];
+ const retained69=[...currentFactoryDeliveryCatalog,...newCases.map(row=>({catalogId:row.id,engineId:row.engine,slug:row.slug,version:row.version}))];expect(retained69).toHaveLength(69);expect(liveFactoryDeliveryCatalog).toEqual([...retained69,...constructionCases.map(row=>({catalogId:row.id,engineId:row.engine,slug:row.slug,version:row.version}))]);expect(liveFactoryDeliveryCatalog).toHaveLength(79);expect(new Set(liveFactoryDeliveryCatalog.map(row=>row.catalogId)).size).toBe(79);
+ const old=functions(readFileSync('docs/milestone100-20261114/business-held-successor.sql','utf8')),oldComplete=[...retainedTechnologyTwentyTuples,...retained69];expect(values(old.factory_native_embed_publication_v1,'catalog,engine,slug')).toEqual(publication(retained69).map(({version,...row})=>row));expect(values(old.submit_technology_five_job_v1,'id,engine')).toEqual(sorted(oldComplete).map(row=>({id:row.catalogId,engine:row.engineId})));expect(values(old.technology_five_require_publication_v1,'catalog,engine,slug,version')).toEqual(publication(oldComplete));
+ const sql=functions(readFileSync('docs/construction-qualification-20261116/held-business-successor.sql','utf8')),complete=[...retainedTechnologyTwentyTuples,...liveFactoryDeliveryCatalog];
  expect(values(sql.factory_native_embed_publication_v1,'catalog,engine,slug')).toEqual(publication(liveFactoryDeliveryCatalog).map(({version,...row})=>row));expect(values(sql.submit_technology_five_job_v1,'id,engine')).toEqual(sorted(complete).map(row=>({id:row.catalogId,engine:row.engineId})));expect(values(sql.technology_five_require_publication_v1,'catalog,engine,slug,version')).toEqual(publication(complete));
 });
