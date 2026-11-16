@@ -1,3 +1,4 @@
+import {sourceGit} from '../parallel-source-20261110/baseline-runtime.mjs';
 import {sourceStage9CapturePath,sourceStage9Policy} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import {sourceStage8CapturePath,sourceStage8Policy} from '../milestone100-20261114/source-stage8-activation.mjs';
 import {readFileSync} from 'node:fs';
@@ -19,7 +20,7 @@ const sourceIDs=[...new Set(sourceCapture.rows.flatMap(row=>[row.predecessor,row
 const source9Capture=JSON.parse(readFileSync(sourceStage9CapturePath)),source9IDs=[...new Set(source9Capture.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean)).map(row=>row.blob))],sourcePaths=new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths]);
 const head=actual(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),target='tests/parallel-source-20261110/bootstrap.mjs';
 function fixture({preload=true}={}){
- const events=[],sourceReads=new Set(),sourceObjects=makeGitReader(actual);let batches=0,batchOverride=null,pathOverride=false,rawOverride=false,preloadFailure=false,phase='idle',sourceGitReads=0,pendingAuthorityRead,sourceOverride=null;
+ const events=[],sourceReads=new Set(),sourceObjects=makeGitReader(sourceGit);let batches=0,batchOverride=null,pathOverride=false,rawOverride=false,preloadFailure=false,phase='idle',sourceGitReads=0,pendingAuthorityRead,sourceOverride=null;
  const sourceFirst=()=>{assert.equal(sourceReads.size,sourcePaths.size,'Every actual source read must precede authority operations');assert(sourceGitReads>0,'Real source Git proof must precede authority operations');};
  const objects=makeGitReader((args,options)=>{assert.deepEqual(args,['cat-file','--batch']);assert.equal(options.input.toString(),ids.join('\n')+'\n');batches++;return batchOverride?.(batches)??fullBatch;});
  const git=(args,options)=>{

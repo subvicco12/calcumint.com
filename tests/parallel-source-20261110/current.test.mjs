@@ -195,8 +195,9 @@ test('mandatory source guard regressions exercise exact source and immutable ava
  });
  const results=new Map(),cold=files.find(([file])=>file==='source-app-stage5-availability.test.mjs');
  // The original eight-worker availability case owns its entire window alone.
- results.set(cold[0],(await Promise.allSettled([run(cold)]))[0]);
- const remaining=files.filter(row=>row!==cold);
+ const authorityFixture=files.find(([file])=>file==='source-authority-preload.test.mjs');
+ for(const row of [cold,authorityFixture])results.set(row[0],(await Promise.allSettled([run(row)]))[0]);
+ const remaining=files.filter(row=>row!==cold&&row!==authorityFixture);
  let nextIndex=0;
  const worker=async()=>{while(nextIndex<remaining.length){const row=remaining[nextIndex++],result=(await Promise.allSettled([run(row)]))[0];results.set(row[0],result);}};
  await Promise.all([worker(),worker()]);
@@ -205,7 +206,7 @@ test('mandatory source guard regressions exercise exact source and immutable ava
  for(const [file,count]of files){
   const result=results.get(file);
   try{
-   if(result.status==='rejected'){const error=result.reason;throw new Error('Mandatory source guard child failed: '+file+'\nstdout:\n'+(error.stdout??'')+'\nstderr:\n'+(error.stderr??''),{cause:error});}
+   if(result.status==='rejected'){const error=result.reason;throw new Error('Mandatory source guard child failed: '+file+'\nexit: '+JSON.stringify({message:error.message,code:error.code,signal:error.signal,killed:error.killed})+'\nstdout:\n'+(error.stdout??'')+'\nstderr:\n'+(error.stderr??''),{cause:error});}
    const tap=result.value;
    for(const [name,value]of [['tests',count],['pass',count],['fail',0],['skipped',0]])assert.match(tap,new RegExp('# '+name+' '+value+'\\b'));
    if(file.startsWith('tests/'))assert.match(tap,/# cancelled 0\b/);
