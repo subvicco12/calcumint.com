@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
-import {readFileSync,writeFileSync,mkdtempSync,rmSync} from 'node:fs';
+import {readFileSync,writeFileSync,mkdtempSync,mkdirSync,rmSync,realpathSync,lstatSync} from 'node:fs';
 import {join} from 'node:path';
 import {tmpdir} from 'node:os';
 import {makeGitReader} from '../parallel-source-20261110/git-reader.mjs';
@@ -68,17 +68,27 @@ test('registered history recovers actual inputs while mismatched readers and unr
 });
 
 test('a same-byte physical symlink cannot be hidden by an approved supplied reader',()=>{
- const root=process.cwd(),fixedRef='6b013fbf483e69b1016d238f84cc55e5057bb717';
+ const root=process.cwd();
  const actual=args=>execFileSync('git',args,{cwd:root,stdio:['ignore','pipe','pipe']});
  const original=read(lineageNativePath),head=actual(['rev-parse','--verify','HEAD^{commit}']);
+ const snapshotRef=head.toString().trim();assert.match(snapshotRef,/^[a-f0-9]{40}$/);
+ const objects=realpathSync(actual(['rev-parse','--path-format=absolute','--git-path','objects']).toString().trim());
  const indexPath=actual(['rev-parse','--path-format=absolute','--git-path','index']).toString().trim(),index=readFileSync(indexPath);
  const directory=mkdtempSync(join(tmpdir(),'lineage-contract-')),tree=join(directory,'tree');
  try{
   // Share immutable objects only; the checkout, HEAD, index and mutated guard belong to this clone.
   actual(['clone','--shared','--no-checkout',root,tree]);
+  const admin=join(tree,'.git');assert(lstatSync(admin).isDirectory()&&!lstatSync(admin).isSymbolicLink());assert.equal(realpathSync(admin),admin);
+  // Shallow local clones may ignore --shared. Explicitly expose only the parent's immutable object store.
+  mkdirSync(join(admin,'objects','info'),{recursive:true});writeFileSync(join(admin,'objects','info','alternates'),objects+'\n');
   const isolated=args=>execFileSync('git',args,{cwd:tree,stdio:['ignore','pipe','pipe']});
-  isolated(['checkout','--detach',fixedRef]);
-  assert.equal(isolated(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),fixedRef);
+  isolated(['checkout','--detach',snapshotRef]);
+  assert.equal(isolated(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),snapshotRef);
+  const clonedIndex=isolated(['rev-parse','--path-format=absolute','--git-path','index']).toString().trim();
+  assert.equal(realpathSync(clonedIndex),clonedIndex);assert.notEqual(clonedIndex,indexPath);
+  const parentIndexStat=lstatSync(indexPath),clonedIndexStat=lstatSync(clonedIndex);
+  assert(clonedIndexStat.isFile()&&!clonedIndexStat.isSymbolicLink()&&clonedIndexStat.nlink===1);
+  assert(clonedIndexStat.dev!==parentIndexStat.dev||clonedIndexStat.ino!==parentIndexStat.ino,'Clone index must be a distinct file');
   isolated(['remote','set-url','origin','https://github.com/subvicco12/calcumint.com.git']);
   const child=String.raw`import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
@@ -86,7 +96,7 @@ import {readFileSync,writeFileSync,rmSync,symlinkSync} from 'node:fs';
 import {join} from 'node:path';
 import {lineageNativePath,proveLineageNativeSuccessor} from './tests/next-engineering-20261115/source-lineage-native-contract.mjs';
 const native=(args,options={})=>execFileSync('git',args,{cwd:process.cwd(),stdio:['ignore','pipe','pipe'],maxBuffer:64*1024*1024,...options});
-assert.equal(native(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),${JSON.stringify(fixedRef)});
+assert.equal(native(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),${JSON.stringify(snapshotRef)});
 const read=p=>readFileSync(p),original=read(lineageNativePath),copy=join(process.cwd(),'same-bytes.mjs');
 writeFileSync(copy,original);
 try{
