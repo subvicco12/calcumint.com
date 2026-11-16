@@ -1,0 +1,7 @@
+{
+  "kind": "COORDINATOR_FOCUSED_EXECUTION_OUTPUT",
+  "originalFilename": "business.log",
+  "bytes": 627,
+  "sha256": "c16e2d1c8add2377762e3313536c71cc6649c6625e04b067150d8616a8e76e66",
+  "text": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(d.includes(\"CASE WHEN item->>'calculatorSlug' IN(\"))\n\n    at forwardSQL (file:///workspace/coordinator-construction-20261116/tests/coordinator-construction-20261116/business-sql-generate.mjs:97:37)\n    at file:///workspace/coordinator-construction-20261116/tests/coordinator-construction-20261116/business-acceptance.mjs:31:16 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v22.23.4\n"
+}
