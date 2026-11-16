@@ -16,7 +16,7 @@ const paths=[
  'src/components/worker1-construction-20261116/persistence.tsx','src/components/worker1-construction-20261116/portal.test.tsx','src/components/worker1-construction-20261116/portal.tsx',
  'src/lib/worker1-construction-20261116/account.test.ts','src/lib/worker1-construction-20261116/account.ts','src/lib/worker1-construction-20261116/cohort.test.ts','src/lib/worker1-construction-20261116/cohort.ts'
 ].sort();
-const ids=[343,344,346,350,354,355,356,359,360,361],dir='docs/worker1-construction-20261116',sha=b=>createHash('sha256').update(b).digest('hex'),read=p=>readFileSync(resolve(root,p));
+const ids=[343,344,345,346,348,349,350,354,355,356],dir='docs/worker1-construction-20261116',sha=b=>createHash('sha256').update(b).digest('hex'),read=p=>readFileSync(resolve(root,p));
 if(process.argv[2]==='--capture'){
  const code=process.argv[3];assert.match(code??'',/^[a-f0-9]{40}$/,'Explicit reviewed code commit required');
  withSourceObjectLock(common,()=>{
@@ -43,7 +43,7 @@ const receipt=withSourceObjectLock(common,()=>{
  const previous=JSON.parse(git(['show',base+':docs/four-worker-integration-20261115/candidate-dispositions.json']));for(const r of previous.rows)qualified.add(r.catalogId);assert.equal(qualified.size,81);
  const blocked=new Set(ledger.rows.filter(r=>r.canonicalDisposition==='IDENTITY_OR_SCOPE_BLOCKED').map(r=>r.masterId));assert.equal(blocked.size,43);
  const worker3=new Set([...Array.from({length:8},(_,i)=>284+i),300,329,...Array.from({length:10},(_,i)=>333+i)]),physics=new Set([322,323,324,325,327]);
- for(const id of ids)assert(!qualified.has(id)&&!blocked.has(id)&&!worker3.has(id)&&!physics.has(id));
+ for(const id of ids)assert(id>=343&&id<=357&&!qualified.has(id)&&!blocked.has(id)&&!worker3.has(id)&&!physics.has(id));
  return {baseline:base,codeRef:policy.codeRef,verifiedHead:git(['rev-parse','HEAD']).toString().trim(),sourceCaptureSHA256:policy.captureSHA256,paths,ids,qualifiedExclusionCount:81,authorityExclusionCount:43,worker3AndPhysicsExcluded:true,exactObjectsVerified:true,negativeControls:['all9 current bytes','capture tamper','unknown dirty source','HEAD reversion','symlink'],sourceObjectReadsAvailabilityLocked:true,centralSourceManifestActivated:false,engineeringPromotion:false,releaseHold:true};
 });
 mkdirSync('/tmp/worker1-construction-evidence',{recursive:true});writeFileSync('/tmp/worker1-construction-evidence/source-admission.json',JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify(receipt));

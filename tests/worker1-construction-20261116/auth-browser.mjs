@@ -22,7 +22,7 @@ let db,next,browser;
 const pass=s=>{report.checks.push(s);console.log('PASS '+s);};
 try{
  await mkdir(out,{recursive:true});await build({entryPoints:[path.join(root,'src/lib/worker1-construction-20261116/cohort.ts')],outfile:path.join(out,'cohort.mjs'),platform:'node',format:'esm',bundle:true,alias:{'@':path.join(root,'src')},logLevel:'silent'});
- const api=await import(pathToFileURL(path.join(out,'cohort.mjs')));const cases=api.constructionContracts.map(c=>{const raw=Object.fromEntries(c.fields.map(f=>[f.key,String(f.defaultValue)]));return {id:c.catalogId,slug:c.slug,title:c.title,unit:c.unit,first:c.fields[0].key,raw,packet:api.constructionWorkflows(c.catalogId).execute(raw)};});
+ const api=await import(pathToFileURL(path.join(out,'cohort.mjs')));const cases=api.constructionContracts.map(c=>{const raw=Object.fromEntries(c.fields.map(f=>[f.key,String(f.defaultValue)]));return {id:c.catalogId,slug:c.slug,title:c.title,unit:c.unit,first:c.fields[0].key,firstLabel:c.fields[0].label,raw,packet:api.constructionWorkflows(c.catalogId).execute(raw)};});
  assert.equal(cases.length,10);
  db=await startGoTrueFixture({initializeSchema:initializeFullSchema});registerCredentials(db.anonKey,db.serviceKey);
  const users={};for(const [name,plan] of [['free','free'],['pro','pro'],['business','business'],['outsider','business'],['member','business']]){
@@ -49,7 +49,7 @@ try{
   for(const c of cases){
    await choose(c.id);await browser.click('Calculate');await browser.until(q('[aria-label="Calculation result"]'));
    assert.equal(await browser.js('!!document.querySelector("[role=alert]")'),false);assert(await browser.js('document.documentElement.scrollWidth<=innerWidth'),'Mobile width');
-   const ax=await browser.send('Accessibility.getFullAXTree');assert(ax.nodes.some(n=>n.name?.value?.includes('Length')||n.name?.value?.includes('Thickness')));
+   const ax=await browser.send('Accessibility.getFullAXTree');assert(ax.nodes.some(n=>n.name?.value?.includes(c.firstLabel)));
    await browser.click('Save calculation');await browser.until('document.body.innerText.includes("Authenticated immutable history saved:")');
    const history=await ok(user.sdk.from('calculation_history').select('*').eq('calculator_slug',c.slug));assert.equal(history.length,1);assert.deepEqual(history[0].input_data,c.packet.snapshot.input);assert.deepEqual(history[0].output_data,c.packet.snapshot.output);
    await browser.click('Save calculation');await browser.until('document.body.innerText.includes("Authenticated immutable history saved:")');assert.equal((await ok(user.sdk.from('calculation_history').select('id').eq('calculator_slug',c.slug))).length,1);

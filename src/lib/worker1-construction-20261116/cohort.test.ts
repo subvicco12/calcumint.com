@@ -1,7 +1,7 @@
 import {expect,it} from 'vitest';
 import {constructionContracts,constructionContract} from './cohort';
 it('binds exactly the ten reserved catalog identities to their immutable v1 engines',()=>{
- expect(constructionContracts.map(x=>x.catalogId)).toEqual([343,344,346,350,354,355,356,359,360,361]);
+ expect(constructionContracts.map(x=>x.catalogId)).toEqual([343,344,345,346,348,349,350,354,355,356]);
  expect(constructionContract(343)).toMatchObject({slug:'concrete-calculator',version:1});
 });
 
@@ -16,9 +16,9 @@ const witnesses=[
  [354,{lengthMeters:'12',widthMeters:'3',depthMeters:'.5',wastePercent:'10'},19.8],
  [355,{lengthMeters:'8',widthMeters:'5',depthMeters:'.04',densityKgPerCubicMeter:'2350',wastePercent:'5'},3948],
  [356,{lengthMeters:'3.5',widthMeters:'2',depthMeters:'1.25',bulkingPercent:'30'},11.375],
- [359,{lengthMeters:'12.5',widthMeters:'4',averageDepthMeters:'1.2'},60],
- [360,{lengthMeters:'1.2',widthMeters:'2.5',heightMeters:'1.6'},4.8],
- [361,{lengthMeters:'5',internalDiameterMeters:'.2'},0.15707963267948966],
+ [345,{wallAreaSquareMeters:'75',coats:'3',coverageSquareMetersPerLiter:'12.5',wastePercent:'20'},21.6],
+ [348,{areaSquareMeters:'22.5',tileLengthCm:'50',tileWidthCm:'25',wastePercent:'25'},225],
+ [349,{surfaceAreaSquareFeet:'200',sheetLengthFeet:'8',sheetWidthFeet:'4',wastePercent:'20'},8],
 ] as const;
 it.each(witnesses)('independent dimensional golden, immutable history and source-bound workflows #%s',(id,raw,expected)=>{
  const c=constructionContract(id),flow=constructionWorkflows(id),packet=flow.execute(raw),before=JSON.stringify(packet);
@@ -38,9 +38,9 @@ it.each(witnesses)('independent dimensional golden, immutable history and source
  expect(()=>flow.execute({...raw,extra:'1'})).toThrow();expect(JSON.stringify(packet)).toBe(before);
 });
 it('refuses demonstrated finite-input underflow and overflow without rewriting historical results',()=>{
- const raw={lengthMeters:'1e-200',widthMeters:'1e-200',averageDepthMeters:'1e-200'};
- const c=constructionContract(359),input=Object.fromEntries(Object.entries(raw).map(([k,v])=>[k,Number(v)]));const output=c.engine.calculate(input,{});
- expect(output.value).toBe(0);expect(()=>constructionWorkflows(359).execute(raw)).toThrow(/capture range/);
+ const raw={lengthMeters:'1e-200',widthMeters:'1e-200',depthMeters:'1e-200',wastePercent:'0'};
+ const c=constructionContract(343),input=Object.fromEntries(Object.entries(raw).map(([k,v])=>[k,Number(v)]));const output=c.engine.calculate(input,{});
+ expect(output.value).toBe(0);expect(()=>constructionWorkflows(343).execute(raw)).toThrow(/capture range/);
  expect(verifyConstructionSnapshot({calculatorSlug:c.slug,calculatorVersion:1,input,output}).snapshot.output.value).toBe(0);
  expect(()=>constructionWorkflows(355).execute({lengthMeters:'1e100',widthMeters:'1e100',depthMeters:'1e100',densityKgPerCubicMeter:'1e100',wastePercent:'0'})).toThrow();
 });
@@ -49,11 +49,23 @@ it('preserves valid zero allowances, strict quantities and every catalog mapping
   const raw=Object.fromEntries(c.fields.map(f=>[f.key,String(f.defaultValue)]));
   for(const f of c.fields.filter(f=>f.key==='wastePercent'||f.key==='bulkingPercent'))expect(constructionWorkflows(c.catalogId).execute({...raw,[f.key]:'0'}).snapshot.output.value).toBeGreaterThan(0);
   const catalog=readFileSync('data/catalog/master-catalog-2026.csv','utf8');expect(catalog).toContain(`"${c.catalogId}","Engineering & Construction","${c.title}"`);
-  if(Object.hasOwn(raw,'quantity'))expect(()=>constructionWorkflows(c.catalogId).execute({...raw,quantity:'1.5'})).toThrow();
+  for(const field of c.fields.filter(f=>f.unit==='integer'))expect(()=>constructionWorkflows(c.catalogId).execute({...raw,[field.key]:'1.5'})).toThrow();
  }
  expect(()=>verifyConstructionSnapshot(Object.defineProperty({calculatorSlug:'concrete-calculator'},'input',{enumerable:true,get(){throw Error('getter');}}))).toThrow(/Unsupported/);
 });
 it.each(witnesses)('CSV presentation retains explicit dimensional metadata #%s',(id,raw)=>{
  const c=constructionContract(id),flow=constructionWorkflows(id),csv=flow.exportPacket(flow.execute(raw),'csv','pro');
  expect(csv).toContain('outputUnit');expect(csv).toContain(c.unit);expect(csv).toContain('inputUnits');
+});
+it.each([
+ [348,{areaSquareMeters:'22.5',tileLengthCm:'50',tileWidthCm:'25',wastePercent:'10'}],
+ [349,{surfaceAreaSquareFeet:'5760',sheetLengthFeet:'8',sheetWidthFeet:'4',wastePercent:'10'}],
+] as const)('refuses demonstrated v1 whole-unit ceiling error #%s without rewriting history',(id,raw)=>{
+ const c=constructionContract(id),input=Object.fromEntries(Object.entries(raw).map(([k,v])=>[k,Number(v)])),output=c.engine.calculate(input,{});
+ // Exact normalized-input count is 180 * (1 + 10/100) = 198.
+ expect(output.value).toBe(199);expect(()=>constructionWorkflows(id).execute(raw)).toThrow(/Whole-unit rounding/);
+ const saved={calculatorSlug:c.slug,calculatorVersion:1,input,output};expect(verifyConstructionSnapshot(saved).snapshot.output.value).toBe(199);
+});
+it('refuses unsafe whole-unit captures without inventing a commercial quota',()=>{
+ expect(()=>constructionWorkflows(348).execute({areaSquareMeters:'1e20',tileLengthCm:'100',tileWidthCm:'100',wastePercent:'0'})).toThrow(/Safe whole-unit/);
 });

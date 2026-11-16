@@ -1,6 +1,6 @@
-import {concreteCalculator,squareFootageCalculator,flooringCalculator,lumberCalculator} from '@/calculators/engineering-construction/catalog-batch-1';
+import {concreteCalculator,squareFootageCalculator,paintCalculator,flooringCalculator,tileCalculator,drywallCalculator,lumberCalculator} from '@/calculators/engineering-construction/catalog-batch-1';
 import {gravelCalculator,asphaltCalculator,excavationCalculator} from '@/calculators/engineering-construction/catalog-batch-2';
-import {poolVolumeCalculator,waterTankCalculator,pipeVolumeCalculator} from '@/calculators/engineering-construction/catalog-batch-3';
+import {rational,add,multiply,divide,type Rational} from '@/calculators/exact-rational';
 import type {CalculatorDefinition} from '@/calculators/types';
 import type {StructuredCalculationResult} from '@/calculators/final-framework/types';
 import {concreteResult} from '@/calculators/final-framework/concrete-adapter';
@@ -22,14 +22,14 @@ const waste=field('wastePercent','Explicit waste allowance','%');
 const rows=[
  [343,concreteCalculator,'m³',[...lengths,field('depthMeters','Depth','m'),waste]],
  [344,squareFootageCalculator,'ft²',[field('lengthFeet','Length','ft'),field('widthFeet','Width','ft'),field('quantity','Quantity','integer')]],
+ [345,paintCalculator,'L',[field('wallAreaSquareMeters','Paintable area','m²'),field('coats','Coats','integer'),field('coverageSquareMetersPerLiter','Supplied product coverage','m²/L'),waste]],
  [346,flooringCalculator,'m²',[...lengths,waste]],
+ [348,tileCalculator,'tiles',[field('areaSquareMeters','Surface area','m²'),field('tileLengthCm','Tile length','cm'),field('tileWidthCm','Tile width','cm'),waste]],
+ [349,drywallCalculator,'sheets',[field('surfaceAreaSquareFeet','Surface area','ft²'),field('sheetLengthFeet','Sheet length','ft'),field('sheetWidthFeet','Sheet width','ft'),waste]],
  [350,lumberCalculator,'board feet',[field('thicknessInches','Thickness','in'),field('widthInches','Width','in'),field('lengthFeet','Length','ft'),field('quantity','Quantity','integer')]],
  [354,gravelCalculator,'m³',[...lengths,field('depthMeters','Depth','m'),waste]],
  [355,asphaltCalculator,'kg',[...lengths,field('depthMeters','Depth','m'),field('densityKgPerCubicMeter','Supplied compacted density','kg/m³'),waste]],
  [356,excavationCalculator,'m³',[...lengths,field('depthMeters','In-situ depth','m'),field('bulkingPercent','Supplied bulking allowance','%')]],
- [359,poolVolumeCalculator,'m³',[...lengths,field('averageDepthMeters','Supplied average depth','m')]],
- [360,waterTankCalculator,'m³',[...lengths,field('heightMeters','Internal height','m')]],
- [361,pipeVolumeCalculator,'m³',[field('lengthMeters','Length','m'),field('internalDiameterMeters','Internal diameter','m')]],
 ] as const;
 export const constructionCaptureRevision='worker1-construction-20261116.1';
 export const constructionContracts=Object.freeze(rows.map(([catalogId,definition,unit,fields])=>{
@@ -49,6 +49,7 @@ export function constructionWorkflows(id:number){
   // Every selected quantity is mathematically positive. Historical v1 records
   // retain their original zero/underflow behavior in the separate verifier.
   if(!Number.isFinite(output.value)||output.value<2**-1022)throw Error('Quantity outside positive finite normal capture range');
+  if(id===348||id===349)verifyWholeUnitCeiling(id,parsed,output.value);
   return createCalculationSnapshot({calculatorSlug:c.slug,calculatorVersion:c.version,input:parsed,output});
  }});
  return Object.freeze({...flow,exportPacket:(packet:FactoryExecutionPacket,format:'json'|'csv',plan:CalcuMintPlan):string=>{
@@ -89,4 +90,23 @@ export function prepareConstructionRecovery(value:unknown){
  try{current=constructionWorkflows(verified.catalogId).execute(raw);}catch{return {...verified,currentCaptureAvailable:false as const};}
  if(!equalCompletionJson(current.snapshot,verified.snapshot))throw Error('Historical construction result differs from current capture');
  return {...verified,currentCaptureAvailable:true as const};
+}
+
+/** Independent exact arithmetic is a refusal witness, never a replacement
+ * engine/output. It evaluates the retained ceil formula on normalized binary64
+ * inputs and preserves old snapshots when v1 rounding disagrees. */
+function binary64Rational(value:number):Rational{
+ if(!Number.isFinite(value)||value<0)throw Error('Nonnegative finite witness input required');
+ if(value===0)return rational(0n);
+ const view=new DataView(new ArrayBuffer(8));view.setFloat64(0,value);const bits=view.getBigUint64(0),exponent=Number((bits>>52n)&2047n),fraction=bits&((1n<<52n)-1n);
+ const significand=exponent===0?fraction:(1n<<52n)|fraction,power=exponent===0?-1074:exponent-1075;
+ return power>=0?rational(significand<<BigInt(power)):rational(significand,1n<<BigInt(-power));
+}
+function verifyWholeUnitCeiling(id:348|349,input:Record<string,number>,output:number){
+ const n=binary64Rational;
+ const unitArea=id===348?divide(multiply(n(input.tileLengthCm),n(input.tileWidthCm)),rational(10000n)):multiply(n(input.sheetLengthFeet),n(input.sheetWidthFeet));
+ const count=multiply(divide(n(id===348?input.areaSquareMeters:input.surfaceAreaSquareFeet),unitArea),add(rational(1n),divide(n(input.wastePercent),rational(100n))));
+ const numerator=BigInt(count.numerator),denominator=BigInt(count.denominator),ceiling=(numerator+denominator-1n)/denominator;
+ if(!Number.isSafeInteger(output)||ceiling>BigInt(Number.MAX_SAFE_INTEGER))throw Error('Safe whole-unit capture range required');
+ if(BigInt(output)!==ceiling)throw Error('Whole-unit rounding differs from exact normalized-input ceiling; historical v1 is preserved');
 }

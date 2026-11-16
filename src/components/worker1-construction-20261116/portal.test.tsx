@@ -24,12 +24,12 @@ it('retains a stable authenticated history request after uncertain transport and
  expect(screen.queryByRole('alert')).toBeNull();expect(screen.getByText(/Team writes, API\/embed grants/)).toBeTruthy();
 });
 it('shows a verified historical underflow snapshot read-only without forcing a new capture',async()=>{
- const c=constructionContracts.find(c=>c.catalogId===359)!;const input={lengthMeters:1e-200,widthMeters:1e-200,averageDepthMeters:1e-200};
- const snapshot={calculatorSlug:c.slug,calculatorVersion:1,input,output:c.engine.calculate(input,{})};api.read.mockResolvedValue({catalogId:359,snapshot});
- render(<ConstructionPortal ownerId={owner} plan="free"/>);fireEvent.change(screen.getByLabelText('Construction profile'),{target:{value:'359'}});
+ const c=constructionContracts.find(c=>c.catalogId===343)!;const input={lengthMeters:1e-200,widthMeters:1e-200,depthMeters:1e-200,wastePercent:0};
+ const snapshot={calculatorSlug:c.slug,calculatorVersion:1,input,output:c.engine.calculate(input,{})};api.read.mockResolvedValue({catalogId:343,snapshot});
+ render(<ConstructionPortal ownerId={owner} plan="free"/>);fireEvent.change(screen.getByLabelText('Construction profile'),{target:{value:'343'}});
  fireEvent.change(screen.getByLabelText('Saved history ID'),{target:{value:'history'}});fireEvent.click(screen.getByRole('button',{name:'Restore owned history'}));
  await waitFor(()=>expect(screen.getByLabelText('Verified historical construction snapshot').textContent).toContain('"value": 0'));
- expect(screen.getByText('Recorded result unit: m³')).toBeTruthy();expect(screen.queryByLabelText('Calculation result')).toBeNull();expect((screen.getByLabelText('Length',{exact:false}) as HTMLInputElement).value).toBe('10');
+ expect(screen.getByText('Recorded result unit: m³')).toBeTruthy();expect(screen.queryByLabelText('Calculation result')).toBeNull();expect((screen.getByLabelText('Length',{exact:false}) as HTMLInputElement).value).toBe('5');
 });
 it('does not overwrite an uncalculated draft with a late history response',async()=>{
  let resolve!:(v:unknown)=>void;api.read.mockImplementation(()=>new Promise(r=>resolve=r));
