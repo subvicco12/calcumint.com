@@ -177,7 +177,7 @@ async function baselineProviderFixture(){
  for(const name of ['baseline-runtime.mjs','git-reader.mjs'])copyFileSync(new URL('../parallel-source-20261110/'+name,import.meta.url),join(r.root,'tests/parallel-source-20261110',name));
  for(const name of ['source-private-git-transport.mjs','source-private-git-worker.mjs','source-private-git-broker.py','source-private-git-images.mjs'])copyFileSync(new URL('./'+name,import.meta.url),join(r.root,'tests/next-engineering-20261115',name));
  copyFileSync(new URL('../milestone100-20261114/source-immutable-queries.mjs',import.meta.url),join(r.root,'tests/milestone100-20261114/source-immutable-queries.mjs'));
- const module=await import(pathToFileURL(join(r.root,'tests/parallel-source-20261110/baseline-runtime.mjs')));
+ const baselineModule=await import(pathToFileURL(join(r.root,'tests/parallel-source-20261110/baseline-runtime.mjs')));
  const saved=new Map();
  const environment=values=>{for(const[key,value]of Object.entries(values)){if(!saved.has(key))saved.set(key,process.env[key]);if(value===undefined)delete process.env[key];else process.env[key]=value;}};
  const fake=(label='first')=>{
@@ -186,7 +186,7 @@ async function baselineProviderFixture(){
   return directory+':/usr/bin:/bin';
  };
  const cleanup=()=>{for(const[key,value]of saved){if(value===undefined)delete process.env[key];else process.env[key]=value;}r.cleanup();};
- return{...r,sourceGit:module.sourceGit,environment,fake,log:join(r.root,'requests'),cleanup};
+ return{...r,sourceGit:baselineModule.sourceGit,environment,fake,log:join(r.root,'requests'),cleanup};
 }
 
 test('baseline provider keeps a shared broker while observing fresh default environment PATH and explicit cwd',async()=>{
