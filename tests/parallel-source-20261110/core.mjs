@@ -24,7 +24,7 @@ const stage5Input=(read,git)=>({read,git,root,policy:appStage5Policy,capturePath
 const stage5Rows=read=>new Map([...appStage5Records({read,policy:appStage5Policy,capturePath:appStage5CapturePath}),...testStage6Records(read),...pinnedSourceStage7Records(read)]);
 function proveStage5(read,git){ensureAppStage5Objects(git);return proveCurrentAppStage5AndHistoricalInputs(stage5Input(read,git)).stage7Actual;}
 
-import {retainedWorkflowRecord} from '../ci-balance-20261113/workflow.mjs';
+import {retainedWorkflowRecord,retainedBalancedWorkflowRecord,proveBalancedWorkflowCurrentSuccessor} from '../ci-balance-20261113/workflow.mjs';
 import {readFileSync,lstatSync,realpathSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {resolve,isAbsolute} from 'node:path';
@@ -56,7 +56,7 @@ export const retainedStage7V6CapturePath='docs/parallel-source-20261110/capture-
 export const retainedStage7V7CapturePath='docs/parallel-source-20261110/capture-revision66.json';
 export const retainedStage7V8CapturePath='docs/parallel-source-20261110/capture-revision67.json';
 const retainedStage8CapturePath='docs/parallel-source-20261110/capture-revision68.json';
-export const capturePath='docs/parallel-source-20261110/capture-revision129.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision130.json';
 const root=resolve(fileURLToPath(new URL('../../',import.meta.url))),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -284,7 +284,7 @@ function retainedVerifyParallelSource(read=readFileSync,git=sourceGit,suppliedRo
  const nodeRecord=capture.currentSources.find(r=>r.path===nodePath);assert(nodeRecord,'Exact current caller-tamper test must remain captured');
  assert.equal(git(['rev-parse',nodeRef+':'+nodePath]).toString().trim(),nodeRecord.blob);assert.equal(hash(git(['show',nodeRef+':'+nodePath])),nodeRecord.sha256);
  assert.deepEqual(before.filter(b=>b.supplementalSources?.some(d=>d.path===nodePath)).map(b=>b.path),['scripts/publication20-caller-lineage.mjs']);
- const ownedEvolutions=new Map([...apps,...auxiliary]);ownedEvolutions.set(nodePath,{...nodeRecord,ref:nodeRef});evolutions.set(nodePath,{...nodeRecord,ref:nodeRef});
+ const ownedEvolutions=new Map([...apps,...auxiliary]);const frozenWorkflow=retainedBalancedWorkflowRecord(read);immutableRecord(frozenWorkflow,git);ownedEvolutions.set(frozenWorkflow.path,frozenWorkflow);evolutions.set(frozenWorkflow.path,frozenWorkflow);ownedEvolutions.set(nodePath,{...nodeRecord,ref:nodeRef});evolutions.set(nodePath,{...nodeRecord,ref:nodeRef});
  const diagnosticPath='tests/product-completion-lineage.test.mjs',diagnosticRef='a963ef7aaa04664d07709cc431d6214511bc0573';
  const diagnostic=capture.currentSources.find(r=>r.path===diagnosticPath);assert(diagnostic,'Exact reviewed Git diagnostic successor must remain captured');
  assert.equal(git(['rev-parse',diagnosticRef+':'+diagnosticPath]).toString().trim(),diagnostic.blob);assert.equal(hash(git(['show',diagnosticRef+':'+diagnosticPath])),diagnostic.sha256);
@@ -315,7 +315,7 @@ function retainedVerifyParallelSource(read=readFileSync,git=sourceGit,suppliedRo
  const checkedEdges=new Set();
  for(const row of after)for(const dep of row.supplementalSources??[]){
   const identity=dep.ref+':'+dep.path+':'+dep.blob;if(checkedEdges.has(identity))continue;checkedEdges.add(identity);
-  const bytes=git(['cat-file','blob',dep.blob]);sourceRecord({...dep,bytes:bytes.length},read,git,stage5);
+  const bytes=git(['cat-file','blob',dep.blob]);if(dep.path==='.github/workflows/ci.yml')proveBalancedWorkflowCurrentSuccessor({record:{...dep,bytes:bytes.length},currentBytes:read(dep.path),input:{read,git,root}});else sourceRecord({...dep,bytes:bytes.length},read,git,stage5);
  }
  for(const r of [...apps.values(),...auxiliary.values()])assert(after.some(b=>b.path===r.path||b.supplementalSources?.some(d=>d.path===r.path)),'Application or explicit NS dependency missing from current binding graph');
  return true;

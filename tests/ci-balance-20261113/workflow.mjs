@@ -18,6 +18,7 @@ const gitDefault=completionGitReader(owned),sha=b=>createHash('sha256').update(b
 function capture(read){const bytes=read(balanceCapturePath);assert.equal(sha(bytes),balancePolicy.captureSHA256,'Independent workflow relocation capture differs');const c=JSON.parse(bytes);assert.equal(c.kind,'EXACT_FIVE_JOB_CAMPAIGN_RELOCATION');assert.equal(c.predecessor.ref,balancePolicy.predecessorRef);assert.equal(c.current.ref,balancePolicy.codeRef);assert.equal(c.oldNS.ref,balancePolicy.oldNSRef);assert.equal(c.predecessor.path,'.github/workflows/ci.yml');assert.equal(c.current.path,c.predecessor.path);assert.equal(c.oldNS.path,c.predecessor.path);assert.equal(c.productionWrites,false);assert.equal(c.timeoutsChanged,false);assert.equal(c.sourceCommandsRemoved,false);return c;}
 export const balancedWorkflowRecord=read=>{assert.equal(capture(read).current.sha256,workflowSchedulePolicy.predecessor.sha256);return workflowSchedulePolicy.current;};
 export const retainedWorkflowRecord=read=>capture(read).oldNS;
+export const retainedBalancedWorkflowRecord=read=>capture(read).current;
 function ensureObjects(){
  if(available)return;
  const refs=[balancePolicy.predecessorRef,balancePolicy.codeRef,balancePolicy.oldNSRef,workflowSchedulePolicy.predecessor.ref,workflowSchedulePolicy.current.ref];for(const ref of refs)assert.match(ref,/^[0-9a-f]{40}$/);
@@ -53,4 +54,16 @@ export function verifyBalancedWorkflow({read=readFileSync,git=gitDefault,root=re
  const actualHead=owned(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.equal(actualHead,schedule.actualHead,'Actual workflow HEAD moved');assert.match(actualHead,/^[a-f0-9]{40}$/);assert.equal(git(['rev-parse',actualHead+':'+c.current.path]).toString().trim(),schedule.current.blob,'Actual workflow HEAD differs');
  const target=resolve(root,c.current.path),stat=lstatSync(target);assert(stat.isFile()&&!stat.isSymbolicLink());assert.equal(realpathSync(target),target);assert(read(c.current.path).equals(schedule.currentBytes),'Current NS source bytes differ: .github/workflows/ci.yml (current workflow bytes differ)');
  assert(Buffer.from(historicalWorkflowBeforeBalance(after.toString(),read)).equals(before));return {current:schedule.current,retained:c.oldNS,actualHead};
+}
+
+/** Keep frozen graph declarations literal while proving their exact live successor. */
+export function proveBalancedWorkflowCurrentSuccessor({record,currentBytes,input}){
+ const previous=retainedBalancedWorkflowRecord(input.read);
+ for(const key of ['path','ref','blob','sha256'])assert.equal(record[key],previous[key],'Exact balanced workflow predecessor record required');
+ if(record.bytes!==undefined)assert.equal(record.bytes,previous.bytes);
+ assert.equal(input.git(['rev-parse',previous.ref+':'+previous.path]).toString().trim(),previous.blob);
+ const bytes=input.git(['cat-file','blob',previous.blob]);assert.equal(bytes.length,previous.bytes);assert.equal(sha(bytes),previous.sha256);
+ const live=verifyWorkflowScheduling(input);assert(bytes.equals(live.predecessorBytes));
+ assert(Buffer.isBuffer(currentBytes)&&currentBytes.equals(live.currentBytes),'Exact current scheduled workflow required');
+ return bytes;
 }
