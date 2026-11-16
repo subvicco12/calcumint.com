@@ -1,3 +1,4 @@
+import {constructionContracts,verifyConstructionSnapshot} from '@/lib/worker1-construction-20261116/cohort';
 import {z} from 'zod';
 import {factoryContracts} from '../registry';
 import {verifyPrivateFactoryPacket} from '../private-delivery';
@@ -19,6 +20,7 @@ export function verifyFactoryPacket(value:unknown):FactoryExecutionPacket {
 /** Stored scenarios contain normalized snapshots, not original raw keystrokes or source packets. */
 export function verifyFactoryStoredSnapshot(value:CalculationSnapshot){
  const snapshot=createCalculationSnapshot(value);
+ if(constructionContracts.some(row=>row.slug===snapshot.calculatorSlug)){const verified=verifyConstructionSnapshot(snapshot);return Object.freeze({catalogId:verified.catalogId,snapshot:verified.snapshot});}
  const contract=factoryContracts.find(row=>row.registered&&row.slug===snapshot.calculatorSlug&&row.version===snapshot.calculatorVersion);
  if(!contract)throw Error('Exact registered factory snapshot version unavailable');
  // A stored normalized v1 record is not a request for a new capture. Reuse the
