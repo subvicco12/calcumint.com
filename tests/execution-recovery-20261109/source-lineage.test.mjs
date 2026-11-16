@@ -1,3 +1,4 @@
+import {execNativeGit} from '../construction-ci-recovery-20261116/native-git.mjs';
 import '../cohort22-closure-20261109/caller-source.test.mjs';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
@@ -8,7 +9,7 @@ import {createHash} from 'node:crypto';
 import {verifyPublication20CallerLineage} from '../../scripts/publication20-caller-lineage.mjs';
 import {verifyCapturedSource} from '../milestone100-20261114/receipt-source-path-stage8.mjs';
 import {verifyCompletionBinding} from '../../scripts/product-completion-stage8.mjs';
-const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']});
+const git=args=>execNativeGit(args,{stdio:['ignore','pipe','pipe']});
 const hash=b=>createHash('sha256').update(b).digest('hex');
 const old='a7a656f71b04b50192485a49b0b56b3fa6bd86b9',capture='7086b85437b025225f5736fb6b849415e518dc08';
 const caller='src/components/calculator-interactive.tsx',outer='src/lib/registered-snapshot-verification.ts';

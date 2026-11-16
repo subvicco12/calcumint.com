@@ -1,3 +1,4 @@
+import {executionTransportPath,executionTransportArgumentBytes,proveExecutionTransportSuccessor} from '../tests/construction-ci-recovery-20261116/execution-native-transport.mjs';
 import {rejectChangedSourceArgument} from '../tests/construction-ci-recovery-20261116/negative-source-arguments.mjs';
 import {rejectScheduledWorkflowArgument} from '../tests/construction-ci-recovery-20261116/workflow-scheduling.mjs';
 import {sourceStage9Policy,sourceStage9CapturePath} from '../tests/four-worker-integration-20261115/source-stage9-policy.mjs';
@@ -42,7 +43,7 @@ export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
  if(!affected){const valid=retainedVerify(name,bytes,claim,git,read);if(!valid)return false;}
  const supplied=git;git=immutableTreeQueryReader(completionGitReader(git));
  const argumentGuard=guardSuccessors.find(row=>row.path===name);
- if(argumentGuard){assert.equal(git(['rev-parse','--verify',argumentGuard.ref+'^{commit}']).toString().trim(),argumentGuard.ref);assert.equal(git(['rev-parse',argumentGuard.ref+':'+name]).toString().trim(),argumentGuard.blob);const expected=argumentGuard.path===publicationTransportPath?Buffer.from(expectedPublicationNativeProcessTransport(publicationTransportArgumentBytes(git).toString())):argumentGuard.path===shortestNativeDriverPath?shortestNativeArgumentBytes(git):git(['cat-file','blob',argumentGuard.blob]);if(argumentGuard.path!==publicationTransportPath&&argumentGuard.path!==shortestNativeDriverPath){assert.equal(expected.length,argumentGuard.bytes);assert.equal(sha(expected),argumentGuard.sha256);}assert(Buffer.isBuffer(bytes)&&bytes.equals(expected),'Completion current successor differs');}
+ if(argumentGuard){assert.equal(git(['rev-parse','--verify',argumentGuard.ref+'^{commit}']).toString().trim(),argumentGuard.ref);assert.equal(git(['rev-parse',argumentGuard.ref+':'+name]).toString().trim(),argumentGuard.blob);const expected=argumentGuard.path===executionTransportPath?executionTransportArgumentBytes(git):argumentGuard.path===publicationTransportPath?Buffer.from(expectedPublicationNativeProcessTransport(publicationTransportArgumentBytes(git).toString())):argumentGuard.path===shortestNativeDriverPath?shortestNativeArgumentBytes(git):git(['cat-file','blob',argumentGuard.blob]);if(argumentGuard.path!==executionTransportPath&&argumentGuard.path!==publicationTransportPath&&argumentGuard.path!==shortestNativeDriverPath){assert.equal(expected.length,argumentGuard.bytes);assert.equal(sha(expected),argumentGuard.sha256);}assert(Buffer.isBuffer(bytes)&&bytes.equals(expected),'Completion current successor differs');}
  rejectShortestCallerArgument(name,bytes,supplied);
  const proofGit=(args,options)=>git(args,options);
  for(const name of ['preloadCommits','preloadBlobs','preloadPaths'])if(typeof supplied[name]==='function')proofGit[name]=values=>supplied[name](values);
@@ -59,7 +60,7 @@ export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
   for(const record of guardSuccessors){
    assert.equal(git(['rev-parse','--verify',record.ref+'^{commit}']).toString().trim(),record.ref);
    assert.equal(git(['rev-parse',record.ref+':'+record.path]).toString().trim(),record.blob);
-   const expected=record.path===publicationTransportPath?provePublicationTransportSuccessor(git,read):record.path===shortestNativeDriverPath?proveShortestNativeDriverSuccessor(proof.historicalInput.git,proof.historicalInput.read):git(['cat-file','blob',record.blob]);if(record.path!==publicationTransportPath&&record.path!==shortestNativeDriverPath)assert.equal(createHash('sha256').update(expected).digest('hex'),record.sha256);
+   const expected=record.path===executionTransportPath?proveExecutionTransportSuccessor(git,read):record.path===publicationTransportPath?provePublicationTransportSuccessor(git,read):record.path===shortestNativeDriverPath?proveShortestNativeDriverSuccessor(proof.historicalInput.git,proof.historicalInput.read):git(['cat-file','blob',record.blob]);if(record.path!==executionTransportPath&&record.path!==publicationTransportPath&&record.path!==shortestNativeDriverPath)assert.equal(createHash('sha256').update(expected).digest('hex'),record.sha256);
    assert(read(record.path).equals(expected),'Completion supplemental source bytes differ: '+record.path);
    if(record.path===name)assert(bytes.equals(expected),'Completion current successor differs');
   }
