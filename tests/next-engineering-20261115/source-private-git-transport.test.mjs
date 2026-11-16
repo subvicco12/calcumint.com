@@ -56,3 +56,12 @@ test('combined stdout and stderr obey the original direct maxBuffer refusal',asy
   assert.throws(()=>execFileSync('git',args,options),error=>error.code==='ENOBUFS');assert.throws(()=>channel.run(args,options),error=>error.code==='ENOBUFS');
  }finally{channel.close();rmSync(directory,{recursive:true,force:true});}
 });
+
+test('Worker bootstrap excludes owner NODE_OPTIONS while each Git request retains its environment',async()=>{
+ const directory=mkdtempSync(join(tmpdir(),'calcumint-git-bootstrap-')),saved=process.env.NODE_OPTIONS;const channel=await transport();
+ try{
+  const marker=join(directory,'preloaded'),preload=join(directory,'preload.cjs');writeFileSync(preload,'require("node:fs").writeFileSync('+JSON.stringify(marker)+',"unexpected preload")');process.env.NODE_OPTIONS='--require='+preload;
+  const git=join(directory,'git');writeFileSync(git,'#!/usr/bin/python3\nimport os,json\nprint(json.dumps({k:os.environ.get(k) for k in ["NODE_OPTIONS","CUSTOM_COMMAND_ENV","PATH"]}))\n');chmodSync(git,0o700);const env={...process.env,PATH:directory+':/usr/bin:/bin',CUSTOM_COMMAND_ENV:'main-owned request value'};
+  const observed=JSON.parse(channel.run(['rev-parse','--show-toplevel'],opts(process.cwd(),{env})));assert.deepEqual(observed,{NODE_OPTIONS:env.NODE_OPTIONS,CUSTOM_COMMAND_ENV:env.CUSTOM_COMMAND_ENV,PATH:env.PATH});assert.equal(existsSync(marker),false,'Owner preload executed in the supposedly verified Worker image');
+ }finally{channel.close();if(saved===undefined)delete process.env.NODE_OPTIONS;else process.env.NODE_OPTIONS=saved;rmSync(directory,{recursive:true,force:true});}
+});

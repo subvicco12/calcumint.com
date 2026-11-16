@@ -62,7 +62,7 @@ export function createPrivateGitTransport(...extra){
   // Execute exactly the verified loaded images; no script pathname is re-opened.
   const workerSource=verifiedImage(privateGitImages.worker),brokerSource=verifiedImage(privateGitImages.broker);
   shared=new SharedArrayBuffer(STDERR+MAX_OUTPUT);words=new Int32Array(shared,0,16);all=new Uint8Array(shared);
-  worker=new Worker(new URL('data:text/javascript;base64,'+Buffer.from(workerSource).toString('base64')),{workerData:{shared,brokerSource,parentPID:process.pid},execArgv:[]});worker.unref();
+  worker=new Worker(new URL('data:text/javascript;base64,'+Buffer.from(workerSource).toString('base64')),{workerData:{shared,brokerSource,parentPID:process.pid},execArgv:[],env:{PATH:'/usr/bin:/bin',LANG:'C.UTF-8'}});worker.unref();
   // Worker errors cannot be allowed to become uncaught owner-process exceptions.
   worker.on('error',()=>{});
   if(awaitResult(15000)!==READY)throw Object.assign(Error('Private Git startup failed: '+metadata().message),{code:'EPRIVATEGIT'});
