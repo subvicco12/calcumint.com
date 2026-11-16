@@ -41,3 +41,26 @@ test('raw actual HEAD movement refuses for direct and historical reader capabili
   assert.throws(()=>proveApiRuntimeSourceSuccessor({...boundary,fixed:apiRuntimeAnchor.fixed}),/HEAD moved|HEAD changed/);
  }
 });
+
+const current32CapturePath='docs/next-engineering-20261115/source/stage10-current32.json';
+const {predecessor:current32Predecessor,current:current32Current}=JSON.parse(readFileSync(current32CapturePath)).rows.find(row=>row.path===apiRuntimeAnchor.fixed.path),current32Row={predecessor:current32Predecessor,current:current32Current};
+test('the named current32 API object join admits only its exact independently captured tuple',()=>{
+ objectJoin({row:current32Row});
+ for(const side of ['predecessor','current'])for(const[key,value]of [['path','src/unknown.ts'],['ref','0'.repeat(40)],['blob','1'.repeat(40)],['bytes',1],['sha256','0'.repeat(64)]]){
+  const row=structuredClone(current32Row);row[side][key]=value;let called=false;
+  assert.throws(()=>objectJoin({row,git:()=>{called=true;throw Error('Unexpected Git before exact tuple validation');}}));assert.equal(called,false);
+ }
+ assert.throws(()=>objectJoin({currentBytes:sourceGit(['cat-file','blob',apiRuntimeAnchor.current.blob])}),/Current exact API test source bytes differ/);
+});
+test('the named current32 API capture and immutable successor cannot be substituted',()=>{
+ const captureBlob='41dcb7e6d85c84b78a9e0d5086a802c2e96b06bd';
+ for(const query of [args=>args[0]==='cat-file'&&args[1]==='blob'&&args[2]===captureBlob,args=>args[0]==='cat-file'&&args[1]==='blob'&&args[2]===current32Row.current.blob,args=>args[0]==='rev-parse'&&args[1]==='baf80e18e0fb7a6a961006ee6fea507539363756:'+current32CapturePath]){
+  let observed=false;const git=(args,options)=>{if(query(args)){observed=true;return Buffer.from('substituted independently pinned API bytes');}return sourceGit(args,options);};
+  assert.throws(()=>objectJoin({row:current32Row,git}));assert.equal(observed,true,'The exact admitted immutable dependency must be observed');
+ }
+});
+test('the named current32 API object join refuses a HEAD move during immutable capture authentication',()=>{
+ const before=sourceGit(['rev-parse','--verify','HEAD^{commit}']).toString().trim();let head=before,observed=false;
+ const git=(args,options)=>{if(JSON.stringify(args)===JSON.stringify(['rev-parse','--verify','HEAD^{commit}']))return Buffer.from(head+'\n');if(args[0]==='cat-file'&&args[1]==='blob'&&args[2]==='41dcb7e6d85c84b78a9e0d5086a802c2e96b06bd'){observed=true;head=sourceStage8Policy.codeRef;}return sourceGit(args,options);};
+ assert.throws(()=>objectJoin({row:current32Row,git}),/Actual HEAD moved during fixed API historical object join/);assert.equal(observed,true);
+});
