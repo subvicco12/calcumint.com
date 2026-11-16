@@ -394,10 +394,20 @@ jobs:
           git fetch --no-tags --depth=1 origin b1c606efd06930ae8363e98aa369298ed0c404aa 804028a913ee33021b14e67d0f40ee7893d896b6 a9f17d4f010355eb490318c3a868d445bf38f72f 761b850479ea36b2b4ebf8039664d8400c762555 ee3d0a70cf5a908ce3588bb02b67bbb86576a8a7 6d2960c2fac7817741b08877ebd3b611720923b7 815fa75177ff4348b64502d6745a8fc294c65fed
           node_modules/.bin/vitest run --config tests/owner-p0/calculus/vitest.config.mts
           node --test tests/p0-decision-contracts/*.test.mjs tests/owner-p0/authorization.test.mjs tests/owner-p0/privileges/contract.test.mjs tests/owner-p0/adoption/*.test.mjs
-          node tests/owner-p0/calculus/browser.mjs
-          node tests/owner-p0/membership/acceptance.mjs
-          node tests/owner-p0/privileges/acceptance.mjs
-          node tests/owner-p0/adoption/acceptance.mjs
+          owner_p0_status=0
+          node tests/owner-p0/calculus/browser.mjs &
+          owner_p0_calculus_pid=$!
+          node tests/owner-p0/membership/acceptance.mjs &
+          owner_p0_membership_pid=$!
+          wait "$owner_p0_calculus_pid" || owner_p0_status=1
+          wait "$owner_p0_membership_pid" || owner_p0_status=1
+          node tests/owner-p0/privileges/acceptance.mjs &
+          owner_p0_privileges_pid=$!
+          node tests/owner-p0/adoption/acceptance.mjs &
+          owner_p0_adoption_pid=$!
+          wait "$owner_p0_privileges_pid" || owner_p0_status=1
+          wait "$owner_p0_adoption_pid" || owner_p0_status=1
+          test "$owner_p0_status" -eq 0
         env:
           OWNER_CALCULUS_EVIDENCE: ${{ runner.temp }}/owner-calculus-browser
           MEMBERSHIP_ARTIFACTS: ${{ runner.temp }}/owner-membership
