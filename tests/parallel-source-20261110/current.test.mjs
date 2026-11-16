@@ -132,21 +132,32 @@ test('source availability refuses unsafe or multiple origins and substituted com
 });
 
 for(const record of capture.factorySources)test('finite factory stage rejects altered or reverted bytes '+record.path,()=>{for(const bytes of [Buffer.from('tamper'),Buffer.alloc(0)])assert.throws(()=>verifyParallelSource(name=>name===record.path?bytes:readFileSync(name)),/Current factory bytes differ|Current target source differs|Independent current target bytes differ/);});
-test('factory capture and literal policy are independently governed',()=>{
+test('factory capture and literal policy are independently governed',async context=>{
  const scheduler=JSON.parse(readFileSync('docs/calculator-factory/unit-scheduler-successor.json'));assert.equal(scheduler.path,'vitest.config.ts');assert.equal(scheduler.predecessor.ref,'9ad7e75641322696f75a018e53513c8158c39870');assert.equal(factoryPolicy.codeRef,'b3f0844e8ec09010464afa3ea33306bc4f384c41');assert.equal(scheduler.current.ref,factoryPolicy.codeRef);
  const contents=[];for(const record of [scheduler.predecessor,scheduler.current]){assert.equal(record.path,'vitest.config.ts');assert.equal(sourceGit(['rev-parse',record.ref+':'+record.path]).toString().trim(),record.blob);const bytes=sourceGit(['cat-file','blob',record.blob]);assert.equal(bytes.length,record.bytes);assert.equal(createHash('sha256').update(bytes).digest('hex'),record.sha256);contents.push(bytes.toString());}
  assert.equal(contents[0].split('  test: {').length,2);assert.equal(contents[1],contents[0].replace('  test: {','  test: {\n    // Retained source suites launch bounded child workers; avoid nested outer oversubscription.\n    maxWorkers: 1,'));
  for(const path of ['vitest.config.ts','docs/calculator-factory/unit-scheduler-successor.json','tests/calculator-factory-source-20261112/policy.mjs','docs/calculator-factory/source-stage-20261112.json','tests/calculator-factory-source-20261112/exact-stage.mjs','tests/completion-first-20261112/stage.mjs','tests/completion-first-20261112/policy.mjs','docs/completion-first-20261112/source-stage.json','tests/completion-first-20261112/workflows-stage.mjs','tests/completion-first-20261112/workflows-policy.mjs','tests/completion-first-20261112/retained-stage1-tests.mjs','docs/completion-first-20261112/source-stage2.json','tests/completion-first-20261112/non-source-stage2.mjs','tests/completion-first-20261112/non-source-policy.mjs','docs/completion-first-20261112/non-source-stage2.json','tests/completion-first-20261112/retained-runtime-stage2.mjs'])assert.throws(()=>verifyParallelSource(name=>name===path?Buffer.from('{}'):readFileSync(name)),/Independent current target bytes differ/);
  const env={...process.env};delete env.NODE_TEST_CONTEXT;
- const tap=execFileSync(process.execPath,['tests/completion-first-20261112/retained-stage1-tests.mjs'],{env,encoding:'utf8',timeout:60000,maxBuffer:4000000});
+ // Independent read-only child suites share a bounded two-worker queue rather
+ // than accumulating their wall times inside the unchanged150s outer proof.
+ const children=[
+  [['tests/completion-first-20261112/retained-stage1-tests.mjs'],60000],
+  [['--test','tests/completion-first-20261112/personal-stage.test.mjs'],60000],
+  [['--test','tests/four-worker-integration-20261115/source-stage9.test.mjs'],15000],
+  [['--test','tests/gotrue-runtime/login-diagnostics.test.mjs'],30000],
+  [['--test','tests/full-product-batch13/workflow.test.mjs','tests/full-product-batch14/workflow.test.mjs','tests/full-product-batch17/workflow.test.mjs'],30000]
+ ];
+ const results=new Array(children.length);let childIndex=0;
+ const run=([args,timeout])=>new Promise((resolve,reject)=>execFile(process.execPath,args,{env,encoding:'utf8',timeout,maxBuffer:4000000,signal:context.signal},(error,stdout,stderr)=>error?reject(Object.assign(error,{stdout,stderr})):resolve(stdout)));
+ const worker=async()=>{while(childIndex<children.length){const index=childIndex++;results[index]=(await Promise.allSettled([run(children[index])]))[0];}};
+ await Promise.all([worker(),worker()]);
+ const failures=results.flatMap((result,index)=>result.status==='rejected'?[new Error('Exact source child failed: '+JSON.stringify(children[index][0])+'\n'+String(result.reason.stdout??'')+'\n'+String(result.reason.stderr??''),{cause:result.reason})]:[]);
+ if(failures.length)throw new AggregateError(failures,'Bounded exact source child failures');
+ const [tap,stage2,stage9,diagnostics,workflowConsumers]=results.map(result=>result.value);
  assert.match(tap,/# tests 4\b/);assert.match(tap,/# pass 4\b/);assert.match(tap,/# fail 0\b/);assert.match(tap,/# skipped 0\b/);
- const stage2=execFileSync(process.execPath,['--test','tests/completion-first-20261112/personal-stage.test.mjs'],{env,encoding:'utf8',timeout:60000,maxBuffer:4000000});
  assert.match(stage2,/# tests 4\b/);assert.match(stage2,/# pass 4\b/);assert.match(stage2,/# fail 0\b/);assert.match(stage2,/# skipped 0\b/);
- const stage9=execFileSync(process.execPath,['--test','tests/four-worker-integration-20261115/source-stage9.test.mjs'],{env,encoding:'utf8',timeout:15000,maxBuffer:4000000});
  for(const [key,value]of [['tests',5],['pass',5],['fail',0],['skipped',0],['cancelled',0]])assert.match(stage9,new RegExp('^# '+key+' '+value+'$','m'));
- const diagnostics=execFileSync(process.execPath,['--test','tests/gotrue-runtime/login-diagnostics.test.mjs'],{env,encoding:'utf8',timeout:30000,maxBuffer:4000000});
  assert.match(diagnostics,/# tests 4\b/);assert.match(diagnostics,/# pass 4\b/);assert.match(diagnostics,/# fail 0\b/);assert.match(diagnostics,/# skipped 0\b/);
- const workflowConsumers=execFileSync(process.execPath,['--test','tests/full-product-batch13/workflow.test.mjs','tests/full-product-batch14/workflow.test.mjs','tests/full-product-batch17/workflow.test.mjs'],{env,encoding:'utf8',timeout:30000,maxBuffer:4000000});
  assert.match(workflowConsumers,/# tests 10\b/);assert.match(workflowConsumers,/# pass 10\b/);assert.match(workflowConsumers,/# fail 0\b/);assert.match(workflowConsumers,/# skipped 0\b/);
 });
 

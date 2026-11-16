@@ -12,6 +12,10 @@ const retainedPath='docs/parallel-source-20261110/capture-revision120.json';
 const retainedSHA256='83a759a3be14e902a4f94c62e19d66da1b7ab80b25be8e4a04fac8f582ec56de';
 const sha=b=>createHash('sha256').update(b).digest('hex');
 export const stage8V54GuardPaths=Object.freeze([
+  "vitest.config.ts",
+  "tests/construction-ci-recovery-20261116/refusal-browser.mjs",
+  "tests/construction-ci-recovery-20261116/yield-task-updates.mjs",
+  "tests/source-lineage-bootstrap.test.mjs",
   "tests/completion-wave-20261113/source-authority-preload.test.mjs",
   "tests/milestone100-20261114/source-stage8-guard-selection.mjs",
   "tests/milestone100-20261114/source-preflight-stage8.mjs",
