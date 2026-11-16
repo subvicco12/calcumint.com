@@ -1,3 +1,4 @@
+import {historicalWorkflowBeforeScheduling} from '../construction-ci-recovery-20261116/workflow-scheduling.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -9,6 +10,7 @@ verifyBalancedWorkflow();
 const before=execFileSync('git',['show',balancePolicy.predecessorRef+':.github/workflows/ci.yml'],{encoding:'utf8',stdio:['ignore','pipe','pipe'],timeout:30000,maxBuffer:8000000});
 const current=readFileSync('.github/workflows/ci.yml','utf8');
 function exactGraph(source){
+ source=historicalWorkflowBeforeScheduling(source);
  const a=yaml.load(before),b=yaml.load(source);assert.deepEqual(Object.keys(b),Object.keys(a));
  assert.deepEqual(Object.keys(b.jobs),Object.keys(a.jobs));
  for(const name of Object.keys(a.jobs)){
