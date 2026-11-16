@@ -1,4 +1,4 @@
-import {sourceStage10CapturePath,sourceStage10Policy} from '../next-engineering-20261115/source-stage10-current26-policy.mjs';
+import {sourceStage10CapturePath,sourceStage10Policy} from '../next-engineering-20261115/source-stage10-current32-policy.mjs';
 import {sourceStage9CapturePath,sourceStage9Policy} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import {sourceStage8CapturePath,sourceStage8Policy} from '../milestone100-20261114/source-stage8-activation.mjs';
 import {readFileSync} from 'node:fs';import {createHash} from 'node:crypto';

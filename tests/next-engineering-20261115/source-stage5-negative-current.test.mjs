@@ -1,7 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';
 import {rejectChangedKnownStage5Source} from './source-stage5-negative-current.mjs';import {sourceGit} from '../parallel-source-20261110/baseline-runtime.mjs';
 import {appStage5Policy} from '../completion-wave-20261113/source-app-stage5-policy.mjs';import {accepted} from '../parallel-source-20261110/authority.mjs';
-import {provePinnedSourceStage8} from '../milestone100-20261114/source-stage8-activation.mjs';import {sourceStage10CapturePath} from './source-stage10-current26-policy.mjs';
+import {provePinnedSourceStage8} from '../milestone100-20261114/source-stage8-activation.mjs';import {sourceStage10CapturePath} from './source-stage10-current32-policy.mjs';
 import {proveCurrentAppStage5AndHistoricalInputs} from '../completion-wave-20261113/source-test-stage6.mjs';
 const root=process.cwd();
 test('only known actual Stage5 bytes refuse early and opaque transports retain their original proof entry',()=>{

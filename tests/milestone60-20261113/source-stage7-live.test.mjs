@@ -1,4 +1,4 @@
-import {sourceStage10Policy,sourceStage10CapturePath} from '../next-engineering-20261115/source-stage10-current26-policy.mjs';
+import {sourceStage10Policy,sourceStage10CapturePath} from '../next-engineering-20261115/source-stage10-current32-policy.mjs';
 import {createHash} from 'node:crypto';
 import {sourceStage9Policy,sourceStage9CapturePath} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import {provePinnedSourceStage8,sourceStage8Policy,sourceStage8CapturePath} from '../milestone100-20261114/source-stage8-activation.mjs';

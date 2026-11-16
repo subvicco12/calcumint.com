@@ -4,7 +4,7 @@ import {sourceGit} from '../parallel-source-20261110/baseline-runtime.mjs';
 import {proveSourceStage9} from '../four-worker-integration-20261115/source-stage9.mjs';
 import {provePinnedSourceStage8,sourceStage8Policy,sourceStage8CapturePath} from '../milestone100-20261114/source-stage8-activation.mjs';
 import {proveSourceStage8AndHistoricalInputs,refreshPrivatePinnedStage8,createSourceStage8ObservationInput,sourceStage8HistoricalView} from '../milestone100-20261114/source-stage8.mjs';
-import {sourceStage10Policy} from './source-stage10-current26-policy.mjs';
+import {sourceStage10Policy} from './source-stage10-current32-policy.mjs';
 const root=process.cwd(),input={root,read:readFileSync,git:sourceGit};
 test('canonical bound projection facts cannot be changed through public maps and refresh still checks live sources',()=>{
  let bad;const read=path=>path===bad?Buffer.from('changed actual source'):readFileSync(path),p=provePinnedSourceStage8({...input,read}),first=p.live.entries().next().value;

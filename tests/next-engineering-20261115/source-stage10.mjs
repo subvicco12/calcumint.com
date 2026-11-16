@@ -6,9 +6,9 @@ import {execFileSync} from 'node:child_process';
 import {resolve} from 'node:path';
 import {readFileSync,lstatSync,realpathSync} from 'node:fs';
 import {createHash} from 'node:crypto';
-import {verifyExactCurrent26} from './source-exact-current26.mjs';
+import {verifyExactCurrent32} from './source-exact-current32.mjs';
 import {immutableTreeQueryReader} from '../milestone100-20261114/source-immutable-queries.mjs';
-import {sourceStage10Policy as policy,sourceStage10CapturePath as capturePath} from './source-stage10-current26-policy.mjs';
+import {sourceStage10Policy as policy,sourceStage10CapturePath as capturePath} from './source-stage10-current32-policy.mjs';
 const historical=new WeakMap(),proved=new WeakSet();
 const headArgs=['rev-parse','--verify','HEAD^{commit}'];
 const sha=b=>createHash('sha256').update(b).digest('hex');
@@ -71,7 +71,7 @@ function exact(input,expectedHead){
   input.git.preloadBlobs([...new Set(immutableRecords.map(row=>row.blob))]);
  }
  if(typeof input.git.preloadPaths==='function')input.git.preloadPaths(immutableRecords.map(({ref,path,blob})=>({ref,path,blob})));
- const rows=verifyExactCurrent26({...input,captureBytes:bytes});
+ const rows=verifyExactCurrent32({...input,captureBytes:bytes});
  // A supplied reader must describe the actual physical workspace, not an alternative tree.
  for(const [path,row]of rows){const physical=readFileSync(resolve(input.root,path));assert.equal(sha(physical),row.current.sha256,'Physical current source differs: '+path);}
  assert.equal(native(input),before,'Native HEAD moved during exact Stage10 proof');
