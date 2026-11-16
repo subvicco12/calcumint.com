@@ -3,7 +3,7 @@ import {nonSourceRecords} from '../../completion-first-20261112/non-source-stage
 import {runClosedSynchronousBatch,assertAPIEvidencePaths} from './runtime-evidence-batch.mjs';
 import {proveNamedCurrentContext,preloadRetainedImmutableObjects,primeRetainedImmutableObjects} from '../../parallel-source-20261110/core.mjs';
 import {readStage2HistoricalRuntime} from '../../completion-first-20261112/retained-runtime-stage2.mjs';
-import {boundedCompletionGitReader as completionGitReader} from '../../construction-ci-recovery-20261116/bounded-immutable-preload.mjs';
+import {completionGitReader} from '../../parallel-source-20261110/git-reader.mjs';
 /** Historical receipts retain their exact byte claims; current successors prove separately. */
 import assert from 'node:assert/strict';
 import {readFileSync,lstatSync,realpathSync} from 'node:fs';
@@ -592,3 +592,6 @@ export function withRuntimeEvidenceBatch(paths,run,...extra){
   end(state){try{verifyCurrentRuntimeContext();}finally{assertActualState(state.before);}}
  });
 }
+
+/** Immutable fixture availability only; every current-source proof remains fresh in the caller. */
+export function primeRuntimeImmutableFixtures(){primeRetainedImmutableObjects(readFileSync,git);}
