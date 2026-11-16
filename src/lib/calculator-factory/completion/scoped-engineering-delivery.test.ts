@@ -1,6 +1,6 @@
 import {createHash} from 'node:crypto';
 import {expect,it} from 'vitest';
-import {factoryContracts,getFactoryContract,getFactoryWorkflows} from '../registry';
+import {factoryContracts,factoryResult,getFactoryContract,getFactoryWorkflows} from '../registry';
 import {nextEngineeringContracts} from './next-engineering';
 import {factoryDownload} from './exports';
 import {runFactoryEmbedCalculation} from '@/lib/native-delivery/factory-embed-contract';
@@ -29,8 +29,10 @@ it.each(nextEngineeringContracts)('exports scope, all unit bindings and source e
  for(const source of report.metadata.publisherSources)expect(visible).toContain(source.replace(/\s/g,''));
  expect(pdf).toContain('SOURCES');expect(pdf).toContain('SCOPED ENGINEERING CONTRACT');
  for(const source of c.sourceEvidence)expect(pdf).toContain(source.replaceAll('(','\\(').replaceAll(')','\\)'));
- for(const alter of [(r:typeof report)=>r.metadata.scope='forged',(r:typeof report)=>r.metadata.fields[0].unit='forged',(r:typeof report)=>r.metadata.sourceEvidence=[],(r:typeof report)=>r.metadata.extra=true,(r:typeof report)=>r.extra=true,(r:typeof report)=>r.reportVersion=2,(r:typeof report)=>r.packet.snapshot.output[c.primaryKey]=123456789]){const forged=structuredClone(report);alter(forged);expect(()=>w.replay(JSON.stringify(forged))).toThrow();}
+ for(const alter of [(r:typeof report)=>r.metadata.scope='forged',(r:typeof report)=>r.metadata.identity.sourceVersion='forged',(r:typeof report)=>r.metadata.publisherSources=['https://forged.invalid'],(r:typeof report)=>r.metadata.outputs[c.primaryKey].unit='forged',(r:typeof report)=>r.metadata.limitations=[],(r:typeof report)=>r.metadata.fields[0].unit='forged',(r:typeof report)=>r.metadata.sourceEvidence=[],(r:typeof report)=>r.metadata.extra=true,(r:typeof report)=>r.extra=true,(r:typeof report)=>r.reportVersion=2,(r:typeof report)=>r.packet.snapshot.output[c.primaryKey]=123456789]){const forged=structuredClone(report);alter(forged);expect(()=>w.replay(JSON.stringify(forged))).toThrow();}
  const batch=w.batch([rawFor(c)]);expect(w.replayBatch(w.exportBatch(batch,'business'))).toEqual(batch);
+ expect(w.replayBatch(JSON.stringify([p]))).toEqual(batch);
+ const forgedBatch=JSON.parse(w.exportBatch(batch,'business'));forgedBatch[0].metadata.publisherSources=['https://forged.invalid'];expect(()=>w.replayBatch(JSON.stringify(forgedBatch))).toThrow();
 });
 it.each(nextEngineeringContracts)('carries the same scoped bindings in native embed/batch for $catalogId',c=>{
  const raw=rawFor(c),report=JSON.parse(getFactoryWorkflows(c.catalogId).exportPacket(getFactoryWorkflows(c.catalogId).execute(raw),'json','business'));
@@ -53,4 +55,14 @@ it('binds secondary statistics units and reports inherited approximation limitat
  expect(metadata(291).limitations.join(' ')).toContain('continuous/global error bound');
  for(const c of nextEngineeringContracts)expect(metadata(c.catalogId).publisherSources.every((url:string)=>url.startsWith('https://'))).toBe(true);
  expect(metadata(329).publisherSources).toContain('https://openstax.org/books/chemistry-2e/pages/11-4-colligative-properties');
+});
+
+it.each(nextEngineeringContracts)('shows publisher links, scoped limitations and secondary units in the actual Final result for $catalogId',c=>{
+ const raw=rawFor(c),w=getFactoryWorkflows(c.catalogId),metadata=JSON.parse(w.exportPacket(w.execute(raw),'json','business')).metadata;
+ const result=factoryResult(c.catalogId,raw);
+ for(const url of metadata.publisherSources)expect(result.sources).toEqual(expect.arrayContaining([expect.objectContaining({url})]));
+ for(const limitation of metadata.limitations)expect(result.warnings).toContain(limitation);
+ for(const metric of result.metrics??[])expect(metric.unit).toBe(metadata.outputs[metric.id]?.unit);
+ const embed=runFactoryEmbedCalculation(c.catalogId,1,raw);
+ for(const url of metadata.publisherSources)expect(embed.sources).toEqual(expect.arrayContaining([expect.objectContaining({url})]));
 });
