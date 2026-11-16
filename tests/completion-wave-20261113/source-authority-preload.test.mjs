@@ -5,7 +5,7 @@ import {readFileSync} from 'node:fs';import {createHash} from 'node:crypto';
 import test from 'node:test';import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';import {resolve} from 'node:path';
 import {accepted,verifyParallelAuthority} from '../parallel-source-20261110/authority.mjs';
-import {makeGitReader} from '../parallel-source-20261110/git-reader.mjs';
+import {makeGitReader,completionGitReader} from '../parallel-source-20261110/git-reader.mjs';
 const root=resolve(new URL('../../',import.meta.url).pathname),ids=accepted.map(r=>r.blob);
 const actual=(args,options={})=>execFileSync('git',args,{cwd:root,stdio:['ignore','pipe','pipe'],maxBuffer:128*1024*1024,...options});
 const fullBatch=actual(['cat-file','--batch'],{input:Buffer.from(ids.join('\n')+'\n'),stdio:['pipe','pipe','pipe']});
@@ -54,8 +54,10 @@ function prewarmSourceObjects(reader){
  }
  reader.preloadCommits([...new Set(commits)]);reader.preloadPaths(records.map(({ref,path,blob})=>({ref,path,blob})));reader.preloadBlobs([...new Set(records.map(row=>row.blob))]);
 }
+// Share immutable source-oracle facts only for this identical native transport.
+// Each authority reader, live source observation and adversarial fixture stays fresh.
 function fixture({preload=true}={}){
- const events=[],sourceReads=new Set(),sourceObjects=makeGitReader(actual);let batches=0,batchOverride=null,pathOverride=false,rawOverride=false,preloadFailure=false,phase='idle',sourceGitReads=0,pendingAuthorityRead,sourceOverride=null;
+ const events=[],sourceReads=new Set(),sourceObjects=completionGitReader(actual);let batches=0,batchOverride=null,pathOverride=false,rawOverride=false,preloadFailure=false,phase='idle',sourceGitReads=0,pendingAuthorityRead,sourceOverride=null;
  prewarmSourceObjects(sourceObjects);
  const sourceFirst=()=>{assert.equal(sourceReads.size,sourcePaths.size,'Every actual source read must precede authority operations');assert(sourceGitReads>0,'Real source Git proof must precede authority operations');};
  const objects=makeGitReader((args,options)=>{assert.deepEqual(args,['cat-file','--batch']);assert.equal(options.input.toString(),ids.join('\n')+'\n');batches++;return batchOverride?.(batches)??fullBatch;});
