@@ -182,7 +182,7 @@ async function baselineProviderFixture(){
  const environment=values=>{for(const[key,value]of Object.entries(values)){if(!saved.has(key))saved.set(key,process.env[key]);if(value===undefined)delete process.env[key];else process.env[key]=value;}};
  const fake=(label='first')=>{
   const directory=join(r.root,'bin-'+label);mkdirSync(directory);const executable=join(directory,'git');
-  writeFileSync(executable,`#!/usr/bin/python3\nimport os,sys,json\nwith open(os.environ['BASELINE_FIXTURE_LOG'],'a') as f:f.write(json.dumps(sys.argv[1:])+'\\n')\nmode=os.environ.get('BASELINE_FIXTURE_MODE','observe')\nif mode=='fail':\n sys.stderr.write('started failure\\n')\n sys.exit(7)\nif mode=='binary':\n sys.stdout.buffer.write(b'\\x00\\xff'*(5*1024*1024))\nelse:\n print(json.dumps({'ppid':os.getppid(),'cwd':os.getcwd(),'marker':os.environ.get('BASELINE_FIXTURE_MARKER'),'label':${JSON.stringify(label)},'argv':sys.argv[1:]}))\n`);chmodSync(executable,0o700);
+  writeFileSync(executable,`#!/usr/bin/python3\nimport os,sys,json\nwith open(os.environ['BASELINE_FIXTURE_LOG'],'a') as f:f.write(json.dumps(sys.argv[1:])+'\\n')\nmode=os.environ.get('BASELINE_FIXTURE_MODE','observe')\nif mode=='fail':\n sys.stderr.write('started failure\\n')\n sys.exit(7)\nif mode=='default-overflow':\n sys.stdout.buffer.write(b'o'*(17*1024*1024))\nelif mode=='binary':\n sys.stdout.buffer.write(b'\\x00\\xff'*(5*1024*1024))\nelse:\n print(json.dumps({'ppid':os.getppid(),'cwd':os.getcwd(),'marker':os.environ.get('BASELINE_FIXTURE_MARKER'),'label':${JSON.stringify(label)},'argv':sys.argv[1:]}))\n`);chmodSync(executable,0o700);
   return directory+':/usr/bin:/bin';
  };
  const cleanup=()=>{for(const[key,value]of saved){if(value===undefined)delete process.env[key];else process.env[key]=value;}r.cleanup();};
@@ -219,7 +219,8 @@ test('baseline provider retains its sixteen MiB binary default and caller maxBuf
   r.environment({PATH:r.fake(),BASELINE_FIXTURE_LOG:r.log,BASELINE_FIXTURE_MODE:'binary'});
   const args=['rev-parse','--show-toplevel'],bytes=r.sourceGit(args);assert(Buffer.isBuffer(bytes));assert.equal(bytes.length,10*1024*1024);assert.deepEqual(bytes.subarray(0,4),Buffer.from([0,255,0,255]));assert.deepEqual(bytes.subarray(-4),Buffer.from([0,255,0,255]));
   assert.throws(()=>r.sourceGit(args,{maxBuffer:8192}),error=>error.code==='ENOBUFS'&&Buffer.isBuffer(error.stdout)&&Buffer.isBuffer(error.stderr));
-  assert.equal(readFileSync(r.log,'utf8').trim().split('\n').length,2,'An overflowing started request is never retried');
+  r.environment({BASELINE_FIXTURE_MODE:'default-overflow'});assert.throws(()=>r.sourceGit(args),error=>error.code==='ENOBUFS','The original sixteen MiB default limit remains enforced');
+  assert.equal(readFileSync(r.log,'utf8').trim().split('\n').length,3,'Overflowing started requests are never retried');
  }finally{r.cleanup();}
 });
 
