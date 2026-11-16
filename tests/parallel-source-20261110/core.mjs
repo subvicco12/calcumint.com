@@ -1,3 +1,4 @@
+import {workflowSchedulePolicy} from '../construction-ci-recovery-20261116/workflow-scheduling-policy.mjs';
 import {workflowSourceEvidenceClaims} from '../milestone100-20261114/workflow-source-evidence-claims.mjs';
 import {negativeReject as rejectWrongWorkflowClaim} from '../milestone100-20261114/source-stage8-negative-workflow-claim.mjs';
 import {runCompositionSourceEvidenceBatch} from '../milestone100-20261114/composition-source-evidence-batch.mjs';
@@ -56,7 +57,7 @@ export const retainedStage7V6CapturePath='docs/parallel-source-20261110/capture-
 export const retainedStage7V7CapturePath='docs/parallel-source-20261110/capture-revision66.json';
 export const retainedStage7V8CapturePath='docs/parallel-source-20261110/capture-revision67.json';
 const retainedStage8CapturePath='docs/parallel-source-20261110/capture-revision68.json';
-export const capturePath='docs/parallel-source-20261110/capture-revision130.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision131.json';
 const root=resolve(fileURLToPath(new URL('../../',import.meta.url))),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -161,7 +162,8 @@ function applicationSuccession(capture,read,git,witness,stage5){
  const {historicalFactory:factory,historicalCompletion:completion,live:workflow,nonSource,personal,personalAuxiliary}=verifyPersonalAndHistoricalWorkflow({git,read,root},witness);
  assert.deepEqual([...personal.values()].map(r=>r.current),capture.personalSources);assert.deepEqual([...personalAuxiliary.values()].map(r=>r.current),capture.personalAuxiliarySources);
  assert.deepEqual([...workflow.values()].map(r=>r.current),capture.workflowSources,'Workflow sources must enter closed current capture');
- assert.deepEqual([...nonSource.values()].map(r=>r.current),capture.workflowNonSourceSources,'Exact NS current sources required');
+ const retainedNSWorkflow=retainedBalancedWorkflowRecord(read);assert.deepEqual(capture.workflowNonSourceSources.filter(row=>row.path===retainedNSWorkflow.path),[retainedNSWorkflow],'Literal retained NS workflow must remain exact');immutableRecord(retainedNSWorkflow,git);
+ assert.deepEqual([...nonSource.values()].map(r=>r.current),capture.workflowNonSourceSources.map(row=>row.path===retainedNSWorkflow.path?{...workflowSchedulePolicy.current}:row),'Exact NS current sources required');
  assert.deepEqual(capture.workflowGuardSources.map(r=>r.path),workflowPolicy.guardPaths);for(const row of capture.workflowGuardSources){assert.equal(row.ref,workflowPolicy.guardRef);sourceRecord(row,read,git,stage5);}
  assert.deepEqual([...completion.values()].map(r=>r.current),capture.completionSources,'Completion sources must enter closed current capture');
  assert.deepEqual([...factory.values()].map(r=>r.current),capture.factorySources,'Factory sources must enter closed current capture');

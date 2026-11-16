@@ -1,3 +1,6 @@
+import {verifyCompletionBinding} from '../../scripts/product-completion-stage8.mjs';
+import {sourceGit} from '../parallel-source-20261110/baseline-runtime.mjs';
+import {createHash} from 'node:crypto';
 import {retainedBalancedWorkflowRecord,proveBalancedWorkflowCurrentSuccessor} from '../ci-balance-20261113/workflow.mjs';
 import test,{after} from 'node:test';
 import assert from 'node:assert/strict';
@@ -24,3 +27,5 @@ test('parsed YAML preserves all jobs, controls, steps, environments and every ot
 test('current live workflow proof rejects retained reversion and substituted immutable objects',()=>{assert.equal(verifyWorkflowScheduling().current.ref,policy.current.ref);for(const bytes of [Buffer.from(previous()),Buffer.from('tampered')])assert.throws(()=>verifyWorkflowScheduling({read:p=>p===policy.current.path?bytes:readFileSync(p)}));assert.throws(()=>verifyWorkflowScheduling({git:args=>args[0]==='rev-parse'&&args[1].includes(':.github/workflows/ci.yml')?Buffer.from('0'.repeat(40)+'\n'):raw(args)}));});
 
 test('frozen graph workflow claims require both their immutable bytes and the exact live scheduling successor',()=>{const record=retainedBalancedWorkflowRecord(readFileSync),input={read:readFileSync,git:raw,root:process.cwd()},bytes=Buffer.from(current());assert.equal(proveBalancedWorkflowCurrentSuccessor({record,currentBytes:bytes,input}).toString(),previous());for(const candidate of [{...record,blob:'0'.repeat(40)},{...record,ref:policy.predecessor.ref}])assert.throws(()=>proveBalancedWorkflowCurrentSuccessor({record:candidate,currentBytes:bytes,input}));assert.throws(()=>proveBalancedWorkflowCurrentSuccessor({record,currentBytes:Buffer.from(previous()),input}));});
+
+test('the real current adapter accepts only its supplied exact current workflow argument',()=>{const name=policy.current.path,claim=createHash('sha256').update(raw(['show','a955cdad7019a645b7ed2950299d0603ba1784a7:'+name])).digest('hex');for(const bytes of [Buffer.from(previous()),Buffer.from('changed argument'),null])assert.throws(()=>verifyCompletionBinding(name,bytes,claim,sourceGit,readFileSync),error=>error.message==='Completion current successor differs');assert.equal(verifyCompletionBinding(name,Buffer.from(current()),claim,sourceGit,readFileSync),true);});

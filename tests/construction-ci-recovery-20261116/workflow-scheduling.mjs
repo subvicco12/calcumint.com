@@ -56,3 +56,9 @@ export function verifyWorkflowScheduling({read=readFileSync,git=gitDefault,root=
  assert.equal(owned(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),head,'Actual HEAD moved during scheduling proof');
  return {current:policy.current,predecessor:policy.predecessor,currentBytes:after,predecessorBytes:before,actualHead:head};
 }
+
+/** Negative-only argument guard; a positive Buffer still needs the complete live proof. */
+export function rejectScheduledWorkflowArgument(name,bytes){
+ if(name!==policy.current.path)return;
+ assert(Buffer.isBuffer(bytes)&&bytes.length===policy.current.bytes&&sha(bytes)===policy.current.sha256,'Completion current successor differs');
+}

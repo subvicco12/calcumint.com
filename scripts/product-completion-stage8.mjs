@@ -1,4 +1,4 @@
-import {verifyWorkflowScheduling} from '../tests/construction-ci-recovery-20261116/workflow-scheduling.mjs';
+import {verifyWorkflowScheduling,rejectScheduledWorkflowArgument} from '../tests/construction-ci-recovery-20261116/workflow-scheduling.mjs';
 import {sourceStage9Policy,sourceStage9CapturePath} from '../tests/four-worker-integration-20261115/source-stage9-policy.mjs';
 import {shortestNativeDriverPath,shortestNativeArgumentBytes,proveShortestNativeDriverSuccessor,shortestNativeTestRecords,shortestNativeSupplementalPredecessor,rejectShortestCallerArgument} from '../tests/milestone100-20261114/source-stage8-shortest-native-driver.mjs';
 import {runtimeAuxiliarySource,proveRuntimeAuxiliarySuccessor} from '../tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs';
@@ -35,6 +35,7 @@ function shortestGuardPredecessor(git,read){
 export const completionBindingDependencies=name=>legacyBindingPaths.includes(name)?Object.freeze([...new Set([...retainedDependencies(name),...(name===caller?[caller,...factoryPolicy.paths,'tests/calculator-factory-20261112/account-acceptance.mjs']:[]),...sourceStage8Policy.paths,...sourceStage9Policy.paths,sourceStage9CapturePath,sourceStage8CapturePath,'tests/milestone100-20261114/receipt-source-path-stage8.mjs','tests/milestone100-20261114/source-stage8-activation.mjs','tests/milestone100-20261114/source-stage8-policy.mjs','tests/milestone100-20261114/source-stage8-guard-policy.mjs','scripts/product-completion-stage8.mjs',...accepted.map(row=>row.path),...guardSuccessors.map(row=>row.path)])]):retainedDependencies(name);
 export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
  if(!legacyBindingPaths.includes(name))return retainedVerify(name,bytes,claim,git,read);
+ rejectScheduledWorkflowArgument(name,bytes);
  const affected=needsStage8(name);
  if(!affected){const valid=retainedVerify(name,bytes,claim,git,read);if(!valid)return false;}
  const supplied=git;git=immutableTreeQueryReader(completionGitReader(git));
@@ -63,8 +64,9 @@ export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
   if(guardSuccessors.some(row=>row.path===name))historicalBytes=git(['show',sourceStage8Policy.predecessorRef+':'+name]);
  }
  if(name===guardV6){assert(Buffer.isBuffer(bytes)&&bytes.equals(guardV6Proof.current),'Completion current successor differs');historicalBytes=guardV6Proof.previous;}
- const workflowBefore=()=>verifyWorkflowScheduling({read,git,root:fileURLToPath(new URL('../',import.meta.url))}).predecessorBytes;
- if(name===scheduledWorkflow)historicalBytes=workflowBefore();
+ const workflowProof=()=>verifyWorkflowScheduling({read,git,root:fileURLToPath(new URL('../',import.meta.url))});
+ const workflowBefore=()=>workflowProof().predecessorBytes;
+ if(name===scheduledWorkflow){const live=workflowProof();assert(Buffer.isBuffer(bytes)&&bytes.equals(live.currentBytes),'Completion current successor differs');historicalBytes=live.predecessorBytes;}
  const historicalRead=path=>{
   if(path===scheduledWorkflow)return workflowBefore();
   if(shortestNativeTestRecords.some(row=>row.path===path)&&retainedDependencies(name).includes(path))return shortestNativeSupplementalPredecessor(path,proof.historicalInput.git,proof.historicalInput.read);
