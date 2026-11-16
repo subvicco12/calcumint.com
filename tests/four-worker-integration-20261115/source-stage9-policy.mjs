@@ -1,9 +1,9 @@
-/** Exact construction cumulative successor; both prior Stage9 captures remain immutable. */
-export const sourceStage9CapturePath="docs/construction-qualification-20261116/source-stage9-construction.json";
+/** Construction-only exact cumulative admission; every historical capture remains literal. */
+export const sourceStage9CapturePath="docs/construction-qualification-20261116/source-stage9-construction-final.json";
 export const sourceStage9Policy=Object.freeze({
-  "captureSHA256": "51a6b56e37a257517db821f69e3626f5237645122e9b657f83e85fe7953bd93f",
+  "captureSHA256": "f527189f08c9118a97f5b228d45f0093e53b4d384c16232664ba2a423665c245",
   "predecessorRef": "dc8544422dbb4ebccfc96e03431e64ebcf871fc9",
-  "codeRef": "7481cb8b5feaadd0e6ba0d43b9708e1ce47dc6e8",
+  "codeRef": "530a0c190a0b21d3efed2a5b37b37d906ae13963",
   "paths": [
     "src/app/admin/worker1-construction-20261116/actions.ts",
     "src/app/admin/worker1-construction-20261116/page.tsx",
@@ -31,6 +31,7 @@ export const sourceStage9Policy=Object.freeze({
     "src/lib/calculator-factory/private-delivery.ts",
     "src/lib/calculator-factory/registry.test.ts",
     "src/lib/calculator-factory/registry.ts",
+    "src/lib/completion-wave-20261113/sql-successor.test.ts",
     "src/lib/native-delivery/factory-automation-contract.test.ts",
     "src/lib/native-delivery/factory-delivery-catalog.ts",
     "src/lib/native-delivery/factory-embed-contract.test.ts",
@@ -45,15 +46,7 @@ export const sourceStage9Policy=Object.freeze({
     "src/lib/worker1-construction-20261116/cohort.ts"
   ],
   "ancestry": [
-    "7481cb8b5feaadd0e6ba0d43b9708e1ce47dc6e8",
-    "061d73c98bf2783e04c7ea387ac754047a9f6c7b",
-    "441ee8a095ad9ffabe3e9dbde67766317c6a0aab",
-    "75040e7463093c5e9094016ef91cb64987d3df63",
-    "3ddc5ee49d659fc9e7150ffdb1ff790ca085726e",
-    "70c0bc2e38c36984fbeed028c782357cca6eaffa",
-    "2d0adeb745bb52a9e2bed80218d82f0efe9ac6dd",
-    "a986c8d5911db9e18f2a600d10c59e8527a10c5e",
-    "46f30734263b372417ac079543e7e0a37d1f533e",
+    "530a0c190a0b21d3efed2a5b37b37d906ae13963",
     "8296454dc7244205ef4cf0b6e0b41c38f90af20f",
     "0ab903ea3a5dda24506cc329c699cc7c2a837760",
     "b08da690c219987230d8a5b83cb3a92e9a035254",
