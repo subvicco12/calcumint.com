@@ -5,9 +5,10 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {makeGitReader} from './git-reader.mjs';
+import {privateGitBuffer} from '../next-engineering-20261115/source-private-git-transport.mjs';
 export const baselineRef='a7bab5b5534d51cea25ba5ffe4aa9b3630176909';
 const root=fileURLToPath(new URL('../../',import.meta.url));
-export const sourceGit=makeGitReader((args,options={})=>execFileSync('git',args,{cwd:root,stdio:['ignore','pipe','pipe'],maxBuffer:16*1024*1024,...options}));
+export const sourceGit=makeGitReader((args,options={})=>privateGitBuffer(args,{cwd:root,stdio:['ignore','pipe','pipe'],maxBuffer:16*1024*1024,...options}));
 let cached;
 export function retainedA7Proof(){
  if(cached)return cached;
