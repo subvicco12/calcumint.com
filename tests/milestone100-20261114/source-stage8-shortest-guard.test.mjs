@@ -1,3 +1,4 @@
+import {retainedCompletionExecutable} from '../next-engineering-20261115/source-completion-prewarm-admission.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -13,6 +14,6 @@ test('valid target readers cannot hide substituted argument bytes or predecessor
  assert.throws(()=>verifyCompletionBinding(path,readFileSync(path),'0'.repeat(64),sourceGit),/Completion predecessor claim differs/);
 });
 test('the historical verifier remains literal and unknown paths still cannot invoke Git',()=>{
- const old='eac9a6c23ae4d8f1abb607e32f57ce0d422a3cb8',name='scripts/product-completion-lineage.mjs';assert(readFileSync(name).equals(sourceGit(['show',old+':'+name])));
+ const old='eac9a6c23ae4d8f1abb607e32f57ce0d422a3cb8',name='scripts/product-completion-lineage.mjs';const current=readFileSync(name),historical=sourceGit(['show',old+':'+name]);assert(!current.equals(historical),'The actual admitted availability wrapper must remain present');assert(Buffer.from(retainedCompletionExecutable(current.toString('utf8'))).equals(historical));
  assert.equal(verifyCompletionBinding('src/unknown-not-owned.ts',Buffer.from(''),claim,()=>{throw Error('Unknown path called Git');}),false);
 });
