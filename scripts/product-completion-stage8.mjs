@@ -1,3 +1,4 @@
+import {rejectChangedSourceArgument} from '../tests/construction-ci-recovery-20261116/negative-source-arguments.mjs';
 import {rejectScheduledWorkflowArgument} from '../tests/construction-ci-recovery-20261116/workflow-scheduling.mjs';
 import {sourceStage9Policy,sourceStage9CapturePath} from '../tests/four-worker-integration-20261115/source-stage9-policy.mjs';
 import {shortestNativeDriverPath,shortestNativeArgumentBytes,proveShortestNativeDriverSuccessor,shortestNativeTestRecords,shortestNativeSupplementalPredecessor,rejectShortestCallerArgument} from '../tests/milestone100-20261114/source-stage8-shortest-native-driver.mjs';
@@ -36,6 +37,7 @@ export const completionBindingDependencies=name=>legacyBindingPaths.includes(nam
 export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
  if(!legacyBindingPaths.includes(name))return retainedVerify(name,bytes,claim,git,read);
  rejectScheduledWorkflowArgument(name,bytes);
+ if(read===readFileSync)rejectChangedSourceArgument(name,bytes,read,'Completion current successor differs');
  const affected=needsStage8(name);
  if(!affected){const valid=retainedVerify(name,bytes,claim,git,read);if(!valid)return false;}
  const supplied=git;git=immutableTreeQueryReader(completionGitReader(git));
