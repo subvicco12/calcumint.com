@@ -1,0 +1,34 @@
+# Construction exact-head CI recovery
+
+RELEASE HOLD ACTIVE. Scoped engineering promotion remains gated on mandatory exact-head CI. The focused Tile/Drywall browser evidence now passes.
+
+Recovery branch: `coordinator/construction-ci-recovery-20261116`. The starting Draft PR1538 head is `7098e84fa609ca99fd8fa55ef93c68422cbd74c0`; original failed run43840485387 is retained in a lossless receipt envelope. Construction application source remains exactly the integrated application at530a0c190a0b21d3efed2a5b37b37d906ae13963. No SRC, immutable calculator, Supabase, workflow, data or package file changes are made by this repair. The nine construction shared joins and source/version identities remain unchanged.
+
+## Failure classification
+
+The exact hosted failed assertion was `executes fresh current-source, full-authority, reader, reversion and nomination negatives` in `src/lib/parallel-source-evidence.test.ts`. Its child exceeded the original150000ms deadline, received SIGKILL and returned incomplete TAP. The log does not establish a failed calculator assertion before that kill. The full failed unit receipt contains10180 passes, one failure, four skips and one unhandled error.
+
+The separate unhandled error was `[vitest-worker]: Timeout calling "onTaskUpdate"`. An isolated unchanged `execution-recovery-evidence.test.ts` reproduction passed all six assertions but exited1 with that error. The sampled worker blocked its event loop for67343.745ms while synchronous evidence cases ran back to back, exceeding Vitest's unchanged60000ms RPC limit. A one-turn yield prototype ran the same six assertions in69256ms, exited0 and had a maximum sampled event-loop delay of43654.316ms. The remaining long individual synchronous case stays below the original RPC bound; every case and child deadline is unchanged.
+
+Source proof profiling found thousands of short Git subprocesses and sequential independent nested suites on the critical path. The original instrumented first wrapper passed in145489ms, close to its150000ms bound. Availability-lock waits occurred but did not dominate; no local deadlock or OOM kill was observed. Local evidence does not retroactively establish hosted CPU, memory or Git-lock state. The hosted ENOENT cleanup messages refer to already-removed synthetic test directories, not a demonstrated persistent repository lock.
+
+These are two harness scheduling costs. There is no evidence that they share a Git deadlock or calculator defect.
+
+## Repairs and preserved boundaries
+
+- The authority-preload regression fixture already obtains a real `cat-file --batch` response. It now constructs its immutable fixture content through the existing content-address-validating Git reader, avoiding a separate process for each accepted blob. The reader verifies each SHA1 object identity/type/length/delimiter before use. All six existing adversarial fixtures remain unchanged.
+- A Vitest `beforeEach` hook yields one event-loop turn, permitting pending task-update IPC to settle between synchronous evidence cases. It does not replace test bodies, cache observations, alter deadlines, suppress errors or skip assertions.
+- The factory capture test's five independent read-only child suites run in a bounded two-worker queue. Each retains its exact argument list, original timeout, output bounds and assertions. All child failures are collected and reported; children inherit the existing owned source process group.
+- Additive V54/capture121 binds only the exact reviewed harness/config/guard successors. Capture120 and its complete independent authority are preserved literally. Mutable HEAD/status/index/files, ignored and skip-worktree detection, immutable Git checks, source-admission negatives and common-directory locks remain implemented by the original unchanged proof functions. Worker2's rejected observation caching is not used.
+
+One local candidate exposed a missing unchanged bootstrap-test path in the new preflight guard nomination. That failed receipt is retained; the exact path is now included. A read-only reviewer also found a stale-result false positive in the new browser scenario check. The final producer resets to a fresh authenticated document and proves old historical pane/status absence before the scenario action. Review of that correction found no further concrete blocker.
+
+## Focused verification and retained evidence
+
+The affected three-file run passed14/14: all six source wrappers, all six execution/RPC assertions and the two milestone source cases. The first source proof completed in133684ms; its six-wrapper file completed in289501ms. The complete affected run took364.20seconds with no unhandled error. The six authority-preload regressions also pass.
+
+The verified57 original payload hashes, fourteen raw files,2,099 source fingerprints, thirty original browser export payloads,51 targeted tests,352 integration tests and529 shared regression receipt are reused from the construction intake. No original evidence was retrieved or regenerated again. The separate new browser producer is restricted to six Tile/Drywall refusal journeys and four recorded-history JSON downloads on disposable pinned PostgreSQL/GoTrue/PostgREST with genuine cookie-authenticated application actions. Its historical database rows are explicitly synthetic exact-v1 fixtures, not customer history or new capture acceptance.
+
+The focused browser receipt passes six journeys across Free/Pro/Business and four actual recorded-history JSON downloads. Scenario recovery begins from a fresh page with prior historical pane/status absent. Every stored199 input/output remains unchanged; foreign histories/scenarios remain hidden. An initial direct synthetic seed was correctly refused by HISTORY_WRITE_REJECTED; the passing producer uses the existing genuine authenticated atomic history/scenario RPCs. Both attempts are retained. An additional profiled run exited before its deadline but rejected `Composition actual status changed`: coordinator receipt files were added during its full-workspace status bracket. This diagnostic is retained as invalid for acceptance; the workspace is frozen before the final rerun. No freshness assertion is changed. The final exact-head CI is pending. All ten IDs343/344/345/346/348/349/350/354/355/356 remain scoped engineering candidates at this checkpoint. Confirmed engineering overlay remains81. Historical Tile/Drywall199 results and steps are preserved; current inconsistent captures refuse rather than substituting198. Full-domain correction/version adoption, physical/source applicability, competent acceptance, canonical certification and publication remain outside this engineering scope.
+
+No PR merge, deployment, production/staging SQL, active migration, credential/RLS change, certification, publication or release-hold change is authorized or performed.
