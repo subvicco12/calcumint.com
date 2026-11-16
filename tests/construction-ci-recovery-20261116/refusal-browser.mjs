@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {mkdir,readFile,writeFile} from 'node:fs/promises';
+import {mkdir,writeFile} from 'node:fs/promises';
 import {randomUUID,createHash} from 'node:crypto';
 import {pathToFileURL} from 'node:url';
 import path from 'node:path';
@@ -44,7 +44,7 @@ try{
  await identity(users.outsider);await visit('/admin/worker1-construction-20261116');assert.match(await browser.text(),/Authorized.*access required/);pass('Authenticated non-reviewer private route denied');
 
  const witnesses={348:{areaSquareMeters:'22.5',tileLengthCm:'50',tileWidthCm:'25',wastePercent:'10'},349:{surfaceAreaSquareFeet:'5760',sheetLengthFeet:'8',sheetWidthFeet:'4',wastePercent:'10'}};
- const sqlJSON=value=>"'"+JSON.stringify(value).replaceAll("'","''")+"'::jsonb";
+
  const fieldForLabel=async text=>browser.js(`(()=>{const l=[...document.querySelectorAll('label')].find(l=>l.textContent.startsWith(${JSON.stringify(text)}));if(!l)throw Error('Missing labelled field');for(const old of document.querySelectorAll('[data-refusal-field]'))old.removeAttribute('data-refusal-field');l.querySelector('input').setAttribute('data-refusal-field','true');return 'input[data-refusal-field]'})()`);
  for(const plan of ['free','pro','business']){
   const user=users[plan];await identity(user);await visit('/admin/worker1-construction-20261116');
@@ -57,7 +57,7 @@ try{
    await browser.click('Calculate');await browser.until('document.querySelector("[role=alert]")?.textContent.includes("Whole-unit rounding")');
    assert.equal(await browser.js(q("[aria-label=\"Calculation result\"]")),false);
    assert.equal(await browser.js('[...document.querySelectorAll("button")].some(b=>["Save calculation","Export JSON","Download JSON"].includes(b.textContent.trim()))'),false,'Refused capture exposes no save or export');
-   const historyId=randomUUID();await db.sql(`INSERT INTO public.calculation_history(id,user_id,calculator_slug,calculator_version,input_data,output_data) VALUES('${historyId}','${user.id}','${c.slug}',1,${sqlJSON(input)},${sqlJSON(output)});`);
+   const historyId=randomUUID();assert.equal(await ok(user.sdk.rpc('save_calculation_history_atomic',{p_expected_owner_id:user.id,p_request_id:historyId,p_calculator_slug:c.slug,p_calculator_version:1,p_input_data:input,p_output_data:output})),historyId);
    assert.equal((await ok(users.outsider.sdk.from('calculation_history').select('id').eq('id',historyId))).length,0);
    await browser.field(await fieldForLabel('Saved history ID'),historyId);await browser.click('Restore owned history');
    await browser.until(q('[aria-label="Verified historical construction snapshot"]','?.textContent.includes("199")'));
@@ -69,7 +69,7 @@ try{
    else{
     const d=await recordedDownload(browser,{label:'Export recorded construction JSON',filename:c.slug+'-v1-recorded.json',directory:out});assert.deepEqual(JSON.parse(d.bytes.toString()),snapshot);
     report.downloads.push({id:c.id,plan,format:'recorded-json',file:path.relative(out,d.file),bytes:d.bytes.length,sha256:sha(d.bytes)});
-    const scenarioId=randomUUID();await db.sql(`INSERT INTO public.saved_scenarios(id,user_id,project_id,name,calculator_slug,calculator_version,input_data,output_data) VALUES('${scenarioId}','${user.id}','${user.project.id}','Retained v1 witness','${c.slug}',1,${sqlJSON(input)},${sqlJSON(output)});`);
+    const scenarioId=randomUUID();assert.equal(await ok(user.sdk.rpc('save_project_scenario_atomic',{p_expected_owner_id:user.id,p_request_id:scenarioId,p_project_id:user.project.id,p_history_id:historyId,p_name:'Retained v1 witness'})),scenarioId);
     assert.equal((await ok(users.outsider.sdk.from('saved_scenarios').select('id').eq('id',scenarioId))).length,0);
     // A fresh document prevents the preceding identical history199 pane/status
     // from satisfying a scenario operation that never executed.
