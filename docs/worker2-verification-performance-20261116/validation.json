@@ -1,0 +1,26 @@
+{
+  "result": "NO_SAFE_OPTIMIZATION",
+  "scope": "Single observation-reuse candidate; investigation stopped, not a universal impossibility proof.",
+  "baseline": "3723ef1b6a8b92aedba74eef81767c600ff87406",
+  "worker3SourceRef": "419d56c17ca72dae58132aa00c7424b07477aa6c",
+  "worker3KernelSHA256": "43b82d0752e26e09bd34655916e202040ffeaba4ebc72fed27d3ff63ee9d915c",
+  "confirmedEngineeringOverlay": 81,
+  "engineeringOverlayChange": 0,
+  "releaseHold": true,
+  "testsPassed": 8,
+  "testsFailedFinal": 0,
+  "counterexamples": 2,
+  "realIndexLockTest": true,
+  "immutableObjectChecksRetained": true,
+  "deadlinesChanged": false,
+  "priorDiagnosticsRepeated": false,
+  "hostedCiLaunched": false,
+  "worker3FilesModified": false,
+  "patchPrepared": false,
+  "runtime": "v22.23.4",
+  "medianSixChecksMilliseconds": {
+    "fresh": 207.20964400000003,
+    "reuse": 153.69184549999994
+  },
+  "safetyDecision": "Reject measurable speed gain because fresh-source refusals are lost."
+}

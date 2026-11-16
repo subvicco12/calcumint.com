@@ -1,0 +1,186 @@
+TAP version 13
+# Subtest: honest immutable workspace yields the same HEAD and still checks objects on each call
+not ok 1 - honest immutable workspace yields the same HEAD and still checks objects on each call
+  ---
+  duration_ms: 74.179946
+  type: 'test'
+  location: '/workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:8:1'
+  failureType: 'testCodeFailure'
+  error: 'headArgs is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    eval (eval at makeKernel (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/fixture.mjs:55:12), <anonymous>:12:25)
+    file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:11:82
+    Object.profile (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/fixture.mjs:67:96)
+    file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:11:23
+    using (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:7:58)
+    TestContext.<anonymous> (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:8:101)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.start (node:internal/test_runner/test:944:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+  ...
+# Subtest: COUNTEREXAMPLE: reused native observations accept a newly ignored source file
+not ok 2 - COUNTEREXAMPLE: reused native observations accept a newly ignored source file
+  ---
+  duration_ms: 66.593354
+  type: 'test'
+  location: '/workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:15:1'
+  failureType: 'testCodeFailure'
+  error: 'headArgs is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    eval (eval at makeKernel (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/fixture.mjs:55:12), <anonymous>:12:25)
+    file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:17:16
+    using (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:7:58)
+    TestContext.<anonymous> (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:15:93)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: COUNTEREXAMPLE: index flags changed by a supplied callback cannot reuse prior native index bytes
+not ok 3 - COUNTEREXAMPLE: index flags changed by a supplied callback cannot reuse prior native index bytes
+  ---
+  duration_ms: 59.173162
+  type: 'test'
+  location: '/workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:22:1'
+  failureType: 'testCodeFailure'
+  error: 'headArgs is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    eval (eval at makeKernel (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/fixture.mjs:55:12), <anonymous>:12:25)
+    file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:23:71
+    using (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:7:58)
+    TestContext.<anonymous> (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:22:112)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: both modes retain the supplied current-source dirty rejection
+not ok 4 - both modes retain the supplied current-source dirty rejection
+  ---
+  duration_ms: 69.716165
+  type: 'test'
+  location: '/workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:34:1'
+  failureType: 'testCodeFailure'
+  error: 'headArgs is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    eval (eval at makeKernel (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/fixture.mjs:55:12), <anonymous>:12:25)
+    file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:35:71
+    using (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:7:58)
+    TestContext.<anonymous> (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:34:77)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: both modes retain final supplied HEAD checks when metadata moves
+not ok 5 - both modes retain final supplied HEAD checks when metadata moves
+  ---
+  duration_ms: 68.071897
+  type: 'test'
+  location: '/workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:40:1'
+  failureType: 'testCodeFailure'
+  error: 'headArgs is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    eval (eval at makeKernel (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/fixture.mjs:55:12), <anonymous>:12:25)
+    file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:41:71
+    using (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:7:58)
+    TestContext.<anonymous> (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:40:80)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: actual Git index lock prevents a writer and is never removed by either mode
+not ok 6 - actual Git index lock prevents a writer and is never removed by either mode
+  ---
+  duration_ms: 54.446834
+  type: 'test'
+  location: '/workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:50:1'
+  failureType: 'testCodeFailure'
+  error: 'headArgs is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    eval (eval at makeKernel (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/fixture.mjs:55:12), <anonymous>:12:25)
+    file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:51:40
+    using (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:7:58)
+    TestContext.<anonymous> (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:50:91)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: immutable blob substitution is refused on every call even when observations are reused
+not ok 7 - immutable blob substitution is refused on every call even when observations are reused
+  ---
+  duration_ms: 95.40215
+  type: 'test'
+  location: '/workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:62:1'
+  failureType: 'testCodeFailure'
+  error: 'headArgs is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    eval (eval at makeKernel (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/fixture.mjs:55:12), <anonymous>:12:25)
+    file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:64:40
+    using (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:7:58)
+    TestContext.<anonymous> (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:62:102)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: a substituted immutable commit never becomes a passing cached verdict
+not ok 8 - a substituted immutable commit never becomes a passing cached verdict
+  ---
+  duration_ms: 67.397064
+  type: 'test'
+  location: '/workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:72:1'
+  failureType: 'testCodeFailure'
+  error: 'headArgs is not defined'
+  code: 'ERR_TEST_FAILURE'
+  name: 'ReferenceError'
+  stack: |-
+    eval (eval at makeKernel (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/fixture.mjs:55:12), <anonymous>:12:25)
+    file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:74:23
+    using (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:7:58)
+    TestContext.<anonymous> (file:///workspace/worker2-verification-performance/tests/worker2-verification-performance-20261116/equivalence.test.mjs:72:85)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 0
+# fail 8
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 800.354662

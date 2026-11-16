@@ -1,0 +1,4062 @@
+{
+  "result": "NO_SAFE_OPTIMIZATION",
+  "hypothesis": "reuse native status/HEAD/index observations between boundaries",
+  "sourceRef": "419d56c17ca72dae58132aa00c7424b07477aa6c",
+  "sourcePath": "tests/next-engineering-20261115/source-stage10.mjs",
+  "kernelSourceSHA256": "43b82d0752e26e09bd34655916e202040ffeaba4ebc72fed27d3ff63ee9d915c",
+  "runtime": "v22.23.4",
+  "repetitions": 6,
+  "pairs": 4,
+  "medianMilliseconds": {
+    "fresh": 207.20964400000003,
+    "reuse": 153.69184549999994
+  },
+  "safety": "Rejected: ignored-source and transient index-flag counterexamples break equivalence.",
+  "scope": "Disposable native observation kernel only; not full API/source/CI acceptance. No deadline gain claimed.",
+  "samples": [
+    {
+      "pair": 0,
+      "order": [
+        "fresh",
+        "reuse"
+      ],
+      "fresh": {
+        "milliseconds": 210.46667000000002,
+        "calls": [
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 3.007441,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.78594600000001,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.768506000000002,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 2.960874000000004,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 5.229972000000004,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 5.397037999999995,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 4.929726000000002,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 3.3987559999999917,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.4400639999999925,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 2.7050899999999984,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.3745449999999977,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.3102249999999884,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.1261030000000005,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.103033000000011,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 5.697216999999995,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.819414000000023,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 3.4415559999999914,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 5.6680120000000045,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 3.085182000000003,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.9492790000000184,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.961769000000004,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 2.8807199999999966,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.94267099999999,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.161397999999991,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.4417350000000226,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 3.587397999999979,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.312872999999996,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 3.289367999999996,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.7889359999999783,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.5571180000000027,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 2.8380260000000135,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.157656000000003,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.612008000000003,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.2025979999999947,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 2.834635999999989,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 2.7485429999999837,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 5.325271000000015,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 5.005409000000014,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.096554999999995,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.852706000000012,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.1043579999999906,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.5232320000000072,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.886655999999988,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 3.4342790000000036,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 11.383295000000004,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 3.552932999999996,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.182665999999983,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.5184879999999907,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.5699769999999944,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.6583269999999857,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.649005000000045,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 2.916513000000009,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 3.5631140000000414,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 2.830289999999991,
+            "failed": false
+          }
+        ],
+        "gitMilliseconds": 207.56850600000004
+      },
+      "reuse": {
+        "milliseconds": 145.956862,
+        "calls": [
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 3.001197999999988,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.5888989999999694,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 5.401579999999967,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.007828000000018,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.36229400000002,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 2.982641000000001,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 6.116067999999984,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 3.0125079999999684,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.6872679999999605,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.2786389999999983,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.4658099999999763,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.320641999999964,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 4.917990999999972,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 2.7496909999999843,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 2.893757999999991,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 5.143414000000007,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.097355999999991,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.319665999999984,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.59189200000003,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 3.971293000000003,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.7934660000000235,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 6.703503000000012,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.2199640000000045,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.467694999999992,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.147357999999997,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 3.1159640000000195,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.223047000000008,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.9049640000000068,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.2300030000000106,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.325723000000039,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 2.7410319999999615,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 2.7122340000000236,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 2.9639889999999696,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 5.4653149999999755,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.2583960000000047,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.0370510000000195,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.2787380000000326,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 3.542964999999981,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.787352999999996,
+            "failed": false
+          }
+        ],
+        "gitMilliseconds": 143.82919599999985
+      }
+    },
+    {
+      "pair": 1,
+      "order": [
+        "reuse",
+        "fresh"
+      ],
+      "reuse": {
+        "milliseconds": 160.37449400000003,
+        "calls": [
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 5.189878999999962,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.2612989999999513,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.7511910000000057,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.180632000000003,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 6.355793000000006,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.2725399999999922,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 2.8409039999999663,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 2.9016229999999723,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.9982780000000275,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 11.399153999999953,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.8942970000000514,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.218484999999987,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.7348329999999805,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 3.4573589999999967,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.483335000000011,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 6.082522999999924,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.48727800000006,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.9953460000000405,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.679663000000005,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 3.5144300000000612,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 4.482020000000034,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.113775000000032,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 5.39460100000008,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.797015999999985,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.0696440000000393,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 2.919638999999961,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 2.8408279999999877,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.773052000000007,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.4607699999999113,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.0951929999999948,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 2.802502000000004,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 2.7815080000000307,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 2.9610930000000053,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.9788189999999304,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.2874550000000227,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 8.006914999999935,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.31273299999998,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 2.996181999999976,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 2.761853999999971,
+            "failed": false
+          }
+        ],
+        "gitMilliseconds": 156.53444099999984
+      },
+      "fresh": {
+        "milliseconds": 196.81795699999998,
+        "calls": [
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 2.9808909999999287,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.2501479999999674,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.659883000000036,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 2.891352999999981,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.4153890000000047,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.4231320000000096,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 2.7654810000000225,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 3.2364599999999655,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.9660920000000033,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 3.041723999999931,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.526100000000042,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.9806570000000647,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.6063500000000204,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 5.514161000000058,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.4603160000000344,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.221108999999956,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 3.4426699999999073,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.047802000000047,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 2.6226519999999027,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.9939219999999978,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.523787000000084,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.395932000000016,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.4174070000000256,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.4216610000000856,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 2.841323999999986,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 2.923417000000086,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.312471999999957,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 3.06765699999994,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.33056600000009,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.1908839999999827,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 2.9210840000000644,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 5.592260999999894,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.777394000000072,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.3037449999999353,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 3.19844599999999,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.6676459999999906,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 3.7238459999999804,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.8455370000000357,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.600455000000011,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.8544910000000527,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.8408150000000205,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 6.662128999999936,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 5.94433099999992,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 3.6231480000000147,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 2.9697869999999966,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 2.5511149999999816,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.4102159999999913,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.8453329999999823,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 2.7046170000000984,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.371727000000078,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.2518210000000636,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 2.8430060000000594,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "ceeaab8e0a5bf5ce3784af01d36a156b492bf8d4"
+            ],
+            "milliseconds": 4.393994000000021,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 4.258758999999941,
+            "failed": false
+          }
+        ],
+        "gitMilliseconds": 195.62710200000026
+      }
+    },
+    {
+      "pair": 2,
+      "order": [
+        "fresh",
+        "reuse"
+      ],
+      "fresh": {
+        "milliseconds": 203.95261800000003,
+        "calls": [
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 3.2819350000000895,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.2520419999999604,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.2255549999999857,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.0589970000000903,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.7484249999999975,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.046073999999976,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.5953650000000152,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 6.269851000000017,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 9.748738000000003,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 3.028536000000031,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 5.428424000000064,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.5560819999999467,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 2.8627930000000106,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.771498000000065,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.5533629999999903,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.548511000000076,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 2.9522940000000517,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 2.7987300000000914,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 2.501888000000008,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.445378000000005,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.3919779999999946,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 5.032487999999944,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 2.82975799999997,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.0948319999999967,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.372280000000046,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 3.2883259999999837,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.8058950000000777,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 3.2172309999999698,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.1533829999999625,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.8777280000000474,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 7.080475999999976,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.4076499999999896,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.7462790000000723,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.4378020000000333,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 2.8912429999999176,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.0392380000000685,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 3.00621000000001,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 5.183782000000065,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.912099000000012,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.1117379999999457,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.096644999999967,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.4076520000000983,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.058559999999943,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 3.4343149999999696,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.4580479999999625,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 2.9345280000000002,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.859215000000063,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.1964720000000852,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.276168000000098,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.216138999999885,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.1543490000001384,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 2.965723999999909,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 5.528699000000188,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.1896609999998873,
+            "failed": false
+          }
+        ],
+        "gitMilliseconds": 202.33107000000075
+      },
+      "reuse": {
+        "milliseconds": 147.00919699999986,
+        "calls": [
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 2.9944080000000213,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.5950580000001082,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.9694469999999455,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.565366999999924,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.6025110000000495,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.1324220000001333,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.5593659999999545,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 4.364837999999963,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.353300999999874,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.320607999999993,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.6069559999998546,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.2729759999999715,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 2.996456999999964,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 3.1639920000000075,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.0414680000001226,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.774618000000146,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.549891000000116,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.5284169999999904,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.4708110000001398,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 2.9469810000000507,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.684534999999869,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 5.749285999999984,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.7230869999998504,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.2628310000000056,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.4329230000000734,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 5.277178000000049,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 4.659505999999965,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.34164799999985,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.9486329999999725,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 5.398151000000098,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.4013210000000527,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 2.998645000000124,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 2.979712000000063,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.078094000000192,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.9672100000000228,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.616224000000102,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 4.9826220000002195,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 3.488117999999986,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.0228850000000875,
+            "failed": false
+          }
+        ],
+        "gitMilliseconds": 145.8225020000009
+      }
+    },
+    {
+      "pair": 3,
+      "order": [
+        "reuse",
+        "fresh"
+      ],
+      "reuse": {
+        "milliseconds": 190.45855600000004,
+        "calls": [
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 4.163125000000036,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 8.458528000000115,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.393754999999828,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 15.350912999999991,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 6.942282999999861,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.455208999999968,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 4.7621579999999994,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 2.916291000000001,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 5.436476000000084,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 6.504089000000022,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.068049000000201,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.313419999999951,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.012617000000091,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 3.111161999999922,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.199889000000212,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.4228189999998904,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 5.36435500000016,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 7.2834150000001046,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.8504740000000766,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 4.859478000000081,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.180945000000065,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.459520999999995,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.190891999999849,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.556565999999975,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 4.814082999999982,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 2.9697400000000016,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 7.092023000000154,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 6.873914000000013,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.3742500000000746,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.183599999999842,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 10.19325700000013,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 5.056942000000163,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.5356400000000576,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 5.853367000000162,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.468466000000035,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.6695320000001175,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.2274250000000393,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 4.542371000000003,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.127621999999974,
+            "failed": false
+          }
+        ],
+        "gitMilliseconds": 188.23866100000123
+      },
+      "fresh": {
+        "milliseconds": 214.8898160000001,
+        "calls": [
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 3.320570000000089,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 6.548747999999932,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.650797000000011,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.0537149999997837,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.957927000000154,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.754088000000138,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.538814999999886,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 2.964443000000074,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.152274000000034,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 9.553717000000006,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.8245030000000497,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.256932000000006,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.2576460000000225,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.6930580000000646,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 7.475090999999793,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 4.298317999999881,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 5.028886000000057,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.171180999999933,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 7.739958999999999,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.916143999999804,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.997679000000062,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 2.9364170000001195,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.4050620000000436,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.6115570000001753,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.1083839999998872,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 3.251681999999846,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.371519000000035,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 3.1655669999997826,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.367572999999993,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.1661629999998695,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.7007209999999304,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.5456380000000536,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 4.457263000000012,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 3.436331999999993,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 2.9824149999999463,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.8795880000000125,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 3.495777000000089,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.5847610000000714,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.425049000000172,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 2.7359440000000177,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.137429999999995,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.2912059999998746,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 2.9821090000000368,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 2.880245000000059,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 3.251659000000018,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "milliseconds": 4.112427999999909,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain=v2",
+              "--branch",
+              "--ignored=matching",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 6.207532000000128,
+            "failed": false
+          },
+          {
+            "args": [
+              "status",
+              "--porcelain",
+              "--untracked-files=all",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.6847889999999097,
+            "failed": false
+          },
+          {
+            "args": [
+              "ls-files",
+              "-v",
+              "-z",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.2382270000000517,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.3248909999999796,
+            "failed": false
+          },
+          {
+            "args": [
+              "diff",
+              "--name-only",
+              "-z",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56",
+              "--",
+              "src"
+            ],
+            "milliseconds": 3.330528999999842,
+            "failed": false
+          },
+          {
+            "args": [
+              "rev-parse",
+              "--verify",
+              "HEAD^{commit}"
+            ],
+            "milliseconds": 2.970839999999953,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "commit",
+              "bcaff11abf009877a86913c8fbe4aae6f42dda56"
+            ],
+            "milliseconds": 3.8875970000001416,
+            "failed": false
+          },
+          {
+            "args": [
+              "cat-file",
+              "blob",
+              "efeee5db16c087416d13e29bc506c998eeaf0827"
+            ],
+            "milliseconds": 2.8765670000000227,
+            "failed": false
+          }
+        ],
+        "gitMilliseconds": 212.95795199999975
+      }
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: honest immutable workspace yields the same HEAD and still checks objects on each call
+ok 1 - honest immutable workspace yields the same HEAD and still checks objects on each call
+  ---
+  duration_ms: 243.685842
+  type: 'test'
+  ...
+# Subtest: COUNTEREXAMPLE: reused native observations accept a newly ignored source file
+ok 2 - COUNTEREXAMPLE: reused native observations accept a newly ignored source file
+  ---
+  duration_ms: 85.680261
+  type: 'test'
+  ...
+# Subtest: COUNTEREXAMPLE: index flags changed by a supplied callback cannot reuse prior native index bytes
+ok 3 - COUNTEREXAMPLE: index flags changed by a supplied callback cannot reuse prior native index bytes
+  ---
+  duration_ms: 117.973684
+  type: 'test'
+  ...
+# Subtest: both modes retain the supplied current-source dirty rejection
+ok 4 - both modes retain the supplied current-source dirty rejection
+  ---
+  duration_ms: 68.826864
+  type: 'test'
+  ...
+# Subtest: both modes retain final supplied HEAD checks when metadata moves
+ok 5 - both modes retain final supplied HEAD checks when metadata moves
+  ---
+  duration_ms: 164.038203
+  type: 'test'
+  ...
+# Subtest: actual Git index lock prevents a writer and is never removed by either mode
+ok 6 - actual Git index lock prevents a writer and is never removed by either mode
+  ---
+  duration_ms: 142.424227
+  type: 'test'
+  ...
+# Subtest: immutable blob substitution is refused on every call even when observations are reused
+ok 7 - immutable blob substitution is refused on every call even when observations are reused
+  ---
+  duration_ms: 124.633404
+  type: 'test'
+  ...
+# Subtest: a substituted immutable commit never becomes a passing cached verdict
+ok 8 - a substituted immutable commit never becomes a passing cached verdict
+  ---
+  duration_ms: 118.398121
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1212.011946
