@@ -56,7 +56,7 @@ export const retainedStage7V6CapturePath='docs/parallel-source-20261110/capture-
 export const retainedStage7V7CapturePath='docs/parallel-source-20261110/capture-revision66.json';
 export const retainedStage7V8CapturePath='docs/parallel-source-20261110/capture-revision67.json';
 const retainedStage8CapturePath='docs/parallel-source-20261110/capture-revision68.json';
-export const capturePath='docs/parallel-source-20261110/capture-revision121.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision122.json';
 const root=resolve(fileURLToPath(new URL('../../',import.meta.url))),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -340,7 +340,13 @@ export function preloadRetainedImmutableObjects(read,git){verifyParallelAuthorit
 /** Availability only: immutable object transport setup never attests current source. */
 export function primeRetainedImmutableObjects(read,git){primeRetainedImmutableAvailability(read,git);}
 
-function currentStage8Input(read,git){return provePinnedSourceStage8({read,git,root});}
+function currentStage8Input(read,git){
+ const view=provePinnedSourceStage8({read,git,root});
+ // Availability only, after fresh live verification. Supplied/opaque readers
+ // retain their original path; every positive proof and final fence still runs.
+ if(read===readFileSync&&typeof git.preloadCommits==='function'&&typeof git.preloadBlobs==='function')primeRetainedImmutableAvailability(read,git);
+ return view;
+}
 function completeStage8(view,run){const result=run();assertSourceStage8HeadStable(view);return result;}
 function rejectChangedUnchangedFactoryBytes(currentRead){
  // Negative-only fast refusal: every positive input still executes the full proof.

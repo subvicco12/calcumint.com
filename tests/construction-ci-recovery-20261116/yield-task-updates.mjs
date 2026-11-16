@@ -1,6 +1,8 @@
-/** Let pending Vitest task-update IPC settle between synchronous evidence cases.
- * This changes scheduling only: test bodies, assertions and deadlines stay intact.
+/** Let pending task-update IPC settle only between the six proven long
+ * synchronous recovery cases. No other file registers this scheduling hook.
  */
-import {beforeEach} from 'vitest';
+import {beforeEach,expect} from 'vitest';
 import {setImmediate} from 'node:timers/promises';
-beforeEach(async()=>{await setImmediate();});
+import {fileURLToPath} from 'node:url';
+const target=fileURLToPath(new URL('../../src/lib/execution-recovery-evidence.test.ts',import.meta.url));
+if(expect.getState().testPath===target)beforeEach(async()=>{await setImmediate();});
