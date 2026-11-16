@@ -2,7 +2,7 @@ import {sourceStage8Policy,sourceStage8CapturePath} from '../milestone100-202611
 import {sourceStage9Policy,sourceStage9CapturePath} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 /** Exact current source must be authenticated before any older historical projection. */
 import assert from 'node:assert/strict';
-import {execFileSync} from 'node:child_process';
+import {privateGitBuffer} from './source-private-git-transport.mjs';
 import {resolve} from 'node:path';
 import {readFileSync,lstatSync,realpathSync} from 'node:fs';
 import {createHash} from 'node:crypto';
@@ -16,7 +16,7 @@ const nativeReaders=new Map();
 function nativeReader(root){
  let reader=nativeReaders.get(root);if(reader)return reader;
  // Only full immutable tree-query bytes enter this existing query cache.
- reader=immutableTreeQueryReader(args=>execFileSync('git',['-c','core.fsmonitor=false','-c','core.ignorestat=false','-c','core.untrackedCache=false',...args],{cwd:root,env:{...process.env,GIT_NO_REPLACE_OBJECTS:'1'},stdio:['ignore','pipe','pipe'],maxBuffer:64*1024*1024}));
+ reader=immutableTreeQueryReader(args=>privateGitBuffer(['-c','core.fsmonitor=false','-c','core.ignorestat=false','-c','core.untrackedCache=false',...args],{cwd:root,env:{...process.env,GIT_NO_REPLACE_OBJECTS:'1'},stdio:['ignore','pipe','pipe'],maxBuffer:64*1024*1024}));
  if(nativeReaders.size>=32)nativeReaders.delete(nativeReaders.keys().next().value);nativeReaders.set(root,reader);return reader;
 }
 export const sourceStage10HistoricalView=git=>historical.get(git);
