@@ -4,7 +4,6 @@ import {savedActionsClaim,savedActionsReceiptHistoricalClaim} from './source-sta
 import {assertNamedApplicationSuccessor} from '../parallel-source-20261110/core.mjs';
 import {completionGitReader} from '../parallel-source-20261110/git-reader.mjs';
 import {readFileSync} from 'node:fs';
-import {execFileSync} from 'node:child_process';
 import {verifyCompletionBinding} from '../../scripts/product-completion-stage8.mjs';
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';

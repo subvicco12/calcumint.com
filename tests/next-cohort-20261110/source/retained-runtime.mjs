@@ -8,7 +8,6 @@ import {completionGitReader} from '../../parallel-source-20261110/git-reader.mjs
 import assert from 'node:assert/strict';
 import {readFileSync,lstatSync,realpathSync} from 'node:fs';
 import {resolve} from 'node:path';
-import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 const prior='1ec63cd11626df15063546c7e5bfedecec33f6ee';
 // Populated only by independently reviewed final frozen-app source records.
