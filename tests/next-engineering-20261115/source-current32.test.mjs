@@ -1,8 +1,7 @@
 import {proveSourceStage10} from './source-stage10.mjs';
-import {makeGitReader} from '../parallel-source-20261110/git-reader.mjs';
 import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync,mkdtempSync,rmSync} from 'node:fs';import {execFileSync} from 'node:child_process';import {tmpdir} from 'node:os';import {join} from 'node:path';
 import {verifyExactStage} from '../calculator-factory-source-20261112/exact-stage.mjs';import {verifyExactCurrent32} from './source-exact-current32.mjs';import {sourceStage10Policy as policy,sourceStage10CapturePath} from './source-stage10-current32-policy.mjs';
-const root=process.cwd(),git=makeGitReader((args,options={})=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],...options})),captureBytes=readFileSync(sourceStage10CapturePath),input={read:readFileSync,git,root,captureBytes};
+const root=process.cwd(),git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']}),captureBytes=readFileSync(sourceStage10CapturePath),input={read:readFileSync,git,root,captureBytes};
 test('fixed32 admits only the eight exact reviewed delivery changes while the original API still forbids calculator paths',()=>{
  assert.equal(verifyExactCurrent32(input).size,32);
  assert.throws(()=>verifyExactStage({...input,policy}),/Exact safe non-mathematical source path required/);
@@ -17,7 +16,7 @@ test('original23 and24 captures/policies remain literal and both diagnostic pare
 test('new calculator engine or other test paths remain refused by native whole-source proof',()=>{
  const dir=mkdtempSync(join(tmpdir(),'calcumint-current26-')),tree=join(dir,'tree');
  try{execFileSync('git',['clone','--shared','--no-checkout',root,tree],{stdio:['ignore','pipe','pipe']});execFileSync('git',['checkout','--detach','HEAD'],{cwd:tree,stdio:['ignore','pipe','pipe']});
- const script="import assert from'node:assert/strict';import{readFileSync,writeFileSync,rmSync}from'node:fs';import{execFileSync}from'node:child_process';import{makeGitReader}from'./tests/parallel-source-20261110/git-reader.mjs';import{proveSourceStage10}from'./tests/next-engineering-20261115/source-stage10.mjs';const git=makeGitReader((args,options={})=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],...options})),input={root:process.cwd(),read:readFileSync,git};assert.equal(proveSourceStage10(input).live.size,32);for(const path of ['src/calculators/unreviewed-engine.ts','src/calculators/unreviewed.test.ts']){writeFileSync(path,'export const unexpected=1;');assert.throws(()=>proveSourceStage10(input),/native dirty or unknown source/);rmSync(path);}assert.equal(proveSourceStage10(input).live.size,32);";
+ const script="import assert from'node:assert/strict';import{readFileSync,writeFileSync,rmSync}from'node:fs';import{execFileSync}from'node:child_process';import{proveSourceStage10}from'./tests/next-engineering-20261115/source-stage10.mjs';const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']}),input={root:process.cwd(),read:readFileSync,git};assert.equal(proveSourceStage10(input).live.size,32);for(const path of ['src/calculators/unreviewed-engine.ts','src/calculators/unreviewed.test.ts']){writeFileSync(path,'export const unexpected=1;');assert.throws(()=>proveSourceStage10(input),/native dirty or unknown source/);rmSync(path);}assert.equal(proveSourceStage10(input).live.size,32);";
  execFileSync(process.execPath,['--input-type=module','-e',script],{cwd:tree,stdio:['ignore','pipe','pipe'],maxBuffer:4000000});
  }finally{rmSync(dir,{recursive:true,force:true});}
 });
