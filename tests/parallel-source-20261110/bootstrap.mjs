@@ -1,3 +1,4 @@
+import {execNativeGit} from '../construction-ci-recovery-20261116/native-git.mjs';
 import {sourceStage8Policy} from '../milestone100-20261114/source-stage8-policy-v3.mjs';
 /** Object availability only. The caller must first verify the independently pinned capture. */
 import assert from 'node:assert/strict';
@@ -19,7 +20,7 @@ import {testStagePolicy} from '../completion-first-20261112/test-stage-policy.mj
 import {personalPolicy} from '../completion-first-20261112/personal-policy.mjs';
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const allowed=new Set(['https://github.com/subvicco12/calcumint.com','https://github.com/subvicco12/calcumint.com.git']);
-const invoke=(args,options={})=>execFileSync('git',['-c','protocol.file.allow=never','-c','protocol.ext.allow=never',...args],{cwd:root,env:{...process.env,GIT_TERMINAL_PROMPT:'0'},stdio:options.stdio??['ignore','pipe','pipe'],timeout:options.timeout??60000,maxBuffer:options.maxBuffer??4*1024*1024,...(options.input===undefined?{}:{input:options.input})});
+const invoke=(args,options={})=>execNativeGit(['-c','protocol.file.allow=never','-c','protocol.ext.allow=never',...args],{cwd:root,env:{...process.env,GIT_TERMINAL_PROMPT:'0'},stdio:options.stdio??['ignore','pipe','pipe'],timeout:options.timeout??60000,maxBuffer:options.maxBuffer??4*1024*1024,...(options.input===undefined?{}:{input:options.input})});
 const appStage5AvailabilityReader=makeGitReader(invoke),testStage6AvailabilityReader=makeGitReader(invoke),sourceStage7AvailabilityReader=makeGitReader(invoke);
 let ready=false,nonSourceReady=false,testStageReady=false,appStage5Ready=false,testStage6Ready=false,sourceStage7Ready=false;
 /** Standalone retained workflow readers run before the larger parallel bootstrap.

@@ -1,3 +1,4 @@
+import {execNativeGit} from '../../construction-ci-recovery-20261116/native-git.mjs';
 import {nonSourceRecords} from '../../completion-first-20261112/non-source-stage2.mjs';
 import {runClosedSynchronousBatch,assertAPIEvidencePaths} from './runtime-evidence-batch.mjs';
 import {proveNamedCurrentContext,preloadRetainedImmutableObjects,primeRetainedImmutableObjects} from '../../parallel-source-20261110/core.mjs';
@@ -482,7 +483,7 @@ const currentContext=Object.freeze([
 ]);
 const immutableObjects=new WeakMap();
 const hash=b=>createHash('sha256').update(b).digest('hex');
-const git=completionGitReader((args,options={})=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024,...options}));
+const git=completionGitReader((args,options={})=>execNativeGit(args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024,...options}));
 let immutableObjectsPreloaded=false;
 export function verifyCurrentRuntimeContext(read=readFileSync,sourceGit=git){
  assert(currentContext.length>0,'Missing reviewed current runtime context');
@@ -568,9 +569,9 @@ function preloadBatchCurrentPaths(declared,admitted,boundHead){
 // End private bound-head path preload.
 
 // Explicit synchronous opt-in only. Default per-read entry points above remain unchanged.
-const rawActualState=()=>({head:execFileSync('git',['rev-parse','--verify','HEAD^{commit}'],{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024}),status:execFileSync('git',['status','--porcelain=v1','--untracked-files=all'],{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024})});
+const rawActualState=()=>({head:execNativeGit(['rev-parse','--verify','HEAD^{commit}'],{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024}),status:execNativeGit(['status','--porcelain=v1','--untracked-files=all'],{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024})});
 function assertActualState(before){const after=rawActualState();assert(before.head.equals(after.head),'Evidence batch actual HEAD changed');assert(before.status.equals(after.status),'Evidence batch actual status changed');}
-function assertActualHead(before){assert(before.head.equals(execFileSync('git',['rev-parse','--verify','HEAD^{commit}'],{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024})),'Evidence batch actual HEAD changed');}
+function assertActualHead(before){assert(before.head.equals(execNativeGit(['rev-parse','--verify','HEAD^{commit}'],{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024})),'Evidence batch actual HEAD changed');}
 export function withRuntimeEvidenceBatch(paths,run,...extra){
  return runClosedSynchronousBatch(paths,run,{
   begin(declared){
