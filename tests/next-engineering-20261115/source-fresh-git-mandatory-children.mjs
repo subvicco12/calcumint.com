@@ -5,5 +5,6 @@ export const freshGitMandatoryChildren=Object.freeze([
  ['tests/next-engineering-20261115/source-private-git-transport.test.mjs',14],
  ['tests/next-engineering-20261115/source-private-git-lifecycle.test.mjs',6],
  ['tests/next-engineering-20261115/source-private-git-stream.test.mjs',1],
- ['tests/next-engineering-20261115/source-binding-current32.test.mjs',7]
+ ['tests/next-engineering-20261115/source-binding-current32.test.mjs',7],
+ ['tests/next-engineering-20261115/source-stage9-fixture.test.mjs',4]
 ].map(row=>Object.freeze(row)));
