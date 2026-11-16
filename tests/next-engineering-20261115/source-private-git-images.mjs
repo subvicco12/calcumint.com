@@ -6,7 +6,7 @@ export const privateGitImages=Object.freeze({
   },
   "broker": {
     "path": "./source-private-git-broker.py",
-    "sha256": "7f5f8b8846e6b2baa1f89168020ebad70271792aa33f27c640b6e34c5f1c7c07"
+    "sha256": "f84e33e129d9e48d56cf182de349acfb05d431fd3f8bfe77f9e114e6c493dd02"
   }
 });
 for(const image of Object.values(privateGitImages))Object.freeze(image);
