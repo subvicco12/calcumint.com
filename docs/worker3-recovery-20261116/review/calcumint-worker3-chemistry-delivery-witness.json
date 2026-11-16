@@ -1,0 +1,915 @@
+[
+  {
+    "id": 329,
+    "scope": "Molality n/m_solvent from solute amount in mol and positive solvent mass in kg. The denominator is solvent mass, not solution mass. Composition only; no ideal-solution activity or colligative-property prediction.",
+    "unit": "mol/kg",
+    "sourceRefs": [
+      "docs/next-engineering-20261115/chemistry-a/sources/11-4-colligative-properties.md",
+      "docs/next-engineering-20261115/chemistry-a/source-manifest.json"
+    ],
+    "finalUIHasScope": true,
+    "packetKeys": [
+      "schemaVersion",
+      "identity",
+      "raw",
+      "snapshot"
+    ],
+    "packetInputKeys": [
+      "moles",
+      "solventMassKg"
+    ],
+    "packetOutputKeys": [
+      "value",
+      "steps"
+    ],
+    "formats": {
+      "json": {
+        "bytes": 593,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      },
+      "csv": {
+        "bytes": 446,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      },
+      "pdf": {
+        "bytes": 15670,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      }
+    },
+    "embedSources": [
+      {
+        "label": "CalcuMint deterministic chemistry engine"
+      }
+    ],
+    "embedHasScope": true,
+    "embedResultUnit": "mol/kg",
+    "batchKeys": [
+      "index",
+      "ok",
+      "result"
+    ],
+    "batchResultKeys": [
+      "catalogId",
+      "engineId",
+      "slug",
+      "version",
+      "packet",
+      "input",
+      "output"
+    ],
+    "batchContainsScope": false,
+    "batchContainsSources": false
+  },
+  {
+    "id": 333,
+    "scope": "Concentration-model pH = -log10([H+]/(1 mol/L)), with positive hydrogen-ion concentration in mol/L. Ideal dilute-solution approximation treating concentration as activity; no activity coefficients, ionic-strength correction, acid dissociation solving or temperature-based neutrality classification. Values are not restricted to 0–14.",
+    "unit": "dimensionless",
+    "sourceRefs": [
+      "docs/next-engineering-20261115/chemistry-a/sources/14-2-ph-and-poh.md",
+      "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+      "docs/next-engineering-20261115/chemistry-a/sources/11-4-colligative-properties.md",
+      "docs/next-engineering-20261115/chemistry-a/source-manifest.json"
+    ],
+    "finalUIHasScope": true,
+    "packetKeys": [
+      "schemaVersion",
+      "identity",
+      "raw",
+      "snapshot"
+    ],
+    "packetInputKeys": [
+      "hydrogenIonConcentration"
+    ],
+    "packetOutputKeys": [
+      "value",
+      "steps"
+    ],
+    "formats": {
+      "json": {
+        "bytes": 551,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      },
+      "csv": {
+        "bytes": 418,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      },
+      "pdf": {
+        "bytes": 14822,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      }
+    },
+    "embedSources": [
+      {
+        "label": "CalcuMint deterministic chemistry engine"
+      }
+    ],
+    "embedHasScope": true,
+    "embedResultUnit": "dimensionless",
+    "batchKeys": [
+      "index",
+      "ok",
+      "result"
+    ],
+    "batchResultKeys": [
+      "catalogId",
+      "engineId",
+      "slug",
+      "version",
+      "packet",
+      "input",
+      "output"
+    ],
+    "batchContainsScope": false,
+    "batchContainsSources": false
+  },
+  {
+    "id": 334,
+    "scope": "Ideal-gas absolute pressure P=nRT/V in atm; amount in mol, strictly positive absolute temperature in K and volume in L. Immutable v1 R=0.082057366080960 L·atm·mol^-1·K^-1. Zero amount represents the vacuum limit. No real-gas, gauge-pressure or Celsius conversion.",
+    "unit": "atm",
+    "sourceRefs": [
+      "docs/next-engineering-20261115/chemistry-a/sources/9-2-ideal-gas-law.md",
+      "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+      "docs/next-engineering-20261115/chemistry-a/sources/nist-molar-gas-constant.md",
+      "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+      "docs/next-engineering-20261115/chemistry-a/sources/nist-sp811-pressure-units.md",
+      "docs/next-engineering-20261115/chemistry-a/source-manifest.json"
+    ],
+    "finalUIHasScope": true,
+    "packetKeys": [
+      "schemaVersion",
+      "identity",
+      "raw",
+      "snapshot"
+    ],
+    "packetInputKeys": [
+      "moles",
+      "temperatureKelvin",
+      "volumeLiters"
+    ],
+    "packetOutputKeys": [
+      "value",
+      "steps"
+    ],
+    "formats": {
+      "json": {
+        "bytes": 738,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      },
+      "csv": {
+        "bytes": 578,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      },
+      "pdf": {
+        "bytes": 16672,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      }
+    },
+    "embedSources": [
+      {
+        "label": "CalcuMint deterministic chemistry engine"
+      }
+    ],
+    "embedHasScope": true,
+    "embedResultUnit": "atm",
+    "batchKeys": [
+      "index",
+      "ok",
+      "result"
+    ],
+    "batchResultKeys": [
+      "catalogId",
+      "engineId",
+      "slug",
+      "version",
+      "packet",
+      "input",
+      "output"
+    ],
+    "batchContainsScope": false,
+    "batchContainsSources": false
+  },
+  {
+    "id": 335,
+    "scope": "Ideal-gas density rho=PM/(RT) in g/L; nonnegative absolute pressure in atm, strictly positive molar mass in g/mol and absolute temperature in K. Immutable v1 R=0.082057366080960 L·atm·mol^-1·K^-1. Zero pressure is the vacuum limit; no real-gas corrections.",
+    "unit": "g/L",
+    "sourceRefs": [
+      "docs/next-engineering-20261115/chemistry-a/sources/9-3-gas-stoichiometry.md",
+      "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+      "docs/next-engineering-20261115/chemistry-a/sources/nist-molar-gas-constant.md",
+      "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+      "docs/next-engineering-20261115/chemistry-a/sources/nist-sp811-pressure-units.md",
+      "docs/next-engineering-20261115/chemistry-a/source-manifest.json"
+    ],
+    "finalUIHasScope": true,
+    "packetKeys": [
+      "schemaVersion",
+      "identity",
+      "raw",
+      "snapshot"
+    ],
+    "packetInputKeys": [
+      "pressureAtm",
+      "molarMassGPerMol",
+      "temperatureKelvin"
+    ],
+    "packetOutputKeys": [
+      "value",
+      "steps"
+    ],
+    "formats": {
+      "json": {
+        "bytes": 726,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      },
+      "csv": {
+        "bytes": 568,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      },
+      "pdf": {
+        "bytes": 16658,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      }
+    },
+    "embedSources": [
+      {
+        "label": "CalcuMint deterministic chemistry engine"
+      }
+    ],
+    "embedHasScope": true,
+    "embedResultUnit": "g/L",
+    "batchKeys": [
+      "index",
+      "ok",
+      "result"
+    ],
+    "batchResultKeys": [
+      "catalogId",
+      "engineId",
+      "slug",
+      "version",
+      "packet",
+      "input",
+      "output"
+    ],
+    "batchContainsScope": false,
+    "batchContainsSources": false
+  },
+  {
+    "id": 336,
+    "scope": "Mass percent =100 componentMass/totalMass using g for both masses. Total includes the component and must be positive; component lies from zero through total. A composition ratio, with no volume-percent or mass/volume-percent interpretation.",
+    "unit": "%",
+    "sourceRefs": [
+      "docs/next-engineering-20261115/chemistry-a/sources/3-4-other-concentrations.md",
+      "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+      "docs/next-engineering-20261115/chemistry-a/sources/3-2-mass-composition.md",
+      "docs/next-engineering-20261115/chemistry-a/source-manifest.json"
+    ],
+    "finalUIHasScope": true,
+    "packetKeys": [
+      "schemaVersion",
+      "identity",
+      "raw",
+      "snapshot"
+    ],
+    "packetInputKeys": [
+      "componentMass",
+      "totalMass"
+    ],
+    "packetOutputKeys": [
+      "value",
+      "steps"
+    ],
+    "formats": {
+      "json": {
+        "bytes": 660,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      },
+      "csv": {
+        "bytes": 502,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      },
+      "pdf": {
+        "bytes": 15800,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "unitLiteralPresent": true
+      }
+    },
+    "embedSources": [
+      {
+        "label": "CalcuMint deterministic chemistry engine"
+      }
+    ],
+    "embedHasScope": true,
+    "embedResultUnit": "%",
+    "batchKeys": [
+      "index",
+      "ok",
+      "result"
+    ],
+    "batchResultKeys": [
+      "catalogId",
+      "engineId",
+      "slug",
+      "version",
+      "packet",
+      "input",
+      "output"
+    ],
+    "batchContainsScope": false,
+    "batchContainsSources": false
+  },
+  {
+    "id": 337,
+    "scope": "Mass concentration = solute mass in g / positive final total solution volume in L, not solvent volume. The mass/volume ratio underlying the textbook mass-volume percentage is expressed here in g/L, not percent. Composition only; no activity or ideal-solution thermodynamic correction and no conversion to molarity.",
+    "unit": "g/L",
+    "sourceRefs": [
+      "docs/next-engineering-20261115/chemistry-a/sources/3-4-other-concentrations.md",
+      "docs/next-engineering-20261115/chemistry-a/source-manifest.json"
+    ],
+    "finalUIHasScope": true,
+    "packetKeys": [
+      "schemaVersion",
+      "identity",
+      "raw",
+      "snapshot"
+    ],
+    "packetInputKeys": [
+      "soluteMassGrams",
+      "solutionVolumeLiters"
+    ],
+    "packetOutputKeys": [
+      "value",
+      "steps"
+    ],
+    "formats": {
+      "json": {
+        "bytes": 695,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      },
+      "csv": {
+        "bytes": 534,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      },
+      "pdf": {
+        "bytes": 15838,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      }
+    },
+    "embedSources": [
+      {
+        "label": "CalcuMint deterministic chemistry engine"
+      }
+    ],
+    "embedHasScope": true,
+    "embedResultUnit": "g/L",
+    "batchKeys": [
+      "index",
+      "ok",
+      "result"
+    ],
+    "batchResultKeys": [
+      "catalogId",
+      "engineId",
+      "slug",
+      "version",
+      "packet",
+      "input",
+      "output"
+    ],
+    "batchContainsScope": false,
+    "batchContainsSources": false
+  },
+  {
+    "id": 338,
+    "scope": "Target amount in mol from the ratio of positive coefficients in the same supplied balanced reaction. Coefficients may share a fractional rescaling. Assumes complete stoichiometric conversion of the supplied known amount; no equation balancing, limiting-reactant selection, yield, purity or side-reaction model.",
+    "unit": "mol",
+    "sourceRefs": [
+      "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+      "https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry"
+    ],
+    "finalUIHasScope": true,
+    "packetKeys": [
+      "schemaVersion",
+      "identity",
+      "raw",
+      "snapshot"
+    ],
+    "packetInputKeys": [
+      "knownMoles",
+      "knownCoefficient",
+      "targetCoefficient"
+    ],
+    "packetOutputKeys": [
+      "value",
+      "steps"
+    ],
+    "formats": {
+      "json": {
+        "bytes": 690,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      },
+      "csv": {
+        "bytes": 530,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      },
+      "pdf": {
+        "bytes": 16624,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      }
+    },
+    "embedSources": [
+      {
+        "label": "CalcuMint deterministic chemistry engine"
+      }
+    ],
+    "embedHasScope": true,
+    "embedResultUnit": "mol",
+    "batchKeys": [
+      "index",
+      "ok",
+      "result"
+    ],
+    "batchResultKeys": [
+      "catalogId",
+      "engineId",
+      "slug",
+      "version",
+      "packet",
+      "input",
+      "output"
+    ],
+    "batchContainsScope": false,
+    "batchContainsSources": false
+  },
+  {
+    "id": 339,
+    "scope": "Remaining amount for a closed first-order decay process with a constant positive half-life, no replenishment and nonnegative elapsed time. Initial and remaining amounts share one unit; elapsed time and half-life share one time unit. For positive initial amount, capture requires both the decay factor and remaining amount to be positive normal binary64 values; mathematical decay rounded to zero or subnormal intermediates is refused.",
+    "unit": "same as initial amount",
+    "sourceRefs": [
+      "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+      "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws"
+    ],
+    "finalUIHasScope": true,
+    "packetKeys": [
+      "schemaVersion",
+      "identity",
+      "raw",
+      "snapshot"
+    ],
+    "packetInputKeys": [
+      "initialAmount",
+      "elapsedTime",
+      "halfLife"
+    ],
+    "packetOutputKeys": [
+      "value",
+      "steps"
+    ],
+    "formats": {
+      "json": {
+        "bytes": 658,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      },
+      "csv": {
+        "bytes": 502,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      },
+      "pdf": {
+        "bytes": 16536,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      }
+    },
+    "embedSources": [
+      {
+        "label": "CalcuMint deterministic chemistry engine"
+      }
+    ],
+    "embedHasScope": true,
+    "embedResultUnit": "same as initial amount",
+    "batchKeys": [
+      "index",
+      "ok",
+      "result"
+    ],
+    "batchResultKeys": [
+      "catalogId",
+      "engineId",
+      "slug",
+      "version",
+      "packet",
+      "input",
+      "output"
+    ],
+    "batchContainsScope": false,
+    "batchContainsSources": false
+  },
+  {
+    "id": 340,
+    "scope": "Nernst cell potential E = E° - (RT/nF) ln Q for the same balanced redox reaction, with E° applicable at the supplied positive kelvin temperature and a positive safe-integer electron transfer count n. Q is a positive dimensionless activity quotient relative to standard states, with pure solid/liquid activities taken as unity; concentration substitution requires justified ideal behavior. The engine fixes R = 8.31446261815324 J/(mol K) and F = 96485.33212 C/mol; it does not compute activities, temperature corrections to E°, kinetics, overpotential or junction potentials.",
+    "unit": "V",
+    "sourceRefs": [
+      "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+      "https://openstax.org/books/chemistry-2e/pages/17-4-potential-free-energy-and-equilibrium",
+      "https://openstax.org/books/chemistry-2e/pages/13-2-equilibrium-constants",
+      "https://goldbook.iupac.org/terms/view/A00115",
+      "https://physics.nist.gov/cgi-bin/cuu/Value?r",
+      "https://physics.nist.gov/cgi-bin/cuu/Value?f"
+    ],
+    "finalUIHasScope": true,
+    "packetKeys": [
+      "schemaVersion",
+      "identity",
+      "raw",
+      "snapshot"
+    ],
+    "packetInputKeys": [
+      "standardPotential",
+      "temperatureKelvin",
+      "electronCount",
+      "reactionQuotient"
+    ],
+    "packetOutputKeys": [
+      "value",
+      "steps"
+    ],
+    "formats": {
+      "json": {
+        "bytes": 776,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "unitLiteralPresent": true
+      },
+      "csv": {
+        "bytes": 606,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "unitLiteralPresent": true
+      },
+      "pdf": {
+        "bytes": 17516,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "unitLiteralPresent": true
+      }
+    },
+    "embedSources": [
+      {
+        "label": "CalcuMint deterministic chemistry engine"
+      }
+    ],
+    "embedHasScope": true,
+    "embedResultUnit": "V",
+    "batchKeys": [
+      "index",
+      "ok",
+      "result"
+    ],
+    "batchResultKeys": [
+      "catalogId",
+      "engineId",
+      "slug",
+      "version",
+      "packet",
+      "input",
+      "output"
+    ],
+    "batchContainsScope": false,
+    "batchContainsSources": false
+  },
+  {
+    "id": 341,
+    "scope": "Decadic absorbance A = εbc using molar absorption coefficient ε in L/(mol cm), optical path b in cm and concentration c in mol/L. Assumes collimated monochromatic radiation, a homogeneous isotropic absorbing medium, and valid linear response at the chosen wavelength; excludes scattering, stray light, concentration-dependent interactions, speciation changes and detector saturation. Zero factor gives zero absorbance within the ideal mathematical model.",
+    "unit": "dimensionless",
+    "sourceRefs": [
+      "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+      "https://goldbook.iupac.org/terms/view/B00626"
+    ],
+    "finalUIHasScope": true,
+    "packetKeys": [
+      "schemaVersion",
+      "identity",
+      "raw",
+      "snapshot"
+    ],
+    "packetInputKeys": [
+      "molarAbsorptivity",
+      "pathLength",
+      "concentration"
+    ],
+    "packetOutputKeys": [
+      "value",
+      "steps"
+    ],
+    "formats": {
+      "json": {
+        "bytes": 703,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      },
+      "csv": {
+        "bytes": 540,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      },
+      "pdf": {
+        "bytes": 16640,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      }
+    },
+    "embedSources": [
+      {
+        "label": "CalcuMint deterministic chemistry engine"
+      }
+    ],
+    "embedHasScope": true,
+    "embedResultUnit": "dimensionless",
+    "batchKeys": [
+      "index",
+      "ok",
+      "result"
+    ],
+    "batchResultKeys": [
+      "catalogId",
+      "engineId",
+      "slug",
+      "version",
+      "packet",
+      "input",
+      "output"
+    ],
+    "batchContainsScope": false,
+    "batchContainsSources": false
+  },
+  {
+    "id": 342,
+    "scope": "Analyte molar concentration at exact equivalence of the supplied balanced titrant/analyte reaction, using positive stoichiometric coefficients with optional common fractional rescaling. Titrant concentration is in mol/L; titrant and analyte volumes must use the same unit (for example both mL). Assumes quantitative selective reaction, known titrant concentration, and measured volumes; no endpoint/equivalence correction, blank correction, dilution, acid/base speciation or uncertainty model.",
+    "unit": "mol/L",
+    "sourceRefs": [
+      "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+      "https://openstax.org/books/chemistry-2e/pages/4-5-quantitative-chemical-analysis",
+      "https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry"
+    ],
+    "finalUIHasScope": true,
+    "packetKeys": [
+      "schemaVersion",
+      "identity",
+      "raw",
+      "snapshot"
+    ],
+    "packetInputKeys": [
+      "titrantConcentration",
+      "titrantVolume",
+      "analyteVolume",
+      "titrantCoefficient",
+      "analyteCoefficient"
+    ],
+    "packetOutputKeys": [
+      "value",
+      "steps"
+    ],
+    "formats": {
+      "json": {
+        "bytes": 812,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      },
+      "csv": {
+        "bytes": 640,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      },
+      "pdf": {
+        "bytes": 18298,
+        "scopePresent": false,
+        "sourceRefsPresent": [
+          false,
+          false,
+          false
+        ],
+        "unitLiteralPresent": false
+      }
+    },
+    "embedSources": [
+      {
+        "label": "CalcuMint deterministic chemistry engine"
+      }
+    ],
+    "embedHasScope": true,
+    "embedResultUnit": "mol/L",
+    "batchKeys": [
+      "index",
+      "ok",
+      "result"
+    ],
+    "batchResultKeys": [
+      "catalogId",
+      "engineId",
+      "slug",
+      "version",
+      "packet",
+      "input",
+      "output"
+    ],
+    "batchContainsScope": false,
+    "batchContainsSources": false
+  }
+]

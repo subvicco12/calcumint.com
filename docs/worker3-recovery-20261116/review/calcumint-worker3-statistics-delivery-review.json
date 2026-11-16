@@ -1,0 +1,68 @@
+{
+  "kind": "INDEPENDENT_READ_ONLY_SCOPED_DELIVERY_CODE_REVIEW",
+  "base": "419d56c17ca72dae58132aa00c7424b07477aa6c",
+  "reviewedCommit": "4510ca6c70527bd030cf03703b6b83d363f22dcc",
+  "workingFollowupReviewed": true,
+  "testsRun": false,
+  "trackedEditsByReviewer": false,
+  "files": [
+    {
+      "path": "src/lib/calculator-factory/completion/exports.ts",
+      "sha256": "2ee65284cfd31a6924a86afd66aad070ed6abb8c021d3c68e3962e8c056d6240"
+    },
+    {
+      "path": "src/lib/calculator-factory/completion/scoped-engineering-delivery.test.ts",
+      "sha256": "79643aff70c0fa1b8bfe46ae19fb833180328dd9c8931eaa7f4fee68a7ecceb8"
+    },
+    {
+      "path": "src/lib/calculator-factory/completion/scoped-engineering-metadata.ts",
+      "sha256": "775f343f4ab27930ddc52e0b34108e600177e0c7a0df6e268ac1050ad2f999dc"
+    },
+    {
+      "path": "src/lib/calculator-factory/registry.test.ts",
+      "sha256": "9d7e7acadaada029ecd733465ea11bcde3c215bb3e18ea6c434ff46c9ffedac8"
+    },
+    {
+      "path": "src/lib/calculator-factory/registry.ts",
+      "sha256": "4b8f2e679ce59962a3e5d47e732c104f75776857984c36b0c59082148869cca6"
+    },
+    {
+      "path": "src/lib/calculator-factory/workflows.ts",
+      "sha256": "fd85e9a03a46aeea2149a08bdc70553779a72f9470c7a1949a4914692d4fb833"
+    },
+    {
+      "path": "src/lib/native-delivery/factory-automation-contract.ts",
+      "sha256": "a5d8128d8b2eb7d2baa8de9c2457484c5bcedd8b9e6624eb93526e2f00e063b0"
+    },
+    {
+      "path": "src/lib/native-delivery/factory-embed-contract.ts",
+      "sha256": "bae60431f261b98f58cafe75e4909e93488ea93fab197c17a2d4895850701dd8"
+    }
+  ],
+  "verdict": "NO_ADDITIONAL_IMPLEMENTATION_DEFECT_FOUND; final verification remains parent-owned",
+  "findings": [
+    {
+      "severity": "fixed in working followup",
+      "description": "4510 factoryResult omitted compiled publisher URLs, approximation warnings and secondary units; working registry.ts followup now includes all."
+    },
+    {
+      "severity": "fixed in working followup",
+      "description": "4510 native embed top-level sources remained generic immutable source labels; working followup appends publisher URLs while legacy source arrays retain their branch."
+    }
+  ],
+  "checks": {
+    "scope": "285/286 inherited rounded critical table caveat and 291 finite-grid noncertification explicit in metadata; sources and units independently compared to retained publisher manifests and immutable output types.",
+    "units": "All20 primary units, all9 statistics secondary numeric units, all chemistry scalar outputs have correct metadata; steps remain original structured explanations.",
+    "identity": "sourceVersion template, engine IDs/slugs/versions, immutable calculator modules unchanged by8-file change. Metadata carries identical pinned identity.",
+    "replay": "Scoped report outer4-key/version exact shape plus deep compiled metadata equality and full packet raw/output recomputation; bare historical packet remains accepted deliberately. replayBatch applies same metadata gate.",
+    "native": "Metadata delivered in embed and batch; verifier recomputes complete native rows so mutated metadata fails exact equality.",
+    "legacy69": "Metadata opt-in only for nextEngineeringContracts; original69 raw packet/JSON/CSV/PDF/embed/batch branches unchanged; baseline payload hash goldens guard this behavior.",
+    "testQuality": "Full export paths and visible PDF text asserted, not just nonempty bytes. Publisher assertions often compare against generated metadata, but mapping manually checked independently here. Native metadata tamper is adversarial. Original69 fixed golden hashes provide independent baseline guard."
+  },
+  "coverageSuggestions": [
+    "Explicitly mutate metadata.identity, publisherSources, outputs units and limitations in replay tests.",
+    "Explicitly mutate report metadata in replayBatch to guard import branch.",
+    "Final-result test currently inspects actual factoryResult object, whose established FinalResultPresentation renderer visibly consumes sources/warnings/metric units; adding20 DOM tests would repeat established renderer behavior and is unnecessary."
+  ],
+  "unaffectedProofReuse": "Engine numerical receipts remain bound. Shared workflow/registry/export/native changes require new affected tests and Business compiled dependency rebinding; prior298/482/124 receipts alone cannot qualify changed code."
+}

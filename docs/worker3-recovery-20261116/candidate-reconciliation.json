@@ -1,0 +1,728 @@
+{
+  "kind": "WORKER3_RECOVERY_IN_PROGRESS_RECONCILIATION",
+  "originalCode": "419d56c17ca72dae58132aa00c7424b07477aa6c",
+  "originalEvidence": "4a895fcba82c719c21749d0efcfa5f8f1bad26a6",
+  "coordinatorHeadReadOnly": "8296454dc7244205ef4cf0b6e0b41c38f90af20f",
+  "confirmedEngineeringBaseline": 81,
+  "newConfirmedEngineering": 0,
+  "potentialEngineeringOverlay": 101,
+  "releaseHold": true,
+  "canonicalCountsChanged": false,
+  "PR1538Modified": false,
+  "productionChanges": false,
+  "all20RemainUnqualified": true,
+  "rows": [
+    {
+      "catalogId": 284,
+      "identity": {
+        "engineId": "statistics.z-score",
+        "slug": "z-score-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.z-score@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/statistics/catalog-batch-1.ts",
+        "blob": "32bcaac6edbe68d220109ce6f9cde62694bcf429",
+        "sha256": "172db736ce7c991e0b11cf99612578d7c25374bda0f95e009167e9fa887ba52f",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 284,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "3e2f67802c15275cfb68db6203dae2ccef0816a8c44101e578612fa239643066"
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "coreScopedAudit": "NO_ADDITIONAL_ARITHMETIC_OR_SOURCE_APPLICABILITY_DEFECT_DEMONSTRATED",
+      "deliveryRepairSource": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "remainingSharedGates": [
+        "Exact current32 source admission and security controls",
+        "Fresh Git transport correctness and original API/UI limits",
+        "Complete mandatory exact-head hosted CI"
+      ],
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 285,
+      "identity": {
+        "engineId": "statistics.confidence-interval",
+        "slug": "confidence-interval-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.confidence-interval@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/statistics/catalog-batch-2.ts",
+        "blob": "82bc66e1af1a64535c0eccf4a033f20f2f4df94e",
+        "sha256": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 285,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "9e8cc004af9a53dbb31d0fd28b198fbd844f27c050e2e46531dc2e4e4395c51f"
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "coreScopedAudit": "NO_ADDITIONAL_ARITHMETIC_OR_SOURCE_APPLICABILITY_DEFECT_DEMONSTRATED",
+      "deliveryRepairSource": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "remainingSharedGates": [
+        "Exact current32 source admission and security controls",
+        "Fresh Git transport correctness and original API/UI limits",
+        "Complete mandatory exact-head hosted CI"
+      ],
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 286,
+      "identity": {
+        "engineId": "statistics.sample-size",
+        "slug": "sample-size-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.sample-size@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/statistics/catalog-batch-2.ts",
+        "blob": "82bc66e1af1a64535c0eccf4a033f20f2f4df94e",
+        "sha256": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 286,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "4053ee4fb04e73951d7cb6786ecffb92138707e1a98065f8935049f7986bfb2a"
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "coreScopedAudit": "NO_ADDITIONAL_ARITHMETIC_OR_SOURCE_APPLICABILITY_DEFECT_DEMONSTRATED",
+      "deliveryRepairSource": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "remainingSharedGates": [
+        "Exact current32 source admission and security controls",
+        "Fresh Git transport correctness and original API/UI limits",
+        "Complete mandatory exact-head hosted CI"
+      ],
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 287,
+      "identity": {
+        "engineId": "statistics.probability",
+        "slug": "probability-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.probability@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/statistics/catalog-batch-2.ts",
+        "blob": "82bc66e1af1a64535c0eccf4a033f20f2f4df94e",
+        "sha256": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 287,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "9f0bd0689ad55b06397d60c4b4959aca1755b1dacce9cb23791c3e9e8526ca3a"
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "coreScopedAudit": "NO_ADDITIONAL_ARITHMETIC_OR_SOURCE_APPLICABILITY_DEFECT_DEMONSTRATED",
+      "deliveryRepairSource": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "remainingSharedGates": [
+        "Exact current32 source admission and security controls",
+        "Fresh Git transport correctness and original API/UI limits",
+        "Complete mandatory exact-head hosted CI"
+      ],
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 288,
+      "identity": {
+        "engineId": "statistics.permutation",
+        "slug": "permutation-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.permutation@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/statistics/catalog-batch-2.ts",
+        "blob": "82bc66e1af1a64535c0eccf4a033f20f2f4df94e",
+        "sha256": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 288,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "10db3a3862ffec0b7b05e9838b117ae79768518e52c87ea7dd882de7ef3de6a5"
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "coreScopedAudit": "NO_ADDITIONAL_ARITHMETIC_OR_SOURCE_APPLICABILITY_DEFECT_DEMONSTRATED",
+      "deliveryRepairSource": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "remainingSharedGates": [
+        "Exact current32 source admission and security controls",
+        "Fresh Git transport correctness and original API/UI limits",
+        "Complete mandatory exact-head hosted CI"
+      ],
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 289,
+      "identity": {
+        "engineId": "statistics.combination",
+        "slug": "combination-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.combination@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/statistics/catalog-batch-3.ts",
+        "blob": "15c2400c792fc2848264e9fe1783f919e7fbf7f6",
+        "sha256": "41df470fd871e6fd1779035805c1b96cb120c91aff7a3cce40bc7628e3c3dd8e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 289,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "2b85f6d1b3ee1023958b9f5b61d87cefe093e3a4d28ffc273ca02c72acf40228"
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "coreScopedAudit": "NO_ADDITIONAL_ARITHMETIC_OR_SOURCE_APPLICABILITY_DEFECT_DEMONSTRATED",
+      "deliveryRepairSource": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "remainingSharedGates": [
+        "Exact current32 source admission and security controls",
+        "Fresh Git transport correctness and original API/UI limits",
+        "Complete mandatory exact-head hosted CI"
+      ],
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 290,
+      "identity": {
+        "engineId": "statistics.binomial-probability",
+        "slug": "binomial-probability-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.binomial-probability@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/statistics/catalog-batch-3.ts",
+        "blob": "15c2400c792fc2848264e9fe1783f919e7fbf7f6",
+        "sha256": "41df470fd871e6fd1779035805c1b96cb120c91aff7a3cce40bc7628e3c3dd8e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 290,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "279b38d575d5fd2398b24430d1e5365baf0533274252c3b6924a5ccdd036c553"
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "coreScopedAudit": "NO_ADDITIONAL_ARITHMETIC_OR_SOURCE_APPLICABILITY_DEFECT_DEMONSTRATED",
+      "deliveryRepairSource": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "remainingSharedGates": [
+        "Exact current32 source admission and security controls",
+        "Fresh Git transport correctness and original API/UI limits",
+        "Complete mandatory exact-head hosted CI"
+      ],
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 291,
+      "identity": {
+        "engineId": "statistics.normal-distribution",
+        "slug": "normal-distribution-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.normal-distribution@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/statistics/catalog-batch-3.ts",
+        "blob": "15c2400c792fc2848264e9fe1783f919e7fbf7f6",
+        "sha256": "41df470fd871e6fd1779035805c1b96cb120c91aff7a3cce40bc7628e3c3dd8e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 291,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "4031133180be0a275623aae7d19ae846ad91d10305a7cae358df8cb45fac90e5"
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "coreScopedAudit": "NO_ADDITIONAL_ARITHMETIC_OR_SOURCE_APPLICABILITY_DEFECT_DEMONSTRATED",
+      "deliveryRepairSource": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "remainingSharedGates": [
+        "Exact current32 source admission and security controls",
+        "Fresh Git transport correctness and original API/UI limits",
+        "Complete mandatory exact-head hosted CI"
+      ],
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 300,
+      "identity": {
+        "engineId": "statistics.bayes-theorem",
+        "slug": "bayes-theorem-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.bayes-theorem@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/statistics/catalog-batch-4.ts",
+        "blob": "87a4eb962a39f28b0f1e8f13884cf8c7ff54826e",
+        "sha256": "b5f186fbbbeed527bf7f2734a3b53e02d2fcd2113fcef1b71092ef6d520e35f9",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 300,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "273fc8e1d7e745e989d6fad180983246a040f6a1f103db1d6f61a2629968ab12"
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "coreScopedAudit": "NO_ADDITIONAL_ARITHMETIC_OR_SOURCE_APPLICABILITY_DEFECT_DEMONSTRATED",
+      "deliveryRepairSource": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "remainingSharedGates": [
+        "Exact current32 source admission and security controls",
+        "Fresh Git transport correctness and original API/UI limits",
+        "Complete mandatory exact-head hosted CI"
+      ],
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 329,
+      "identity": {
+        "engineId": "chemistry.molality",
+        "slug": "molality-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.molality@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 329,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "2617d6d3138a3d2c1369c5b9d781a494e3b4830654b9d3b589e86a706ff5cbaa"
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "coreScopedAudit": "NO_ADDITIONAL_ARITHMETIC_OR_SOURCE_APPLICABILITY_DEFECT_DEMONSTRATED",
+      "deliveryRepairSource": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "remainingSharedGates": [
+        "Exact current32 source admission and security controls",
+        "Fresh Git transport correctness and original API/UI limits",
+        "Complete mandatory exact-head hosted CI"
+      ],
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 333,
+      "identity": {
+        "engineId": "chemistry.ph",
+        "slug": "ph-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.ph@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 333,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "563f69cdbb46e06d1f47c606bdaf7361f93d5eff9ecee37674d8d0b65a4f3ea7"
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "coreScopedAudit": "NO_ADDITIONAL_ARITHMETIC_OR_SOURCE_APPLICABILITY_DEFECT_DEMONSTRATED",
+      "deliveryRepairSource": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "remainingSharedGates": [
+        "Exact current32 source admission and security controls",
+        "Fresh Git transport correctness and original API/UI limits",
+        "Complete mandatory exact-head hosted CI"
+      ],
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 334,
+      "identity": {
+        "engineId": "chemistry.ideal-gas-law",
+        "slug": "ideal-gas-law-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.ideal-gas-law@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 334,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "3417079b2c940c587ee2f0e1e58e7284238c648ce32060d8d03e6a7d85bf416a"
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "coreScopedAudit": "NO_ADDITIONAL_ARITHMETIC_OR_SOURCE_APPLICABILITY_DEFECT_DEMONSTRATED",
+      "deliveryRepairSource": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "remainingSharedGates": [
+        "Exact current32 source admission and security controls",
+        "Fresh Git transport correctness and original API/UI limits",
+        "Complete mandatory exact-head hosted CI"
+      ],
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 335,
+      "identity": {
+        "engineId": "chemistry.gas-density",
+        "slug": "gas-density-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.gas-density@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 335,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "b7f260588406713ef02e12b837135b6698ca23aa83fd395a1e6015096b152e7c"
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "coreScopedAudit": "NO_ADDITIONAL_ARITHMETIC_OR_SOURCE_APPLICABILITY_DEFECT_DEMONSTRATED",
+      "deliveryRepairSource": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "remainingSharedGates": [
+        "Exact current32 source admission and security controls",
+        "Fresh Git transport correctness and original API/UI limits",
+        "Complete mandatory exact-head hosted CI"
+      ],
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 336,
+      "identity": {
+        "engineId": "chemistry.percent-composition",
+        "slug": "percent-composition-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.percent-composition@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 336,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "cf701464ce2264fc9bd97ce0c200c59017bbf9d6fadfd88f03fa15bb653bb031"
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "coreScopedAudit": "NO_ADDITIONAL_ARITHMETIC_OR_SOURCE_APPLICABILITY_DEFECT_DEMONSTRATED",
+      "deliveryRepairSource": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "remainingSharedGates": [
+        "Exact current32 source admission and security controls",
+        "Fresh Git transport correctness and original API/UI limits",
+        "Complete mandatory exact-head hosted CI"
+      ],
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 337,
+      "identity": {
+        "engineId": "chemistry.solution-concentration",
+        "slug": "solution-concentration-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.solution-concentration@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 337,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "1e15436d1a82ff8f6f8c8a453a2d78d754f43a1f9f8cc79d925740babe1ba4ed"
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "coreScopedAudit": "NO_ADDITIONAL_ARITHMETIC_OR_SOURCE_APPLICABILITY_DEFECT_DEMONSTRATED",
+      "deliveryRepairSource": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "remainingSharedGates": [
+        "Exact current32 source admission and security controls",
+        "Fresh Git transport correctness and original API/UI limits",
+        "Complete mandatory exact-head hosted CI"
+      ],
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 338,
+      "identity": {
+        "engineId": "chemistry.stoichiometry",
+        "slug": "stoichiometry-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.stoichiometry@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 338,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "8b03855dea7b47891152c6b7a40949658502b294840851774a3267ead7de2eff"
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "coreScopedAudit": "NO_ADDITIONAL_ARITHMETIC_OR_SOURCE_APPLICABILITY_DEFECT_DEMONSTRATED",
+      "deliveryRepairSource": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "remainingSharedGates": [
+        "Exact current32 source admission and security controls",
+        "Fresh Git transport correctness and original API/UI limits",
+        "Complete mandatory exact-head hosted CI"
+      ],
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 339,
+      "identity": {
+        "engineId": "chemistry.half-life",
+        "slug": "half-life-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.half-life@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 339,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "dc9b0769923c7797811b806b7bf5c0a4112f55b8b07f60a361e62f563eb57269"
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "coreScopedAudit": "NO_ADDITIONAL_ARITHMETIC_OR_SOURCE_APPLICABILITY_DEFECT_DEMONSTRATED",
+      "deliveryRepairSource": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "remainingSharedGates": [
+        "Exact current32 source admission and security controls",
+        "Fresh Git transport correctness and original API/UI limits",
+        "Complete mandatory exact-head hosted CI"
+      ],
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 340,
+      "identity": {
+        "engineId": "chemistry.nernst-equation",
+        "slug": "nernst-equation-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.nernst-equation@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 340,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "cdb5856952d93faaafb249ae319a2882bfb27cc3e2205c5b1bdd2f7f99feccf7"
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "coreScopedAudit": "NO_ADDITIONAL_ARITHMETIC_OR_SOURCE_APPLICABILITY_DEFECT_DEMONSTRATED",
+      "deliveryRepairSource": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "remainingSharedGates": [
+        "Exact current32 source admission and security controls",
+        "Fresh Git transport correctness and original API/UI limits",
+        "Complete mandatory exact-head hosted CI"
+      ],
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 341,
+      "identity": {
+        "engineId": "chemistry.beer-lambert-law",
+        "slug": "beer-lambert-law-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.beer-lambert-law@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 341,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "a9904b3ee4e3623d27142926e93b1c639cc96ad9d5f4881dfe16275713688e89"
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "coreScopedAudit": "NO_ADDITIONAL_ARITHMETIC_OR_SOURCE_APPLICABILITY_DEFECT_DEMONSTRATED",
+      "deliveryRepairSource": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "remainingSharedGates": [
+        "Exact current32 source admission and security controls",
+        "Fresh Git transport correctness and original API/UI limits",
+        "Complete mandatory exact-head hosted CI"
+      ],
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 342,
+      "identity": {
+        "engineId": "chemistry.titration",
+        "slug": "titration-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.titration@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 342,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "1a6e4bcf9ef119cb2a650c8fa5a21cf9e2ffd6bc057ffce5a2d5eb3b93aade9a"
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "coreScopedAudit": "NO_ADDITIONAL_ARITHMETIC_OR_SOURCE_APPLICABILITY_DEFECT_DEMONSTRATED",
+      "deliveryRepairSource": "50240fb1d59a1f8d298718f85e58bd55b4b990c2",
+      "remainingSharedGates": [
+        "Exact current32 source admission and security controls",
+        "Fresh Git transport correctness and original API/UI limits",
+        "Complete mandatory exact-head hosted CI"
+      ],
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false
+    }
+  ],
+  "auditReceipts": [
+    {
+      "path": "docs/worker3-recovery-20261116/review/calcumint-worker3-statistics-audit.json",
+      "bytes": 82728,
+      "sha256": "0b87adbae0f14c62109b38db999273eac7198da7ec77e4e1b28da51feb6ca310"
+    },
+    {
+      "path": "docs/worker3-recovery-20261116/review/calcumint-worker3-statistics-audit.md",
+      "bytes": 4431,
+      "sha256": "1be418a05a14cfc2226bebf34a08e3a5f1019e411fd9d83f2e61bb5cdf2c6c03"
+    },
+    {
+      "path": "docs/worker3-recovery-20261116/review/calcumint-worker3-chemistry-audit.json",
+      "bytes": 148762,
+      "sha256": "17a0d507a76757ee68182173eacbee9c990f6b47099d3cf233867230eb39dc55"
+    },
+    {
+      "path": "docs/worker3-recovery-20261116/review/calcumint-worker3-chemistry-audit.md",
+      "bytes": 11610,
+      "sha256": "802e01263ac1b08542a31a77a7de775d6831f6269f8dee696c886f59682d7845"
+    },
+    {
+      "path": "docs/worker3-recovery-20261116/review/calcumint-worker3-chemistry-delivery-witness.json",
+      "bytes": 23329,
+      "sha256": "8073abbaf350355b9e9cbb69630f7d36797207d2e1154289617ce527f2e4ad81"
+    },
+    {
+      "path": "docs/worker3-recovery-20261116/review/calcumint-worker3-statistics-delivery-review.json",
+      "bytes": 4397,
+      "sha256": "ac8c374491ba46066ca9d9db0db6d61eab5f52495b5366fb832b3e2ca4a9abc1"
+    },
+    {
+      "path": "docs/worker3-recovery-20261116/review/calcumint-worker3-integration-design.json",
+      "bytes": 8455,
+      "sha256": "ce6fa7e2947e0c63259533c0f8d529df9743edab5b8b7ca5eb7233b8f6f977f8"
+    },
+    {
+      "path": "docs/worker3-recovery-20261116/review/calcumint-worker3-integration-design.md",
+      "bytes": 12262,
+      "sha256": "288931233eac011081a64ef9832d5c072d3fcaba1c7a3b3f653982a825f45b57"
+    },
+    {
+      "path": "docs/worker3-recovery-20261116/review/calcumint-worker3-publication-independent-review.json",
+      "bytes": 1022,
+      "sha256": "eeca2214652c82d0e8e030d6c1e055693f21d0abe0fd8337549a2943aed96eaf"
+    },
+    {
+      "path": "docs/worker3-recovery-20261116/review/calcumint-delivery-business-deltas.json",
+      "bytes": 891,
+      "sha256": "3afc7422474bfcded4859dbe2db0e6aaea298e9cfb07457eebb48320cbc88bb3"
+    }
+  ]
+}
