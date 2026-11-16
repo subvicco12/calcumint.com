@@ -1,0 +1,145 @@
+{
+  "kind": "EXACT_HEAD_HOSTED_CI_FAILURE_EVIDENCE",
+  "runId": 43734620606,
+  "head": "419d56c17ca72dae58132aa00c7424b07477aa6c",
+  "workflowId": 357576907,
+  "workflowPath": ".github/workflows/ci.yml",
+  "event": "workflow_dispatch",
+  "runAttempt": 1,
+  "status": "completed",
+  "conclusion": "failure",
+  "jobs": [
+    {
+      "id": 132874372257,
+      "name": "source-acceptance",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "head_sha": "419d56c17ca72dae58132aa00c7424b07477aa6c",
+      "run_id": 43734620606,
+      "run_attempt": 1,
+      "started_at": "2026-11-15T16:17:18Z",
+      "completed_at": "2026-11-15T16:37:33Z"
+    },
+    {
+      "id": 132874372509,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "419d56c17ca72dae58132aa00c7424b07477aa6c",
+      "run_id": 43734620606,
+      "run_attempt": 1,
+      "started_at": "2026-11-15T16:17:19Z",
+      "completed_at": "2026-11-15T16:26:57Z"
+    },
+    {
+      "id": 132874372532,
+      "name": "checks",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "419d56c17ca72dae58132aa00c7424b07477aa6c",
+      "run_id": 43734620606,
+      "run_attempt": 1,
+      "started_at": "2026-11-15T16:17:19Z",
+      "completed_at": "2026-11-15T16:29:45Z"
+    },
+    {
+      "id": 132874372534,
+      "name": "publication-factory",
+      "status": "completed",
+      "conclusion": "failure",
+      "head_sha": "419d56c17ca72dae58132aa00c7424b07477aa6c",
+      "run_id": 43734620606,
+      "run_attempt": 1,
+      "started_at": "2026-11-15T16:17:18Z",
+      "completed_at": "2026-11-15T16:26:34Z"
+    },
+    {
+      "id": 132874372552,
+      "name": "full-product",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "419d56c17ca72dae58132aa00c7424b07477aa6c",
+      "run_id": 43734620606,
+      "run_attempt": 1,
+      "started_at": "2026-11-15T16:17:18Z",
+      "completed_at": "2026-11-15T16:32:18Z"
+    },
+    {
+      "id": 132880233302,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "failure",
+      "head_sha": "419d56c17ca72dae58132aa00c7424b07477aa6c",
+      "run_id": 43734620606,
+      "run_attempt": 1,
+      "started_at": "2026-11-15T16:37:35Z",
+      "completed_at": "2026-11-15T16:37:39Z"
+    }
+  ],
+  "publicationFailure": {
+    "job": "publication-factory",
+    "step": "Approved six-candidate worker, workflow and replay acceptance",
+    "cases": 43,
+    "passed": 42,
+    "failed": 1,
+    "test": "standalone exact bootstrap source capture preserves frozen manifest and governing verifier sources",
+    "location": "tests/source-lineage-bootstrap.test.mjs:45",
+    "callee": "tests/milestone100-20261114/source-preflight-stage8.mjs:51",
+    "actualRef": "174c42d16f0eaad9ced52069a17c239d73337b4d",
+    "expectedRef": "1f4b9885c7f483c5ec2282e50d72a1fefe3e4a19",
+    "classification": "Historical guard reference join assertion; no missing-object or mathematical-engine-change claim.",
+    "receipt": "final26/hosted-publication-six-candidate-step.log"
+  },
+  "unfilteredUnit": {
+    "jobConclusion": "cancelled",
+    "configuredJobTimeoutMinutes": 20,
+    "jobWallSeconds": 1215.0,
+    "completed": false,
+    "aggregateUnitSummaryAvailable": false,
+    "observedPassedOuterFiles": 375,
+    "observedFailedOuterFiles": [
+      "src/lib/execution-recovery-evidence.test.ts",
+      "src/lib/five-full-contract-evidence.test.ts",
+      "src/lib/parallel-source-evidence.test.ts"
+    ],
+    "observedSkippedOuterFiles": [
+      "src/calculators/catalog-full-evidence.test.ts"
+    ],
+    "timingFailures": [
+      {
+        "case": "API source proof",
+        "milliseconds": 6707,
+        "deadlineMilliseconds": 5000
+      },
+      {
+        "case": "UI/PDF source proof",
+        "milliseconds": 6231,
+        "deadlineMilliseconds": 5000
+      },
+      {
+        "case": "source-proof child",
+        "milliseconds": 150100,
+        "deadlineMilliseconds": 150000,
+        "qualification": "Observed wrapper duration; child has150000ms limit and outer case160000ms."
+      },
+      {
+        "case": "shortest-publication wrapper",
+        "milliseconds": 65014,
+        "deadlineMilliseconds": 65000
+      },
+      {
+        "case": "execution-lineage wrapper",
+        "milliseconds": 60043,
+        "deadlineMilliseconds": 60000
+      }
+    ],
+    "otherObservedFailure": "six-candidate CI lineage consumer exited1 at23305ms; its command group also fails in the publication job with the separately recorded reference assertion.",
+    "receipt": "final26/hosted-unfiltered-unit-step.log",
+    "logTransportObservation": "Bounded catalog output completed; the log contains hundreds of later file results. No hosted stdout-transport-hang diagnosis is made."
+  },
+  "sourceProofArchitectureAssessment": "final26/calcumint-source26-architecture-assessment.md",
+  "qualificationGranted": false,
+  "confirmedEngineeringOverlay": 80,
+  "newConfirmedEngineering": 0,
+  "releaseHold": true
+}

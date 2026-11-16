@@ -1,0 +1,21 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Evidence batch actual status changed
+    at assertActualState (file:///workspace/worker2-ci-acceleration/tests/next-cohort-20261110/source/retained-runtime.mjs:582:141)
+    at Object.begin (file:///workspace/worker2-ci-acceleration/tests/next-cohort-20261110/source/retained-runtime.mjs:592:13)
+    at runClosedSynchronousBatch (file:///workspace/worker2-ci-acceleration/tests/next-cohort-20261110/source/runtime-evidence-batch.mjs:78:18)
+    at withRuntimeEvidenceBatch (file:///workspace/worker2-ci-acceleration/tests/next-cohort-20261110/source/retained-runtime.mjs:585:9)
+    at Object.run (file:///tmp/worker2-original-proof-PhUuaJ/probe.mjs:32:3)
+    at file:///workspace/worker2-ci-acceleration/tests/worker2-ci-acceleration-20261116/original-proof-probe.mjs:36:42
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v22.23.4

@@ -1,0 +1,382 @@
+﻿2026-11-15T16:25:56.2003815Z ##[group]Run if ! command -v pdftotext >/dev/null || ! command -v pdffonts >/dev/null || ! command -v pdftoppm >/dev/null || ! command -v pdfinfo >/dev/null; then
+2026-11-15T16:25:56.2004902Z [36;1mif ! command -v pdftotext >/dev/null || ! command -v pdffonts >/dev/null || ! command -v pdftoppm >/dev/null || ! command -v pdfinfo >/dev/null; then[0m
+2026-11-15T16:25:56.2005539Z [36;1m  sudo apt-get update -qq[0m
+2026-11-15T16:25:56.2005957Z [36;1m  sudo apt-get install -y --no-install-recommends poppler-utils[0m
+2026-11-15T16:25:56.2006335Z [36;1mfi[0m
+2026-11-15T16:25:56.2006577Z [36;1mnode scripts/assert-pdf-tools.mjs[0m
+2026-11-15T16:25:56.2006995Z [36;1mpython3 scripts/product-completion-20261108/inventory.py --check[0m
+2026-11-15T16:25:56.2007788Z [36;1mnode --test tests/financial-safety-lineage.test.mjs tests/product-completion-lineage.test.mjs tests/source-lineage-bootstrap.test.mjs[0m
+2026-11-15T16:25:56.2008542Z [36;1mnode scripts/check-current-six-candidate-evidence.mjs[0m
+2026-11-15T16:25:56.2009005Z [36;1mnode --test tests/full-six-candidate/preview.test.mjs[0m
+2026-11-15T16:25:56.2009400Z [36;1mnode tests/full-six-candidate/browser.mjs[0m
+2026-11-15T16:25:56.2009784Z [36;1mnode tests/product-completion-20261108/browser.mjs[0m
+2026-11-15T16:25:56.2058321Z shell: /usr/bin/bash -e {0}
+2026-11-15T16:25:56.2058770Z env:
+2026-11-15T16:25:56.2059467Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.zijSh9/opt/google/chrome/chrome
+2026-11-15T16:25:56.2060609Z   SIX_CANDIDATE_BROWSER_RECEIPT: /home/runner/work/_temp/six-candidate-closure
+2026-11-15T16:25:56.2061384Z   PRODUCT_COMPLETION_BROWSER: /home/runner/work/_temp/six-candidate-closure/product-completion
+2026-11-15T16:25:56.2061875Z ##[endgroup]
+2026-11-15T16:25:59.1332401Z Reading package lists...
+2026-11-15T16:25:59.2818025Z Building dependency tree...
+2026-11-15T16:25:59.2825467Z Reading state information...
+2026-11-15T16:25:59.3651076Z Solving dependencies...
+2026-11-15T16:25:59.4470487Z The following additional packages will be installed:
+2026-11-15T16:25:59.4476041Z   libgpgmepp7 libpoppler156
+2026-11-15T16:25:59.4482416Z Recommended packages:
+2026-11-15T16:25:59.4483017Z   poppler-data
+2026-11-15T16:25:59.4668698Z The following NEW packages will be installed:
+2026-11-15T16:25:59.4673537Z   libgpgmepp7 libpoppler156 poppler-utils
+2026-11-15T16:25:59.4878035Z 0 upgraded, 3 newly installed, 0 to remove and 24 not upgraded.
+2026-11-15T16:25:59.4879118Z Need to get 1607 kB of archives.
+2026-11-15T16:25:59.4879904Z After this operation, 5354 kB of additional disk space will be used.
+2026-11-15T16:25:59.4880799Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-11-15T16:25:59.5826068Z Get:2 http://azure.archive.ubuntu.com/ubuntu resolute/main amd64v3 libgpgmepp7 amd64 2.0.0-2 [132 kB]
+2026-11-15T16:25:59.6622853Z Get:3 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64v3 libpoppler156 amd64 26.01.0-2ubuntu0.3 [1243 kB]
+2026-11-15T16:25:59.7599886Z Get:4 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64v3 poppler-utils amd64 26.01.0-2ubuntu0.3 [231 kB]
+2026-11-15T16:26:00.0627107Z Fetched 1607 kB in 0s (5574 kB/s)
+2026-11-15T16:26:00.0861269Z Selecting previously unselected package libgpgmepp7:amd64.
+2026-11-15T16:26:00.1146274Z (Reading database ... 
+2026-11-15T16:26:00.1146694Z (Reading database ... 5%
+2026-11-15T16:26:00.1146984Z (Reading database ... 10%
+2026-11-15T16:26:00.1147301Z (Reading database ... 15%
+2026-11-15T16:26:00.1147568Z (Reading database ... 20%
+2026-11-15T16:26:00.1147901Z (Reading database ... 25%
+2026-11-15T16:26:00.1149209Z (Reading database ... 30%
+2026-11-15T16:26:00.1149646Z (Reading database ... 35%
+2026-11-15T16:26:00.1149911Z (Reading database ... 40%
+2026-11-15T16:26:00.1150179Z (Reading database ... 45%
+2026-11-15T16:26:00.1150445Z (Reading database ... 50%
+2026-11-15T16:26:00.1947493Z (Reading database ... 55%
+2026-11-15T16:26:00.3929983Z (Reading database ... 60%
+2026-11-15T16:26:00.4958458Z (Reading database ... 65%
+2026-11-15T16:26:00.6964926Z (Reading database ... 70%
+2026-11-15T16:26:00.8434423Z (Reading database ... 75%
+2026-11-15T16:26:01.0445810Z (Reading database ... 80%
+2026-11-15T16:26:01.2527856Z (Reading database ... 85%
+2026-11-15T16:26:01.4423871Z (Reading database ... 90%
+2026-11-15T16:26:01.6103325Z (Reading database ... 95%
+2026-11-15T16:26:01.6103936Z (Reading database ... 100%
+2026-11-15T16:26:01.6104809Z (Reading database ... 213946 files and directories currently installed.)
+2026-11-15T16:26:01.6147093Z Preparing to unpack .../libgpgmepp7_2.0.0-2_amd64v3.deb ...
+2026-11-15T16:26:01.6235177Z Unpacking libgpgmepp7:amd64 (2.0.0-2) ...
+2026-11-15T16:26:01.6493205Z Selecting previously unselected package libpoppler156:amd64.
+2026-11-15T16:26:01.6631655Z Preparing to unpack .../libpoppler156_26.01.0-2ubuntu0.3_amd64v3.deb ...
+2026-11-15T16:26:01.6638628Z Unpacking libpoppler156:amd64 (26.01.0-2ubuntu0.3) ...
+2026-11-15T16:26:01.7007103Z Selecting previously unselected package poppler-utils.
+2026-11-15T16:26:01.7143977Z Preparing to unpack .../poppler-utils_26.01.0-2ubuntu0.3_amd64v3.deb ...
+2026-11-15T16:26:01.7150385Z Unpacking poppler-utils (26.01.0-2ubuntu0.3) ...
+2026-11-15T16:26:01.7671096Z Setting up libgpgmepp7:amd64 (2.0.0-2) ...
+2026-11-15T16:26:01.7687341Z Setting up libpoppler156:amd64 (26.01.0-2ubuntu0.3) ...
+2026-11-15T16:26:01.7704970Z Setting up poppler-utils (26.01.0-2ubuntu0.3) ...
+2026-11-15T16:26:01.7722722Z Processing triggers for man-db (2.13.1-1build1) ...
+2026-11-15T16:26:01.7810982Z Not building database; man-db/auto-update is not 'true'.
+2026-11-15T16:26:01.7822964Z Processing triggers for libc-bin (2.43-2ubuntu2.4) ...
+2026-11-15T16:26:02.4622664Z 
+2026-11-15T16:26:02.4623558Z Running kernel seems to be up-to-date.
+2026-11-15T16:26:02.4624099Z 
+2026-11-15T16:26:02.4624366Z Restarting services...
+2026-11-15T16:26:02.4715586Z 
+2026-11-15T16:26:02.4716048Z Service restarts being deferred:
+2026-11-15T16:26:02.4719401Z  systemctl restart hosted-compute-agent.service
+2026-11-15T16:26:02.4719837Z 
+2026-11-15T16:26:02.4720196Z No containers need to be restarted.
+2026-11-15T16:26:02.4720571Z 
+2026-11-15T16:26:02.4720896Z No user sessions are running outdated binaries.
+2026-11-15T16:26:02.4721281Z 
+2026-11-15T16:26:02.4721614Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-11-15T16:26:03.3849974Z {"independentPdfTools":{"pdftotext":"pdftotext version 26.01.0","pdffonts":"pdffonts version 26.01.0","pdftoppm":"pdftoppm version 26.01.0","pdfinfo":"pdfinfo version 26.01.0"}}
+2026-11-15T16:26:10.4185925Z PASS: 540 unique IDs; retained native catalog attestation matches exact repository triples; deterministic inventory outputs match. Native workbook bytes not reopened; retained attestation only.
+2026-11-15T16:26:10.5364764Z TAP version 13
+2026-11-15T16:26:11.0882783Z # Subtest: retains both exact historical financial witness revisions
+2026-11-15T16:26:11.0903963Z ok 1 - retains both exact historical financial witness revisions
+2026-11-15T16:26:11.0923317Z   ---
+2026-11-15T16:26:11.0924119Z   duration_ms: 2.273952
+2026-11-15T16:26:11.0925041Z   type: 'test'
+2026-11-15T16:26:11.0925804Z   ...
+2026-11-15T16:26:11.0927119Z # Subtest: admits exact guard successor and frozen historical source: src/calculators/finance/compound-interest.ts
+2026-11-15T16:26:11.0929050Z ok 2 - admits exact guard successor and frozen historical source: src/calculators/finance/compound-interest.ts
+2026-11-15T16:26:11.0930278Z   ---
+2026-11-15T16:26:11.0930840Z   duration_ms: 32.076216
+2026-11-15T16:26:11.0931482Z   type: 'test'
+2026-11-15T16:26:11.0932051Z   ...
+2026-11-15T16:26:11.0934542Z # Subtest: rejects changed or reverted current bytes and false historical claim: src/calculators/finance/compound-interest.ts
+2026-11-15T16:26:11.0936755Z ok 3 - rejects changed or reverted current bytes and false historical claim: src/calculators/finance/compound-interest.ts
+2026-11-15T16:26:11.0937920Z   ---
+2026-11-15T16:26:11.0952895Z   duration_ms: 44.193554
+2026-11-15T16:26:11.0954661Z   type: 'test'
+2026-11-15T16:26:11.0955305Z   ...
+2026-11-15T16:26:11.0957224Z # Subtest: rejects missing or substituted predecessor and successor objects: src/calculators/finance/compound-interest.ts
+2026-11-15T16:26:11.0959212Z ok 4 - rejects missing or substituted predecessor and successor objects: src/calculators/finance/compound-interest.ts
+2026-11-15T16:26:11.0960466Z   ---
+2026-11-15T16:26:11.0961067Z   duration_ms: 59.738177
+2026-11-15T16:26:11.0961755Z   type: 'test'
+2026-11-15T16:26:11.0962372Z   ...
+2026-11-15T16:26:11.0964352Z # Subtest: admits exact guard successor and frozen historical source: src/calculators/finance/loan-payment.ts
+2026-11-15T16:26:11.0966279Z ok 5 - admits exact guard successor and frozen historical source: src/calculators/finance/loan-payment.ts
+2026-11-15T16:26:11.0967419Z   ---
+2026-11-15T16:26:11.0968006Z   duration_ms: 30.352184
+2026-11-15T16:26:11.0968679Z   type: 'test'
+2026-11-15T16:26:11.0969285Z   ...
+2026-11-15T16:26:11.0970607Z # Subtest: rejects changed or reverted current bytes and false historical claim: src/calculators/finance/loan-payment.ts
+2026-11-15T16:26:11.0972666Z ok 6 - rejects changed or reverted current bytes and false historical claim: src/calculators/finance/loan-payment.ts
+2026-11-15T16:26:11.0973997Z   ---
+2026-11-15T16:26:11.0974630Z   duration_ms: 45.814948
+2026-11-15T16:26:11.0975227Z   type: 'test'
+2026-11-15T16:26:11.0975810Z   ...
+2026-11-15T16:26:11.0977089Z # Subtest: rejects missing or substituted predecessor and successor objects: src/calculators/finance/loan-payment.ts
+2026-11-15T16:26:11.0979123Z ok 7 - rejects missing or substituted predecessor and successor objects: src/calculators/finance/loan-payment.ts
+2026-11-15T16:26:11.0980431Z   ---
+2026-11-15T16:26:11.0980997Z   duration_ms: 63.015428
+2026-11-15T16:26:11.0981648Z   type: 'test'
+2026-11-15T16:26:11.0982329Z   ...
+2026-11-15T16:26:11.0983832Z # Subtest: admits exact guard successor and frozen historical source: src/calculators/precision.ts
+2026-11-15T16:26:11.0985466Z ok 8 - admits exact guard successor and frozen historical source: src/calculators/precision.ts
+2026-11-15T16:26:11.0986511Z   ---
+2026-11-15T16:26:11.0987069Z   duration_ms: 28.153001
+2026-11-15T16:26:11.0987690Z   type: 'test'
+2026-11-15T16:26:11.0988234Z   ...
+2026-11-15T16:26:11.0989461Z # Subtest: rejects changed or reverted current bytes and false historical claim: src/calculators/precision.ts
+2026-11-15T16:26:11.0991176Z ok 9 - rejects changed or reverted current bytes and false historical claim: src/calculators/precision.ts
+2026-11-15T16:26:11.0992719Z   ---
+2026-11-15T16:26:11.0993303Z   duration_ms: 43.16767
+2026-11-15T16:26:11.0993914Z   type: 'test'
+2026-11-15T16:26:11.0994443Z   ...
+2026-11-15T16:26:11.0995938Z # Subtest: rejects missing or substituted predecessor and successor objects: src/calculators/precision.ts
+2026-11-15T16:26:11.0997696Z ok 10 - rejects missing or substituted predecessor and successor objects: src/calculators/precision.ts
+2026-11-15T16:26:11.0998753Z   ---
+2026-11-15T16:26:11.0999259Z   duration_ms: 61.435637
+2026-11-15T16:26:11.0999819Z   type: 'test'
+2026-11-15T16:26:11.1000352Z   ...
+2026-11-15T16:26:11.1001213Z # Subtest: unknown and unsafe paths cannot invoke the successor exception
+2026-11-15T16:26:11.1002359Z ok 11 - unknown and unsafe paths cannot invoke the successor exception
+2026-11-15T16:26:11.1003443Z   ---
+2026-11-15T16:26:11.1003982Z   duration_ms: 0.301352
+2026-11-15T16:26:11.1004566Z   type: 'test'
+2026-11-15T16:26:11.1008068Z   ...
+2026-11-15T16:26:17.3881654Z # Subtest: frozen comparison admits only exact financial successors and still rejects unrelated edits
+2026-11-15T16:26:17.3892226Z ok 12 - frozen comparison admits only exact financial successors and still rejects unrelated edits
+2026-11-15T16:26:17.3897739Z   ---
+2026-11-15T16:26:17.3898371Z   duration_ms: 105.857436
+2026-11-15T16:26:17.3899310Z   type: 'test'
+2026-11-15T16:26:17.3899937Z   ...
+2026-11-15T16:26:17.3900932Z # Subtest: both publication caller comparisons accept exact pinned precision successor
+2026-11-15T16:26:17.3902355Z ok 13 - both publication caller comparisons accept exact pinned precision successor
+2026-11-15T16:26:17.3904520Z   ---
+2026-11-15T16:26:17.3905185Z   duration_ms: 6201.509526
+2026-11-15T16:26:17.3905919Z   type: 'test'
+2026-11-15T16:26:17.3906516Z   ...
+2026-11-15T16:26:21.6652849Z # {"candidateIds":[235,251,275,276,282,283],"exactSourceBindings":41,"canonicalAccepted":0,"publicationEligible":0,"releaseHold":true}
+2026-11-15T16:26:22.5094689Z # Subtest: admits exact committed successor: src/calculators/finance/compound-interest.test.ts
+2026-11-15T16:26:22.5111714Z ok 14 - admits exact committed successor: src/calculators/finance/compound-interest.test.ts
+2026-11-15T16:26:22.5143559Z   ---
+2026-11-15T16:26:22.5162231Z   duration_ms: 76.897664
+2026-11-15T16:26:22.5163363Z   type: 'test'
+2026-11-15T16:26:22.5164072Z   ...
+2026-11-15T16:26:22.5165340Z # Subtest: rejects uncommitted successor tamper: src/calculators/finance/compound-interest.test.ts
+2026-11-15T16:26:22.5167124Z ok 15 - rejects uncommitted successor tamper: src/calculators/finance/compound-interest.test.ts
+2026-11-15T16:26:22.5168378Z   ---
+2026-11-15T16:26:22.5193341Z   duration_ms: 0.738208
+2026-11-15T16:26:22.5223024Z   type: 'test'
+2026-11-15T16:26:22.5243133Z   ...
+2026-11-15T16:26:22.5253757Z # Subtest: rejects rewritten historical claim: src/calculators/finance/compound-interest.test.ts
+2026-11-15T16:26:22.5259347Z ok 16 - rejects rewritten historical claim: src/calculators/finance/compound-interest.test.ts
+2026-11-15T16:26:22.5260230Z   ---
+2026-11-15T16:26:22.5260572Z   duration_ms: 0.227664
+2026-11-15T16:26:22.5260954Z   type: 'test'
+2026-11-15T16:26:22.5261292Z   ...
+2026-11-15T16:26:22.5262143Z # Subtest: rejects silent predecessor reversion: src/calculators/finance/compound-interest.test.ts
+2026-11-15T16:26:22.5280235Z ok 17 - rejects silent predecessor reversion: src/calculators/finance/compound-interest.test.ts
+2026-11-15T16:26:22.5281094Z   ---
+2026-11-15T16:26:22.5281417Z   duration_ms: 0.223827
+2026-11-15T16:26:22.5281793Z   type: 'test'
+2026-11-15T16:26:22.5282120Z   ...
+2026-11-15T16:26:22.5313341Z # Subtest: rejects unavailable or replaced Git provenance: src/calculators/finance/compound-interest.test.ts
+2026-11-15T16:26:22.5314878Z ok 18 - rejects unavailable or replaced Git provenance: src/calculators/finance/compound-interest.test.ts
+2026-11-15T16:26:22.5315784Z   ---
+2026-11-15T16:26:22.5316124Z   duration_ms: 0.241811
+2026-11-15T16:26:22.5316503Z   type: 'test'
+2026-11-15T16:26:22.5317261Z   ...
+2026-11-15T16:26:22.5318096Z # Subtest: rejects corrupted source object: src/calculators/finance/compound-interest.test.ts
+2026-11-15T16:26:22.5319323Z ok 19 - rejects corrupted source object: src/calculators/finance/compound-interest.test.ts
+2026-11-15T16:26:22.5320090Z   ---
+2026-11-15T16:26:22.5320418Z   duration_ms: 30.528794
+2026-11-15T16:26:22.5320808Z   type: 'test'
+2026-11-15T16:26:22.5321138Z   ...
+2026-11-15T16:26:22.5321955Z # Subtest: admits exact committed successor: src/components/full-six/candidate-workbench.tsx
+2026-11-15T16:26:22.5323385Z ok 20 - admits exact committed successor: src/components/full-six/candidate-workbench.tsx
+2026-11-15T16:26:22.5324144Z   ---
+2026-11-15T16:26:22.5324468Z   duration_ms: 162.405304
+2026-11-15T16:26:22.5324848Z   type: 'test'
+2026-11-15T16:26:22.5325168Z   ...
+2026-11-15T16:26:22.5326002Z # Subtest: rejects uncommitted successor tamper: src/components/full-six/candidate-workbench.tsx
+2026-11-15T16:26:22.5327281Z ok 21 - rejects uncommitted successor tamper: src/components/full-six/candidate-workbench.tsx
+2026-11-15T16:26:22.5328053Z   ---
+2026-11-15T16:26:22.5328369Z   duration_ms: 0.513157
+2026-11-15T16:26:22.5328752Z   type: 'test'
+2026-11-15T16:26:22.5329084Z   ...
+2026-11-15T16:26:22.5329954Z # Subtest: rejects rewritten historical claim: src/components/full-six/candidate-workbench.tsx
+2026-11-15T16:26:22.5331480Z ok 22 - rejects rewritten historical claim: src/components/full-six/candidate-workbench.tsx
+2026-11-15T16:26:22.5332250Z   ---
+2026-11-15T16:26:22.5332748Z   duration_ms: 0.381501
+2026-11-15T16:26:22.5333149Z   type: 'test'
+2026-11-15T16:26:22.5333714Z   ...
+2026-11-15T16:26:22.5334628Z # Subtest: rejects silent predecessor reversion: src/components/full-six/candidate-workbench.tsx
+2026-11-15T16:26:22.5335947Z ok 23 - rejects silent predecessor reversion: src/components/full-six/candidate-workbench.tsx
+2026-11-15T16:26:22.5336720Z   ---
+2026-11-15T16:26:22.5337041Z   duration_ms: 0.70776
+2026-11-15T16:26:22.5337415Z   type: 'test'
+2026-11-15T16:26:22.5337743Z   ...
+2026-11-15T16:26:22.5338734Z # Subtest: rejects unavailable or replaced Git provenance: src/components/full-six/candidate-workbench.tsx
+2026-11-15T16:26:22.5340148Z ok 24 - rejects unavailable or replaced Git provenance: src/components/full-six/candidate-workbench.tsx
+2026-11-15T16:26:22.5340990Z   ---
+2026-11-15T16:26:22.5341312Z   duration_ms: 0.227304
+2026-11-15T16:26:22.5341704Z   type: 'test'
+2026-11-15T16:26:22.5342029Z   ...
+2026-11-15T16:26:22.5373030Z # Subtest: rejects corrupted source object: src/components/full-six/candidate-workbench.tsx
+2026-11-15T16:26:22.5374613Z ok 25 - rejects corrupted source object: src/components/full-six/candidate-workbench.tsx
+2026-11-15T16:26:22.5375370Z   ---
+2026-11-15T16:26:22.5375698Z   duration_ms: 24.502684
+2026-11-15T16:26:22.5376081Z   type: 'test'
+2026-11-15T16:26:22.5376416Z   ...
+2026-11-15T16:26:22.5377057Z # Subtest: admits exact committed successor: .github/workflows/ci.yml
+2026-11-15T16:26:22.5377984Z ok 26 - admits exact committed successor: .github/workflows/ci.yml
+2026-11-15T16:26:22.5378595Z   ---
+2026-11-15T16:26:22.5378924Z   duration_ms: 366.79345
+2026-11-15T16:26:22.5379317Z   type: 'test'
+2026-11-15T16:26:22.5379651Z   ...
+2026-11-15T16:26:22.5380326Z # Subtest: rejects uncommitted successor tamper: .github/workflows/ci.yml
+2026-11-15T16:26:22.5381314Z ok 27 - rejects uncommitted successor tamper: .github/workflows/ci.yml
+2026-11-15T16:26:22.5381943Z   ---
+2026-11-15T16:26:22.5382279Z   duration_ms: 0.85239
+2026-11-15T16:26:22.5382821Z   type: 'test'
+2026-11-15T16:26:22.5383157Z   ...
+2026-11-15T16:26:22.5383807Z # Subtest: rejects rewritten historical claim: .github/workflows/ci.yml
+2026-11-15T16:26:22.5384754Z ok 28 - rejects rewritten historical claim: .github/workflows/ci.yml
+2026-11-15T16:26:22.5385349Z   ---
+2026-11-15T16:26:22.5385670Z   duration_ms: 0.101048
+2026-11-15T16:26:22.5386051Z   type: 'test'
+2026-11-15T16:26:22.5386371Z   ...
+2026-11-15T16:26:22.5387046Z # Subtest: rejects silent predecessor reversion: .github/workflows/ci.yml
+2026-11-15T16:26:22.5388378Z ok 29 - rejects silent predecessor reversion: .github/workflows/ci.yml
+2026-11-15T16:26:22.5389012Z   ---
+2026-11-15T16:26:22.5389344Z   duration_ms: 0.768343
+2026-11-15T16:26:22.5389720Z   type: 'test'
+2026-11-15T16:26:22.5390053Z   ...
+2026-11-15T16:26:22.5390800Z # Subtest: rejects unavailable or replaced Git provenance: .github/workflows/ci.yml
+2026-11-15T16:26:22.5391933Z ok 30 - rejects unavailable or replaced Git provenance: .github/workflows/ci.yml
+2026-11-15T16:26:22.5392801Z   ---
+2026-11-15T16:26:22.5393126Z   duration_ms: 0.139471
+2026-11-15T16:26:22.5393515Z   type: 'test'
+2026-11-15T16:26:22.5393836Z   ...
+2026-11-15T16:26:22.5394472Z # Subtest: rejects corrupted source object: .github/workflows/ci.yml
+2026-11-15T16:26:22.5395373Z ok 31 - rejects corrupted source object: .github/workflows/ci.yml
+2026-11-15T16:26:22.5395946Z   ---
+2026-11-15T16:26:22.5396278Z   duration_ms: 31.054564
+2026-11-15T16:26:22.5396675Z   type: 'test'
+2026-11-15T16:26:22.5397000Z   ...
+2026-11-15T16:26:22.5397577Z # Subtest: does not admit any unrelated engine, UI or unsafe path
+2026-11-15T16:26:22.5398419Z ok 32 - does not admit any unrelated engine, UI or unsafe path
+2026-11-15T16:26:22.5398974Z   ---
+2026-11-15T16:26:22.5399297Z   duration_ms: 0.303997
+2026-11-15T16:26:22.5399673Z   type: 'test'
+2026-11-15T16:26:22.5399998Z   ...
+2026-11-15T16:26:22.5401134Z # Subtest: integrated checker rejects a predecessor reversion even with its valid old hash: src/calculators/finance/compound-interest.ts
+2026-11-15T16:26:22.5433077Z ok 33 - integrated checker rejects a predecessor reversion even with its valid old hash: src/calculators/finance/compound-interest.ts
+2026-11-15T16:26:22.5433934Z   ---
+2026-11-15T16:26:22.5434157Z   duration_ms: 63.696038
+2026-11-15T16:26:22.5434415Z   type: 'test'
+2026-11-15T16:26:22.5434633Z   ...
+2026-11-15T16:26:22.5435345Z # Subtest: integrated checker rejects a predecessor reversion even with its valid old hash: src/components/full-six/candidate-workbench.tsx
+2026-11-15T16:26:22.5436444Z ok 34 - integrated checker rejects a predecessor reversion even with its valid old hash: src/components/full-six/candidate-workbench.tsx
+2026-11-15T16:26:22.5437039Z   ---
+2026-11-15T16:26:22.5437247Z   duration_ms: 9.410057
+2026-11-15T16:26:22.5437498Z   type: 'test'
+2026-11-15T16:26:22.5437705Z   ...
+2026-11-15T16:26:22.5438292Z # Subtest: integrated checker rejects a predecessor reversion even with its valid old hash: .github/workflows/ci.yml
+2026-11-15T16:26:22.5439206Z ok 35 - integrated checker rejects a predecessor reversion even with its valid old hash: .github/workflows/ci.yml
+2026-11-15T16:26:22.5439724Z   ---
+2026-11-15T16:26:22.5440102Z   duration_ms: 9.35482
+2026-11-15T16:26:22.5440350Z   type: 'test'
+2026-11-15T16:26:22.5440559Z   ...
+2026-11-15T16:26:22.5440988Z # Subtest: integrated checker rejects unrelated source tamper without new approval
+2026-11-15T16:26:22.5441630Z ok 36 - integrated checker rejects unrelated source tamper without new approval
+2026-11-15T16:26:22.5442033Z   ---
+2026-11-15T16:26:22.5442754Z   duration_ms: 0.350624
+2026-11-15T16:26:22.5443214Z   type: 'test'
+2026-11-15T16:26:22.5443554Z   ...
+2026-11-15T16:26:22.5444572Z # Subtest: workbench binding rejects supplemental comparison tamper: src/lib/full-six/candidate/scenario-comparison.ts
+2026-11-15T16:26:22.5446199Z ok 37 - workbench binding rejects supplemental comparison tamper: src/lib/full-six/candidate/scenario-comparison.ts
+2026-11-15T16:26:22.5447105Z   ---
+2026-11-15T16:26:22.5447476Z   duration_ms: 9.195893
+2026-11-15T16:26:22.5447853Z   type: 'test'
+2026-11-15T16:26:22.5448190Z   ...
+2026-11-15T16:26:22.5449257Z # Subtest: workbench binding rejects supplemental comparison tamper: src/components/full-six/candidate-scenario-comparison.tsx
+2026-11-15T16:26:22.5451019Z ok 38 - workbench binding rejects supplemental comparison tamper: src/components/full-six/candidate-scenario-comparison.tsx
+2026-11-15T16:26:22.5451975Z   ---
+2026-11-15T16:26:22.5452779Z   duration_ms: 9.094643
+2026-11-15T16:26:22.5453172Z   type: 'test'
+2026-11-15T16:26:22.5453484Z   ...
+2026-11-15T16:26:32.2024960Z # Subtest: reuses verified revisions without redundant network fetch
+2026-11-15T16:26:32.2033666Z ok 39 - reuses verified revisions without redundant network fetch
+2026-11-15T16:26:32.2034663Z   ---
+2026-11-15T16:26:32.2035222Z   duration_ms: 4.399246
+2026-11-15T16:26:32.2035657Z   type: 'test'
+2026-11-15T16:26:32.2036057Z   ...
+2026-11-15T16:26:32.2036796Z # Subtest: fetches only exact missing commits and re-verifies them
+2026-11-15T16:26:32.2037859Z ok 40 - fetches only exact missing commits and re-verifies them
+2026-11-15T16:26:32.2038601Z   ---
+2026-11-15T16:26:32.2038983Z   duration_ms: 5.466287
+2026-11-15T16:26:32.2039470Z   type: 'test'
+2026-11-15T16:26:32.2039895Z   ...
+2026-11-15T16:26:32.2073332Z # Subtest: fails closed on absent or substituted revisions after fetch
+2026-11-15T16:26:32.2074807Z ok 41 - fails closed on absent or substituted revisions after fetch
+2026-11-15T16:26:32.2089013Z   ---
+2026-11-15T16:26:32.2089552Z   duration_ms: 5.533651
+2026-11-15T16:26:32.2090124Z   type: 'test'
+2026-11-15T16:26:32.2090598Z   ...
+2026-11-15T16:26:32.2091764Z # Subtest: standalone exact bootstrap source capture preserves frozen manifest and governing verifier sources
+2026-11-15T16:26:32.2093782Z not ok 42 - standalone exact bootstrap source capture preserves frozen manifest and governing verifier sources
+2026-11-15T16:26:32.2094881Z   ---
+2026-11-15T16:26:32.2095281Z   duration_ms: 13940.006227
+2026-11-15T16:26:32.2095731Z   type: 'test'
+2026-11-15T16:26:32.2096783Z   location: '/home/runner/work/calcumint.com/calcumint.com/tests/source-lineage-bootstrap.test.mjs:45:1'
+2026-11-15T16:26:32.2098268Z   failureType: 'testCodeFailure'
+2026-11-15T16:26:32.2098775Z   error: |-
+2026-11-15T16:26:32.2099219Z     Expected values to be strictly equal:
+2026-11-15T16:26:32.2099756Z     + actual - expected
+2026-11-15T16:26:32.2100161Z     
+2026-11-15T16:26:32.2100609Z     + '174c42d16f0eaad9ced52069a17c239d73337b4d'
+2026-11-15T16:26:32.2101167Z     - '1f4b9885c7f483c5ec2282e50d72a1fefe3e4a19'
+2026-11-15T16:26:32.2101484Z     
+2026-11-15T16:26:32.2101702Z   code: 'ERR_ASSERTION'
+2026-11-15T16:26:32.2101961Z   name: 'AssertionError'
+2026-11-15T16:26:32.2102303Z   expected: '1f4b9885c7f483c5ec2282e50d72a1fefe3e4a19'
+2026-11-15T16:26:32.2102971Z   actual: '174c42d16f0eaad9ced52069a17c239d73337b4d'
+2026-11-15T16:26:32.2103311Z   operator: 'strictEqual'
+2026-11-15T16:26:32.2103563Z   stack: |-
+2026-11-15T16:26:32.2104329Z     proveSourcePreflightAndHistoricalInputs (file:///home/runner/work/calcumint.com/calcumint.com/tests/milestone100-20261114/source-preflight-stage8.mjs:51:870)
+2026-11-15T16:26:32.2105509Z     verifyBootstrapSuccession (file:///home/runner/work/calcumint.com/calcumint.com/tests/source-lineage-bootstrap.test.mjs:26:15)
+2026-11-15T16:26:32.2106575Z     TestContext.<anonymous> (file:///home/runner/work/calcumint.com/calcumint.com/tests/source-lineage-bootstrap.test.mjs:45:124)
+2026-11-15T16:26:32.2107259Z     Test.runInAsyncScope (node:async_hooks:214:14)
+2026-11-15T16:26:32.2107667Z     Test.run (node:internal/test_runner/test:1047:25)
+2026-11-15T16:26:32.2108143Z     Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+2026-11-15T16:26:32.2108628Z     Test.postRun (node:internal/test_runner/test:1173:19)
+2026-11-15T16:26:32.2109058Z     Test.run (node:internal/test_runner/test:1101:12)
+2026-11-15T16:26:32.2109597Z     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+2026-11-15T16:26:32.2110055Z   ...
+2026-11-15T16:26:32.2110626Z # Subtest: bootstrap source audit refuses old-valid reversion, arbitrary tamper and missing Git proof
+2026-11-15T16:26:32.2111476Z ok 43 - bootstrap source audit refuses old-valid reversion, arbitrary tamper and missing Git proof
+2026-11-15T16:26:32.2111981Z   ---
+2026-11-15T16:26:32.2112228Z   duration_ms: 7597.360413
+2026-11-15T16:26:32.2112744Z   type: 'test'
+2026-11-15T16:26:32.2112974Z   ...
+2026-11-15T16:26:32.2205562Z 1..43
+2026-11-15T16:26:32.2206109Z # tests 43
+2026-11-15T16:26:32.2206863Z # suites 0
+2026-11-15T16:26:32.2207540Z # pass 42
+2026-11-15T16:26:32.2208142Z # fail 1
+2026-11-15T16:26:32.2208752Z # cancelled 0
+2026-11-15T16:26:32.2209346Z # skipped 0
+2026-11-15T16:26:32.2209976Z # todo 0
+2026-11-15T16:26:32.2210576Z # duration_ms 21703.133964
+2026-11-15T16:26:32.2282017Z ##[error]Process completed with exit code 1.

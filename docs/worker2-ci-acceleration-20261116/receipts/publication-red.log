@@ -1,0 +1,34 @@
+✖ standalone exact bootstrap source capture preserves frozen manifest and governing verifier sources (25025.618388ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 25356.068578
+
+✖ failing tests:
+
+test at tests/source-lineage-bootstrap.test.mjs:45:1
+✖ standalone exact bootstrap source capture preserves frozen manifest and governing verifier sources (25025.618388ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '174c42d16f0eaad9ced52069a17c239d73337b4d'
+  - '1f4b9885c7f483c5ec2282e50d72a1fefe3e4a19'
+  
+      at proveSourcePreflightAndHistoricalInputs (file:///workspace/worker2-ci-acceleration/tests/milestone100-20261114/source-preflight-stage8.mjs:51:870)
+      at verifyBootstrapSuccession (file:///workspace/worker2-ci-acceleration/tests/source-lineage-bootstrap.test.mjs:26:15)
+      at TestContext.<anonymous> (file:///workspace/worker2-ci-acceleration/tests/source-lineage-bootstrap.test.mjs:45:124)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '174c42d16f0eaad9ced52069a17c239d73337b4d',
+    expected: '1f4b9885c7f483c5ec2282e50d72a1fefe3e4a19',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
