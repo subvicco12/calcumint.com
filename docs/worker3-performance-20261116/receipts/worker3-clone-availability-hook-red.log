@@ -1,0 +1,28 @@
+TAP version 13
+# Subtest: private availability transactions never execute configured repository hooks
+not ok 1 - private availability transactions never execute configured repository hooks
+  ---
+  duration_ms: 126.866256
+  type: 'test'
+  location: '/workspace/calcumint-worker3-clone-availability-admission/tests/next-engineering-20261115/source-clone-availability.test.mjs:74:1'
+  failureType: 'testCodeFailure'
+  error: 'Availability ref installation must not execute repository hooks'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/calcumint-worker3-clone-availability-admission/tests/next-engineering-20261115/source-clone-availability.test.mjs:80:55)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 269.744206

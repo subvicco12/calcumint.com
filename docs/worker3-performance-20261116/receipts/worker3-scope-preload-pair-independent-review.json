@@ -1,0 +1,46 @@
+{
+  "kind": "INDEPENDENT_SCOPE_PRELOAD_PAIRED_PHASE_DESIGN_REVIEW",
+  "observedHead": "12d1bac81a0e01e46c8654f61c4f4a96ad26e92b",
+  "scope": "Conditional resource scheduling change only; no runtimeperformanceclaim",
+  "blockingFindings": [],
+  "findings": [
+    "No sourceadmission/security assertion requires globalexclusive authority-scope execution against preload6",
+    "Witness/collector/nested-scope state is Node-process-local",
+    "Authority physicalsymlink andmodified-observer changes use a privateworktree",
+    "Preloadsourceoracle/counters/readers are private to itsprocess anddo not mutatephysicalSRC/HEAD/index",
+    "Thepairsharesimmutable Gitobjects andexistingobjectavailability lockprotocol; nocache/lockownership logicchanges",
+    "Existing alone-window comment encodesperformance policy ratherthan asecuritycapability"
+  ],
+  "requiredInvariants": [
+    "Cold eight-worker availability phase remainsalone andfirst",
+    "Bothpairedcommandsretain30000ms/maxBuffer/context.signal/inheritedPGID",
+    "Capturebothsettledresults evenifonefails",
+    "Remove earlypreload fromremainingpool exactlyonce",
+    "Exactly40uniquechildlaunches; do not relyonresultsMap size tohide duplicates",
+    "Atmosttwo activechildren; remainingpoolstilltwo workers",
+    "Originaldeclarationreportorder/counts/assertions unchanged"
+  ],
+  "requiredVerification": [
+    "Both10case scope and6case preload passunderoriginal30swhilepaired",
+    "Full115cases andall40childreceipts underoriginal150s",
+    "No foreignlock cleanup changes",
+    "Ifpressure causesfailure, abandonpair withoutdeadlineincrease"
+  ],
+  "files": [
+    {
+      "path": "tests/milestone100-20261114/source-stage8-authority-scope.test.mjs",
+      "sha256": "8b160625b887a10a661df15997ab11228448587324c72aac30ac309030a04f77"
+    },
+    {
+      "path": "tests/completion-wave-20261113/source-authority-preload.test.mjs",
+      "sha256": "095f954e8f370bf620bcd226ea43b5aab50c928735afc731d8eaee8ac09053c8"
+    },
+    {
+      "path": "tests/parallel-source-20261110/current.test.mjs",
+      "sha256": "d90a1a14250dac9210dfddae387e511d1216abcc7ccdb353742137cb4f659389"
+    }
+  ],
+  "runtimeTestsRunByReviewer": false,
+  "sourceEditsByReviewer": false,
+  "qualified": false
+}

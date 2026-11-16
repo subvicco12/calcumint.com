@@ -1,0 +1,370 @@
+TAP version 13
+# Subtest: successful parent exit cleans grandchild holding inherited pipes
+ok 1 - successful parent exit cleans grandchild holding inherited pipes
+  ---
+  duration_ms: 126.907403
+  type: 'test'
+  ...
+# Subtest: direct deadline kills owned grandchild group
+ok 2 - direct deadline kills owned grandchild group
+  ---
+  duration_ms: 274.809425
+  type: 'test'
+  ...
+# Subtest: active caller abort kills owned grandchild group
+ok 3 - active caller abort kills owned grandchild group
+  ---
+  duration_ms: 292.152316
+  type: 'test'
+  ...
+# Subtest: preaborted caller never executes child
+ok 4 - preaborted caller never executes child
+  ---
+  duration_ms: 0.494878
+  type: 'test'
+  ...
+# Subtest: success and nonzero preserve output and asynchronous progress
+ok 5 - success and nonzero preserve output and asynchronous progress
+  ---
+  duration_ms: 217.462182
+  type: 'test'
+  ...
+# Subtest: output overflow stops owned command
+ok 6 - output overflow stops owned command
+  ---
+  duration_ms: 50.015144
+  type: 'test'
+  ...
+# Subtest: preflight successor changes only the exact policy import and finite ancestry union
+ok 7 - preflight successor changes only the exact policy import and finite ancestry union
+  ---
+  duration_ms: 168.050198
+  type: 'test'
+  ...
+# Subtest: all five original bootstrap assertions remain literal below a single import successor
+ok 8 - all five original bootstrap assertions remain literal below a single import successor
+  ---
+  duration_ms: 11.349119
+  type: 'test'
+  ...
+# Subtest: current preflight and original five-case audit both execute before historical projection
+ok 9 - current preflight and original five-case audit both execute before historical projection
+  ---
+  duration_ms: 8751.290484
+  type: 'test'
+  ...
+# Subtest: current preflight rejects original-valid reversion, tamper and missing immutable Git proof
+ok 10 - current preflight rejects original-valid reversion, tamper and missing immutable Git proof
+  ---
+  duration_ms: 914.249576
+  type: 'test'
+  ...
+# Subtest: a genuinely shallow store retrieves the exact missing authority once and preserves its bytes
+ok 11 - a genuinely shallow store retrieves the exact missing authority once and preserves its bytes
+  ---
+  duration_ms: 431.584158
+  type: 'test'
+  ...
+# Subtest: present commits with wrong authority path, blob or SHA are refused without a corrective fetch
+ok 12 - present commits with wrong authority path, blob or SHA are refused without a corrective fetch
+  ---
+  duration_ms: 223.820503
+  type: 'test'
+  ...
+# Subtest: a failed bounded fetch preserves Git shallow locks and releases only its owned coordination lock
+ok 13 - a failed bounded fetch preserves Git shallow locks and releases only its owned coordination lock
+  ---
+  duration_ms: 111.524827
+  type: 'test'
+  ...
+# Subtest: invalid records and origins cannot nominate another authority path or perform a fetch
+ok 14 - invalid records and origins cannot nominate another authority path or perform a fetch
+  ---
+  duration_ms: 11.661133
+  type: 'test'
+  ...
+# Subtest: transport failures propagate without fabricating availability and the owned lock is released
+ok 15 - transport failures propagate without fabricating availability and the owned lock is released
+  ---
+  duration_ms: 4.28565
+  type: 'test'
+  ...
+# Subtest: substituted commit content is rejected even after a successful preparation
+ok 16 - substituted commit content is rejected even after a successful preparation
+  ---
+  duration_ms: 197.695354
+  type: 'test'
+  ...
+# Subtest: direct exact commit reads use one verified transport request and defensive copies
+ok 17 - direct exact commit reads use one verified transport request and defensive copies
+  ---
+  duration_ms: 2.652061
+  type: 'test'
+  ...
+# Subtest: wrong commit content is rejected without installing a cache entry
+ok 18 - wrong commit content is rejected without installing a cache entry
+  ---
+  duration_ms: 0.594702
+  type: 'test'
+  ...
+# Subtest: wrong object type identity, nonbinary output and transport errors never install entries
+ok 19 - wrong object type identity, nonbinary output and transport errors never install entries
+  ---
+  duration_ms: 0.831246
+  type: 'test'
+  ...
+# Subtest: explicit options retain the original transport behavior and bypass immutable caching
+ok 20 - explicit options retain the original transport behavior and bypass immutable caching
+  ---
+  duration_ms: 0.24903
+  type: 'test'
+  ...
+# Subtest: symbolic commit, HEAD, status and origin requests stay fresh and supplied transports stay isolated
+ok 21 - symbolic commit, HEAD, status and origin requests stay fresh and supplied transports stay isolated
+  ---
+  duration_ms: 1.10735
+  type: 'test'
+  ...
+# Subtest: inherited retained-runtime row never overrides its original auxiliary successor
+ok 22 - inherited retained-runtime row never overrides its original auxiliary successor
+  ---
+  duration_ms: 791.087112
+  type: 'test'
+  ...
+# Subtest: only explicit Stage8 guard paths select their exact captured successor
+ok 23 - only explicit Stage8 guard paths select their exact captured successor
+  ---
+  duration_ms: 0.422177
+  type: 'test'
+  ...
+# Subtest: committed A2 capture69 and all115 installed authority records remain literal
+ok 24 - committed A2 capture69 and all115 installed authority records remain literal
+  ---
+  duration_ms: 60.292205
+  type: 'test'
+  ...
+# Subtest: only the independently captured V6 list adds new owned guard successors
+ok 25 - only the independently captured V6 list adds new owned guard successors
+  ---
+  duration_ms: 2.937314
+  type: 'test'
+  ...
+# Subtest: named current closure declares all23 exact factory reads and account acceptance auxiliary
+ok 26 - named current closure declares all23 exact factory reads and account acceptance auxiliary
+  ---
+  duration_ms: 3.58435
+  type: 'test'
+  ...
+# Subtest: unknown completion paths gain no named core dependency closure
+ok 27 - unknown completion paths gain no named core dependency closure
+  ---
+  duration_ms: 0.22982
+  type: 'test'
+  ...
+# Subtest: unchanged caller has full current proof without being falsely required in the changed-path roster
+ok 28 - unchanged caller has full current proof without being falsely required in the changed-path roster
+  ---
+  duration_ms: 10121.308622
+  type: 'test'
+  ...
+# Subtest: declared current byte tamper is refused before any Git or retained proof can run
+ok 29 - declared current byte tamper is refused before any Git or retained proof can run
+  ---
+  duration_ms: 35.144058
+  type: 'test'
+  ...
+# Subtest: passing the finite byte preflight always continues into the unchanged full proof
+ok 30 - passing the finite byte preflight always continues into the unchanged full proof
+  ---
+  duration_ms: 133.294065
+  type: 'test'
+  ...
+# Subtest: a supplied closed reader keeps its own missing-dependency error with no filesystem fallback
+ok 31 - a supplied closed reader keeps its own missing-dependency error with no filesystem fallback
+  ---
+  duration_ms: 0.250189
+  type: 'test'
+  ...
+# Subtest: historical capabilities retain reader identity and freshly inspect their actual target bytes
+ok 32 - historical capabilities retain reader identity and freshly inspect their actual target bytes
+  ---
+  duration_ms: 1199.056824
+  type: 'test'
+  ...
+# Subtest: publication transport differs from literal G2 only by the native transport and negative declared-path safety preflight
+ok 33 - publication transport differs from literal G2 only by the native transport and negative declared-path safety preflight
+  ---
+  duration_ms: 148.969341
+  type: 'test'
+  ...
+# Subtest: missing, duplicated, or altered predecessor constructor and substituted old Git identity refuse
+ok 34 - missing, duplicated, or altered predecessor constructor and substituted old Git identity refuse
+  ---
+  duration_ms: 5.332238
+  type: 'test'
+  ...
+# Subtest: path preflight preserves the exact historical membership guard and cannot broaden it
+ok 35 - path preflight preserves the exact historical membership guard and cannot broaden it
+  ---
+  duration_ms: 1.067442
+  type: 'test'
+  ...
+# Subtest: the one fixed F042 claim joins to exact eac9 and reviewed current Git bytes
+ok 36 - the one fixed F042 claim joins to exact eac9 and reviewed current Git bytes
+  ---
+  duration_ms: 342.529772
+  type: 'test'
+  ...
+# Subtest: unknown or added paths and wrong historical claims refuse
+ok 37 - unknown or added paths and wrong historical claims refuse
+  ---
+  duration_ms: 3.285996
+  type: 'test'
+  ...
+# Subtest: every predecessor/current identity field remains exact
+ok 38 - every predecessor/current identity field remains exact
+  ---
+  duration_ms: 5.45162
+  type: 'test'
+  ...
+# Subtest: current tamper and valid old-byte reversion refuse
+ok 39 - current tamper and valid old-byte reversion refuse
+  ---
+  duration_ms: 1.966624
+  type: 'test'
+  ...
+# Subtest: missing or substituted immutable provenance refuses
+ok 40 - missing or substituted immutable provenance refuses
+  ---
+  duration_ms: 0.551844
+  type: 'test'
+  ...
+# Subtest: both exact historical and current receipt claims use a separately fixed historical chain claim
+ok 41 - both exact historical and current receipt claims use a separately fixed historical chain claim
+  ---
+  duration_ms: 0.297167
+  type: 'test'
+  ...
+# Subtest: unknown receipt claims, paths, changed bytes and old-byte reversion refuse
+ok 42 - unknown receipt claims, paths, changed bytes and old-byte reversion refuse
+  ---
+  duration_ms: 2.939703
+  type: 'test'
+  ...
+# Subtest: historical and current SavedActions receipts use the complete same supplied target map
+ok 43 - historical and current SavedActions receipts use the complete same supplied target map
+  ---
+  duration_ms: 16367.494262
+  type: 'test'
+  ...
+# Subtest: SavedActions receipt rejects supplied current tamper or unavailable new dependency with no fallback
+ok 44 - SavedActions receipt rejects supplied current tamper or unavailable new dependency with no fallback
+  ---
+  duration_ms: 125.82994
+  type: 'test'
+  ...
+# Subtest: partial fixture has private copied index, detached current HEAD and real actual-worktree status
+ok 45 - partial fixture has private copied index, detached current HEAD and real actual-worktree status
+  ---
+  duration_ms: 135.128608
+  type: 'test'
+  ...
+# Subtest: real private-index source mutation is observed and current source gate denies without touching actual source
+ok 46 - real private-index source mutation is observed and current source gate denies without touching actual source
+  ---
+  duration_ms: 276.921108
+  type: 'test'
+  ...
+# Subtest: snapshot stability refuses actual-head movement and semantic source-status changes
+ok 47 - snapshot stability refuses actual-head movement and semantic source-status changes
+  ---
+  duration_ms: 0.83246
+  type: 'test'
+  ...
+# Subtest: fixture successor is exactly the named imports, private constructor and added positive control
+ok 48 - fixture successor is exactly the named imports, private constructor and added positive control
+  ---
+  duration_ms: 4.651837
+  type: 'test'
+  ...
+# Subtest: preexisting Git administration and noncanonical temporary locations are refused before writes
+ok 49 - preexisting Git administration and noncanonical temporary locations are refused before writes
+  ---
+  duration_ms: 9.44708
+  type: 'test'
+  ...
+# Subtest: only two public canonical origins and synchronous callbacks are allowed
+ok 50 - only two public canonical origins and synchronous callbacks are allowed
+  ---
+  duration_ms: 95.466717
+  type: 'test'
+  ...
+# Subtest: the exact shortest guard import successor retains its original predecessor claim
+ok 51 - the exact shortest guard import successor retains its original predecessor claim
+  ---
+  duration_ms: 3554.709976
+  type: 'test'
+  ...
+# Subtest: valid target readers cannot hide substituted argument bytes or predecessor reversion
+ok 52 - valid target readers cannot hide substituted argument bytes or predecessor reversion
+  ---
+  duration_ms: 3596.404562
+  type: 'test'
+  ...
+# Subtest: the historical verifier remains literal and unknown paths still cannot invoke Git
+ok 53 - the historical verifier remains literal and unknown paths still cannot invoke Git
+  ---
+  duration_ms: 9.626686
+  type: 'test'
+  ...
+# Subtest: every supplied finite-stage transport runs under the actual lock and remains uncached
+ok 54 - every supplied finite-stage transport runs under the actual lock and remains uncached
+  ---
+  duration_ms: 76.536956
+  type: 'test'
+  ...
+# Subtest: a supplied transport exception propagates and releases only the owned lock
+ok 55 - a supplied transport exception propagates and releases only the owned lock
+  ---
+  duration_ms: 8.123677
+  type: 'test'
+  ...
+# Subtest: the wrapped parallel availability callback is locked on every invocation
+ok 56 - the wrapped parallel availability callback is locked on every invocation
+  ---
+  duration_ms: 36.543869
+  type: 'test'
+  ...
+# Subtest: both current test bodies differ from exact eac9 only by the reviewed import
+ok 57 - both current test bodies differ from exact eac9 only by the reviewed import
+  ---
+  duration_ms: 580.572591
+  type: 'test'
+  ...
+# Subtest: test body tamper, current reversion and wrong helper imports refuse
+ok 58 - test body tamper, current reversion and wrong helper imports refuse
+  ---
+  duration_ms: 3.450645
+  type: 'test'
+  ...
+# Subtest: unknown test paths, false predecessor/current tuples and missing Git refuse
+ok 59 - unknown test paths, false predecessor/current tuples and missing Git refuse
+  ---
+  duration_ms: 5.216761
+  type: 'test'
+  ...
+# Subtest: wrong original F042 claims still fail the unchanged legacy verifier
+ok 60 - wrong original F042 claims still fail the unchanged legacy verifier
+  ---
+  duration_ms: 7.858973
+  type: 'test'
+  ...
+1..60
+# tests 60
+# suites 0
+# pass 60
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 29003.491588

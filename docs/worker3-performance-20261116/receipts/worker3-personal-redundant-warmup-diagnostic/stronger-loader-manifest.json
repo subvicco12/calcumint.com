@@ -1,0 +1,19 @@
+{
+  "diagnosticOnly": true,
+  "qualification": false,
+  "target": "file:///workspace/calcumint-worker3-recovery/tests/completion-first-20261112/personal-stage.test.mjs",
+  "originalSHA256": "d6475cfdf00c6612b7a24501186ed14fb96cdc45f2a4de5b4c07eb92c69cd992",
+  "transformedSHA256": "be26d1383b3fbdc27b394d0aea88470d9c8e2ff10256e1c33eae3b68fa42113f",
+  "originalLoopSHA256": "f1bc5ba10e5a6f17f287a5c5c2dc84b929167ece45d7671177a28c3ed168cb92",
+  "strongerLoopSHA256": "d68e0c4e8fd9a1570c54fe7283d2ae415d6463408d42f0ddfcc19c55c607f976",
+  "restoresOriginalExactly": true,
+  "originalLoopDefaultRuntimeCalls": 2,
+  "replacementDefaultRuntimeCalls": 1,
+  "loopNegativeRuntimeCalls": 4,
+  "earlierAssertedNSPositiveRetained": true,
+  "finalVerifyContextRetained": true,
+  "exactPathAndCallbackVisitAssertionsAdded": true,
+  "postNegativeDefaultNSByteEqualityAdded": true,
+  "originalLoop": " for(const row of JSON.parse(readFileSync(personalCapturePath)).rows){const path=row.path;retainedRuntimeBytes('tests/gotrue-runtime/acceptance.mjs');for(const bytes of [Buffer.from('changed after immutable warm'),sourceGit(['cat-file','blob',row.predecessor.blob])])assert.throws(()=>retainedRuntimeBytes('tests/gotrue-runtime/acceptance.mjs',p=>p===path?bytes:readFileSync(p)),/Current factory bytes differ/);}",
+  "strongerLoop": " for(const row of JSON.parse(readFileSync(personalCapturePath)).rows){\n  const path=row.path;\n  for(const bytes of [Buffer.from('changed after immutable warm'),sourceGit(['cat-file','blob',row.predecessor.blob])]){\n   let visited=false;\n   assert.throws(()=>retainedRuntimeBytes('tests/gotrue-runtime/acceptance.mjs',p=>{if(p===path){visited=true;return bytes;}return readFileSync(p);}),error=>error instanceof Error&&/Current factory bytes differ/.test(error.message)&&error.message.includes(path),'Each personal source must fail at its exact changed path');\n   assert.equal(visited,true,'Personal source substitution was not observed: '+path);\n  }\n }\n assert(retainedRuntimeBytes(nsPath).equals(nsOld),'Default NS historical bytes recover after every personal source refusal');"
+}

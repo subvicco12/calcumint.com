@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: later nomination requires both independent capture digests before an old factory path is excluded
+ok 1 - later nomination requires both independent capture digests before an old factory path is excluded
+  ---
+  duration_ms: 4.819742
+  type: 'test'
+  ...
+# Subtest: hashed captures cannot nominate paths outside fixed policy, duplicate rows, or a different code identity
+ok 2 - hashed captures cannot nominate paths outside fixed policy, duplicate rows, or a different code identity
+  ---
+  duration_ms: 1.662253
+  type: 'test'
+  ...
+# Subtest: only the authenticated later path is excluded; unknown factory drift and repeated reads still refuse
+ok 3 - only the authenticated later path is excluded; unknown factory drift and repeated reads still refuse
+  ---
+  duration_ms: 1.808306
+  type: 'test'
+  ...
+# Subtest: current32 workflows tamper and valid old factory reversion still refuse in the preceding full current-byte filter
+ok 4 - current32 workflows tamper and valid old factory reversion still refuse in the preceding full current-byte filter
+  ---
+  duration_ms: 19.755032
+  type: 'test'
+  ...
+# Subtest: catalog exact same-byte32 join preserves literal26 and original corpus identities after fresh proof
+ok 5 - catalog exact same-byte32 join preserves literal26 and original corpus identities after fresh proof
+  ---
+  duration_ms: 27.46374
+  type: 'test'
+  ...
+# Subtest: catalog same-hash arbitrary ref or changed row tuple cannot replace the one fixed32 join
+ok 6 - catalog same-hash arbitrary ref or changed row tuple cannot replace the one fixed32 join
+  ---
+  duration_ms: 42.634212
+  type: 'test'
+  ...
+# Subtest: catalog independently refuses retained26 capture or either immutable path substitution
+ok 7 - catalog independently refuses retained26 capture or either immutable path substitution
+  ---
+  duration_ms: 40.189546
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 147.76438

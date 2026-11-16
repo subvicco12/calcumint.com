@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: preflight preserves original92 and APP140 inside exactly286 reviewed immutable cold prerequisites
+ok 1 - preflight preserves original92 and APP140 inside exactly286 reviewed immutable cold prerequisites
+  ---
+  duration_ms: 5.243544
+  type: 'test'
+  ...
+# Subtest: original92 warm state fetches exactly194 pinned additions once, including observed48 app ancestors
+ok 2 - original92 warm state fetches exactly194 pinned additions once, including observed48 app ancestors
+  ---
+  duration_ms: 2.860636
+  type: 'test'
+  ...
+# Subtest: warm exact286 skips network but performs both full presence passes
+ok 3 - warm exact286 skips network but performs both full presence passes
+  ---
+  duration_ms: 2.283041
+  type: 'test'
+  ...
+# Subtest: partial fetch and substituted post-fetch identity fail closed
+ok 4 - partial fetch and substituted post-fetch identity fail closed
+  ---
+  duration_ms: 3.778773
+  type: 'test'
+  ...
+# Subtest: fetch failure propagates without retry or caller-nominated revisions
+ok 5 - fetch failure propagates without retry or caller-nominated revisions
+  ---
+  duration_ms: 1.347826
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 25.130767

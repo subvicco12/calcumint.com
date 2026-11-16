@@ -1,0 +1,148 @@
+TAP version 13
+# Subtest: private transport is available as a bounded Buffer-only command channel
+ok 1 - private transport is available as a bounded Buffer-only command channel
+  ---
+  duration_ms: 8.803772
+  type: 'test'
+  ...
+# Subtest: fresh native root and HEAD commands equal direct bytes and observe a subsequent commit
+ok 2 - fresh native root and HEAD commands equal direct bytes and observe a subsequent commit
+  ---
+  duration_ms: 145.638247
+  type: 'test'
+  ...
+# Subtest: status and index observations remain live across dirty source and index flags
+ok 3 - status and index observations remain live across dirty source and index flags
+  ---
+  duration_ms: 143.661615
+  type: 'test'
+  ...
+# Subtest: binary batch stdin and stdout are preserved including embedded NUL and newline
+ok 4 - binary batch stdin and stdout are preserved including embedded NUL and newline
+  ---
+  duration_ms: 105.433927
+  type: 'test'
+  ...
+# Subtest: missing object failures poison the channel and preserve failure bytes
+ok 5 - missing object failures poison the channel and preserve failure bytes
+  ---
+  duration_ms: 104.29132
+  type: 'test'
+  ...
+# Subtest: unsupported option and command shapes dispatch directly before any private broker starts
+ok 6 - unsupported option and command shapes dispatch directly before any private broker starts
+  ---
+  duration_ms: 28.567325
+  type: 'test'
+  ...
+# Subtest: fresh Git commands use each request environment rather than broker bootstrap environment
+ok 7 - fresh Git commands use each request environment rather than broker bootstrap environment
+  ---
+  duration_ms: 112.401699
+  type: 'test'
+  ...
+# Subtest: positive timeout stays on the direct path and retains original child cancellation
+ok 8 - positive timeout stays on the direct path and retains original child cancellation
+  ---
+  duration_ms: 386.790271
+  type: 'test'
+  ...
+# Subtest: stdout and stderr overflow fail before an unbounded response can be retained
+ok 9 - stdout and stderr overflow fail before an unbounded response can be retained
+  ---
+  duration_ms: 183.443278
+  type: 'test'
+  ...
+# Subtest: broker refuses a missing creator thread before publishing READY
+ok 10 - broker refuses a missing creator thread before publishing READY
+  ---
+  duration_ms: 25.23511
+  type: 'test'
+  ...
+# Subtest: loaded helper bytes must match the independently fixed image policy
+ok 11 - loaded helper bytes must match the independently fixed image policy
+  ---
+  duration_ms: 3.739485
+  type: 'test'
+  ...
+# Subtest: default native adapter runs a failed command once and recovers on the next independent invocation
+ok 12 - default native adapter runs a failed command once and recovers on the next independent invocation
+  ---
+  duration_ms: 187.93492
+  type: 'test'
+  ...
+# Subtest: combined stdout and stderr obey the original direct maxBuffer refusal
+ok 13 - combined stdout and stderr obey the original direct maxBuffer refusal
+  ---
+  duration_ms: 107.306327
+  type: 'test'
+  ...
+# Subtest: Worker bootstrap excludes owner NODE_OPTIONS while each Git request retains its environment
+ok 14 - Worker bootstrap excludes owner NODE_OPTIONS while each Git request retains its environment
+  ---
+  duration_ms: 96.932534
+  type: 'test'
+  ...
+# Subtest: broker empty-pipe wait preserves closed subprocess semantics
+ok 15 - broker empty-pipe wait preserves closed subprocess semantics
+  ---
+  duration_ms: 195.813873
+  type: 'test'
+  ...
+# Subtest: broker empty-pipe wait preserves inherited subprocess semantics
+ok 16 - broker empty-pipe wait preserves inherited subprocess semantics
+  ---
+  duration_ms: 166.518429
+  type: 'test'
+  ...
+# Subtest: broker empty-pipe wait preserves interrupted subprocess semantics
+ok 17 - broker empty-pipe wait preserves interrupted subprocess semantics
+  ---
+  duration_ms: 112.282542
+  type: 'test'
+  ...
+# Subtest: broker empty-pipe wait preserves positive subprocess semantics
+ok 18 - broker empty-pipe wait preserves positive subprocess semantics
+  ---
+  duration_ms: 156.900763
+  type: 'test'
+  ...
+# Subtest: baseline provider keeps a shared broker while observing fresh default environment PATH and explicit cwd
+ok 19 - baseline provider keeps a shared broker while observing fresh default environment PATH and explicit cwd
+  ---
+  duration_ms: 168.229895
+  type: 'test'
+  ...
+# Subtest: baseline provider observes a subsequent commit dirty source and changed index flags
+ok 20 - baseline provider observes a subsequent commit dirty source and changed index flags
+  ---
+  duration_ms: 161.470677
+  type: 'test'
+  ...
+# Subtest: baseline provider retains its sixteen MiB binary default and caller maxBuffer refusal
+ok 21 - baseline provider retains its sixteen MiB binary default and caller maxBuffer refusal
+  ---
+  duration_ms: 502.330711
+  type: 'test'
+  ...
+# Subtest: baseline provider preserves positive-timeout and unsupported-option direct dispatch
+ok 22 - baseline provider preserves positive-timeout and unsupported-option direct dispatch
+  ---
+  duration_ms: 85.000201
+  type: 'test'
+  ...
+# Subtest: baseline provider never retries a failed started command and recovers on a new request
+ok 23 - baseline provider never retries a failed started command and recovers on a new request
+  ---
+  duration_ms: 208.194041
+  type: 'test'
+  ...
+1..23
+# tests 23
+# suites 0
+# pass 23
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3429.149671

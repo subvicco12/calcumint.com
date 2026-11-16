@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: private invocation proves authority and Stage5 before callback then proves Stage5 afresh
+ok 1 - private invocation proves authority and Stage5 before callback then proves Stage5 afresh
+  ---
+  duration_ms: 2.482477
+  type: 'test'
+  ...
+# Subtest: failed authority or beginning proof never runs callback
+ok 2 - failed authority or beginning proof never runs callback
+  ---
+  duration_ms: 1.619341
+  type: 'test'
+  ...
+# Subtest: private rows are independent frozen copies
+ok 3 - private rows are independent frozen copies
+  ---
+  duration_ms: 0.600323
+  type: 'test'
+  ...
+# Subtest: callback errors still execute fresh ending proof and expire map
+ok 4 - callback errors still execute fresh ending proof and expire map
+  ---
+  duration_ms: 0.422653
+  type: 'test'
+  ...
+# Subtest: thenable callbacks are refused with ending proof and expiry
+ok 5 - thenable callbacks are refused with ending proof and expiry
+  ---
+  duration_ms: 0.742232
+  type: 'test'
+  ...
+# Subtest: fresh ending proof failure cannot produce a successful return
+ok 6 - fresh ending proof failure cannot produce a successful return
+  ---
+  duration_ms: 1.117138
+  type: 'test'
+  ...
+# Subtest: HEAD and source status movement are rejected independently
+ok 7 - HEAD and source status movement are rejected independently
+  ---
+  duration_ms: 1.091018
+  type: 'test'
+  ...
+# Subtest: registered reader and actual endpoint identity remain mandatory
+ok 8 - registered reader and actual endpoint identity remain mandatory
+  ---
+  duration_ms: 0.82971
+  type: 'test'
+  ...
+# Subtest: each scoped source selection preserves immutable old and fresh current checks
+ok 9 - each scoped source selection preserves immutable old and fresh current checks
+  ---
+  duration_ms: 4.277232
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 25.362848

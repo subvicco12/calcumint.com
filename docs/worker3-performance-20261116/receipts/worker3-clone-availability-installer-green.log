@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: fixed clone installer forbids caller-nominated refs before invoking Git
+ok 1 - fixed clone installer forbids caller-nominated refs before invoking Git
+  ---
+  duration_ms: 2.450308
+  type: 'test'
+  ...
+# Subtest: fixed source refs are installed by one create-only transaction and warm calls revalidate without writes
+ok 2 - fixed source refs are installed by one create-only transaction and warm calls revalidate without writes
+  ---
+  duration_ms: 164.814155
+  type: 'test'
+  ...
+# Subtest: missing substituted wrong-type and malformed immutable commits refuse before ref creation
+ok 3 - missing substituted wrong-type and malformed immutable commits refuse before ref creation
+  ---
+  duration_ms: 135.75396
+  type: 'test'
+  ...
+# Subtest: foreign conflicting symbolic and injected availability refs never get overwritten
+ok 4 - foreign conflicting symbolic and injected availability refs never get overwritten
+  ---
+  duration_ms: 164.807566
+  type: 'test'
+  ...
+# Subtest: foreign Git locks abort the whole create transaction and remain untouched
+ok 5 - foreign Git locks abort the whole create transaction and remain untouched
+  ---
+  duration_ms: 204.306
+  type: 'test'
+  ...
+# Subtest: dangling symbolic refs cannot redirect create-only updates into another branch
+ok 6 - dangling symbolic refs cannot redirect create-only updates into another branch
+  ---
+  duration_ms: 51.248536
+  type: 'test'
+  ...
+# Subtest: post-transaction ref loss refuses without retry rollback deletion or overwrites
+ok 7 - post-transaction ref loss refuses without retry rollback deletion or overwrites
+  ---
+  duration_ms: 97.348944
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 987.48225

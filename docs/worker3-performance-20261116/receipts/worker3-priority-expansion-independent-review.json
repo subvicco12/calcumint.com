@@ -1,0 +1,36 @@
+{
+  "kind": "INDEPENDENT_EXISTING_TWO_WORKER_PRIORITY_EXPANSION_DESIGN_REVIEW",
+  "observedHead": "12d1bac81a0e01e46c8654f61c4f4a96ad26e92b",
+  "ownerPath": "tests/parallel-source-20261110/current.test.mjs",
+  "observedOwnerSHA256": "d90a1a14250dac9210dfddae387e511d1216abcc7ccdb353742137cb4f659389",
+  "observedPriority": "['tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs','source-authority-preload.test.mjs','tests/milestone100-20261114/retained-stage7-preflight.mjs','tests/next-engineering-20261115/source-current26.test.mjs','tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs','source-test-stage6.test.mjs','tests/next-engineering-20261115/source-private-git-transport.test.mjs','tests/next-engineering-20261115/source-current32.test.mjs','tests/next-engineering-20261115/source-lineage-native-contract.test.mjs','source-app-stage5.test.mjs','tests/next-engineering-20261115/source-private-git-stream.test.mjs']",
+  "scope": "Design review before priority-list-only change; no runtime performance claim",
+  "blockingFindings": [],
+  "supportedChange": "Extend/reorder the existing priority list only to start already-present long pool jobs earlier",
+  "preservedRequirements": [
+    "Exact40 files/counts and childcommand arguments",
+    "Existing30000ms child limits and parentcontext.signal",
+    "Inherited owned processgroup, no detach",
+    "Coldavailability andauthorityscope exclusive phases beforepool",
+    "Exactlytwo poolworkers",
+    "Eachchild originalbody/callback/observersequence",
+    "Allsettledresults andoriginaldeclarationreportorder",
+    "All115parenttests, no skips/cache/deadlineincreases"
+  ],
+  "independenceFindings": [
+    "Everyproposed addedfilealreadybelongs tosame remainingpool",
+    "Per-child environment changes stayprocess-local",
+    "Current26/current32/lineageclone/worktree mutations useprivate temp roots",
+    "SharedGitobjectoperations retain existinglockownership checks",
+    "Possiblejobpairings werealready timing-dependent underexisting2-workerpool"
+  ],
+  "requiredFollowup": [
+    "Validate exactpriorityfilekeys againstoriginalfiles roster",
+    "Full115case proof and40child receipts within original150000ms",
+    "Inspect failures and ownedlock cleanup; do not infer performance from designreview",
+    "Exact-head hostedCI afterfinalcandidateverification"
+  ],
+  "runtimeTestsRunByReviewer": false,
+  "sourceEditsByReviewer": false,
+  "qualified": false
+}

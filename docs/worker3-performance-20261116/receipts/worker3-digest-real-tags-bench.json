@@ -1,0 +1,101 @@
+{
+  "kind": "ADVISORY_WEIGHTED_DIGEST_PRIMITIVES",
+  "head": "aa7b496a3b8bb4847a5d989d3c1e537f88296f9e",
+  "node": "v22.23.4",
+  "recordsA": 593,
+  "recordsB": 648,
+  "histogram": {
+    "immutable": {
+      "calls": 2548,
+      "bytes": 319929568,
+      "bins": {
+        "262145-1048576": {
+          "calls": 548,
+          "bytes": 286848560
+        },
+        "4097-65536": {
+          "calls": 946,
+          "bytes": 8936608
+        },
+        "257-4096": {
+          "calls": 912,
+          "bytes": 2243036
+        },
+        "0-256": {
+          "calls": 18,
+          "bytes": 3732
+        },
+        "65537-262144": {
+          "calls": 124,
+          "bytes": 21897632
+        }
+      }
+    },
+    "current": {
+      "calls": 2416,
+      "bytes": 319354884,
+      "bins": {
+        "262145-1048576": {
+          "calls": 548,
+          "bytes": 286848560
+        },
+        "4097-65536": {
+          "calls": 890,
+          "bytes": 8513384
+        },
+        "257-4096": {
+          "calls": 840,
+          "bytes": 2092408
+        },
+        "0-256": {
+          "calls": 14,
+          "bytes": 2900
+        },
+        "65537-262144": {
+          "calls": 124,
+          "bytes": 21897632
+        }
+      }
+    }
+  },
+  "uniqueImmutableBlobs": 656,
+  "preparationMS": 1325.5666999999999,
+  "measurements": [
+    {
+      "method": "createHash",
+      "ms": 443.581692
+    },
+    {
+      "method": "realTagged",
+      "ms": 250.32197900000006
+    },
+    {
+      "method": "realTagged",
+      "ms": 248.6938329999998
+    },
+    {
+      "method": "createHash",
+      "ms": 422.8590260000001
+    },
+    {
+      "method": "createHash",
+      "ms": 422.96313499999997
+    },
+    {
+      "method": "realTagged",
+      "ms": 250.11495800000012
+    },
+    {
+      "method": "realTagged",
+      "ms": 242.9797920000001
+    },
+    {
+      "method": "createHash",
+      "ms": 417.4100709999998
+    }
+  ],
+  "totalMS": 4024.862694,
+  "sink": 0,
+  "qualified": false,
+  "limits": "Captures the dominant two authority loops, each opening and closing, from verified current/immutable bytes. No actual source proof or WeakMap tag implementation executed. Other small SHA sites, lookup/ownership checking, mismatch fallbacks and integration overhead are excluded. Public-current bytes always receive a fresh digest in every hypothetical tagged case."
+}

@@ -1,0 +1,145 @@
+{
+  "kind": "INDEPENDENT_BROKER_DEFAULT_STRUCTURAL_SECURITY_REVIEW_NOT_RUNTIME_QUALIFICATION",
+  "candidate": "69c56e391cabe36976e8c4bdfc82db183be70bca",
+  "base": "e7e5c58b3e9507f22d5f73f41b8d51d8a329f366",
+  "rootMergedHead": "482d5aedb5be11e2da836980a98fbfabaa5a5f16",
+  "blockingFindings": [],
+  "preservedFrozenAuthorityArrays": 174,
+  "historicalDocCaptureJSONsByteIdentical": 189,
+  "applicationSourceChanges": [],
+  "baselineProviderOnlyExactNativeInitializerChanged": true,
+  "retainedA7ProofBodyAnd90sLiteralUnchanged": true,
+  "transportTestsOriginal18BytePrefixPreserved": true,
+  "transportTestsAdded": 5,
+  "mandatoryCountCorrection": {
+    "previousStaleValue": 14,
+    "actualBefore": 18,
+    "newActual": 23,
+    "onlyRosterEdit": true
+  },
+  "originalOwnerCommandsAssertionsAndDeadlinesUnchanged": true,
+  "newGuardBindings": [
+    {
+      "path": "scripts/fetch-source-lineage.mjs",
+      "ref": "3e6001410f3fdce498120232c6c289fe136283da",
+      "blob": "dda53b20a98be8d692dbf5e3476341f00850acc3",
+      "sha256": "34b1f3003dfece6b9b8b20dcfa482ee9e42f3153c2686e23a8c32d308238e264"
+    },
+    {
+      "path": "tests/milestone100-20261114/source-preflight-stage8.mjs",
+      "ref": "3e6001410f3fdce498120232c6c289fe136283da",
+      "blob": "b4ca7904639c79f2b183776453afc51dbc7de5a8",
+      "sha256": "69bd7a07542747d8d1a70db71a67dc354fc691111df91b3d1705c09e59927ef8"
+    },
+    {
+      "path": "tests/next-engineering-20261115/source-admission-broker-default.mjs",
+      "ref": "3e6001410f3fdce498120232c6c289fe136283da",
+      "blob": "b10823d7dbe2fbf1e380def3bdf1d12e278500e6",
+      "sha256": "62683b6582003f5bf47bb75d2442e844c389710836209302a7b8c4975b63ecd6"
+    },
+    {
+      "path": "tests/next-engineering-20261115/source-availability.test.mjs",
+      "ref": "3e6001410f3fdce498120232c6c289fe136283da",
+      "blob": "45459dba7e6f40c06c9d9f6d917bb0a440850ad3",
+      "sha256": "f6351187ad8e38945651ad435ff8080a0646d38f4d8dabfe582ec17f3c9ff284"
+    },
+    {
+      "path": "tests/next-engineering-20261115/source-fresh-git-mandatory-children.mjs",
+      "ref": "3e6001410f3fdce498120232c6c289fe136283da",
+      "blob": "2c5e2ccdb60e7e95a83133e112ea82b9f2a2dab4",
+      "sha256": "2fa547bebd7f3e24c76c74326430fcc3d5dc2c922129d051fad1b599f8dc55af"
+    },
+    {
+      "path": "tests/next-engineering-20261115/source-private-git-transport.test.mjs",
+      "ref": "3e6001410f3fdce498120232c6c289fe136283da",
+      "blob": "7a8d93466779a54307101fba16453281eede1ea2",
+      "sha256": "41387cca0749982db81ecaf14a5d6255ab613f4095145ac62b7225aba04ecd42"
+    },
+    {
+      "path": "tests/parallel-source-20261110/baseline-runtime.mjs",
+      "ref": "3e6001410f3fdce498120232c6c289fe136283da",
+      "blob": "e214d957cb27685cf9c8d0a2abe56cdf150a6b69",
+      "sha256": "a7aacd569d83846e9ffe6692de68243a9ac687436e0e06949fec46f9f9602d66"
+    },
+    {
+      "path": "tests/parallel-source-20261110/bootstrap.mjs",
+      "ref": "3e6001410f3fdce498120232c6c289fe136283da",
+      "blob": "7861c919228e759a0a26a3fb1ebce58b2767e83a",
+      "sha256": "fe319bcd281202da87abfaae6f9e514d9be13c7184f92c2b69a98ac3d5fb0689"
+    },
+    {
+      "path": "tests/parallel-source-20261110/core.mjs",
+      "ref": "3e6001410f3fdce498120232c6c289fe136283da",
+      "blob": "5e04adc8c4f3ca55d544761828c256d7d4c3499e",
+      "sha256": "ac141b9f6e78502b948f966fbd435d89151090f62d7509e9747f6ac934db3a4b"
+    }
+  ],
+  "captureSHA256": "cab9a7a42a72d7193230823b49498a71a643bfa73f233ebab1edf9ac9d3e129b",
+  "acceptedRowsVerified": 42,
+  "selectorAndBootstrapEdits": {
+    "scripts/fetch-source-lineage.mjs": [
+      {
+        "type": "insert",
+        "old": "",
+        "new": "tBootstrapRefs,additionalStage10BrokerDefaul"
+      },
+      {
+        "type": "insert",
+        "old": "",
+        "new": ",...additionalStage10BrokerDefaultBootstrapRefs"
+      }
+    ],
+    "tests/parallel-source-20261110/bootstrap.mjs": [
+      {
+        "type": "insert",
+        "old": "",
+        "new": "tBootstrapRefs,additionalStage10BrokerDefaul"
+      },
+      {
+        "type": "insert",
+        "old": "",
+        "new": "...additionalStage10BrokerDefaultBootstrapRefs,"
+      }
+    ],
+    "tests/milestone100-20261114/source-preflight-stage8.mjs": [
+      {
+        "type": "insert",
+        "old": "",
+        "new": ",'additionalStage10BrokerDefaultBootstrapRefs'"
+      },
+      {
+        "type": "insert",
+        "old": "",
+        "new": "capture.sourceStage10BrokerDefault,"
+      }
+    ],
+    "tests/next-engineering-20261115/source-availability.test.mjs": [
+      {
+        "type": "insert",
+        "old": "",
+        "new": ",'e7e5c58b3e9507f22d5f73f41b8d51d8a329f366'"
+      }
+    ],
+    "tests/parallel-source-20261110/core.mjs": [
+      {
+        "type": "replace",
+        "old": "w",
+        "new": "def"
+      },
+      {
+        "type": "replace",
+        "old": "i",
+        "new": "ul"
+      }
+    ]
+  },
+  "rootIndependentAuthorityPin": {
+    "retainedPreviousTuple": "{ref:'d203682dc43a193d8d07c36aa73006f1b2f93461',blob:'dfec6dc5d49f5763d6ba5092b6e9522838850e49',sha256:'60b601528047f1dc863c62e9db0e28a361c1a893dbd2c2296dd702d7974e29d4'}",
+    "newTuple": "{ref:'69c56e391cabe36976e8c4bdfc82db183be70bca',blob:'9e14956bd6b892e5249b807cadd8e4c974b97409',sha256:'558c93f7e0c50e8909fd7dd3e583a71edc7b64c7c64e22018ff82254827fd783'}",
+    "exactBytesVerified": true,
+    "captureAdmissionRequiredForNSPin": false
+  },
+  "securityScope": "Same existing verified singleton transport within governing owned proof budgets <=150s; existing15/180 helper watchdog values unchanged. Every mutable Git observation remains fresh. Positive-timeout/unsupported requests stay direct; no global unbounded execFileSync equivalence is claimed.",
+  "remainingValidation": "Original personal four cases and source150, mandatory40 child owner, exact-head hosted CI; no heavy verification performed by this reviewer.",
+  "qualified": false
+}

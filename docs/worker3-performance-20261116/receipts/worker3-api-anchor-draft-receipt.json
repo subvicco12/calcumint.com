@@ -1,0 +1,67 @@
+{
+  "status": "DRAFT_NOT_QUALIFIED_PENDING_GOVERNED_ADMISSION",
+  "branch": "engineering/worker3-api-anchor-repair-20261116",
+  "base": "482d5aedb5be11e2da836980a98fbfabaa5a5f16",
+  "head": "0f679bcc7c2d483c4714eb1d4acef3c52c9b2ba0",
+  "files": [
+    "tests/milestone100-20261114/source-stage8-api-runtime-anchor.mjs",
+    "tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs"
+  ],
+  "apiRuntimeAnchorLiteralUnchanged": true,
+  "originalSixTestBodiesBytePrefixPreserved": true,
+  "appendedTests": 3,
+  "newMandatoryCount": 9,
+  "applicationSourceChanges": [],
+  "additionalFullSourceProofCalls": 0,
+  "objectJoinNewFilesystemReads": 0,
+  "current32CaptureBinding": {
+    "ref": "baf80e18e0fb7a6a961006ee6fea507539363756",
+    "path": "docs/next-engineering-20261115/source/stage10-current32.json",
+    "blob": "41dcb7e6d85c84b78a9e0d5086a802c2e96b06bd",
+    "bytes": 23403,
+    "sha256": "b1151d655a9e44f8a304c0d81f4c94d3e0a974a12d12a4d51955b4eb8f54488d"
+  },
+  "originalRed": {
+    "tests": 6,
+    "passed": 4,
+    "failed": 2,
+    "duration_ms": 4430.99768,
+    "failure": "latest API bytes3d25 incorrectly compared with retained9cca; same mismatch masks HEAD negative"
+  },
+  "newControlsRed": {
+    "tests": 3,
+    "passed": 0,
+    "failed": 3
+  },
+  "draftFull": {
+    "tests": 9,
+    "passed": 7,
+    "failed": 2,
+    "duration_ms": 4710.91653,
+    "failure": "Both full-proof cases correctly reject unadmitted changed helper bytes; complete green required after root exact admission"
+  },
+  "checks": [
+    "node --check helper",
+    "node --check test",
+    "git diff --check"
+  ],
+  "receipts": {
+    "/tmp/worker3-api-anchor-original-red.log": {
+      "bytes": 4716,
+      "sha256": "02b3f9978ff6943c762caa028eb3fd5c91e879c8079a0a83a851c1fda8bb8067"
+    },
+    "/tmp/worker3-api-anchor-new-controls-red.log": {
+      "bytes": 9931,
+      "sha256": "435b42e39e11ac36eb4a713f1eebebe067e72042384b16e638f4e711103120de"
+    },
+    "/tmp/worker3-api-anchor-new-controls-green.log": {
+      "bytes": 851,
+      "sha256": "9abb4593fbb38e27d8d527f6615624eb3e5406d51aa13bb7853d09e22874360e"
+    },
+    "/tmp/worker3-api-anchor-draft-full.log": {
+      "bytes": 5410,
+      "sha256": "735bf9b2a5d717044b05870c18f51be7ec79fcc22f6010f7f5b4a75dc29848c0"
+    }
+  },
+  "qualified": false
+}

@@ -1,0 +1,144 @@
+{
+  "kind": "ADVISORY_PAIRED_PRODUCER_INCLUSIVE_IMMUTABLE_DIGEST_BENCHMARK_NOT_QUALIFICATION",
+  "head": "b7a7c176cf6a2349a468d10ce30c25552835de5e",
+  "node": "v22.23.4",
+  "recordsA": 612,
+  "recordsB": 667,
+  "uniqueImmutableBlobs": 675,
+  "immutableBankBytes": 86808019,
+  "histogram": {
+    "immutable": {
+      "calls": 2624,
+      "bytes": 346801052
+    },
+    "current": {
+      "calls": 2492,
+      "bytes": 346226368
+    }
+  },
+  "results": [
+    {
+      "mode": "original",
+      "warmOwners": false,
+      "ms": 647.5279459999999,
+      "backendExecutions": 1,
+      "rss": 355971072
+    },
+    {
+      "mode": "draft",
+      "warmOwners": false,
+      "ms": 720.1102229999997,
+      "backendExecutions": 1,
+      "rss": 454930432
+    },
+    {
+      "mode": "draft",
+      "warmOwners": false,
+      "ms": 482.3862640000002,
+      "backendExecutions": 1,
+      "rss": 457113600
+    },
+    {
+      "mode": "original",
+      "warmOwners": false,
+      "ms": 486.4078129999998,
+      "backendExecutions": 1,
+      "rss": 433594368
+    },
+    {
+      "mode": "original",
+      "warmOwners": false,
+      "ms": 496.4178660000007,
+      "backendExecutions": 1,
+      "rss": 433594368
+    },
+    {
+      "mode": "draft",
+      "warmOwners": false,
+      "ms": 467.1245770000005,
+      "backendExecutions": 1,
+      "rss": 459673600
+    },
+    {
+      "mode": "draft",
+      "warmOwners": false,
+      "ms": 488.63744700000007,
+      "backendExecutions": 1,
+      "rss": 463523840
+    },
+    {
+      "mode": "original",
+      "warmOwners": false,
+      "ms": 521.4286700000002,
+      "backendExecutions": 1,
+      "rss": 458645504
+    },
+    {
+      "mode": "original",
+      "warmOwners": true,
+      "ms": 506.8273330000002,
+      "backendExecutions": 1,
+      "rss": 459038720
+    },
+    {
+      "mode": "draft",
+      "warmOwners": true,
+      "ms": 403.43044499999996,
+      "backendExecutions": 1,
+      "rss": 466214912
+    },
+    {
+      "mode": "draft",
+      "warmOwners": true,
+      "ms": 370.88540999999987,
+      "backendExecutions": 1,
+      "rss": 466407424
+    },
+    {
+      "mode": "original",
+      "warmOwners": true,
+      "ms": 500.1916400000009,
+      "backendExecutions": 1,
+      "rss": 466296832
+    },
+    {
+      "mode": "original",
+      "warmOwners": true,
+      "ms": 496.81822999999895,
+      "backendExecutions": 1,
+      "rss": 465993728
+    },
+    {
+      "mode": "draft",
+      "warmOwners": true,
+      "ms": 382.5607970000001,
+      "backendExecutions": 1,
+      "rss": 465358848
+    },
+    {
+      "mode": "draft",
+      "warmOwners": true,
+      "ms": 455.1020040000003,
+      "backendExecutions": 1,
+      "rss": 468910080
+    },
+    {
+      "mode": "original",
+      "warmOwners": true,
+      "ms": 495.7659480000002,
+      "backendExecutions": 1,
+      "rss": 464924672
+    }
+  ],
+  "sink": 0,
+  "limitations": [
+    "Both modes retain every Buffer.from copy and immutable preload verification.",
+    "Cold-owner measurements include private preimage allocation/copy/SHA and every enrollment/intrinsic/content check; preload is outside the timer in both modes as in retained immutable availability.",
+    "Warm-owner measurements are a separate advisory upper bound, not justification for adding prewarming or moving proof work outside any existing timer.",
+    "Current bytes always receive a fresh native SHA256 and never use immutable tags.",
+    "Buffers are exact SHA-verified Git objects; no current source-read/HEAD/status/admission verification is simulated or claimed.",
+    "Trusted Node intrinsics at module initialization are the same prerequisite as the existing verifier.",
+    "No original source/API/UI/child deadline is executed or altered here."
+  ],
+  "qualified": false
+}

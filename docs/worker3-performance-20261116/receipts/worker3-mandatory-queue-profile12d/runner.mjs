@@ -1,0 +1,17 @@
+import {runSourceNode} from '/workspace/calcumint-worker3-recovery/tests/ci-rpc-recovery-20261113/source-node.mjs';
+import {mkdirSync,writeFileSync,readFileSync,readdirSync,appendFileSync} from 'node:fs';
+import {execFileSync} from 'node:child_process';import {createHash} from 'node:crypto';
+const dir='/tmp/worker3-mandatory-queue-profile12d',root='/workspace/calcumint-worker3-recovery';mkdirSync(dir,{recursive:true});
+const head=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),status=execFileSync('git',['status','--porcelain'],{cwd:root,encoding:'utf8'});if(status!==" M tests/parallel-source-20261110/current.test.mjs\n")throw Error('Profile requires only the authorized LPT priority diff');const diff=execFileSync('git',['diff','--','tests/parallel-source-20261110/current.test.mjs'],{cwd:root});const prioritySHA256=createHash('sha256').update(readFileSync(root+'/tests/parallel-source-20261110/current.test.mjs')).digest('hex');writeFileSync(dir+'/priority-working.patch',diff);
+writeFileSync(dir+'/events.jsonl','');writeFileSync(dir+'/processes.jsonl','');let pgid,samples=0;const started=performance.now();
+function sample(){
+ try{if(!pgid){const row=readFileSync(dir+'/events.jsonl','utf8').split('\n').filter(Boolean).map(JSON.parse).find(row=>row.event==='owner');pgid=row?.pgid;}}catch{return;}
+ if(!pgid)return;
+ const records=[];for(const entry of readdirSync('/proc')){if(!/^\d+$/.test(entry))continue;try{const text=readFileSync('/proc/'+entry+'/stat','utf8'),i=text.lastIndexOf(') '),f=text.slice(i+2).split(' ');if(Number(f[2])!==pgid)continue;records.push({pid:Number(entry),ppid:Number(f[1]),state:f[0],selfTicks:Number(f[11])+Number(f[12]),childrenTicks:Number(f[13])+Number(f[14]),startTicks:Number(f[19]),name:text.slice(text.indexOf('(')+1,i)});}catch{}}
+ appendFileSync(dir+'/processes.jsonl',JSON.stringify({timeMS:performance.now()-started,pgid,records})+'\n');samples++;
+}
+const timer=setInterval(sample,200);let result;
+try{const stdout=await runSourceNode(['--require','/tmp/worker3-mandatory-queue-profiler12d.cjs','--test-name-pattern=^mandatory source guard regressions exercise exact source and immutable availability without skips$','tests/parallel-source-20261110/current.test.mjs'],{cwd:root,timeout:150000,maxBuffer:16*1024*1024});writeFileSync(dir+'/owner.stdout',stdout);result={success:true};}
+catch(error){writeFileSync(dir+'/owner.stdout',error.stdout??'');writeFileSync(dir+'/owner.stderr',error.stderr??'');result={success:false,error:{name:error.name,code:error.code,message:error.message,signal:error.signal}};}
+finally{clearInterval(timer);sample();}
+const closingHead=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),closingStatus=execFileSync('git',['status','--porcelain'],{cwd:root,encoding:'utf8'});const closingPrioritySHA256=createHash('sha256').update(readFileSync(root+'/tests/parallel-source-20261110/current.test.mjs')).digest('hex');result={...result,head,closingHead,status,closingStatus,prioritySHA256,closingPrioritySHA256,unchangedInput:head===closingHead&&status===closingStatus&&prioritySHA256===closingPrioritySHA256,wallMS:performance.now()-started,samples,scope:'ADVISORY_ORIGINAL_MANDATORY40_BLOCK_ONLY_NOT_ACCEPTANCE',qualified:false};writeFileSync(dir+'/result.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({...result,error:result.error?{code:result.error.code,name:result.error.name}:undefined}));

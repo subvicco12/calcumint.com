@@ -1,0 +1,126 @@
+{
+  "kind": "READ_ONLY_LIGHT_LANE_SCHEDULER_REVIEW",
+  "base": "c670cf49279c9a4cee94fa9b2e492bd1d1dd4d42",
+  "fileSHA256": "4ecf6860c4f818de84515c3f0ff0ea5fb00b343a17e099b3cb1485398024d675",
+  "checks": {
+    "outsidequeuebyteidentical": true,
+    "oldpoolpartitionpriorityidentical": true,
+    "actualscopepromiseonly": true,
+    "22distinctliteralguards": true,
+    "atomicuniqueclaimbeforeawait": true,
+    "disjointexhaustivepartition": true,
+    "fixedexactonceplanretained": true,
+    "unknownlightnamesrefused": true,
+    "onlytwolanes": true,
+    "fixed30s_signal_groupcoldreportpreserved": true,
+    "noSRCchanges": true
+  },
+  "blockingFindings": [],
+  "reasoning": [
+    "Exactly two asynchronous lanes; each awaits every child it starts before starting its next. Scope child starts once in its own promise; resolving it does not await continuation of its lane.",
+    "Shared postincrement indices execute synchronously before awaiting record, so each disjoint partition item is claimed once. There are no retries. Both lanes await actual scope completion before heavy jobs.",
+    "Cold availability remains awaited alone. Existing child argv, counts, deadlines, context signal, process group ownership, result collection and original report order are untouched.",
+    "Scope cases use process-local tamper callbacks and unique temporary worktree; changed observer/source bytes are written only there. Light guards use synthetic callbacks/inputs or immutable fixture reads. No global scope-exclusive security prerequisite was identified.",
+    "Execution failure is recorded by unchanged Promise.allSettled and remains an assertion failure; scheduling does not convert a failed scope proof into success."
+  ],
+  "lightGuardRoster": [
+    "tests/milestone100-20261114/source-stage8-negative-publication-caller.test.mjs",
+    "tests/milestone100-20261114/workflow-source-evidence-batch.test.mjs",
+    "tests/milestone100-20261114/source-stage8-shortest-native-driver.test.mjs",
+    "source-preflight.test.mjs",
+    "tests/next-cohort-20261110/source/runtime-evidence-batch.test.mjs",
+    "tests/milestone100-20261114/authority-observation-collector.test.mjs",
+    "tests/next-cohort-20261110/source/runtime-stage2-batch.test.mjs",
+    "tests/milestone100-20261114/source-stage8-stage5-scope.test.mjs",
+    "tests/milestone100-20261114/source-stage8-negative-factory.test.mjs",
+    "tests/milestone100-20261114/source-stage8-current-guard-scope.test.mjs",
+    "tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs",
+    "tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs",
+    "tests/milestone100-20261114/source-stage8-runtime-chain-prefetch.test.mjs",
+    "tests/milestone100-20261114/source-stage8-negative-workflow-claim.test.mjs",
+    "tests/milestone100-20261114/source-stage8-negative-reader-order.test.mjs",
+    "tests/milestone100-20261114/composition-source-evidence-batch.test.mjs",
+    "tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs",
+    "tests/next-cohort-20261110/source/runtime-head-bound-batch.test.mjs",
+    "tests/next-engineering-20261115/source-binding-current32.test.mjs",
+    "tests/next-engineering-20261115/source-stage9-fixture.test.mjs",
+    "tests/next-engineering-20261115/source-completion-prewarm-admission.test.mjs",
+    "tests/next-engineering-20261115/source-lineage-fixture.test.mjs"
+  ],
+  "directLightFixtureFilesystemProcessSignals": {
+    "tests/milestone100-20261114/source-stage8-negative-publication-caller.test.mjs": [
+      "import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';import {createHash} from 'node:crypto';import {execFileSync} from 'node:child_process';",
+      "test('allfour current pins match immutable Git paths and exact current filesystem bytes',()=>{assert.equal(publicationCallerNegativeRecords.length,4);for(const row of publicationCallerNegativeRecords){assert(Object.isFro",
+      "test('the unchanged A955 historical manifest independently fixes exactlytwo batch claims',()=>{const row=publicationCallerHistoricalManifest;assert.equal(row.blob,'4c0126a413efa65c14bcd6131efd21b788252386');assert.equal(",
+      "test('the exact G2 successor adds only the fixed import and call after the entire safe loop',()=>{const old=execFileSync('git',['show','11d38597565922ac12d1a06678288ee7d6daf863:'+publicationTransportPath]).toString(),cur",
+      "const helper=readFileSync(new URL('./source-stage8-publication-transport.mjs',import.meta.url),'utf8'),match=/export function provePublicationTransportSuccessor\\(git,read\\)\\{([\\s\\S]*?)\\n\\}/.exec(helper);assert(match);con"
+    ],
+    "tests/milestone100-20261114/workflow-source-evidence-batch.test.mjs": [],
+    "tests/milestone100-20261114/source-stage8-shortest-native-driver.test.mjs": [
+      "import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync,mkdtempSync,writeFileSync,rmSync} from 'node:fs';import {tmpdir} from 'node:os';import {join} from 'node:path';import {makeGitRead",
+      "const sha=bytes=>createHash('sha256').update(bytes).digest('hex'),old=guardSuccessors.find(row=>row.path===shortestNativeDriverPath),previous=execFileSync('git',['show',old.ref+':'+old.path]),current=readFileSync(shortes",
+      "test('native options default limits and supplied overrides remain exact in the transformed checker',()=>{const text=expectedShortestNativeDriver(previous.toString());assert(text.includes(\"makeGitReader((args,options={})=",
+      "for(const row of shortestNativeTestRecords){const prior=execFileSync('git',['show',row.ref+':'+row.path]);assert.equal(prior.length,row.bytes);assert.equal(sha(prior),row.sha256);assert.equal(execFileSync('git',['rev-par",
+      "for(const row of shortestNativeTestRecords){const f=fixture(row.path,definition[1]);assert.deepEqual(f.run(),readFileSync(row.path));f.state.read=execFileSync('git',['show',row.ref+':'+row.path]);assert.throws(f.run);con",
+      "const directory=mkdtempSync(join(tmpdir(),'shortest-native-batch-'));t.after(()=>rmSync(directory,{recursive:true,force:true}));",
+      "const native=(args,options={})=>execFileSync('git',args,{cwd:directory,stdio:['ignore','pipe','pipe'],...options});native(['init','-q']);writeFileSync(join(directory,'value'),'immutable value');native(['add','value']);na",
+      "const text=readFileSync(file,'utf8'),literal=/const immutableNativeGit=(makeGitReader\\([^\\n]+\\));\\nconst git=immutableNativeGit;/.exec(text);assert(literal);const calls=[],invoke=(command,args,options)=>{assert.equal(com",
+      "const clean=git(['status','--porcelain=v1']);writeFileSync(join(directory,'value'),'changed');const dirty=git(['status','--porcelain=v1']);assert.equal(clean.length,0);assert(dirty.length>0);const before=calls.length;git",
+      "const bytes=readFileSync('docs/parallel-source-20261110/capture-revision68.json');assert.equal(sha(bytes),'e9bc59cd40b54da57bef70ccba322b22fc2bab255b31261a3a65d72cd2744fd3');const row=JSON.parse(bytes).applicationSuccess",
+      "const row=shortestCallerArgumentRecord,git=()=>{throw Error('Argument check must not invoke Git');},bytes=readFileSync(row.path),prior=execFileSync('git',['show','cef0352fca135b252b981b959c3529170b1f0c81:'+row.path]);ass"
+    ],
+    "tests/completion-wave-20261113/source-preflight.test.mjs": [],
+    "tests/next-cohort-20261110/source/runtime-evidence-batch.test.mjs": [],
+    "tests/milestone100-20261114/authority-observation-collector.test.mjs": [],
+    "tests/next-cohort-20261110/source/runtime-stage2-batch.test.mjs": [
+      "import {readFileSync,lstatSync,realpathSync,mkdtempSync,writeFileSync,symlinkSync,unlinkSync,rmSync} from 'node:fs';",
+      "test('every mapped and Stage2 read rejects same-byte leaf and parent symlinks',()=>{assert(source.includes('try{assertRegularBatchCurrentPath(path);return row?retainedMappedRuntimeBytes'));const physical=/function assert"
+    ],
+    "tests/milestone100-20261114/source-stage8-stage5-scope.test.mjs": [],
+    "tests/milestone100-20261114/source-stage8-negative-factory.test.mjs": [
+      "import {execFileSync} from 'node:child_process';",
+      "test('original16 immutable factory rows and current15 stable rows retain literal bytes and hashes',()=>{const later=new Set(laterPolicies.flatMap(policy=>policy.paths));const stable=factoryPolicy.paths.filter(path=>!late"
+    ],
+    "tests/milestone100-20261114/source-stage8-current-guard-scope.test.mjs": [
+      "import test,{after} from 'node:test';import assert from 'node:assert/strict';import {readFileSync,lstatSync,realpathSync,mkdtempSync,writeFileSync,symlinkSync,unlinkSync,rmSync} from 'node:fs';import {resolve,join} from ",
+      "const physicalRoot=mkdtempSync(join(tmpdir(),'current-guard-scope-'));writeFileSync(join(physicalRoot,'capture'),'same bytes');after(()=>rmSync(physicalRoot,{recursive:true,force:true}));",
+      "test('ending same-size substitution and wrong type are rejected',()=>{for(const kind of ['same-size','type']){const f=fixture();f.compile();f.state.bytes=kind==='same-size'?Buffer.from(f.original.toString().replace('bbbb"
+    ],
+    "tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs": [],
+    "tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs": [],
+    "tests/milestone100-20261114/source-stage8-runtime-chain-prefetch.test.mjs": [],
+    "tests/milestone100-20261114/source-stage8-negative-workflow-claim.test.mjs": [],
+    "tests/milestone100-20261114/source-stage8-negative-reader-order.test.mjs": [],
+    "tests/milestone100-20261114/composition-source-evidence-batch.test.mjs": [],
+    "tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs": [],
+    "tests/next-cohort-20261110/source/runtime-head-bound-batch.test.mjs": [
+      "test('raw HEAD movement still fails independently from bound lookup',()=>{const body=/function assertActualHead\\(before\\)\\{([^\\n]+)\\}/.exec(source)[1];let actual=head;const verify=new Function('assert','execFileSync','re"
+    ],
+    "tests/next-engineering-20261115/source-binding-current32.test.mjs": [
+      "const {execFileSync}=await import('node:child_process');const previous=execFileSync('git',['cat-file','blob',old.blob]);",
+      "const {execFileSync}=await import('node:child_process');",
+      "const name='src/calculators/catalog-reviewed-standard-evidence.test.ts',current=readFileSync(name),native=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']}),historical=native(['show','b96b1ac89971cb8418d2389"
+    ],
+    "tests/next-engineering-20261115/source-stage9-fixture.test.mjs": [
+      "const original=\"const root=process.cwd(),git=args=>execFileSync('git',args,{cwd:root,maxBuffer:16*1024*1024}),read=p=>readFileSync(path.join(root,p));\";",
+      "const successor=\"const root=process.cwd(),git=makeGitReader((args,options={})=>execFileSync('git',args,{cwd:root,maxBuffer:16*1024*1024,...options})),read=p=>readFileSync(path.join(root,p));\";",
+      "return new Function('makeGitReader','execFileSync','readFileSync','path','process',declaration+'\\nreturn {root,git,read};')(makeGitReader,invoke,readFileSync,path,{cwd:()=>'/native-stage9-fixture'});"
+    ],
+    "tests/next-engineering-20261115/source-completion-prewarm-admission.test.mjs": [
+      "import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';import {execFileSync} from 'node:child_process';import {retainedCompletionExecutable} from './source-completion-pr",
+      "const path='scripts/product-completion-lineage.mjs',git=args=>execFileSync('git',args,{maxBuffer:32*1024*1024}),old=git(['show','9b70d14069cba27e5a4463865686c182ae6ad9cd:'+path]).toString(),current=readFileSync(path,'utf"
+    ],
+    "tests/next-engineering-20261115/source-lineage-fixture.test.mjs": [
+      "const original=\"const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']});\";",
+      "const successor=\"const git=makeGitReader((args,options={})=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],...options}));\";",
+      "return new Function('makeGitReader','execFileSync',declaration+'\\nreturn git;')(makeGitReader,invoke);"
+    ]
+  },
+  "maxSimultaneousQueueChildren": 2,
+  "mandatoryCommands": 41,
+  "mandatoryChildCases": 332,
+  "testsRun": false,
+  "sourceEdits": false,
+  "qualificationClaim": false,
+  "requiredFollowup": "Exact admitted-head focused source and full mandatory hosted CI remain required."
+}

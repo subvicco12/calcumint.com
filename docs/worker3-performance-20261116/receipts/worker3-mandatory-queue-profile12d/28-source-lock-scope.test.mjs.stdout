@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: new scopes are private and inherited scope identity cannot nominate another owner generation
+ok 1 - new scopes are private and inherited scope identity cannot nominate another owner generation
+  ---
+  duration_ms: 7.682547
+  type: 'test'
+  ...
+# Subtest: normal release registers outside the directory before callback and forgets only after rmdir
+ok 2 - normal release registers outside the directory before callback and forgets only after rmdir
+  ---
+  duration_ms: 2.542209
+  type: 'test'
+  ...
+# Subtest: a registered dead owner with a fully drained dedicated PGID is reclaimed exactly
+ok 3 - a registered dead owner with a fully drained dedicated PGID is reclaimed exactly
+  ---
+  duration_ms: 56.525189
+  type: 'test'
+  ...
+# Subtest: unknown and foreign leases never delete another directory
+ok 4 - unknown and foreign leases never delete another directory
+  ---
+  duration_ms: 1.52023
+  type: 'test'
+  ...
+# Subtest: live owners and PID-generation substitution are preserved
+ok 5 - live owners and PID-generation substitution are preserved
+  ---
+  duration_ms: 3.74839
+  type: 'test'
+  ...
+# Subtest: nonempty or replaced same-scope lock directories remain untouched
+ok 6 - nonempty or replaced same-scope lock directories remain untouched
+  ---
+  duration_ms: 338.341965
+  type: 'test'
+  ...
+# Subtest: lock and registry symlinks are refused without following or deleting targets
+ok 7 - lock and registry symlinks are refused without following or deleting targets
+  ---
+  duration_ms: 96.620391
+  type: 'test'
+  ...
+# Subtest: a dead owner with a still-running Git-like descendant cannot release its lease
+ok 8 - a dead owner with a still-running Git-like descendant cannot release its lease
+  ---
+  duration_ms: 79.297397
+  type: 'test'
+  ...
+# Subtest: forged handles and changed registry ownership are refused and no recursive cleanup occurs
+ok 9 - forged handles and changed registry ownership are refused and no recursive cleanup occurs
+  ---
+  duration_ms: 1.448681
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 593.923273

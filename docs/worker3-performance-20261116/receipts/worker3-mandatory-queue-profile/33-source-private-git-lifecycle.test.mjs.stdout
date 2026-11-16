@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: broker death fails the current command and kills its immediate Git child
+ok 1 - broker death fails the current command and kills its immediate Git child
+  ---
+  duration_ms: 108.395226
+  type: 'test'
+  ...
+# Subtest: creator Worker death after READY kills broker and immediate Git while main stays alive
+ok 2 - creator Worker death after READY kills broker and immediate Git while main stays alive
+  ---
+  duration_ms: 235.454162
+  type: 'test'
+  ...
+# Subtest: creator Worker death before prctl prevents later READY or Git execution
+ok 3 - creator Worker death before prctl prevents later READY or Git execution
+  ---
+  duration_ms: 98.636257
+  type: 'test'
+  ...
+# Subtest: creator Worker death after prctl but before READY kills the broker
+ok 4 - creator Worker death after prctl but before READY kills the broker
+  ---
+  duration_ms: 67.115528
+  type: 'test'
+  ...
+# Subtest: unknown response sequence and oversized frame fail without accepted stdout
+ok 5 - unknown response sequence and oversized frame fail without accepted stdout
+  ---
+  duration_ms: 159.637643
+  type: 'test'
+  ...
+# Subtest: original outer source runner still owns Git and helper descendants in its unchanged process group
+ok 6 - original outer source runner still owns Git and helper descendants in its unchanged process group
+  ---
+  duration_ms: 189.1105
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 867.08788

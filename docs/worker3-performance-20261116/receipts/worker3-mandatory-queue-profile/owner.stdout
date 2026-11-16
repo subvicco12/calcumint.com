@@ -1,0 +1,451 @@
+TAP version 13
+# Subtest: mandatory source guard regressions exercise exact source and immutable availability without skips
+not ok 1 - mandatory source guard regressions exercise exact source and immutable availability without skips
+  ---
+  duration_ms: 67567.967043
+  type: 'test'
+  location: '/workspace/calcumint-worker3-recovery/tests/parallel-source-20261110/current.test.mjs:207:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Mandatory source guard children failed: Mandatory source guard child failed: tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs
+    stdout:
+    TAP version 13
+    # Subtest: one exact API test successor proves before retaining the literal fixed runtime anchor
+    not ok 1 - one exact API test successor proves before retaining the literal fixed runtime anchor
+      ---
+      duration_ms: 202.467174
+      type: 'test'
+      location: '/workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs:8:1'
+      failureType: 'testCodeFailure'
+      error: 'Current exact API test source bytes differ'
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: false
+      operator: '=='
+      stack: |-
+        assertApiRuntimeHistoricalObjectJoin (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-api-runtime-anchor.mjs:46:2)
+        objectJoin (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs:6:25)
+        TestContext.<anonymous> (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs:9:2)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.start (node:internal/test_runner/test:944:17)
+        startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+      ...
+    # Subtest: unknown anchors and caller-nominated source rows refuse without accessing Git
+    ok 2 - unknown anchors and caller-nominated source rows refuse without accessing Git
+      ---
+      duration_ms: 1.908962
+      type: 'test'
+      ...
+    # Subtest: every predecessor and current tuple field remains independently exact
+    ok 3 - every predecessor and current tuple field remains independently exact
+      ---
+      duration_ms: 3.358981
+      type: 'test'
+      ...
+    # Subtest: changed current API source and retained-valid reversion refuse
+    ok 4 - changed current API source and retained-valid reversion refuse
+      ---
+      duration_ms: 32.489905
+      type: 'test'
+      ...
+    # Subtest: closed readers cannot omit the independently pinned helper or source proof and Git cannot be fabricated
+    ok 5 - closed readers cannot omit the independently pinned helper or source proof and Git cannot be fabricated
+      ---
+      duration_ms: 2035.965244
+      type: 'test'
+      ...
+    # Subtest: raw actual HEAD movement refuses for direct and historical reader capabilities
+    not ok 6 - raw actual HEAD movement refuses for direct and historical reader capabilities
+      ---
+      duration_ms: 968.050333
+      type: 'test'
+      location: '/workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs:34:1'
+      failureType: 'testCodeFailure'
+      error: |-
+        The input did not match the regular expression /HEAD moved|HEAD changed/. Input:
+        
+        'AssertionError [ERR_ASSERTION]: Exact actual HEAD API test object differs\n' +
+          '+ actual - expected\n' +
+          '\n' +
+          "+ '3d25a974c6c821504d1c9df1b3540be1fed6d410'\n" +
+          "- '9cca36d6924a508b2894b36480976aecf0188c9a'\n"
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected:
+      actual:
+        generatedMessage: false
+        actual: '3d25a974c6c821504d1c9df1b3540be1fed6d410'
+        expected: '9cca36d6924a508b2894b36480976aecf0188c9a'
+        operator: 'strictEqual'
+        diff: 'simple'
+      error: |-
+        Exact actual HEAD API test object differs
+        + actual - expected
+        
+        + '3d25a974c6c821504d1c9df1b3540be1fed6d410'
+        - '9cca36d6924a508b2894b36480976aecf0188c9a'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: '9cca36d6924a508b2894b36480976aecf0188c9a'
+      actual: '3d25a974c6c821504d1c9df1b3540be1fed6d410'
+      operator: 'strictEqual'
+      stack: |-
+        proveApiRuntimeSourceSuccessor (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-api-runtime-anchor.mjs:31:9)
+        file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs:41:21
+        getActual (node:assert:609:5)
+        Function.throws (node:assert:757:24)
+        TestContext.<anonymous> (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs:41:10)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+        Test.postRun (node:internal/test_runner/test:1173:19)
+        Test.run (node:internal/test_runner/test:1101:12)
+      operator: 'throws'
+      stack: |-
+        TestContext.<anonymous> (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs:41:10)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+        Test.postRun (node:internal/test_runner/test:1173:19)
+        Test.run (node:internal/test_runner/test:1101:12)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    1..6
+    # tests 6
+    # suites 0
+    # pass 4
+    # fail 2
+    # cancelled 0
+    # skipped 0
+    # todo 0
+    # duration_ms 3274.814776
+    
+    stderr:
+    
+    Mandatory source guard child failed: tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs
+    stdout:
+    TAP version 13
+    # Subtest: availability prime returns undefined and transports the same finite immutable objects
+    not ok 1 - availability prime returns undefined and transports the same finite immutable objects
+      ---
+      duration_ms: 3.448124
+      type: 'test'
+      location: '/workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs:10:1'
+      failureType: 'testCodeFailure'
+      error: 'runtimeAuxiliaryAvailabilitySuccessor is not defined'
+      code: 'ERR_TEST_FAILURE'
+      name: 'ReferenceError'
+      stack: |-
+        primeRetainedImmutableAvailability (eval at fixture (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs:9:773), <anonymous>:11:57)
+        Object.primeRetainedImmutableObjects [as prime] (eval at fixture (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs:9:773), <anonymous>:19:50)
+        TestContext.<anonymous> (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs:10:132)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.start (node:internal/test_runner/test:944:17)
+        startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+      ...
+    # Subtest: old full preloader always executes original authority before availability
+    not ok 2 - old full preloader always executes original authority before availability
+      ---
+      duration_ms: 1.122077
+      type: 'test'
+      location: '/workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs:11:1'
+      failureType: 'testCodeFailure'
+      error: 'runtimeAuxiliaryAvailabilitySuccessor is not defined'
+      code: 'ERR_TEST_FAILURE'
+      name: 'ReferenceError'
+      stack: |-
+        primeRetainedImmutableAvailability (eval at fixture (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs:9:773), <anonymous>:11:57)
+        Object.preloadRetainedImmutableObjects [as full] (eval at fixture (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs:9:773), <anonymous>:17:86)
+        TestContext.<anonymous> (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs:11:120)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+        Test.postRun (node:internal/test_runner/test:1173:19)
+        Test.run (node:internal/test_runner/test:1101:12)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+      ...
+    # Subtest: prime alone cannot grant a verdict or bypass later full authority refusal
+    not ok 3 - prime alone cannot grant a verdict or bypass later full authority refusal
+      ---
+      duration_ms: 0.723747
+      type: 'test'
+      location: '/workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs:12:1'
+      failureType: 'testCodeFailure'
+      error: 'runtimeAuxiliaryAvailabilitySuccessor is not defined'
+      code: 'ERR_TEST_FAILURE'
+      name: 'ReferenceError'
+      stack: |-
+        primeRetainedImmutableAvailability (eval at fixture (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs:9:773), <anonymous>:11:57)
+        Object.primeRetainedImmutableObjects [as prime] (eval at fixture (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs:9:773), <anonymous>:19:50)
+        TestContext.<anonymous> (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs:12:120)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+        Test.postRun (node:internal/test_runner/test:1173:19)
+        Test.run (node:internal/test_runner/test:1101:12)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: every finite capture tamper is denied before any ensure or preload callback
+    ok 4 - every finite capture tamper is denied before any ensure or preload callback
+      ---
+      duration_ms: 7.331532
+      type: 'test'
+      ...
+    # Subtest: missing accepted record missing reader data and nonBuffer captures fail closed
+    ok 5 - missing accepted record missing reader data and nonBuffer captures fail closed
+      ---
+      duration_ms: 1.213125
+      type: 'test'
+      ...
+    # Subtest: capture68 is authenticated before the canonical availability lock path runs
+    ok 6 - capture68 is authenticated before the canonical availability lock path runs
+      ---
+      duration_ms: 0.751286
+      type: 'test'
+      ...
+    # Subtest: optional path batch remains optional without manufacturing capabilities
+    not ok 7 - optional path batch remains optional without manufacturing capabilities
+      ---
+      duration_ms: 1.009756
+      type: 'test'
+      location: '/workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs:16:1'
+      failureType: 'testCodeFailure'
+      error: 'runtimeAuxiliaryAvailabilitySuccessor is not defined'
+      code: 'ERR_TEST_FAILURE'
+      name: 'ReferenceError'
+      stack: |-
+        primeRetainedImmutableAvailability (eval at fixture (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs:9:773), <anonymous>:11:57)
+        Object.primeRetainedImmutableObjects [as prime] (eval at fixture (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs:9:773), <anonymous>:19:50)
+        TestContext.<anonymous> (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs:16:131)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+        Test.postRun (node:internal/test_runner/test:1173:19)
+        Test.run (node:internal/test_runner/test:1101:12)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: authenticated invalid JSON and unsupported blob data cannot preload arbitrary objects
+    ok 8 - authenticated invalid JSON and unsupported blob data cannot preload arbitrary objects
+      ---
+      duration_ms: 1.930741
+      type: 'test'
+      ...
+    # Subtest: all invocations reread authenticate and preload through only the provided endpoints
+    not ok 9 - all invocations reread authenticate and preload through only the provided endpoints
+      ---
+      duration_ms: 0.778069
+      type: 'test'
+      location: '/workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs:18:1'
+      failureType: 'testCodeFailure'
+      error: 'runtimeAuxiliaryAvailabilitySuccessor is not defined'
+      code: 'ERR_TEST_FAILURE'
+      name: 'ReferenceError'
+      stack: |-
+        primeRetainedImmutableAvailability (eval at fixture (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs:9:773), <anonymous>:11:57)
+        Object.primeRetainedImmutableObjects [as prime] (eval at fixture (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs:9:773), <anonymous>:19:50)
+        TestContext.<anonymous> (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs:18:117)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+        Test.postRun (node:internal/test_runner/test:1173:19)
+        Test.run (node:internal/test_runner/test:1101:12)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    1..9
+    # tests 9
+    # suites 0
+    # pass 4
+    # fail 5
+    # cancelled 0
+    # skipped 0
+    # todo 0
+    # duration_ms 28.633794
+    
+    stderr:
+    
+    Mandatory source guard child failed: tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs
+    stdout:
+    TAP version 13
+    # Subtest: old prime must coalesce all six literal refs paths and blobs before helper batches
+    not ok 1 - old prime must coalesce all six literal refs paths and blobs before helper batches
+      ---
+      duration_ms: 4.046092
+      type: 'test'
+      location: '/workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs:15:1'
+      failureType: 'testCodeFailure'
+      error: 'runtimeAuxiliaryAvailabilitySuccessor is not defined'
+      code: 'ERR_TEST_FAILURE'
+      name: 'ReferenceError'
+      stack: |-
+        Object.eval [as prime] (eval at fixture (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs:12:582), <anonymous>:11:57)
+        TestContext.<anonymous> (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs:15:142)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.start (node:internal/test_runner/test:944:17)
+        startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+      ...
+    # Subtest: auxiliary current module bytes are freshly authenticated before availability or preloads
+    ok 2 - auxiliary current module bytes are freshly authenticated before availability or preloads
+      ---
+      duration_ms: 2.413684
+      type: 'test'
+      ...
+    # Subtest: conflicting immutable path nominations refuse without installing preload batches
+    not ok 3 - conflicting immutable path nominations refuse without installing preload batches
+      ---
+      duration_ms: 1.001643
+      type: 'test'
+      location: '/workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs:17:1'
+      failureType: 'testCodeFailure'
+      error: |-
+        The input did not match the regular expression /Conflicting/. Input:
+        
+        'ReferenceError: runtimeAuxiliaryAvailabilitySuccessor is not defined'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected:
+      actual:
+      error: 'runtimeAuxiliaryAvailabilitySuccessor is not defined'
+      name: 'ReferenceError'
+      stack: |-
+        Object.eval [as prime] (eval at fixture (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs:12:582), <anonymous>:11:57)
+        file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs:17:160
+        getActual (node:assert:609:5)
+        Function.throws (node:assert:757:24)
+        TestContext.<anonymous> (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs:17:147)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+        Test.postRun (node:internal/test_runner/test:1173:19)
+        Test.run (node:internal/test_runner/test:1101:12)
+      operator: 'throws'
+      stack: |-
+        TestContext.<anonymous> (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs:17:147)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+        Test.postRun (node:internal/test_runner/test:1173:19)
+        Test.run (node:internal/test_runner/test:1101:12)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: only existing supplied capabilities run and absent optional path method stays absent
+    not ok 4 - only existing supplied capabilities run and absent optional path method stays absent
+      ---
+      duration_ms: 1.398276
+      type: 'test'
+      location: '/workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs:18:1'
+      failureType: 'testCodeFailure'
+      error: 'runtimeAuxiliaryAvailabilitySuccessor is not defined'
+      code: 'ERR_TEST_FAILURE'
+      name: 'ReferenceError'
+      stack: |-
+        Object.eval [as prime] (eval at fixture (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs:12:582), <anonymous>:11:57)
+        TestContext.<anonymous> (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs:18:170)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+        Test.postRun (node:internal/test_runner/test:1173:19)
+        Test.run (node:internal/test_runner/test:1101:12)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: original supplied preload errors propagate with no native fallback
+    not ok 5 - original supplied preload errors propagate with no native fallback
+      ---
+      duration_ms: 1.651592
+      type: 'test'
+      location: '/workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs:19:1'
+      failureType: 'testCodeFailure'
+      error: |-
+        The validation function is expected to return "true". Received false
+        
+        Caught error:
+        
+        ReferenceError: runtimeAuxiliaryAvailabilitySuccessor is not defined
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: [Function (anonymous)]
+      actual:
+      error: 'runtimeAuxiliaryAvailabilitySuccessor is not defined'
+      name: 'ReferenceError'
+      stack: |-
+        Object.eval [as prime] (eval at fixture (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs:12:582), <anonymous>:11:57)
+        file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs:19:224
+        getActual (node:assert:609:5)
+        Function.throws (node:assert:757:24)
+        TestContext.<anonymous> (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs:19:211)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+        Test.postRun (node:internal/test_runner/test:1173:19)
+        Test.run (node:internal/test_runner/test:1101:12)
+      operator: 'throws'
+      stack: |-
+        TestContext.<anonymous> (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs:19:211)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+        Test.postRun (node:internal/test_runner/test:1173:19)
+        Test.run (node:internal/test_runner/test:1101:12)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: coalescing arguments cannot mutate literal frozen runtime records
+    not ok 6 - coalescing arguments cannot mutate literal frozen runtime records
+      ---
+      duration_ms: 0.548861
+      type: 'test'
+      location: '/workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs:20:1'
+      failureType: 'testCodeFailure'
+      error: 'runtimeAuxiliaryAvailabilitySuccessor is not defined'
+      code: 'ERR_TEST_FAILURE'
+      name: 'ReferenceError'
+      stack: |-
+        Object.eval [as prime] (eval at fixture (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs:12:582), <anonymous>:11:57)
+        TestContext.<anonymous> (file:///workspace/calcumint-worker3-recovery/tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs:20:197)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+        Test.postRun (node:internal/test_runner/test:1173:19)
+        Test.run (node:internal/test_runner/test:1101:12)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: full exported preloader still verifies authority first and all helper immutable checks remain
+    ok 7 - full exported preloader still verifies authority first and all helper immutable checks remain
+      ---
+      duration_ms: 0.415105
+      type: 'test'
+      ...
+    1..7
+    # tests 7
+    # suites 0
+    # pass 2
+    # fail 5
+    # cancelled 0
+    # skipped 0
+    # todo 0
+    # duration_ms 21.677802
+    
+    stderr:
+    
+  code: 'ERR_TEST_FAILURE'
+  name: 'AggregateError'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/calcumint-worker3-recovery/tests/parallel-source-20261110/current.test.mjs:239:29)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 67591.497057

@@ -1,0 +1,15 @@
+{
+  "tag": "original",
+  "pass": true,
+  "ms": 37992.029426,
+  "stdout": "TAP version 13\n# Subtest: mandatory live Stage2 composes exact historical Stage1 at5008 and Stage6 without replacing their literal records\nok 1 - mandatory live Stage2 composes exact historical Stage1 at5008 and Stage6 without replacing their literal records\n  ---\n  duration_ms: 6253.903286\n  type: 'test'\n  ...\n# Subtest: every current Stage2 source rejects genuine Stage1 predecessor bytes and current substitutions\nok 2 - every current Stage2 source rejects genuine Stage1 predecessor bytes and current substitutions\n  ---\n  duration_ms: 2093.736311\n  type: 'test'\n  ...\n# Subtest: Stage2 captures and commits cannot nominate themselves or hide a later current source delta\nok 3 - Stage2 captures and commits cannot nominate themselves or hide a later current source delta\n  ---\n  duration_ms: 6099.687797\n  type: 'test'\n  ...\n# Subtest: an overlapping historical Business source discloses the actual latest immutable source ref\nok 4 - an overlapping historical Business source discloses the actual latest immutable source ref\n  ---\n  duration_ms: 23251.364557\n  type: 'test'\n  ...\n1..4\n# tests 4\n# suites 0\n# pass 4\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 37918.727394\n",
+  "args": [
+    "--import",
+    "/tmp/worker3-personal-redundant-warmup-diagnostic/profile.mjs",
+    "--test",
+    "tests/completion-first-20261112/personal-stage.test.mjs"
+  ],
+  "timeout": 60000,
+  "diagnosticOnly": true,
+  "qualification": false
+}
