@@ -5,10 +5,11 @@ import {execFileSync} from 'node:child_process';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {proveSourceStage10,assertSourceStage10Stable} from './source-stage10.mjs';
+import {makeGitReader} from '../parallel-source-20261110/git-reader.mjs';
 const ref='41dd08636532c4930666c76b109526d293186699';
 const files=['tests/next-engineering-20261115/source-current26.test.mjs','tests/next-engineering-20261115/source-exact-current26.mjs','tests/next-engineering-20261115/source-stage10-current26-policy.mjs','docs/next-engineering-20261115/source/stage10-current26.json'];
 export function runLiteralCurrent26Audit(){
- const root=process.cwd(),git=args=>execFileSync('git',args,{cwd:root,stdio:['ignore','pipe','pipe'],maxBuffer:64*1024*1024});
+ const root=process.cwd(),git=makeGitReader((args,options={})=>execFileSync('git',args,{cwd:root,stdio:['ignore','pipe','pipe'],maxBuffer:64*1024*1024,...options}));
  const proof=proveSourceStage10({root,git,read:readFileSync});assert.equal(proof.live.size,32);
  const temporary=mkdtempSync(join(tmpdir(),'calcumint-literal-current26-')),tree=join(temporary,'tree');let added=false;
  try{
