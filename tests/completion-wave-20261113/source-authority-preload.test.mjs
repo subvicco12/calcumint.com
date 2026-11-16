@@ -17,7 +17,31 @@ const byPath=new Map(accepted.map(r=>[r.path,r]));
 const sourceCapture=JSON.parse(readFileSync(sourceStage8CapturePath)),sourceNames=[sourceStage8CapturePath,sourceStage9CapturePath,sourceStage10CapturePath,...new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths,...sourceStage10Policy.paths])],sourceContent=new Map(sourceNames.map(path=>[path,readFileSync(path)]));
 const sourceIDs=[...new Set(sourceCapture.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean)).map(row=>row.blob))];
 const source9Capture=JSON.parse(readFileSync(sourceStage9CapturePath)),source9IDs=[...new Set(source9Capture.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean)).map(row=>row.blob))],sourcePaths=new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths,...sourceStage10Policy.paths]);
-const source10Capture=JSON.parse(readFileSync(sourceStage10CapturePath)),source10Records=source10Capture.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean));source10Records.push(...source10Capture.retainedStages.flatMap(stage=>Object.values(stage)));const source10IDs=[...new Set(source10Records.map(row=>row.blob))];
+const source10CaptureBytes=readFileSync(sourceStage10CapturePath),source10Capture=JSON.parse(source10CaptureBytes),source10Records=source10Capture.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean));source10Records.push(...source10Capture.retainedStages.flatMap(stage=>Object.values(stage)));const source10IDs=[...new Set(source10Records.map(row=>row.blob))];
+// The second complete immutable preload also includes retained source versions.
+// Admit that one exact array only after authenticating its fixed capture and every object.
+assert.equal(createHash('sha256').update(source10CaptureBytes).digest('hex'),sourceStage10Policy.captureSHA256,'Fixture current source capture must be independently fixed');
+const source10RetainedRecords=[...source10Records],retainedObjects=new Map();
+function exactRetainedObject(record){
+ assert.match(record.ref,/^[0-9a-f]{40}$/);assert.match(record.blob,/^[0-9a-f]{40}$/);
+ assert.equal(actual(['rev-parse',record.ref+':'+record.path]).toString().trim(),record.blob,'Fixture retained source path differs');
+ let bytes=retainedObjects.get(record.blob);if(!bytes){bytes=actual(['cat-file','blob',record.blob]);retainedObjects.set(record.blob,bytes);}
+ assert.equal(bytes.length,record.bytes,'Fixture retained source length differs');
+ assert.equal(createHash('sha256').update(bytes).digest('hex'),record.sha256,'Fixture retained source digest differs');
+ assert.equal(createHash('sha1').update(Buffer.from('blob '+bytes.length+'\0')).update(bytes).digest('hex'),record.blob,'Fixture retained source object address differs');return bytes;
+}
+for(const stage of source10Capture.retainedStages){
+ for(const record of Object.values(stage))exactRetainedObject(record);
+ const retained=JSON.parse(exactRetainedObject(stage.capture));
+ assert.equal(retained.predecessorRef,sourceStage10Policy.predecessorRef);assert(sourceStage10Policy.ancestry.includes(retained.codeRef),'Fixture retained code must remain in fixed ancestry');
+ assert(retained.rows.length<=sourceStage10Policy.paths.length&&retained.rows.every(row=>sourceStage10Policy.paths.includes(row.path)),'Fixture retained paths must remain in the finite source roster');
+ for(const row of retained.rows){
+  assert.equal(row.current.path,row.path);assert.equal(row.current.ref,retained.codeRef);exactRetainedObject(row.current);
+  if(row.predecessor){assert.equal(row.predecessor.path,row.path);assert.equal(row.predecessor.ref,retained.predecessorRef);exactRetainedObject(row.predecessor);}
+  source10RetainedRecords.push(...[row.predecessor,row.current].filter(Boolean));
+ }
+}
+const source10RetainedIDs=[...new Set(source10RetainedRecords.map(row=>row.blob))];
 const head=actual(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),target='tests/parallel-source-20261110/bootstrap.mjs';
 // Private source-only availability setup. The exposed authority transport/counters remain unchanged.
 function prewarmSourceObjects(reader){
@@ -49,7 +73,7 @@ function fixture({preload=true}={}){
  };
  if(preload)git.preloadBlobs=values=>{
   if(JSON.stringify(values)!==JSON.stringify(ids)){
-   assert.equal(phase,'source');assert([sourceIDs,source9IDs,source10IDs].some(exact=>JSON.stringify(values)===JSON.stringify(exact)),'Only exact independently pinned source blob IDs may preload');sourceObjects.preloadBlobs(values);return;
+   assert.equal(phase,'source');assert([sourceIDs,source9IDs,source10IDs,source10RetainedIDs].some(exact=>JSON.stringify(values)===JSON.stringify(exact)),'Only exact independently pinned source blob IDs may preload');sourceObjects.preloadBlobs(values);return;
   }
   sourceFirst();phase='authority';events.push('preload');if(preloadFailure)throw Error('preload rejected');objects.preloadBlobs(values);
  };

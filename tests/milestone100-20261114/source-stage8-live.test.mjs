@@ -49,7 +49,7 @@ test('a retained historical transport cannot cache a current proof across source
 
 test('exported current maps cannot mutate the private historical projection',()=>{
  const proof=provePinnedSourceStage8(input),path=sourceStage8Policy.paths.find(path=>proof.live.get(path).predecessor),expected=proof.historicalInput.read(path);
- const row=proof.live.get(path);row.predecessor.blob='0'.repeat(40);proof.live.set(path,{predecessor:null});
+ const row=proof.live.get(path);assert.throws(()=>{row.predecessor.blob='0'.repeat(40);},TypeError);proof.live.set(path,{predecessor:null});
  assert(proof.historicalInput.read(path).equals(expected));
  assert.throws(()=>{proof.actualInput.read=()=>Buffer.from('tamper');},TypeError);
  assert.throws(()=>{proof.historicalInput.read=()=>Buffer.from('tamper');},TypeError);
@@ -80,7 +80,7 @@ test('metadata HEAD paths share only a per-proof observation and movement refuse
 });
 
 test('a metadata-only HEAD switch inside the retained callback is rejected before return',()=>{
- let head=sourceGit(['rev-parse','--verify','HEAD^{commit}']).toString().trim();
+ let head=sourceGit(['rev-parse','--verify','HEAD^{commit}']).toString().trim();const originalHead=head;
  const git=(args,options)=>JSON.stringify(args)===JSON.stringify(['rev-parse','--verify','HEAD^{commit}'])?Buffer.from(head+'\n'):sourceGit(args,options);
- assert.throws(()=>proveCurrentStage8AndHistoricalInputs({...proveSourceStage9({...input,git}).historicalInput,policy:sourceStage8Policy,capturePath:sourceStage8CapturePath},()=>{head=sourceStage9Policy.codeRef;return {actualCurrent:new Map()};}),/HEAD moved during public source proof/);
+ assert.throws(()=>proveCurrentStage8AndHistoricalInputs({...proveSourceStage9({...input,git}).historicalInput,policy:sourceStage8Policy,capturePath:sourceStage8CapturePath},()=>{head=sourceStage9Policy.codeRef;return {actualCurrent:new Map()};}),error=>/HEAD moved during public source proof/.test(error.message)||(error instanceof assert.AssertionError&&error.message.split('\n')[0]==='Native HEAD moved or supplied HEAD differs'&&error.operator==='strictEqual'&&error.actual===sourceStage9Policy.codeRef&&error.expected===originalHead));
 });
