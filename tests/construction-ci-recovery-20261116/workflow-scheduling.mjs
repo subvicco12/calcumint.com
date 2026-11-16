@@ -52,7 +52,7 @@ export function verifyWorkflowScheduling({read=readFileSync,git=gitDefault,root=
  assert.equal(owned(['rev-parse',head+':'+policy.current.path]).toString().trim(),policy.current.blob,'Actual scheduling HEAD differs');
  assert.equal(git(['rev-parse',head+':'+policy.current.path]).toString().trim(),policy.current.blob,'Supplied scheduling HEAD differs');
  const target=resolve(root,policy.current.path),stat=lstatSync(target);assert(stat.isFile()&&!stat.isSymbolicLink());assert.equal(realpathSync(target),target);
- const fresh=read(policy.current.path);assert(Buffer.isBuffer(fresh)&&fresh.equals(after),'Current scheduling workflow bytes differ');
+ const fresh=read(policy.current.path);assert(Buffer.isBuffer(fresh)&&fresh.equals(after),'Current NS source bytes differ: .github/workflows/ci.yml (current workflow bytes differ)');
  assert.equal(owned(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),head,'Actual HEAD moved during scheduling proof');
  return {current:policy.current,predecessor:policy.predecessor,currentBytes:after,predecessorBytes:before,actualHead:head};
 }

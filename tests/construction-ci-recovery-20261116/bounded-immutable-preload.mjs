@@ -10,6 +10,7 @@ export function boundedImmutableBatchTransport(invoke){
   const remaining=()=>{const ms=deadline-Date.now();assert(ms>0,'Immutable preload exceeded original deadline');return ms;};
   const sizes=invoke(['cat-file','--batch-check=%(objectname) %(objecttype) %(objectsize)'],{...options,maxBuffer:chunkLimit,timeout:remaining()});
   assert(Buffer.isBuffer(sizes),'Binary immutable batch sizes required');const rows=sizes.toString('ascii').split('\n');assert.equal(rows.pop(),'','Complete immutable size response required');assert.equal(rows.length,ids.length,'Immutable size cardinality differs');
+  if(rows.some((row,index)=>row===ids[index]+' missing'))return invoke(args,{...options,timeout:remaining()});
   const records=rows.map((row,index)=>{const m=/^([a-f0-9]{40}) (blob|commit) (0|[1-9][0-9]*)$/.exec(row);assert(m&&m[1]===ids[index],'Immutable batch size identity/type differs');const size=Number(m[3]);assert(Number.isSafeInteger(size)&&size>=0,'Safe immutable object size required');const wire=Buffer.byteLength(row)+1+size+1;assert(Number.isSafeInteger(wire),'Safe immutable wire size required');return {id:m[1],type:m[2],size,wire};});
   // Predetermine fallback before executing any data chunk; never replay partial work.
   if(records.some(row=>row.wire>chunkLimit)||records.reduce((n,r)=>n+r.wire,0)>totalLimit)return invoke(args,{...options,timeout:remaining()});

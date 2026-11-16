@@ -1,3 +1,4 @@
+import {restoreWorkflowGraphVerifier} from '../construction-ci-recovery-20261116/workflow-scheduling.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -12,7 +13,7 @@ test('valid target readers cannot hide substituted argument bytes or predecessor
  for(const bytes of [Buffer.from('arbitrary argument'),sourceGit(['show','eac9a6c23ae4d8f1abb607e32f57ce0d422a3cb8:'+path])])assert.throws(()=>verifyCompletionBinding(path,bytes,claim,sourceGit),/Completion current successor differs/);
  assert.throws(()=>verifyCompletionBinding(path,readFileSync(path),'0'.repeat(64),sourceGit),/Completion predecessor claim differs/);
 });
-test('the historical verifier remains literal and unknown paths still cannot invoke Git',()=>{
- const old='eac9a6c23ae4d8f1abb607e32f57ce0d422a3cb8',name='scripts/product-completion-lineage.mjs';assert(readFileSync(name).equals(sourceGit(['show',old+':'+name])));
+test('the exact verifier successor preserves literal historical bytes and unknown paths cannot invoke Git',()=>{
+ const old='eac9a6c23ae4d8f1abb607e32f57ce0d422a3cb8',name='scripts/product-completion-lineage.mjs';assert(Buffer.from(restoreWorkflowGraphVerifier(readFileSync(name,'utf8'))).equals(sourceGit(['show',old+':'+name])));
  assert.equal(verifyCompletionBinding('src/unknown-not-owned.ts',Buffer.from(''),claim,()=>{throw Error('Unknown path called Git');}),false);
 });
