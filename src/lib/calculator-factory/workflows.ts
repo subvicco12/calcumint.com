@@ -1,3 +1,4 @@
+import type {ScopedEngineeringMetadata} from './completion/scoped-engineering-metadata';
 import {copyCalculationData,createCalculationSnapshot,type CalculationSnapshot} from '../calculation-snapshot';
 import {parseFinalPrivateSnapshotText} from '../final-private-snapshot-text';
 import {equalCompletionJson} from '@/calculators/completion-contracts';
@@ -15,11 +16,21 @@ export type FactoryBatchRow=Readonly<{raw:FactoryRaw;packet?:FactoryExecutionPac
  * Replay proves numerical consistency only, never authentication or publication authority.
  * Plan arguments control local affordances; authenticated server actions own authorization.
  */
-export function createFactoryWorkflows(options:{identity:FactoryIdentity;execute:(raw:FactoryRaw)=>CalculationSnapshot}){
+export function createFactoryWorkflows(options:{identity:FactoryIdentity;execute:(raw:FactoryRaw)=>CalculationSnapshot;scopedMetadata?:ScopedEngineeringMetadata}){
  const identity=copyCalculationData({identity:options.identity},{}).input.identity as FactoryIdentity;
  if(!identity.sourceVersion||typeof identity.sourceVersion!=='string')throw Error('Pinned source version required');
  createCalculationSnapshot({...identity,input:{},output:{}});
  const engine=options.execute;
+ const scopedMetadata=options.scopedMetadata;
+ const report=(packet:FactoryExecutionPacket)=>scopedMetadata?{kind:'calcumint.scoped-report',reportVersion:1,metadata:scopedMetadata,packet}:packet;
+ const reportPacket=(value:unknown):FactoryExecutionPacket=>{
+  if(value&&typeof value==='object'&&!Array.isArray(value)&&Object.hasOwn(value,'kind')){
+   const supplied=value as Record<string,unknown>;
+   if(!scopedMetadata||Object.keys(supplied).length!==4||supplied.kind!=='calcumint.scoped-report'||supplied.reportVersion!==1||!equalCompletionJson(supplied.metadata,scopedMetadata))throw Error('Scoped report differs from exact compiled contract');
+   return supplied.packet as FactoryExecutionPacket;
+  }
+  return value as FactoryExecutionPacket;
+ };
  const rawCopy=(raw:FactoryRaw):FactoryRaw=>{
   const copied=copyCalculationData({raw},{}).input.raw;
   if(!copied||typeof copied!=='object'||Array.isArray(copied)||Object.values(copied).some(v=>typeof v!=='string')||new TextEncoder().encode(JSON.stringify(copied)).length>65536)throw Error('Bounded raw string fields required');
@@ -31,7 +42,7 @@ export function createFactoryWorkflows(options:{identity:FactoryIdentity;execute
   return Object.freeze({schemaVersion:1,identity,raw:entered,snapshot});
  };
  const replay=(text:string):FactoryExecutionPacket=>{
-  const supplied=copyCalculationData({packet:parseFinalPrivateSnapshotText(text)},{}).input.packet as FactoryExecutionPacket;
+  const supplied=reportPacket(copyCalculationData({packet:parseFinalPrivateSnapshotText(text)},{}).input.packet);
   if(!supplied||!equalCompletionJson(supplied.identity,identity))throw Error('Pinned identity/source version differs');
   const expected=execute(supplied.raw);
   if(!equalCompletionJson(supplied,expected))throw Error('Packet differs from exact raw input and immutable engine result');
@@ -41,9 +52,9 @@ export function createFactoryWorkflows(options:{identity:FactoryIdentity;execute
  const requirePlan=(plan:CalcuMintPlan,key:'exports'|'scenarios')=>{if(!getPlanEntitlements(plan)[key])throw Error('This workflow requires Pro or Business');};
  const exportPacket=(packet:FactoryExecutionPacket,format:'json'|'csv',plan:CalcuMintPlan):string=>{
   requirePlan(plan,'exports');const checked=verify(packet);
-  if(format==='json')return JSON.stringify(checked,null,2);
+  if(format==='json')return JSON.stringify(report(checked),null,2);
   if(format!=='csv')throw Error('Unsupported export format');
-  return serializeCalculationCsv({identity:checked.identity,raw:checked.raw,input:checked.snapshot.input},checked.snapshot.output);
+  return serializeCalculationCsv({identity:checked.identity,raw:checked.raw,input:checked.snapshot.input,...(scopedMetadata?{scopedMetadata}:{})},checked.snapshot.output);
  };
  const scenario=(previous:readonly FactoryScenario[],slot:ScenarioSlot,packet:FactoryExecutionPacket,notes:string,plan:CalcuMintPlan):readonly FactoryScenario[]=>{
   requirePlan(plan,'scenarios');
@@ -61,13 +72,13 @@ export function createFactoryWorkflows(options:{identity:FactoryIdentity;execute
   requirePlan(plan,'exports');
   if(rows.length<1||rows.length>100||rows.some(row=>row.error||!row.packet))throw Error('Correct every row before exporting');
   const checked=rows.map(row=>{const packet=verify(row.packet!);if(!equalCompletionJson(row.raw,packet.raw))throw Error('Batch raw provenance differs');return packet;});
-  return JSON.stringify(checked,null,2);
+  return JSON.stringify(checked.map(report),null,2);
  };
  const replayBatch=(text:string):readonly FactoryBatchRow[]=>{
   const packets=parseFinalPrivateSnapshotText(text);
   if(!Array.isArray(packets)||packets.length<1||packets.length>100)throw Error('Enter 1–100 complete batch packets');
-  return Object.freeze(packets.map(value=>{const packet=verify(value);return Object.freeze({raw:packet.raw,packet});}));
+  return Object.freeze(packets.map(value=>{const packet=verify(reportPacket(value));return Object.freeze({raw:packet.raw,packet});}));
  };
- return Object.freeze({identity,execute,replay,verify,exportPacket,scenario,batch,exportBatch,replayBatch});
+ return Object.freeze({identity,execute,replay,verify,exportPacket,scenario,batch,exportBatch,replayBatch,...(scopedMetadata?{scopedMetadata}:{})});
 }
 export type FactoryWorkflows=ReturnType<typeof createFactoryWorkflows>;
