@@ -1,3 +1,4 @@
+import {restoreWorkflowGraphVerifier} from '../construction-ci-recovery-20261116/workflow-scheduling.mjs';
 import {workflowSchedulePolicy} from '../construction-ci-recovery-20261116/workflow-scheduling-policy.mjs';
 import {workflowSourceEvidenceClaims} from '../milestone100-20261114/workflow-source-evidence-claims.mjs';
 import {negativeReject as rejectWrongWorkflowClaim} from '../milestone100-20261114/source-stage8-negative-workflow-claim.mjs';
@@ -57,7 +58,7 @@ export const retainedStage7V6CapturePath='docs/parallel-source-20261110/capture-
 export const retainedStage7V7CapturePath='docs/parallel-source-20261110/capture-revision66.json';
 export const retainedStage7V8CapturePath='docs/parallel-source-20261110/capture-revision67.json';
 const retainedStage8CapturePath='docs/parallel-source-20261110/capture-revision68.json';
-export const capturePath='docs/parallel-source-20261110/capture-revision131.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision132.json';
 const root=resolve(fileURLToPath(new URL('../../',import.meta.url))),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -260,11 +261,12 @@ function retainedVerifyParallelSource(read=readFileSync,git=sourceGit,suppliedRo
  const metadata='scripts/product-completion-lineage.mjs',old=git(['show',baselineRef+':'+metadata]).toString(),current=read(metadata).toString();
  const qualifiedStage7Graph=git(['show',receiptLineagePolicy.retainedGraphRef+':'+metadata]).toString();
  verifyStage7Lineage({previous:git(['show',sourceStage7Policy.predecessorRef+':'+metadata]).toString(),current:qualifiedStage7Graph,records:pinnedSourceStage7Records(read)});
- verifyReceiptLineageExtension({previous:qualifiedStage7Graph,current,git});
+ const retainedGraph=restoreWorkflowGraphVerifier(current);
+ verifyReceiptLineageExtension({previous:qualifiedStage7Graph,current:retainedGraph,git});
  const historicalTail=old.slice(old.indexOf('export const completionSourceRefs'));
  const insertion=" if(claim!==b.predecessorSHA256)throw Error('Completion predecessor claim differs: '+name);";
  assert.equal(historicalTail.split(insertion).length,2,'Exact unchanged guard insertion preimage required');
- assert.equal(current.slice(current.indexOf('export const completionSourceRefs')),historicalTail.replace(insertion,insertion+'\n git=completionGitReader(git);'),'Only the independently bound immutable Git transport insertion may extend the unchanged executable guard');
+ assert.equal(retainedGraph.slice(retainedGraph.indexOf('export const completionSourceRefs')),historicalTail.replace(insertion,insertion+'\n git=completionGitReader(git);'),'Only the independently bound immutable Git transport insertion may extend the unchanged executable guard');
  assert.equal(capture.workflowGraphPredecessor.path,metadata);assert.equal(capture.workflowGraphPredecessor.ref,workflowPolicy.predecessorRef);
  const workflowPrior=parseRows(immutableRecord(capture.workflowGraphPredecessor,git).toString());
  const before=parseRows(old),after=parseRows(current);assert.deepEqual(after.map(r=>r.path),before.map(r=>r.path));if(suppliedRows)assert.deepEqual(suppliedRows,after,'Only the reviewed parallel source rows are admitted');

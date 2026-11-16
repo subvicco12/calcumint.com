@@ -1,4 +1,4 @@
-import {verifyWorkflowScheduling,rejectScheduledWorkflowArgument} from '../tests/construction-ci-recovery-20261116/workflow-scheduling.mjs';
+import {rejectScheduledWorkflowArgument} from '../tests/construction-ci-recovery-20261116/workflow-scheduling.mjs';
 import {sourceStage9Policy,sourceStage9CapturePath} from '../tests/four-worker-integration-20261115/source-stage9-policy.mjs';
 import {shortestNativeDriverPath,shortestNativeArgumentBytes,proveShortestNativeDriverSuccessor,shortestNativeTestRecords,shortestNativeSupplementalPredecessor,rejectShortestCallerArgument} from '../tests/milestone100-20261114/source-stage8-shortest-native-driver.mjs';
 import {runtimeAuxiliarySource,proveRuntimeAuxiliarySuccessor} from '../tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs';
@@ -64,11 +64,8 @@ export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
   if(guardSuccessors.some(row=>row.path===name))historicalBytes=git(['show',sourceStage8Policy.predecessorRef+':'+name]);
  }
  if(name===guardV6){assert(Buffer.isBuffer(bytes)&&bytes.equals(guardV6Proof.current),'Completion current successor differs');historicalBytes=guardV6Proof.previous;}
- const workflowProof=()=>verifyWorkflowScheduling({read,git,root:fileURLToPath(new URL('../',import.meta.url))});
- const workflowBefore=()=>workflowProof().predecessorBytes;
- if(name===scheduledWorkflow){const live=workflowProof();assert(Buffer.isBuffer(bytes)&&bytes.equals(live.currentBytes),'Completion current successor differs');historicalBytes=live.predecessorBytes;}
  const historicalRead=path=>{
-  if(path===scheduledWorkflow)return workflowBefore();
+  if(path===scheduledWorkflow)return read(path);
   if(shortestNativeTestRecords.some(row=>row.path===path)&&retainedDependencies(name).includes(path))return shortestNativeSupplementalPredecessor(path,proof.historicalInput.git,proof.historicalInput.read);
   if(retainedDependencies(name).includes(runtimeAuxiliarySource.prior.path)&&path===runtimeAuxiliarySource.prior.path){
    proveRuntimeAuxiliarySuccessor({record:runtimeAuxiliarySource.prior,currentBytes:read(path),input:proof.historicalInput});

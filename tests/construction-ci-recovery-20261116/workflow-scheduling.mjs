@@ -62,3 +62,25 @@ export function rejectScheduledWorkflowArgument(name,bytes){
  if(name!==policy.current.path)return;
  assert(Buffer.isBuffer(bytes)&&bytes.length===policy.current.bytes&&sha(bytes)===policy.current.sha256,'Completion current successor differs');
 }
+
+/** Current workflow edges enter the frozen graph only after their original Git checks. */
+export function workflowGraphPredecessor(bytes,read,git){
+ const proof=verifyWorkflowScheduling({read,git});
+ assert(Buffer.isBuffer(bytes)&&bytes.equals(proof.currentBytes),'Completion current successor differs');
+ return proof.predecessorBytes;
+}
+const graphImport="import {workflowGraphPredecessor} from '../tests/construction-ci-recovery-20261116/workflow-scheduling.mjs';\n";
+const graphDependencyBefore="  if(hash(source)!==dep.sha256||!read(dep.path).equals(source))throw Error('Completion supplemental source bytes differ: '+dep.path);";
+const graphDependencyAfter="  if(hash(source)!==dep.sha256)throw Error('Completion supplemental source bytes differ: '+dep.path);\n  const supplied=read(dep.path),current=dep.path==='.github/workflows/ci.yml'?workflowGraphPredecessor(supplied,read,git):supplied;\n  if(!current.equals(source))throw Error('Completion supplemental source bytes differ: '+dep.path);";
+const graphSuccessorBefore="  if(stage==='successor'&&(!bytes.equals(source)||hash(bytes)!==b.successorSHA256))throw Error('Completion current successor differs');";
+const graphSuccessorAfter="  if(stage==='successor'&&name==='.github/workflows/ci.yml')bytes=workflowGraphPredecessor(bytes,read,git);\n"+graphSuccessorBefore;
+export function extendWorkflowGraphVerifier(source){
+ assert(!source.includes(graphImport));
+ for(const before of [graphDependencyBefore,graphSuccessorBefore])assert.equal(source.split(before).length,2,'Exact graph verifier preimage required');
+ return graphImport+source.replace(graphDependencyBefore,graphDependencyAfter).replace(graphSuccessorBefore,graphSuccessorAfter);
+}
+export function restoreWorkflowGraphVerifier(source){
+ assert(source.startsWith(graphImport),'Exact graph verifier import required');
+ for(const after of [graphDependencyAfter,graphSuccessorAfter])assert.equal(source.split(after).length,2,'Exact graph verifier successor required');
+ return source.slice(graphImport.length).replace(graphDependencyAfter,graphDependencyBefore).replace(graphSuccessorAfter,graphSuccessorBefore);
+}
