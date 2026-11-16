@@ -12,6 +12,7 @@ export const runtimeAuxiliaryBatchPredecessor=Object.freeze({"path":"tests/next-
 export const runtimeAuxiliaryBoundHeadPredecessor=Object.freeze({"path":"tests/next-cohort-20261110/source/retained-runtime.mjs","ref":"88de7068ba2674aab85df5611840c4b029ef68c0","blob":"777f9b68d5a0b41d5c21d2650f7199867d1dc503","bytes":29359,"sha256":"e0f6a8da85bbb125270670cecaecf9ce98d7aa5eff6ae72c28bac9f91bd42455"});
 export const runtimeAuxiliaryPrimePredecessor=Object.freeze({"path":"tests/next-cohort-20261110/source/retained-runtime.mjs","ref":"257a18f2ebab091410129a2fcd58bd7edff843e9","blob":"92c537d1fcc2b307f1799c4b474627de49e0358b","bytes":30516,"sha256":"f9f1a86538710d60b49baa562a198226cf5f005f32e8b6c85b3bb3203ed96fb4"});
 export const runtimeAuxiliaryBatchSuccessor=Object.freeze({"path":"tests/next-cohort-20261110/source/retained-runtime.mjs","ref":"64c86e4fe5f77816f2b5b45ea2177ed56520b292","blob":"9994a48ea83a831a0159123da5bc377901fbe5ce","bytes":30546,"sha256":"1c64dd97bee245a7b08e5e1b3fc9b32e8f6370fadd8619b8c213fa0e33a33c22"});
+export const runtimeAuxiliaryNativeGitSuccessor=Object.freeze({"path":"tests/next-cohort-20261110/source/retained-runtime.mjs","ref":"bdf5f656a6917c222d15daf3eef410368ea93aff","blob":"60dd2cf54efd56e9f2bcc00795a6ce3bee3e6ea4","bytes":30563,"sha256":"69e02449bb9998c985e8b4c6bc8f2d313bd018f82a4e3c1265556aa399be3433"});
 export const runtimeAuxiliaryImmutableChain=Object.freeze([runtimeAuxiliarySource.prior,runtimeAuxiliarySource.current,runtimeAuxiliaryBatchPredecessor,runtimeAuxiliaryBoundHeadPredecessor,runtimeAuxiliaryPrimePredecessor,runtimeAuxiliaryBatchSuccessor]);
 export const runtimeAuxiliaryImmutableRefs=Object.freeze([...new Set(runtimeAuxiliaryImmutableChain.map(row=>row.ref))].sort());
 function preloadRuntimeAuxiliaryObjects(git){
@@ -37,9 +38,15 @@ export function proveRuntimeAuxiliarySuccessor({record,currentBytes,input,witnes
  let proof;
  if(witness===undefined){proof=provePinnedSourceStage8({...input,root});assert.equal(proof.actualInput.read,actual.read,'The same registered actual source reader is required');assertSourceStage8HeadStable(proof);verifyParallelAuthority(actual.read,actual.git);}
  else replayActualAuthorityWitness(witness,input);
- const next=runtimeAuxiliaryBatchSuccessor;assert.equal(next.path,runtimeAuxiliarySource.current.path);
+ const next=runtimeAuxiliaryNativeGitSuccessor;assert.equal(next.path,runtimeAuxiliarySource.current.path);
  const authority=accepted.find(row=>row.path===next.path);assert(authority,'Independently admitted runtime guard required');assert.equal(authority.blob,next.blob);assert.equal(authority.sha256,next.sha256);
  preloadRuntimeAuxiliaryObjects(actual.git);
+ const originalTransport=immutable(runtimeAuxiliaryBatchSuccessor,actual.git),nativeTransport=immutable(next,actual.git);
+ const oldNative=originalTransport.toString(),nativeImport="import {execNativeGit} from '../../construction-ci-recovery-20261116/native-git.mjs';\n";
+ assert.equal(oldNative.split("import {execFileSync} from 'node:child_process';\n").length,2,'Exact original native Git import required');
+ assert.equal(oldNative.split("execFileSync('git',").length,5,'Only four native Git calls may advance');
+ const expectedNative=nativeImport+oldNative.replace("import {execFileSync} from 'node:child_process';\n",'').replaceAll("execFileSync('git',",'execNativeGit(');
+ assert(nativeTransport.equals(Buffer.from(expectedNative)),'Only exact native Git transport may change; historical rows and proof checks remain literal');
  immutable(runtimeAuxiliarySource.prior,actual.git);immutable(runtimeAuxiliarySource.current,actual.git);immutable(runtimeAuxiliaryBatchPredecessor,actual.git);immutable(runtimeAuxiliaryBoundHeadPredecessor,actual.git);immutable(runtimeAuxiliaryPrimePredecessor,actual.git);const bytes=immutable(next,actual.git),path=next.path;
  assert.equal(actual.git(['rev-parse',before+':'+path]).toString().trim(),next.blob,'Exact actual HEAD runtime object differs');
  const target=resolve(root,path),stat=lstatSync(target);assert(stat.isFile()&&!stat.isSymbolicLink(),'Regular actual runtime source required');assert.equal(realpathSync(target),target,'Redirected runtime source');
