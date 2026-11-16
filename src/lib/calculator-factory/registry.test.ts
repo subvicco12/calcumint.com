@@ -19,7 +19,7 @@ describe('factory exact integration contracts',()=>{
  it('binds private physics arithmetic revision into exported source identity',()=>{for(const id of [323,324])expect(getFactoryWorkflows(id).identity.sourceVersion).toContain(physicsScaledRevision);});
  it('preserves case-sensitive target and percentage presentation units',()=>{expect(factoryResult(208,{old:'100',next:'125'}).primaryResult.unit).toBe('%');expect(factoryResult(440,{value:'1',fromUnit:'khz',toUnit:'mhz'}).primaryResult.unit).toBe('MHz');});
  it('gates paid local workflows without changing shared mathematics',()=>{
-  for(const row of factoryContracts){const workflows=getFactoryWorkflows(row.catalogId),raw=defaults(row),packet=workflows.execute(raw);expect(()=>workflows.exportPacket(packet,'json','free')).toThrow();expect(()=>workflows.scenario([],'A',packet,'','free')).toThrow();const pro=JSON.parse(workflows.exportPacket(packet,'json','pro')),business=JSON.parse(workflows.exportPacket(packet,'json','business'));expect(pro).toEqual(business);expect(pro.snapshot).toEqual(calculateFactory(row.catalogId,raw));}
+  for(const row of factoryContracts){const workflows=getFactoryWorkflows(row.catalogId),raw=defaults(row),packet=workflows.execute(raw);expect(()=>workflows.exportPacket(packet,'json','free')).toThrow();expect(()=>workflows.scenario([],'A',packet,'','free')).toThrow();const pro=JSON.parse(workflows.exportPacket(packet,'json','pro')),business=JSON.parse(workflows.exportPacket(packet,'json','business'));expect(pro).toEqual(business);expect((pro.packet??pro).snapshot).toEqual(calculateFactory(row.catalogId,raw));}
  });
 });
 it('uses source-defined case-sensitive symbols in every scoped converter control and result',()=>{

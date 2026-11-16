@@ -1,4 +1,4 @@
-import {sourceStage10Policy,sourceStage10CapturePath} from '../next-engineering-20261115/source-stage10-current26-policy.mjs';
+import {sourceStage10Policy,sourceStage10CapturePath} from '../next-engineering-20261115/source-stage10-current32-policy.mjs';
 import {sourceStage9Policy,sourceStage9CapturePath} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
