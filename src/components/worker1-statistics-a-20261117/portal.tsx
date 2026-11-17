@@ -1,0 +1,48 @@
+'use client';
+import {useEffect,useRef,useState} from 'react';
+import {statisticsContracts,statisticsContract,statisticsWorkflows,statisticsResult,verifyStatisticsSnapshot} from '@/lib/worker1-statistics-a-20261117/cohort';
+import type {FactoryExecutionPacket,FactoryScenario} from '@/lib/calculator-factory/workflows';
+import type {CalculationSnapshot} from '@/lib/calculation-snapshot';
+import type {CalcuMintPlan} from '@/lib/entitlements';
+import {sameRecordedJson} from '@/lib/recorded-json-equality';
+import {FinalResultPresentation} from '../final-result-presentation';
+import {CalculatorFactoryDownloads} from '../calculator-factory-downloads';
+import {saveHistory,readHistory,loadProjects,saveScenario,restoreScenario,loadBusiness} from '@/app/admin/worker1-statistics-a-20261117/actions';
+export function StatisticsPortal({ownerId,plan}:{ownerId:string;plan:CalcuMintPlan}){
+ const [id,setId]=useState(292);
+ return <section style={{minWidth:0,maxWidth:'100%',overflowWrap:'anywhere'}}><label>Statistics profile<select value={id} onChange={e=>setId(Number(e.target.value))}>{statisticsContracts.map(c=><option key={c.catalogId} value={c.catalogId}>#{c.catalogId} {c.title}</option>)}</select></label><StatisticsProfile key={ownerId+':'+id} id={id} ownerId={ownerId} plan={plan}/><style>{`.worker1-statistics-controls input,.worker1-statistics-controls select,.worker1-statistics-controls button,.worker1-statistics-controls textarea{box-sizing:border-box;max-width:100%;min-height:44px;font-size:16px}.worker1-statistics-controls label{display:block}.worker1-statistics-controls :focus-visible{outline:3px solid #1259c3;outline-offset:2px}`}</style></section>;
+}
+function StatisticsProfile({id,ownerId,plan}:{id:number;ownerId:string;plan:CalcuMintPlan}){
+ const c=statisticsContract(id),flow=statisticsWorkflows(id),[raw,setRaw]=useState<Record<string,string>>(()=>Object.fromEntries(c.fields.map(f=>[f.key,String(f.defaultValue)])));
+ const [packet,setPacket]=useState<FactoryExecutionPacket|null>(null),[error,setError]=useState(''),[status,setStatus]=useState(''),[busy,setBusy]=useState(false),[historical,setHistorical]=useState<CalculationSnapshot|null>(null);
+ const [history,setHistory]=useState(''),[scenarioId,setScenarioId]=useState(''),[project,setProject]=useState(''),[projects,setProjects]=useState<{id:string;name:string}[]>([]),[name,setName]=useState(''),[org,setOrg]=useState('');
+ const [scenarios,setScenarios]=useState<readonly FactoryScenario[]>([]),[replay,setReplay]=useState(''),[batch,setBatch]=useState(''),[batchResult,setBatchResult]=useState('');
+ const revision=useRef(0),mounted=useRef(true),pending=useRef(false),retry=useRef<{key:string;id:string}|null>(null);
+ useEffect(()=>{mounted.current=true;return()=>{mounted.current=false;};},[]);
+ const invalidate=()=>{revision.current++;pending.current=false;setBusy(false);setStatus('');setError('');};
+ const act=(fn:()=>void)=>{invalidate();try{fn();}catch(e){setError(e instanceof Error?e.message:'Statistics workflow unavailable');}};
+ async function run(fn:(valid:()=>boolean)=>Promise<string>){
+  if(pending.current)return;pending.current=true;const token=++revision.current;setBusy(true);setError('');setStatus('');const valid=()=>mounted.current&&revision.current===token;
+  try{const message=await fn(valid);if(valid())setStatus(message);}catch(e){if(valid())setError(e instanceof Error?e.message:'Request unavailable');}finally{if(valid()){pending.current=false;setBusy(false);}}
+ }
+ function recover(value:{catalogId:number;snapshot:CalculationSnapshot}){
+  if(value.catalogId!==id)throw Error('Choose the matching statistics profile before restoring');const checked=verifyStatisticsSnapshot(value.snapshot);
+  const restoredRaw=Object.fromEntries(Object.entries(checked.snapshot.input).map(([k,v])=>[k,Array.isArray(v)?v.map(x=>Object.is(x,-0)?'-0':String(x)).join(', '):Object.is(v,-0)?'-0':String(v)]));
+  let current:FactoryExecutionPacket;try{current=flow.execute(restoredRaw);}catch{setPacket(null);setHistorical(checked.snapshot);return 'Verified historical v1 record opened read-only; new capture is refused.';}
+  if(!sameRecordedJson(current.snapshot,checked.snapshot))throw Error('Historical result differs from exact current capture');
+  setRaw(restoredRaw);setPacket(current);setHistorical(null);return 'Verified owned snapshot restored';
+ }
+ function requestId(key:string){if(retry.current?.key!==key)retry.current={key,id:crypto.randomUUID()};return retry.current.id;}
+ return <section className="worker1-statistics-controls" aria-label={c.title+' private engineering review'}><h2>{c.title}</h2><p>{c.engineId}@{c.version}. {c.scope}</p><p>Comma-separated decimal observations; no missing-value imputation. Binary64 private capture: each nonzero input magnitude must be between 1e-50 and 1e50. Canonical applicability and competent review remain pending.</p>
+ <form onSubmit={e=>{e.preventDefault();setPacket(null);setHistorical(null);act(()=>setPacket(flow.execute(raw)));}}>{c.fields.map(f=><label key={f.key}>{f.label}<input name={f.key} value={raw[f.key]} onChange={e=>{invalidate();setPacket(null);setHistorical(null);setRaw({...raw,[f.key]:e.target.value});}}/></label>)}<button type="submit">Calculate</button></form>
+ {error&&<p role="alert">{error}</p>}{status&&<p role="status">{status}</p>}{busy&&<p role="status">Working…</p>}
+ {packet&&<><FinalResultPresentation plan={plan} result={statisticsResult(packet)}/><CalculatorFactoryDownloads workflows={flow} packet={packet} title={c.title} plan={plan}/><button disabled={busy} onClick={()=>{const captured=packet,key=JSON.stringify([ownerId,captured]),request=requestId(key);void run(async()=>{const r=await saveHistory({expectedOwnerId:ownerId,requestId:request,packet:captured});return 'Authenticated immutable history saved: '+r.id;});}}>Save calculation</button>{(['A','B'] as const).map(slot=><button key={slot} onClick={()=>act(()=>setScenarios(flow.scenario(scenarios,slot,packet,'',plan)))}>Capture scenario {slot}</button>)}</>}
+ {!!scenarios.length&&<ul aria-label="Captured scenarios">{scenarios.map(s=><li key={s.slot}>Scenario {s.slot}: {String(s.packet.snapshot.output[c.primaryKey])}</li>)}</ul>}
+ <label>Saved history ID<input value={history} onChange={e=>{invalidate();setHistory(e.target.value);}}/></label><button disabled={busy||!history.trim()} onClick={()=>void run(async valid=>{const r=await readHistory({expectedOwnerId:ownerId,historyId:history.trim()});return valid()?recover(r):'Stale response ignored';})}>Restore owned history</button>
+ {plan!=='free'&&<><button disabled={busy} onClick={()=>void run(async valid=>{const r=await loadProjects(ownerId);if(valid()){setProjects(r.projects);setProject(r.projects[0]?.id??'');}return 'Owned projects loaded';})}>Load owned projects</button><label>Owned project<select value={project} onChange={e=>{invalidate();setProject(e.target.value);}}>{!projects.length&&<option value="">Load projects</option>}{projects.map(p=><option key={p.id} value={p.id}>{p.name}</option>)}</select></label><label>Scenario name<input value={name} maxLength={120} onChange={e=>{invalidate();setName(e.target.value);}}/></label><button disabled={busy||!packet||!project||!name.trim()} onClick={()=>{if(!packet)return;const captured=packet,request=requestId(JSON.stringify([ownerId,packet,project,name]));void run(async valid=>{const r=await saveScenario({expectedOwnerId:ownerId,packet:captured,projectId:project,name,requestId:request});if(valid())setScenarioId(r.scenarioId);return 'Saved scenario '+r.scenarioId;});}}>Save project scenario</button><label>Saved scenario ID<input value={scenarioId} onChange={e=>{invalidate();setScenarioId(e.target.value);}}/></label><button disabled={busy||!scenarioId.trim()} onClick={()=>void run(async valid=>{const r=await restoreScenario({expectedOwnerId:ownerId,scenarioId:scenarioId.trim()});return valid()?recover(r):'Stale response ignored';})}>Restore saved scenario</button></>}
+ {historical&&<section aria-label="Read-only historical statistics"><p>Original normalized v1 record; raw decimal entry was not retained. No new capture or substituted result.</p><pre aria-label="Verified historical statistics snapshot" style={{whiteSpace:'pre-wrap',overflowWrap:'anywhere'}}>{JSON.stringify(historical,null,2)}</pre></section>}
+ <label>Packet JSON to replay<textarea value={replay} onChange={e=>{invalidate();setReplay(e.target.value);}}/></label><button onClick={()=>{setPacket(null);act(()=>{const checked=flow.replay(replay);setPacket(checked);setRaw({...checked.raw});setHistorical(null);});}}>Replay packet</button>
+ <label>Batch rows (JSON objects of raw string fields, one per line)<textarea value={batch} onChange={e=>{invalidate();setBatch(e.target.value);setBatchResult('');}}/></label><button onClick={()=>act(()=>{if(batch.length>65536)throw Error('Batch exceeds 64 KiB');const rows=flow.batch(batch.split('\n').map(line=>JSON.parse(line)));setBatchResult(JSON.stringify(rows));})}>Run batch</button>{batchResult&&<pre aria-label="Batch results" style={{whiteSpace:'pre-wrap',overflowWrap:'anywhere'}}>{batchResult}</pre>}
+ {plan==='business'&&<><label>Business organization ID<input value={org} onChange={e=>{invalidate();setOrg(e.target.value);}}/></label><button disabled={busy||!org.trim()} onClick={()=>void run(async()=>{const r=await loadBusiness({expectedOwnerId:ownerId,organizationId:org.trim()});return `Verified Business role: ${r.role}. ${r.delivery.reason}`;})}>Check current Business capability</button><p>Shared writes, metered jobs, API/embed and signed webhooks are blocked pending exact-tuple shared capability adoption.</p></>}
+ </section>;
+}

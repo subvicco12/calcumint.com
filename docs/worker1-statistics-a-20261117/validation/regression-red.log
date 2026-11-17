@@ -1,0 +1,46 @@
+
+ RUN  v3.2.7 /workspace/work/worker1-statistics-a-20261117
+
+ ❯ src/lib/worker1-statistics-a-20261117/cohort.test.ts (13 tests | 1 failed) 249ms
+   ✓ binds the exact catalog tuples without registering new engines 2ms
+   ✓ preserves immutable outputs, raw provenance, scenarios, batch recovery and exports #292 115ms
+   ✓ preserves immutable outputs, raw provenance, scenarios, batch recovery and exports #293 67ms
+   ✓ preserves immutable outputs, raw provenance, scenarios, batch recovery and exports #294 21ms
+   ✓ preserves immutable outputs, raw provenance, scenarios, batch recovery and exports #295 11ms
+   ✓ has independent hand-derived goldens including legitimate zero and negative values 2ms
+   ✓ refuses malformed/unsupported new captures #292 1ms
+   ✓ refuses malformed/unsupported new captures #293 1ms
+   ✓ refuses malformed/unsupported new captures #294 3ms
+   ✓ refuses malformed/unsupported new captures #295 3ms
+   ✓ refuses known weighted cancellation while preserving exact historical v1 output 1ms
+   ✓ rejects pairing and degeneracy instead of fabricating results 3ms
+   × refuses regression loss of centered precision while preserving immutable v1 history 17ms
+     → expected [Function] to throw an error
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/worker1-statistics-a-20261117/cohort.test.ts > refuses regression loss of centered precision while preserving immutable v1 history
+AssertionError: expected [Function] to throw an error
+
+- Expected: 
+null
+
++ Received: 
+undefined
+
+ ❯ src/lib/worker1-statistics-a-20261117/cohort.test.ts:54:110
+     52|  // Two distinct points define slope (1-0)/((1e16+2)-1e16) = 1/2.
+     53|  expect(output.slope).toBe(.25);
+     54|  expect(()=>statisticsWorkflows(293).execute({xValues:'100000000000000…
+       |                                                                                                              ^
+     55|  expect(verifyStatisticsSnapshot({calculatorSlug:linearRegressionCalcu…
+     56| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 12 passed (13)
+   Start at  04:54:49
+   Duration  1.19s (transform 424ms, setup 21ms, collect 591ms, tests 249ms, environment 0ms, prepare 88ms)
+

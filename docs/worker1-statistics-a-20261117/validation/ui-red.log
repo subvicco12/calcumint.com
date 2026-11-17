@@ -1,0 +1,32 @@
+
+ RUN  v3.2.7 /workspace/work/worker1-statistics-a-20261117
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/worker1-statistics-a-20261117/portal.test.tsx [ src/components/worker1-statistics-a-20261117/portal.test.tsx ]
+Error: Failed to resolve import "./portal" from "src/components/worker1-statistics-a-20261117/portal.test.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /workspace/work/worker1-statistics-a-20261117/src/components/worker1-statistics-a-20261117/portal.test.tsx:4:0
+  3  |  const __vi_import_0__ = await import("react/jsx-dev-runtime");
+  4  |  const __vi_import_1__ = await import("@testing-library/react");
+  5  |  const __vi_import_2__ = await import("./portal");
+     |                                       ^
+  6  |  const __vi_import_3__ = await import("@/lib/worker1-statistics-a-20261117/cohort");
+  7  |  
+ ❯ TransformPluginContext._formatLog ../batch13-deps/node_modules/vite/dist/node/chunks/config.js:29250:43
+ ❯ TransformPluginContext.error ../batch13-deps/node_modules/vite/dist/node/chunks/config.js:29247:14
+ ❯ normalizeUrl ../batch13-deps/node_modules/vite/dist/node/chunks/config.js:27370:18
+ ❯ ../batch13-deps/node_modules/vite/dist/node/chunks/config.js:27428:32
+ ❯ TransformPluginContext.transform ../batch13-deps/node_modules/vite/dist/node/chunks/config.js:27396:4
+ ❯ EnvironmentPluginContainer.transform ../batch13-deps/node_modules/vite/dist/node/chunks/config.js:29048:14
+ ❯ loadAndTransform ../batch13-deps/node_modules/vite/dist/node/chunks/config.js:22914:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  04:52:54
+   Duration  1.24s (transform 39ms, setup 22ms, collect 0ms, tests 0ms, environment 824ms, prepare 87ms)
+
