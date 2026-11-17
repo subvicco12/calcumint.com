@@ -1,0 +1,1874 @@
+{
+  "kind": "EXACT20_SCOPED_ENGINEERING_HANDOFF_NOT_CANONICAL_ACCEPTANCE",
+  "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+  "sourceCommit": "822743dd987bc2f07e52ab07a3c2ef4ab05f625f",
+  "unchangedCalculatorImplementationSource": "550ae67dfdf8fcfa8fb0ac68ccbe2ac68e13fb0f",
+  "additionalSourceChange": "Whole89-tuple roster regression test; mathematical and delivery implementations unchanged",
+  "baselineConfirmedOverlay": 80,
+  "newConfirmed": 0,
+  "potentialOverlay": 100,
+  "releaseHold": true,
+  "prior80": [
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    215,
+    216,
+    218,
+    219,
+    220,
+    221,
+    223,
+    224,
+    225,
+    227,
+    228,
+    229,
+    230,
+    231,
+    255,
+    256,
+    259,
+    260,
+    261,
+    262,
+    263,
+    264,
+    265,
+    266,
+    267,
+    269,
+    270,
+    271,
+    272,
+    273,
+    274,
+    275,
+    278,
+    279,
+    280,
+    328,
+    331,
+    332,
+    368,
+    369,
+    370,
+    371,
+    372,
+    373,
+    374,
+    375,
+    376,
+    377,
+    378,
+    379,
+    380,
+    381,
+    382,
+    383,
+    384,
+    385,
+    386,
+    387,
+    423,
+    424,
+    425,
+    427,
+    428,
+    429,
+    430,
+    431,
+    432,
+    433,
+    434,
+    436,
+    437,
+    438,
+    439,
+    440
+  ],
+  "excludedAuthority43": [
+    9,
+    19,
+    20,
+    23,
+    34,
+    48,
+    87,
+    92,
+    95,
+    97,
+    98,
+    112,
+    120,
+    121,
+    122,
+    123,
+    124,
+    128,
+    129,
+    130,
+    131,
+    132,
+    135,
+    136,
+    137,
+    173,
+    198,
+    199,
+    204,
+    404,
+    405,
+    406,
+    407,
+    408,
+    409,
+    410,
+    442,
+    485,
+    502,
+    522,
+    526,
+    527,
+    530
+  ],
+  "selectedIds": [
+    284,
+    285,
+    286,
+    287,
+    288,
+    289,
+    290,
+    291,
+    300,
+    329,
+    333,
+    334,
+    335,
+    336,
+    337,
+    338,
+    339,
+    340,
+    341,
+    342
+  ],
+  "sourceFiles": [
+    {
+      "path": "src/components/calculator-factory-portal.tsx",
+      "blob": "897b31ce2bf64e94031b3004fa8b01123ce56043",
+      "bytes": 4307,
+      "sha256": "3e6c088ded6f0bc05e2893fc830e166b3149c9f5578f157698944aa0a3609320"
+    },
+    {
+      "path": "src/components/next-engineering-analysis.test.tsx",
+      "blob": "1f6c6a9664cc29e9de76af4b8fea3139b964bd80",
+      "bytes": 2333,
+      "sha256": "99b7a1065acc24e7810c2771f93c769155023b0e6650a145ed2ab91f69d3ecf8"
+    },
+    {
+      "path": "src/components/next-engineering-analysis.tsx",
+      "blob": "3b6034b058488a14ffdd8d2982ed7b8eb15191ec",
+      "bytes": 5537,
+      "sha256": "7a3358c374a3ae1d6d81b7fa97e0cab26f7bfb80a785de8f6aac6f7b0ef0ec2c"
+    },
+    {
+      "path": "src/lib/business/factory-nine-sharing.test.ts",
+      "blob": "e9d2548dd59a4d3eb66eba5ab720752672197f63",
+      "bytes": 2203,
+      "sha256": "a65f9576fbbb391ce14e21cefd68e75572028bd4900bdcb6cca3751f4ede3273"
+    },
+    {
+      "path": "src/lib/calculator-factory/completion/business.ts",
+      "blob": "472c79202852618e27cc3af19d801b41cebc8ce2",
+      "bytes": 2844,
+      "sha256": "a92bf9b766442834deb217c65ee14c0c8c36594f02c75f8f0a863414d3f215ea"
+    },
+    {
+      "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts",
+      "blob": "30a9522fad7f0e8b7795af9ba70e844e22d966fe",
+      "bytes": 8084,
+      "sha256": "b9dbfe201541b15175dbc9043ec2cfae0839f1503b4600626cbfada4c1d006eb"
+    },
+    {
+      "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-a.ts",
+      "blob": "434023f3f8ba88c4e9c7477751f935b9e1ab898f",
+      "bytes": 4398,
+      "sha256": "d03e9bb0c3a59f5b232b68ffea3205297a07c49b0016fae1b04bf0b9d9ded37a"
+    },
+    {
+      "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts",
+      "blob": "f001871a1cab16ce1a5b3755a1e4bedace179f68",
+      "bytes": 7767,
+      "sha256": "464aef407d0f024d76401adf232114d32e4c0a971b007d0d24288331c87aba46"
+    },
+    {
+      "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-b.ts",
+      "blob": "b688d2646831bf922a197131741cb6d654ff42c5",
+      "bytes": 5499,
+      "sha256": "835435adab7b7c2caab0c8e045e041f94009d779cfe4a59d9d99717502444580"
+    },
+    {
+      "path": "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+      "blob": "706908108d8967f2efa78fd08f0d7064b78d4dc8",
+      "bytes": 2078,
+      "sha256": "045d1b30bdf9144ee31673665da1879359bdb90d86c25be031bdacbb9dc9a2eb"
+    },
+    {
+      "path": "src/lib/calculator-factory/completion/next-engineering-core.ts",
+      "blob": "8fe50d2a203e228dfb9285c08c887604218a55b7",
+      "bytes": 4631,
+      "sha256": "b50db1e836a0a0858281005dc384cf312ea7fba117a14257020cc962e1ce33ec"
+    },
+    {
+      "path": "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+      "blob": "e4e7641c64fd603adc886adb0b4bef98d7142bba",
+      "bytes": 2729,
+      "sha256": "73e69998be3678a787cbaaf016a8a980fe267ec958acf472c7eaeddd86ce6d24"
+    },
+    {
+      "path": "src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts",
+      "blob": "190ea72b11ff688b6f818518f9e24ff3d6da43fd",
+      "bytes": 10372,
+      "sha256": "1424ba796264a7bce6cea3b0bb8a6fc747a192f351b0be43c159ca4344fc7b21"
+    },
+    {
+      "path": "src/lib/calculator-factory/completion/next-engineering-statistics-a.ts",
+      "blob": "599eef3451d3c6e985437fc1d1aab2a1efc3788a",
+      "bytes": 4073,
+      "sha256": "3fcbab24b57ff249d77477370ae4dca301e729245ef2591e01719b34962eb755"
+    },
+    {
+      "path": "src/lib/calculator-factory/completion/next-engineering-statistics-b.test.ts",
+      "blob": "3154c6b181efb63851e0725d4351ac6d95285622",
+      "bytes": 8066,
+      "sha256": "4957ce204c5d16eb3a202664c28ca8c4fabe79f6b0ac6c025fd3744cac361808"
+    },
+    {
+      "path": "src/lib/calculator-factory/completion/next-engineering-statistics-b.ts",
+      "blob": "2d0a6175d9a7c07a6f1b3f5c7accd648529d7a25",
+      "bytes": 4727,
+      "sha256": "3ac2447f87852d50ba76f51aa852964116fab7a9cf7e3269df932d35e0204b5b"
+    },
+    {
+      "path": "src/lib/calculator-factory/completion/next-engineering.ts",
+      "blob": "3467dca9540bdcae09b692ae6bd87d321e6f03c2",
+      "bytes": 4036,
+      "sha256": "82ba8f13c54e165b2a4d56420a7e65df4d99da453329f7040cff7d162cea1ad4"
+    },
+    {
+      "path": "src/lib/calculator-factory/registry.test.ts",
+      "blob": "0af71d8b9d3447279a17be51258d89420e1ea1af",
+      "bytes": 4833,
+      "sha256": "e6f5adecb9e49668791caefb36f02ac99d4c42cd509a74854f5439cbaf764c0d"
+    },
+    {
+      "path": "src/lib/calculator-factory/registry.ts",
+      "blob": "37b2aa94913ffea8a7416bf24957173ccfbc78f7",
+      "bytes": 8271,
+      "sha256": "85653a120bc3be44867cbec29319e895d9fcf78d5fe27e83d7a96ee0cdf4b925"
+    },
+    {
+      "path": "src/lib/completion-wave-20261113/sql-successor.test.ts",
+      "blob": "c44d3a8d434e84287a88980800a31503472eb67f",
+      "bytes": 23942,
+      "sha256": "acf845d5b44140a490157c75dcfa9adc6d7b2a45facdefdae1d930b922c4ce99"
+    },
+    {
+      "path": "src/lib/native-delivery/factory-automation-contract.test.ts",
+      "blob": "648d6da59de72e2c9776e3b814db517796d2e678",
+      "bytes": 2848,
+      "sha256": "bd53184b4f10c10f29c6ba4f7c1e1149a03388a2264655bce8ab1e1385525676"
+    },
+    {
+      "path": "src/lib/native-delivery/factory-delivery-catalog.ts",
+      "blob": "c6d7c371a962e8b1d01f0a725e3651786a426385",
+      "bytes": 5450,
+      "sha256": "761c1a546635d3a4ab34302d3a7326d3b0a5bea7769181d876ab27d8b274a9be"
+    },
+    {
+      "path": "src/lib/native-delivery/factory-embed-contract.test.ts",
+      "blob": "0557d900af11db5ab634461bb5ace0642dce5824",
+      "bytes": 4774,
+      "sha256": "e9886a19526a02743646ef9ed85771a438b4e27ba04c91ba0de09fadc1fca538"
+    },
+    {
+      "path": "src/lib/registered-snapshot-verification.ts",
+      "blob": "f01ce77d1e69e537e0c11a94204f3730d021cda8",
+      "bytes": 2216,
+      "sha256": "7858d334f0abaf70b91bab8ae1f8681ace559f49a16c7b334867d4ab48c576b9"
+    }
+  ],
+  "rows": [
+    {
+      "catalogId": 284,
+      "title": "Z-Score Calculator",
+      "identity": {
+        "engineId": "statistics.z-score",
+        "slug": "z-score-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.z-score@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/statistics/catalog-batch-1.ts",
+        "blob": "32bcaac6edbe68d220109ce6f9cde62694bcf429",
+        "sha256": "172db736ce7c991e0b11cf99612578d7c25374bda0f95e009167e9fa887ba52f",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 284,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "3e2f67802c15275cfb68db6203dae2ccef0816a8c44101e578612fa239643066"
+      },
+      "scope": "Standardize one value using a supplied mean and positive standard deviation in the same unit; no tail probability or distribution fit.",
+      "primaryKey": "zScore",
+      "unit": "dimensionless",
+      "sourceEvidence": [
+        "docs/next-engineering-20261115/statistics-a/source-bindings.md#id-284",
+        "docs/next-engineering-20261115/statistics-a/evidence/manifest.json"
+      ],
+      "localEvidence": [
+        {
+          "reference": "docs/next-engineering-20261115/statistics-a/source-bindings.md#id-284",
+          "path": "docs/next-engineering-20261115/statistics-a/source-bindings.md",
+          "bytes": 8150,
+          "sha256": "bc1e23fa402edfda04d5a4315a1d00ee2cbf29ca09b22f60703cd70e8582cc6e"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/statistics-a/evidence/manifest.json",
+          "path": "docs/next-engineering-20261115/statistics-a/evidence/manifest.json",
+          "bytes": 3570,
+          "sha256": "a4cc622c552f43a2cceaa3e7adb1033574756eb0ace174e5c105e4b8b2aa9702"
+        }
+      ],
+      "files": [
+        "src/components/calculator-factory-portal.tsx",
+        "src/components/next-engineering-analysis.test.tsx",
+        "src/components/next-engineering-analysis.tsx",
+        "src/lib/business/factory-nine-sharing.test.ts",
+        "src/lib/calculator-factory/completion/business.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.ts",
+        "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/completion-wave-20261113/sql-successor.test.ts",
+        "src/lib/native-delivery/factory-automation-contract.test.ts",
+        "src/lib/native-delivery/factory-delivery-catalog.ts",
+        "src/lib/native-delivery/factory-embed-contract.test.ts",
+        "src/lib/registered-snapshot-verification.ts",
+        "src/lib/calculator-factory/completion/next-engineering-statistics-a.ts",
+        "src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts"
+      ],
+      "receipts": {
+        "focused": "docs/next-engineering-20261115/validation/frozen-source-focused.log",
+        "business": "docs/next-engineering-20261115/business/integrated-receipt.json",
+        "lane": "docs/next-engineering-20261115/statistics-a/"
+      },
+      "disposition": "IMPLEMENTED_SCOPED_ENGINEERING_PENDING_EXACT_HEAD_SOURCE_AND_CI_QUALIFICATION",
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false,
+      "limitations": []
+    },
+    {
+      "catalogId": 285,
+      "title": "Confidence Interval Calculator",
+      "identity": {
+        "engineId": "statistics.confidence-interval",
+        "slug": "confidence-interval-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.confidence-interval@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/statistics/catalog-batch-2.ts",
+        "blob": "82bc66e1af1a64535c0eccf4a033f20f2f4df94e",
+        "sha256": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 285,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "9e8cc004af9a53dbb31d0fd28b198fbd844f27c050e2e46531dc2e4e4395c51f"
+      },
+      "scope": "Two-sided normal interval from a supplied estimate and positive standard error; caller establishes a valid normal approximation. Confidence levels: 80%, 90%, 95%, 98%, 99%. No t interval.",
+      "primaryKey": "marginOfError",
+      "unit": "supplied estimate unit",
+      "sourceEvidence": [
+        "docs/next-engineering-20261115/statistics-a/source-bindings.md#id-285",
+        "docs/next-engineering-20261115/statistics-a/evidence/manifest.json"
+      ],
+      "localEvidence": [
+        {
+          "reference": "docs/next-engineering-20261115/statistics-a/source-bindings.md#id-285",
+          "path": "docs/next-engineering-20261115/statistics-a/source-bindings.md",
+          "bytes": 8150,
+          "sha256": "bc1e23fa402edfda04d5a4315a1d00ee2cbf29ca09b22f60703cd70e8582cc6e"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/statistics-a/evidence/manifest.json",
+          "path": "docs/next-engineering-20261115/statistics-a/evidence/manifest.json",
+          "bytes": 3570,
+          "sha256": "a4cc622c552f43a2cceaa3e7adb1033574756eb0ace174e5c105e4b8b2aa9702"
+        }
+      ],
+      "files": [
+        "src/components/calculator-factory-portal.tsx",
+        "src/components/next-engineering-analysis.test.tsx",
+        "src/components/next-engineering-analysis.tsx",
+        "src/lib/business/factory-nine-sharing.test.ts",
+        "src/lib/calculator-factory/completion/business.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.ts",
+        "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/completion-wave-20261113/sql-successor.test.ts",
+        "src/lib/native-delivery/factory-automation-contract.test.ts",
+        "src/lib/native-delivery/factory-delivery-catalog.ts",
+        "src/lib/native-delivery/factory-embed-contract.test.ts",
+        "src/lib/registered-snapshot-verification.ts",
+        "src/lib/calculator-factory/completion/next-engineering-statistics-a.ts",
+        "src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts"
+      ],
+      "numericalEvidence": {
+        "spec": "docs/next-engineering-20261115/statistics-b/numerical/SPEC.json",
+        "results": "docs/next-engineering-20261115/statistics-b/numerical/RESULTS.json",
+        "hashes": "docs/next-engineering-20261115/statistics-b/numerical/HASHES.json",
+        "status": "PASS_EMPIRICAL_DECLARED_SCOPE_NOT_FORMAL_ACCURACY_CERTIFICATION",
+        "scopeLimitation": "Uses the immutable rounded critical table; no ideal-quantile coverage or minimal-sample guarantee."
+      },
+      "receipts": {
+        "focused": "docs/next-engineering-20261115/validation/frozen-source-focused.log",
+        "business": "docs/next-engineering-20261115/business/integrated-receipt.json",
+        "lane": "docs/next-engineering-20261115/statistics-a/"
+      },
+      "disposition": "IMPLEMENTED_SCOPED_ENGINEERING_PENDING_EXACT_HEAD_SOURCE_AND_CI_QUALIFICATION",
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false,
+      "limitations": []
+    },
+    {
+      "catalogId": 286,
+      "title": "Sample Size Calculator",
+      "identity": {
+        "engineId": "statistics.sample-size",
+        "slug": "sample-size-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.sample-size@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/statistics/catalog-batch-2.ts",
+        "blob": "82bc66e1af1a64535c0eccf4a033f20f2f4df94e",
+        "sha256": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 286,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "4053ee4fb04e73951d7cb6786ecffb92138707e1a98065f8935049f7986bfb2a"
+      },
+      "scope": "Normal-approximation proportion sample-size planning for 0 < p < 1, absolute fractional margin 0 < E ≤ 1, and the five v1 confidence levels; round upward, maximum 1e9. No finite-population correction or inference guarantee.",
+      "primaryKey": "sampleSize",
+      "unit": "observations",
+      "sourceEvidence": [
+        "docs/next-engineering-20261115/statistics-a/source-bindings.md#id-286",
+        "docs/next-engineering-20261115/statistics-a/evidence/manifest.json"
+      ],
+      "localEvidence": [
+        {
+          "reference": "docs/next-engineering-20261115/statistics-a/source-bindings.md#id-286",
+          "path": "docs/next-engineering-20261115/statistics-a/source-bindings.md",
+          "bytes": 8150,
+          "sha256": "bc1e23fa402edfda04d5a4315a1d00ee2cbf29ca09b22f60703cd70e8582cc6e"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/statistics-a/evidence/manifest.json",
+          "path": "docs/next-engineering-20261115/statistics-a/evidence/manifest.json",
+          "bytes": 3570,
+          "sha256": "a4cc622c552f43a2cceaa3e7adb1033574756eb0ace174e5c105e4b8b2aa9702"
+        }
+      ],
+      "files": [
+        "src/components/calculator-factory-portal.tsx",
+        "src/components/next-engineering-analysis.test.tsx",
+        "src/components/next-engineering-analysis.tsx",
+        "src/lib/business/factory-nine-sharing.test.ts",
+        "src/lib/calculator-factory/completion/business.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.ts",
+        "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/completion-wave-20261113/sql-successor.test.ts",
+        "src/lib/native-delivery/factory-automation-contract.test.ts",
+        "src/lib/native-delivery/factory-delivery-catalog.ts",
+        "src/lib/native-delivery/factory-embed-contract.test.ts",
+        "src/lib/registered-snapshot-verification.ts",
+        "src/lib/calculator-factory/completion/next-engineering-statistics-a.ts",
+        "src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts"
+      ],
+      "numericalEvidence": {
+        "spec": "docs/next-engineering-20261115/statistics-b/numerical/SPEC.json",
+        "results": "docs/next-engineering-20261115/statistics-b/numerical/RESULTS.json",
+        "hashes": "docs/next-engineering-20261115/statistics-b/numerical/HASHES.json",
+        "status": "PASS_EMPIRICAL_DECLARED_SCOPE_NOT_FORMAL_ACCURACY_CERTIFICATION",
+        "scopeLimitation": "Uses the immutable rounded critical table; no ideal-quantile coverage or minimal-sample guarantee."
+      },
+      "receipts": {
+        "focused": "docs/next-engineering-20261115/validation/frozen-source-focused.log",
+        "business": "docs/next-engineering-20261115/business/integrated-receipt.json",
+        "lane": "docs/next-engineering-20261115/statistics-a/"
+      },
+      "disposition": "IMPLEMENTED_SCOPED_ENGINEERING_PENDING_EXACT_HEAD_SOURCE_AND_CI_QUALIFICATION",
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false,
+      "limitations": []
+    },
+    {
+      "catalogId": 287,
+      "title": "Probability Calculator",
+      "identity": {
+        "engineId": "statistics.probability",
+        "slug": "probability-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.probability@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/statistics/catalog-batch-2.ts",
+        "blob": "82bc66e1af1a64535c0eccf4a033f20f2f4df94e",
+        "sha256": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 287,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "9f0bd0689ad55b06397d60c4b4959aca1755b1dacce9cb23791c3e9e8526ca3a"
+      },
+      "scope": "Intersection, union, and complement for two supplied independent event probabilities in [0,1]. Independence is assumed; no conditional/dependent-event model.",
+      "primaryKey": "bothIndependent",
+      "unit": "probability",
+      "sourceEvidence": [
+        "docs/next-engineering-20261115/statistics-a/source-bindings.md#id-287",
+        "docs/next-engineering-20261115/statistics-a/evidence/manifest.json"
+      ],
+      "localEvidence": [
+        {
+          "reference": "docs/next-engineering-20261115/statistics-a/source-bindings.md#id-287",
+          "path": "docs/next-engineering-20261115/statistics-a/source-bindings.md",
+          "bytes": 8150,
+          "sha256": "bc1e23fa402edfda04d5a4315a1d00ee2cbf29ca09b22f60703cd70e8582cc6e"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/statistics-a/evidence/manifest.json",
+          "path": "docs/next-engineering-20261115/statistics-a/evidence/manifest.json",
+          "bytes": 3570,
+          "sha256": "a4cc622c552f43a2cceaa3e7adb1033574756eb0ace174e5c105e4b8b2aa9702"
+        }
+      ],
+      "files": [
+        "src/components/calculator-factory-portal.tsx",
+        "src/components/next-engineering-analysis.test.tsx",
+        "src/components/next-engineering-analysis.tsx",
+        "src/lib/business/factory-nine-sharing.test.ts",
+        "src/lib/calculator-factory/completion/business.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.ts",
+        "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/completion-wave-20261113/sql-successor.test.ts",
+        "src/lib/native-delivery/factory-automation-contract.test.ts",
+        "src/lib/native-delivery/factory-delivery-catalog.ts",
+        "src/lib/native-delivery/factory-embed-contract.test.ts",
+        "src/lib/registered-snapshot-verification.ts",
+        "src/lib/calculator-factory/completion/next-engineering-statistics-a.ts",
+        "src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts"
+      ],
+      "receipts": {
+        "focused": "docs/next-engineering-20261115/validation/frozen-source-focused.log",
+        "business": "docs/next-engineering-20261115/business/integrated-receipt.json",
+        "lane": "docs/next-engineering-20261115/statistics-a/"
+      },
+      "disposition": "IMPLEMENTED_SCOPED_ENGINEERING_PENDING_EXACT_HEAD_SOURCE_AND_CI_QUALIFICATION",
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false,
+      "limitations": []
+    },
+    {
+      "catalogId": 288,
+      "title": "Permutation Calculator",
+      "identity": {
+        "engineId": "statistics.permutation",
+        "slug": "permutation-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.permutation@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/statistics/catalog-batch-2.ts",
+        "blob": "82bc66e1af1a64535c0eccf4a033f20f2f4df94e",
+        "sha256": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 288,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "10db3a3862ffec0b7b05e9838b117ae79768518e52c87ea7dd882de7ef3de6a5"
+      },
+      "scope": "Ordered selections without replacement from n distinct objects, integer 0 ≤ r ≤ n ≤ 1e9; result must be an exact safe integer. P(n,0)=1. No repeated/indistinguishable objects.",
+      "primaryKey": "permutations",
+      "unit": "ordered selections",
+      "sourceEvidence": [
+        "docs/next-engineering-20261115/statistics-a/source-bindings.md#id-288",
+        "docs/next-engineering-20261115/statistics-a/evidence/manifest.json"
+      ],
+      "localEvidence": [
+        {
+          "reference": "docs/next-engineering-20261115/statistics-a/source-bindings.md#id-288",
+          "path": "docs/next-engineering-20261115/statistics-a/source-bindings.md",
+          "bytes": 8150,
+          "sha256": "bc1e23fa402edfda04d5a4315a1d00ee2cbf29ca09b22f60703cd70e8582cc6e"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/statistics-a/evidence/manifest.json",
+          "path": "docs/next-engineering-20261115/statistics-a/evidence/manifest.json",
+          "bytes": 3570,
+          "sha256": "a4cc622c552f43a2cceaa3e7adb1033574756eb0ace174e5c105e4b8b2aa9702"
+        }
+      ],
+      "files": [
+        "src/components/calculator-factory-portal.tsx",
+        "src/components/next-engineering-analysis.test.tsx",
+        "src/components/next-engineering-analysis.tsx",
+        "src/lib/business/factory-nine-sharing.test.ts",
+        "src/lib/calculator-factory/completion/business.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.ts",
+        "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/completion-wave-20261113/sql-successor.test.ts",
+        "src/lib/native-delivery/factory-automation-contract.test.ts",
+        "src/lib/native-delivery/factory-delivery-catalog.ts",
+        "src/lib/native-delivery/factory-embed-contract.test.ts",
+        "src/lib/registered-snapshot-verification.ts",
+        "src/lib/calculator-factory/completion/next-engineering-statistics-a.ts",
+        "src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts"
+      ],
+      "receipts": {
+        "focused": "docs/next-engineering-20261115/validation/frozen-source-focused.log",
+        "business": "docs/next-engineering-20261115/business/integrated-receipt.json",
+        "lane": "docs/next-engineering-20261115/statistics-a/"
+      },
+      "disposition": "IMPLEMENTED_SCOPED_ENGINEERING_PENDING_EXACT_HEAD_SOURCE_AND_CI_QUALIFICATION",
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false,
+      "limitations": []
+    },
+    {
+      "catalogId": 289,
+      "title": "Combination Calculator",
+      "identity": {
+        "engineId": "statistics.combination",
+        "slug": "combination-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.combination@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/statistics/catalog-batch-3.ts",
+        "blob": "15c2400c792fc2848264e9fe1783f919e7fbf7f6",
+        "sha256": "41df470fd871e6fd1779035805c1b96cb120c91aff7a3cce40bc7628e3c3dd8e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 289,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "2b85f6d1b3ee1023958b9f5b61d87cefe093e3a4d28ffc273ca02c72acf40228"
+      },
+      "scope": "Unordered selections without replacement from n distinct objects; integer 0 ≤ r ≤ n ≤ 10000. Exact integer result must fit Number.MAX_SAFE_INTEGER.",
+      "primaryKey": "combinations",
+      "unit": "selections",
+      "sourceEvidence": [
+        "https://www.itl.nist.gov/div898/software/dataplot/refman2/auxillar/binomial.htm",
+        "docs/next-engineering-20261115/statistics-b/nist-combinations.md",
+        "docs/next-engineering-20261115/statistics-b/SOURCES.md#289"
+      ],
+      "localEvidence": [
+        {
+          "reference": "docs/next-engineering-20261115/statistics-b/nist-combinations.md",
+          "path": "docs/next-engineering-20261115/statistics-b/nist-combinations.md",
+          "bytes": 3185,
+          "sha256": "0e9fa8a4e6d161adcbfd00cc20a7a989f58ec31a826d9a3b1fbfed3138d27b49"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/statistics-b/SOURCES.md#289",
+          "path": "docs/next-engineering-20261115/statistics-b/SOURCES.md",
+          "bytes": 6119,
+          "sha256": "2ed96e01ced0a9f31e1fce14787a7154246421a19ea21ed2b70a7b9d2b56987f"
+        }
+      ],
+      "files": [
+        "src/components/calculator-factory-portal.tsx",
+        "src/components/next-engineering-analysis.test.tsx",
+        "src/components/next-engineering-analysis.tsx",
+        "src/lib/business/factory-nine-sharing.test.ts",
+        "src/lib/calculator-factory/completion/business.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.ts",
+        "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/completion-wave-20261113/sql-successor.test.ts",
+        "src/lib/native-delivery/factory-automation-contract.test.ts",
+        "src/lib/native-delivery/factory-delivery-catalog.ts",
+        "src/lib/native-delivery/factory-embed-contract.test.ts",
+        "src/lib/registered-snapshot-verification.ts",
+        "src/lib/calculator-factory/completion/next-engineering-statistics-b.ts",
+        "src/lib/calculator-factory/completion/next-engineering-statistics-b.test.ts"
+      ],
+      "receipts": {
+        "focused": "docs/next-engineering-20261115/validation/frozen-source-focused.log",
+        "business": "docs/next-engineering-20261115/business/integrated-receipt.json",
+        "lane": "docs/next-engineering-20261115/statistics-b/"
+      },
+      "disposition": "IMPLEMENTED_SCOPED_ENGINEERING_PENDING_EXACT_HEAD_SOURCE_AND_CI_QUALIFICATION",
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false,
+      "limitations": []
+    },
+    {
+      "catalogId": 290,
+      "title": "Binomial Probability Calculator",
+      "identity": {
+        "engineId": "statistics.binomial-probability",
+        "slug": "binomial-probability-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.binomial-probability@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/statistics/catalog-batch-3.ts",
+        "blob": "15c2400c792fc2848264e9fe1783f919e7fbf7f6",
+        "sha256": "41df470fd871e6fd1779035805c1b96cb120c91aff7a3cce40bc7628e3c3dd8e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 290,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "279b38d575d5fd2398b24430d1e5365baf0533274252c3b6924a5ccdd036c553"
+      },
+      "scope": "Exactly k successes in n independent Bernoulli trials with a common fixed success probability p; integer 0 ≤ k ≤ n ≤ 10000, 0 ≤ p ≤ 1. Log-space binary64 approximation; interior positive probabilities that underflow, become subnormal or round to one for n>0 are refused. Degenerate p=0 and p=1 include exact zero and one.",
+      "primaryKey": "probability",
+      "unit": "probability (0–1)",
+      "sourceEvidence": [
+        "https://www.itl.nist.gov/div898/handbook/eda/section3/eda366i.htm",
+        "docs/next-engineering-20261115/statistics-b/nist-binomial.md",
+        "docs/next-engineering-20261115/statistics-b/SOURCES.md#290"
+      ],
+      "localEvidence": [
+        {
+          "reference": "docs/next-engineering-20261115/statistics-b/nist-binomial.md",
+          "path": "docs/next-engineering-20261115/statistics-b/nist-binomial.md",
+          "bytes": 3120,
+          "sha256": "688056166cfcfde919f7c7b0ecf69bf2d8dd6b7432fb185ce9dde5a26aaa90a9"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/statistics-b/SOURCES.md#290",
+          "path": "docs/next-engineering-20261115/statistics-b/SOURCES.md",
+          "bytes": 6119,
+          "sha256": "2ed96e01ced0a9f31e1fce14787a7154246421a19ea21ed2b70a7b9d2b56987f"
+        }
+      ],
+      "files": [
+        "src/components/calculator-factory-portal.tsx",
+        "src/components/next-engineering-analysis.test.tsx",
+        "src/components/next-engineering-analysis.tsx",
+        "src/lib/business/factory-nine-sharing.test.ts",
+        "src/lib/calculator-factory/completion/business.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.ts",
+        "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/completion-wave-20261113/sql-successor.test.ts",
+        "src/lib/native-delivery/factory-automation-contract.test.ts",
+        "src/lib/native-delivery/factory-delivery-catalog.ts",
+        "src/lib/native-delivery/factory-embed-contract.test.ts",
+        "src/lib/registered-snapshot-verification.ts",
+        "src/lib/calculator-factory/completion/next-engineering-statistics-b.ts",
+        "src/lib/calculator-factory/completion/next-engineering-statistics-b.test.ts"
+      ],
+      "receipts": {
+        "focused": "docs/next-engineering-20261115/validation/frozen-source-focused.log",
+        "business": "docs/next-engineering-20261115/business/integrated-receipt.json",
+        "lane": "docs/next-engineering-20261115/statistics-b/"
+      },
+      "disposition": "IMPLEMENTED_SCOPED_ENGINEERING_PENDING_EXACT_HEAD_SOURCE_AND_CI_QUALIFICATION",
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false,
+      "limitations": []
+    },
+    {
+      "catalogId": 291,
+      "title": "Normal Distribution Calculator",
+      "identity": {
+        "engineId": "statistics.normal-distribution",
+        "slug": "normal-distribution-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.normal-distribution@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/statistics/catalog-batch-3.ts",
+        "blob": "15c2400c792fc2848264e9fe1783f919e7fbf7f6",
+        "sha256": "41df470fd871e6fd1779035805c1b96cb120c91aff7a3cce40bc7628e3c3dd8e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 291,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "4031133180be0a275623aae7d19ae846ad91d10305a7cae358df8cb45fac90e5"
+      },
+      "scope": "Normal model with supplied mean and positive standard deviation in the same units as x. PDF has reciprocal input units; z is dimensionless. CDF and upperTail use the immutable v1 erf approximation, not exact probabilities or a certified error bound. Capture is restricted to |z| ≤ 4 and finite normal positive density and tails; extreme tails are refused.",
+      "primaryKey": "cdf",
+      "unit": "probability (0–1)",
+      "sourceEvidence": [
+        "https://www.itl.nist.gov/div898/handbook/eda/section3/eda3661.htm",
+        "docs/next-engineering-20261115/statistics-b/nist-normal.md",
+        "docs/next-engineering-20261115/statistics-b/SOURCES.md#291"
+      ],
+      "localEvidence": [
+        {
+          "reference": "docs/next-engineering-20261115/statistics-b/nist-normal.md",
+          "path": "docs/next-engineering-20261115/statistics-b/nist-normal.md",
+          "bytes": 6737,
+          "sha256": "842184ff47bb1401e4f4ed47b5219b294813c63ea0e75ea1149a318ad23a5b1a"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/statistics-b/SOURCES.md#291",
+          "path": "docs/next-engineering-20261115/statistics-b/SOURCES.md",
+          "bytes": 6119,
+          "sha256": "2ed96e01ced0a9f31e1fce14787a7154246421a19ea21ed2b70a7b9d2b56987f"
+        }
+      ],
+      "files": [
+        "src/components/calculator-factory-portal.tsx",
+        "src/components/next-engineering-analysis.test.tsx",
+        "src/components/next-engineering-analysis.tsx",
+        "src/lib/business/factory-nine-sharing.test.ts",
+        "src/lib/calculator-factory/completion/business.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.ts",
+        "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/completion-wave-20261113/sql-successor.test.ts",
+        "src/lib/native-delivery/factory-automation-contract.test.ts",
+        "src/lib/native-delivery/factory-delivery-catalog.ts",
+        "src/lib/native-delivery/factory-embed-contract.test.ts",
+        "src/lib/registered-snapshot-verification.ts",
+        "src/lib/calculator-factory/completion/next-engineering-statistics-b.ts",
+        "src/lib/calculator-factory/completion/next-engineering-statistics-b.test.ts"
+      ],
+      "numericalEvidence": {
+        "spec": "docs/next-engineering-20261115/statistics-b/numerical/SPEC.json",
+        "results": "docs/next-engineering-20261115/statistics-b/numerical/RESULTS.json",
+        "hashes": "docs/next-engineering-20261115/statistics-b/numerical/HASHES.json",
+        "status": "PASS_EMPIRICAL_DECLARED_SCOPE_NOT_FORMAL_ACCURACY_CERTIFICATION",
+        "scopeLimitation": "Finite grid and transformed-case evidence; no continuous-domain error proof."
+      },
+      "receipts": {
+        "focused": "docs/next-engineering-20261115/validation/frozen-source-focused.log",
+        "business": "docs/next-engineering-20261115/business/integrated-receipt.json",
+        "lane": "docs/next-engineering-20261115/statistics-b/"
+      },
+      "disposition": "IMPLEMENTED_SCOPED_ENGINEERING_PENDING_EXACT_HEAD_SOURCE_AND_CI_QUALIFICATION",
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false,
+      "limitations": [
+        "Immutable erf approximation; coefficient provenance and global error bound remain unqualified."
+      ]
+    },
+    {
+      "catalogId": 300,
+      "title": "Bayes Theorem Calculator",
+      "identity": {
+        "engineId": "statistics.bayes-theorem",
+        "slug": "bayes-theorem-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.bayes-theorem@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/statistics/catalog-batch-4.ts",
+        "blob": "87a4eb962a39f28b0f1e8f13884cf8c7ff54826e",
+        "sha256": "b5f186fbbbeed527bf7f2734a3b53e02d2fcd2113fcef1b71092ef6d520e35f9",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 300,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "273fc8e1d7e745e989d6fad180983246a040f6a1f103db1d6f61a2629968ab12"
+      },
+      "scope": "Two exhaustive complementary hypotheses H and not-H. prior=P(H), likelihood=P(E|H), evidenceGivenNot=P(E|not-H), each in [0,1]; evidence probability must be positive. Rounded endpoint posteriors with positive evidence from both hypotheses are refused. Supplied probabilities are assumed applicable to the same population and evidence. Retains joint numerator and total-evidence denominator; no diagnostic or causal inference.",
+      "primaryKey": "posterior",
+      "unit": "probability (0–1)",
+      "sourceEvidence": [
+        "https://openstax.org/books/principles-data-science/pages/3-4-probability-theory",
+        "docs/next-engineering-20261115/statistics-b/openstax-bayes-excerpt.md",
+        "docs/next-engineering-20261115/statistics-b/SOURCES.md#300"
+      ],
+      "localEvidence": [
+        {
+          "reference": "docs/next-engineering-20261115/statistics-b/openstax-bayes-excerpt.md",
+          "path": "docs/next-engineering-20261115/statistics-b/openstax-bayes-excerpt.md",
+          "bytes": 942,
+          "sha256": "091f58924614ea9a804832b2594cb6a845ba91d741f75f4ace76341e868fbc00"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/statistics-b/SOURCES.md#300",
+          "path": "docs/next-engineering-20261115/statistics-b/SOURCES.md",
+          "bytes": 6119,
+          "sha256": "2ed96e01ced0a9f31e1fce14787a7154246421a19ea21ed2b70a7b9d2b56987f"
+        }
+      ],
+      "files": [
+        "src/components/calculator-factory-portal.tsx",
+        "src/components/next-engineering-analysis.test.tsx",
+        "src/components/next-engineering-analysis.tsx",
+        "src/lib/business/factory-nine-sharing.test.ts",
+        "src/lib/calculator-factory/completion/business.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.ts",
+        "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/completion-wave-20261113/sql-successor.test.ts",
+        "src/lib/native-delivery/factory-automation-contract.test.ts",
+        "src/lib/native-delivery/factory-delivery-catalog.ts",
+        "src/lib/native-delivery/factory-embed-contract.test.ts",
+        "src/lib/registered-snapshot-verification.ts",
+        "src/lib/calculator-factory/completion/next-engineering-statistics-b.ts",
+        "src/lib/calculator-factory/completion/next-engineering-statistics-b.test.ts"
+      ],
+      "receipts": {
+        "focused": "docs/next-engineering-20261115/validation/frozen-source-focused.log",
+        "business": "docs/next-engineering-20261115/business/integrated-receipt.json",
+        "lane": "docs/next-engineering-20261115/statistics-b/"
+      },
+      "disposition": "IMPLEMENTED_SCOPED_ENGINEERING_PENDING_EXACT_HEAD_SOURCE_AND_CI_QUALIFICATION",
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false,
+      "limitations": []
+    },
+    {
+      "catalogId": 329,
+      "title": "Molality Calculator",
+      "identity": {
+        "engineId": "chemistry.molality",
+        "slug": "molality-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.molality@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 329,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "2617d6d3138a3d2c1369c5b9d781a494e3b4830654b9d3b589e86a706ff5cbaa"
+      },
+      "scope": "Molality n/m_solvent from solute amount in mol and positive solvent mass in kg. The denominator is solvent mass, not solution mass. Composition only; no ideal-solution activity or colligative-property prediction.",
+      "primaryKey": "value",
+      "unit": "mol/kg",
+      "sourceEvidence": [
+        "docs/next-engineering-20261115/chemistry-a/sources/11-4-colligative-properties.md",
+        "docs/next-engineering-20261115/chemistry-a/source-manifest.json"
+      ],
+      "localEvidence": [
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/sources/11-4-colligative-properties.md",
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/11-4-colligative-properties.md",
+          "bytes": 71308,
+          "sha256": "8169efe1cac7f7d440b819941dde5404eae024ab6b8f8cf45fac730b38ed0dfb"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "bytes": 11041,
+          "sha256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81"
+        }
+      ],
+      "files": [
+        "src/components/calculator-factory-portal.tsx",
+        "src/components/next-engineering-analysis.test.tsx",
+        "src/components/next-engineering-analysis.tsx",
+        "src/lib/business/factory-nine-sharing.test.ts",
+        "src/lib/calculator-factory/completion/business.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.ts",
+        "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/completion-wave-20261113/sql-successor.test.ts",
+        "src/lib/native-delivery/factory-automation-contract.test.ts",
+        "src/lib/native-delivery/factory-delivery-catalog.ts",
+        "src/lib/native-delivery/factory-embed-contract.test.ts",
+        "src/lib/registered-snapshot-verification.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-a.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts"
+      ],
+      "receipts": {
+        "focused": "docs/next-engineering-20261115/validation/frozen-source-focused.log",
+        "business": "docs/next-engineering-20261115/business/integrated-receipt.json",
+        "lane": "docs/next-engineering-20261115/chemistry-a/"
+      },
+      "disposition": "IMPLEMENTED_SCOPED_ENGINEERING_PENDING_EXACT_HEAD_SOURCE_AND_CI_QUALIFICATION",
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false,
+      "limitations": []
+    },
+    {
+      "catalogId": 333,
+      "title": "pH Calculator",
+      "identity": {
+        "engineId": "chemistry.ph",
+        "slug": "ph-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.ph@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 333,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "563f69cdbb46e06d1f47c606bdaf7361f93d5eff9ecee37674d8d0b65a4f3ea7"
+      },
+      "scope": "Concentration-model pH = -log10([H+]/(1 mol/L)), with positive hydrogen-ion concentration in mol/L. Ideal dilute-solution approximation treating concentration as activity; no activity coefficients, ionic-strength correction, acid dissociation solving or temperature-based neutrality classification. Values are not restricted to 0–14.",
+      "primaryKey": "value",
+      "unit": "dimensionless",
+      "sourceEvidence": [
+        "docs/next-engineering-20261115/chemistry-a/sources/14-2-ph-and-poh.md",
+        "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+        "docs/next-engineering-20261115/chemistry-a/sources/11-4-colligative-properties.md",
+        "docs/next-engineering-20261115/chemistry-a/source-manifest.json"
+      ],
+      "localEvidence": [
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/sources/14-2-ph-and-poh.md",
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/14-2-ph-and-poh.md",
+          "bytes": 32785,
+          "sha256": "047f19be03aa21dbd23f90583c5ade093f4094fa209bc931e0f467b7f760946f"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "bytes": 11041,
+          "sha256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/sources/11-4-colligative-properties.md",
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/11-4-colligative-properties.md",
+          "bytes": 71308,
+          "sha256": "8169efe1cac7f7d440b819941dde5404eae024ab6b8f8cf45fac730b38ed0dfb"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "bytes": 11041,
+          "sha256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81"
+        }
+      ],
+      "files": [
+        "src/components/calculator-factory-portal.tsx",
+        "src/components/next-engineering-analysis.test.tsx",
+        "src/components/next-engineering-analysis.tsx",
+        "src/lib/business/factory-nine-sharing.test.ts",
+        "src/lib/calculator-factory/completion/business.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.ts",
+        "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/completion-wave-20261113/sql-successor.test.ts",
+        "src/lib/native-delivery/factory-automation-contract.test.ts",
+        "src/lib/native-delivery/factory-delivery-catalog.ts",
+        "src/lib/native-delivery/factory-embed-contract.test.ts",
+        "src/lib/registered-snapshot-verification.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-a.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts"
+      ],
+      "receipts": {
+        "focused": "docs/next-engineering-20261115/validation/frozen-source-focused.log",
+        "business": "docs/next-engineering-20261115/business/integrated-receipt.json",
+        "lane": "docs/next-engineering-20261115/chemistry-a/"
+      },
+      "disposition": "IMPLEMENTED_SCOPED_ENGINEERING_PENDING_EXACT_HEAD_SOURCE_AND_CI_QUALIFICATION",
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false,
+      "limitations": []
+    },
+    {
+      "catalogId": 334,
+      "title": "Ideal Gas Law Calculator",
+      "identity": {
+        "engineId": "chemistry.ideal-gas-law",
+        "slug": "ideal-gas-law-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.ideal-gas-law@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 334,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "3417079b2c940c587ee2f0e1e58e7284238c648ce32060d8d03e6a7d85bf416a"
+      },
+      "scope": "Ideal-gas absolute pressure P=nRT/V in atm; amount in mol, strictly positive absolute temperature in K and volume in L. Immutable v1 R=0.082057366080960 L·atm·mol^-1·K^-1. Zero amount represents the vacuum limit. No real-gas, gauge-pressure or Celsius conversion.",
+      "primaryKey": "value",
+      "unit": "atm",
+      "sourceEvidence": [
+        "docs/next-engineering-20261115/chemistry-a/sources/9-2-ideal-gas-law.md",
+        "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+        "docs/next-engineering-20261115/chemistry-a/sources/nist-molar-gas-constant.md",
+        "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+        "docs/next-engineering-20261115/chemistry-a/sources/nist-sp811-pressure-units.md",
+        "docs/next-engineering-20261115/chemistry-a/source-manifest.json"
+      ],
+      "localEvidence": [
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/sources/9-2-ideal-gas-law.md",
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/9-2-ideal-gas-law.md",
+          "bytes": 54934,
+          "sha256": "9d6315ce4e704b28bb2a2495c62d0b37f5536989733fa85251afe3b0d12815dc"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "bytes": 11041,
+          "sha256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/sources/nist-molar-gas-constant.md",
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/nist-molar-gas-constant.md",
+          "bytes": 2558,
+          "sha256": "852e28f9d7b2ae68712dd88438a1a3d3fa5888631addbe2f6986a578f453d064"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "bytes": 11041,
+          "sha256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/sources/nist-sp811-pressure-units.md",
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/nist-sp811-pressure-units.md",
+          "bytes": 46993,
+          "sha256": "4732d3d34b1d5901834d263286701978464670b0ca4affb7d2ef523d91a89441"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "bytes": 11041,
+          "sha256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81"
+        }
+      ],
+      "files": [
+        "src/components/calculator-factory-portal.tsx",
+        "src/components/next-engineering-analysis.test.tsx",
+        "src/components/next-engineering-analysis.tsx",
+        "src/lib/business/factory-nine-sharing.test.ts",
+        "src/lib/calculator-factory/completion/business.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.ts",
+        "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/completion-wave-20261113/sql-successor.test.ts",
+        "src/lib/native-delivery/factory-automation-contract.test.ts",
+        "src/lib/native-delivery/factory-delivery-catalog.ts",
+        "src/lib/native-delivery/factory-embed-contract.test.ts",
+        "src/lib/registered-snapshot-verification.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-a.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts"
+      ],
+      "receipts": {
+        "focused": "docs/next-engineering-20261115/validation/frozen-source-focused.log",
+        "business": "docs/next-engineering-20261115/business/integrated-receipt.json",
+        "lane": "docs/next-engineering-20261115/chemistry-a/"
+      },
+      "disposition": "IMPLEMENTED_SCOPED_ENGINEERING_PENDING_EXACT_HEAD_SOURCE_AND_CI_QUALIFICATION",
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false,
+      "limitations": []
+    },
+    {
+      "catalogId": 335,
+      "title": "Gas Density Calculator",
+      "identity": {
+        "engineId": "chemistry.gas-density",
+        "slug": "gas-density-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.gas-density@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 335,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "b7f260588406713ef02e12b837135b6698ca23aa83fd395a1e6015096b152e7c"
+      },
+      "scope": "Ideal-gas density rho=PM/(RT) in g/L; nonnegative absolute pressure in atm, strictly positive molar mass in g/mol and absolute temperature in K. Immutable v1 R=0.082057366080960 L·atm·mol^-1·K^-1. Zero pressure is the vacuum limit; no real-gas corrections.",
+      "primaryKey": "value",
+      "unit": "g/L",
+      "sourceEvidence": [
+        "docs/next-engineering-20261115/chemistry-a/sources/9-3-gas-stoichiometry.md",
+        "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+        "docs/next-engineering-20261115/chemistry-a/sources/nist-molar-gas-constant.md",
+        "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+        "docs/next-engineering-20261115/chemistry-a/sources/nist-sp811-pressure-units.md",
+        "docs/next-engineering-20261115/chemistry-a/source-manifest.json"
+      ],
+      "localEvidence": [
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/sources/9-3-gas-stoichiometry.md",
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/9-3-gas-stoichiometry.md",
+          "bytes": 53506,
+          "sha256": "470df3544cda2e1bede4964d03ee2f392314a7483993f6b03db510f30dd78a44"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "bytes": 11041,
+          "sha256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/sources/nist-molar-gas-constant.md",
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/nist-molar-gas-constant.md",
+          "bytes": 2558,
+          "sha256": "852e28f9d7b2ae68712dd88438a1a3d3fa5888631addbe2f6986a578f453d064"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "bytes": 11041,
+          "sha256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/sources/nist-sp811-pressure-units.md",
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/nist-sp811-pressure-units.md",
+          "bytes": 46993,
+          "sha256": "4732d3d34b1d5901834d263286701978464670b0ca4affb7d2ef523d91a89441"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "bytes": 11041,
+          "sha256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81"
+        }
+      ],
+      "files": [
+        "src/components/calculator-factory-portal.tsx",
+        "src/components/next-engineering-analysis.test.tsx",
+        "src/components/next-engineering-analysis.tsx",
+        "src/lib/business/factory-nine-sharing.test.ts",
+        "src/lib/calculator-factory/completion/business.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.ts",
+        "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/completion-wave-20261113/sql-successor.test.ts",
+        "src/lib/native-delivery/factory-automation-contract.test.ts",
+        "src/lib/native-delivery/factory-delivery-catalog.ts",
+        "src/lib/native-delivery/factory-embed-contract.test.ts",
+        "src/lib/registered-snapshot-verification.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-a.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts"
+      ],
+      "receipts": {
+        "focused": "docs/next-engineering-20261115/validation/frozen-source-focused.log",
+        "business": "docs/next-engineering-20261115/business/integrated-receipt.json",
+        "lane": "docs/next-engineering-20261115/chemistry-a/"
+      },
+      "disposition": "IMPLEMENTED_SCOPED_ENGINEERING_PENDING_EXACT_HEAD_SOURCE_AND_CI_QUALIFICATION",
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false,
+      "limitations": []
+    },
+    {
+      "catalogId": 336,
+      "title": "Percent Composition Calculator",
+      "identity": {
+        "engineId": "chemistry.percent-composition",
+        "slug": "percent-composition-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.percent-composition@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 336,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "cf701464ce2264fc9bd97ce0c200c59017bbf9d6fadfd88f03fa15bb653bb031"
+      },
+      "scope": "Mass percent =100 componentMass/totalMass using g for both masses. Total includes the component and must be positive; component lies from zero through total. A composition ratio, with no volume-percent or mass/volume-percent interpretation.",
+      "primaryKey": "value",
+      "unit": "%",
+      "sourceEvidence": [
+        "docs/next-engineering-20261115/chemistry-a/sources/3-4-other-concentrations.md",
+        "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+        "docs/next-engineering-20261115/chemistry-a/sources/3-2-mass-composition.md",
+        "docs/next-engineering-20261115/chemistry-a/source-manifest.json"
+      ],
+      "localEvidence": [
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/sources/3-4-other-concentrations.md",
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/3-4-other-concentrations.md",
+          "bytes": 29775,
+          "sha256": "d759f0bb27e5b397ec3d49cfd0e33602f12f08a5559ef8b71abb15aa398e8edd"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "bytes": 11041,
+          "sha256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/sources/3-2-mass-composition.md",
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/3-2-mass-composition.md",
+          "bytes": 36695,
+          "sha256": "9eb822eeb65c71e70b3864778f2affb497b2efd4fba973c4638875fdb72c96fc"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "bytes": 11041,
+          "sha256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81"
+        }
+      ],
+      "files": [
+        "src/components/calculator-factory-portal.tsx",
+        "src/components/next-engineering-analysis.test.tsx",
+        "src/components/next-engineering-analysis.tsx",
+        "src/lib/business/factory-nine-sharing.test.ts",
+        "src/lib/calculator-factory/completion/business.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.ts",
+        "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/completion-wave-20261113/sql-successor.test.ts",
+        "src/lib/native-delivery/factory-automation-contract.test.ts",
+        "src/lib/native-delivery/factory-delivery-catalog.ts",
+        "src/lib/native-delivery/factory-embed-contract.test.ts",
+        "src/lib/registered-snapshot-verification.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-a.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts"
+      ],
+      "receipts": {
+        "focused": "docs/next-engineering-20261115/validation/frozen-source-focused.log",
+        "business": "docs/next-engineering-20261115/business/integrated-receipt.json",
+        "lane": "docs/next-engineering-20261115/chemistry-a/"
+      },
+      "disposition": "IMPLEMENTED_SCOPED_ENGINEERING_PENDING_EXACT_HEAD_SOURCE_AND_CI_QUALIFICATION",
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false,
+      "limitations": []
+    },
+    {
+      "catalogId": 337,
+      "title": "Solution Concentration Calculator",
+      "identity": {
+        "engineId": "chemistry.solution-concentration",
+        "slug": "solution-concentration-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.solution-concentration@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 337,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "1e15436d1a82ff8f6f8c8a453a2d78d754f43a1f9f8cc79d925740babe1ba4ed"
+      },
+      "scope": "Mass concentration = solute mass in g / positive final total solution volume in L, not solvent volume. The mass/volume ratio underlying the textbook mass-volume percentage is expressed here in g/L, not percent. Composition only; no activity or ideal-solution thermodynamic correction and no conversion to molarity.",
+      "primaryKey": "value",
+      "unit": "g/L",
+      "sourceEvidence": [
+        "docs/next-engineering-20261115/chemistry-a/sources/3-4-other-concentrations.md",
+        "docs/next-engineering-20261115/chemistry-a/source-manifest.json"
+      ],
+      "localEvidence": [
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/sources/3-4-other-concentrations.md",
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/3-4-other-concentrations.md",
+          "bytes": 29775,
+          "sha256": "d759f0bb27e5b397ec3d49cfd0e33602f12f08a5559ef8b71abb15aa398e8edd"
+        },
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "bytes": 11041,
+          "sha256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81"
+        }
+      ],
+      "files": [
+        "src/components/calculator-factory-portal.tsx",
+        "src/components/next-engineering-analysis.test.tsx",
+        "src/components/next-engineering-analysis.tsx",
+        "src/lib/business/factory-nine-sharing.test.ts",
+        "src/lib/calculator-factory/completion/business.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.ts",
+        "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/completion-wave-20261113/sql-successor.test.ts",
+        "src/lib/native-delivery/factory-automation-contract.test.ts",
+        "src/lib/native-delivery/factory-delivery-catalog.ts",
+        "src/lib/native-delivery/factory-embed-contract.test.ts",
+        "src/lib/registered-snapshot-verification.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-a.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts"
+      ],
+      "receipts": {
+        "focused": "docs/next-engineering-20261115/validation/frozen-source-focused.log",
+        "business": "docs/next-engineering-20261115/business/integrated-receipt.json",
+        "lane": "docs/next-engineering-20261115/chemistry-a/"
+      },
+      "disposition": "IMPLEMENTED_SCOPED_ENGINEERING_PENDING_EXACT_HEAD_SOURCE_AND_CI_QUALIFICATION",
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false,
+      "limitations": []
+    },
+    {
+      "catalogId": 338,
+      "title": "Stoichiometry Calculator",
+      "identity": {
+        "engineId": "chemistry.stoichiometry",
+        "slug": "stoichiometry-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.stoichiometry@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 338,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "8b03855dea7b47891152c6b7a40949658502b294840851774a3267ead7de2eff"
+      },
+      "scope": "Target amount in mol from the ratio of positive coefficients in the same supplied balanced reaction. Coefficients may share a fractional rescaling. Assumes complete stoichiometric conversion of the supplied known amount; no equation balancing, limiting-reactant selection, yield, purity or side-reaction model.",
+      "primaryKey": "value",
+      "unit": "mol",
+      "sourceEvidence": [
+        "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+        "https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry"
+      ],
+      "localEvidence": [
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+          "path": "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+          "bytes": 5850,
+          "sha256": "963cc04634760a7536b450c7a165bae9c91b1cfee3a65acf546ddd840f7ee925"
+        }
+      ],
+      "files": [
+        "src/components/calculator-factory-portal.tsx",
+        "src/components/next-engineering-analysis.test.tsx",
+        "src/components/next-engineering-analysis.tsx",
+        "src/lib/business/factory-nine-sharing.test.ts",
+        "src/lib/calculator-factory/completion/business.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.ts",
+        "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/completion-wave-20261113/sql-successor.test.ts",
+        "src/lib/native-delivery/factory-automation-contract.test.ts",
+        "src/lib/native-delivery/factory-delivery-catalog.ts",
+        "src/lib/native-delivery/factory-embed-contract.test.ts",
+        "src/lib/registered-snapshot-verification.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-b.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts"
+      ],
+      "receipts": {
+        "focused": "docs/next-engineering-20261115/validation/frozen-source-focused.log",
+        "business": "docs/next-engineering-20261115/business/integrated-receipt.json",
+        "lane": "docs/next-engineering-20261115/chemistry-b/"
+      },
+      "disposition": "IMPLEMENTED_SCOPED_ENGINEERING_PENDING_EXACT_HEAD_SOURCE_AND_CI_QUALIFICATION",
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false,
+      "limitations": []
+    },
+    {
+      "catalogId": 339,
+      "title": "Half-Life Calculator",
+      "identity": {
+        "engineId": "chemistry.half-life",
+        "slug": "half-life-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.half-life@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 339,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "dc9b0769923c7797811b806b7bf5c0a4112f55b8b07f60a361e62f563eb57269"
+      },
+      "scope": "Remaining amount for a closed first-order decay process with a constant positive half-life, no replenishment and nonnegative elapsed time. Initial and remaining amounts share one unit; elapsed time and half-life share one time unit. For positive initial amount, capture requires both the decay factor and remaining amount to be positive normal binary64 values; mathematical decay rounded to zero or subnormal intermediates is refused.",
+      "primaryKey": "value",
+      "unit": "same as initial amount",
+      "sourceEvidence": [
+        "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+        "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws"
+      ],
+      "localEvidence": [
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+          "path": "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+          "bytes": 5850,
+          "sha256": "963cc04634760a7536b450c7a165bae9c91b1cfee3a65acf546ddd840f7ee925"
+        }
+      ],
+      "files": [
+        "src/components/calculator-factory-portal.tsx",
+        "src/components/next-engineering-analysis.test.tsx",
+        "src/components/next-engineering-analysis.tsx",
+        "src/lib/business/factory-nine-sharing.test.ts",
+        "src/lib/calculator-factory/completion/business.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.ts",
+        "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/completion-wave-20261113/sql-successor.test.ts",
+        "src/lib/native-delivery/factory-automation-contract.test.ts",
+        "src/lib/native-delivery/factory-delivery-catalog.ts",
+        "src/lib/native-delivery/factory-embed-contract.test.ts",
+        "src/lib/registered-snapshot-verification.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-b.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts"
+      ],
+      "receipts": {
+        "focused": "docs/next-engineering-20261115/validation/frozen-source-focused.log",
+        "business": "docs/next-engineering-20261115/business/integrated-receipt.json",
+        "lane": "docs/next-engineering-20261115/chemistry-b/"
+      },
+      "disposition": "IMPLEMENTED_SCOPED_ENGINEERING_PENDING_EXACT_HEAD_SOURCE_AND_CI_QUALIFICATION",
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false,
+      "limitations": []
+    },
+    {
+      "catalogId": 340,
+      "title": "Nernst Equation Calculator",
+      "identity": {
+        "engineId": "chemistry.nernst-equation",
+        "slug": "nernst-equation-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.nernst-equation@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 340,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "cdb5856952d93faaafb249ae319a2882bfb27cc3e2205c5b1bdd2f7f99feccf7"
+      },
+      "scope": "Nernst cell potential E = E° - (RT/nF) ln Q for the same balanced redox reaction, with E° applicable at the supplied positive kelvin temperature and a positive safe-integer electron transfer count n. Q is a positive dimensionless activity quotient relative to standard states, with pure solid/liquid activities taken as unity; concentration substitution requires justified ideal behavior. The engine fixes R = 8.31446261815324 J/(mol K) and F = 96485.33212 C/mol; it does not compute activities, temperature corrections to E°, kinetics, overpotential or junction potentials.",
+      "primaryKey": "value",
+      "unit": "V",
+      "sourceEvidence": [
+        "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+        "https://openstax.org/books/chemistry-2e/pages/17-4-potential-free-energy-and-equilibrium",
+        "https://openstax.org/books/chemistry-2e/pages/13-2-equilibrium-constants",
+        "https://goldbook.iupac.org/terms/view/A00115",
+        "https://physics.nist.gov/cgi-bin/cuu/Value?r",
+        "https://physics.nist.gov/cgi-bin/cuu/Value?f"
+      ],
+      "localEvidence": [
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+          "path": "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+          "bytes": 5850,
+          "sha256": "963cc04634760a7536b450c7a165bae9c91b1cfee3a65acf546ddd840f7ee925"
+        }
+      ],
+      "files": [
+        "src/components/calculator-factory-portal.tsx",
+        "src/components/next-engineering-analysis.test.tsx",
+        "src/components/next-engineering-analysis.tsx",
+        "src/lib/business/factory-nine-sharing.test.ts",
+        "src/lib/calculator-factory/completion/business.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.ts",
+        "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/completion-wave-20261113/sql-successor.test.ts",
+        "src/lib/native-delivery/factory-automation-contract.test.ts",
+        "src/lib/native-delivery/factory-delivery-catalog.ts",
+        "src/lib/native-delivery/factory-embed-contract.test.ts",
+        "src/lib/registered-snapshot-verification.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-b.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts"
+      ],
+      "receipts": {
+        "focused": "docs/next-engineering-20261115/validation/frozen-source-focused.log",
+        "business": "docs/next-engineering-20261115/business/integrated-receipt.json",
+        "lane": "docs/next-engineering-20261115/chemistry-b/"
+      },
+      "disposition": "IMPLEMENTED_SCOPED_ENGINEERING_PENDING_EXACT_HEAD_SOURCE_AND_CI_QUALIFICATION",
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false,
+      "limitations": []
+    },
+    {
+      "catalogId": 341,
+      "title": "Beer-Lambert Law Calculator",
+      "identity": {
+        "engineId": "chemistry.beer-lambert-law",
+        "slug": "beer-lambert-law-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.beer-lambert-law@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 341,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "a9904b3ee4e3623d27142926e93b1c639cc96ad9d5f4881dfe16275713688e89"
+      },
+      "scope": "Decadic absorbance A = εbc using molar absorption coefficient ε in L/(mol cm), optical path b in cm and concentration c in mol/L. Assumes collimated monochromatic radiation, a homogeneous isotropic absorbing medium, and valid linear response at the chosen wavelength; excludes scattering, stray light, concentration-dependent interactions, speciation changes and detector saturation. Zero factor gives zero absorbance within the ideal mathematical model.",
+      "primaryKey": "value",
+      "unit": "dimensionless",
+      "sourceEvidence": [
+        "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+        "https://goldbook.iupac.org/terms/view/B00626"
+      ],
+      "localEvidence": [
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+          "path": "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+          "bytes": 5850,
+          "sha256": "963cc04634760a7536b450c7a165bae9c91b1cfee3a65acf546ddd840f7ee925"
+        }
+      ],
+      "files": [
+        "src/components/calculator-factory-portal.tsx",
+        "src/components/next-engineering-analysis.test.tsx",
+        "src/components/next-engineering-analysis.tsx",
+        "src/lib/business/factory-nine-sharing.test.ts",
+        "src/lib/calculator-factory/completion/business.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.ts",
+        "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/completion-wave-20261113/sql-successor.test.ts",
+        "src/lib/native-delivery/factory-automation-contract.test.ts",
+        "src/lib/native-delivery/factory-delivery-catalog.ts",
+        "src/lib/native-delivery/factory-embed-contract.test.ts",
+        "src/lib/registered-snapshot-verification.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-b.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts"
+      ],
+      "receipts": {
+        "focused": "docs/next-engineering-20261115/validation/frozen-source-focused.log",
+        "business": "docs/next-engineering-20261115/business/integrated-receipt.json",
+        "lane": "docs/next-engineering-20261115/chemistry-b/"
+      },
+      "disposition": "IMPLEMENTED_SCOPED_ENGINEERING_PENDING_EXACT_HEAD_SOURCE_AND_CI_QUALIFICATION",
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false,
+      "limitations": []
+    },
+    {
+      "catalogId": 342,
+      "title": "Titration Calculator",
+      "identity": {
+        "engineId": "chemistry.titration",
+        "slug": "titration-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.titration@1/private.next-engineering.20261115.1"
+      },
+      "engineBinding": {
+        "baseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+        "path": "src/calculators/chemistry/catalog-batch-1.ts",
+        "blob": "290f03f358cd546532b3ea8890a953b0389cec39",
+        "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+        "unchanged": true
+      },
+      "ledgerBinding": {
+        "path": "docs/milestone100-20261114/requirements-540.json",
+        "masterId": 342,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "rowSha256": "1a6e4bcf9ef119cb2a650c8fa5a21cf9e2ffd6bc057ffce5a2d5eb3b93aade9a"
+      },
+      "scope": "Analyte molar concentration at exact equivalence of the supplied balanced titrant/analyte reaction, using positive stoichiometric coefficients with optional common fractional rescaling. Titrant concentration is in mol/L; titrant and analyte volumes must use the same unit (for example both mL). Assumes quantitative selective reaction, known titrant concentration, and measured volumes; no endpoint/equivalence correction, blank correction, dilution, acid/base speciation or uncertainty model.",
+      "primaryKey": "value",
+      "unit": "mol/L",
+      "sourceEvidence": [
+        "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+        "https://openstax.org/books/chemistry-2e/pages/4-5-quantitative-chemical-analysis",
+        "https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry"
+      ],
+      "localEvidence": [
+        {
+          "reference": "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+          "path": "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+          "bytes": 5850,
+          "sha256": "963cc04634760a7536b450c7a165bae9c91b1cfee3a65acf546ddd840f7ee925"
+        }
+      ],
+      "files": [
+        "src/components/calculator-factory-portal.tsx",
+        "src/components/next-engineering-analysis.test.tsx",
+        "src/components/next-engineering-analysis.tsx",
+        "src/lib/business/factory-nine-sharing.test.ts",
+        "src/lib/calculator-factory/completion/business.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering-core.ts",
+        "src/lib/calculator-factory/completion/next-engineering-integration.test.ts",
+        "src/lib/calculator-factory/completion/next-engineering.ts",
+        "src/lib/calculator-factory/registry.test.ts",
+        "src/lib/calculator-factory/registry.ts",
+        "src/lib/completion-wave-20261113/sql-successor.test.ts",
+        "src/lib/native-delivery/factory-automation-contract.test.ts",
+        "src/lib/native-delivery/factory-delivery-catalog.ts",
+        "src/lib/native-delivery/factory-embed-contract.test.ts",
+        "src/lib/registered-snapshot-verification.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-b.ts",
+        "src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts"
+      ],
+      "receipts": {
+        "focused": "docs/next-engineering-20261115/validation/frozen-source-focused.log",
+        "business": "docs/next-engineering-20261115/business/integrated-receipt.json",
+        "lane": "docs/next-engineering-20261115/chemistry-b/"
+      },
+      "disposition": "IMPLEMENTED_SCOPED_ENGINEERING_PENDING_EXACT_HEAD_SOURCE_AND_CI_QUALIFICATION",
+      "canonicalAccepted": false,
+      "certified": false,
+      "publicationEligible": false,
+      "limitations": []
+    }
+  ]
+}

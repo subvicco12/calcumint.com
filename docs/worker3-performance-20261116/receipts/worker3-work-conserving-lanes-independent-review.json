@@ -1,0 +1,56 @@
+{
+  "kind": "INDEPENDENT_WORK_CONSERVING_TWO_LANE_DESIGN_REVIEW",
+  "observedHead": "79745baf553091a77e51e7d23b2832b6319e918c",
+  "design": "Aftercoldalone, independentlyawaitscope/preloadineachlane, theneachlaneenterssameexistingworker/sharednextIndexpool; removeonlyglobalpairjoinidlebarrier",
+  "blockingFindings": [],
+  "securityAssessment": [
+    "Globalpairjoinisnotawitness/sourceadmission/ownershipprecondition",
+    "AuthoritywitnesscollectorandactiveScopeareprocess-local",
+    "Authorityphysicalchangesareprivateworktree;lockfixturechangesuseprivatetempscopes/dirs",
+    "SharedrootGitobjectavailabilityretainsallorigin/object/lockchecks",
+    "Allpoolchildrenalreadyindependentprocessesunderexistingtwoworkercap",
+    "PlainclosedlocalArray/sharednextIndexhasnoawaitbetweenboundcheckandincrement;eachrecordawaitlimitseachlanetooneactivechild"
+  ],
+  "requiredInvariants": [
+    "Coldavailabilitycompletesalonefirst",
+    "Scopeandpreloadremainexactlyonceandexcludedfromremainingpool",
+    "Same40uniqueplannednamesandlength/uniqueset/exactsortedremainingassertions",
+    "Bothlanesawaitrecord(first),thenawaitsameworker()",
+    "Atmosttwoactivechildcommands;nonewdetachment",
+    "EveryexecFiletimeout30000/maxBuffer/context.signalandallcallbackobservationsunchanged",
+    "recordcontinuescapturingallsettledresults",
+    "Originalfilesdeclarationreportorder/count/securityassertionsunchanged",
+    "results.size40beforeacceptance"
+  ],
+  "requiredVerification": [
+    "All40childrenpasswithinoriginal30seachundernewscope-vs-pooloverlap",
+    "Ownership/foreignlockcleanupoutcomesunchanged",
+    "All115sourcecaseswithinoriginal150s",
+    "Completeexact-headhostedCI"
+  ],
+  "runtimeTestsRunByReviewer": false,
+  "sourceEditsByReviewer": false,
+  "qualified": false,
+  "files": [
+    {
+      "path": "tests/parallel-source-20261110/current.test.mjs",
+      "sha256": "2e540f4aa6ad9043499eea0ee192bef3d1b997365a7fc94d5fa7be2f1b8ad5fd"
+    },
+    {
+      "path": "tests/milestone100-20261114/source-stage8-authority-scope.mjs",
+      "sha256": "c194fdd88512e4f8f85e4133aa12701dd1c5ba2faada37240394aabd52175f08"
+    },
+    {
+      "path": "tests/milestone100-20261114/source-stage8-authority-scope.test.mjs",
+      "sha256": "8b160625b887a10a661df15997ab11228448587324c72aac30ac309030a04f77"
+    },
+    {
+      "path": "tests/parallel-source-20261110/source-lock-scope.test.mjs",
+      "sha256": "946f1b3e1996c62a8d2a790d244732a1f44571be10ee3d68b4b6eb190cb2d39e"
+    },
+    {
+      "path": "tests/ci-rpc-recovery-20261113/source-node-owned-lock.test.mjs",
+      "sha256": "d8b1597ad1490d992eb82f84601bf0dd069634998ca005de0ed1679d91e11b38"
+    }
+  ]
+}

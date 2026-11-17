@@ -1,0 +1,288 @@
+TAP version 13
+# Subtest: exact known UI receipt claim requires current successor 811bbd67bfcc635808101a351fa15eb133331369
+ok 1 - exact known UI receipt claim requires current successor 811bbd67bfcc635808101a351fa15eb133331369
+  ---
+  duration_ms: 5842.199934
+  type: 'test'
+  ...
+# Subtest: exact known UI receipt claim requires current successor 3c2b768ecc9e6e0821df8e74c779d134e99c4f48
+ok 2 - exact known UI receipt claim requires current successor 3c2b768ecc9e6e0821df8e74c779d134e99c4f48
+  ---
+  duration_ms: 1073.506606
+  type: 'test'
+  ...
+# Subtest: exact known UI receipt claim requires current successor 56763645c091743508c1b7a163c7c59dcb7f4b7d
+ok 3 - exact known UI receipt claim requires current successor 56763645c091743508c1b7a163c7c59dcb7f4b7d
+  ---
+  duration_ms: 967.029541
+  type: 'test'
+  ...
+# Subtest: exact known UI receipt claim requires current successor d1ea2fd979fa02e1d107e48aedcba72086115f6e
+ok 4 - exact known UI receipt claim requires current successor d1ea2fd979fa02e1d107e48aedcba72086115f6e
+  ---
+  duration_ms: 887.672885
+  type: 'test'
+  ...
+# Subtest: exact known UI receipt claim requires current successor 955e2ed5df93e646275c4d94d33548cac5925380
+ok 5 - exact known UI receipt claim requires current successor 955e2ed5df93e646275c4d94d33548cac5925380
+  ---
+  duration_ms: 884.788603
+  type: 'test'
+  ...
+# Subtest: known old UI claim cannot allow old valid caller bytes or invented claims
+ok 6 - known old UI claim cannot allow old valid caller bytes or invented claims
+  ---
+  duration_ms: 18.146792
+  type: 'test'
+  ...
+# Subtest: same target UI dependency drift refused src/lib/technology-capture-trust.ts
+ok 7 - same target UI dependency drift refused src/lib/technology-capture-trust.ts
+  ---
+  duration_ms: 1034.638935
+  type: 'test'
+  ...
+# Subtest: same target UI dependency drift refused src/lib/presentation-entitlements.ts
+ok 8 - same target UI dependency drift refused src/lib/presentation-entitlements.ts
+  ---
+  duration_ms: 975.419747
+  type: 'test'
+  ...
+# Subtest: same target UI dependency drift refused src/components/technology-worked-example.tsx
+ok 9 - same target UI dependency drift refused src/components/technology-worked-example.tsx
+  ---
+  duration_ms: 908.236127
+  type: 'test'
+  ...
+# Subtest: exact567 caller byte reversion is refused despite legitimate retained receipt claim
+ok 10 - exact567 caller byte reversion is refused despite legitimate retained receipt claim
+  ---
+  duration_ms: 18.499199
+  type: 'test'
+  ...
+# Subtest: exactd1 caller byte reversion is refused despite legitimate retained receipt claim
+ok 11 - exactd1 caller byte reversion is refused despite legitimate retained receipt claim
+  ---
+  duration_ms: 16.764476
+  type: 'test'
+  ...
+# Subtest: current actual caller retains original20 binding contract through exact successor
+ok 12 - current actual caller retains original20 binding contract through exact successor
+  ---
+  duration_ms: 5391.290486
+  type: 'test'
+  ...
+# Subtest: retained and fresh outer receipt claims require exact current captured source
+ok 13 - retained and fresh outer receipt claims require exact current captured source
+  ---
+  duration_ms: 1250.349438
+  type: 'test'
+  ...
+# Subtest: exact capture and hard predecessor refusal src/components/calculator-interactive.tsx
+not ok 14 - exact capture and hard predecessor refusal src/components/calculator-interactive.tsx
+  ---
+  duration_ms: 5900.270086
+  type: 'test'
+  location: '/workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:24:2'
+  failureType: 'testCodeFailure'
+  error: 'spawnSync git ENOBUFS'
+  code: 'ENOBUFS'
+  stack: |-
+    execNativeGit (file:///workspace/coordinator-worker3-20261117/tests/construction-ci-recovery-20261116/native-git.mjs:325:27)
+    git (file:///workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:12:17)
+    blob (file:///workspace/coordinator-worker3-20261117/tests/parallel-source-20261110/git-reader.mjs:26:40)
+    reader (file:///workspace/coordinator-worker3-20261117/tests/parallel-source-20261110/git-reader.mjs:40:93)
+    reader (file:///workspace/coordinator-worker3-20261117/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)
+    Object.proofGit [as git] (file:///workspace/coordinator-worker3-20261117/scripts/product-completion-stage8.mjs:48:33)
+    verifyParallelAuthority (file:///workspace/coordinator-worker3-20261117/tests/parallel-source-20261110/authority.mjs:23564:21)
+    verifyCompletionBinding (file:///workspace/coordinator-worker3-20261117/scripts/product-completion-stage8.mjs:51:2)
+    TestContext.<anonymous> (file:///workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:24:76)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+  ...
+# Subtest: target-tree dependency refusal src/components/calculator-interactive.tsx src/lib/technology-snapshot-verification.ts
+not ok 15 - target-tree dependency refusal src/components/calculator-interactive.tsx src/lib/technology-snapshot-verification.ts
+  ---
+  duration_ms: 410.534107
+  type: 'test'
+  location: '/workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:25:125'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /supplemental source bytes differ/. Input:
+    
+    'Error: spawnSync git ENOBUFS'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: 'spawnSync git ENOBUFS'
+  stack: |-
+    execNativeGit (file:///workspace/coordinator-worker3-20261117/tests/construction-ci-recovery-20261116/native-git.mjs:325:27)
+    git (file:///workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:12:17)
+    blob (file:///workspace/coordinator-worker3-20261117/tests/parallel-source-20261110/git-reader.mjs:26:40)
+    reader (file:///workspace/coordinator-worker3-20261117/tests/parallel-source-20261110/git-reader.mjs:40:93)
+    reader (file:///workspace/coordinator-worker3-20261117/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)
+    Object.proofGit [as git] (file:///workspace/coordinator-worker3-20261117/scripts/product-completion-stage8.mjs:48:33)
+    verifyParallelAuthority (file:///workspace/coordinator-worker3-20261117/tests/parallel-source-20261110/authority.mjs:23564:21)
+    verifyCompletionBinding (file:///workspace/coordinator-worker3-20261117/scripts/product-completion-stage8.mjs:51:2)
+    file:///workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:25:199
+    getActual (node:assert:609:5)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:25:188)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: target-tree dependency refusal src/components/calculator-interactive.tsx src/calculators/technology-computing/catalog-batch-2.ts
+not ok 16 - target-tree dependency refusal src/components/calculator-interactive.tsx src/calculators/technology-computing/catalog-batch-2.ts
+  ---
+  duration_ms: 447.513471
+  type: 'test'
+  location: '/workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:25:125'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /supplemental source bytes differ/. Input:
+    
+    'Error: spawnSync git ENOBUFS'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: 'spawnSync git ENOBUFS'
+  stack: |-
+    execNativeGit (file:///workspace/coordinator-worker3-20261117/tests/construction-ci-recovery-20261116/native-git.mjs:325:27)
+    git (file:///workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:12:17)
+    blob (file:///workspace/coordinator-worker3-20261117/tests/parallel-source-20261110/git-reader.mjs:26:40)
+    reader (file:///workspace/coordinator-worker3-20261117/tests/parallel-source-20261110/git-reader.mjs:40:93)
+    reader (file:///workspace/coordinator-worker3-20261117/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)
+    Object.proofGit [as git] (file:///workspace/coordinator-worker3-20261117/scripts/product-completion-stage8.mjs:48:33)
+    verifyParallelAuthority (file:///workspace/coordinator-worker3-20261117/tests/parallel-source-20261110/authority.mjs:23564:21)
+    verifyCompletionBinding (file:///workspace/coordinator-worker3-20261117/scripts/product-completion-stage8.mjs:51:2)
+    file:///workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:25:199
+    getActual (node:assert:609:5)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:25:188)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: exact capture and hard predecessor refusal src/lib/registered-snapshot-verification.ts
+not ok 17 - exact capture and hard predecessor refusal src/lib/registered-snapshot-verification.ts
+  ---
+  duration_ms: 380.258605
+  type: 'test'
+  location: '/workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:24:2'
+  failureType: 'testCodeFailure'
+  error: 'spawnSync git ENOBUFS'
+  code: 'ENOBUFS'
+  stack: |-
+    execNativeGit (file:///workspace/coordinator-worker3-20261117/tests/construction-ci-recovery-20261116/native-git.mjs:325:27)
+    git (file:///workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:12:17)
+    blob (file:///workspace/coordinator-worker3-20261117/tests/parallel-source-20261110/git-reader.mjs:26:40)
+    reader (file:///workspace/coordinator-worker3-20261117/tests/parallel-source-20261110/git-reader.mjs:40:93)
+    reader (file:///workspace/coordinator-worker3-20261117/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)
+    Object.proofGit [as git] (file:///workspace/coordinator-worker3-20261117/scripts/product-completion-stage8.mjs:48:33)
+    verifyParallelAuthority (file:///workspace/coordinator-worker3-20261117/tests/parallel-source-20261110/authority.mjs:23564:21)
+    verifyCompletionBinding (file:///workspace/coordinator-worker3-20261117/scripts/product-completion-stage8.mjs:51:2)
+    TestContext.<anonymous> (file:///workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:24:76)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+  ...
+# Subtest: target-tree dependency refusal src/lib/registered-snapshot-verification.ts src/lib/technology-snapshot-verification.ts
+not ok 18 - target-tree dependency refusal src/lib/registered-snapshot-verification.ts src/lib/technology-snapshot-verification.ts
+  ---
+  duration_ms: 390.279125
+  type: 'test'
+  location: '/workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:25:125'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /supplemental source bytes differ/. Input:
+    
+    'Error: spawnSync git ENOBUFS'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: 'spawnSync git ENOBUFS'
+  stack: |-
+    execNativeGit (file:///workspace/coordinator-worker3-20261117/tests/construction-ci-recovery-20261116/native-git.mjs:325:27)
+    git (file:///workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:12:17)
+    blob (file:///workspace/coordinator-worker3-20261117/tests/parallel-source-20261110/git-reader.mjs:26:40)
+    reader (file:///workspace/coordinator-worker3-20261117/tests/parallel-source-20261110/git-reader.mjs:40:93)
+    reader (file:///workspace/coordinator-worker3-20261117/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)
+    Object.proofGit [as git] (file:///workspace/coordinator-worker3-20261117/scripts/product-completion-stage8.mjs:48:33)
+    verifyParallelAuthority (file:///workspace/coordinator-worker3-20261117/tests/parallel-source-20261110/authority.mjs:23564:21)
+    verifyCompletionBinding (file:///workspace/coordinator-worker3-20261117/scripts/product-completion-stage8.mjs:51:2)
+    file:///workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:25:199
+    getActual (node:assert:609:5)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:25:188)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: target-tree dependency refusal src/lib/registered-snapshot-verification.ts src/calculators/technology-computing/catalog-batch-2.ts
+not ok 19 - target-tree dependency refusal src/lib/registered-snapshot-verification.ts src/calculators/technology-computing/catalog-batch-2.ts
+  ---
+  duration_ms: 390.545843
+  type: 'test'
+  location: '/workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:25:125'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /supplemental source bytes differ/. Input:
+    
+    'Error: spawnSync git ENOBUFS'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: 'spawnSync git ENOBUFS'
+  stack: |-
+    execNativeGit (file:///workspace/coordinator-worker3-20261117/tests/construction-ci-recovery-20261116/native-git.mjs:325:27)
+    git (file:///workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:12:17)
+    blob (file:///workspace/coordinator-worker3-20261117/tests/parallel-source-20261110/git-reader.mjs:26:40)
+    reader (file:///workspace/coordinator-worker3-20261117/tests/parallel-source-20261110/git-reader.mjs:40:93)
+    reader (file:///workspace/coordinator-worker3-20261117/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)
+    Object.proofGit [as git] (file:///workspace/coordinator-worker3-20261117/scripts/product-completion-stage8.mjs:48:33)
+    verifyParallelAuthority (file:///workspace/coordinator-worker3-20261117/tests/parallel-source-20261110/authority.mjs:23564:21)
+    verifyCompletionBinding (file:///workspace/coordinator-worker3-20261117/scripts/product-completion-stage8.mjs:51:2)
+    file:///workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:25:199
+    getActual (node:assert:609:5)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/coordinator-worker3-20261117/tests/execution-recovery-20261109/source-lineage.test.mjs:25:188)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: retained software closure reproduces unchanged historical preservation packets
+ok 20 - retained software closure reproduces unchanged historical preservation packets
+  ---
+  duration_ms: 14586.81413
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 14
+# fail 6
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 42107.386275

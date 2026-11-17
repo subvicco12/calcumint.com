@@ -1,0 +1,762 @@
+{
+  "sourceInputs": {
+    "f490": {
+      "path": "/tmp/worker3-f490-hosted-full.log",
+      "sha256": "efdffdbaa1ecbabe314bea5af5690ff35f44884c5c40462c35706810c22da6af"
+    },
+    "7eb": {
+      "path": "/tmp/worker3-7eb-hosted-full.log",
+      "sha256": "b201c0f9a8613af8b65845a55551efb6c4f6fb17c09c094a088990195df76cd5"
+    }
+  },
+  "method": "Log window =first line of a step tofirst line of thenext logged step; includes smallinter-step overhead. logActivitySec separatelyboundsfirst-to-lastactivity. Cancelled windows arepartial, notcompletion times.",
+  "heads": {
+    "f490": "f49065b2ff40abb6593a7e480033413b7e34899c",
+    "7eb": "7ebdf0412619b8414e8c20b091f4fd9872c41f03"
+  },
+  "setupBeforeFirstFunctionalSec": {
+    "f490": 34.08137011528015,
+    "7eb": 37.35981106758118
+  },
+  "startOfBatch21ElapsedSec": {
+    "f490": 775.841551065445,
+    "7eb": 1014.7175529003143
+  },
+  "sourcePrepWindowSec": {
+    "f490": 3.607185125350952,
+    "7eb": 4.817191123962402
+  },
+  "steps": [
+    {
+      "step": "Set up job",
+      "f490WindowSec": 0.7570719718933105,
+      "7ebWindowSec": 0.816910982131958,
+      "deltaSec": 0.05983901023864746,
+      "ratio": 1.0790400549223875,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 34,
+      "7ebLines": 34,
+      "sameLoggedCommands": true,
+      "f490TAP": [],
+      "7ebTAP": []
+    },
+    {
+      "step": "Checkout",
+      "f490WindowSec": 3.3375601768493652,
+      "7ebWindowSec": 3.6170260906219482,
+      "deltaSec": 0.279465913772583,
+      "ratio": 1.0837335954902234,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 73,
+      "7ebLines": 73,
+      "sameLoggedCommands": true,
+      "f490TAP": [],
+      "7ebTAP": []
+    },
+    {
+      "step": "Use Node.js 22",
+      "f490WindowSec": 5.291294813156128,
+      "7ebWindowSec": 3.7942728996276855,
+      "deltaSec": -1.4970219135284424,
+      "ratio": 0.7170783397276809,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 28,
+      "7ebLines": 28,
+      "sameLoggedCommands": true,
+      "f490TAP": [],
+      "7ebTAP": []
+    },
+    {
+      "step": "Fetch exact financial and caller source revisions",
+      "f490WindowSec": 3.607185125350952,
+      "7ebWindowSec": 4.817191123962402,
+      "deltaSec": 1.2100059986114502,
+      "ratio": 1.335443276838675,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 5,
+      "7ebLines": 5,
+      "sameLoggedCommands": true,
+      "f490TAP": [],
+      "7ebTAP": []
+    },
+    {
+      "step": "Install dependencies",
+      "f490WindowSec": 9.626286029815674,
+      "7ebWindowSec": 12.305508852005005,
+      "deltaSec": 2.679222822189331,
+      "ratio": 1.278323624904862,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 6,
+      "7ebLines": 6,
+      "sameLoggedCommands": true,
+      "f490TAP": [],
+      "7ebTAP": []
+    },
+    {
+      "step": "Pull pinned isolated database fixtures",
+      "f490WindowSec": 6.184766054153442,
+      "7ebWindowSec": 5.791131019592285,
+      "deltaSec": -0.3936350345611572,
+      "ratio": 0.9363540947039043,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 73,
+      "7ebLines": 73,
+      "sameLoggedCommands": true,
+      "f490TAP": [],
+      "7ebTAP": []
+    },
+    {
+      "step": "Provision pinned isolated browser fixture",
+      "f490WindowSec": 5.197563886642456,
+      "7ebWindowSec": 6.106482982635498,
+      "deltaSec": 0.908919095993042,
+      "ratio": 1.1748740594279043,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 8,
+      "7ebLines": 8,
+      "sameLoggedCommands": true,
+      "f490TAP": [],
+      "7ebTAP": []
+    },
+    {
+      "step": "Exact 540-row engineering delta integrity",
+      "f490WindowSec": 0.07964205741882324,
+      "7ebWindowSec": 0.11128711700439453,
+      "deltaSec": 0.03164505958557129,
+      "ratio": 1.3973410608813834,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 7,
+      "7ebLines": 7,
+      "sameLoggedCommands": true,
+      "f490TAP": [],
+      "7ebTAP": []
+    },
+    {
+      "step": "Private full-product functional acceptance",
+      "f490WindowSec": 43.314213037490845,
+      "7ebWindowSec": 63.303714990615845,
+      "deltaSec": 19.989501953125,
+      "ratio": 1.4614998299939788,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 8,
+      "7ebLines": 8,
+      "sameLoggedCommands": true,
+      "f490TAP": [],
+      "7ebTAP": []
+    },
+    {
+      "step": "Installed SDK synthetic fixture CORS acceptance",
+      "f490WindowSec": 1.803830862045288,
+      "7ebWindowSec": 2.1510438919067383,
+      "deltaSec": 0.3472130298614502,
+      "ratio": 1.192486467089137,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 34,
+      "7ebLines": 34,
+      "sameLoggedCommands": true,
+      "f490TAP": [
+        "# tests 3",
+        "# pass 3",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 1759.031923"
+      ],
+      "7ebTAP": [
+        "# tests 3",
+        "# pass 3",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 2085.394985"
+      ]
+    },
+    {
+      "step": "Owned history exports and scenario recovery acceptance",
+      "f490WindowSec": 102.96887612342834,
+      "7ebWindowSec": 129.90435695648193,
+      "deltaSec": 26.93548083305359,
+      "ratio": 1.2615885677995178,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 65,
+      "7ebLines": 65,
+      "sameLoggedCommands": true,
+      "f490TAP": [],
+      "7ebTAP": []
+    },
+    {
+      "step": "Exact Batch13 540-ID requirement deltas",
+      "f490WindowSec": 2.609261989593506,
+      "7ebWindowSec": 3.6658780574798584,
+      "deltaSec": 1.0566160678863525,
+      "ratio": 1.4049482467074768,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 51,
+      "7ebLines": 51,
+      "sameLoggedCommands": true,
+      "f490TAP": [
+        "# tests 5",
+        "# pass 5",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 278.755432"
+      ],
+      "7ebTAP": [
+        "# tests 5",
+        "# pass 5",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 352.647251"
+      ]
+    },
+    {
+      "step": "Batch13 private sensitivity and module transport acceptance",
+      "f490WindowSec": 6.440932989120483,
+      "7ebWindowSec": 8.277966022491455,
+      "deltaSec": 1.8370330333709717,
+      "ratio": 1.2852122567450932,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 55,
+      "7ebLines": 55,
+      "sameLoggedCommands": true,
+      "f490TAP": [
+        "# tests 6",
+        "# pass 6",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 763.590184"
+      ],
+      "7ebTAP": [
+        "# tests 6",
+        "# pass 6",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 964.522826"
+      ]
+    },
+    {
+      "step": "Genuine isolated GoTrue and schema acceptance",
+      "f490WindowSec": 21.384902000427246,
+      "7ebWindowSec": 28.792686939239502,
+      "deltaSec": 7.407784938812256,
+      "ratio": 1.3464025665707637,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 18,
+      "7ebLines": 18,
+      "sameLoggedCommands": true,
+      "f490TAP": [],
+      "7ebTAP": []
+    },
+    {
+      "step": "Batch14 identity and contract evidence preparation",
+      "f490WindowSec": 4.439195871353149,
+      "7ebWindowSec": 5.959258079528809,
+      "deltaSec": 1.5200622081756592,
+      "ratio": 1.342418368602491,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 83,
+      "7ebLines": 83,
+      "sameLoggedCommands": true,
+      "f490TAP": [
+        "# tests 5",
+        "# pass 5",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 1080.298075",
+        "# tests 3",
+        "# pass 3",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 60.680439"
+      ],
+      "7ebTAP": [
+        "# tests 5",
+        "# pass 5",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 1289.82928",
+        "# tests 3",
+        "# pass 3",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 81.698746"
+      ]
+    },
+    {
+      "step": "Batch14 accessible private sensitivity and scenario report replay",
+      "f490WindowSec": 39.263864040374756,
+      "7ebWindowSec": 51.888190031051636,
+      "deltaSec": 12.62432599067688,
+      "ratio": 1.3215253083011742,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 58,
+      "7ebLines": 58,
+      "sameLoggedCommands": true,
+      "f490TAP": [
+        "# tests 6",
+        "# pass 6",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 1313.764232"
+      ],
+      "7ebTAP": [
+        "# tests 6",
+        "# pass 6",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 1400.418429"
+      ]
+    },
+    {
+      "step": "Genuine full repository schema and Business authorization",
+      "f490WindowSec": 9.453792095184326,
+      "7ebWindowSec": 12.680853843688965,
+      "deltaSec": 3.2270617485046387,
+      "ratio": 1.3413510383995513,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 38,
+      "7ebLines": 38,
+      "sameLoggedCommands": true,
+      "f490TAP": [],
+      "7ebTAP": []
+    },
+    {
+      "step": "Software closure evidence and recovery lifecycle browser acceptance",
+      "f490WindowSec": 69.84839105606079,
+      "7ebWindowSec": 84.58810710906982,
+      "deltaSec": 14.739716053009033,
+      "ratio": 1.2110244177446956,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 221,
+      "7ebLines": 221,
+      "sameLoggedCommands": true,
+      "f490TAP": [
+        "# tests 1",
+        "# pass 1",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 47.004468",
+        "# tests 30",
+        "# pass 30",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 35398.624776"
+      ],
+      "7ebTAP": [
+        "# tests 1",
+        "# pass 1",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 61.102866",
+        "# tests 30",
+        "# pass 30",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 42763.532078"
+      ]
+    },
+    {
+      "step": "Batch16 requirement, schema comparison and finder acceptance",
+      "f490WindowSec": 29.82143998146057,
+      "7ebWindowSec": 42.3132688999176,
+      "deltaSec": 12.491828918457031,
+      "ratio": 1.418887516036213,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 63,
+      "7ebLines": 63,
+      "sameLoggedCommands": true,
+      "f490TAP": [
+        "# tests 4",
+        "# pass 4",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 383.627329"
+      ],
+      "7ebTAP": [
+        "# tests 4",
+        "# pass 4",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 552.399661"
+      ]
+    },
+    {
+      "step": "Preserve sanitized native login observations",
+      "f490WindowSec": 1.0166208744049072,
+      "7ebWindowSec": 1.1802821159362793,
+      "deltaSec": 0.16366124153137207,
+      "ratio": 1.1609855213991878,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 27,
+      "7ebLines": 27,
+      "sameLoggedCommands": true,
+      "f490TAP": [],
+      "7ebTAP": []
+    },
+    {
+      "step": "Batch17 independent issuance capture and expiry acceptance",
+      "f490WindowSec": 67.0385799407959,
+      "7ebWindowSec": 74.54455995559692,
+      "deltaSec": 7.505980014801025,
+      "ratio": 1.1119650807256034,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 357,
+      "7ebLines": 357,
+      "sameLoggedCommands": true,
+      "f490TAP": [
+        "# tests 33",
+        "# pass 33",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 1415.090463"
+      ],
+      "7ebTAP": [
+        "# tests 33",
+        "# pass 33",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 2108.985206"
+      ]
+    },
+    {
+      "step": "Hosted-schema-bound guarded remediation acceptance",
+      "f490WindowSec": 21.652367115020752,
+      "7ebWindowSec": 29.54405903816223,
+      "deltaSec": 7.8916919231414795,
+      "ratio": 1.3644724792083738,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 131,
+      "7ebLines": 131,
+      "sameLoggedCommands": true,
+      "f490TAP": [
+        "# tests 9",
+        "# pass 9",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 71.516444"
+      ],
+      "7ebTAP": [
+        "# tests 9",
+        "# pass 9",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 100.57088"
+      ]
+    },
+    {
+      "step": "Hosted remediation closure and authenticated compatibility",
+      "f490WindowSec": 42.69026708602905,
+      "7ebWindowSec": 56.652827978134155,
+      "deltaSec": 13.962560892105103,
+      "ratio": 1.3270666089759493,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 94,
+      "7ebLines": 94,
+      "sameLoggedCommands": true,
+      "f490TAP": [],
+      "7ebTAP": []
+    },
+    {
+      "step": "P0 publication and Business integrity safeguards",
+      "f490WindowSec": 31.433509826660156,
+      "7ebWindowSec": 41.34890699386597,
+      "deltaSec": 9.91539716720581,
+      "ratio": 1.315440344456734,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 92,
+      "7ebLines": 92,
+      "sameLoggedCommands": true,
+      "f490TAP": [
+        "# tests 4",
+        "# pass 4",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 101.257602"
+      ],
+      "7ebTAP": [
+        "# tests 4",
+        "# pass 4",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 123.373761"
+      ]
+    },
+    {
+      "step": "Owner-authorized isolated P0 implementation",
+      "f490WindowSec": 226.59038305282593,
+      "7ebWindowSec": 310.055055141449,
+      "deltaSec": 83.46467208862305,
+      "ratio": 1.3683504611454078,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 1316,
+      "7ebLines": 1317,
+      "sameLoggedCommands": true,
+      "f490TAP": [
+        "# tests 205",
+        "# pass 205",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 174741.718315"
+      ],
+      "7ebTAP": [
+        "# tests 205",
+        "# pass 205",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 235038.490267"
+      ]
+    },
+    {
+      "step": "Calculator-first publication evidence and browser acceptance",
+      "f490WindowSec": 19.989753007888794,
+      "7ebWindowSec": 30.506725788116455,
+      "deltaSec": 10.516972780227661,
+      "ratio": 1.5261181954613057,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 12,
+      "7ebLines": 12,
+      "sameLoggedCommands": true,
+      "f490TAP": [],
+      "7ebTAP": []
+    },
+    {
+      "step": "Batch21 calculator wave exact evidence and browser acceptance",
+      "f490WindowSec": 185.51241207122803,
+      "7ebWindowSec": 197.000892162323,
+      "deltaSec": 11.48848009109497,
+      "ratio": 1.0619283635139407,
+      "f490Status": "success",
+      "7ebStatus": "cancelled",
+      "f490Lines": 394,
+      "7ebLines": 286,
+      "sameLoggedCommands": true,
+      "f490TAP": [
+        "# tests 9",
+        "# pass 9",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 58.357319"
+      ],
+      "7ebTAP": [
+        "# tests 9",
+        "# pass 9",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 89.526055"
+      ]
+    },
+    {
+      "step": "Preserve Batch21 primary failure and browser evidence",
+      "f490WindowSec": 1.4358928203582764,
+      "7ebWindowSec": 1.909613847732544,
+      "deltaSec": 0.4737210273742676,
+      "ratio": 1.3299139188230409,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 25,
+      "7ebLines": 25,
+      "sameLoggedCommands": true,
+      "f490TAP": [],
+      "7ebTAP": []
+    },
+    {
+      "step": "Batch22 publication packets, live interface evidence and isolated preflight",
+      "f490WindowSec": 33.537121057510376,
+      "7ebWindowSec": null,
+      "deltaSec": null,
+      "ratio": null,
+      "f490Status": "success",
+      "7ebStatus": "not-logged",
+      "f490Lines": 109,
+      "7ebLines": 0,
+      "sameLoggedCommands": null,
+      "f490TAP": [],
+      "7ebTAP": []
+    },
+    {
+      "step": "Six proposed publication targets \u2014 numerical and workflow evidence",
+      "f490WindowSec": 30.59276008605957,
+      "7ebWindowSec": null,
+      "deltaSec": null,
+      "ratio": null,
+      "f490Status": "success",
+      "7ebStatus": "not-logged",
+      "f490Lines": 110,
+      "7ebLines": 0,
+      "sameLoggedCommands": null,
+      "f490TAP": [
+        "# tests 10",
+        "# pass 10",
+        "# fail 0",
+        "# cancelled 0",
+        "# skipped 0",
+        "# duration_ms 4042.459591"
+      ],
+      "7ebTAP": []
+    },
+    {
+      "step": "Post Use Node.js 22",
+      "f490WindowSec": 0.09916901588439941,
+      "7ebWindowSec": null,
+      "deltaSec": null,
+      "ratio": null,
+      "f490Status": "success",
+      "7ebStatus": "not-logged",
+      "f490Lines": 4,
+      "7ebLines": 0,
+      "sameLoggedCommands": null,
+      "f490TAP": [],
+      "7ebTAP": []
+    },
+    {
+      "step": "Post Checkout",
+      "f490WindowSec": 0.18877291679382324,
+      "7ebWindowSec": 0.49880409240722656,
+      "deltaSec": 0.3100311756134033,
+      "ratio": 2.6423498713643214,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 14,
+      "7ebLines": 14,
+      "sameLoggedCommands": true,
+      "f490TAP": [],
+      "7ebTAP": []
+    },
+    {
+      "step": "Complete job",
+      "f490WindowSec": 0.027120113372802734,
+      "7ebWindowSec": 0.10023689270019531,
+      "deltaSec": 0.07311677932739258,
+      "ratio": 3.696035164835165,
+      "f490Status": "success",
+      "7ebStatus": "success",
+      "f490Lines": 2,
+      "7ebLines": 7,
+      "sameLoggedCommands": true,
+      "f490TAP": [],
+      "7ebTAP": []
+    }
+  ],
+  "p0Same205CaseNamesAllPass": true,
+  "p0TopFiveGitBoundDeltas": [
+    {
+      "name": "historical mathematical closure remains exact with explicit Git-bound caller and financial successors",
+      "f490MS": 100041.678971,
+      "7ebMS": 130044.431832,
+      "deltaMS": 30002.752861
+    },
+    {
+      "name": "src/app/business/api/page.tsx: caller successor verifies original and successor Git objects",
+      "f490MS": 46537.742524,
+      "7ebMS": 70102.997748,
+      "deltaMS": 23565.255223999993
+    },
+    {
+      "name": "src/app/business/api/page.tsx: tampered caller is rejected with original historical claim",
+      "f490MS": 40888.303997,
+      "7ebMS": 62054.701853,
+      "deltaMS": 21166.397855999996
+    },
+    {
+      "name": "src/app/business/page.tsx: caller successor verifies original and successor Git objects",
+      "f490MS": 43440.117799,
+      "7ebMS": 52508.213972,
+      "deltaMS": 9068.096172999998
+    },
+    {
+      "name": "src/app/business/page.tsx: tampered caller is rejected with original historical claim",
+      "f490MS": 43530.858475,
+      "7ebMS": 49901.297318,
+      "deltaMS": 6370.438842999996
+    }
+  ],
+  "p0Remaining200MaxPositiveIncreaseMS": 9.067354000000002,
+  "p0Remaining200MaxAbsoluteDeltaMS": 9.067354000000002,
+  "p0SuiteMS": {
+    "f490": 174741.718315,
+    "7eb": 235038.490267
+  },
+  "batch21": {
+    "f490": {
+      "markers": 318,
+      "firstMarkerAfterStepSec": 2.832150936126709,
+      "lastMarkerAfterStepSec": 184.8717999458313,
+      "sameFirst210SpanSec": 121.90114617347717,
+      "medianIntervalSec": 0.5168559551239014,
+      "meanIntervalSec": 0.5742575678539577,
+      "finalSummaryPresent": true
+    },
+    "7eb": {
+      "markers": 210,
+      "firstMarkerAfterStepSec": 4.401395082473755,
+      "lastMarkerAfterStepSec": 196.49632501602173,
+      "sameFirst210SpanSec": 192.09492993354797,
+      "medianIntervalSec": 0.820702075958252,
+      "meanIntervalSec": 0.9191144972897032,
+      "finalSummaryPresent": false
+    }
+  },
+  "batch21SameProgressPrefix": true,
+  "cloneAttribution": "No gitclone command orclone timing appears in either full-productlog. Directfetch/availabilitysetup increase isquantified; repeateddownstreamclonecost cannot be measured fromthese logs.",
+  "environment": {
+    "runnerImageBoth": "ubuntu-26.04 20261111.196.1",
+    "NodeBoth": "22.23.4",
+    "ChromeBoth": "156.0.8078.47",
+    "f490Region": "southcentralus",
+    "7ebRegion": "westcentralus",
+    "CPUAndLoadObserved": false
+  },
+  "qualified": false
+}

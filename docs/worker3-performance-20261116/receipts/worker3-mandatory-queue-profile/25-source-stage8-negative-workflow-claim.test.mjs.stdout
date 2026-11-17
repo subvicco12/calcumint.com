@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: all15 literal historical workflow claims remain F042 and valid claims return no verdict
+ok 1 - all15 literal historical workflow claims remain F042 and valid claims return no verdict
+  ---
+  duration_ms: 130.942873
+  type: 'test'
+  ...
+# Subtest: everyknown path rejects wrongSHA with the unchanged exact diagnostic
+ok 2 - everyknown path rejects wrongSHA with the unchanged exact diagnostic
+  ---
+  duration_ms: 76.858267
+  type: 'test'
+  ...
+# Subtest: unknown paths return no authority without invoking a caller endpoint
+ok 3 - unknown paths return no authority without invoking a caller endpoint
+  ---
+  duration_ms: 0.145258
+  type: 'test'
+  ...
+# Subtest: capture digest and type are authenticated before a false claim can be evaluated
+ok 4 - capture digest and type are authenticated before a false claim can be evaluated
+  ---
+  duration_ms: 2.418695
+  type: 'test'
+  ...
+# Subtest: roster uniqueness order and captured application ref remain exact
+ok 5 - roster uniqueness order and captured application ref remain exact
+  ---
+  duration_ms: 20.635402
+  type: 'test'
+  ...
+# Subtest: every tuple field and exactshape is checked despite a synthetic matching digest
+ok 6 - every tuple field and exactshape is checked despite a synthetic matching digest
+  ---
+  duration_ms: 22.742786
+  type: 'test'
+  ...
+# Subtest: provided-reader failures propagate and each known invocation rereads the fixed capture
+ok 7 - provided-reader failures propagate and each known invocation rereads the fixed capture
+  ---
+  duration_ms: 2.737048
+  type: 'test'
+  ...
+# Subtest: a valid precheck does not suppress the caller full proof or manufacture returned records
+ok 8 - a valid precheck does not suppress the caller full proof or manufacture returned records
+  ---
+  duration_ms: 1.719817
+  type: 'test'
+  ...
+# Subtest: the helper has no Git filesystem fallback cache or policy-nomination parameter
+ok 9 - the helper has no Git filesystem fallback cache or policy-nomination parameter
+  ---
+  duration_ms: 0.342534
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 271.058859

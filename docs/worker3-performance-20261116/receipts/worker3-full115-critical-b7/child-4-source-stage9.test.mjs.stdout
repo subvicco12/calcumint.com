@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: exact18live objects precede historical capability; maps cannot alter private evidence
+ok 1 - exact18live objects precede historical capability; maps cannot alter private evidence
+  ---
+  duration_ms: 633.836527
+  type: 'test'
+  ...
+# Subtest: all18current paths reject tamper and predecessor reversion before capability escape
+ok 2 - all18current paths reject tamper and predecessor reversion before capability escape
+  ---
+  duration_ms: 857.776013
+  type: 'test'
+  ...
+# Subtest: native metadata HEAD move and dirty SRC fail closed
+ok 3 - native metadata HEAD move and dirty SRC fail closed
+  ---
+  duration_ms: 348.513775
+  type: 'test'
+  ...
+# Subtest: physical file and parent directory symlinks are rejected
+ok 4 - physical file and parent directory symlinks are rejected
+  ---
+  duration_ms: 2.487534
+  type: 'test'
+  ...
+# Subtest: raw retained Stage8 rejects stale Stage9 capability and immutable alias
+ok 5 - raw retained Stage8 rejects stale Stage9 capability and immutable alias
+  ---
+  duration_ms: 325.837255
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2279.585441

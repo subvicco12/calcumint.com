@@ -1,3 +1,4 @@
+import {statisticsContracts,verifyStatisticsSnapshot} from './statistics-integration-20261117/cohort';
 import {constructionContracts,verifyConstructionSnapshot} from './worker1-construction-20261116/cohort';
 import {nextEngineeringContracts,verifyNextEngineeringSnapshot} from './calculator-factory/completion/next-engineering';
 import {verifyCookingSnapshot} from './cooking-snapshot-verification';
@@ -17,6 +18,7 @@ export function verifyRegisteredSnapshot(raw:unknown){
  const slug=clean&&typeof clean==='object'&&!Array.isArray(clean)?(clean as Record<string,unknown>).calculatorSlug:undefined;
  if(constructionContracts.some(row=>row.slug===slug))return verifyConstructionSnapshot(clean);
  if(nextEngineeringContracts.some(row=>row.slug===slug))return verifyNextEngineeringSnapshot(clean);
+ if(statisticsContracts.some(row=>row.slug===slug))return verifyStatisticsSnapshot(clean as Parameters<typeof verifyStatisticsSnapshot>[0]);
  if(slug==='cooking-measurement-converter')return verifyCookingSnapshot(clean);
  if(slug==='molarity-calculator'||slug==='moles-calculator'||slug==='dilution-calculator')return verifyWorkerCScienceSnapshot(clean);
  if(slug==='surface-area-calculator')return verifySurfaceAreaSnapshot(clean);

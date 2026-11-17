@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: callback-active timeout reaps only its genuine owned empty lock after group death
+ok 1 - callback-active timeout reaps only its genuine owned empty lock after group death
+  ---
+  duration_ms: 341.244879
+  type: 'test'
+  ...
+# Subtest: unknown foreign legacy lock remains unchanged after owned child timeout
+ok 2 - unknown foreign legacy lock remains unchanged after owned child timeout
+  ---
+  duration_ms: 165.880398
+  type: 'test'
+  ...
+# Subtest: inherited genuine root is retained and custom environment cannot replace its scope
+ok 3 - inherited genuine root is retained and custom environment cannot replace its scope
+  ---
+  duration_ms: 41.595175
+  type: 'test'
+  ...
+# Subtest: cleanup failure retains primary timeout classification and diagnostic
+ok 4 - cleanup failure retains primary timeout classification and diagnostic
+  ---
+  duration_ms: 315.550245
+  type: 'test'
+  ...
+# Subtest: cleanup failure retains primary exit7 classification and diagnostic
+ok 5 - cleanup failure retains primary exit7 classification and diagnostic
+  ---
+  duration_ms: 36.538559
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 909.298065

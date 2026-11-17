@@ -1,0 +1,68 @@
+$ ./node_modules/.bin/vitest run src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts
+
+ RUN  v3.2.7 /workspace/calcumint-chem-a
+
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts (1 test | 1 failed) 8ms
+   × provides exactly the six assigned immutable chemistry tuples 8ms
+     → expected [] to deeply equal [ …(6) ]
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts > provides exactly the six assigned immutable chemistry tuples
+AssertionError: expected [] to deeply equal [ …(6) ]
+
+- Expected
++ Received
+
+- [
+-   [
+-     329,
+-     "chemistry.molality",
+-     1,
+-   ],
+-   [
+-     333,
+-     "chemistry.ph",
+-     1,
+-   ],
+-   [
+-     334,
+-     "chemistry.ideal-gas-law",
+-     1,
+-   ],
+-   [
+-     335,
+-     "chemistry.gas-density",
+-     1,
+-   ],
+-   [
+-     336,
+-     "chemistry.percent-composition",
+-     1,
+-   ],
+-   [
+-     337,
+-     "chemistry.solution-concentration",
+-     1,
+-   ],
+- ]
++ []
+
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts:5:78
+      3|
+      4| it('provides exactly the six assigned immutable chemistry tuples', () …
+      5|   expect(chemistryAContracts.map(c => [c.catalogId, c.engineId, c.vers…
+       |                                                                              ^
+      6|     [329, 'chemistry.molality', 1],
+      7|     [333, 'chemistry.ph', 1],
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  09:35:26
+   Duration  244ms (transform 38ms, setup 0ms, collect 32ms, tests 8ms, environment 0ms, prepare 57ms)
+
+
+exit_code=1

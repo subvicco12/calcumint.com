@@ -1,0 +1,581 @@
+{
+  "head": "12d1bac81a0e01e46c8654f61c4f4a96ad26e92b",
+  "workingPrioritySHA256": "d90a1a14250dac9210dfddae387e511d1216abcc7ccdb353742137cb4f659389",
+  "oldFivePriority": {
+    "priority": [
+      "tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs",
+      "source-authority-preload.test.mjs",
+      "tests/milestone100-20261114/retained-stage7-preflight.mjs",
+      "tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs",
+      "source-test-stage6.test.mjs"
+    ],
+    "exclusiveMS": 25971.473355,
+    "simulatedPoolWallMS": 38273.590080999995,
+    "simulatedTotalMS": 64245.063436,
+    "lanesMS": [
+      34869.71734999999,
+      38273.590080999995
+    ],
+    "schedule": [
+      {
+        "file": "tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs",
+        "lane": 0,
+        "startMS": 0.0,
+        "endMS": 13803.640085000003,
+        "wallMS": 13803.640085000003
+      },
+      {
+        "file": "tests/completion-wave-20261113/source-authority-preload.test.mjs",
+        "lane": 1,
+        "startMS": 0.0,
+        "endMS": 11838.091810999998,
+        "wallMS": 11838.091810999998
+      },
+      {
+        "file": "tests/milestone100-20261114/retained-stage7-preflight.mjs",
+        "lane": 1,
+        "startMS": 11838.091810999998,
+        "endMS": 20031.67622,
+        "wallMS": 8193.584409000003
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs",
+        "lane": 0,
+        "startMS": 13803.640085000003,
+        "endMS": 20717.55927,
+        "wallMS": 6913.919184999999
+      },
+      {
+        "file": "tests/completion-wave-20261113/source-test-stage6.test.mjs",
+        "lane": 1,
+        "startMS": 20031.67622,
+        "endMS": 23744.96217,
+        "wallMS": 3713.2859499999977
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-negative-publication-caller.test.mjs",
+        "lane": 0,
+        "startMS": 20717.55927,
+        "endMS": 20865.54403,
+        "wallMS": 147.98475999999937
+      },
+      {
+        "file": "tests/milestone100-20261114/workflow-source-evidence-batch.test.mjs",
+        "lane": 0,
+        "startMS": 20865.54403,
+        "endMS": 20923.978775,
+        "wallMS": 58.43474499999866
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-shortest-native-driver.test.mjs",
+        "lane": 0,
+        "startMS": 20923.978775,
+        "endMS": 21219.475142,
+        "wallMS": 295.49636699999974
+      },
+      {
+        "file": "tests/completion-wave-20261113/source-app-stage5.test.mjs",
+        "lane": 0,
+        "startMS": 21219.475142,
+        "endMS": 22621.409002999997,
+        "wallMS": 1401.9338609999977
+      },
+      {
+        "file": "tests/completion-wave-20261113/source-preflight.test.mjs",
+        "lane": 0,
+        "startMS": 22621.409002999997,
+        "endMS": 22705.558667999994,
+        "wallMS": 84.14966499999719
+      },
+      {
+        "file": "tests/next-cohort-20261110/source/runtime-evidence-batch.test.mjs",
+        "lane": 0,
+        "startMS": 22705.558667999994,
+        "endMS": 22765.840563999995,
+        "wallMS": 60.281896000000415
+      },
+      {
+        "file": "tests/milestone100-20261114/authority-observation-collector.test.mjs",
+        "lane": 0,
+        "startMS": 22765.840563999995,
+        "endMS": 22857.789328999996,
+        "wallMS": 91.948765000001
+      },
+      {
+        "file": "tests/next-cohort-20261110/source/runtime-stage2-batch.test.mjs",
+        "lane": 0,
+        "startMS": 22857.789328999996,
+        "endMS": 22951.502530999995,
+        "wallMS": 93.713201999999
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-stage5-scope.test.mjs",
+        "lane": 0,
+        "startMS": 22951.502530999995,
+        "endMS": 23026.306966999993,
+        "wallMS": 74.80443599999853
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-negative-factory.test.mjs",
+        "lane": 0,
+        "startMS": 23026.306966999993,
+        "endMS": 23157.113238999995,
+        "wallMS": 130.80627200000163
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-current-guard-scope.test.mjs",
+        "lane": 0,
+        "startMS": 23157.113238999995,
+        "endMS": 23219.845878999997,
+        "wallMS": 62.73264000000199
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs",
+        "lane": 0,
+        "startMS": 23219.845878999997,
+        "endMS": 23379.337996,
+        "wallMS": 159.4921170000016
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs",
+        "lane": 0,
+        "startMS": 23379.337996,
+        "endMS": 23467.591747999995,
+        "wallMS": 88.2537519999969
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-runtime-chain-prefetch.test.mjs",
+        "lane": 0,
+        "startMS": 23467.591747999995,
+        "endMS": 23535.391731999993,
+        "wallMS": 67.7999839999975
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs",
+        "lane": 0,
+        "startMS": 23535.391731999993,
+        "endMS": 24833.234405999992,
+        "wallMS": 1297.8426739999995
+      },
+      {
+        "file": "tests/parallel-source-20261110/source-lock-scope.test.mjs",
+        "lane": 1,
+        "startMS": 23744.96217,
+        "endMS": 24380.953781999997,
+        "wallMS": 635.991611999998
+      },
+      {
+        "file": "tests/ci-rpc-recovery-20261113/source-node-owned-lock.test.mjs",
+        "lane": 1,
+        "startMS": 24380.953781999997,
+        "endMS": 25377.918167999997,
+        "wallMS": 996.9643859999996
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-negative-workflow-claim.test.mjs",
+        "lane": 0,
+        "startMS": 24833.234405999992,
+        "endMS": 25042.443764999993,
+        "wallMS": 209.2093590000004
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-negative-reader-order.test.mjs",
+        "lane": 0,
+        "startMS": 25042.443764999993,
+        "endMS": 25096.899276999993,
+        "wallMS": 54.455512000000454
+      },
+      {
+        "file": "tests/milestone100-20261114/composition-source-evidence-batch.test.mjs",
+        "lane": 0,
+        "startMS": 25096.899276999993,
+        "endMS": 25206.12568999999,
+        "wallMS": 109.22641299999668
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs",
+        "lane": 0,
+        "startMS": 25206.12568999999,
+        "endMS": 25336.623895999994,
+        "wallMS": 130.49820600000385
+      },
+      {
+        "file": "tests/next-cohort-20261110/source/runtime-head-bound-batch.test.mjs",
+        "lane": 0,
+        "startMS": 25336.623895999994,
+        "endMS": 25417.840065999993,
+        "wallMS": 81.21616999999969
+      },
+      {
+        "file": "tests/next-engineering-20261115/source-current32.test.mjs",
+        "lane": 1,
+        "startMS": 25377.918167999997,
+        "endMS": 29837.962343,
+        "wallMS": 4460.044175000003
+      },
+      {
+        "file": "tests/next-engineering-20261115/source-current26.test.mjs",
+        "lane": 0,
+        "startMS": 25417.840065999993,
+        "endMS": 33803.480337999994,
+        "wallMS": 8385.640271999997
+      },
+      {
+        "file": "tests/next-engineering-20261115/source-private-git-transport.test.mjs",
+        "lane": 1,
+        "startMS": 29837.962343,
+        "endMS": 33355.380908,
+        "wallMS": 3517.418565
+      },
+      {
+        "file": "tests/next-engineering-20261115/source-private-git-lifecycle.test.mjs",
+        "lane": 1,
+        "startMS": 33355.380908,
+        "endMS": 34073.835384,
+        "wallMS": 718.454475999999
+      },
+      {
+        "file": "tests/next-engineering-20261115/source-private-git-stream.test.mjs",
+        "lane": 0,
+        "startMS": 33803.480337999994,
+        "endMS": 34808.746156999994,
+        "wallMS": 1005.2658190000002
+      },
+      {
+        "file": "tests/next-engineering-20261115/source-binding-current32.test.mjs",
+        "lane": 1,
+        "startMS": 34073.835384,
+        "endMS": 34266.681262,
+        "wallMS": 192.84587800000008
+      },
+      {
+        "file": "tests/next-engineering-20261115/source-stage9-fixture.test.mjs",
+        "lane": 1,
+        "startMS": 34266.681262,
+        "endMS": 34334.642003999994,
+        "wallMS": 67.96074199999566
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-runtime-current-selection.test.mjs",
+        "lane": 1,
+        "startMS": 34334.642003999994,
+        "endMS": 34690.63634999999,
+        "wallMS": 355.9943459999995
+      },
+      {
+        "file": "tests/next-engineering-20261115/source-completion-prewarm-admission.test.mjs",
+        "lane": 1,
+        "startMS": 34690.63634999999,
+        "endMS": 34865.86538399999,
+        "wallMS": 175.22903399999632
+      },
+      {
+        "file": "tests/next-engineering-20261115/source-lineage-fixture.test.mjs",
+        "lane": 0,
+        "startMS": 34808.746156999994,
+        "endMS": 34869.71734999999,
+        "wallMS": 60.971192999997584
+      },
+      {
+        "file": "tests/next-engineering-20261115/source-lineage-native-contract.test.mjs",
+        "lane": 1,
+        "startMS": 34865.86538399999,
+        "endMS": 38273.590080999995,
+        "wallMS": 3407.724697000005
+      }
+    ]
+  },
+  "newElevenPriority": {
+    "priority": [
+      "tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs",
+      "source-authority-preload.test.mjs",
+      "tests/milestone100-20261114/retained-stage7-preflight.mjs",
+      "tests/next-engineering-20261115/source-current26.test.mjs",
+      "tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs",
+      "source-test-stage6.test.mjs",
+      "tests/next-engineering-20261115/source-private-git-transport.test.mjs",
+      "tests/next-engineering-20261115/source-current32.test.mjs",
+      "tests/next-engineering-20261115/source-lineage-native-contract.test.mjs",
+      "source-app-stage5.test.mjs",
+      "tests/next-engineering-20261115/source-private-git-stream.test.mjs"
+    ],
+    "exclusiveMS": 25971.473355,
+    "simulatedPoolWallMS": 36587.10983999999,
+    "simulatedTotalMS": 62558.583194999985,
+    "lanesMS": [
+      36556.19759099999,
+      36587.10983999999
+    ],
+    "schedule": [
+      {
+        "file": "tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs",
+        "lane": 0,
+        "startMS": 0.0,
+        "endMS": 13803.640085000003,
+        "wallMS": 13803.640085000003
+      },
+      {
+        "file": "tests/completion-wave-20261113/source-authority-preload.test.mjs",
+        "lane": 1,
+        "startMS": 0.0,
+        "endMS": 11838.091810999998,
+        "wallMS": 11838.091810999998
+      },
+      {
+        "file": "tests/milestone100-20261114/retained-stage7-preflight.mjs",
+        "lane": 1,
+        "startMS": 11838.091810999998,
+        "endMS": 20031.67622,
+        "wallMS": 8193.584409000003
+      },
+      {
+        "file": "tests/next-engineering-20261115/source-current26.test.mjs",
+        "lane": 0,
+        "startMS": 13803.640085000003,
+        "endMS": 22189.280357,
+        "wallMS": 8385.640271999997
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs",
+        "lane": 1,
+        "startMS": 20031.67622,
+        "endMS": 26945.595405,
+        "wallMS": 6913.919184999999
+      },
+      {
+        "file": "tests/completion-wave-20261113/source-test-stage6.test.mjs",
+        "lane": 0,
+        "startMS": 22189.280357,
+        "endMS": 25902.566306999997,
+        "wallMS": 3713.2859499999977
+      },
+      {
+        "file": "tests/next-engineering-20261115/source-private-git-transport.test.mjs",
+        "lane": 0,
+        "startMS": 25902.566306999997,
+        "endMS": 29419.984871999997,
+        "wallMS": 3517.418565
+      },
+      {
+        "file": "tests/next-engineering-20261115/source-current32.test.mjs",
+        "lane": 1,
+        "startMS": 26945.595405,
+        "endMS": 31405.639580000003,
+        "wallMS": 4460.044175000003
+      },
+      {
+        "file": "tests/next-engineering-20261115/source-lineage-native-contract.test.mjs",
+        "lane": 0,
+        "startMS": 29419.984871999997,
+        "endMS": 32827.709569,
+        "wallMS": 3407.724697000005
+      },
+      {
+        "file": "tests/completion-wave-20261113/source-app-stage5.test.mjs",
+        "lane": 1,
+        "startMS": 31405.639580000003,
+        "endMS": 32807.573441,
+        "wallMS": 1401.9338609999977
+      },
+      {
+        "file": "tests/next-engineering-20261115/source-private-git-stream.test.mjs",
+        "lane": 1,
+        "startMS": 32807.573441,
+        "endMS": 33812.83926,
+        "wallMS": 1005.2658190000002
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-negative-publication-caller.test.mjs",
+        "lane": 0,
+        "startMS": 32827.709569,
+        "endMS": 32975.694329,
+        "wallMS": 147.98475999999937
+      },
+      {
+        "file": "tests/milestone100-20261114/workflow-source-evidence-batch.test.mjs",
+        "lane": 0,
+        "startMS": 32975.694329,
+        "endMS": 33034.129074,
+        "wallMS": 58.43474499999866
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-shortest-native-driver.test.mjs",
+        "lane": 0,
+        "startMS": 33034.129074,
+        "endMS": 33329.625441,
+        "wallMS": 295.49636699999974
+      },
+      {
+        "file": "tests/completion-wave-20261113/source-preflight.test.mjs",
+        "lane": 0,
+        "startMS": 33329.625441,
+        "endMS": 33413.775105999994,
+        "wallMS": 84.14966499999719
+      },
+      {
+        "file": "tests/next-cohort-20261110/source/runtime-evidence-batch.test.mjs",
+        "lane": 0,
+        "startMS": 33413.775105999994,
+        "endMS": 33474.057001999994,
+        "wallMS": 60.281896000000415
+      },
+      {
+        "file": "tests/milestone100-20261114/authority-observation-collector.test.mjs",
+        "lane": 0,
+        "startMS": 33474.057001999994,
+        "endMS": 33566.005766999995,
+        "wallMS": 91.948765000001
+      },
+      {
+        "file": "tests/next-cohort-20261110/source/runtime-stage2-batch.test.mjs",
+        "lane": 0,
+        "startMS": 33566.005766999995,
+        "endMS": 33659.718968999994,
+        "wallMS": 93.713201999999
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-stage5-scope.test.mjs",
+        "lane": 0,
+        "startMS": 33659.718968999994,
+        "endMS": 33734.52340499999,
+        "wallMS": 74.80443599999853
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-negative-factory.test.mjs",
+        "lane": 0,
+        "startMS": 33734.52340499999,
+        "endMS": 33865.329676999994,
+        "wallMS": 130.80627200000163
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-current-guard-scope.test.mjs",
+        "lane": 1,
+        "startMS": 33812.83926,
+        "endMS": 33875.5719,
+        "wallMS": 62.73264000000199
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs",
+        "lane": 0,
+        "startMS": 33865.329676999994,
+        "endMS": 34024.821793999996,
+        "wallMS": 159.4921170000016
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs",
+        "lane": 1,
+        "startMS": 33875.5719,
+        "endMS": 33963.825652,
+        "wallMS": 88.2537519999969
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-runtime-chain-prefetch.test.mjs",
+        "lane": 1,
+        "startMS": 33963.825652,
+        "endMS": 34031.625636,
+        "wallMS": 67.7999839999975
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs",
+        "lane": 0,
+        "startMS": 34024.821793999996,
+        "endMS": 35322.664467999995,
+        "wallMS": 1297.8426739999995
+      },
+      {
+        "file": "tests/parallel-source-20261110/source-lock-scope.test.mjs",
+        "lane": 1,
+        "startMS": 34031.625636,
+        "endMS": 34667.617247999995,
+        "wallMS": 635.991611999998
+      },
+      {
+        "file": "tests/ci-rpc-recovery-20261113/source-node-owned-lock.test.mjs",
+        "lane": 1,
+        "startMS": 34667.617247999995,
+        "endMS": 35664.581633999995,
+        "wallMS": 996.9643859999996
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-negative-workflow-claim.test.mjs",
+        "lane": 0,
+        "startMS": 35322.664467999995,
+        "endMS": 35531.873826999996,
+        "wallMS": 209.2093590000004
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-negative-reader-order.test.mjs",
+        "lane": 0,
+        "startMS": 35531.873826999996,
+        "endMS": 35586.329338999996,
+        "wallMS": 54.455512000000454
+      },
+      {
+        "file": "tests/milestone100-20261114/composition-source-evidence-batch.test.mjs",
+        "lane": 0,
+        "startMS": 35586.329338999996,
+        "endMS": 35695.55575199999,
+        "wallMS": 109.22641299999668
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs",
+        "lane": 1,
+        "startMS": 35664.581633999995,
+        "endMS": 35795.07984,
+        "wallMS": 130.49820600000385
+      },
+      {
+        "file": "tests/next-cohort-20261110/source/runtime-head-bound-batch.test.mjs",
+        "lane": 0,
+        "startMS": 35695.55575199999,
+        "endMS": 35776.77192199999,
+        "wallMS": 81.21616999999969
+      },
+      {
+        "file": "tests/next-engineering-20261115/source-private-git-lifecycle.test.mjs",
+        "lane": 0,
+        "startMS": 35776.77192199999,
+        "endMS": 36495.22639799999,
+        "wallMS": 718.454475999999
+      },
+      {
+        "file": "tests/next-engineering-20261115/source-binding-current32.test.mjs",
+        "lane": 1,
+        "startMS": 35795.07984,
+        "endMS": 35987.925718,
+        "wallMS": 192.84587800000008
+      },
+      {
+        "file": "tests/next-engineering-20261115/source-stage9-fixture.test.mjs",
+        "lane": 1,
+        "startMS": 35987.925718,
+        "endMS": 36055.886459999994,
+        "wallMS": 67.96074199999566
+      },
+      {
+        "file": "tests/milestone100-20261114/source-stage8-runtime-current-selection.test.mjs",
+        "lane": 1,
+        "startMS": 36055.886459999994,
+        "endMS": 36411.880805999994,
+        "wallMS": 355.9943459999995
+      },
+      {
+        "file": "tests/next-engineering-20261115/source-completion-prewarm-admission.test.mjs",
+        "lane": 1,
+        "startMS": 36411.880805999994,
+        "endMS": 36587.10983999999,
+        "wallMS": 175.22903399999632
+      },
+      {
+        "file": "tests/next-engineering-20261115/source-lineage-fixture.test.mjs",
+        "lane": 0,
+        "startMS": 36495.22639799999,
+        "endMS": 36556.19759099999,
+        "wallMS": 60.971192999997584
+      }
+    ]
+  },
+  "simulatedReductionMS": 1686.480241000012,
+  "limitations": "OFFLINE TRACE SIMULATION ONLY: reuses durations measured under new schedule. Durations can change with companion CPU/I/O, so this is not a measured causal scheduling gain or acceptance evidence. Exact queue still runs all40commands with original30second child limits.",
+  "qualified": false
+}

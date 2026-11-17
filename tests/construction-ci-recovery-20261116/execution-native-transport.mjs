@@ -1,10 +1,10 @@
-/** Exact native process placement for the unchanged execution-lineage G2 assertions. */
+/** Exact native process placement and bounded8MiB readback for unchanged G2 assertions. */
 import assert from 'node:assert/strict';import {createHash} from 'node:crypto';import {lstatSync,realpathSync} from 'node:fs';import {resolve} from 'node:path';import {fileURLToPath} from 'node:url';
 import {guardSuccessors} from '../milestone100-20261114/source-stage8-guard-policy.mjs';import {accepted} from '../parallel-source-20261110/authority.mjs';import {sourceStage8HistoricalView} from '../milestone100-20261114/source-stage8.mjs';import {selectStage8GuardSuccessor} from '../milestone100-20261114/source-stage8-guard-selection.mjs';
 export const executionTransportPath='tests/execution-recovery-20261109/source-lineage.test.mjs';
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 export function expectedExecutionNativeTransport(previous){
- const before="const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']});",after="const git=args=>execNativeGit(args,{stdio:['ignore','pipe','pipe']});",addition="import {execNativeGit} from '../construction-ci-recovery-20261116/native-git.mjs';\n";
+ const before="const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']});",after="const git=args=>execNativeGit(args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024});",addition="import {execNativeGit} from '../construction-ci-recovery-20261116/native-git.mjs';\n";
  assert.equal(previous.split(before).length,2,'Exact execution Git constructor required');assert(!previous.includes(addition),'Native execution successor cannot attest itself');return addition+previous.replace(before,after);
 }
 export function executionTransportArgumentBytes(git){const old=guardSuccessors.find(row=>row.path===executionTransportPath);assert(old);assert.equal(git(['rev-parse','--verify',old.ref+'^{commit}']).toString().trim(),old.ref);assert.equal(git(['rev-parse',old.ref+':'+old.path]).toString().trim(),old.blob);const bytes=git(['cat-file','blob',old.blob]);assert.equal(bytes.length,old.bytes);assert.equal(sha(bytes),old.sha256);return Buffer.from(expectedExecutionNativeTransport(bytes.toString()));}

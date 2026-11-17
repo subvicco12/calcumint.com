@@ -1,3 +1,4 @@
+import {sourceStage9Policy,sourceStage9CapturePath} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import {rejectChangedSourceArgument} from '../construction-ci-recovery-20261116/negative-source-arguments.mjs';
 import {restoreWorkflowGraphVerifier} from '../construction-ci-recovery-20261116/workflow-scheduling.mjs';
 import {workflowSchedulePolicy} from '../construction-ci-recovery-20261116/workflow-scheduling-policy.mjs';
@@ -59,7 +60,7 @@ export const retainedStage7V6CapturePath='docs/parallel-source-20261110/capture-
 export const retainedStage7V7CapturePath='docs/parallel-source-20261110/capture-revision66.json';
 export const retainedStage7V8CapturePath='docs/parallel-source-20261110/capture-revision67.json';
 const retainedStage8CapturePath='docs/parallel-source-20261110/capture-revision68.json';
-export const capturePath='docs/parallel-source-20261110/capture-revision136.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision143.json';
 const root=resolve(fileURLToPath(new URL('../../',import.meta.url))),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -329,14 +330,14 @@ function retainedVerifyParallelSource(read=readFileSync,git=sourceGit,suppliedRo
 
 function primeRetainedImmutableAvailability(read,git){
  const ids=new Set(),paths=new Map();const visit=value=>{if(value&&typeof value==='object'){if(typeof value.blob==='string'){assert.match(value.blob,/^[a-f0-9]{40}$/);ids.add(value.blob);if(typeof value.ref==='string'&&/^[a-f0-9]{40}$/.test(value.ref)&&typeof value.path==='string'){const key=value.ref+':'+value.path;assert(!paths.has(key)||paths.get(key).blob===value.blob,'Conflicting independently pinned path records');paths.set(key,{ref:value.ref,path:value.path,blob:value.blob});}}Object.values(value).forEach(visit);}};
- const finite=[sourceStage8CapturePath,capturePath,'docs/parallel-source-20261110/capture-revision81.json','docs/parallel-source-20261110/capture-revision80.json','docs/parallel-source-20261110/capture-revision79.json','docs/parallel-source-20261110/capture-revision78.json','docs/parallel-source-20261110/capture-revision77.json','docs/parallel-source-20261110/capture-revision76.json','docs/parallel-source-20261110/capture-revision75.json','docs/parallel-source-20261110/capture-revision74.json','docs/parallel-source-20261110/capture-revision73.json','docs/parallel-source-20261110/capture-revision72.json','docs/parallel-source-20261110/capture-revision71.json','docs/parallel-source-20261110/capture-revision70.json','docs/parallel-source-20261110/capture-revision69.json',retainedStage8CapturePath,retainedStage7V8CapturePath,retainedStage7V7CapturePath,retainedStage7V6CapturePath,retainedStage7CapturePath,retainedStage6CapturePath,sourceStage7CapturePath,appStage5CapturePath,testStage6CapturePath,"docs/ci-balance-20261113/workflow-source.json",personalCapturePath,"docs/completion-first-20261112/source-stage2.json","docs/completion-first-20261112/non-source-stage2.json",completionCapturePath,factoryCapturePath,"docs/milestone60-20261113/source-immutable-prefetch-hints.json"];
+ const finite=[sourceStage8CapturePath,sourceStage9CapturePath,capturePath,'docs/parallel-source-20261110/capture-revision81.json','docs/parallel-source-20261110/capture-revision80.json','docs/parallel-source-20261110/capture-revision79.json','docs/parallel-source-20261110/capture-revision78.json','docs/parallel-source-20261110/capture-revision77.json','docs/parallel-source-20261110/capture-revision76.json','docs/parallel-source-20261110/capture-revision75.json','docs/parallel-source-20261110/capture-revision74.json','docs/parallel-source-20261110/capture-revision73.json','docs/parallel-source-20261110/capture-revision72.json','docs/parallel-source-20261110/capture-revision71.json','docs/parallel-source-20261110/capture-revision70.json','docs/parallel-source-20261110/capture-revision69.json',retainedStage8CapturePath,retainedStage7V8CapturePath,retainedStage7V7CapturePath,retainedStage7V6CapturePath,retainedStage7CapturePath,retainedStage6CapturePath,sourceStage7CapturePath,appStage5CapturePath,testStage6CapturePath,"docs/ci-balance-20261113/workflow-source.json",personalCapturePath,"docs/completion-first-20261112/source-stage2.json","docs/completion-first-20261112/non-source-stage2.json",completionCapturePath,factoryCapturePath,"docs/milestone60-20261113/source-immutable-prefetch-hints.json"];
  const captures=new Map();
  for(const path of finite){const record=accepted.find(row=>row.path===path);assert(record,"Preloaded capture must have independent authority");const supplied=read(path);assert(Buffer.isBuffer(supplied),'Preloaded capture must contain bytes');const bytes=Buffer.from(supplied);assert.equal(hash(bytes),record.sha256,'Independent preloaded capture bytes differ: '+path);captures.set(path,JSON.parse(bytes));}
  const auxiliaryPath='tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs',auxiliaryAuthority=accepted.find(row=>row.path===auxiliaryPath);assert(auxiliaryAuthority,'Independent runtime auxiliary authority required');const auxiliarySupplied=read(auxiliaryPath);assert(Buffer.isBuffer(auxiliarySupplied),'Independent runtime auxiliary module must contain bytes');const auxiliaryBytes=Buffer.from(auxiliarySupplied);assert.equal(hash(auxiliaryBytes),auxiliaryAuthority.sha256,'Independent runtime auxiliary module bytes differ');
  ensureParallelSources(captures.get(retainedStage8CapturePath),git,{defaultRetainedCommitBatch:true});
  for(const capture of captures.values())visit(capture);
  for(const record of runtimeAuxiliaryImmutableChain)visit(record);
- git.preloadCommits([...new Set([...factoryPolicy.ancestry,...completionPolicy.ancestry,...workflowPolicy.ancestry,...workflowPolicy.guardAncestry,...personalPolicy.ancestry,...personalPolicy.auxiliaryAncestry,...nonSourcePolicy.ancestry,...appStage5Policy.ancestry,...testStage6Policy.ancestry,...sourceStage7Policy.ancestry,...sourceStage8Policy.ancestry,...runtimeAuxiliaryImmutableChain.map(row=>row.ref)])]);
+ git.preloadCommits([...new Set([...factoryPolicy.ancestry,...completionPolicy.ancestry,...workflowPolicy.ancestry,...workflowPolicy.guardAncestry,...personalPolicy.ancestry,...personalPolicy.auxiliaryAncestry,...nonSourcePolicy.ancestry,...appStage5Policy.ancestry,...testStage6Policy.ancestry,...sourceStage7Policy.ancestry,...sourceStage8Policy.ancestry,...sourceStage9Policy.ancestry,...runtimeAuxiliaryImmutableChain.map(row=>row.ref)])]);
  if(typeof git.preloadPaths==='function')git.preloadPaths([...paths.values()]);
  for(const record of accepted){assert.match(record.blob,/^[a-f0-9]{40}$/);ids.add(record.blob);}
  git.preloadBlobs([...ids]);
@@ -358,6 +359,14 @@ function rejectChangedUnchangedFactoryBytes(currentRead){
  const later=new Set([...completionPolicy.paths,...workflowPolicy.paths,...personalPolicy.paths,...testStagePolicy.paths,...appStage5Policy.paths,...testStage6Policy.paths,...sourceStage7Policy.paths,...sourceStage8Policy.paths]);
  const bytes=currentRead(factoryCapturePath);assert(Buffer.isBuffer(bytes)&&hash(bytes)===factoryPolicy.captureSHA256,'Independent current target bytes differ: '+factoryCapturePath);
  const rows=JSON.parse(bytes).rows;assert(Array.isArray(rows),'Finite factory source rows required');
+ // Only independently fixed later captures may remove paths from this old negative filter.
+ // This grants no success: the preceding current-byte filter and subsequent full proof remain mandatory.
+ for(const [policy,path]of [[sourceStage9Policy,sourceStage9CapturePath]]){
+  const supplied=currentRead(path);assert(Buffer.isBuffer(supplied)&&hash(supplied)===policy.captureSHA256,'Independent later factory capture differs: '+path);
+  const capture=JSON.parse(supplied);assert.equal(capture.predecessorRef,policy.predecessorRef);assert.equal(capture.codeRef,policy.codeRef);
+  assert.deepEqual(capture.rows.map(row=>row.path),policy.paths,'Exact later factory roster required');assert.equal(new Set(policy.paths).size,policy.paths.length);
+  for(const path of policy.paths)later.add(path);
+ }
  for(const path of factoryPolicy.paths.filter(path=>!later.has(path))){
   const found=rows.filter(row=>row.path===path);assert.equal(found.length,1,'Exact finite factory source row required');const row=found[0].current;
   assert.equal(row.path,path);assert.equal(row.ref,factoryPolicy.codeRef);assert.match(row.blob,/^[a-f0-9]{40}$/);assert.match(row.sha256,/^[a-f0-9]{64}$/);assert(Number.isSafeInteger(row.bytes)&&row.bytes>=0);

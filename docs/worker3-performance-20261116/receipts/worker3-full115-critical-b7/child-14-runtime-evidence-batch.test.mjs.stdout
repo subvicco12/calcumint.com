@@ -1,0 +1,76 @@
+TAP version 13
+# Subtest: one fresh boundary pair, copied bytes and closed copied declaration
+ok 1 - one fresh boundary pair, copied bytes and closed copied declaration
+  ---
+  duration_ms: 3.556093
+  type: 'test'
+  ...
+# Subtest: unknown path failure remains poisoned after callback catches it
+ok 2 - unknown path failure remains poisoned after callback catches it
+  ---
+  duration_ms: 2.486558
+  type: 'test'
+  ...
+# Subtest: tamper caught then reverted cannot turn the batch positive
+ok 3 - tamper caught then reverted cannot turn the batch positive
+  ---
+  duration_ms: 0.867701
+  type: 'test'
+  ...
+# Subtest: post-boundary current change fails even without another read
+ok 4 - post-boundary current change fails even without another read
+  ---
+  duration_ms: 0.536442
+  type: 'test'
+  ...
+# Subtest: escaped reader expires after both success and exception
+ok 5 - escaped reader expires after both success and exception
+  ---
+  duration_ms: 0.322366
+  type: 'test'
+  ...
+# Subtest: Promises, thenables and arbitrary returns are rejected without awaiting
+ok 6 - Promises, thenables and arbitrary returns are rejected without awaiting
+  ---
+  duration_ms: 1.554178
+  type: 'test'
+  ...
+# Subtest: nested attempt poisons outer scope even when caught
+ok 7 - nested attempt poisons outer scope even when caught
+  ---
+  duration_ms: 0.271395
+  type: 'test'
+  ...
+# Subtest: invalid encoding and extra reader arguments are sticky refusals
+ok 8 - invalid encoding and extra reader arguments are sticky refusals
+  ---
+  duration_ms: 0.708031
+  type: 'test'
+  ...
+# Subtest: invalid declaration and custom hook arguments fail before opening scope
+ok 9 - invalid declaration and custom hook arguments fail before opening scope
+  ---
+  duration_ms: 0.893035
+  type: 'test'
+  ...
+# Subtest: closing proof executes after callback failure and no state survives
+ok 10 - closing proof executes after callback failure and no state survives
+  ---
+  duration_ms: 0.480455
+  type: 'test'
+  ...
+# Subtest: exact independently pinned API52 universe refuses same-size substitution and widening
+ok 11 - exact independently pinned API52 universe refuses same-size substitution and widening
+  ---
+  duration_ms: 3.36453
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 44.989219

@@ -1,0 +1,67 @@
+TAP version 13
+# Subtest: baseline provider keeps a shared broker while observing fresh default environment PATH and explicit cwd
+not ok 1 - baseline provider keeps a shared broker while observing fresh default environment PATH and explicit cwd
+  ---
+  duration_ms: 60.485748
+  type: 'test'
+  location: '/workspace/calcumint-worker3-baseline-private-tests/tests/next-engineering-20261115/source-private-git-transport.test.mjs:192:1'
+  failureType: 'testCodeFailure'
+  error: 'Baseline Git must fork from the private broker rather than the loaded verifier'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 735064
+  actual: 735064
+  operator: 'notStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/calcumint-worker3-baseline-private-tests/tests/next-engineering-20261115/source-private-git-transport.test.mjs:197:53)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: baseline provider observes a subsequent commit dirty source and changed index flags
+ok 2 - baseline provider observes a subsequent commit dirty source and changed index flags
+  ---
+  duration_ms: 90.339729
+  type: 'test'
+  ...
+# Subtest: baseline provider retains its sixteen MiB binary default and caller maxBuffer refusal
+ok 3 - baseline provider retains its sixteen MiB binary default and caller maxBuffer refusal
+  ---
+  duration_ms: 251.087697
+  type: 'test'
+  ...
+# Subtest: baseline provider preserves positive-timeout and unsupported-option direct dispatch
+ok 4 - baseline provider preserves positive-timeout and unsupported-option direct dispatch
+  ---
+  duration_ms: 69.140721
+  type: 'test'
+  ...
+# Subtest: baseline provider never retries a failed started command and recovers on a new request
+not ok 5 - baseline provider never retries a failed started command and recovers on a new request
+  ---
+  duration_ms: 69.315103
+  type: 'test'
+  location: '/workspace/calcumint-worker3-baseline-private-tests/tests/next-engineering-20261115/source-private-git-transport.test.mjs:236:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected "actual" to be strictly unequal to:
+    
+    735064
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 735064
+  actual: 735064
+  operator: 'notStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/calcumint-worker3-baseline-private-tests/tests/next-engineering-20261115/source-private-git-transport.test.mjs:241:141)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 3
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 643.068291

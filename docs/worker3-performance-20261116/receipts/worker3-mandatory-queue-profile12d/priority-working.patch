@@ -1,0 +1,14 @@
+diff --git a/tests/parallel-source-20261110/current.test.mjs b/tests/parallel-source-20261110/current.test.mjs
+index 80d378d8..f81caf2c 100644
+--- a/tests/parallel-source-20261110/current.test.mjs
++++ b/tests/parallel-source-20261110/current.test.mjs
+@@ -222,7 +222,8 @@ test('mandatory source guard regressions exercise exact source and immutable ava
+  const record=async row=>{results.set(row[0],(await Promise.allSettled([run(row)]))[0]);};
+  // This observation-heavy child owns its original 30-second window alone.
+  await record(scope);
+- const priority=['tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs','source-authority-preload.test.mjs','tests/milestone100-20261114/retained-stage7-preflight.mjs','tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs','source-test-stage6.test.mjs'];
++ // Start measured long jobs early without changing either lane or any child contract.
++ const priority=['tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs','source-authority-preload.test.mjs','tests/milestone100-20261114/retained-stage7-preflight.mjs','tests/next-engineering-20261115/source-current26.test.mjs','tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs','source-test-stage6.test.mjs','tests/next-engineering-20261115/source-private-git-transport.test.mjs','tests/next-engineering-20261115/source-current32.test.mjs','tests/next-engineering-20261115/source-lineage-native-contract.test.mjs','source-app-stage5.test.mjs','tests/next-engineering-20261115/source-private-git-stream.test.mjs'];
+  const rank=file=>priority.includes(file)?priority.indexOf(file):priority.length,pool=[...heavy,...companion].sort((a,b)=>rank(a[0])-rank(b[0]));let nextIndex=0;
+  const worker=async()=>{while(nextIndex<pool.length)await record(pool[nextIndex++]);};await Promise.all([worker(),worker()]);
+  const failures=[];

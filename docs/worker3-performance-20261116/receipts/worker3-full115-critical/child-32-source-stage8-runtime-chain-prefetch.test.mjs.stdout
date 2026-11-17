@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: all six exact immutable roots remain explicit and available for bounded bootstrap
+ok 1 - all six exact immutable roots remain explicit and available for bounded bootstrap
+  ---
+  duration_ms: 1.471402
+  type: 'test'
+  ...
+# Subtest: only originally provided capabilities receive exact literal objects with their receiver
+ok 2 - only originally provided capabilities receive exact literal objects with their receiver
+  ---
+  duration_ms: 0.336186
+  type: 'test'
+  ...
+# Subtest: opaque transport receives no synthetic capability and original immutable checks still follow
+ok 3 - opaque transport receives no synthetic capability and original immutable checks still follow
+  ---
+  duration_ms: 0.194572
+  type: 'test'
+  ...
+# Subtest: preload error propagates and never becomes availability or source success
+ok 4 - preload error propagates and never becomes availability or source success
+  ---
+  duration_ms: 0.404355
+  type: 'test'
+  ...
+# Subtest: a provided method cannot mutate the literal original chain through its path arguments
+ok 5 - a provided method cannot mutate the literal original chain through its path arguments
+  ---
+  duration_ms: 0.149327
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 11.61301

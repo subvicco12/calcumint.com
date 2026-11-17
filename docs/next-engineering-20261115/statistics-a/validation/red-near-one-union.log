@@ -1,0 +1,95 @@
+
+ RUN  v3.2.7 /workspace/calcumint-stats-a
+
+ ❯ src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts (63 tests | 1 failed | 62 skipped) 13ms
+   ↓ statistics A immutable engineering bindings > binds exactly IDs 284–288 and the v1 engine tuples
+   ↓ statistics A immutable engineering bindings > 284: preserves every immutable example output field and roundtrips JSON history
+   ↓ statistics A immutable engineering bindings > 284: refuses omitted, invented, blank and numeric raw fields
+   ↓ statistics A immutable engineering bindings > 284: refuses altered identity, versions, outputs, steps and extra history fields
+   ↓ statistics A immutable engineering bindings > 285: preserves every immutable example output field and roundtrips JSON history
+   ↓ statistics A immutable engineering bindings > 285: refuses omitted, invented, blank and numeric raw fields
+   ↓ statistics A immutable engineering bindings > 285: refuses altered identity, versions, outputs, steps and extra history fields
+   ↓ statistics A immutable engineering bindings > 286: preserves every immutable example output field and roundtrips JSON history
+   ↓ statistics A immutable engineering bindings > 286: refuses omitted, invented, blank and numeric raw fields
+   ↓ statistics A immutable engineering bindings > 286: refuses altered identity, versions, outputs, steps and extra history fields
+   ↓ statistics A immutable engineering bindings > 287: preserves every immutable example output field and roundtrips JSON history
+   ↓ statistics A immutable engineering bindings > 287: refuses omitted, invented, blank and numeric raw fields
+   ↓ statistics A immutable engineering bindings > 287: refuses altered identity, versions, outputs, steps and extra history fields
+   ↓ statistics A immutable engineering bindings > 288: preserves every immutable example output field and roundtrips JSON history
+   ↓ statistics A immutable engineering bindings > 288: refuses omitted, invented, blank and numeric raw fields
+   ↓ statistics A immutable engineering bindings > 288: refuses altered identity, versions, outputs, steps and extra history fields
+   ↓ independent constants and domain boundaries > 284: standardizes a textbook or zero-deviation fixture
+   ↓ independent constants and domain boundaries > 284: standardizes a textbook or zero-deviation fixture
+   ↓ independent constants and domain boundaries > 284: standardizes a textbook or zero-deviation fixture
+   ↓ independent constants and domain boundaries > 284: rejects invalid sigma 0
+   ↓ independent constants and domain boundaries > 284: rejects invalid sigma -1
+   ↓ independent constants and domain boundaries > 284: rejects invalid sigma NaN
+   ↓ independent constants and domain boundaries > 284: rejects invalid sigma Infinity
+   ↓ independent constants and domain boundaries > 285: preserves the v1 tabulated normal critical value at 0.8
+   ↓ independent constants and domain boundaries > 285: preserves the v1 tabulated normal critical value at 0.9
+   ↓ independent constants and domain boundaries > 285: preserves the v1 tabulated normal critical value at 0.95
+   ↓ independent constants and domain boundaries > 285: preserves the v1 tabulated normal critical value at 0.98
+   ↓ independent constants and domain boundaries > 285: preserves the v1 tabulated normal critical value at 0.99
+   ↓ independent constants and domain boundaries > 285: rejects a positive interval width lost to binary64 addition
+   ↓ independent constants and domain boundaries > 285: rejects nonpositive SE 0
+   ↓ independent constants and domain boundaries > 285: rejects nonpositive SE -1
+   ↓ independent constants and domain boundaries > 285: rejects confidence levels outside the immutable table
+   ↓ independent constants and domain boundaries > 286: rejects confidence levels outside the immutable table
+   ↓ independent constants and domain boundaries > 286: rounds an independent proportion-planning fixture upward
+   ↓ independent constants and domain boundaries > 286: excludes degenerate planning proportion 0 from new capture
+   ↓ independent constants and domain boundaries > 286: excludes degenerate planning proportion 1 from new capture
+   ↓ independent constants and domain boundaries > 286: rejects unsupported margin or sample-count overflow 0
+   ↓ independent constants and domain boundaries > 286: rejects unsupported margin or sample-count overflow -0.1
+   ↓ independent constants and domain boundaries > 286: rejects unsupported margin or sample-count overflow 1.1
+   ↓ independent constants and domain boundaries > 286: rejects unsupported margin or sample-count overflow 1e-10
+   ↓ independent constants and domain boundaries > 287: retains independent-event and endpoint identities
+   ↓ independent constants and domain boundaries > 287: retains independent-event and endpoint identities
+   ↓ independent constants and domain boundaries > 287: retains independent-event and endpoint identities
+   ↓ independent constants and domain boundaries > 287: retains independent-event and endpoint identities
+   ↓ independent constants and domain boundaries > 287: rejects a nonzero event lost in the complement or union
+   ↓ independent constants and domain boundaries > 287: rejects a computed union below a certain event, without rewriting v1 output
+   × independent constants and domain boundaries > 287: rejects an interior-event union rounded to certainty and preserves v1 history 11ms
+     → expected [Function] to throw an error
+   ↓ independent constants and domain boundaries > 287: rejects probabilities outside [0,1]: -0.1
+   ↓ independent constants and domain boundaries > 287: rejects probabilities outside [0,1]: 1.1
+   ↓ independent constants and domain boundaries > 288: exact ordered count P(6,3)
+   ↓ independent constants and domain boundaries > 288: exact ordered count P(0,0)
+   ↓ independent constants and domain boundaries > 288: exact ordered count P(1000000000,0)
+   ↓ independent constants and domain boundaries > 288: exact ordered count P(18,18)
+   ↓ independent constants and domain boundaries > 288: rejects exact-integer overflow or invalid domain P(19,19)
+   ↓ independent constants and domain boundaries > 288: rejects exact-integer overflow or invalid domain P(5,6)
+   ↓ independent constants and domain boundaries > 288: rejects exact-integer overflow or invalid domain P(5.5,2)
+   ↓ independent constants and domain boundaries > 288: rejects exact-integer overflow or invalid domain P(-1,0)
+   ↓ independent constants and domain boundaries > 288: rejects exact-integer overflow or invalid domain P(1000000001,0)
+   ↓ independent constants and domain boundaries > 284: bounds new capture and retains original-domain historical values
+   ↓ independent constants and domain boundaries > 285: replays original v1 collapsed intervals without applying capture guards
+   ↓ independent constants and domain boundaries > 286: replays the original endpoint proportion 0 without a new-capture guard
+   ↓ independent constants and domain boundaries > 286: replays the original endpoint proportion 1 without a new-capture guard
+   ↓ independent constants and domain boundaries > 287: replays the original tiny-event calculation without a new-capture guard
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts > independent constants and domain boundaries > 287: rejects an interior-event union rounded to certainty and preserves v1 history
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts:139:59
+    137|     const output = probabilityCalculator.calculate(input, {});
+    138|     expect(output.eitherIndependent).toBe(1);
+    139|     expect(() => contract(287).execute(textInput(input))).toThrow(/col…
+       |                                                           ^
+    140|     const snapshot = {calculatorSlug: probabilityCalculator.slug, calc…
+    141|     expect(contract(287).verifyHistorical(snapshot).snapshot).toEqual(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 62 skipped (63)
+   Start at  09:45:51
+   Duration  586ms (transform 140ms, setup 0ms, collect 240ms, tests 13ms, environment 0ms, prepare 81ms)

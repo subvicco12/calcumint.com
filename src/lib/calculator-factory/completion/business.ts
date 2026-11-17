@@ -1,3 +1,4 @@
+import {statisticsContracts,verifyStatisticsSnapshot} from '@/lib/statistics-integration-20261117/cohort';
 import {constructionContracts,verifyConstructionSnapshot} from '@/lib/worker1-construction-20261116/cohort';
 import {nextEngineeringContracts,verifyNextEngineeringSnapshot} from './next-engineering';
 import {z} from 'zod';
@@ -31,6 +32,7 @@ export function verifyFactoryStoredSnapshot(value:CalculationSnapshot){
   return Object.freeze({catalogId:contract.catalogId,snapshot:verifyLaunchSnapshot(snapshot).snapshot});
  }
  if(nextEngineeringContracts.some(row=>row.catalogId===contract.catalogId))return Object.freeze({catalogId:contract.catalogId,snapshot:verifyNextEngineeringSnapshot(snapshot).snapshot});
+ if(statisticsContracts.some(row=>row.catalogId===contract.catalogId))return Object.freeze({catalogId:contract.catalogId,snapshot:verifyStatisticsSnapshot(snapshot).snapshot});
  const raw=Object.fromEntries(Object.entries(snapshot.input).map(([key,input])=>{
   if(typeof input!=='string'&&typeof input!=='number')throw Error('Unsupported persisted factory input');
   return [key,typeof input==='number'&&Object.is(input,-0)?'-0':String(input)];

@@ -1,0 +1,1075 @@
+{
+  "kind": "COORDINATOR_WORKER3_SCOPED_ENGINEERING_RECONCILIATION_PENDING_EXACT_HEAD_CI",
+  "baselineConfirmedOverlay": 91,
+  "qualifiedBeforeExactHeadCI": 0,
+  "potentialOverlay": 111,
+  "releaseHold": true,
+  "canonicalCountsChanged": false,
+  "certificationGranted": false,
+  "publicationEligible": false,
+  "publicationRPCsActivated": 0,
+  "productionWrites": false,
+  "workerCode": "b7a7c176cf6a2349a468d10ce30c25552835de5e",
+  "workerEvidence": "9dc538af9d5361db30799a6fd9789dea0e5132e2",
+  "applicationSourceObject": "4fda315aba11b0aec54587784dc2f9896322c1b4",
+  "sourceAuthorityGeneration": 73,
+  "sourceCaptureRevision": 140,
+  "sourcePaths": 59,
+  "sourceAncestryEntries": 57,
+  "targetedApplicationTests": 692,
+  "combinedHeldSQLTests": 7,
+  "originalWorkerBusinessGeneratorTests": 21,
+  "sourceNegativeFixtureControls": 18,
+  "finiteCurrentSourceNegativeControls": 9,
+  "sourceWrappers": {
+    "full115": {
+      "passed": true,
+      "wrapperMilliseconds": 145217,
+      "childLimitMilliseconds": 150000,
+      "outerLimitMilliseconds": 160000
+    },
+    "shortest": {
+      "passed": true,
+      "milliseconds": 52406
+    },
+    "sixCandidate": {
+      "passed": true,
+      "milliseconds": 35914
+    },
+    "first20": {
+      "passed": true,
+      "milliseconds": 24488
+    },
+    "sprint": {
+      "passed": true,
+      "milliseconds": 11128
+    },
+    "authenticatedReceipts": {
+      "passed": true,
+      "milliseconds": 28810
+    }
+  },
+  "APIsource": {
+    "passed": true,
+    "milliseconds": 4313,
+    "limitMilliseconds": 5000
+  },
+  "UIsource": {
+    "passed": true,
+    "milliseconds": 3035,
+    "limitMilliseconds": 5000
+  },
+  "Business": {
+    "tuples": 99,
+    "predecessorTuples": 79,
+    "newIdentities": 20,
+    "genuineAuthenticatedRecoveries": 28,
+    "malformedRefusals": 232,
+    "writesSubmittedBy": "service-role actor-bound RPC in disposable fixture",
+    "authenticatedApplicationRecovery": true,
+    "productionEquivalence": "UNKNOWN",
+    "heldSQLActivatedInProduction": false
+  },
+  "reuse": {
+    "constructionSourceAndEngines": "unchanged from green baseline",
+    "constructionOriginalPayloadHashes": 57,
+    "constructionOriginalEvidenceFiles": 14,
+    "constructionFingerprints": 2099,
+    "constructionOriginalExports": 30,
+    "constructionOriginalBrowserRefusals": "reused unchanged Tile/Drywall cookie-authenticated refusal and historical199 downloads",
+    "workerFunctionalNumericalAndSourceAudit": "reused only exact unchanged per-ID engine/contract/evidence dependencies",
+    "mandatoryCI": "all five jobs and validate must run at the final PR SHA"
+  },
+  "remainingGates": [
+    "mandatory exact-head CI all five jobs and validate SUCCESS",
+    "final individual scoped qualification reconciliation"
+  ],
+  "rows": [
+    {
+      "catalogId": 284,
+      "title": "Z-Score Calculator",
+      "identity": {
+        "engineId": "statistics.z-score",
+        "slug": "z-score-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.z-score@1/private.next-engineering.20261115.1"
+      },
+      "scope": "Standardize one value using a supplied mean and positive standard deviation in the same unit; no tail probability or distribution fit.",
+      "scopeAudit": "Arithmetic standardization; supplied same-unit mean/positive SD; no distribution/tail claim.",
+      "numericalQuality": "OpenStax 6.1 fixture 17,5,6 \u2192 2; zero deviation and invalid sigma cases.",
+      "conditions": [
+        "Scope is the explicit bounded/private engineering model below; applicability assumptions are supplied by the caller.",
+        "Canonical acceptance, certification, publication eligibility and production-equivalence authority remain outside this evidence.",
+        "Final exact-head shared CI and unresolved observed local runtime gates require root decision; no per-ID qualification is granted here."
+      ],
+      "candidateSpecificBlockingIssues": [],
+      "checks": [
+        {
+          "path": "src/calculators/statistics/catalog-batch-1.ts",
+          "expectedSHA256": "172db736ce7c991e0b11cf99612578d7c25374bda0f95e009167e9fa887ba52f",
+          "actualSHA256": "172db736ce7c991e0b11cf99612578d7c25374bda0f95e009167e9fa887ba52f",
+          "matches": true
+        },
+        {
+          "path": "src/lib/calculator-factory/completion/next-engineering-statistics-a.ts",
+          "expectedSHA256": "3fcbab24b57ff249d77477370ae4dca301e729245ef2591e01719b34962eb755",
+          "actualSHA256": "3fcbab24b57ff249d77477370ae4dca301e729245ef2591e01719b34962eb755",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/statistics-a/source-bindings.md",
+          "expectedSHA256": "bc1e23fa402edfda04d5a4315a1d00ee2cbf29ca09b22f60703cd70e8582cc6e",
+          "actualSHA256": "bc1e23fa402edfda04d5a4315a1d00ee2cbf29ca09b22f60703cd70e8582cc6e",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/statistics-a/evidence/manifest.json",
+          "expectedSHA256": "a4cc622c552f43a2cceaa3e7adb1033574756eb0ace174e5c105e4b8b2aa9702",
+          "actualSHA256": "a4cc622c552f43a2cceaa3e7adb1033574756eb0ace174e5c105e4b8b2aa9702",
+          "matches": true
+        }
+      ],
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED_PENDING_MANDATORY_EXACT_HEAD_CI",
+      "qualified": false
+    },
+    {
+      "catalogId": 285,
+      "title": "Confidence Interval Calculator",
+      "identity": {
+        "engineId": "statistics.confidence-interval",
+        "slug": "confidence-interval-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.confidence-interval@1/private.next-engineering.20261115.1"
+      },
+      "scope": "Two-sided normal interval from a supplied estimate and positive standard error; caller establishes a valid normal approximation. Confidence levels: 80%, 90%, 95%, 98%, 99%. No t interval.",
+      "scopeAudit": "Two-sided normal estimate \u00b1 z*SE; five confidence levels; caller establishes normal approximation; collapsed endpoints refused.",
+      "numericalQuality": "Five table constants compared against 90-digit oracle: maximum absolute discrepancy 4.728118191455206e-13 \u2264 5e-13. Textbook interval fixture; does not prove coverage.",
+      "conditions": [
+        "Scope is the explicit bounded/private engineering model below; applicability assumptions are supplied by the caller.",
+        "Canonical acceptance, certification, publication eligibility and production-equivalence authority remain outside this evidence.",
+        "Final exact-head shared CI and unresolved observed local runtime gates require root decision; no per-ID qualification is granted here.",
+        "No ideal coverage/minimum-N/uniform numerical/global floating-point accuracy guarantee beyond the explicit retained evidence and delivered warnings."
+      ],
+      "candidateSpecificBlockingIssues": [],
+      "checks": [
+        {
+          "path": "src/calculators/statistics/catalog-batch-2.ts",
+          "expectedSHA256": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f",
+          "actualSHA256": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f",
+          "matches": true
+        },
+        {
+          "path": "src/lib/calculator-factory/completion/next-engineering-statistics-a.ts",
+          "expectedSHA256": "3fcbab24b57ff249d77477370ae4dca301e729245ef2591e01719b34962eb755",
+          "actualSHA256": "3fcbab24b57ff249d77477370ae4dca301e729245ef2591e01719b34962eb755",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/statistics-a/source-bindings.md",
+          "expectedSHA256": "bc1e23fa402edfda04d5a4315a1d00ee2cbf29ca09b22f60703cd70e8582cc6e",
+          "actualSHA256": "bc1e23fa402edfda04d5a4315a1d00ee2cbf29ca09b22f60703cd70e8582cc6e",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/statistics-a/evidence/manifest.json",
+          "expectedSHA256": "a4cc622c552f43a2cceaa3e7adb1033574756eb0ace174e5c105e4b8b2aa9702",
+          "actualSHA256": "a4cc622c552f43a2cceaa3e7adb1033574756eb0ace174e5c105e4b8b2aa9702",
+          "matches": true
+        }
+      ],
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED_PENDING_MANDATORY_EXACT_HEAD_CI",
+      "qualified": false
+    },
+    {
+      "catalogId": 286,
+      "title": "Sample Size Calculator",
+      "identity": {
+        "engineId": "statistics.sample-size",
+        "slug": "sample-size-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.sample-size@1/private.next-engineering.20261115.1"
+      },
+      "scope": "Normal-approximation proportion sample-size planning for 0 < p < 1, absolute fractional margin 0 < E \u2264 1, and the five v1 confidence levels; round upward, maximum 1e9. No finite-population correction or inference guarantee.",
+      "scopeAudit": "Normal proportion planning; 0<p<1, 0<E\u22641; five confidence levels; count\u22641e9; ceiling of inherited rounded-table expression.",
+      "numericalQuality": "Five explicit ceil discrepancies from ideal quantiles retained: all confidence levels can differ by one near integer boundaries. p=.5,E=.05,CL=.95 gives 385. No ideal minimal-sample/coverage guarantee.",
+      "conditions": [
+        "Scope is the explicit bounded/private engineering model below; applicability assumptions are supplied by the caller.",
+        "Canonical acceptance, certification, publication eligibility and production-equivalence authority remain outside this evidence.",
+        "Final exact-head shared CI and unresolved observed local runtime gates require root decision; no per-ID qualification is granted here.",
+        "No ideal coverage/minimum-N/uniform numerical/global floating-point accuracy guarantee beyond the explicit retained evidence and delivered warnings."
+      ],
+      "candidateSpecificBlockingIssues": [],
+      "checks": [
+        {
+          "path": "src/calculators/statistics/catalog-batch-2.ts",
+          "expectedSHA256": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f",
+          "actualSHA256": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f",
+          "matches": true
+        },
+        {
+          "path": "src/lib/calculator-factory/completion/next-engineering-statistics-a.ts",
+          "expectedSHA256": "3fcbab24b57ff249d77477370ae4dca301e729245ef2591e01719b34962eb755",
+          "actualSHA256": "3fcbab24b57ff249d77477370ae4dca301e729245ef2591e01719b34962eb755",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/statistics-a/source-bindings.md",
+          "expectedSHA256": "bc1e23fa402edfda04d5a4315a1d00ee2cbf29ca09b22f60703cd70e8582cc6e",
+          "actualSHA256": "bc1e23fa402edfda04d5a4315a1d00ee2cbf29ca09b22f60703cd70e8582cc6e",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/statistics-a/evidence/manifest.json",
+          "expectedSHA256": "a4cc622c552f43a2cceaa3e7adb1033574756eb0ace174e5c105e4b8b2aa9702",
+          "actualSHA256": "a4cc622c552f43a2cceaa3e7adb1033574756eb0ace174e5c105e4b8b2aa9702",
+          "matches": true
+        }
+      ],
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED_PENDING_MANDATORY_EXACT_HEAD_CI",
+      "qualified": false
+    },
+    {
+      "catalogId": 287,
+      "title": "Probability Calculator",
+      "identity": {
+        "engineId": "statistics.probability",
+        "slug": "probability-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.probability@1/private.next-engineering.20261115.1"
+      },
+      "scope": "Intersection, union, and complement for two supplied independent event probabilities in [0,1]. Independence is assumed; no conditional/dependent-event model.",
+      "scopeAudit": "Independent event intersection/union/complement; [0,1] with guards against out-of-bounds or swallowed positive contributions.",
+      "numericalQuality": "Independent .5/.4 fixture and endpoint identities; near-one union rounding and tiny contribution guards; original outputs historically replayable.",
+      "conditions": [
+        "Scope is the explicit bounded/private engineering model below; applicability assumptions are supplied by the caller.",
+        "Canonical acceptance, certification, publication eligibility and production-equivalence authority remain outside this evidence.",
+        "Final exact-head shared CI and unresolved observed local runtime gates require root decision; no per-ID qualification is granted here."
+      ],
+      "candidateSpecificBlockingIssues": [],
+      "checks": [
+        {
+          "path": "src/calculators/statistics/catalog-batch-2.ts",
+          "expectedSHA256": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f",
+          "actualSHA256": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f",
+          "matches": true
+        },
+        {
+          "path": "src/lib/calculator-factory/completion/next-engineering-statistics-a.ts",
+          "expectedSHA256": "3fcbab24b57ff249d77477370ae4dca301e729245ef2591e01719b34962eb755",
+          "actualSHA256": "3fcbab24b57ff249d77477370ae4dca301e729245ef2591e01719b34962eb755",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/statistics-a/source-bindings.md",
+          "expectedSHA256": "bc1e23fa402edfda04d5a4315a1d00ee2cbf29ca09b22f60703cd70e8582cc6e",
+          "actualSHA256": "bc1e23fa402edfda04d5a4315a1d00ee2cbf29ca09b22f60703cd70e8582cc6e",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/statistics-a/evidence/manifest.json",
+          "expectedSHA256": "a4cc622c552f43a2cceaa3e7adb1033574756eb0ace174e5c105e4b8b2aa9702",
+          "actualSHA256": "a4cc622c552f43a2cceaa3e7adb1033574756eb0ace174e5c105e4b8b2aa9702",
+          "matches": true
+        }
+      ],
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED_PENDING_MANDATORY_EXACT_HEAD_CI",
+      "qualified": false
+    },
+    {
+      "catalogId": 288,
+      "title": "Permutation Calculator",
+      "identity": {
+        "engineId": "statistics.permutation",
+        "slug": "permutation-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.permutation@1/private.next-engineering.20261115.1"
+      },
+      "scope": "Ordered selections without replacement from n distinct objects, integer 0 \u2264 r \u2264 n \u2264 1e9; result must be an exact safe integer. P(n,0)=1. No repeated/indistinguishable objects.",
+      "scopeAudit": "Ordered distinct-object selections without replacement; integer 0\u2264r\u2264n\u22641e9 and exact safe result.",
+      "numericalQuality": "Product factors are exact while safe; 6P3=120, empty product=1, 18! accepted, 19! refused.",
+      "conditions": [
+        "Scope is the explicit bounded/private engineering model below; applicability assumptions are supplied by the caller.",
+        "Canonical acceptance, certification, publication eligibility and production-equivalence authority remain outside this evidence.",
+        "Final exact-head shared CI and unresolved observed local runtime gates require root decision; no per-ID qualification is granted here."
+      ],
+      "candidateSpecificBlockingIssues": [],
+      "checks": [
+        {
+          "path": "src/calculators/statistics/catalog-batch-2.ts",
+          "expectedSHA256": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f",
+          "actualSHA256": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f",
+          "matches": true
+        },
+        {
+          "path": "src/lib/calculator-factory/completion/next-engineering-statistics-a.ts",
+          "expectedSHA256": "3fcbab24b57ff249d77477370ae4dca301e729245ef2591e01719b34962eb755",
+          "actualSHA256": "3fcbab24b57ff249d77477370ae4dca301e729245ef2591e01719b34962eb755",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/statistics-a/source-bindings.md",
+          "expectedSHA256": "bc1e23fa402edfda04d5a4315a1d00ee2cbf29ca09b22f60703cd70e8582cc6e",
+          "actualSHA256": "bc1e23fa402edfda04d5a4315a1d00ee2cbf29ca09b22f60703cd70e8582cc6e",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/statistics-a/evidence/manifest.json",
+          "expectedSHA256": "a4cc622c552f43a2cceaa3e7adb1033574756eb0ace174e5c105e4b8b2aa9702",
+          "actualSHA256": "a4cc622c552f43a2cceaa3e7adb1033574756eb0ace174e5c105e4b8b2aa9702",
+          "matches": true
+        }
+      ],
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED_PENDING_MANDATORY_EXACT_HEAD_CI",
+      "qualified": false
+    },
+    {
+      "catalogId": 289,
+      "title": "Combination Calculator",
+      "identity": {
+        "engineId": "statistics.combination",
+        "slug": "combination-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.combination@1/private.next-engineering.20261115.1"
+      },
+      "scope": "Unordered selections without replacement from n distinct objects; integer 0 \u2264 r \u2264 n \u2264 10000. Exact integer result must fit Number.MAX_SAFE_INTEGER.",
+      "scopeAudit": "Unordered distinct-object selections; integer 0\u2264r\u2264n\u226410000; exact BigInt recurrence and safe integer output.",
+      "numericalQuality": "52C5=2598960; 56C28=7648690600760440; 57C28 overflow refused; exact recurrence independently justified.",
+      "conditions": [
+        "Scope is the explicit bounded/private engineering model below; applicability assumptions are supplied by the caller.",
+        "Canonical acceptance, certification, publication eligibility and production-equivalence authority remain outside this evidence.",
+        "Final exact-head shared CI and unresolved observed local runtime gates require root decision; no per-ID qualification is granted here."
+      ],
+      "candidateSpecificBlockingIssues": [],
+      "checks": [
+        {
+          "path": "src/calculators/statistics/catalog-batch-3.ts",
+          "expectedSHA256": "41df470fd871e6fd1779035805c1b96cb120c91aff7a3cce40bc7628e3c3dd8e",
+          "actualSHA256": "41df470fd871e6fd1779035805c1b96cb120c91aff7a3cce40bc7628e3c3dd8e",
+          "matches": true
+        },
+        {
+          "path": "src/lib/calculator-factory/completion/next-engineering-statistics-b.ts",
+          "expectedSHA256": "3ac2447f87852d50ba76f51aa852964116fab7a9cf7e3269df932d35e0204b5b",
+          "actualSHA256": "3ac2447f87852d50ba76f51aa852964116fab7a9cf7e3269df932d35e0204b5b",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/statistics-b/nist-combinations.md",
+          "expectedSHA256": "0e9fa8a4e6d161adcbfd00cc20a7a989f58ec31a826d9a3b1fbfed3138d27b49",
+          "actualSHA256": "0e9fa8a4e6d161adcbfd00cc20a7a989f58ec31a826d9a3b1fbfed3138d27b49",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/statistics-b/SOURCES.md",
+          "expectedSHA256": "2ed96e01ced0a9f31e1fce14787a7154246421a19ea21ed2b70a7b9d2b56987f",
+          "actualSHA256": "2ed96e01ced0a9f31e1fce14787a7154246421a19ea21ed2b70a7b9d2b56987f",
+          "matches": true
+        }
+      ],
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED_PENDING_MANDATORY_EXACT_HEAD_CI",
+      "qualified": false
+    },
+    {
+      "catalogId": 290,
+      "title": "Binomial Probability Calculator",
+      "identity": {
+        "engineId": "statistics.binomial-probability",
+        "slug": "binomial-probability-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.binomial-probability@1/private.next-engineering.20261115.1"
+      },
+      "scope": "Exactly k successes in n independent Bernoulli trials with a common fixed success probability p; integer 0 \u2264 k \u2264 n \u2264 10000, 0 \u2264 p \u2264 1. Log-space binary64 approximation; interior positive probabilities that underflow, become subnormal or round to one for n>0 are refused. Degenerate p=0 and p=1 include exact zero and one.",
+      "scopeAudit": "Exactly k successes; independent fixed-p Bernoulli trials; n\u226410000; log-space binary64 approximation. Interior underflow/subnormal/saturation refused; exact degenerate endpoints retained.",
+      "numericalQuality": "Independent 15/128 golden plus boundary/schema/refusal tests. No declared uniform error bound or whole-domain numerical accuracy certification; do not infer such from this single PMF golden.",
+      "conditions": [
+        "Scope is the explicit bounded/private engineering model below; applicability assumptions are supplied by the caller.",
+        "Canonical acceptance, certification, publication eligibility and production-equivalence authority remain outside this evidence.",
+        "Final exact-head shared CI and unresolved observed local runtime gates require root decision; no per-ID qualification is granted here.",
+        "No ideal coverage/minimum-N/uniform numerical/global floating-point accuracy guarantee beyond the explicit retained evidence and delivered warnings."
+      ],
+      "candidateSpecificBlockingIssues": [],
+      "checks": [
+        {
+          "path": "src/calculators/statistics/catalog-batch-3.ts",
+          "expectedSHA256": "41df470fd871e6fd1779035805c1b96cb120c91aff7a3cce40bc7628e3c3dd8e",
+          "actualSHA256": "41df470fd871e6fd1779035805c1b96cb120c91aff7a3cce40bc7628e3c3dd8e",
+          "matches": true
+        },
+        {
+          "path": "src/lib/calculator-factory/completion/next-engineering-statistics-b.ts",
+          "expectedSHA256": "3ac2447f87852d50ba76f51aa852964116fab7a9cf7e3269df932d35e0204b5b",
+          "actualSHA256": "3ac2447f87852d50ba76f51aa852964116fab7a9cf7e3269df932d35e0204b5b",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/statistics-b/nist-binomial.md",
+          "expectedSHA256": "688056166cfcfde919f7c7b0ecf69bf2d8dd6b7432fb185ce9dde5a26aaa90a9",
+          "actualSHA256": "688056166cfcfde919f7c7b0ecf69bf2d8dd6b7432fb185ce9dde5a26aaa90a9",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/statistics-b/SOURCES.md",
+          "expectedSHA256": "2ed96e01ced0a9f31e1fce14787a7154246421a19ea21ed2b70a7b9d2b56987f",
+          "actualSHA256": "2ed96e01ced0a9f31e1fce14787a7154246421a19ea21ed2b70a7b9d2b56987f",
+          "matches": true
+        }
+      ],
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED_PENDING_MANDATORY_EXACT_HEAD_CI",
+      "qualified": false
+    },
+    {
+      "catalogId": 291,
+      "title": "Normal Distribution Calculator",
+      "identity": {
+        "engineId": "statistics.normal-distribution",
+        "slug": "normal-distribution-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.normal-distribution@1/private.next-engineering.20261115.1"
+      },
+      "scope": "Normal model with supplied mean and positive standard deviation in the same units as x. PDF has reciprocal input units; z is dimensionless. CDF and upperTail use the immutable v1 erf approximation, not exact probabilities or a certified error bound. Capture is restricted to |z| \u2264 4 and finite normal positive density and tails; extreme tails are refused.",
+      "scopeAudit": "Normal model; same-unit x/mean/positive SD; erf approximation restricted to |z|\u22644, positive normal density/tails and nonsaturated CDF.",
+      "numericalQuality": "8001 standard-grid points plus 20 transforms: 24063 scalar comparisons pass. CDF/tail observed max 6.968741261075226e-8; PDF relative max 7.579148293168502e-16. Two transformed points are supplementary outside capture. No continuous supremum/coefficient provenance certified.",
+      "conditions": [
+        "Scope is the explicit bounded/private engineering model below; applicability assumptions are supplied by the caller.",
+        "Canonical acceptance, certification, publication eligibility and production-equivalence authority remain outside this evidence.",
+        "Final exact-head shared CI and unresolved observed local runtime gates require root decision; no per-ID qualification is granted here.",
+        "No ideal coverage/minimum-N/uniform numerical/global floating-point accuracy guarantee beyond the explicit retained evidence and delivered warnings."
+      ],
+      "candidateSpecificBlockingIssues": [],
+      "checks": [
+        {
+          "path": "src/calculators/statistics/catalog-batch-3.ts",
+          "expectedSHA256": "41df470fd871e6fd1779035805c1b96cb120c91aff7a3cce40bc7628e3c3dd8e",
+          "actualSHA256": "41df470fd871e6fd1779035805c1b96cb120c91aff7a3cce40bc7628e3c3dd8e",
+          "matches": true
+        },
+        {
+          "path": "src/lib/calculator-factory/completion/next-engineering-statistics-b.ts",
+          "expectedSHA256": "3ac2447f87852d50ba76f51aa852964116fab7a9cf7e3269df932d35e0204b5b",
+          "actualSHA256": "3ac2447f87852d50ba76f51aa852964116fab7a9cf7e3269df932d35e0204b5b",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/statistics-b/nist-normal.md",
+          "expectedSHA256": "842184ff47bb1401e4f4ed47b5219b294813c63ea0e75ea1149a318ad23a5b1a",
+          "actualSHA256": "842184ff47bb1401e4f4ed47b5219b294813c63ea0e75ea1149a318ad23a5b1a",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/statistics-b/SOURCES.md",
+          "expectedSHA256": "2ed96e01ced0a9f31e1fce14787a7154246421a19ea21ed2b70a7b9d2b56987f",
+          "actualSHA256": "2ed96e01ced0a9f31e1fce14787a7154246421a19ea21ed2b70a7b9d2b56987f",
+          "matches": true
+        }
+      ],
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED_PENDING_MANDATORY_EXACT_HEAD_CI",
+      "qualified": false
+    },
+    {
+      "catalogId": 300,
+      "title": "Bayes Theorem Calculator",
+      "identity": {
+        "engineId": "statistics.bayes-theorem",
+        "slug": "bayes-theorem-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/statistics.bayes-theorem@1/private.next-engineering.20261115.1"
+      },
+      "scope": "Two exhaustive complementary hypotheses H and not-H. prior=P(H), likelihood=P(E|H), evidenceGivenNot=P(E|not-H), each in [0,1]; evidence probability must be positive. Rounded endpoint posteriors with positive evidence from both hypotheses are refused. Supplied probabilities are assumed applicable to the same population and evidence. Retains joint numerator and total-evidence denominator; no diagnostic or causal inference.",
+      "scopeAudit": "Complementary exhaustive H/not-H; same-population evidence; supplied [0,1] probabilities; positive denominator; interior rounded endpoint refused.",
+      "numericalQuality": "Independent 15/112 posterior; zero-evidence refusal, exact endpoints, retained joint numerator/denominator; no calibration/diagnostic/causal inference.",
+      "conditions": [
+        "Scope is the explicit bounded/private engineering model below; applicability assumptions are supplied by the caller.",
+        "Canonical acceptance, certification, publication eligibility and production-equivalence authority remain outside this evidence.",
+        "Final exact-head shared CI and unresolved observed local runtime gates require root decision; no per-ID qualification is granted here."
+      ],
+      "candidateSpecificBlockingIssues": [],
+      "checks": [
+        {
+          "path": "src/calculators/statistics/catalog-batch-4.ts",
+          "expectedSHA256": "b5f186fbbbeed527bf7f2734a3b53e02d2fcd2113fcef1b71092ef6d520e35f9",
+          "actualSHA256": "b5f186fbbbeed527bf7f2734a3b53e02d2fcd2113fcef1b71092ef6d520e35f9",
+          "matches": true
+        },
+        {
+          "path": "src/lib/calculator-factory/completion/next-engineering-statistics-b.ts",
+          "expectedSHA256": "3ac2447f87852d50ba76f51aa852964116fab7a9cf7e3269df932d35e0204b5b",
+          "actualSHA256": "3ac2447f87852d50ba76f51aa852964116fab7a9cf7e3269df932d35e0204b5b",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/statistics-b/openstax-bayes-excerpt.md",
+          "expectedSHA256": "091f58924614ea9a804832b2594cb6a845ba91d741f75f4ace76341e868fbc00",
+          "actualSHA256": "091f58924614ea9a804832b2594cb6a845ba91d741f75f4ace76341e868fbc00",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/statistics-b/SOURCES.md",
+          "expectedSHA256": "2ed96e01ced0a9f31e1fce14787a7154246421a19ea21ed2b70a7b9d2b56987f",
+          "actualSHA256": "2ed96e01ced0a9f31e1fce14787a7154246421a19ea21ed2b70a7b9d2b56987f",
+          "matches": true
+        }
+      ],
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED_PENDING_MANDATORY_EXACT_HEAD_CI",
+      "qualified": false
+    },
+    {
+      "catalogId": 329,
+      "title": "Molality Calculator",
+      "identity": {
+        "engineId": "chemistry.molality",
+        "slug": "molality-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.molality@1/private.next-engineering.20261115.1"
+      },
+      "scope": "Molality n/m_solvent from solute amount in mol and positive solvent mass in kg. The denominator is solvent mass, not solution mass. Composition only; no ideal-solution activity or colligative-property prediction.",
+      "scopeAudit": "Molality n/m_solvent from solute amount in mol and positive solvent mass in kg. The denominator is solvent mass, not solution mass. Composition only; no ideal-solution activity or colligative-property prediction.",
+      "numericalQuality": "OpenStax 11.4 lines 790\u2013828 defines molality and 35.8 mol/2 kg=17.9 worked example.",
+      "conditions": [
+        "Scope is the explicit bounded/private engineering model below; applicability assumptions are supplied by the caller.",
+        "Canonical acceptance, certification, publication eligibility and production-equivalence authority remain outside this evidence.",
+        "Final exact-head shared CI and unresolved observed local runtime gates require root decision; no per-ID qualification is granted here."
+      ],
+      "candidateSpecificBlockingIssues": [],
+      "checks": [
+        {
+          "path": "src/calculators/chemistry/catalog-batch-1.ts",
+          "expectedSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "actualSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "matches": true
+        },
+        {
+          "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-a.ts",
+          "expectedSHA256": "d03e9bb0c3a59f5b232b68ffea3205297a07c49b0016fae1b04bf0b9d9ded37a",
+          "actualSHA256": "d03e9bb0c3a59f5b232b68ffea3205297a07c49b0016fae1b04bf0b9d9ded37a",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/11-4-colligative-properties.md",
+          "expectedSHA256": "8169efe1cac7f7d440b819941dde5404eae024ab6b8f8cf45fac730b38ed0dfb",
+          "actualSHA256": "8169efe1cac7f7d440b819941dde5404eae024ab6b8f8cf45fac730b38ed0dfb",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "expectedSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "actualSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "matches": true
+        }
+      ],
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED_PENDING_MANDATORY_EXACT_HEAD_CI",
+      "qualified": false
+    },
+    {
+      "catalogId": 333,
+      "title": "pH Calculator",
+      "identity": {
+        "engineId": "chemistry.ph",
+        "slug": "ph-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.ph@1/private.next-engineering.20261115.1"
+      },
+      "scope": "Concentration-model pH = -log10([H+]/(1 mol/L)), with positive hydrogen-ion concentration in mol/L. Ideal dilute-solution approximation treating concentration as activity; no activity coefficients, ionic-strength correction, acid dissociation solving or temperature-based neutrality classification. Values are not restricted to 0\u201314.",
+      "scopeAudit": "Concentration-model pH = -log10([H+]/(1 mol/L)), with positive hydrogen-ion concentration in mol/L. Ideal dilute-solution approximation treating concentration as activity; no activity coefficients, ionic-strength correction, acid dissociation solving or temperature-based neutrality classification. Values are not restricted to 0\u201314.",
+      "numericalQuality": "OpenStax 14.2 defines hydronium concentration pH; 11.4 line1265 supports dilute concentration/activity approximation.",
+      "conditions": [
+        "Scope is the explicit bounded/private engineering model below; applicability assumptions are supplied by the caller.",
+        "Canonical acceptance, certification, publication eligibility and production-equivalence authority remain outside this evidence.",
+        "Final exact-head shared CI and unresolved observed local runtime gates require root decision; no per-ID qualification is granted here."
+      ],
+      "candidateSpecificBlockingIssues": [],
+      "checks": [
+        {
+          "path": "src/calculators/chemistry/catalog-batch-1.ts",
+          "expectedSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "actualSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "matches": true
+        },
+        {
+          "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-a.ts",
+          "expectedSHA256": "d03e9bb0c3a59f5b232b68ffea3205297a07c49b0016fae1b04bf0b9d9ded37a",
+          "actualSHA256": "d03e9bb0c3a59f5b232b68ffea3205297a07c49b0016fae1b04bf0b9d9ded37a",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/14-2-ph-and-poh.md",
+          "expectedSHA256": "047f19be03aa21dbd23f90583c5ade093f4094fa209bc931e0f467b7f760946f",
+          "actualSHA256": "047f19be03aa21dbd23f90583c5ade093f4094fa209bc931e0f467b7f760946f",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "expectedSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "actualSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/11-4-colligative-properties.md",
+          "expectedSHA256": "8169efe1cac7f7d440b819941dde5404eae024ab6b8f8cf45fac730b38ed0dfb",
+          "actualSHA256": "8169efe1cac7f7d440b819941dde5404eae024ab6b8f8cf45fac730b38ed0dfb",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "expectedSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "actualSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "matches": true
+        }
+      ],
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED_PENDING_MANDATORY_EXACT_HEAD_CI",
+      "qualified": false
+    },
+    {
+      "catalogId": 334,
+      "title": "Ideal Gas Law Calculator",
+      "identity": {
+        "engineId": "chemistry.ideal-gas-law",
+        "slug": "ideal-gas-law-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.ideal-gas-law@1/private.next-engineering.20261115.1"
+      },
+      "scope": "Ideal-gas absolute pressure P=nRT/V in atm; amount in mol, strictly positive absolute temperature in K and volume in L. Immutable v1 R=0.082057366080960 L\u00b7atm\u00b7mol^-1\u00b7K^-1. Zero amount represents the vacuum limit. No real-gas, gauge-pressure or Celsius conversion.",
+      "scopeAudit": "Ideal-gas absolute pressure P=nRT/V in atm; amount in mol, strictly positive absolute temperature in K and volume in L. Immutable v1 R=0.082057366080960 L\u00b7atm\u00b7mol^-1\u00b7K^-1. Zero amount represents the vacuum limit. No real-gas, gauge-pressure or Celsius conversion.",
+      "numericalQuality": "OpenStax 9.2 ideal gas plus NIST SI R and atm conversion support units; native R is rounded, not exact source value.",
+      "conditions": [
+        "Scope is the explicit bounded/private engineering model below; applicability assumptions are supplied by the caller.",
+        "Canonical acceptance, certification, publication eligibility and production-equivalence authority remain outside this evidence.",
+        "Final exact-head shared CI and unresolved observed local runtime gates require root decision; no per-ID qualification is granted here."
+      ],
+      "candidateSpecificBlockingIssues": [],
+      "checks": [
+        {
+          "path": "src/calculators/chemistry/catalog-batch-1.ts",
+          "expectedSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "actualSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "matches": true
+        },
+        {
+          "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-a.ts",
+          "expectedSHA256": "d03e9bb0c3a59f5b232b68ffea3205297a07c49b0016fae1b04bf0b9d9ded37a",
+          "actualSHA256": "d03e9bb0c3a59f5b232b68ffea3205297a07c49b0016fae1b04bf0b9d9ded37a",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/9-2-ideal-gas-law.md",
+          "expectedSHA256": "9d6315ce4e704b28bb2a2495c62d0b37f5536989733fa85251afe3b0d12815dc",
+          "actualSHA256": "9d6315ce4e704b28bb2a2495c62d0b37f5536989733fa85251afe3b0d12815dc",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "expectedSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "actualSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/nist-molar-gas-constant.md",
+          "expectedSHA256": "852e28f9d7b2ae68712dd88438a1a3d3fa5888631addbe2f6986a578f453d064",
+          "actualSHA256": "852e28f9d7b2ae68712dd88438a1a3d3fa5888631addbe2f6986a578f453d064",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "expectedSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "actualSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/nist-sp811-pressure-units.md",
+          "expectedSHA256": "4732d3d34b1d5901834d263286701978464670b0ca4affb7d2ef523d91a89441",
+          "actualSHA256": "4732d3d34b1d5901834d263286701978464670b0ca4affb7d2ef523d91a89441",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "expectedSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "actualSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "matches": true
+        }
+      ],
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED_PENDING_MANDATORY_EXACT_HEAD_CI",
+      "qualified": false
+    },
+    {
+      "catalogId": 335,
+      "title": "Gas Density Calculator",
+      "identity": {
+        "engineId": "chemistry.gas-density",
+        "slug": "gas-density-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.gas-density@1/private.next-engineering.20261115.1"
+      },
+      "scope": "Ideal-gas density rho=PM/(RT) in g/L; nonnegative absolute pressure in atm, strictly positive molar mass in g/mol and absolute temperature in K. Immutable v1 R=0.082057366080960 L\u00b7atm\u00b7mol^-1\u00b7K^-1. Zero pressure is the vacuum limit; no real-gas corrections.",
+      "scopeAudit": "Ideal-gas density rho=PM/(RT) in g/L; nonnegative absolute pressure in atm, strictly positive molar mass in g/mol and absolute temperature in K. Immutable v1 R=0.082057366080960 L\u00b7atm\u00b7mol^-1\u00b7K^-1. Zero pressure is the vacuum limit; no real-gas corrections.",
+      "numericalQuality": "OpenStax 9.3 derives gas density d=PM/RT; NIST supports constants/units.",
+      "conditions": [
+        "Scope is the explicit bounded/private engineering model below; applicability assumptions are supplied by the caller.",
+        "Canonical acceptance, certification, publication eligibility and production-equivalence authority remain outside this evidence.",
+        "Final exact-head shared CI and unresolved observed local runtime gates require root decision; no per-ID qualification is granted here."
+      ],
+      "candidateSpecificBlockingIssues": [],
+      "checks": [
+        {
+          "path": "src/calculators/chemistry/catalog-batch-1.ts",
+          "expectedSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "actualSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "matches": true
+        },
+        {
+          "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-a.ts",
+          "expectedSHA256": "d03e9bb0c3a59f5b232b68ffea3205297a07c49b0016fae1b04bf0b9d9ded37a",
+          "actualSHA256": "d03e9bb0c3a59f5b232b68ffea3205297a07c49b0016fae1b04bf0b9d9ded37a",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/9-3-gas-stoichiometry.md",
+          "expectedSHA256": "470df3544cda2e1bede4964d03ee2f392314a7483993f6b03db510f30dd78a44",
+          "actualSHA256": "470df3544cda2e1bede4964d03ee2f392314a7483993f6b03db510f30dd78a44",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "expectedSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "actualSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/nist-molar-gas-constant.md",
+          "expectedSHA256": "852e28f9d7b2ae68712dd88438a1a3d3fa5888631addbe2f6986a578f453d064",
+          "actualSHA256": "852e28f9d7b2ae68712dd88438a1a3d3fa5888631addbe2f6986a578f453d064",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "expectedSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "actualSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/nist-sp811-pressure-units.md",
+          "expectedSHA256": "4732d3d34b1d5901834d263286701978464670b0ca4affb7d2ef523d91a89441",
+          "actualSHA256": "4732d3d34b1d5901834d263286701978464670b0ca4affb7d2ef523d91a89441",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "expectedSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "actualSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "matches": true
+        }
+      ],
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED_PENDING_MANDATORY_EXACT_HEAD_CI",
+      "qualified": false
+    },
+    {
+      "catalogId": 336,
+      "title": "Percent Composition Calculator",
+      "identity": {
+        "engineId": "chemistry.percent-composition",
+        "slug": "percent-composition-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.percent-composition@1/private.next-engineering.20261115.1"
+      },
+      "scope": "Mass percent =100 componentMass/totalMass using g for both masses. Total includes the component and must be positive; component lies from zero through total. A composition ratio, with no volume-percent or mass/volume-percent interpretation.",
+      "scopeAudit": "Mass percent =100 componentMass/totalMass using g for both masses. Total includes the component and must be positive; component lies from zero through total. A composition ratio, with no volume-percent or mass/volume-percent interpretation.",
+      "numericalQuality": "OpenStax 3.4 mass percent and 3.2 generic composition apply.",
+      "conditions": [
+        "Scope is the explicit bounded/private engineering model below; applicability assumptions are supplied by the caller.",
+        "Canonical acceptance, certification, publication eligibility and production-equivalence authority remain outside this evidence.",
+        "Final exact-head shared CI and unresolved observed local runtime gates require root decision; no per-ID qualification is granted here."
+      ],
+      "candidateSpecificBlockingIssues": [],
+      "checks": [
+        {
+          "path": "src/calculators/chemistry/catalog-batch-1.ts",
+          "expectedSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "actualSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "matches": true
+        },
+        {
+          "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-a.ts",
+          "expectedSHA256": "d03e9bb0c3a59f5b232b68ffea3205297a07c49b0016fae1b04bf0b9d9ded37a",
+          "actualSHA256": "d03e9bb0c3a59f5b232b68ffea3205297a07c49b0016fae1b04bf0b9d9ded37a",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/3-4-other-concentrations.md",
+          "expectedSHA256": "d759f0bb27e5b397ec3d49cfd0e33602f12f08a5559ef8b71abb15aa398e8edd",
+          "actualSHA256": "d759f0bb27e5b397ec3d49cfd0e33602f12f08a5559ef8b71abb15aa398e8edd",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "expectedSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "actualSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/3-2-mass-composition.md",
+          "expectedSHA256": "9eb822eeb65c71e70b3864778f2affb497b2efd4fba973c4638875fdb72c96fc",
+          "actualSHA256": "9eb822eeb65c71e70b3864778f2affb497b2efd4fba973c4638875fdb72c96fc",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "expectedSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "actualSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "matches": true
+        }
+      ],
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED_PENDING_MANDATORY_EXACT_HEAD_CI",
+      "qualified": false
+    },
+    {
+      "catalogId": 337,
+      "title": "Solution Concentration Calculator",
+      "identity": {
+        "engineId": "chemistry.solution-concentration",
+        "slug": "solution-concentration-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.solution-concentration@1/private.next-engineering.20261115.1"
+      },
+      "scope": "Mass concentration = solute mass in g / positive final total solution volume in L, not solvent volume. The mass/volume ratio underlying the textbook mass-volume percentage is expressed here in g/L, not percent. Composition only; no activity or ideal-solution thermodynamic correction and no conversion to molarity.",
+      "scopeAudit": "Mass concentration = solute mass in g / positive final total solution volume in L, not solvent volume. The mass/volume ratio underlying the textbook mass-volume percentage is expressed here in g/L, not percent. Composition only; no activity or ideal-solution thermodynamic correction and no conversion to molarity.",
+      "numericalQuality": "OpenStax 3.4 mass-volume percent supplies same ratio; conversion q grams/100mL =>10q g/L is a dimensional derivation, not direct claim publisher uses g/L.",
+      "conditions": [
+        "Scope is the explicit bounded/private engineering model below; applicability assumptions are supplied by the caller.",
+        "Canonical acceptance, certification, publication eligibility and production-equivalence authority remain outside this evidence.",
+        "Final exact-head shared CI and unresolved observed local runtime gates require root decision; no per-ID qualification is granted here."
+      ],
+      "candidateSpecificBlockingIssues": [],
+      "checks": [
+        {
+          "path": "src/calculators/chemistry/catalog-batch-1.ts",
+          "expectedSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "actualSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "matches": true
+        },
+        {
+          "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-a.ts",
+          "expectedSHA256": "d03e9bb0c3a59f5b232b68ffea3205297a07c49b0016fae1b04bf0b9d9ded37a",
+          "actualSHA256": "d03e9bb0c3a59f5b232b68ffea3205297a07c49b0016fae1b04bf0b9d9ded37a",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/sources/3-4-other-concentrations.md",
+          "expectedSHA256": "d759f0bb27e5b397ec3d49cfd0e33602f12f08a5559ef8b71abb15aa398e8edd",
+          "actualSHA256": "d759f0bb27e5b397ec3d49cfd0e33602f12f08a5559ef8b71abb15aa398e8edd",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-a/source-manifest.json",
+          "expectedSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "actualSHA256": "da89c321f115887256e475e0a64171dc346a79c1aa0a6ed7d4c3d7c932ad4e81",
+          "matches": true
+        }
+      ],
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED_PENDING_MANDATORY_EXACT_HEAD_CI",
+      "qualified": false
+    },
+    {
+      "catalogId": 338,
+      "title": "Stoichiometry Calculator",
+      "identity": {
+        "engineId": "chemistry.stoichiometry",
+        "slug": "stoichiometry-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.stoichiometry@1/private.next-engineering.20261115.1"
+      },
+      "scope": "Target amount in mol from the ratio of positive coefficients in the same supplied balanced reaction. Coefficients may share a fractional rescaling. Assumes complete stoichiometric conversion of the supplied known amount; no equation balancing, limiting-reactant selection, yield, purity or side-reaction model.",
+      "scopeAudit": "Target amount in mol from the ratio of positive coefficients in the same supplied balanced reaction. Coefficients may share a fractional rescaling. Assumes complete stoichiometric conversion of the supplied known amount; no equation balancing, limiting-reactant selection, yield, purity or side-reaction model.",
+      "numericalQuality": "OpenStax 4.3 balanced coefficient mole ratios apply.",
+      "conditions": [
+        "Scope is the explicit bounded/private engineering model below; applicability assumptions are supplied by the caller.",
+        "Canonical acceptance, certification, publication eligibility and production-equivalence authority remain outside this evidence.",
+        "Final exact-head shared CI and unresolved observed local runtime gates require root decision; no per-ID qualification is granted here."
+      ],
+      "candidateSpecificBlockingIssues": [],
+      "checks": [
+        {
+          "path": "src/calculators/chemistry/catalog-batch-1.ts",
+          "expectedSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "actualSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "matches": true
+        },
+        {
+          "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-b.ts",
+          "expectedSHA256": "835435adab7b7c2caab0c8e045e041f94009d779cfe4a59d9d99717502444580",
+          "actualSHA256": "835435adab7b7c2caab0c8e045e041f94009d779cfe4a59d9d99717502444580",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+          "expectedSHA256": "963cc04634760a7536b450c7a165bae9c91b1cfee3a65acf546ddd840f7ee925",
+          "actualSHA256": "963cc04634760a7536b450c7a165bae9c91b1cfee3a65acf546ddd840f7ee925",
+          "matches": true
+        }
+      ],
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED_PENDING_MANDATORY_EXACT_HEAD_CI",
+      "qualified": false
+    },
+    {
+      "catalogId": 339,
+      "title": "Half-Life Calculator",
+      "identity": {
+        "engineId": "chemistry.half-life",
+        "slug": "half-life-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.half-life@1/private.next-engineering.20261115.1"
+      },
+      "scope": "Remaining amount for a closed first-order decay process with a constant positive half-life, no replenishment and nonnegative elapsed time. Initial and remaining amounts share one unit; elapsed time and half-life share one time unit. For positive initial amount, capture requires both the decay factor and remaining amount to be positive normal binary64 values; mathematical decay rounded to zero or subnormal intermediates is refused.",
+      "scopeAudit": "Remaining amount for a closed first-order decay process with a constant positive half-life, no replenishment and nonnegative elapsed time. Initial and remaining amounts share one unit; elapsed time and half-life share one time unit. For positive initial amount, capture requires both the decay factor and remaining amount to be positive normal binary64 values; mathematical decay rounded to zero or subnormal intermediates is refused.",
+      "numericalQuality": "OpenStax 12.4 first-order integration and constant half-life apply; binary64 policy is engineering, not physical law.",
+      "conditions": [
+        "Scope is the explicit bounded/private engineering model below; applicability assumptions are supplied by the caller.",
+        "Canonical acceptance, certification, publication eligibility and production-equivalence authority remain outside this evidence.",
+        "Final exact-head shared CI and unresolved observed local runtime gates require root decision; no per-ID qualification is granted here."
+      ],
+      "candidateSpecificBlockingIssues": [],
+      "checks": [
+        {
+          "path": "src/calculators/chemistry/catalog-batch-1.ts",
+          "expectedSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "actualSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "matches": true
+        },
+        {
+          "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-b.ts",
+          "expectedSHA256": "835435adab7b7c2caab0c8e045e041f94009d779cfe4a59d9d99717502444580",
+          "actualSHA256": "835435adab7b7c2caab0c8e045e041f94009d779cfe4a59d9d99717502444580",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+          "expectedSHA256": "963cc04634760a7536b450c7a165bae9c91b1cfee3a65acf546ddd840f7ee925",
+          "actualSHA256": "963cc04634760a7536b450c7a165bae9c91b1cfee3a65acf546ddd840f7ee925",
+          "matches": true
+        }
+      ],
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED_PENDING_MANDATORY_EXACT_HEAD_CI",
+      "qualified": false
+    },
+    {
+      "catalogId": 340,
+      "title": "Nernst Equation Calculator",
+      "identity": {
+        "engineId": "chemistry.nernst-equation",
+        "slug": "nernst-equation-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.nernst-equation@1/private.next-engineering.20261115.1"
+      },
+      "scope": "Nernst cell potential E = E\u00b0 - (RT/nF) ln Q for the same balanced redox reaction, with E\u00b0 applicable at the supplied positive kelvin temperature and a positive safe-integer electron transfer count n. Q is a positive dimensionless activity quotient relative to standard states, with pure solid/liquid activities taken as unity; concentration substitution requires justified ideal behavior. The engine fixes R = 8.31446261815324 J/(mol K) and F = 96485.33212 C/mol; it does not compute activities, temperature corrections to E\u00b0, kinetics, overpotential or junction potentials.",
+      "scopeAudit": "Nernst cell potential E = E\u00b0 - (RT/nF) ln Q for the same balanced redox reaction, with E\u00b0 applicable at the supplied positive kelvin temperature and a positive safe-integer electron transfer count n. Q is a positive dimensionless activity quotient relative to standard states, with pure solid/liquid activities taken as unity; concentration substitution requires justified ideal behavior. The engine fixes R = 8.31446261815324 J/(mol K) and F = 96485.33212 C/mol; it does not compute activities, temperature corrections to E\u00b0, kinetics, overpotential or junction potentials.",
+      "numericalQuality": "OpenStax17.4 Nernst;13.2 relative dimensionless Q; IUPAC activity; NIST constants support applicability, displayed ellipses do not establish all fixed engine digits; F is truncated.",
+      "conditions": [
+        "Scope is the explicit bounded/private engineering model below; applicability assumptions are supplied by the caller.",
+        "Canonical acceptance, certification, publication eligibility and production-equivalence authority remain outside this evidence.",
+        "Final exact-head shared CI and unresolved observed local runtime gates require root decision; no per-ID qualification is granted here."
+      ],
+      "candidateSpecificBlockingIssues": [],
+      "checks": [
+        {
+          "path": "src/calculators/chemistry/catalog-batch-1.ts",
+          "expectedSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "actualSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "matches": true
+        },
+        {
+          "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-b.ts",
+          "expectedSHA256": "835435adab7b7c2caab0c8e045e041f94009d779cfe4a59d9d99717502444580",
+          "actualSHA256": "835435adab7b7c2caab0c8e045e041f94009d779cfe4a59d9d99717502444580",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+          "expectedSHA256": "963cc04634760a7536b450c7a165bae9c91b1cfee3a65acf546ddd840f7ee925",
+          "actualSHA256": "963cc04634760a7536b450c7a165bae9c91b1cfee3a65acf546ddd840f7ee925",
+          "matches": true
+        }
+      ],
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED_PENDING_MANDATORY_EXACT_HEAD_CI",
+      "qualified": false
+    },
+    {
+      "catalogId": 341,
+      "title": "Beer-Lambert Law Calculator",
+      "identity": {
+        "engineId": "chemistry.beer-lambert-law",
+        "slug": "beer-lambert-law-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.beer-lambert-law@1/private.next-engineering.20261115.1"
+      },
+      "scope": "Decadic absorbance A = \u03b5bc using molar absorption coefficient \u03b5 in L/(mol cm), optical path b in cm and concentration c in mol/L. Assumes collimated monochromatic radiation, a homogeneous isotropic absorbing medium, and valid linear response at the chosen wavelength; excludes scattering, stray light, concentration-dependent interactions, speciation changes and detector saturation. Zero factor gives zero absorbance within the ideal mathematical model.",
+      "scopeAudit": "Decadic absorbance A = \u03b5bc using molar absorption coefficient \u03b5 in L/(mol cm), optical path b in cm and concentration c in mol/L. Assumes collimated monochromatic radiation, a homogeneous isotropic absorbing medium, and valid linear response at the chosen wavelength; excludes scattering, stray light, concentration-dependent interactions, speciation changes and detector saturation. Zero factor gives zero absorbance within the ideal mathematical model.",
+      "numericalQuality": "IUPAC B00626 explicitly defines law and units; no irrelevant OpenStax6.1 claim.",
+      "conditions": [
+        "Scope is the explicit bounded/private engineering model below; applicability assumptions are supplied by the caller.",
+        "Canonical acceptance, certification, publication eligibility and production-equivalence authority remain outside this evidence.",
+        "Final exact-head shared CI and unresolved observed local runtime gates require root decision; no per-ID qualification is granted here."
+      ],
+      "candidateSpecificBlockingIssues": [],
+      "checks": [
+        {
+          "path": "src/calculators/chemistry/catalog-batch-1.ts",
+          "expectedSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "actualSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "matches": true
+        },
+        {
+          "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-b.ts",
+          "expectedSHA256": "835435adab7b7c2caab0c8e045e041f94009d779cfe4a59d9d99717502444580",
+          "actualSHA256": "835435adab7b7c2caab0c8e045e041f94009d779cfe4a59d9d99717502444580",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+          "expectedSHA256": "963cc04634760a7536b450c7a165bae9c91b1cfee3a65acf546ddd840f7ee925",
+          "actualSHA256": "963cc04634760a7536b450c7a165bae9c91b1cfee3a65acf546ddd840f7ee925",
+          "matches": true
+        }
+      ],
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED_PENDING_MANDATORY_EXACT_HEAD_CI",
+      "qualified": false
+    },
+    {
+      "catalogId": 342,
+      "title": "Titration Calculator",
+      "identity": {
+        "engineId": "chemistry.titration",
+        "slug": "titration-calculator",
+        "version": 1,
+        "sourceVersion": "factory-wave1-20261112.1/chemistry.titration@1/private.next-engineering.20261115.1"
+      },
+      "scope": "Analyte molar concentration at exact equivalence of the supplied balanced titrant/analyte reaction, using positive stoichiometric coefficients with optional common fractional rescaling. Titrant concentration is in mol/L; titrant and analyte volumes must use the same unit (for example both mL). Assumes quantitative selective reaction, known titrant concentration, and measured volumes; no endpoint/equivalence correction, blank correction, dilution, acid/base speciation or uncertainty model.",
+      "scopeAudit": "Analyte molar concentration at exact equivalence of the supplied balanced titrant/analyte reaction, using positive stoichiometric coefficients with optional common fractional rescaling. Titrant concentration is in mol/L; titrant and analyte volumes must use the same unit (for example both mL). Assumes quantitative selective reaction, known titrant concentration, and measured volumes; no endpoint/equivalence correction, blank correction, dilution, acid/base speciation or uncertainty model.",
+      "numericalQuality": "OpenStax4.5 titration analysis with4.3 balanced mole ratios applies.",
+      "conditions": [
+        "Scope is the explicit bounded/private engineering model below; applicability assumptions are supplied by the caller.",
+        "Canonical acceptance, certification, publication eligibility and production-equivalence authority remain outside this evidence.",
+        "Final exact-head shared CI and unresolved observed local runtime gates require root decision; no per-ID qualification is granted here."
+      ],
+      "candidateSpecificBlockingIssues": [],
+      "checks": [
+        {
+          "path": "src/calculators/chemistry/catalog-batch-1.ts",
+          "expectedSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "actualSHA256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+          "matches": true
+        },
+        {
+          "path": "src/lib/calculator-factory/completion/next-engineering-chemistry-b.ts",
+          "expectedSHA256": "835435adab7b7c2caab0c8e045e041f94009d779cfe4a59d9d99717502444580",
+          "actualSHA256": "835435adab7b7c2caab0c8e045e041f94009d779cfe4a59d9d99717502444580",
+          "matches": true
+        },
+        {
+          "path": "docs/next-engineering-20261115/chemistry-b/source-manifest.json",
+          "expectedSHA256": "963cc04634760a7536b450c7a165bae9c91b1cfee3a65acf546ddd840f7ee925",
+          "actualSHA256": "963cc04634760a7536b450c7a165bae9c91b1cfee3a65acf546ddd840f7ee925",
+          "matches": true
+        }
+      ],
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED_PENDING_MANDATORY_EXACT_HEAD_CI",
+      "qualified": false
+    }
+  ]
+}

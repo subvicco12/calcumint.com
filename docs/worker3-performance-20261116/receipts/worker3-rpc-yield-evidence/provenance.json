@@ -1,0 +1,49 @@
+{
+  "implementationCommit": "1f03a1193b6c8b50fe33fd3a7fd6a2973f09cefe",
+  "workerBase": "7ebdf0412619b8414e8c20b091f4fd9872c41f03",
+  "exactCoordinatorPRHead": "1b0c1e12cf0de67f9ae238cfa618ed8eaeb3f126",
+  "archiveRun": 43836695478,
+  "archiveSourceHead": "e7e5c58b3e9507f22d5f73f41b8d51d8a329f366",
+  "archiveFullLogPath": "/tmp/worker3-performance-e7-hosted-source.log",
+  "archiveFullLogSHA256": "e77f0a1c9082356adecf6960267c0c8925f97ea288f4feac011a9e602644299b",
+  "archiveMatchingLineNumbers": [
+    2806
+  ],
+  "exactHookSemantics": "beforeEach(async()=>{await setImmediate();});",
+  "originalRPCDeadlineMS": 60000,
+  "originalMaxWorkers": 1,
+  "testBodiesChanged": false,
+  "sourceFilesChanged": false,
+  "productionChanges": false,
+  "qualification": false,
+  "coordinatorIndependentProof": {
+    "reportPath": "/tmp/worker3-external-construction-ci-report.md",
+    "reportSHA256": "afd9675b9f29334084d53b38d28b4155f75d3b7d361ce0308d5de80e9885522c",
+    "redSixPassedButExitOne": true,
+    "redMaxLoopMS": 67343.745,
+    "greenSixPassedExitZero": true,
+    "greenTotalMS": 69256,
+    "greenMaxLoopMS": 43654.316,
+    "worker3PerformanceClaim": false
+  },
+  "exactSourceFiles": {
+    "vitest.config.ts": "1a6e61ff3d53be5b52809e57fbd682a667635c929867af04a2a7b1d161c0299d",
+    "tests/construction-ci-recovery-20261116/yield-task-updates.mjs": "d0eb17f098ad81dce5c194527b9d57c8977b7aa34df13721a2da7f7f401c88fe"
+  },
+  "executionTestSource": {
+    "path": "src/lib/execution-recovery-evidence.test.ts",
+    "localGitBlob": "8bb490e90651b322e482e6f48f03d3031ff82035",
+    "coordinatorGitBlob": "8bb490e90651b322e482e6f48f03d3031ff82035",
+    "exactBytesSame": true,
+    "localSHA256": "ba04aeec65362e5586697a8013ecf5c444b78480243150a332a84c8c245c3649"
+  },
+  "worker3RuntimeValidation": {
+    "owner": "root coordinator",
+    "status": "PENDING_ROOT_COMBINED_EXACT_HEAD_RUNTIME",
+    "workerRanNoAdditionalRuntimeSuites": true,
+    "requiredSelection": "all six execution-recovery cases plus source115 wrapper and API/UI two cases",
+    "noDuplicateFocusedRun": true
+  },
+  "implementationWorktreeClean": true,
+  "reportCopiedByteHashMatchesFirstRead": true
+}

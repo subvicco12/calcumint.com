@@ -1,0 +1,1465 @@
+{
+  "result": {
+    "passed": false,
+    "error": {
+      "name": "Error",
+      "code": "ETIMEDOUT",
+      "signal": "SIGKILL",
+      "message": "Source verifier exceeded unchanged 150000ms deadline"
+    },
+    "head": "f49065b2ff40abb6593a7e480033413b7e34899c",
+    "closingHead": "f49065b2ff40abb6593a7e480033413b7e34899c",
+    "status": "",
+    "closingStatus": "",
+    "changedOriginalTargets": [],
+    "unchangedInput": true,
+    "wallMS": 150063.676849,
+    "samples": 746,
+    "qualified": false,
+    "scope": "ADVISORY_ORIGINAL7_FILE_FULL115_CRITICAL_PATH_NOT_ACCEPTANCE"
+  },
+  "clockOriginUnixMSAdvisory": 1794827480196.0122,
+  "files": [
+    {
+      "file": "tests/parallel-source-20261110/application-successor.test.mjs",
+      "sha256": "7e1f7a1f961734ad3779d2f32984e333f7b4d58bbb2561ecdcd3f207b47d1951",
+      "pid": 1431356,
+      "startUTC": "2026-11-16T11:11:20.544Z",
+      "startMS": 347.98779296875,
+      "exitUTC": "2026-11-16T11:12:11.487Z",
+      "exitMS": 51290.98779296875,
+      "wallMS": 50943,
+      "exitCode": 0,
+      "stateAtDeadline": "completed"
+    },
+    {
+      "file": "tests/parallel-source-20261110/current.test.mjs",
+      "sha256": "1f1c75a05a37a7e3a9c69308ad8ab49ead3ddbe2238ce1215c7ca10fa328c2cd",
+      "pid": 1431357,
+      "startUTC": "2026-11-16T11:11:20.530Z",
+      "startMS": 333.98779296875,
+      "exitUTC": null,
+      "exitMS": null,
+      "wallMS": null,
+      "exitCode": null,
+      "stateAtDeadline": "active"
+    },
+    {
+      "file": "tests/parallel-source-20261110/git-reader.test.mjs",
+      "sha256": "78082c242a3b5263cbea0c99a7039026279ba28cbb2976efcb11d7c473f34213",
+      "pid": 1465816,
+      "startUTC": "2026-11-16T11:12:11.720Z",
+      "startMS": 51523.98779296875,
+      "exitUTC": "2026-11-16T11:12:12.014Z",
+      "exitMS": 51817.98779296875,
+      "wallMS": 294,
+      "exitCode": 0,
+      "stateAtDeadline": "completed"
+    },
+    {
+      "file": "tests/parallel-source-20261110/retained-vitest.test.mjs",
+      "sha256": "dbc2b73a7d5e777cc1148c7356b795dcb7216711e418f38c4a364f217deb6484",
+      "pid": 1524065,
+      "startUTC": "2026-11-16T11:13:36.175Z",
+      "startMS": 135978.98779296875,
+      "exitUTC": "2026-11-16T11:13:36.197Z",
+      "exitMS": 136000.98779296875,
+      "wallMS": 22,
+      "exitCode": 0,
+      "stateAtDeadline": "completed"
+    },
+    {
+      "file": "tests/parallel-source-20261110/source-object-lock.test.mjs",
+      "sha256": "5436cd496ccfc34162d637ca8e5435cfe9aa3285b4c199eab6e673edc63d5f2b",
+      "pid": 1524186,
+      "startUTC": "2026-11-16T11:13:36.376Z",
+      "startMS": 136179.98779296875,
+      "exitUTC": "2026-11-16T11:13:41.224Z",
+      "exitMS": 141027.98779296875,
+      "wallMS": 4848,
+      "exitCode": 0,
+      "stateAtDeadline": "completed"
+    },
+    {
+      "file": "tests/parallel-source-20261110/retained-vitest-diagnostics.test.mjs",
+      "sha256": "2b4e0bd189996fd9f5aa7cac0c967f321dd19735bedf8cbcea941da2881ed03b",
+      "pid": 1506431,
+      "startUTC": "2026-11-16T11:13:10.417Z",
+      "startMS": 110220.98779296875,
+      "exitUTC": "2026-11-16T11:13:35.951Z",
+      "exitMS": 135754.98779296875,
+      "wallMS": 25534,
+      "exitCode": 0,
+      "stateAtDeadline": "completed"
+    },
+    {
+      "file": "tests/parallel-source-20261110/historical-group.test.mjs",
+      "sha256": "56a2596ac7c160235260f3753b138e21ab8d4007d47764cef96dc782414d5345",
+      "pid": 1466281,
+      "startUTC": "2026-11-16T11:12:12.138Z",
+      "startMS": 51941.98779296875,
+      "exitUTC": "2026-11-16T11:13:10.261Z",
+      "exitMS": 110064.98779296875,
+      "wallMS": 58123,
+      "exitCode": 0,
+      "stateAtDeadline": "completed"
+    }
+  ],
+  "children": [
+    {
+      "id": 1,
+      "argv": [
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=2",
+        "tests/milestone100-20261114/source-stage8-saved-actions-claim.test.mjs",
+        "tests/milestone100-20261114/source-stage8-test-only-successor.test.mjs",
+        "tests/milestone100-20261114/source-stage8-guard-selection.test.mjs",
+        "tests/milestone100-20261114/source-preflight-stage8.test.mjs",
+        "tests/milestone100-20261114/source-stage8-shortest-guard.test.mjs",
+        "tests/milestone100-20261114/source-stage8-named-dependencies.test.mjs",
+        "tests/milestone100-20261114/source-stage8-shortest-fixture.test.mjs",
+        "tests/milestone100-20261114/source-stage8-publication-transport.test.mjs",
+        "tests/milestone100-20261114/source-stage8-direct-commit-cache.test.mjs",
+        "tests/milestone100-20261114/source-stage8-negative-authority.test.mjs",
+        "tests/milestone100-20261114/source-stage8-authority-availability.test.mjs",
+        "tests/milestone100-20261114/source-stage8-supplied-lock.test.mjs",
+        "tests/ci-rpc-recovery-20261113/source-node.test.mjs"
+      ],
+      "pid": 1432127,
+      "startUTC": "2026-11-16T11:11:24.288Z",
+      "startMS": 4091.98779296875,
+      "endUTC": "2026-11-16T11:11:52.611Z",
+      "endMS": 32414.98779296875,
+      "wallMS": 28330.709718,
+      "timeout": 45000,
+      "maxBuffer": 4000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 60,
+        "pass": 60,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 28275.828079
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 48150.0,
+      "sampleCount": 141,
+      "stdout": "/tmp/worker3-full115-critical/child-1-source-stage8-saved-actions-claim.test.mjs+source-stage8-test-only-successor.test.mjs+sour.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-1-source-stage8-saved-actions-claim.test.mjs+source-stage8-test-only-successor.test.mjs+sour.stderr"
+    },
+    {
+      "id": 2,
+      "argv": [
+        "--test",
+        "tests/completion-first-20261112/personal-stage.test.mjs"
+      ],
+      "pid": 1455146,
+      "startUTC": "2026-11-16T11:11:59.304Z",
+      "startMS": 39107.98779296875,
+      "endUTC": "2026-11-16T11:12:45.773Z",
+      "endMS": 85576.98779296875,
+      "wallMS": 46483.613702,
+      "timeout": 60000,
+      "maxBuffer": 4000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 46409.519989
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 47310.0,
+      "sampleCount": 232,
+      "stdout": "/tmp/worker3-full115-critical/child-2-personal-stage.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-2-personal-stage.test.mjs.stderr"
+    },
+    {
+      "id": 3,
+      "argv": [
+        "tests/completion-first-20261112/retained-stage1-tests.mjs"
+      ],
+      "pid": 1455154,
+      "startUTC": "2026-11-16T11:11:59.317Z",
+      "startMS": 39120.98779296875,
+      "endUTC": "2026-11-16T11:12:09.872Z",
+      "endMS": 49675.98779296875,
+      "wallMS": 10568.417215,
+      "timeout": 60000,
+      "maxBuffer": 4000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 9114.322931
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 10210.0,
+      "sampleCount": 53,
+      "stdout": "/tmp/worker3-full115-critical/child-3-retained-stage1-tests.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-3-retained-stage1-tests.mjs.stderr"
+    },
+    {
+      "id": 4,
+      "argv": [
+        "--test",
+        "tests/four-worker-integration-20261115/source-stage9.test.mjs"
+      ],
+      "pid": 1463763,
+      "startUTC": "2026-11-16T11:12:09.893Z",
+      "startMS": 49696.98779296875,
+      "endUTC": "2026-11-16T11:12:12.328Z",
+      "endMS": 52131.98779296875,
+      "wallMS": 2455.638415,
+      "timeout": 15000,
+      "maxBuffer": 4000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 2381.718692
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 2260.0,
+      "sampleCount": 12,
+      "stdout": "/tmp/worker3-full115-critical/child-4-source-stage9.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-4-source-stage9.test.mjs.stderr"
+    },
+    {
+      "id": 5,
+      "argv": [
+        "--test",
+        "tests/gotrue-runtime/login-diagnostics.test.mjs"
+      ],
+      "pid": 1466619,
+      "startUTC": "2026-11-16T11:12:12.343Z",
+      "startMS": 52146.98779296875,
+      "endUTC": "2026-11-16T11:12:12.939Z",
+      "endMS": 52742.98779296875,
+      "wallMS": 610.79207,
+      "timeout": 30000,
+      "maxBuffer": 4000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 543.480879
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 560.0,
+      "sampleCount": 3,
+      "stdout": "/tmp/worker3-full115-critical/child-5-login-diagnostics.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-5-login-diagnostics.test.mjs.stderr"
+    },
+    {
+      "id": 6,
+      "argv": [
+        "--test",
+        "tests/full-product-batch13/workflow.test.mjs",
+        "tests/full-product-batch14/workflow.test.mjs",
+        "tests/full-product-batch17/workflow.test.mjs"
+      ],
+      "pid": 1467100,
+      "startUTC": "2026-11-16T11:12:12.954Z",
+      "startMS": 52757.98779296875,
+      "endUTC": "2026-11-16T11:12:14.324Z",
+      "endMS": 54127.98779296875,
+      "wallMS": 1383.989488,
+      "timeout": 30000,
+      "maxBuffer": 4000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 10,
+        "pass": 10,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 1332.443313
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 1860.0,
+      "sampleCount": 7,
+      "stdout": "/tmp/worker3-full115-critical/child-6-workflow.test.mjs+workflow.test.mjs+workflow.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-6-workflow.test.mjs+workflow.test.mjs+workflow.test.mjs.stderr"
+    },
+    {
+      "id": 7,
+      "argv": [
+        "tests/completion-wave-20261113/source-app-stage5-availability.test.mjs"
+      ],
+      "pid": 1489453,
+      "startUTC": "2026-11-16T11:12:47.846Z",
+      "startMS": 87649.98779296875,
+      "endUTC": "2026-11-16T11:12:48.277Z",
+      "endMS": 88080.98779296875,
+      "wallMS": 439.878283,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 155.597372
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 290.0,
+      "sampleCount": 2,
+      "stdout": "/tmp/worker3-full115-critical/child-7-source-app-stage5-availability.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-7-source-app-stage5-availability.test.mjs.stderr"
+    },
+    {
+      "id": 8,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-authority-scope.test.mjs"
+      ],
+      "pid": 1489790,
+      "startUTC": "2026-11-16T11:12:48.292Z",
+      "startMS": 88095.98779296875,
+      "endUTC": "2026-11-16T11:13:15.857Z",
+      "endMS": 115660.98779296875,
+      "wallMS": 27579.496658,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 10,
+        "pass": 10,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 27345.748266
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 30030.0,
+      "sampleCount": 137,
+      "stdout": "/tmp/worker3-full115-critical/child-8-source-stage8-authority-scope.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-8-source-stage8-authority-scope.test.mjs.stderr"
+    },
+    {
+      "id": 9,
+      "argv": [
+        "tests/completion-wave-20261113/source-authority-preload.test.mjs"
+      ],
+      "pid": 1489796,
+      "startUTC": "2026-11-16T11:12:48.305Z",
+      "startMS": 88108.98779296875,
+      "endUTC": "2026-11-16T11:13:01.503Z",
+      "endMS": 101306.98779296875,
+      "wallMS": 13211.25803,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 11030.803925
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 13080.0,
+      "sampleCount": 66,
+      "stdout": "/tmp/worker3-full115-critical/child-9-source-authority-preload.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-9-source-authority-preload.test.mjs.stderr"
+    },
+    {
+      "id": 10,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs"
+      ],
+      "pid": 1508243,
+      "startUTC": "2026-11-16T11:13:15.915Z",
+      "startMS": 115718.98779296875,
+      "endUTC": "2026-11-16T11:13:30.745Z",
+      "endMS": 130548.98779296875,
+      "wallMS": 14885.69576,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 14708.90567
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 15260.0,
+      "sampleCount": 75,
+      "stdout": "/tmp/worker3-full115-critical/child-10-source-stage8-runtime-auxiliary.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-10-source-stage8-runtime-auxiliary.test.mjs.stderr"
+    },
+    {
+      "id": 11,
+      "argv": [
+        "tests/milestone100-20261114/retained-stage7-preflight.mjs"
+      ],
+      "pid": 1508249,
+      "startUTC": "2026-11-16T11:13:15.968Z",
+      "startMS": 115771.98779296875,
+      "endUTC": "2026-11-16T11:13:23.910Z",
+      "endMS": 123713.98779296875,
+      "wallMS": 7992.347959,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 666.365759
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 7990.0,
+      "sampleCount": 40,
+      "stdout": "/tmp/worker3-full115-critical/child-11-retained-stage7-preflight.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-11-retained-stage7-preflight.mjs.stderr"
+    },
+    {
+      "id": 12,
+      "argv": [
+        "tests/next-engineering-20261115/source-current26.test.mjs"
+      ],
+      "pid": 1513815,
+      "startUTC": "2026-11-16T11:13:23.923Z",
+      "startMS": 123726.98779296875,
+      "endUTC": "2026-11-16T11:13:33.407Z",
+      "endMS": 133210.98779296875,
+      "wallMS": 9496.199633,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 9421.374599
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 9070.0,
+      "sampleCount": 47,
+      "stdout": "/tmp/worker3-full115-critical/child-12-source-current26.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-12-source-current26.test.mjs.stderr"
+    },
+    {
+      "id": 13,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs"
+      ],
+      "pid": 1519023,
+      "startUTC": "2026-11-16T11:13:30.762Z",
+      "startMS": 130565.98779296875,
+      "endUTC": "2026-11-16T11:13:38.388Z",
+      "endMS": 138191.98779296875,
+      "wallMS": 7642.749896,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 7434.572987
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 8240.0,
+      "sampleCount": 38,
+      "stdout": "/tmp/worker3-full115-critical/child-13-source-stage8-api-runtime-anchor.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-13-source-stage8-api-runtime-anchor.test.mjs.stderr"
+    },
+    {
+      "id": 14,
+      "argv": [
+        "tests/completion-wave-20261113/source-test-stage6.test.mjs"
+      ],
+      "pid": 1521276,
+      "startUTC": "2026-11-16T11:13:33.422Z",
+      "startMS": 133225.98779296875,
+      "endUTC": "2026-11-16T11:13:41.551Z",
+      "endMS": 141354.98779296875,
+      "wallMS": 8144.222051,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 8013.387524
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 4060.0,
+      "sampleCount": 40,
+      "stdout": "/tmp/worker3-full115-critical/child-14-source-test-stage6.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-14-source-test-stage6.test.mjs.stderr"
+    },
+    {
+      "id": 15,
+      "argv": [
+        "tests/next-engineering-20261115/source-private-git-transport.test.mjs"
+      ],
+      "pid": 1526153,
+      "startUTC": "2026-11-16T11:13:38.401Z",
+      "startMS": 138204.98779296875,
+      "endUTC": "2026-11-16T11:13:42.386Z",
+      "endMS": 142189.98779296875,
+      "wallMS": 3997.921648,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 23,
+        "pass": 23,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 3899.203921
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 3340.0,
+      "sampleCount": 19,
+      "stdout": "/tmp/worker3-full115-critical/child-15-source-private-git-transport.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-15-source-private-git-transport.test.mjs.stderr"
+    },
+    {
+      "id": 16,
+      "argv": [
+        "tests/next-engineering-20261115/source-current32.test.mjs"
+      ],
+      "pid": 1527328,
+      "startUTC": "2026-11-16T11:13:41.570Z",
+      "startMS": 141373.98779296875,
+      "endUTC": "2026-11-16T11:13:49.315Z",
+      "endMS": 149118.98779296875,
+      "wallMS": 7763.469838,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 7663.858469
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 7800.0,
+      "sampleCount": 39,
+      "stdout": "/tmp/worker3-full115-critical/child-16-source-current32.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-16-source-current32.test.mjs.stderr"
+    },
+    {
+      "id": 17,
+      "argv": [
+        "tests/next-engineering-20261115/source-lineage-native-contract.test.mjs"
+      ],
+      "pid": 1527566,
+      "startUTC": "2026-11-16T11:13:42.403Z",
+      "startMS": 142206.98779296875,
+      "endUTC": "2026-11-16T11:13:46.177Z",
+      "endMS": 145980.98779296875,
+      "wallMS": 3791.21421,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 7,
+        "pass": 7,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 3691.657704
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 3720.0,
+      "sampleCount": 19,
+      "stdout": "/tmp/worker3-full115-critical/child-17-source-lineage-native-contract.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-17-source-lineage-native-contract.test.mjs.stderr"
+    },
+    {
+      "id": 18,
+      "argv": [
+        "tests/completion-wave-20261113/source-app-stage5.test.mjs"
+      ],
+      "pid": 1529038,
+      "startUTC": "2026-11-16T11:13:46.191Z",
+      "startMS": 145994.98779296875,
+      "endUTC": "2026-11-16T11:13:47.634Z",
+      "endMS": 147437.98779296875,
+      "wallMS": 1456.244517,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 7,
+        "pass": 7,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 1389.178286
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 1400.0,
+      "sampleCount": 8,
+      "stdout": "/tmp/worker3-full115-critical/child-18-source-app-stage5.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-18-source-app-stage5.test.mjs.stderr"
+    },
+    {
+      "id": 19,
+      "argv": [
+        "tests/next-engineering-20261115/source-private-git-stream.test.mjs"
+      ],
+      "pid": 1530116,
+      "startUTC": "2026-11-16T11:13:47.647Z",
+      "startMS": 147450.98779296875,
+      "endUTC": "2026-11-16T11:13:48.634Z",
+      "endMS": 148437.98779296875,
+      "wallMS": 1000.159437,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 938.18555
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 1120.0,
+      "sampleCount": 5,
+      "stdout": "/tmp/worker3-full115-critical/child-19-source-private-git-stream.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-19-source-private-git-stream.test.mjs.stderr"
+    },
+    {
+      "id": 20,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-negative-publication-caller.test.mjs"
+      ],
+      "pid": 1530428,
+      "startUTC": "2026-11-16T11:13:48.646Z",
+      "startMS": 148449.98779296875,
+      "endUTC": "2026-11-16T11:13:48.963Z",
+      "endMS": 148766.98779296875,
+      "wallMS": 328.564453,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 10,
+        "pass": 10,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 240.050238
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 190.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical/child-20-source-stage8-negative-publication-caller.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-20-source-stage8-negative-publication-caller.test.mjs.stderr"
+    },
+    {
+      "id": 21,
+      "argv": [
+        "tests/milestone100-20261114/workflow-source-evidence-batch.test.mjs"
+      ],
+      "pid": 1530490,
+      "startUTC": "2026-11-16T11:13:48.979Z",
+      "startMS": 148782.98779296875,
+      "endUTC": "2026-11-16T11:13:49.035Z",
+      "endMS": 148838.98779296875,
+      "wallMS": 71.752069,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 15.395735
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 40.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical/child-21-workflow-source-evidence-batch.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-21-workflow-source-evidence-batch.test.mjs.stderr"
+    },
+    {
+      "id": 22,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-shortest-native-driver.test.mjs"
+      ],
+      "pid": 1530515,
+      "startUTC": "2026-11-16T11:13:49.046Z",
+      "startMS": 148849.98779296875,
+      "endUTC": "2026-11-16T11:13:49.378Z",
+      "endMS": 149181.98779296875,
+      "wallMS": 342.336899,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 18,
+        "pass": 18,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 242.281191
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 170.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical/child-22-source-stage8-shortest-native-driver.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-22-source-stage8-shortest-native-driver.test.mjs.stderr"
+    },
+    {
+      "id": 23,
+      "argv": [
+        "tests/completion-wave-20261113/source-preflight.test.mjs"
+      ],
+      "pid": 1530664,
+      "startUTC": "2026-11-16T11:13:49.328Z",
+      "startMS": 149131.98779296875,
+      "endUTC": "2026-11-16T11:13:49.428Z",
+      "endMS": 149231.98779296875,
+      "wallMS": 112.848111,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 25.130767
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 90.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical/child-23-source-preflight.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-23-source-preflight.test.mjs.stderr"
+    },
+    {
+      "id": 24,
+      "argv": [
+        "tests/next-cohort-20261110/source/runtime-evidence-batch.test.mjs"
+      ],
+      "pid": 1530679,
+      "startUTC": "2026-11-16T11:13:49.389Z",
+      "startMS": 149192.98779296875,
+      "endUTC": "2026-11-16T11:13:49.455Z",
+      "endMS": 149258.98779296875,
+      "wallMS": 77.217054,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 11,
+        "pass": 11,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 20.477342
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 20.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical/child-24-runtime-evidence-batch.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-24-runtime-evidence-batch.test.mjs.stderr"
+    },
+    {
+      "id": 25,
+      "argv": [
+        "tests/milestone100-20261114/authority-observation-collector.test.mjs"
+      ],
+      "pid": 1530686,
+      "startUTC": "2026-11-16T11:13:49.436Z",
+      "startMS": 149239.98779296875,
+      "endUTC": "2026-11-16T11:13:49.511Z",
+      "endMS": 149314.98779296875,
+      "wallMS": 82.871793,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 23,
+        "pass": 23,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 28.027768
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": null,
+      "sampleCount": 0,
+      "stdout": "/tmp/worker3-full115-critical/child-25-authority-observation-collector.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-25-authority-observation-collector.test.mjs.stderr"
+    },
+    {
+      "id": 26,
+      "argv": [
+        "tests/next-cohort-20261110/source/runtime-stage2-batch.test.mjs"
+      ],
+      "pid": 1530693,
+      "startUTC": "2026-11-16T11:13:49.462Z",
+      "startMS": 149265.98779296875,
+      "endUTC": "2026-11-16T11:13:49.528Z",
+      "endMS": 149331.98779296875,
+      "wallMS": 72.74794,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 10,
+        "pass": 10,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 21.969234
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": null,
+      "sampleCount": 0,
+      "stdout": "/tmp/worker3-full115-critical/child-26-runtime-stage2-batch.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-26-runtime-stage2-batch.test.mjs.stderr"
+    },
+    {
+      "id": 27,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-stage5-scope.test.mjs"
+      ],
+      "pid": 1530700,
+      "startUTC": "2026-11-16T11:13:49.518Z",
+      "startMS": 149321.98779296875,
+      "endUTC": "2026-11-16T11:13:49.591Z",
+      "endMS": 149394.98779296875,
+      "wallMS": 80.11769,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 25.362848
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": null,
+      "sampleCount": 0,
+      "stdout": "/tmp/worker3-full115-critical/child-27-source-stage8-stage5-scope.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-27-source-stage8-stage5-scope.test.mjs.stderr"
+    },
+    {
+      "id": 28,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-negative-factory.test.mjs"
+      ],
+      "pid": 1530706,
+      "startUTC": "2026-11-16T11:13:49.536Z",
+      "startMS": 149340.98779296875,
+      "endUTC": "2026-11-16T11:13:49.661Z",
+      "endMS": 149464.98779296875,
+      "wallMS": 132.797388,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 77.913085
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 70.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical/child-28-source-stage8-negative-factory.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-28-source-stage8-negative-factory.test.mjs.stderr"
+    },
+    {
+      "id": 29,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-current-guard-scope.test.mjs"
+      ],
+      "pid": 1530718,
+      "startUTC": "2026-11-16T11:13:49.598Z",
+      "startMS": 149401.98779296875,
+      "endUTC": "2026-11-16T11:13:49.670Z",
+      "endMS": 149473.98779296875,
+      "wallMS": 78.712797,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 21.285202
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 10.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical/child-29-source-stage8-current-guard-scope.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-29-source-stage8-current-guard-scope.test.mjs.stderr"
+    },
+    {
+      "id": 30,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs"
+      ],
+      "pid": 1530737,
+      "startUTC": "2026-11-16T11:13:49.669Z",
+      "startMS": 149472.98779296875,
+      "endUTC": "2026-11-16T11:13:49.834Z",
+      "endMS": 149637.98779296875,
+      "wallMS": 172.948217,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 10,
+        "pass": 10,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 119.947489
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 180.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical/child-30-source-stage8-negative-workflow.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-30-source-stage8-negative-workflow.test.mjs.stderr"
+    },
+    {
+      "id": 31,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs"
+      ],
+      "pid": 1530738,
+      "startUTC": "2026-11-16T11:13:49.677Z",
+      "startMS": 149480.98779296875,
+      "endUTC": "2026-11-16T11:13:49.772Z",
+      "endMS": 149575.98779296875,
+      "wallMS": 101.865381,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 28.392389
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": null,
+      "sampleCount": 0,
+      "stdout": "/tmp/worker3-full115-critical/child-31-source-stage8-immutable-prime.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-31-source-stage8-immutable-prime.test.mjs.stderr"
+    },
+    {
+      "id": 32,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-runtime-chain-prefetch.test.mjs"
+      ],
+      "pid": 1530751,
+      "startUTC": "2026-11-16T11:13:49.779Z",
+      "startMS": 149582.98779296875,
+      "endUTC": "2026-11-16T11:13:49.862Z",
+      "endMS": 149665.98779296875,
+      "wallMS": 90.529419,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 11.61301
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 40.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical/child-32-source-stage8-runtime-chain-prefetch.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-32-source-stage8-runtime-chain-prefetch.test.mjs.stderr"
+    },
+    {
+      "id": 33,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs"
+      ],
+      "pid": 1530758,
+      "startUTC": "2026-11-16T11:13:49.843Z",
+      "startMS": 149646.98779296875,
+      "endUTC": null,
+      "endMS": null,
+      "wallMS": null,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "active-killed-by-outer150",
+      "tapSummary": {},
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 390.0,
+      "sampleCount": 2,
+      "stdout": "/tmp/worker3-full115-critical/child-33-source-stage8-negative-current-src.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-33-source-stage8-negative-current-src.test.mjs.stderr"
+    },
+    {
+      "id": 34,
+      "argv": [
+        "tests/parallel-source-20261110/source-lock-scope.test.mjs"
+      ],
+      "pid": 1530765,
+      "startUTC": "2026-11-16T11:13:49.873Z",
+      "startMS": 149676.98779296875,
+      "endUTC": null,
+      "endMS": null,
+      "wallMS": null,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "active-killed-by-outer150",
+      "tapSummary": {},
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 310.0,
+      "sampleCount": 2,
+      "stdout": "/tmp/worker3-full115-critical/child-34-source-lock-scope.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical/child-34-source-lock-scope.test.mjs.stderr"
+    }
+  ],
+  "mandatoryPlan": [
+    {
+      "file": "tests/milestone100-20261114/source-stage8-negative-publication-caller.test.mjs",
+      "expectedCases": 10,
+      "stateAtDeadline": "completed",
+      "childId": 20,
+      "observedPass": 10
+    },
+    {
+      "file": "tests/milestone100-20261114/workflow-source-evidence-batch.test.mjs",
+      "expectedCases": 5,
+      "stateAtDeadline": "completed",
+      "childId": 21,
+      "observedPass": 5
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-shortest-native-driver.test.mjs",
+      "expectedCases": 18,
+      "stateAtDeadline": "completed",
+      "childId": 22,
+      "observedPass": 18
+    },
+    {
+      "file": "tests/completion-wave-20261113/source-app-stage5.test.mjs",
+      "expectedCases": 7,
+      "stateAtDeadline": "completed",
+      "childId": 18,
+      "observedPass": 7
+    },
+    {
+      "file": "tests/completion-wave-20261113/source-app-stage5-availability.test.mjs",
+      "expectedCases": 5,
+      "stateAtDeadline": "completed",
+      "childId": 7,
+      "observedPass": 5
+    },
+    {
+      "file": "tests/completion-wave-20261113/source-authority-preload.test.mjs",
+      "expectedCases": 6,
+      "stateAtDeadline": "completed",
+      "childId": 9,
+      "observedPass": 6
+    },
+    {
+      "file": "tests/completion-wave-20261113/source-preflight.test.mjs",
+      "expectedCases": 5,
+      "stateAtDeadline": "completed",
+      "childId": 23,
+      "observedPass": 5
+    },
+    {
+      "file": "tests/milestone100-20261114/retained-stage7-preflight.mjs",
+      "expectedCases": 5,
+      "stateAtDeadline": "completed",
+      "childId": 11,
+      "observedPass": 5
+    },
+    {
+      "file": "tests/completion-wave-20261113/source-test-stage6.test.mjs",
+      "expectedCases": 6,
+      "stateAtDeadline": "completed",
+      "childId": 14,
+      "observedPass": 6
+    },
+    {
+      "file": "tests/next-cohort-20261110/source/runtime-evidence-batch.test.mjs",
+      "expectedCases": 11,
+      "stateAtDeadline": "completed",
+      "childId": 24,
+      "observedPass": 11
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs",
+      "expectedCases": 9,
+      "stateAtDeadline": "completed",
+      "childId": 13,
+      "observedPass": 9
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs",
+      "expectedCases": 6,
+      "stateAtDeadline": "completed",
+      "childId": 10,
+      "observedPass": 6
+    },
+    {
+      "file": "tests/milestone100-20261114/authority-observation-collector.test.mjs",
+      "expectedCases": 23,
+      "stateAtDeadline": "completed",
+      "childId": 25,
+      "observedPass": 23
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-authority-scope.test.mjs",
+      "expectedCases": 10,
+      "stateAtDeadline": "completed",
+      "childId": 8,
+      "observedPass": 10
+    },
+    {
+      "file": "tests/next-cohort-20261110/source/runtime-stage2-batch.test.mjs",
+      "expectedCases": 10,
+      "stateAtDeadline": "completed",
+      "childId": 26,
+      "observedPass": 10
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-stage5-scope.test.mjs",
+      "expectedCases": 9,
+      "stateAtDeadline": "completed",
+      "childId": 27,
+      "observedPass": 9
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-negative-factory.test.mjs",
+      "expectedCases": 9,
+      "stateAtDeadline": "completed",
+      "childId": 28,
+      "observedPass": 9
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-current-guard-scope.test.mjs",
+      "expectedCases": 9,
+      "stateAtDeadline": "completed",
+      "childId": 29,
+      "observedPass": 9
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs",
+      "expectedCases": 10,
+      "stateAtDeadline": "completed",
+      "childId": 30,
+      "observedPass": 10
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs",
+      "expectedCases": 9,
+      "stateAtDeadline": "completed",
+      "childId": 31,
+      "observedPass": 9
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-runtime-chain-prefetch.test.mjs",
+      "expectedCases": 5,
+      "stateAtDeadline": "completed",
+      "childId": 32,
+      "observedPass": 5
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs",
+      "expectedCases": 9,
+      "stateAtDeadline": "active-killed-by-outer150",
+      "childId": 33,
+      "observedPass": null
+    },
+    {
+      "file": "tests/parallel-source-20261110/source-lock-scope.test.mjs",
+      "expectedCases": 9,
+      "stateAtDeadline": "active-killed-by-outer150",
+      "childId": 34,
+      "observedPass": null
+    },
+    {
+      "file": "tests/ci-rpc-recovery-20261113/source-node-owned-lock.test.mjs",
+      "expectedCases": 5,
+      "stateAtDeadline": "not-launched",
+      "childId": null,
+      "observedPass": null
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-negative-workflow-claim.test.mjs",
+      "expectedCases": 9,
+      "stateAtDeadline": "not-launched",
+      "childId": null,
+      "observedPass": null
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-negative-reader-order.test.mjs",
+      "expectedCases": 8,
+      "stateAtDeadline": "not-launched",
+      "childId": null,
+      "observedPass": null
+    },
+    {
+      "file": "tests/milestone100-20261114/composition-source-evidence-batch.test.mjs",
+      "expectedCases": 16,
+      "stateAtDeadline": "not-launched",
+      "childId": null,
+      "observedPass": null
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs",
+      "expectedCases": 7,
+      "stateAtDeadline": "not-launched",
+      "childId": null,
+      "observedPass": null
+    },
+    {
+      "file": "tests/next-cohort-20261110/source/runtime-head-bound-batch.test.mjs",
+      "expectedCases": 7,
+      "stateAtDeadline": "not-launched",
+      "childId": null,
+      "observedPass": null
+    },
+    {
+      "file": "tests/next-engineering-20261115/source-current32.test.mjs",
+      "expectedCases": 4,
+      "stateAtDeadline": "completed",
+      "childId": 16,
+      "observedPass": 4
+    },
+    {
+      "file": "tests/next-engineering-20261115/source-current26.test.mjs",
+      "expectedCases": 1,
+      "stateAtDeadline": "completed",
+      "childId": 12,
+      "observedPass": 1
+    },
+    {
+      "file": "tests/next-engineering-20261115/source-private-git-transport.test.mjs",
+      "expectedCases": 23,
+      "stateAtDeadline": "completed",
+      "childId": 15,
+      "observedPass": 23
+    },
+    {
+      "file": "tests/next-engineering-20261115/source-private-git-lifecycle.test.mjs",
+      "expectedCases": 6,
+      "stateAtDeadline": "not-launched",
+      "childId": null,
+      "observedPass": null
+    },
+    {
+      "file": "tests/next-engineering-20261115/source-private-git-stream.test.mjs",
+      "expectedCases": 1,
+      "stateAtDeadline": "completed",
+      "childId": 19,
+      "observedPass": 1
+    },
+    {
+      "file": "tests/next-engineering-20261115/source-binding-current32.test.mjs",
+      "expectedCases": 7,
+      "stateAtDeadline": "not-launched",
+      "childId": null,
+      "observedPass": null
+    },
+    {
+      "file": "tests/next-engineering-20261115/source-stage9-fixture.test.mjs",
+      "expectedCases": 4,
+      "stateAtDeadline": "not-launched",
+      "childId": null,
+      "observedPass": null
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-runtime-current-selection.test.mjs",
+      "expectedCases": 7,
+      "stateAtDeadline": "not-launched",
+      "childId": null,
+      "observedPass": null
+    },
+    {
+      "file": "tests/next-engineering-20261115/source-completion-prewarm-admission.test.mjs",
+      "expectedCases": 2,
+      "stateAtDeadline": "not-launched",
+      "childId": null,
+      "observedPass": null
+    },
+    {
+      "file": "tests/next-engineering-20261115/source-lineage-fixture.test.mjs",
+      "expectedCases": 4,
+      "stateAtDeadline": "not-launched",
+      "childId": null,
+      "observedPass": null
+    },
+    {
+      "file": "tests/next-engineering-20261115/source-lineage-native-contract.test.mjs",
+      "expectedCases": 7,
+      "stateAtDeadline": "completed",
+      "childId": 17,
+      "observedPass": 7
+    }
+  ],
+  "asyncChildrenExpected": 46,
+  "asyncChildrenLaunched": 34,
+  "asyncChildrenCompleted": 32,
+  "completedChildErrors": 0,
+  "mandatoryChildrenCompleted": 26,
+  "mandatoryChildrenActiveAtDeadline": 2,
+  "mandatoryChildrenNotLaunched": 12,
+  "mandatoryObservedCompletedPass": 223,
+  "TAPPrefixPass": 96,
+  "TAPPrefixFail": 0,
+  "cpuQuota": "400000 100000",
+  "qualified": false
+}

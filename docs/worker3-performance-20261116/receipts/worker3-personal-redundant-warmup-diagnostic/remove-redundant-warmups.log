@@ -1,0 +1,38 @@
+TAP version 13
+# (node:1221470) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+# --import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("/tmp/worker3-personal-redundant-warmup-diagnostic/warmup-loader.mjs", pathToFileURL("./"));'
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: mandatory live Stage2 composes exact historical Stage1 at5008 and Stage6 without replacing their literal records
+ok 1 - mandatory live Stage2 composes exact historical Stage1 at5008 and Stage6 without replacing their literal records
+  ---
+  duration_ms: 5535.238365
+  type: 'test'
+  ...
+# Subtest: every current Stage2 source rejects genuine Stage1 predecessor bytes and current substitutions
+ok 2 - every current Stage2 source rejects genuine Stage1 predecessor bytes and current substitutions
+  ---
+  duration_ms: 2053.479477
+  type: 'test'
+  ...
+# Subtest: Stage2 captures and commits cannot nominate themselves or hide a later current source delta
+ok 3 - Stage2 captures and commits cannot nominate themselves or hide a later current source delta
+  ---
+  duration_ms: 6190.601909
+  type: 'test'
+  ...
+# Subtest: an overlapping historical Business source discloses the actual latest immutable source ref
+ok 4 - an overlapping historical Business source discloses the actual latest immutable source ref
+  ---
+  duration_ms: 19746.494509
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 33748.267484
+

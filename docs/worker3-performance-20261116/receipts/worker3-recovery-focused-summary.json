@@ -1,0 +1,367 @@
+{
+  "schemaVersion": 1,
+  "kind": "WORKER3_CROSS_HEAD_LOCAL_FOCUSED_RECEIPT_SUMMARY",
+  "createdUTC": "2026-11-16T13:15:16.280396+00:00",
+  "finalCandidateHead": "b7a7c176cf6a2349a468d10ce30c25552835de5e",
+  "releaseHold": true,
+  "qualification": false,
+  "confirmedEngineeringBaselineUnchanged": 81,
+  "scope": "Read-only aggregation of existing receipts. No tests, benchmarks, source edits, canonical certification or publication actions performed by this summary task.",
+  "headApplicability": {
+    "mixedHeads": true,
+    "noClaimOfFinalB7LocalRPCSixRun": true,
+    "noPriorHeadPassSubstitutesForExactB7HostedCI": true,
+    "zeroApplicationSourceDeltaDoesNotEstablishHarnessOrAdmissionEquivalence": true,
+    "vitestHeadBindingNote": "Vitest JSON does not embed a Git SHA; named run heads follow the coordinator-provided run context. Cold proof JSON embeds its own exact head.",
+    "unchangedSRCDeltasToB7": {
+      "7ebdf0412619b8414e8c20b091f4fd9872c41f03": [],
+      "c670cf49279c9a4cee94fa9b2e492bd1d1dd4d42": [],
+      "3b7cbf3f760a71255d7306f8b9cccefaa5ac1b4a": [],
+      "4283f0e5ecf70e6145bebd92d4cdacc6974ecbf9": [],
+      "41082b15e786ee9cce103a7814cdfbe1645ff68f": []
+    },
+    "c670ToB7ExactRPCBindings": {
+      "vitest.config.ts": true,
+      "tests/construction-ci-recovery-20261116/yield-task-updates.mjs": true,
+      "src/lib/execution-recovery-evidence.test.ts": true
+    },
+    "sourceAdmissionAndNamespaceChangesStillRequireExactHeadVerification": true
+  },
+  "preservedLimits": {
+    "rpcTaskUpdateMS": 60000,
+    "APIProofMS": 5000,
+    "UIProofMS": 5000,
+    "full115OwnedChildMS": 150000,
+    "full115VitestOuterMS": 160000,
+    "mandatoryGuardChildMS": 30000,
+    "shortestNodeChildMS": 60000,
+    "shortestVitestOuterMS": 65000,
+    "sixCandidateNodeChildMS": 60000,
+    "sixCandidateVitestOuterMS": 65000,
+    "first20NodeChildMS": 60000,
+    "first20VitestOuterMS": 65000,
+    "sourceAcceptanceHostedJobMinutes": 20,
+    "maxWorkers": 1,
+    "limitsRaised": false,
+    "assertionsDisabled": false,
+    "currentVerdictsCached": false,
+    "securityNegativeControlsRemoved": false
+  },
+  "receipts": {
+    "c670RPCSixAndAPIUI": {
+      "head": "c670cf49279c9a4cee94fa9b2e492bd1d1dd4d42",
+      "classification": "SHARED_VITEST_IPC_SCHEDULING_AND_PROOF_PERFORMANCE",
+      "overallSelectedRunSuccess": false,
+      "overallFailureReason": "Separate full115 source wrapper failed its authority-scope child; RPC six and API/UI two passed.",
+      "selectedExecutionCases": 9,
+      "selectedPassed": 8,
+      "selectedFailed": 1,
+      "unselectedFilteredCases": 9,
+      "rpcSix": {
+        "file": "src/lib/execution-recovery-evidence.test.ts",
+        "status": "passed",
+        "casesPassed": 6,
+        "casesFailed": 0,
+        "fileSpanMS": 80641.3935546875,
+        "sumCaseDurationsMS": 80638.54159099999,
+        "largestIndividualCaseDurationMS": 55949.862502,
+        "eventLoopDelayDirectlyMeasured": false,
+        "cases": [
+          {
+            "title": "RETAINED A7 \u2014 runs the new exact-source, reviewer and operator guard tests through normal mandatory unit discovery",
+            "status": "passed",
+            "durationMS": 19484.596373
+          },
+          {
+            "title": "runs every current source-lineage guard in its own bounded mandatory unit process",
+            "status": "passed",
+            "durationMS": 55949.862502
+          },
+          {
+            "title": "allows only the exact documented dependency-cache relocation and unchanged captured bytes",
+            "status": "passed",
+            "durationMS": 6.137149999995017
+          },
+          {
+            "title": "RETAINED A7 \u2014 binds actual authenticated nineteen-identity receipts and independently isolated shared plan gating",
+            "status": "passed",
+            "durationMS": 2558.29213799999
+          },
+          {
+            "title": "RETAINED A7 \u2014 binds native UI and actual isolated restore receipts without fabricating human or production acceptance",
+            "status": "passed",
+            "durationMS": 2571.2598010000074
+          },
+          {
+            "title": "advances only scoped requirements for22identities and preserves all540 classifications",
+            "status": "passed",
+            "durationMS": 68.39362699999765
+          }
+        ]
+      },
+      "APIUI": [
+        {
+          "title": "retains genuine five API execution source and requires reviewed current runtime successors separately",
+          "status": "passed",
+          "durationMS": 4579.6655089999995,
+          "existingLimitMS": 5000
+        },
+        {
+          "title": "retains visible-interface and paragraph-PDF accessibility proof without asserting formal conformance",
+          "status": "passed",
+          "durationMS": 3867.985007,
+          "existingLimitMS": 5000
+        }
+      ],
+      "unhandledRPCDiagnostics": {
+        "unhandledErrorHeadingPresent": false,
+        "onTaskUpdatePresent": false
+      },
+      "applicability": "Passing prior-head shared-infrastructure regression evidence only. Exact RPC hook/config/test blobs match b7, but admission/namespace dependencies and integrated head differ. This is not a b7 RPC-six rerun.",
+      "artifacts": [
+        {
+          "path": "/tmp/worker3-c670-focused-source-rpc-api-ui.json",
+          "sha256": "158dcfca74fad0953b269478a8da3194f3d061622e16a203ed7305384b8e16aa"
+        },
+        {
+          "path": "/tmp/worker3-c670-focused-source-rpc-api-ui.log",
+          "sha256": "e8db25fbacf22ed949b3e36c565f8c7104b1e815dbab7c7b5296661e5d85845f"
+        }
+      ]
+    },
+    "c670Full115Failure": {
+      "head": "c670cf49279c9a4cee94fa9b2e492bd1d1dd4d42",
+      "vitestCaseDurationMS": 144780.409593,
+      "nestedTAPDurationMS": 144700.592827,
+      "nestedTests": 115,
+      "nestedPass": 114,
+      "nestedFail": 1,
+      "nestedSkip": 0,
+      "failure": "Only mandatory authority-scope child timed out at its existing 30000ms; empty child stdout/stderr.",
+      "classification": "SHARED_SOURCE_VERIFICATION_CHILD_BUDGET",
+      "calculatorSpecificNumericalDefectEstablished": false,
+      "artifact": {
+        "path": "/tmp/worker3-c670-focused-source-rpc-api-ui.json",
+        "sha256": "158dcfca74fad0953b269478a8da3194f3d061622e16a203ed7305384b8e16aa"
+      }
+    },
+    "b7OriginalFull115Failure": {
+      "head": "b7a7c176cf6a2349a468d10ce30c25552835de5e",
+      "vitestCaseDurationMS": 150177.427761,
+      "status": "failed",
+      "ownedDeadlineMS": 150000,
+      "cause": "ETIMEDOUT/SIGKILL at unchanged owned source deadline, as preserved in log.",
+      "visibleTAPPrefixPass": 96,
+      "visibleTAPPrefixFail": 0,
+      "final115SummaryPresent": false,
+      "otherFiveWrappers": "Unselected by this focused run, not independently reverified here.",
+      "classification": "SHARED_SOURCE_VERIFICATION_COMPLETENESS_AND_BUDGET",
+      "doesNotProveAllRemainingChildrenPassed": true,
+      "artifacts": [
+        {
+          "path": "/tmp/worker3-b7a-source115.json",
+          "sha256": "b491ed17d020885b3cc92c944dd7975ff334810a6951ceef3f4e63d4bbeb3a43"
+        },
+        {
+          "path": "/tmp/worker3-b7a-source115.log",
+          "sha256": "4a5dd00e821d0a679077c51e75a2f1638df9b9202196718128e8a63b0ff5509c"
+        }
+      ]
+    },
+    "b7AdvisoryFull115CriticalTrace": {
+      "head": "b7a7c176cf6a2349a468d10ce30c25552835de5e",
+      "qualification": false,
+      "instrumentedAdvisoryNotAcceptance": true,
+      "ownedWallMS": 150086.061304,
+      "ownedDeadlineMS": 150000,
+      "mandatoryChildrenCompleted": 34,
+      "mandatoryChildrenActiveAtDeadline": 2,
+      "mandatoryChildrenNotLaunched": 5,
+      "completedChildErrors": 1,
+      "scopeChild": {
+        "wallMS": 30053.516514,
+        "originalDeadlineMS": 30000,
+        "killed": true,
+        "signal": "SIGTERM",
+        "stdoutBytes": 0,
+        "stderrBytes": 0
+      },
+      "interpretation": "The zero-failure 96-case ordered TAP prefix hid a genuine scope-child timeout. Do not infer pass from missing late TAP.",
+      "artifact": {
+        "path": "/tmp/worker3-full115-critical-b7/critical-path-summary.json",
+        "sha256": "4de59a4b593d5c0fc3f3f0ae0ef0441b94e372f211ebe2ff5e3ba567c51066fd"
+      }
+    },
+    "7ebEightSelectedPasses": {
+      "head": "7ebdf0412619b8414e8c20b091f4fd9872c41f03",
+      "success": true,
+      "selectedPassed": 8,
+      "selectedFailed": 0,
+      "unselectedFilteredCases": 4,
+      "selection": "All six parallel-source wrappers plus API/UI two. The six execution-recovery/RPC tests were NOT selected.",
+      "cases": [
+        {
+          "title": "retains genuine five API execution source and requires reviewed current runtime successors separately",
+          "status": "passed",
+          "durationMS": 4537.379852
+        },
+        {
+          "title": "retains visible-interface and paragraph-PDF accessibility proof without asserting formal conformance",
+          "status": "passed",
+          "durationMS": 3881.4335630000005
+        },
+        {
+          "title": "executes fresh current-source, full-authority, reader, reversion and nomination negatives",
+          "status": "passed",
+          "durationMS": 141732.961919
+        },
+        {
+          "title": "executes the actual shortest-publication CI consumer with current immutable graph edges",
+          "status": "passed",
+          "durationMS": 61278.81439699998
+        },
+        {
+          "title": "executes the actual six-candidate CI lineage consumer with exact tamper refusals",
+          "status": "passed",
+          "durationMS": 36483.045547999995
+        },
+        {
+          "title": "executes the actual first20 publication manifest consumer and successor refusal cases",
+          "status": "passed",
+          "durationMS": 41024.607838999975
+        },
+        {
+          "title": "executes the actual calculator-sprint source consumers with strict Git refusal diagnostics",
+          "status": "passed",
+          "durationMS": 12428.886062999954
+        },
+        {
+          "title": "executes retained and exact-current authenticated receipt source claims with provenance refusals",
+          "status": "passed",
+          "durationMS": 35512.37163000001
+        }
+      ],
+      "unhandledRPCDiagnostics": {
+        "unhandledErrorHeadingPresent": false,
+        "onTaskUpdatePresent": false
+      },
+      "applicability": "Valid earlier-head local passes under original limits. Later b7 original source115 and hosted results govern final acceptance.",
+      "artifacts": [
+        {
+          "path": "/tmp/worker3-7eb-focused-source-api-ui.json",
+          "sha256": "c3ae4ba90339d4fb3f1655fb6bbec9ff4528bacd82ac3d8cdf6d422de9129cdc"
+        },
+        {
+          "path": "/tmp/worker3-7eb-focused-source-api-ui.log",
+          "sha256": "dee8ea852f2940f929f28766732526f6e664eaba1ef11c3cddb30cd860c3fb5e"
+        }
+      ]
+    },
+    "lightOnlyMandatory41Pass": {
+      "codeCommit": "41082b15e786ee9cce103a7814cdfbe1645ff68f",
+      "testedBaseHead": "c670cf49279c9a4cee94fa9b2e492bd1d1dd4d42",
+      "testedWorkingTreeContainedOnlySchedulerPatch": true,
+      "notAnExactB7IntegratedRun": true,
+      "sourceSHA256": "4ecf6860c4f818de84515c3f0ff0ea5fb00b343a17e099b3cb1485398024d675",
+      "outerCasesPassed": 1,
+      "mandatoryChildrenPassed": 41,
+      "mandatoryCasesEnforced": 332,
+      "mandatoryCaseMS": 58362.268815,
+      "TAPTotalMS": 58589.283515,
+      "scopeOriginal30sPassed": true,
+      "perChildExactTimingsNotSeparatelyMeasured": true,
+      "classification": "SHARED_SOURCE_GUARD_SCHEDULING",
+      "applicability": "Focused isolated pass only. Subsequent b7 full-context trace demonstrates that scope can still time out under integrated contention.",
+      "artifacts": [
+        {
+          "path": "/tmp/worker3-scope-light-lane-evidence/receipt.json",
+          "sha256": "64cb802975ad78f7f356e77601a3a2ed9a0e73707e2cd146f2f1b01996ac2d14"
+        },
+        {
+          "path": "/tmp/worker3-scope-light-lane-evidence/focused41.log",
+          "sha256": "387037f1b03716ca566f7c7f7e45f999c15a630d553f56d1c48d987dfa9e8ca9"
+        }
+      ]
+    },
+    "cloneColdRawFour": {
+      "head": "3b7cbf3f760a71255d7306f8b9cccefaa5ac1b4a",
+      "success": true,
+      "testsPassed": 4,
+      "ownedElapsedMS": 10051.154314,
+      "externalProcessElapsedMS": 10091.711834997113,
+      "existingOwnedDeadlineMS": 30000,
+      "parentReallyShallow": true,
+      "cloneMissingOriginalCodeRefBefore": true,
+      "allApprovedCommitsAvailableAfter": true,
+      "approvedCommitCountAtThisHead": 561,
+      "rawFixtureSHA256": "dce9ab31f02577cc410559d559fcec9bbb376ccc1326c513412c69d2677de52d",
+      "HEADAndIndexUnchanged": true,
+      "qualification": false,
+      "classification": "SHARED_SHALLOW_CLONE_OBJECT_AVAILABILITY",
+      "applicability": "Historical implementation/cold-fixture proof at embedded head3b7; does not establish every later b7 ref is available or exact-head cold acceptance.",
+      "artifacts": [
+        {
+          "path": "/tmp/worker3-clone-availability-actual-cold-proof.json",
+          "sha256": "b2184f88671180b4fb13c60904dd88da785f50d6ea7a74386f54d639d219da0e"
+        },
+        {
+          "path": "/tmp/worker3-actual-shallow-source-4imeod_8/raw-four.stdout",
+          "sha256": "69e31d0d594b86791f96a843ff6e76841d730488e249a26154a2e9219a85c15f"
+        },
+        {
+          "path": "/tmp/worker3-actual-shallow-source-4imeod_8/raw-four.stderr",
+          "sha256": "4e90498dcfe9402ad5113dcecd66bc0ddbad84487fc056fc50ece2691878bd96"
+        }
+      ]
+    },
+    "prewarmColdTwo": {
+      "head": "4283f0e5ecf70e6145bebd92d4cdacc6974ecbf9",
+      "success": true,
+      "testsPassed": 2,
+      "ownedElapsedMS": 221.6047,
+      "externalProcessElapsedMS": 266.8545689957682,
+      "existingOwnedDeadlineMS": 30000,
+      "parentReallyShallow": true,
+      "target": "9b70d14069cba27e5a4463865686c182ae6ad9cd",
+      "targetAbsentBefore": true,
+      "unchangedOriginalColdTestFailedBeforeBootstrap": true,
+      "bootstrapFetchedExactlyOneMissingCommit": true,
+      "approvedCommitCountAtThisHead": 568,
+      "immutableBaselineBlob": "7fb5c6fe7ff77528e1189dd1b7782c5be58373ef",
+      "testSHA256": "d001fef36312c7bcd53aa9256cf0ac9c854f8710743fc8918f7e56b6891e55f4",
+      "rawCurrent32SHA256": "dce9ab31f02577cc410559d559fcec9bbb376ccc1326c513412c69d2677de52d",
+      "HEADAndIndexUnchanged": true,
+      "qualification": false,
+      "classification": "SHARED_IMMUTABLE_POSITIVE_REF_AVAILABILITY",
+      "applicability": "Real prior-head shallow red/green ref-availability proof, not b7 integrated or hosted acceptance.",
+      "artifacts": [
+        {
+          "path": "/tmp/worker3-positive-refs-actual-cold-proof.json",
+          "sha256": "0ca56343ff89778dd24d03394d5e87518616c86f37c9173055e9b5eaf6b5683b"
+        },
+        {
+          "path": "/tmp/worker3-positive-ref-cold-pvuddf1u/prewarm-green.stdout",
+          "sha256": "abbc96dea3b8a7f1eae99888b17230606e7579bc53fac29bbd23b92514a98762"
+        },
+        {
+          "path": "/tmp/worker3-positive-ref-cold-pvuddf1u/prewarm-green.stderr",
+          "sha256": "aba9562e142f490f90e2ccd425938a2342b7e0c43ee493f80c78391153bb0dc4"
+        }
+      ]
+    }
+  },
+  "dispositions": {
+    "all20Candidates": "IMPLEMENTED_NOT_QUALIFIED",
+    "sharedInfrastructureNotCalculatorSpecific": true,
+    "passingLocalCIOrSelectedTestsAloneDoNotQualifyCalculators": true,
+    "canonicalCertificationCountsUpdated": false,
+    "directPR1538ModificationPerformed": false,
+    "productionChangesPerformed": false,
+    "mergeOrPublicationPerformed": false
+  },
+  "hostedCI": {
+    "head": "b7a7c176cf6a2349a468d10ce30c25552835de5e",
+    "statusAtCoordinatorInstruction": "Running; build passed. Other exact-head mandatory conclusions pending coordinator collection.",
+    "summaryDoesNotPollOrAssertCurrentRemoteConclusion": true
+  }
+}

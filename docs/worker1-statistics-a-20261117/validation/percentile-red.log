@@ -1,0 +1,47 @@
+
+ RUN  v3.2.7 /workspace/work/worker1-statistics-a-20261117
+
+ ❯ src/lib/worker1-statistics-a-20261117/cohort.test.ts (14 tests | 1 failed) 328ms
+   ✓ binds the exact catalog tuples without registering new engines 2ms
+   ✓ preserves immutable outputs, raw provenance, scenarios, batch recovery and exports #292 200ms
+   ✓ preserves immutable outputs, raw provenance, scenarios, batch recovery and exports #293 88ms
+   ✓ preserves immutable outputs, raw provenance, scenarios, batch recovery and exports #294 11ms
+   ✓ preserves immutable outputs, raw provenance, scenarios, batch recovery and exports #295 9ms
+   ✓ has independent hand-derived goldens including legitimate zero and negative values 2ms
+   ✓ refuses malformed/unsupported new captures #292 1ms
+   ✓ refuses malformed/unsupported new captures #293 1ms
+   ✓ refuses malformed/unsupported new captures #294 1ms
+   ✓ refuses malformed/unsupported new captures #295 1ms
+   ✓ refuses known weighted cancellation while preserving exact historical v1 output 1ms
+   ✓ rejects pairing and degeneracy instead of fabricating results 2ms
+   ✓ refuses regression loss of centered precision while preserving immutable v1 history 1ms
+   × refuses percentile interpolation cancellation without rewriting its historical result 8ms
+     → expected [Function] to throw an error
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/worker1-statistics-a-20261117/cohort.test.ts > refuses percentile interpolation cancellation without rewriting its historical result
+AssertionError: expected [Function] to throw an error
+
+- Expected: 
+null
+
++ Received: 
+undefined
+
+ ❯ src/lib/worker1-statistics-a-20261117/cohort.test.ts:62:101
+     60|  // 2e16 * (2^-47 / 100) = 1.4210854715202004, not v1's 2.
+     61|  expect(output.percentile).toBe(2);
+     62|  expect(()=>statisticsWorkflows(295).execute({values:'-1e16,1e16',perc…
+       |                                                                                                     ^
+     63|  expect(verifyStatisticsSnapshot({calculatorSlug:percentileCalculator.…
+     64| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 13 passed (14)
+   Start at  04:59:46
+   Duration  1.47s (transform 485ms, setup 22ms, collect 696ms, tests 328ms, environment 0ms, prepare 83ms)
+

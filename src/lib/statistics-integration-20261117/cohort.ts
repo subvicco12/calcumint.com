@@ -1,0 +1,12 @@
+import {statisticsContracts as a,statisticsWorkflows as aw,verifyStatisticsSnapshot as av,statisticsResult as ar,statisticsCaptureRevision as aRevision} from '@/lib/worker1-statistics-a-20261117/cohort';
+import {statisticsContracts as b,statisticsWorkflows as bw,verifyStatisticsSnapshot as bv,statisticsResult as br,statisticsCaptureRevision as bRevision} from '@/lib/worker2-statistics-b-20261117/cohort';
+import type {FactoryContract} from '@/lib/calculator-factory/registry';
+import type {FactoryExecutionPacket} from '@/lib/calculator-factory/workflows';
+import type {CalculationSnapshot} from '@/lib/calculation-snapshot';
+const original=Object.freeze([...a,...b]);
+/** Exact worker namespaces retained; no implicit successor or blocked298 adoption. */
+export function statisticsWorkflows(id:number){return a.some(c=>c.catalogId===id)?aw(id):bw(id);}
+export function verifyStatisticsSnapshot(snapshot:CalculationSnapshot){const verified=a.some(c=>c.slug===snapshot.calculatorSlug)?av(snapshot):bv(snapshot);return Object.freeze({...verified,engineVersion:verified.snapshot.calculatorVersion,scope:'Exact historical forward agreement with immutable v1; capture-only guards bypassed; no certification or publication authority.'});}
+export function statisticsResult(packet:FactoryExecutionPacket){return a.some(c=>c.catalogId===packet.identity.catalogId)?ar(packet):br(packet);}
+export const statisticsContracts:readonly FactoryContract[]=Object.freeze(original.map(c=>Object.freeze({catalogId:c.catalogId,engineId:c.engineId,slug:c.slug,version:c.version,title:c.title,registered:true,captureRevision:c.catalogId<=295?aRevision:bRevision,primaryKey:c.primaryKey,fields:c.fields,scope:c.scope,sourceEvidence:[`src/lib/worker${c.catalogId<=295?'1-statistics-a':'2-statistics-b'}-20261117/cohort.ts`,...(c.catalogId<=295?['docs/worker1-statistics-a-20261117/source-bindings.json','docs/statistics-integration-20261117/source-scope-review.json']:['docs/worker2-statistics-b-20261117/SOURCES.md'])],limitations:['Private bounded binary64 capture only; canonical mapping, certification and publication remain pending.','Historical v1 replay bypasses capture-only precision refusals; no result is silently replaced.'],execute:(raw:Readonly<Record<string,string>>)=>statisticsWorkflows(c.catalogId).execute(raw).snapshot})));
+if(statisticsContracts.length!==7||new Set(statisticsContracts.map(c=>c.catalogId)).size!==7)throw Error('Seven disjoint exact statistics identities required');

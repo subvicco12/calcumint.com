@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: original16 immutable factory rows and current15 stable rows retain literal bytes and hashes
+ok 1 - original16 immutable factory rows and current15 stable rows retain literal bytes and hashes
+  ---
+  duration_ms: 59.593779
+  type: 'test'
+  ...
+# Subtest: capture tamper or non-Buffer capture is refused before current target reads
+ok 2 - capture tamper or non-Buffer capture is refused before current target reads
+  ---
+  duration_ms: 1.482323
+  type: 'test'
+  ...
+# Subtest: missing unknown replacement and duplicate factory rows fail exact selection
+ok 3 - missing unknown replacement and duplicate factory rows fail exact selection
+  ---
+  duration_ms: 1.02503
+  type: 'test'
+  ...
+# Subtest: current tuple requires exact path and code ref
+ok 4 - current tuple requires exact path and code ref
+  ---
+  duration_ms: 1.156202
+  type: 'test'
+  ...
+# Subtest: current blob digest and byte-count fields retain strict shapes
+ok 5 - current blob digest and byte-count fields retain strict shapes
+  ---
+  duration_ms: 6.71373
+  type: 'test'
+  ...
+# Subtest: live current Buffer length and SHA are independently checked
+ok 6 - live current Buffer length and SHA are independently checked
+  ---
+  duration_ms: 0.664923
+  type: 'test'
+  ...
+# Subtest: every later owned policy exclusion leaves acceptance to its full successor proof
+ok 7 - every later owned policy exclusion leaves acceptance to its full successor proof
+  ---
+  duration_ms: 0.954158
+  type: 'test'
+  ...
+# Subtest: successful negative filter returns no verdict and repeated reads remain fresh
+ok 8 - successful negative filter returns no verdict and repeated reads remain fresh
+  ---
+  duration_ms: 0.345726
+  type: 'test'
+  ...
+# Subtest: verifyParallelSource still runs complete actual proof after negative-only checks
+ok 9 - verifyParallelSource still runs complete actual proof after negative-only checks
+  ---
+  duration_ms: 0.64216
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 81.878842

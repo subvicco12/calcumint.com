@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: allfour current pins match immutable Git paths and exact current filesystem bytes
+ok 1 - allfour current pins match immutable Git paths and exact current filesystem bytes
+  ---
+  duration_ms: 29.275264
+  type: 'test'
+  ...
+# Subtest: the unchanged A955 historical manifest independently fixes exactlytwo batch claims
+ok 2 - the unchanged A955 historical manifest independently fixes exactlytwo batch claims
+  ---
+  duration_ms: 8.716558
+  type: 'test'
+  ...
+# Subtest: valid fixed evidence returns no verdict and reads only the exactfour paths
+ok 3 - valid fixed evidence returns no verdict and reads only the exactfour paths
+  ---
+  duration_ms: 0.555501
+  type: 'test'
+  ...
+# Subtest: every wrong current byte or type receives its original exact path diagnostic
+ok 4 - every wrong current byte or type receives its original exact path diagnostic
+  ---
+  duration_ms: 1.497561
+  type: 'test'
+  ...
+# Subtest: two rewritten historical batch claims fail without using metadata as current authority
+ok 5 - two rewritten historical batch claims fail without using metadata as current authority
+  ---
+  duration_ms: 0.355429
+  type: 'test'
+  ...
+# Subtest: tool and frequency claim decisions remain for the original full verifier
+ok 6 - tool and frequency claim decisions remain for the original full verifier
+  ---
+  duration_ms: 0.326926
+  type: 'test'
+  ...
+# Subtest: closed reader failures propagate and no filesystem fallback supplies missing inputs
+ok 7 - closed reader failures propagate and no filesystem fallback supplies missing inputs
+  ---
+  duration_ms: 1.29748
+  type: 'test'
+  ...
+# Subtest: each invocation freshly reads all evidence and prior successes cannot mask later changes
+ok 8 - each invocation freshly reads all evidence and prior successes cannot mask later changes
+  ---
+  duration_ms: 0.351033
+  type: 'test'
+  ...
+# Subtest: the exact G2 successor adds only the fixed import and call after the entire safe loop
+ok 9 - the exact G2 successor adds only the fixed import and call after the entire safe loop
+  ---
+  duration_ms: 4.354802
+  type: 'test'
+  ...
+# Subtest: V11 remains an immutable intermediate while the new independently admitted current relation stays strict
+ok 10 - V11 remains an immutable intermediate while the new independently admitted current relation stays strict
+  ---
+  duration_ms: 27.486394
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 82.61008

@@ -1,0 +1,135 @@
+
+ RUN  v3.2.7 /workspace/calcumint-stats-a
+
+ ❯ src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts (61 tests | 4 failed) 36ms
+   ✓ statistics A immutable engineering bindings > binds exactly IDs 284–288 and the v1 engine tuples 2ms
+   ✓ statistics A immutable engineering bindings > 284: preserves every immutable example output field and roundtrips JSON history 3ms
+   ✓ statistics A immutable engineering bindings > 284: refuses omitted, invented, blank and numeric raw fields 1ms
+   ✓ statistics A immutable engineering bindings > 284: refuses altered identity, versions, outputs, steps and extra history fields 2ms
+   ✓ statistics A immutable engineering bindings > 285: preserves every immutable example output field and roundtrips JSON history 1ms
+   ✓ statistics A immutable engineering bindings > 285: refuses omitted, invented, blank and numeric raw fields 1ms
+   ✓ statistics A immutable engineering bindings > 285: refuses altered identity, versions, outputs, steps and extra history fields 1ms
+   ✓ statistics A immutable engineering bindings > 286: preserves every immutable example output field and roundtrips JSON history 1ms
+   ✓ statistics A immutable engineering bindings > 286: refuses omitted, invented, blank and numeric raw fields 0ms
+   ✓ statistics A immutable engineering bindings > 286: refuses altered identity, versions, outputs, steps and extra history fields 2ms
+   ✓ statistics A immutable engineering bindings > 287: preserves every immutable example output field and roundtrips JSON history 1ms
+   ✓ statistics A immutable engineering bindings > 287: refuses omitted, invented, blank and numeric raw fields 0ms
+   ✓ statistics A immutable engineering bindings > 287: refuses altered identity, versions, outputs, steps and extra history fields 1ms
+   ✓ statistics A immutable engineering bindings > 288: preserves every immutable example output field and roundtrips JSON history 1ms
+   ✓ statistics A immutable engineering bindings > 288: refuses omitted, invented, blank and numeric raw fields 1ms
+   ✓ statistics A immutable engineering bindings > 288: refuses altered identity, versions, outputs, steps and extra history fields 1ms
+   ✓ independent constants and domain boundaries > 284: standardizes a textbook or zero-deviation fixture 1ms
+   ✓ independent constants and domain boundaries > 284: standardizes a textbook or zero-deviation fixture 0ms
+   ✓ independent constants and domain boundaries > 284: standardizes a textbook or zero-deviation fixture 0ms
+   ✓ independent constants and domain boundaries > 284: rejects invalid sigma 0 0ms
+   ✓ independent constants and domain boundaries > 284: rejects invalid sigma -1 0ms
+   ✓ independent constants and domain boundaries > 284: rejects invalid sigma NaN 0ms
+   ✓ independent constants and domain boundaries > 284: rejects invalid sigma Infinity 1ms
+   ✓ independent constants and domain boundaries > 285: preserves the v1 tabulated normal critical value at 0.8 0ms
+   ✓ independent constants and domain boundaries > 285: preserves the v1 tabulated normal critical value at 0.9 0ms
+   ✓ independent constants and domain boundaries > 285: preserves the v1 tabulated normal critical value at 0.95 0ms
+   ✓ independent constants and domain boundaries > 285: preserves the v1 tabulated normal critical value at 0.98 0ms
+   ✓ independent constants and domain boundaries > 285: preserves the v1 tabulated normal critical value at 0.99 0ms
+   × independent constants and domain boundaries > 285: rejects a positive interval width lost to binary64 addition 6ms
+     → expected [Function] to throw an error
+   ✓ independent constants and domain boundaries > 285: rejects nonpositive SE 0 0ms
+   ✓ independent constants and domain boundaries > 285: rejects nonpositive SE -1 0ms
+   ✓ independent constants and domain boundaries > 285: rejects confidence levels outside the immutable table 0ms
+   ✓ independent constants and domain boundaries > 286: rejects confidence levels outside the immutable table 0ms
+   ✓ independent constants and domain boundaries > 286: rounds an independent proportion-planning fixture upward 0ms
+   × independent constants and domain boundaries > 286: excludes degenerate planning proportion 0 from new capture 2ms
+     → expected [Function] to throw an error
+   × independent constants and domain boundaries > 286: excludes degenerate planning proportion 1 from new capture 1ms
+     → expected [Function] to throw an error
+   ✓ independent constants and domain boundaries > 286: rejects unsupported margin or sample-count overflow 0 0ms
+   ✓ independent constants and domain boundaries > 286: rejects unsupported margin or sample-count overflow -0.1 0ms
+   ✓ independent constants and domain boundaries > 286: rejects unsupported margin or sample-count overflow 1.1 0ms
+   ✓ independent constants and domain boundaries > 286: rejects unsupported margin or sample-count overflow 1e-10 0ms
+   ✓ independent constants and domain boundaries > 287: retains independent-event and endpoint identities 0ms
+   ✓ independent constants and domain boundaries > 287: retains independent-event and endpoint identities 0ms
+   ✓ independent constants and domain boundaries > 287: retains independent-event and endpoint identities 0ms
+   ✓ independent constants and domain boundaries > 287: retains independent-event and endpoint identities 0ms
+   × independent constants and domain boundaries > 287: rejects a nonzero event lost in the complement or union 0ms
+     → expected [Function] to throw an error
+   ✓ independent constants and domain boundaries > 287: rejects probabilities outside [0,1]: -0.1 0ms
+   ✓ independent constants and domain boundaries > 287: rejects probabilities outside [0,1]: 1.1 0ms
+   ✓ independent constants and domain boundaries > 288: exact ordered count P(6,3) 0ms
+   ✓ independent constants and domain boundaries > 288: exact ordered count P(0,0) 0ms
+   ✓ independent constants and domain boundaries > 288: exact ordered count P(1000000000,0) 0ms
+   ✓ independent constants and domain boundaries > 288: exact ordered count P(18,18) 0ms
+   ✓ independent constants and domain boundaries > 288: rejects exact-integer overflow or invalid domain P(19,19) 0ms
+   ✓ independent constants and domain boundaries > 288: rejects exact-integer overflow or invalid domain P(5,6) 0ms
+   ✓ independent constants and domain boundaries > 288: rejects exact-integer overflow or invalid domain P(5.5,2) 0ms
+   ✓ independent constants and domain boundaries > 288: rejects exact-integer overflow or invalid domain P(-1,0) 0ms
+   ✓ independent constants and domain boundaries > 288: rejects exact-integer overflow or invalid domain P(1000000001,0) 0ms
+   ✓ independent constants and domain boundaries > 284: bounds new capture and retains original-domain historical values 0ms
+   ✓ independent constants and domain boundaries > 285: replays original v1 collapsed intervals without applying capture guards 0ms
+   ✓ independent constants and domain boundaries > 286: replays the original endpoint proportion 0 without a new-capture guard 0ms
+   ✓ independent constants and domain boundaries > 286: replays the original endpoint proportion 1 without a new-capture guard 0ms
+   ✓ independent constants and domain boundaries > 287: replays the original tiny-event calculation without a new-capture guard 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts > independent constants and domain boundaries > 285: rejects a positive interval width lost to binary64 addition
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts:87:106
+     85|
+     86|   it('285: rejects a positive interval width lost to binary64 addition…
+     87|     expect(() => contract(285).execute({estimate: '1e20', standardErro…
+       |                                                                                                          ^
+     88|   });
+     89|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts > independent constants and domain boundaries > 286: excludes degenerate planning proportion 0 from new capture
+ FAIL  src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts > independent constants and domain boundaries > 286: excludes degenerate planning proportion 1 from new capture
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts:107:103
+    105|
+    106|   it.each(['0', '1'])('286: excludes degenerate planning proportion %s…
+    107|     expect(() => contract(286).execute({confidenceLevel: '0.95', margi…
+       |                                                                                                       ^
+    108|   });
+    109|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts > independent constants and domain boundaries > 287: rejects a nonzero event lost in the complement or union
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts:122:91
+    120|
+    121|   it('287: rejects a nonzero event lost in the complement or union', (…
+    122|     expect(() => contract(287).execute({probabilityOfA: '1e-50', proba…
+       |                                                                                           ^
+    123|   });
+    124|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 57 passed (61)
+   Start at  09:36:16
+   Duration  504ms (transform 123ms, setup 0ms, collect 217ms, tests 36ms, environment 0ms, prepare 61ms)

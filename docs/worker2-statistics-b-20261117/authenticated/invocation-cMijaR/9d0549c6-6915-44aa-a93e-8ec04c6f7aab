@@ -1,0 +1,83 @@
+{
+  "kind": "calcumint.scoped-report",
+  "reportVersion": 1,
+  "metadata": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 299,
+      "engineId": "statistics.expected-value",
+      "calculatorSlug": "expected-value-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "worker2-statistics-b-20261117.1/statistics.expected-value@1"
+    },
+    "scope": "Finite supplied discrete distribution; outcome/probability arrays must pair exactly, probabilities in[0,1] and their binary64 sum exactly1. No normalization, risk/causal or distribution-fit inference.",
+    "primaryKey": "expectedValue",
+    "fields": [
+      {
+        "key": "outcomes",
+        "label": "Outcomes (JSON array)",
+        "unit": "supplied common unit"
+      },
+      {
+        "key": "probabilities",
+        "label": "Probabilities (JSON array)",
+        "unit": "probability (0–1)"
+      }
+    ],
+    "outputs": {
+      "expectedValue": {
+        "label": "expectedValue",
+        "unit": "supplied common unit"
+      }
+    },
+    "sourceEvidence": [
+      "https://openstax.org/books/introductory-statistics-2e/pages/4-2-mean-or-expected-value-and-standard-deviation",
+      "docs/worker2-statistics-b-20261117/SOURCES.md"
+    ],
+    "publisherSources": [
+      "https://openstax.org/books/introductory-statistics-2e/pages/4-2-mean-or-expected-value-and-standard-deviation"
+    ],
+    "limitations": [
+      "Private bounded profile; canonical mapping, source adoption, competent review and publication remain pending.",
+      "Input values |x|≤1e50; nonzero magnitudes≥1e-50;1–10000 observations and shared64KiB raw-entry bound.",
+      "New capture refuses error above2^-40 relative to exact normalized binary64 formula; zero must agree exactly. This is capture policy, not a full-domain precision certificate.",
+      "Historical replay retains the full original engine domain and bypasses new capture guards."
+    ],
+    "authority": "Private engineering scope only; not canonical, certification or publication approval."
+  },
+  "packet": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 299,
+      "engineId": "statistics.expected-value",
+      "calculatorSlug": "expected-value-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "worker2-statistics-b-20261117.1/statistics.expected-value@1"
+    },
+    "raw": {
+      "outcomes": "[0,10]",
+      "probabilities": "[0.7,0.3]"
+    },
+    "snapshot": {
+      "calculatorSlug": "expected-value-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "outcomes": [
+          0,
+          10
+        ],
+        "probabilities": [
+          0.7,
+          0.3
+        ]
+      },
+      "output": {
+        "expectedValue": 3,
+        "steps": [
+          "Σp = 1",
+          "E(X) = Σx·p(x) = 3"
+        ]
+      }
+    }
+  }
+}

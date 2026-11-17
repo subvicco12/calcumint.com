@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: one exact test-only delta proves before projecting APP8cb; unknown requests delegate
+ok 1 - one exact test-only delta proves before projecting APP8cb; unknown requests delegate
+  ---
+  duration_ms: 271.697975
+  type: 'test'
+  ...
+# Subtest: current bytes, retained-valid reversion, dirty state and unknown SRC cannot reuse a prior success
+ok 2 - current bytes, retained-valid reversion, dirty state and unknown SRC cannot reuse a prior success
+  ---
+  duration_ms: 454.505689
+  type: 'test'
+  ...
+# Subtest: malformed capture, substituted current HEAD path and commit parents cannot nominate themselves
+ok 3 - malformed capture, substituted current HEAD path and commit parents cannot nominate themselves
+  ---
+  duration_ms: 156.915288
+  type: 'test'
+  ...
+# Subtest: redirected filesystem target remains forbidden despite matching retained bytes
+ok 4 - redirected filesystem target remains forbidden despite matching retained bytes
+  ---
+  duration_ms: 111.994157
+  type: 'test'
+  ...
+# Subtest: actual outer SRC20 composes literal Stage5 APP19 and one test-only successor
+ok 5 - actual outer SRC20 composes literal Stage5 APP19 and one test-only successor
+  ---
+  duration_ms: 1809.577202
+  type: 'test'
+  ...
+# Subtest: APP immutable preload reaches the original reader only after outer success and cannot bypass current proof
+ok 6 - APP immutable preload reaches the original reader only after outer success and cannot bypass current proof
+  ---
+  duration_ms: 5181.536577
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8013.387524

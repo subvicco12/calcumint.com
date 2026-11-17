@@ -1,0 +1,28 @@
+
+> calcumint@0.1.0 test
+> vitest run src/lib/calculator-factory/completion/next-engineering-core.test.ts
+
+
+ RUN  v3.2.7 /workspace/calcumint-next-cohort
+
+ ❯ src/lib/calculator-factory/completion/next-engineering-core.test.ts (3 tests | 1 failed) 17ms
+   ✓ captures all immutable output fields and refuses omitted or invented fields 6ms
+   ✓ verifies historical original-domain values independently of capture bounds 2ms
+   × refuses extra snapshot metadata and accessors before historical dispatch 8ms
+     → expected [Function] to throw an error
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-core.test.ts > refuses extra snapshot metadata and accessors before historical dispatch
+AssertionError: expected [Function] to throw an error
+ ❯ src/lib/calculator-factory/completion/next-engineering-core.test.ts:8:237
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  09:38:13
+   Duration  556ms (transform 120ms, setup 0ms, collect 184ms, tests 17ms, environment 0ms, prepare 90ms)
+

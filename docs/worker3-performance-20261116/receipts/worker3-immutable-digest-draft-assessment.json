@@ -1,0 +1,132 @@
+{
+  "kind": "REJECTED_IMMUTABLE_DIGEST_DRAFT_REVIEW_AND_PERFORMANCE_ASSESSMENT",
+  "disposition": "REJECTED_NOT_INTEGRATED",
+  "branch": "engineering/worker3-immutable-digest-draft-20261116",
+  "base": "b7a7c176cf6a2349a468d10ce30c25552835de5e",
+  "draftCommit": "8b051e5fe0ef582d74edf1d4948ec1089c1d678e",
+  "sourceAdmissionAttempted": false,
+  "remotePushed": false,
+  "coreOrAuthorityModified": false,
+  "productionChanges": false,
+  "applicationSourceChanges": [],
+  "userDeadlineChanges": [],
+  "files": [
+    {
+      "path": "tests/parallel-source-20261110/git-reader.mjs",
+      "gitBlob": "441a84d38137ada51a8b9998d6e8aa3593ab8a67",
+      "sha256": "1146e865da9baa966a7ecf73540d9ab95424962d46c15391d1d427f1f05c53c4"
+    },
+    {
+      "path": "tests/parallel-source-20261110/immutable-git-digest.mjs",
+      "gitBlob": "52e1cb2ddfc4d922ed0459e1d66ae1c3d5bb7092",
+      "sha256": "687d1f3080ff699ffd38b6775ba6078191d6bace3377b5c3192b526606135a04"
+    },
+    {
+      "path": "tests/parallel-source-20261110/immutable-git-digest.test.mjs",
+      "gitBlob": "16fac8565d9b4eadfffe1b17a8483a6e1912214f",
+      "sha256": "7009c9f9221ad1d4e0e30fdc219ecc4d2ca8c94450ffbb3c7ea4c5654541512f"
+    }
+  ],
+  "trustScope": "Standard genuine Node intrinsics at source-admitted module initialization, matching existing crypto-admission prerequisite. No claim authenticates arbitrary pre-import wrappers or same-source/different-closure replacements. Relevant post-initialization replacements disable enrollment/fastpath and use the existing live SHA path.",
+  "mechanism": "Existing immutable Git-reader invocation/cache/Buffer.from behavior retained; returned copies enroll only after full equality against an unexposed unpooled preimage with a digest computed from actual bytes. Every digest shortcut rechecks full bytes and intrinsic descriptors. Current-file hashes remain native; no source/Git/HEAD/status/index observations or admission verdicts are cached.",
+  "testReceipts": {
+    "validNativeNode22": {
+      "tests": 21,
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 464.07822,
+      "newPrimitiveAdversarialCases": 14,
+      "existingGitReaderCases": 7
+    },
+    "newAdversarialRedBeforeFix": {
+      "tests": 3,
+      "failed": 3,
+      "extraDescriptorGetterCallbacks": 132,
+      "extraBufferInstanceGetterCallbacks": 1,
+      "extraArrayIteratorCallbacks": 1
+    },
+    "discardedSandboxReceipts": "Initial default-sandbox Node22 runs reported only one file-level result without individual TAP cases; they are preserved but not used as case-count evidence. An initial9PASS progress claim was corrected to root before adoption."
+  },
+  "benchmark": {
+    "head": "b7a7c176cf6a2349a468d10ce30c25552835de5e",
+    "bankObjects": 675,
+    "privatePreimagePayloadBytesIfAllOwnersRetained": 86808019,
+    "immutableDigestBytes": 346801052,
+    "nativeCurrentDigestBytes": 346226368,
+    "pairs": {
+      "cold": {
+        "pairedOriginalMinusDraftMs": [
+          -72.58227699999975,
+          4.021548999999595,
+          29.293289000000186,
+          32.79122300000017
+        ],
+        "meanMs": -1.6190539999999487,
+        "medianMs": 16.65741899999989,
+        "interpretation": "Includes actual cold owner construction, full copy/SHA, all producer copies and intrinsic checks; not a robust gain."
+      },
+      "warm": {
+        "pairedOriginalMinusDraftMs": [
+          103.39688800000022,
+          129.30623000000105,
+          114.25743299999885,
+          40.6639439999999
+        ],
+        "meanMs": 96.90612375,
+        "medianMs": 108.82716049999954,
+        "interpretation": "Advisory upper bound after extra owner prewarming; not an authorized verification strategy."
+      }
+    },
+    "rssCaveat": "Shared-process end-of-trial RSS is advisory, not an isolated peak measurement. Private preimage payload itself adds86.8MB for this object bank.",
+    "allTransportInvocationCountsEqual": true,
+    "fullSourceOrAPIDeadlineExecuted": false
+  },
+  "reason": "Cold-owner original-minus-draft timings range from a72.6ms regression to32.8ms savings with mean regression1.6ms. This is not a demonstrated useful net gain for outstanding150s/30s/20-minute verification failures. Warm-owner gains require extra prewarming and cannot justify moving work outside original proof timers. Added private ownership memory could worsen unmeasured full-proof costs. Do not admit or integrate this draft.",
+  "independentReviewBeforeAnyFutureIntegration": "REQUIRED; this rejected draft is not approved or qualified.",
+  "artifacts": {
+    "/tmp/worker3-immutable-digest-tests-red.log": {
+      "bytes": 1626,
+      "sha256": "561ce1fc1219cc6fc8c94edc96621d49f88eff78aa2aaaeec39ca4d5be9a6616"
+    },
+    "/tmp/worker3-immutable-digest-tests-green.log": {
+      "bytes": 312,
+      "sha256": "b58fe4eb7b05ea0d127ab4bbe119713d6d715f4288dfaa9f9f03084f30b4cbc9"
+    },
+    "/tmp/worker3-immutable-digest-poison-red.log": {
+      "bytes": 555,
+      "sha256": "f918f1fe846c9fda3143555ccada4865805ca1c2c185e900ec07073b2e7d7f82"
+    },
+    "/tmp/worker3-immutable-digest-poison-red-isolated.log": {
+      "bytes": 556,
+      "sha256": "8226b5fd9fd3ad006ac1f61c9c8372e2a4181f689b8449ace5709d1620c7d797"
+    },
+    "/tmp/worker3-immutable-digest-poison-red-isolated-native.log": {
+      "bytes": 3408,
+      "sha256": "7325a207574725f2c013c2b5e222aa7d3c23703cbef5ee7d6a146ace83c68866"
+    },
+    "/tmp/worker3-immutable-digest-controls-native.log": {
+      "bytes": 3278,
+      "sha256": "e1bd9a1840ebf1736e6a458ae47e0352eb3c08234f279dca5f0523461a022529"
+    },
+    "/tmp/worker3-immutable-digest-controls-reader-native.log": {
+      "bytes": 5158,
+      "sha256": "ff636b702d29d63f9d62b8101eabf7dec609108038d9ea8cc32d7d9ad60cf375"
+    },
+    "/tmp/worker3-immutable-digest-producer-bench.json": {
+      "bytes": 3739,
+      "sha256": "60558340c71d8554fbfe161b4cd8c1a4732ea42f081dfd4426f9003225861cac"
+    },
+    "/tmp/worker3-immutable-digest-producer-bench.log": {
+      "bytes": 3739,
+      "sha256": "60558340c71d8554fbfe161b4cd8c1a4732ea42f081dfd4426f9003225861cac"
+    },
+    "/tmp/worker3-immutable-digest-producer-bench.mjs": {
+      "bytes": 5467,
+      "sha256": "00b9f4e62541122f4ea98e6956c072e390413ff1ea7281ec00825d19d972eb10"
+    }
+  },
+  "qualified": false,
+  "releaseHold": true,
+  "confirmedEngineeringBaseline": 81
+}

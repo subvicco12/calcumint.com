@@ -1,0 +1,10 @@
+{
+  "diagnosticOnly": true,
+  "qualification": false,
+  "target": "file:///workspace/calcumint-worker3-recovery/tests/parallel-source-20261110/baseline-runtime.mjs",
+  "originalSHA256": "f8c26450aaa067ff22dda8058c7ecd9bb6a80ca2b2e847835dcb9eeb5ed805c0",
+  "transformedSHA256": "5fea942d77283d256a2287f4ad2510976bf566ae56a9173ec004ac5181f90d9d",
+  "needle": "export const sourceGit=makeGitReader((args,options={})=>execFileSync('git',args,{cwd:root,stdio:['ignore','pipe','pipe'],maxBuffer:16*1024*1024,...options}));",
+  "replacement": "export const sourceGit=makeGitReader((args,options={})=>{const start=worker3performance.now();let ok=false;try{const result=privateGitBuffer(args,{cwd:root,stdio:['ignore','pipe','pipe'],maxBuffer:16*1024*1024,...options});ok=true;return result;}finally{worker3appendFileSync(process.env.WORKER3_PROFILE_OUTPUT,JSON.stringify({pid:process.pid,kind:'advisory-sourceGit',args,ms:worker3performance.now()-start,ok})+'\\n');}});",
+  "imports": "import {privateGitBuffer} from 'file:///workspace/calcumint-worker3-recovery/tests/next-engineering-20261115/source-private-git-transport.mjs';\nimport {appendFileSync as worker3appendFileSync} from 'node:fs';\nimport {performance as worker3performance} from 'node:perf_hooks';\n"
+}
