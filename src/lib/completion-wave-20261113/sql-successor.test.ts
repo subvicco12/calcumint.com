@@ -205,7 +205,7 @@ it('parser refuses duplicate or conflicting IDs and exposes unknown tuple additi
 });
 
 it('closes the entire current roster against literal44 plus all25 exact successor witnesses without filtering',()=>{
- const retained69=[...currentFactoryDeliveryCatalog,...newCases.map(row=>({catalogId:row.id,engineId:row.engine,slug:row.slug,version:row.version}))];expect(retained69).toHaveLength(69);const retained79=[...retained69,...constructionCases.map(row=>({catalogId:row.id,engineId:row.engine,slug:row.slug,version:row.version}))];expect(retained79).toHaveLength(79);expect(new Set(retained79.map(row=>row.catalogId)).size).toBe(79);expect(liveFactoryDeliveryCatalog).toEqual([...retained79,...nextCases.cases.map(({catalogId,engineId,slug,version})=>({catalogId,engineId,slug,version}))]);expect(liveFactoryDeliveryCatalog).toHaveLength(99);
+ const retained69=[...currentFactoryDeliveryCatalog,...newCases.map(row=>({catalogId:row.id,engineId:row.engine,slug:row.slug,version:row.version}))];expect(retained69).toHaveLength(69);const retained79=[...retained69,...constructionCases.map(row=>({catalogId:row.id,engineId:row.engine,slug:row.slug,version:row.version}))];expect(retained79).toHaveLength(79);expect(new Set(retained79.map(row=>row.catalogId)).size).toBe(79);expect(liveFactoryDeliveryCatalog.filter(row=>![292,293,294,295,296,297,299].includes(row.catalogId))).toEqual([...retained79,...nextCases.cases.map(({catalogId,engineId,slug,version})=>({catalogId,engineId,slug,version}))]);expect(liveFactoryDeliveryCatalog.filter(row=>![292,293,294,295,296,297,299].includes(row.catalogId))).toHaveLength(99);
  const old=functions(readFileSync('docs/milestone100-20261114/business-held-successor.sql','utf8')),oldComplete=[...retainedTechnologyTwentyTuples,...retained69];expect(values(old.factory_native_embed_publication_v1,'catalog,engine,slug')).toEqual(publication(retained69).map(({version,...row})=>row));expect(values(old.submit_technology_five_job_v1,'id,engine')).toEqual(sorted(oldComplete).map(row=>({id:row.catalogId,engine:row.engineId})));expect(values(old.technology_five_require_publication_v1,'catalog,engine,slug,version')).toEqual(publication(oldComplete));
  const sql=functions(readFileSync('docs/construction-qualification-20261116/held-business-successor.sql','utf8')),complete=[...retainedTechnologyTwentyTuples,...retained79];
  expect(values(sql.factory_native_embed_publication_v1,'catalog,engine,slug')).toEqual(publication(retained79).map(({version,...row})=>row));expect(values(sql.submit_technology_five_job_v1,'id,engine')).toEqual(sorted(complete).map(row=>({id:row.catalogId,engine:row.engineId})));expect(values(sql.technology_five_require_publication_v1,'catalog,engine,slug,version')).toEqual(publication(complete));
@@ -215,11 +215,23 @@ it('closes the entire current roster against literal44 plus all25 exact successo
 it('admits exactly99 combined tuples while retaining construction79 and all20 Worker3 identities',()=>{
  const tuples=JSON.parse(readFileSync('docs/coordinator-worker3-20261117/business/tuples99.json','utf8'));
  const added=nextCases.cases.map(({catalogId,engineId,slug,version})=>({catalogId,engineId,slug,version}));
- expect(added).toHaveLength(20);expect(liveFactoryDeliveryCatalog).toEqual(tuples);expect(tuples).toHaveLength(99);expect(new Set(tuples.map((r:{catalogId:number})=>r.catalogId)).size).toBe(99);
+ expect(added).toHaveLength(20);expect(liveFactoryDeliveryCatalog.filter(row=>![292,293,294,295,296,297,299].includes(row.catalogId))).toEqual(tuples);expect(tuples).toHaveLength(99);expect(new Set(tuples.map((r:{catalogId:number})=>r.catalogId)).size).toBe(99);
  const retained79=tuples.filter((r:{catalogId:number})=>!added.some(a=>a.catalogId===r.catalogId));expect(retained79).toHaveLength(79);
  const sql=functions(readFileSync('docs/coordinator-worker3-20261117/business/held-successor.sql','utf8')),complete=[...retainedTechnologyTwentyTuples,...tuples];
  expect(Object.keys(sql).sort()).toEqual(names);expect(values(sql.factory_native_embed_publication_v1,'catalog,engine,slug')).toEqual(publication(tuples).map(({version,...row})=>row));
  expect(values(sql.submit_technology_five_job_v1,'id,engine')).toEqual(sorted(complete).map(row=>({id:row.catalogId,engine:row.engineId})));expect(values(sql.technology_five_require_publication_v1,'catalog,engine,slug,version')).toEqual(publication(complete));
  const slugs=sql.share_factory_nine_snapshot.match(/item->>'calculatorSlug' NOT IN\(([^)]*)\)/)![1].split(',').map(value=>value.trim().slice(1,-1));expect(slugs.sort()).toEqual(tuples.map((r:{slug:string})=>r.slug).sort());
  expect(readFileSync('docs/coordinator-worker3-20261117/business/held-successor.sql','utf8')).toContain('UNAPPLIED_NEXT_ENGINEERING_BUSINESS_SUCCESSOR');
+});
+
+it('admits only seven statistics successors after the exact retained99 tuples',()=>{
+ const old=JSON.parse(readFileSync('docs/coordinator-worker3-20261117/business/tuples99.json','utf8'));
+ const tuples=JSON.parse(readFileSync('docs/statistics-integration-20261117/business/tuples106.json','utf8'));
+ expect(tuples.slice(0,99)).toEqual(old);expect(tuples.slice(99).map((r:{catalogId:number})=>r.catalogId)).toEqual([292,293,294,295,296,297,299]);
+ expect(liveFactoryDeliveryCatalog).toEqual(tuples);expect(tuples).toHaveLength(106);
+ const sql=functions(readFileSync('docs/statistics-integration-20261117/business/held-successor.sql','utf8')),complete=[...retainedTechnologyTwentyTuples,...tuples];
+ expect(values(sql.factory_native_embed_publication_v1,'catalog,engine,slug')).toEqual(publication(tuples).map(({version,...row})=>row));
+ expect(values(sql.submit_technology_five_job_v1,'id,engine')).toEqual(sorted(complete).map(row=>({id:row.catalogId,engine:row.engineId})));
+ expect(values(sql.technology_five_require_publication_v1,'catalog,engine,slug,version')).toEqual(publication(complete));
+ expect(readFileSync('docs/statistics-integration-20261117/business/held-successor.sql','utf8')).toContain('UNAPPLIED_NEXT_ENGINEERING_BUSINESS_SUCCESSOR');
 });

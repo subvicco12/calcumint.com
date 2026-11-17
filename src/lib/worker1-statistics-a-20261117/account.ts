@@ -9,11 +9,14 @@ import {verifyStatisticsPacket,verifyStatisticsSnapshot} from './cohort';
 async function account(expectedOwner:string,scenario=false){
  const owner=z.uuid().parse(expectedOwner),client=await createSupabaseServerClient();if(!client)throw Error('Authentication unavailable');
  const session=await client.auth.getUser();if(session.error||!session.data.user)throw Error('Sign in to continue');if(session.data.user.id!==owner)throw Error('Account context changed');
+ const review=await client.from('platform_admins').select('role,active').eq('user_id',owner).maybeSingle();
+ if(review.error||!review.data?.active||!['owner','admin','reviewer'].includes(String(review.data.role)))throw Error('Authorized engineering review access required');
  if(scenario){const e=await readAccountEntitlements(client,owner);if(!e.projects||!e.scenarios)throw Error('Projects and scenarios require Pro or Business');}
  return {owner,client};
 }
 export async function saveStatisticsHistory(input:{expectedOwnerId:string;requestId:string;packet:unknown}){
  const packet=verifyStatisticsPacket(input.packet),owner=z.uuid().parse(input.expectedOwnerId),requestId=z.uuid().parse(input.requestId);
+ await account(owner);
  return saveCalculationHistory({...packet.snapshot,expectedOwnerId:owner,requestId});
 }
 export async function statisticsProjects(expectedOwner:string){
@@ -45,6 +48,7 @@ export async function readStatisticsHistory(input:{expectedOwnerId:string;histor
  * enters the shared-write/native/job allowlists or SQL capability implicitly. */
 export async function statisticsBusinessProjects(input:{expectedOwnerId:string;organizationId:string}){
  const clean=z.object({expectedOwnerId:z.uuid(),organizationId:z.uuid()}).strict().parse(input);
+ await account(clean.expectedOwnerId);
  const result=await factoryBusinessWorkspace(clean);
  return {...result,delivery:{available:false as const,reason:'These exact statistics tuples require separately reviewed shared-storage/native delivery capability adoption. No shared write, API/embed grant or metered job is enabled by this worker.'}};
 }

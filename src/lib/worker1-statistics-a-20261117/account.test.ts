@@ -9,7 +9,7 @@ import {statisticsContracts,statisticsWorkflows} from './cohort';
 const owner='11111111-1111-4111-8111-111111111111',project='22222222-2222-4222-8222-222222222222',request='33333333-3333-4333-8333-333333333333';
 let rows:Record<string,unknown>,filters:[string,unknown][];
 beforeEach(()=>{
- rows={calculation_projects:{id:project,name:'Project'}};filters=[];mock.plan={projects:true,scenarios:true};mock.history.mockReset().mockResolvedValue({id:request});mock.scenario.mockReset().mockResolvedValue(undefined);mock.business.mockReset().mockResolvedValue({role:'member',projects:[],sharing:{available:false}});
+ rows={calculation_projects:{id:project,name:'Project'},platform_admins:{role:'reviewer',active:true}};filters=[];mock.plan={projects:true,scenarios:true};mock.history.mockReset().mockResolvedValue({id:request});mock.scenario.mockReset().mockResolvedValue(undefined);mock.business.mockReset().mockResolvedValue({role:'member',projects:[],sharing:{available:false}});
  mock.client={auth:{getUser:async()=>({data:{user:{id:owner}},error:null})},from:(table:string)=>{const q={select:()=>q,eq:(k:string,v:unknown)=>{filters.push([k,v]);return q;},order:()=>q,limit:async()=>({data:[rows[table]],error:null}),maybeSingle:async()=>({data:rows[table]??null,error:null})};return q;}};
 });
 it.each(statisticsContracts)('unit: actual #$catalogId snapshot goes through existing atomic history and scenario actions',async c=>{
@@ -32,4 +32,11 @@ it('unit: stale owner, downgrade, foreign project and forged packet fail before 
 it('unit: context read cannot activate Business writes or native commercial capability',async()=>{
  expect(await statisticsBusinessProjects({expectedOwnerId:owner,organizationId:project})).toMatchObject({role:'member',delivery:{available:false}});
  mock.business.mockRejectedValue(Error('Current organization permission required'));await expect(statisticsBusinessProjects({expectedOwnerId:owner,organizationId:project})).rejects.toThrow('permission');
+});
+it('revoked reviewer cannot persist or read private Business context',async()=>{
+ rows.platform_admins=null;
+ const packet=statisticsWorkflows(294).execute({values:'10,20',weights:'1,3'});
+ await expect(saveStatisticsHistory({expectedOwnerId:owner,requestId:request,packet})).rejects.toThrow('review access');
+ await expect(statisticsBusinessProjects({expectedOwnerId:owner,organizationId:project})).rejects.toThrow('review access');
+ expect(mock.history).not.toHaveBeenCalled();expect(mock.business).not.toHaveBeenCalled();
 });
