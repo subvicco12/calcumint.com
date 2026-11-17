@@ -1,2 +1,4 @@
 # Retain raw test receipts without whitespace or line-ending normalization.
 receipts/*.log -text -diff
+authenticated/*.log -text -diff
+authenticated/invocation-*/** -text -diff
