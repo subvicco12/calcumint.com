@@ -56,7 +56,7 @@ try{
    assert.equal((await ok(users.outsider.sdk.from('calculation_history').select('id').eq('id',history[0].id))).length,0);
    const row={id:c.id,plan,historyId:history[0].id,mathematicalParity:true,mobileAndAX:true,foreignHistoryDenied:true};
    if(plan==='free'){
-    await browser.click('Export JSON');await browser.until(q('[role=alert]'));assert.match(await browser.text(),/Pro/);
+    await browser.click('Download JSON');await browser.until(q('[role=alert]'));assert.match(await browser.text(),/Pro/);
     assert.equal(await browser.js('[...document.querySelectorAll("button")].some(b=>b.textContent==="Save project scenario")'),false);
    }else{
     await browser.click('Load owned projects');await browser.until('document.body.innerText.includes("Owned projects loaded")');
