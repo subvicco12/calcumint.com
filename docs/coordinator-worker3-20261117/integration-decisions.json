@@ -20,5 +20,23 @@
     "authenticatedRecoveries": 28,
     "malformedRefusals": 232,
     "productionWrites": false
+  },
+  "sourceAuthorityGeneration": 73,
+  "sourceCaptureRevision": 140,
+  "allSixOriginalSourceWrappersPassed": true,
+  "typecheckPassed": true,
+  "lint": {
+    "passed": true,
+    "errors": 0,
+    "warnings": 86
+  },
+  "independentReview": {
+    "reviewedApplicationAndBusinessHead": "78372cd9ea7ccee5c6c6e83d5969948d55a766e5",
+    "findings": [
+      "stale negative-only current-stage capture",
+      "stale preflight authority selection"
+    ],
+    "resolution": "Exact additive V71\u2013V73 successors and focused regression; application unchanged from reviewed head.",
+    "freshBusinessAcceptanceLimits": "Service-role actor-bound submission; actual authenticated application recovery separately exercised. Construction browser and numerical evidence reused only for unchanged dependencies."
   }
 }
