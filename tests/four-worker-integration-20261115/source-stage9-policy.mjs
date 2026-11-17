@@ -1,9 +1,10 @@
-/** Cumulative exact source admission; immutable engines and all prior stages retained. */
-export const sourceStage9CapturePath="docs/statistics-integration-20261117/source-stage9-statistics.json";
+/** Exact cumulative source; registered mathematical engines remain immutable. */
+export const sourceStage9CapturePath="docs/statistics-integration-20261117/source-stage9-statistics-revision2.json";
 export const sourceStage9Policy=Object.freeze({
   "predecessorRef": "dc8544422dbb4ebccfc96e03431e64ebcf871fc9",
-  "codeRef": "bfef306d8c3fc8608feadba880d4eb2afca2e210",
+  "codeRef": "63866c0ceab931b3d92a5d22285cb8c261017c2c",
   "ancestry": [
+    "63866c0ceab931b3d92a5d22285cb8c261017c2c",
     "bfef306d8c3fc8608feadba880d4eb2afca2e210",
     "4fda315aba11b0aec54587784dc2f9896322c1b4",
     "530a0c190a0b21d3efed2a5b37b37d906ae13963",
@@ -63,7 +64,7 @@ export const sourceStage9Policy=Object.freeze({
     "56844ec40292b010bc89ad7371c2d0340340bafe",
     "dc8544422dbb4ebccfc96e03431e64ebcf871fc9"
   ],
-  "captureSHA256": "4f448f9fe6f7ac2be7450ce6fe27c21b3c2556f93d3bae83c8b3d3811d8c7d50",
+  "captureSHA256": "0f66789c7cf6c08516b10454dd18f424b14d0c58da8fe845cf9d85563cdb8f31",
   "paths": [
     "src/app/admin/worker1-construction-20261116/actions.ts",
     "src/app/admin/worker1-construction-20261116/page.tsx",
