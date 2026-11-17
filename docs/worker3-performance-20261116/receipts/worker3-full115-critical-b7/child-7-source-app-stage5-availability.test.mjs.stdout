@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: exact independently pinned51 commits batch after origin; malformed content never proves availability
+ok 1 - exact independently pinned51 commits batch after origin; malformed content never proves availability
+  ---
+  duration_ms: 15.381815
+  type: 'test'
+  ...
+# Subtest: only a missing pinned commit receives one bounded fetch; repeated or outside missing fails closed
+ok 2 - only a missing pinned commit receives one bounded fetch; repeated or outside missing fails closed
+  ---
+  duration_ms: 1.906029
+  type: 'test'
+  ...
+# Subtest: failed batch is not a successful availability cache and a fresh retry validates actual bytes
+ok 3 - failed batch is not a successful availability cache and a fresh retry validates actual bytes
+  ---
+  duration_ms: 6.208115
+  type: 'test'
+  ...
+# Subtest: custom source transports remain uncached and execute inside owned availability lock
+ok 4 - custom source transports remain uncached and execute inside owned availability lock
+  ---
+  duration_ms: 48.910478
+  type: 'test'
+  ...
+# Subtest: default batch transport forwards stdin and caches success only after owned lock release
+ok 5 - default batch transport forwards stdin and caches success only after owned lock release
+  ---
+  duration_ms: 234.806538
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 330.325831

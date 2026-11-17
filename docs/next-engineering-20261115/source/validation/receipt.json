@@ -1,0 +1,77 @@
+{
+  "kind": "EXACT_STAGE10_ENGINEERING_SOURCE_ADMISSION_CHECKPOINT",
+  "sourceBaseline": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+  "frozenImplementationHead": "550ae67dfdf8fcfa8fb0ac68ccbe2ac68e13fb0f",
+  "testedSourceAdmissionHead": "b8694256532a2f13a5808c426e0c54e104d1775b",
+  "sourcePathCount": 23,
+  "sourceDeltaFromFrozenImplementation": [],
+  "ciWorkflowDelta": [],
+  "runtime": "Node.js v24.19.0 outside filesystem/process sandbox",
+  "checks": [
+    {
+      "name": "stage10",
+      "passed": true,
+      "tests": 8,
+      "path": "docs/next-engineering-20261115/source/validation/stage10.log",
+      "sha256": "f167209921f9b6ba00b05a856e7331c6396b2e13d5d42b2ee46e97002bd9845b"
+    },
+    {
+      "name": "stage9-deadline",
+      "passed": true,
+      "tests": 5,
+      "path": "docs/next-engineering-20261115/source/validation/stage9-deadline.log",
+      "sha256": "7979f88161b1bd6badec4be340e1be2d6013153e4a01c9e2c24ec5df96027eed"
+    },
+    {
+      "name": "stage8",
+      "passed": true,
+      "tests": 11,
+      "path": "docs/next-engineering-20261115/source/validation/stage8.log",
+      "sha256": "ac5d8adcd86a559181630857239dca4560a0f01fa8b187f023a58d3a336550b1"
+    },
+    {
+      "name": "preflight",
+      "passed": true,
+      "tests": 4,
+      "path": "docs/next-engineering-20261115/source/validation/preflight.log",
+      "sha256": "7686287767b2f6783ba5648ab09b51f2ba2adf363a52b0c0d0c26feb7a27ec4d"
+    },
+    {
+      "name": "named",
+      "passed": true,
+      "tests": 1,
+      "path": "docs/next-engineering-20261115/source/validation/named.log",
+      "sha256": "340db35660aee7c6c66eaa98e639e0f52f132e7749c5783a5a848c18d980aa38"
+    },
+    {
+      "name": "availability",
+      "passed": true,
+      "tests": 1,
+      "path": "docs/next-engineering-20261115/source/validation/availability.log",
+      "sha256": "37079fc02381142fa686bb380d1615a1ae84769366cedbda27f69874a0b23a36"
+    },
+    {
+      "name": "authority",
+      "passed": true,
+      "tests": null,
+      "path": "docs/next-engineering-20261115/source/validation/authority.log",
+      "sha256": "a17fcf0a2f50e2d495e4f90ce263410edc183add6c62699a2facbccf60410f74"
+    }
+  ],
+  "passedFocusedCases": 30,
+  "stage9RetainedChildDeadlineMs": 15000,
+  "observedStage9ChildElapsedMs": 7266,
+  "fullCurrentWrapper": "Not established locally at final head. Existing nested historical assertions require TAP; local Node24 defaults to spec in some child forms. CI workflow pins Node22. No reporter or deadline workaround added.",
+  "qualification": "PENDING independent review, exact-head unchanged five-job CI and aggregate. This source proof preserves historical claims and does not qualify the new cohort by itself.",
+  "canonicalAcceptance": false,
+  "certificationGranted": false,
+  "publicationGranted": false,
+  "productionWrites": false,
+  "completionCountsChanged": false,
+  "releaseHold": true,
+  "runtimeFetchRejected": {
+    "action": "npm exec --yes --package=node@22 -- node --version",
+    "review": "Automatic approval review rejected fetching and executing an external npm Node22 package because of unapproved network/supply-chain side effects. No alternate download or execution attempted.",
+    "safeAlternative": "Parent will execute unchanged GitHub CI already configured for Node22."
+  }
+}

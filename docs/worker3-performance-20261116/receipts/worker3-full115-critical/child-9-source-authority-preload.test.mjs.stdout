@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: only static accepted IDs preload before the first per-record Git read
+ok 1 - only static accepted IDs preload before the first per-record Git read
+  ---
+  duration_ms: 2145.882372
+  type: 'test'
+  ...
+# Subtest: malformed or wrong-content batch cannot establish authority
+ok 2 - malformed or wrong-content batch cannot establish authority
+  ---
+  duration_ms: 1495.67626
+  type: 'test'
+  ...
+# Subtest: successful preload never admits mutated or retained-valid reverted current files
+ok 3 - successful preload never admits mutated or retained-valid reverted current files
+  ---
+  duration_ms: 2068.039809
+  type: 'test'
+  ...
+# Subtest: fresh HEAD path and raw object checks still reject substitutions after success
+ok 4 - fresh HEAD path and raw object checks still reject substitutions after success
+  ---
+  duration_ms: 1927.194164
+  type: 'test'
+  ...
+# Subtest: preload failure never becomes success and a fresh retry validates every live read
+ok 5 - preload failure never becomes success and a fresh retry validates every live read
+  ---
+  duration_ms: 1974.416969
+  type: 'test'
+  ...
+# Subtest: opaque transports without preload preserve the original fresh per-record behavior
+ok 6 - opaque transports without preload preserve the original fresh per-record behavior
+  ---
+  duration_ms: 1393.071434
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 11030.803925

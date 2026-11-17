@@ -19,7 +19,7 @@ export function proveSourceStage9(input){
  assert.equal(typeof input.read,'function');assert.equal(typeof input.git,'function');assert.equal(typeof input.root,'string');
  const actual=Object.freeze({...input,git:immutableTreeQueryReader(input.git)});
  const captureBytes=actual.read(capturePath);assert.equal(sha(captureBytes),policy.captureSHA256,'Independent Stage9 capture digest differs');
- const capture=JSON.parse(captureBytes);assert.deepEqual(capture.ancestry,policy.ancestry);assert.equal(policy.paths.length,39);
+ const capture=JSON.parse(captureBytes);assert.deepEqual(capture.ancestry,policy.ancestry);assert.equal(policy.paths.length,59);
  currentBytesFirst(actual,captureBytes);
  if(typeof actual.git.preloadCommits==='function')actual.git.preloadCommits(policy.ancestry);
  const records=capture.rows.flatMap(row=>[row.predecessor,row.current].filter(Boolean));

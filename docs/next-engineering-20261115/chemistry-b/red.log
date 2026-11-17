@@ -1,0 +1,359 @@
+
+ RUN  v3.2.7 /workspace/calcumint-chem-b
+
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts (27 tests | 22 failed) 30ms
+   × chemistry contract 338 > binds the exact immutable tuple, all fields, units, scope and applicable sources 6ms
+     → Missing chemistry contract 338
+   × chemistry contract 338 > captures an independent numeric golden and preserves the complete engine output 1ms
+     → Missing chemistry contract 338
+   ✓ chemistry contract 338 > rejects missing, blank, unknown, nonnumeric and out-of-bound capture fields 3ms
+   × chemistry contract 338 > rejects historical wrong identity/version, tampered value/steps and unknown input/output fields 1ms
+     → Missing chemistry contract 338
+   × chemistry contract 339 > binds the exact immutable tuple, all fields, units, scope and applicable sources 1ms
+     → Missing chemistry contract 339
+   × chemistry contract 339 > captures an independent numeric golden and preserves the complete engine output 1ms
+     → Missing chemistry contract 339
+   ✓ chemistry contract 339 > rejects missing, blank, unknown, nonnumeric and out-of-bound capture fields 1ms
+   × chemistry contract 339 > rejects historical wrong identity/version, tampered value/steps and unknown input/output fields 0ms
+     → Missing chemistry contract 339
+   × chemistry contract 340 > binds the exact immutable tuple, all fields, units, scope and applicable sources 0ms
+     → Missing chemistry contract 340
+   × chemistry contract 340 > captures an independent numeric golden and preserves the complete engine output 0ms
+     → Missing chemistry contract 340
+   ✓ chemistry contract 340 > rejects missing, blank, unknown, nonnumeric and out-of-bound capture fields 1ms
+   × chemistry contract 340 > rejects historical wrong identity/version, tampered value/steps and unknown input/output fields 0ms
+     → Missing chemistry contract 340
+   × chemistry contract 341 > binds the exact immutable tuple, all fields, units, scope and applicable sources 0ms
+     → Missing chemistry contract 341
+   × chemistry contract 341 > captures an independent numeric golden and preserves the complete engine output 0ms
+     → Missing chemistry contract 341
+   ✓ chemistry contract 341 > rejects missing, blank, unknown, nonnumeric and out-of-bound capture fields 0ms
+   × chemistry contract 341 > rejects historical wrong identity/version, tampered value/steps and unknown input/output fields 0ms
+     → Missing chemistry contract 341
+   × chemistry contract 342 > binds the exact immutable tuple, all fields, units, scope and applicable sources 0ms
+     → Missing chemistry contract 342
+   × chemistry contract 342 > captures an independent numeric golden and preserves the complete engine output 0ms
+     → Missing chemistry contract 342
+   ✓ chemistry contract 342 > rejects missing, blank, unknown, nonnumeric and out-of-bound capture fields 1ms
+   × chemistry contract 342 > rejects historical wrong identity/version, tampered value/steps and unknown input/output fields 2ms
+     → Missing chemistry contract 342
+   × offers exactly catalog IDs 338 through 342 6ms
+     → expected [] to deeply equal [ 338, 339, 340, 341, 342 ]
+   × requires positive balanced coefficients while allowing fractional common rescaling 0ms
+     → Missing chemistry contract 338
+   × refuses half-life intermediate power underflow and subnormal results, preserving actual zero and t=0 0ms
+     → Missing chemistry contract 339
+   × requires whole electron transfers and positive dimensionless Q, preserving potential direction 0ms
+     → Missing chemistry contract 340
+   × preserves optical zero boundaries and refuses negative factors 0ms
+     → Missing chemistry contract 341
+   × uses matching volume units and balanced coefficients at titration equivalence 0ms
+     → Missing chemistry contract 342
+   × replays original engine domains outside capture bounds or chemistry capture assumptions 3ms
+     → Missing chemistry contract 338
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 22 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > chemistry contract 338 > binds the exact immutable tuple, all fields, units, scope and applicable sources
+Error: Missing chemistry contract 338
+ ❯ get src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:11:24
+      9| const get = (id: number): EngineeringContract => {
+     10|   const contract = chemistryBContracts.find(row => row.catalogId === i…
+     11|   if (!contract) throw Error(`Missing chemistry contract ${id}`);
+       |                        ^
+     12|   return contract;
+     13| };
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:25:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/22]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > chemistry contract 338 > captures an independent numeric golden and preserves the complete engine output
+Error: Missing chemistry contract 338
+ ❯ get src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:11:24
+      9| const get = (id: number): EngineeringContract => {
+     10|   const contract = chemistryBContracts.find(row => row.catalogId === i…
+     11|   if (!contract) throw Error(`Missing chemistry contract ${id}`);
+       |                        ^
+     12|   return contract;
+     13| };
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:33:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/22]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > chemistry contract 338 > rejects historical wrong identity/version, tampered value/steps and unknown input/output fields
+Error: Missing chemistry contract 338
+ ❯ get src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:11:24
+      9| const get = (id: number): EngineeringContract => {
+     10|   const contract = chemistryBContracts.find(row => row.catalogId === i…
+     11|   if (!contract) throw Error(`Missing chemistry contract ${id}`);
+       |                        ^
+     12|   return contract;
+     13| };
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:48:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/22]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > chemistry contract 339 > binds the exact immutable tuple, all fields, units, scope and applicable sources
+Error: Missing chemistry contract 339
+ ❯ get src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:11:24
+      9| const get = (id: number): EngineeringContract => {
+     10|   const contract = chemistryBContracts.find(row => row.catalogId === i…
+     11|   if (!contract) throw Error(`Missing chemistry contract ${id}`);
+       |                        ^
+     12|   return contract;
+     13| };
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:25:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/22]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > chemistry contract 339 > captures an independent numeric golden and preserves the complete engine output
+Error: Missing chemistry contract 339
+ ❯ get src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:11:24
+      9| const get = (id: number): EngineeringContract => {
+     10|   const contract = chemistryBContracts.find(row => row.catalogId === i…
+     11|   if (!contract) throw Error(`Missing chemistry contract ${id}`);
+       |                        ^
+     12|   return contract;
+     13| };
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:33:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/22]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > chemistry contract 339 > rejects historical wrong identity/version, tampered value/steps and unknown input/output fields
+Error: Missing chemistry contract 339
+ ❯ get src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:11:24
+      9| const get = (id: number): EngineeringContract => {
+     10|   const contract = chemistryBContracts.find(row => row.catalogId === i…
+     11|   if (!contract) throw Error(`Missing chemistry contract ${id}`);
+       |                        ^
+     12|   return contract;
+     13| };
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:48:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/22]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > chemistry contract 340 > binds the exact immutable tuple, all fields, units, scope and applicable sources
+Error: Missing chemistry contract 340
+ ❯ get src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:11:24
+      9| const get = (id: number): EngineeringContract => {
+     10|   const contract = chemistryBContracts.find(row => row.catalogId === i…
+     11|   if (!contract) throw Error(`Missing chemistry contract ${id}`);
+       |                        ^
+     12|   return contract;
+     13| };
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:25:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/22]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > chemistry contract 340 > captures an independent numeric golden and preserves the complete engine output
+Error: Missing chemistry contract 340
+ ❯ get src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:11:24
+      9| const get = (id: number): EngineeringContract => {
+     10|   const contract = chemistryBContracts.find(row => row.catalogId === i…
+     11|   if (!contract) throw Error(`Missing chemistry contract ${id}`);
+       |                        ^
+     12|   return contract;
+     13| };
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:33:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/22]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > chemistry contract 340 > rejects historical wrong identity/version, tampered value/steps and unknown input/output fields
+Error: Missing chemistry contract 340
+ ❯ get src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:11:24
+      9| const get = (id: number): EngineeringContract => {
+     10|   const contract = chemistryBContracts.find(row => row.catalogId === i…
+     11|   if (!contract) throw Error(`Missing chemistry contract ${id}`);
+       |                        ^
+     12|   return contract;
+     13| };
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:48:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/22]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > chemistry contract 341 > binds the exact immutable tuple, all fields, units, scope and applicable sources
+Error: Missing chemistry contract 341
+ ❯ get src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:11:24
+      9| const get = (id: number): EngineeringContract => {
+     10|   const contract = chemistryBContracts.find(row => row.catalogId === i…
+     11|   if (!contract) throw Error(`Missing chemistry contract ${id}`);
+       |                        ^
+     12|   return contract;
+     13| };
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:25:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/22]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > chemistry contract 341 > captures an independent numeric golden and preserves the complete engine output
+Error: Missing chemistry contract 341
+ ❯ get src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:11:24
+      9| const get = (id: number): EngineeringContract => {
+     10|   const contract = chemistryBContracts.find(row => row.catalogId === i…
+     11|   if (!contract) throw Error(`Missing chemistry contract ${id}`);
+       |                        ^
+     12|   return contract;
+     13| };
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:33:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/22]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > chemistry contract 341 > rejects historical wrong identity/version, tampered value/steps and unknown input/output fields
+Error: Missing chemistry contract 341
+ ❯ get src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:11:24
+      9| const get = (id: number): EngineeringContract => {
+     10|   const contract = chemistryBContracts.find(row => row.catalogId === i…
+     11|   if (!contract) throw Error(`Missing chemistry contract ${id}`);
+       |                        ^
+     12|   return contract;
+     13| };
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:48:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/22]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > chemistry contract 342 > binds the exact immutable tuple, all fields, units, scope and applicable sources
+Error: Missing chemistry contract 342
+ ❯ get src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:11:24
+      9| const get = (id: number): EngineeringContract => {
+     10|   const contract = chemistryBContracts.find(row => row.catalogId === i…
+     11|   if (!contract) throw Error(`Missing chemistry contract ${id}`);
+       |                        ^
+     12|   return contract;
+     13| };
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:25:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/22]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > chemistry contract 342 > captures an independent numeric golden and preserves the complete engine output
+Error: Missing chemistry contract 342
+ ❯ get src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:11:24
+      9| const get = (id: number): EngineeringContract => {
+     10|   const contract = chemistryBContracts.find(row => row.catalogId === i…
+     11|   if (!contract) throw Error(`Missing chemistry contract ${id}`);
+       |                        ^
+     12|   return contract;
+     13| };
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:33:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/22]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > chemistry contract 342 > rejects historical wrong identity/version, tampered value/steps and unknown input/output fields
+Error: Missing chemistry contract 342
+ ❯ get src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:11:24
+      9| const get = (id: number): EngineeringContract => {
+     10|   const contract = chemistryBContracts.find(row => row.catalogId === i…
+     11|   if (!contract) throw Error(`Missing chemistry contract ${id}`);
+       |                        ^
+     12|   return contract;
+     13| };
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:48:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/22]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > offers exactly catalog IDs 338 through 342
+AssertionError: expected [] to deeply equal [ 338, 339, 340, 341, 342 ]
+
+- Expected
++ Received
+
+- [
+-   338,
+-   339,
+-   340,
+-   341,
+-   342,
+- ]
++ []
+
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:61:57
+     59|
+     60| it('offers exactly catalog IDs 338 through 342', () => {
+     61|   expect(chemistryBContracts.map(row => row.catalogId)).toEqual([338,3…
+       |                                                         ^
+     62| });
+     63| it('requires positive balanced coefficients while allowing fractional …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/22]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > requires positive balanced coefficients while allowing fractional common rescaling
+Error: Missing chemistry contract 338
+ ❯ get src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:11:24
+      9| const get = (id: number): EngineeringContract => {
+     10|   const contract = chemistryBContracts.find(row => row.catalogId === i…
+     11|   if (!contract) throw Error(`Missing chemistry contract ${id}`);
+       |                        ^
+     12|   return contract;
+     13| };
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:64:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/22]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > refuses half-life intermediate power underflow and subnormal results, preserving actual zero and t=0
+Error: Missing chemistry contract 339
+ ❯ get src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:11:24
+      9| const get = (id: number): EngineeringContract => {
+     10|   const contract = chemistryBContracts.find(row => row.catalogId === i…
+     11|   if (!contract) throw Error(`Missing chemistry contract ${id}`);
+       |                        ^
+     12|   return contract;
+     13| };
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:70:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/22]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > requires whole electron transfers and positive dimensionless Q, preserving potential direction
+Error: Missing chemistry contract 340
+ ❯ get src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:11:24
+      9| const get = (id: number): EngineeringContract => {
+     10|   const contract = chemistryBContracts.find(row => row.catalogId === i…
+     11|   if (!contract) throw Error(`Missing chemistry contract ${id}`);
+       |                        ^
+     12|   return contract;
+     13| };
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:81:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/22]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > preserves optical zero boundaries and refuses negative factors
+Error: Missing chemistry contract 341
+ ❯ get src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:11:24
+      9| const get = (id: number): EngineeringContract => {
+     10|   const contract = chemistryBContracts.find(row => row.catalogId === i…
+     11|   if (!contract) throw Error(`Missing chemistry contract ${id}`);
+       |                        ^
+     12|   return contract;
+     13| };
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:89:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/22]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > uses matching volume units and balanced coefficients at titration equivalence
+Error: Missing chemistry contract 342
+ ❯ get src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:11:24
+      9| const get = (id: number): EngineeringContract => {
+     10|   const contract = chemistryBContracts.find(row => row.catalogId === i…
+     11|   if (!contract) throw Error(`Missing chemistry contract ${id}`);
+       |                        ^
+     12|   return contract;
+     13| };
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:96:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/22]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts > replays original engine domains outside capture bounds or chemistry capture assumptions
+Error: Missing chemistry contract 338
+ ❯ get src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:11:24
+      9| const get = (id: number): EngineeringContract => {
+     10|   const contract = chemistryBContracts.find(row => row.catalogId === i…
+     11|   if (!contract) throw Error(`Missing chemistry contract ${id}`);
+       |                        ^
+     12|   return contract;
+     13| };
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-b.test.ts:113:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/22]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  22 failed | 5 passed (27)
+   Start at  09:36:48
+   Duration  535ms (transform 79ms, setup 0ms, collect 158ms, tests 30ms, environment 0ms, prepare 93ms)

@@ -1,0 +1,51 @@
+source-acceptance	Unit tests	2026-11-16T09:25:44.1649827Z 
+source-acceptance	Unit tests	2026-11-16T09:25:44.1650049Z [31m[1mCaused by: Error[22m: Source verifier exceeded unchanged 150000ms deadline[39m
+source-acceptance	Unit tests	2026-11-16T09:25:44.1650631Z [36m [2m❯[22m Timeout.<anonymous> tests/ci-rpc-recovery-20261113/source-node.mjs:[2m40:56[22m[39m
+source-acceptance	Unit tests	2026-11-16T09:25:44.1650843Z 
+source-acceptance	Unit tests	2026-11-16T09:25:44.1650985Z [31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22m[39m
+source-acceptance	Unit tests	2026-11-16T09:25:44.1651535Z [31m[1mSerialized Error:[22m[39m [90m{ code: 'ETIMEDOUT', stdout: '', stderr: '', signal: 'SIGKILL', killed: true, sourceLockCleanup: { removed: [], preserved: [] } }[39m
+source-acceptance	Unit tests	2026-11-16T09:25:44.1651975Z [31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+source-acceptance	Unit tests	2026-11-16T09:25:44.1652090Z 
+source-acceptance	Unit tests	2026-11-16T09:25:44.1652261Z [31m⎯⎯⎯⎯⎯⎯[39m[1m[41m Unhandled Errors [49m[22m[31m⎯⎯⎯⎯⎯⎯[39m
+source-acceptance	Unit tests	2026-11-16T09:25:44.1652474Z [31m[1m
+source-acceptance	Unit tests	2026-11-16T09:25:44.1652649Z Vitest caught 1 unhandled error during the test run.
+source-acceptance	Unit tests	2026-11-16T09:25:44.1653061Z This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.[22m[39m
+source-acceptance	Unit tests	2026-11-16T09:25:44.1653308Z 
+source-acceptance	Unit tests	2026-11-16T09:25:44.1653475Z [31m⎯⎯⎯⎯⎯⎯[39m[1m[41m Unhandled Error [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+source-acceptance	Unit tests	2026-11-16T09:25:44.1653793Z [31m[1mError[22m: [vitest-worker]: Timeout calling "onTaskUpdate"[39m
+source-acceptance	Unit tests	2026-11-16T09:25:44.1654226Z [90m [2m❯[22m Object.onTimeoutError node_modules/vitest/dist/chunks/rpc.-pEldfrD.js:[2m53:10[22m[39m
+source-acceptance	Unit tests	2026-11-16T09:25:44.1654687Z [90m [2m❯[22m Timeout._onTimeout node_modules/vitest/dist/chunks/index.B521nVV-.js:[2m59:62[22m[39m
+source-acceptance	Unit tests	2026-11-16T09:25:44.1655055Z [90m [2m❯[22m listOnTimeout node:internal/timers:[2m585:17[22m[39m
+source-acceptance	Unit tests	2026-11-16T09:25:44.1655369Z [90m [2m❯[22m processTimers node:internal/timers:[2m521:7[22m[39m
+source-acceptance	Unit tests	2026-11-16T09:25:44.1655510Z 
+source-acceptance	Unit tests	2026-11-16T09:25:44.1655634Z [31m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[39m
+source-acceptance	Unit tests	2026-11-16T09:25:44.1655736Z 
+source-acceptance	Unit tests	2026-11-16T09:25:44.1655743Z 
+source-acceptance	Unit tests	2026-11-16T09:25:44.1656061Z [2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m1084 passed[39m[22m[2m | [22m[33m2 skipped[39m[90m (1087)[39m
+source-acceptance	Unit tests	2026-11-16T09:25:44.1656600Z [2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m10494 passed[39m[22m[2m | [22m[33m4 skipped[39m[90m (10499)[39m
+source-acceptance	Unit tests	2026-11-16T09:25:44.1656947Z [2m     Errors [22m [1m[31m1 error[39m[22m
+source-acceptance	Unit tests	2026-11-16T09:25:44.1657165Z [2m   Start at [22m 09:06:29
+source-acceptance	Unit tests	2026-11-16T09:25:44.1657580Z [2m   Duration [22m 1154.52s[2m (transform 11.11s, setup 0ms, collect 106.30s, tests 869.31s, environment 31.31s, prepare 47.30s)[22m
+source-acceptance	Unit tests	2026-11-16T09:25:44.1657824Z 
+source-acceptance	Unit tests	2026-11-16T09:25:44.1682557Z 
+source-acceptance	Unit tests	2026-11-16T09:25:44.1820260Z ##[error]Error: Exact source Node suite failed; retained TAP follows:
+source-acceptance	Unit tests	TAP version 13
+source-acceptance	Unit tests	# Subtest: the exact reviewed final-two app is current while mathematical engines remain immutable
+source-acceptance	Unit tests	ok 1 - the exact reviewed final-two app is current while mathematical engines remain immutable
+source-acceptance	Unit tests	  ---
+source-acceptance	Unit tests	  duration_ms: 33847.08709
+source-acceptance	Unit tests	  type: 'test'
+source-acceptance	Unit tests	  ...
+source-acceptance	Unit tests	# Subtest: original valid F042 application bytes cannot masquerade as the new current app
+source-acceptance	Unit tests	ok 2 - original valid F042 application bytes cannot masquerade as the new current app
+source-acceptance	Unit tests	  ---
+source-acceptance	Unit tests	  duration_ms: 33.819695
+source-acceptance	Unit tests	  type: 'test'
+source-acceptance	Unit tests	  ...
+source-acceptance	Unit tests	# Subtest: the newly introduced native catalog is a live source requirement, not an unbound addition
+source-acceptance	Unit tests	ok 3 - the newly introduced native catalog is a live source requirement, not an unbound addition
+source-acceptance	Unit tests	  ---
+source-acceptance	Unit tests	  duration_ms: 2.689412
+source-acceptance	Unit tests	  type: 'test'
+source-acceptance	Unit tests	  ...
+source-acceptance	Unit tests	# Subtest: coordinated app succession nomination cannot replace the independently fixed capture

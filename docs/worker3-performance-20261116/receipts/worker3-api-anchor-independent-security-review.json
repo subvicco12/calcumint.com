@@ -1,0 +1,43 @@
+{
+  "kind": "INDEPENDENT_API_ANCHOR_SECURITY_REVIEW_NOT_RUNTIME_ACCEPTANCE",
+  "base": "482d5aedb5be11e2da836980a98fbfabaa5a5f16",
+  "candidate": "0f679bcc7c2d483c4714eb1d4acef3c52c9b2ba0",
+  "blockingFindings": [],
+  "oldAnchorLiteralPreserved": true,
+  "originalSixTestsExactPrefix": true,
+  "current32Capture": {
+    "ref": "baf80e18e0fb7a6a961006ee6fea507539363756",
+    "path": "docs/next-engineering-20261115/source/stage10-current32.json",
+    "blob": "41dcb7e6d85c84b78a9e0d5086a802c2e96b06bd",
+    "bytes": 23403,
+    "sha256": "b1151d655a9e44f8a304c0d81f4c94d3e0a974a12d12a4d51955b4eb8f54488d",
+    "independentlyVerifiedAgainstGit": true
+  },
+  "verifiedProperties": [
+    "All old fixed/predecessor/current API anchor tuples remain literal",
+    "Current32 capture commit/path/blob/length/SHA and named row independently match Git",
+    "Already verified Stage8 proof.stage10Live supplies exact current32 row; no second full proof",
+    "Current actual HEAD path, actual closed read and final HEAD remain required",
+    "Original Stage8 closing/native checks and old F042/eac9/2a59 immutable relation remain",
+    "Unknown or altered row rejected before supplied Git access",
+    "Historical/observed input resolves through associated actual Git; collector actual endpoint retained",
+    "No filesystem fallback, current verdict cache, deadline change or SRC modification introduced"
+  ],
+  "runtimeTestsRunByReviewer": false,
+  "requiredFollowup": [
+    "Admit exact changed helper and test bytes",
+    "Run complete original six plus three added tests after admission",
+    "Run complete mandatory source and hosted exact-head validation"
+  ],
+  "files": [
+    {
+      "path": "tests/milestone100-20261114/source-stage8-api-runtime-anchor.mjs",
+      "sha256": "8817f4c395cb91388b93c9fbaf45b8b4dc23825495b6294956af1f73aaeed240"
+    },
+    {
+      "path": "tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs",
+      "sha256": "f831f77ee7e34b294586d6b261aadc6674b908185fb5cf5ea6f851b87a7b11aa"
+    }
+  ],
+  "qualified": false
+}

@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: reactivated observation aliases record all24 actual source paths and replay original operations
+ok 1 - reactivated observation aliases record all24 actual source paths and replay original operations
+  ---
+  duration_ms: 1444.49236
+  type: 'test'
+  ...
+# Subtest: unchanged full authority must succeed before a callback or witness can exist
+ok 2 - unchanged full authority must succeed before a callback or witness can exist
+  ---
+  duration_ms: 1806.631199
+  type: 'test'
+  ...
+# Subtest: a valid synchronous witness revalidates inside its callback and expires on return
+ok 3 - a valid synchronous witness revalidates inside its callback and expires on return
+  ---
+  duration_ms: 2257.313816
+  type: 'test'
+  ...
+# Subtest: post-issue non-runtime reader tamper poisons even when the callback catches it
+ok 4 - post-issue non-runtime reader tamper poisons even when the callback catches it
+  ---
+  duration_ms: 1305.751497
+  type: 'test'
+  ...
+# Subtest: opaque post-issue raw commit and blob substitutions cannot reuse an initial proof
+ok 5 - opaque post-issue raw commit and blob substitutions cannot reuse an initial proof
+  ---
+  duration_ms: 2517.421597
+  type: 'test'
+  ...
+# Subtest: provided preload method identity and capability presence remain fixed
+ok 6 - provided preload method identity and capability presence remain fixed
+  ---
+  duration_ms: 2514.834863
+  type: 'test'
+  ...
+# Subtest: nested scopes, thenables and caught forged-witness attempts fail closed
+ok 7 - nested scopes, thenables and caught forged-witness attempts fail closed
+  ---
+  duration_ms: 3538.771275
+  type: 'test'
+  ...
+# Subtest: live actual HEAD and status changes refuse at the replay boundary
+ok 8 - live actual HEAD and status changes refuse at the replay boundary
+  ---
+  duration_ms: 2325.064793
+  type: 'test'
+  ...
+# Subtest: reader, Git, root and view identities cannot be substituted inside an active scope
+ok 9 - reader, Git, root and view identities cannot be substituted inside an active scope
+  ---
+  duration_ms: 2681.797324
+  type: 'test'
+  ...
+# Subtest: same-byte physical symlinks refuse and modified observers never run before original-reader preflight
+ok 10 - same-byte physical symlinks refuse and modified observers never run before original-reader preflight
+  ---
+  duration_ms: 5447.187717
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 25854.133209

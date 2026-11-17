@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: native inputs retain early SRC refusal then every original authority and factory check
+ok 1 - native inputs retain early SRC refusal then every original authority and factory check
+  ---
+  duration_ms: 2.45144
+  type: 'test'
+  ...
+# Subtest: historical capabilities first consume their same actual closed authority reader
+ok 2 - historical capabilities first consume their same actual closed authority reader
+  ---
+  duration_ms: 0.493293
+  type: 'test'
+  ...
+# Subtest: changed historical guard refuses without requiring undeclared expanded SRC or Git
+ok 3 - changed historical guard refuses without requiring undeclared expanded SRC or Git
+  ---
+  duration_ms: 1.385101
+  type: 'test'
+  ...
+# Subtest: historical reader substitution fails before touching any supplied byte endpoint
+ok 4 - historical reader substitution fails before touching any supplied byte endpoint
+  ---
+  duration_ms: 0.971121
+  type: 'test'
+  ...
+# Subtest: native early refusal cannot produce a proof or skip through to authority after failure
+ok 5 - native early refusal cannot produce a proof or skip through to authority after failure
+  ---
+  duration_ms: 0.398546
+  type: 'test'
+  ...
+# Subtest: a prior valid historical read is not cached for a later current guard mutation
+ok 6 - a prior valid historical read is not cached for a later current guard mutation
+  ---
+  duration_ms: 0.531488
+  type: 'test'
+  ...
+# Subtest: native false workflow claim refuses early but a valid claim still reaches the original complete proof
+ok 7 - native false workflow claim refuses early but a valid claim still reaches the original complete proof
+  ---
+  duration_ms: 0.621751
+  type: 'test'
+  ...
+# Subtest: custom source or Git readers retain their original proof without entering the native claim precheck
+ok 8 - custom source or Git readers retain their original proof without entering the native claim precheck
+  ---
+  duration_ms: 0.560362
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 22.071587

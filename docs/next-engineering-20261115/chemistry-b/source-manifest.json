@@ -1,0 +1,130 @@
+{
+  "status": "PRIVATE ENGINEERING ONLY; RELEASE HOLD ACTIVE",
+  "retrieval": "Firecrawl scrape; full returned markdown retained in source-captures.json. SHA256 is of exact UTF-8 text field, not JSON serialization. Timestamp is observed retrieval completion in UTC.",
+  "sources": [
+    {
+      "name": "stoichiometry",
+      "catalogIds": [
+        338
+      ],
+      "retrievedAt": "2026-11-15T09:35:23Z",
+      "url": "https://openstax.org/books/chemistry-2e/pages/4-3-reaction-stoichiometry",
+      "textSha256": "5faa4685c2c43187c21729ad9224d4b5b1aa11a7cb7bc1fea012da5716df22a6"
+    },
+    {
+      "name": "half-life",
+      "catalogIds": [
+        339
+      ],
+      "retrievedAt": "2026-11-15T09:35:23Z",
+      "url": "https://openstax.org/books/chemistry-2e/pages/12-4-integrated-rate-laws",
+      "textSha256": "c136e121aaa955234e5444a4618a5ed37fd9cf440076405eef22527f3df36f3e"
+    },
+    {
+      "name": "nernst",
+      "catalogIds": [
+        340
+      ],
+      "retrievedAt": "2026-11-15T09:35:23Z",
+      "url": "https://openstax.org/books/chemistry-2e/pages/17-4-potential-free-energy-and-equilibrium",
+      "textSha256": "992fcede83fcb4543727d106d0c03aa29cc3bc07ed2fd73c94662b241ba33c1c"
+    },
+    {
+      "name": "titration",
+      "catalogIds": [
+        342
+      ],
+      "retrievedAt": "2026-11-15T09:35:23Z",
+      "url": "https://openstax.org/books/chemistry-2e/pages/4-5-quantitative-chemical-analysis",
+      "textSha256": "c43c40022b9678fe4755097858cf452f06a0c856fd54a6bb22e707370805d7bf"
+    },
+    {
+      "name": "beer-lambert",
+      "catalogIds": [
+        341
+      ],
+      "retrievedAt": "2026-11-15T09:35:23Z",
+      "url": "https://goldbook.iupac.org/terms/view/B00626",
+      "textSha256": "196e7fbc49e34fed7d3cd31ff115a32a8c2bcf4d2f3d83617bf598cf15b79d57"
+    },
+    {
+      "name": "equilibrium",
+      "catalogIds": [
+        340
+      ],
+      "retrievedAt": "2026-11-15T09:35:23Z",
+      "url": "https://openstax.org/books/chemistry-2e/pages/13-2-equilibrium-constants",
+      "textSha256": "ccf3ac9208e5574a71837fc830c346b6e2ae03c2f8c04dcef3db198fce8ea4af"
+    },
+    {
+      "name": "gas-constant",
+      "catalogIds": [
+        340
+      ],
+      "retrievedAt": "2026-11-15T09:35:23Z",
+      "url": "https://physics.nist.gov/cgi-bin/cuu/Value?r",
+      "textSha256": "c86d00a32926db7e81f302ad75e2d8d0ca30322776680fc6411b8bb6225abd2f"
+    },
+    {
+      "name": "faraday-constant",
+      "catalogIds": [
+        340
+      ],
+      "retrievedAt": "2026-11-15T09:35:23Z",
+      "url": "https://physics.nist.gov/cgi-bin/cuu/Value?f",
+      "textSha256": "8fe17394b6ebccf2adbeed9c7e66af9ef3a0cd49f3d1bf7a24961b42aa41b4c1"
+    },
+    {
+      "name": "activity",
+      "catalogIds": [
+        340
+      ],
+      "retrievedAt": "2026-11-15T09:39:12Z",
+      "url": "https://goldbook.iupac.org/terms/view/A00115",
+      "textSha256": "fde995a88f4d3ffc5dff11d75598dbf3faf5c3b5ca79dfc5b171ee12d5c6a6eb"
+    }
+  ],
+  "applicability": {
+    "338": {
+      "sources": [
+        "stoichiometry"
+      ],
+      "supports": "Balanced equation coefficients give molar ratios. Positive coefficients belong to actual participating species. Fractional common rescaling preserves ratios.",
+      "gap": "No supplied chemical equation is validated, balanced, or checked for limiting reactants, yield, purity or side reactions."
+    },
+    "339": {
+      "sources": [
+        "half-life"
+      ],
+      "supports": "First-order concentration law and constant half-life support repeated halving of any proportional amount.",
+      "gap": "First-order applicability and constant half-life must be established by caller. Binary64 underflow restrictions are engineering policy, not textbook chemistry limits."
+    },
+    "340": {
+      "sources": [
+        "nernst",
+        "equilibrium",
+        "gas-constant",
+        "faraday-constant",
+        "activity"
+      ],
+      "supports": "Nernst form, transferred electrons, positive absolute temperature, and relative dimensionless Q are supported by OpenStax. NIST supplies SI units and exact constants with displayed decimal prefixes. IUPAC activity definition explicitly relates relative activity to chemical potential and the choice of standard state.",
+      "gap": "NIST returned decimal values use ellipses, not every engine digit. Immutable code fixes R=8.31446261815324 and truncated F=96485.33212. Q input is assumed to be activity-based; no activity coefficients or E\u00b0 temperature-dependence are computed. Safe integer electron count is a conservative capture policy; historical fractional engine inputs replay unchanged."
+    },
+    "341": {
+      "sources": [
+        "beer-lambert"
+      ],
+      "supports": "IUPAC explicitly gives A=epsilon*c*l, collimated monochromatic radiation, homogeneous isotropic medium, cm path and mol/dm3 concentration with dm3/(mol cm) absorption coefficient.",
+      "gap": "OpenStax Chemistry2e section 6.1 was inspected but contains no Beer-Lambert definition; it is not cited as applicable evidence. IUPAC provides the applicable primary definition. Instrument linearity, scattering and speciation are not evaluated."
+    },
+    "342": {
+      "sources": [
+        "titration",
+        "stoichiometry"
+      ],
+      "supports": "Titrant/analyte quantities are linked by balanced equation mole ratios at equivalence. Molarity and matched volume-unit cancellation yield analyte mol/L.",
+      "gap": "Endpoint detection is not equivalence validation; no blank, dilution, uncertainty or competing reaction corrections are calculated."
+    }
+  },
+  "disposition": "Evidence supports private formula applicability only. Canonical acceptance, certification and publication are not asserted. No immutable engine, shared registry, native route, history dispatcher, canonical count, production configuration or PR1538 modifications."
+}

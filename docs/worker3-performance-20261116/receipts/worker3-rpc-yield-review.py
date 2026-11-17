@@ -1,0 +1,30 @@
+import subprocess,re,json,hashlib
+from pathlib import Path
+R='/workspace/calcumint-worker3-rpc-yield-admission';B='7ebdf0412619b8414e8c20b091f4fd9872c41f03';N='7f83386ebe5c23719ca0198758070d02a18971ff';A='tests/parallel-source-20261110/authority.mjs'
+def g(*args,**kw):return subprocess.check_output(['git',*args],cwd=R,**kw)
+def d(r,p):return g('show',r+':'+p)
+def t(r,p):return d(r,p).decode()
+def sha(b):return hashlib.sha256(b).hexdigest()
+checks={}
+def ck(n,v):checks[n]=bool(v)
+old=t(B,A);new=t(N,A);pat=r'(?:export )?const\s+(\w+)\s*=\s*Object\.freeze\((\[[\s\S]*?\])\);'
+def arrays(s):return {m[1]:m[0] for m in re.finditer(pat,s) if m[1]!='accepted'}
+o=arrays(old);n=arrays(new);ck('all184oldarraysbyteidentical',len(o)==184 and all(n.get(k)==v for k,v in o.items()));ck('authorityverifieridentical',old[old.index('export function verifyParallelAuthority'):]==new[new.index('export function verifyParallelAuthority'):]);ck('SRC0',not g('diff','--name-only',B,N,'--','src').strip())
+cp='docs/next-engineering-20261115/source/guard-capture-rpc-yield.json';raw=d(N,cp);cap=json.loads(raw);st=cap['sourceStage10RpcYield'];ret=d(B,st['retainedCapturePath']);prev=json.loads(ret);ck('retainedcaptureexacthash',sha(ret)==st['retainedCaptureSHA256']);ck('oldcapturefieldsretained',all(cap.get(k)==v for k,v in prev.items() if k not in ['currentSources','sourceStage10']));oldrows={r['path']:r for r in prev['currentSources']};rows={r['path']:r for r in cap['currentSources']};paths=st['guardPaths'];ck('8distinctguards',len(set(paths))==len(paths)==8);ck('nonchangedcurrentrowsretained',all(rows.get(p)==r for p,r in oldrows.items() if p not in paths));ck('guardpathsadditive',set(prev['sourceStage10']['guardPaths'])|set(paths)==set(cap['sourceStage10']['guardPaths']))
+entries={}
+for line in g('ls-tree','-r',st['guardRef'],'--',*paths).decode().splitlines():
+ h,p=line.split('\t',1);entries[p]=h.split()[2]
+for p in paths:
+ r=rows[p];b=d(st['guardRef'],p);ck('binding:'+p,r['ref']==st['guardRef'] and entries[p]==r['blob'] and r['bytes']==len(b) and r['sha256']==sha(b) and b==d(N,p))
+accepted=json.loads(re.search(r'export const acceptedStage10RpcYield=Object.freeze\((\[[\s\S]*?\])\);',new)[1]);want=[{k:rows[p][k] for k in ['path','blob','sha256']} for p in paths];want.append({'path':cp,'blob':g('rev-parse',N+':'+cp).decode().strip(),'sha256':sha(raw)});source=json.loads(d(N,st['capturePath']));want.extend({k:r['current'][k] for k in ['path','blob','sha256']} for r in source['rows']);ck('41exactacceptedrecords',accepted==want and len(accepted)==41)
+refs=json.loads(re.search(r'export const additionalStage10RpcYieldBootstrapRefs=Object.freeze\((\[[\s\S]*?\])\);',new)[1]);ck('3bbootstrapref', '3b7cbf3f760a71255d7306f8b9cccefaa5ac1b4a' in refs);ck('guardandparentbootstrap',st['guardRef'] in refs and B in refs)
+for p in ['scripts/fetch-source-lineage.mjs','tests/milestone100-20261114/source-preflight-stage8.mjs','tests/next-engineering-20261115/source-availability.test.mjs','tests/parallel-source-20261110/bootstrap.mjs']:
+ s=t(N,p).replace(',additionalStage10RpcYieldBootstrapRefs','').replace(',...additionalStage10RpcYieldBootstrapRefs','').replace(",'additionalStage10RpcYieldBootstrapRefs'",'').replace('capture.sourceStage10RpcYield,','').replace(",'3b7cbf3f760a71255d7306f8b9cccefaa5ac1b4a','7ebdf0412619b8414e8c20b091f4fd9872c41f03'",'');ck('onlytypedrefaddition:'+p,s==t(B,p))
+p='tests/parallel-source-20261110/core.mjs';ck('onlycaptureselectorchange',t(N,p).replace('guard-capture-rpc-yield.json','guard-capture-clone-availability.json')==t(B,p))
+for p in ['tests/parallel-source-20261110/current.test.mjs','tests/next-engineering-20261115/source-fresh-git-mandatory-children.mjs','tests/next-engineering-20261115/source-current32.test.mjs']:
+ ck('unchanged:'+p,d(N,p)==d(B,p))
+p='vitest.config.ts';cfg=d(N,p);ck('configexactsha',sha(cfg)=='1a6e61ff3d53be5b52809e57fbd682a667635c929867af04a2a7b1d161c0299d');ck('configsingleaddition',cfg.replace(b'    setupFiles: ["./tests/construction-ci-recovery-20261116/yield-task-updates.mjs"],\n',b'')==d(B,p));p='tests/construction-ci-recovery-20261116/yield-task-updates.mjs';helper=d(N,p);ck('helperexactsha',sha(helper)=='d0eb17f098ad81dce5c194527b9d57c8977b7aa34df13721a2da7f7f401c88fe');ck('literalhookonly',len(helper.splitlines())==6 and b'beforeEach(async()=>{await setImmediate();});' in helper)
+ck('authorityexactblob',g('rev-parse',N+':'+A).decode().strip()=='71a8b3d4af136a49192d6e5fb24e746c9068763a');ck('authorityexactsha',sha(d(N,A))=='60cd2003265517eaee5b3e119dba3652570c9907f30348f5e001bea7fea3672d')
+oldtree={l.split('\t')[1]:l.split()[2] for l in g('ls-tree','-r',B,'docs').decode().splitlines()};newtree={l.split('\t')[1]:l.split()[2] for l in g('ls-tree','-r',N,'docs').decode().splitlines()};caps=[p for p in oldtree if 'capture' in p and p.endswith('.json')];ck('alloldcaptureJSONsunchanged',all(newtree.get(p)==oldtree[p] for p in caps))
+r={'head':N,'parentReviewedHead':B,'guardRef':st['guardRef'],'captureSHA256':sha(raw),'oldFrozenAuthorityArrays':len(o),'newFrozenAuthorityArrays':len(n),'oldCaptureJSONsPreserved':len(caps),'newExactGuardBindings':len(paths),'newAcceptedRecords':len(accepted),'checks':checks,'blockingFindings':[k for k,v in checks.items() if not v],'structuralConclusion':'Native setImmediate yields before each Vitest case; original test bodies, assertion sets, timeout values, maxWorkers, source readers, negative controls and Node source queue remain intact. No reviewed retained-Vitest fixture needs a helper copy: literal A7 owns its historical config.','runtimeTestsRun':False,'sourceWrites':False,'qualificationClaim':False,'pending':['Root new authority pin retaining old 3b tuple and 87 exact records','Focused exact-head runtime evidence','All five hosted mandatory jobs and aggregate','Per-ID scoped acceptance reconciliation']}
+Path('/tmp/worker3-rpc-yield-independent-review.json').write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r,indent=2));assert not r['blockingFindings']

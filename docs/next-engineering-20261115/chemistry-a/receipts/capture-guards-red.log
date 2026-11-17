@@ -1,0 +1,114 @@
+$ ./node_modules/.bin/vitest run src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts
+
+ RUN  v3.2.7 /workspace/calcumint-chem-a
+
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts (60 tests | 8 failed) 66ms
+   ✓ provides exactly the six assigned immutable chemistry tuples 2ms
+   ✓ ID 329 captures an independently calculated golden and all structured output 5ms
+   ✓ ID 333 captures an independently calculated golden and all structured output 1ms
+   ✓ ID 334 captures an independently calculated golden and all structured output 1ms
+   ✓ ID 335 captures an independently calculated golden and all structured output 1ms
+   ✓ ID 336 captures an independently calculated golden and all structured output 1ms
+   ✓ ID 337 captures an independently calculated golden and all structured output 1ms
+   ✓ ID 329 refuses omitted, invented and non-text raw fields 2ms
+   ✓ ID 333 refuses omitted, invented and non-text raw fields 1ms
+   ✓ ID 334 refuses omitted, invented and non-text raw fields 1ms
+   ✓ ID 335 refuses omitted, invented and non-text raw fields 0ms
+   ✓ ID 336 refuses omitted, invented and non-text raw fields 2ms
+   ✓ ID 337 refuses omitted, invented and non-text raw fields 0ms
+   ✓ ID 329 refuses incomplete, nonfinite, out-of-range and malformed numeric text 1ms
+   ✓ ID 333 refuses incomplete, nonfinite, out-of-range and malformed numeric text 1ms
+   ✓ ID 334 refuses incomplete, nonfinite, out-of-range and malformed numeric text 1ms
+   ✓ ID 335 refuses incomplete, nonfinite, out-of-range and malformed numeric text 1ms
+   ✓ ID 336 refuses incomplete, nonfinite, out-of-range and malformed numeric text 3ms
+   ✓ ID 337 refuses incomplete, nonfinite, out-of-range and malformed numeric text 1ms
+   ✓ ID 329 retains physical zero/endpoints and unrestricted concentration-model pH 0ms
+   ✓ ID 334 retains physical zero/endpoints and unrestricted concentration-model pH 0ms
+   ✓ ID 335 retains physical zero/endpoints and unrestricted concentration-model pH 0ms
+   ✓ ID 336 retains physical zero/endpoints and unrestricted concentration-model pH 0ms
+   ✓ ID 336 retains physical zero/endpoints and unrestricted concentration-model pH 0ms
+   ✓ ID 337 retains physical zero/endpoints and unrestricted concentration-model pH 0ms
+   ✓ ID 333 retains physical zero/endpoints and unrestricted concentration-model pH 0ms
+   ✓ ID 333 retains physical zero/endpoints and unrestricted concentration-model pH 0ms
+   ✓ ID 329 refuses nonphysical capture inputs {"moles":"-1","solventMassKg":"1"} 1ms
+   ✓ ID 329 refuses nonphysical capture inputs {"moles":"1","solventMassKg":"0"} 0ms
+   ✓ ID 333 refuses nonphysical capture inputs {"hydrogenIonConcentration":"0"} 0ms
+   ✓ ID 333 refuses nonphysical capture inputs {"hydrogenIonConcentration":"-1"} 0ms
+   × ID 334 refuses nonphysical capture inputs {"moles":"1","temperatureKelvin":"0","volumeLiters":"1"} 9ms
+     → expected [Function] to throw an error
+   × ID 334 refuses nonphysical capture inputs {"moles":"0","temperatureKelvin":"0","volumeLiters":"1"} 1ms
+     → expected [Function] to throw an error
+   ✓ ID 334 refuses nonphysical capture inputs {"moles":"1","temperatureKelvin":"-1","volumeLiters":"1"} 0ms
+   ✓ ID 334 refuses nonphysical capture inputs {"moles":"1","temperatureKelvin":"1","volumeLiters":"0"} 0ms
+   × ID 335 refuses nonphysical capture inputs {"pressureAtm":"1","molarMassGPerMol":"0","temperatureKelvin":"1"} 1ms
+     → expected [Function] to throw an error
+   × ID 335 refuses nonphysical capture inputs {"pressureAtm":"0","molarMassGPerMol":"0","temperatureKelvin":"1"} 1ms
+     → expected [Function] to throw an error
+   ✓ ID 335 refuses nonphysical capture inputs {"pressureAtm":"-1","molarMassGPerMol":"1","temperatureKelvin":"1"} 0ms
+   ✓ ID 335 refuses nonphysical capture inputs {"pressureAtm":"1","molarMassGPerMol":"1","temperatureKelvin":"0"} 0ms
+   × ID 336 refuses nonphysical capture inputs {"componentMass":"1.0000000000000002","totalMass":"1"} 1ms
+     → expected [Function] to throw an error
+   ✓ ID 336 refuses nonphysical capture inputs {"componentMass":"1","totalMass":"0"} 0ms
+   ✓ ID 337 refuses nonphysical capture inputs {"soluteMassGrams":"1","solutionVolumeLiters":"0"} 0ms
+   ✓ ID 329 preserves a nonzero result at the bounded numeric extremes 1ms
+   ✓ ID 334 preserves a nonzero result at the bounded numeric extremes 0ms
+   ✓ ID 335 preserves a nonzero result at the bounded numeric extremes 0ms
+   ✓ ID 336 preserves a nonzero result at the bounded numeric extremes 0ms
+   ✓ ID 337 preserves a nonzero result at the bounded numeric extremes 0ms
+   ✓ ID 329 replays its original v1 domain while refusing the same new capture 1ms
+   ✓ ID 333 replays its original v1 domain while refusing the same new capture 0ms
+   × ID 334 replays its original v1 domain while refusing the same new capture 1ms
+     → expected [Function] to throw an error
+   × ID 335 replays its original v1 domain while refusing the same new capture 1ms
+     → expected [Function] to throw an error
+   × ID 336 replays its original v1 domain while refusing the same new capture 1ms
+     → expected [Function] to throw an error
+   ✓ ID 337 replays its original v1 domain while refusing the same new capture 2ms
+   ✓ ID 329 refuses tampered historical fields and unavailable identity/version 6ms
+   ✓ ID 333 refuses tampered historical fields and unavailable identity/version 1ms
+   ✓ ID 334 refuses tampered historical fields and unavailable identity/version 0ms
+   ✓ ID 335 refuses tampered historical fields and unavailable identity/version 0ms
+   ✓ ID 336 refuses tampered historical fields and unavailable identity/version 1ms
+   ✓ ID 337 refuses tampered historical fields and unavailable identity/version 1ms
+   ✓ preserves a genuinely underflowed original-domain historical result without admitting it as capture 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts > ID 334 refuses nonphysical capture inputs {"moles":"1","temperatureKelvin":"0","volumeLiters":"1"}
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts > ID 334 refuses nonphysical capture inputs {"moles":"0","temperatureKelvin":"0","volumeLiters":"1"}
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts > ID 335 refuses nonphysical capture inputs {"pressureAtm":"1","molarMassGPerMol":"0","temperatureKelvin":"1"}
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts > ID 335 refuses nonphysical capture inputs {"pressureAtm":"0","molarMassGPerMol":"0","temperatureKelvin":"1"}
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts > ID 336 refuses nonphysical capture inputs {"componentMass":"1.0000000000000002","totalMass":"1"}
+AssertionError: expected [Function] to throw an error
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts:93:43
+     91|   [337, {soluteMassGrams: '1', solutionVolumeLiters: '0'}],
+     92| ] as const)('ID %i refuses nonphysical capture inputs %j', (id, raw) =…
+     93|   expect(() => contract(id).execute(raw)).toThrow();
+       |                                           ^
+     94| });
+     95|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts > ID 334 replays its original v1 domain while refusing the same new capture
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts > ID 335 replays its original v1 domain while refusing the same new capture
+ FAIL  src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts > ID 336 replays its original v1 domain while refusing the same new capture
+AssertionError: expected [Function] to throw an error
+ ❯ src/lib/calculator-factory/completion/next-engineering-chemistry-a.test.ts:119:102
+    117| it.each(histories)('ID $id replays its original v1 domain while refusi…
+    118|   const c = contract(id), snapshot = {calculatorSlug: slug, calculator…
+    119|   expect(() => c.execute(Object.fromEntries(Object.entries(input).map(…
+       |                                                                                                      ^
+    120|   expect(c.verifyHistorical(snapshot).snapshot).toEqual(snapshot);
+    121| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  8 failed | 52 passed (60)
+   Start at  09:37:01
+   Duration  648ms (transform 137ms, setup 0ms, collect 260ms, tests 66ms, environment 0ms, prepare 82ms)
+
+
+exit_code=1

@@ -1,0 +1,166 @@
+{
+  "head": "3b7cbf3f760a71255d7306f8b9cccefaa5ac1b4a",
+  "base": "/tmp/worker3-actual-shallow-source-4imeod_8",
+  "qualified": false,
+  "events": [
+    {
+      "command": [
+        "/workspace/.pr1467/sprint/node-v22.23.4-linux-x64/bin/node",
+        "--input-type=module",
+        "-e",
+        "import{cloneSourceLineageRefs}from\"./scripts/fetch-source-lineage.mjs\";console.log(JSON.stringify(cloneSourceLineageRefs));"
+      ],
+      "milliseconds": 123.48346399812726,
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "git",
+        "init",
+        "-q"
+      ],
+      "milliseconds": 4.2994930045097135,
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "git",
+        "remote",
+        "add",
+        "origin"
+      ],
+      "milliseconds": 2.7374700002837926,
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "--depth=1"
+      ],
+      "milliseconds": 2347.804493001604,
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "git",
+        "checkout",
+        "--detach",
+        "3b7cbf3f760a71255d7306f8b9cccefaa5ac1b4a"
+      ],
+      "milliseconds": 1949.081903003389,
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "--depth=1"
+      ],
+      "milliseconds": 3293.137091000972,
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "--is-shallow-repository"
+      ],
+      "milliseconds": 2.68194499949459,
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "git",
+        "cat-file",
+        "-e",
+        "50240fb1d59a1f8d298718f85e58bd55b4b990c2^{commit}"
+      ],
+      "milliseconds": 2.3072559997672215,
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "git",
+        "clone",
+        "--shared",
+        "--no-checkout"
+      ],
+      "milliseconds": 1294.7435160021996,
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "git",
+        "cat-file",
+        "-e",
+        "50240fb1d59a1f8d298718f85e58bd55b4b990c2^{commit}"
+      ],
+      "milliseconds": 4.677736003941391,
+      "exitCode": 128
+    },
+    {
+      "command": [
+        "git",
+        "remote",
+        "set-url",
+        "origin"
+      ],
+      "milliseconds": 3.6882519998471253,
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "/workspace/.pr1467/sprint/node-v22.23.4-linux-x64/bin/node",
+        "scripts/fetch-source-lineage.mjs"
+      ],
+      "milliseconds": 3452.2342449999996,
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "git",
+        "clone",
+        "--shared",
+        "--no-checkout"
+      ],
+      "milliseconds": 1569.8034480010392,
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "/workspace/.pr1467/sprint/node-v22.23.4-linux-x64/bin/node",
+        "--input-type=module",
+        "-e",
+        "import{runSourceNode}from\"./tests/ci-rpc-recovery-20261113/source-node.mjs\";const started=performance.now();try{const out=await runSourceNode([\"--test\",\"tests/next-engineering-20261115/source-current32.test.mjs\"],{cwd:process.cwd(),env:{...process.env},timeout:30000,maxBuffer:1000000});process.stdout.write(out);process.stderr.write(\"RAW_FOUR_ELAPSED_MS=\"+(performance.now()-started)+\"\\n\");}catch(error){process.stdout.write(error.stdout??\"\");process.stderr.write(String(error.stack)+\"\\n\"+String(error.stderr??\"\"));process.exitCode=1;}"
+      ],
+      "milliseconds": 10091.711834997113,
+      "exitCode": 0
+    }
+  ],
+  "parentIsShallow": true,
+  "parentContainsCodeRef": true,
+  "unmodifiedCloneBeforeContainsCodeRef": false,
+  "bootstrap": {
+    "sourceRevisions": 561,
+    "fetched": 0,
+    "releaseHold": true,
+    "productionWrites": false,
+    "cloneAvailability": {
+      "sourceRevisions": 561,
+      "created": 561,
+      "sourceAdmission": false,
+      "releaseHold": true,
+      "productionWrites": false
+    }
+  },
+  "unmodifiedCloneAfterContainsEveryApprovedCommit": true,
+  "approvedCommitCount": 561,
+  "rawFixtureSHA256": "dce9ab31f02577cc410559d559fcec9bbb376ccc1326c513412c69d2677de52d",
+  "rawFourExitCode": 0,
+  "rawFourPassed": true,
+  "HEADAndIndexUnchanged": true,
+  "success": true
+}

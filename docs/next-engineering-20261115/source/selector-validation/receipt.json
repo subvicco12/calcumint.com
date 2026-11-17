@@ -1,0 +1,109 @@
+{
+  "kind": "EXACT_STAGE10_CURRENT_SELECTOR_INTEGRATION_REPAIR",
+  "testedHead": "e84aba4ed0624aaac53f80df0ddcc380e4ff653d",
+  "originalCIFailure": {
+    "run": 43703105932,
+    "exactRootHead": "fee65f11",
+    "buildConsumer": "node --test --test-reporter=tap tests/ci-gate-recovery/*.test.mjs",
+    "buildFailure": "batch17-budget-successor;61 passed and1 failed before repair",
+    "publicationConsumer": "node scripts/first20-publication/evidence.mjs --check",
+    "diagnostic": "Independent current target bytes differ: src/lib/registered-snapshot-verification.ts",
+    "cause": "Negative current-source selector stopped at Stage9 and compared the actual Stage10 verifier against stale historical bytes.",
+    "preserved": true
+  },
+  "auditFinding": "Direct negative-workflow fixture had5 failures from stale current47 tuples and an earlier Git-dependent negative preflight override; fixed with an authenticated literal Stage10 descriptor merged last, restricted to the original47-path universe.",
+  "repairs": [
+    "Keep original ten current-source descriptor array unchanged; append a separate exact Stage10 descriptor and apply the existing hash/roster/tuple checks before current target reads.",
+    "Keep original negative workflow descriptor array and47-path universe unchanged; merge authenticated Stage10 rows last only for existing workflow paths. Negative preflight uses no Git or filesystem fallback.",
+    "Retain complete positive native/Git/historical proofs after negative-only checks.",
+    "Add real verifyParallelSource and first20 positive checks plus fresh tampered Stage10-byte refusal regressions.",
+    "Explicitly fetch newly retained379997d8 authority pin through additive bootstrap."
+  ],
+  "arrayPreservation": [
+    {
+      "path": "tests/milestone100-20261114/source-stage8-negative-current-src.mjs",
+      "literalArrayUnchanged": true,
+      "sha256": "4ea5a5a8e89618027d311cb8c04a406c1a64dba9381a0e4ed9fecf29abbb0056"
+    },
+    {
+      "path": "tests/completion-first-20261112/personal-stage.mjs",
+      "literalArrayUnchanged": true,
+      "sha256": "2918ef27511a00bb74871237cc9ded3281bc5d8d3d873ebe8fe285025981ddcc"
+    }
+  ],
+  "selectorAudit": {
+    "publicNamedCurrentContext": "Stage10 merged last",
+    "namedApplicationSuccessor": "Stage10 selected first",
+    "productCompletionSourceRow": "Stage10 selected first",
+    "receiptVerifier": "Exact Stage10 code hash joined without rewriting older receipt claims",
+    "directNegativeCurrentSource": "Repaired;Stage10 merged last",
+    "negativeWorkflow47": "Repaired;Stage10 merged last within47 paths",
+    "unchangedFactoryResidual": "No overlap with Stage10;unchanged",
+    "stage8Actual": "No active consumers found;unchanged",
+    "stage9HistoricalByteCheck": "Intentionally consumes authenticated Stage10 predecessor projection;unchanged"
+  },
+  "checks": {
+    "ciGateRecoveryTests": 63,
+    "actualConsumerTests": 2,
+    "negativeHelperAndAvailabilityTests": 20,
+    "literalPreflightTests": 4,
+    "totalPassedCases": 89,
+    "first20EvidenceCheck": true,
+    "partial16SourceCheck": true,
+    "changedAdmissionLint": {
+      "errors": 0,
+      "warnings": 11
+    }
+  },
+  "evidence": [
+    {
+      "name": "ci-gates",
+      "path": "docs/next-engineering-20261115/source/selector-validation/ci-gates.log",
+      "sha256": "735880c04c26a5eaa5ad6833e3a685e235fb8dccadb67332dbcb354825db2444",
+      "exitCode": 0
+    },
+    {
+      "name": "first20",
+      "path": "docs/next-engineering-20261115/source/selector-validation/first20.log",
+      "sha256": "ea92b7775c5dbd84ef3f2a8bcfbe405605dc457c171a76ddeeaf076738005e09",
+      "exitCode": 0
+    },
+    {
+      "name": "partial16",
+      "path": "docs/next-engineering-20261115/source/selector-validation/partial16.log",
+      "sha256": "b43536f8abf8bf0286e3079692e04d7b7341b29a380deeb9c74587f7f52b6f87",
+      "exitCode": 0
+    },
+    {
+      "name": "actual-consumers",
+      "path": "docs/next-engineering-20261115/source/selector-validation/actual-consumers.log",
+      "sha256": "876847b469194eea4c39e124a0332d832b2d48cd8ca0e2d6e6f7977dffeb026a",
+      "exitCode": 0
+    },
+    {
+      "name": "negative-helpers",
+      "path": "docs/next-engineering-20261115/source/selector-validation/negative-helpers.log",
+      "sha256": "74e8c3ec248accc5a85ada2be8560263bdd349e829db5446601e1e7d84646946",
+      "exitCode": 0
+    },
+    {
+      "name": "preflight",
+      "path": "docs/next-engineering-20261115/source/selector-validation/preflight.log",
+      "sha256": "5f126124c904e9d78f15268f32447dc750ad3c8fa1c684995e4c8e3ba7bc4c03",
+      "exitCode": 0
+    },
+    {
+      "name": "lint",
+      "path": "docs/next-engineering-20261115/source/selector-validation/lint.log",
+      "sha256": "8b9c6ddbde5106702d4d72793c119a603a0f2236f3a29c40708f185c08d690ab",
+      "exitCode": 0
+    }
+  ],
+  "srcDeltaFromFrozen550": [],
+  "workflowDelta": [],
+  "deadlinesChanged": false,
+  "canonicalCountsChanged": false,
+  "qualified": false,
+  "qualificationRemaining": "Independent review and unchanged exact-head five-job Node22 CI plus aggregate.",
+  "releaseHold": true
+}

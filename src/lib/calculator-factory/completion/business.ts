@@ -1,4 +1,5 @@
 import {constructionContracts,verifyConstructionSnapshot} from '@/lib/worker1-construction-20261116/cohort';
+import {nextEngineeringContracts,verifyNextEngineeringSnapshot} from './next-engineering';
 import {z} from 'zod';
 import {factoryContracts} from '../registry';
 import {verifyPrivateFactoryPacket} from '../private-delivery';
@@ -29,6 +30,7 @@ export function verifyFactoryStoredSnapshot(value:CalculationSnapshot){
  if(contract.catalogId===226&&snapshot.calculatorSlug==='remainder-calculator'&&snapshot.calculatorVersion===1){
   return Object.freeze({catalogId:contract.catalogId,snapshot:verifyLaunchSnapshot(snapshot).snapshot});
  }
+ if(nextEngineeringContracts.some(row=>row.catalogId===contract.catalogId))return Object.freeze({catalogId:contract.catalogId,snapshot:verifyNextEngineeringSnapshot(snapshot).snapshot});
  const raw=Object.fromEntries(Object.entries(snapshot.input).map(([key,input])=>{
   if(typeof input!=='string'&&typeof input!=='number')throw Error('Unsupported persisted factory input');
   return [key,typeof input==='number'&&Object.is(input,-0)?'-0':String(input)];

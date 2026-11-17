@@ -1,0 +1,25 @@
+{
+  "kind": "READ_ONLY_TWO_FIXED_LANE_SCHEDULER_REVIEW",
+  "base": "79745baf553091a77e51e7d23b2832b6319e918c",
+  "path": "tests/parallel-source-20261110/current.test.mjs",
+  "workingSHA256": "91b0da3da299e7d152f5018b7171806ec3b8880d81281e0e85794402913e6b60",
+  "onlyChangedCode": "Replace global scope/preload completion barrier and later worker start with two fixed initial lanes that continue directly into the existing shared pool.",
+  "preserved": [
+    "all40 command paths and323expected cases",
+    "coldavailability awaited before either lane",
+    "same39-child exactonce unique planned set",
+    "scopeandpreload excluded from sharedpool",
+    "sameoriginalNodeargv/env/options/AbortSignal",
+    "all30second perchild deadlines andmaxBuffer",
+    "sameowned inherited processgroup",
+    "settled failures retained andlater jobs stillvisited",
+    "original declared resultreportorder andallnegative assertions"
+  ],
+  "concurrencyReason": "Each of exactlytwo lanes awaits one child before reserving another pool item; nextIndex++ occurs synchronously in single-threaded JS beforeawait, so a pool row cannot be claimed twice. No additional lane/thread/publicinput is added.",
+  "securityAssessment": "No new verdict or result cache, no cross-test-case result transfer, no skipped callback/source observation. This stays within the original mandatorycase context rather than borrowing work into an earlier factorycase.",
+  "risk": "Scope may have a companion for more of its30second window; focusedall40/all323 andexactintegrated150second plushostedCI mustdemonstrate budget fitness. Local cgroup4CPUs doesnotprovehostedCPUequivalence.",
+  "blockingStructuralFinding": false,
+  "runtimeTestsByReviewer": false,
+  "productionChanges": false,
+  "qualified": false
+}

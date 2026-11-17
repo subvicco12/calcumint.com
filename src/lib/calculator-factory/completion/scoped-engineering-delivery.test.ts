@@ -1,0 +1,68 @@
+import {createHash} from 'node:crypto';
+import {expect,it} from 'vitest';
+import {factoryContracts,factoryResult,getFactoryContract,getFactoryWorkflows} from '../registry';
+import {nextEngineeringContracts} from './next-engineering';
+import {factoryDownload} from './exports';
+import {runFactoryEmbedCalculation} from '@/lib/native-delivery/factory-embed-contract';
+import {runFactoryAutomationBatch,verifyFactoryAutomationRows} from '@/lib/native-delivery/factory-automation-contract';
+const rawFor=(c:(typeof factoryContracts)[number])=>Object.fromEntries(c.fields.map(f=>[f.key,String(f.defaultValue)]));
+const hash=(v:unknown)=>createHash('sha256').update(typeof v==='string'?v:JSON.stringify(v)).digest('hex');
+it.each(nextEngineeringContracts)('exports scope, all unit bindings and source evidence for $catalogId through actual workflow/download routes',c=>{
+ const w=getFactoryWorkflows(c.catalogId),p=w.execute(rawFor(c));
+ const report=JSON.parse(w.exportPacket(p,'json','business'));
+ expect(report.kind).toBe('calcumint.scoped-report');expect(report.reportVersion).toBe(1);
+ expect(report.packet).toEqual(p);expect(report.metadata.scope).toBe(c.scope);
+ expect(report.metadata.sourceEvidence).toEqual(c.sourceEvidence);
+ expect(report.metadata.fields).toEqual(c.fields.map(({key,label,unit})=>({key,label,unit})));
+ expect(report.metadata.outputs[c.primaryKey].unit).toBe(c.unit);
+ expect(report.metadata.limitations).toEqual(expect.arrayContaining([...c.limitations]));
+ expect(w.replay(JSON.stringify(report))).toEqual(p);expect(w.replay(JSON.stringify(p))).toEqual(p);
+ expect(new TextDecoder().decode(factoryDownload(w,p,'json','business',c.title).bytes)).toBe(w.exportPacket(p,'json','business'));
+ const csv=w.exportPacket(p,'csv','business');expect(csv).toContain('scopedMetadata');expect(csv).toContain(c.scope.replaceAll('"','""'));
+ for(const source of c.sourceEvidence)expect(csv).toContain(source);
+ // Read literal and Unicode text operators from the generated PDF, not byte count alone.
+ const pdfBytes=new TextDecoder().decode(factoryDownload(w,p,'pdf','business',c.title).bytes);
+ const pdf=pdfBytes.replace(/<([0-9a-f]+)> Tj/g,(_match,hex:string)=>Array.from({length:hex.length/4},(_,i)=>String.fromCharCode(parseInt(hex.slice(i*4,i*4+4),16))).join('')+' Tj');
+ const visible=Array.from(pdfBytes.matchAll(/\(((?:\\.|[^\\)])*)\) Tj|<([0-9a-f]+)> Tj/g),m=>m[2]?Array.from({length:m[2].length/4},(_,i)=>String.fromCharCode(parseInt(m[2].slice(i*4,i*4+4),16))).join(''):m[1].replace(/\\([0-7]{1,3}|[()\\])/g,(_all,part:string)=>/^[0-7]+$/.test(part)?String.fromCharCode(parseInt(part,8)):part)).join('').replace(/\s/g,'');
+ expect(visible).toContain(c.scope.replace(/\s/g,''));
+ for(const field of report.metadata.fields)expect(visible).toContain(`${field.label}[${field.unit}]`.replace(/\s/g,''));
+ for(const source of report.metadata.publisherSources)expect(visible).toContain(source.replace(/\s/g,''));
+ expect(pdf).toContain('SOURCES');expect(pdf).toContain('SCOPED ENGINEERING CONTRACT');
+ for(const source of c.sourceEvidence)expect(pdf).toContain(source.replaceAll('(','\\(').replaceAll(')','\\)'));
+ for(const alter of [(r:typeof report)=>r.metadata.scope='forged',(r:typeof report)=>r.metadata.identity.sourceVersion='forged',(r:typeof report)=>r.metadata.publisherSources=['https://forged.invalid'],(r:typeof report)=>r.metadata.outputs[c.primaryKey].unit='forged',(r:typeof report)=>r.metadata.limitations=[],(r:typeof report)=>r.metadata.fields[0].unit='forged',(r:typeof report)=>r.metadata.sourceEvidence=[],(r:typeof report)=>r.metadata.extra=true,(r:typeof report)=>r.extra=true,(r:typeof report)=>r.reportVersion=2,(r:typeof report)=>r.packet.snapshot.output[c.primaryKey]=123456789]){const forged=structuredClone(report);alter(forged);expect(()=>w.replay(JSON.stringify(forged))).toThrow();}
+ const batch=w.batch([rawFor(c)]);expect(w.replayBatch(w.exportBatch(batch,'business'))).toEqual(batch);
+ expect(w.replayBatch(JSON.stringify([p]))).toEqual(batch);
+ const forgedBatch=JSON.parse(w.exportBatch(batch,'business'));forgedBatch[0].metadata.publisherSources=['https://forged.invalid'];expect(()=>w.replayBatch(JSON.stringify(forgedBatch))).toThrow();
+});
+it.each(nextEngineeringContracts)('carries the same scoped bindings in native embed/batch for $catalogId',c=>{
+ const raw=rawFor(c),report=JSON.parse(getFactoryWorkflows(c.catalogId).exportPacket(getFactoryWorkflows(c.catalogId).execute(raw),'json','business'));
+ const embed=runFactoryEmbedCalculation(c.catalogId,1,raw);expect(embed).toHaveProperty('scopedMetadata',report.metadata);
+ const rows=runFactoryAutomationBatch({catalogId:c.catalogId,version:1,rows:[raw]});expect(rows[0]).toHaveProperty('result.scopedMetadata',report.metadata);
+ expect(()=>verifyFactoryAutomationRows(c.catalogId,1,[raw],rows)).not.toThrow();
+ const altered=structuredClone(rows) as unknown as {result:{scopedMetadata:{scope:string}}}[];altered[0].result.scopedMetadata.scope='forged';expect(()=>verifyFactoryAutomationRows(c.catalogId,1,[raw],altered)).toThrow();
+});
+it('keeps legacy extra-key and size refusal for scoped imports',()=>{const w=getFactoryWorkflows(329),p=w.execute({moles:'1',solventMassKg:'2'});expect(()=>w.replay(JSON.stringify({...p,extra:1}))).toThrow();expect(()=>w.replay(' '.repeat(8_000_001))).toThrow();});
+
+const original69=[[218,"f48b8d671c1ad9df30213a3451d626b52ca94fbfeba01cbfce85bc609310135b"],[219,"f7076953b350a4b74a177533716f51be21df4093c14c1e1090bb581a9af26d50"],[220,"f0812ba81943ffcd872cc764060a44b6c96496049446abda0a53a7c500c04999"],[423,"c1703c86ca4cc29e38de23774dbe4580a0abdcfbf5e0946557b15801918ed1cb"],[430,"ee7fecf4a022d637e4056e30f6df4df0ab95231d2d1b0a1bc373bfde24bf06ec"],[431,"2c2bbe5e3ca9e32f7541cf119cbd17bcfa42ca44f1449fcbfea686ada9804bd6"],[432,"7fff1e207ecb8129b71115e40a4bef3994617f2d53158d0ef741f696fd676915"],[438,"681073c793271a83a9d849742b17890f795ce2e5d15db6244859fb818884e424"],[440,"024f58404f78f02acef4774fbcb9253adbbb9506b023b1cef14966136b0c8229"],[208,"dbc95713ad01a7e73b621d418541a7700f51c0024685fcb133eae042ba887421"],[209,"49386e5946c050d3845af487e981739caf4b1ec06fc1bb641c2ea8e23806d805"],[210,"d4f894a3f6beeae5b6d98b8283d86e94b4aa063b6275eb011ab662681603579f"],[211,"49dc1176739388063e971682819be10878cbabf592f1d2c05faaa3d3a9c0036a"],[212,"240cc2e10cef227f4f294324b224573903160609e0d34e1eef28d339c8f863a6"],[215,"257395e480482f39b2912a8ee4e0ebe9252ee70acd509b133c7a5ba8207f2f74"],[216,"f883580100fdacd20aee0ddfc3cf0df54eedf1cfd0b99bca5721df24d2315ad9"],[424,"b23bf64a9caaaf98f74ad85b52083a3b20427d038bb68911ce14e2c6143ec399"],[425,"f398df4dcecc5bbcbe25415542e11d9c49606e1e9555644689401671d8f0fdf4"],[427,"a01f4a23a365bcb9002bf9db95517991dc9fac3dcc2d33dc8cc87dac2bc8c5cc"],[428,"de606b6670fc6fc348ef34b8703d35af38f0eee46a1c58c298ebceefe5e5d6e1"],[433,"8d97acf79e3dd6003689afc807015307c88dd3e816227e54c838e5b2cb0963e0"],[434,"ff008d3bfaafd946ab6e9a4992ab8246b45e56ecc83a3bc81a8e45c374d692ed"],[322,"5876fa3c5dde5f8aabb7364a823def10ca9af5734e320eda3e60ff3a27341f12"],[325,"c27d5314362c0aaafa9515aefe7807750900a028ba1d71374113b1db954ae16e"],[327,"3fe65804e7b8d6d8e32feb327a1cd708dd941caf1d3d0f6ffa594312f4847644"],[255,"bbd7c307ad994b1c7de8a77fe37f7567c304f0de9a0f6025bed85569a64d423c"],[256,"641dfcc07ee5e8522928a8b797e0411ee1cc6b9e399897f5e7189e0651a4411d"],[259,"78e7c67819358e5dbb27f0700ced4897c38a79217972a32e7f2a39a125f8eb52"],[260,"a700126975851dd8e03e5d9a7074a659527d675f6623cc08911110038cf8c36a"],[263,"dc04d4c2f7139ed976d89e96f2f938574212336f4cb70901acc288f65198f08f"],[264,"4490e83f87837867b1bc00237e5c319c6b349503e4ad467a31b79f8bd83883f3"],[265,"b53bea8ebb467d6d8d7d31c16e5e53bc87393305fa5268f3db03f2305ef834a8"],[429,"1b5ff424592ff2c4b252384c365ce05eced9e197dc2d7be6fc6a512fcb67ef8c"],[436,"457efd03e94af45bd3d95c75f1cca57c9cd2a8a08115e4212d18255d596ca5e5"],[437,"33e020fb600005ed312534f9dfd2fde733b2b4ba3bd0602633306c5d55145086"],[439,"246c9ebf39133218440de2675ec0b4937283b181f0899a85351edc35ed1d105d"],[261,"55094af44004c52758e951ba49ed876bdb746f13e4157b04bdcaa690e91021d7"],[262,"5dec118ccbfc8c91f67dc79a484e31e21f5feb06b639ecbbbd02243e2423c1a5"],[266,"39a4d9987bcf2962eb2f2ee336c58cfbc095ae1374ac46c197651e5a4ac12949"],[267,"0339bcbe5e5d67290c1453cf1966823958673c603cefb8b51ea2f2ca285f7020"],[269,"e6248bd33d934853a304632127ec8544b1eb74258cdfd4e7e442cd8995e59bea"],[270,"59cff427f6b2e9b3d3a0b18799d87104fa0fabd1f557ae2133bbeedd65f1846d"],[271,"ac2cfd31b15678c9d68bd4e82618953b99bbde80ce130fe3dc9bfc7883955171"],[273,"a43e40aba5139b70bad6ea2a9be0168e814cbe88ab4793b2ee8589e284a3e0cc"],[213,"0c8b9b0d71f1852961b9bd2b6e0179664ef34e1fa417dfd20cf7f55db484932a"],[221,"4287648700e5a50dd644b5455a38223ac1ad8fc23438e2e7c68547b7c01eace3"],[223,"37ed0d7e1b5918dbb352ca88e3fe6d90369f7b55bcf912afa5025073b4dbca99"],[224,"58d0bb1df5ae47bd6ea924b7f71745a87cb8f6192061721ea661917b3c23f13b"],[225,"45933459d03d45b8cdb0a73b9b7b9be84ec60da98f44efe82db87de37a35cf2a"],[226,"6fe0f051e8b5204a1159cade0014b81c525fcb544413641e00ff715b79ec9fb9"],[227,"bf41cff51babc6ee23e7058b15dc0c47ec7fc92a485d205ec9778edc8881ecb8"],[228,"d10679af01c1b52ee44805f00f52dbb6478a0450f16de79591e219e52f6ef2f6"],[229,"c743efc2945d91ae8dd3cf5562cfae828dbba6751b288dff6d5606542e214874"],[230,"a7299f96e1c451cbb8dcd6aae1f14673c9f4596e71a5c80e0fba4210e72265a3"],[231,"9f7dc207bc8e808c295dcd231029957960e2784017e73b090b18e39a1e518596"],[234,"8bd5a943e93f07f2f4d3dfdf8328daeda439845b38c97eb762de7f188007ab0e"],[254,"96bb1637318b845bf484ce6804582de4f6ad75de11f8c1512d2d9d3f39b81976"],[257,"f1ac400b31f587c3777e9e522c8eb7c436dcfe05726b2a835d4815ff84c264f8"],[258,"33b686bbf3f0b3b3688fd7f08658465c3e7d8e8f891b9fe1b5572c1f360e199a"],[268,"4038eba1eebaa8e39370b0056b966b59bee135f4faed46f3ba4601c7eae05b49"],[272,"c69fdee9833cecfa51dc9d8ea1123305f7b57ca73b9a976ff53ad88d9b1605e1"],[274,"10024761276876bcdd05475483f023a27a7cd8254a67658282400405bb04cb41"],[275,"c69133d6475ad4d179b25ce46abe57981762e8041b4e2b10a933678e5bd0e106"],[278,"244c15f9b382229a4613808842501a9d52f613a0a5abd6074209cdc0e5133a70"],[279,"1218bc209337530845fe6976bac0a483e037464e7e7c15a767ec015f2339c848"],[280,"6eea9a831a5859ac9a3965dd5f1080147cd3de12078cca280374d6852b84f84f"],[328,"aba64c004a54e5b31a1d07c14bbbdd4776b6e86356b75be18d616f5fa30c1da3"],[331,"28c035ea8d613c2ee1be551b68388ad4a80ea4fdaaf93b6a55f9a949b5a25eea"],[332,"e8a806cbea0a5046956766d7b2a4ca43af7055d7cf3e579f23e16af189afcdd4"]] as const;
+it.each(original69)('preserves original delivery/export bytes for #%i',(id,want)=>{const c=getFactoryContract(id)!,w=getFactoryWorkflows(id),raw=rawFor(c),p=w.execute(raw);expect(hash({packet:p,json:w.exportPacket(p,'json','business'),csv:w.exportPacket(p,'csv','business'),downloads:Object.fromEntries((['json','csv','pdf'] as const).map(fmt=>[fmt,createHash('sha256').update(factoryDownload(w,p,fmt,'business',c.title).bytes).digest('hex')])),embed:runFactoryEmbedCalculation(id,1,raw),batch:runFactoryAutomationBatch({catalogId:id,version:1,rows:[raw]})})).toBe(want);});
+it('binds secondary statistics units and reports inherited approximation limitations',()=>{
+ const metadata=(id:number)=>{const c=getFactoryContract(id)!,w=getFactoryWorkflows(id);return JSON.parse(w.exportPacket(w.execute(rawFor(c)),'json','business')).metadata;};
+ expect(metadata(284).outputs.deviation.unit).toBe('supplied unit');
+ for(const key of ['estimate','lowerBound','upperBound','marginOfError'])expect(metadata(285).outputs[key].unit).toBe('supplied estimate unit');
+ expect(metadata(286).outputs.unroundedSampleSize.unit).toBe('observations');
+ expect(metadata(291).outputs.pdf.unit).toBe('reciprocal input unit');expect(metadata(291).outputs.zScore.unit).toBe('dimensionless');
+ expect(metadata(285).limitations.join(' ')).toContain('rounded v1 critical-value table');expect(metadata(286).limitations.join(' ')).toContain('minimum sample-size guarantee');
+ expect(metadata(291).limitations.join(' ')).toContain('continuous/global error bound');
+ for(const c of nextEngineeringContracts)expect(metadata(c.catalogId).publisherSources.every((url:string)=>url.startsWith('https://'))).toBe(true);
+ expect(metadata(329).publisherSources).toContain('https://openstax.org/books/chemistry-2e/pages/11-4-colligative-properties');
+});
+
+it.each(nextEngineeringContracts)('shows publisher links, scoped limitations and secondary units in the actual Final result for $catalogId',c=>{
+ const raw=rawFor(c),w=getFactoryWorkflows(c.catalogId),metadata=JSON.parse(w.exportPacket(w.execute(raw),'json','business')).metadata;
+ const result=factoryResult(c.catalogId,raw);
+ for(const url of metadata.publisherSources)expect(result.sources).toEqual(expect.arrayContaining([expect.objectContaining({url})]));
+ for(const limitation of metadata.limitations)expect(result.warnings).toContain(limitation);
+ for(const metric of result.metrics??[])expect(metric.unit).toBe(metadata.outputs[metric.id]?.unit);
+ const embed=runFactoryEmbedCalculation(c.catalogId,1,raw);
+ for(const url of metadata.publisherSources)expect(embed.sources).toEqual(expect.arrayContaining([expect.objectContaining({url})]));
+});

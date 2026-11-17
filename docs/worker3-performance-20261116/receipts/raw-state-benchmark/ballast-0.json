@@ -1,0 +1,1524 @@
+{
+  "mib": 0,
+  "node": "v22.23.4",
+  "options": {
+    "cwd": "/workspace/calcumint-worker3-recovery",
+    "env": "current process.env snapshot",
+    "stdio": [
+      "ignore",
+      "pipe",
+      "pipe"
+    ],
+    "maxBuffer": 8388608
+  },
+  "memory": {
+    "rss": 28692480,
+    "heapTotal": 7184384,
+    "heapUsed": 5214624,
+    "external": 2194397,
+    "arrayBuffers": 16659
+  },
+  "cold": [
+    {
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "ms": 87.45493200000001,
+      "bytes": 41,
+      "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+    },
+    {
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "ms": 25.95849100000001,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "pairs": [
+    {
+      "repetition": 0,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 4.948857000000004,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "broker": {
+        "ms": 4.662393000000009,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 0,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 22.770901999999978,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "broker": {
+        "ms": 24.643158999999997,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 1,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 4.539964999999995,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "direct": {
+        "ms": 4.422042000000005,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 1,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 23.247428000000014,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "direct": {
+        "ms": 19.31417799999997,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 2,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 3.304171999999994,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "broker": {
+        "ms": 4.861580000000004,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 2,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 19.93474199999997,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "broker": {
+        "ms": 20.748436000000027,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 3,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 4.204038999999966,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "direct": {
+        "ms": 2.8371779999999944,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 3,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 21.571497000000022,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "direct": {
+        "ms": 18.00895700000001,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 4,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 4.133095000000026,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "broker": {
+        "ms": 4.569186999999999,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 4,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 21.484928000000025,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "broker": {
+        "ms": 21.497195999999974,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 5,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 4.0837040000000115,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "direct": {
+        "ms": 2.9648409999999785,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 5,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 19.68752699999999,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "direct": {
+        "ms": 20.997513000000026,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 6,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 3.6012210000000096,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "broker": {
+        "ms": 4.282689000000005,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 6,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 20.378461000000016,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "broker": {
+        "ms": 20.72039600000005,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 7,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 4.012398000000076,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "direct": {
+        "ms": 3.044367999999963,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 7,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 25.907368999999903,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "direct": {
+        "ms": 18.169025000000033,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 8,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 3.2625679999999875,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "broker": {
+        "ms": 3.892696000000001,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 8,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 19.34493000000009,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "broker": {
+        "ms": 19.891879000000017,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 9,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 3.8463729999999714,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "direct": {
+        "ms": 3.1132980000001,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 9,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 19.676153999999997,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "direct": {
+        "ms": 19.381846999999993,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 10,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 3.177864999999997,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "broker": {
+        "ms": 3.9702129999999443,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 10,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 20.41117500000007,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "broker": {
+        "ms": 21.814509000000044,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 11,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 4.100477999999953,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "direct": {
+        "ms": 4.294265999999993,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 11,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 20.41025400000001,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "direct": {
+        "ms": 18.210237000000006,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 12,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 3.029446000000007,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "broker": {
+        "ms": 3.853568999999993,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 12,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 18.52521200000001,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "broker": {
+        "ms": 22.173405000000002,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 13,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 3.7324530000000777,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "direct": {
+        "ms": 2.853136999999947,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 13,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 19.16719999999998,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "direct": {
+        "ms": 18.72553800000003,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 14,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 3.382519000000002,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "broker": {
+        "ms": 3.63880400000005,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 14,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 18.06330300000002,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "broker": {
+        "ms": 19.671085999999946,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 15,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 4.129437999999936,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "direct": {
+        "ms": 3.0410510000000386,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 15,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 20.296025999999983,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "direct": {
+        "ms": 19.296018000000004,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 16,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 3.0633699999999635,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "broker": {
+        "ms": 4.114431999999965,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 16,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 17.598988000000077,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "broker": {
+        "ms": 21.15402199999994,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 17,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 3.739624000000049,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "direct": {
+        "ms": 2.9433989999999994,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 17,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 20.38555999999994,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "direct": {
+        "ms": 21.49650599999984,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 18,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 3.3712359999999535,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "broker": {
+        "ms": 4.401124999999865,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 18,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 19.353251,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "broker": {
+        "ms": 19.998293999999987,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 19,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 4.033241999999973,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "direct": {
+        "ms": 3.0566329999999198,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 19,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 19.69087599999989,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "direct": {
+        "ms": 18.741831000000047,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 20,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 3.5671250000000327,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "broker": {
+        "ms": 4.7183789999999135,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 20,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 20.13390100000015,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "broker": {
+        "ms": 21.537038999999822,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 21,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 3.9913980000001175,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "direct": {
+        "ms": 5.017624000000069,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 21,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 20.08455099999992,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "direct": {
+        "ms": 19.467329000000063,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 22,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 3.7008260000000064,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "broker": {
+        "ms": 5.476495000000114,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 22,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 19.38768899999991,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "broker": {
+        "ms": 18.967677000000094,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 23,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 3.7491249999998217,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "direct": {
+        "ms": 3.80118299999981,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 23,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 19.778094999999894,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "direct": {
+        "ms": 18.394960999999967,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 24,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 3.651203000000123,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "broker": {
+        "ms": 3.8879880000001776,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 24,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 21.17393500000003,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "broker": {
+        "ms": 18.563237000000072,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 25,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 4.364150999999993,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "direct": {
+        "ms": 2.85841100000016,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 25,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 19.383391000000074,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "direct": {
+        "ms": 19.301844000000074,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 26,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 3.145567999999912,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "broker": {
+        "ms": 3.6423999999999523,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 26,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 19.491809999999987,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "broker": {
+        "ms": 18.235476000000062,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 27,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 3.4790800000000672,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "direct": {
+        "ms": 2.9631990000000314,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 27,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 20.140529000000015,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "direct": {
+        "ms": 18.028428000000076,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 28,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 3.242138999999952,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "broker": {
+        "ms": 3.72051300000021,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 28,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 20.023885000000064,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "broker": {
+        "ms": 21.046296999999868,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 29,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 4.032850000000053,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "direct": {
+        "ms": 3.2489579999999023,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 29,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 19.003259999999955,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "direct": {
+        "ms": 18.629666000000043,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 30,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 2.9719689999999446,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "broker": {
+        "ms": 3.665766000000076,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 30,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "direct",
+        "broker"
+      ],
+      "direct": {
+        "ms": 18.26315999999997,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "broker": {
+        "ms": 18.615760999999793,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 31,
+      "args": [
+        "rev-parse",
+        "--verify",
+        "HEAD^{commit}"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 3.802752000000055,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "direct": {
+        "ms": 3.168867999999975,
+        "length": 41,
+        "sha256": "53b63e4f03b12dbb1f8da382dfd7432cd850ef6fc29815ecc04ad9e8e0637195"
+      },
+      "equal": true
+    },
+    {
+      "repetition": 31,
+      "args": [
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "order": [
+        "broker",
+        "direct"
+      ],
+      "broker": {
+        "ms": 21.988702999999987,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "direct": {
+        "ms": 18.21240200000011,
+        "length": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    }
+  ],
+  "memoryAfter": {
+    "rss": 52547584,
+    "heapTotal": 10067968,
+    "heapUsed": 5924144,
+    "external": 2195823,
+    "arrayBuffers": 268476878
+  }
+}

@@ -1,0 +1,2385 @@
+{
+  "result": {
+    "passed": false,
+    "error": {
+      "name": "Error",
+      "code": "ETIMEDOUT",
+      "signal": "SIGKILL",
+      "message": "Source verifier exceeded unchanged 150000ms deadline"
+    },
+    "head": "b7a7c176cf6a2349a468d10ce30c25552835de5e",
+    "closingHead": "b7a7c176cf6a2349a468d10ce30c25552835de5e",
+    "status": "",
+    "closingStatus": "",
+    "changedOriginalTargets": [],
+    "unchangedInput": true,
+    "wallMS": 150086.061304,
+    "samples": 746,
+    "qualified": false,
+    "scope": "ADVISORY_ORIGINAL7_FILE_FULL115_CRITICAL_PATH_NOT_ACCEPTANCE"
+  },
+  "clockOriginUnixMSAdvisory": 1794833992295.0186,
+  "files": [
+    {
+      "file": "tests/parallel-source-20261110/application-successor.test.mjs",
+      "sha256": "7e1f7a1f961734ad3779d2f32984e333f7b4d58bbb2561ecdcd3f207b47d1951",
+      "pid": 2254030,
+      "startUTC": "2026-11-16T12:59:52.635Z",
+      "startMS": 339.9814453125,
+      "exitUTC": "2026-11-16T13:00:42.664Z",
+      "exitMS": 50368.9814453125,
+      "wallMS": 50029,
+      "exitCode": 0,
+      "stateAtDeadline": "completed"
+    },
+    {
+      "file": "tests/parallel-source-20261110/current.test.mjs",
+      "sha256": "e07f44b5c6b77c888b1add8b3287a1a28ff6b9b09bdfbcac8c6f3478299c57ec",
+      "pid": 2254031,
+      "startUTC": "2026-11-16T12:59:52.663Z",
+      "startMS": 367.9814453125,
+      "exitUTC": null,
+      "exitMS": null,
+      "wallMS": null,
+      "exitCode": null,
+      "stateAtDeadline": "active"
+    },
+    {
+      "file": "tests/parallel-source-20261110/git-reader.test.mjs",
+      "sha256": "78082c242a3b5263cbea0c99a7039026279ba28cbb2976efcb11d7c473f34213",
+      "pid": 2288969,
+      "startUTC": "2026-11-16T13:00:42.886Z",
+      "startMS": 50590.9814453125,
+      "exitUTC": "2026-11-16T13:00:43.210Z",
+      "exitMS": 50914.9814453125,
+      "wallMS": 324,
+      "exitCode": 0,
+      "stateAtDeadline": "completed"
+    },
+    {
+      "file": "tests/parallel-source-20261110/retained-vitest.test.mjs",
+      "sha256": "dbc2b73a7d5e777cc1148c7356b795dcb7216711e418f38c4a364f217deb6484",
+      "pid": 2348944,
+      "startUTC": "2026-11-16T13:02:12.365Z",
+      "startMS": 140069.9814453125,
+      "exitUTC": "2026-11-16T13:02:12.387Z",
+      "exitMS": 140091.9814453125,
+      "wallMS": 22,
+      "exitCode": 0,
+      "stateAtDeadline": "completed"
+    },
+    {
+      "file": "tests/parallel-source-20261110/source-object-lock.test.mjs",
+      "sha256": "5436cd496ccfc34162d637ca8e5435cfe9aa3285b4c199eab6e673edc63d5f2b",
+      "pid": 2349098,
+      "startUTC": "2026-11-16T13:02:12.812Z",
+      "startMS": 140516.9814453125,
+      "exitUTC": "2026-11-16T13:02:18.420Z",
+      "exitMS": 146124.9814453125,
+      "wallMS": 5608,
+      "exitCode": 0,
+      "stateAtDeadline": "completed"
+    },
+    {
+      "file": "tests/parallel-source-20261110/retained-vitest-diagnostics.test.mjs",
+      "sha256": "2b4e0bd189996fd9f5aa7cac0c967f321dd19735bedf8cbcea941da2881ed03b",
+      "pid": 2329562,
+      "startUTC": "2026-11-16T13:01:45.426Z",
+      "startMS": 113130.9814453125,
+      "exitUTC": "2026-11-16T13:02:12.125Z",
+      "exitMS": 139830.9814453125,
+      "wallMS": 26700,
+      "exitCode": 0,
+      "stateAtDeadline": "completed"
+    },
+    {
+      "file": "tests/parallel-source-20261110/historical-group.test.mjs",
+      "sha256": "56a2596ac7c160235260f3753b138e21ab8d4007d47764cef96dc782414d5345",
+      "pid": 2289537,
+      "startUTC": "2026-11-16T13:00:43.327Z",
+      "startMS": 51031.9814453125,
+      "exitUTC": "2026-11-16T13:01:45.261Z",
+      "exitMS": 112965.9814453125,
+      "wallMS": 61934,
+      "exitCode": 0,
+      "stateAtDeadline": "completed"
+    }
+  ],
+  "children": [
+    {
+      "id": 1,
+      "argv": [
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=2",
+        "tests/milestone100-20261114/source-stage8-saved-actions-claim.test.mjs",
+        "tests/milestone100-20261114/source-stage8-test-only-successor.test.mjs",
+        "tests/milestone100-20261114/source-stage8-guard-selection.test.mjs",
+        "tests/milestone100-20261114/source-preflight-stage8.test.mjs",
+        "tests/milestone100-20261114/source-stage8-shortest-guard.test.mjs",
+        "tests/milestone100-20261114/source-stage8-named-dependencies.test.mjs",
+        "tests/milestone100-20261114/source-stage8-shortest-fixture.test.mjs",
+        "tests/milestone100-20261114/source-stage8-publication-transport.test.mjs",
+        "tests/milestone100-20261114/source-stage8-direct-commit-cache.test.mjs",
+        "tests/milestone100-20261114/source-stage8-negative-authority.test.mjs",
+        "tests/milestone100-20261114/source-stage8-authority-availability.test.mjs",
+        "tests/milestone100-20261114/source-stage8-supplied-lock.test.mjs",
+        "tests/ci-rpc-recovery-20261113/source-node.test.mjs"
+      ],
+      "pid": 2254545,
+      "startUTC": "2026-11-16T12:59:54.523Z",
+      "startMS": 2227.9814453125,
+      "endUTC": "2026-11-16T13:00:23.589Z",
+      "endMS": 31293.9814453125,
+      "wallMS": 29072.938935,
+      "timeout": 45000,
+      "maxBuffer": 4000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 60,
+        "pass": 60,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 29003.491588
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 48670.0,
+      "sampleCount": 144,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-1-source-stage8-saved-actions-claim.test.mjs+source-stage8-test-only-successor.test.mjs+sour.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-1-source-stage8-saved-actions-claim.test.mjs+source-stage8-test-only-successor.test.mjs+sour.stderr"
+    },
+    {
+      "id": 2,
+      "argv": [
+        "--test",
+        "tests/completion-first-20261112/personal-stage.test.mjs"
+      ],
+      "pid": 2277717,
+      "startUTC": "2026-11-16T13:00:30.464Z",
+      "startMS": 38168.9814453125,
+      "endUTC": "2026-11-16T13:01:16.334Z",
+      "endMS": 84038.9814453125,
+      "wallMS": 45895.87378,
+      "timeout": 60000,
+      "maxBuffer": 4000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 45767.503133
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 47100.0,
+      "sampleCount": 229,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-2-personal-stage.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-2-personal-stage.test.mjs.stderr"
+    },
+    {
+      "id": 3,
+      "argv": [
+        "tests/completion-first-20261112/retained-stage1-tests.mjs"
+      ],
+      "pid": 2277718,
+      "startUTC": "2026-11-16T13:00:30.478Z",
+      "startMS": 38182.9814453125,
+      "endUTC": "2026-11-16T13:00:40.902Z",
+      "endMS": 48606.9814453125,
+      "wallMS": 10438.362303,
+      "timeout": 60000,
+      "maxBuffer": 4000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 8776.011668
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 9880.0,
+      "sampleCount": 51,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-3-retained-stage1-tests.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-3-retained-stage1-tests.mjs.stderr"
+    },
+    {
+      "id": 4,
+      "argv": [
+        "--test",
+        "tests/four-worker-integration-20261115/source-stage9.test.mjs"
+      ],
+      "pid": 2286736,
+      "startUTC": "2026-11-16T13:00:40.919Z",
+      "startMS": 48623.9814453125,
+      "endUTC": "2026-11-16T13:00:43.245Z",
+      "endMS": 50949.9814453125,
+      "wallMS": 2342.325173,
+      "timeout": 15000,
+      "maxBuffer": 4000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 2279.585441
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 2080.0,
+      "sampleCount": 11,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-4-source-stage9.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-4-source-stage9.test.mjs.stderr"
+    },
+    {
+      "id": 5,
+      "argv": [
+        "--test",
+        "tests/gotrue-runtime/login-diagnostics.test.mjs"
+      ],
+      "pid": 2289575,
+      "startUTC": "2026-11-16T13:00:43.264Z",
+      "startMS": 50968.9814453125,
+      "endUTC": "2026-11-16T13:00:43.813Z",
+      "endMS": 51517.9814453125,
+      "wallMS": 568.063391,
+      "timeout": 30000,
+      "maxBuffer": 4000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 510.688914
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 530.0,
+      "sampleCount": 3,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-5-login-diagnostics.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-5-login-diagnostics.test.mjs.stderr"
+    },
+    {
+      "id": 6,
+      "argv": [
+        "--test",
+        "tests/full-product-batch13/workflow.test.mjs",
+        "tests/full-product-batch14/workflow.test.mjs",
+        "tests/full-product-batch17/workflow.test.mjs"
+      ],
+      "pid": 2289984,
+      "startUTC": "2026-11-16T13:00:43.827Z",
+      "startMS": 51531.9814453125,
+      "endUTC": "2026-11-16T13:00:45.256Z",
+      "endMS": 52960.9814453125,
+      "wallMS": 1442.217855,
+      "timeout": 30000,
+      "maxBuffer": 4000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 10,
+        "pass": 10,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 1388.693618
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 2120.0,
+      "sampleCount": 7,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-6-workflow.test.mjs+workflow.test.mjs+workflow.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-6-workflow.test.mjs+workflow.test.mjs+workflow.test.mjs.stderr"
+    },
+    {
+      "id": 7,
+      "argv": [
+        "tests/completion-wave-20261113/source-app-stage5-availability.test.mjs"
+      ],
+      "pid": 2311980,
+      "startUTC": "2026-11-16T13:01:18.247Z",
+      "startMS": 85951.9814453125,
+      "endUTC": "2026-11-16T13:01:18.907Z",
+      "endMS": 86611.9814453125,
+      "wallMS": 670.214745,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 330.325831
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 530.0,
+      "sampleCount": 3,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-7-source-app-stage5-availability.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-7-source-app-stage5-availability.test.mjs.stderr"
+    },
+    {
+      "id": 8,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-authority-scope.test.mjs"
+      ],
+      "pid": 2312148,
+      "startUTC": "2026-11-16T13:01:18.919Z",
+      "startMS": 86623.9814453125,
+      "endUTC": "2026-11-16T13:01:48.962Z",
+      "endMS": 116666.9814453125,
+      "wallMS": 30053.516514,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": {
+        "name": "Error",
+        "code": null,
+        "killed": true,
+        "signal": "SIGTERM",
+        "message": "Command failed: /workspace/.pr1467/sprint/node-v22.23.4-linux-x64/bin/node tests/milestone100-20261114/source-stage8-authority-scope.test.mjs\n"
+      },
+      "stateAtDeadline": "completed",
+      "tapSummary": {},
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 32570.0,
+      "sampleCount": 149,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-8-source-stage8-authority-scope.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-8-source-stage8-authority-scope.test.mjs.stderr"
+    },
+    {
+      "id": 9,
+      "argv": [
+        "tests/completion-wave-20261113/source-authority-preload.test.mjs"
+      ],
+      "pid": 2312164,
+      "startUTC": "2026-11-16T13:01:18.935Z",
+      "startMS": 86639.9814453125,
+      "endUTC": "2026-11-16T13:01:33.354Z",
+      "endMS": 101058.9814453125,
+      "wallMS": 14434.462622,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 11929.087637
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 14230.0,
+      "sampleCount": 72,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-9-source-authority-preload.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-9-source-authority-preload.test.mjs.stderr"
+    },
+    {
+      "id": 10,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-negative-publication-caller.test.mjs"
+      ],
+      "pid": 2323452,
+      "startUTC": "2026-11-16T13:01:33.371Z",
+      "startMS": 101075.9814453125,
+      "endUTC": "2026-11-16T13:01:33.553Z",
+      "endMS": 101257.9814453125,
+      "wallMS": 198.69268,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 10,
+        "pass": 10,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 90.484754
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 150.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-10-source-stage8-negative-publication-caller.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-10-source-stage8-negative-publication-caller.test.mjs.stderr"
+    },
+    {
+      "id": 11,
+      "argv": [
+        "tests/milestone100-20261114/workflow-source-evidence-batch.test.mjs"
+      ],
+      "pid": 2323485,
+      "startUTC": "2026-11-16T13:01:33.569Z",
+      "startMS": 101273.9814453125,
+      "endUTC": "2026-11-16T13:01:33.694Z",
+      "endMS": 101398.9814453125,
+      "wallMS": 140.758788,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 26.248971
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": null,
+      "sampleCount": 0,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-11-workflow-source-evidence-batch.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-11-workflow-source-evidence-batch.test.mjs.stderr"
+    },
+    {
+      "id": 12,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-shortest-native-driver.test.mjs"
+      ],
+      "pid": 2323501,
+      "startUTC": "2026-11-16T13:01:33.710Z",
+      "startMS": 101414.9814453125,
+      "endUTC": "2026-11-16T13:01:34.125Z",
+      "endMS": 101829.9814453125,
+      "wallMS": 429.519085,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 18,
+        "pass": 18,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 296.683558
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 200.0,
+      "sampleCount": 2,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-12-source-stage8-shortest-native-driver.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-12-source-stage8-shortest-native-driver.test.mjs.stderr"
+    },
+    {
+      "id": 13,
+      "argv": [
+        "tests/completion-wave-20261113/source-preflight.test.mjs"
+      ],
+      "pid": 2323769,
+      "startUTC": "2026-11-16T13:01:34.143Z",
+      "startMS": 101847.9814453125,
+      "endUTC": "2026-11-16T13:01:34.253Z",
+      "endMS": 101957.9814453125,
+      "wallMS": 127.825603,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 27.753163
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": null,
+      "sampleCount": 0,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-13-source-preflight.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-13-source-preflight.test.mjs.stderr"
+    },
+    {
+      "id": 14,
+      "argv": [
+        "tests/next-cohort-20261110/source/runtime-evidence-batch.test.mjs"
+      ],
+      "pid": 2323861,
+      "startUTC": "2026-11-16T13:01:34.263Z",
+      "startMS": 101967.9814453125,
+      "endUTC": "2026-11-16T13:01:34.386Z",
+      "endMS": 102090.9814453125,
+      "wallMS": 133.297893,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 11,
+        "pass": 11,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 44.989219
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 70.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-14-runtime-evidence-batch.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-14-runtime-evidence-batch.test.mjs.stderr"
+    },
+    {
+      "id": 15,
+      "argv": [
+        "tests/milestone100-20261114/authority-observation-collector.test.mjs"
+      ],
+      "pid": 2323934,
+      "startUTC": "2026-11-16T13:01:34.398Z",
+      "startMS": 102102.9814453125,
+      "endUTC": "2026-11-16T13:01:34.481Z",
+      "endMS": 102185.9814453125,
+      "wallMS": 94.908609,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 23,
+        "pass": 23,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 33.289035
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": null,
+      "sampleCount": 0,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-15-authority-observation-collector.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-15-authority-observation-collector.test.mjs.stderr"
+    },
+    {
+      "id": 16,
+      "argv": [
+        "tests/next-cohort-20261110/source/runtime-stage2-batch.test.mjs"
+      ],
+      "pid": 2323985,
+      "startUTC": "2026-11-16T13:01:34.498Z",
+      "startMS": 102202.9814453125,
+      "endUTC": "2026-11-16T13:01:34.563Z",
+      "endMS": 102267.9814453125,
+      "wallMS": 81.882644,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 10,
+        "pass": 10,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 26.417971
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 40.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-16-runtime-stage2-batch.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-16-runtime-stage2-batch.test.mjs.stderr"
+    },
+    {
+      "id": 17,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-stage5-scope.test.mjs"
+      ],
+      "pid": 2324001,
+      "startUTC": "2026-11-16T13:01:34.576Z",
+      "startMS": 102280.9814453125,
+      "endUTC": "2026-11-16T13:01:34.655Z",
+      "endMS": 102359.9814453125,
+      "wallMS": 91.214292,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 27.149567
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": null,
+      "sampleCount": 0,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-17-source-stage8-stage5-scope.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-17-source-stage8-stage5-scope.test.mjs.stderr"
+    },
+    {
+      "id": 18,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-negative-factory.test.mjs"
+      ],
+      "pid": 2324017,
+      "startUTC": "2026-11-16T13:01:34.669Z",
+      "startMS": 102373.9814453125,
+      "endUTC": "2026-11-16T13:01:34.829Z",
+      "endMS": 102533.9814453125,
+      "wallMS": 173.958842,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 93.625042
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 50.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-18-source-stage8-negative-factory.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-18-source-stage8-negative-factory.test.mjs.stderr"
+    },
+    {
+      "id": 19,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-current-guard-scope.test.mjs"
+      ],
+      "pid": 2324099,
+      "startUTC": "2026-11-16T13:01:34.845Z",
+      "startMS": 102549.9814453125,
+      "endUTC": "2026-11-16T13:01:34.937Z",
+      "endMS": 102641.9814453125,
+      "wallMS": 108.462372,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 29.783498
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 90.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-19-source-stage8-current-guard-scope.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-19-source-stage8-current-guard-scope.test.mjs.stderr"
+    },
+    {
+      "id": 20,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs"
+      ],
+      "pid": 2324174,
+      "startUTC": "2026-11-16T13:01:34.951Z",
+      "startMS": 102655.9814453125,
+      "endUTC": "2026-11-16T13:01:35.173Z",
+      "endMS": 102877.9814453125,
+      "wallMS": 235.041302,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 10,
+        "pass": 10,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 156.815814
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 220.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-20-source-stage8-negative-workflow.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-20-source-stage8-negative-workflow.test.mjs.stderr"
+    },
+    {
+      "id": 21,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs"
+      ],
+      "pid": 2324309,
+      "startUTC": "2026-11-16T13:01:35.189Z",
+      "startMS": 102893.9814453125,
+      "endUTC": "2026-11-16T13:01:35.311Z",
+      "endMS": 103015.9814453125,
+      "wallMS": 138.679163,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 35.507171
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": null,
+      "sampleCount": 0,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-21-source-stage8-immutable-prime.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-21-source-stage8-immutable-prime.test.mjs.stderr"
+    },
+    {
+      "id": 22,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-runtime-chain-prefetch.test.mjs"
+      ],
+      "pid": 2324421,
+      "startUTC": "2026-11-16T13:01:35.323Z",
+      "startMS": 103027.9814453125,
+      "endUTC": "2026-11-16T13:01:35.414Z",
+      "endMS": 103118.9814453125,
+      "wallMS": 102.100572,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 9.93345
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 20.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-22-source-stage8-runtime-chain-prefetch.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-22-source-stage8-runtime-chain-prefetch.test.mjs.stderr"
+    },
+    {
+      "id": 23,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-negative-workflow-claim.test.mjs"
+      ],
+      "pid": 2324476,
+      "startUTC": "2026-11-16T13:01:35.422Z",
+      "startMS": 103126.9814453125,
+      "endUTC": "2026-11-16T13:01:35.655Z",
+      "endMS": 103359.9814453125,
+      "wallMS": 241.619361,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 182.366058
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 110.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-23-source-stage8-negative-workflow-claim.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-23-source-stage8-negative-workflow-claim.test.mjs.stderr"
+    },
+    {
+      "id": 24,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-negative-reader-order.test.mjs"
+      ],
+      "pid": 2324506,
+      "startUTC": "2026-11-16T13:01:35.670Z",
+      "startMS": 103374.9814453125,
+      "endUTC": "2026-11-16T13:01:35.740Z",
+      "endMS": 103444.9814453125,
+      "wallMS": 84.84063,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 8,
+        "pass": 8,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 19.189758
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 60.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-24-source-stage8-negative-reader-order.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-24-source-stage8-negative-reader-order.test.mjs.stderr"
+    },
+    {
+      "id": 25,
+      "argv": [
+        "tests/milestone100-20261114/composition-source-evidence-batch.test.mjs"
+      ],
+      "pid": 2324528,
+      "startUTC": "2026-11-16T13:01:35.751Z",
+      "startMS": 103455.9814453125,
+      "endUTC": "2026-11-16T13:01:35.864Z",
+      "endMS": 103568.9814453125,
+      "wallMS": 123.161162,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 16,
+        "pass": 16,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 61.095134
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": null,
+      "sampleCount": 0,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-25-composition-source-evidence-batch.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-25-composition-source-evidence-batch.test.mjs.stderr"
+    },
+    {
+      "id": 26,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs"
+      ],
+      "pid": 2324588,
+      "startUTC": "2026-11-16T13:01:35.885Z",
+      "startMS": 103589.9814453125,
+      "endUTC": "2026-11-16T13:01:36.131Z",
+      "endMS": 103835.9814453125,
+      "wallMS": 267.740099,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 7,
+        "pass": 7,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 87.439364
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 50.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-26-source-stage8-runtime-prime-coalescing.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-26-source-stage8-runtime-prime-coalescing.test.mjs.stderr"
+    },
+    {
+      "id": 27,
+      "argv": [
+        "tests/next-cohort-20261110/source/runtime-head-bound-batch.test.mjs"
+      ],
+      "pid": 2324677,
+      "startUTC": "2026-11-16T13:01:36.149Z",
+      "startMS": 103853.9814453125,
+      "endUTC": "2026-11-16T13:01:36.221Z",
+      "endMS": 103925.9814453125,
+      "wallMS": 87.747885,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 7,
+        "pass": 7,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 18.028887
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": null,
+      "sampleCount": 0,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-27-runtime-head-bound-batch.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-27-runtime-head-bound-batch.test.mjs.stderr"
+    },
+    {
+      "id": 28,
+      "argv": [
+        "tests/next-engineering-20261115/source-binding-current32.test.mjs"
+      ],
+      "pid": 2324731,
+      "startUTC": "2026-11-16T13:01:36.231Z",
+      "startMS": 103935.9814453125,
+      "endUTC": "2026-11-16T13:01:36.470Z",
+      "endMS": 104174.9814453125,
+      "wallMS": 249.331565,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 7,
+        "pass": 7,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 182.895736
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 80.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-28-source-binding-current32.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-28-source-binding-current32.test.mjs.stderr"
+    },
+    {
+      "id": 29,
+      "argv": [
+        "tests/next-engineering-20261115/source-stage9-fixture.test.mjs"
+      ],
+      "pid": 2324956,
+      "startUTC": "2026-11-16T13:01:36.482Z",
+      "startMS": 104186.9814453125,
+      "endUTC": "2026-11-16T13:01:36.554Z",
+      "endMS": 104258.9814453125,
+      "wallMS": 83.686045,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 18.271406
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 50.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-29-source-stage9-fixture.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-29-source-stage9-fixture.test.mjs.stderr"
+    },
+    {
+      "id": 30,
+      "argv": [
+        "tests/next-engineering-20261115/source-completion-prewarm-admission.test.mjs"
+      ],
+      "pid": 2324995,
+      "startUTC": "2026-11-16T13:01:36.563Z",
+      "startMS": 104267.9814453125,
+      "endUTC": "2026-11-16T13:01:36.752Z",
+      "endMS": 104456.9814453125,
+      "wallMS": 198.127986,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 107.349543
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 160.0,
+      "sampleCount": 1,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-30-source-completion-prewarm-admission.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-30-source-completion-prewarm-admission.test.mjs.stderr"
+    },
+    {
+      "id": 31,
+      "argv": [
+        "tests/next-engineering-20261115/source-lineage-fixture.test.mjs"
+      ],
+      "pid": 2325046,
+      "startUTC": "2026-11-16T13:01:36.765Z",
+      "startMS": 104469.9814453125,
+      "endUTC": "2026-11-16T13:01:36.855Z",
+      "endMS": 104559.9814453125,
+      "wallMS": 102.619197,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 18.835373
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": null,
+      "sampleCount": 0,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-31-source-lineage-fixture.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-31-source-lineage-fixture.test.mjs.stderr"
+    },
+    {
+      "id": 32,
+      "argv": [
+        "tests/completion-wave-20261113/source-test-stage6.test.mjs"
+      ],
+      "pid": 2330501,
+      "startUTC": "2026-11-16T13:01:48.976Z",
+      "startMS": 116680.9814453125,
+      "endUTC": "2026-11-16T13:01:53.355Z",
+      "endMS": 121059.9814453125,
+      "wallMS": 4392.846389,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 4240.405698
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 4010.0,
+      "sampleCount": 22,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-32-source-test-stage6.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-32-source-test-stage6.test.mjs.stderr"
+    },
+    {
+      "id": 33,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs"
+      ],
+      "pid": 2330506,
+      "startUTC": "2026-11-16T13:01:48.987Z",
+      "startMS": 116691.9814453125,
+      "endUTC": "2026-11-16T13:02:04.618Z",
+      "endMS": 132322.9814453125,
+      "wallMS": 15642.411852,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 15465.757062
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 14660.0,
+      "sampleCount": 78,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-33-source-stage8-runtime-auxiliary.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-33-source-stage8-runtime-auxiliary.test.mjs.stderr"
+    },
+    {
+      "id": 34,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs"
+      ],
+      "pid": 2334357,
+      "startUTC": "2026-11-16T13:01:53.369Z",
+      "startMS": 121073.9814453125,
+      "endUTC": "2026-11-16T13:02:01.299Z",
+      "endMS": 129003.9814453125,
+      "wallMS": 7944.465355,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 7811.865568
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 8120.0,
+      "sampleCount": 40,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-34-source-stage8-api-runtime-anchor.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-34-source-stage8-api-runtime-anchor.test.mjs.stderr"
+    },
+    {
+      "id": 35,
+      "argv": [
+        "tests/milestone100-20261114/retained-stage7-preflight.mjs"
+      ],
+      "pid": 2342457,
+      "startUTC": "2026-11-16T13:02:01.310Z",
+      "startMS": 129014.9814453125,
+      "endUTC": "2026-11-16T13:02:09.107Z",
+      "endMS": 136811.9814453125,
+      "wallMS": 7807.614772,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 646.838324
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 7600.0,
+      "sampleCount": 38,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-35-retained-stage7-preflight.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-35-retained-stage7-preflight.mjs.stderr"
+    },
+    {
+      "id": 36,
+      "argv": [
+        "tests/next-engineering-20261115/source-current26.test.mjs"
+      ],
+      "pid": 2344891,
+      "startUTC": "2026-11-16T13:02:04.630Z",
+      "startMS": 132334.9814453125,
+      "endUTC": "2026-11-16T13:02:14.015Z",
+      "endMS": 141719.9814453125,
+      "wallMS": 9396.587828,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 9323.064743
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 9170.0,
+      "sampleCount": 47,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-36-source-current26.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-36-source-current26.test.mjs.stderr"
+    },
+    {
+      "id": 37,
+      "argv": [
+        "tests/next-engineering-20261115/source-current32.test.mjs"
+      ],
+      "pid": 2347152,
+      "startUTC": "2026-11-16T13:02:09.121Z",
+      "startMS": 136825.9814453125,
+      "endUTC": "2026-11-16T13:02:19.117Z",
+      "endMS": 146821.9814453125,
+      "wallMS": 10009.804545,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 9930.491856
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 9490.0,
+      "sampleCount": 49,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-37-source-current32.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-37-source-current32.test.mjs.stderr"
+    },
+    {
+      "id": 38,
+      "argv": [
+        "tests/next-engineering-20261115/source-private-git-transport.test.mjs"
+      ],
+      "pid": 2350044,
+      "startUTC": "2026-11-16T13:02:14.033Z",
+      "startMS": 141737.9814453125,
+      "endUTC": "2026-11-16T13:02:18.372Z",
+      "endMS": 146076.9814453125,
+      "wallMS": 4356.298164,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 23,
+        "pass": 23,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 4227.282221
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 3770.0,
+      "sampleCount": 22,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-38-source-private-git-transport.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-38-source-private-git-transport.test.mjs.stderr"
+    },
+    {
+      "id": 39,
+      "argv": [
+        "tests/next-engineering-20261115/source-lineage-native-contract.test.mjs"
+      ],
+      "pid": 2352180,
+      "startUTC": "2026-11-16T13:02:18.390Z",
+      "startMS": 146094.9814453125,
+      "endUTC": null,
+      "endMS": null,
+      "wallMS": null,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "active-killed-by-outer150",
+      "tapSummary": {},
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 3870.0,
+      "sampleCount": 20,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-39-source-lineage-native-contract.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-39-source-lineage-native-contract.test.mjs.stderr"
+    },
+    {
+      "id": 40,
+      "argv": [
+        "tests/completion-wave-20261113/source-app-stage5.test.mjs"
+      ],
+      "pid": 2352539,
+      "startUTC": "2026-11-16T13:02:19.134Z",
+      "startMS": 146838.9814453125,
+      "endUTC": "2026-11-16T13:02:20.625Z",
+      "endMS": 148329.9814453125,
+      "wallMS": 1507.485509,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 7,
+        "pass": 7,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 1435.477784
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 1420.0,
+      "sampleCount": 8,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-40-source-app-stage5.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-40-source-app-stage5.test.mjs.stderr"
+    },
+    {
+      "id": 41,
+      "argv": [
+        "tests/next-engineering-20261115/source-private-git-stream.test.mjs"
+      ],
+      "pid": 2353588,
+      "startUTC": "2026-11-16T13:02:20.639Z",
+      "startMS": 148343.9814453125,
+      "endUTC": "2026-11-16T13:02:22.010Z",
+      "endMS": 149714.9814453125,
+      "wallMS": 1384.739827,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "completed",
+      "tapSummary": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "duration_ms": 1306.195425
+      },
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 1780.0,
+      "sampleCount": 7,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-41-source-private-git-stream.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-41-source-private-git-stream.test.mjs.stderr"
+    },
+    {
+      "id": 42,
+      "argv": [
+        "tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs"
+      ],
+      "pid": 2353688,
+      "startUTC": "2026-11-16T13:02:22.076Z",
+      "startMS": 149780.9814453125,
+      "endUTC": null,
+      "endMS": null,
+      "wallMS": null,
+      "timeout": 30000,
+      "maxBuffer": 1000000,
+      "encoding": "utf8",
+      "hasSignal": true,
+      "error": null,
+      "stateAtDeadline": "active-killed-by-outer150",
+      "tapSummary": {},
+      "partialNotOkCount": 0,
+      "sampledSubtreeCPUMSAdvisory": 240.0,
+      "sampleCount": 2,
+      "stdout": "/tmp/worker3-full115-critical-b7/child-42-source-stage8-negative-current-src.test.mjs.stdout",
+      "stderr": "/tmp/worker3-full115-critical-b7/child-42-source-stage8-negative-current-src.test.mjs.stderr"
+    }
+  ],
+  "mandatoryPlan": [
+    {
+      "file": "tests/milestone100-20261114/source-stage8-negative-publication-caller.test.mjs",
+      "expectedCases": 10,
+      "stateAtDeadline": "completed",
+      "childId": 10,
+      "observedPass": 10
+    },
+    {
+      "file": "tests/milestone100-20261114/workflow-source-evidence-batch.test.mjs",
+      "expectedCases": 5,
+      "stateAtDeadline": "completed",
+      "childId": 11,
+      "observedPass": 5
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-shortest-native-driver.test.mjs",
+      "expectedCases": 18,
+      "stateAtDeadline": "completed",
+      "childId": 12,
+      "observedPass": 18
+    },
+    {
+      "file": "tests/completion-wave-20261113/source-app-stage5.test.mjs",
+      "expectedCases": 7,
+      "stateAtDeadline": "completed",
+      "childId": 40,
+      "observedPass": 7
+    },
+    {
+      "file": "tests/completion-wave-20261113/source-app-stage5-availability.test.mjs",
+      "expectedCases": 5,
+      "stateAtDeadline": "completed",
+      "childId": 7,
+      "observedPass": 5
+    },
+    {
+      "file": "tests/completion-wave-20261113/source-authority-preload.test.mjs",
+      "expectedCases": 6,
+      "stateAtDeadline": "completed",
+      "childId": 9,
+      "observedPass": 6
+    },
+    {
+      "file": "tests/completion-wave-20261113/source-preflight.test.mjs",
+      "expectedCases": 5,
+      "stateAtDeadline": "completed",
+      "childId": 13,
+      "observedPass": 5
+    },
+    {
+      "file": "tests/milestone100-20261114/retained-stage7-preflight.mjs",
+      "expectedCases": 5,
+      "stateAtDeadline": "completed",
+      "childId": 35,
+      "observedPass": 5
+    },
+    {
+      "file": "tests/completion-wave-20261113/source-test-stage6.test.mjs",
+      "expectedCases": 6,
+      "stateAtDeadline": "completed",
+      "childId": 32,
+      "observedPass": 6
+    },
+    {
+      "file": "tests/next-cohort-20261110/source/runtime-evidence-batch.test.mjs",
+      "expectedCases": 11,
+      "stateAtDeadline": "completed",
+      "childId": 14,
+      "observedPass": 11
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs",
+      "expectedCases": 9,
+      "stateAtDeadline": "completed",
+      "childId": 34,
+      "observedPass": 9
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs",
+      "expectedCases": 6,
+      "stateAtDeadline": "completed",
+      "childId": 33,
+      "observedPass": 6
+    },
+    {
+      "file": "tests/milestone100-20261114/authority-observation-collector.test.mjs",
+      "expectedCases": 23,
+      "stateAtDeadline": "completed",
+      "childId": 15,
+      "observedPass": 23
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-authority-scope.test.mjs",
+      "expectedCases": 10,
+      "stateAtDeadline": "completed",
+      "childId": 8,
+      "observedPass": null
+    },
+    {
+      "file": "tests/next-cohort-20261110/source/runtime-stage2-batch.test.mjs",
+      "expectedCases": 10,
+      "stateAtDeadline": "completed",
+      "childId": 16,
+      "observedPass": 10
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-stage5-scope.test.mjs",
+      "expectedCases": 9,
+      "stateAtDeadline": "completed",
+      "childId": 17,
+      "observedPass": 9
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-negative-factory.test.mjs",
+      "expectedCases": 9,
+      "stateAtDeadline": "completed",
+      "childId": 18,
+      "observedPass": 9
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-current-guard-scope.test.mjs",
+      "expectedCases": 9,
+      "stateAtDeadline": "completed",
+      "childId": 19,
+      "observedPass": 9
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs",
+      "expectedCases": 10,
+      "stateAtDeadline": "completed",
+      "childId": 20,
+      "observedPass": 10
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs",
+      "expectedCases": 9,
+      "stateAtDeadline": "completed",
+      "childId": 21,
+      "observedPass": 9
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-runtime-chain-prefetch.test.mjs",
+      "expectedCases": 5,
+      "stateAtDeadline": "completed",
+      "childId": 22,
+      "observedPass": 5
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs",
+      "expectedCases": 9,
+      "stateAtDeadline": "active-killed-by-outer150",
+      "childId": 42,
+      "observedPass": null
+    },
+    {
+      "file": "tests/parallel-source-20261110/source-lock-scope.test.mjs",
+      "expectedCases": 9,
+      "stateAtDeadline": "not-launched",
+      "childId": null,
+      "observedPass": null
+    },
+    {
+      "file": "tests/ci-rpc-recovery-20261113/source-node-owned-lock.test.mjs",
+      "expectedCases": 5,
+      "stateAtDeadline": "not-launched",
+      "childId": null,
+      "observedPass": null
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-negative-workflow-claim.test.mjs",
+      "expectedCases": 9,
+      "stateAtDeadline": "completed",
+      "childId": 23,
+      "observedPass": 9
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-negative-reader-order.test.mjs",
+      "expectedCases": 8,
+      "stateAtDeadline": "completed",
+      "childId": 24,
+      "observedPass": 8
+    },
+    {
+      "file": "tests/milestone100-20261114/composition-source-evidence-batch.test.mjs",
+      "expectedCases": 16,
+      "stateAtDeadline": "completed",
+      "childId": 25,
+      "observedPass": 16
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs",
+      "expectedCases": 7,
+      "stateAtDeadline": "completed",
+      "childId": 26,
+      "observedPass": 7
+    },
+    {
+      "file": "tests/next-cohort-20261110/source/runtime-head-bound-batch.test.mjs",
+      "expectedCases": 7,
+      "stateAtDeadline": "completed",
+      "childId": 27,
+      "observedPass": 7
+    },
+    {
+      "file": "tests/next-engineering-20261115/source-current32.test.mjs",
+      "expectedCases": 4,
+      "stateAtDeadline": "completed",
+      "childId": 37,
+      "observedPass": 4
+    },
+    {
+      "file": "tests/next-engineering-20261115/source-current26.test.mjs",
+      "expectedCases": 1,
+      "stateAtDeadline": "completed",
+      "childId": 36,
+      "observedPass": 1
+    },
+    {
+      "file": "tests/next-engineering-20261115/source-private-git-transport.test.mjs",
+      "expectedCases": 23,
+      "stateAtDeadline": "completed",
+      "childId": 38,
+      "observedPass": 23
+    },
+    {
+      "file": "tests/next-engineering-20261115/source-private-git-lifecycle.test.mjs",
+      "expectedCases": 6,
+      "stateAtDeadline": "not-launched",
+      "childId": null,
+      "observedPass": null
+    },
+    {
+      "file": "tests/next-engineering-20261115/source-private-git-stream.test.mjs",
+      "expectedCases": 1,
+      "stateAtDeadline": "completed",
+      "childId": 41,
+      "observedPass": 1
+    },
+    {
+      "file": "tests/next-engineering-20261115/source-binding-current32.test.mjs",
+      "expectedCases": 7,
+      "stateAtDeadline": "completed",
+      "childId": 28,
+      "observedPass": 7
+    },
+    {
+      "file": "tests/next-engineering-20261115/source-stage9-fixture.test.mjs",
+      "expectedCases": 4,
+      "stateAtDeadline": "completed",
+      "childId": 29,
+      "observedPass": 4
+    },
+    {
+      "file": "tests/milestone100-20261114/source-stage8-runtime-current-selection.test.mjs",
+      "expectedCases": 7,
+      "stateAtDeadline": "not-launched",
+      "childId": null,
+      "observedPass": null
+    },
+    {
+      "file": "tests/next-engineering-20261115/source-completion-prewarm-admission.test.mjs",
+      "expectedCases": 2,
+      "stateAtDeadline": "completed",
+      "childId": 30,
+      "observedPass": 2
+    },
+    {
+      "file": "tests/next-engineering-20261115/source-lineage-fixture.test.mjs",
+      "expectedCases": 4,
+      "stateAtDeadline": "completed",
+      "childId": 31,
+      "observedPass": 4
+    },
+    {
+      "file": "tests/next-engineering-20261115/source-lineage-native-contract.test.mjs",
+      "expectedCases": 7,
+      "stateAtDeadline": "active-killed-by-outer150",
+      "childId": 39,
+      "observedPass": null
+    },
+    {
+      "file": "tests/next-engineering-20261115/source-clone-availability.test.mjs",
+      "expectedCases": 9,
+      "stateAtDeadline": "not-launched",
+      "childId": null,
+      "observedPass": null
+    }
+  ],
+  "asyncChildrenExpected": 47,
+  "asyncChildrenLaunched": 42,
+  "asyncChildrenCompleted": 40,
+  "completedChildErrors": 1,
+  "mandatoryChildrenCompleted": 34,
+  "mandatoryChildrenActiveAtDeadline": 2,
+  "mandatoryChildrenNotLaunched": 5,
+  "mandatoryObservedCompletedPass": 270,
+  "TAPPrefixPass": 96,
+  "TAPPrefixFail": 0,
+  "cpuQuota": "400000 100000",
+  "qualified": false,
+  "prefixCases": [
+    {
+      "status": "ok",
+      "number": 1,
+      "name": "the exact reviewed final-two app is current while mathematical engines remain immutable",
+      "durationMS": 26247.241337
+    },
+    {
+      "status": "ok",
+      "number": 2,
+      "name": "original valid F042 application bytes cannot masquerade as the new current app",
+      "durationMS": 43.054957
+    },
+    {
+      "status": "ok",
+      "number": 3,
+      "name": "the newly introduced native catalog is a live source requirement, not an unbound addition",
+      "durationMS": 6.069077
+    },
+    {
+      "status": "ok",
+      "number": 4,
+      "name": "coordinated app succession nomination cannot replace the independently fixed capture",
+      "durationMS": 116.886407
+    },
+    {
+      "status": "ok",
+      "number": 5,
+      "name": "current mathematical dependencies outside the approved app delta remain checked",
+      "durationMS": 2365.375411
+    },
+    {
+      "status": "ok",
+      "number": 6,
+      "name": "mutable current-source cleanliness is rechecked rather than cached as an immutable object",
+      "durationMS": 2572.607711
+    },
+    {
+      "status": "ok",
+      "number": 7,
+      "name": "retained genuine artifacts keep their original application claim and disclose the current successor",
+      "durationMS": 18658.380663
+    },
+    {
+      "status": "ok",
+      "number": 8,
+      "name": "the entire populated independent authority is fixed before any candidate can attest itself",
+      "durationMS": 1750.982806
+    },
+    {
+      "status": "ok",
+      "number": 9,
+      "name": "actual current execution passes while unchanged R5 executes at literal A7",
+      "durationMS": 29075.716321
+    },
+    {
+      "status": "ok",
+      "number": 10,
+      "name": "current source reader rejects changed exact app bytes src/app/api/business/technology-five-shares/route.test.ts",
+      "durationMS": 6.30793
+    },
+    {
+      "status": "ok",
+      "number": 11,
+      "name": "current source reader rejects changed exact app bytes src/app/business/projects/[id]/page.test.tsx",
+      "durationMS": 3.558237
+    },
+    {
+      "status": "ok",
+      "number": 12,
+      "name": "current source reader rejects changed exact app bytes src/app/business/projects/[id]/page.tsx",
+      "durationMS": 4.268669
+    },
+    {
+      "status": "ok",
+      "number": 13,
+      "name": "current source reader rejects changed exact app bytes src/components/catalog-engineering-review.tsx",
+      "durationMS": 3.916495
+    },
+    {
+      "status": "ok",
+      "number": 14,
+      "name": "current source reader rejects changed exact app bytes src/components/converter-cohort-20261110-examples.tsx",
+      "durationMS": 4.072868
+    },
+    {
+      "status": "ok",
+      "number": 15,
+      "name": "current source reader rejects changed exact app bytes src/components/parallel-completion-integration.test.tsx",
+      "durationMS": 5.128262
+    },
+    {
+      "status": "ok",
+      "number": 16,
+      "name": "current source reader rejects changed exact app bytes src/components/parallel-converters-evidence.test.tsx",
+      "durationMS": 3.520764
+    },
+    {
+      "status": "ok",
+      "number": 17,
+      "name": "current source reader rejects changed exact app bytes src/components/parallel-guided-business-evidence.test.tsx",
+      "durationMS": 4.895972
+    },
+    {
+      "status": "ok",
+      "number": 18,
+      "name": "current source reader rejects changed exact app bytes src/components/publication20-tool.tsx",
+      "durationMS": 5.622879
+    },
+    {
+      "status": "ok",
+      "number": 19,
+      "name": "current source reader rejects changed exact app bytes src/components/specialist-general-20261110-business-input.tsx",
+      "durationMS": 3.574268
+    },
+    {
+      "status": "ok",
+      "number": 20,
+      "name": "current source reader rejects changed exact app bytes src/components/technology-five-share-form.tsx",
+      "durationMS": 3.347258
+    },
+    {
+      "status": "ok",
+      "number": 21,
+      "name": "current source reader rejects changed exact app bytes src/lib/business/technology-next-sharing.test.ts",
+      "durationMS": 8.730518
+    },
+    {
+      "status": "ok",
+      "number": 22,
+      "name": "current source reader rejects changed exact app bytes src/lib/business/technology-next-sharing.ts",
+      "durationMS": 4.663197
+    },
+    {
+      "status": "ok",
+      "number": 23,
+      "name": "current source reader rejects changed exact app bytes src/lib/converter-cohort-20261110.ts",
+      "durationMS": 2.828377
+    },
+    {
+      "status": "ok",
+      "number": 24,
+      "name": "current source reader rejects changed exact app bytes src/lib/finance-cohort-20261110-annuity.ts",
+      "durationMS": 3.326526
+    },
+    {
+      "status": "ok",
+      "number": 25,
+      "name": "current source reader rejects changed exact app bytes src/lib/native-delivery/technology-five-catalog.ts",
+      "durationMS": 2.807129
+    },
+    {
+      "status": "ok",
+      "number": 26,
+      "name": "current source reader rejects changed exact app bytes src/lib/native-delivery/technology-five-contract.ts",
+      "durationMS": 3.477462
+    },
+    {
+      "status": "ok",
+      "number": 27,
+      "name": "current source reader rejects changed exact app bytes src/lib/native-delivery/technology-five-publication.test.ts",
+      "durationMS": 4.720535
+    },
+    {
+      "status": "ok",
+      "number": 28,
+      "name": "current source reader rejects changed exact app bytes src/lib/native-delivery/technology-native-schema.ts",
+      "durationMS": 3.280429
+    },
+    {
+      "status": "ok",
+      "number": 29,
+      "name": "current source reader rejects changed exact app bytes src/lib/native-delivery/technology-next-composition.test.ts",
+      "durationMS": 2.720323
+    },
+    {
+      "status": "ok",
+      "number": 30,
+      "name": "current source reader rejects changed exact app bytes src/lib/native-delivery/technology-next-five-composition.test.ts",
+      "durationMS": 4.154397
+    },
+    {
+      "status": "ok",
+      "number": 31,
+      "name": "current source reader rejects changed exact app bytes src/lib/parallel-finance-qualification.test.ts",
+      "durationMS": 2.944103
+    },
+    {
+      "status": "ok",
+      "number": 32,
+      "name": "current source reader rejects changed exact app bytes src/lib/parallel-readiness-evidence.test.ts",
+      "durationMS": 3.361277
+    },
+    {
+      "status": "ok",
+      "number": 33,
+      "name": "current source reader rejects changed exact app bytes src/lib/registered-snapshot-verification.ts",
+      "durationMS": 20.917681
+    },
+    {
+      "status": "ok",
+      "number": 34,
+      "name": "current source reader rejects changed exact app bytes src/lib/specialist-general-20261110-business-input.ts",
+      "durationMS": 6.215176
+    },
+    {
+      "status": "ok",
+      "number": 35,
+      "name": "current source reader rejects changed exact app bytes src/lib/technology-cidr-snapshot-verification.test.ts",
+      "durationMS": 5.500646
+    },
+    {
+      "status": "ok",
+      "number": 36,
+      "name": "current source reader rejects changed exact app bytes src/lib/technology-cidr-snapshot-verification.ts",
+      "durationMS": 6.12894
+    },
+    {
+      "status": "ok",
+      "number": 37,
+      "name": "no-op validator cannot nominate itself tests/parallel-source-20261110/core.mjs",
+      "durationMS": 11.96413
+    },
+    {
+      "status": "ok",
+      "number": 38,
+      "name": "no-op validator cannot nominate itself tests/parallel-source-20261110/bootstrap.mjs",
+      "durationMS": 9.382528
+    },
+    {
+      "status": "ok",
+      "number": 39,
+      "name": "no-op validator cannot nominate itself tests/parallel-source-20261110/baseline-probe.mjs",
+      "durationMS": 11.01932
+    },
+    {
+      "status": "ok",
+      "number": 40,
+      "name": "no-op validator cannot nominate itself tests/parallel-source-20261110/historical-tests.mjs",
+      "durationMS": 12.139741
+    },
+    {
+      "status": "ok",
+      "number": 41,
+      "name": "no-op validator cannot nominate itself tests/parallel-source-20261110/git-reader.mjs",
+      "durationMS": 38.597096
+    },
+    {
+      "status": "ok",
+      "number": 42,
+      "name": "no-op validator cannot nominate itself tests/parallel-source-20261110/source-object-lock.mjs",
+      "durationMS": 18.825425
+    },
+    {
+      "status": "ok",
+      "number": 43,
+      "name": "no-op validator cannot nominate itself scripts/product-completion-lineage.mjs",
+      "durationMS": 19.275498
+    },
+    {
+      "status": "ok",
+      "number": 44,
+      "name": "a closed asynchronous-style target map supplies every current byte without a workspace fallback",
+      "durationMS": 2912.33198
+    },
+    {
+      "status": "ok",
+      "number": 45,
+      "name": "old valid app bytes cannot replace the reviewed source",
+      "durationMS": 78.323158
+    },
+    {
+      "status": "ok",
+      "number": 46,
+      "name": "coordinated capture edits, removed dependencies and unsafe paths are not admission authority",
+      "durationMS": 555.695698
+    },
+    {
+      "status": "ok",
+      "number": 47,
+      "name": "missing or substituted actual Git provenance is never supplied by a receipt",
+      "durationMS": 190.645715
+    },
+    {
+      "status": "ok",
+      "number": 48,
+      "name": "the complete binding graph cannot be truncated by a supplied caller",
+      "durationMS": 2506.857855
+    },
+    {
+      "status": "ok",
+      "number": 49,
+      "name": "source availability refuses unsafe or multiple origins and substituted commits before fetching",
+      "durationMS": 61.959305
+    },
+    {
+      "status": "ok",
+      "number": 50,
+      "name": "finite factory stage rejects altered or reverted bytes src/app/admin/calculator-factory/page.test.tsx",
+      "durationMS": 10.086975
+    },
+    {
+      "status": "ok",
+      "number": 51,
+      "name": "finite factory stage rejects altered or reverted bytes src/app/admin/calculator-factory/page.tsx",
+      "durationMS": 13.169761
+    },
+    {
+      "status": "ok",
+      "number": 52,
+      "name": "finite factory stage rejects altered or reverted bytes src/app/api/v1/calculator-factory/calculate/route.test.ts",
+      "durationMS": 6.236219
+    },
+    {
+      "status": "ok",
+      "number": 53,
+      "name": "finite factory stage rejects altered or reverted bytes src/app/api/v1/calculator-factory/calculate/route.ts",
+      "durationMS": 6.637674
+    },
+    {
+      "status": "ok",
+      "number": 54,
+      "name": "finite factory stage rejects altered or reverted bytes src/components/calculator-factory-portal.test.tsx",
+      "durationMS": 7.068453
+    },
+    {
+      "status": "ok",
+      "number": 55,
+      "name": "finite factory stage rejects altered or reverted bytes src/components/calculator-factory-portal.tsx",
+      "durationMS": 6.747528
+    },
+    {
+      "status": "ok",
+      "number": 56,
+      "name": "finite factory stage rejects altered or reverted bytes src/components/calculator-factory-workbench.test.tsx",
+      "durationMS": 7.362958
+    },
+    {
+      "status": "ok",
+      "number": 57,
+      "name": "finite factory stage rejects altered or reverted bytes src/components/calculator-factory-workbench.tsx",
+      "durationMS": 9.046791
+    },
+    {
+      "status": "ok",
+      "number": 58,
+      "name": "finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/basic-math.test.ts",
+      "durationMS": 6.419075
+    },
+    {
+      "status": "ok",
+      "number": 59,
+      "name": "finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/basic-math.ts",
+      "durationMS": 6.322503
+    },
+    {
+      "status": "ok",
+      "number": 60,
+      "name": "finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/conversions.test.ts",
+      "durationMS": 6.52134
+    },
+    {
+      "status": "ok",
+      "number": 61,
+      "name": "finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/conversions.ts",
+      "durationMS": 6.348888
+    },
+    {
+      "status": "ok",
+      "number": 62,
+      "name": "finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/physics.test.ts",
+      "durationMS": 6.17938
+    },
+    {
+      "status": "ok",
+      "number": 63,
+      "name": "finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/physics.ts",
+      "durationMS": 11.460776
+    },
+    {
+      "status": "ok",
+      "number": 64,
+      "name": "finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/experimental/physics-scaled.test.ts",
+      "durationMS": 6.834197
+    },
+    {
+      "status": "ok",
+      "number": 65,
+      "name": "finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/experimental/physics-scaled.ts",
+      "durationMS": 7.108324
+    },
+    {
+      "status": "ok",
+      "number": 66,
+      "name": "finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/publication.test.ts",
+      "durationMS": 6.190446
+    },
+    {
+      "status": "ok",
+      "number": 67,
+      "name": "finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/publication.ts",
+      "durationMS": 6.286617
+    },
+    {
+      "status": "ok",
+      "number": 68,
+      "name": "finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/registry.test.ts",
+      "durationMS": 6.175556
+    },
+    {
+      "status": "ok",
+      "number": 69,
+      "name": "finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/registry.ts",
+      "durationMS": 8.920728
+    },
+    {
+      "status": "ok",
+      "number": 70,
+      "name": "finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/workflows.test.ts",
+      "durationMS": 6.165138
+    },
+    {
+      "status": "ok",
+      "number": 71,
+      "name": "finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/workflows.ts",
+      "durationMS": 6.062802
+    },
+    {
+      "status": "ok",
+      "number": 72,
+      "name": "finite factory stage rejects altered or reverted bytes src/lib/parallel-source-evidence.test.ts",
+      "durationMS": 6.040924
+    },
+    {
+      "status": "ok",
+      "number": 73,
+      "name": "factory capture and literal policy are independently governed",
+      "durationMS": 46013.710959
+    },
+    {
+      "status": "ok",
+      "number": 74,
+      "name": "exact Stage5 actual application source is live and finite",
+      "durationMS": 561.413638
+    },
+    {
+      "status": "ok",
+      "number": 75,
+      "name": "Stage5 refuses altered actual current application bytes src/components/calculator-factory-portal.tsx",
+      "durationMS": 1.010648
+    },
+    {
+      "status": "ok",
+      "number": 76,
+      "name": "Stage5 refuses altered actual current application bytes src/components/calculator-factory-shared-workspace.test.tsx",
+      "durationMS": 431.17841
+    },
+    {
+      "status": "ok",
+      "number": 77,
+      "name": "Stage5 refuses altered actual current application bytes src/components/calculator-factory-shared-workspace.tsx",
+      "durationMS": 451.494562
+    },
+    {
+      "status": "ok",
+      "number": 78,
+      "name": "Stage5 refuses altered actual current application bytes src/components/completion-wave-analysis.test.tsx",
+      "durationMS": 0.630337
+    },
+    {
+      "status": "ok",
+      "number": 79,
+      "name": "Stage5 refuses altered actual current application bytes src/components/completion-wave-analysis.tsx",
+      "durationMS": 0.431225
+    },
+    {
+      "status": "ok",
+      "number": 80,
+      "name": "Stage5 refuses altered actual current application bytes src/lib/business/factory-nine-sharing.test.ts",
+      "durationMS": 3.070655
+    },
+    {
+      "status": "ok",
+      "number": 81,
+      "name": "Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/business-cases.test.ts",
+      "durationMS": 0.95621
+    },
+    {
+      "status": "ok",
+      "number": 82,
+      "name": "Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/business-cases.ts",
+      "durationMS": 0.59393
+    },
+    {
+      "status": "ok",
+      "number": 83,
+      "name": "Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/conversion-workflows.ts",
+      "durationMS": 0.618305
+    },
+    {
+      "status": "ok",
+      "number": 84,
+      "name": "Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/engine-evidence.test.ts",
+      "durationMS": 0.525743
+    },
+    {
+      "status": "ok",
+      "number": 85,
+      "name": "Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/math-analysis.ts",
+      "durationMS": 4.550408
+    },
+    {
+      "status": "ok",
+      "number": 86,
+      "name": "Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/native-wave.test.ts",
+      "durationMS": 0.772699
+    },
+    {
+      "status": "ok",
+      "number": 87,
+      "name": "Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/physics.ts",
+      "durationMS": 0.65624
+    },
+    {
+      "status": "ok",
+      "number": 88,
+      "name": "Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/retained-nine-tuples.ts",
+      "durationMS": 0.913124
+    },
+    {
+      "status": "ok",
+      "number": 89,
+      "name": "Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/sql-successor.test.ts",
+      "durationMS": 0.701548
+    },
+    {
+      "status": "ok",
+      "number": 90,
+      "name": "Stage5 refuses altered actual current application bytes src/lib/native-delivery/factory-automation-contract.test.ts",
+      "durationMS": 0.512424
+    },
+    {
+      "status": "ok",
+      "number": 91,
+      "name": "Stage5 refuses altered actual current application bytes src/lib/native-delivery/factory-automation-sql.test.ts",
+      "durationMS": 391.811984
+    },
+    {
+      "status": "ok",
+      "number": 92,
+      "name": "Stage5 refuses altered actual current application bytes src/lib/native-delivery/factory-delivery-catalog.ts",
+      "durationMS": 0.883621
+    },
+    {
+      "status": "ok",
+      "number": 93,
+      "name": "Stage5 refuses altered actual current application bytes src/lib/native-delivery/factory-embed-contract.test.ts",
+      "durationMS": 0.880219
+    },
+    {
+      "status": "ok",
+      "number": 94,
+      "name": "Stage5 proof imports and finite capture remain independent authority tests/completion-wave-20261113/source-app-stage5.mjs",
+      "durationMS": 19.464484
+    },
+    {
+      "status": "ok",
+      "number": 95,
+      "name": "Stage5 proof imports and finite capture remain independent authority tests/completion-wave-20261113/source-app-stage5-policy.mjs",
+      "durationMS": 18.469676
+    },
+    {
+      "status": "ok",
+      "number": 96,
+      "name": "Stage5 proof imports and finite capture remain independent authority docs/completion-wave-20261113/source-app-stage5-revision2.json",
+      "durationMS": 3.987448
+    }
+  ],
+  "prefix96SumMS": 135475.954007,
+  "currentFirst89SumMS": 85466.338444,
+  "lightBarrier": {
+    "lightCount": 22,
+    "scopeStartMS": 86623.9814453125,
+    "scopeEndMS": 116666.9814453125,
+    "preloadStartMS": 86639.9814453125,
+    "preloadEndMS": 101058.9814453125,
+    "lightStartMS": 101075.9814453125,
+    "lightEndMS": 104559.9814453125,
+    "lightWallMS": 3484.0,
+    "freeLaneIdleAfterLightMS": 12107.0,
+    "heavyFirstStartMS": 116680.9814453125
+  },
+  "postCleanupOwnedPGIDMembers": [
+    2254031,
+    2254062,
+    2255848,
+    2255851,
+    2312265,
+    2330474,
+    2351182,
+    2352180,
+    2352349,
+    2353688
+  ],
+  "postCleanupOwnedPGIDProcessStates": [
+    {
+      "pid": 2254031,
+      "ppid": 1,
+      "state": "Z",
+      "name": "node"
+    },
+    {
+      "pid": 2254062,
+      "ppid": 1,
+      "state": "Z",
+      "name": "python3"
+    },
+    {
+      "pid": 2255848,
+      "ppid": 1,
+      "state": "Z",
+      "name": "sh"
+    },
+    {
+      "pid": 2255851,
+      "ppid": 1,
+      "state": "Z",
+      "name": "git"
+    },
+    {
+      "pid": 2312265,
+      "ppid": 1,
+      "state": "Z",
+      "name": "python3"
+    },
+    {
+      "pid": 2330474,
+      "ppid": 1,
+      "state": "Z",
+      "name": "node"
+    },
+    {
+      "pid": 2351182,
+      "ppid": 1,
+      "state": "Z",
+      "name": "git"
+    },
+    {
+      "pid": 2352180,
+      "ppid": 1,
+      "state": "Z",
+      "name": "node"
+    },
+    {
+      "pid": 2352349,
+      "ppid": 1,
+      "state": "Z",
+      "name": "python3"
+    },
+    {
+      "pid": 2353688,
+      "ppid": 1,
+      "state": "Z",
+      "name": "node"
+    }
+  ]
+}

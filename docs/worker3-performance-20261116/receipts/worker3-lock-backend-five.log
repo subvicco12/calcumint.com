@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: callback result propagates, owned locks release, and wrapped source preparation cannot bypass coordination
+ok 1 - callback result propagates, owned locks release, and wrapped source preparation cannot bypass coordination
+  ---
+  duration_ms: 4675.404313
+  type: 'test'
+  ...
+# Subtest: bounded timeout leaves another owner directory and Git shallow.lock untouched
+ok 2 - bounded timeout leaves another owner directory and Git shallow.lock untouched
+  ---
+  duration_ms: 25.942916
+  type: 'test'
+  ...
+# Subtest: unexpected filesystem errors propagate and a nonempty owned directory is never recursively removed
+ok 3 - unexpected filesystem errors propagate and a nonempty owned directory is never recursively removed
+  ---
+  duration_ms: 1.660102
+  type: 'test'
+  ...
+# Subtest: replaced lock ownership is refused without removing the other empty directory
+ok 4 - replaced lock ownership is refused without removing the other empty directory
+  ---
+  duration_ms: 0.689495
+  type: 'test'
+  ...
+# Subtest: eight cold concurrent Git clients recheck under the shared common-dir lock and fetch once
+ok 5 - eight cold concurrent Git clients recheck under the shared common-dir lock and fetch once
+  ---
+  duration_ms: 243.571198
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5105.686901

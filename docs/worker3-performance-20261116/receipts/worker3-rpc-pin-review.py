@@ -1,0 +1,12 @@
+exec(open('/tmp/worker3-rpc-yield-review.py').read().split("Path('/tmp/worker3-rpc-yield-independent-review.json')")[0])
+H='c670cf49279c9a4cee94fa9b2e492bd1d1dd4d42';p='tests/parallel-source-20261110/current.test.mjs';a=t(B,p);b=t(H,p)
+def ts(s):
+ out={}
+ for m in re.finditer(r'const (\w+Authority)=({[^\n]+});',s):
+  v=re.search(r"ref:'([a-f0-9]{40})'.*blob:'([a-f0-9]{40})'.*sha256:'([a-f0-9]{64})'",m[2]);
+  if v:out[m[1]]=v.groups()
+ return out
+old=ts(a);new=ts(b);names=lambda s:re.search(r' const records=\[([^\]]+)\];',s)[1].split(',');ot=[old[n] for n in names(a)];nt=[new[n] for n in names(b)];ck('87uniqueexactauthoritytuples',len(nt)==len(set(nt))==87 and len(ot)==86 and nt[:-1]==ot and nt[-1]==(N,'71a8b3d4af136a49192d6e5fb24e746c9068763a','60cd2003265517eaee5b3e119dba3652570c9907f30348f5e001bea7fea3672d'));ck('3btupleexactretained',new['retainedStage10CloneAvailabilityAuthority']==old['expectedAuthority']);mapped=g('rev-parse','--revs-only','--end-of-options',*[x[0]+':'+A for x in nt]).decode().splitlines();ck('all87nativeGitpathbindings',mapped==[x[1] for x in nt])
+line="const retainedStage10CloneAvailabilityAuthority={ref:'3b7cbf3f760a71255d7306f8b9cccefaa5ac1b4a',blob:'9a7a5b3ecdc5c5efc5d37fc543df7cfb9f8fddc7',sha256:'f95098e31258060809522ebdce3feb418336a179f127fa516f440f361930e079'};\n"
+inverse=b.replace(line,'').replace("const expectedAuthority={ref:'7f83386ebe5c23719ca0198758070d02a18971ff',blob:'71a8b3d4af136a49192d6e5fb24e746c9068763a',sha256:'60cd2003265517eaee5b3e119dba3652570c9907f30348f5e001bea7fea3672d'};",line.strip().replace('retainedStage10CloneAvailabilityAuthority','expectedAuthority')).replace(',retainedStage10CloneAvailabilityAuthority,expectedAuthority]',',expectedAuthority]');ck('rootNSonlypinandretentionaddition',inverse==a);ck('rootauthoritysameadmitted',d(H,A)==d(N,A));ck('pincommitonlyNS',g('diff','--name-only',H+'^',H).decode().strip()==p)
+r.update({'finalRootHead':H,'batchedAuthorityRecords':87,'checks':checks,'blockingFindings':[k for k,v in checks.items() if not v],'pending':['Focused exact-head runtime evidence','All five hosted mandatory jobs and aggregate','Per-ID scoped acceptance reconciliation']});Path('/tmp/worker3-rpc-yield-independent-review.json').write_text(json.dumps(r,indent=2)+'\n');print(json.dumps({'head':H,'blockingFindings':r['blockingFindings'],'receiptSHA256':sha(Path('/tmp/worker3-rpc-yield-independent-review.json').read_bytes())},indent=2));assert not r['blockingFindings']

@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: fixed clone installer forbids caller-nominated refs before invoking Git
+ok 1 - fixed clone installer forbids caller-nominated refs before invoking Git
+  ---
+  duration_ms: 3.190757
+  type: 'test'
+  ...
+# Subtest: fixed source refs are installed by one create-only transaction and warm calls revalidate without writes
+ok 2 - fixed source refs are installed by one create-only transaction and warm calls revalidate without writes
+  ---
+  duration_ms: 168.697733
+  type: 'test'
+  ...
+# Subtest: missing substituted wrong-type and malformed immutable commits refuse before ref creation
+ok 3 - missing substituted wrong-type and malformed immutable commits refuse before ref creation
+  ---
+  duration_ms: 135.379887
+  type: 'test'
+  ...
+# Subtest: foreign conflicting symbolic and injected availability refs never get overwritten
+ok 4 - foreign conflicting symbolic and injected availability refs never get overwritten
+  ---
+  duration_ms: 192.314379
+  type: 'test'
+  ...
+# Subtest: foreign Git locks abort the whole create transaction and remain untouched
+ok 5 - foreign Git locks abort the whole create transaction and remain untouched
+  ---
+  duration_ms: 183.888533
+  type: 'test'
+  ...
+# Subtest: dangling symbolic refs cannot redirect create-only updates into another branch
+ok 6 - dangling symbolic refs cannot redirect create-only updates into another branch
+  ---
+  duration_ms: 56.742705
+  type: 'test'
+  ...
+# Subtest: post-transaction ref loss refuses without retry rollback deletion or overwrites
+ok 7 - post-transaction ref loss refuses without retry rollback deletion or overwrites
+  ---
+  duration_ms: 86.225349
+  type: 'test'
+  ...
+# Subtest: opaque transports cannot nominate another repository lock and every callback runs under the native lock
+ok 8 - opaque transports cannot nominate another repository lock and every callback runs under the native lock
+  ---
+  duration_ms: 14.097451
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1001.953615
