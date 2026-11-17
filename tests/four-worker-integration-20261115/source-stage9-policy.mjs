@@ -1,9 +1,10 @@
 /** Exact cumulative source; registered mathematical engines remain immutable. */
-export const sourceStage9CapturePath="docs/statistics-integration-20261117/source-stage9-statistics-revision2.json";
+export const sourceStage9CapturePath="docs/statistics-integration-20261117/source-stage9-statistics-revision3.json";
 export const sourceStage9Policy=Object.freeze({
   "predecessorRef": "dc8544422dbb4ebccfc96e03431e64ebcf871fc9",
-  "codeRef": "63866c0ceab931b3d92a5d22285cb8c261017c2c",
+  "codeRef": "0fd467880b5b0142898d3010c4d3ab9fe1b64958",
   "ancestry": [
+    "0fd467880b5b0142898d3010c4d3ab9fe1b64958",
     "63866c0ceab931b3d92a5d22285cb8c261017c2c",
     "bfef306d8c3fc8608feadba880d4eb2afca2e210",
     "4fda315aba11b0aec54587784dc2f9896322c1b4",
@@ -64,7 +65,7 @@ export const sourceStage9Policy=Object.freeze({
     "56844ec40292b010bc89ad7371c2d0340340bafe",
     "dc8544422dbb4ebccfc96e03431e64ebcf871fc9"
   ],
-  "captureSHA256": "0f66789c7cf6c08516b10454dd18f424b14d0c58da8fe845cf9d85563cdb8f31",
+  "captureSHA256": "fa6dbf24b7877ea5353933604f9ea866ce82cd47745a5a157debd38102afa5b7",
   "paths": [
     "src/app/admin/worker1-construction-20261116/actions.ts",
     "src/app/admin/worker1-construction-20261116/page.tsx",
@@ -126,6 +127,7 @@ export const sourceStage9Policy=Object.freeze({
     "src/lib/native-delivery/factory-delivery-catalog.ts",
     "src/lib/native-delivery/factory-embed-contract.test.ts",
     "src/lib/native-delivery/factory-embed-contract.ts",
+    "src/lib/parallel-source-evidence.test.ts",
     "src/lib/registered-snapshot-verification.ts",
     "src/lib/science-dispatch.test.ts",
     "src/lib/science-worker-c-snapshot-verification.ts",
