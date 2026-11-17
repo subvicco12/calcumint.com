@@ -6,7 +6,7 @@ import test from 'node:test';import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';import {resolve} from 'node:path';
 import {accepted,verifyParallelAuthority} from '../parallel-source-20261110/authority.mjs';
 import {makeGitReader} from '../parallel-source-20261110/git-reader.mjs';
-const root=resolve(new URL('../../',import.meta.url).pathname),ids=accepted.map(r=>r.blob);
+const root=resolve(new URL('../../',import.meta.url).pathname),ids=[...new Set(accepted.map(r=>r.blob))];
 const actual=(args,options={})=>execFileSync('git',args,{cwd:root,stdio:['ignore','pipe','pipe'],maxBuffer:128*1024*1024,...options});
 const fullBatch=actual(['cat-file','--batch'],{input:Buffer.from(ids.join('\n')+'\n'),stdio:['pipe','pipe','pipe']});
 // This is the same real immutable batch used by the adversarial fixtures below.
