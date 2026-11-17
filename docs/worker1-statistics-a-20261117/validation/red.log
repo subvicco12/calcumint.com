@@ -1,0 +1,27 @@
+
+ RUN  v3.2.7 /workspace/work/worker1-statistics-a-20261117
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/worker1-statistics-a-20261117/cohort.test.ts [ src/lib/worker1-statistics-a-20261117/cohort.test.ts ]
+Error: Cannot find module './cohort' imported from '/workspace/work/worker1-statistics-a-20261117/src/lib/worker1-statistics-a-20261117/cohort.test.ts'
+ ❯ src/lib/worker1-statistics-a-20261117/cohort.test.ts:4:1
+      2| import {correlationCalculator} from '@/calculators/statistics/catalog-…
+      3| import {linearRegressionCalculator,weightedMeanCalculator,percentileCa…
+      4| import {statisticsContracts,statisticsWorkflows,verifyStatisticsSnapsh…
+       | ^
+      5| import {factoryDownload} from '@/lib/calculator-factory/completion/exp…
+      6| const engines=[correlationCalculator,linearRegressionCalculator,weight…
+
+Caused by: Error: Failed to load url ./cohort (resolved id: ./cohort) in /workspace/work/worker1-statistics-a-20261117/src/lib/worker1-statistics-a-20261117/cohort.test.ts. Does the file exist?
+ ❯ loadAndTransform ../batch13-deps/node_modules/vite/dist/node/chunks/config.js:22907:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  04:51:09
+   Duration  725ms (transform 146ms, setup 21ms, collect 0ms, tests 0ms, environment 0ms, prepare 97ms)
+

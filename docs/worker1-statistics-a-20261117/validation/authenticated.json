@@ -1,0 +1,143 @@
+{
+  "baseline": "6fa8f87433ee8434d1d89aaf93deea0216eb17cb",
+  "scope": "Genuine disposable PostgreSQL17/GoTrue/PostgREST with actual account-action composition; fixture SDK session adapter replaces server cookie transport only. next/cache revalidation is a no-op. This is NOT native browser/cookie transport, hosted or production acceptance.",
+  "rows": [
+    {
+      "catalogId": 292,
+      "plan": "free",
+      "historyPersistence": true,
+      "historyIdempotency": true,
+      "historyRLS": true,
+      "exactReplay": true
+    },
+    {
+      "catalogId": 293,
+      "plan": "free",
+      "historyPersistence": true,
+      "historyIdempotency": true,
+      "historyRLS": true,
+      "exactReplay": true
+    },
+    {
+      "catalogId": 294,
+      "plan": "free",
+      "historyPersistence": true,
+      "historyIdempotency": true,
+      "historyRLS": true,
+      "exactReplay": true
+    },
+    {
+      "catalogId": 295,
+      "plan": "free",
+      "historyPersistence": true,
+      "historyIdempotency": true,
+      "historyRLS": true,
+      "exactReplay": true
+    },
+    {
+      "catalogId": 292,
+      "plan": "pro",
+      "historyPersistence": true,
+      "historyIdempotency": true,
+      "historyRLS": true,
+      "exactReplay": true,
+      "scenarioPersistence": true,
+      "scenarioRLS": true
+    },
+    {
+      "catalogId": 293,
+      "plan": "pro",
+      "historyPersistence": true,
+      "historyIdempotency": true,
+      "historyRLS": true,
+      "exactReplay": true,
+      "scenarioPersistence": true,
+      "scenarioRLS": true
+    },
+    {
+      "catalogId": 294,
+      "plan": "pro",
+      "historyPersistence": true,
+      "historyIdempotency": true,
+      "historyRLS": true,
+      "exactReplay": true,
+      "scenarioPersistence": true,
+      "scenarioRLS": true
+    },
+    {
+      "catalogId": 295,
+      "plan": "pro",
+      "historyPersistence": true,
+      "historyIdempotency": true,
+      "historyRLS": true,
+      "exactReplay": true,
+      "scenarioPersistence": true,
+      "scenarioRLS": true
+    },
+    {
+      "catalogId": 292,
+      "plan": "business",
+      "historyPersistence": true,
+      "historyIdempotency": true,
+      "historyRLS": true,
+      "exactReplay": true,
+      "scenarioPersistence": true,
+      "scenarioRLS": true
+    },
+    {
+      "catalogId": 293,
+      "plan": "business",
+      "historyPersistence": true,
+      "historyIdempotency": true,
+      "historyRLS": true,
+      "exactReplay": true,
+      "scenarioPersistence": true,
+      "scenarioRLS": true
+    },
+    {
+      "catalogId": 294,
+      "plan": "business",
+      "historyPersistence": true,
+      "historyIdempotency": true,
+      "historyRLS": true,
+      "exactReplay": true,
+      "scenarioPersistence": true,
+      "scenarioRLS": true
+    },
+    {
+      "catalogId": 295,
+      "plan": "business",
+      "historyPersistence": true,
+      "historyIdempotency": true,
+      "historyRLS": true,
+      "exactReplay": true,
+      "scenarioPersistence": true,
+      "scenarioRLS": true
+    }
+  ],
+  "negativeChecks": [
+    "missing-session",
+    "stale-owner",
+    "foreign-history-RLS",
+    "foreign-scenario-RLS",
+    "foreign-project",
+    "forged-output",
+    "free-scenario-denial"
+  ],
+  "passed": true,
+  "productionWrites": false,
+  "releaseHold": true,
+  "adapterSHA256": "75b28c05b607e859595aa1dd4dfdac67f82c1e49a51273ebbebe1970ad642b49",
+  "business": {
+    "ownerRead": true,
+    "memberRead": true,
+    "nonmemberDenied": true,
+    "revocationDenied": true,
+    "sharedDeliveryAvailable": false
+  },
+  "images": {
+    "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+    "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+    "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+  }
+}
