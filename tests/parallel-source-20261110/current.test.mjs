@@ -218,7 +218,7 @@ test('factory capture and literal policy are independently governed',async conte
   [['--test','tests/full-product-batch13/workflow.test.mjs','tests/full-product-batch14/workflow.test.mjs','tests/full-product-batch17/workflow.test.mjs'],30000]
  ];
  const results=new Array(children.length);let childIndex=0;
- const run=([args,timeout])=>scheduleSourceChild(()=>new Promise((resolve,reject)=>execFile(process.execPath,args,{env,encoding:'utf8',timeout,maxBuffer:4000000,signal:context.signal},(error,stdout,stderr)=>error?reject(Object.assign(error,{stdout,stderr})):resolve(stdout))),{exclusive:args.length===2&&args[0]==='--test'&&args[1]==='tests/completion-first-20261112/personal-stage.test.mjs',signal:context.signal});
+ const run=([args,timeout])=>scheduleSourceChild(()=>new Promise((resolve,reject)=>execFile(process.execPath,args,{env,encoding:'utf8',timeout,maxBuffer:4000000,signal:context.signal},(error,stdout,stderr)=>error?reject(Object.assign(error,{stdout,stderr})):resolve(stdout))),{signal:context.signal});
  const worker=async()=>{while(childIndex<children.length){const index=childIndex++;results[index]=(await Promise.allSettled([run(children[index])]))[0];}};
  await Promise.all([worker(),worker()]);
  const failures=results.flatMap((result,index)=>result.status==='rejected'?[new Error('Exact source child failed: '+JSON.stringify(children[index][0])+'\n'+String(result.reason.stdout??'')+'\n'+String(result.reason.stderr??''),{cause:result.reason})]:[]);
