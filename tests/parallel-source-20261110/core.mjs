@@ -1,3 +1,4 @@
+import {sourceStage9Policy,sourceStage9CapturePath} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import {rejectChangedSourceArgument} from '../construction-ci-recovery-20261116/negative-source-arguments.mjs';
 import {restoreWorkflowGraphVerifier} from '../construction-ci-recovery-20261116/workflow-scheduling.mjs';
 import {workflowSchedulePolicy} from '../construction-ci-recovery-20261116/workflow-scheduling-policy.mjs';
@@ -59,7 +60,7 @@ export const retainedStage7V6CapturePath='docs/parallel-source-20261110/capture-
 export const retainedStage7V7CapturePath='docs/parallel-source-20261110/capture-revision66.json';
 export const retainedStage7V8CapturePath='docs/parallel-source-20261110/capture-revision67.json';
 const retainedStage8CapturePath='docs/parallel-source-20261110/capture-revision68.json';
-export const capturePath='docs/parallel-source-20261110/capture-revision138.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision139.json';
 const root=resolve(fileURLToPath(new URL('../../',import.meta.url))),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -358,6 +359,14 @@ function rejectChangedUnchangedFactoryBytes(currentRead){
  const later=new Set([...completionPolicy.paths,...workflowPolicy.paths,...personalPolicy.paths,...testStagePolicy.paths,...appStage5Policy.paths,...testStage6Policy.paths,...sourceStage7Policy.paths,...sourceStage8Policy.paths]);
  const bytes=currentRead(factoryCapturePath);assert(Buffer.isBuffer(bytes)&&hash(bytes)===factoryPolicy.captureSHA256,'Independent current target bytes differ: '+factoryCapturePath);
  const rows=JSON.parse(bytes).rows;assert(Array.isArray(rows),'Finite factory source rows required');
+ // Only independently fixed later captures may remove paths from this old negative filter.
+ // This grants no success: the preceding current-byte filter and subsequent full proof remain mandatory.
+ for(const [policy,path]of [[sourceStage9Policy,sourceStage9CapturePath]]){
+  const supplied=currentRead(path);assert(Buffer.isBuffer(supplied)&&hash(supplied)===policy.captureSHA256,'Independent later factory capture differs: '+path);
+  const capture=JSON.parse(supplied);assert.equal(capture.predecessorRef,policy.predecessorRef);assert.equal(capture.codeRef,policy.codeRef);
+  assert.deepEqual(capture.rows.map(row=>row.path),policy.paths,'Exact later factory roster required');assert.equal(new Set(policy.paths).size,policy.paths.length);
+  for(const path of policy.paths)later.add(path);
+ }
  for(const path of factoryPolicy.paths.filter(path=>!later.has(path))){
   const found=rows.filter(row=>row.path===path);assert.equal(found.length,1,'Exact finite factory source row required');const row=found[0].current;
   assert.equal(row.path,path);assert.equal(row.ref,factoryPolicy.codeRef);assert.match(row.blob,/^[a-f0-9]{40}$/);assert.match(row.sha256,/^[a-f0-9]{64}$/);assert(Number.isSafeInteger(row.bytes)&&row.bytes>=0);
