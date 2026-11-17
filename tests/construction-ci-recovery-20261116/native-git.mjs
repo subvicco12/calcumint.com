@@ -155,12 +155,12 @@ function transfer(state, fd, b, write, deadline) {
             if (n)
                 at += n;
             else
-                Atomics.wait(pause, 0, 0, 0.05);
+                Atomics.wait(pause, 0, 0, 0.5);
         }
         catch (e) {
             if (e.code !== 'EAGAIN' && e.code !== 'EINTR')
                 throw e;
-            Atomics.wait(pause, 0, 0, 0.05);
+            Atomics.wait(pause, 0, 0, 0.5);
         }
     }
     return b;
