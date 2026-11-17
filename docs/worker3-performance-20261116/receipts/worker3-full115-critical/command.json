@@ -1,0 +1,33 @@
+{
+  "originalArgs": [
+    "--test",
+    "--test-concurrency=2",
+    "--test-reporter=tap",
+    "--test-reporter-destination=/tmp/worker3-full115-critical/cases.tap",
+    "tests/parallel-source-20261110/application-successor.test.mjs",
+    "tests/parallel-source-20261110/current.test.mjs",
+    "tests/parallel-source-20261110/git-reader.test.mjs",
+    "tests/parallel-source-20261110/retained-vitest.test.mjs",
+    "tests/parallel-source-20261110/source-object-lock.test.mjs",
+    "tests/parallel-source-20261110/retained-vitest-diagnostics.test.mjs",
+    "tests/parallel-source-20261110/historical-group.test.mjs"
+  ],
+  "args": [
+    "--experimental-loader=file:///tmp/worker3-full115-critical/loader.mjs",
+    "--test",
+    "--test-concurrency=2",
+    "--test-reporter=tap",
+    "--test-reporter-destination=/tmp/worker3-full115-critical/cases.tap",
+    "tests/parallel-source-20261110/application-successor.test.mjs",
+    "tests/parallel-source-20261110/current.test.mjs",
+    "tests/parallel-source-20261110/git-reader.test.mjs",
+    "tests/parallel-source-20261110/retained-vitest.test.mjs",
+    "tests/parallel-source-20261110/source-object-lock.test.mjs",
+    "tests/parallel-source-20261110/retained-vitest-diagnostics.test.mjs",
+    "tests/parallel-source-20261110/historical-group.test.mjs"
+  ],
+  "timeout": 150000,
+  "stdio": "inherit",
+  "NODE_OPTIONSIntroduced": false,
+  "nestedChildLoaderInheritance": false
+}

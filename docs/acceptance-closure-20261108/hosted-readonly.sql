@@ -1,0 +1,10 @@
+BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY;
+SELECT jsonb_build_object(
+'observed_at',clock_timestamp(),'read_only',current_setting('transaction_read_only'),'actor',current_user,'server_version',current_setting('server_version'),
+'rpc_overloads',(SELECT coalesce(jsonb_agg(jsonb_build_object('name',p.proname,'signature',pg_get_function_identity_arguments(p.oid),'owner',pg_get_userbyid(p.proowner),'security_definer',p.prosecdef,'acl',p.proacl::text) ORDER BY p.proname),'[]'::jsonb) FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname='public' AND p.prokind='f' AND p.proname IN('create_catalog_calculator_with_audit','record_calculator_qa_decision','assign_calculator_reviewer','transition_calculator_with_audit','prepare_catalog_inventory_drafts','publish_calculator_batch_with_audit_v1')),
+'table_write_capabilities',(SELECT jsonb_agg(jsonb_build_object('table',c.relname,'owner',pg_get_userbyid(c.relowner),'rls',c.relrowsecurity,'force_rls',c.relforcerowsecurity,'role',r.rolname,'bypass_rls',r.rolbypassrls,'insert',has_table_privilege(r.oid,c.oid,'INSERT'),'update',has_table_privilege(r.oid,c.oid,'UPDATE'),'delete',has_table_privilege(r.oid,c.oid,'DELETE'),'truncate',has_table_privilege(r.oid,c.oid,'TRUNCATE')) ORDER BY c.relname,r.rolname) FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace CROSS JOIN pg_roles r WHERE n.nspname='public' AND c.relname IN('platform_admins','calculator_catalog_admin','calculator_qa_checks','calculator_review_events','calculator_bulk_jobs','calculator_source_evidence','admin_alerts') AND r.rolname IN('anon','authenticated','service_role','postgres')),
+'other_transaction_count',(SELECT count(*) FROM pg_stat_activity WHERE datname=current_database() AND pid<>pg_backend_pid() AND xact_start IS NOT NULL),
+'prepared_transaction_count',(SELECT count(*) FROM pg_prepared_xacts WHERE database=current_database()),
+'waiting_lock_count',(SELECT count(*) FROM pg_locks WHERE database=(SELECT oid FROM pg_database WHERE datname=current_database()) AND NOT granted)
+) AS evidence;
+ROLLBACK;

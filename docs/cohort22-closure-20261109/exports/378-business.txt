@@ -1,0 +1,49 @@
+CalcuMint | Calculation report
+
+
+Resolution Calculator
+Calculator: resolution-calculator | Engine version: 1
+Raw engine values: full numeric precision; no display rounding or sampled rows.
+Units appear only where supplied by the calculation or bound display metadata.
+Embedded Unicode glyphs are readable.
+Unsupported characters and controls use explicit Unicode escapes.
+Tagged PDF; PDF/UA conformance: UNVERIFIED.
+Text follows document order; charts include complete numeric text alternatives.
+
+
+INPUTS
+Width (pixels) [pixels]
+input["widthPixels"] = 1920
+Height (pixels) [pixels]
+input["heightPixels"] = 1080
+
+
+RESULTS
+Total resolution [pixels]
+output["value"] = 2073600
+output["steps"][0] = "Resolution = 2073600"
+
+
+METHODOLOGY
+Deterministic calculation using the reviewed Technology & Computing engine.\u000aTechnic
+al calculation revision: technology.resolution@1\u000a\u000aTotal pixel count from horiz
+ontal and vertical pixel dimensions.\u000aPixels = width × height
+
+
+DECLARED FORMULAS
+resolution-calculator: Pixels = width × height
+Total pixel count from horizontal and vertical pixel dimensions.
+
+
+SOURCES
+W3C CSS Values and Units Level 4 — resolution and pixel units
+https://www.w3.org/TR/css-values-4/#resolution
+W3C specifies pixel-based resolution terminology. This calculator separately counts tota
+l image pixels by multiplying explicitly supplied horizontal and vertical pixel dimensio
+ns; it does not estimate physical pixel density.
+
+
+
+
+Engine v1 | Page 1 of 1
+

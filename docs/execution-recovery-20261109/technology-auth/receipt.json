@@ -1,0 +1,5757 @@
+{
+  "passed": true,
+  "observedAt": "2026-11-09T09:53:44.685Z",
+  "sourceCommit": "7086b85437b025225f5736fb6b849415e518dc08",
+  "checks": [
+    "#368 free exact history/replay and account boundaries; scenario PLAN_DENIED",
+    "#368 pro exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#368 business exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#370 free exact history/replay and account boundaries; scenario PLAN_DENIED",
+    "#370 pro exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#370 business exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#371 free exact history/replay and account boundaries; scenario PLAN_DENIED",
+    "#371 pro exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#371 business exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#372 free exact history/replay and account boundaries; scenario PLAN_DENIED",
+    "#372 pro exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#372 business exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#373 free exact history/replay and account boundaries; scenario PLAN_DENIED",
+    "#373 pro exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#373 business exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#374 free exact history/replay and account boundaries; scenario PLAN_DENIED",
+    "#374 pro exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#374 business exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#375 free exact history/replay and account boundaries; scenario PLAN_DENIED",
+    "#375 pro exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#375 business exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#376 free exact history/replay and account boundaries; scenario PLAN_DENIED",
+    "#376 pro exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#376 business exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#377 free exact history/replay and account boundaries; scenario PLAN_DENIED",
+    "#377 pro exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#377 business exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#378 free exact history/replay and account boundaries; scenario PLAN_DENIED",
+    "#378 pro exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#378 business exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#379 free exact history/replay and account boundaries; scenario PLAN_DENIED",
+    "#379 pro exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#379 business exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#380 free exact history/replay and account boundaries; scenario PLAN_DENIED",
+    "#380 pro exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#380 business exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#381 free exact history/replay and account boundaries; scenario PLAN_DENIED",
+    "#381 pro exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#381 business exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#382 free exact history/replay and account boundaries; scenario PLAN_DENIED",
+    "#382 pro exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#382 business exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#383 free exact history/replay and account boundaries; scenario PLAN_DENIED",
+    "#383 pro exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#383 business exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#384 free exact history/replay and account boundaries; scenario PLAN_DENIED",
+    "#384 pro exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#384 business exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#385 free exact history/replay and account boundaries; scenario PLAN_DENIED",
+    "#385 pro exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#385 business exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#386 free exact history/replay and account boundaries; scenario PLAN_DENIED",
+    "#386 pro exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#386 business exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#387 free exact history/replay and account boundaries; scenario PLAN_DENIED",
+    "#387 pro exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY",
+    "#387 business exact history/replay and account boundaries; scenario EXACT_RETRY_IMMUTABLE_REPLAY"
+  ],
+  "journeys": [
+    {
+      "masterId": 368,
+      "slug": "ip-subnet-calculator",
+      "version": 1,
+      "engineId": "technology.ip-subnet",
+      "plan": "free",
+      "literalExpected": 256,
+      "actual": 256,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "PLAN_DENIED",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "08cb901f5048b928036c99b0fd4a8787250ced36114ee9f7fee7305139eb31f8",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 368,
+      "slug": "ip-subnet-calculator",
+      "version": 1,
+      "engineId": "technology.ip-subnet",
+      "plan": "pro",
+      "literalExpected": 256,
+      "actual": 256,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "08cb901f5048b928036c99b0fd4a8787250ced36114ee9f7fee7305139eb31f8",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 368,
+      "slug": "ip-subnet-calculator",
+      "version": 1,
+      "engineId": "technology.ip-subnet",
+      "plan": "business",
+      "literalExpected": 256,
+      "actual": 256,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "08cb901f5048b928036c99b0fd4a8787250ced36114ee9f7fee7305139eb31f8",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 370,
+      "slug": "bandwidth-calculator",
+      "version": 1,
+      "engineId": "technology.bandwidth",
+      "plan": "free",
+      "literalExpected": 80,
+      "actual": 80,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "PLAN_DENIED",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "ad407c5d4a135d038a9c28e02ad245c2c08c5cb994f8d6ca149bf1583fcbe474",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 370,
+      "slug": "bandwidth-calculator",
+      "version": 1,
+      "engineId": "technology.bandwidth",
+      "plan": "pro",
+      "literalExpected": 80,
+      "actual": 80,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "ad407c5d4a135d038a9c28e02ad245c2c08c5cb994f8d6ca149bf1583fcbe474",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 370,
+      "slug": "bandwidth-calculator",
+      "version": 1,
+      "engineId": "technology.bandwidth",
+      "plan": "business",
+      "literalExpected": 80,
+      "actual": 80,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "ad407c5d4a135d038a9c28e02ad245c2c08c5cb994f8d6ca149bf1583fcbe474",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 371,
+      "slug": "download-time-calculator",
+      "version": 1,
+      "engineId": "technology.download-time",
+      "plan": "free",
+      "literalExpected": 10,
+      "actual": 10,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "PLAN_DENIED",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "40c82ec43ecb88d1887828c7d91398a3997c42b84e9c508ad1c2cf38f57780ea",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 371,
+      "slug": "download-time-calculator",
+      "version": 1,
+      "engineId": "technology.download-time",
+      "plan": "pro",
+      "literalExpected": 10,
+      "actual": 10,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "40c82ec43ecb88d1887828c7d91398a3997c42b84e9c508ad1c2cf38f57780ea",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 371,
+      "slug": "download-time-calculator",
+      "version": 1,
+      "engineId": "technology.download-time",
+      "plan": "business",
+      "literalExpected": 10,
+      "actual": 10,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "40c82ec43ecb88d1887828c7d91398a3997c42b84e9c508ad1c2cf38f57780ea",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 372,
+      "slug": "upload-time-calculator",
+      "version": 1,
+      "engineId": "technology.upload-time",
+      "plan": "free",
+      "literalExpected": 10,
+      "actual": 10,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "PLAN_DENIED",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "1fb863b8f39495f1bbe98ca074767fa336cf49b782d4d5d2e1c9add645abb8f5",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 372,
+      "slug": "upload-time-calculator",
+      "version": 1,
+      "engineId": "technology.upload-time",
+      "plan": "pro",
+      "literalExpected": 10,
+      "actual": 10,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "1fb863b8f39495f1bbe98ca074767fa336cf49b782d4d5d2e1c9add645abb8f5",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 372,
+      "slug": "upload-time-calculator",
+      "version": 1,
+      "engineId": "technology.upload-time",
+      "plan": "business",
+      "literalExpected": 10,
+      "actual": 10,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "1fb863b8f39495f1bbe98ca074767fa336cf49b782d4d5d2e1c9add645abb8f5",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 373,
+      "slug": "data-transfer-calculator",
+      "version": 1,
+      "engineId": "technology.data-transfer",
+      "plan": "free",
+      "literalExpected": 100,
+      "actual": 100,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "PLAN_DENIED",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "12dd5955e0c1e982ccabf0aadd4d01efc6b8fc37d75588f61932305e24596684",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 373,
+      "slug": "data-transfer-calculator",
+      "version": 1,
+      "engineId": "technology.data-transfer",
+      "plan": "pro",
+      "literalExpected": 100,
+      "actual": 100,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "12dd5955e0c1e982ccabf0aadd4d01efc6b8fc37d75588f61932305e24596684",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 373,
+      "slug": "data-transfer-calculator",
+      "version": 1,
+      "engineId": "technology.data-transfer",
+      "plan": "business",
+      "literalExpected": 100,
+      "actual": 100,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "12dd5955e0c1e982ccabf0aadd4d01efc6b8fc37d75588f61932305e24596684",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 374,
+      "slug": "storage-conversion-calculator",
+      "version": 1,
+      "engineId": "technology.storage-conversion",
+      "plan": "free",
+      "literalExpected": 1024,
+      "actual": 1024,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "PLAN_DENIED",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "8936a19eed1ab7b2dbc1c6da3318cab010c0ad78eed824ce6687c66f3c0b06d1",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 374,
+      "slug": "storage-conversion-calculator",
+      "version": 1,
+      "engineId": "technology.storage-conversion",
+      "plan": "pro",
+      "literalExpected": 1024,
+      "actual": 1024,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "8936a19eed1ab7b2dbc1c6da3318cab010c0ad78eed824ce6687c66f3c0b06d1",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 374,
+      "slug": "storage-conversion-calculator",
+      "version": 1,
+      "engineId": "technology.storage-conversion",
+      "plan": "business",
+      "literalExpected": 1024,
+      "actual": 1024,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "8936a19eed1ab7b2dbc1c6da3318cab010c0ad78eed824ce6687c66f3c0b06d1",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 375,
+      "slug": "raid-capacity-calculator",
+      "version": 1,
+      "engineId": "technology.raid-capacity",
+      "plan": "free",
+      "literalExpected": 2000,
+      "actual": 2000,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "PLAN_DENIED",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "b9411bea574b402e45ceecbaad8119f8977917b745cd30d2b143f8a55cd9546c",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 375,
+      "slug": "raid-capacity-calculator",
+      "version": 1,
+      "engineId": "technology.raid-capacity",
+      "plan": "pro",
+      "literalExpected": 2000,
+      "actual": 2000,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "b9411bea574b402e45ceecbaad8119f8977917b745cd30d2b143f8a55cd9546c",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 375,
+      "slug": "raid-capacity-calculator",
+      "version": 1,
+      "engineId": "technology.raid-capacity",
+      "plan": "business",
+      "literalExpected": 2000,
+      "actual": 2000,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "b9411bea574b402e45ceecbaad8119f8977917b745cd30d2b143f8a55cd9546c",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 376,
+      "slug": "screen-ppi-calculator",
+      "version": 1,
+      "engineId": "technology.screen-ppi",
+      "plan": "free",
+      "literalExpected": 141.21199808219862,
+      "actual": 141.21199808219862,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "PLAN_DENIED",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "e28aa9a0828d59a223dea5973a0a6100e8588432a0e68ef5c53bec6df0a34e0b",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 376,
+      "slug": "screen-ppi-calculator",
+      "version": 1,
+      "engineId": "technology.screen-ppi",
+      "plan": "pro",
+      "literalExpected": 141.21199808219862,
+      "actual": 141.21199808219862,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "e28aa9a0828d59a223dea5973a0a6100e8588432a0e68ef5c53bec6df0a34e0b",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 376,
+      "slug": "screen-ppi-calculator",
+      "version": 1,
+      "engineId": "technology.screen-ppi",
+      "plan": "business",
+      "literalExpected": 141.21199808219862,
+      "actual": 141.21199808219862,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "e28aa9a0828d59a223dea5973a0a6100e8588432a0e68ef5c53bec6df0a34e0b",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 377,
+      "slug": "aspect-ratio-calculator",
+      "version": 1,
+      "engineId": "technology.aspect-ratio",
+      "plan": "free",
+      "literalExpected": 1.7777777777777777,
+      "actual": 1.7777777777777777,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "PLAN_DENIED",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "8d1daf9b59f05344a76ffdc5a907c564c0e722388ef82d17a4da27a842d66449",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 377,
+      "slug": "aspect-ratio-calculator",
+      "version": 1,
+      "engineId": "technology.aspect-ratio",
+      "plan": "pro",
+      "literalExpected": 1.7777777777777777,
+      "actual": 1.7777777777777777,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "8d1daf9b59f05344a76ffdc5a907c564c0e722388ef82d17a4da27a842d66449",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 377,
+      "slug": "aspect-ratio-calculator",
+      "version": 1,
+      "engineId": "technology.aspect-ratio",
+      "plan": "business",
+      "literalExpected": 1.7777777777777777,
+      "actual": 1.7777777777777777,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "8d1daf9b59f05344a76ffdc5a907c564c0e722388ef82d17a4da27a842d66449",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 378,
+      "slug": "resolution-calculator",
+      "version": 1,
+      "engineId": "technology.resolution",
+      "plan": "free",
+      "literalExpected": 2073600,
+      "actual": 2073600,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "PLAN_DENIED",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "b6f25b0fb05e64635be1a3d0cc6d2bafcdd7c5a163b1bec4741e99bc12b094f2",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 378,
+      "slug": "resolution-calculator",
+      "version": 1,
+      "engineId": "technology.resolution",
+      "plan": "pro",
+      "literalExpected": 2073600,
+      "actual": 2073600,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "b6f25b0fb05e64635be1a3d0cc6d2bafcdd7c5a163b1bec4741e99bc12b094f2",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 378,
+      "slug": "resolution-calculator",
+      "version": 1,
+      "engineId": "technology.resolution",
+      "plan": "business",
+      "literalExpected": 2073600,
+      "actual": 2073600,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "b6f25b0fb05e64635be1a3d0cc6d2bafcdd7c5a163b1bec4741e99bc12b094f2",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 379,
+      "slug": "dpi-calculator",
+      "version": 1,
+      "engineId": "technology.dpi",
+      "plan": "free",
+      "literalExpected": 300,
+      "actual": 300,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "PLAN_DENIED",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "1dff48563c26f92ae3b2876a8df4238e19b21a6c0aa045cc52c27a86ff480ce0",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 379,
+      "slug": "dpi-calculator",
+      "version": 1,
+      "engineId": "technology.dpi",
+      "plan": "pro",
+      "literalExpected": 300,
+      "actual": 300,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "1dff48563c26f92ae3b2876a8df4238e19b21a6c0aa045cc52c27a86ff480ce0",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 379,
+      "slug": "dpi-calculator",
+      "version": 1,
+      "engineId": "technology.dpi",
+      "plan": "business",
+      "literalExpected": 300,
+      "actual": 300,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "1dff48563c26f92ae3b2876a8df4238e19b21a6c0aa045cc52c27a86ff480ce0",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 380,
+      "slug": "battery-runtime-calculator",
+      "version": 1,
+      "engineId": "technology.battery-runtime",
+      "plan": "free",
+      "literalExpected": 4.5,
+      "actual": 4.5,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "PLAN_DENIED",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "24dd21d7e1cb37b6ab6714fbc720b73952bb967e6eb12c10335c6bfbcfda3cca",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 380,
+      "slug": "battery-runtime-calculator",
+      "version": 1,
+      "engineId": "technology.battery-runtime",
+      "plan": "pro",
+      "literalExpected": 4.5,
+      "actual": 4.5,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "24dd21d7e1cb37b6ab6714fbc720b73952bb967e6eb12c10335c6bfbcfda3cca",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 380,
+      "slug": "battery-runtime-calculator",
+      "version": 1,
+      "engineId": "technology.battery-runtime",
+      "plan": "business",
+      "literalExpected": 4.5,
+      "actual": 4.5,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "24dd21d7e1cb37b6ab6714fbc720b73952bb967e6eb12c10335c6bfbcfda3cca",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 381,
+      "slug": "ups-runtime-calculator",
+      "version": 1,
+      "engineId": "technology.ups-runtime",
+      "plan": "free",
+      "literalExpected": 1.8,
+      "actual": 1.8,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "PLAN_DENIED",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "3c76fb11bf2854cf8bd3ec5457d5e96702f673292d770d738ab3fe53b2b87c3e",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 381,
+      "slug": "ups-runtime-calculator",
+      "version": 1,
+      "engineId": "technology.ups-runtime",
+      "plan": "pro",
+      "literalExpected": 1.8,
+      "actual": 1.8,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "3c76fb11bf2854cf8bd3ec5457d5e96702f673292d770d738ab3fe53b2b87c3e",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 381,
+      "slug": "ups-runtime-calculator",
+      "version": 1,
+      "engineId": "technology.ups-runtime",
+      "plan": "business",
+      "literalExpected": 1.8,
+      "actual": 1.8,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "3c76fb11bf2854cf8bd3ec5457d5e96702f673292d770d738ab3fe53b2b87c3e",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 382,
+      "slug": "power-supply-calculator",
+      "version": 1,
+      "engineId": "technology.power-supply",
+      "plan": "free",
+      "literalExpected": 600,
+      "actual": 600,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "PLAN_DENIED",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "141fb27024ea8b7673c6731800347930c8b1c25600f1eebd175c84390df1c882",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 382,
+      "slug": "power-supply-calculator",
+      "version": 1,
+      "engineId": "technology.power-supply",
+      "plan": "pro",
+      "literalExpected": 600,
+      "actual": 600,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "141fb27024ea8b7673c6731800347930c8b1c25600f1eebd175c84390df1c882",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 382,
+      "slug": "power-supply-calculator",
+      "version": 1,
+      "engineId": "technology.power-supply",
+      "plan": "business",
+      "literalExpected": 600,
+      "actual": 600,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "141fb27024ea8b7673c6731800347930c8b1c25600f1eebd175c84390df1c882",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 383,
+      "slug": "website-bandwidth-calculator",
+      "version": 2,
+      "engineId": "technology.website-bandwidth",
+      "plan": "free",
+      "literalExpected": 200,
+      "actual": 200,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "PLAN_DENIED",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "6149785decec4e419d69aeb44315199d1d9f59a46eee64da390d8260d6066684",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 383,
+      "slug": "website-bandwidth-calculator",
+      "version": 2,
+      "engineId": "technology.website-bandwidth",
+      "plan": "pro",
+      "literalExpected": 200,
+      "actual": 200,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "6149785decec4e419d69aeb44315199d1d9f59a46eee64da390d8260d6066684",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 383,
+      "slug": "website-bandwidth-calculator",
+      "version": 2,
+      "engineId": "technology.website-bandwidth",
+      "plan": "business",
+      "literalExpected": 200,
+      "actual": 200,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "6149785decec4e419d69aeb44315199d1d9f59a46eee64da390d8260d6066684",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 384,
+      "slug": "cloud-storage-cost-calculator",
+      "version": 1,
+      "engineId": "technology.cloud-storage-cost",
+      "plan": "free",
+      "literalExpected": 20,
+      "actual": 20,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "PLAN_DENIED",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "867c571b3ef6ea170f41ae39fb22b5ad900de9a537cffe1d0daf892517e5bf79",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 384,
+      "slug": "cloud-storage-cost-calculator",
+      "version": 1,
+      "engineId": "technology.cloud-storage-cost",
+      "plan": "pro",
+      "literalExpected": 20,
+      "actual": 20,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "867c571b3ef6ea170f41ae39fb22b5ad900de9a537cffe1d0daf892517e5bf79",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 384,
+      "slug": "cloud-storage-cost-calculator",
+      "version": 1,
+      "engineId": "technology.cloud-storage-cost",
+      "plan": "business",
+      "literalExpected": 20,
+      "actual": 20,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "867c571b3ef6ea170f41ae39fb22b5ad900de9a537cffe1d0daf892517e5bf79",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 385,
+      "slug": "cloud-data-transfer-cost-calculator",
+      "version": 1,
+      "engineId": "technology.cloud-data-transfer-cost",
+      "plan": "free",
+      "literalExpected": 45,
+      "actual": 45,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "PLAN_DENIED",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "81e9aef80225d12e0ca698ac7fc5518a2980a020e985fd10059a78a168038762",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 385,
+      "slug": "cloud-data-transfer-cost-calculator",
+      "version": 1,
+      "engineId": "technology.cloud-data-transfer-cost",
+      "plan": "pro",
+      "literalExpected": 45,
+      "actual": 45,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "81e9aef80225d12e0ca698ac7fc5518a2980a020e985fd10059a78a168038762",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 385,
+      "slug": "cloud-data-transfer-cost-calculator",
+      "version": 1,
+      "engineId": "technology.cloud-data-transfer-cost",
+      "plan": "business",
+      "literalExpected": 45,
+      "actual": 45,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "81e9aef80225d12e0ca698ac7fc5518a2980a020e985fd10059a78a168038762",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 386,
+      "slug": "base64-size-calculator",
+      "version": 1,
+      "engineId": "technology.base64-size",
+      "plan": "free",
+      "literalExpected": 1336,
+      "actual": 1336,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "PLAN_DENIED",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "433b35833bcdfa4f613011c5715a8a366e7772420b0f4d8c0b1ae9efc1d6fd9b",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 386,
+      "slug": "base64-size-calculator",
+      "version": 1,
+      "engineId": "technology.base64-size",
+      "plan": "pro",
+      "literalExpected": 1336,
+      "actual": 1336,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "433b35833bcdfa4f613011c5715a8a366e7772420b0f4d8c0b1ae9efc1d6fd9b",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 386,
+      "slug": "base64-size-calculator",
+      "version": 1,
+      "engineId": "technology.base64-size",
+      "plan": "business",
+      "literalExpected": 1336,
+      "actual": 1336,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "433b35833bcdfa4f613011c5715a8a366e7772420b0f4d8c0b1ae9efc1d6fd9b",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 387,
+      "slug": "password-entropy-calculator",
+      "version": 1,
+      "engineId": "technology.password-entropy",
+      "plan": "free",
+      "literalExpected": 104.8734216268422,
+      "actual": 104.8734216268422,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "PLAN_DENIED",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "72a997170dedb02b51e26012a82b9e1141ee55aca81b0216f8cd91c90731caf6",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 387,
+      "slug": "password-entropy-calculator",
+      "version": 1,
+      "engineId": "technology.password-entropy",
+      "plan": "pro",
+      "literalExpected": 104.8734216268422,
+      "actual": 104.8734216268422,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "72a997170dedb02b51e26012a82b9e1141ee55aca81b0216f8cd91c90731caf6",
+      "wrongVersionsRejected": true
+    },
+    {
+      "masterId": 387,
+      "slug": "password-entropy-calculator",
+      "version": 1,
+      "engineId": "technology.password-entropy",
+      "plan": "business",
+      "literalExpected": 104.8734216268422,
+      "actual": 104.8734216268422,
+      "history": "ATOMIC_IDEMPOTENT_PERSISTED_REPLAY",
+      "scenario": "EXACT_RETRY_IMMUTABLE_REPLAY",
+      "foreignReadUpdateDenied": true,
+      "negativeCode": "P0001",
+      "snapshotSha256": "72a997170dedb02b51e26012a82b9e1141ee55aca81b0216f8cd91c90731caf6",
+      "wrongVersionsRejected": true
+    }
+  ],
+  "sources": [
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/AuthAdminApi.js",
+      "sha256": "8e879ad1a0f0ad11923dc1b7bedd7e522532a298025c3fae52669419d342421a"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/AuthClient.js",
+      "sha256": "f9dbb30bd5c6511db0c98a24f1f9b077aa2d080505427c93dea757d97d981568"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/GoTrueAdminApi.js",
+      "sha256": "bd8c28a4dfaf0c06fd107250b1a5d3156a7d085fd4cd3a7ae953b7be2e2833f6"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/GoTrueClient.js",
+      "sha256": "3e831952d18c01fe2d9cc802b76af6ba86355adc60f33edff3325779ed9e3ef5"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/index.js",
+      "sha256": "a43ea0c523b8f4f8b8d59bc3b16b9ec9158cad05de53ffc92238fceb26d8bcfd"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/base64url.js",
+      "sha256": "1d97eac773480a5e06ba408f4d746e59b4269a6b8afd22aaad75f5773c7cf9d7"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/constants.js",
+      "sha256": "9218c8a8da3825083fcb3b105a8c52c1c5a542a865f5abf2ab5185b7b4beabf9"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/errors.js",
+      "sha256": "3cf62e517139e8e2092891eb990ea32b25b95678a52a63b4b911ec08e363f77a"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/fetch.js",
+      "sha256": "50fa4e318e07a49de1179256e3fa3dc927a6a46664386f0baed30ef80f3c1d0b"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/helpers.js",
+      "sha256": "e9b82e7663b66ba154d7eddf388047461e0019359d1df50274aa43adbd560678"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/local-storage.js",
+      "sha256": "a3c6841d8c4dc24a2c0ac1d238b42a278c7ac05d18a7571db91c3fc140e42d93"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/locks.js",
+      "sha256": "d9ebad87448eb4aa3f1db2453f313377e19c6c144824f502154bcf3b0cd851c3"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/polyfills.js",
+      "sha256": "0b5600e6e4cda1f029ec448d93857062731b850424d3b465fa7dae4e5921ae7e"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/types.js",
+      "sha256": "4ba1cf76d3e6b838ad40f6b4ef88845ee054726ddd1f42ebfcdfa9efa23cef43"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/version.js",
+      "sha256": "1def3472b0673feb364044cbad8229e06e1a9edfb6a5f06dfdbdbe5a8a986a06"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/web3/ethereum.js",
+      "sha256": "839a33e8225db3da724f25bea5d1b127ba30cb4c272cab30dd9700232ada431d"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/webauthn.errors.js",
+      "sha256": "40cb9a8d5f58c798e4b1ea47774ba29e59a9efb455c6edd4d05c8a38c762cd78"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/webauthn.js",
+      "sha256": "016e06c91127c337b8d0536df280cd57c66c07ec236436a39b8b7083ac308db3"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/functions-js/dist/main/FunctionsClient.js",
+      "sha256": "f8a4f5ab75ae570a108ba4a7aa1a30dc58ca62af8d48fb0f9a2dc7e0ea1ca1e1"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/functions-js/dist/main/helper.js",
+      "sha256": "323d5529b134ddf92d2bce3ffb1c1707d483325f182fd2665d59564ca6bb933e"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/functions-js/dist/main/index.js",
+      "sha256": "41f4ff1b0f36c0ccc0a0e0fbd6428f2654dafbe1fd3e3dd89a8736166ac5c4f5"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/functions-js/dist/main/types.js",
+      "sha256": "c599ec73696bd9a251cc206407bdc5a9b2fbda1b12d97ceb9868b2a060dbb514"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/phoenix/priv/static/phoenix.cjs.js",
+      "sha256": "0b9d4a6280454132320c6ea886355f4d34059213ecc6697f43d7e836c98920aa"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/postgrest-js/dist/index.mjs",
+      "sha256": "1bed557508b6bc15f77eb4c78bc6fdd620abdf7d1ad39b670df92d83547cc538"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/RealtimeChannel.js",
+      "sha256": "fe8bc4667cb634ba665b28b6ae9b1d966f40dcd6d726dd0849ccd1a8d0fb509d"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/RealtimeClient.js",
+      "sha256": "015dd0b89c4bda020ddbe829c6338c8ad965bf364076988391c20c827a5c60d1"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/RealtimePostgresFilterBuilder.js",
+      "sha256": "87b125bf675a17e13e706d65a3d579c18633dccf5630abd0fde2ff09d5fed7de"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/RealtimePresence.js",
+      "sha256": "a2687fc9777849d24b7ec2b45b5191b7a2a06c4b19b4dc2ccb8c25f31679246d"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/index.js",
+      "sha256": "c9b62a4332542a15618a2d2442760c5d2d5ef59f494765f98a297baeb9335582"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/lib/constants.js",
+      "sha256": "4998f76316a28ee16dce3c3346845be0e9ddde85559f34eb6a3c307732fcca35"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/lib/normalizeChannelError.js",
+      "sha256": "fcea2bd55b4f6c749cc0f9daf956b4d0db126d096656ff8149bb517648475efa"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/lib/serializer.js",
+      "sha256": "d71a6f611f1fd578287b89f510a9e8a6b9dc7048085065e607769b7eed7f1945"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/lib/transformers.js",
+      "sha256": "c6050fcfa7e19d3f5b7f0cc3e7e40e899aa753a75e10d268252be968e9fc7062"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/lib/version.js",
+      "sha256": "1def3472b0673feb364044cbad8229e06e1a9edfb6a5f06dfdbdbe5a8a986a06"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/lib/websocket-factory.js",
+      "sha256": "cb05e6f4ab46ee28118d7baecd0ff6c6116e1a538f4896bb7d4d1de1b60ab1a9"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/phoenix/channelAdapter.js",
+      "sha256": "07b9e487385763cfa10b923113e76872c0ff1b67b3542b7027261045edf0c875"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/phoenix/presenceAdapter.js",
+      "sha256": "568992f5fe7333a3a80ea4e13bfa147759e762f699d9e76b7aa5ee2a58ec981f"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/phoenix/socketAdapter.js",
+      "sha256": "7db2e3463f86fbaa76f347159403c053ba0ffce5e0c8553708698c2ea534c630"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/storage-js/dist/index.mjs",
+      "sha256": "f34162d316d3c45187d18bb3aa38361eae1fd52ce10cb0a3fd29b1a4f333c79e"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/supabase-js/dist/index.mjs",
+      "sha256": "3379e7d01b41287fdf65e7a590969c92888ea3522c43ab765390eff262c93cb7"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/@supabase/supabase-js/dist/tracingRegistry.mjs",
+      "sha256": "1682402eb4078c171f9b70e9a8e52c17eeefee593d94b167059c354ba74eac8f"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/iceberg-js/dist/index.mjs",
+      "sha256": "15ed0530ab67a7bfb541eb2cea764023c159312b7f1888e42c029840fafd381d"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/tslib/tslib.es6.mjs",
+      "sha256": "0929993220938091ede542d688b0fdb87dad99a7e77678e1983c32d18a503339"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/index.js",
+      "sha256": "32e7efd49a94a765f6d10a1a0a3c02c50c246def17c80c6f0225f85525d98505"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/checks.js",
+      "sha256": "7543391a9ad5e7df287bbfecaa79844d46af44c75c1de0d43a411d65795d9dd1"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/coerce.js",
+      "sha256": "fb2efe3b6eacc475c77cbb571b5fb8650d92a10f316dc869e49b722973d83c3c"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/compat.js",
+      "sha256": "0e948b101771cc0e7b753e54b3f5b486929d3db9bd4c09d98fe4ce86271bcf7b"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/deep-partial.js",
+      "sha256": "0abffcc9838e04dc6f091229c1d522fbfd43aab9563316b52d3eb8ff2bacf26d"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/errors.js",
+      "sha256": "d32f7c1ef8e2c70072f6f0ec8ba7081bbc331353cc3a7cb4429e5ece91409543"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/external.js",
+      "sha256": "c6b584ae70ba4e7132b2cd78c23ea4ecedc9828abf999edee312372e1fb453d6"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/from-json-schema.js",
+      "sha256": "31dc999a26cb6928f5e99ea564d648567e85cf9aa47565198fb6186dbd6c070e"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/in-out.js",
+      "sha256": "34370913842ff02d14a9796b11c5ec2af160bdb35a7148edc286e9a9c6fb5c17"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/iso.js",
+      "sha256": "deaa026b7c5302e59719f401248e7866691d8d8a892884dd2b6868b1cb7252d8"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/parse.js",
+      "sha256": "11941573401bbef138842c7a523dff554873343fccbf0e8b0a144259d2d703f1"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/schemas.js",
+      "sha256": "2bf4a631a18f734a9a7ab7fc11bcf919214774d2235a312dcec0dd53d0324c32"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/core/api.js",
+      "sha256": "03ae6016abc9585e3f3481d6b8d775a95ae4ee65badbde73ca1ed953ff14c0e7"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/core/checks.js",
+      "sha256": "bc42543274218aa7ef72192b3218d2a4a399e53df8de240a04d9ff275096f563"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/core/compile.js",
+      "sha256": "df28853593428e5a2a8729b09f43baf0998eaae7f1e37797993035187833b054"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/core/core.js",
+      "sha256": "c7ce485c97263e42568d16b11bb4a90133221c7e807498a9273d70f41ba16ef6"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/core/doc.js",
+      "sha256": "be4c1b1a1ad247cc70f360a572060edd7e0cea24252c3a319f33d247899c5643"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/core/errors.js",
+      "sha256": "a0c95ef2f7085b5bc2931f7b566f524b26a0360c8df741e3f87f923745cf9792"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/core/index.js",
+      "sha256": "2a0e452323aa5b75b7d7de4879289e2579b9dd2d6af291c0416ba6806ca2199d"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/core/json-schema-generator.js",
+      "sha256": "beaeab6faa654e99e443b8a9f5d8a4adc08cd8226f92a0cd32477a58ecfa1807"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/core/json-schema-processors.js",
+      "sha256": "b6d2aee72212c076b9cde38da6333591c76a24eb049a4ee4e7bd2b7825d8b817"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/core/json-schema.js",
+      "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/core/memoizer.js",
+      "sha256": "18a3188c51229d9189a5408b0b7fbc3e121b55c2b4c3c406d79cb9b77e7ad964"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/core/parse.js",
+      "sha256": "fb05b91ec260f3f484f7c00a177b6126ceb8fd1b09dc90b1200afdffd4d98efd"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/core/regexes.js",
+      "sha256": "24fc98f6fc9175e50ff29d28b040e3b4ac5650de19914d45ee27b853d367ecc6"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/core/registries.js",
+      "sha256": "f04d4b2c0bc5b4ac2d6610ea34edf2e5260eade18f20976b79916dcdbeb9fa4d"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/core/schemas.js",
+      "sha256": "e632b655441418f0593153abc6809fd81cf3e0782d810622d0a4fa50ef6e182e"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/core/to-json-schema.js",
+      "sha256": "85b883eb8f05e9f060c71a39fce7df9345b566af29d5bc9c8fa477fe616a051d"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/core/util.js",
+      "sha256": "728f52b496620336775eafcdb91c0a574380086e53f215b55c58eedc1422c49c"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/core/versions.js",
+      "sha256": "63b38035ff5e2a5a5cfe5665e271af72b0cf9791e770dccf5e99d977064fb96c"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/core/visit.js",
+      "sha256": "a804062900869e09ea0b975cfa569fd3c70dc33bad7fc30b63872d451cae29f7"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ar.js",
+      "sha256": "eec4016c2b3063ae929617d90ec609e4c425e60c97a954d3a24de0f457b6ec97"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/az.js",
+      "sha256": "5bd03646b9d18b73e71356cd28937e4e6413b806bb23e14689cc88f6f65ff3a6"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/be.js",
+      "sha256": "f969afea5d9800a71958a621658943b85a2576a2bfefdd5dea70afc4924d4af4"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/bg.js",
+      "sha256": "96741333a790320e05aef7286b5b709a4a7c48cfffc50fc5e6acff5b505275e9"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/bn.js",
+      "sha256": "6d8227b52a6864465b7c52a9ef7e09d261d904ec8a619932e15dd9f9f826e8dd"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ca.js",
+      "sha256": "67f6f38b59a6e3ee81cc5155480465331dd9a142b2471a495503a81dafba0684"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ckb.js",
+      "sha256": "bdb9ef0cfda4009f8892585a1780fff863cd409931d6f89394c271042c131137"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/cs.js",
+      "sha256": "4ffa0e484ad1842a2c0e5c7f2dfe9160155ff5be4b95ab6e524d3a30a2210488"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/da.js",
+      "sha256": "29addcd60e88422bed9ed78c6c864220a15c06b31fdb4ab7ad4f87be4098e6ae"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/de.js",
+      "sha256": "f344eb96ba18d9db907f3f9c95897ce2590ab0cde1553c023daffbb1cb5ef6f4"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/el.js",
+      "sha256": "fdea833aa0a8c381d26216db1521dd7fbc4dccb6d3aa50f9a585ffb975df91eb"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/en.js",
+      "sha256": "d5930e10d137b048b37823e168e4177947e1f696ada8419c71bb0d32da4333c0"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/eo.js",
+      "sha256": "97797bd22319ecc3f2044da6c305f1114b851803697029ffce2b66644757da3a"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/es.js",
+      "sha256": "12e762b921b1e3fdb8e265d2b554de81ce9706ceb23a81527f48ae2dddf355db"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/fa.js",
+      "sha256": "60e7eeff4c000c85f8420168374344305d3c2110a5f91a2fb672b2a2381eeddf"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/fi.js",
+      "sha256": "1e72af4193e564cd37dce4a850dc18bc1bcd6ca280f29e9f5f8c6bbab6a2cad9"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/fr-CA.js",
+      "sha256": "a2ca0451ff943766bb6a88b392b25447462a1d3ed75c1adda5ddb0bc474bcd42"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/fr.js",
+      "sha256": "477345d6401d0e4f07794b1a2cff8b78953723f1fc8cfaeb6b660c19be47125a"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/gu.js",
+      "sha256": "b1921ac6b4158e6360a8da6099df8bbf2d7bce7c1cf381d5a5e47aa0c74874d2"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/he.js",
+      "sha256": "1cfff31fac19616d900d1f3febd9690ea87711e13b5be299326ebfd3f33aad4d"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/hi.js",
+      "sha256": "c31e466c2a31dc10ba6a288e1aebf429a6e9566a26918d0240aae058693f6329"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/hr.js",
+      "sha256": "ff2bebef0761f2d6095103d58484e3b95551bc51d56770db8f161b8e0e0ec941"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/hu.js",
+      "sha256": "9816c21ee0b3be9d973f9e033e9587a608f2d35dd1b984d415b88e03242b0189"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/hy.js",
+      "sha256": "daf6d0c590d9b061759598ba9f7f97041e2874c7a58da2c64b86f152840d68fa"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/id.js",
+      "sha256": "e5c23bb0b6f696fa936bafd7969e64738504cf7a5be3ec04b24ae899d4912b58"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/index.js",
+      "sha256": "7ea85250d1e7bd9459cda61f38c78757a410d561a5421bb3f08019bba79c9849"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/is.js",
+      "sha256": "1cce1285bbf55c8a76303fea0be0fb6d39fbd0ece833137ea23a22f406ac1ae1"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/it.js",
+      "sha256": "096b497df6c5fe7de4422482b7733e764e4b344e8d7f768a7289556687acdb82"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ja.js",
+      "sha256": "2a6bbbd6dbd573687b22f35873a13cdf730c07423b4ab114e5a8b12d8777146d"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ka.js",
+      "sha256": "baf3204123cf4246df654fd1948b6c8da6917e7a06e470aeeaf7c1eaa7003628"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/kh.js",
+      "sha256": "78c3d1991041bb8c8fc0f7c5d745aae422d4c2e4e8f30bae44f3fef4765900a8"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/km.js",
+      "sha256": "e61079f14070dfa9c7b2047eb79f5bea6d4e845f192756d103c121bbd63ee18a"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/kn.js",
+      "sha256": "884b1b68a1ca02fe9a774b8de9cbfa3486892eea36192699120f57b31f0a1f42"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ko.js",
+      "sha256": "11fcef61a2f23e010bf0f569d71be0d49524afc97f3072cc03fdc6fe3ea2f14d"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/lt.js",
+      "sha256": "d2e67a35a3c6e7241a9eb9c5851e4b5b651ac8b23278854862e6055829946c48"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/mk.js",
+      "sha256": "64ddd914c432ba5690d0686bff6603651ce886a891f84823d7dc766c9c980cd1"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ms.js",
+      "sha256": "94faf0d306ffa2a4f95e57f3e53060d27220a639b9cb529f00d1d01b6270f045"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ne.js",
+      "sha256": "6da69989b702ae15baa27b799b6b2b32fd011ba3980a190dd0eccfc9233083d6"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/nl.js",
+      "sha256": "296ced8be508c5f9e82b562049d2974882029bcd5b2ab4ade14401b33ec99909"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/nn.js",
+      "sha256": "bae9756817629db30841eb54a27ed9b3c71c2a4208314d8d070be624bd2e9359"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/no.js",
+      "sha256": "f358e5586940350ee25a05db184565d23eb1c66903e182ebec812172f31cb55a"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ota.js",
+      "sha256": "66ed8c3ce00b2e9971ed5a17f002937405d8cdfeb399ebe012db9d2317f42146"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/pl.js",
+      "sha256": "b7f82cf9f747785beeec05cd31d3d7493c52bd3647598924141568f148c07222"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ps.js",
+      "sha256": "1c15b81fcce0cdc59dbcca18df5c4ecf4e176fc3fb7668207b9ba54df43cce46"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/pt-BR.js",
+      "sha256": "abc52db767b9dd938954776728ea7480cdcab569a5a17664f60e5a2c1d63e60b"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/pt.js",
+      "sha256": "93a820f60d571607bf34b69198f5b24617475584c0b22c0f8d160fcdef096a46"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ro.js",
+      "sha256": "54751d2866171c9c7ce1a72868dec09efa54d1b2b67401767594c5b360aca38a"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ru.js",
+      "sha256": "40a019b53bd1684fd4b750db87021520dd5d710f714010c0a594e5bcf5787478"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/sk.js",
+      "sha256": "ae7c49242e70149434c9051dd00209afbd517d98ba54c13692371a5340b616da"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/sl.js",
+      "sha256": "490ca48f8aae3aed660758b32856d49a9fc5c7e255dad220e75abaef8c35140b"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/sv.js",
+      "sha256": "448f36996bb0d159489b34ad7d86df03e520a13e43b1c98ea2fb18d7ed4a3c95"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ta.js",
+      "sha256": "8b6e1bc033fdaefb1acfc7edf88c9f53c3a50cc892066effdab306103e994d42"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/tg.js",
+      "sha256": "9a5c9a3b18b8ccded28d66033575b22d823df17a7afa8bb9a733f31fe071462f"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/th.js",
+      "sha256": "913cc4962ddf5cb54ed694d04b7008493ef401d3333b26426b32f4890712574e"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/tk.js",
+      "sha256": "445abfed18c5a9d79143b02c9cf9c171b41fb5dff8ffc2cb59b7aef7203e5a7f"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/tr.js",
+      "sha256": "bca07607a27f518f19877dd9c2235fada9c73eb56896f0f6e274781fab71d64e"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ua.js",
+      "sha256": "9391169ffbc72f777a83230b6ffcc3f4cf46ab5945ec540de9ef4609dca1f4cc"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/uk.js",
+      "sha256": "1e59ba41296aeb5b6142a6e5ed84712931e33e54ab0b9ae5d83faf436fc3d968"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ur.js",
+      "sha256": "d37ed2c93408e0a6b6e1cd290117a6f0e9d7b2c83509cd34b502e1dd94899c87"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/uz.js",
+      "sha256": "2cbe07635b03064ffad0bfcc98d2d570f3264b9cd3e22bbd5c160cd0343f7872"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/vi.js",
+      "sha256": "15939adaf263e0869c602d4b34c206178a235b8bec11c8207ccd3fa50de3a141"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/yo.js",
+      "sha256": "88b33f6527c1a2faaf159568330cf727c448dc468eac72142a6fb24f8714ac1e"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/zh-CN.js",
+      "sha256": "8fc02f2bd4d92f46b24b8d82da0ee95c962fc80c14dd7dd469500e14de08d320"
+    },
+    {
+      "path": "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/zh-TW.js",
+      "sha256": "01d9b119e318d8b9f1a8fa720d06424457429425a61d0730984b750e6a5edf7d"
+    },
+    {
+      "path": "data/verification/codex-a-standard-risk-goldens-2026-10-15.json",
+      "sha256": "e5a9b33a487bfa5c083dffd45bb039df459393b1a46a11346d000e11ca1c1ec6"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-10.ts",
+      "sha256": "78370a3240b98b4339d88fdaa95cf57ff963f7b780b0956d6fc541909a0f93de"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-5.ts",
+      "sha256": "e98001a65ed437da15dab7eaec36deef4b41d0d700ccc5a8c66a42f66b73679a"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-6.ts",
+      "sha256": "22b299e5a083fe842b26ac266fc0c7cd8489ea1161f118fc573cd8d145a97780"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-7.ts",
+      "sha256": "f904cd5773c1af7a309d3eec309e187d382e959312dcf42ab55d1b7d57a51583"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-8.ts",
+      "sha256": "2ddc4c3dc3eba93c8f73480157646efe440adb8a4994db62c97ca0a5e979b9f8"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-9.ts",
+      "sha256": "37e07d82438874849d13ec95a19ea2acc9d7b542aabe94a72de0c276eac5f855"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-final.ts",
+      "sha256": "dd4526c7417726e2ec607c0fa304a1d159afff3f8c60511ba44d88080d2237d4"
+    },
+    {
+      "path": "src/calculators/advanced-math/expression-engine.ts",
+      "sha256": "52af6dda5267eeeeb34830776a054e1ad1e5051560e99f2483bd7879bedf3d24"
+    },
+    {
+      "path": "src/calculators/advanced-math/graph-example-fixtures.ts",
+      "sha256": "c1e5490bf9fd7da179e5138d687f25938370481ea58a40753fd4413e606cd666"
+    },
+    {
+      "path": "src/calculators/advanced-math/numerical-calculus.ts",
+      "sha256": "e520eef484e8e9ac0da8205ac31141897ba202c7dd6de527176dfee096820555"
+    },
+    {
+      "path": "src/calculators/astronomy/catalog-batch-1.ts",
+      "sha256": "f4b488471dd6e09e520c18c1dd09172974c6cacf629f2dddf811b0a16c4fe578"
+    },
+    {
+      "path": "src/calculators/astronomy/catalog-batch-2.ts",
+      "sha256": "c48e38f86ae73fd65bdc88a53477abefa3d46c71fa24f72ddcdaf15564efd060"
+    },
+    {
+      "path": "src/calculators/automotive/catalog-batch-1.ts",
+      "sha256": "4826a3f6f02ca1beaec234c46d727c544e8d2f0c1f8c5767cd244c97764e7bd1"
+    },
+    {
+      "path": "src/calculators/automotive/catalog-batch-2.ts",
+      "sha256": "6b0463fd727ee335e73a9ef87193d38e2cbd222d57e6b641860d848eedf48632"
+    },
+    {
+      "path": "src/calculators/automotive/catalog-batch-3.ts",
+      "sha256": "96bb0a427eceaca0fb7d22fdf43fda9cdc694de4e711249f4fe94c42cf77c144"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-1.ts",
+      "sha256": "fa857a72b5aaa6e9cddcd1b29eaba332f376a57096aa93758dfc56ba385e4e41"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-10.ts",
+      "sha256": "c7b339db13c5776937bb880a4ae8af1417306f3b84cfa35b1f59e4e9151c2da4"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-2.ts",
+      "sha256": "779521e1f846f7909ab2a956a3278a3795c5d175996f6ac36777fdaaa2217545"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-3.ts",
+      "sha256": "e689dbd9af8c05efd65beec6c7105db3a1813b46d397e92c383523755026b3f1"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-4.ts",
+      "sha256": "8966fbcbaa70951ac309f6311dafaaf2bc4f8382f8fbdb6ae00c701a9b17ef0b"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-5.ts",
+      "sha256": "550fa7010e4c2387b3b4df70b3427cf9b0e75948583839baf354ae20a6214ba4"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-6.ts",
+      "sha256": "176aaa874707d02609dc6ad65d2e576e9ab4cc3a58339735f82cb6c9b33d1789"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-7.ts",
+      "sha256": "d2cfeb025471e82881a5a16e30d6cdbe05740898088b1b4af2e648096506dca7"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-8.ts",
+      "sha256": "f913c7dbbf7621781913fd963521dcee71e97d9cab124cae90c47659b6c6847c"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-9.ts",
+      "sha256": "6e670ab5c4ec140f0119a1fff345f9d7ced192d2af47ab51027134cac9704ab8"
+    },
+    {
+      "path": "src/calculators/business/break-even.ts",
+      "sha256": "7f9cc4da38039323d768d4576c3054d151706aaf4c3734d1f0fe2045754ec5f9"
+    },
+    {
+      "path": "src/calculators/business/catalog-batch-1.ts",
+      "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c"
+    },
+    {
+      "path": "src/calculators/business/catalog-batch-2.ts",
+      "sha256": "0fe5e0b1af5c8b509287338f630183d587394bc61d38ce3fa1444e1325d6c2f0"
+    },
+    {
+      "path": "src/calculators/chemistry/catalog-batch-1.ts",
+      "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e"
+    },
+    {
+      "path": "src/calculators/chemistry/molecular-weight.ts",
+      "sha256": "a423344150d0042466ec7183c18cf7ff3b423d6dcb2f071cc7255d7943324772"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-1.ts",
+      "sha256": "e4c01d7544568d9ce3900b54b50895d3212824ec5ec6dbfcf3e49c92bb014da9"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-2.ts",
+      "sha256": "8c8021714b27b2399ea4d27a6bec595e446426ca2e6ad846815e60a9a5b35467"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-3.ts",
+      "sha256": "8605a98cbc051450fbd71089d77f174f961ea56d5ee6b743e38c8a473b87c165"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-4.ts",
+      "sha256": "4358ecb067e980b3f7070f470eaba300f95ca9025046297fa9bd6ddc95034883"
+    },
+    {
+      "path": "src/calculators/core/percentage.ts",
+      "sha256": "abb6d4dfce62afce867ceaa5ea209ec3f9f6ba885016ecd9b5aed452668b21cc"
+    },
+    {
+      "path": "src/calculators/core/unit-conversion.ts",
+      "sha256": "b323d7311c94a07c3da809af6293e775cf97e634e7c5f352fad0710a7a7e174a"
+    },
+    {
+      "path": "src/calculators/date-time/catalog-batch-1.ts",
+      "sha256": "401d8eee881a349686bda1d26a05dd5cc594d93223f9a5597687705b70ee5c26"
+    },
+    {
+      "path": "src/calculators/date-time/catalog-batch-2.ts",
+      "sha256": "35797f610a32d13b76c2ea9115608c9d3b163cfa1ed11c319f615f3b3af3c63a"
+    },
+    {
+      "path": "src/calculators/date-time/catalog-batch-3.ts",
+      "sha256": "bcce15de3064a8bf0bf153147593398a9e160709bea680be96aebac6796ed268"
+    },
+    {
+      "path": "src/calculators/date-time/catalog-batch-4.ts",
+      "sha256": "915d97086aff8dc1402e6aa99c561ea36d867b439eb806d27692ccccc4855169"
+    },
+    {
+      "path": "src/calculators/decimal-fraction-goldens.ts",
+      "sha256": "29a5f87e07817fed990d1efa116b4daf1c06b3c91bd00114eee15e6dde406bc5"
+    },
+    {
+      "path": "src/calculators/earth-science/catalog-batch-1.ts",
+      "sha256": "65b3ecdb748ac4dc042d98be0f413d7e5fbdab7378a73a8573848ed7cc641220"
+    },
+    {
+      "path": "src/calculators/earth-science/catalog-batch-2.ts",
+      "sha256": "bc395d363a4564313798f487580145c4e5a94cf7dce3ea822290f5e14cd1c03f"
+    },
+    {
+      "path": "src/calculators/earth-science/catalog-batch-3.ts",
+      "sha256": "1aca52fae468bc5279cd7fb4f1c09806f48000c8582a4da091068bc2a60a0f0c"
+    },
+    {
+      "path": "src/calculators/energy/catalog-batch-1.ts",
+      "sha256": "43eab5317a4a9d92975d5a747d3c99f7105cbffc7f747d9909a3cd91f076fe48"
+    },
+    {
+      "path": "src/calculators/energy/catalog-batch-2.ts",
+      "sha256": "1eaba45a2f79407ad7828a98089d7b4c2d8ad5197fcb1b71138a3fc549366b67"
+    },
+    {
+      "path": "src/calculators/energy/catalog-batch-3.ts",
+      "sha256": "2a7cd952c5e0ed4619ec5fa254efc0d94e2d15ae94dc42d6adf972932f3e3ea0"
+    },
+    {
+      "path": "src/calculators/engine.ts",
+      "sha256": "41da900c997cdf101aa4d45d336d6319772ddddd0f254c24cb413ff3553b67c6"
+    },
+    {
+      "path": "src/calculators/engineering-construction/catalog-batch-1.ts",
+      "sha256": "5fffb904e82954a759e33f228e14fddf7a2d84a85845b20a946ff05cb3faaa1a"
+    },
+    {
+      "path": "src/calculators/engineering-construction/catalog-batch-2.ts",
+      "sha256": "ec16883a8b9a7c9766fa7eb67e13f441a80993da0eef811f475e696ad254f36b"
+    },
+    {
+      "path": "src/calculators/engineering-construction/catalog-batch-3.ts",
+      "sha256": "c771e0b347e2150fa4144e0b1e1e11eb8d009eb0887dcc5eb35e53e1fe849c92"
+    },
+    {
+      "path": "src/calculators/engineering/fluid-mechanics-batch-1.ts",
+      "sha256": "9bd48e8dd909c9faf6c69dbb81803eed1944c75ca0b980acc8984bb942fd5ded"
+    },
+    {
+      "path": "src/calculators/engineering/fluid-mechanics-batch-2.ts",
+      "sha256": "660b4dfa005344b24225c402e07272c7d90e4a8f107cb8421b2331281c7af022"
+    },
+    {
+      "path": "src/calculators/engineering/fluid-mechanics-batch-3.ts",
+      "sha256": "725deec938a52e1e32f6cd95013a0c88183271fc9a9766d400060ac481a4b9a5"
+    },
+    {
+      "path": "src/calculators/engineering/material-mechanics-batch-1.ts",
+      "sha256": "dc0a78ed532732f487aacdd31ef0b7d36257b5759374522f92c5f4fbdf4c3ae6"
+    },
+    {
+      "path": "src/calculators/engineering/material-mechanics-batch-2.ts",
+      "sha256": "8b535e4963599c320b286829e34c04aef55b21fc3eedbfdb4809fecbd2cb70a5"
+    },
+    {
+      "path": "src/calculators/engineering/material-mechanics-batch-3.ts",
+      "sha256": "3607db69dd8720960876b256ad00957a3abb472fcb2d7b732f0e77d3e23495a4"
+    },
+    {
+      "path": "src/calculators/engineering/material-mechanics-batch-4.ts",
+      "sha256": "9a7d38b8bf1f745ff9e893616ba6bcd29e01eade173fd081b61861e976db13a3"
+    },
+    {
+      "path": "src/calculators/engineering/material-mechanics-batch-5.ts",
+      "sha256": "8240dc739a79259b953968c14edc8cb7dc29ba62ae6458fc7054427e8f056d03"
+    },
+    {
+      "path": "src/calculators/engineering/section-properties-batch-1.ts",
+      "sha256": "5a6f5f46a22ff20cfcf8a74ad1c9f2a7f756ed1e00871ece029a1d630f9fdda6"
+    },
+    {
+      "path": "src/calculators/engineering/section-properties-batch-2.ts",
+      "sha256": "3604ce9adcc57a4786a5d7f8b9c813621c299458d2d7f893bdd0bd03213fcbcd"
+    },
+    {
+      "path": "src/calculators/engineering/structural-mechanics-batch-1.ts",
+      "sha256": "bb17f0e5653cd51bc35fbf12b6b5d7ebab791316d8dd50c5ea452b89547fc19d"
+    },
+    {
+      "path": "src/calculators/engineering/structural-mechanics-batch-2.ts",
+      "sha256": "92f9e83ad926376cd53a657632700ac23a5eb98d5f07373e2540905cf616ea3e"
+    },
+    {
+      "path": "src/calculators/engineering/structural-mechanics-batch-3.ts",
+      "sha256": "345cec23cafd85385f59318278da6f1bbc945fc25a7032633f0394cd0dc0d9d3"
+    },
+    {
+      "path": "src/calculators/engineering/structural-mechanics-batch-4.ts",
+      "sha256": "8e452e2c2523375b165f093ec54146cd7c7eab0d24b6505248a1a42078cf6488"
+    },
+    {
+      "path": "src/calculators/final-framework/adapters.ts",
+      "sha256": "f4749489bbc133a9bb7ca4a89e1dff5809ec2d760979dea833473e10ffc2bfc7"
+    },
+    {
+      "path": "src/calculators/final-framework/analysis.ts",
+      "sha256": "225af2ddbba2bb3aa3f571acc8e4a8eb263f6b553e25fbc7db3bf69254185013"
+    },
+    {
+      "path": "src/calculators/final-framework/investment-periods.ts",
+      "sha256": "d2cfb48822b17ca40c91a35578f53e5c4cb31f8ae1a4e30cbcec6aecca331eba"
+    },
+    {
+      "path": "src/calculators/final-framework/mortgage-rate-analysis.ts",
+      "sha256": "250c05582df44869d3ec103339774465f61e35a7b649e6f13d6ae01a37605a7e"
+    },
+    {
+      "path": "src/calculators/final-framework/registered-rate-analysis.ts",
+      "sha256": "97cebcf2a1efb21369667d5a2e5aea016bd63e5af05a4b3374a13a82b82295bc"
+    },
+    {
+      "path": "src/calculators/finance/compound-interest-independent-goldens.ts",
+      "sha256": "636f1be17ad0b4597ec0a05cfe0d6f558575cb2b8ebd49a531a80366cbc7bdd8"
+    },
+    {
+      "path": "src/calculators/finance/compound-interest.ts",
+      "sha256": "7c948d1deec2565b9386f9978f1ef6f81c33993354065e9d8a393aeb5cf28b8d"
+    },
+    {
+      "path": "src/calculators/finance/credit-card-payoff.ts",
+      "sha256": "d593379c7972731b19ef6870a21abf7933550d0164b53b5de818d71128c01cbc"
+    },
+    {
+      "path": "src/calculators/finance/debt-aggregate-independent-goldens.ts",
+      "sha256": "b430852558318dc73083fdb8acf62fb5e2f7e7c54e98b35f0cf1a188d5303109"
+    },
+    {
+      "path": "src/calculators/finance/debt-payoff-independent-goldens.ts",
+      "sha256": "a71ef994534e2ffa35c2d4bba721ddf2b39e67674f69fdf340fb9d944faa7277"
+    },
+    {
+      "path": "src/calculators/finance/debt-payoff.ts",
+      "sha256": "8d3a06f4ccf4368699afe331b049904fcbf30006ac8ffded0635315b377259b9"
+    },
+    {
+      "path": "src/calculators/finance/emergency-fund.ts",
+      "sha256": "8d23710209a00cb34bd5ef07d6f101a44ff0606bb8068c87ac5666b5d8fe944f"
+    },
+    {
+      "path": "src/calculators/finance/inflation.ts",
+      "sha256": "49c39abe7dbf306efe32fdeb38201e99b0602bf3111a791c883a816ff1bfa839"
+    },
+    {
+      "path": "src/calculators/finance/investment-cashflow-independent-goldens.ts",
+      "sha256": "91fedaf53ad6b4ad059fee5751f0820120bce453ec965d773ab4e0cb416d337f"
+    },
+    {
+      "path": "src/calculators/finance/investment-math.ts",
+      "sha256": "a16d2dc25d157c6253741d45bd1168ed63331835303e1e73cc260abdf365079e"
+    },
+    {
+      "path": "src/calculators/finance/loan-affordability.ts",
+      "sha256": "66da8c1e94eb65c63c2d3e98a0c64b3390f5791394ef1ad8ba263602599dcb36"
+    },
+    {
+      "path": "src/calculators/finance/loan-analysis.ts",
+      "sha256": "92d37f5d5219b794d4dde2fa48d77a605fa344501964ae853549981ff81746ef"
+    },
+    {
+      "path": "src/calculators/finance/loan-comparison.ts",
+      "sha256": "346a180bfa3b146de75a6787627ea6e1ae39d7963242e277a791aabcf7c0868c"
+    },
+    {
+      "path": "src/calculators/finance/loan-payment.ts",
+      "sha256": "c4347c6d8d5cc7ea7d95bc2eda914a3f9eb4faba37f373d4be521f71dd2923f5"
+    },
+    {
+      "path": "src/calculators/finance/loan-prepayment.ts",
+      "sha256": "94c613d8333db7459df1718baae2c93b6f417938168fccb4e20451164d8f3a29"
+    },
+    {
+      "path": "src/calculators/finance/loan-refinance.ts",
+      "sha256": "c056bacfc51a189210880dd3569ffd88b15f72293a66ebd2e48bcad3748e11fd"
+    },
+    {
+      "path": "src/calculators/finance/mortgage.ts",
+      "sha256": "8f4c7b87637df8e401582493a7ae3ec94b9a252ac08bee0cce00f825bb5d21bd"
+    },
+    {
+      "path": "src/calculators/finance/net-worth.ts",
+      "sha256": "707072aa5877103f6d018ae6e00dc2ca05e4f7a18c6cf48dbd91fbd5b6387b57"
+    },
+    {
+      "path": "src/calculators/finance/planning-independent-goldens.ts",
+      "sha256": "5bf99dbe2cb5509ec95bbd03b9e992f5eed146228b7f5b3f5054100695cfb34d"
+    },
+    {
+      "path": "src/calculators/finance/rate-conversion.ts",
+      "sha256": "6e157a83c6344e7c6b709e9174c1fdf6d81bac5587b855d195ca11780d3e9608"
+    },
+    {
+      "path": "src/calculators/finance/recurring-deposit-independent-goldens.ts",
+      "sha256": "d94577bbe27131fa1464dbecb971284755c42b6864c3fca5bb3d3b18e02a510d"
+    },
+    {
+      "path": "src/calculators/finance/recurring-deposit.ts",
+      "sha256": "1e0a39d9c34a8d814b2962b009f08ee9b61de65753aaf1e8f72477b5613d7e1e"
+    },
+    {
+      "path": "src/calculators/finance/roi.ts",
+      "sha256": "33b13a26a7539dbeac88a2aa764488520ee357787b66fed6c4effd5a7476c2c2"
+    },
+    {
+      "path": "src/calculators/finance/savings-goal.ts",
+      "sha256": "9edbe2a841d15318a22917e1c8f27739951c7d926740070825c2dceb0439d7ea"
+    },
+    {
+      "path": "src/calculators/finance/simple-interest-independent-goldens.ts",
+      "sha256": "e7380cbb67f037566961e3ca278a4194c9b26dc9aec3a128ea90a08b4ec44036"
+    },
+    {
+      "path": "src/calculators/finance/simple-interest.ts",
+      "sha256": "602ea32c413f5ed632bb697b4f1583aaa70f4ebe68fadf6a6dac0ae5ef82c773"
+    },
+    {
+      "path": "src/calculators/finance/sip-independent-goldens.ts",
+      "sha256": "a8ebbac118762b2860d137cb4282f508b510c34912486c8d7082ad365b297a89"
+    },
+    {
+      "path": "src/calculators/finance/sip.ts",
+      "sha256": "d829448f8d9fa930b5744dcf0128e7ea5e7139c2306e23df83cf622ce134310a"
+    },
+    {
+      "path": "src/calculators/finance/step-up-sip.ts",
+      "sha256": "48409de2f3903a7022d26055f3bf7e6a2060b4901ff645dad60a5fd9d1e0e1f6"
+    },
+    {
+      "path": "src/calculators/finance/swp.ts",
+      "sha256": "05c71cdb936b1b564b4a225e650739b2d1c1b36344fbf12aa4dec2793ffc1092"
+    },
+    {
+      "path": "src/calculators/finance/term-deposit-independent-goldens.ts",
+      "sha256": "d911da3e25dddddf2f86bb999bc1ab9c640575fcad086687bbe2acc1e4fc7277"
+    },
+    {
+      "path": "src/calculators/finance/term-deposit.ts",
+      "sha256": "5d5667156843d9a8a64ee63bf4d6d9143f4ecf8a1ab1d1b78a32559732b2feef"
+    },
+    {
+      "path": "src/calculators/food/catalog-batch-1.ts",
+      "sha256": "46244d45761804666c6fc760d09a9a1465e1826112bc39aa4c27b94faf44b2b7"
+    },
+    {
+      "path": "src/calculators/food/catalog-batch-2.ts",
+      "sha256": "5ad8babfdb2f307f0057ba2683e8c1459a7b422fb780f6c0cb37cd26b3d12740"
+    },
+    {
+      "path": "src/calculators/food/catalog-batch-3.ts",
+      "sha256": "d3deb7587f49b53721bc4a0d9aa47a0fae91185208d729516723c95361fb8c99"
+    },
+    {
+      "path": "src/calculators/geometry/catalog-completion.ts",
+      "sha256": "784b527d4380facf78f20092642a70001e83c259d1916f78af44e996a3d344ff"
+    },
+    {
+      "path": "src/calculators/geometry/geometry-batch-1.ts",
+      "sha256": "62385ab4198d720da8e473a80a8e4a7eca513b7e1fd3e1e6b203a033fa22f340"
+    },
+    {
+      "path": "src/calculators/geometry/geometry-batch-2.ts",
+      "sha256": "5e63745210af76229b44f582cb6a115941c7bd5d9e1b89fb13ac5e889513c549"
+    },
+    {
+      "path": "src/calculators/geometry/geometry-batch-3.ts",
+      "sha256": "fd339ae67994186739fc699758a23438f45b0d1871e502c06eecdaa898c209ba"
+    },
+    {
+      "path": "src/calculators/geometry/geometry-batch-4.ts",
+      "sha256": "d5821b14e63d82f173d6c35130497b33813630aeb740919e4c5ef7e8fe472536"
+    },
+    {
+      "path": "src/calculators/geometry/geometry-batch-5.ts",
+      "sha256": "cbf468d4ff6e92ad68440f7a5690019ec6081c9ae3f4a57a5747ca8baa370feb"
+    },
+    {
+      "path": "src/calculators/geometry/slope-versioned-compatibility.ts",
+      "sha256": "ef37c45cf7589c165f80de83603e63827439a25afb3603737762c2231a67b710"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-1.ts",
+      "sha256": "49560119c7f2cb1b92a8901315d8c75cdd22e0b447d4369afac804c7d42ddeee"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-10.ts",
+      "sha256": "d131c41863321bdada3278d42b95f943559bedf82e06b35a8370ef2ff79b56d6"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-2.ts",
+      "sha256": "706b5f85dfde3ecee7a8c3c5fc3cd1e126aaf324f8d79b263b53a20ac07a00f7"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-3.ts",
+      "sha256": "93e9da5c19eb47a80551b6d7f07ac4e11b0fd3adb0765b46cd0694c6c424ada0"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-4.ts",
+      "sha256": "06d7a130edbf28d191ce8fbb6fd3f8bf4ee08d55362c0978416392097d0cfe7c"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-5.ts",
+      "sha256": "c385851797bd77a8cadcb9b879a1acc15ff5b2b4afa46a07fafe37ad5db08df9"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-6.ts",
+      "sha256": "09bea83526af631c0b323e2846a2c31a42aef5474820995daf25eda72f1cf8c8"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-7.ts",
+      "sha256": "f03cc9143366a4cac73ff6eb98ee42f2f970e5969363a82b6365619f7b4d4add"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-8.ts",
+      "sha256": "99fd6e08e2a7754cde556e82158752e5cb840d1387fc94e57f0394db6d7f416f"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-9.ts",
+      "sha256": "904f9c1ddf10640d1be880c22844cdcd1f6a7f8cdddd6790638ee436ad0ca210"
+    },
+    {
+      "path": "src/calculators/health/bmi.ts",
+      "sha256": "e2597d2b3db50ce3a17c55d558f2b1f64ae48ce49a3815ee0c717127ee1105d6"
+    },
+    {
+      "path": "src/calculators/health/catalog-batch-1.ts",
+      "sha256": "9ba383a5ebef9a107250c330c7697911c6b0fcf0ecc037455606351b0b43c9d4"
+    },
+    {
+      "path": "src/calculators/health/catalog-batch-2.ts",
+      "sha256": "33832771a7fa59c471a73600c742c0dfae79b8ce9b258aa56c7ecfe17fe52a56"
+    },
+    {
+      "path": "src/calculators/launch-portfolio.ts",
+      "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+    },
+    {
+      "path": "src/calculators/numeric/exact-positive-product.ts",
+      "sha256": "6c7be9dc65ee41126b7e26112f46fe9fd762c9245f07f7ddd22ec9e199da1958"
+    },
+    {
+      "path": "src/calculators/physics/catalog-batch-1.ts",
+      "sha256": "c3e93d1e67efe9a5a36316b8bc4c46d72ea131bb01fa8ddc058d6e4daf5f8432"
+    },
+    {
+      "path": "src/calculators/physics/catalog-batch-2.ts",
+      "sha256": "9616404307a9e0bcf5cd3678c2720288e514a00c8faf79bdb3ef1af8845e036d"
+    },
+    {
+      "path": "src/calculators/physics/catalog-batch-3.ts",
+      "sha256": "b5c1870d729cbbd32db6eac439c7b6aa2b90f54c3677879bf0a05120a5f0faf6"
+    },
+    {
+      "path": "src/calculators/physics/catalog-batch-4.ts",
+      "sha256": "ad1d13a5809b551edf42ed7a5b1bcccb9d51ec69cd18cc6354ddbc2891be26da"
+    },
+    {
+      "path": "src/calculators/physics/catalog-batch-5.ts",
+      "sha256": "65365cfb3fddccd06e69f8afdcbf796eeea1b9c97502c15f407bef07bb17e7ed"
+    },
+    {
+      "path": "src/calculators/precision.ts",
+      "sha256": "139319afc73ef22c45dd46ef94b56b85f3442ed57b239cd6a0e59f92cd68643a"
+    },
+    {
+      "path": "src/calculators/registry.ts",
+      "sha256": "acfe4a797d5f28c146cacbd0f5d33e9f87192f54f716d7090683b626a8b7eeb5"
+    },
+    {
+      "path": "src/calculators/sports/catalog-batch-1.ts",
+      "sha256": "9b00fb4013c05f359657b95dd129cc272197e6e62cfc1d8c7580e80a4668f284"
+    },
+    {
+      "path": "src/calculators/statistics/catalog-batch-1.ts",
+      "sha256": "172db736ce7c991e0b11cf99612578d7c25374bda0f95e009167e9fa887ba52f"
+    },
+    {
+      "path": "src/calculators/statistics/catalog-batch-2.ts",
+      "sha256": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f"
+    },
+    {
+      "path": "src/calculators/statistics/catalog-batch-3.ts",
+      "sha256": "41df470fd871e6fd1779035805c1b96cb120c91aff7a3cce40bc7628e3c3dd8e"
+    },
+    {
+      "path": "src/calculators/statistics/catalog-batch-4.ts",
+      "sha256": "b5f186fbbbeed527bf7f2734a3b53e02d2fcd2113fcef1b71092ef6d520e35f9"
+    },
+    {
+      "path": "src/calculators/technology-computing/catalog-batch-1.ts",
+      "sha256": "31f347fc286cc0b22cd888b9f53719e4733ffa17ab8323aa4f6dc5bc497079f6"
+    },
+    {
+      "path": "src/calculators/technology-computing/catalog-batch-2.ts",
+      "sha256": "d352f40f8aef2cbd22afd8c09e577f28fc4eda1b925a928ec65c1ea25f4393d7"
+    },
+    {
+      "path": "src/calculators/technology-computing/catalog-batch-3.ts",
+      "sha256": "87794ca04801ddcff1b68ec740d0b5df16346d415aca6a041a07a9dc7615cd5f"
+    },
+    {
+      "path": "src/calculators/travel/catalog-batch-1.ts",
+      "sha256": "f2e7adc8729f0a28feaf615f18b7f9c56bb4db8a7f5f2ccd0b414d04a743cfee"
+    },
+    {
+      "path": "src/calculators/travel/catalog-batch-2.ts",
+      "sha256": "b3b7afaaaaa14e37159c4b08c9116bb33b2417925b455e069ae77d9569e950ab"
+    },
+    {
+      "path": "src/calculators/travel/catalog-batch-3.ts",
+      "sha256": "39ef5f34eb37931fdb2ec9e8e28c567191df073f628857c767452447b388c6c8"
+    },
+    {
+      "path": "src/calculators/types.ts",
+      "sha256": "a8b9a16ab7d9c63e3918ae93587aace30c5d322a006226cce3d945022ba8b2d8"
+    },
+    {
+      "path": "src/calculators/units.ts",
+      "sha256": "74e92b7afeb83f53e31e0eed710e5afecb8716df0735556c8fac229793d142ec"
+    },
+    {
+      "path": "src/lib/account-persistence.ts",
+      "sha256": "09316cd9df4ab359a3d20ac921e1c908f0e3b48831977149800262c16a01ad9e"
+    },
+    {
+      "path": "src/lib/auth-recovery.ts",
+      "sha256": "b13709c6c6e1b03164eea4e892c1cc60a426d7c7f5fa8e0c88510190e69fc3a8"
+    },
+    {
+      "path": "src/lib/batch21-snapshot-replay.ts",
+      "sha256": "bbdfd0512ed1b790753c62e01e287bc7d648729179b39bf1182d387845cdcef8"
+    },
+    {
+      "path": "src/lib/batch22-physics-replay.ts",
+      "sha256": "97c42822733670f5a215fa5ce51ef929ae1b902ec163d3ec676aa43586d1ef43"
+    },
+    {
+      "path": "src/lib/calculation-snapshot.ts",
+      "sha256": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c"
+    },
+    {
+      "path": "src/lib/entitlements.ts",
+      "sha256": "16227499beb299e6cf02c2f8485b5804294c97e4da446ac7934b55aedbd1f731"
+    },
+    {
+      "path": "src/lib/launch-snapshot-verification.ts",
+      "sha256": "1418dcda1a71424f34062787ad62bb716e1e96d24fc18d3b45de834affcd196f"
+    },
+    {
+      "path": "src/lib/password-recovery.ts",
+      "sha256": "219a1cea057af6b4c1ca3815cc03c9a9986eeed2f70db7a60264fd16ab7f20cb"
+    },
+    {
+      "path": "src/lib/persisted-calculation.ts",
+      "sha256": "ccc7470275310c92e3cb518afee76a5dd3553e3b52396b4937263bf18c19d914"
+    },
+    {
+      "path": "src/lib/publication20/conversions.ts",
+      "sha256": "33294ef227aa6e4a4a14f4282dcda1834a03396e62c6a0dbc5d4fb932472ec8c"
+    },
+    {
+      "path": "src/lib/publication20/index.ts",
+      "sha256": "b6b25b6307770a8a3185fe5b72366bdb139d31d33aa7b82a850e7deeab0afd0e"
+    },
+    {
+      "path": "src/lib/publication20/network.ts",
+      "sha256": "18ba9ac37cdb9f2634388bde49cff591186e9ed48160aacf340fb19a75432976"
+    },
+    {
+      "path": "src/lib/recorded-json-equality.ts",
+      "sha256": "59fda934bec9e573c970d5a451b3d3e3ba14292838a9c6544cafbd10e71f0fcc"
+    },
+    {
+      "path": "src/lib/registered-snapshot-replay.ts",
+      "sha256": "4d6a168ff5072e1ad0f2cfb051a69750d6a2fb0f360164038597fb24ed0128d6"
+    },
+    {
+      "path": "src/lib/registered-snapshot-verification.ts",
+      "sha256": "7a288d92b16613f4208b43de2ef7b2b52d2c111a4457b1677e7b0df9a9031cf8"
+    },
+    {
+      "path": "src/lib/technology-snapshot-verification.ts",
+      "sha256": "276ad7ee37203fa90b65571a3bab1b3dde271f13c1f323a1e8d330a6bab9e521"
+    },
+    {
+      "path": "tests/execution-recovery-20261109/technology-auth.mjs",
+      "sha256": "592f3887f702e79051f9b5e91a3cdc0cd933df09f846ee13c42ea97ddc17e87e"
+    },
+    {
+      "path": "tests/execution-recovery-20261109/technology-cases.json",
+      "sha256": "81547c793feb9ec5c8c5988f07a83671142c6fc2366ca13bcde1a57da7e7bca8"
+    },
+    {
+      "path": "tests/gotrue-full-schema/schema.mjs",
+      "sha256": "0185b1e41bb8e810296636cc633974ac4897e412cc597814a91b405c11019726"
+    },
+    {
+      "path": "tests/gotrue-runtime/fixture.mjs",
+      "sha256": "98265ac37460e7676f6f5dae59a20110e82aefba1e9d567f880e0df6aa768387"
+    }
+  ],
+  "provenance": {
+    "images": {
+      "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+      "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+      "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+    },
+    "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+    "autoconfirm": true,
+    "scope": "Full repository candidate model plus locally adopted guarded review bundle; NOT raw historical-chain success or authentic captured production equivalence",
+    "authMigrationCount": 75,
+    "authUidOwner": "supabase_auth_admin",
+    "schemaCoverage": {
+      "tables": [
+        "admin_alerts",
+        "ai_usage_events",
+        "api_usage_events",
+        "batch_calculation_jobs",
+        "batch_request_receipts",
+        "billing_account_fences",
+        "billing_atomic_completions",
+        "billing_customers",
+        "billing_webhook_events",
+        "business_api_keys",
+        "business_projects",
+        "business_webhook_endpoints",
+        "calculation_history",
+        "calculation_projects",
+        "calculator_bulk_jobs",
+        "calculator_catalog_admin",
+        "calculator_qa_checks",
+        "calculator_review_events",
+        "calculator_source_evidence",
+        "client_workspaces",
+        "custom_calculator_runs",
+        "custom_calculator_versions",
+        "custom_calculators",
+        "embed_configs",
+        "embed_events",
+        "embed_lead_receipts",
+        "embed_leads",
+        "favorites",
+        "lead_consents",
+        "organization_audit_log",
+        "organization_invitations",
+        "organization_members",
+        "organizations",
+        "platform_admins",
+        "profiles",
+        "saved_scenarios",
+        "share_links",
+        "shared_calculations",
+        "subscriptions",
+        "user_preferences",
+        "webhook_deliveries"
+      ],
+      "policies": 86,
+      "publicFunctions": 88,
+      "tablesWithoutRls": null
+    },
+    "appliedHistoricalSources": [
+      "001_b3_accounts.sql",
+      "002_b4_billing.sql",
+      "003_b5_business.sql",
+      "004_b6_builder.sql",
+      "005_b7_delivery.sql",
+      "006_b8_api_automation.sql",
+      "007_b9_ai.sql",
+      "008_b10_admin_factory.sql",
+      "008b_b10_alert_automation.sql",
+      "010_b7_pro_workspace.sql",
+      "012_production_fk_indexes.sql",
+      "013_production_rpc_privilege_hardening_v2.sql",
+      "014_production_entitlement_rpc_sync.sql",
+      "016_final_certification_evidence_gate.sql",
+      "017_regulatory_rule_pack_evidence.sql",
+      "018_harden_rule_pack_required_metadata.sql",
+      "019_authoritative_lifecycle_enforcement.sql",
+      "020_post_certification_revalidation.sql",
+      "021_require_rule_pack_provenance.sql",
+      "022_harden_reviewer_waiver_authority.sql",
+      "023_structured_source_evidence.sql",
+      "024_reviewer_assignment_authority.sql",
+      "025_derived_source_count_authority.sql",
+      "026_publication_manifest_authority.sql",
+      "027_publication_trigger_privilege_hardening.sql",
+      "028_source_evidence_reviewer_index.sql",
+      "029_account_rls_auth_initplan.sql",
+      "030_billing_ai_rls_auth_initplan.sql",
+      "031_admin_identity_rls_auth_initplan.sql",
+      "032_business_builder_rls_auth_initplan.sql",
+      "033_pro_workspace_rls_auth_initplan.sql",
+      "034_billing_webhook_event_privileges.sql",
+      "035_split_overlapping_write_policies.sql",
+      "036_consolidate_ai_usage_read_policy.sql",
+      "037_builder_publish_business_entitlement.sql"
+    ],
+    "deferredToBundle": [
+      "009_country_preferences.sql",
+      "038_client_account_billing_privileges.sql",
+      "032_atomic_reviewer_qa_audit.sql",
+      "033_atomic_reviewer_assignment_audit.sql",
+      "034_atomic_lifecycle_transition_audit.sql",
+      "035_atomic_catalog_creation.sql"
+    ],
+    "legacy011": "unchanged broken source fingerprinted; existing missing-contract repair adopted only locally",
+    "sources": [
+      {
+        "path": "docs/audits/migration-contract-2026-10-20/inventory.json",
+        "sha256": "67e0cf0d7ee790de5de7cfa348f5b18ac20359dfca670ee8c1fb4870703e784b"
+      },
+      {
+        "path": "supabase/migrations/001_b3_accounts.sql",
+        "sha256": "44c6b84cbef90edd8bae8f97b9ee8f3ca3fe0a2b75c9a7bc81c40ab782641444"
+      },
+      {
+        "path": "supabase/migrations/002_b4_billing.sql",
+        "sha256": "3676dc52b3086a3445ccc96a6dc2e4aa7293d23f66736046bca22243a918df24"
+      },
+      {
+        "path": "supabase/migrations/003_b5_business.sql",
+        "sha256": "3b2a88f0cc96edcd84fda58250093eec823354748121c7eee88b3f77029cb8e5"
+      },
+      {
+        "path": "supabase/migrations/004_b6_builder.sql",
+        "sha256": "6a71738de1ccb5b57f0761fac772e7771d2736d390f81d92aed464810aad9899"
+      },
+      {
+        "path": "supabase/migrations/005_b7_delivery.sql",
+        "sha256": "5851dc2e24b1445526b2986f743fad11adeba4742667587efaf5249b882bb258"
+      },
+      {
+        "path": "supabase/migrations/006_b8_api_automation.sql",
+        "sha256": "637ec0680c7ac01f2f801cbcadd6c45c7ab1996e9db28afe35d0878c2950e1b5"
+      },
+      {
+        "path": "supabase/migrations/007_b9_ai.sql",
+        "sha256": "6b1cd86c7d45533a0a783541ca03c8a455e427e5386469557530b4fcee1bb429"
+      },
+      {
+        "path": "supabase/migrations/008_b10_admin_factory.sql",
+        "sha256": "7080c1d1d1125545f3fd4626d5881c28ed8e642100bb94d061889e0fefe94b36"
+      },
+      {
+        "path": "supabase/migrations/008b_b10_alert_automation.sql",
+        "sha256": "ee5df09520e3a4c8f8c9251bb0b7718df1cf56d861e256de96ab21c89e55d6aa"
+      },
+      {
+        "path": "supabase/migrations/010_b7_pro_workspace.sql",
+        "sha256": "a16d5bbe5092d0d0cda135aeb2e4c034512e8c85faccf3ed3ff9512b7d8b3f0e"
+      },
+      {
+        "path": "supabase/migrations/011_b8_free_save_quotas.sql",
+        "sha256": "4c0f9f7c3a2f8e7b9b343b252b586c2921cbb981ab819a323afccba5b2a29a50"
+      },
+      {
+        "path": "docs/architecture/proposals/20261020-v1-legacy-save-quota-repair.sql",
+        "sha256": "1befdc09dd6b2b7ab2d0a225cdec6e048c170f0d6d3add2a164c4a30c20d31a2"
+      },
+      {
+        "path": "supabase/migrations/012_production_fk_indexes.sql",
+        "sha256": "e953260b2a57aa83b1d050b7536f27ea4324a396aa84332593e72b727b1ee6d2"
+      },
+      {
+        "path": "supabase/migrations/013_production_rpc_privilege_hardening_v2.sql",
+        "sha256": "3e6d9402ee352faeba6af214b7650c3a31782be2ba2d74eef88d8d98d76592fa"
+      },
+      {
+        "path": "supabase/migrations/014_production_entitlement_rpc_sync.sql",
+        "sha256": "f5fe2f21ecc004231cf3e01010f96a853f281fc03864512341bea7fc49f0faff"
+      },
+      {
+        "path": "supabase/migrations/016_final_certification_evidence_gate.sql",
+        "sha256": "b2ffa0198bc303b38aa766ac7157e7c8f93a9009b42d52fe4fbd3c45bf521d5e"
+      },
+      {
+        "path": "supabase/migrations/017_regulatory_rule_pack_evidence.sql",
+        "sha256": "255266b6ac885463b09b48f70caaec1348ae3a4b7b919cfed86ee6271217f987"
+      },
+      {
+        "path": "supabase/migrations/018_harden_rule_pack_required_metadata.sql",
+        "sha256": "8de88ad1d1551adc19704660ac79ef8625c20d1197bd261f9938fa7167ee2e66"
+      },
+      {
+        "path": "supabase/migrations/019_authoritative_lifecycle_enforcement.sql",
+        "sha256": "fef6d250fe190e7ae508769d2037fcbeb79340de1837fd2c47010a854873c4f1"
+      },
+      {
+        "path": "supabase/migrations/020_post_certification_revalidation.sql",
+        "sha256": "8be8fad45bfa4ac03a0e1b6272825ec3eba7fcf75e8739039d25e462a83839d1"
+      },
+      {
+        "path": "supabase/migrations/021_require_rule_pack_provenance.sql",
+        "sha256": "2948349c3454f6533393c7f907d96b88a42157360ed10872912cc0393722fcbc"
+      },
+      {
+        "path": "supabase/migrations/022_harden_reviewer_waiver_authority.sql",
+        "sha256": "45ad7805d74f2c795c7ec6f92910e29d82851a1a7e614e86e721df3e0fda7818"
+      },
+      {
+        "path": "supabase/migrations/023_structured_source_evidence.sql",
+        "sha256": "df68de0942cb46eaa9cfabab5136297093c399319c8e78b94768752a5c649f01"
+      },
+      {
+        "path": "supabase/migrations/024_reviewer_assignment_authority.sql",
+        "sha256": "e04d659cda5b30351322831dd41cf37a3f0250e32323af6f5b5af6b04fa7e65e"
+      },
+      {
+        "path": "supabase/migrations/025_derived_source_count_authority.sql",
+        "sha256": "d979f0fbc012676c4ba18d633733db59d8400bf7a9125f171c08ac973caf01a4"
+      },
+      {
+        "path": "supabase/migrations/026_publication_manifest_authority.sql",
+        "sha256": "281590f74a5d4c3dad201612aa13bd4364f02f678d3d3429949e179aabe12c42"
+      },
+      {
+        "path": "supabase/migrations/027_publication_trigger_privilege_hardening.sql",
+        "sha256": "b001be015340eecebbacb5c5fd66ecae82347c150088a2f896c768d57d4ed070"
+      },
+      {
+        "path": "supabase/migrations/028_source_evidence_reviewer_index.sql",
+        "sha256": "c93164c647d0c015b426950a19da17c2409c74edb9cff5b3db0749fdb021d08a"
+      },
+      {
+        "path": "supabase/migrations/029_account_rls_auth_initplan.sql",
+        "sha256": "04de135a6a2c9ef351c0a7c364b81a6d8be82fecf919ca72b1af8d62f253910f"
+      },
+      {
+        "path": "supabase/migrations/030_billing_ai_rls_auth_initplan.sql",
+        "sha256": "a1d4e07e8db42a84885bfc95a5a3da0945d118c305a46125f5367f2ba3cb97a0"
+      },
+      {
+        "path": "supabase/migrations/031_admin_identity_rls_auth_initplan.sql",
+        "sha256": "9600a2261753c5cdcbb015baa04579d8063940afaccd11eaa5ac7c3f364b96c4"
+      },
+      {
+        "path": "supabase/migrations/032_business_builder_rls_auth_initplan.sql",
+        "sha256": "76da26bbc86622c664d4e322f45ea2b716357d38ec93a4e2ab238f50145e2dc9"
+      },
+      {
+        "path": "supabase/migrations/033_pro_workspace_rls_auth_initplan.sql",
+        "sha256": "4b13a12bbf5113a2605bae3d4be08ec785174f3afb9bd2806fb1c3e5b906241f"
+      },
+      {
+        "path": "supabase/migrations/034_billing_webhook_event_privileges.sql",
+        "sha256": "597177fba00c67f0ea0baca5a54c1cc44a2ab77886b7376fa9549e4d0ef3aaf4"
+      },
+      {
+        "path": "supabase/migrations/035_split_overlapping_write_policies.sql",
+        "sha256": "fedde50298d7230a29a0ae7c41afa5c8df95195e7473042fb8c1efb6fc56540d"
+      },
+      {
+        "path": "supabase/migrations/036_consolidate_ai_usage_read_policy.sql",
+        "sha256": "28edd1f34e9628f64bc255d9a9a3f643d367d0ffdcd430022d67d45f0f11d9e5"
+      },
+      {
+        "path": "supabase/migrations/037_builder_publish_business_entitlement.sql",
+        "sha256": "7582b31222aa28378cfe7e984228738a4b5bc704715f9b783f957ed23711636b"
+      }
+    ],
+    "bundle": {
+      "reviewVersion": "20261021.v1",
+      "deploymentVersion": null,
+      "productionExecutionAuthorized": false,
+      "requires": [
+        "owner dispositions for historical differences and external writers",
+        "trusted postgres ownership",
+        "reviewed write pause, timeouts, backup and restore plan",
+        "exact metadata freshness and schema/ledger preconditions"
+      ],
+      "excludes": [
+        "011 missing-only repair",
+        "historical029 replay",
+        "global default ACL changes",
+        "production execution"
+      ],
+      "sources": [
+        {
+          "path": "supabase/migrations/009_country_preferences.sql",
+          "sha256": "da461b18da708919e8679fc2e8d198234e71c46253a46d6915536c72ab412cab"
+        },
+        {
+          "path": "docs/architecture/proposals/20261021-v1-authentic-account-security.sql",
+          "sha256": "a4075c12645710adf1bada346c85d1115984b88760318a7ec63a6d05a4ed2bc7"
+        },
+        {
+          "path": "supabase/migrations/032_atomic_reviewer_qa_audit.sql",
+          "sha256": "b548046cb0a3aa91dd2838a824a5a1155b7b4c317d65cc644b6c9673a26418f1"
+        },
+        {
+          "path": "supabase/migrations/033_atomic_reviewer_assignment_audit.sql",
+          "sha256": "74ce0f947c3922c4c7992880abd108a2900a6ce14933bd45c3a5762617f2fcd8"
+        },
+        {
+          "path": "supabase/migrations/034_atomic_lifecycle_transition_audit.sql",
+          "sha256": "745efcbcb731821dd82727e91a6fe46093413890122818eb0560fd05a3414c90"
+        },
+        {
+          "path": "supabase/migrations/035_atomic_catalog_creation.sql",
+          "sha256": "426de9383b1ca63f504adbdb9e515c239c8d2c4bd37f518a6b900667d2f30b47"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-BILLING-TRANSACTION-PROPOSAL.md",
+          "sha256": "12b486c353f56007e7c65be18d50c30989d2cb784cdaf16cf53400cc6db06348"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-ACCOUNT-HISTORY.sql",
+          "sha256": "18b3ca55203fdd7709cc4d632a23d6727081ee9a0269175d1e7c87763b0e712c"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-API-QUOTA.sql",
+          "sha256": "2e3cd725261052be9c4bce71610a5912b235d2322b737c93cd87a4f74c86a436"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-BATCH-JOB.sql",
+          "sha256": "8f8113e98ee43b7f4e9c06682030d4020eb51760cf890b960587a3358d5eebe6"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-EMBED-LEAD-CONSENT.sql",
+          "sha256": "c93ded8059a77f93b43c7c8931834a560b5b13cf1f4984d5d0efe54892f1a6a5"
+        },
+        {
+          "path": "docs/architecture/proposals/20261021-v1-atomic-object-privileges.sql",
+          "sha256": "929828b851598c019c4d77856291ec57a2ffe751dcbeecfb0248239c9008116a"
+        }
+      ],
+      "sha256": "07dda25c047f8e75059402f561c5e4988322f60ed40faaa23aa87740c36534a4"
+    },
+    "productionEquivalence": "UNKNOWN",
+    "captureAvailable": false
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    }
+  ],
+  "productionWrites": false,
+  "releaseHold": true,
+  "limitations": [
+    "Genuine isolated GoTrue JWT/Supabase SDK/PostgREST/PG17.6; no browser or Next server-action claim",
+    "Synthetic privileged plan setup is not billing-provider acceptance",
+    "19 exact existing example contracts only; no full canonical/source/competent acceptance",
+    "Website bandwidth v2 only; v1 refused without upgrade; unchanged original engine bytes"
+  ]
+}

@@ -1,7 +1,9 @@
 import {mkdirSync,readFileSync,writeFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {collectBatch16RequirementEvidence} from '../src/lib/batch16-requirement-evidence';
-const report=collectBatch16RequirementEvidence();
+import {validateHistoricalBatch16Report} from '../src/lib/historical-canonical-evidence';
+const current=collectBatch16RequirementEvidence();
+const report=process.argv.includes('--check')?validateHistoricalBatch16Report(current):current;
 const text=JSON.stringify(report,null,2)+'\n';
 const directory='docs/full-product-batch16';
 const artifacts={

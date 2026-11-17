@@ -1,0 +1,56 @@
+{
+  "kind": "INDEPENDENT_A69_STATIC_SECURITY_REVIEW_NOT_CANONICAL_APPROVAL",
+  "reviewer": "wave100_math",
+  "guardRef": "dd0b18c19de3a9cdd898a10ec9e35e19ef43c64b",
+  "applicationRef": "b1dccffe1cc9e0515030d5e7ea4bad8a72756080",
+  "result": "PASS_STATIC_AND_OBJECT_INTEGRITY_WITH_POSTCOMMIT_LIVE_VERIFICATION_REQUIRED",
+  "candidateArtifacts": [
+    {
+      "path": "tests/parallel-source-20261110/authority.mjs",
+      "bytes": 153186,
+      "blob": "6df9f71a74c92b0f41d0ea6a9f57522a68b70450",
+      "sha256": "f74bfb1d8129bc91018e50e991bab5996a0ccfb037b1e738b4fb05ca8e57869f"
+    },
+    {
+      "path": "tests/milestone100-20261114/source-stage8-guard-policy.mjs",
+      "bytes": 988,
+      "blob": "22f844b38f5e0cca2b43c350edb0c348460e009f",
+      "sha256": "b9afcec334ec7c702834d598db87b741081d4d025f0401d46e180b9e04edd3e2"
+    },
+    {
+      "path": "docs/parallel-source-20261110/capture-revision69.json",
+      "bytes": 475459,
+      "blob": "7884ddf28303084605ef38b389f2b866a20a61ac",
+      "sha256": "0a439a2a90756d4521f60e46511e323b6157d7f5186083b91b08886ced04838a"
+    }
+  ],
+  "checks": {
+    "overlayRecords": 114,
+    "exactGuardObjects": 112,
+    "generatedAuthorityArtifacts": 2,
+    "sourceDeltaAgainstEac9": 22,
+    "capture68Preserved": true,
+    "historicalAuthority68Preserved": true,
+    "oldAuthorityArrayPrefixBytePreserved": true,
+    "capture69OnlyChangedTopLevelFields": [
+      "currentSources",
+      "sourceStage8"
+    ],
+    "capture68CurrentSourceRows": 964,
+    "capture69CurrentSourceRows": 995,
+    "removedRows": 0,
+    "currentSourceDelta": {
+      "contentChanged": 25,
+      "refOnly": 56,
+      "added": 31
+    },
+    "allChangedOrAddedCaptureTuplesVerified": 112,
+    "staticGuardSuccessorTuplesVerified": 3,
+    "guardsOrSourceEditedByReviewer": false
+  },
+  "limitations": [
+    "Full positive authority cannot pass until these exact A artifacts are committed and HEAD pins match.",
+    "No canonical, certification, publication, deployment or production approval granted.",
+    "Operations identified a separate helper-boundary gap: unchanged recognized legacy bindings may return positive through retained verifier without Stage8 guard checks. If admission requires all new-helper positives guarded, current G/A pair is not final; a new immutable G successor and renewed A review are required."
+  ]
+}

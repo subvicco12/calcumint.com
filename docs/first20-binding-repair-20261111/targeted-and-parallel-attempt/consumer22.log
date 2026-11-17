@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: keeps exact20 tuples,500 obligations and no approval while binding new evidence
+ok 1 - keeps exact20 tuples,500 obligations and no approval while binding new evidence
+  ---
+  duration_ms: 63.616731
+  type: 'test'
+  ...
+# Subtest: rejects reorderedwave
+ok 2 - rejects reorderedwave
+  ---
+  duration_ms: 24.841512
+  type: 'test'
+  ...
+# Subtest: rejects changedversion
+ok 3 - rejects changedversion
+  ---
+  duration_ms: 22.495811
+  type: 'test'
+  ...
+# Subtest: rejects missingrequirement
+ok 4 - rejects missingrequirement
+  ---
+  duration_ms: 18.14445
+  type: 'test'
+  ...
+# Subtest: rejects inventedeligibility
+ok 5 - rejects inventedeligibility
+  ---
+  duration_ms: 14.947807
+  type: 'test'
+  ...
+# Subtest: rejects missingbrowserproof
+ok 6 - rejects missingbrowserproof
+  ---
+  duration_ms: 17.424594
+  type: 'test'
+  ...
+# Subtest: rejects wrongreviewerbinding
+ok 7 - rejects wrongreviewerbinding
+  ---
+  duration_ms: 17.416315
+  type: 'test'
+  ...
+# Subtest: rejects promotedstatus
+ok 8 - rejects promotedstatus
+  ---
+  duration_ms: 28.874435
+  type: 'test'
+  ...
+# Subtest: rejects wrongplan
+ok 9 - rejects wrongplan
+  ---
+  duration_ms: 18.03658
+  type: 'test'
+  ...
+# Subtest: rejects tamperedoutput
+ok 10 - rejects tamperedoutput
+  ---
+  duration_ms: 15.873489
+  type: 'test'
+  ...
+# Subtest: rejects falselayout
+ok 11 - rejects falselayout
+  ---
+  duration_ms: 17.012434
+  type: 'test'
+  ...
+# Subtest: rejects missingexport
+ok 12 - rejects missingexport
+  ---
+  duration_ms: 15.035513
+  type: 'test'
+  ...
+# Subtest: rejects wrongboundary
+ok 13 - rejects wrongboundary
+  ---
+  duration_ms: 19.91785
+  type: 'test'
+  ...
+# Subtest: rejects falsewitness
+ok 14 - rejects falsewitness
+  ---
+  duration_ms: 27.636615
+  type: 'test'
+  ...
+# Subtest: actual current manifest admits only reviewed exact verifier and preview successors
+ok 15 - actual current manifest admits only reviewed exact verifier and preview successors
+  ---
+  duration_ms: 5230.029012
+  type: 'test'
+  ...
+# Subtest: refuses extra preview assertion changes
+ok 16 - refuses extra preview assertion changes
+  ---
+  duration_ms: 159.308297
+  type: 'test'
+  ...
+# Subtest: refuses a valid old preview preimage as a silent current-source reversion
+ok 17 - refuses a valid old preview preimage as a silent current-source reversion
+  ---
+  duration_ms: 89.917147
+  type: 'test'
+  ...
+# Subtest: unrelated browser source still requires its original exact bytes
+ok 18 - unrelated browser source still requires its original exact bytes
+  ---
+  duration_ms: 107.844561
+  type: 'test'
+  ...
+# Subtest: refuses changing the retained predecessor claim
+ok 19 - refuses changing the retained predecessor claim
+  ---
+  duration_ms: 29.215563
+  type: 'test'
+  ...
+# Subtest: refuses missing immutable Git provenance without substituting receipt hashes
+ok 20 - refuses missing immutable Git provenance without substituting receipt hashes
+  ---
+  duration_ms: 0.248428
+  type: 'test'
+  ...
+# Subtest: refuses the old valid verifier despite its unchanged manifest hash
+ok 21 - refuses the old valid verifier despite its unchanged manifest hash
+  ---
+  duration_ms: 79.1449
+  type: 'test'
+  ...
+# Subtest: coordinated verifier and manifest edits cannot nominate their own source approval
+ok 22 - coordinated verifier and manifest edits cannot nominate their own source approval
+  ---
+  duration_ms: 29.498381
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6006.127751

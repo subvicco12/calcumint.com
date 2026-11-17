@@ -1,0 +1,26 @@
+
+ RUN  v3.2.7 /workspace/calcumint-stats-a
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts [ src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts ]
+Error: Cannot find module './next-engineering-statistics-a' imported from '/workspace/calcumint-stats-a/src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts'
+ ❯ src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts:4:1
+      2| import {zScoreCalculator} from '@/calculators/statistics/catalog-batch…
+      3| import {confidenceIntervalCalculator, sampleSizeCalculator, probabilit…
+      4| import {statisticsAContracts} from './next-engineering-statistics-a';
+       | ^
+      5|
+      6| const engines = [zScoreCalculator, confidenceIntervalCalculator, sampl…
+
+Caused by: Error: Failed to load url ./next-engineering-statistics-a (resolved id: ./next-engineering-statistics-a) in /workspace/calcumint-stats-a/src/lib/calculator-factory/completion/next-engineering-statistics-a.test.ts. Does the file exist?
+ ❯ loadAndTransform ../calcumint.com/node_modules/vite/dist/node/chunks/config.js:22907:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  09:35:51
+   Duration  406ms (transform 75ms, setup 0ms, collect 0ms, tests 0ms, environment 0ms, prepare 67ms)

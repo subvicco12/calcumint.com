@@ -1,0 +1,80 @@
+✔ binds exact original math/parser and append-only UI successor (1911.586613ms)
+✔ rejects changed source even when a new metadata hash claims it is authorized (53.189753ms)
+✔ rejects an altered original evidence manifest (35.654951ms)
+✔ rejects wrong predecessor identity (14.313571ms)
+✔ rejects release authority promotion (14.828522ms)
+✔ rejects source member omission and traversal substitution (12.492915ms)
+✔ rejects unbound caller edits (1692.385181ms)
+✔ rejects symlinked dependencies (512.784642ms)
+✔ rejects unbound shared batch dependency src/components/publication20-batch.tsx (1964.792127ms)
+✔ rejects unbound shared batch dependency src/lib/publication20/batch.ts (1753.122005ms)
+✖ rejects presentation successor tamper src/components/publication20-tool.tsx (911.394188ms)
+✔ rejects symlinked presentation successor src/components/publication20-tool.tsx (1024.873544ms)
+✔ rejects rewritten presentation historical claim src/components/publication20-tool.tsx (1534.531489ms)
+✔ rejects presentation successor tamper src/components/publication20-batch.tsx (1572.073756ms)
+✔ rejects symlinked presentation successor src/components/publication20-batch.tsx (1492.929169ms)
+✔ rejects rewritten presentation historical claim src/components/publication20-batch.tsx (1550.44352ms)
+✔ rejects presentation successor tamper src/lib/frequency-presentation.ts (1538.589353ms)
+✔ rejects symlinked presentation successor src/lib/frequency-presentation.ts (1621.865503ms)
+✔ retains twenty original bindings with two supplemental presentation bindings (1889.858596ms)
+{"identities":20,"callerBindings":20,"sourceBindings":41,"canonicalAccepted":0,"publicationEligible":0,"releaseHold":true}
+✔ exact current committed source accepted: .github/workflows/ci.yml (2.374001ms)
+✔ predecessor reversion denied even with original hash: .github/workflows/ci.yml (7.989128ms)
+✔ tampering denied: .github/workflows/ci.yml (1.205138ms)
+✔ provenance loss denied: .github/workflows/ci.yml (0.383625ms)
+✔ exact current committed source accepted: scripts/publication20-caller-lineage.mjs (1.785655ms)
+✔ predecessor reversion denied even with original hash: scripts/publication20-caller-lineage.mjs (11.294865ms)
+✔ tampering denied: scripts/publication20-caller-lineage.mjs (1.102204ms)
+✔ provenance loss denied: scripts/publication20-caller-lineage.mjs (0.278895ms)
+✔ exact current committed source accepted: scripts/check-shortest-publication20.mjs (0.456392ms)
+✔ predecessor reversion denied even with original hash: scripts/check-shortest-publication20.mjs (10.027454ms)
+✔ tampering denied: scripts/check-shortest-publication20.mjs (0.39274ms)
+✔ provenance loss denied: scripts/check-shortest-publication20.mjs (0.196561ms)
+✔ unrelated historical binding remains strict (0.295626ms)
+✔ historical manifest cannot silently rewrite current source claims (6.388358ms)
+✔ requires independent successor Git object bytes even when current file matches its pinned SHA (22.795289ms)
+✔ requires exact predecessor path object even when historical SHA claim is unchanged (5.183965ms)
+✔ full shortest-publication guard binds the current verifier and preserves historical caller claims (6874.302858ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 35
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 21273.842252
+
+✖ failing tests:
+
+test at tests/shortest-publication-20/caller-lineage.test.mjs:25:2
+✖ rejects presentation successor tamper src/components/publication20-tool.tsx (911.394188ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Completion current successor differs/. Input:
+  
+  'Error: Completion supplemental source bytes differ: src/components/publication20-tool.tsx'
+  
+      at file:///workspace/work/product-completion-20261108/tests/shortest-publication-20/caller-lineage.test.mjs:25:125
+      at fixture (file:///workspace/work/product-completion-20261108/tests/shortest-publication-20/caller-lineage.test.mjs:11:740)
+      at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/shortest-publication-20/caller-lineage.test.mjs:25:57)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Completion supplemental source bytes differ: src/components/publication20-tool.tsx
+        at verifyCompletionBinding (file:///workspace/work/product-completion-20261108/scripts/product-completion-lineage.mjs:4050:70)
+        at verifyPublication20CallerLineage (file:///workspace/work/product-completion-20261108/scripts/publication20-caller-lineage.mjs:26:8)
+        at file:///workspace/work/product-completion-20261108/tests/shortest-publication-20/caller-lineage.test.mjs:25:136
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at file:///workspace/work/product-completion-20261108/tests/shortest-publication-20/caller-lineage.test.mjs:25:125
+        at fixture (file:///workspace/work/product-completion-20261108/tests/shortest-publication-20/caller-lineage.test.mjs:11:740)
+        at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/shortest-publication-20/caller-lineage.test.mjs:25:57)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25),
+    expected: /Completion current successor differs/,
+    operator: 'throws',
+    diff: 'simple'
+  }

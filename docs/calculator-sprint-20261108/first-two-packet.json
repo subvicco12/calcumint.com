@@ -1,0 +1,469 @@
+{
+  "kind": "FIRST_TWO_CURRENT_SOURCE_PACKET_NOT_ACCEPTANCE",
+  "baselineSHA": "6e5b8aa3dd07b1c57993c4cc8b6f1cf1be7ce2ef",
+  "inventory": {
+    "path": "docs/product-completion-20261108/inventory-540.json",
+    "sha256": "8c3e60c9da8b5654b953569d351f7f6eaa3127ae8f7d3bb0692c72a558dba19a",
+    "bytes": 14297158
+  },
+  "rows": [
+    {
+      "masterId": 432,
+      "title": "Time Converter",
+      "classification": "IMPLEMENTED_REVIEW_PENDING",
+      "engineId": "conversion.time",
+      "slug": "time-converter",
+      "version": 1,
+      "engineBinding": {
+        "path": "src/calculators/conversion/catalog-batch-2.ts",
+        "sha256": "8c8021714b27b2399ea4d27a6bec595e446426ca2e6ad846815e60a9a5b35467",
+        "bytes": 3705
+      },
+      "retainedExactEngineSHA256Matches": true,
+      "sourceFacts": "s=1; ms=.001; min=60; h=3600; day=86400; week=7*86400=604800. Fixed duration rather than calendar arithmetic.",
+      "sourceLocator": "BIPM Table 8; SI prefixes",
+      "scope": "Fixed seconds/day/week durations, not calendar or timezone arithmetic. This is a coherent narrow calculator contract; native catalog does not establish an exhaustive unit roster.",
+      "retainedScopeDispositions": {
+        "identity_and_native_catalog_mapping": {
+          "status": "complete",
+          "reason": "Exact recorded tuple and native title/domain agree; canonical lifecycle adoption is a separate requirement."
+        },
+        "bounded_product_scope": {
+          "status": "complete",
+          "reason": "Fixed seconds/day/week durations, not calendar or timezone arithmetic. This is a coherent narrow calculator contract; native catalog does not establish an exhaustive unit roster."
+        },
+        "new_domain_models_or_arbitrary_advanced_variables": {
+          "status": "justifiedNA",
+          "reason": "No additional independent modelling variable is necessary for the declared fixed conversion/ideal arithmetic. Blueprint paragraph101 makes context relevant; paragraph122 distinguishes optional modelling depth. Do not invent a provider or physical model."
+        },
+        "free_chart_and_multiple_result_cards": {
+          "status": "justifiedNA",
+          "reason": "Scalar conversion adds no independent series or KPI and native catalog says usually none/visual when useful."
+        },
+        "scenario_table_unit_analysis": {
+          "status": "justifiedNA",
+          "reason": "No decision-specific scenario or sensitivity dimension beyond value/unit selection is established for this scalar converter. Native converter row prioritizes history and useful batch. Offered A/B still must reconcile."
+        },
+        "jurisdiction_rule_pack_and_high_risk_external_specialist": {
+          "status": "justifiedNA",
+          "reason": "Declared generic unit/ideal-arithmetic product has no jurisdiction-sensitive rule or high-risk advice. No designation requiring an external specialist is established; qualified formula/QA review is still applicable."
+        }
+      },
+      "historicalBrowserJourneys": [
+        {
+          "catalogId": 432,
+          "engineId": "conversion.time",
+          "version": 1,
+          "plan": "free",
+          "width": 360,
+          "artifactSHA256": "8591d89b42f10cc9f7c8325ade7b261ae1f8276dc647adf69a0acc11a1796726",
+          "output": {
+            "result": 252
+          },
+          "blankSaveExportDenied": true,
+          "recovered": true,
+          "scenarioRecovery": false,
+          "jsonReplayTamper": false,
+          "noHorizontalOverflow": true
+        },
+        {
+          "catalogId": 432,
+          "engineId": "conversion.time",
+          "version": 1,
+          "plan": "pro",
+          "width": 360,
+          "artifactSHA256": "8591d89b42f10cc9f7c8325ade7b261ae1f8276dc647adf69a0acc11a1796726",
+          "output": {
+            "result": 252
+          },
+          "blankSaveExportDenied": true,
+          "recovered": true,
+          "scenarioRecovery": true,
+          "jsonReplayTamper": true,
+          "noHorizontalOverflow": true
+        },
+        {
+          "catalogId": 432,
+          "engineId": "conversion.time",
+          "version": 1,
+          "plan": "business",
+          "width": 1440,
+          "artifactSHA256": "8591d89b42f10cc9f7c8325ade7b261ae1f8276dc647adf69a0acc11a1796726",
+          "output": {
+            "result": 252
+          },
+          "blankSaveExportDenied": true,
+          "recovered": true,
+          "scenarioRecovery": false,
+          "jsonReplayTamper": true,
+          "noHorizontalOverflow": true
+        }
+      ],
+      "historicalAuthenticatedArtifacts": [
+        {
+          "plan": "free",
+          "catalogId": 432,
+          "id": "6ed18ef7-b0b3-47a4-9333-b929a0628e55",
+          "snapshot": {
+            "calculatorSlug": "time-converter",
+            "calculatorVersion": 1,
+            "input": {
+              "value": 1.5,
+              "fromUnit": "week",
+              "toUnit": "h"
+            },
+            "output": {
+              "result": 252
+            }
+          },
+          "sha256": "8591d89b42f10cc9f7c8325ade7b261ae1f8276dc647adf69a0acc11a1796726"
+        },
+        {
+          "plan": "pro",
+          "catalogId": 432,
+          "id": "ddaa28ef-5865-472a-8c01-1447eab28a82",
+          "snapshot": {
+            "calculatorSlug": "time-converter",
+            "calculatorVersion": 1,
+            "input": {
+              "value": 1.5,
+              "fromUnit": "week",
+              "toUnit": "h"
+            },
+            "output": {
+              "result": 252
+            }
+          },
+          "sha256": "8591d89b42f10cc9f7c8325ade7b261ae1f8276dc647adf69a0acc11a1796726"
+        },
+        {
+          "plan": "business",
+          "catalogId": 432,
+          "id": "04bb1706-479d-4df8-8abe-342de5ce49a7",
+          "snapshot": {
+            "calculatorSlug": "time-converter",
+            "calculatorVersion": 1,
+            "input": {
+              "value": 1.5,
+              "fromUnit": "week",
+              "toUnit": "h"
+            },
+            "output": {
+              "result": 252
+            }
+          },
+          "sha256": "8591d89b42f10cc9f7c8325ade7b261ae1f8276dc647adf69a0acc11a1796726"
+        }
+      ],
+      "existingEngineBrowserCase": {
+        "catalogId": 432,
+        "engineId": "conversion.time",
+        "slug": "time-converter",
+        "version": 1,
+        "input": {
+          "value": 1.5,
+          "fromUnit": "week",
+          "toUnit": "h"
+        },
+        "expected": 252,
+        "primaryKey": "result"
+      },
+      "decisions": {
+        "sourceDecision": "PENDING_AUTHORIZED_COMPETENT_ADOPTION",
+        "formulaDecision": "PENDING_AUTHORIZED_COMPETENT_ADOPTION",
+        "precisionDecision": "PENDING_AUTHORIZED_COMPETENT_ADOPTION",
+        "canonicalQaDecision": "PENDING_FULL_APPLICABLE_DISPOSITIONS",
+        "competentDecision": {
+          "status": "PENDING",
+          "reviewerName": null,
+          "reviewerAuthorityProvenance": null,
+          "signedAt": null,
+          "sourceAccepted": null,
+          "formulaAccepted": null,
+          "precisionAccepted": null,
+          "technicalQaAccepted": null
+        },
+        "fullyAccepted": false,
+        "publicationEligible": false
+      }
+    },
+    {
+      "masterId": 440,
+      "title": "Frequency Converter",
+      "classification": "IMPLEMENTED_REVIEW_PENDING",
+      "engineId": "conversion.frequency",
+      "slug": "frequency-converter",
+      "version": 1,
+      "engineBinding": {
+        "path": "src/calculators/conversion/catalog-batch-3.ts",
+        "sha256": "8605a98cbc051450fbd71089d77f174f961ea56d5ee6b743e38c8a473b87c165",
+        "bytes": 3872
+      },
+      "retainedExactEngineSHA256Matches": true,
+      "sourceFacts": "Hz=s^-1; kHz=10^3; MHz=10^6; GHz=10^9. No angular frequency conversion offered.",
+      "sourceLocator": "BIPM derived-unit table and Table 7",
+      "scope": "SI frequency prefixes, not angular frequency. This is a coherent narrow calculator contract; native catalog does not establish an exhaustive unit roster.",
+      "retainedScopeDispositions": {
+        "identity_and_native_catalog_mapping": {
+          "status": "complete",
+          "reason": "Exact recorded tuple and native title/domain agree; canonical lifecycle adoption is a separate requirement."
+        },
+        "bounded_product_scope": {
+          "status": "complete",
+          "reason": "SI frequency prefixes, not angular frequency. This is a coherent narrow calculator contract; native catalog does not establish an exhaustive unit roster."
+        },
+        "new_domain_models_or_arbitrary_advanced_variables": {
+          "status": "justifiedNA",
+          "reason": "No additional independent modelling variable is necessary for the declared fixed conversion/ideal arithmetic. Blueprint paragraph101 makes context relevant; paragraph122 distinguishes optional modelling depth. Do not invent a provider or physical model."
+        },
+        "free_chart_and_multiple_result_cards": {
+          "status": "justifiedNA",
+          "reason": "Scalar conversion adds no independent series or KPI and native catalog says usually none/visual when useful."
+        },
+        "scenario_table_unit_analysis": {
+          "status": "justifiedNA",
+          "reason": "No decision-specific scenario or sensitivity dimension beyond value/unit selection is established for this scalar converter. Native converter row prioritizes history and useful batch. Offered A/B still must reconcile."
+        },
+        "jurisdiction_rule_pack_and_high_risk_external_specialist": {
+          "status": "justifiedNA",
+          "reason": "Declared generic unit/ideal-arithmetic product has no jurisdiction-sensitive rule or high-risk advice. No designation requiring an external specialist is established; qualified formula/QA review is still applicable."
+        },
+        "complete_source_body_factor_applicability": {
+          "status": "complete",
+          "reason": "Retained BIPM frequency/prefix body supports all offered Hz/kHz/MHz/GHz factors. Formal governed source adoption remains separate."
+        }
+      },
+      "historicalBrowserJourneys": [
+        {
+          "catalogId": 440,
+          "engineId": "conversion.frequency",
+          "version": 1,
+          "plan": "free",
+          "width": 360,
+          "artifactSHA256": "9320db36bf31588e3e8785c7131b97b3072cb963cd9552dd65797bda3a8c94c0",
+          "output": {
+            "result": 125000
+          },
+          "blankSaveExportDenied": true,
+          "recovered": true,
+          "scenarioRecovery": false,
+          "jsonReplayTamper": false,
+          "noHorizontalOverflow": true
+        },
+        {
+          "catalogId": 440,
+          "engineId": "conversion.frequency",
+          "version": 1,
+          "plan": "pro",
+          "width": 360,
+          "artifactSHA256": "9320db36bf31588e3e8785c7131b97b3072cb963cd9552dd65797bda3a8c94c0",
+          "output": {
+            "result": 125000
+          },
+          "blankSaveExportDenied": true,
+          "recovered": true,
+          "scenarioRecovery": true,
+          "jsonReplayTamper": true,
+          "noHorizontalOverflow": true
+        },
+        {
+          "catalogId": 440,
+          "engineId": "conversion.frequency",
+          "version": 1,
+          "plan": "business",
+          "width": 1440,
+          "artifactSHA256": "9320db36bf31588e3e8785c7131b97b3072cb963cd9552dd65797bda3a8c94c0",
+          "output": {
+            "result": 125000
+          },
+          "blankSaveExportDenied": true,
+          "recovered": true,
+          "scenarioRecovery": false,
+          "jsonReplayTamper": true,
+          "noHorizontalOverflow": true
+        }
+      ],
+      "historicalAuthenticatedArtifacts": [
+        {
+          "plan": "free",
+          "catalogId": 440,
+          "id": "5411258b-2c45-4933-b2ca-d889ea5f6ea8",
+          "snapshot": {
+            "calculatorSlug": "frequency-converter",
+            "calculatorVersion": 1,
+            "input": {
+              "value": 0.125,
+              "fromUnit": "mhz",
+              "toUnit": "hz"
+            },
+            "output": {
+              "result": 125000
+            }
+          },
+          "sha256": "9320db36bf31588e3e8785c7131b97b3072cb963cd9552dd65797bda3a8c94c0"
+        },
+        {
+          "plan": "pro",
+          "catalogId": 440,
+          "id": "fc8d3cf3-808c-45e8-96ba-4116660aec11",
+          "snapshot": {
+            "calculatorSlug": "frequency-converter",
+            "calculatorVersion": 1,
+            "input": {
+              "value": 0.125,
+              "fromUnit": "mhz",
+              "toUnit": "hz"
+            },
+            "output": {
+              "result": 125000
+            }
+          },
+          "sha256": "9320db36bf31588e3e8785c7131b97b3072cb963cd9552dd65797bda3a8c94c0"
+        },
+        {
+          "plan": "business",
+          "catalogId": 440,
+          "id": "514394d3-9762-4a6c-94fa-2fec74df8a94",
+          "snapshot": {
+            "calculatorSlug": "frequency-converter",
+            "calculatorVersion": 1,
+            "input": {
+              "value": 0.125,
+              "fromUnit": "mhz",
+              "toUnit": "hz"
+            },
+            "output": {
+              "result": 125000
+            }
+          },
+          "sha256": "9320db36bf31588e3e8785c7131b97b3072cb963cd9552dd65797bda3a8c94c0"
+        }
+      ],
+      "existingEngineBrowserCase": {
+        "catalogId": 440,
+        "engineId": "conversion.frequency",
+        "slug": "frequency-converter",
+        "version": 1,
+        "input": {
+          "value": 0.125,
+          "fromUnit": "mhz",
+          "toUnit": "hz"
+        },
+        "expected": 125000,
+        "primaryKey": "result"
+      },
+      "decisions": {
+        "sourceDecision": "PENDING_AUTHORIZED_COMPETENT_ADOPTION",
+        "formulaDecision": "PENDING_AUTHORIZED_COMPETENT_ADOPTION",
+        "precisionDecision": "PENDING_AUTHORIZED_COMPETENT_ADOPTION",
+        "canonicalQaDecision": "PENDING_FULL_APPLICABLE_DISPOSITIONS",
+        "competentDecision": {
+          "status": "PENDING",
+          "reviewerName": null,
+          "reviewerAuthorityProvenance": null,
+          "signedAt": null,
+          "sourceAccepted": null,
+          "formulaAccepted": null,
+          "precisionAccepted": null,
+          "technicalQaAccepted": null
+        },
+        "fullyAccepted": false,
+        "publicationEligible": false
+      }
+    }
+  ],
+  "sharedCurrentBindings": [
+    {
+      "path": "src/lib/publication20/conversions.ts",
+      "sha256": "33294ef227aa6e4a4a14f4282dcda1834a03396e62c6a0dbc5d4fb932472ec8c",
+      "bytes": 4950
+    },
+    {
+      "path": "src/components/publication20-tool.tsx",
+      "sha256": "4c5ad7ad371345c640f420e5fc5492ef4df7b2ada11468f54e74cf31cc07e589",
+      "bytes": 6056
+    },
+    {
+      "path": "src/components/final-result-presentation.tsx",
+      "sha256": "5840ee953bb668f6aec9f202c9e26b936b792ac85ed646df89067836be0a9838",
+      "bytes": 4575
+    },
+    {
+      "path": "src/components/calculator-account-actions.tsx",
+      "sha256": "c0237e89e75a029c1022890f6981f0b2e268ce55b7e78832f3ad389c765e50d4",
+      "bytes": 16069
+    },
+    {
+      "path": "src/lib/account-persistence.ts",
+      "sha256": "09316cd9df4ab359a3d20ac921e1c908f0e3b48831977149800262c16a01ad9e",
+      "bytes": 1975
+    },
+    {
+      "path": "src/components/calculator-scenario-workspace.tsx",
+      "sha256": "d35ae6ea673594d23eee4e352ba32a09ac55c61df41694afc91a0c418b03c090",
+      "bytes": 15591
+    },
+    {
+      "path": "src/lib/calculation-snapshot.ts",
+      "sha256": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c",
+      "bytes": 2875
+    },
+    {
+      "path": "src/lib/calculation-export.ts",
+      "sha256": "97992314804275537dd23de65fff89376d4883b644ad2619cdc266b07f31c1d6",
+      "bytes": 2749
+    },
+    {
+      "path": "src/lib/calculation-export-pdf.ts",
+      "sha256": "4ef6c414166bf89414b70dab1750611e4a3daf4f6a483c82d2b572b2ea117958",
+      "bytes": 23200
+    },
+    {
+      "path": "src/lib/publication20/result-trust.ts",
+      "sha256": "c1e21a0f680f4245424c1542fa59012b9d83347ef4da3e1309b4b61eba6cbbd9",
+      "bytes": 1496
+    }
+  ],
+  "retainedEvidenceBindings": [
+    {
+      "path": "docs/acceptance20-20261106/validation.json",
+      "sha256": "3c6a6c25e0a2481d6ca52adf8aa4bd72742eb133af12fd09bde18f92c29c30d2",
+      "bytes": 3842
+    },
+    {
+      "path": "docs/acceptance20-20261106/browser-receipt.json",
+      "sha256": "17756d1abe0d7b7d5df82817ab4b70a908aa285c072717494be94bcd00303c64",
+      "bytes": 31839
+    },
+    {
+      "path": "docs/critical440-auth/receipt.json",
+      "sha256": "7b3a8efadb7b0b84b22786320a0e72d8fa320a803e301b30b9d1c19657b69593",
+      "bytes": 101219
+    },
+    {
+      "path": "docs/frequency440-presentation/evidence/critical440-browser.json",
+      "sha256": "2a78aca377984802437735d9ba2143965bee5146ff9ae2e7176e7c60b7e14e51",
+      "bytes": 729
+    },
+    {
+      "path": "docs/shortest-publication-20/browser-cases.json",
+      "sha256": "c257da8bfbda240d3980742c81df32e01877148ee22c80b59b8314d2fc24b717",
+      "bytes": 5165
+    }
+  ],
+  "engineeringFinding": "No independently demonstrated actionable defect found in the examined exact current paths; no production code correction claimed.",
+  "evidenceLimits": [
+    "Current engine bytes match retained exact engine bindings; current shared caller hashes are a source inventory, not a new execution attestation.",
+    "Historical browser transport is synthetic, not genuine hosted-account or production persistence acceptance.",
+    "critical440-auth uses isolated authenticated database/SDK proof; all twenty history artifacts and per-plan parity include #432/#440. Atomic scenario/isolation/retry proof is specifically #440 and cannot silently establish #432-specific execution.",
+    "Prior export acceptance is 40 bounded cases with separate CSV parser and Poppler; comparison PDF does not independently assert every field and makes no PDF/UA claim.",
+    "No new qualified source/formula/precision/technical QA approval, canonical acceptance, certification, publication, production observation or production writes."
+  ],
+  "unresolved": [
+    "Authorized competent source/formula/precision/technical QA decisions remain unsigned.",
+    "Canonical lifecycle adoption and all applicable acceptance dispositions remain unresolved.",
+    "Historical bounded workflow proof does not establish complete full-domain current-head browser, accessibility, performance or all-plan acceptance."
+  ],
+  "productionWrites": false,
+  "newApproval": false
+}

@@ -1,0 +1,246 @@
+{
+  "kind": "UNSIGNED_EXACT_VERSION_REVIEW_PREPARATION_NOT_ACCEPTANCE",
+  "catalogId": 438,
+  "engine": {
+    "catalogId": 438,
+    "engineId": "conversion.force",
+    "calculatorSlug": "force-converter",
+    "calculatorVersion": 1,
+    "sourceVersion": "factory-wave1-20261112.1/conversion.force@1"
+  },
+  "frozenRuntimeSHA": "79bf64466663cc961fdb80365143d0c750dccc6f",
+  "canonicalTarget": {
+    "catalogPath": "docs/first20-publication/input/input/governing/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx",
+    "catalogRow": 439,
+    "blueprintPath": "docs/blueprint-reconciliation/native-paragraphs.txt"
+  },
+  "observedSnapshot": {
+    "calculatorSlug": "force-converter",
+    "calculatorVersion": 1,
+    "input": {
+      "value": 1,
+      "fromUnit": "n",
+      "toUnit": "kn"
+    },
+    "output": {
+      "result": 0.001
+    }
+  },
+  "rawExample": {
+    "value": "1",
+    "fromUnit": "n",
+    "toUnit": "kn"
+  },
+  "mathematicsEvidence": {
+    "path": "src/lib/calculator-factory/completion/conversion-contracts.test.ts",
+    "independentExpectedValues": true,
+    "historicalEngineChanged": false,
+    "sha256": "4ceafc8aa5a4a972249fb5ef03f25d7575563b63b87652beee65e6cc1ef6c1b8"
+  },
+  "sourceEvidence": {
+    "path": "src/lib/calculator-factory/completion/conversion-contracts.ts",
+    "nativeUCUMCapture": {
+      "path": "docs/first-live-closure-20261108/source/ucum-v2.2-native-source.zip",
+      "sha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+      "member": "ucum-essence.xml",
+      "memberSHA256": "dfccea1b5dc284245ebae97edd1dc03c45864da4e87df55bc9851797b4fd0b61"
+    },
+    "sha256": "4b92e748f570d9a8502137687bb332b34f60d0a74a7c95da5f809938ff969fdf"
+  },
+  "browserEvidence": {
+    "receipt": "../browser-receipt.json",
+    "syntheticAccountActions": true,
+    "journeys": [
+      {
+        "catalogId": 438,
+        "plan": "free",
+        "interactionElapsedMs": 19.900000002235174,
+        "performanceObservation": "Local visible calculation includes CDP latency; not hosted SLA",
+        "sourceBoundRealComponent": true,
+        "staleInvalidRefusal": true,
+        "keyboard": true,
+        "mobile": true,
+        "mathAnalysis": false,
+        "conversionSource": true,
+        "persistedSyntheticSaveReloadRestore": false,
+        "syntheticAuth": true
+      },
+      {
+        "catalogId": 438,
+        "plan": "pro",
+        "interactionElapsedMs": 26.300000000745058,
+        "performanceObservation": "Local visible calculation includes CDP latency; not hosted SLA",
+        "sourceBoundRealComponent": true,
+        "staleInvalidRefusal": true,
+        "keyboard": true,
+        "mobile": true,
+        "mathAnalysis": false,
+        "conversionSource": true,
+        "persistedSyntheticSaveReloadRestore": true,
+        "syntheticAuth": true
+      },
+      {
+        "catalogId": 438,
+        "plan": "business",
+        "interactionElapsedMs": 16.5,
+        "performanceObservation": "Local visible calculation includes CDP latency; not hosted SLA",
+        "sourceBoundRealComponent": true,
+        "staleInvalidRefusal": true,
+        "keyboard": true,
+        "mobile": true,
+        "mathAnalysis": false,
+        "conversionSource": true,
+        "persistedSyntheticSaveReloadRestore": true,
+        "syntheticAuth": true
+      }
+    ],
+    "downloads": [
+      {
+        "catalogId": 438,
+        "plan": "pro",
+        "format": "json",
+        "bytes": 531,
+        "sha256": "22c4c94c44f0c07f8fe33615e00b4f094aad147210ad3ac462093e4db679356d",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 438,
+        "plan": "pro",
+        "format": "csv",
+        "bytes": 395,
+        "sha256": "2ff105221459d002b31c73d2c03c8f90538d4193252418c5e7f316686186b748",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 438,
+        "plan": "pro",
+        "format": "pdf",
+        "bytes": 16214,
+        "sha256": "c82bdb57b628a1f6f39db60acbc7f59c3f53b3283f2796b2ff996f398c6ade52",
+        "popplerReadback": true
+      },
+      {
+        "catalogId": 438,
+        "plan": "business",
+        "format": "json",
+        "bytes": 531,
+        "sha256": "22c4c94c44f0c07f8fe33615e00b4f094aad147210ad3ac462093e4db679356d",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 438,
+        "plan": "business",
+        "format": "csv",
+        "bytes": 395,
+        "sha256": "2ff105221459d002b31c73d2c03c8f90538d4193252418c5e7f316686186b748",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 438,
+        "plan": "business",
+        "format": "pdf",
+        "bytes": 16214,
+        "sha256": "c82bdb57b628a1f6f39db60acbc7f59c3f53b3283f2796b2ff996f398c6ade52",
+        "popplerReadback": true
+      }
+    ]
+  },
+  "genuineAccountRpcEvidence": {
+    "receipt": "../account-receipt.json",
+    "observations": [
+      {
+        "catalogId": 438,
+        "slug": "force-converter",
+        "version": 1,
+        "plan": "free",
+        "input": {
+          "value": 1,
+          "fromUnit": "kn",
+          "toUnit": "n"
+        },
+        "output": {
+          "result": 1000
+        },
+        "historyId": "fc56ccfc-e625-441b-9df0-11bd267b2191",
+        "scenarioId": null,
+        "registeredRestoreVerified": false,
+        "realJWT": true,
+        "exactRetry": true,
+        "conflictDenied": true,
+        "foreignReadUpdateDeleteDenied": true,
+        "freeScenarioDenied": true
+      },
+      {
+        "catalogId": 438,
+        "slug": "force-converter",
+        "version": 1,
+        "plan": "pro",
+        "input": {
+          "value": 1,
+          "fromUnit": "kn",
+          "toUnit": "n"
+        },
+        "output": {
+          "result": 1000
+        },
+        "historyId": "004f6bce-20e3-4aa3-9299-999da71eff0f",
+        "scenarioId": "d642009a-86b7-4ce2-a607-8a9a8600f53a",
+        "registeredRestoreVerified": true,
+        "realJWT": true,
+        "exactRetry": true,
+        "conflictDenied": true,
+        "foreignReadUpdateDeleteDenied": true,
+        "freeScenarioDenied": false
+      },
+      {
+        "catalogId": 438,
+        "slug": "force-converter",
+        "version": 1,
+        "plan": "business",
+        "input": {
+          "value": 1,
+          "fromUnit": "kn",
+          "toUnit": "n"
+        },
+        "output": {
+          "result": 1000
+        },
+        "historyId": "b46b173c-da4e-41bc-b603-af85c4dcf6dd",
+        "scenarioId": "6ecf0829-49cc-4cab-a2d8-131ef049d8c2",
+        "registeredRestoreVerified": true,
+        "realJWT": true,
+        "exactRetry": true,
+        "conflictDenied": true,
+        "foreignReadUpdateDeleteDenied": true,
+        "freeScenarioDenied": false
+      }
+    ],
+    "genuineBrowserServerActions": "SEE_SEPARATE_FINAL_VALIDATION"
+  },
+  "outstandingDecisions": [
+    "Accept/reject full canonical scope against exact catalog/Blueprint; offered bounded profile is not automatically complete",
+    "Accept/reject source applicability, formula/units, numerical precision/refusal and QA evidence",
+    "Resolve applicable organization-shared attachment and durable delivery/automation requirements; preserve proven capabilities",
+    "Record actual reviewer competence, independence, appointment authority and signed exact-version decision"
+  ],
+  "reviewerIdentity": null,
+  "appointment": null,
+  "competence": null,
+  "independence": null,
+  "signature": null,
+  "sourceDecision": "PENDING",
+  "formulaPrecisionDecision": "PENDING",
+  "canonicalQaDecision": "PENDING",
+  "canonicalAccepted": false,
+  "certified": false,
+  "publicationEligible": false,
+  "releaseHold": true,
+  "genuineNextPositiveEvidence": {
+    "path": "../genuine-browser-positive-receipt.json",
+    "sha256": "822a6c865a2aa4ffe6783a3ec377a292b2f6c13a279ea5ac8be33b5db094a088",
+    "observedPositiveJourneys": 3,
+    "paidDocumentReloadRestores": 2,
+    "wholeProducerPassed": false,
+    "ownerSwitchPostSqlVerified": false
+  }
+}

@@ -1,0 +1,1059 @@
+TAP version 13
+# Subtest: exact23live objects precede historical capability; maps cannot alter private evidence
+ok 1 - exact23live objects precede historical capability; maps cannot alter private evidence
+  ---
+  duration_ms: 1485.020619
+  type: 'test'
+  ...
+# Subtest: all23current paths reject tamper and predecessor reversion before capability escape
+ok 2 - all23current paths reject tamper and predecessor reversion before capability escape
+  ---
+  duration_ms: 774.899013
+  type: 'test'
+  ...
+# Subtest: native metadata HEAD move and dirty SRC fail closed
+ok 3 - native metadata HEAD move and dirty SRC fail closed
+  ---
+  duration_ms: 933.711133
+  type: 'test'
+  ...
+# Subtest: physical file and parent directory symlinks are rejected
+ok 4 - physical file and parent directory symlinks are rejected
+  ---
+  duration_ms: 846.26144
+  type: 'test'
+  ...
+# Subtest: raw retained Stage8 rejects stale Stage9 capability and immutable alias
+ok 5 - raw retained Stage8 rejects stale Stage9 capability and immutable alias
+  ---
+  duration_ms: 714.568774
+  type: 'test'
+  ...
+# Subtest: the entire populated independent authority is fixed before any candidate can attest itself
+ok 6 - the entire populated independent authority is fixed before any candidate can attest itself
+  ---
+  duration_ms: 2073.680105
+  type: 'test'
+  ...
+# Subtest: actual current execution passes while unchanged R5 executes at literal A7
+not ok 7 - actual current execution passes while unchanged R5 executes at literal A7
+  ---
+  duration_ms: 10.059104
+  type: 'test'
+  location: '/workspace/coordinator-226-20261115/tests/parallel-source-20261110/current.test.mjs:83:1'
+  failureType: 'testCodeFailure'
+  error: 'Independent current target bytes differ: src/components/calculator-factory-portal.tsx'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    rejectChangedCurrentStageSourceBytes (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-current-src.mjs:22:57)
+    rejectChangedCurrentAuthorityBytes (file:///workspace/coordinator-226-20261115/tests/parallel-source-20261110/core.mjs:364:2)
+    verifyParallelSource (file:///workspace/coordinator-226-20261115/tests/parallel-source-20261110/core.mjs:368:84)
+    TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/parallel-source-20261110/current.test.mjs:84:15)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/app/api/business/technology-five-shares/route.test.ts
+ok 8 - current source reader rejects changed exact app bytes src/app/api/business/technology-five-shares/route.test.ts
+  ---
+  duration_ms: 11.77908
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/app/business/projects/[id]/page.test.tsx
+ok 9 - current source reader rejects changed exact app bytes src/app/business/projects/[id]/page.test.tsx
+  ---
+  duration_ms: 9.297797
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/app/business/projects/[id]/page.tsx
+ok 10 - current source reader rejects changed exact app bytes src/app/business/projects/[id]/page.tsx
+  ---
+  duration_ms: 16.251656
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/components/catalog-engineering-review.tsx
+ok 11 - current source reader rejects changed exact app bytes src/components/catalog-engineering-review.tsx
+  ---
+  duration_ms: 3.151397
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/components/converter-cohort-20261110-examples.tsx
+ok 12 - current source reader rejects changed exact app bytes src/components/converter-cohort-20261110-examples.tsx
+  ---
+  duration_ms: 4.785408
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/components/parallel-completion-integration.test.tsx
+ok 13 - current source reader rejects changed exact app bytes src/components/parallel-completion-integration.test.tsx
+  ---
+  duration_ms: 4.500468
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/components/parallel-converters-evidence.test.tsx
+ok 14 - current source reader rejects changed exact app bytes src/components/parallel-converters-evidence.test.tsx
+  ---
+  duration_ms: 4.293326
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/components/parallel-guided-business-evidence.test.tsx
+ok 15 - current source reader rejects changed exact app bytes src/components/parallel-guided-business-evidence.test.tsx
+  ---
+  duration_ms: 4.620197
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/components/publication20-tool.tsx
+ok 16 - current source reader rejects changed exact app bytes src/components/publication20-tool.tsx
+  ---
+  duration_ms: 4.042997
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/components/specialist-general-20261110-business-input.tsx
+ok 17 - current source reader rejects changed exact app bytes src/components/specialist-general-20261110-business-input.tsx
+  ---
+  duration_ms: 4.161383
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/components/technology-five-share-form.tsx
+ok 18 - current source reader rejects changed exact app bytes src/components/technology-five-share-form.tsx
+  ---
+  duration_ms: 4.511407
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/lib/business/technology-next-sharing.test.ts
+ok 19 - current source reader rejects changed exact app bytes src/lib/business/technology-next-sharing.test.ts
+  ---
+  duration_ms: 7.248912
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/lib/business/technology-next-sharing.ts
+ok 20 - current source reader rejects changed exact app bytes src/lib/business/technology-next-sharing.ts
+  ---
+  duration_ms: 8.461566
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/lib/converter-cohort-20261110.ts
+ok 21 - current source reader rejects changed exact app bytes src/lib/converter-cohort-20261110.ts
+  ---
+  duration_ms: 6.771914
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/lib/finance-cohort-20261110-annuity.ts
+ok 22 - current source reader rejects changed exact app bytes src/lib/finance-cohort-20261110-annuity.ts
+  ---
+  duration_ms: 9.247073
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/lib/native-delivery/technology-five-catalog.ts
+ok 23 - current source reader rejects changed exact app bytes src/lib/native-delivery/technology-five-catalog.ts
+  ---
+  duration_ms: 3.165288
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/lib/native-delivery/technology-five-contract.ts
+ok 24 - current source reader rejects changed exact app bytes src/lib/native-delivery/technology-five-contract.ts
+  ---
+  duration_ms: 2.427655
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/lib/native-delivery/technology-five-publication.test.ts
+ok 25 - current source reader rejects changed exact app bytes src/lib/native-delivery/technology-five-publication.test.ts
+  ---
+  duration_ms: 2.746954
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/lib/native-delivery/technology-native-schema.ts
+ok 26 - current source reader rejects changed exact app bytes src/lib/native-delivery/technology-native-schema.ts
+  ---
+  duration_ms: 3.194724
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/lib/native-delivery/technology-next-composition.test.ts
+ok 27 - current source reader rejects changed exact app bytes src/lib/native-delivery/technology-next-composition.test.ts
+  ---
+  duration_ms: 2.821075
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/lib/native-delivery/technology-next-five-composition.test.ts
+ok 28 - current source reader rejects changed exact app bytes src/lib/native-delivery/technology-next-five-composition.test.ts
+  ---
+  duration_ms: 3.561695
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/lib/parallel-finance-qualification.test.ts
+ok 29 - current source reader rejects changed exact app bytes src/lib/parallel-finance-qualification.test.ts
+  ---
+  duration_ms: 2.482171
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/lib/parallel-readiness-evidence.test.ts
+ok 30 - current source reader rejects changed exact app bytes src/lib/parallel-readiness-evidence.test.ts
+  ---
+  duration_ms: 2.750135
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/lib/registered-snapshot-verification.ts
+ok 31 - current source reader rejects changed exact app bytes src/lib/registered-snapshot-verification.ts
+  ---
+  duration_ms: 2.566096
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/lib/specialist-general-20261110-business-input.ts
+ok 32 - current source reader rejects changed exact app bytes src/lib/specialist-general-20261110-business-input.ts
+  ---
+  duration_ms: 2.755094
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/lib/technology-cidr-snapshot-verification.test.ts
+ok 33 - current source reader rejects changed exact app bytes src/lib/technology-cidr-snapshot-verification.test.ts
+  ---
+  duration_ms: 2.667854
+  type: 'test'
+  ...
+# Subtest: current source reader rejects changed exact app bytes src/lib/technology-cidr-snapshot-verification.ts
+ok 34 - current source reader rejects changed exact app bytes src/lib/technology-cidr-snapshot-verification.ts
+  ---
+  duration_ms: 2.701389
+  type: 'test'
+  ...
+# Subtest: no-op validator cannot nominate itself tests/parallel-source-20261110/core.mjs
+ok 35 - no-op validator cannot nominate itself tests/parallel-source-20261110/core.mjs
+  ---
+  duration_ms: 7.643933
+  type: 'test'
+  ...
+# Subtest: no-op validator cannot nominate itself tests/parallel-source-20261110/bootstrap.mjs
+ok 36 - no-op validator cannot nominate itself tests/parallel-source-20261110/bootstrap.mjs
+  ---
+  duration_ms: 7.573078
+  type: 'test'
+  ...
+# Subtest: no-op validator cannot nominate itself tests/parallel-source-20261110/baseline-probe.mjs
+ok 37 - no-op validator cannot nominate itself tests/parallel-source-20261110/baseline-probe.mjs
+  ---
+  duration_ms: 10.051148
+  type: 'test'
+  ...
+# Subtest: no-op validator cannot nominate itself tests/parallel-source-20261110/historical-tests.mjs
+ok 38 - no-op validator cannot nominate itself tests/parallel-source-20261110/historical-tests.mjs
+  ---
+  duration_ms: 2.716744
+  type: 'test'
+  ...
+# Subtest: no-op validator cannot nominate itself tests/parallel-source-20261110/git-reader.mjs
+ok 39 - no-op validator cannot nominate itself tests/parallel-source-20261110/git-reader.mjs
+  ---
+  duration_ms: 15.617203
+  type: 'test'
+  ...
+# Subtest: no-op validator cannot nominate itself tests/parallel-source-20261110/source-object-lock.mjs
+ok 40 - no-op validator cannot nominate itself tests/parallel-source-20261110/source-object-lock.mjs
+  ---
+  duration_ms: 3.775732
+  type: 'test'
+  ...
+# Subtest: no-op validator cannot nominate itself scripts/product-completion-lineage.mjs
+ok 41 - no-op validator cannot nominate itself scripts/product-completion-lineage.mjs
+  ---
+  duration_ms: 4.486021
+  type: 'test'
+  ...
+# Subtest: a closed asynchronous-style target map supplies every current byte without a workspace fallback
+not ok 42 - a closed asynchronous-style target map supplies every current byte without a workspace fallback
+  ---
+  duration_ms: 249.861246
+  type: 'test'
+  location: '/workspace/coordinator-226-20261115/tests/parallel-source-20261110/current.test.mjs:99:1'
+  failureType: 'testCodeFailure'
+  error: 'Independent current target bytes differ: src/components/calculator-factory-portal.tsx'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    rejectChangedCurrentStageSourceBytes (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-current-src.mjs:22:57)
+    rejectChangedCurrentAuthorityBytes (file:///workspace/coordinator-226-20261115/tests/parallel-source-20261110/core.mjs:364:2)
+    verifyParallelSource (file:///workspace/coordinator-226-20261115/tests/parallel-source-20261110/core.mjs:368:84)
+    TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/parallel-source-20261110/current.test.mjs:101:15)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: old valid app bytes cannot replace the reviewed source
+ok 43 - old valid app bytes cannot replace the reviewed source
+  ---
+  duration_ms: 38.077188
+  type: 'test'
+  ...
+# Subtest: coordinated capture edits, removed dependencies and unsafe paths are not admission authority
+ok 44 - coordinated capture edits, removed dependencies and unsafe paths are not admission authority
+  ---
+  duration_ms: 61.937629
+  type: 'test'
+  ...
+# Subtest: missing or substituted actual Git provenance is never supplied by a receipt
+not ok 45 - missing or substituted actual Git provenance is never supplied by a receipt
+  ---
+  duration_ms: 3.868887
+  type: 'test'
+  location: '/workspace/coordinator-226-20261115/tests/parallel-source-20261110/current.test.mjs:113:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /Missing current provenance/. Input:
+    
+    'AssertionError [ERR_ASSERTION]: Independent current target bytes differ: src/components/calculator-factory-portal.tsx'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: 'Independent current target bytes differ: src/components/calculator-factory-portal.tsx'
+  stack: |-
+    rejectChangedCurrentStageSourceBytes (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-current-src.mjs:22:57)
+    rejectChangedCurrentAuthorityBytes (file:///workspace/coordinator-226-20261115/tests/parallel-source-20261110/core.mjs:364:2)
+    verifyParallelSource (file:///workspace/coordinator-226-20261115/tests/parallel-source-20261110/core.mjs:368:84)
+    file:///workspace/coordinator-226-20261115/tests/parallel-source-20261110/current.test.mjs:114:20
+    getActual (node:assert:609:5)
+    Function.throws (node:assert:757:24)
+    TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/parallel-source-20261110/current.test.mjs:114:9)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/parallel-source-20261110/current.test.mjs:114:9)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: the complete binding graph cannot be truncated by a supplied caller
+not ok 46 - the complete binding graph cannot be truncated by a supplied caller
+  ---
+  duration_ms: 5.135057
+  type: 'test'
+  location: '/workspace/coordinator-226-20261115/tests/parallel-source-20261110/current.test.mjs:117:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /Only the reviewed parallel source rows/. Input:
+    
+    'AssertionError [ERR_ASSERTION]: Independent current target bytes differ: src/components/calculator-factory-portal.tsx'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: 'Independent current target bytes differ: src/components/calculator-factory-portal.tsx'
+  stack: |-
+    rejectChangedCurrentStageSourceBytes (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-current-src.mjs:22:57)
+    rejectChangedCurrentAuthorityBytes (file:///workspace/coordinator-226-20261115/tests/parallel-source-20261110/core.mjs:364:2)
+    verifyParallelSource (file:///workspace/coordinator-226-20261115/tests/parallel-source-20261110/core.mjs:368:84)
+    file:///workspace/coordinator-226-20261115/tests/parallel-source-20261110/current.test.mjs:118:104
+    getActual (node:assert:609:5)
+    Function.throws (node:assert:757:24)
+    TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/parallel-source-20261110/current.test.mjs:118:93)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/parallel-source-20261110/current.test.mjs:118:93)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: source availability refuses unsafe or multiple origins and substituted commits before fetching
+ok 47 - source availability refuses unsafe or multiple origins and substituted commits before fetching
+  ---
+  duration_ms: 24.157967
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/app/admin/calculator-factory/page.test.tsx
+ok 48 - finite factory stage rejects altered or reverted bytes src/app/admin/calculator-factory/page.test.tsx
+  ---
+  duration_ms: 9.989889
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/app/admin/calculator-factory/page.tsx
+ok 49 - finite factory stage rejects altered or reverted bytes src/app/admin/calculator-factory/page.tsx
+  ---
+  duration_ms: 15.437008
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/app/api/v1/calculator-factory/calculate/route.test.ts
+ok 50 - finite factory stage rejects altered or reverted bytes src/app/api/v1/calculator-factory/calculate/route.test.ts
+  ---
+  duration_ms: 24.013122
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/app/api/v1/calculator-factory/calculate/route.ts
+ok 51 - finite factory stage rejects altered or reverted bytes src/app/api/v1/calculator-factory/calculate/route.ts
+  ---
+  duration_ms: 19.0374
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/components/calculator-factory-portal.test.tsx
+ok 52 - finite factory stage rejects altered or reverted bytes src/components/calculator-factory-portal.test.tsx
+  ---
+  duration_ms: 15.372908
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/components/calculator-factory-portal.tsx
+ok 53 - finite factory stage rejects altered or reverted bytes src/components/calculator-factory-portal.tsx
+  ---
+  duration_ms: 5.355109
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/components/calculator-factory-workbench.test.tsx
+ok 54 - finite factory stage rejects altered or reverted bytes src/components/calculator-factory-workbench.test.tsx
+  ---
+  duration_ms: 6.401083
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/components/calculator-factory-workbench.tsx
+ok 55 - finite factory stage rejects altered or reverted bytes src/components/calculator-factory-workbench.tsx
+  ---
+  duration_ms: 7.391548
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/basic-math.test.ts
+ok 56 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/basic-math.test.ts
+  ---
+  duration_ms: 5.62817
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/basic-math.ts
+ok 57 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/basic-math.ts
+  ---
+  duration_ms: 9.218911
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/conversions.test.ts
+ok 58 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/conversions.test.ts
+  ---
+  duration_ms: 21.782904
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/conversions.ts
+ok 59 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/conversions.ts
+  ---
+  duration_ms: 19.826281
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/physics.test.ts
+ok 60 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/physics.test.ts
+  ---
+  duration_ms: 5.971459
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/physics.ts
+ok 61 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/cohorts/physics.ts
+  ---
+  duration_ms: 6.686918
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/experimental/physics-scaled.test.ts
+ok 62 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/experimental/physics-scaled.test.ts
+  ---
+  duration_ms: 6.974605
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/experimental/physics-scaled.ts
+ok 63 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/experimental/physics-scaled.ts
+  ---
+  duration_ms: 5.731876
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/publication.test.ts
+ok 64 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/publication.test.ts
+  ---
+  duration_ms: 6.014487
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/publication.ts
+ok 65 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/publication.ts
+  ---
+  duration_ms: 5.868158
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/registry.test.ts
+ok 66 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/registry.test.ts
+  ---
+  duration_ms: 6.321239
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/registry.ts
+ok 67 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/registry.ts
+  ---
+  duration_ms: 9.779095
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/workflows.test.ts
+ok 68 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/workflows.test.ts
+  ---
+  duration_ms: 6.781416
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/workflows.ts
+ok 69 - finite factory stage rejects altered or reverted bytes src/lib/calculator-factory/workflows.ts
+  ---
+  duration_ms: 6.350334
+  type: 'test'
+  ...
+# Subtest: finite factory stage rejects altered or reverted bytes src/lib/parallel-source-evidence.test.ts
+ok 70 - finite factory stage rejects altered or reverted bytes src/lib/parallel-source-evidence.test.ts
+  ---
+  duration_ms: 6.623063
+  type: 'test'
+  ...
+# Subtest: factory capture and literal policy are independently governed
+not ok 71 - factory capture and literal policy are independently governed
+  ---
+  duration_ms: 13137.259908
+  type: 'test'
+  location: '/workspace/coordinator-226-20261115/tests/parallel-source-20261110/current.test.mjs:128:1'
+  failureType: 'testCodeFailure'
+  error: 'Command failed: /workspace/.pr1467/sprint/node-v22.23.4-linux-x64/bin/node --test tests/completion-first-20261112/personal-stage.test.mjs'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    genericNodeError (node:internal/errors:983:15)
+    wrappedFn (node:internal/errors:537:14)
+    checkExecSyncError (node:child_process:916:11)
+    execFileSync (node:child_process:952:15)
+    TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/parallel-source-20261110/current.test.mjs:136:15)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+  ...
+# Subtest: exact Stage5 actual application source is live and finite
+ok 72 - exact Stage5 actual application source is live and finite
+  ---
+  duration_ms: 941.349002
+  type: 'test'
+  ...
+# Subtest: Stage5 refuses altered actual current application bytes src/components/calculator-factory-portal.tsx
+ok 73 - Stage5 refuses altered actual current application bytes src/components/calculator-factory-portal.tsx
+  ---
+  duration_ms: 0.665631
+  type: 'test'
+  ...
+# Subtest: Stage5 refuses altered actual current application bytes src/components/calculator-factory-shared-workspace.test.tsx
+ok 74 - Stage5 refuses altered actual current application bytes src/components/calculator-factory-shared-workspace.test.tsx
+  ---
+  duration_ms: 123.021123
+  type: 'test'
+  ...
+# Subtest: Stage5 refuses altered actual current application bytes src/components/calculator-factory-shared-workspace.tsx
+ok 75 - Stage5 refuses altered actual current application bytes src/components/calculator-factory-shared-workspace.tsx
+  ---
+  duration_ms: 114.137269
+  type: 'test'
+  ...
+# Subtest: Stage5 refuses altered actual current application bytes src/components/completion-wave-analysis.test.tsx
+ok 76 - Stage5 refuses altered actual current application bytes src/components/completion-wave-analysis.test.tsx
+  ---
+  duration_ms: 136.604613
+  type: 'test'
+  ...
+# Subtest: Stage5 refuses altered actual current application bytes src/components/completion-wave-analysis.tsx
+ok 77 - Stage5 refuses altered actual current application bytes src/components/completion-wave-analysis.tsx
+  ---
+  duration_ms: 119.754088
+  type: 'test'
+  ...
+# Subtest: Stage5 refuses altered actual current application bytes src/lib/business/factory-nine-sharing.test.ts
+ok 78 - Stage5 refuses altered actual current application bytes src/lib/business/factory-nine-sharing.test.ts
+  ---
+  duration_ms: 0.550272
+  type: 'test'
+  ...
+# Subtest: Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/business-cases.test.ts
+ok 79 - Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/business-cases.test.ts
+  ---
+  duration_ms: 121.740843
+  type: 'test'
+  ...
+# Subtest: Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/business-cases.ts
+ok 80 - Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/business-cases.ts
+  ---
+  duration_ms: 109.074371
+  type: 'test'
+  ...
+# Subtest: Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/conversion-workflows.ts
+ok 81 - Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/conversion-workflows.ts
+  ---
+  duration_ms: 108.963781
+  type: 'test'
+  ...
+# Subtest: Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/engine-evidence.test.ts
+ok 82 - Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/engine-evidence.test.ts
+  ---
+  duration_ms: 112.644348
+  type: 'test'
+  ...
+# Subtest: Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/math-analysis.ts
+ok 83 - Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/math-analysis.ts
+  ---
+  duration_ms: 118.163539
+  type: 'test'
+  ...
+# Subtest: Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/native-wave.test.ts
+ok 84 - Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/native-wave.test.ts
+  ---
+  duration_ms: 115.025662
+  type: 'test'
+  ...
+# Subtest: Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/physics.ts
+ok 85 - Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/physics.ts
+  ---
+  duration_ms: 141.48727
+  type: 'test'
+  ...
+# Subtest: Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/retained-nine-tuples.ts
+ok 86 - Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/retained-nine-tuples.ts
+  ---
+  duration_ms: 135.515611
+  type: 'test'
+  ...
+# Subtest: Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/sql-successor.test.ts
+ok 87 - Stage5 refuses altered actual current application bytes src/lib/completion-wave-20261113/sql-successor.test.ts
+  ---
+  duration_ms: 0.798367
+  type: 'test'
+  ...
+# Subtest: Stage5 refuses altered actual current application bytes src/lib/native-delivery/factory-automation-contract.test.ts
+ok 88 - Stage5 refuses altered actual current application bytes src/lib/native-delivery/factory-automation-contract.test.ts
+  ---
+  duration_ms: 0.759648
+  type: 'test'
+  ...
+# Subtest: Stage5 refuses altered actual current application bytes src/lib/native-delivery/factory-automation-sql.test.ts
+ok 89 - Stage5 refuses altered actual current application bytes src/lib/native-delivery/factory-automation-sql.test.ts
+  ---
+  duration_ms: 129.510786
+  type: 'test'
+  ...
+# Subtest: Stage5 refuses altered actual current application bytes src/lib/native-delivery/factory-delivery-catalog.ts
+ok 90 - Stage5 refuses altered actual current application bytes src/lib/native-delivery/factory-delivery-catalog.ts
+  ---
+  duration_ms: 0.681464
+  type: 'test'
+  ...
+# Subtest: Stage5 refuses altered actual current application bytes src/lib/native-delivery/factory-embed-contract.test.ts
+ok 91 - Stage5 refuses altered actual current application bytes src/lib/native-delivery/factory-embed-contract.test.ts
+  ---
+  duration_ms: 0.564017
+  type: 'test'
+  ...
+# Subtest: Stage5 proof imports and finite capture remain independent authority tests/completion-wave-20261113/source-app-stage5.mjs
+ok 92 - Stage5 proof imports and finite capture remain independent authority tests/completion-wave-20261113/source-app-stage5.mjs
+  ---
+  duration_ms: 3.714138
+  type: 'test'
+  ...
+# Subtest: Stage5 proof imports and finite capture remain independent authority tests/completion-wave-20261113/source-app-stage5-policy.mjs
+ok 93 - Stage5 proof imports and finite capture remain independent authority tests/completion-wave-20261113/source-app-stage5-policy.mjs
+  ---
+  duration_ms: 3.635402
+  type: 'test'
+  ...
+# Subtest: Stage5 proof imports and finite capture remain independent authority docs/completion-wave-20261113/source-app-stage5-revision2.json
+ok 94 - Stage5 proof imports and finite capture remain independent authority docs/completion-wave-20261113/source-app-stage5-revision2.json
+  ---
+  duration_ms: 2.52939
+  type: 'test'
+  ...
+# Subtest: mandatory source guard regressions exercise exact source and immutable availability without skips
+not ok 95 - mandatory source guard regressions exercise exact source and immutable availability without skips
+  ---
+  duration_ms: 35249.679457
+  type: 'test'
+  location: '/workspace/coordinator-226-20261115/tests/parallel-source-20261110/current.test.mjs:156:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Mandatory source guard children failed: Mandatory source guard child failed: tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs
+    stdout:
+    TAP version 13
+    # Subtest: the finite chronological captures resolve actual47 bytes with exactly10 current overrides
+    not ok 1 - the finite chronological captures resolve actual47 bytes with exactly10 current overrides
+      ---
+      duration_ms: 6.172982
+      type: 'test'
+      location: '/workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs:6:1'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        4319 !== 4153
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 4153
+      actual: 4319
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs:6:693)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.start (node:internal/test_runner/test:944:17)
+        startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+      ...
+    # Subtest: capture tamper is rejected before any nominated target bytes can enter
+    ok 2 - capture tamper is rejected before any nominated target bytes can enter
+      ---
+      duration_ms: 3.660474
+      type: 'test'
+      ...
+    # Subtest: codeRef path roster duplicate and malformed current tuple fail despite a synthetic matching digest
+    ok 3 - codeRef path roster duplicate and malformed current tuple fail despite a synthetic matching digest
+      ---
+      duration_ms: 9.730477
+      type: 'test'
+      ...
+    # Subtest: all47 changed or retained-version target bytes fail the old diagnostic before Git
+    not ok 4 - all47 changed or retained-version target bytes fail the old diagnostic before Git
+      ---
+      duration_ms: 15.574602
+      type: 'test'
+      location: '/workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs:9:1'
+      failureType: 'testCodeFailure'
+      error: |-
+        The input did not match the regular expression /Current factory bytes differ: src\/components\/calculator-factory-sensitivity\.test\.tsx/. Input:
+        
+        'AssertionError [ERR_ASSERTION]: Current factory bytes differ: src/components/calculator-factory-portal.tsx'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected:
+      actual:
+        generatedMessage: false
+        actual: false
+        expected: true
+        operator: '=='
+        diff: 'simple'
+      error: 'Current factory bytes differ: src/components/calculator-factory-portal.tsx'
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: false
+      operator: '=='
+      stack: |-
+        Object.preflightCurrentWorkflowBytes [as run] (eval at fixture (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs:5:151), <anonymous>:18:84)
+        file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs:9:279
+        getActual (node:assert:609:5)
+        Function.throws (node:assert:757:24)
+        TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs:9:264)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+        Test.postRun (node:internal/test_runner/test:1173:19)
+        Test.run (node:internal/test_runner/test:1101:12)
+      operator: 'throws'
+      stack: |-
+        TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs:9:264)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+        Test.postRun (node:internal/test_runner/test:1173:19)
+        Test.run (node:internal/test_runner/test:1101:12)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: overlays never expand beyond the literal workflow47 path universe
+    ok 5 - overlays never expand beyond the literal workflow47 path universe
+      ---
+      duration_ms: 0.767662
+      type: 'test'
+      ...
+    # Subtest: opaque transports skip without invoking either supplied endpoint
+    ok 6 - opaque transports skip without invoking either supplied endpoint
+      ---
+      duration_ms: 0.206319
+      type: 'test'
+      ...
+    # Subtest: registered inputs use the same actual reader and reject reader or root substitution
+    not ok 7 - registered inputs use the same actual reader and reject reader or root substitution
+      ---
+      duration_ms: 1.108364
+      type: 'test'
+      location: '/workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs:12:1'
+      failureType: 'testCodeFailure'
+      error: |-
+        Got unwanted exception.
+        Actual message: "Current factory bytes differ: src/components/calculator-factory-portal.tsx"
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      actual:
+        generatedMessage: false
+        actual: false
+        expected: true
+        operator: '=='
+        diff: 'simple'
+      error: 'Current factory bytes differ: src/components/calculator-factory-portal.tsx'
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: false
+      operator: '=='
+      stack: |-
+        Object.preflightCurrentWorkflowBytes [as run] (eval at fixture (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs:5:151), <anonymous>:18:84)
+        file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs:12:369
+        getActual (node:assert:609:5)
+        Function.doesNotThrow (node:assert:777:32)
+        TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs:12:350)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+        Test.postRun (node:internal/test_runner/test:1173:19)
+        Test.run (node:internal/test_runner/test:1101:12)
+      operator: 'doesNotThrow'
+      stack: |-
+        TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs:12:350)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+        Test.postRun (node:internal/test_runner/test:1173:19)
+        Test.run (node:internal/test_runner/test:1101:12)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: positive entry always continues into the unchanged full historical helper
+    ok 8 - positive entry always continues into the unchanged full historical helper
+      ---
+      duration_ms: 0.732086
+      type: 'test'
+      ...
+    # Subtest: repeated invocations reread all metadata and targets and cannot reuse a prior success
+    not ok 9 - repeated invocations reread all metadata and targets and cannot reuse a prior success
+      ---
+      duration_ms: 1.404122
+      type: 'test'
+      location: '/workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs:14:1'
+      failureType: 'testCodeFailure'
+      error: 'Current factory bytes differ: src/components/calculator-factory-portal.tsx'
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: false
+      operator: '=='
+      stack: |-
+        Object.preflightCurrentWorkflowBytes [as run] (eval at fixture (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs:5:151), <anonymous>:18:84)
+        TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs:14:273)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+        Test.postRun (node:internal/test_runner/test:1173:19)
+        Test.run (node:internal/test_runner/test:1101:12)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    1..9
+    # tests 9
+    # suites 0
+    # pass 5
+    # fail 4
+    # cancelled 0
+    # skipped 0
+    # todo 0
+    # duration_ms 53.907931
+    
+    stderr:
+    
+    Mandatory source guard child failed: tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs
+    stdout:
+    TAP version 13
+    # Subtest: all ten literal captures and latest exact current source bytes pass without a verdict
+    not ok 1 - all ten literal captures and latest exact current source bytes pass without a verdict
+      ---
+      duration_ms: 8.678088
+      type: 'test'
+      location: '/workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs:8:1'
+      failureType: 'testCodeFailure'
+      error: 'Independent current target bytes differ: src/components/calculator-factory-portal.tsx'
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: false
+      operator: '=='
+      stack: |-
+        rejectChangedCurrentStageSourceBytes (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-current-src.mjs:22:57)
+        TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs:8:124)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.start (node:internal/test_runner/test:944:17)
+        startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)
+      ...
+    # Subtest: every capture digest is authenticated before target nominations are used
+    ok 2 - every capture digest is authenticated before target nominations are used
+      ---
+      duration_ms: 33.14151
+      type: 'test'
+      ...
+    # Subtest: wrong codeRef roster duplicate and malformed tuple fail even with a matching synthetic capture digest
+    ok 3 - wrong codeRef roster duplicate and malformed tuple fail even with a matching synthetic capture digest
+      ---
+      duration_ms: 36.930091
+      type: 'test'
+      ...
+    # Subtest: every finite target rejects fresh changed bytes with the original path diagnostic
+    not ok 4 - every finite target rejects fresh changed bytes with the original path diagnostic
+      ---
+      duration_ms: 152.464717
+      type: 'test'
+      location: '/workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs:11:1'
+      failureType: 'testCodeFailure'
+      error: |-
+        The validation function is expected to return "true". Received false
+        
+        Caught error:
+        
+        AssertionError [ERR_ASSERTION]: Independent current target bytes differ: src/components/calculator-factory-portal.tsx
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: [Function (anonymous)]
+      actual:
+        generatedMessage: false
+        actual: false
+        expected: true
+        operator: '=='
+        diff: 'simple'
+      error: 'Independent current target bytes differ: src/components/calculator-factory-portal.tsx'
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: false
+      operator: '=='
+      stack: |-
+        rejectChangedCurrentStageSourceBytes (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-current-src.mjs:22:57)
+        file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs:11:165
+        getActual (node:assert:609:5)
+        Function.throws (node:assert:757:24)
+        TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs:11:154)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+        Test.postRun (node:internal/test_runner/test:1173:19)
+        Test.run (node:internal/test_runner/test:1101:12)
+      operator: 'throws'
+      stack: |-
+        TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs:11:154)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+        Test.postRun (node:internal/test_runner/test:1173:19)
+        Test.run (node:internal/test_runner/test:1101:12)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: chronological later tuples replace earlier valid historical bytes
+    ok 5 - chronological later tuples replace earlier valid historical bytes
+      ---
+      duration_ms: 3.560364
+      type: 'test'
+      ...
+    # Subtest: unknown paths are never added and no Git filesystem fallback or supplied policy is available
+    not ok 6 - unknown paths are never added and no Git filesystem fallback or supplied policy is available
+      ---
+      duration_ms: 3.744928
+      type: 'test'
+      location: '/workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs:13:1'
+      failureType: 'testCodeFailure'
+      error: 'Independent current target bytes differ: src/components/calculator-factory-portal.tsx'
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: false
+      operator: '=='
+      stack: |-
+        rejectChangedCurrentStageSourceBytes (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-current-src.mjs:22:57)
+        TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs:13:127)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+        Test.postRun (node:internal/test_runner/test:1173:19)
+        Test.run (node:internal/test_runner/test:1101:12)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: missing reader bytes unsupported capture values and nonBuffer target results fail closed
+    ok 7 - missing reader bytes unsupported capture values and nonBuffer target results fail closed
+      ---
+      duration_ms: 2.899078
+      type: 'test'
+      ...
+    # Subtest: each invocation freshly rereads all captures and targets after a previous pass
+    not ok 8 - each invocation freshly rereads all captures and targets after a previous pass
+      ---
+      duration_ms: 2.958042
+      type: 'test'
+      location: '/workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs:15:1'
+      failureType: 'testCodeFailure'
+      error: 'Independent current target bytes differ: src/components/calculator-factory-portal.tsx'
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: false
+      operator: '=='
+      stack: |-
+        rejectChangedCurrentStageSourceBytes (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-current-src.mjs:22:57)
+        TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs:15:255)
+        Test.runInAsyncScope (node:async_hooks:214:14)
+        Test.run (node:internal/test_runner/test:1047:25)
+        Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+        Test.postRun (node:internal/test_runner/test:1173:19)
+        Test.run (node:internal/test_runner/test:1101:12)
+        async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+      ...
+    # Subtest: the module exposes only negative refusal and no caller-selected records or proof map
+    ok 9 - the module exposes only negative refusal and no caller-selected records or proof map
+      ---
+      duration_ms: 0.352798
+      type: 'test'
+      ...
+    1..9
+    # tests 9
+    # suites 0
+    # pass 5
+    # fail 4
+    # cancelled 0
+    # skipped 0
+    # todo 0
+    # duration_ms 257.886416
+    
+    stderr:
+    
+  code: 'ERR_TEST_FAILURE'
+  name: 'AggregateError'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/coordinator-226-20261115/tests/parallel-source-20261110/current.test.mjs:183:29)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: cumulative23 admits only the exact nine-path worker delta and retains every original Stage9 binding
+ok 96 - cumulative23 admits only the exact nine-path worker delta and retains every original Stage9 binding
+  ---
+  duration_ms: 37.489219
+  type: 'test'
+  ...
+1..96
+# tests 96
+# suites 0
+# pass 90
+# fail 6
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 54097.525147

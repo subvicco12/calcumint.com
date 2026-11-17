@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "password-entropy-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "methodology": "Deterministic calculation using the reviewed Technology & Computing engine.\nTechnical calculation revision: technology.password-entropy@1\n\nTheoretical entropy for uniformly random independent characters drawn from the supplied pool; not an estimate for human-chosen passwords.\nEntropy bits = length × log2(character pool size)",
+      "input": {
+        "length": 16,
+        "characterPoolSize": 94
+      },
+      "output": {
+        "value": 104.8734216268422,
+        "steps": [
+          "Password Entropy = 104.8734216268422"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "password-entropy-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "length": {
+            "label": "Length"
+          },
+          "characterPoolSize": {
+            "label": "Character pool size"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Theoretical entropy",
+            "unit": "bits"
+          }
+        }
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "methodology": "Deterministic calculation using the reviewed Technology & Computing engine.\nTechnical calculation revision: technology.password-entropy@1\n\nTheoretical entropy for uniformly random independent characters drawn from the supplied pool; not an estimate for human-chosen passwords.\nEntropy bits = length × log2(character pool size)",
+      "input": {
+        "length": 32,
+        "characterPoolSize": 94
+      },
+      "output": {
+        "value": 209.7468432536844,
+        "steps": [
+          "Password Entropy = 209.7468432536844"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "password-entropy-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "length": {
+            "label": "Length"
+          },
+          "characterPoolSize": {
+            "label": "Character pool size"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Theoretical entropy",
+            "unit": "bits"
+          }
+        }
+      }
+    }
+  ]
+}

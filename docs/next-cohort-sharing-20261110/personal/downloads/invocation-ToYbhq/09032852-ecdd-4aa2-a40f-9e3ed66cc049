@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "power-supply-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "methodology": "Deterministic calculation using the reviewed Technology & Computing engine.\nTechnical calculation revision: technology.power-supply@1\n\nPlanning wattage from measured/estimated system load plus explicit headroom; not a PSU model recommendation.\nRequired W = system load × (1 + headroom %)",
+      "input": {
+        "systemLoadWatts": 500,
+        "headroomPercent": 20
+      },
+      "output": {
+        "value": 600,
+        "steps": [
+          "Power Supply = 600"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "power-supply-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "systemLoadWatts": {
+            "label": "System load (W)",
+            "unit": "W"
+          },
+          "headroomPercent": {
+            "label": "Headroom (%)",
+            "unit": "%"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Planning wattage",
+            "unit": "W"
+          }
+        }
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "methodology": "Deterministic calculation using the reviewed Technology & Computing engine.\nTechnical calculation revision: technology.power-supply@1\n\nPlanning wattage from measured/estimated system load plus explicit headroom; not a PSU model recommendation.\nRequired W = system load × (1 + headroom %)",
+      "input": {
+        "systemLoadWatts": 1000,
+        "headroomPercent": 20
+      },
+      "output": {
+        "value": 1200,
+        "steps": [
+          "Power Supply = 1200"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "power-supply-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "systemLoadWatts": {
+            "label": "System load (W)",
+            "unit": "W"
+          },
+          "headroomPercent": {
+            "label": "Headroom (%)",
+            "unit": "%"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Planning wattage",
+            "unit": "W"
+          }
+        }
+      }
+    }
+  ]
+}

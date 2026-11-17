@@ -1,0 +1,37 @@
+
+ RUN  v3.2.7 /workspace/work/product-completion-20261108
+
+ ✓ src/lib/calculator-closure-preview-security.test.ts (3 tests) 4462ms
+   ✓ isolates concurrent ephemeral servers and credentials  3158ms
+ ✓ src/lib/first20/preview-security.test.ts (3 tests) 5302ms
+   ✓ isolates concurrent ephemeral servers and credentials  3765ms
+ ❯ src/calculators/source-acceptance-evidence.test.ts (6 tests | 1 failed) 5829ms
+   × source acceptance evidence is complete in coverage and fail-closed in readiness > contains exact59packets and retains the11qualified cases unchanged 5567ms
+     → Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+   ✓ source acceptance evidence is complete in coverage and fail-closed in readiness > rejects unsupported completeness, identity, authority and qualified-status promotions 15ms
+   ✓ source acceptance evidence is complete in coverage and fail-closed in readiness > rejects stale referenced lane, source-index and inspected implementation evidence 19ms
+   ✓ source acceptance evidence is complete in coverage and fail-closed in readiness > replays67exact-rational candidate checks without claimingactual-engine acceptance 62ms
+   ✓ source acceptance evidence is complete in coverage and fail-closed in readiness > keeps publisher capture HTTPS,redirect and unreviewed-status protections 158ms
+   ✓ source acceptance evidence is complete in coverage and fail-closed in readiness > distinguishes the actualproxydenial from unattemptedurls and an inactive draft 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/calculators/source-acceptance-evidence.test.ts > source acceptance evidence is complete in coverage and fail-closed in readiness > contains exact59packets and retains the11qualified cases unchanged
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/calculators/source-acceptance-evidence.test.ts:60:2
+     58|
+     59| describe("source acceptance evidence is complete in coverage and fail-…
+     60|  it("contains exact59packets and retains the11qualified cases unchange…
+       |  ^
+     61|  it("rejects unsupported completeness, identity, authority and qualifi…
+     62|   const original=read(`${dir}/readiness-register.json`);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 11 passed (12)
+   Start at  12:45:23
+   Duration  6.27s (transform 216ms, setup 0ms, collect 212ms, tests 15.59s, environment 1ms, prepare 315ms)

@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "storage-conversion-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "methodology": "Binary IEC storage conversion only: B, KiB, MiB, GiB and TiB use exact powers of 1024 bytes. Decimal MB/GB and provider billing conventions are not silently substituted. The immutable v1 schema requires a strictly positive value.\nTechnical calculation revision: technology.storage-conversion@1\n\nBinary IEC storage-unit conversion using 1024-based multiples.\nConverted value = input bytes ÷ target-unit bytes",
+      "input": {
+        "value": 1,
+        "fromUnit": "GiB",
+        "toUnit": "MiB"
+      },
+      "output": {
+        "value": 1024,
+        "steps": [
+          "Storage Conversion = 1024"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "storage-conversion-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "value": {
+            "label": "Value",
+            "unit": "GiB"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Converted storage",
+            "unit": "MiB"
+          }
+        }
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "methodology": "Binary IEC storage conversion only: B, KiB, MiB, GiB and TiB use exact powers of 1024 bytes. Decimal MB/GB and provider billing conventions are not silently substituted. The immutable v1 schema requires a strictly positive value.\nTechnical calculation revision: technology.storage-conversion@1\n\nBinary IEC storage-unit conversion using 1024-based multiples.\nConverted value = input bytes ÷ target-unit bytes",
+      "input": {
+        "value": 2,
+        "fromUnit": "GiB",
+        "toUnit": "MiB"
+      },
+      "output": {
+        "value": 2048,
+        "steps": [
+          "Storage Conversion = 2048"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "storage-conversion-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "value": {
+            "label": "Value",
+            "unit": "GiB"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Converted storage",
+            "unit": "MiB"
+          }
+        }
+      }
+    }
+  ]
+}

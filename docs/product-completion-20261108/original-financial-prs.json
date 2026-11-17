@@ -1,0 +1,36 @@
+{
+  "originals": [
+    {
+      "number": 1370,
+      "head": "07520eb3e89815feda1448405da3b5f0132948c8",
+      "base": "caffafe639350ca0c2c2cf33ae1f099294f5af54",
+      "state": "open",
+      "title": "Reject financial rounding overflow and invalid direct loan inputs",
+      "closedByThisWork": false,
+      "reviewPreserved": true,
+      "requirements": "Schema-valid compound-interest inputs (`principal=1e308`, `annualRatePercent=-50`, `years=10`, `compoundsPerYear=1`) produce finite future value and unrounded interest but return `-Infinity` when interest is rounded. Separately, direct loan-payment calls accept finite rates, fractional terms and term lengths outside the existing schema. This PR rejects overflow in the shared rounding helper and applies the existing loan schema to direct calls, without changing formulas or ordinary rounding behavior.\n\nThe audit compared current main `caffafe639350ca0c2c2cf33ae1f099294f5af54` with open PR #1230 at `0e00fd887b4de7e57b664898fef82cf9573aae4a` and #1231 at `4255bc9048129f74effc76f6c087a815e9ddd0b8`. Both have successful exact-head CI. Their proposed fixes were not duplicated: #1230 adds unrounded loan-output guards; #1231 adds compound-interest direct-call bounds and an unrounded total-interest guard. The rounding defect was reproduced using #1231's actual proposed source, and the loan bound bypass was reproduced using #1230's actual proposed source. Both patches apply cleanly to this branch. The corrected rounding helper also rejects the #1231 reproduction.\n\nValidation:\n\n- Baseline: 17 focused existing tests passed; the new regression tests then exposed 12 failures before correction.\n- Final: 177 tests passed across finance, rounding boundaries, engine and launch-certification suites (26 files).\n- `npm run typecheck` passed.\n- ESLint passed for all four changed files; `git diff --check` passed.\n- Full suite and build were not repeated locally. Main and the two existing PRs have successful CI; this PR must receive its own exact-head CI before release.\n\nThis is a financial-risk change requiring applicable financial specialist review and engineering review of the shared helper. Extreme rounding cases now fail closed rather than returning nonfinite results. Existing examples, deterministic formulas, Free/Pro/Business accuracy parity, certification/publication metadata, specialist approvals, HOLD/DRAFT restrictions, RLS and release controls are preserved. `npm ci` and `next build --webpack` are unchanged. No merge, deployment, database write or calculator promotion was performed.\n\nReview sequence: review this distinct safety correction alongside #1230 and #1231; retain each proposed guard, obtain applicable specialist sign-off, refresh exact-head CI after any rebase, and verify resulting main CI under normal protected release procedures. No merge is authorized by this PR.\n"
+    },
+    {
+      "number": 1231,
+      "head": "4255bc9048129f74effc76f6c087a815e9ddd0b8",
+      "base": "50ae123536f65ac4039ef43fac1abe4c6a2efc30",
+      "state": "open",
+      "title": "Enforce compound-interest direct-call bounds and finite output checks",
+      "closedByThisWork": false,
+      "reviewPreserved": true,
+      "requirements": "Financial-risk change. Direct calculate() calls now enforce the same annual rate, years and compounding-frequency bounds as inputSchema; tests cover finite values outside those bounds. Includes existing finite-output defensive check. Keep DRAFT and do not merge without applicable financial specialist review, exact-head CI and release gates. No new GitHub Actions workflows or production deployment."
+    },
+    {
+      "number": 1230,
+      "head": "0e00fd887b4de7e57b664898fef82cf9573aae4a",
+      "base": "50ae123536f65ac4039ef43fac1abe4c6a2efc30",
+      "state": "open",
+      "title": "Fail closed on nonfinite loan-payment outputs",
+      "closedByThisWork": false,
+      "reviewPreserved": true,
+      "requirements": "Financial engine hardening: guard overflow in unrounded monthly payment and total payment rather than returning Infinity/NaN. No plan-specific formula logic; existing mathematical behavior for finite inputs is unchanged. Draft pending exact-head CI and financial-risk review per governance. No new workflows or runners."
+    }
+  ],
+  "adoption": "Unmerged; valid safety work carried into draft1538, superseded large-finite expectations corrected by independent witnesses; financial review still required",
+  "releaseHold": true
+}

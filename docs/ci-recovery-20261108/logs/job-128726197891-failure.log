@@ -1,0 +1,135 @@
+2026-11-08T12:13:58.4755173Z   ---
+2026-11-08T12:13:58.4755615Z   duration_ms: 79.986256
+2026-11-08T12:13:58.4755866Z   type: 'test'
+2026-11-08T12:13:58.4756044Z   ...
+2026-11-08T12:13:58.4823401Z # Subtest: all original checks remain byte-for-byte with20minute per-job budgets
+2026-11-08T12:13:58.4826803Z not ok 14 - all original checks remain byte-for-byte with20minute per-job budgets
+2026-11-08T12:13:58.4827170Z   ---
+2026-11-08T12:13:58.4836759Z   duration_ms: 3.721993
+2026-11-08T12:13:58.4836999Z   type: 'test'
+2026-11-08T12:13:58.4837408Z   location: '/home/runner/work/calcumint.com/calcumint.com/tests/ci-gate-recovery/workflow.test.mjs:11:1'
+2026-11-08T12:13:58.4838563Z   failureType: 'testCodeFailure'
+2026-11-08T12:13:58.4838803Z   error: |-
+2026-11-08T12:13:58.4839024Z     Expected values to be strictly deep-equal:
+2026-11-08T12:13:58.4839293Z     + actual - expected
+2026-11-08T12:13:58.4839494Z     ... Skipped lines
+2026-11-08T12:13:58.4839683Z
+2026-11-08T12:13:58.4839855Z       [
+2026-11-08T12:13:58.4840107Z         '      - name: Checkout\n        uses: actions/checkout@v5\n',
+2026-11-08T12:13:58.4840418Z         '      - name: Use Node.js 22\n' +
+2026-11-08T12:13:58.4840705Z           '        uses: actions/setup-node@v5\n' +
+2026-11-08T12:13:58.4840974Z           '        with:\n' +
+2026-11-08T12:13:58.4841214Z           '          node-version: 22\n',
+2026-11-08T12:13:58.4841568Z     +   '      - name: Fetch exact financial and caller source revisions\n' +
+2026-11-08T12:13:58.4841979Z     +     '        run: node scripts/fetch-source-lineage.mjs\n',
+2026-11-08T12:13:58.4842314Z         '      - name: Install dependencies\n' +
+2026-11-08T12:13:58.4842625Z           '        run: npm ci --no-audit --no-fund\n',
+2026-11-08T12:13:58.4842938Z         '      - name: GrowthOS heartbeat syntax\n' +
+2026-11-08T12:13:58.4843275Z           '        run: node --check scripts/growthos-heartbeat.mjs\n',
+2026-11-08T12:13:58.4843603Z         '      - name: Lint\n        run: npm run lint\n',
+2026-11-08T12:13:58.4843868Z     ...
+2026-11-08T12:13:58.4844207Z           '          CALCUMINT_ELECTRICITY_EVIDENCE: ${{ runner.temp }}/uk-2026-electricity\n',
+2026-11-08T12:13:58.4844649Z     +   '      - name: Provision pinned isolated browser fixture\n' +
+2026-11-08T12:13:58.4845314Z     +     '        timeout-minutes: 4\n' +
+2026-11-08T12:13:58.4845575Z     +     '        run: |\n' +
+2026-11-08T12:13:58.4845888Z     +     '          browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")\n' +
+2026-11-08T12:13:58.4846320Z     +     '          echo "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"\n' +
+2026-11-08T12:13:58.4846656Z     +     '          "$browser" --version\n',
+2026-11-08T12:13:58.4847141Z         '      - name: Unit tests\n        run: npm test\n',
+2026-11-08T12:13:58.4847537Z         '      - name: Launch certification\n        run: npm run test:launch\n',
+2026-11-08T12:13:58.4848236Z         '      - name: Calculator and rule-pack certification\n' +
+2026-11-08T12:13:58.4848571Z           '        run: npm run test:certification\n',
+2026-11-08T12:13:58.4848988Z     -   '      - name: Synthetic Reference Six browser acceptance\n' +
+2026-11-08T12:13:58.4849470Z     -     '        run: |\n' +
+2026-11-08T12:13:58.4850016Z     -     '          test -x "$CHROMIUM_PATH"\n' +
+2026-11-08T12:13:58.4850423Z     -     '          npm run test:final-reference-browser\n' +
+2026-11-08T12:13:58.4850728Z     -     '        env:\n' +
+2026-11-08T12:13:58.4851112Z     -     '          FINAL_REFERENCE_ARTIFACTS: ${{ runner.temp }}/final-reference-browser\n',
+2026-11-08T12:13:58.4851566Z     -   '      - name: Isolated Business browser acceptance\n' +
+2026-11-08T12:13:58.4851889Z     -     '        run: |\n' +
+2026-11-08T12:13:58.4852165Z     -     '          test -x "$CHROMIUM_PATH"\n' +
+2026-11-08T12:13:58.4852509Z     -     '          node scripts/test-business-browser.mjs\n' +
+2026-11-08T12:13:58.4852800Z     -     '        env:\n' +
+2026-11-08T12:13:58.4853186Z     -     '          BUSINESS_BROWSER_ARTIFACTS: ${{ runner.temp }}/business-browser\n'
+2026-11-08T12:13:58.4853543Z       ]
+2026-11-08T12:13:58.4853714Z
+2026-11-08T12:13:58.4853898Z   code: 'ERR_ASSERTION'
+2026-11-08T12:13:58.4854115Z   name: 'AssertionError'
+2026-11-08T12:13:58.4854326Z   expected:
+2026-11-08T12:13:58.4854498Z     0: |-
+2026-11-08T12:13:58.4854678Z             - name: Checkout
+2026-11-08T12:13:58.4854935Z               uses: actions/checkout@v5
+2026-11-08T12:13:58.4855217Z
+2026-11-08T12:13:58.4855381Z     1: |-
+2026-11-08T12:13:58.4855583Z             - name: Use Node.js 22
+2026-11-08T12:13:58.4855842Z               uses: actions/setup-node@v5
+2026-11-08T12:13:58.4856087Z               with:
+2026-11-08T12:13:58.4856305Z                 node-version: 22
+2026-11-08T12:13:58.4856532Z
+2026-11-08T12:13:58.4856700Z     2: |-
+2026-11-08T12:13:58.4856910Z             - name: Install dependencies
+2026-11-08T12:13:58.4857205Z               run: npm ci --no-audit --no-fund
+2026-11-08T12:13:58.4857438Z
+2026-11-08T12:13:58.4857601Z     3: |-
+2026-11-08T12:13:58.4858032Z             - name: GrowthOS heartbeat syntax
+2026-11-08T12:13:58.4858366Z               run: node --check scripts/growthos-heartbeat.mjs
+2026-11-08T12:13:58.4858639Z
+2026-11-08T12:13:58.4858798Z     4: |-
+2026-11-08T12:13:58.4859042Z             - name: Lint
+2026-11-08T12:13:58.4859258Z               run: npm run lint
+2026-11-08T12:13:58.4859466Z
+2026-11-08T12:13:58.4859623Z     5: |-
+2026-11-08T12:13:58.4859805Z             - name: Typecheck
+2026-11-08T12:13:58.4860050Z               run: npm run typecheck
+2026-11-08T12:13:58.4860270Z
+2026-11-08T12:13:58.4860426Z     6: |-
+2026-11-08T12:13:58.4860674Z             - name: Pull pinned isolated database fixtures
+2026-11-08T12:13:58.4860959Z               run: |
+2026-11-08T12:13:58.4861427Z                 docker pull postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94
+2026-11-08T12:13:58.4862160Z                 docker pull postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401
+2026-11-08T12:13:58.4862590Z
+2026-11-08T12:13:58.4862742Z     7: |-
+2026-11-08T12:13:58.4862985Z             - name: Isolated PostgreSQL HTTP security contract
+2026-11-08T12:13:58.4863518Z               run: node tests/next-runtime/security.mjs
+2026-11-08T12:13:58.4863780Z               env:
+2026-11-08T12:13:58.4864084Z                 NEXT_RUNTIME_ARTIFACTS: ${{ runner.temp }}/next-runtime-security
+2026-11-08T12:13:58.4864428Z
+2026-11-08T12:13:58.4864588Z     8: |-
+2026-11-08T12:13:58.4864850Z             - name: Provision pinned isolated browser fixture
+2026-11-08T12:13:58.4865159Z               timeout-minutes: 4
+2026-11-08T12:13:58.4865372Z               run: |
+2026-11-08T12:13:58.4865841Z                 browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")
+2026-11-08T12:13:58.4866247Z                 echo "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"
+2026-11-08T12:13:58.4866540Z                 "$browser" --version
+2026-11-08T12:13:58.4866777Z
+2026-11-08T12:13:58.4866951Z     9: |-
+2026-11-08T12:13:58.4867177Z             - name: Isolated browser transport recovery
+2026-11-08T12:13:58.4867457Z               run: |
+2026-11-08T12:13:58.4867695Z                 test -x "$CHROMIUM_PATH"
+2026-11-08T12:13:58.4868424Z                 node --test --test-reporter=spec tests/next-runtime/browser-fixture.test.mjs tests/next-runtime/owner-preview-readiness.test.mjs
+2026-11-08T12:13:58.4869061Z                 node --test --test-reporter=spec tests/next-runtime/cdp.test.mjs
+2026-11-08T12:13:58.4869388Z               env:
+2026-11-08T12:13:58.4869603Z                 CDP_STARTUP_DIAGNOSTICS: '1'
+2026-11-08T12:13:58.4869858Z
+2026-11-08T12:13:58.4870036Z     10: |-
+2026-11-08T12:13:58.4870276Z             - name: Actual Next.js Business runtime acceptance
+2026-11-08T12:13:58.4870591Z               run: |
+2026-11-08T12:13:58.4870819Z                 test -x "$CHROMIUM_PATH"
+2026-11-08T12:13:58.4871115Z                 node scripts/test-next-runtime-browser.mjs
+2026-11-08T12:13:58.4871420Z               env:
+2026-11-08T12:13:58.4871716Z                 NEXT_RUNTIME_ARTIFACTS: ${{ runner.temp }}/next-runtime-browser
+2026-11-08T12:13:58.4872122Z                 CDP_STARTUP_DIAGNOSTICS: '1'
+2026-11-08T12:13:58.4872388Z
+2026-11-08T12:13:58.4872574Z     11: |-
+2026-11-08T12:13:58.4872945Z             - name: Private supplied workflow browser acceptance
+2026-11-08T12:13:58.4873304Z               run: node tests/workflow-review/browser.mjs
+2026-11-08T12:13:58.4873582Z               env:
+2026-11-08T12:13:58.4873930Z                 CALCUMINT_WORKFLOW_EVIDENCE: ${{ runner.temp }}/private-workflow-browser
+2026-11-08T12:13:58.4874276Z
+2026-11-08T12:13:58.4874437Z     12: |-
+2026-11-08T12:13:58.4874739Z             - name: Source-bound profile and plan-parity browser acceptance
+2026-11-08T12:13:58.4875151Z               run: node tests/source-profile-review/browser.mjs
+2026-11-08T12:13:58.4875415Z               env:
+2026-11-08T12:13:58.4875766Z                 CALCUMINT_SOURCE_PROFILE_EVIDENCE: ${{ runner.temp }}/source-profile-browser
+2026-11-08T12:13:58.4876151Z
+2026-11-08T12:13:58.4876304Z     13: |-

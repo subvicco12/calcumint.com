@@ -1,0 +1,757 @@
+
+ RUN  v3.2.7 /tmp/calcumint-five-sharing-20261109
+
+ ❯ src/components/technology-five-shared-comparison.test.tsx (2 tests | 1 failed) 270ms
+   ✓ compares immutable shared records through the existing same-revision A/B controls 212ms
+   × does not carry captures across calculator identities or project contexts 57ms
+     → Unable to find a label with the text of: Shared calculator for comparison
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-label[39m=[32m"Shared record comparison"[39m
+    [36m>[39m
+      [36m<h2>[39m
+        [0mCompare shared records[0m
+      [36m</h2>[39m
+      [36m<p>[39m
+        [0mSelect an immutable record and capture A, then select another record of the same calculator and technical revision and capture B or C. Comparisons and recovered scenario templates are separate working copies. Switching calculator identity clears the working set. Sharing a record or exporting a scenario never changes organization history.[0m
+      [36m</p>[39m
+      [36m<label>[39m
+        [0mShared record for comparison[0m
+        [36m<select[39m
+          [33maria-label[39m=[32m"Shared record for comparison"[39m
+        [36m>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"a"[39m
+          [36m>[39m
+            [0mFirst snapshot[0m
+            [0m · [0m
+            [0mbase64-size-calculator[0m
+            [0m · version [0m
+            [0m1[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"c"[39m
+          [36m>[39m
+            [0mBandwidth[0m
+            [0m · [0m
+            [0mbandwidth-calculator[0m
+            [0m · version [0m
+            [0m1[0m
+          [36m</option>[39m
+        [36m</select>[39m
+      [36m</label>[39m
+      [36m<p>[39m
+        [0mSelected recorded result: [0m
+        [0m1336[0m
+      [36m</p>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"Scenario workspace"[39m
+        [33mclass[39m=[32m"calculator-scenarios"[39m
+      [36m>[39m
+        [36m<details[39m
+          [33mopen[39m=[32m""[39m
+        [36m>[39m
+          [36m<summary>[39m
+            [0mYour A/B/C scenarios[0m
+          [36m</summary>[39m
+          [36m<p>[39m
+            [0mCapture the current calculated inputs and result as baseline A, then change the calculator inputs and capture B or C. These are historical snapshots; changing inputs does not recalculate captured scenarios. Eligible complete-input calculators offer editable what-if re-evaluation; the result is a separate preview and never alters captured history or exports. All comparisons use the same calculator version.[0m
+          [36m</p>[39m
+          [36m<p>[39m
+            [0mExisting display labels and units are shown when supplied for this calculator version; other fields retain their raw names. No units or currency are inferred. Complete nested data is retained below and in exports. Standard JSON represents signed zero as zero.[0m
+          [36m</p>[39m
+          [36m<label>[39m
+            [0mNotes for the next capture (your assumptions)[0m
+            [36m<textarea[39m
+              [33mmaxlength[39m=[32m"1200"[39m
+            [36m/>[39m
+          [36m</label>[39m
+          [36m<details[39m
+            [33mclass[39m=[32m"scenario-recovery"[39m
+          [36m>[39m
+            [36m<summary>[39m
+              [0mRecover an exported scenario set[0m
+            [36m</summary>[39m
+            [36m<p>[39m
+              [0mScenario-set JSON and scenario-report JSON are supported. Recovery checks exact supported registered-engine arithmetic before replacing this working set. Report comparisons and charts must also match the complete recorded snapshots. It never changes saved history or the file. Conversion units come from recorded inputs. Notes and methodology are recorded annotations, not authenticated source or certification claims. Unsupported historical or reverse-mode contracts remain readable in saved history.[0m
+            [36m</p>[39m
+            [36m<label>[39m
+              [0mScenario JSON file (maximum 8 MiB)[0m
+              [36m<input[39m
+                [33maccept[39m=[32m"application/json,.json"[39m
+                [33mtype[39m=[32m"file"[39m
+              [36m/>[39m
+            [36m</label>[39m
+            [36m<button[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mCancel scenario file read[0m
+            [36m</button>[39m
+            [36m<label>[39m
+              [0mExported scenario JSON[0m
+              [36m<textarea[39m
+                [33mrows[39m=[32m"7"[39m
+              [36m/>[39m
+            [36m</label>[39m
+            [36m<button[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mVerify and recover scenario set[0m
+            [36m</button>[39m
+          [36m</details>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"scenario-controls"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"button secondary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mReplace[0m
+              [0m [0m
+              [0mbaseline A[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"button secondary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mCapture[0m
+              [0m [0m
+              [0mscenario B[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"button secondary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mCapture[0m
+              [0m [0m
+              [0mscenario C[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"button secondary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mClear scenario set[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<section[39m
+            [33maria-label[39m=[32m"Captured scenario comparison report"[39m
+          [36m>[39m
+            [36m<h3>[39m
+              [0mA/B/C comparison report[0m
+            [36m</h3>[39m
+            [36m<p>[39m
+              [0mDifferences subtract canonical decimal captured values from baseline A, in the original units. No engine re-evaluation or unit conversion. Values retain raw precision; JSON represents signed zero as zero.[0m
+            [36m</p>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"Scenario difference table"[39m
+              [33mclass[39m=[32m"scenario-scroll"[39m
+              [33mrole[39m=[32m"region"[39m
+              [33mtabindex[39m=[32m"0"[39m
+            [36m>[39m
+              [36m<table>[39m
+                [36m<caption>[39m
+                  [0mOutput differences from baseline A[0m
+                [36m</caption>[39m
+                [36m<thead>[39m
+                  [36m<tr>[39m
+                    [36m<th[39m
+                      [33mscope[39m=[32m"col"[39m
+                    [36m>[39m
+                      [0mEngine output[0m
+                    [36m</th>[39m
+                    [36m<th[39m
+                      [33mscope[39m=[32m"col"[39m
+                    [36m>[39m
+                      [0mA[0m
+                      [0m (baseline)[0m
+                      [0m: value / difference[0m
+                    [36m</th>[39m
+                  [36m</tr>[39m
+                [36m</thead>[39m
+                [36m<tbody>[39m
+                  [36m<tr>[39m
+                    [36m<th[39m
+                      [33mscope[39m=[32m"row"[39m
+                    [36m>[39m
+                      [0mvalue[0m
+                      [36m<small>[39m
+                        [0mRaw field: [0m
+                        [0mvalue[0m
+                      [36m</small>[39m
+                    [36m</th>[39m
+                    [36m<td>[39m
+                      [0m1336[0m
+                      [0m / [0m
+                      [0m0[0m
+                      [36m<small>[39m
+                        [0mRaw field[0m
+                        [0m · Unit: [0m
+                        [0mNot supplied[0m
+                      [36m</small>[39m
+                    [36m</td>[39m
+                  [36m</tr>[39m
+                [36m</tbody>[39m
+              [36m</table>[39m
+            [36m</div>[39m
+            [36m<p>[39m
+              [0mNo comparable chart is available. Charts require at least two numeric captures with matching explicit labels and units; unavailable values remain in the snapshots and table.[0m
+            [36m</p>[39m
+          [36m</section>[39m
+          [36m<div[39m
+            [33maria-label[39m=[32m"Captured engine outputs comparison"[39m
+            [33mclass[39m=[32m"scenario-scroll"[39m
+            [33mrole[39m=[32m"region"[39m
+            [33mtabindex[39m=[32m"0"[39m
+          [36m>[39m
+            [36m<table>[39m
+              [36m<caption>[39m
+                [0mCaptured [0m
+                [0mengine outputs[0m
+              [36m</caption>[39m
+              [36m<thead>[39m
+                [36m<tr>[39m
+                  [36m<th[39m
+                    [33mscope[39m=[32m"col"[39m
+                  [36m>[39m
+                    [0mEngine output field[0m
+                  [36m</th>[39m
+                  [36m<th[39m
+                    [33mscope[39m=[32m"col"[39m
+                  [36m>[39m
+                    [0mA[0m
+                    [0m (baseline)[0m
+                  [36m</th>[39m
+                [36m</tr>[39m
+              [36m</thead>[39m
+              [36m<tbody>[39m
+                [36m<tr>[39m
+                  [36m<th[39m
+                    [33mscope[39m=[32m"row"[39m
+                  [36m>[39m
+                    [0mvalue[0m
+                  [36m</th>[39m
+                  [36m<td>[39m
+                    [0m1336[0m
+                  [36m</td>[39m
+                [36m</tr>[39m
+                [36m<tr>[39m
+                  [36m<th[39m
+                    [33mscope[39m=[32m"row"[39m
+                  [36m>[39m
+                    [0msteps[0m
+                  [36m</th>[39m
+                  [36m<td>[39m
+                    [0mNested data: see complete snapshot[0m
+                  [36m</td>[39m
+                [36m</tr>[39m
+              [36m</tbody>[39m
+            [36m</table>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33maria-label[39m=[32m"Captured inputs comparison"[39m
+            [33mclass[39m=[32m"scenario-scroll"[39m
+            [33mrole[39m=[32m"region"[39m
+            [33mtabindex[39m=[32m"0"[39m
+          [36m>[39m
+            [36m<table>[39m
+              [36m<caption>[39m
+                [0mCaptured [0m
+                [0minputs[0m
+              [36m</caption>[39m
+              [36m<thead>[39m
+                [36m<tr>[39m
+                  [36m<th[39m
+                    [33mscope[39m=[32m"col"[39m
+                  [36m>[39m
+                    [0mInput field[0m
+                  [36m</th>[39m
+                  [36m<th[39m
+                    [33mscope[39m=[32m"col"[39m
+                  [36m>[39m
+                    [0mA[0m
+                    [0m (baseline)[0m
+                  [36m</th>[39m
+                [36m</tr>[39m
+              [36m</thead>[39m
+              [36m<tbody>[39m
+                [36m<tr>[39m
+                  [36m<th[39m
+                    [33mscope[39m=[32m"row"[39m
+                  [36m>[39m
+                    [0minputBytes[0m
+                  [36m</th>[39m
+                  [36m<td>[39m
+                    [0m1000[0m
+                  [36m</td>[39m
+                [36m</tr>[39m
+              [36m</tbody>[39m
+            [36m</table>[39m
+          [36m</div>[39m
+          [36m<details>[39m
+            [36m<summary>[39m
+              [0mComplete snapshot [0m
+              [0mA[0m
+              [0m (baseline)[0m
+            [36m</summary>[39m
+            [36m<p>[39m
+              [0mbase64-size-calculator[0m
+              [0m · version [0m
+              [0m1[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mCapture notes: [0m
+              [0mNone supplied[0m
+            [36m</p>[39m
+            [36m<pre>[39m
+              [0m{
+  "input": {
+    "inputBytes": 1000
+  },
+  "output": {
+    "value": 1336,
+    "steps": [
+      "Base64 Size = 1336"
+    ]
+  }
+}[0m
+            [36m</pre>[39m
+          [36m</details>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"scenario-controls"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"button secondary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mExport scenario set JSON[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"button secondary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mExport scenario set CSV[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"button secondary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mExport scenario report [0m
+              [0mJSON[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"button secondary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mExport scenario report [0m
+              [0mCSV[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"button secondary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mExport scenario report [0m
+              [0mPDF[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<p[39m
+            [33maria-atomic[39m=[32m"true"[39m
+            [33maria-live[39m=[32m"polite"[39m
+            [33mrole[39m=[32m"status"[39m
+          [36m>[39m
+            [0mCaptured baseline A from the current calculation.[0m
+          [36m</p>[39m
+        [36m</details>[39m
+      [36m</section>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/technology-five-shared-comparison.test.tsx > does not carry captures across calculator identities or project contexts
+TestingLibraryElementError: Unable to find a label with the text of: Shared calculator for comparison
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-label[39m=[32m"Shared record comparison"[39m
+    [36m>[39m
+      [36m<h2>[39m
+        [0mCompare shared records[0m
+      [36m</h2>[39m
+      [36m<p>[39m
+        [0mSelect an immutable record and capture A, then select another record of the same calculator and technical revision and capture B or C. Comparisons and recovered scenario templates are separate working copies. Switching calculator identity clears the working set. Sharing a record or exporting a scenario never changes organization history.[0m
+      [36m</p>[39m
+      [36m<label>[39m
+        [0mShared record for comparison[0m
+        [36m<select[39m
+          [33maria-label[39m=[32m"Shared record for comparison"[39m
+        [36m>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"a"[39m
+          [36m>[39m
+            [0mFirst snapshot[0m
+            [0m · [0m
+            [0mbase64-size-calculator[0m
+            [0m · version [0m
+            [0m1[0m
+          [36m</option>[39m
+          [36m<option[39m
+            [33mvalue[39m=[32m"c"[39m
+          [36m>[39m
+            [0mBandwidth[0m
+            [0m · [0m
+            [0mbandwidth-calculator[0m
+            [0m · version [0m
+            [0m1[0m
+          [36m</option>[39m
+        [36m</select>[39m
+      [36m</label>[39m
+      [36m<p>[39m
+        [0mSelected recorded result: [0m
+        [0m1336[0m
+      [36m</p>[39m
+      [36m<section[39m
+        [33maria-label[39m=[32m"Scenario workspace"[39m
+        [33mclass[39m=[32m"calculator-scenarios"[39m
+      [36m>[39m
+        [36m<details[39m
+          [33mopen[39m=[32m""[39m
+        [36m>[39m
+          [36m<summary>[39m
+            [0mYour A/B/C scenarios[0m
+          [36m</summary>[39m
+          [36m<p>[39m
+            [0mCapture the current calculated inputs and result as baseline A, then change the calculator inputs and capture B or C. These are historical snapshots; changing inputs does not recalculate captured scenarios. Eligible complete-input calculators offer editable what-if re-evaluation; the result is a separate preview and never alters captured history or exports. All comparisons use the same calculator version.[0m
+          [36m</p>[39m
+          [36m<p>[39m
+            [0mExisting display labels and units are shown when supplied for this calculator version; other fields retain their raw names. No units or currency are inferred. Complete nested data is retained below and in exports. Standard JSON represents signed zero as zero.[0m
+          [36m</p>[39m
+          [36m<label>[39m
+            [0mNotes for the next capture (your assumptions)[0m
+            [36m<textarea[39m
+              [33mmaxlength[39m=[32m"1200"[39m
+            [36m/>[39m
+          [36m</label>[39m
+          [36m<details[39m
+            [33mclass[39m=[32m"scenario-recovery"[39m
+          [36m>[39m
+            [36m<summary>[39m
+              [0mRecover an exported scenario set[0m
+            [36m</summary>[39m
+            [36m<p>[39m
+              [0mScenario-set JSON and scenario-report JSON are supported. Recovery checks exact supported registered-engine arithmetic before replacing this working set. Report comparisons and charts must also match the complete recorded snapshots. It never changes saved history or the file. Conversion units come from recorded inputs. Notes and methodology are recorded annotations, not authenticated source or certification claims. Unsupported historical or reverse-mode contracts remain readable in saved history.[0m
+            [36m</p>[39m
+            [36m<label>[39m
+              [0mScenario JSON file (maximum 8 MiB)[0m
+              [36m<input[39m
+                [33maccept[39m=[32m"application/json,.json"[39m
+                [33mtype[39m=[32m"file"[39m
+              [36m/>[39m
+            [36m</label>[39m
+            [36m<button[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mCancel scenario file read[0m
+            [36m</button>[39m
+            [36m<label>[39m
+              [0mExported scenario JSON[0m
+              [36m<textarea[39m
+                [33mrows[39m=[32m"7"[39m
+              [36m/>[39m
+            [36m</label>[39m
+            [36m<button[39m
+              [33mdisabled[39m=[32m""[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mVerify and recover scenario set[0m
+            [36m</button>[39m
+          [36m</details>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"scenario-controls"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"button secondary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mReplace[0m
+              [0m [0m
+              [0mbaseline A[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"button secondary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mCapture[0m
+              [0m [0m
+              [0mscenario B[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"button secondary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mCapture[0m
+              [0m [0m
+              [0mscenario C[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"button secondary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mClear scenario set[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<section[39m
+            [33maria-label[39m=[32m"Captured scenario comparison report"[39m
+          [36m>[39m
+            [36m<h3>[39m
+              [0mA/B/C comparison report[0m
+            [36m</h3>[39m
+            [36m<p>[39m
+              [0mDifferences subtract canonical decimal captured values from baseline A, in the original units. No engine re-evaluation or unit conversion. Values retain raw precision; JSON represents signed zero as zero.[0m
+            [36m</p>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"Scenario difference table"[39m
+              [33mclass[39m=[32m"scenario-scroll"[39m
+              [33mrole[39m=[32m"region"[39m
+              [33mtabindex[39m=[32m"0"[39m
+            [36m>[39m
+              [36m<table>[39m
+                [36m<caption>[39m
+                  [0mOutput differences from baseline A[0m
+                [36m</caption>[39m
+                [36m<thead>[39m
+                  [36m<tr>[39m
+                    [36m<th[39m
+                      [33mscope[39m=[32m"col"[39m
+                    [36m>[39m
+                      [0mEngine output[0m
+                    [36m</th>[39m
+                    [36m<th[39m
+                      [33mscope[39m=[32m"col"[39m
+                    [36m>[39m
+                      [0mA[0m
+                      [0m (baseline)[0m
+                      [0m: value / difference[0m
+                    [36m</th>[39m
+                  [36m</tr>[39m
+                [36m</thead>[39m
+                [36m<tbody>[39m
+                  [36m<tr>[39m
+                    [36m<th[39m
+                      [33mscope[39m=[32m"row"[39m
+                    [36m>[39m
+                      [0mvalue[0m
+                      [36m<small>[39m
+                        [0mRaw field: [0m
+                        [0mvalue[0m
+                      [36m</small>[39m
+                    [36m</th>[39m
+                    [36m<td>[39m
+                      [0m1336[0m
+                      [0m / [0m
+                      [0m0[0m
+                      [36m<small>[39m
+                        [0mRaw field[0m
+                        [0m · Unit: [0m
+                        [0mNot supplied[0m
+                      [36m</small>[39m
+                    [36m</td>[39m
+                  [36m</tr>[39m
+                [36m</tbody>[39m
+              [36m</table>[39m
+            [36m</div>[39m
+            [36m<p>[39m
+              [0mNo comparable chart is available. Charts require at least two numeric captures with matching explicit labels and units; unavailable values remain in the snapshots and table.[0m
+            [36m</p>[39m
+          [36m</section>[39m
+          [36m<div[39m
+            [33maria-label[39m=[32m"Captured engine outputs comparison"[39m
+            [33mclass[39m=[32m"scenario-scroll"[39m
+            [33mrole[39m=[32m"region"[39m
+            [33mtabindex[39m=[32m"0"[39m
+          [36m>[39m
+            [36m<table>[39m
+              [36m<caption>[39m
+                [0mCaptured [0m
+                [0mengine outputs[0m
+              [36m</caption>[39m
+              [36m<thead>[39m
+                [36m<tr>[39m
+                  [36m<th[39m
+                    [33mscope[39m=[32m"col"[39m
+                  [36m>[39m
+                    [0mEngine output field[0m
+                  [36m</th>[39m
+                  [36m<th[39m
+                    [33mscope[39m=[32m"col"[39m
+                  [36m>[39m
+                    [0mA[0m
+                    [0m (baseline)[0m
+                  [36m</th>[39m
+                [36m</tr>[39m
+              [36m</thead>[39m
+              [36m<tbody>[39m
+                [36m<tr>[39m
+                  [36m<th[39m
+                    [33mscope[39m=[32m"row"[39m
+                  [36m>[39m
+                    [0mvalue[0m
+                  [36m</th>[39m
+                  [36m<td>[39m
+                    [0m1336[0m
+                  [36m</td>[39m
+                [36m</tr>[39m
+                [36m<tr>[39m
+                  [36m<th[39m
+                    [33mscope[39m=[32m"row"[39m
+                  [36m>[39m
+                    [0msteps[0m
+                  [36m</th>[39m
+                  [36m<td>[39m
+                    [0mNested data: see complete snapshot[0m
+                  [36m</td>[39m
+                [36m</tr>[39m
+              [36m</tbody>[39m
+            [36m</table>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33maria-label[39m=[32m"Captured inputs comparison"[39m
+            [33mclass[39m=[32m"scenario-scroll"[39m
+            [33mrole[39m=[32m"region"[39m
+            [33mtabindex[39m=[32m"0"[39m
+          [36m>[39m
+            [36m<table>[39m
+              [36m<caption>[39m
+                [0mCaptured [0m
+                [0minputs[0m
+              [36m</caption>[39m
+              [36m<thead>[39m
+                [36m<tr>[39m
+                  [36m<th[39m
+                    [33mscope[39m=[32m"col"[39m
+                  [36m>[39m
+                    [0mInput field[0m
+                  [36m</th>[39m
+                  [36m<th[39m
+                    [33mscope[39m=[32m"col"[39m
+                  [36m>[39m
+                    [0mA[0m
+                    [0m (baseline)[0m
+                  [36m</th>[39m
+                [36m</tr>[39m
+              [36m</thead>[39m
+              [36m<tbody>[39m
+                [36m<tr>[39m
+                  [36m<th[39m
+                    [33mscope[39m=[32m"row"[39m
+                  [36m>[39m
+                    [0minputBytes[0m
+                  [36m</th>[39m
+                  [36m<td>[39m
+                    [0m1000[0m
+                  [36m</td>[39m
+                [36m</tr>[39m
+              [36m</tbody>[39m
+            [36m</table>[39m
+          [36m</div>[39m
+          [36m<details>[39m
+            [36m<summary>[39m
+              [0mComplete snapshot [0m
+              [0mA[0m
+              [0m (baseline)[0m
+            [36m</summary>[39m
+            [36m<p>[39m
+              [0mbase64-size-calculator[0m
+              [0m · version [0m
+              [0m1[0m
+            [36m</p>[39m
+            [36m<p>[39m
+              [0mCapture notes: [0m
+              [0mNone supplied[0m
+            [36m</p>[39m
+            [36m<pre>[39m
+              [0m{
+  "input": {
+    "inputBytes": 1000
+  },
+  "output": {
+    "value": 1336,
+    "steps": [
+      "Base64 Size = 1336"
+    ]
+  }
+}[0m
+            [36m</pre>[39m
+          [36m</details>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"scenario-controls"[39m
+          [36m>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"button secondary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mExport scenario set JSON[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"button secondary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mExport scenario set CSV[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"button secondary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mExport scenario report [0m
+              [0mJSON[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"button secondary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mExport scenario report [0m
+              [0mCSV[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"button secondary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mExport scenario report [0m
+              [0mPDF[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<p[39m
+            [33maria-atomic[39m=[32m"true"[39m
+            [33maria-live[39m=[32m"polite"[39m
+            [33mrole[39m=[32m"status"[39m
+          [36m>[39m
+            [0mCaptured baseline A from the current calculation.[0m
+          [36m</p>[39m
+        [36m</details>[39m
+      [36m</section>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError ../../workspace/work/batch13-deps/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ getAllByLabelText ../../workspace/work/batch13-deps/node_modules/@testing-library/dom/dist/queries/label-text.js:111:38
+ ❯ ../../workspace/work/batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../workspace/work/batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/technology-five-shared-comparison.test.tsx:8:508
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  19:20:32
+   Duration  2.93s (transform 1.26s, setup 0ms, collect 1.96s, tests 270ms, environment 377ms, prepare 84ms)
+

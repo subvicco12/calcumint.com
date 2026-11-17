@@ -1,0 +1,46 @@
+✖ independent fixed guard anchor admits only the reviewed current source with genuine Git provenance (4.540676ms)
+✖ independent anchor rejects coordinated predecessor capture, metadata and guard-byte redirection (1.723495ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 97.636368
+
+✖ failing tests:
+
+test at tests/first-five-20261109/accepted-evolution-guard.test.mjs:7:1
+✖ independent fixed guard anchor admits only the reviewed current source with genuine Git provenance (4.540676ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/first-five-20261109/accepted-evolution-guard.test.mjs:7:159)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /Missing fixed guard provenance/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/first-five-20261109/accepted-evolution-guard.test.mjs:8:1
+✖ independent anchor rejects coordinated predecessor capture, metadata and guard-byte redirection (1.723495ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/first-five-20261109/accepted-evolution-guard.test.mjs:12:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /Fixed reviewed guard/,
+    operator: 'throws',
+    diff: 'simple'
+  }

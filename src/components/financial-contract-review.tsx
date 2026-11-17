@@ -1,6 +1,6 @@
 'use client';
 import {useState} from 'react';
-import {financialContracts,financialExamples,exportFinancialContract} from '../calculators/financial-contracts';
+import {financialContracts,financialExamples,exportFinancialContract,importFinancialContract} from '../calculators/financial-contracts';
 
 type Snapshot=ReturnType<typeof exportFinancialContract>;
 const json=(value:unknown)=>JSON.stringify(value,null,2);
@@ -20,6 +20,10 @@ export function FinancialContractReview(){
  const invalidate=()=>{setSnapshot(null);setError('');};
  const load=(next=id)=>{setInput(json(financialExamples[next]));invalidate();};
  function calculate(){invalidate();try{if(input.length>1_000_000)throw Error('Input too large');setSnapshot(exportFinancialContract(id,JSON.parse(input),plan));}catch{setError('Check the required fields, supplied scope, matched horizons, financing principal, rent losses and supported numerical bounds.');}}
+ function restore(saved:Snapshot){
+  try{const verified=importFinancialContract(saved);setId(verified.profileId);setInput(json(verified.calculation.input));setSnapshot(verified);setError('');}
+  catch{setError('Saved snapshot must match its original financial contract, source, dependency, version and actual engine result.');}
+ }
  function download(){
   if(!snapshot)return;
   const url=URL.createObjectURL(new Blob([json(snapshot)+'\n'],{type:'application/json'}));
@@ -49,7 +53,7 @@ export function FinancialContractReview(){
   </>}</section>
   <h2>Tab-local history</h2><p>Up to 20 detached snapshots; no account write or persistent browser storage.</p>
   <button type="button" onClick={()=>setHistory([])}>Clear local history</button>
-  <ol data-testid="financial-history">{history.map((s,i)=><li key={i}><details><summary>{s.calculation.calculatorSlug} v1 — {headline(s)}</summary><pre style={{whiteSpace:'pre-wrap'}}>{json(s)}</pre></details></li>)}</ol>
+  <ol data-testid="financial-history">{history.map((s,i)=><li key={i}><details><summary>{s.calculation.calculatorSlug} v1 — {headline(s)}</summary><pre style={{whiteSpace:'pre-wrap'}}>{json(s)}</pre></details><button type="button" onClick={()=>restore(s)}>Restore snapshot {i+1}</button></li>)}</ol>
   <style>{'button{min-height:44px;padding:8px 12px} :focus-visible{outline:3px solid #1259c3;outline-offset:2px} a{color:#0645ad}'}</style>
  </main>;
 }

@@ -1,0 +1,307 @@
+{
+  "kind": "UNSIGNED_COMPETENT_REVIEW_DECISION_PACKET_NOT_APPROVAL",
+  "reviewDate": "2026-11-08",
+  "target": {
+    "repository": "subvicco12/calcumint.com",
+    "pr": 1537,
+    "sha": "a955cdad7019a645b7ed2950299d0603ba1784a7"
+  },
+  "candidates": [
+    {
+      "catalogId": 440,
+      "engineId": "conversion.frequency",
+      "version": 1,
+      "slug": "frequency-converter",
+      "repositoryStatus": "draft",
+      "role": "primary",
+      "engineBinding": {
+        "commit": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+        "path": "src/calculators/conversion/catalog-batch-3.ts",
+        "gitBlob": "d8f5cb0153a0ae773c0fbd0dd9c999ae8cfb96a3",
+        "sha256": "8605a98cbc051450fbd71089d77f174f961ea56d5ee6b743e38c8a473b87c165",
+        "verification": "Exact-ref GitHub connector bytes; SHA256 and Git blob SHA1 independently recomputed and match retained preservation bindings"
+      },
+      "sourceFactualDetermination": "SUPPORTED_FOR_DECLARED_OFFERED_SCOPE",
+      "sourceFacts": "Hz=s^-1; kHz=10^3; MHz=10^6; GHz=10^9. No angular frequency conversion offered.",
+      "sourceLocator": "BIPM derived-unit table and Table 7",
+      "retainedGoverningDispositions": {
+        "identity_and_native_catalog_mapping": {
+          "status": "complete",
+          "reason": "Exact recorded tuple and native title/domain agree; canonical lifecycle adoption is a separate requirement.",
+          "evidence": [
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/CalcuMint_Shortest20_20261106T033217Z_be075e04_EVIDENCE/source/src/lib/publication20/conversions.ts",
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/exact-head/docs/acceptance20-20261106/adjudication-20.json",
+            "/workspace/scratch/3ec853bd6442/project_sources/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx#Master Catalog!A441:M441"
+          ]
+        },
+        "bounded_product_scope": {
+          "status": "complete",
+          "reason": "SI frequency prefixes, not angular frequency. This is a coherent narrow calculator contract; native catalog does not establish an exhaustive unit roster.",
+          "evidence": [
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/CalcuMint_Shortest20_20261106T033217Z_be075e04_EVIDENCE/source/src/lib/publication20/conversions.ts",
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/exact-head/docs/acceptance20-20261106/adjudication-20.json",
+            "/workspace/scratch/3ec853bd6442/project_sources/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx#Master Catalog!A441:M441"
+          ]
+        },
+        "new_domain_models_or_arbitrary_advanced_variables": {
+          "status": "justifiedNA",
+          "reason": "No additional independent modelling variable is necessary for the declared fixed conversion/ideal arithmetic. Blueprint paragraph101 makes context relevant; paragraph122 distinguishes optional modelling depth. Do not invent a provider or physical model.",
+          "evidence": [
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/CalcuMint_Shortest20_20261106T033217Z_be075e04_EVIDENCE/source/src/lib/publication20/conversions.ts",
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/exact-head/docs/acceptance20-20261106/adjudication-20.json",
+            "/workspace/scratch/3ec853bd6442/project_sources/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx#Master Catalog!A441:M441",
+            "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx#paragraphs101,122"
+          ]
+        },
+        "free_chart_and_multiple_result_cards": {
+          "status": "justifiedNA",
+          "reason": "Scalar conversion adds no independent series or KPI and native catalog says usually none/visual when useful.",
+          "evidence": [
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/CalcuMint_Shortest20_20261106T033217Z_be075e04_EVIDENCE/source/src/lib/publication20/conversions.ts",
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/exact-head/docs/acceptance20-20261106/adjudication-20.json",
+            "/workspace/scratch/3ec853bd6442/project_sources/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx#Master Catalog!A441:M441",
+            "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx#paragraphs104-105"
+          ]
+        },
+        "scenario_table_unit_analysis": {
+          "status": "justifiedNA",
+          "reason": "No decision-specific scenario or sensitivity dimension beyond value/unit selection is established for this scalar converter. Native converter row prioritizes history and useful batch. Offered A/B still must reconcile.",
+          "evidence": [
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/CalcuMint_Shortest20_20261106T033217Z_be075e04_EVIDENCE/source/src/lib/publication20/conversions.ts",
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/exact-head/docs/acceptance20-20261106/adjudication-20.json",
+            "/workspace/scratch/3ec853bd6442/project_sources/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx#Master Catalog!A441:M441",
+            "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx#paragraphs108-110;table16"
+          ]
+        },
+        "jurisdiction_rule_pack_and_high_risk_external_specialist": {
+          "status": "justifiedNA",
+          "reason": "Declared generic unit/ideal-arithmetic product has no jurisdiction-sensitive rule or high-risk advice. No designation requiring an external specialist is established; qualified formula/QA review is still applicable.",
+          "evidence": [
+            "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx#paragraphs160-166",
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/CalcuMint_Shortest20_20261106T033217Z_be075e04_EVIDENCE/source/src/lib/publication20/conversions.ts",
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/exact-head/docs/acceptance20-20261106/adjudication-20.json",
+            "/workspace/scratch/3ec853bd6442/project_sources/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx#Master Catalog!A441:M441"
+          ]
+        },
+        "complete_source_body_factor_applicability": {
+          "status": "complete",
+          "reason": "Retained BIPM frequency/prefix body supports all offered Hz/kHz/MHz/GHz factors. Formal governed source adoption remains separate.",
+          "evidence": [
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/CalcuMint_PR1527_Acceptance20_2026-11-06/retained-bipm-parsed-capture.json",
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/CalcuMint_Shortest20_20261106T033217Z_be075e04_EVIDENCE/source/src/lib/publication20/conversions.ts",
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/exact-head/docs/acceptance20-20261106/adjudication-20.json",
+            "/workspace/scratch/3ec853bd6442/project_sources/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx#Master Catalog!A441:M441"
+          ]
+        }
+      },
+      "formulaRecommendation": {
+        "decision": "RECOMMEND_ACCEPT_DECLARED_FORMULA_SUBJECT_TO_EXPLICIT_DOMAIN_PRECISION_QA",
+        "formulas": [
+          {
+            "id": "conversion",
+            "expression": "target = source \u00d7 (source hertz / target hertz)",
+            "description": "Converts with a direct ratio of fixed base-unit factors, avoiding lossy output rounding and unnecessary intermediate scaling."
+          }
+        ],
+        "scopeLimitations": "SI frequency prefixes, not angular frequency. This is a coherent narrow calculator contract; native catalog does not establish an exhaustive unit roster.",
+        "notApproval": true
+      },
+      "sourceDecision": "PENDING_AUTHORIZED_COMPETENT_ADOPTION",
+      "formulaDecision": "PENDING_AUTHORIZED_COMPETENT_ADOPTION",
+      "precisionDecision": "PENDING_AUTHORIZED_COMPETENT_ADOPTION",
+      "canonicalQaDecision": "PENDING_FULL_APPLICABLE_DISPOSITIONS",
+      "competentDecision": {
+        "status": "PENDING",
+        "reviewerName": null,
+        "reviewerAuthorityProvenance": null,
+        "signedAt": null,
+        "sourceAccepted": null,
+        "formulaAccepted": null,
+        "precisionAccepted": null,
+        "technicalQaAccepted": null
+      },
+      "fullyAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 432,
+      "engineId": "conversion.time",
+      "version": 1,
+      "slug": "time-converter",
+      "repositoryStatus": "draft",
+      "role": "fallback_no_automatic_substitution",
+      "engineBinding": {
+        "commit": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+        "path": "src/calculators/conversion/catalog-batch-2.ts",
+        "gitBlob": "99ea9f4b5b9931ef08122599f5eac0f5c227c733",
+        "sha256": "8c8021714b27b2399ea4d27a6bec595e446426ca2e6ad846815e60a9a5b35467",
+        "verification": "Exact-ref GitHub connector bytes; SHA256 and Git blob SHA1 independently recomputed and match retained preservation bindings"
+      },
+      "sourceFactualDetermination": "SUPPORTED_FOR_DECLARED_OFFERED_SCOPE",
+      "sourceFacts": "s=1; ms=.001; min=60; h=3600; day=86400; week=7*86400=604800. Fixed duration rather than calendar arithmetic.",
+      "sourceLocator": "BIPM Table 8; SI prefixes",
+      "retainedGoverningDispositions": {
+        "identity_and_native_catalog_mapping": {
+          "status": "complete",
+          "reason": "Exact recorded tuple and native title/domain agree; canonical lifecycle adoption is a separate requirement.",
+          "evidence": [
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/CalcuMint_Shortest20_20261106T033217Z_be075e04_EVIDENCE/source/src/lib/publication20/conversions.ts",
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/exact-head/docs/acceptance20-20261106/adjudication-20.json",
+            "/workspace/scratch/3ec853bd6442/project_sources/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx#Master Catalog!A433:M433"
+          ]
+        },
+        "bounded_product_scope": {
+          "status": "complete",
+          "reason": "Fixed seconds/day/week durations, not calendar or timezone arithmetic. This is a coherent narrow calculator contract; native catalog does not establish an exhaustive unit roster.",
+          "evidence": [
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/CalcuMint_Shortest20_20261106T033217Z_be075e04_EVIDENCE/source/src/lib/publication20/conversions.ts",
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/exact-head/docs/acceptance20-20261106/adjudication-20.json",
+            "/workspace/scratch/3ec853bd6442/project_sources/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx#Master Catalog!A433:M433"
+          ]
+        },
+        "new_domain_models_or_arbitrary_advanced_variables": {
+          "status": "justifiedNA",
+          "reason": "No additional independent modelling variable is necessary for the declared fixed conversion/ideal arithmetic. Blueprint paragraph101 makes context relevant; paragraph122 distinguishes optional modelling depth. Do not invent a provider or physical model.",
+          "evidence": [
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/CalcuMint_Shortest20_20261106T033217Z_be075e04_EVIDENCE/source/src/lib/publication20/conversions.ts",
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/exact-head/docs/acceptance20-20261106/adjudication-20.json",
+            "/workspace/scratch/3ec853bd6442/project_sources/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx#Master Catalog!A433:M433",
+            "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx#paragraphs101,122"
+          ]
+        },
+        "free_chart_and_multiple_result_cards": {
+          "status": "justifiedNA",
+          "reason": "Scalar conversion adds no independent series or KPI and native catalog says usually none/visual when useful.",
+          "evidence": [
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/CalcuMint_Shortest20_20261106T033217Z_be075e04_EVIDENCE/source/src/lib/publication20/conversions.ts",
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/exact-head/docs/acceptance20-20261106/adjudication-20.json",
+            "/workspace/scratch/3ec853bd6442/project_sources/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx#Master Catalog!A433:M433",
+            "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx#paragraphs104-105"
+          ]
+        },
+        "scenario_table_unit_analysis": {
+          "status": "justifiedNA",
+          "reason": "No decision-specific scenario or sensitivity dimension beyond value/unit selection is established for this scalar converter. Native converter row prioritizes history and useful batch. Offered A/B still must reconcile.",
+          "evidence": [
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/CalcuMint_Shortest20_20261106T033217Z_be075e04_EVIDENCE/source/src/lib/publication20/conversions.ts",
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/exact-head/docs/acceptance20-20261106/adjudication-20.json",
+            "/workspace/scratch/3ec853bd6442/project_sources/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx#Master Catalog!A433:M433",
+            "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx#paragraphs108-110;table16"
+          ]
+        },
+        "jurisdiction_rule_pack_and_high_risk_external_specialist": {
+          "status": "justifiedNA",
+          "reason": "Declared generic unit/ideal-arithmetic product has no jurisdiction-sensitive rule or high-risk advice. No designation requiring an external specialist is established; qualified formula/QA review is still applicable.",
+          "evidence": [
+            "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx#paragraphs160-166",
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/CalcuMint_Shortest20_20261106T033217Z_be075e04_EVIDENCE/source/src/lib/publication20/conversions.ts",
+            "/workspace/scratch/3ec853bd6442/fourday-work-20261106/input/exact-head/docs/acceptance20-20261106/adjudication-20.json",
+            "/workspace/scratch/3ec853bd6442/project_sources/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx#Master Catalog!A433:M433"
+          ]
+        }
+      },
+      "formulaRecommendation": {
+        "decision": "RECOMMEND_ACCEPT_DECLARED_FORMULA_SUBJECT_TO_EXPLICIT_DOMAIN_PRECISION_QA",
+        "formulas": [
+          {
+            "id": "conversion",
+            "expression": "target = source \u00d7 (source seconds / target seconds)",
+            "description": "Converts with a direct ratio of fixed SI base or derived-unit factors, avoiding lossy output rounding and unnecessary intermediate scaling."
+          }
+        ],
+        "scopeLimitations": "Fixed seconds/day/week durations, not calendar or timezone arithmetic. This is a coherent narrow calculator contract; native catalog does not establish an exhaustive unit roster.",
+        "notApproval": true
+      },
+      "sourceDecision": "PENDING_AUTHORIZED_COMPETENT_ADOPTION",
+      "formulaDecision": "PENDING_AUTHORIZED_COMPETENT_ADOPTION",
+      "precisionDecision": "PENDING_AUTHORIZED_COMPETENT_ADOPTION",
+      "canonicalQaDecision": "PENDING_FULL_APPLICABLE_DISPOSITIONS",
+      "competentDecision": {
+        "status": "PENDING",
+        "reviewerName": null,
+        "reviewerAuthorityProvenance": null,
+        "signedAt": null,
+        "sourceAccepted": null,
+        "formulaAccepted": null,
+        "precisionAccepted": null,
+        "technicalQaAccepted": null
+      },
+      "fullyAccepted": false,
+      "publicationEligible": false
+    }
+  ],
+  "frequencySourceCapture": {
+    "publisher": "BIPM",
+    "observedEdition": "SI Brochure9th edition2019",
+    "locator": "Derived unit hertz and SI prefix Table7",
+    "parsedCaptureSHA256": "955028a44a01883bce2a91e6ba60480ee7a8722097c8025cfb83a7a09ab3ef59",
+    "hashScope": "Retained parsed source capture JSON, not original publisher PDF bytes",
+    "recommendation": "FAVORABLE_FOR_BOUNDED_SI_FACTOR_FACTS; formal applicable revision/source adoption PENDING",
+    "sourceDecision": "PENDING"
+  },
+  "frequencyPrecisionRecommendation": {
+    "recommendation": "Review binary64 normal finite operand/result assumptions, zero/identity/signed-zero separate cases, lexical decimal quantization, overflow/subnormal/false-zero refusals and raw-vs-presentation values. gamma2=2u/(1-2u),gamma3=3u/(1-3u),u=2^-53 only under stated hypotheses.120-digit oracle is finite-precision, not exact rational. No universal tolerance accepted.",
+    "witnessesReused": 634,
+    "refusalsReused": 6,
+    "freshEngineRerun": false,
+    "decision": "PENDING"
+  },
+  "sourceBoundary": "Retained BIPM parsed capture hash is not original PDF hash; no new source research or claim of current publisher revision. Source fact sufficiency does not formalize source revision adoption.",
+  "precisionBoundary": {
+    "common": "Binary64 operations and lexical input quantization require explicit bounded contract; same-unit identity, signed/ordinary zero handled separately. Raw historical engine rejects unsupported/nonfinite input and nonfinite result, but does not itself reject every subnormal/false-zero; proposed caller capture/refusal contract and witnesses must not be attributed to all historical engine behavior.",
+    "frequency": "u=2^-53; gamma2=2u/(1-2u) operation bound and gamma3=3u/(1-3u) including input quantization only under stated normal finite nonzero hypotheses. Retain 634 witnesses and 6 refusals without calling this a fresh engine rerun or exact rational oracle.",
+    "time": "ms=.001 is not exactly representable in binary64; frequency gamma bounds cannot be copied unqualified to time factors. Reviewer must include factor representation and selected ratio/input/output bounds. No fresh 432 witness count is asserted."
+  },
+  "technicalFactsClosed": [
+    "Bounded offered factors and inspected direct-ratio formulas have no demonstrated defect; preserve scope and factors.",
+    "PR1534 SI notation and worked example findings retained.",
+    "PR1537 evidence adds exact lower-level authority-reader composition, wrong identity/version and DRAFT route refusal, conditional route/discovery/sitemap coherence and withdrawal.",
+    "Native JSON/CSV download helper evidence retained as scoped technical evidence; synthetic DB approval fixtures are not real competent approval."
+  ],
+  "canonicalQaStillPending": [
+    "Authorized independent source/formula/precision decisions",
+    "History, useful batch and offered A/B reconciliation applicability",
+    "Business/API/embed/team delivery applicability and requirements",
+    "Applicable editorial, accessibility, performance, SEO, export and abuse-policy dispositions; each complete with evidence, justified NA or deferred blocker",
+    "Actual assignment/competence and exact-version lifecycle/source/QA snapshots"
+  ],
+  "namedReviewerAssignments": {
+    "status": "UNKNOWN_NOT_ESTABLISHED_IN_REVIEWED_LOCAL_EVIDENCE",
+    "numericalSourceReviewer": null,
+    "canonicalQaReviewer": null,
+    "assignmentAuthority": null,
+    "competenceEvidence": null,
+    "signedAt": null,
+    "basis": [
+      "n1-1535/output/N1-EXACT-VERSION-MATRIX.json",
+      "final440-1534/output/COMPETENT-REVIEW-RECOMMENDATION.json",
+      "review440-1532/output/reviewer-recommendation.json",
+      "pilot1537-review/input/evidence/docs/first-pilot1536/work-response.json"
+    ],
+    "warning": "Owner, PR author, AI agent and runtime fixture identities are not inferred to be assigned competent reviewers; parent reviewing current registries separately."
+  },
+  "requiredCompetencies": [
+    "SI units and dimensional analysis",
+    "binary64 precision, input quantization and boundary/refusal analysis",
+    "independent auth/tenant/API/embed/history/export and applicable accessibility/performance/editorial QA",
+    "authorized project reviewer/assignment role"
+  ],
+  "genuineDecisionRequirements": [
+    "Actual named independent reviewer with assignment authority provenance and competence evidence",
+    "Exact tuple, commit, source capture/revision/locator, engine bytes, input/domain/precision and applicable QA evidence bindings",
+    "Real recorded per-dimension acceptance/rejection/defer, rationale, timestamp and authenticated signature/attestation under project process; null fields remain unsigned",
+    "Canonical QA accountable decision distinct from technical recommendation; lifecycle certification and release authority separately recorded"
+  ],
+  "fullyAcceptedSubset": [],
+  "releaseHold": true,
+  "publicationAuthorized": false,
+  "certificationGranted": false,
+  "productionWrites": false,
+  "preservation": "No source/factor/historical version/DB/PR edits; historical d1c7c54 digest is source plus additional LF, retain as historical claim and use verified raw 8605a98 digest for exact binding.",
+  "evidence": [
+    "pilot1537-review/input/evidence/docs/first-pilot1536/minimum-path.json",
+    "pilot1537-review/input/evidence/docs/first-pilot1536/preservation.json",
+    "pilot1537-review/input/evidence/EXACT-SHA-MANIFEST.json",
+    "pilot1537-review/input/evidence/FINAL_CI_RECEIPT.json"
+  ]
+}

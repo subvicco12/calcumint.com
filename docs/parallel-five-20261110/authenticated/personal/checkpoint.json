@@ -1,0 +1,2763 @@
+{
+  "passed": true,
+  "scope": "COMPLETED_PERSONAL_JOURNEYS_ONLY_NOT_FULL_COHORT",
+  "sourceHashes": {
+    "src/lib/technology-next-five-analysis.ts": "30f5410307616bb08e2c707044c538f7df7ebdf2769767ec526c6d0e8aa64b80",
+    "src/lib/native-delivery/technology-next-five-catalog.ts": "7a76dc3cc73ded01ac33266b9a1736a5318769095840d770ae11ce336f79f586",
+    "src/components/technology-bounded-analysis.tsx": "ee696f0d2368e8149bae17d62cfab4d54f79c7af80d84a5eca613d43d517ff4f",
+    "src/components/calculator-interactive.tsx": "c6296c137d66ab2a731f9144ab58efb3cb2f25dce2f7f31223b0b9a508d93755",
+    "src/components/technology-next-analysis.tsx": "4c1bb64adc75daf2e4702d75ab90525167e0666f780edef2476c7e35e4f87c61",
+    "src/lib/technology-next-capture-trust.ts": "7d26d1d359895f15bb8f0bdf121dcd23b2bfb3871842124ea8b951dee9e36e22",
+    "src/components/calculator-account-actions.tsx": "c0237e89e75a029c1022890f6981f0b2e268ce55b7e78832f3ad389c765e50d4",
+    "src/components/calculator-scenario-workspace.tsx": "d35ae6ea673594d23eee4e352ba32a09ac55c61df41694afc91a0c418b03c090",
+    "src/components/scenario-set-recovery.tsx": "6e44983e6b038686f398ad1393a1039bef0f45bc449ec56710f2006cb1cbb6a7",
+    "src/components/saved-calculation-actions.tsx": "eb10109b0dfc8a73b0ed4043d35da898cd11a3eace9e711755d8de5179928529",
+    "src/app/account/actions.ts": "dd3ce3722bbdb4b68e28b1405f9a320d63123a9c9ee932304abe1eee8daed822",
+    "src/app/account/history/page.tsx": "dd3e1cce93d8575e1c991a45ebd99f2a69ee8653707c705416fedc0401fb54a5",
+    "src/app/account/saved/page.tsx": "e8564df7ec21e7068dc849a48fe22a9ea7be5dbcb4f5c1c786da8e0c51d6c1ac",
+    "src/app/account/projects/[id]/page.tsx": "d30b24717e35b994a95b61d32ab1d2945461d3a1b32d02498b06c43d968c4ab5",
+    "src/lib/registered-snapshot-verification.ts": "24bf6f31ef7283d9fc319598268c1047ff1c58cd95bda787d55b396e9e3bde4c",
+    "src/lib/technology-snapshot-verification.ts": "276ad7ee37203fa90b65571a3bab1b3dde271f13c1f323a1e8d330a6bab9e521"
+  },
+  "producerSha256": "2b720b0f69f2e86bcc4dbae03b6c8c80a8f268e7a657395aca1fff1c4466a5cf",
+  "journeys": [
+    {
+      "catalogId": 369,
+      "slug": "cidr-calculator",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "prefixLength": 24
+      },
+      "output": {
+        "steps": [
+          "CIDR = 256"
+        ],
+        "value": 256
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": false,
+      "localABRecovery": false,
+      "recordedExports": []
+    },
+    {
+      "catalogId": 375,
+      "slug": "raid-capacity-calculator",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "diskCount": 4,
+        "raidLevel": "10",
+        "diskSizeGb": 1000
+      },
+      "output": {
+        "steps": [
+          "RAID Capacity = 2000"
+        ],
+        "value": 2000
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": false,
+      "localABRecovery": false,
+      "recordedExports": []
+    },
+    {
+      "catalogId": 380,
+      "slug": "battery-runtime-calculator",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "loadWatts": 200,
+        "capacityWh": 1000,
+        "efficiencyPercent": 90
+      },
+      "output": {
+        "steps": [
+          "Battery Runtime = 4.5"
+        ],
+        "value": 4.5
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": false,
+      "localABRecovery": false,
+      "recordedExports": []
+    },
+    {
+      "catalogId": 381,
+      "slug": "ups-runtime-calculator",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "batteryWh": 600,
+        "loadWatts": 300,
+        "efficiencyPercent": 90
+      },
+      "output": {
+        "steps": [
+          "UPS Runtime = 1.8"
+        ],
+        "value": 1.8
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": false,
+      "localABRecovery": false,
+      "recordedExports": []
+    },
+    {
+      "catalogId": 387,
+      "slug": "password-entropy-calculator",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "length": 16,
+        "characterPoolSize": 94
+      },
+      "output": {
+        "steps": [
+          "Password Entropy = 104.8734216268422"
+        ],
+        "value": 104.8734216268422
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": false,
+      "localABRecovery": false,
+      "recordedExports": []
+    },
+    {
+      "catalogId": 369,
+      "slug": "cidr-calculator",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "prefixLength": 24
+      },
+      "output": {
+        "steps": [
+          "CIDR = 256"
+        ],
+        "value": 256
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": true,
+      "localABRecovery": true,
+      "recordedExports": [
+        "JSON",
+        "CSV",
+        "PDF"
+      ]
+    },
+    {
+      "catalogId": 375,
+      "slug": "raid-capacity-calculator",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "diskCount": 4,
+        "raidLevel": "10",
+        "diskSizeGb": 1000
+      },
+      "output": {
+        "steps": [
+          "RAID Capacity = 2000"
+        ],
+        "value": 2000
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": true,
+      "localABRecovery": true,
+      "recordedExports": [
+        "JSON",
+        "CSV",
+        "PDF"
+      ]
+    },
+    {
+      "catalogId": 380,
+      "slug": "battery-runtime-calculator",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "loadWatts": 200,
+        "capacityWh": 1000,
+        "efficiencyPercent": 90
+      },
+      "output": {
+        "steps": [
+          "Battery Runtime = 4.5"
+        ],
+        "value": 4.5
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": true,
+      "localABRecovery": true,
+      "recordedExports": [
+        "JSON",
+        "CSV",
+        "PDF"
+      ]
+    },
+    {
+      "catalogId": 381,
+      "slug": "ups-runtime-calculator",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "batteryWh": 600,
+        "loadWatts": 300,
+        "efficiencyPercent": 90
+      },
+      "output": {
+        "steps": [
+          "UPS Runtime = 1.8"
+        ],
+        "value": 1.8
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": true,
+      "localABRecovery": true,
+      "recordedExports": [
+        "JSON",
+        "CSV",
+        "PDF"
+      ]
+    },
+    {
+      "catalogId": 387,
+      "slug": "password-entropy-calculator",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "length": 16,
+        "characterPoolSize": 94
+      },
+      "output": {
+        "steps": [
+          "Password Entropy = 104.8734216268422"
+        ],
+        "value": 104.8734216268422
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": true,
+      "localABRecovery": true,
+      "recordedExports": [
+        "JSON",
+        "CSV",
+        "PDF"
+      ]
+    },
+    {
+      "catalogId": 369,
+      "slug": "cidr-calculator",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "prefixLength": 24
+      },
+      "output": {
+        "steps": [
+          "CIDR = 256"
+        ],
+        "value": 256
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": true,
+      "localABRecovery": true,
+      "recordedExports": [
+        "JSON",
+        "CSV",
+        "PDF"
+      ]
+    },
+    {
+      "catalogId": 375,
+      "slug": "raid-capacity-calculator",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "diskCount": 4,
+        "raidLevel": "10",
+        "diskSizeGb": 1000
+      },
+      "output": {
+        "steps": [
+          "RAID Capacity = 2000"
+        ],
+        "value": 2000
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": true,
+      "localABRecovery": true,
+      "recordedExports": [
+        "JSON",
+        "CSV",
+        "PDF"
+      ]
+    },
+    {
+      "catalogId": 380,
+      "slug": "battery-runtime-calculator",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "loadWatts": 200,
+        "capacityWh": 1000,
+        "efficiencyPercent": 90
+      },
+      "output": {
+        "steps": [
+          "Battery Runtime = 4.5"
+        ],
+        "value": 4.5
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": true,
+      "localABRecovery": true,
+      "recordedExports": [
+        "JSON",
+        "CSV",
+        "PDF"
+      ]
+    },
+    {
+      "catalogId": 381,
+      "slug": "ups-runtime-calculator",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "batteryWh": 600,
+        "loadWatts": 300,
+        "efficiencyPercent": 90
+      },
+      "output": {
+        "steps": [
+          "UPS Runtime = 1.8"
+        ],
+        "value": 1.8
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": true,
+      "localABRecovery": true,
+      "recordedExports": [
+        "JSON",
+        "CSV",
+        "PDF"
+      ]
+    },
+    {
+      "catalogId": 387,
+      "slug": "password-entropy-calculator",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "length": 16,
+        "characterPoolSize": 94
+      },
+      "output": {
+        "steps": [
+          "Password Entropy = 104.8734216268422"
+        ],
+        "value": 104.8734216268422
+      },
+      "nativeSave": true,
+      "ownedHistoryRead": true,
+      "exactReplay": true,
+      "persistedScenario": true,
+      "localABRecovery": true,
+      "recordedExports": [
+        "JSON",
+        "CSV",
+        "PDF"
+      ]
+    }
+  ],
+  "downloads": [
+    {
+      "tag": "pro:369:local-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "cidr-calculator-scenarios.json",
+      "file": "downloads/invocation-uMRVx0/202e4d14-0ee8-4c90-b8fe-c53aa6b234af",
+      "bytes": 1775,
+      "sha256": "858622aba5156bf34ce093df7d8b5767dbd661e5c2477577bb211c2091cc46c9",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "202e4d14-0ee8-4c90-b8fe-c53aa6b234af",
+          "suggestedFilename": "cidr-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "202e4d14-0ee8-4c90-b8fe-c53aa6b234af",
+          "totalBytes": 1775,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "202e4d14-0ee8-4c90-b8fe-c53aa6b234af",
+          "totalBytes": 1775,
+          "receivedBytes": 1775,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "202e4d14-0ee8-4c90-b8fe-c53aa6b234af",
+          "totalBytes": 1775,
+          "receivedBytes": 1775,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "202e4d14-0ee8-4c90-b8fe-c53aa6b234af",
+          "totalBytes": 1775,
+          "receivedBytes": 1775,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "202e4d14-0ee8-4c90-b8fe-c53aa6b234af",
+          "totalBytes": 1775,
+          "receivedBytes": 1775,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "202e4d14-0ee8-4c90-b8fe-c53aa6b234af",
+          "totalBytes": 1775,
+          "receivedBytes": 1775,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-uMRVx0/202e4d14-0ee8-4c90-b8fe-c53aa6b234af"
+        }
+      ]
+    },
+    {
+      "tag": "pro:369:recorded-JSON",
+      "label": "Export recorded JSON",
+      "filename": "cidr-calculator-v1.json",
+      "file": "downloads/invocation-f62x0t/9b75f808-a738-401f-9daa-e57a05d23bc5",
+      "bytes": 185,
+      "sha256": "98f5fce10ebaf4f5691728c3951d481a5b6b8718080f36627e27be5c4f851c56",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "9b75f808-a738-401f-9daa-e57a05d23bc5",
+          "suggestedFilename": "cidr-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "9b75f808-a738-401f-9daa-e57a05d23bc5",
+          "totalBytes": 185,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "9b75f808-a738-401f-9daa-e57a05d23bc5",
+          "totalBytes": 185,
+          "receivedBytes": 185,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "9b75f808-a738-401f-9daa-e57a05d23bc5",
+          "totalBytes": 185,
+          "receivedBytes": 185,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "9b75f808-a738-401f-9daa-e57a05d23bc5",
+          "totalBytes": 185,
+          "receivedBytes": 185,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "9b75f808-a738-401f-9daa-e57a05d23bc5",
+          "totalBytes": 185,
+          "receivedBytes": 185,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "9b75f808-a738-401f-9daa-e57a05d23bc5",
+          "totalBytes": 185,
+          "receivedBytes": 185,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-f62x0t/9b75f808-a738-401f-9daa-e57a05d23bc5"
+        }
+      ]
+    },
+    {
+      "tag": "pro:369:recorded-CSV",
+      "label": "Export recorded CSV",
+      "filename": "cidr-calculator-v1.csv",
+      "file": "downloads/invocation-qcSQCd/f370e604-5d34-43a4-83f4-44b8dbae1f79",
+      "bytes": 193,
+      "sha256": "725677f8b57663ceb00fa74fc13792eccb160fe32da4c0fe11a4e8df76145057",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "f370e604-5d34-43a4-83f4-44b8dbae1f79",
+          "suggestedFilename": "cidr-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "f370e604-5d34-43a4-83f4-44b8dbae1f79",
+          "totalBytes": 193,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f370e604-5d34-43a4-83f4-44b8dbae1f79",
+          "totalBytes": 193,
+          "receivedBytes": 193,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f370e604-5d34-43a4-83f4-44b8dbae1f79",
+          "totalBytes": 193,
+          "receivedBytes": 193,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f370e604-5d34-43a4-83f4-44b8dbae1f79",
+          "totalBytes": 193,
+          "receivedBytes": 193,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f370e604-5d34-43a4-83f4-44b8dbae1f79",
+          "totalBytes": 193,
+          "receivedBytes": 193,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f370e604-5d34-43a4-83f4-44b8dbae1f79",
+          "totalBytes": 193,
+          "receivedBytes": 193,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-qcSQCd/f370e604-5d34-43a4-83f4-44b8dbae1f79"
+        }
+      ]
+    },
+    {
+      "tag": "pro:369:recorded-PDF",
+      "label": "Export recorded PDF",
+      "filename": "cidr-calculator-v1.pdf",
+      "file": "downloads/invocation-hm7fF8/90423fb5-dad5-4ea8-8343-d2899d6da95c",
+      "bytes": 395105,
+      "sha256": "c07e72cc9d8f36307edad75a589b075baa6b3f042a2198ccc314e3e85aa52cc9",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "90423fb5-dad5-4ea8-8343-d2899d6da95c",
+          "suggestedFilename": "cidr-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "90423fb5-dad5-4ea8-8343-d2899d6da95c",
+          "totalBytes": 395105,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "90423fb5-dad5-4ea8-8343-d2899d6da95c",
+          "totalBytes": 395105,
+          "receivedBytes": 395105,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "90423fb5-dad5-4ea8-8343-d2899d6da95c",
+          "totalBytes": 395105,
+          "receivedBytes": 395105,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "90423fb5-dad5-4ea8-8343-d2899d6da95c",
+          "totalBytes": 395105,
+          "receivedBytes": 395105,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "90423fb5-dad5-4ea8-8343-d2899d6da95c",
+          "totalBytes": 395105,
+          "receivedBytes": 395105,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "90423fb5-dad5-4ea8-8343-d2899d6da95c",
+          "totalBytes": 395105,
+          "receivedBytes": 395105,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-hm7fF8/90423fb5-dad5-4ea8-8343-d2899d6da95c"
+        }
+      ]
+    },
+    {
+      "tag": "pro:375:local-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "raid-capacity-calculator-scenarios.json",
+      "file": "downloads/invocation-ubQo9B/0a105233-126d-4055-9e26-bc1c2f983fa6",
+      "bytes": 2610,
+      "sha256": "86bf7508b469a1750cf5b541db44c56eb6c2840c113eaddffa0bf59507de66c6",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "0a105233-126d-4055-9e26-bc1c2f983fa6",
+          "suggestedFilename": "raid-capacity-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "0a105233-126d-4055-9e26-bc1c2f983fa6",
+          "totalBytes": 2610,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0a105233-126d-4055-9e26-bc1c2f983fa6",
+          "totalBytes": 2610,
+          "receivedBytes": 2610,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0a105233-126d-4055-9e26-bc1c2f983fa6",
+          "totalBytes": 2610,
+          "receivedBytes": 2610,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0a105233-126d-4055-9e26-bc1c2f983fa6",
+          "totalBytes": 2610,
+          "receivedBytes": 2610,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0a105233-126d-4055-9e26-bc1c2f983fa6",
+          "totalBytes": 2610,
+          "receivedBytes": 2610,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0a105233-126d-4055-9e26-bc1c2f983fa6",
+          "totalBytes": 2610,
+          "receivedBytes": 2610,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-ubQo9B/0a105233-126d-4055-9e26-bc1c2f983fa6"
+        }
+      ]
+    },
+    {
+      "tag": "pro:375:recorded-JSON",
+      "label": "Export recorded JSON",
+      "filename": "raid-capacity-calculator-v1.json",
+      "file": "downloads/invocation-Fo7MJv/3ffad09c-fe08-4cde-a9e9-2c917d9f5002",
+      "bytes": 248,
+      "sha256": "531dfb8580f56360223ed0d0b795433ebdfa461148ea6e937975b3e1d1578029",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "3ffad09c-fe08-4cde-a9e9-2c917d9f5002",
+          "suggestedFilename": "raid-capacity-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "3ffad09c-fe08-4cde-a9e9-2c917d9f5002",
+          "totalBytes": 248,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "3ffad09c-fe08-4cde-a9e9-2c917d9f5002",
+          "totalBytes": 248,
+          "receivedBytes": 248,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "3ffad09c-fe08-4cde-a9e9-2c917d9f5002",
+          "totalBytes": 248,
+          "receivedBytes": 248,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "3ffad09c-fe08-4cde-a9e9-2c917d9f5002",
+          "totalBytes": 248,
+          "receivedBytes": 248,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "3ffad09c-fe08-4cde-a9e9-2c917d9f5002",
+          "totalBytes": 248,
+          "receivedBytes": 248,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "3ffad09c-fe08-4cde-a9e9-2c917d9f5002",
+          "totalBytes": 248,
+          "receivedBytes": 248,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-Fo7MJv/3ffad09c-fe08-4cde-a9e9-2c917d9f5002"
+        }
+      ]
+    },
+    {
+      "tag": "pro:375:recorded-CSV",
+      "label": "Export recorded CSV",
+      "filename": "raid-capacity-calculator-v1.csv",
+      "file": "downloads/invocation-xVdlws/57f8399f-d4ef-4c0e-99d9-dd463cb987c6",
+      "bytes": 262,
+      "sha256": "1dc0f1d1d63c11a48dbaf5a7c1e630e3f826580e38dc67f2d5ba4f3073d9e00a",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "57f8399f-d4ef-4c0e-99d9-dd463cb987c6",
+          "suggestedFilename": "raid-capacity-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "57f8399f-d4ef-4c0e-99d9-dd463cb987c6",
+          "totalBytes": 262,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "57f8399f-d4ef-4c0e-99d9-dd463cb987c6",
+          "totalBytes": 262,
+          "receivedBytes": 262,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "57f8399f-d4ef-4c0e-99d9-dd463cb987c6",
+          "totalBytes": 262,
+          "receivedBytes": 262,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "57f8399f-d4ef-4c0e-99d9-dd463cb987c6",
+          "totalBytes": 262,
+          "receivedBytes": 262,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "57f8399f-d4ef-4c0e-99d9-dd463cb987c6",
+          "totalBytes": 262,
+          "receivedBytes": 262,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "57f8399f-d4ef-4c0e-99d9-dd463cb987c6",
+          "totalBytes": 262,
+          "receivedBytes": 262,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-xVdlws/57f8399f-d4ef-4c0e-99d9-dd463cb987c6"
+        }
+      ]
+    },
+    {
+      "tag": "pro:375:recorded-PDF",
+      "label": "Export recorded PDF",
+      "filename": "raid-capacity-calculator-v1.pdf",
+      "file": "downloads/invocation-B4Pgmz/f54b6baa-4d9b-49a5-9017-222c15e17339",
+      "bytes": 395658,
+      "sha256": "df0f93354c07d369b7164d20ed90e6ac44da8e6dc410088b33069d8887b23962",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "f54b6baa-4d9b-49a5-9017-222c15e17339",
+          "suggestedFilename": "raid-capacity-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "f54b6baa-4d9b-49a5-9017-222c15e17339",
+          "totalBytes": 395658,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f54b6baa-4d9b-49a5-9017-222c15e17339",
+          "totalBytes": 395658,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f54b6baa-4d9b-49a5-9017-222c15e17339",
+          "totalBytes": 395658,
+          "receivedBytes": 395658,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f54b6baa-4d9b-49a5-9017-222c15e17339",
+          "totalBytes": 395658,
+          "receivedBytes": 395658,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f54b6baa-4d9b-49a5-9017-222c15e17339",
+          "totalBytes": 395658,
+          "receivedBytes": 395658,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f54b6baa-4d9b-49a5-9017-222c15e17339",
+          "totalBytes": 395658,
+          "receivedBytes": 395658,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-B4Pgmz/f54b6baa-4d9b-49a5-9017-222c15e17339"
+        }
+      ]
+    },
+    {
+      "tag": "pro:380:local-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "battery-runtime-calculator-scenarios.json",
+      "file": "downloads/invocation-Zu8tLH/88be0cd2-86dd-4ae5-8ac1-226b056997fc",
+      "bytes": 2512,
+      "sha256": "ba63f160320b1bff238378b2a8fc8ad6cb2d8ce673485a4584441d93d14b7c5f",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "88be0cd2-86dd-4ae5-8ac1-226b056997fc",
+          "suggestedFilename": "battery-runtime-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "88be0cd2-86dd-4ae5-8ac1-226b056997fc",
+          "totalBytes": 2512,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "88be0cd2-86dd-4ae5-8ac1-226b056997fc",
+          "totalBytes": 2512,
+          "receivedBytes": 2512,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "88be0cd2-86dd-4ae5-8ac1-226b056997fc",
+          "totalBytes": 2512,
+          "receivedBytes": 2512,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "88be0cd2-86dd-4ae5-8ac1-226b056997fc",
+          "totalBytes": 2512,
+          "receivedBytes": 2512,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "88be0cd2-86dd-4ae5-8ac1-226b056997fc",
+          "totalBytes": 2512,
+          "receivedBytes": 2512,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "88be0cd2-86dd-4ae5-8ac1-226b056997fc",
+          "totalBytes": 2512,
+          "receivedBytes": 2512,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-Zu8tLH/88be0cd2-86dd-4ae5-8ac1-226b056997fc"
+        }
+      ]
+    },
+    {
+      "tag": "pro:380:recorded-JSON",
+      "label": "Export recorded JSON",
+      "filename": "battery-runtime-calculator-v1.json",
+      "file": "downloads/invocation-GYI4bR/0c614035-a57c-432c-9529-145b60a8e01f",
+      "bytes": 258,
+      "sha256": "a9738674a25ffc8667d8a3362a3d509a1a1048609327499262cc5a728baa25e9",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "0c614035-a57c-432c-9529-145b60a8e01f",
+          "suggestedFilename": "battery-runtime-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "0c614035-a57c-432c-9529-145b60a8e01f",
+          "totalBytes": 258,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0c614035-a57c-432c-9529-145b60a8e01f",
+          "totalBytes": 258,
+          "receivedBytes": 258,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0c614035-a57c-432c-9529-145b60a8e01f",
+          "totalBytes": 258,
+          "receivedBytes": 258,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0c614035-a57c-432c-9529-145b60a8e01f",
+          "totalBytes": 258,
+          "receivedBytes": 258,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0c614035-a57c-432c-9529-145b60a8e01f",
+          "totalBytes": 258,
+          "receivedBytes": 258,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0c614035-a57c-432c-9529-145b60a8e01f",
+          "totalBytes": 258,
+          "receivedBytes": 258,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-GYI4bR/0c614035-a57c-432c-9529-145b60a8e01f"
+        }
+      ]
+    },
+    {
+      "tag": "pro:380:recorded-CSV",
+      "label": "Export recorded CSV",
+      "filename": "battery-runtime-calculator-v1.csv",
+      "file": "downloads/invocation-2gt8Y3/37cefc2e-8fe7-413f-b8f5-f0f086698576",
+      "bytes": 274,
+      "sha256": "ccbc570d51926a33122be7e540623e311f00df622fb8c7d99a9867d0cafd4166",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "37cefc2e-8fe7-413f-b8f5-f0f086698576",
+          "suggestedFilename": "battery-runtime-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "37cefc2e-8fe7-413f-b8f5-f0f086698576",
+          "totalBytes": 274,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "37cefc2e-8fe7-413f-b8f5-f0f086698576",
+          "totalBytes": 274,
+          "receivedBytes": 274,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "37cefc2e-8fe7-413f-b8f5-f0f086698576",
+          "totalBytes": 274,
+          "receivedBytes": 274,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "37cefc2e-8fe7-413f-b8f5-f0f086698576",
+          "totalBytes": 274,
+          "receivedBytes": 274,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "37cefc2e-8fe7-413f-b8f5-f0f086698576",
+          "totalBytes": 274,
+          "receivedBytes": 274,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "37cefc2e-8fe7-413f-b8f5-f0f086698576",
+          "totalBytes": 274,
+          "receivedBytes": 274,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-2gt8Y3/37cefc2e-8fe7-413f-b8f5-f0f086698576"
+        }
+      ]
+    },
+    {
+      "tag": "pro:380:recorded-PDF",
+      "label": "Export recorded PDF",
+      "filename": "battery-runtime-calculator-v1.pdf",
+      "file": "downloads/invocation-erxUPG/7c95e997-d1b4-463b-9a50-ab03bd1110cc",
+      "bytes": 395712,
+      "sha256": "611d8f6035401527414d44383d0d2138677bcd2254c1f25deb82700b3149c878",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "7c95e997-d1b4-463b-9a50-ab03bd1110cc",
+          "suggestedFilename": "battery-runtime-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "7c95e997-d1b4-463b-9a50-ab03bd1110cc",
+          "totalBytes": 395712,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7c95e997-d1b4-463b-9a50-ab03bd1110cc",
+          "totalBytes": 395712,
+          "receivedBytes": 395712,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7c95e997-d1b4-463b-9a50-ab03bd1110cc",
+          "totalBytes": 395712,
+          "receivedBytes": 395712,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7c95e997-d1b4-463b-9a50-ab03bd1110cc",
+          "totalBytes": 395712,
+          "receivedBytes": 395712,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7c95e997-d1b4-463b-9a50-ab03bd1110cc",
+          "totalBytes": 395712,
+          "receivedBytes": 395712,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7c95e997-d1b4-463b-9a50-ab03bd1110cc",
+          "totalBytes": 395712,
+          "receivedBytes": 395712,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-erxUPG/7c95e997-d1b4-463b-9a50-ab03bd1110cc"
+        }
+      ]
+    },
+    {
+      "tag": "pro:381:local-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "ups-runtime-calculator-scenarios.json",
+      "file": "downloads/invocation-q08GNS/43dd4eab-42cd-4ad9-ab9f-9377b28906bc",
+      "bytes": 2477,
+      "sha256": "f23710b4920d6f86d27b57b7d6b349398bd1b824aa5bde20b4032234b4f5841f",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "43dd4eab-42cd-4ad9-ab9f-9377b28906bc",
+          "suggestedFilename": "ups-runtime-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "43dd4eab-42cd-4ad9-ab9f-9377b28906bc",
+          "totalBytes": 2477,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "43dd4eab-42cd-4ad9-ab9f-9377b28906bc",
+          "totalBytes": 2477,
+          "receivedBytes": 2477,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "43dd4eab-42cd-4ad9-ab9f-9377b28906bc",
+          "totalBytes": 2477,
+          "receivedBytes": 2477,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "43dd4eab-42cd-4ad9-ab9f-9377b28906bc",
+          "totalBytes": 2477,
+          "receivedBytes": 2477,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "43dd4eab-42cd-4ad9-ab9f-9377b28906bc",
+          "totalBytes": 2477,
+          "receivedBytes": 2477,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "43dd4eab-42cd-4ad9-ab9f-9377b28906bc",
+          "totalBytes": 2477,
+          "receivedBytes": 2477,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-q08GNS/43dd4eab-42cd-4ad9-ab9f-9377b28906bc"
+        }
+      ]
+    },
+    {
+      "tag": "pro:381:recorded-JSON",
+      "label": "Export recorded JSON",
+      "filename": "ups-runtime-calculator-v1.json",
+      "file": "downloads/invocation-YDlQZA/433ac0b5-0542-4685-bdbf-22824b4817fb",
+      "bytes": 248,
+      "sha256": "1b95852a7f48985b5028ddd073fb7fac17cca80ce7d681235455758691210428",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "433ac0b5-0542-4685-bdbf-22824b4817fb",
+          "suggestedFilename": "ups-runtime-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "433ac0b5-0542-4685-bdbf-22824b4817fb",
+          "totalBytes": 248,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "433ac0b5-0542-4685-bdbf-22824b4817fb",
+          "totalBytes": 248,
+          "receivedBytes": 248,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "433ac0b5-0542-4685-bdbf-22824b4817fb",
+          "totalBytes": 248,
+          "receivedBytes": 248,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "433ac0b5-0542-4685-bdbf-22824b4817fb",
+          "totalBytes": 248,
+          "receivedBytes": 248,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "433ac0b5-0542-4685-bdbf-22824b4817fb",
+          "totalBytes": 248,
+          "receivedBytes": 248,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "433ac0b5-0542-4685-bdbf-22824b4817fb",
+          "totalBytes": 248,
+          "receivedBytes": 248,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-YDlQZA/433ac0b5-0542-4685-bdbf-22824b4817fb"
+        }
+      ]
+    },
+    {
+      "tag": "pro:381:recorded-CSV",
+      "label": "Export recorded CSV",
+      "filename": "ups-runtime-calculator-v1.csv",
+      "file": "downloads/invocation-5UgeAv/25049e93-e403-4837-855f-fcb11048c8a8",
+      "bytes": 264,
+      "sha256": "7c2dcae5cb9cfd3fc56ca68aee7fd133e8293b96745e3048568f3c089870a1fc",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "25049e93-e403-4837-855f-fcb11048c8a8",
+          "suggestedFilename": "ups-runtime-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "25049e93-e403-4837-855f-fcb11048c8a8",
+          "totalBytes": 264,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "25049e93-e403-4837-855f-fcb11048c8a8",
+          "totalBytes": 264,
+          "receivedBytes": 264,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "25049e93-e403-4837-855f-fcb11048c8a8",
+          "totalBytes": 264,
+          "receivedBytes": 264,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "25049e93-e403-4837-855f-fcb11048c8a8",
+          "totalBytes": 264,
+          "receivedBytes": 264,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "25049e93-e403-4837-855f-fcb11048c8a8",
+          "totalBytes": 264,
+          "receivedBytes": 264,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "25049e93-e403-4837-855f-fcb11048c8a8",
+          "totalBytes": 264,
+          "receivedBytes": 264,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-5UgeAv/25049e93-e403-4837-855f-fcb11048c8a8"
+        }
+      ]
+    },
+    {
+      "tag": "pro:381:recorded-PDF",
+      "label": "Export recorded PDF",
+      "filename": "ups-runtime-calculator-v1.pdf",
+      "file": "downloads/invocation-rIAuu2/7a3be946-c2df-463a-88d0-5ef231865633",
+      "bytes": 395656,
+      "sha256": "4c45a3dca4f1d5de86f8432c58f32f41dc2f6ac92af117ff993147e3866d2835",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "7a3be946-c2df-463a-88d0-5ef231865633",
+          "suggestedFilename": "ups-runtime-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "7a3be946-c2df-463a-88d0-5ef231865633",
+          "totalBytes": 395656,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7a3be946-c2df-463a-88d0-5ef231865633",
+          "totalBytes": 395656,
+          "receivedBytes": 395656,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7a3be946-c2df-463a-88d0-5ef231865633",
+          "totalBytes": 395656,
+          "receivedBytes": 395656,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7a3be946-c2df-463a-88d0-5ef231865633",
+          "totalBytes": 395656,
+          "receivedBytes": 395656,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7a3be946-c2df-463a-88d0-5ef231865633",
+          "totalBytes": 395656,
+          "receivedBytes": 395656,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7a3be946-c2df-463a-88d0-5ef231865633",
+          "totalBytes": 395656,
+          "receivedBytes": 395656,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-rIAuu2/7a3be946-c2df-463a-88d0-5ef231865633"
+        }
+      ]
+    },
+    {
+      "tag": "pro:387:local-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "password-entropy-calculator-scenarios.json",
+      "file": "downloads/invocation-zNsylY/72dbba84-4eb5-4329-a977-d755df995425",
+      "bytes": 2339,
+      "sha256": "d6479565f1d4ca5af4c09b071c2cecfd838087710b7fdfc8584486050388ba0d",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "72dbba84-4eb5-4329-a977-d755df995425",
+          "suggestedFilename": "password-entropy-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "72dbba84-4eb5-4329-a977-d755df995425",
+          "totalBytes": 2339,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "72dbba84-4eb5-4329-a977-d755df995425",
+          "totalBytes": 2339,
+          "receivedBytes": 2339,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "72dbba84-4eb5-4329-a977-d755df995425",
+          "totalBytes": 2339,
+          "receivedBytes": 2339,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "72dbba84-4eb5-4329-a977-d755df995425",
+          "totalBytes": 2339,
+          "receivedBytes": 2339,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "72dbba84-4eb5-4329-a977-d755df995425",
+          "totalBytes": 2339,
+          "receivedBytes": 2339,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "72dbba84-4eb5-4329-a977-d755df995425",
+          "totalBytes": 2339,
+          "receivedBytes": 2339,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-zNsylY/72dbba84-4eb5-4329-a977-d755df995425"
+        }
+      ]
+    },
+    {
+      "tag": "pro:387:recorded-JSON",
+      "label": "Export recorded JSON",
+      "filename": "password-entropy-calculator-v1.json",
+      "file": "downloads/invocation-pYTq4D/26f355f1-80ce-41f4-87f1-b9634745526e",
+      "bytes": 260,
+      "sha256": "1809ed4a7255a5b0d09a198bcab359a47b75e8cac0f07d56bc9d18d701579202",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "26f355f1-80ce-41f4-87f1-b9634745526e",
+          "suggestedFilename": "password-entropy-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "26f355f1-80ce-41f4-87f1-b9634745526e",
+          "totalBytes": 260,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "26f355f1-80ce-41f4-87f1-b9634745526e",
+          "totalBytes": 260,
+          "receivedBytes": 260,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "26f355f1-80ce-41f4-87f1-b9634745526e",
+          "totalBytes": 260,
+          "receivedBytes": 260,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "26f355f1-80ce-41f4-87f1-b9634745526e",
+          "totalBytes": 260,
+          "receivedBytes": 260,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "26f355f1-80ce-41f4-87f1-b9634745526e",
+          "totalBytes": 260,
+          "receivedBytes": 260,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "26f355f1-80ce-41f4-87f1-b9634745526e",
+          "totalBytes": 260,
+          "receivedBytes": 260,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-pYTq4D/26f355f1-80ce-41f4-87f1-b9634745526e"
+        }
+      ]
+    },
+    {
+      "tag": "pro:387:recorded-CSV",
+      "label": "Export recorded CSV",
+      "filename": "password-entropy-calculator-v1.csv",
+      "file": "downloads/invocation-vqVjPr/cde0573e-e73a-46a2-b980-6f98f392de4b",
+      "bytes": 272,
+      "sha256": "85f9c78b095d9fa255e37d364c2fb307c31622582ecd24423119635b246a04f1",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "cde0573e-e73a-46a2-b980-6f98f392de4b",
+          "suggestedFilename": "password-entropy-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "cde0573e-e73a-46a2-b980-6f98f392de4b",
+          "totalBytes": 272,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "cde0573e-e73a-46a2-b980-6f98f392de4b",
+          "totalBytes": 272,
+          "receivedBytes": 272,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "cde0573e-e73a-46a2-b980-6f98f392de4b",
+          "totalBytes": 272,
+          "receivedBytes": 272,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "cde0573e-e73a-46a2-b980-6f98f392de4b",
+          "totalBytes": 272,
+          "receivedBytes": 272,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "cde0573e-e73a-46a2-b980-6f98f392de4b",
+          "totalBytes": 272,
+          "receivedBytes": 272,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "cde0573e-e73a-46a2-b980-6f98f392de4b",
+          "totalBytes": 272,
+          "receivedBytes": 272,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-vqVjPr/cde0573e-e73a-46a2-b980-6f98f392de4b"
+        }
+      ]
+    },
+    {
+      "tag": "pro:387:recorded-PDF",
+      "label": "Export recorded PDF",
+      "filename": "password-entropy-calculator-v1.pdf",
+      "file": "downloads/invocation-TLd1iW/ca46371d-1751-48b4-a7f8-2668d52a4217",
+      "bytes": 395541,
+      "sha256": "06f408aaf82cbe62f26c5b41c98aa6c0123e0cd7aa0fa91319ddabf668e5416a",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "ca46371d-1751-48b4-a7f8-2668d52a4217",
+          "suggestedFilename": "password-entropy-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "ca46371d-1751-48b4-a7f8-2668d52a4217",
+          "totalBytes": 395541,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ca46371d-1751-48b4-a7f8-2668d52a4217",
+          "totalBytes": 395541,
+          "receivedBytes": 395541,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ca46371d-1751-48b4-a7f8-2668d52a4217",
+          "totalBytes": 395541,
+          "receivedBytes": 395541,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ca46371d-1751-48b4-a7f8-2668d52a4217",
+          "totalBytes": 395541,
+          "receivedBytes": 395541,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ca46371d-1751-48b4-a7f8-2668d52a4217",
+          "totalBytes": 395541,
+          "receivedBytes": 395541,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ca46371d-1751-48b4-a7f8-2668d52a4217",
+          "totalBytes": 395541,
+          "receivedBytes": 395541,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-TLd1iW/ca46371d-1751-48b4-a7f8-2668d52a4217"
+        }
+      ]
+    },
+    {
+      "tag": "business:369:local-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "cidr-calculator-scenarios.json",
+      "file": "downloads/invocation-FJBqjs/879da41e-764b-450a-ad26-6b31d6b6f86a",
+      "bytes": 1775,
+      "sha256": "858622aba5156bf34ce093df7d8b5767dbd661e5c2477577bb211c2091cc46c9",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "879da41e-764b-450a-ad26-6b31d6b6f86a",
+          "suggestedFilename": "cidr-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "879da41e-764b-450a-ad26-6b31d6b6f86a",
+          "totalBytes": 1775,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "879da41e-764b-450a-ad26-6b31d6b6f86a",
+          "totalBytes": 1775,
+          "receivedBytes": 1775,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "879da41e-764b-450a-ad26-6b31d6b6f86a",
+          "totalBytes": 1775,
+          "receivedBytes": 1775,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "879da41e-764b-450a-ad26-6b31d6b6f86a",
+          "totalBytes": 1775,
+          "receivedBytes": 1775,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "879da41e-764b-450a-ad26-6b31d6b6f86a",
+          "totalBytes": 1775,
+          "receivedBytes": 1775,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "879da41e-764b-450a-ad26-6b31d6b6f86a",
+          "totalBytes": 1775,
+          "receivedBytes": 1775,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-FJBqjs/879da41e-764b-450a-ad26-6b31d6b6f86a"
+        }
+      ]
+    },
+    {
+      "tag": "business:369:recorded-JSON",
+      "label": "Export recorded JSON",
+      "filename": "cidr-calculator-v1.json",
+      "file": "downloads/invocation-TddTKQ/79565538-734a-48e7-bf24-50d76c3a0515",
+      "bytes": 185,
+      "sha256": "98f5fce10ebaf4f5691728c3951d481a5b6b8718080f36627e27be5c4f851c56",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "79565538-734a-48e7-bf24-50d76c3a0515",
+          "suggestedFilename": "cidr-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "79565538-734a-48e7-bf24-50d76c3a0515",
+          "totalBytes": 185,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "79565538-734a-48e7-bf24-50d76c3a0515",
+          "totalBytes": 185,
+          "receivedBytes": 185,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "79565538-734a-48e7-bf24-50d76c3a0515",
+          "totalBytes": 185,
+          "receivedBytes": 185,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "79565538-734a-48e7-bf24-50d76c3a0515",
+          "totalBytes": 185,
+          "receivedBytes": 185,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "79565538-734a-48e7-bf24-50d76c3a0515",
+          "totalBytes": 185,
+          "receivedBytes": 185,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "79565538-734a-48e7-bf24-50d76c3a0515",
+          "totalBytes": 185,
+          "receivedBytes": 185,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-TddTKQ/79565538-734a-48e7-bf24-50d76c3a0515"
+        }
+      ]
+    },
+    {
+      "tag": "business:369:recorded-CSV",
+      "label": "Export recorded CSV",
+      "filename": "cidr-calculator-v1.csv",
+      "file": "downloads/invocation-DCvHxH/974280fb-76cb-4d70-b8ba-54336045c447",
+      "bytes": 193,
+      "sha256": "725677f8b57663ceb00fa74fc13792eccb160fe32da4c0fe11a4e8df76145057",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "974280fb-76cb-4d70-b8ba-54336045c447",
+          "suggestedFilename": "cidr-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "974280fb-76cb-4d70-b8ba-54336045c447",
+          "totalBytes": 193,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "974280fb-76cb-4d70-b8ba-54336045c447",
+          "totalBytes": 193,
+          "receivedBytes": 193,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "974280fb-76cb-4d70-b8ba-54336045c447",
+          "totalBytes": 193,
+          "receivedBytes": 193,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "974280fb-76cb-4d70-b8ba-54336045c447",
+          "totalBytes": 193,
+          "receivedBytes": 193,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "974280fb-76cb-4d70-b8ba-54336045c447",
+          "totalBytes": 193,
+          "receivedBytes": 193,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "974280fb-76cb-4d70-b8ba-54336045c447",
+          "totalBytes": 193,
+          "receivedBytes": 193,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-DCvHxH/974280fb-76cb-4d70-b8ba-54336045c447"
+        }
+      ]
+    },
+    {
+      "tag": "business:369:recorded-PDF",
+      "label": "Export recorded PDF",
+      "filename": "cidr-calculator-v1.pdf",
+      "file": "downloads/invocation-VZXyQN/24d0a014-1464-47ff-8d48-fa431d94e184",
+      "bytes": 395105,
+      "sha256": "c07e72cc9d8f36307edad75a589b075baa6b3f042a2198ccc314e3e85aa52cc9",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "24d0a014-1464-47ff-8d48-fa431d94e184",
+          "suggestedFilename": "cidr-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "24d0a014-1464-47ff-8d48-fa431d94e184",
+          "totalBytes": 395105,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "24d0a014-1464-47ff-8d48-fa431d94e184",
+          "totalBytes": 395105,
+          "receivedBytes": 395105,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "24d0a014-1464-47ff-8d48-fa431d94e184",
+          "totalBytes": 395105,
+          "receivedBytes": 395105,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "24d0a014-1464-47ff-8d48-fa431d94e184",
+          "totalBytes": 395105,
+          "receivedBytes": 395105,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "24d0a014-1464-47ff-8d48-fa431d94e184",
+          "totalBytes": 395105,
+          "receivedBytes": 395105,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "24d0a014-1464-47ff-8d48-fa431d94e184",
+          "totalBytes": 395105,
+          "receivedBytes": 395105,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-VZXyQN/24d0a014-1464-47ff-8d48-fa431d94e184"
+        }
+      ]
+    },
+    {
+      "tag": "business:375:local-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "raid-capacity-calculator-scenarios.json",
+      "file": "downloads/invocation-HuS4Z2/4043fd07-2cfc-49a2-85b9-dfd1b520b3fd",
+      "bytes": 2610,
+      "sha256": "86bf7508b469a1750cf5b541db44c56eb6c2840c113eaddffa0bf59507de66c6",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "4043fd07-2cfc-49a2-85b9-dfd1b520b3fd",
+          "suggestedFilename": "raid-capacity-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "4043fd07-2cfc-49a2-85b9-dfd1b520b3fd",
+          "totalBytes": 2610,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4043fd07-2cfc-49a2-85b9-dfd1b520b3fd",
+          "totalBytes": 2610,
+          "receivedBytes": 2610,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4043fd07-2cfc-49a2-85b9-dfd1b520b3fd",
+          "totalBytes": 2610,
+          "receivedBytes": 2610,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4043fd07-2cfc-49a2-85b9-dfd1b520b3fd",
+          "totalBytes": 2610,
+          "receivedBytes": 2610,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4043fd07-2cfc-49a2-85b9-dfd1b520b3fd",
+          "totalBytes": 2610,
+          "receivedBytes": 2610,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4043fd07-2cfc-49a2-85b9-dfd1b520b3fd",
+          "totalBytes": 2610,
+          "receivedBytes": 2610,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-HuS4Z2/4043fd07-2cfc-49a2-85b9-dfd1b520b3fd"
+        }
+      ]
+    },
+    {
+      "tag": "business:375:recorded-JSON",
+      "label": "Export recorded JSON",
+      "filename": "raid-capacity-calculator-v1.json",
+      "file": "downloads/invocation-6Kt6ju/8a9046c7-a3e7-4e06-ba0a-04ad3995ff1c",
+      "bytes": 248,
+      "sha256": "531dfb8580f56360223ed0d0b795433ebdfa461148ea6e937975b3e1d1578029",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "8a9046c7-a3e7-4e06-ba0a-04ad3995ff1c",
+          "suggestedFilename": "raid-capacity-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "8a9046c7-a3e7-4e06-ba0a-04ad3995ff1c",
+          "totalBytes": 248,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "8a9046c7-a3e7-4e06-ba0a-04ad3995ff1c",
+          "totalBytes": 248,
+          "receivedBytes": 248,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "8a9046c7-a3e7-4e06-ba0a-04ad3995ff1c",
+          "totalBytes": 248,
+          "receivedBytes": 248,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "8a9046c7-a3e7-4e06-ba0a-04ad3995ff1c",
+          "totalBytes": 248,
+          "receivedBytes": 248,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "8a9046c7-a3e7-4e06-ba0a-04ad3995ff1c",
+          "totalBytes": 248,
+          "receivedBytes": 248,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "8a9046c7-a3e7-4e06-ba0a-04ad3995ff1c",
+          "totalBytes": 248,
+          "receivedBytes": 248,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-6Kt6ju/8a9046c7-a3e7-4e06-ba0a-04ad3995ff1c"
+        }
+      ]
+    },
+    {
+      "tag": "business:375:recorded-CSV",
+      "label": "Export recorded CSV",
+      "filename": "raid-capacity-calculator-v1.csv",
+      "file": "downloads/invocation-jrfl7a/d4e152d7-f211-411a-a815-b354b92922b4",
+      "bytes": 262,
+      "sha256": "1dc0f1d1d63c11a48dbaf5a7c1e630e3f826580e38dc67f2d5ba4f3073d9e00a",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "d4e152d7-f211-411a-a815-b354b92922b4",
+          "suggestedFilename": "raid-capacity-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "d4e152d7-f211-411a-a815-b354b92922b4",
+          "totalBytes": 262,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d4e152d7-f211-411a-a815-b354b92922b4",
+          "totalBytes": 262,
+          "receivedBytes": 262,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d4e152d7-f211-411a-a815-b354b92922b4",
+          "totalBytes": 262,
+          "receivedBytes": 262,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d4e152d7-f211-411a-a815-b354b92922b4",
+          "totalBytes": 262,
+          "receivedBytes": 262,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d4e152d7-f211-411a-a815-b354b92922b4",
+          "totalBytes": 262,
+          "receivedBytes": 262,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d4e152d7-f211-411a-a815-b354b92922b4",
+          "totalBytes": 262,
+          "receivedBytes": 262,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-jrfl7a/d4e152d7-f211-411a-a815-b354b92922b4"
+        }
+      ]
+    },
+    {
+      "tag": "business:375:recorded-PDF",
+      "label": "Export recorded PDF",
+      "filename": "raid-capacity-calculator-v1.pdf",
+      "file": "downloads/invocation-RL3bbH/a66b29bf-8c43-4968-bc9e-80768891d7c7",
+      "bytes": 395658,
+      "sha256": "df0f93354c07d369b7164d20ed90e6ac44da8e6dc410088b33069d8887b23962",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "a66b29bf-8c43-4968-bc9e-80768891d7c7",
+          "suggestedFilename": "raid-capacity-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "a66b29bf-8c43-4968-bc9e-80768891d7c7",
+          "totalBytes": 395658,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "a66b29bf-8c43-4968-bc9e-80768891d7c7",
+          "totalBytes": 395658,
+          "receivedBytes": 395658,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "a66b29bf-8c43-4968-bc9e-80768891d7c7",
+          "totalBytes": 395658,
+          "receivedBytes": 395658,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "a66b29bf-8c43-4968-bc9e-80768891d7c7",
+          "totalBytes": 395658,
+          "receivedBytes": 395658,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "a66b29bf-8c43-4968-bc9e-80768891d7c7",
+          "totalBytes": 395658,
+          "receivedBytes": 395658,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "a66b29bf-8c43-4968-bc9e-80768891d7c7",
+          "totalBytes": 395658,
+          "receivedBytes": 395658,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-RL3bbH/a66b29bf-8c43-4968-bc9e-80768891d7c7"
+        }
+      ]
+    },
+    {
+      "tag": "business:380:local-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "battery-runtime-calculator-scenarios.json",
+      "file": "downloads/invocation-e8WZnf/62938cb3-d046-4d06-8a66-72381e52e604",
+      "bytes": 2512,
+      "sha256": "ba63f160320b1bff238378b2a8fc8ad6cb2d8ce673485a4584441d93d14b7c5f",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "62938cb3-d046-4d06-8a66-72381e52e604",
+          "suggestedFilename": "battery-runtime-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "62938cb3-d046-4d06-8a66-72381e52e604",
+          "totalBytes": 2512,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "62938cb3-d046-4d06-8a66-72381e52e604",
+          "totalBytes": 2512,
+          "receivedBytes": 2512,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "62938cb3-d046-4d06-8a66-72381e52e604",
+          "totalBytes": 2512,
+          "receivedBytes": 2512,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "62938cb3-d046-4d06-8a66-72381e52e604",
+          "totalBytes": 2512,
+          "receivedBytes": 2512,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "62938cb3-d046-4d06-8a66-72381e52e604",
+          "totalBytes": 2512,
+          "receivedBytes": 2512,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "62938cb3-d046-4d06-8a66-72381e52e604",
+          "totalBytes": 2512,
+          "receivedBytes": 2512,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-e8WZnf/62938cb3-d046-4d06-8a66-72381e52e604"
+        }
+      ]
+    },
+    {
+      "tag": "business:380:recorded-JSON",
+      "label": "Export recorded JSON",
+      "filename": "battery-runtime-calculator-v1.json",
+      "file": "downloads/invocation-ypacwc/22b9d441-a172-4260-818d-e3454ae5cb3b",
+      "bytes": 258,
+      "sha256": "a9738674a25ffc8667d8a3362a3d509a1a1048609327499262cc5a728baa25e9",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "22b9d441-a172-4260-818d-e3454ae5cb3b",
+          "suggestedFilename": "battery-runtime-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "22b9d441-a172-4260-818d-e3454ae5cb3b",
+          "totalBytes": 258,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "22b9d441-a172-4260-818d-e3454ae5cb3b",
+          "totalBytes": 258,
+          "receivedBytes": 258,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "22b9d441-a172-4260-818d-e3454ae5cb3b",
+          "totalBytes": 258,
+          "receivedBytes": 258,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "22b9d441-a172-4260-818d-e3454ae5cb3b",
+          "totalBytes": 258,
+          "receivedBytes": 258,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "22b9d441-a172-4260-818d-e3454ae5cb3b",
+          "totalBytes": 258,
+          "receivedBytes": 258,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "22b9d441-a172-4260-818d-e3454ae5cb3b",
+          "totalBytes": 258,
+          "receivedBytes": 258,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-ypacwc/22b9d441-a172-4260-818d-e3454ae5cb3b"
+        }
+      ]
+    },
+    {
+      "tag": "business:380:recorded-CSV",
+      "label": "Export recorded CSV",
+      "filename": "battery-runtime-calculator-v1.csv",
+      "file": "downloads/invocation-omh922/e5a46c5d-95bb-49e2-b5bb-39436d6dc804",
+      "bytes": 274,
+      "sha256": "ccbc570d51926a33122be7e540623e311f00df622fb8c7d99a9867d0cafd4166",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "e5a46c5d-95bb-49e2-b5bb-39436d6dc804",
+          "suggestedFilename": "battery-runtime-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "e5a46c5d-95bb-49e2-b5bb-39436d6dc804",
+          "totalBytes": 274,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e5a46c5d-95bb-49e2-b5bb-39436d6dc804",
+          "totalBytes": 274,
+          "receivedBytes": 274,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e5a46c5d-95bb-49e2-b5bb-39436d6dc804",
+          "totalBytes": 274,
+          "receivedBytes": 274,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e5a46c5d-95bb-49e2-b5bb-39436d6dc804",
+          "totalBytes": 274,
+          "receivedBytes": 274,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e5a46c5d-95bb-49e2-b5bb-39436d6dc804",
+          "totalBytes": 274,
+          "receivedBytes": 274,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e5a46c5d-95bb-49e2-b5bb-39436d6dc804",
+          "totalBytes": 274,
+          "receivedBytes": 274,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-omh922/e5a46c5d-95bb-49e2-b5bb-39436d6dc804"
+        }
+      ]
+    },
+    {
+      "tag": "business:380:recorded-PDF",
+      "label": "Export recorded PDF",
+      "filename": "battery-runtime-calculator-v1.pdf",
+      "file": "downloads/invocation-5drHuZ/d2b07ff3-f478-423f-bdab-2e34a69527dd",
+      "bytes": 395712,
+      "sha256": "611d8f6035401527414d44383d0d2138677bcd2254c1f25deb82700b3149c878",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "d2b07ff3-f478-423f-bdab-2e34a69527dd",
+          "suggestedFilename": "battery-runtime-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "d2b07ff3-f478-423f-bdab-2e34a69527dd",
+          "totalBytes": 395712,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d2b07ff3-f478-423f-bdab-2e34a69527dd",
+          "totalBytes": 395712,
+          "receivedBytes": 395712,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d2b07ff3-f478-423f-bdab-2e34a69527dd",
+          "totalBytes": 395712,
+          "receivedBytes": 395712,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d2b07ff3-f478-423f-bdab-2e34a69527dd",
+          "totalBytes": 395712,
+          "receivedBytes": 395712,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d2b07ff3-f478-423f-bdab-2e34a69527dd",
+          "totalBytes": 395712,
+          "receivedBytes": 395712,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "d2b07ff3-f478-423f-bdab-2e34a69527dd",
+          "totalBytes": 395712,
+          "receivedBytes": 395712,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-5drHuZ/d2b07ff3-f478-423f-bdab-2e34a69527dd"
+        }
+      ]
+    },
+    {
+      "tag": "business:381:local-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "ups-runtime-calculator-scenarios.json",
+      "file": "downloads/invocation-02x3is/f7653e3f-48a1-47de-8801-950edb53e299",
+      "bytes": 2477,
+      "sha256": "f23710b4920d6f86d27b57b7d6b349398bd1b824aa5bde20b4032234b4f5841f",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "f7653e3f-48a1-47de-8801-950edb53e299",
+          "suggestedFilename": "ups-runtime-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "f7653e3f-48a1-47de-8801-950edb53e299",
+          "totalBytes": 2477,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f7653e3f-48a1-47de-8801-950edb53e299",
+          "totalBytes": 2477,
+          "receivedBytes": 2477,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f7653e3f-48a1-47de-8801-950edb53e299",
+          "totalBytes": 2477,
+          "receivedBytes": 2477,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f7653e3f-48a1-47de-8801-950edb53e299",
+          "totalBytes": 2477,
+          "receivedBytes": 2477,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f7653e3f-48a1-47de-8801-950edb53e299",
+          "totalBytes": 2477,
+          "receivedBytes": 2477,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f7653e3f-48a1-47de-8801-950edb53e299",
+          "totalBytes": 2477,
+          "receivedBytes": 2477,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-02x3is/f7653e3f-48a1-47de-8801-950edb53e299"
+        }
+      ]
+    },
+    {
+      "tag": "business:381:recorded-JSON",
+      "label": "Export recorded JSON",
+      "filename": "ups-runtime-calculator-v1.json",
+      "file": "downloads/invocation-nOtn6e/85c8c32b-cc68-46b5-9a67-138c37997206",
+      "bytes": 248,
+      "sha256": "1b95852a7f48985b5028ddd073fb7fac17cca80ce7d681235455758691210428",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "85c8c32b-cc68-46b5-9a67-138c37997206",
+          "suggestedFilename": "ups-runtime-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "85c8c32b-cc68-46b5-9a67-138c37997206",
+          "totalBytes": 248,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "85c8c32b-cc68-46b5-9a67-138c37997206",
+          "totalBytes": 248,
+          "receivedBytes": 248,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "85c8c32b-cc68-46b5-9a67-138c37997206",
+          "totalBytes": 248,
+          "receivedBytes": 248,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "85c8c32b-cc68-46b5-9a67-138c37997206",
+          "totalBytes": 248,
+          "receivedBytes": 248,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "85c8c32b-cc68-46b5-9a67-138c37997206",
+          "totalBytes": 248,
+          "receivedBytes": 248,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "85c8c32b-cc68-46b5-9a67-138c37997206",
+          "totalBytes": 248,
+          "receivedBytes": 248,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-nOtn6e/85c8c32b-cc68-46b5-9a67-138c37997206"
+        }
+      ]
+    },
+    {
+      "tag": "business:381:recorded-CSV",
+      "label": "Export recorded CSV",
+      "filename": "ups-runtime-calculator-v1.csv",
+      "file": "downloads/invocation-VvsrBH/51c0c301-6985-4400-ad32-62498801a973",
+      "bytes": 264,
+      "sha256": "7c2dcae5cb9cfd3fc56ca68aee7fd133e8293b96745e3048568f3c089870a1fc",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "51c0c301-6985-4400-ad32-62498801a973",
+          "suggestedFilename": "ups-runtime-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "51c0c301-6985-4400-ad32-62498801a973",
+          "totalBytes": 264,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "51c0c301-6985-4400-ad32-62498801a973",
+          "totalBytes": 264,
+          "receivedBytes": 264,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "51c0c301-6985-4400-ad32-62498801a973",
+          "totalBytes": 264,
+          "receivedBytes": 264,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "51c0c301-6985-4400-ad32-62498801a973",
+          "totalBytes": 264,
+          "receivedBytes": 264,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "51c0c301-6985-4400-ad32-62498801a973",
+          "totalBytes": 264,
+          "receivedBytes": 264,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "51c0c301-6985-4400-ad32-62498801a973",
+          "totalBytes": 264,
+          "receivedBytes": 264,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-VvsrBH/51c0c301-6985-4400-ad32-62498801a973"
+        }
+      ]
+    },
+    {
+      "tag": "business:381:recorded-PDF",
+      "label": "Export recorded PDF",
+      "filename": "ups-runtime-calculator-v1.pdf",
+      "file": "downloads/invocation-UpU8UE/3c6ff8b4-7c79-49a4-ab9a-a703fee57e5d",
+      "bytes": 395656,
+      "sha256": "4c45a3dca4f1d5de86f8432c58f32f41dc2f6ac92af117ff993147e3866d2835",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "3c6ff8b4-7c79-49a4-ab9a-a703fee57e5d",
+          "suggestedFilename": "ups-runtime-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "3c6ff8b4-7c79-49a4-ab9a-a703fee57e5d",
+          "totalBytes": 395656,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "3c6ff8b4-7c79-49a4-ab9a-a703fee57e5d",
+          "totalBytes": 395656,
+          "receivedBytes": 395656,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "3c6ff8b4-7c79-49a4-ab9a-a703fee57e5d",
+          "totalBytes": 395656,
+          "receivedBytes": 395656,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "3c6ff8b4-7c79-49a4-ab9a-a703fee57e5d",
+          "totalBytes": 395656,
+          "receivedBytes": 395656,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "3c6ff8b4-7c79-49a4-ab9a-a703fee57e5d",
+          "totalBytes": 395656,
+          "receivedBytes": 395656,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "3c6ff8b4-7c79-49a4-ab9a-a703fee57e5d",
+          "totalBytes": 395656,
+          "receivedBytes": 395656,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-UpU8UE/3c6ff8b4-7c79-49a4-ab9a-a703fee57e5d"
+        }
+      ]
+    },
+    {
+      "tag": "business:387:local-scenarios",
+      "label": "Export scenario set JSON",
+      "filename": "password-entropy-calculator-scenarios.json",
+      "file": "downloads/invocation-lad9aF/20686b75-3e11-4acd-a4d2-36d3dc3ec024",
+      "bytes": 2339,
+      "sha256": "d6479565f1d4ca5af4c09b071c2cecfd838087710b7fdfc8584486050388ba0d",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "20686b75-3e11-4acd-a4d2-36d3dc3ec024",
+          "suggestedFilename": "password-entropy-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "20686b75-3e11-4acd-a4d2-36d3dc3ec024",
+          "totalBytes": 2339,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "20686b75-3e11-4acd-a4d2-36d3dc3ec024",
+          "totalBytes": 2339,
+          "receivedBytes": 2339,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "20686b75-3e11-4acd-a4d2-36d3dc3ec024",
+          "totalBytes": 2339,
+          "receivedBytes": 2339,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "20686b75-3e11-4acd-a4d2-36d3dc3ec024",
+          "totalBytes": 2339,
+          "receivedBytes": 2339,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "20686b75-3e11-4acd-a4d2-36d3dc3ec024",
+          "totalBytes": 2339,
+          "receivedBytes": 2339,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "20686b75-3e11-4acd-a4d2-36d3dc3ec024",
+          "totalBytes": 2339,
+          "receivedBytes": 2339,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-lad9aF/20686b75-3e11-4acd-a4d2-36d3dc3ec024"
+        }
+      ]
+    },
+    {
+      "tag": "business:387:recorded-JSON",
+      "label": "Export recorded JSON",
+      "filename": "password-entropy-calculator-v1.json",
+      "file": "downloads/invocation-G6rSNF/14df59c5-d8fd-42be-853c-a6e59c906cc7",
+      "bytes": 260,
+      "sha256": "1809ed4a7255a5b0d09a198bcab359a47b75e8cac0f07d56bc9d18d701579202",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "14df59c5-d8fd-42be-853c-a6e59c906cc7",
+          "suggestedFilename": "password-entropy-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "14df59c5-d8fd-42be-853c-a6e59c906cc7",
+          "totalBytes": 260,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "14df59c5-d8fd-42be-853c-a6e59c906cc7",
+          "totalBytes": 260,
+          "receivedBytes": 260,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "14df59c5-d8fd-42be-853c-a6e59c906cc7",
+          "totalBytes": 260,
+          "receivedBytes": 260,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "14df59c5-d8fd-42be-853c-a6e59c906cc7",
+          "totalBytes": 260,
+          "receivedBytes": 260,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "14df59c5-d8fd-42be-853c-a6e59c906cc7",
+          "totalBytes": 260,
+          "receivedBytes": 260,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "14df59c5-d8fd-42be-853c-a6e59c906cc7",
+          "totalBytes": 260,
+          "receivedBytes": 260,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-G6rSNF/14df59c5-d8fd-42be-853c-a6e59c906cc7"
+        }
+      ]
+    },
+    {
+      "tag": "business:387:recorded-CSV",
+      "label": "Export recorded CSV",
+      "filename": "password-entropy-calculator-v1.csv",
+      "file": "downloads/invocation-RRvjwo/2dd6f60f-f566-47be-a84a-128a6ce22b2a",
+      "bytes": 272,
+      "sha256": "85f9c78b095d9fa255e37d364c2fb307c31622582ecd24423119635b246a04f1",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "2dd6f60f-f566-47be-a84a-128a6ce22b2a",
+          "suggestedFilename": "password-entropy-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "2dd6f60f-f566-47be-a84a-128a6ce22b2a",
+          "totalBytes": 272,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2dd6f60f-f566-47be-a84a-128a6ce22b2a",
+          "totalBytes": 272,
+          "receivedBytes": 272,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2dd6f60f-f566-47be-a84a-128a6ce22b2a",
+          "totalBytes": 272,
+          "receivedBytes": 272,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2dd6f60f-f566-47be-a84a-128a6ce22b2a",
+          "totalBytes": 272,
+          "receivedBytes": 272,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2dd6f60f-f566-47be-a84a-128a6ce22b2a",
+          "totalBytes": 272,
+          "receivedBytes": 272,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2dd6f60f-f566-47be-a84a-128a6ce22b2a",
+          "totalBytes": 272,
+          "receivedBytes": 272,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-RRvjwo/2dd6f60f-f566-47be-a84a-128a6ce22b2a"
+        }
+      ]
+    },
+    {
+      "tag": "business:387:recorded-PDF",
+      "label": "Export recorded PDF",
+      "filename": "password-entropy-calculator-v1.pdf",
+      "file": "downloads/invocation-xx35Ri/dba57d03-ca58-4bce-a9d7-a6f332bdcf35",
+      "bytes": 395541,
+      "sha256": "06f408aaf82cbe62f26c5b41c98aa6c0123e0cd7aa0fa91319ddabf668e5416a",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "C376A208BBBF9E8E9395874A2C76610C",
+          "guid": "dba57d03-ca58-4bce-a9d7-a6f332bdcf35",
+          "suggestedFilename": "password-entropy-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "dba57d03-ca58-4bce-a9d7-a6f332bdcf35",
+          "totalBytes": 395541,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "dba57d03-ca58-4bce-a9d7-a6f332bdcf35",
+          "totalBytes": 395541,
+          "receivedBytes": 395541,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "dba57d03-ca58-4bce-a9d7-a6f332bdcf35",
+          "totalBytes": 395541,
+          "receivedBytes": 395541,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "dba57d03-ca58-4bce-a9d7-a6f332bdcf35",
+          "totalBytes": 395541,
+          "receivedBytes": 395541,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "dba57d03-ca58-4bce-a9d7-a6f332bdcf35",
+          "totalBytes": 395541,
+          "receivedBytes": 395541,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "dba57d03-ca58-4bce-a9d7-a6f332bdcf35",
+          "totalBytes": 395541,
+          "receivedBytes": 395541,
+          "state": "completed",
+          "filePath": "/tmp/parallel-five-authenticated/personal/downloads/invocation-xx35Ri/dba57d03-ca58-4bce-a9d7-a6f332bdcf35"
+        }
+      ]
+    }
+  ]
+}

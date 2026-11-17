@@ -1,0 +1,45 @@
+
+ RUN  v3.2.7 /workspace/worker2-statistics-b
+
+ ↓ src/lib/worker2-statistics-b-20261117/cohort.test.ts (26 tests | 26 skipped)
+ ↓ tests/worker2-statistics-b-20261117/missing-array-contract.test.ts (1 test | 1 skipped)
+ ❯ src/lib/worker2-statistics-b-20261117/account.test.ts (6 tests | 1 failed | 5 skipped) 15ms
+   ↓ unit: actual #296 snapshot goes through existing atomic history and scenario actions
+   ↓ unit: actual #297 snapshot goes through existing atomic history and scenario actions
+   ↓ unit: actual #299 snapshot goes through existing atomic history and scenario actions
+   ↓ unit: stale owner, downgrade, foreign project and forged packet fail before persistence
+   ↓ unit: context read cannot activate Business writes or native commercial capability
+   × unit: revoked review access cannot save history or read private Business context 14ms
+     → promise resolved "{ id: '33333333-3333-4333-8333-33333…' }" instead of rejecting
+ ↓ src/components/worker2-statistics-b-20261117/portal.test.tsx (5 tests | 5 skipped)
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/worker2-statistics-b-20261117/account.test.ts > unit: revoked review access cannot save history or read private Business context
+AssertionError: promise resolved "{ id: '33333333-3333-4333-8333-33333…' }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "id": "33333333-3333-4333-8333-333333333333",
+  }
+
+ ❯ src/lib/worker2-statistics-b-20261117/account.test.ts:39:86
+     37|  rows.platform_admins=null;
+     38|  const packet=statisticsWorkflows(296).execute({values:'[1,2,3,4]',qua…
+     39|  await expect(saveStatisticsHistory({expectedOwnerId:owner,requestId:r…
+       |                                                                                      ^
+     40|  await expect(statisticsBusinessProjects({expectedOwnerId:owner,organi…
+     41|  expect(mock.history).not.toHaveBeenCalled();expect(mock.business).not…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 3 skipped (4)
+      Tests  1 failed | 37 skipped (38)
+   Start at  05:04:06
+   Duration  2.83s (transform 814ms, setup 0ms, collect 1.56s, tests 15ms, environment 400ms, prepare 266ms)
+

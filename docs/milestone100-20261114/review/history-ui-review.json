@@ -1,0 +1,42 @@
+{
+  "kind": "READ_ONLY_HISTORY_AND_SECONDARY_OUTPUT_SOFTWARE_REVIEW",
+  "headBeforeWorkingChanges": "a3b60725130784796ca461c88c33e8983395584d",
+  "currentSourceHashes": {
+    "src/lib/wave100-history-verification.ts": "8605c525d7f8b60638b12ff13545aebc1843d08617ba26204feacdb5f8d9fb6d",
+    "src/lib/wave100-history-verification.test.ts": "96dfcc1523e9c898549728158d20bf21a17c1c49d38a343ed9fd6cd7a9b7c1cf",
+    "src/components/saved-calculation-actions.tsx": "c93c78822427b99490cec057f0b62abd2c22a55b03f56ef38682c15caedbd994",
+    "src/components/wave100-history-recovery.test.tsx": "99ced389b4e318a1a8265d59e34127de36cede44388a90195c7cf158d550d247",
+    "src/components/wave100-calculator-analysis.tsx": "bb321ba3107d8c39da989e54d3cc08e3a6133952abf18f7c11f2328aacb4a3eb",
+    "src/components/wave100-calculator-analysis.test.tsx": "e228e189a00a9aec74bcc4e8037e890ff3b632345225a7eebea218c51aa04a1e"
+  },
+  "historyResult": "NO_DEMONSTRATED_DEFECT",
+  "historyChecks": [
+    "Closed eight exact historical v1 definitions.",
+    "Wrong version throws before arithmetic; no substitution.",
+    "Input schema checked and extra recorded fields refused.",
+    "Full output compared including steps and secondary fields.",
+    "Original registered verifier delegated for other identities.",
+    "Current narrower capture restrictions are not imposed on recorded snapshots; historical underflow witness preserved.",
+    "Saved actions run verification only when requested and preserve stored data/export behavior."
+  ],
+  "uiResult": "ALL_OUTPUT_FIELDS_RENDERED_ONE_MINOR_SECONDARY_UNIT_GAP",
+  "findings": [
+    {
+      "id": "W100-R2",
+      "priority": "P3",
+      "status": "OPEN",
+      "path": "src/components/wave100-calculator-analysis.tsx",
+      "title": "Coordinate secondary dx/dy rows omit known generic length units",
+      "evidence": "Immutable-output unit matcher has no dx/dy case. geometry.slopev2 and geometry.distancev2 return dx and dy, which fall through to empty string. The values themselves are rendered unchanged.",
+      "repair": "Add exact dx/dy length-unit mapping and one coordinate-output table assertion. No registry/adoption change needed."
+    }
+  ],
+  "executedTests": {
+    "files": 4,
+    "tests": 33,
+    "passed": 33,
+    "log": "docs/milestone100-20261114/review/history-ui-focused-tests.log"
+  },
+  "approvalGranted": false,
+  "releaseHold": true
+}

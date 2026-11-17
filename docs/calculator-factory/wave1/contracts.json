@@ -1,0 +1,1572 @@
+{
+  "schemaVersion": 1,
+  "cohort": "calculator-factory-wave1-20261112",
+  "sourceSHA": "6fad73b53a86ea3581763b7b4afb154089e1aa08",
+  "codeRef": "6fad73b53a86ea3581763b7b4afb154089e1aa08",
+  "releaseHold": true,
+  "authority": "Private engineering evidence only. No certification, publication, production merge, live deployment or engineering-complete promotion.",
+  "sourceFiles": [
+    {
+      "path": "data/catalog/source-driven-2026-10-27/engineering-register.json",
+      "sha256": "5eb13eef4484fb708bb61e85b8ec9b6353e439489f35c97f328ed15b42dd0205"
+    },
+    {
+      "path": "data/verification/codex-a-standard-risk-goldens-2026-10-15.json",
+      "sha256": "e5a9b33a487bfa5c083dffd45bb039df459393b1a46a11346d000e11ca1c1ec6"
+    },
+    {
+      "path": "docs/calculator-first/authority-catalog.json",
+      "sha256": "edd257b4d358411cbacf3f8e9012541bfa1ffa9247c7f4687f3183eab384565c"
+    },
+    {
+      "path": "scripts/calculator-factory-20261112/generate.mjs",
+      "sha256": "2b47b6e6592f340ddc4ab550d1d5a1b947adc5c3edf190f1f0a3189575656754"
+    },
+    {
+      "path": "src/calculators/accounting-completion-contracts.ts",
+      "sha256": "f934a60876029aac97d282818a32c28b2109669484cdb111df4e7196cbc04242"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-10.ts",
+      "sha256": "78370a3240b98b4339d88fdaa95cf57ff963f7b780b0956d6fc541909a0f93de"
+    },
+    {
+      "path": "src/calculators/advanced-math/expression-engine.ts",
+      "sha256": "52af6dda5267eeeeb34830776a054e1ad1e5051560e99f2483bd7879bedf3d24"
+    },
+    {
+      "path": "src/calculators/advanced-math/graph-example-fixtures.ts",
+      "sha256": "c1e5490bf9fd7da179e5138d687f25938370481ea58a40753fd4413e606cd666"
+    },
+    {
+      "path": "src/calculators/business/break-even.ts",
+      "sha256": "7f9cc4da38039323d768d4576c3054d151706aaf4c3734d1f0fe2045754ec5f9"
+    },
+    {
+      "path": "src/calculators/completion-contracts.ts",
+      "sha256": "86a3ee18faee1a951c6d43b63762b9158497e2885fdde83bb9e310a80c1730aa"
+    },
+    {
+      "path": "src/calculators/completion-math.ts",
+      "sha256": "2069c86d5ef7d994664037b01c719a5764f84ec4624f090c4a9478d03233b0ed"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-1.ts",
+      "sha256": "e4c01d7544568d9ce3900b54b50895d3212824ec5ec6dbfcf3e49c92bb014da9"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-2.ts",
+      "sha256": "8c8021714b27b2399ea4d27a6bec595e446426ca2e6ad846815e60a9a5b35467"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-3.ts",
+      "sha256": "8605a98cbc051450fbd71089d77f174f961ea56d5ee6b743e38c8a473b87c165"
+    },
+    {
+      "path": "src/calculators/core/percentage.ts",
+      "sha256": "abb6d4dfce62afce867ceaa5ea209ec3f9f6ba885016ecd9b5aed452668b21cc"
+    },
+    {
+      "path": "src/calculators/core/unit-conversion.ts",
+      "sha256": "b323d7311c94a07c3da809af6293e775cf97e634e7c5f352fad0710a7a7e174a"
+    },
+    {
+      "path": "src/calculators/decimal-fraction-goldens.ts",
+      "sha256": "29a5f87e07817fed990d1efa116b4daf1c06b3c91bd00114eee15e6dde406bc5"
+    },
+    {
+      "path": "src/calculators/engine.ts",
+      "sha256": "41da900c997cdf101aa4d45d336d6319772ddddd0f254c24cb413ff3553b67c6"
+    },
+    {
+      "path": "src/calculators/exact-rational.ts",
+      "sha256": "cccb4e1366200c799eb82f3542d4f90ecfc0341d8678db29f93d347f39af806a"
+    },
+    {
+      "path": "src/calculators/final-framework/adapters.ts",
+      "sha256": "f4749489bbc133a9bb7ca4a89e1dff5809ec2d760979dea833473e10ffc2bfc7"
+    },
+    {
+      "path": "src/calculators/final-framework/analysis.ts",
+      "sha256": "225af2ddbba2bb3aa3f571acc8e4a8eb263f6b553e25fbc7db3bf69254185013"
+    },
+    {
+      "path": "src/calculators/final-framework/investment-periods.ts",
+      "sha256": "d2cfb48822b17ca40c91a35578f53e5c4cb31f8ae1a4e30cbcec6aecca331eba"
+    },
+    {
+      "path": "src/calculators/final-framework/mortgage-rate-analysis.ts",
+      "sha256": "250c05582df44869d3ec103339774465f61e35a7b649e6f13d6ae01a37605a7e"
+    },
+    {
+      "path": "src/calculators/final-framework/registered-rate-analysis.ts",
+      "sha256": "97cebcf2a1efb21369667d5a2e5aea016bd63e5af05a4b3374a13a82b82295bc"
+    },
+    {
+      "path": "src/calculators/finance/compound-interest-independent-goldens.ts",
+      "sha256": "636f1be17ad0b4597ec0a05cfe0d6f558575cb2b8ebd49a531a80366cbc7bdd8"
+    },
+    {
+      "path": "src/calculators/finance/compound-interest.ts",
+      "sha256": "7c948d1deec2565b9386f9978f1ef6f81c33993354065e9d8a393aeb5cf28b8d"
+    },
+    {
+      "path": "src/calculators/finance/debt-aggregate-independent-goldens.ts",
+      "sha256": "b430852558318dc73083fdb8acf62fb5e2f7e7c54e98b35f0cf1a188d5303109"
+    },
+    {
+      "path": "src/calculators/finance/debt-payoff-independent-goldens.ts",
+      "sha256": "a71ef994534e2ffa35c2d4bba721ddf2b39e67674f69fdf340fb9d944faa7277"
+    },
+    {
+      "path": "src/calculators/finance/loan-analysis.ts",
+      "sha256": "92d37f5d5219b794d4dde2fa48d77a605fa344501964ae853549981ff81746ef"
+    },
+    {
+      "path": "src/calculators/finance/loan-payment.ts",
+      "sha256": "c4347c6d8d5cc7ea7d95bc2eda914a3f9eb4faba37f373d4be521f71dd2923f5"
+    },
+    {
+      "path": "src/calculators/finance/mortgage.ts",
+      "sha256": "8f4c7b87637df8e401582493a7ae3ec94b9a252ac08bee0cce00f825bb5d21bd"
+    },
+    {
+      "path": "src/calculators/finance/simple-interest-independent-goldens.ts",
+      "sha256": "e7380cbb67f037566961e3ca278a4194c9b26dc9aec3a128ea90a08b4ec44036"
+    },
+    {
+      "path": "src/calculators/finance/simple-interest.ts",
+      "sha256": "602ea32c413f5ed632bb697b4f1583aaa70f4ebe68fadf6a6dac0ae5ef82c773"
+    },
+    {
+      "path": "src/calculators/finance/sip-independent-goldens.ts",
+      "sha256": "a8ebbac118762b2860d137cb4282f508b510c34912486c8d7082ad365b297a89"
+    },
+    {
+      "path": "src/calculators/finance/sip.ts",
+      "sha256": "d829448f8d9fa930b5744dcf0128e7ea5e7139c2306e23df83cf622ce134310a"
+    },
+    {
+      "path": "src/calculators/geometry/catalog-completion.ts",
+      "sha256": "784b527d4380facf78f20092642a70001e83c259d1916f78af44e996a3d344ff"
+    },
+    {
+      "path": "src/calculators/health/bmi.ts",
+      "sha256": "e2597d2b3db50ce3a17c55d558f2b1f64ae48ce49a3815ee0c717127ee1105d6"
+    },
+    {
+      "path": "src/calculators/launch-portfolio.ts",
+      "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+    },
+    {
+      "path": "src/calculators/physics/catalog-batch-3.ts",
+      "sha256": "b5c1870d729cbbd32db6eac439c7b6aa2b90f54c3677879bf0a05120a5f0faf6"
+    },
+    {
+      "path": "src/calculators/precision.ts",
+      "sha256": "139319afc73ef22c45dd46ef94b56b85f3442ed57b239cd6a0e59f92cd68643a"
+    },
+    {
+      "path": "src/calculators/retirement-contracts.ts",
+      "sha256": "87097a3cef9495f9dd699ab4afeae57de353ad5e18e73a5d5d0ed69b91709ec9"
+    },
+    {
+      "path": "src/calculators/statistics/catalog-batch-1.ts",
+      "sha256": "172db736ce7c991e0b11cf99612578d7c25374bda0f95e009167e9fa887ba52f"
+    },
+    {
+      "path": "src/calculators/technology-computing/catalog-batch-1.ts",
+      "sha256": "31f347fc286cc0b22cd888b9f53719e4733ffa17ab8323aa4f6dc5bc497079f6"
+    },
+    {
+      "path": "src/calculators/technology-computing/catalog-batch-2.ts",
+      "sha256": "d352f40f8aef2cbd22afd8c09e577f28fc4eda1b925a928ec65c1ea25f4393d7"
+    },
+    {
+      "path": "src/calculators/types.ts",
+      "sha256": "a8b9a16ab7d9c63e3918ae93587aace30c5d322a006226cce3d945022ba8b2d8"
+    },
+    {
+      "path": "src/calculators/units.ts",
+      "sha256": "74e92b7afeb83f53e31e0eed710e5afecb8716df0735556c8fac229793d142ec"
+    },
+    {
+      "path": "src/lib/batch21-snapshot-replay.ts",
+      "sha256": "bbdfd0512ed1b790753c62e01e287bc7d648729179b39bf1182d387845cdcef8"
+    },
+    {
+      "path": "src/lib/batch22-physics-replay.ts",
+      "sha256": "97c42822733670f5a215fa5ce51ef929ae1b902ec163d3ec676aa43586d1ef43"
+    },
+    {
+      "path": "src/lib/calculation-export-pdf.ts",
+      "sha256": "4ef6c414166bf89414b70dab1750611e4a3daf4f6a483c82d2b572b2ea117958"
+    },
+    {
+      "path": "src/lib/calculation-export.ts",
+      "sha256": "97992314804275537dd23de65fff89376d4883b644ad2619cdc266b07f31c1d6"
+    },
+    {
+      "path": "src/lib/calculation-snapshot.ts",
+      "sha256": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c"
+    },
+    {
+      "path": "src/lib/calculator-factory/cohorts/basic-math.ts",
+      "sha256": "62d3845db55fb28943e032f2bcbb4a40878835183113a80023f548c019596d89"
+    },
+    {
+      "path": "src/lib/calculator-factory/cohorts/conversions.ts",
+      "sha256": "214ed4ab94d6b86e4f5693c0d32d95d41154bb0285c4bda61e7ba6042e72b95b"
+    },
+    {
+      "path": "src/lib/calculator-factory/cohorts/physics.ts",
+      "sha256": "81a4fc21cd9a790b33922f6624dcc76f2da9ed53cc7b8c9aa2dd96f66bc7ba95"
+    },
+    {
+      "path": "src/lib/calculator-factory/experimental/physics-scaled.ts",
+      "sha256": "744a6d0b6134f01ff66ec9ca8ffdb4a4b8ea73f4745c01a0df79e8426441fc74"
+    },
+    {
+      "path": "src/lib/calculator-factory/registry.ts",
+      "sha256": "35e305d0a743db7c2fe7c15edcadb8973b680edf0f7dcf657f212043106315b4"
+    },
+    {
+      "path": "src/lib/calculator-factory/workflows.ts",
+      "sha256": "48983e347f0b83a43ad9d393bdd65700345f21f1ce0b15220138c801e74e435c"
+    },
+    {
+      "path": "src/lib/entitlements.ts",
+      "sha256": "16227499beb299e6cf02c2f8485b5804294c97e4da446ac7934b55aedbd1f731"
+    },
+    {
+      "path": "src/lib/final-private-snapshot-text.ts",
+      "sha256": "f23931b6e7f8ad3d8236b0e23bdf275bb521f9e3cac103cdaf2114249df106e2"
+    },
+    {
+      "path": "src/lib/frequency-presentation.ts",
+      "sha256": "b9c0015f7a6ca30426c2963a10384c05cc99b3cd5d08dc1d1782af48ddfabb05"
+    },
+    {
+      "path": "src/lib/launch-snapshot-verification.ts",
+      "sha256": "1418dcda1a71424f34062787ad62bb716e1e96d24fc18d3b45de834affcd196f"
+    },
+    {
+      "path": "src/lib/pdf-font/dejavu-mono.ts",
+      "sha256": "5b610525088da893e7fe35c71289623b2698a1a8ef5641b4bf9258a308029c4b"
+    },
+    {
+      "path": "src/lib/publication-factory-contracts-input.ts",
+      "sha256": "d0c5d00cc0c5d024420f11f21c27534f5b38dc681cbd53d22e750eb4a8dd281f"
+    },
+    {
+      "path": "src/lib/publication20/conversions.ts",
+      "sha256": "33294ef227aa6e4a4a14f4282dcda1834a03396e62c6a0dbc5d4fb932472ec8c"
+    },
+    {
+      "path": "src/lib/publication20/index.ts",
+      "sha256": "b6b25b6307770a8a3185fe5b72366bdb139d31d33aa7b82a850e7deeab0afd0e"
+    },
+    {
+      "path": "src/lib/publication20/network.ts",
+      "sha256": "18ba9ac37cdb9f2634388bde49cff591186e9ed48160aacf340fb19a75432976"
+    },
+    {
+      "path": "src/lib/publication20/result-trust.ts",
+      "sha256": "c1e21a0f680f4245424c1542fa59012b9d83347ef4da3e1309b4b61eba6cbbd9"
+    },
+    {
+      "path": "src/lib/recorded-json-equality.ts",
+      "sha256": "59fda934bec9e573c970d5a451b3d3e3ba14292838a9c6544cafbd10e71f0fcc"
+    },
+    {
+      "path": "src/lib/registered-input-successor.ts",
+      "sha256": "509826a3de1c3cf91afcf992ebed422019bfc489fd387f250f6706ea18ad28d9"
+    },
+    {
+      "path": "src/lib/registered-snapshot-replay.ts",
+      "sha256": "4d6a168ff5072e1ad0f2cfb051a69750d6a2fb0f360164038597fb24ed0128d6"
+    },
+    {
+      "path": "src/lib/registered-snapshot-verification.ts",
+      "sha256": "24bf6f31ef7283d9fc319598268c1047ff1c58cd95bda787d55b396e9e3bde4c"
+    },
+    {
+      "path": "src/lib/scenario-display-metadata.ts",
+      "sha256": "6eb96f8a21f938f7cd97c0f011b1f67461da47c95203fcf625821da86a76508e"
+    },
+    {
+      "path": "src/lib/scenario-set.ts",
+      "sha256": "e5802bc5f55ed08929923ad7243634a9c009111ffe09f42de75ab6feb7130502"
+    },
+    {
+      "path": "src/lib/technology-cidr-snapshot-verification.ts",
+      "sha256": "d045b50ed69dd3c906a7d7a622f9df63630e56860812c676b3869eccc6a7aec9"
+    },
+    {
+      "path": "src/lib/technology-snapshot-verification.ts",
+      "sha256": "276ad7ee37203fa90b65571a3bab1b3dde271f13c1f323a1e8d330a6bab9e521"
+    }
+  ],
+  "contracts": [
+    {
+      "catalogId": 208,
+      "engineId": "launch-percentage-change-calculator",
+      "slug": "percentage-change-calculator",
+      "version": 1,
+      "title": "Percentage Change Calculator",
+      "fields": [
+        {
+          "key": "old",
+          "label": "Original value",
+          "kind": "number",
+          "defaultValue": 100
+        },
+        {
+          "key": "next",
+          "label": "New value",
+          "kind": "number",
+          "defaultValue": 125
+        }
+      ],
+      "primaryKey": "result",
+      "unit": "%",
+      "scope": "Signed change divided by the absolute original value; original must be nonzero.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "limitations": [
+        "IEEE-754 finite real arithmetic; no arbitrary precision.",
+        "Signed change divided by the absolute original value; original must be nonzero."
+      ],
+      "blockers": [],
+      "registered": true,
+      "inputDefaults": {
+        "old": "100",
+        "next": "125"
+      }
+    },
+    {
+      "catalogId": 209,
+      "engineId": "launch-percentage-increase-calculator",
+      "slug": "percentage-increase-calculator",
+      "version": 1,
+      "title": "Percentage Increase Calculator",
+      "fields": [
+        {
+          "key": "value",
+          "label": "Original value",
+          "kind": "number",
+          "defaultValue": 100
+        },
+        {
+          "key": "percent",
+          "label": "Increase (%)",
+          "kind": "number",
+          "defaultValue": 20
+        }
+      ],
+      "primaryKey": "result",
+      "unit": "",
+      "scope": "Nonnegative percentage increase of a supplied real value.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "limitations": [
+        "IEEE-754 finite real arithmetic; no arbitrary precision.",
+        "Nonnegative percentage increase of a supplied real value."
+      ],
+      "blockers": [],
+      "registered": true,
+      "inputDefaults": {
+        "value": "100",
+        "percent": "20"
+      }
+    },
+    {
+      "catalogId": 210,
+      "engineId": "launch-percentage-decrease-calculator",
+      "slug": "percentage-decrease-calculator",
+      "version": 1,
+      "title": "Percentage Decrease Calculator",
+      "fields": [
+        {
+          "key": "value",
+          "label": "Original value",
+          "kind": "number",
+          "defaultValue": 100
+        },
+        {
+          "key": "percent",
+          "label": "Decrease (%)",
+          "kind": "number",
+          "defaultValue": 20
+        }
+      ],
+      "primaryKey": "result",
+      "unit": "",
+      "scope": "Nonnegative percentage decrease; decreases above 100% may produce negative values.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "limitations": [
+        "IEEE-754 finite real arithmetic; no arbitrary precision.",
+        "Nonnegative percentage decrease; decreases above 100% may produce negative values."
+      ],
+      "blockers": [],
+      "registered": true,
+      "inputDefaults": {
+        "value": "100",
+        "percent": "20"
+      }
+    },
+    {
+      "catalogId": 211,
+      "engineId": "launch-ratio-calculator",
+      "slug": "ratio-calculator",
+      "version": 1,
+      "title": "Ratio Calculator",
+      "fields": [
+        {
+          "key": "a",
+          "label": "First value",
+          "kind": "number",
+          "defaultValue": 12
+        },
+        {
+          "key": "b",
+          "label": "Second value",
+          "kind": "number",
+          "defaultValue": 18
+        }
+      ],
+      "primaryKey": "result",
+      "unit": "",
+      "scope": "Numeric quotient of two values; does not simplify an integer ratio.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "limitations": [
+        "IEEE-754 finite real arithmetic; no arbitrary precision.",
+        "Numeric quotient of two values; does not simplify an integer ratio."
+      ],
+      "blockers": [],
+      "registered": true,
+      "inputDefaults": {
+        "a": "12",
+        "b": "18"
+      }
+    },
+    {
+      "catalogId": 212,
+      "engineId": "launch-proportion-calculator",
+      "slug": "proportion-calculator",
+      "version": 1,
+      "title": "Proportion Calculator",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Known numerator",
+          "kind": "number",
+          "defaultValue": 3
+        },
+        {
+          "key": "b",
+          "label": "Known denominator",
+          "kind": "number",
+          "defaultValue": 5
+        }
+      ],
+      "primaryKey": "result",
+      "unit": "",
+      "scope": "Decimal quotient only; does not solve an unknown term in a four-term proportion.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "limitations": [
+        "IEEE-754 finite real arithmetic; no arbitrary precision.",
+        "Decimal quotient only; does not solve an unknown term in a four-term proportion."
+      ],
+      "blockers": [],
+      "registered": true,
+      "inputDefaults": {
+        "a": "3",
+        "b": "5"
+      }
+    },
+    {
+      "catalogId": 215,
+      "engineId": "launch-fraction-to-decimal-calculator",
+      "slug": "fraction-to-decimal-calculator",
+      "version": 1,
+      "title": "Fraction to Decimal Calculator",
+      "fields": [
+        {
+          "key": "numerator",
+          "label": "Numerator",
+          "kind": "number",
+          "defaultValue": 3
+        },
+        {
+          "key": "denominator",
+          "label": "Denominator",
+          "kind": "number",
+          "defaultValue": 4
+        }
+      ],
+      "primaryKey": "result",
+      "unit": "",
+      "scope": "Finite numeric quotient; no exact repeating-decimal expansion.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "limitations": [
+        "IEEE-754 finite real arithmetic; no arbitrary precision.",
+        "Finite numeric quotient; no exact repeating-decimal expansion."
+      ],
+      "blockers": [],
+      "registered": true,
+      "inputDefaults": {
+        "numerator": "3",
+        "denominator": "4"
+      }
+    },
+    {
+      "catalogId": 216,
+      "engineId": "launch-average-two-numbers-calculator",
+      "slug": "average-two-numbers-calculator",
+      "version": 1,
+      "title": "Average Calculator",
+      "fields": [
+        {
+          "key": "a",
+          "label": "First value",
+          "kind": "number",
+          "defaultValue": 10
+        },
+        {
+          "key": "b",
+          "label": "Second value",
+          "kind": "number",
+          "defaultValue": 20
+        }
+      ],
+      "primaryKey": "result",
+      "unit": "",
+      "scope": "Arithmetic mean of exactly two numbers; no list or weighted mean.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "limitations": [
+        "IEEE-754 finite real arithmetic; no arbitrary precision.",
+        "Arithmetic mean of exactly two numbers; no list or weighted mean."
+      ],
+      "blockers": [],
+      "registered": true,
+      "inputDefaults": {
+        "a": "10",
+        "b": "20"
+      }
+    },
+    {
+      "catalogId": 218,
+      "engineId": "launch-square-calculator",
+      "slug": "square-calculator",
+      "version": 1,
+      "title": "Square Calculator",
+      "fields": [
+        {
+          "key": "x",
+          "label": "Number",
+          "kind": "number",
+          "defaultValue": 12
+        }
+      ],
+      "primaryKey": "result",
+      "unit": "",
+      "scope": "Real scalar squared within finite output range.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "limitations": [
+        "IEEE-754 finite real arithmetic; no arbitrary precision.",
+        "Real scalar squared within finite output range."
+      ],
+      "blockers": [],
+      "registered": true,
+      "inputDefaults": {
+        "x": "12"
+      }
+    },
+    {
+      "catalogId": 219,
+      "engineId": "launch-cube-calculator",
+      "slug": "cube-calculator",
+      "version": 1,
+      "title": "Cube Calculator",
+      "fields": [
+        {
+          "key": "x",
+          "label": "Number",
+          "kind": "number",
+          "defaultValue": 5
+        }
+      ],
+      "primaryKey": "result",
+      "unit": "",
+      "scope": "Real scalar cubed within finite output range.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "limitations": [
+        "IEEE-754 finite real arithmetic; no arbitrary precision.",
+        "Real scalar cubed within finite output range."
+      ],
+      "blockers": [],
+      "registered": true,
+      "inputDefaults": {
+        "x": "5"
+      }
+    },
+    {
+      "catalogId": 220,
+      "engineId": "launch-square-root-calculator",
+      "slug": "square-root-calculator",
+      "version": 1,
+      "title": "Square Root Calculator",
+      "fields": [
+        {
+          "key": "x",
+          "label": "Number",
+          "kind": "number",
+          "defaultValue": 144
+        }
+      ],
+      "primaryKey": "result",
+      "unit": "",
+      "scope": "Principal real square root; nonnegative input only.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "limitations": [
+        "IEEE-754 finite real arithmetic; no arbitrary precision.",
+        "Principal real square root; nonnegative input only."
+      ],
+      "blockers": [],
+      "registered": true,
+      "inputDefaults": {
+        "x": "144"
+      }
+    },
+    {
+      "catalogId": 423,
+      "engineId": "conversion.length",
+      "slug": "length-converter",
+      "version": 1,
+      "title": "Length Converter",
+      "registered": true,
+      "primaryKey": "result",
+      "fields": [
+        {
+          "key": "value",
+          "label": "Value",
+          "kind": "number",
+          "defaultValue": "1"
+        },
+        {
+          "key": "fromUnit",
+          "label": "From unit",
+          "kind": "select",
+          "options": [
+            "m",
+            "km",
+            "cm",
+            "mm",
+            "in",
+            "ft",
+            "yd",
+            "mi"
+          ],
+          "defaultValue": "m"
+        },
+        {
+          "key": "toUnit",
+          "label": "To unit",
+          "kind": "select",
+          "options": [
+            "m",
+            "km",
+            "cm",
+            "mm",
+            "in",
+            "ft",
+            "yd",
+            "mi"
+          ],
+          "defaultValue": "km"
+        }
+      ],
+      "scope": "Fixed-unit scalar conversion through the exact existing v1 factor table. Decimal input is represented by binary64; physical applicability, source review and complete canonical acceptance are separate. The caller must refuse nonzero input rounded to zero by a linear conversion. International inch/foot/yard/mile codes; no survey-foot mode.",
+      "sourceEvidence": [
+        "src/lib/publication20/conversions.ts"
+      ],
+      "limitations": [
+        "Offered unit codes only; formal canonical and source applicability remain subject to competent acceptance."
+      ],
+      "inputDefaults": {
+        "value": "1",
+        "fromUnit": "m",
+        "toUnit": "km"
+      }
+    },
+    {
+      "catalogId": 424,
+      "engineId": "conversion.area",
+      "slug": "area-converter",
+      "version": 1,
+      "title": "Area Converter",
+      "registered": true,
+      "primaryKey": "result",
+      "fields": [
+        {
+          "key": "value",
+          "label": "Value",
+          "kind": "number",
+          "defaultValue": "1"
+        },
+        {
+          "key": "fromUnit",
+          "label": "From unit",
+          "kind": "select",
+          "options": [
+            "m2",
+            "km2",
+            "cm2",
+            "ft2",
+            "yd2",
+            "acre",
+            "ha",
+            "mi2"
+          ],
+          "defaultValue": "m2"
+        },
+        {
+          "key": "toUnit",
+          "label": "To unit",
+          "kind": "select",
+          "options": [
+            "m2",
+            "km2",
+            "cm2",
+            "ft2",
+            "yd2",
+            "acre",
+            "ha",
+            "mi2"
+          ],
+          "defaultValue": "km2"
+        }
+      ],
+      "scope": "Fixed-unit scalar conversion through the exact existing v1 factor table. Decimal input is represented by binary64; physical applicability, source review and complete canonical acceptance are separate. The caller must refuse nonzero input rounded to zero by a linear conversion. Squared international-length area factors; no land-jurisdiction assessment.",
+      "sourceEvidence": [
+        "src/lib/publication20/conversions.ts"
+      ],
+      "limitations": [
+        "Offered unit codes only; formal canonical and source applicability remain subject to competent acceptance."
+      ],
+      "inputDefaults": {
+        "value": "1",
+        "fromUnit": "m2",
+        "toUnit": "km2"
+      }
+    },
+    {
+      "catalogId": 425,
+      "engineId": "conversion.volume",
+      "slug": "volume-converter",
+      "version": 1,
+      "title": "Volume Converter",
+      "registered": true,
+      "primaryKey": "result",
+      "fields": [
+        {
+          "key": "value",
+          "label": "Value",
+          "kind": "number",
+          "defaultValue": "1"
+        },
+        {
+          "key": "fromUnit",
+          "label": "From unit",
+          "kind": "select",
+          "options": [
+            "m3",
+            "l",
+            "ml",
+            "cm3",
+            "ft3",
+            "in3",
+            "gal_us",
+            "qt_us"
+          ],
+          "defaultValue": "m3"
+        },
+        {
+          "key": "toUnit",
+          "label": "To unit",
+          "kind": "select",
+          "options": [
+            "m3",
+            "l",
+            "ml",
+            "cm3",
+            "ft3",
+            "in3",
+            "gal_us",
+            "qt_us"
+          ],
+          "defaultValue": "l"
+        }
+      ],
+      "scope": "Fixed-unit scalar conversion through the exact existing v1 factor table. Decimal input is represented by binary64; physical applicability, source review and complete canonical acceptance are separate. The caller must refuse nonzero input rounded to zero by a linear conversion. Explicit U.S. liquid gallon/quart codes; no imperial gallon or ingredient-density conversion.",
+      "sourceEvidence": [
+        "src/lib/publication20/conversions.ts"
+      ],
+      "limitations": [
+        "Offered unit codes only; formal canonical and source applicability remain subject to competent acceptance."
+      ],
+      "inputDefaults": {
+        "value": "1",
+        "fromUnit": "m3",
+        "toUnit": "l"
+      }
+    },
+    {
+      "catalogId": 427,
+      "engineId": "conversion.temperature",
+      "slug": "temperature-converter",
+      "version": 1,
+      "title": "Temperature Converter",
+      "registered": true,
+      "primaryKey": "result",
+      "fields": [
+        {
+          "key": "value",
+          "label": "Value",
+          "kind": "number",
+          "defaultValue": "1"
+        },
+        {
+          "key": "fromUnit",
+          "label": "From unit",
+          "kind": "select",
+          "options": [
+            "c",
+            "f",
+            "k"
+          ],
+          "defaultValue": "c"
+        },
+        {
+          "key": "toUnit",
+          "label": "To unit",
+          "kind": "select",
+          "options": [
+            "c",
+            "f",
+            "k"
+          ],
+          "defaultValue": "f"
+        }
+      ],
+      "scope": "Algebraic Celsius/Fahrenheit/Kelvin temperature-value conversion, not temperature-interval conversion. Algebraic conversion does not establish physical feasibility; values below absolute zero are not rejected on physical grounds. Existing numerical precision and finite-result limits still apply. OWN-427 approves this product scope only; source applicability, competent QA and certification remain separate. Historical v1 is unchanged.",
+      "sourceEvidence": [
+        "src/lib/publication20/conversions.ts"
+      ],
+      "limitations": [
+        "Offered unit codes only; formal canonical and source applicability remain subject to competent acceptance."
+      ],
+      "inputDefaults": {
+        "value": "1",
+        "fromUnit": "c",
+        "toUnit": "f"
+      }
+    },
+    {
+      "catalogId": 428,
+      "engineId": "conversion.speed",
+      "slug": "speed-converter",
+      "version": 1,
+      "title": "Speed Converter",
+      "registered": true,
+      "primaryKey": "result",
+      "fields": [
+        {
+          "key": "value",
+          "label": "Value",
+          "kind": "number",
+          "defaultValue": "1"
+        },
+        {
+          "key": "fromUnit",
+          "label": "From unit",
+          "kind": "select",
+          "options": [
+            "m_s",
+            "km_h",
+            "mph",
+            "ft_s",
+            "knot"
+          ],
+          "defaultValue": "m_s"
+        },
+        {
+          "key": "toUnit",
+          "label": "To unit",
+          "kind": "select",
+          "options": [
+            "m_s",
+            "km_h",
+            "mph",
+            "ft_s",
+            "knot"
+          ],
+          "defaultValue": "km_h"
+        }
+      ],
+      "scope": "Fixed-unit scalar conversion through the exact existing v1 factor table. Decimal input is represented by binary64; physical applicability, source review and complete canonical acceptance are separate. The caller must refuse nonzero input rounded to zero by a linear conversion. Knot uses one international nautical mile per hour; no travel or velocity-vector model.",
+      "sourceEvidence": [
+        "src/lib/publication20/conversions.ts"
+      ],
+      "limitations": [
+        "Offered unit codes only; formal canonical and source applicability remain subject to competent acceptance."
+      ],
+      "inputDefaults": {
+        "value": "1",
+        "fromUnit": "m_s",
+        "toUnit": "km_h"
+      }
+    },
+    {
+      "catalogId": 430,
+      "engineId": "conversion.energy",
+      "slug": "energy-converter",
+      "version": 1,
+      "title": "Energy Converter",
+      "registered": true,
+      "primaryKey": "result",
+      "fields": [
+        {
+          "key": "value",
+          "label": "Value",
+          "kind": "number",
+          "defaultValue": "1"
+        },
+        {
+          "key": "fromUnit",
+          "label": "From unit",
+          "kind": "select",
+          "options": [
+            "j",
+            "kj",
+            "mj",
+            "wh",
+            "kwh",
+            "cal",
+            "kcal"
+          ],
+          "defaultValue": "j"
+        },
+        {
+          "key": "toUnit",
+          "label": "To unit",
+          "kind": "select",
+          "options": [
+            "j",
+            "kj",
+            "mj",
+            "wh",
+            "kwh",
+            "cal",
+            "kcal"
+          ],
+          "defaultValue": "kj"
+        }
+      ],
+      "scope": "Fixed-unit scalar conversion through the exact existing v1 factor table. Decimal input is represented by binary64; physical applicability, source review and complete canonical acceptance are separate. The caller must refuse nonzero input rounded to zero by a linear conversion. cal/kcal retain the existing 4.184 J thermochemical factor; no ingredient/nutritional applicability is inferred.",
+      "sourceEvidence": [
+        "src/lib/publication20/conversions.ts"
+      ],
+      "limitations": [
+        "Offered unit codes only; formal canonical and source applicability remain subject to competent acceptance."
+      ],
+      "inputDefaults": {
+        "value": "1",
+        "fromUnit": "j",
+        "toUnit": "kj"
+      }
+    },
+    {
+      "catalogId": 431,
+      "engineId": "conversion.power",
+      "slug": "power-converter",
+      "version": 1,
+      "title": "Power Converter",
+      "registered": true,
+      "primaryKey": "result",
+      "fields": [
+        {
+          "key": "value",
+          "label": "Value",
+          "kind": "number",
+          "defaultValue": "1"
+        },
+        {
+          "key": "fromUnit",
+          "label": "From unit",
+          "kind": "select",
+          "options": [
+            "w",
+            "kw",
+            "mw",
+            "hp_mech"
+          ],
+          "defaultValue": "w"
+        },
+        {
+          "key": "toUnit",
+          "label": "To unit",
+          "kind": "select",
+          "options": [
+            "w",
+            "kw",
+            "mw",
+            "hp_mech"
+          ],
+          "defaultValue": "kw"
+        }
+      ],
+      "scope": "Fixed-unit scalar conversion through the exact existing v1 factor table. Decimal input is represented by binary64; physical applicability, source review and complete canonical acceptance are separate. The caller must refuse nonzero input rounded to zero by a linear conversion. hp_mech is the declared mechanical-horsepower factor, not metric/electrical horsepower.",
+      "sourceEvidence": [
+        "src/lib/publication20/conversions.ts"
+      ],
+      "limitations": [
+        "Offered unit codes only; formal canonical and source applicability remain subject to competent acceptance."
+      ],
+      "inputDefaults": {
+        "value": "1",
+        "fromUnit": "w",
+        "toUnit": "kw"
+      }
+    },
+    {
+      "catalogId": 432,
+      "engineId": "conversion.time",
+      "slug": "time-converter",
+      "version": 1,
+      "title": "Time Converter",
+      "registered": true,
+      "primaryKey": "result",
+      "fields": [
+        {
+          "key": "value",
+          "label": "Value",
+          "kind": "number",
+          "defaultValue": "1"
+        },
+        {
+          "key": "fromUnit",
+          "label": "From unit",
+          "kind": "select",
+          "options": [
+            "s",
+            "ms",
+            "min",
+            "h",
+            "day",
+            "week"
+          ],
+          "defaultValue": "s"
+        },
+        {
+          "key": "toUnit",
+          "label": "To unit",
+          "kind": "select",
+          "options": [
+            "s",
+            "ms",
+            "min",
+            "h",
+            "day",
+            "week"
+          ],
+          "defaultValue": "ms"
+        }
+      ],
+      "scope": "Fixed-unit scalar conversion through the exact existing v1 factor table. Decimal input is represented by binary64; physical applicability, source review and complete canonical acceptance are separate. The caller must refuse nonzero input rounded to zero by a linear conversion. Fixed durations only: day=86400 seconds and week=7 fixed days; no calendar, timezone or leap-second computation.",
+      "sourceEvidence": [
+        "src/lib/publication20/conversions.ts"
+      ],
+      "limitations": [
+        "Offered unit codes only; formal canonical and source applicability remain subject to competent acceptance."
+      ],
+      "inputDefaults": {
+        "value": "1",
+        "fromUnit": "s",
+        "toUnit": "ms"
+      }
+    },
+    {
+      "catalogId": 433,
+      "engineId": "conversion.angle",
+      "slug": "angle-converter",
+      "version": 1,
+      "title": "Angle Converter",
+      "registered": true,
+      "primaryKey": "result",
+      "fields": [
+        {
+          "key": "value",
+          "label": "Value",
+          "kind": "number",
+          "defaultValue": "1"
+        },
+        {
+          "key": "fromUnit",
+          "label": "From unit",
+          "kind": "select",
+          "options": [
+            "rad",
+            "deg",
+            "grad",
+            "turn"
+          ],
+          "defaultValue": "rad"
+        },
+        {
+          "key": "toUnit",
+          "label": "To unit",
+          "kind": "select",
+          "options": [
+            "rad",
+            "deg",
+            "grad",
+            "turn"
+          ],
+          "defaultValue": "deg"
+        }
+      ],
+      "scope": "Fixed-unit scalar conversion through the exact existing v1 factor table. Decimal input is represented by binary64; physical applicability, source review and complete canonical acceptance are separate. The caller must refuse nonzero input rounded to zero by a linear conversion. Radians use the existing host Math.PI representation; no arbitrary precision or orientation normalization.",
+      "sourceEvidence": [
+        "src/lib/publication20/conversions.ts"
+      ],
+      "limitations": [
+        "Offered unit codes only; formal canonical and source applicability remain subject to competent acceptance."
+      ],
+      "inputDefaults": {
+        "value": "1",
+        "fromUnit": "rad",
+        "toUnit": "deg"
+      }
+    },
+    {
+      "catalogId": 434,
+      "engineId": "conversion.data-storage",
+      "slug": "data-storage-converter",
+      "version": 1,
+      "title": "Data Storage Converter",
+      "registered": true,
+      "primaryKey": "result",
+      "fields": [
+        {
+          "key": "value",
+          "label": "Value",
+          "kind": "number",
+          "defaultValue": "1"
+        },
+        {
+          "key": "fromUnit",
+          "label": "From unit",
+          "kind": "select",
+          "options": [
+            "B",
+            "KB",
+            "MB",
+            "GB",
+            "TB",
+            "KiB",
+            "MiB",
+            "GiB"
+          ],
+          "defaultValue": "B"
+        },
+        {
+          "key": "toUnit",
+          "label": "To unit",
+          "kind": "select",
+          "options": [
+            "B",
+            "KB",
+            "MB",
+            "GB",
+            "TB",
+            "KiB",
+            "MiB",
+            "GiB"
+          ],
+          "defaultValue": "KB"
+        }
+      ],
+      "scope": "Fixed-unit scalar conversion through the exact existing v1 factor table. Decimal input is represented by binary64; physical applicability, source review and complete canonical acceptance are separate. The caller must refuse nonzero input rounded to zero by a linear conversion. Case-sensitive existing codes: B is byte, KB/MB/GB/TB are decimal, KiB/MiB/GiB are binary; no bit, compression or provider-pricing mode.",
+      "sourceEvidence": [
+        "src/lib/publication20/conversions.ts"
+      ],
+      "limitations": [
+        "Offered unit codes only; formal canonical and source applicability remain subject to competent acceptance."
+      ],
+      "inputDefaults": {
+        "value": "1",
+        "fromUnit": "B",
+        "toUnit": "KB"
+      }
+    },
+    {
+      "catalogId": 438,
+      "engineId": "conversion.force",
+      "slug": "force-converter",
+      "version": 1,
+      "title": "Force Converter",
+      "registered": true,
+      "primaryKey": "result",
+      "fields": [
+        {
+          "key": "value",
+          "label": "Value",
+          "kind": "number",
+          "defaultValue": "1"
+        },
+        {
+          "key": "fromUnit",
+          "label": "From unit",
+          "kind": "select",
+          "options": [
+            "n",
+            "kn",
+            "dyn",
+            "lbf"
+          ],
+          "defaultValue": "n"
+        },
+        {
+          "key": "toUnit",
+          "label": "To unit",
+          "kind": "select",
+          "options": [
+            "n",
+            "kn",
+            "dyn",
+            "lbf"
+          ],
+          "defaultValue": "kn"
+        }
+      ],
+      "scope": "Fixed-unit scalar conversion through the exact existing v1 factor table. Decimal input is represented by binary64; physical applicability, source review and complete canonical acceptance are separate. The caller must refuse nonzero input rounded to zero by a linear conversion. lbf retains the defined conventional standard-gravity factor; no mass/weight location model.",
+      "sourceEvidence": [
+        "src/lib/publication20/conversions.ts"
+      ],
+      "limitations": [
+        "Offered unit codes only; formal canonical and source applicability remain subject to competent acceptance."
+      ],
+      "inputDefaults": {
+        "value": "1",
+        "fromUnit": "n",
+        "toUnit": "kn"
+      }
+    },
+    {
+      "catalogId": 440,
+      "engineId": "conversion.frequency",
+      "slug": "frequency-converter",
+      "version": 1,
+      "title": "Frequency Converter",
+      "registered": true,
+      "primaryKey": "result",
+      "fields": [
+        {
+          "key": "value",
+          "label": "Value",
+          "kind": "number",
+          "defaultValue": "1"
+        },
+        {
+          "key": "fromUnit",
+          "label": "From unit",
+          "kind": "select",
+          "options": [
+            "hz",
+            "khz",
+            "mhz",
+            "ghz"
+          ],
+          "defaultValue": "hz",
+          "optionLabels": {
+            "hz": "Hz",
+            "khz": "kHz",
+            "mhz": "MHz",
+            "ghz": "GHz"
+          }
+        },
+        {
+          "key": "toUnit",
+          "label": "To unit",
+          "kind": "select",
+          "options": [
+            "hz",
+            "khz",
+            "mhz",
+            "ghz"
+          ],
+          "defaultValue": "khz",
+          "optionLabels": {
+            "hz": "Hz",
+            "khz": "kHz",
+            "mhz": "MHz",
+            "ghz": "GHz"
+          }
+        }
+      ],
+      "scope": "Fixed-unit scalar conversion through the exact existing v1 factor table. Decimal input is represented by binary64; physical applicability, source review and complete canonical acceptance are separate. The caller must refuse nonzero input rounded to zero by a linear conversion. Scalar cycle frequency only; no angular-frequency or spectral model.",
+      "sourceEvidence": [
+        "src/lib/publication20/conversions.ts"
+      ],
+      "limitations": [
+        "Offered unit codes only; formal canonical and source applicability remain subject to competent acceptance."
+      ],
+      "inputDefaults": {
+        "value": "1",
+        "fromUnit": "hz",
+        "toUnit": "khz"
+      }
+    },
+    {
+      "catalogId": 322,
+      "engineId": "physics.capacitance",
+      "slug": "capacitance-calculator",
+      "version": 1,
+      "title": "Capacitance Calculator",
+      "registered": true,
+      "primaryKey": "value",
+      "fields": [
+        {
+          "key": "charge",
+          "label": "Charge",
+          "kind": "number",
+          "defaultValue": 10
+        },
+        {
+          "key": "voltage",
+          "label": "Voltage",
+          "kind": "number",
+          "defaultValue": 5
+        }
+      ],
+      "scope": "Signed charge divided by nonzero voltage",
+      "sourceEvidence": [
+        "src/calculators/physics/catalog-batch-3.ts"
+      ],
+      "limitations": [
+        "Observed scalar v1 contract only; no canonical mapping approval",
+        "CANONICAL_UNITS_AND_SCOPE_UNAPPROVED",
+        "SOURCE_APPLICABILITY_AND_COMPETENT_REVIEW_REQUIRED",
+        "FULL_DOMAIN_ACCEPTANCE_REQUIRED"
+      ],
+      "inputDefaults": {
+        "charge": "10",
+        "voltage": "5"
+      }
+    },
+    {
+      "catalogId": 323,
+      "engineId": "private.physics-scaled.coulomb-force",
+      "slug": "private-physics-scaled-coulomb-force",
+      "privateRevision": "private.physics-scaled.20261112.1",
+      "version": 1,
+      "title": "Coulomb Force Calculator",
+      "registered": false,
+      "primaryKey": "value",
+      "fields": [
+        {
+          "key": "charge1",
+          "label": "Charge1",
+          "kind": "number",
+          "defaultValue": 0.000001
+        },
+        {
+          "key": "charge2",
+          "label": "Charge2",
+          "kind": "number",
+          "defaultValue": 0.000001
+        },
+        {
+          "key": "distance",
+          "label": "Distance",
+          "kind": "number",
+          "defaultValue": 1
+        }
+      ],
+      "scope": "Existing signed Coulomb scalar formula with unchanged constant",
+      "sourceEvidence": [
+        "src/calculators/physics/catalog-batch-3.ts"
+      ],
+      "limitations": [
+        "Private arithmetic revision; physical medium and canonical units unapproved",
+        "CANONICAL_UNITS_AND_SCOPE_UNAPPROVED",
+        "SOURCE_APPLICABILITY_AND_COMPETENT_REVIEW_REQUIRED",
+        "FULL_DOMAIN_ACCEPTANCE_REQUIRED"
+      ],
+      "inputDefaults": {
+        "charge1": "0.000001",
+        "charge2": "0.000001",
+        "distance": "1"
+      }
+    },
+    {
+      "catalogId": 324,
+      "engineId": "private.physics-scaled.projectile-range",
+      "slug": "private-physics-scaled-projectile-range",
+      "privateRevision": "private.physics-scaled.20261112.1",
+      "version": 1,
+      "title": "Projectile Motion Calculator",
+      "registered": false,
+      "primaryKey": "value",
+      "fields": [
+        {
+          "key": "speed",
+          "label": "Speed",
+          "kind": "number",
+          "defaultValue": 10
+        },
+        {
+          "key": "angle",
+          "label": "Angle",
+          "kind": "number",
+          "defaultValue": 45
+        },
+        {
+          "key": "gravity",
+          "label": "Gravity",
+          "kind": "number",
+          "defaultValue": 10
+        }
+      ],
+      "scope": "Existing ideal level-ground range without air resistance; angle in degrees",
+      "sourceEvidence": [
+        "src/calculators/physics/catalog-batch-3.ts"
+      ],
+      "limitations": [
+        "Private arithmetic revision; 90 degree floating residual preserved; no launch-height model",
+        "CANONICAL_UNITS_AND_SCOPE_UNAPPROVED",
+        "SOURCE_APPLICABILITY_AND_COMPETENT_REVIEW_REQUIRED",
+        "FULL_DOMAIN_ACCEPTANCE_REQUIRED"
+      ],
+      "inputDefaults": {
+        "speed": "10",
+        "angle": "45",
+        "gravity": "10"
+      }
+    },
+    {
+      "catalogId": 325,
+      "engineId": "physics.free-fall",
+      "slug": "free-fall-calculator",
+      "version": 1,
+      "title": "Free Fall Calculator",
+      "registered": true,
+      "primaryKey": "value",
+      "fields": [
+        {
+          "key": "time",
+          "label": "Time",
+          "kind": "number",
+          "defaultValue": 2
+        },
+        {
+          "key": "gravity",
+          "label": "Gravity",
+          "kind": "number",
+          "defaultValue": 9.8
+        }
+      ],
+      "scope": "Distance from rest under constant gravity",
+      "sourceEvidence": [
+        "src/calculators/physics/catalog-batch-3.ts"
+      ],
+      "limitations": [
+        "Observed scalar v1 contract only; no canonical mapping approval",
+        "CANONICAL_UNITS_AND_SCOPE_UNAPPROVED",
+        "SOURCE_APPLICABILITY_AND_COMPETENT_REVIEW_REQUIRED",
+        "FULL_DOMAIN_ACCEPTANCE_REQUIRED"
+      ],
+      "inputDefaults": {
+        "time": "2",
+        "gravity": "9.8"
+      }
+    },
+    {
+      "catalogId": 327,
+      "engineId": "physics.angular-velocity",
+      "slug": "angular-velocity-calculator",
+      "version": 1,
+      "title": "Angular Velocity Calculator",
+      "registered": true,
+      "primaryKey": "value",
+      "fields": [
+        {
+          "key": "angle",
+          "label": "Angle",
+          "kind": "number",
+          "defaultValue": 6
+        },
+        {
+          "key": "time",
+          "label": "Time",
+          "kind": "number",
+          "defaultValue": 2
+        }
+      ],
+      "scope": "Signed average angular displacement divided by positive elapsed time",
+      "sourceEvidence": [
+        "src/calculators/physics/catalog-batch-3.ts"
+      ],
+      "limitations": [
+        "Observed scalar v1 contract only; no canonical mapping approval",
+        "CANONICAL_UNITS_AND_SCOPE_UNAPPROVED",
+        "SOURCE_APPLICABILITY_AND_COMPETENT_REVIEW_REQUIRED",
+        "FULL_DOMAIN_ACCEPTANCE_REQUIRED"
+      ],
+      "inputDefaults": {
+        "angle": "6",
+        "time": "2"
+      }
+    }
+  ]
+}

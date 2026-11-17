@@ -1,0 +1,157 @@
+[
+  {
+    "command": "python3 scripts/verify-uk-2026-electricity-source.py --check",
+    "exit": 0,
+    "log": "evidence-final-00.log"
+  },
+  {
+    "command": "python3 scripts/verify-partial16-source.py --check",
+    "exit": 0,
+    "log": "evidence-final-01.log"
+  },
+  {
+    "command": "python3 scripts/reconcile-native-blueprint.py --check",
+    "exit": 0,
+    "log": "evidence-final-02.log"
+  },
+  {
+    "command": "node scripts/canonical-acceptance-evidence.mjs docs/canonical-acceptance --check",
+    "exit": 0,
+    "log": "evidence-final-03.log"
+  },
+  {
+    "command": "python3 scripts/reconcile-canonical-calculus.py --check",
+    "exit": 0,
+    "log": "evidence-final-04.log"
+  },
+  {
+    "command": "python3 scripts/canonical-validation-source.py --check",
+    "exit": 0,
+    "log": "evidence-final-05.log"
+  },
+  {
+    "command": "node scripts/canonical-validation-evidence.mjs --check",
+    "exit": 0,
+    "log": "evidence-final-06.log"
+  },
+  {
+    "command": "python3 scripts/scale-validation-source.py --check",
+    "exit": 0,
+    "log": "evidence-final-07.log"
+  },
+  {
+    "command": "node scripts/scale-validation-evidence.mjs --check",
+    "exit": 0,
+    "log": "evidence-final-08.log"
+  },
+  {
+    "command": "node scripts/check-batch13-evidence.mjs",
+    "exit": 0,
+    "log": "evidence-final-09.log"
+  },
+  {
+    "command": "node scripts/check-batch14-evidence.mjs",
+    "exit": 0,
+    "log": "evidence-final-10.log"
+  },
+  {
+    "command": "node scripts/software-closure-evidence.mjs --check",
+    "exit": 0,
+    "log": "evidence-final-11.log"
+  },
+  {
+    "command": "node scripts/batch16-contract-groups.mjs --check",
+    "exit": 0,
+    "log": "evidence-final-12.log"
+  },
+  {
+    "command": "node scripts/batch16-authority-requests.mjs --check",
+    "exit": 0,
+    "log": "evidence-final-13.log"
+  },
+  {
+    "command": "node scripts/calculator-first/snapshot-registry.mjs --check",
+    "exit": 0,
+    "log": "evidence-final-14.log"
+  },
+  {
+    "command": "node scripts/calculator-first/generate-register.mjs --check",
+    "exit": 0,
+    "log": "evidence-final-15.log"
+  },
+  {
+    "command": "node scripts/batch21-calculator-wave/evidence.mjs --check",
+    "exit": 0,
+    "log": "evidence-final-16.log"
+  },
+  {
+    "command": "node scripts/batch22-publication/packets.mjs --check",
+    "exit": 0,
+    "log": "evidence-final-17.log"
+  },
+  {
+    "command": "node scripts/batch22-publication/evidence.mjs --check",
+    "exit": 0,
+    "log": "evidence-final-18.log"
+  },
+  {
+    "command": "node scripts/check-calculator-closure-history.mjs",
+    "exit": 0,
+    "log": "evidence-final-19.log"
+  },
+  {
+    "command": "node scripts/publication-factory/identities.mjs --check",
+    "exit": 0,
+    "log": "evidence-final-20.log"
+  },
+  {
+    "command": "node scripts/publication-qa1517/decisions.mjs --check",
+    "exit": 0,
+    "log": "evidence-final-21.log"
+  },
+  {
+    "command": "node scripts/check-calculator-closure-history.mjs --full-six-only",
+    "exit": 0,
+    "log": "evidence-final-22.log"
+  },
+  {
+    "command": "node scripts/fast-publication-20261102/queue.mjs --check",
+    "exit": 0,
+    "log": "evidence-final-23.log"
+  },
+  {
+    "command": "node scripts/check-shortest-publication20.mjs",
+    "exit": 0,
+    "log": "evidence-final-24.log"
+  },
+  {
+    "command": "python3 scripts/product-completion-20261108/inventory.py --check",
+    "exit": 0,
+    "log": "evidence-final-25.log"
+  },
+  {
+    "command": "node scripts/check-current-six-candidate-evidence.mjs",
+    "exit": 0,
+    "log": "evidence-final-26.log"
+  },
+  {
+    "command": "node scripts/check-decimal50-statistics.mjs",
+    "exit": 0,
+    "log": "evidence-final-27.log"
+  },
+  {
+    "command": "node scripts/first20-publication/evidence.mjs --check",
+    "exit": 0,
+    "log": "evidence-final-28.log"
+  },
+  {
+    "command": "node scripts/adoption1535/inventory.mjs --check",
+    "exit": 0,
+    "log": "evidence-final-29.log"
+  },
+  {
+    "command": "node scripts/adoption1535/package.mjs --check",
+    "exit": 0,
+    "log": "evidence-final-30.log"
+  }
+]

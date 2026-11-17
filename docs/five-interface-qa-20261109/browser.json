@@ -1,0 +1,1735 @@
+{
+  "sourceCommit": "a2bebecdd8a015a93752b7280619d117168f66e3",
+  "scope": "Actual UI with explicit SYNTHETIC account transport; no hosted authentication or production performance qualification",
+  "observations": [
+    {
+      "catalogId": 370,
+      "plan": "free",
+      "before": {
+        "snapshot": {
+          "calculatorSlug": "bandwidth-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "dataMegabytes": 100,
+            "timeSeconds": 10
+          },
+          "output": {
+            "value": 80,
+            "steps": [
+              "Bandwidth = 80"
+            ]
+          }
+        },
+        "text": "80 Mbps",
+        "label": "Data (MB)"
+      },
+      "changed": {
+        "milliseconds": 15.100000001490116,
+        "dispatchToDOMMilliseconds": 28.600000001490116,
+        "text": "160 Mbps",
+        "snapshot": {
+          "calculatorSlug": "bandwidth-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "dataMegabytes": 200,
+            "timeSeconds": 10
+          },
+          "output": {
+            "value": 160,
+            "steps": [
+              "Bandwidth = 160"
+            ]
+          }
+        }
+      },
+      "blankRecovery": {
+        "focus": true,
+        "invalid": "true",
+        "bound": true,
+        "alert": true
+      },
+      "focusStyle": {
+        "tag": "INPUT",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(11, 122, 102)"
+      },
+      "semantics": {
+        "tables": [
+          {
+            "name": "Relationship samples",
+            "heads": true
+          },
+          {
+            "name": "Worked example inputs",
+            "heads": true
+          }
+        ],
+        "charts": [
+          {
+            "name": "Transfer relationship: Mbps by seconds",
+            "description": "Discrete engine-verified samples; the complete values and any refusals appear in the relationship table."
+          }
+        ],
+        "label": "Data (MB)"
+      },
+      "responsive": [
+        {
+          "configuredWidth": 320,
+          "width": 320,
+          "scrollWidth": 320,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 820,
+          "width": 820,
+          "scrollWidth": 805,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 1280,
+          "width": 1280,
+          "scrollWidth": 1265,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        }
+      ],
+      "reducedMotion": {
+        "matches": true,
+        "activeAnimations": []
+      },
+      "resultTextContrast": {
+        "foreground": "rgb(16, 33, 31)",
+        "background": "rgb(231, 248, 242)",
+        "fontSize": "38.4px",
+        "ratio": 15.171915369578551
+      }
+    },
+    {
+      "catalogId": 371,
+      "plan": "free",
+      "before": {
+        "snapshot": {
+          "calculatorSlug": "download-time-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "dataMegabytes": 100,
+            "bandwidthMbps": 80
+          },
+          "output": {
+            "value": 10,
+            "steps": [
+              "Download Time = 10"
+            ]
+          }
+        },
+        "text": "10 s",
+        "label": "Data (MB)"
+      },
+      "changed": {
+        "milliseconds": 13.899999998509884,
+        "dispatchToDOMMilliseconds": 22,
+        "text": "20 s",
+        "snapshot": {
+          "calculatorSlug": "download-time-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "dataMegabytes": 200,
+            "bandwidthMbps": 80
+          },
+          "output": {
+            "value": 20,
+            "steps": [
+              "Download Time = 20"
+            ]
+          }
+        }
+      },
+      "blankRecovery": {
+        "focus": true,
+        "invalid": "true",
+        "bound": true,
+        "alert": true
+      },
+      "focusStyle": {
+        "tag": "INPUT",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(11, 122, 102)"
+      },
+      "semantics": {
+        "tables": [
+          {
+            "name": "Relationship samples",
+            "heads": true
+          },
+          {
+            "name": "Worked example inputs",
+            "heads": true
+          }
+        ],
+        "charts": [
+          {
+            "name": "Transfer relationship: seconds by Mbps",
+            "description": "Discrete engine-verified samples; the complete values and any refusals appear in the relationship table."
+          }
+        ],
+        "label": "Data (MB)"
+      },
+      "responsive": [
+        {
+          "configuredWidth": 320,
+          "width": 320,
+          "scrollWidth": 320,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 820,
+          "width": 820,
+          "scrollWidth": 805,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 1280,
+          "width": 1280,
+          "scrollWidth": 1265,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        }
+      ],
+      "reducedMotion": {
+        "matches": true,
+        "activeAnimations": [
+          {
+            "duration": 0.01,
+            "target": "STRONG"
+          },
+          {
+            "duration": 0.01,
+            "target": "STRONG"
+          }
+        ]
+      },
+      "resultTextContrast": {
+        "foreground": "rgb(16, 33, 31)",
+        "background": "rgb(231, 248, 242)",
+        "fontSize": "32.8px",
+        "ratio": 15.171915369578551
+      }
+    },
+    {
+      "catalogId": 372,
+      "plan": "free",
+      "before": {
+        "snapshot": {
+          "calculatorSlug": "upload-time-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "dataMegabytes": 100,
+            "bandwidthMbps": 80
+          },
+          "output": {
+            "value": 10,
+            "steps": [
+              "Upload Time = 10"
+            ]
+          }
+        },
+        "text": "10 s",
+        "label": "Data (MB)"
+      },
+      "changed": {
+        "milliseconds": 11.900000005960464,
+        "dispatchToDOMMilliseconds": 22.5,
+        "text": "20 s",
+        "snapshot": {
+          "calculatorSlug": "upload-time-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "dataMegabytes": 200,
+            "bandwidthMbps": 80
+          },
+          "output": {
+            "value": 20,
+            "steps": [
+              "Upload Time = 20"
+            ]
+          }
+        }
+      },
+      "blankRecovery": {
+        "focus": true,
+        "invalid": "true",
+        "bound": true,
+        "alert": true
+      },
+      "focusStyle": {
+        "tag": "INPUT",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(11, 122, 102)"
+      },
+      "semantics": {
+        "tables": [
+          {
+            "name": "Relationship samples",
+            "heads": true
+          },
+          {
+            "name": "Worked example inputs",
+            "heads": true
+          }
+        ],
+        "charts": [
+          {
+            "name": "Transfer relationship: seconds by Mbps",
+            "description": "Discrete engine-verified samples; the complete values and any refusals appear in the relationship table."
+          }
+        ],
+        "label": "Data (MB)"
+      },
+      "responsive": [
+        {
+          "configuredWidth": 320,
+          "width": 320,
+          "scrollWidth": 320,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 820,
+          "width": 820,
+          "scrollWidth": 805,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 1280,
+          "width": 1280,
+          "scrollWidth": 1265,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        }
+      ],
+      "reducedMotion": {
+        "matches": true,
+        "activeAnimations": []
+      },
+      "resultTextContrast": {
+        "foreground": "rgb(16, 33, 31)",
+        "background": "rgb(231, 248, 242)",
+        "fontSize": "38.4px",
+        "ratio": 15.171915369578551
+      }
+    },
+    {
+      "catalogId": 373,
+      "plan": "free",
+      "before": {
+        "snapshot": {
+          "calculatorSlug": "data-transfer-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "bandwidthMbps": 80,
+            "timeSeconds": 10
+          },
+          "output": {
+            "value": 100,
+            "steps": [
+              "Data Transfer = 100"
+            ]
+          }
+        },
+        "text": "100 MB",
+        "label": "Bandwidth (Mbps)"
+      },
+      "changed": {
+        "milliseconds": 8.400000005960464,
+        "dispatchToDOMMilliseconds": 16.900000005960464,
+        "text": "200 MB",
+        "snapshot": {
+          "calculatorSlug": "data-transfer-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "bandwidthMbps": 160,
+            "timeSeconds": 10
+          },
+          "output": {
+            "value": 200,
+            "steps": [
+              "Data Transfer = 200"
+            ]
+          }
+        }
+      },
+      "blankRecovery": {
+        "focus": true,
+        "invalid": "true",
+        "bound": true,
+        "alert": true
+      },
+      "focusStyle": {
+        "tag": "INPUT",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(11, 122, 102)"
+      },
+      "semantics": {
+        "tables": [
+          {
+            "name": "Relationship samples",
+            "heads": true
+          },
+          {
+            "name": "Worked example inputs",
+            "heads": true
+          }
+        ],
+        "charts": [
+          {
+            "name": "Transfer relationship: MB by seconds",
+            "description": "Discrete engine-verified samples; the complete values and any refusals appear in the relationship table."
+          }
+        ],
+        "label": "Bandwidth (Mbps)"
+      },
+      "responsive": [
+        {
+          "configuredWidth": 320,
+          "width": 320,
+          "scrollWidth": 320,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 820,
+          "width": 820,
+          "scrollWidth": 805,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 1280,
+          "width": 1280,
+          "scrollWidth": 1265,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        }
+      ],
+      "reducedMotion": {
+        "matches": true,
+        "activeAnimations": []
+      },
+      "resultTextContrast": {
+        "foreground": "rgb(16, 33, 31)",
+        "background": "rgb(231, 248, 242)",
+        "fontSize": "38.4px",
+        "ratio": 15.171915369578551
+      }
+    },
+    {
+      "catalogId": 386,
+      "plan": "free",
+      "before": {
+        "snapshot": {
+          "calculatorSlug": "base64-size-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "inputBytes": 1000
+          },
+          "output": {
+            "value": 1336,
+            "steps": [
+              "Base64 Size = 1336"
+            ]
+          }
+        },
+        "text": "1,336 bytes",
+        "label": "Input bytes"
+      },
+      "changed": {
+        "milliseconds": 13.599999994039536,
+        "dispatchToDOMMilliseconds": 28.899999998509884,
+        "text": "1,340 bytes",
+        "snapshot": {
+          "calculatorSlug": "base64-size-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "inputBytes": 1003
+          },
+          "output": {
+            "value": 1340,
+            "steps": [
+              "Base64 Size = 1340"
+            ]
+          }
+        }
+      },
+      "blankRecovery": {
+        "focus": true,
+        "invalid": "true",
+        "bound": true,
+        "alert": true
+      },
+      "focusStyle": {
+        "tag": "INPUT",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(11, 122, 102)"
+      },
+      "semantics": {
+        "tables": [
+          {
+            "name": "Relationship samples",
+            "heads": true
+          },
+          {
+            "name": "Worked example inputs",
+            "heads": true
+          }
+        ],
+        "charts": [
+          {
+            "name": "Padded Base64 relationship: encoded bytes by raw bytes",
+            "description": "Discrete engine-verified samples; the complete values and any refusals appear in the relationship table."
+          }
+        ],
+        "label": "Input bytes"
+      },
+      "responsive": [
+        {
+          "configuredWidth": 320,
+          "width": 320,
+          "scrollWidth": 320,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 820,
+          "width": 820,
+          "scrollWidth": 805,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 1280,
+          "width": 1280,
+          "scrollWidth": 1265,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        }
+      ],
+      "reducedMotion": {
+        "matches": true,
+        "activeAnimations": [
+          {
+            "duration": 0.01,
+            "target": "STRONG"
+          },
+          {
+            "duration": 0.01,
+            "target": "STRONG"
+          }
+        ]
+      },
+      "resultTextContrast": {
+        "foreground": "rgb(16, 33, 31)",
+        "background": "rgb(231, 248, 242)",
+        "fontSize": "32.8px",
+        "ratio": 15.171915369578551
+      }
+    },
+    {
+      "catalogId": 370,
+      "plan": "pro",
+      "before": {
+        "snapshot": {
+          "calculatorSlug": "bandwidth-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "dataMegabytes": 100,
+            "timeSeconds": 10
+          },
+          "output": {
+            "value": 80,
+            "steps": [
+              "Bandwidth = 80"
+            ]
+          }
+        },
+        "text": "80 Mbps",
+        "label": "Data (MB)"
+      },
+      "changed": {
+        "milliseconds": 15.200000002980232,
+        "dispatchToDOMMilliseconds": 36.80000000447035,
+        "text": "160 Mbps",
+        "snapshot": {
+          "calculatorSlug": "bandwidth-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "dataMegabytes": 200,
+            "timeSeconds": 10
+          },
+          "output": {
+            "value": 160,
+            "steps": [
+              "Bandwidth = 160"
+            ]
+          }
+        }
+      },
+      "blankRecovery": {
+        "focus": true,
+        "invalid": "true",
+        "bound": true,
+        "alert": true
+      },
+      "focusStyle": {
+        "tag": "INPUT",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(11, 122, 102)"
+      },
+      "semantics": {
+        "tables": [
+          {
+            "name": "Input and output reconciliation",
+            "heads": true
+          },
+          {
+            "name": "Relationship samples",
+            "heads": true
+          },
+          {
+            "name": "Relative result changes",
+            "heads": true
+          },
+          {
+            "name": "Worked example inputs",
+            "heads": true
+          }
+        ],
+        "charts": [
+          {
+            "name": "Transfer relationship: Mbps by seconds",
+            "description": "Discrete engine-verified samples; the complete values and any refusals appear in the relationship table."
+          }
+        ],
+        "label": "Data (MB)"
+      },
+      "responsive": [
+        {
+          "configuredWidth": 320,
+          "width": 320,
+          "scrollWidth": 320,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 820,
+          "width": 820,
+          "scrollWidth": 805,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 1280,
+          "width": 1280,
+          "scrollWidth": 1265,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        }
+      ],
+      "reducedMotion": {
+        "matches": true,
+        "activeAnimations": [
+          {
+            "duration": 0.01,
+            "target": "STRONG"
+          },
+          {
+            "duration": 0.01,
+            "target": "STRONG"
+          }
+        ]
+      },
+      "resultTextContrast": {
+        "foreground": "rgb(16, 33, 31)",
+        "background": "rgb(231, 248, 242)",
+        "fontSize": "32.8px",
+        "ratio": 15.171915369578551
+      }
+    },
+    {
+      "catalogId": 371,
+      "plan": "pro",
+      "before": {
+        "snapshot": {
+          "calculatorSlug": "download-time-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "dataMegabytes": 100,
+            "bandwidthMbps": 80
+          },
+          "output": {
+            "value": 10,
+            "steps": [
+              "Download Time = 10"
+            ]
+          }
+        },
+        "text": "10 s",
+        "label": "Data (MB)"
+      },
+      "changed": {
+        "milliseconds": 7,
+        "dispatchToDOMMilliseconds": 17.799999997019768,
+        "text": "20 s",
+        "snapshot": {
+          "calculatorSlug": "download-time-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "dataMegabytes": 200,
+            "bandwidthMbps": 80
+          },
+          "output": {
+            "value": 20,
+            "steps": [
+              "Download Time = 20"
+            ]
+          }
+        }
+      },
+      "blankRecovery": {
+        "focus": true,
+        "invalid": "true",
+        "bound": true,
+        "alert": true
+      },
+      "focusStyle": {
+        "tag": "INPUT",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(11, 122, 102)"
+      },
+      "semantics": {
+        "tables": [
+          {
+            "name": "Input and output reconciliation",
+            "heads": true
+          },
+          {
+            "name": "Relationship samples",
+            "heads": true
+          },
+          {
+            "name": "Relative result changes",
+            "heads": true
+          },
+          {
+            "name": "Worked example inputs",
+            "heads": true
+          }
+        ],
+        "charts": [
+          {
+            "name": "Transfer relationship: seconds by Mbps",
+            "description": "Discrete engine-verified samples; the complete values and any refusals appear in the relationship table."
+          }
+        ],
+        "label": "Data (MB)"
+      },
+      "responsive": [
+        {
+          "configuredWidth": 320,
+          "width": 320,
+          "scrollWidth": 320,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 820,
+          "width": 820,
+          "scrollWidth": 805,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 1280,
+          "width": 1280,
+          "scrollWidth": 1265,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        }
+      ],
+      "reducedMotion": {
+        "matches": true,
+        "activeAnimations": [
+          {
+            "duration": 0.01,
+            "target": "STRONG"
+          },
+          {
+            "duration": 0.01,
+            "target": "STRONG"
+          },
+          {
+            "duration": 0.01,
+            "target": "BUTTON"
+          },
+          {
+            "duration": 0.01,
+            "target": "BUTTON"
+          },
+          {
+            "duration": 0.01,
+            "target": "BUTTON"
+          }
+        ]
+      },
+      "resultTextContrast": {
+        "foreground": "rgb(16, 33, 31)",
+        "background": "rgb(231, 248, 242)",
+        "fontSize": "26.4px",
+        "ratio": 15.171915369578551
+      }
+    },
+    {
+      "catalogId": 372,
+      "plan": "pro",
+      "before": {
+        "snapshot": {
+          "calculatorSlug": "upload-time-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "dataMegabytes": 100,
+            "bandwidthMbps": 80
+          },
+          "output": {
+            "value": 10,
+            "steps": [
+              "Upload Time = 10"
+            ]
+          }
+        },
+        "text": "10 s",
+        "label": "Data (MB)"
+      },
+      "changed": {
+        "milliseconds": 11.700000002980232,
+        "dispatchToDOMMilliseconds": 22.899999998509884,
+        "text": "20 s",
+        "snapshot": {
+          "calculatorSlug": "upload-time-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "dataMegabytes": 200,
+            "bandwidthMbps": 80
+          },
+          "output": {
+            "value": 20,
+            "steps": [
+              "Upload Time = 20"
+            ]
+          }
+        }
+      },
+      "blankRecovery": {
+        "focus": true,
+        "invalid": "true",
+        "bound": true,
+        "alert": true
+      },
+      "focusStyle": {
+        "tag": "INPUT",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(11, 122, 102)"
+      },
+      "semantics": {
+        "tables": [
+          {
+            "name": "Input and output reconciliation",
+            "heads": true
+          },
+          {
+            "name": "Relationship samples",
+            "heads": true
+          },
+          {
+            "name": "Relative result changes",
+            "heads": true
+          },
+          {
+            "name": "Worked example inputs",
+            "heads": true
+          }
+        ],
+        "charts": [
+          {
+            "name": "Transfer relationship: seconds by Mbps",
+            "description": "Discrete engine-verified samples; the complete values and any refusals appear in the relationship table."
+          }
+        ],
+        "label": "Data (MB)"
+      },
+      "responsive": [
+        {
+          "configuredWidth": 320,
+          "width": 320,
+          "scrollWidth": 320,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 820,
+          "width": 820,
+          "scrollWidth": 805,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 1280,
+          "width": 1280,
+          "scrollWidth": 1265,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        }
+      ],
+      "reducedMotion": {
+        "matches": true,
+        "activeAnimations": []
+      },
+      "resultTextContrast": {
+        "foreground": "rgb(16, 33, 31)",
+        "background": "rgb(231, 248, 242)",
+        "fontSize": "38.4px",
+        "ratio": 15.171915369578551
+      }
+    },
+    {
+      "catalogId": 373,
+      "plan": "pro",
+      "before": {
+        "snapshot": {
+          "calculatorSlug": "data-transfer-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "bandwidthMbps": 80,
+            "timeSeconds": 10
+          },
+          "output": {
+            "value": 100,
+            "steps": [
+              "Data Transfer = 100"
+            ]
+          }
+        },
+        "text": "100 MB",
+        "label": "Bandwidth (Mbps)"
+      },
+      "changed": {
+        "milliseconds": 9,
+        "dispatchToDOMMilliseconds": 21.399999998509884,
+        "text": "200 MB",
+        "snapshot": {
+          "calculatorSlug": "data-transfer-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "bandwidthMbps": 160,
+            "timeSeconds": 10
+          },
+          "output": {
+            "value": 200,
+            "steps": [
+              "Data Transfer = 200"
+            ]
+          }
+        }
+      },
+      "blankRecovery": {
+        "focus": true,
+        "invalid": "true",
+        "bound": true,
+        "alert": true
+      },
+      "focusStyle": {
+        "tag": "INPUT",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(11, 122, 102)"
+      },
+      "semantics": {
+        "tables": [
+          {
+            "name": "Input and output reconciliation",
+            "heads": true
+          },
+          {
+            "name": "Relationship samples",
+            "heads": true
+          },
+          {
+            "name": "Relative result changes",
+            "heads": true
+          },
+          {
+            "name": "Worked example inputs",
+            "heads": true
+          }
+        ],
+        "charts": [
+          {
+            "name": "Transfer relationship: MB by seconds",
+            "description": "Discrete engine-verified samples; the complete values and any refusals appear in the relationship table."
+          }
+        ],
+        "label": "Bandwidth (Mbps)"
+      },
+      "responsive": [
+        {
+          "configuredWidth": 320,
+          "width": 320,
+          "scrollWidth": 320,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 820,
+          "width": 820,
+          "scrollWidth": 805,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 1280,
+          "width": 1280,
+          "scrollWidth": 1265,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        }
+      ],
+      "reducedMotion": {
+        "matches": true,
+        "activeAnimations": []
+      },
+      "resultTextContrast": {
+        "foreground": "rgb(16, 33, 31)",
+        "background": "rgb(231, 248, 242)",
+        "fontSize": "38.4px",
+        "ratio": 15.171915369578551
+      }
+    },
+    {
+      "catalogId": 386,
+      "plan": "pro",
+      "before": {
+        "snapshot": {
+          "calculatorSlug": "base64-size-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "inputBytes": 1000
+          },
+          "output": {
+            "value": 1336,
+            "steps": [
+              "Base64 Size = 1336"
+            ]
+          }
+        },
+        "text": "1,336 bytes",
+        "label": "Input bytes"
+      },
+      "changed": {
+        "milliseconds": 8.399999998509884,
+        "dispatchToDOMMilliseconds": 15.700000002980232,
+        "text": "1,340 bytes",
+        "snapshot": {
+          "calculatorSlug": "base64-size-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "inputBytes": 1003
+          },
+          "output": {
+            "value": 1340,
+            "steps": [
+              "Base64 Size = 1340"
+            ]
+          }
+        }
+      },
+      "blankRecovery": {
+        "focus": true,
+        "invalid": "true",
+        "bound": true,
+        "alert": true
+      },
+      "focusStyle": {
+        "tag": "INPUT",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(11, 122, 102)"
+      },
+      "semantics": {
+        "tables": [
+          {
+            "name": "Input and output reconciliation",
+            "heads": true
+          },
+          {
+            "name": "Relationship samples",
+            "heads": true
+          },
+          {
+            "name": "Relative result changes",
+            "heads": true
+          },
+          {
+            "name": "Worked example inputs",
+            "heads": true
+          }
+        ],
+        "charts": [
+          {
+            "name": "Padded Base64 relationship: encoded bytes by raw bytes",
+            "description": "Discrete engine-verified samples; the complete values and any refusals appear in the relationship table."
+          }
+        ],
+        "label": "Input bytes"
+      },
+      "responsive": [
+        {
+          "configuredWidth": 320,
+          "width": 320,
+          "scrollWidth": 320,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 820,
+          "width": 820,
+          "scrollWidth": 805,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 1280,
+          "width": 1280,
+          "scrollWidth": 1265,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        }
+      ],
+      "reducedMotion": {
+        "matches": true,
+        "activeAnimations": []
+      },
+      "resultTextContrast": {
+        "foreground": "rgb(16, 33, 31)",
+        "background": "rgb(231, 248, 242)",
+        "fontSize": "38.4px",
+        "ratio": 15.171915369578551
+      }
+    },
+    {
+      "catalogId": 370,
+      "plan": "business",
+      "before": {
+        "snapshot": {
+          "calculatorSlug": "bandwidth-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "dataMegabytes": 100,
+            "timeSeconds": 10
+          },
+          "output": {
+            "value": 80,
+            "steps": [
+              "Bandwidth = 80"
+            ]
+          }
+        },
+        "text": "80 Mbps",
+        "label": "Data (MB)"
+      },
+      "changed": {
+        "milliseconds": 12.099999994039536,
+        "dispatchToDOMMilliseconds": 24.19999999552965,
+        "text": "160 Mbps",
+        "snapshot": {
+          "calculatorSlug": "bandwidth-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "dataMegabytes": 200,
+            "timeSeconds": 10
+          },
+          "output": {
+            "value": 160,
+            "steps": [
+              "Bandwidth = 160"
+            ]
+          }
+        }
+      },
+      "blankRecovery": {
+        "focus": true,
+        "invalid": "true",
+        "bound": true,
+        "alert": true
+      },
+      "focusStyle": {
+        "tag": "INPUT",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(11, 122, 102)"
+      },
+      "semantics": {
+        "tables": [
+          {
+            "name": "Input and output reconciliation",
+            "heads": true
+          },
+          {
+            "name": "Relationship samples",
+            "heads": true
+          },
+          {
+            "name": "Relative result changes",
+            "heads": true
+          },
+          {
+            "name": "Worked example inputs",
+            "heads": true
+          }
+        ],
+        "charts": [
+          {
+            "name": "Transfer relationship: Mbps by seconds",
+            "description": "Discrete engine-verified samples; the complete values and any refusals appear in the relationship table."
+          }
+        ],
+        "label": "Data (MB)"
+      },
+      "responsive": [
+        {
+          "configuredWidth": 320,
+          "width": 320,
+          "scrollWidth": 320,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 820,
+          "width": 820,
+          "scrollWidth": 805,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 1280,
+          "width": 1280,
+          "scrollWidth": 1265,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        }
+      ],
+      "reducedMotion": {
+        "matches": true,
+        "activeAnimations": []
+      },
+      "resultTextContrast": {
+        "foreground": "rgb(16, 33, 31)",
+        "background": "rgb(231, 248, 242)",
+        "fontSize": "38.4px",
+        "ratio": 15.171915369578551
+      }
+    },
+    {
+      "catalogId": 371,
+      "plan": "business",
+      "before": {
+        "snapshot": {
+          "calculatorSlug": "download-time-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "dataMegabytes": 100,
+            "bandwidthMbps": 80
+          },
+          "output": {
+            "value": 10,
+            "steps": [
+              "Download Time = 10"
+            ]
+          }
+        },
+        "text": "10 s",
+        "label": "Data (MB)"
+      },
+      "changed": {
+        "milliseconds": 26.69999999552965,
+        "dispatchToDOMMilliseconds": 46.79999999701977,
+        "text": "20 s",
+        "snapshot": {
+          "calculatorSlug": "download-time-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "dataMegabytes": 200,
+            "bandwidthMbps": 80
+          },
+          "output": {
+            "value": 20,
+            "steps": [
+              "Download Time = 20"
+            ]
+          }
+        }
+      },
+      "blankRecovery": {
+        "focus": true,
+        "invalid": "true",
+        "bound": true,
+        "alert": true
+      },
+      "focusStyle": {
+        "tag": "INPUT",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(11, 122, 102)"
+      },
+      "semantics": {
+        "tables": [
+          {
+            "name": "Input and output reconciliation",
+            "heads": true
+          },
+          {
+            "name": "Relationship samples",
+            "heads": true
+          },
+          {
+            "name": "Relative result changes",
+            "heads": true
+          },
+          {
+            "name": "Worked example inputs",
+            "heads": true
+          }
+        ],
+        "charts": [
+          {
+            "name": "Transfer relationship: seconds by Mbps",
+            "description": "Discrete engine-verified samples; the complete values and any refusals appear in the relationship table."
+          }
+        ],
+        "label": "Data (MB)"
+      },
+      "responsive": [
+        {
+          "configuredWidth": 320,
+          "width": 320,
+          "scrollWidth": 320,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 820,
+          "width": 820,
+          "scrollWidth": 805,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 1280,
+          "width": 1280,
+          "scrollWidth": 1265,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        }
+      ],
+      "reducedMotion": {
+        "matches": true,
+        "activeAnimations": [
+          {
+            "duration": 0.01,
+            "target": "STRONG"
+          },
+          {
+            "duration": 0.01,
+            "target": "STRONG"
+          }
+        ]
+      },
+      "resultTextContrast": {
+        "foreground": "rgb(16, 33, 31)",
+        "background": "rgb(231, 248, 242)",
+        "fontSize": "32.8px",
+        "ratio": 15.171915369578551
+      }
+    },
+    {
+      "catalogId": 372,
+      "plan": "business",
+      "before": {
+        "snapshot": {
+          "calculatorSlug": "upload-time-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "dataMegabytes": 100,
+            "bandwidthMbps": 80
+          },
+          "output": {
+            "value": 10,
+            "steps": [
+              "Upload Time = 10"
+            ]
+          }
+        },
+        "text": "10 s",
+        "label": "Data (MB)"
+      },
+      "changed": {
+        "milliseconds": 12.699999995529652,
+        "dispatchToDOMMilliseconds": 22.69999999552965,
+        "text": "20 s",
+        "snapshot": {
+          "calculatorSlug": "upload-time-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "dataMegabytes": 200,
+            "bandwidthMbps": 80
+          },
+          "output": {
+            "value": 20,
+            "steps": [
+              "Upload Time = 20"
+            ]
+          }
+        }
+      },
+      "blankRecovery": {
+        "focus": true,
+        "invalid": "true",
+        "bound": true,
+        "alert": true
+      },
+      "focusStyle": {
+        "tag": "INPUT",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(11, 122, 102)"
+      },
+      "semantics": {
+        "tables": [
+          {
+            "name": "Input and output reconciliation",
+            "heads": true
+          },
+          {
+            "name": "Relationship samples",
+            "heads": true
+          },
+          {
+            "name": "Relative result changes",
+            "heads": true
+          },
+          {
+            "name": "Worked example inputs",
+            "heads": true
+          }
+        ],
+        "charts": [
+          {
+            "name": "Transfer relationship: seconds by Mbps",
+            "description": "Discrete engine-verified samples; the complete values and any refusals appear in the relationship table."
+          }
+        ],
+        "label": "Data (MB)"
+      },
+      "responsive": [
+        {
+          "configuredWidth": 320,
+          "width": 320,
+          "scrollWidth": 320,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 820,
+          "width": 820,
+          "scrollWidth": 805,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 1280,
+          "width": 1280,
+          "scrollWidth": 1265,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        }
+      ],
+      "reducedMotion": {
+        "matches": true,
+        "activeAnimations": []
+      },
+      "resultTextContrast": {
+        "foreground": "rgb(16, 33, 31)",
+        "background": "rgb(231, 248, 242)",
+        "fontSize": "38.4px",
+        "ratio": 15.171915369578551
+      }
+    },
+    {
+      "catalogId": 373,
+      "plan": "business",
+      "before": {
+        "snapshot": {
+          "calculatorSlug": "data-transfer-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "bandwidthMbps": 80,
+            "timeSeconds": 10
+          },
+          "output": {
+            "value": 100,
+            "steps": [
+              "Data Transfer = 100"
+            ]
+          }
+        },
+        "text": "100 MB",
+        "label": "Bandwidth (Mbps)"
+      },
+      "changed": {
+        "milliseconds": 14.300000004470348,
+        "dispatchToDOMMilliseconds": 24.899999998509884,
+        "text": "200 MB",
+        "snapshot": {
+          "calculatorSlug": "data-transfer-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "bandwidthMbps": 160,
+            "timeSeconds": 10
+          },
+          "output": {
+            "value": 200,
+            "steps": [
+              "Data Transfer = 200"
+            ]
+          }
+        }
+      },
+      "blankRecovery": {
+        "focus": true,
+        "invalid": "true",
+        "bound": true,
+        "alert": true
+      },
+      "focusStyle": {
+        "tag": "INPUT",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(11, 122, 102)"
+      },
+      "semantics": {
+        "tables": [
+          {
+            "name": "Input and output reconciliation",
+            "heads": true
+          },
+          {
+            "name": "Relationship samples",
+            "heads": true
+          },
+          {
+            "name": "Relative result changes",
+            "heads": true
+          },
+          {
+            "name": "Worked example inputs",
+            "heads": true
+          }
+        ],
+        "charts": [
+          {
+            "name": "Transfer relationship: MB by seconds",
+            "description": "Discrete engine-verified samples; the complete values and any refusals appear in the relationship table."
+          }
+        ],
+        "label": "Bandwidth (Mbps)"
+      },
+      "responsive": [
+        {
+          "configuredWidth": 320,
+          "width": 320,
+          "scrollWidth": 320,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 820,
+          "width": 820,
+          "scrollWidth": 805,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 1280,
+          "width": 1280,
+          "scrollWidth": 1265,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        }
+      ],
+      "reducedMotion": {
+        "matches": true,
+        "activeAnimations": []
+      },
+      "resultTextContrast": {
+        "foreground": "rgb(16, 33, 31)",
+        "background": "rgb(231, 248, 242)",
+        "fontSize": "38.4px",
+        "ratio": 15.171915369578551
+      }
+    },
+    {
+      "catalogId": 386,
+      "plan": "business",
+      "before": {
+        "snapshot": {
+          "calculatorSlug": "base64-size-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "inputBytes": 1000
+          },
+          "output": {
+            "value": 1336,
+            "steps": [
+              "Base64 Size = 1336"
+            ]
+          }
+        },
+        "text": "1,336 bytes",
+        "label": "Input bytes"
+      },
+      "changed": {
+        "milliseconds": 20.599999994039536,
+        "dispatchToDOMMilliseconds": 40,
+        "text": "1,340 bytes",
+        "snapshot": {
+          "calculatorSlug": "base64-size-calculator",
+          "calculatorVersion": 1,
+          "input": {
+            "inputBytes": 1003
+          },
+          "output": {
+            "value": 1340,
+            "steps": [
+              "Base64 Size = 1340"
+            ]
+          }
+        }
+      },
+      "blankRecovery": {
+        "focus": true,
+        "invalid": "true",
+        "bound": true,
+        "alert": true
+      },
+      "focusStyle": {
+        "tag": "INPUT",
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(11, 122, 102)"
+      },
+      "semantics": {
+        "tables": [
+          {
+            "name": "Input and output reconciliation",
+            "heads": true
+          },
+          {
+            "name": "Relationship samples",
+            "heads": true
+          },
+          {
+            "name": "Relative result changes",
+            "heads": true
+          },
+          {
+            "name": "Worked example inputs",
+            "heads": true
+          }
+        ],
+        "charts": [
+          {
+            "name": "Padded Base64 relationship: encoded bytes by raw bytes",
+            "description": "Discrete engine-verified samples; the complete values and any refusals appear in the relationship table."
+          }
+        ],
+        "label": "Input bytes"
+      },
+      "responsive": [
+        {
+          "configuredWidth": 320,
+          "width": 320,
+          "scrollWidth": 320,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 820,
+          "width": 820,
+          "scrollWidth": 805,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        },
+        {
+          "configuredWidth": 1280,
+          "width": 1280,
+          "scrollWidth": 1265,
+          "meta": "width=device-width,initial-scale=1",
+          "offenders": []
+        }
+      ],
+      "reducedMotion": {
+        "matches": true,
+        "activeAnimations": []
+      },
+      "resultTextContrast": {
+        "foreground": "rgb(16, 33, 31)",
+        "background": "rgb(231, 248, 242)",
+        "fontSize": "38.4px",
+        "ratio": 15.171915369578551
+      }
+    }
+  ],
+  "sourceHashes": {
+    "src/components/calculator-interactive.tsx": "8f033f08da04fddfcedf6a230dc4a93aaff97d9c8f69b20bf4e1be0341ddebb6",
+    "src/components/technology-input-field.tsx": "82e931a240ffb6192553e1154b14df26fbed5852eff41e82b808a0c0ae4badb6",
+    "src/components/final-calculator-renderer.tsx": "95acb3ca32311c3e843371e2e39c3f74d311d99997706d866b1629957796e4b6",
+    "src/components/technology-five-analysis.tsx": "52951de9c42770e75613a4e4803fcd5b3f1b6c8a5d4de2a9bc2fbf8e52650022",
+    "tests/five-interface-qa-20261109/browser.mjs": "01f78a09bf3ea495d96e0d59ebff58812526809bad77d4efeb4f1cd5cc3fcec0"
+  },
+  "passed": true
+}

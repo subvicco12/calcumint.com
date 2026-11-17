@@ -1,0 +1,119 @@
+{
+  "kind": "FACTORY_WAVE_LOCAL_VALIDATION_NOT_HOSTED_QUALIFICATION",
+  "validationSourceRef": "7125bf30922a2ad1c6f38ccf00b333e41ef437de",
+  "releaseHold": true,
+  "sourceGuards": {
+    "passed": 100,
+    "failed": 0
+  },
+  "actualSourceConsumer": {
+    "passed": 6,
+    "failed": 0,
+    "expandedSourceCases": 91
+  },
+  "account": {
+    "identities": 22,
+    "planObservations": 66,
+    "genuineLocalTransport": true,
+    "productionEquivalence": "UNKNOWN"
+  },
+  "browser": {
+    "passed": 16,
+    "sourceFiles": 95,
+    "syntheticOwnerAndActionTransport": true,
+    "genuineAuthentication": false
+  },
+  "fullUnit": {
+    "status": "PASS",
+    "command": "npm test -- --maxWorkers=1",
+    "passed": 9357,
+    "failed": 0,
+    "skippedExisting": 4,
+    "total": 9361,
+    "filesPassed": 1022,
+    "filesSkippedExisting": 2,
+    "seconds": 1080.27,
+    "assertionsAndTimeoutsUnchanged": true
+  },
+  "priorConcurrentFullUnit": {
+    "passed": 9342,
+    "failed": 7,
+    "skipped": 4,
+    "unhandledErrors": 1,
+    "qualified": false
+  },
+  "build": {
+    "finalRuntimeBuild": "PASS",
+    "command": "next build --webpack"
+  },
+  "lint": {
+    "finalRun": "PASS",
+    "errors": 0,
+    "warnings": 39
+  },
+  "typecheck": {
+    "finalRun": "PASS",
+    "command": "npm run typecheck",
+    "declarationFix": "tests/calculator-factory-source-20261112/policy.d.mts"
+  },
+  "hostedCI": {
+    "status": "NOT_STARTED",
+    "qualificationRequires": [
+      "checks",
+      "build",
+      "full-product",
+      "source-acceptance",
+      "publication-factory",
+      "validate"
+    ]
+  },
+  "newConfirmedEngineeringComplete": 0,
+  "confirmedEngineeringOverlay": 20,
+  "newCanonicalAcceptances": 0,
+  "newCertifications": 0,
+  "newPublicationEligible": 0,
+  "canonicalCounts": {
+    "COMPLETE_AND_CERTIFIED": 0,
+    "IMPLEMENTED_REVIEW_PENDING": 2,
+    "IMPLEMENTED_TEST_GAPS": 0,
+    "PARTIALLY_IMPLEMENTED": 495,
+    "NOT_IMPLEMENTED": 0,
+    "IDENTITY_OR_SCOPE_BLOCKED": 43
+  },
+  "receiptHashes": {
+    "account-receipt.json": "f6b75699d8e91c5780ef35c47b52bfcca007156c590f21e699674c9aaef2af73",
+    "browser-receipt.json": "44475fb4c33f79013580163823c0870eeea56de86cd77ea9ab4ee99965333888",
+    "contracts.json": "45e0f6698b22821d2499501f59a22c556cde597f03a4dfd86f0c6811d4f6dfff",
+    "evidence.json": "a60c389726c3229acb257a922ac98af32084fe52494b32a7102dfe944a505a7f",
+    "contracts-normal-output-v2.json": "992578ee9f2f45b254c82d3685b8e434d3860883473efb22cc41120292f68feb",
+    "evidence-normal-output-v2.json": "e2edebe6e9b749624587592fc0a204c616da86bdacb2a03398f9e93417ec65d8",
+    "remaining-work.json": "cb0d5a48e4881fc21bccc7bbb5d28c42b50db7ab9e80291779dcdee931fbed97",
+    "review-queue.json": "13490656dfc33d87730689e42a876cded26fef54b18a09345370a42cebfe4bfc"
+  },
+  "priorControlledRuntimeFullUnit": {
+    "sourceRef": "bbf0a1f8b4c8f06e7ff508298099fc2cd17177df",
+    "passed": 9349,
+    "skippedExisting": 4,
+    "seconds": 1125.81
+  },
+  "newBoundaryTests": {
+    "basicMathTests": 21,
+    "historicalReplayUnchanged": true,
+    "captureRevision": "private.basic-math-capture.normal-output.20261112.1"
+  },
+  "sourceAdmission": {
+    "artifact": "docs/parallel-source-20261110/capture-revision36.json",
+    "runtimeRef": "8ca2fcee34ab5947f814b953d97a5866a7bcb03f",
+    "closureRecords": 711,
+    "finiteSourcePaths": 23,
+    "retainedCaptures31Through35Unchanged": true
+  },
+  "workerAccounting": {
+    "delegatedLanesExecuted": 6,
+    "rootIntegrationLane": 1,
+    "peakSimultaneouslyRunning": "NOT_INSTRUMENTED",
+    "workerHours": "NOT_INSTRUMENTED",
+    "newConfirmedEngineeringCompletions": 0,
+    "completionsPerWorkerDay": "NOT_ESTIMABLE_WITHOUT_WORKER_TIME"
+  }
+}

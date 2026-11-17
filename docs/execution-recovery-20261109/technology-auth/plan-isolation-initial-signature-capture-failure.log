@@ -1,0 +1,16 @@
+PASS Free owned project/history denied with zero scenarios
+PASS Same JWT/user/project/history/request succeeds after only fixture plan changes to Pro
+file:///tmp/calcumint-recovery-technology-auth-20261109/tests/gotrue-runtime/fixture.mjs:8
+const docker=(args,input='')=>new Promise((resolve,reject)=>{const p=spawn('docker',['--host=unix:///var/run/docker.sock',...args],{env,stdio:['pipe','pipe','pipe'],timeout:30000});let out='',err='';p.stdout.on('data',x=>out+=x);p.stderr.on('data',x=>err+=x);p.on('error',reject);p.on('close',code=>code===0?resolve(out.trim()):reject(Error(`Docker ${args[0]} failed: ${err||out}`)));p.stdin.on('error',reject);p.stdin.end(input);});
+                                                                                                                                                                                                                                                                                                                                               ^
+
+Error: Docker exec failed: ERROR:  function "public.save_project_scenario_atomic(uuid,uuid,uuid,uuid,text)" does not exist
+LINE 1: SELECT pg_get_functiondef('public.save_project_scenario_atom...
+                                  ^
+
+    at ChildProcess.<anonymous> (file:///tmp/calcumint-recovery-technology-auth-20261109/tests/gotrue-runtime/fixture.mjs:8:336)
+    at ChildProcess.emit (node:events:509:28)
+    at maybeClose (node:internal/child_process:1141:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:306:5)
+
+Node.js v24.19.0

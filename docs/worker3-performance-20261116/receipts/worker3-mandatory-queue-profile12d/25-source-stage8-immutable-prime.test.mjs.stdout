@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: availability prime returns undefined and transports the same finite immutable objects
+ok 1 - availability prime returns undefined and transports the same finite immutable objects
+  ---
+  duration_ms: 3.607997
+  type: 'test'
+  ...
+# Subtest: old full preloader always executes original authority before availability
+ok 2 - old full preloader always executes original authority before availability
+  ---
+  duration_ms: 1.330961
+  type: 'test'
+  ...
+# Subtest: prime alone cannot grant a verdict or bypass later full authority refusal
+ok 3 - prime alone cannot grant a verdict or bypass later full authority refusal
+  ---
+  duration_ms: 1.527719
+  type: 'test'
+  ...
+# Subtest: every finite capture tamper is denied before any ensure or preload callback
+ok 4 - every finite capture tamper is denied before any ensure or preload callback
+  ---
+  duration_ms: 5.363683
+  type: 'test'
+  ...
+# Subtest: missing accepted record missing reader data and nonBuffer captures fail closed
+ok 5 - missing accepted record missing reader data and nonBuffer captures fail closed
+  ---
+  duration_ms: 1.070906
+  type: 'test'
+  ...
+# Subtest: capture68 is authenticated before the canonical availability lock path runs
+ok 6 - capture68 is authenticated before the canonical availability lock path runs
+  ---
+  duration_ms: 0.754564
+  type: 'test'
+  ...
+# Subtest: optional path batch remains optional without manufacturing capabilities
+ok 7 - optional path batch remains optional without manufacturing capabilities
+  ---
+  duration_ms: 0.764297
+  type: 'test'
+  ...
+# Subtest: authenticated invalid JSON and unsupported blob data cannot preload arbitrary objects
+ok 8 - authenticated invalid JSON and unsupported blob data cannot preload arbitrary objects
+  ---
+  duration_ms: 1.452761
+  type: 'test'
+  ...
+# Subtest: all invocations reread authenticate and preload through only the provided endpoints
+ok 9 - all invocations reread authenticate and preload through only the provided endpoints
+  ---
+  duration_ms: 1.536265
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 25.892221

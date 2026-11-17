@@ -1,0 +1,4 @@
+PASS Actual pg_dump schema and public synthetic data captured without auth data or role credentials
+PASS Injected late restore failure rolls back schema and data atomically in separate empty database
+PASS Actual restore preserves exact core metadata/ACL/RLS/constraints and all seven-table rows including publication/audit sentinel; FK and anonymous denial enforced
+PASS Restored database supports exact reversal and reapplication while preserving committed publication/audit state

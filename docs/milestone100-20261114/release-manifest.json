@@ -1,0 +1,34 @@
+{
+  "kind": "PROPOSED_FIRST_PILOT_NOT_AUTHORIZED_RELEASE",
+  "authorizedBatch": [],
+  "publicationEligibleIds": [],
+  "primary": {
+    "catalogId": 440,
+    "engineId": "conversion.frequency",
+    "version": 1,
+    "slug": "frequency-converter",
+    "competentAcceptance": "PENDING",
+    "operatorAttestations": "PENDING"
+  },
+  "fallback": {
+    "catalogId": 432,
+    "engineId": "conversion.time",
+    "version": 1,
+    "slug": "time-converter",
+    "competentAcceptance": "PENDING",
+    "operatorAttestations": "PENDING"
+  },
+  "sixRPCsHeld": true,
+  "liveTransitionAuthorized": false,
+  "releaseHold": true,
+  "lastProductionMetadataObservation": "2026-11-13; reused, not refreshed in this wave",
+  "heldRPCSignatures": [
+    "create_catalog_calculator_with_audit(text,text,text,text,text,jsonb)",
+    "record_calculator_qa_decision(uuid,text,text,text)",
+    "assign_calculator_reviewer(uuid,uuid)",
+    "transition_calculator_with_audit(uuid,text,text)",
+    "prepare_catalog_inventory_drafts(jsonb)",
+    "publish_calculator_batch_with_audit_v1(jsonb)"
+  ],
+  "dependencyScope": "Use the existing reviewed graph: first four are logical single-pilot dependencies; reviewed core adds inventory preparation; batch addon is an optional batch optimization, not a universal legacy-publication requirement."
+}

@@ -1,0 +1,225 @@
+
+ RUN  v3.2.7 /workspace/coordinator-statistics-20261117
+
+ ❯ src/lib/statistics-integration-20261117/integration.test.ts (9 tests | 7 failed) 68ms
+   × adopts exact #292 packet, replay and delivery without recapture 25ms
+     → expected { catalogId: 292, …(2) } to match object { snapshot: { …(4) }, …(2) }
+(2 matching properties omitted from actual)
+   × adopts exact #293 packet, replay and delivery without recapture 8ms
+     → expected { catalogId: 293, …(2) } to match object { snapshot: { …(4) }, …(2) }
+(2 matching properties omitted from actual)
+   × adopts exact #294 packet, replay and delivery without recapture 7ms
+     → expected { catalogId: 294, …(2) } to match object { snapshot: { …(4) }, …(2) }
+(2 matching properties omitted from actual)
+   × adopts exact #295 packet, replay and delivery without recapture 7ms
+     → expected { catalogId: 295, …(2) } to match object { snapshot: { …(4) }, …(2) }
+(2 matching properties omitted from actual)
+   × adopts exact #296 packet, replay and delivery without recapture 7ms
+     → expected { catalogId: 296, …(3) } to match object { snapshot: { …(4) }, …(2) }
+(2 matching properties omitted from actual)
+   × adopts exact #297 packet, replay and delivery without recapture 8ms
+     → expected { catalogId: 297, …(3) } to match object { snapshot: { …(4) }, …(2) }
+(2 matching properties omitted from actual)
+   × adopts exact #299 packet, replay and delivery without recapture 3ms
+     → expected { catalogId: 299, …(3) } to match object { snapshot: { …(4) }, …(2) }
+(2 matching properties omitted from actual)
+   ✓ keeps blocked298 unavailable 1ms
+   ✓ routes cancellation history through original v1 while refusing new capture 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/statistics-integration-20261117/integration.test.ts > adopts exact #292 packet, replay and delivery without recapture
+AssertionError: expected { catalogId: 292, …(2) } to match object { snapshot: { …(4) }, …(2) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+@@ -1,8 +1,6 @@
+  {
+-   "engineVersion": 1,
+-   "scope": Any<String>,
+    "snapshot": {
+      "calculatorSlug": "correlation-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "xValues": [
+
+ ❯ src/lib/statistics-integration-20261117/integration.test.ts:16:52
+     14|  expect(verifyFactoryPacket(packet)).toEqual(packet);
+     15|  expect(verifyFactoryStoredSnapshot(packet.snapshot).snapshot).toEqual…
+     16|  expect(verifyRegisteredSnapshot(packet.snapshot)).toMatchObject({snap…
+       |                                                    ^
+     17|  expect(factoryDeliveryIdentity(c.catalogId,1)).toMatchObject({engineI…
+     18|  expect(()=>verifyFactoryPacket({...packet,identity:{...packet.identit…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  src/lib/statistics-integration-20261117/integration.test.ts > adopts exact #293 packet, replay and delivery without recapture
+AssertionError: expected { catalogId: 293, …(2) } to match object { snapshot: { …(4) }, …(2) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+@@ -1,8 +1,6 @@
+  {
+-   "engineVersion": 1,
+-   "scope": Any<String>,
+    "snapshot": {
+      "calculatorSlug": "linear-regression-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "xValues": [
+
+ ❯ src/lib/statistics-integration-20261117/integration.test.ts:16:52
+     14|  expect(verifyFactoryPacket(packet)).toEqual(packet);
+     15|  expect(verifyFactoryStoredSnapshot(packet.snapshot).snapshot).toEqual…
+     16|  expect(verifyRegisteredSnapshot(packet.snapshot)).toMatchObject({snap…
+       |                                                    ^
+     17|  expect(factoryDeliveryIdentity(c.catalogId,1)).toMatchObject({engineI…
+     18|  expect(()=>verifyFactoryPacket({...packet,identity:{...packet.identit…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  src/lib/statistics-integration-20261117/integration.test.ts > adopts exact #294 packet, replay and delivery without recapture
+AssertionError: expected { catalogId: 294, …(2) } to match object { snapshot: { …(4) }, …(2) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+@@ -1,8 +1,6 @@
+  {
+-   "engineVersion": 1,
+-   "scope": Any<String>,
+    "snapshot": {
+      "calculatorSlug": "weighted-mean-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "values": [
+
+ ❯ src/lib/statistics-integration-20261117/integration.test.ts:16:52
+     14|  expect(verifyFactoryPacket(packet)).toEqual(packet);
+     15|  expect(verifyFactoryStoredSnapshot(packet.snapshot).snapshot).toEqual…
+     16|  expect(verifyRegisteredSnapshot(packet.snapshot)).toMatchObject({snap…
+       |                                                    ^
+     17|  expect(factoryDeliveryIdentity(c.catalogId,1)).toMatchObject({engineI…
+     18|  expect(()=>verifyFactoryPacket({...packet,identity:{...packet.identit…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  src/lib/statistics-integration-20261117/integration.test.ts > adopts exact #295 packet, replay and delivery without recapture
+AssertionError: expected { catalogId: 295, …(2) } to match object { snapshot: { …(4) }, …(2) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+@@ -1,8 +1,6 @@
+  {
+-   "engineVersion": 1,
+-   "scope": Any<String>,
+    "snapshot": {
+      "calculatorSlug": "percentile-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "percentile": 75,
+
+ ❯ src/lib/statistics-integration-20261117/integration.test.ts:16:52
+     14|  expect(verifyFactoryPacket(packet)).toEqual(packet);
+     15|  expect(verifyFactoryStoredSnapshot(packet.snapshot).snapshot).toEqual…
+     16|  expect(verifyRegisteredSnapshot(packet.snapshot)).toMatchObject({snap…
+       |                                                    ^
+     17|  expect(factoryDeliveryIdentity(c.catalogId,1)).toMatchObject({engineI…
+     18|  expect(()=>verifyFactoryPacket({...packet,identity:{...packet.identit…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  src/lib/statistics-integration-20261117/integration.test.ts > adopts exact #296 packet, replay and delivery without recapture
+AssertionError: expected { catalogId: 296, …(3) } to match object { snapshot: { …(4) }, …(2) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+@@ -1,8 +1,7 @@
+  {
+    "engineVersion": 1,
+-   "scope": Any<String>,
+    "snapshot": {
+      "calculatorSlug": "quartile-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "quartileNumber": 1,
+
+ ❯ src/lib/statistics-integration-20261117/integration.test.ts:16:52
+     14|  expect(verifyFactoryPacket(packet)).toEqual(packet);
+     15|  expect(verifyFactoryStoredSnapshot(packet.snapshot).snapshot).toEqual…
+     16|  expect(verifyRegisteredSnapshot(packet.snapshot)).toMatchObject({snap…
+       |                                                    ^
+     17|  expect(factoryDeliveryIdentity(c.catalogId,1)).toMatchObject({engineI…
+     18|  expect(()=>verifyFactoryPacket({...packet,identity:{...packet.identit…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+ FAIL  src/lib/statistics-integration-20261117/integration.test.ts > adopts exact #297 packet, replay and delivery without recapture
+AssertionError: expected { catalogId: 297, …(3) } to match object { snapshot: { …(4) }, …(2) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+@@ -1,8 +1,7 @@
+  {
+    "engineVersion": 1,
+-   "scope": Any<String>,
+    "snapshot": {
+      "calculatorSlug": "interquartile-range-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "values": [
+
+ ❯ src/lib/statistics-integration-20261117/integration.test.ts:16:52
+     14|  expect(verifyFactoryPacket(packet)).toEqual(packet);
+     15|  expect(verifyFactoryStoredSnapshot(packet.snapshot).snapshot).toEqual…
+     16|  expect(verifyRegisteredSnapshot(packet.snapshot)).toMatchObject({snap…
+       |                                                    ^
+     17|  expect(factoryDeliveryIdentity(c.catalogId,1)).toMatchObject({engineI…
+     18|  expect(()=>verifyFactoryPacket({...packet,identity:{...packet.identit…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/7]⎯
+
+ FAIL  src/lib/statistics-integration-20261117/integration.test.ts > adopts exact #299 packet, replay and delivery without recapture
+AssertionError: expected { catalogId: 299, …(3) } to match object { snapshot: { …(4) }, …(2) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+@@ -1,8 +1,7 @@
+  {
+    "engineVersion": 1,
+-   "scope": Any<String>,
+    "snapshot": {
+      "calculatorSlug": "expected-value-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "outcomes": [
+
+ ❯ src/lib/statistics-integration-20261117/integration.test.ts:16:52
+     14|  expect(verifyFactoryPacket(packet)).toEqual(packet);
+     15|  expect(verifyFactoryStoredSnapshot(packet.snapshot).snapshot).toEqual…
+     16|  expect(verifyRegisteredSnapshot(packet.snapshot)).toMatchObject({snap…
+       |                                                    ^
+     17|  expect(factoryDeliveryIdentity(c.catalogId,1)).toMatchObject({engineI…
+     18|  expect(()=>verifyFactoryPacket({...packet,identity:{...packet.identit…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/7]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  7 failed | 2 passed (9)
+   Start at  08:22:04
+   Duration  1.34s (transform 680ms, setup 17ms, collect 1.03s, tests 68ms, environment 0ms, prepare 48ms)
+

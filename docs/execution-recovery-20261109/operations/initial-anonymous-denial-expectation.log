@@ -1,0 +1,30 @@
+PASS Actual pg_dump schema and public synthetic data captured without auth data or role credentials
+PASS Injected late restore failure rolls back schema and data atomically in separate empty database
+node:internal/errors:985
+  const err = new Error(message);
+              ^
+
+Error: Command failed: docker --host=unix:///var/run/docker.sock exec -i calcumint-gotrue-405b706b-eb61-4f1a-87c9-caef85f3ea8b-db psql -h 127.0.0.1 -U postgres -d recovery_a02b00ecfcf845809c835741eec80a99 -XqAt -v ON_ERROR_STOP=1
+ERROR:  permission denied for function is_platform_admin
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at checkExecSyncError (node:child_process:942:11)
+    at execFileSync (node:child_process:978:15)
+    at docker (file:///tmp/calcumint-recovery-operations-20261109/tests/execution-recovery-20261109/operations-restore.mjs:13:28)
+    at sql (file:///tmp/calcumint-recovery-operations-20261109/tests/execution-recovery-20261109/operations-restore.mjs:35:15)
+    at file:///tmp/calcumint-recovery-operations-20261109/tests/execution-recovery-20261109/operations-restore.mjs:45:16
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+  status: 3,
+  signal: null,
+  output: [
+    null,
+    '',
+    'ERROR:  permission denied for function is_platform_admin\n'
+  ],
+  pid: 36518,
+  stdout: '',
+  stderr: 'ERROR:  permission denied for function is_platform_admin\n'
+}
+
+Node.js v24.19.0

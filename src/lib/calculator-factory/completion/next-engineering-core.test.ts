@@ -1,0 +1,10 @@
+import {expect,it} from 'vitest';
+import {zScoreCalculator} from '@/calculators/statistics/catalog-batch-1';
+import {createEngineeringContract} from './next-engineering-core';
+const contract=()=>createEngineeringContract(zScoreCalculator,{catalogId:284,primaryKey:'zScore',unit:'dimensionless',scope:'Supplied mean and positive standard deviation',sourceEvidence:['source']});
+it('captures all immutable output fields and refuses omitted or invented fields',()=>{const c=contract(),p=c.execute({value:'110',mean:'100',standardDeviation:'10'});expect(p.output).toEqual(zScoreCalculator.calculate({value:110,mean:100,standardDeviation:10},{}));expect(()=>c.execute({value:'',mean:'100',standardDeviation:'10'})).toThrow();expect(()=>c.execute({value:'110',mean:'100',standardDeviation:'10',extra:'1'})).toThrow();});
+it('verifies historical original-domain values independently of capture bounds',()=>{const c=contract(),input={value:1e60,mean:0,standardDeviation:1e60},snapshot={calculatorSlug:zScoreCalculator.slug,calculatorVersion:1,input,output:zScoreCalculator.calculate(input,{})};expect(()=>c.execute({value:'1e60',mean:'0',standardDeviation:'1e60'})).toThrow();expect(c.verifyHistorical(snapshot).snapshot).toEqual(snapshot);expect(()=>c.verifyHistorical({...snapshot,calculatorVersion:2})).toThrow();expect(()=>c.verifyHistorical({...snapshot,output:{...snapshot.output,zScore:2}})).toThrow();});
+
+it('refuses extra snapshot metadata and accessors before historical dispatch',()=>{const c=contract(),snapshot=c.execute({value:'110',mean:'100',standardDeviation:'10'});expect(()=>c.verifyHistorical({...snapshot,extra:true} as never)).toThrow();let reads=0;const forged=Object.defineProperty({...snapshot},'calculatorSlug',{enumerable:true,get(){reads++;return snapshot.calculatorSlug;}});expect(()=>c.verifyHistorical(forged)).toThrow();expect(reads).toBe(0);});
+
+it('keeps exposed field metadata immutable',()=>{const c=contract();expect(Object.isFrozen(c)).toBe(true);expect(Object.isFrozen(c.fields)).toBe(true);expect(c.fields.every(Object.isFrozen)).toBe(true);});

@@ -1,7 +1,7 @@
 'use client';
 
 import {useState} from 'react';
-import {privateWorkflowDefinitions,exportPrivateWorkflow} from '../calculators/private-scenario-workflows';
+import {privateWorkflowDefinitions,exportPrivateWorkflow,importPrivateWorkflow} from '../calculators/private-scenario-workflows';
 
 type Snapshot=ReturnType<typeof exportPrivateWorkflow>;
 const examples:Readonly<Record<string,Record<string,unknown>>>=Object.freeze({
@@ -27,6 +27,10 @@ export function PrivateWorkflowReview(){
    if(input.length>2_000_000)throw Error('Scenario exceeds reviewer size limit');
    setSnapshot(exportPrivateWorkflow(id,JSON.parse(input)));
   }catch{setError('Check the scenario JSON, required fields, units and supported finite bounds.');}
+ }
+ function restore(saved:Snapshot){
+  try{const verified=importPrivateWorkflow(saved);setId(verified.workflowId);setInput(json(verified.calculation.input));setSnapshot(verified);setError('');}
+  catch{setError('Saved snapshot must match its original workflow, dependencies, version and actual engine result.');}
  }
  function download(){
   if(!snapshot)return;
@@ -66,6 +70,7 @@ export function PrivateWorkflowReview(){
   <ol data-testid="local-history">{history.map((saved,index)=><li key={index}>
    <p>{saved.calculation.calculatorSlug} v{saved.calculation.calculatorVersion}</p>
    <details><summary>Saved input and result {index+1}</summary><pre style={{whiteSpace:'pre-wrap'}}>{json(saved)}</pre></details>
+   <button type="button" onClick={()=>restore(saved)}>Restore snapshot {index+1}</button>
   </li>)}</ol>
   <style>{'button {min-height:44px;padding:8px 12px} :focus-visible {outline:3px solid #1259c3;outline-offset:2px} a {color:#0645ad}'}</style>
  </main>;

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "password-entropy-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "input": {
+        "length": 16,
+        "characterPoolSize": 94
+      },
+      "output": {
+        "steps": [
+          "Password Entropy = 104.8734216268422"
+        ],
+        "value": 104.8734216268422
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "input": {
+        "length": 32,
+        "characterPoolSize": 94
+      },
+      "output": {
+        "steps": [
+          "Password Entropy = 209.7468432536844"
+        ],
+        "value": 209.7468432536844
+      }
+    }
+  ],
+  "comparison": {
+    "schemaVersion": 1,
+    "metrics": [
+      {
+        "field": "value",
+        "label": "value",
+        "cells": [
+          {
+            "slot": "A",
+            "value": 104.8734216268422,
+            "difference": 0,
+            "unavailable": null
+          },
+          {
+            "slot": "B",
+            "value": 209.7468432536844,
+            "difference": 104.8734216268422,
+            "unavailable": null
+          }
+        ]
+      }
+    ],
+    "charts": []
+  }
+}

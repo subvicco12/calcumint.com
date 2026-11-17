@@ -1,0 +1,14 @@
+{
+  "captureRevision": "private.science-completion.20261114.1",
+  "status": "PRIVATE_ENGINEERING_CANDIDATES_NOT_CERTIFIED",
+  "source": "https://openstax.org/books/chemistry-2e/pages/3-3-molarity",
+  "sourceCheckedAt": "2026-11-14",
+  "candidates": [
+    {"catalogId":328,"engineId":"chemistry.molarity","slug":"molarity-calculator","version":1,"unit":"mol/L","golden":{"input":{"moles":0.01,"solutionVolumeLiters":0.2},"expected":0.05},"target":0.5,"solveFor":"moles","reverseExpected":0.1},
+    {"catalogId":331,"engineId":"chemistry.moles","slug":"moles-calculator","version":1,"unit":"mol","golden":{"input":{"massGrams":36,"molarMass":18},"expected":2},"target":4,"solveFor":"massGrams","reverseExpected":72},
+    {"catalogId":332,"engineId":"chemistry.dilution","slug":"dilution-calculator","version":1,"unit":"mol/L","golden":{"input":{"initialConcentration":2.04,"initialVolume":0.025,"finalVolume":0.5},"expected":0.102},"target":0.204,"solveFor":"initialConcentration","reverseExpected":4.08}
+  ],
+  "remaining": ["Owner/specialist acceptance of bounded scope and explicit units", "Certification and publication authorization"],
+  "excludedPhysicsIds": [322,323,324,325,327],
+  "excludedOtherChemistryIds": [329,330,333,334,335,336,337,338,339,340]
+}

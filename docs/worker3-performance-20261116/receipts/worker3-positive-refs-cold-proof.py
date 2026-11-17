@@ -1,0 +1,23 @@
+import subprocess,pathlib,tempfile,json,time,hashlib
+node='/workspace/.pr1467/sprint/node-v22.23ff4-linux-x64/bin/node'.replace('23ff4','23.4')
+source=pathlib.Path('/workspace/calcumint-worker3-positive-ref-admission');head='4283f0e5ecf70e6145bebd92d4cdacc6974ecbf9';target='9b70d14069cba27e5a4463865686c182ae6ad9cd'
+base=pathlib.Path(tempfile.mkdtemp(prefix='worker3-positive-ref-cold-'));parent=base/'parent';receipt={'head':head,'base':str(base),'target':target,'qualified':False,'events':[]}
+def command(args,cwd,check=True,timeout=60):
+ start=time.monotonic();p=subprocess.run(args,cwd=cwd,capture_output=True,text=True,timeout=timeout);receipt['events'].append({'command':args[:4],'exitCode':p.returncode,'elapsedMS':(time.monotonic()-start)*1000})
+ if check and p.returncode:raise RuntimeError(p.stderr[-4000:]+p.stdout[-4000:])
+ return p
+try:
+ refs=json.loads(command([node,'--input-type=module','-e','import{cloneSourceLineageRefs}from"./scripts/fetch-source-lineage.mjs";console.log(JSON.stringify(cloneSourceLineageRefs));'],source).stdout);assert target in refs
+ parent.mkdir();command(['git','init','-q'],parent);command(['git','remote','add','origin',str(source)],parent);command(['git','fetch','--no-tags','--depth=1','origin',head],parent);command(['git','checkout','--detach',head],parent);command(['git','fetch','--no-tags','--depth=1','origin',*[r for r in refs if r!=target]],parent)
+ receipt['isShallow']=command(['git','rev-parse','--is-shallow-repository'],parent).stdout.strip()=='true';receipt['targetAbsentBefore']=command(['git','cat-file','-e',target+'^{commit}'],parent,False).returncode!=0;assert receipt['isShallow'] and receipt['targetAbsentBefore']
+ path='tests/next-engineering-20261115/source-completion-prewarm-admission.test.mjs';original=subprocess.check_output(['git','show','c670cf49279c9a4cee94fa9b2e492bd1d1dd4d42:'+path],cwd=source);receipt['testSHA256']=hashlib.sha256((parent/path).read_bytes()).hexdigest();assert (parent/path).read_bytes()==original
+ script='import{runSourceNode}from"./tests/ci-rpc-recovery-20261113/source-node.mjs";const start=performance.now();try{const out=await runSourceNode(["--test","'+path+'"],{cwd:process.cwd(),env:{...process.env},timeout:30000,maxBuffer:1000000});process.stdout.write(out);process.stderr.write("PREWARM_TWO_ELAPSED_MS="+(performance.now()-start)+"\\n");}catch(error){process.stdout.write(error.stdout??"");process.stderr.write(String(error.stack)+"\\n"+String(error.stderr??""));process.exitCode=1;}'
+ red=command([node,'--input-type=module','-e',script],parent,False,40);(base/'prewarm-red.stdout').write_text(red.stdout);(base/'prewarm-red.stderr').write_text(red.stderr);assert red.returncode!=0 and target in red.stdout+red.stderr;receipt['unchangedColdTestRed']=True
+ command(['git','remote','set-url','origin','https://github.com/subvicco12/calcumint.com.git'],parent);before_head=(parent/'.git/HEAD').read_bytes();before_index=(parent/'.git/index').read_bytes()
+ bootstrap=command([node,'scripts/fetch-source-lineage.mjs'],parent);(base/'bootstrap.stdout').write_text(bootstrap.stdout);(base/'bootstrap.stderr').write_text(bootstrap.stderr);receipt['bootstrap']=json.loads(bootstrap.stdout);assert receipt['bootstrap']['fetched']==1 and receipt['bootstrap']['cloneAvailability']['created']==len(refs)
+ blob=command(['git','rev-parse',target+':scripts/product-completion-lineage.mjs'],parent).stdout.strip();assert blob=='7fb5c6fe7ff77528e1189dd1b7782c5be58373ef';receipt['immutableBaselineBlob']=blob
+ green=command([node,'--input-type=module','-e',script],parent,False,40);(base/'prewarm-green.stdout').write_text(green.stdout);(base/'prewarm-green.stderr').write_text(green.stderr);receipt['prewarmTwoPassed']=green.returncode==0 and '# tests 2\n' in green.stdout and '# pass 2\n' in green.stdout and '# fail 0\n' in green.stdout;assert receipt['prewarmTwoPassed'],green.stdout+green.stderr
+ receipt['HEADAndIndexUnchanged']=before_head==(parent/'.git/HEAD').read_bytes() and before_index==(parent/'.git/index').read_bytes();assert receipt['HEADAndIndexUnchanged'];receipt['rawCurrent32SHA256']=hashlib.sha256((parent/'tests/next-engineering-20261115/source-current32.test.mjs').read_bytes()).hexdigest();assert receipt['rawCurrent32SHA256']=='dce9ab31f02577cc410559d559fcec9bbb376ccc1326c513412c69d2677de52d';receipt['success']=True
+except Exception as e:receipt['success']=False;receipt['error']=str(e)
+finally:pathlib.Path('/tmp/worker3-positive-refs-actual-cold-proof.json').write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps(receipt,indent=2))
+if not receipt['success']:raise SystemExit(1)

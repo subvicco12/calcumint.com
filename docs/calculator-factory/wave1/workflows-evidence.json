@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "lane": "factory-workflows",
+  "baseCommit": "9ad7e75641322696f75a018e53513c8158c39870",
+  "scope": "Private local reusable execution, retained raw provenance, source-pinned replay, scenario, batch and export adapters with accessible workbench",
+  "reused": [
+    "src/lib/calculation-snapshot.ts:createCalculationSnapshot/copyCalculationData",
+    "src/lib/final-private-snapshot-text.ts:parseFinalPrivateSnapshotText",
+    "src/calculators/completion-contracts.ts:equalCompletionJson",
+    "src/lib/scenario-set.ts:captureScenario",
+    "src/lib/calculation-export.ts:serializeCalculationCsv",
+    "src/lib/entitlements.ts:getPlanEntitlements"
+  ],
+  "verification": {
+    "focusedCommand": "npx vitest run src/lib/calculator-factory/workflows.test.ts src/components/calculator-factory-workbench.test.tsx",
+    "testFiles": 2,
+    "testsPassed": 11,
+    "scopedEslint": "passed"
+  },
+  "boundaries": [
+    "Trusted compiled engine closure and source identity must be supplied by registry owner.",
+    "Replay verifies unsigned consistency, not authenticated provenance.",
+    "Local plan affordances do not authorize server operations. Existing authenticated account actions remain responsible for history/project persistence.",
+    "No production publication, certification, SQL migration, billing or authentication changes.",
+    "Workbench is exported for private route integration; this lane does not create or authorize routes."
+  ],
+  "coverage": [
+    "exact raw decimal strings and frozen packets",
+    "stale source / version / forged outputs / unknown fields / precision-erasing numeric token rejection",
+    "baseline scenario rule and retained complete execution packets",
+    "1\u2013100 bounded batch, per-row errors, complete export requirement, batch replay",
+    "free local export/scenario denial with identical engine path for all plans",
+    "CSV source and raw provenance",
+    "accessible select and decimal text fields, stale output clearing, replay failure"
+  ]
+}

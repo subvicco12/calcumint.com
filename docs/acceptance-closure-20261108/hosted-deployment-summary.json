@@ -1,0 +1,58 @@
+{
+  "source": "Authenticated Hostinger Cloud hosting_get-deployment GET/readOnly operation; exact domain only",
+  "domain": "calcumint.com",
+  "build": {
+    "uuid": "01a12a3d-9c48-7282-9707-033bf0bf5cab",
+    "state": "completed",
+    "options": {
+      "node_version": 22,
+      "app_type": "next",
+      "root_directory": null,
+      "output_directory": ".next",
+      "build_script": "build",
+      "entry_file": null,
+      "package_manager": "npm",
+      "source_type": "git",
+      "source_options": {
+        "archive_path": null,
+        "owner": "subvicco12",
+        "repository": "calcumint.com",
+        "branch": "main",
+        "installation_uuid": "01a03d3d-616e-73ef-8ee4-e787f68f32f5",
+        "commit": {
+          "hash": "caffafe639350ca0c2c2cf33ae1f099294f5af54",
+          "message": "Make npm installs reproducible and local setup credential-free (#1369)",
+          "author": {
+            "name": "subvicco12",
+            "avatar_url": "https://avatars.githubusercontent.com/u/320672644?v=4"
+          }
+        }
+      }
+    },
+    "created_at": "2026-10-11T09:14:03Z",
+    "updated_at": "2026-10-11T09:15:17Z"
+  },
+  "buildSettings": {
+    "node_version": 22,
+    "app_type": "next",
+    "root_directory": null,
+    "output_directory": ".next",
+    "build_script": "build",
+    "entry_file": null,
+    "package_manager": "npm"
+  },
+  "gitAutoDeployment": {
+    "installation_uuid": "01a03d3d-616e-73ef-8ee4-e787f68f32f5",
+    "is_enabled": true,
+    "owner": "subvicco12",
+    "repository": "calcumint.com",
+    "branch": "main",
+    "directory": ""
+  },
+  "productionWrites": false,
+  "limitations": [
+    "Provider latest completed deployment metadata and publish/restart log bind this build to the stated source SHA; live process/file identity was not independently probed.",
+    "This SHA differs from reviewed PR1538 3350a313ebc6b5300757e64ae4c125af29bdfdb3; reviewed source must not be described as deployed.",
+    "Enabled auto-deployment settings do not independently prove delivery of every webhook or future build success."
+  ]
+}

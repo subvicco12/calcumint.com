@@ -1,0 +1,31 @@
+✔ reuses verified revisions without redundant network fetch (3.749232ms)
+✖ fetches only exact missing commits and re-verifies them (2.357641ms)
+✔ fails closed on absent or substituted revisions after fetch (0.913335ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14.885794
+
+✖ failing tests:
+
+test at tests/source-lineage-bootstrap.test.mjs:8:1
+✖ fetches only exact missing commits and re-verifies them (2.357641ms)
+  AssertionError [ERR_ASSERTION]: Historical source comparison must be fetched: 761b850479ea36b2b4ebf8039664d8400c762555
+      at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/source-lineage-bootstrap.test.mjs:11:236)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

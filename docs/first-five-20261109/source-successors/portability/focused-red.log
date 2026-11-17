@@ -1,0 +1,50 @@
+✖ active source bootstrap requires integrated helper capture and excludes unpublished local ref (9.363716ms)
+✔ integrated helper retains exact historical local capture bytes without requiring its unpublished Git object (11.669043ms)
+✖ current helper proof retains predecessor claim and refuses source reversion or integrated provenance substitution (487.130946ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 515.689781
+
+✖ failing tests:
+
+test at tests/first-five-20261109/lineage-portability.test.mjs:9:1
+✖ active source bootstrap requires integrated helper capture and excludes unpublished local ref (9.363716ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(completionSourceRefs.includes(integrated))
+  
+      at TestContext.<anonymous> (file:///tmp/calcumint-first-five-lineage-portability-20261109/tests/first-five-20261109/lineage-portability.test.mjs:9:107)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/first-five-20261109/lineage-portability.test.mjs:15:1
+✖ current helper proof retains predecessor claim and refuses source reversion or integrated provenance substitution (487.130946ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///tmp/calcumint-first-five-lineage-portability-20261109/tests/first-five-20261109/lineage-portability.test.mjs:19:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /source revision unavailable/,
+    operator: 'throws',
+    diff: 'simple'
+  }

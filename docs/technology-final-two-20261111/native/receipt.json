@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "kind": "FINAL_TWO_NATIVE_ISOLATED_SQL_MODEL_NOT_PRODUCTION",
+  "producerSHA256": "ee0631dbb8483d37ed73f13ebba466e210228246bae31fa4c87a7a83354fe862",
+  "checks": [
+    "All original18 exact tuples pass protected jobs; old18 rejects new2 with nonempty historical jobs/grants/usage",
+    "Injected function-source drift refuses adoption without changing seeded rows",
+    "Wrong operator, table and column writer privilege drift refuse adoption before effects",
+    "Explicit forward transaction rollback restores exact metadata and nonempty historical bytes",
+    "Held adoption preserves historical row bytes and refuses reapplication",
+    "Exact reverse restores source/constraint/ACL/RLS/trigger metadata and all nonempty historical bytes; reapply refuses",
+    "Restored exact old18 schema permits repeat forward adoption",
+    "Exact new2 jobs pass with duplicate stability; wrong identity/version, unrelated IDs and untrusted roles refuse",
+    "All new-two exact embed grants debit protected quotas and retain durable duplicate identity",
+    "Reverse refuses new-two durable rows without deleting or mutating audit",
+    "Every unchanged function and all table ownership/ACL/RLS/columns/indexes/policies/triggers retain exact metadata"
+  ],
+  "preHash": "40a6fc0dca4392c58a178b1df154b7099865e024a554f9f317611cc06d2ab728",
+  "postHash": "1a371a13355af3b186659076489269a887749f8d45c65e27610fd556628b8d85",
+  "historicalRowsSHA256": "a8d2acc85bf2c354651dc9b95bfb3db004fd408435018251be3a48a0023d8876",
+  "nonemptyHistoricalCounts": {
+    "technology_five_jobs": 18,
+    "technology_five_embed_usage": 1,
+    "technology_five_embed_grants": 1
+  },
+  "sources": {
+    "docs/native440/quota-readiness-wrapper.sql": "59fbc3417054f5482b2e1cc2e9a13cd98167c73fa243e35e72a067a74496de59",
+    "docs/first-five-native-20261109/embed-metering-proposal.sql": "e889df1052cbc44680939c2624c78014a32e18c6a47450a49619d572ee231294",
+    "docs/first-five-native-20261109/jobs-webhooks-proposal.sql": "59fb18da69e9008859cbffc18f56763df64fa681136cfd86f87372cfeced0e92",
+    "docs/first-five-native-20261109/embed-integrity-successor.sql": "5e56446b99fcb7c70b6f40f188cb9a2731a77d923a1e5ff0930770ce6a616d66",
+    "docs/next-cohort-native-20261110/contract-successor.sql": "aafbbc87dca61581fc68cc6aa1af65022b478879b8c91c4d791fdbba3f36917a",
+    "docs/parallel-five-20261110/native/contract-successor.sql": "a9fe9272d0a31d36949b66a84a87b07c6023f3cb466b5ee860c6877ca0e689b1"
+  },
+  "successorSHA256": "3d6a521eb420cf73088f8c740f1d5b2b7d4567b20f32c93678d7a403d2e6bc0e",
+  "reverseSHA256": "feee758d460d98b532453c16f7b100fff1b09f6708b577ba92f4963f54eb75e6",
+  "productionWrites": false,
+  "sqlActivated": false,
+  "syntheticLowerPublication": true,
+  "fixtureOutputs": true,
+  "certificationGranted": false
+}

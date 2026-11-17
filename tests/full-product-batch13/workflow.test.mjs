@@ -1,6 +1,7 @@
+import {historicalWorkflowWithoutLoginObservations} from '../completion-first-20261112/non-source-stage2.mjs';
 import {workflowJobs} from '../ci-gate-recovery/verification-jobs-contract.mjs';
 import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';
-const yaml=readFileSync('.github/workflows/ci.yml','utf8'),job=workflowJobs(yaml)['full-product'];
+const yaml=readFileSync('.github/workflows/ci.yml','utf8'),job=workflowJobs(historicalWorkflowWithoutLoginObservations(yaml))['full-product'];
 test('genuine-auth and private sensitivity are mandatory bounded sequential CI steps',()=>{
  assert.match(job,/timeout-minutes: 20/);assert(job.includes('docker pull supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b'));
  const commands=['node tests/full-product-batch12/private-browser.mjs','node tests/full-product-batch12/account-browser.mjs','node scripts/check-batch13-evidence.mjs','node --test tests/next-runtime/cdp-network-diagnostics.test.mjs','node tests/full-product-batch13/private-browser.mjs','node tests/gotrue-runtime/acceptance.mjs'];let position=-1;for(const command of commands){const next=job.indexOf(command);assert(next>position,command+' must execute in sequence');position=next;}

@@ -1,0 +1,366 @@
+{
+  "kind": "SOURCE_RECOVERY_CONTINUATION_NOT_CANONICAL_ACCEPTANCE",
+  "sourceHead": "6c86c810adfef46e963dff46ddb850ec21d3f175",
+  "reviewedAuthorityRef": "180b31865ab46379cb1a53b2533feea024a1e293",
+  "authoritySHA256": "90e1229b6ef7505692c20d8f04d7e8b28a4bf8b8f8bb370d2f4f579b270c02e8",
+  "capturePath": "docs/parallel-source-20261110/capture-revision104.json",
+  "captureSHA256": "eedc968e38317c0ff6b38415ec3993058f5cd985a1848bd990bad3c112b4ab3d",
+  "admissionRecords": 62,
+  "independentCodeReview": "PASS: wave100_operations; not competent calculator acceptance",
+  "targetedChecks": [
+    {
+      "receipt": "A37-exclusive-API-original5.json",
+      "head": "6c86c810adfef46e963dff46ddb850ec21d3f175",
+      "command": [
+        "/workspace/tools/node22-recovery/node-v22.23.4-linux-x64/bin/node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "src/lib/five-full-contract-evidence.test.ts",
+        "-t",
+        "retains genuine five API execution source"
+      ],
+      "startedAt": "2026-11-14T22:19:04.301697+00:00",
+      "seconds": 6.364,
+      "exitCode": 0,
+      "outerTimedOut": false,
+      "outerSafetySeconds": 45,
+      "deadlinesChanged": false,
+      "instrumentation": false,
+      "log": "/workspace/artifacts/source-recovery-20261114/ownership-fix/A37-exclusive-API-original5.log"
+    },
+    {
+      "receipt": "A37-private-shortest-original65.json",
+      "head": "6c86c810adfef46e963dff46ddb850ec21d3f175",
+      "command": [
+        "/workspace/tools/node22-recovery/node-v22.23.4-linux-x64/bin/node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "src/lib/parallel-source-evidence.test.ts",
+        "-t",
+        "executes the actual shortest-publication CI consumer"
+      ],
+      "startedAt": "2026-11-14T22:02:11.403537+00:00",
+      "seconds": 47.729,
+      "exitCode": 0,
+      "outerTimedOut": false,
+      "outerSafetySeconds": 100,
+      "deadlinesChanged": false,
+      "instrumentation": false,
+      "log": "/workspace/artifacts/source-recovery-20261114/ownership-fix/A37-private-shortest-original65.log"
+    },
+    {
+      "receipt": "A37-final-source-original150-outer160.json",
+      "head": "6c86c810adfef46e963dff46ddb850ec21d3f175",
+      "command": [
+        "/workspace/tools/node22-recovery/node-v22.23.4-linux-x64/bin/node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "src/lib/parallel-source-evidence.test.ts",
+        "-t",
+        "executes fresh current-source, full-authority"
+      ],
+      "startedAt": "2026-11-14T22:04:16.159037+00:00",
+      "seconds": 142.047,
+      "exitCode": 0,
+      "outerTimedOut": false,
+      "outerSafetySeconds": 190,
+      "deadlinesChanged": false,
+      "instrumentation": false,
+      "log": "/workspace/artifacts/source-recovery-20261114/ownership-fix/A37-final-source-original150-outer160.log"
+    },
+    {
+      "receipt": "A37-final-authenticated-setup-original30.json",
+      "head": "6c86c810adfef46e963dff46ddb850ec21d3f175",
+      "command": [
+        "/workspace/tools/node22-recovery/node-v22.23.4-linux-x64/bin/node",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "src/lib/parallel-five-auth-evidence.test.ts"
+      ],
+      "startedAt": "2026-11-14T22:06:38.215241+00:00",
+      "seconds": 28.298,
+      "exitCode": 0,
+      "outerTimedOut": false,
+      "outerSafetySeconds": 80,
+      "deadlinesChanged": false,
+      "instrumentation": false,
+      "log": "/workspace/artifacts/source-recovery-20261114/ownership-fix/A37-final-authenticated-setup-original30.log"
+    },
+    {
+      "receipt": "A33-complete-input-genuine-automation.json",
+      "name": "genuine-automation",
+      "head": "2fb7b19056599fb71d975984366796cbbdbbd5c2",
+      "root": "/tmp/calcumint-source-qualification-gcl2oh7r",
+      "command": [
+        "/workspace/tools/node22-recovery/node-v22.23.4-linux-x64/bin/node",
+        "scripts/milestone100-20261114/business-automation.mjs"
+      ],
+      "startedAt": "2026-11-14T21:25:51.304161+00:00",
+      "seconds": 36.145,
+      "exitCode": 0,
+      "outerTimedOut": false,
+      "outerSafetySeconds": 240,
+      "caseDeadlinesChanged": false,
+      "log": "/workspace/artifacts/source-recovery-20261114/ownership-fix/A33-complete-input-genuine-automation.log",
+      "productionWrites": false
+    }
+  ],
+  "earlierA32Checks": [
+    {
+      "name": "integrity-locks",
+      "head": "a9c494d21c1187e584cc26d307e0cc51f7c291d3",
+      "root": "/tmp/calcumint-source-qualification-gcl2oh7r",
+      "command": [
+        "/workspace/tools/node22-recovery/node-v22.23.4-linux-x64/bin/node",
+        "--test",
+        "--test-concurrency=2",
+        "tests/parallel-source-20261110/git-reader.test.mjs",
+        "tests/parallel-source-20261110/source-object-lock.test.mjs",
+        "tests/milestone100-20261114/source-stage8-authority-availability.test.mjs",
+        "tests/milestone100-20261114/source-stage8-supplied-lock.test.mjs",
+        "tests/parallel-source-20261110/source-lock-scope.test.mjs",
+        "tests/ci-rpc-recovery-20261113/source-node.test.mjs",
+        "tests/ci-rpc-recovery-20261113/source-node-owned-lock.test.mjs"
+      ],
+      "startedAt": "2026-11-14T21:00:04.614793+00:00",
+      "seconds": 5.838,
+      "exitCode": 0,
+      "outerTimedOut": false,
+      "outerSafetySeconds": 180,
+      "caseDeadlinesChanged": false,
+      "log": "/workspace/artifacts/source-recovery-20261114/ownership-fix/A32-private-integrity-locks.log",
+      "productionWrites": false
+    },
+    {
+      "name": "lint",
+      "head": "a9c494d21c1187e584cc26d307e0cc51f7c291d3",
+      "root": "/tmp/calcumint-source-qualification-gcl2oh7r",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "startedAt": "2026-11-14T21:01:04.784769+00:00",
+      "seconds": 60.167,
+      "exitCode": 0,
+      "outerTimedOut": false,
+      "outerSafetySeconds": 120,
+      "caseDeadlinesChanged": false,
+      "log": "/workspace/artifacts/source-recovery-20261114/ownership-fix/A32-private-lint.log",
+      "productionWrites": false
+    },
+    {
+      "name": "typecheck",
+      "head": "a9c494d21c1187e584cc26d307e0cc51f7c291d3",
+      "root": "/tmp/calcumint-source-qualification-gcl2oh7r",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "startedAt": "2026-11-14T21:02:40.715168+00:00",
+      "seconds": 95.918,
+      "exitCode": 0,
+      "outerTimedOut": false,
+      "outerSafetySeconds": 120,
+      "caseDeadlinesChanged": false,
+      "log": "/workspace/artifacts/source-recovery-20261114/ownership-fix/A32-private-typecheck.log",
+      "productionWrites": false
+    },
+    {
+      "name": "launch",
+      "head": "a9c494d21c1187e584cc26d307e0cc51f7c291d3",
+      "root": "/tmp/calcumint-source-qualification-gcl2oh7r",
+      "command": [
+        "npm",
+        "run",
+        "test:launch"
+      ],
+      "startedAt": "2026-11-14T21:02:44.877865+00:00",
+      "seconds": 4.146,
+      "exitCode": 0,
+      "outerTimedOut": false,
+      "outerSafetySeconds": 90,
+      "caseDeadlinesChanged": false,
+      "log": "/workspace/artifacts/source-recovery-20261114/ownership-fix/A32-private-launch.log",
+      "productionWrites": false
+    },
+    {
+      "name": "certification",
+      "head": "a9c494d21c1187e584cc26d307e0cc51f7c291d3",
+      "root": "/tmp/calcumint-source-qualification-gcl2oh7r",
+      "command": [
+        "npm",
+        "run",
+        "test:certification"
+      ],
+      "startedAt": "2026-11-14T21:02:48.623285+00:00",
+      "seconds": 3.742,
+      "exitCode": 0,
+      "outerTimedOut": false,
+      "outerSafetySeconds": 90,
+      "caseDeadlinesChanged": false,
+      "log": "/workspace/artifacts/source-recovery-20261114/ownership-fix/A32-private-certification.log",
+      "productionWrites": false
+    },
+    {
+      "name": "webpack",
+      "head": "a9c494d21c1187e584cc26d307e0cc51f7c291d3",
+      "root": "/tmp/calcumint-source-qualification-gcl2oh7r",
+      "command": [
+        "/workspace/tools/node22-recovery/node-v22.23.4-linux-x64/bin/node",
+        "node_modules/next/dist/bin/next",
+        "build",
+        "--webpack"
+      ],
+      "startedAt": "2026-11-14T21:05:13.815492+00:00",
+      "seconds": 145.188,
+      "exitCode": 0,
+      "outerTimedOut": false,
+      "outerSafetySeconds": 240,
+      "caseDeadlinesChanged": false,
+      "log": "/workspace/artifacts/source-recovery-20261114/ownership-fix/A32-private-webpack.log",
+      "productionWrites": false
+    },
+    {
+      "name": "genuine-account",
+      "head": "a9c494d21c1187e584cc26d307e0cc51f7c291d3",
+      "root": "/tmp/calcumint-source-qualification-gcl2oh7r",
+      "command": [
+        "/workspace/tools/node22-recovery/node-v22.23.4-linux-x64/bin/node",
+        "scripts/milestone100-20261114/business-account.mjs"
+      ],
+      "startedAt": "2026-11-14T21:05:39.784849+00:00",
+      "seconds": 25.959,
+      "exitCode": 0,
+      "outerTimedOut": false,
+      "outerSafetySeconds": 180,
+      "caseDeadlinesChanged": false,
+      "log": "/workspace/artifacts/source-recovery-20261114/ownership-fix/A32-private-genuine-account.log",
+      "productionWrites": false
+    },
+    {
+      "name": "genuine-automation",
+      "head": "a9c494d21c1187e584cc26d307e0cc51f7c291d3",
+      "root": "/tmp/calcumint-source-qualification-gcl2oh7r",
+      "command": [
+        "/workspace/tools/node22-recovery/node-v22.23.4-linux-x64/bin/node",
+        "scripts/milestone100-20261114/business-automation.mjs"
+      ],
+      "startedAt": "2026-11-14T21:06:21.097349+00:00",
+      "seconds": 41.308,
+      "exitCode": 1,
+      "outerTimedOut": false,
+      "outerSafetySeconds": 240,
+      "caseDeadlinesChanged": false,
+      "log": "/workspace/artifacts/source-recovery-20261114/ownership-fix/A32-private-genuine-automation.log",
+      "productionWrites": false
+    },
+    {
+      "name": "browser-accessibility",
+      "head": "a9c494d21c1187e584cc26d307e0cc51f7c291d3",
+      "root": "/tmp/calcumint-source-qualification-gcl2oh7r",
+      "command": [
+        "/workspace/tools/node22-recovery/node-v22.23.4-linux-x64/bin/node",
+        "scripts/milestone100-20261114/browser.mjs"
+      ],
+      "startedAt": "2026-11-14T21:15:32.619200+00:00",
+      "seconds": 551.515,
+      "exitCode": 0,
+      "outerTimedOut": false,
+      "outerSafetySeconds": 900,
+      "caseDeadlinesChanged": false,
+      "log": "/workspace/artifacts/source-recovery-20261114/ownership-fix/A32-private-browser-accessibility.log",
+      "productionWrites": false
+    }
+  ],
+  "reusedApplicationEvidence": {
+    "testedHead": "a9c494d21c1187e584cc26d307e0cc51f7c291d3",
+    "currentSrcTree": "73bc1328f28991eac8cf270848451451e19f4f55",
+    "exactSrcTreeAndThreeAcceptanceScriptsUnchanged": true
+  },
+  "fullRegression": {
+    "passing": false,
+    "kind": "RESUMED_ALL1069_FILES_ACCOUNTED_NOT_PASSING_UNFILTERED_RUN",
+    "tests": 10026,
+    "passed": 10020,
+    "failed": 2,
+    "existingSkipped": 4,
+    "head": "a9c494d21c1187e584cc26d307e0cc51f7c291d3",
+    "unfilteredExitCode": 143,
+    "safetyCapSeconds": 1200,
+    "remainingTwoSourceCasesNowPassedTargeted": true,
+    "finalExactHeadFullRegression": "HOSTED_CI_REQUIRED"
+  },
+  "retainedFailures": [
+    "A31-full-interruption.json",
+    "A32-private-full-unfiltered1200.json",
+    "A33-runtime-interruption.json",
+    "A33-private-source-original150-outer160.json",
+    "A34-private-shortest-original65.json",
+    "A35-private-shortest-original65.json",
+    "A36-private-shortest-original65.json",
+    "A37-final-cold-API-original5s.json"
+  ],
+  "apiVariance": {
+    "firstA37Attempt": "FAIL: original5000ms case timed out",
+    "sameHeadExclusiveOriginalAttempt": "PASS4333ms; no instrumentation or source edits",
+    "instrumentedDiagnostic": "4560ms; not used as qualification",
+    "rootCauseOfVariance": "NOT_ESTABLISHED; no claim that admission audit overlapped (timestamps disprove it)",
+    "bufferExperiment": "Byte-identical but only2.656ms aggregate gain; rejected without source edits"
+  },
+  "originalUnidentifiedLockModified": false,
+  "sourceProofPaths": 24,
+  "sourceAncestryEntries": 60,
+  "historicalCapturesChanged": false,
+  "deadlinesChanged": false,
+  "calculatorMathematicsChanged": false,
+  "confirmedScopedOverlay": 61,
+  "conditionalIds": [
+    213,
+    221,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    272,
+    274,
+    275,
+    278,
+    279,
+    280,
+    328,
+    331,
+    332
+  ],
+  "potentialScopedOverlay": 81,
+  "newlyConfirmed": 0,
+  "newlyPublicationEligible": 0,
+  "canonicalCounts": {
+    "completeAndCertified": 0,
+    "reviewPending": 2,
+    "partialOrUnproven": 495,
+    "identityScopeBlocked": 43
+  },
+  "ledgerSHA256": "b2e7af97f65fde236b58c76a093e019b1b7595b7f0ac39fd735b4e633a6f1d72",
+  "releaseHold": true,
+  "productionWrites": false,
+  "finalHostedCI": "NOT_YET_STARTED; exact delivery head/run stored in append-only checkpoint",
+  "previousPRCI": {
+    "head": "c754c88a27c635af7ecfbe6c826b445a91eeba9a",
+    "run": 43591823245,
+    "result": "FAILURE",
+    "mandatoryPassed": 4
+  },
+  "limits": [
+    "Only verified owned lock leases may be removed; unknown/foreign directories remain protected",
+    "Dead owner plus drained protected process group required",
+    "No production operator/reviewer attestation supplied",
+    "Scoped technical profiles are not full canonical Blueprint acceptance"
+  ]
+}

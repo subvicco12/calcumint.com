@@ -1,0 +1,9 @@
+PASS repo schema dependencies: auth trigger, membership helper, member/outsider builder RLS, profile plan ACL
+PASS PostgREST rejects wrong JWT signature
+PASS Owner profile display update succeeds but plan update is denied
+PASS RLS prevents cross-account project reads and writes through real HTTP
+PASS Client roles cannot TRUNCATE tables or execute internal service RPC
+PASS Membership role and organization identity fencing survives HTTP writes
+PASS Identical concurrent HTTP lead requests persist one complete receipt
+PASS Late consent failure rolls back the complete HTTP transaction and retry recovers
+PASS Missing and inaccessible RPC signatures fail closed through HTTP

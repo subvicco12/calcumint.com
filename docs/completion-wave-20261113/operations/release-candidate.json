@@ -1,0 +1,379 @@
+{
+  "kind": "BLOCKED_EXACT_VERSION_CANDIDATE_NOT_ACTIVATION",
+  "baseCommit": "f0f6b507a18bf51d7c8925734d854a05120ade10",
+  "engineeringScope": 29,
+  "certificationIncrement": 0,
+  "publicationEligibilityIncrement": 0,
+  "releaseHold": true,
+  "activationAuthorized": false,
+  "productionWrites": false,
+  "newOperationalFacts": [],
+  "authorizedBatch": [],
+  "minimumConditionalBatch": [
+    {
+      "catalogId": 218,
+      "engineId": "launch-square-calculator",
+      "slug": "square-calculator",
+      "version": 1,
+      "reviewPath": "docs/completion-delivery-20261112/review/218.json",
+      "accepted": false
+    }
+  ],
+  "selectionReason": "One exact v1 tuple is the minimum nonempty blast radius; 218 is a planning choice, not accepted or preferred by an authority. Requires genuine per-tuple decisions and all applicable controls.",
+  "reviewCandidates": [
+    {
+      "catalogId": 218,
+      "engineId": "launch-square-calculator",
+      "slug": "square-calculator",
+      "version": 1,
+      "reviewPath": "docs/completion-delivery-20261112/review/218.json",
+      "accepted": false
+    },
+    {
+      "catalogId": 219,
+      "engineId": "launch-cube-calculator",
+      "slug": "cube-calculator",
+      "version": 1,
+      "reviewPath": "docs/completion-delivery-20261112/review/219.json",
+      "accepted": false
+    },
+    {
+      "catalogId": 220,
+      "engineId": "launch-square-root-calculator",
+      "slug": "square-root-calculator",
+      "version": 1,
+      "reviewPath": "docs/completion-delivery-20261112/review/220.json",
+      "accepted": false
+    },
+    {
+      "catalogId": 423,
+      "engineId": "conversion.length",
+      "slug": "length-converter",
+      "version": 1,
+      "reviewPath": "docs/completion-delivery-20261112/review/423.json",
+      "accepted": false
+    },
+    {
+      "catalogId": 430,
+      "engineId": "conversion.energy",
+      "slug": "energy-converter",
+      "version": 1,
+      "reviewPath": "docs/completion-delivery-20261112/review/430.json",
+      "accepted": false
+    },
+    {
+      "catalogId": 431,
+      "engineId": "conversion.power",
+      "slug": "power-converter",
+      "version": 1,
+      "reviewPath": "docs/completion-delivery-20261112/review/431.json",
+      "accepted": false
+    },
+    {
+      "catalogId": 432,
+      "engineId": "conversion.time",
+      "slug": "time-converter",
+      "version": 1,
+      "reviewPath": "docs/completion-delivery-20261112/review/432.json",
+      "accepted": false
+    },
+    {
+      "catalogId": 438,
+      "engineId": "conversion.force",
+      "slug": "force-converter",
+      "version": 1,
+      "reviewPath": "docs/completion-delivery-20261112/review/438.json",
+      "accepted": false
+    },
+    {
+      "catalogId": 440,
+      "engineId": "conversion.frequency",
+      "slug": "frequency-converter",
+      "version": 1,
+      "reviewPath": "docs/completion-delivery-20261112/review/440.json",
+      "accepted": false
+    }
+  ],
+  "exactSix": [
+    {
+      "name": "create_catalog_calculator_with_audit",
+      "signature": "create_catalog_calculator_with_audit(text,text,text,text,text,jsonb)",
+      "identityArguments": "p_calculator_key text, p_slug text, p_title text, p_category text, p_risk_class text, p_metadata jsonb",
+      "source": "supabase/migrations/035_atomic_catalog_creation.sql",
+      "sourceSHA256": "426de9383b1ca63f504adbdb9e515c239c8d2c4bd37f518a6b900667d2f30b47",
+      "runtimeDefinitionSHA256": "d2d7a27c14c06c02b8682a7ab755bbd64612044780c500db5bfe5b7267bbd28b",
+      "security": "INVOKER",
+      "anonExecute": false,
+      "authenticatedExecute": true,
+      "serviceExecute": true
+    },
+    {
+      "name": "record_calculator_qa_decision",
+      "signature": "record_calculator_qa_decision(uuid,text,text,text)",
+      "identityArguments": "p_calculator_id uuid, p_check_type text, p_status text, p_details text",
+      "source": "supabase/migrations/032_atomic_reviewer_qa_audit.sql",
+      "sourceSHA256": "b548046cb0a3aa91dd2838a824a5a1155b7b4c317d65cc644b6c9673a26418f1",
+      "runtimeDefinitionSHA256": "6c9db494f011444d4844e7d006b780ec77b2e1bb640c0ed0a3c112ca568982b7",
+      "security": "INVOKER",
+      "anonExecute": false,
+      "authenticatedExecute": true,
+      "serviceExecute": true
+    },
+    {
+      "name": "assign_calculator_reviewer",
+      "signature": "assign_calculator_reviewer(uuid,uuid)",
+      "identityArguments": "p_calculator_id uuid, p_reviewer_id uuid",
+      "source": "supabase/migrations/033_atomic_reviewer_assignment_audit.sql",
+      "sourceSHA256": "74ce0f947c3922c4c7992880abd108a2900a6ce14933bd45c3a5762617f2fcd8",
+      "runtimeDefinitionSHA256": "bc344f3b6af48b4fcab7499f4f9e1776e1cf55d028bf15fd5b4b2fa4f7c7d419",
+      "security": "INVOKER",
+      "anonExecute": false,
+      "authenticatedExecute": true,
+      "serviceExecute": true
+    },
+    {
+      "name": "transition_calculator_with_audit",
+      "signature": "transition_calculator_with_audit(uuid,text,text)",
+      "identityArguments": "p_calculator_id uuid, p_expected_lifecycle text, p_target_lifecycle text",
+      "source": "supabase/migrations/034_atomic_lifecycle_transition_audit.sql",
+      "sourceSHA256": "745efcbcb731821dd82727e91a6fe46093413890122818eb0560fd05a3414c90",
+      "runtimeDefinitionSHA256": "74b5b040ec144b083f710f198ae16dfb80dd6f758781d68fb773e67dacafa03e",
+      "security": "INVOKER",
+      "anonExecute": false,
+      "authenticatedExecute": true,
+      "serviceExecute": true
+    },
+    {
+      "name": "prepare_catalog_inventory_drafts",
+      "signature": "prepare_catalog_inventory_drafts(jsonb)",
+      "identityArguments": "p_items jsonb",
+      "source": "docs/sprint20-publication/guarded/prepare-catalog-inventory-drafts.sql",
+      "sourceSHA256": "1bf012895fe18526908edfb620c130fb25b51de69da41e3e033a873d3aa95a63",
+      "runtimeDefinitionSHA256": "31c8eccb82e4547e47459e96bfda27a74ead2e6b1f05075953b8baed3e9bd20c",
+      "security": "INVOKER",
+      "anonExecute": false,
+      "authenticatedExecute": true,
+      "serviceExecute": true
+    },
+    {
+      "name": "publish_calculator_batch_with_audit_v1",
+      "signature": "publish_calculator_batch_with_audit_v1(jsonb)",
+      "identityArguments": "p_items jsonb",
+      "source": "docs/publication540-shared/database/guarded-successor.sql",
+      "sourceSHA256": "ff64fee9c2196752a5dc7c9875b6210e05d04714037dbb00cc87ab9b7dae0233",
+      "runtimeDefinitionSHA256": "5e1c61d4877ecd290918cd965e82050db38e63548e4875ab4792ed321aa5179e",
+      "security": "INVOKER",
+      "anonExecute": false,
+      "authenticatedExecute": true,
+      "serviceExecute": false
+    }
+  ],
+  "applyOrder": [
+    "adoption1528 core and all guarded successors",
+    "publication540 addon via unchanged adoption1535 composition"
+  ],
+  "reverseOrder": [
+    "publication540 addon",
+    "adoption1528 core"
+  ],
+  "currentTargetAttestation": null,
+  "missingControls": [
+    {
+      "id": "appointment-and-contract",
+      "responsibleRole": "Actual accountable appointment/canonical authority",
+      "requiredAction": "Identify actual author/reviewer(s), competence/independence/authority and exact offered contract decisions; #440 existing handoff unchanged.",
+      "actualEvidence": null,
+      "signature": null
+    },
+    {
+      "id": "operators-and-window",
+      "responsibleRole": "Actual owner/change authority",
+      "requiredAction": "Select actual adoption operator, observer, recovery custodian, DB/provider owner and deployment/writer custodians; propose exact scope/window/abort/resume duties.",
+      "actualEvidence": null,
+      "signature": null
+    },
+    {
+      "id": "writer-ddl-freeze",
+      "responsibleRole": "Application/DB/provider/scheduler/service-key custodians",
+      "requiredAction": "Name every active privileged/external/repository writer and DDL/default-ACL/provider hook participant; provide supported pause/drain/exclusion/resume controls.",
+      "actualEvidence": null,
+      "signature": null
+    },
+    {
+      "id": "backup-restore",
+      "responsibleRole": "Production backup/recovery custodian",
+      "requiredAction": "Select recoverable checkpoint, scope/time/retention/access and separately approved restore destination; perform or supply genuine production-scope restore qualification and data/metadata invariants.",
+      "actualEvidence": null,
+      "signature": null
+    },
+    {
+      "id": "credential-custody",
+      "responsibleRole": "Runtime/security/deployment/DB custodians",
+      "requiredAction": "Provide opaque vault/config refs, least privilege, ownership, readiness and rotation/recovery for selected paths; include conditional native/Business secrets only when chosen.",
+      "actualEvidence": null,
+      "signature": null
+    },
+    {
+      "id": "deployed-source-and-clients",
+      "responsibleRole": "Deployment owner and every writer/client owner",
+      "requiredAction": "Establish actual running build/commit and exact participating RPC/SDK clients, auto-main deployment controls and compatibility against the selected package.",
+      "actualEvidence": null,
+      "signature": null
+    },
+    {
+      "id": "target-preimages-dependencies",
+      "responsibleRole": "DB/provider operator and independent observer",
+      "requiredAction": "In separately authorized window reconcile current exact core/addon bodies, signatures/owners/ACL/RLS/defaultACL/provider hooks/dependencies/data and supported schema-cache behavior.",
+      "actualEvidence": null,
+      "signature": null
+    },
+    {
+      "id": "versioned-cohort-adoption",
+      "responsibleRole": "Canonical authority and versioned lifecycle operator",
+      "requiredAction": "Select only actually accepted exact engine/slug/version tuples; verify existing target rows and an authorized version-adoption path. Inventory/core create cannot be assumed to provision383@2.",
+      "actualEvidence": null,
+      "signature": null
+    },
+    {
+      "id": "activation-reversal-withdrawal",
+      "responsibleRole": "Actual change/release/recovery authority",
+      "requiredAction": "Separately approve exact activation/reverse/withdrawal bytes and limited blast radius after evidence review; define ambiguous commit reconciliation and abort criteria.",
+      "actualEvidence": null,
+      "signature": null
+    },
+    {
+      "id": "postimage-observation-resume",
+      "responsibleRole": "Actual operator/observer and writer custodians",
+      "requiredAction": "After a later authorized operation verify postimage, cache/API discoverability and least-privilege negative gates, reconcile preserved data/audits, and resume each writer only after acceptance.",
+      "actualEvidence": null,
+      "signature": null
+    }
+  ],
+  "evidence": [
+    {
+      "path": "docs/publication-rpc-six-20261110/qualification.json",
+      "sha256": "751def51eed3ce1204c2f720cf7f6c1cf6eb521b7fc964d9b4c11161dceb077b",
+      "gitBlob": "cb547dbe53a5729336d0a46693dfed5622d6d662"
+    },
+    {
+      "path": "docs/publication-rpc-six-20261110/receipt.json",
+      "sha256": "3cf37a910552b43d6ebabf3df182553b25c04bb22c749c5c630a5ad499c46989",
+      "gitBlob": "d6c3447e4bd8431588fd0d94c6a1e8fe12d6ecc7"
+    },
+    {
+      "path": "docs/publication-rpc-six-20261110/RUNBOOK.md",
+      "sha256": "c4fbdab9dab788e2d5f56c3e09bc3515cd6381db612c461d5f9638e574afaea1",
+      "gitBlob": "771aa304bb222767dc26644cd3baa0217d96fc4a"
+    },
+    {
+      "path": "docs/operational-thirteen-20261110/PROCEDURE.md",
+      "sha256": "66aacbdfdade96d6aa089ce302bc5ebdcecfa81714be95955ff5b169fe5a6dab",
+      "gitBlob": "3a1d60ab0de806c26c5cb1a44cd5479d63a4e039"
+    },
+    {
+      "path": "docs/operational-thirteen-20261110/operator-checklist.json",
+      "sha256": "9f32e2720e58e9220e074dd6e0571a868485ac7772dbea7129f64435b46018fe",
+      "gitBlob": "897f127d9f08ae5236d2c63550bbbf9828b87c05"
+    },
+    {
+      "path": "docs/operational-thirteen-20261110/REVIEW-TRACK-B.md",
+      "sha256": "69726cc2d8d9f3738615d01a0855bc173e0cdd1112fdf5014f7b4b356d6b4e84",
+      "gitBlob": "3345501bd646f4b24f96b8333a84a13bcf5878ad"
+    },
+    {
+      "path": "docs/adoption1535/package/source-pins.json",
+      "sha256": "fe294823920f21e4347cd26479b4d6f3dc8099be2d788b239aa363865b35c9cf",
+      "gitBlob": "1e4e4e2933966f3d3fb846c01172b091e639e748"
+    },
+    {
+      "path": "docs/adoption1535/package/guarded-target-apply.sql",
+      "sha256": "7dfc42e461c0e9f836cacdeab368cb54bc0695b3cd2de243a5741348a537a530",
+      "gitBlob": "7c58ad43b938468f69dc921081cb0232484dda9f"
+    },
+    {
+      "path": "docs/adoption1535/package/guarded-target-reverse.sql",
+      "sha256": "733eb6ff56968bc602633b5722e4a96fa889b8944476a4870048d502460c85d6",
+      "gitBlob": "7f4024146e8cdb92170a29b366ae94b4b4138fc4"
+    },
+    {
+      "path": "docs/adoption1528/target-metadata.json",
+      "sha256": "2ec6d13ed35c3f91b11fff43a1c5b8b499a5574c3b2a05c08243d0d96b39ba26",
+      "gitBlob": "ae68d2ee4410d6c58a51e8bea23f21be9180d5ff"
+    },
+    {
+      "path": "docs/adoption1528/package/expected-postimage.json",
+      "sha256": "346ac4f4afec678b715c14f1e48bca586986c79c9b87eac5874b817999a84d2c",
+      "gitBlob": "e52fdde3fd9528de8e48ba90991fa343db9da46e"
+    },
+    {
+      "path": "docs/publication540-shared/database/expected-postimage.json",
+      "sha256": "4d0e52191dd86ed7c98f97ee86cd5d07484baf5ff9fc5248f64171fde1f22156",
+      "gitBlob": "290378bd9ccc78df9f29efa08560f4a02238bf09"
+    },
+    {
+      "path": "docs/adoption1535/writer-inventory.json",
+      "sha256": "6bffa3b3ae5abc4f5abfa92965bd58da2bfd219659a4ee12f2e8f286ac2695ee",
+      "gitBlob": "6b2550b302163d2d5a59bc20009beb0a39d57471"
+    },
+    {
+      "path": "docs/adoption1535/runtime-secret-custody.json",
+      "sha256": "5baf31db35a22b4a21d721ff1afd2181daac7b6f2dfbaf3a769fda83c8f45296",
+      "gitBlob": "91df2ab850406bd49e3edb35ba7eb78d7e65d92a"
+    },
+    {
+      "path": "docs/execution-recovery-20261109/reviewer/APPOINTMENT-HANDOFF.md",
+      "sha256": "581ff599f832acade409ecb1207c0520056e4f4aba3e8b20f7b956426a659d30",
+      "gitBlob": "d4f3acbfaa33222be05d09d7fd3b59e0690fb9e1"
+    },
+    {
+      "path": "docs/completion-delivery-20261112/engineering-closure.json",
+      "sha256": "df796fc70d86a6c6561bef3136b4768314f566654900338fcbb2f6641bc0ccc4",
+      "gitBlob": "89f5150b63c3a3c9c48273280de87724e5685c8d"
+    },
+    {
+      "path": "docs/completion-delivery-20261112/review/218.json",
+      "sha256": "2b5af2c27d931367a42b45f1c47ccfc4e8aa3f0d00b9af8bf0f6ad735d4d643b",
+      "gitBlob": "b08472f782c26400bb0e4db3cb9d40e26bbfecc3"
+    },
+    {
+      "path": "docs/completion-delivery-20261112/review/219.json",
+      "sha256": "02771fdefbb1e715ef15262416eb7fec452ba9443ca3c70af81c5e3233e436b6",
+      "gitBlob": "20c68ca4bfd38d56375bc8a39186efc14a5a9f00"
+    },
+    {
+      "path": "docs/completion-delivery-20261112/review/220.json",
+      "sha256": "14bf9db9fc26d80be296ece78de0957b01c5257e2df920fbc8eb680f2b3a5cf9",
+      "gitBlob": "85f44b76c14ddb20eddf9f3f2edd44c6ebfb4478"
+    },
+    {
+      "path": "docs/completion-delivery-20261112/review/423.json",
+      "sha256": "ccd666fc3bb6aa44f059fe6e28621556a3c5d123f7871f8d7c804a1541e4b80e",
+      "gitBlob": "ba3e69b48cf14f1a3ffee1550b2f252e52bb2b19"
+    },
+    {
+      "path": "docs/completion-delivery-20261112/review/430.json",
+      "sha256": "0143691befd2695bd299bb4b31d49c461325a45ec905682dca3393ae0cf663b4",
+      "gitBlob": "60b063a7fed83f2b0e57f97367b64bf51149f1e8"
+    },
+    {
+      "path": "docs/completion-delivery-20261112/review/431.json",
+      "sha256": "61b274749b50dd2905a24ec51ce3316e6e8d71fb38354050a8f544f87a61833d",
+      "gitBlob": "7cd47ff113e003b0f8b75f14971bbb4c02d870bb"
+    },
+    {
+      "path": "docs/completion-delivery-20261112/review/432.json",
+      "sha256": "938485566e5b82ee4ee4127306d52c98d2312d80d11e11c5e506b7196de13b99",
+      "gitBlob": "a3a5e21122d6e62fd26cd91c1b63c6223b71d535"
+    },
+    {
+      "path": "docs/completion-delivery-20261112/review/438.json",
+      "sha256": "871eca338302690edac12a5f727a2b718093ecf8d73b6a68f435706510fab0db",
+      "gitBlob": "0b8c6a440809b047a2189d9ad0fa32f96b3d3ece"
+    },
+    {
+      "path": "docs/completion-delivery-20261112/review/440.json",
+      "sha256": "513a6c9e04ede764293826695eff4f49d9e1245d40f2d60b496310ba75a508d3",
+      "gitBlob": "1f0fb796d863676a8164ec93f4f0ca9a96e2cdff"
+    }
+  ]
+}

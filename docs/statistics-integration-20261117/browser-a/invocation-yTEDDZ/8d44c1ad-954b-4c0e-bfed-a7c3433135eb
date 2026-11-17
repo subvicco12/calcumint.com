@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "identity": {
+    "catalogId": 295,
+    "engineId": "statistics.percentile",
+    "calculatorSlug": "percentile-calculator",
+    "calculatorVersion": 1,
+    "sourceVersion": "worker1-statistics-a-20261117.1/statistics.percentile@1"
+  },
+  "raw": {
+    "values": "1, 2, 3, 4",
+    "percentile": "75"
+  },
+  "snapshot": {
+    "calculatorSlug": "percentile-calculator",
+    "calculatorVersion": 1,
+    "input": {
+      "values": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "percentile": 75
+    },
+    "output": {
+      "percentile": 3.25,
+      "position": 2.25,
+      "count": 4,
+      "steps": [
+        "Sorted count = 4",
+        "Position = 2.25",
+        "Percentile = 3.25"
+      ]
+    }
+  }
+}

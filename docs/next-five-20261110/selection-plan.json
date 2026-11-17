@@ -1,0 +1,213 @@
+{
+  "status": "PROPOSAL_ONLY_NO_SHARED_APP_EDITS",
+  "applicationBaseline": "23f2860c",
+  "selected": [
+    {
+      "catalogId": 369,
+      "engineId": "technology.cidr",
+      "slug": "cidr-calculator",
+      "version": 1,
+      "schema": {
+        "prefixLength": "integer0..32"
+      },
+      "scope": "IPv4 total address count only; no network/host/broadcast/range/IPv6/routability inference",
+      "example": {
+        "prefixLength": 24
+      },
+      "expected": 256,
+      "source": "RFC4632",
+      "goal": "Enumerate33prefixes; exact original-engine target equality; refuse unreachable target",
+      "nativeRow": {
+        "A": "369",
+        "B": "Technology & Computing",
+        "C": "CIDR Calculator",
+        "D": "Planned",
+        "E": "Foundation / Expansion 1",
+        "F": "Technical / engineering",
+        "G": "B \u2014 Analytical",
+        "H": "Full certified core calculation",
+        "I": "Relationship/result visual when useful",
+        "J": "Advanced variables; tables; unit analysis; scenarios",
+        "K": "Pro analytics + team/client/embed/API/automation",
+        "L": "Required before publish",
+        "M": "Formula verified after certification"
+      }
+    },
+    {
+      "catalogId": 375,
+      "engineId": "technology.raid-capacity",
+      "slug": "raid-capacity-calculator",
+      "version": 1,
+      "schema": {
+        "diskCount": "integer2..64",
+        "diskSizeGb": "finitepositive<=1e100",
+        "raidLevel": [
+          "0",
+          "1",
+          "5",
+          "6",
+          "10"
+        ]
+      },
+      "scope": "Nominal equal-size capacity-only model; level1 returns one disk capacity;5>=3,6>=4,10even>=4; no vendor/filesystem/rebuild guarantees",
+      "example": {
+        "diskCount": 4,
+        "diskSizeGb": 1000,
+        "raidLevel": "10"
+      },
+      "expected": 2000,
+      "source": "SNIA RAID levels retained source",
+      "goal": "Continuous diskSizeGb axis, fixed count and level; verify against retained engine",
+      "nativeRow": {
+        "A": "375",
+        "B": "Technology & Computing",
+        "C": "RAID Capacity Calculator",
+        "D": "Planned",
+        "E": "Foundation / Expansion 1",
+        "F": "Technical / engineering",
+        "G": "B \u2014 Analytical",
+        "H": "Full certified core calculation",
+        "I": "Relationship/result visual when useful",
+        "J": "Advanced variables; tables; unit analysis; scenarios",
+        "K": "Pro analytics + team/client/embed/API/automation",
+        "L": "Required before publish",
+        "M": "Formula verified after certification"
+      }
+    },
+    {
+      "catalogId": 380,
+      "engineId": "technology.battery-runtime",
+      "slug": "battery-runtime-calculator",
+      "version": 1,
+      "schema": {
+        "capacityWh": "finitepositive<=1e100",
+        "loadWatts": "finitepositive<=1e100",
+        "efficiencyPercent": "finite>0<=100"
+      },
+      "scope": "Ideal suppliedWh*efficiencyFraction/loadW inhours; no chemistry/discharge/vendor curve",
+      "example": {
+        "capacityWh": 1000,
+        "loadWatts": 200,
+        "efficiencyPercent": 90
+      },
+      "expected": 4.5,
+      "source": "NIST Handbook44 watthour retained source",
+      "goal": "Continuous capacityWh axis; fixed efficiency/load; refuse unsafe quotient/product/final",
+      "nativeRow": {
+        "A": "380",
+        "B": "Technology & Computing",
+        "C": "Battery Runtime Calculator",
+        "D": "Planned",
+        "E": "Foundation / Expansion 1",
+        "F": "Technical / engineering",
+        "G": "B \u2014 Analytical",
+        "H": "Full certified core calculation",
+        "I": "Relationship/result visual when useful",
+        "J": "Advanced variables; tables; unit analysis; scenarios",
+        "K": "Pro analytics + team/client/embed/API/automation",
+        "L": "Required before publish",
+        "M": "Formula verified after certification"
+      }
+    },
+    {
+      "catalogId": 381,
+      "engineId": "technology.ups-runtime",
+      "slug": "ups-runtime-calculator",
+      "version": 1,
+      "schema": {
+        "batteryWh": "finitepositive<=1e100",
+        "loadWatts": "finitepositive<=1e100",
+        "efficiencyPercent": "finite>0<=100"
+      },
+      "scope": "Ideal supplied batteryWh*efficiencyFraction/loadW inhours; no vendor runtime/ratedVA/powerfactor inference",
+      "example": {
+        "batteryWh": 600,
+        "loadWatts": 300,
+        "efficiencyPercent": 90
+      },
+      "expected": 1.8,
+      "source": "NIST Handbook44 watthour retained source",
+      "goal": "Continuous batteryWh axis; fixed efficiency/load; refuse unsafe quotient/product/final",
+      "nativeRow": {
+        "A": "381",
+        "B": "Technology & Computing",
+        "C": "UPS Runtime Calculator",
+        "D": "Planned",
+        "E": "Foundation / Expansion 1",
+        "F": "Technical / engineering",
+        "G": "B \u2014 Analytical",
+        "H": "Full certified core calculation",
+        "I": "Relationship/result visual when useful",
+        "J": "Advanced variables; tables; unit analysis; scenarios",
+        "K": "Pro analytics + team/client/embed/API/automation",
+        "L": "Required before publish",
+        "M": "Formula verified after certification"
+      }
+    },
+    {
+      "catalogId": 387,
+      "engineId": "technology.password-entropy",
+      "slug": "password-entropy-calculator",
+      "version": 1,
+      "schema": {
+        "length": "integer1..10000",
+        "characterPoolSize": "integer2..1114112"
+      },
+      "scope": "Theoretical independent uniform-random symbols, length*log2(poolSize), bits; no human password strength/cracktime/hashrate/profitability",
+      "example": {
+        "length": 16,
+        "characterPoolSize": 94
+      },
+      "expected": 104.8734216268422,
+      "source": "NIST SP800-63B passwords retained source",
+      "goal": "Integer length1..10000; exact retained-forward target match; no fractional length/silent rounding",
+      "nativeRow": {
+        "A": "387",
+        "B": "Technology & Computing",
+        "C": "Password Entropy Calculator",
+        "D": "Planned",
+        "E": "Foundation / Expansion 1",
+        "F": "Technical / engineering",
+        "G": "B \u2014 Analytical",
+        "H": "Full certified core calculation",
+        "I": "Relationship/result visual when useful",
+        "J": "Advanced variables; tables; unit analysis; scenarios",
+        "K": "Pro analytics + team/client/embed/API/automation",
+        "L": "Required before publish",
+        "M": "Formula verified after certification"
+      }
+    }
+  ],
+  "identityCorrection": "387 is Password Entropy, not hashrate",
+  "excluded": [
+    {
+      "id": 368,
+      "reason": "Prefer exact33state CIDR; address string/IP title adds range/network expectations absent in scalarv1"
+    },
+    {
+      "id": 376,
+      "reason": "Retained confirmed squaring underflow can returnzero/inaccurate normal; any future newcapture must guard eachsquare+sum; historicalreader unchanged"
+    }
+  ],
+  "sourceHashes": {
+    "docs/first20-publication/input/input/governing/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx": "4dbc3ade32ad20413aec7533838b969ece4185d0b62641b581bffc6ccf5d2899",
+    "src/calculators/technology-computing/catalog-batch-1.ts": "31f347fc286cc0b22cd888b9f53719e4733ffa17ab8323aa4f6dc5bc497079f6",
+    "src/calculators/technology-computing/catalog-batch-2.ts": "d352f40f8aef2cbd22afd8c09e577f28fc4eda1b925a928ec65c1ea25f4393d7",
+    "src/components/calculator-interactive.tsx": "af625bb001afe2cc52eea383f6e6462a5eb728b74de321f84d436611729ea5ad",
+    "src/lib/technology-capture-trust.ts": "364a0d58de1a63828128a8407e0a4ff58d2ae750ba72f11431124c8e12e3e408",
+    "src/lib/technology-next-capture-trust.ts": "7d26d1d359895f15bb8f0bdf121dcd23b2bfb3871842124ea8b951dee9e36e22",
+    "src/lib/technology-next-analysis.ts": "7f9a698de33a9fbe87dafb758061fadb830af2722cf8bd06df258c037ff38784",
+    "src/lib/technology-next-batch.ts": "e484171805140fb6ed95f31829d82217446fac6f34981994a183eaf76889a481",
+    "src/lib/native-delivery/technology-next-catalog.ts": "6e6c0cdca34a7d084c3baeaa64e639aba790853ca2ef0ecfa17faae800369cc6",
+    "src/lib/native-delivery/technology-next-contract.ts": "7d1958c83e1ae8ca1440304222433f9c58ff7455f757ac4d60bd4ccb15f4bee8",
+    "src/lib/business/technology-next-sharing.ts": "e4c40c9d4eb571c265d7024d3b95888c13b10714a98b421bfbe93930c7bc30ab",
+    "docs/cohort22-closure-20261109/technology/criteria.json": "58efdb8498f1ca93db14fdcee4e6fb79aad72d93bc141157d2e8809964e1d571",
+    "docs/cohort22-closure-20261109/technology/hazard-witnesses.json": "2bf082893aa2144f4f4ee0d3149c8fce8c139010cdfd0b71f4305f9cf6904059"
+  },
+  "limits": [
+    "No build/Next/Docker or newmathengine work",
+    "No source/canonical/specialist approval or production activation",
+    "All selectednative rowsB-Analytical; J/K positive, notNA",
+    "Originalmath/replay retained; stricternewcapture boundary only"
+  ]
+}

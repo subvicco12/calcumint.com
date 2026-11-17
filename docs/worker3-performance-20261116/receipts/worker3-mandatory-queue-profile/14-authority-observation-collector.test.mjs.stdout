@@ -1,0 +1,148 @@
+TAP version 13
+# Subtest: transparent receiver translation, arity and options survive original replay
+ok 1 - transparent receiver translation, arity and options survive original replay
+  ---
+  duration_ms: 3.222926
+  type: 'test'
+  ...
+# Subtest: bare undefined receiver is preserved and equal calls execute initially then deduplicate replay
+ok 2 - bare undefined receiver is preserved and equal calls execute initially then deduplicate replay
+  ---
+  duration_ms: 0.422798
+  type: 'test'
+  ...
+# Subtest: initial verifier Buffer and private expectation cannot alias original or one another
+ok 3 - initial verifier Buffer and private expectation cannot alias original or one another
+  ---
+  duration_ms: 0.257427
+  type: 'test'
+  ...
+# Subtest: opaque raw commit and blob changes after seal are detected without native fallback
+ok 4 - opaque raw commit and blob changes after seal are detected without native fallback
+  ---
+  duration_ms: 2.402162
+  type: 'test'
+  ...
+# Subtest: preloads only mirror original capabilities and always use original Git receiver
+ok 5 - preloads only mirror original capabilities and always use original Git receiver
+  ---
+  duration_ms: 0.304518
+  type: 'test'
+  ...
+# Subtest: changed or newly added preload capability fails replay
+ok 6 - changed or newly added preload capability fails replay
+  ---
+  duration_ms: 1.177976
+  type: 'test'
+  ...
+# Subtest: closed original reader errors remain sticky even if initial verifier catches them
+ok 7 - closed original reader errors remain sticky even if initial verifier catches them
+  ---
+  duration_ms: 0.271456
+  type: 'test'
+  ...
+# Subtest: inconsistent repeated result is sticky despite caller catching mismatch
+ok 8 - inconsistent repeated result is sticky despite caller catching mismatch
+  ---
+  duration_ms: 0.411906
+  type: 'test'
+  ...
+# Subtest: role, function, receiver, arity and options distinguish otherwise equal facts
+ok 9 - role, function, receiver, arity and options distinguish otherwise equal facts
+  ---
+  duration_ms: 0.626233
+  type: 'test'
+  ...
+# Subtest: replay uses private defensive operands instead of later changed options
+ok 10 - replay uses private defensive operands instead of later changed options
+  ---
+  duration_ms: 0.978996
+  type: 'test'
+  ...
+# Subtest: unexpected Git mutations fail before original and poison captured scope
+ok 11 - unexpected Git mutations fail before original and poison captured scope
+  ---
+  duration_ms: 0.523775
+  type: 'test'
+  ...
+# Subtest: fetch is rejected during constructor while readonly availability probes are recorded
+ok 12 - fetch is rejected during constructor while readonly availability probes are recorded
+  ---
+  duration_ms: 0.569265
+  type: 'test'
+  ...
+# Subtest: post-seal callbacks and constructor reuse are refused and sticky
+ok 13 - post-seal callbacks and constructor reuse are refused and sticky
+  ---
+  duration_ms: 0.578195
+  type: 'test'
+  ...
+# Subtest: read path inventory is copied and no facts or verdict token are exposed
+ok 14 - read path inventory is copied and no facts or verdict token are exposed
+  ---
+  duration_ms: 0.223747
+  type: 'test'
+  ...
+# Subtest: unsupported operand accessors and contradictory receiver bindings fail closed
+ok 15 - unsupported operand accessors and contradictory receiver bindings fail closed
+  ---
+  duration_ms: 0.400342
+  type: 'test'
+  ...
+# Subtest: unused stateful preload returns stay transparent without becoming approval facts
+ok 16 - unused stateful preload returns stay transparent without becoming approval facts
+  ---
+  duration_ms: 0.31579
+  type: 'test'
+  ...
+# Subtest: frozen preload inputs stay frozen on replay and later mutation attempts throw
+ok 17 - frozen preload inputs stay frozen on replay and later mutation attempts throw
+  ---
+  duration_ms: 0.379152
+  type: 'test'
+  ...
+# Subtest: known nested replay forwards originals and compares, unknown nested event poisons
+ok 18 - known nested replay forwards originals and compares, unknown nested event poisons
+  ---
+  duration_ms: 0.226344
+  type: 'test'
+  ...
+# Subtest: recursive known replay cycles are rejected before unbounded recursion
+ok 19 - recursive known replay cycles are rejected before unbounded recursion
+  ---
+  duration_ms: 0.118068
+  type: 'test'
+  ...
+# Subtest: opaque Proxy operands cannot substitute descriptor values during replay
+ok 20 - opaque Proxy operands cannot substitute descriptor values during replay
+  ---
+  duration_ms: 0.467318
+  type: 'test'
+  ...
+# Subtest: unsupported array prototypes are rejected instead of silently normalized
+ok 21 - unsupported array prototypes are rejected instead of silently normalized
+  ---
+  duration_ms: 1.18827
+  type: 'test'
+  ...
+# Subtest: comparison failures do not expose private expected observations as error fields
+ok 22 - comparison failures do not expose private expected observations as error fields
+  ---
+  duration_ms: 0.203165
+  type: 'test'
+  ...
+# Subtest: receiver identity distinguishes negative zero from positive zero
+ok 23 - receiver identity distinguishes negative zero from positive zero
+  ---
+  duration_ms: 0.374715
+  type: 'test'
+  ...
+1..23
+# tests 23
+# suites 0
+# pass 23
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 33.535006

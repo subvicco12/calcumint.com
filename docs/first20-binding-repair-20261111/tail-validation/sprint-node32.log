@@ -1,0 +1,202 @@
+TAP version 13
+# Subtest: 43 authority records retain exact source hashes and resolvable prerequisites without approvals
+ok 1 - 43 authority records retain exact source hashes and resolvable prerequisites without approvals
+  ---
+  duration_ms: 68.561953
+  type: 'test'
+  ...
+# Subtest: packet selects the two exact review pending rows without granting acceptance
+ok 2 - packet selects the two exact review pending rows without granting acceptance
+  ---
+  duration_ms: 150.695676
+  type: 'test'
+  ...
+# Subtest: every current source and retained evidence byte binding still matches
+ok 3 - every current source and retained evidence byte binding still matches
+  ---
+  duration_ms: 416.959998
+  type: 'test'
+  ...
+# Subtest: retained packet bytes are immutable at the failed exact head
+ok 4 - retained packet bytes are immutable at the failed exact head
+  ---
+  duration_ms: 6.473427
+  type: 'test'
+  ...
+# Subtest: rejects valid historical caller reversion after Final migration
+ok 5 - rejects valid historical caller reversion after Final migration
+  ---
+  duration_ms: 13.175735
+  type: 'test'
+  ...
+# Subtest: rejects unreviewed current caller bytes
+ok 6 - rejects unreviewed current caller bytes
+  ---
+  duration_ms: 5.904171
+  type: 'test'
+  ...
+# Subtest: rejects missing exact Git successor provenance
+ok 7 - rejects missing exact Git successor provenance
+  ---
+  duration_ms: 0.358138
+  type: 'test'
+  ...
+# Subtest: rejects changed current renderer dependency
+ok 8 - rejects changed current renderer dependency
+  ---
+  duration_ms: 5.2019
+  type: 'test'
+  ...
+# Subtest: admits only the exact captured caller successor
+ok 9 - admits only the exact captured caller successor
+  ---
+  duration_ms: 72.053342
+  type: 'test'
+  ...
+# Subtest: rejects silent valid-hash historical caller reversion
+ok 10 - rejects silent valid-hash historical caller reversion
+  ---
+  duration_ms: 1.307885
+  type: 'test'
+  ...
+# Subtest: rejects unreviewed caller bytes
+ok 11 - rejects unreviewed caller bytes
+  ---
+  duration_ms: 0.823866
+  type: 'test'
+  ...
+# Subtest: rejects unavailable provenance
+ok 12 - rejects unavailable provenance
+  ---
+  duration_ms: 0.339428
+  type: 'test'
+  ...
+# Subtest: rejects altered serialized-boundary dependency: src/lib/final-private-snapshot-text.ts
+ok 13 - rejects altered serialized-boundary dependency: src/lib/final-private-snapshot-text.ts
+  ---
+  duration_ms: 0.537825
+  type: 'test'
+  ...
+# Subtest: rejects altered serialized-boundary dependency: src/lib/publication-factory-contracts-input.ts
+ok 14 - rejects altered serialized-boundary dependency: src/lib/publication-factory-contracts-input.ts
+  ---
+  duration_ms: 0.464402
+  type: 'test'
+  ...
+# Subtest: admits only the exact captured caller successor
+ok 15 - admits only the exact captured caller successor
+  ---
+  duration_ms: 300.193775
+  type: 'test'
+  ...
+# Subtest: rejects silent valid-hash historical caller reversion
+ok 16 - rejects silent valid-hash historical caller reversion
+  ---
+  duration_ms: 1.711489
+  type: 'test'
+  ...
+# Subtest: rejects unreviewed caller bytes
+ok 17 - rejects unreviewed caller bytes
+  ---
+  duration_ms: 2.481484
+  type: 'test'
+  ...
+# Subtest: rejects unavailable provenance
+ok 18 - rejects unavailable provenance
+  ---
+  duration_ms: 0.828999
+  type: 'test'
+  ...
+# Subtest: rejects altered serialized-boundary dependency: src/lib/final-private-snapshot-text.ts
+ok 19 - rejects altered serialized-boundary dependency: src/lib/final-private-snapshot-text.ts
+  ---
+  duration_ms: 0.546972
+  type: 'test'
+  ...
+# Subtest: rejects altered serialized-boundary dependency: src/lib/publication-factory-contracts-input.ts
+ok 20 - rejects altered serialized-boundary dependency: src/lib/publication-factory-contracts-input.ts
+  ---
+  duration_ms: 0.649282
+  type: 'test'
+  ...
+# Subtest: all 540 inherited rows reconcile with bounded deltas and no approval promotion
+ok 21 - all 540 inherited rows reconcile with bounded deltas and no approval promotion
+  ---
+  duration_ms: 403.415116
+  type: 'test'
+  ...
+# Subtest: private financial revision and all mathematical/transport dependencies match exact Git capture
+ok 22 - private financial revision and all mathematical/transport dependencies match exact Git capture
+  ---
+  duration_ms: 88.866149
+  type: 'test'
+  ...
+# Subtest: immutable private dependency tamper refused: src/lib/financial-successor/exact-grid-private.ts
+ok 23 - immutable private dependency tamper refused: src/lib/financial-successor/exact-grid-private.ts
+  ---
+  duration_ms: 15.94492
+  type: 'test'
+  ...
+# Subtest: immutable private dependency tamper refused: src/lib/financial-exact-grid.ts
+ok 24 - immutable private dependency tamper refused: src/lib/financial-exact-grid.ts
+  ---
+  duration_ms: 24.183577
+  type: 'test'
+  ...
+# Subtest: immutable private dependency tamper refused: src/calculators/finance/loan-payment.ts
+ok 25 - immutable private dependency tamper refused: src/calculators/finance/loan-payment.ts
+  ---
+  duration_ms: 29.008583
+  type: 'test'
+  ...
+# Subtest: immutable private dependency tamper refused: src/calculators/finance/compound-interest.ts
+ok 26 - immutable private dependency tamper refused: src/calculators/finance/compound-interest.ts
+  ---
+  duration_ms: 31.236675
+  type: 'test'
+  ...
+# Subtest: immutable private dependency tamper refused: src/calculators/precision.ts
+ok 27 - immutable private dependency tamper refused: src/calculators/precision.ts
+  ---
+  duration_ms: 43.942805
+  type: 'test'
+  ...
+# Subtest: immutable private dependency tamper refused: src/lib/calculation-snapshot.ts
+ok 28 - immutable private dependency tamper refused: src/lib/calculation-snapshot.ts
+  ---
+  duration_ms: 45.760324
+  type: 'test'
+  ...
+# Subtest: immutable private dependency tamper refused: src/lib/recorded-json-equality.ts
+ok 29 - immutable private dependency tamper refused: src/lib/recorded-json-equality.ts
+  ---
+  duration_ms: 58.895235
+  type: 'test'
+  ...
+# Subtest: immutable private dependency tamper refused: src/lib/publication-factory-contracts-input.ts
+ok 30 - immutable private dependency tamper refused: src/lib/publication-factory-contracts-input.ts
+  ---
+  duration_ms: 64.474024
+  type: 'test'
+  ...
+# Subtest: immutable private dependency tamper refused: package-lock.json
+ok 31 - immutable private dependency tamper refused: package-lock.json
+  ---
+  duration_ms: 66.467285
+  type: 'test'
+  ...
+# Subtest: missing exact initial Git revision cannot create a successful source proof
+ok 32 - missing exact initial Git revision cannot create a successful source proof
+  ---
+  duration_ms: 2.024971
+  type: 'test'
+  ...
+1..32
+# tests 32
+# suites 0
+# pass 32
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1059.419576

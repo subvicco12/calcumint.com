@@ -1,0 +1,36 @@
+{
+  "status": "FAIL",
+  "sourceHead": "33b98fb7db5e11650914958744f55f030273118c",
+  "startedAt": "2026-11-11T05:19:16.905209+00:00",
+  "checks": [
+    {
+      "name": "finite-test-successors",
+      "command": [
+        "node",
+        "--test",
+        "tests/parallel-five-20261110/test-only-successor.test.mjs"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/recovery-revision14-validation/finite-test-successors.log",
+      "exitCode": 0,
+      "durationSeconds": 0.6425305550001212,
+      "sha256": "a38c8f6719073c8ee8a9d028d4f5f6526de1b4f52b110fbf1faad4d2779635b4"
+    },
+    {
+      "name": "unit",
+      "command": [
+        "npm",
+        "test",
+        "--",
+        "--maxWorkers=2"
+      ],
+      "status": "FAIL",
+      "log": "/workspace/artifacts/parallel-completion-20261110/recovery-revision14-validation/unit.log",
+      "exitCode": 1,
+      "durationSeconds": 569.2286986070012,
+      "sha256": "e43761c244fd4fa3177928003f73d3a19657726ebf16178ae93b1db7a1b7c612"
+    }
+  ],
+  "finishedAt": "2026-11-11T05:28:46.781522+00:00",
+  "headAtEnd": "33b98fb7db5e11650914958744f55f030273118c"
+}

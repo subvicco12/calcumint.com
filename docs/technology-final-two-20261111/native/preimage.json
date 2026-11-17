@@ -1,0 +1,2980 @@
+{
+  "preHash": "40a6fc0dca4392c58a178b1df154b7099865e024a554f9f317611cc06d2ab728",
+  "postHash": "1a371a13355af3b186659076489269a887749f8d45c65e27610fd556628b8d85",
+  "preimage": {
+    "tables": [
+      {
+        "acl": "{postgres=arwdDxtm/postgres}",
+        "rls": true,
+        "name": "technology_five_embed_attempts",
+        "owner": "postgres",
+        "columns": [
+          [
+            "id",
+            "uuid",
+            true,
+            "gen_random_uuid()",
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "grant_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "organization_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "issuer_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "api_key_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "request_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "created_at",
+            "timestamp with time zone",
+            true,
+            "clock_timestamp()",
+            null,
+            "",
+            "",
+            "0"
+          ]
+        ],
+        "indexes": [
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_embed_attempts_key_window",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": false,
+            "primary": false,
+            "definition": "CREATE INDEX technology_five_embed_attempts_key_window ON public.technology_five_embed_attempts USING btree (api_key_id, created_at)",
+            "replicaIdentity": false
+          },
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_embed_attempts_pkey",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": true,
+            "primary": true,
+            "definition": "CREATE UNIQUE INDEX technology_five_embed_attempts_pkey ON public.technology_five_embed_attempts USING btree (id)",
+            "replicaIdentity": false
+          }
+        ],
+        "options": null,
+        "forceRls": false,
+        "policies": null,
+        "triggers": [
+          [
+            "CREATE TRIGGER technology_five_attempt_immutable BEFORE DELETE OR UPDATE ON public.technology_five_embed_attempts FOR EACH ROW EXECUTE FUNCTION technology_five_embed_identity_v1()",
+            "O",
+            false,
+            false
+          ]
+        ],
+        "constraints": [
+          [
+            "technology_five_embed_attempts_grant_id_fkey",
+            "FOREIGN KEY (grant_id) REFERENCES technology_five_embed_grants(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_attempts_pkey",
+            "PRIMARY KEY (id)",
+            true,
+            false,
+            false
+          ]
+        ],
+        "replicaIdentity": "d"
+      },
+      {
+        "acl": "{postgres=arwdDxtm/postgres,service_role=ar/postgres}",
+        "rls": true,
+        "name": "technology_five_embed_grants",
+        "owner": "postgres",
+        "columns": [
+          [
+            "id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "organization_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "issuer_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "api_key_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "token_hash",
+            "text",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "allowed_origin",
+            "text",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "catalog_id",
+            "integer",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "engine_id",
+            "text",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "technical_version",
+            "integer",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "issued_at",
+            "timestamp with time zone",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "expires_at",
+            "timestamp with time zone",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "revoked_at",
+            "timestamp with time zone",
+            false,
+            null,
+            "{service_role=w/postgres}",
+            "",
+            "",
+            "0"
+          ]
+        ],
+        "indexes": [
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_embed_grants_pkey",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": true,
+            "primary": true,
+            "definition": "CREATE UNIQUE INDEX technology_five_embed_grants_pkey ON public.technology_five_embed_grants USING btree (id)",
+            "replicaIdentity": false
+          }
+        ],
+        "options": null,
+        "forceRls": false,
+        "policies": null,
+        "triggers": [
+          [
+            "CREATE TRIGGER technology_five_grant_identity BEFORE DELETE OR UPDATE ON public.technology_five_embed_grants FOR EACH ROW EXECUTE FUNCTION technology_five_embed_identity_v1()",
+            "O",
+            false,
+            false
+          ]
+        ],
+        "constraints": [
+          [
+            "technology_five_embed_grants_api_key_id_fkey",
+            "FOREIGN KEY (api_key_id) REFERENCES business_api_keys(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_grants_check1",
+            "CHECK (((expires_at > issued_at) AND (expires_at <= (issued_at + '01:00:00'::interval))))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_grants_exact_native_tuple_check",
+            "CHECK ((((((((((((((((((((catalog_id = 370) AND (engine_id = 'technology.bandwidth'::text) AND (technical_version = 1)) OR ((catalog_id = 371) AND (engine_id = 'technology.download-time'::text) AND (technical_version = 1))) OR ((catalog_id = 372) AND (engine_id = 'technology.upload-time'::text) AND (technical_version = 1))) OR ((catalog_id = 373) AND (engine_id = 'technology.data-transfer'::text) AND (technical_version = 1))) OR ((catalog_id = 386) AND (engine_id = 'technology.base64-size'::text) AND (technical_version = 1))) OR ((catalog_id = 374) AND (engine_id = 'technology.storage-conversion'::text) AND (technical_version = 1))) OR ((catalog_id = 377) AND (engine_id = 'technology.aspect-ratio'::text) AND (technical_version = 1))) OR ((catalog_id = 378) AND (engine_id = 'technology.resolution'::text) AND (technical_version = 1))) OR ((catalog_id = 379) AND (engine_id = 'technology.dpi'::text) AND (technical_version = 1))) OR ((catalog_id = 382) AND (engine_id = 'technology.power-supply'::text) AND (technical_version = 1))) OR ((catalog_id = 383) AND (engine_id = 'technology.website-bandwidth'::text) AND (technical_version = 2))) OR ((catalog_id = 384) AND (engine_id = 'technology.cloud-storage-cost'::text) AND (technical_version = 1))) OR ((catalog_id = 385) AND (engine_id = 'technology.cloud-data-transfer-cost'::text) AND (technical_version = 1))) OR ((catalog_id = 369) AND (engine_id = 'technology.cidr'::text) AND (technical_version = 1))) OR ((catalog_id = 375) AND (engine_id = 'technology.raid-capacity'::text) AND (technical_version = 1))) OR ((catalog_id = 380) AND (engine_id = 'technology.battery-runtime'::text) AND (technical_version = 1))) OR ((catalog_id = 381) AND (engine_id = 'technology.ups-runtime'::text) AND (technical_version = 1))) OR ((catalog_id = 387) AND (engine_id = 'technology.password-entropy'::text) AND (technical_version = 1))))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_grants_issuer_id_fkey",
+            "FOREIGN KEY (issuer_id) REFERENCES profiles(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_grants_organization_id_fkey",
+            "FOREIGN KEY (organization_id) REFERENCES organizations(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_grants_pkey",
+            "PRIMARY KEY (id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_grants_token_hash_check",
+            "CHECK ((token_hash ~ '^[a-f0-9]{64}$'::text))",
+            true,
+            false,
+            false
+          ]
+        ],
+        "replicaIdentity": "d"
+      },
+      {
+        "acl": "{postgres=arwdDxtm/postgres}",
+        "rls": true,
+        "name": "technology_five_embed_usage",
+        "owner": "postgres",
+        "columns": [
+          [
+            "grant_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "request_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "organization_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "issuer_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "api_key_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "catalog_id",
+            "integer",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "engine_id",
+            "text",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "technical_version",
+            "integer",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "request_hash",
+            "text",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "result_hash",
+            "text",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "created_at",
+            "timestamp with time zone",
+            true,
+            "now()",
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "units",
+            "integer",
+            true,
+            "1",
+            null,
+            "",
+            "",
+            "0"
+          ]
+        ],
+        "indexes": [
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_embed_usage_pkey",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": true,
+            "primary": true,
+            "definition": "CREATE UNIQUE INDEX technology_five_embed_usage_pkey ON public.technology_five_embed_usage USING btree (grant_id, request_id)",
+            "replicaIdentity": false
+          }
+        ],
+        "options": null,
+        "forceRls": false,
+        "policies": null,
+        "triggers": [
+          [
+            "CREATE TRIGGER technology_five_usage_immutable BEFORE DELETE OR UPDATE ON public.technology_five_embed_usage FOR EACH ROW EXECUTE FUNCTION technology_five_embed_identity_v1()",
+            "O",
+            false,
+            false
+          ]
+        ],
+        "constraints": [
+          [
+            "technology_five_embed_usage_api_key_id_fkey",
+            "FOREIGN KEY (api_key_id) REFERENCES business_api_keys(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_usage_exact_native_tuple_check",
+            "CHECK ((((((((((((((((((((catalog_id = 370) AND (engine_id = 'technology.bandwidth'::text) AND (technical_version = 1)) OR ((catalog_id = 371) AND (engine_id = 'technology.download-time'::text) AND (technical_version = 1))) OR ((catalog_id = 372) AND (engine_id = 'technology.upload-time'::text) AND (technical_version = 1))) OR ((catalog_id = 373) AND (engine_id = 'technology.data-transfer'::text) AND (technical_version = 1))) OR ((catalog_id = 386) AND (engine_id = 'technology.base64-size'::text) AND (technical_version = 1))) OR ((catalog_id = 374) AND (engine_id = 'technology.storage-conversion'::text) AND (technical_version = 1))) OR ((catalog_id = 377) AND (engine_id = 'technology.aspect-ratio'::text) AND (technical_version = 1))) OR ((catalog_id = 378) AND (engine_id = 'technology.resolution'::text) AND (technical_version = 1))) OR ((catalog_id = 379) AND (engine_id = 'technology.dpi'::text) AND (technical_version = 1))) OR ((catalog_id = 382) AND (engine_id = 'technology.power-supply'::text) AND (technical_version = 1))) OR ((catalog_id = 383) AND (engine_id = 'technology.website-bandwidth'::text) AND (technical_version = 2))) OR ((catalog_id = 384) AND (engine_id = 'technology.cloud-storage-cost'::text) AND (technical_version = 1))) OR ((catalog_id = 385) AND (engine_id = 'technology.cloud-data-transfer-cost'::text) AND (technical_version = 1))) OR ((catalog_id = 369) AND (engine_id = 'technology.cidr'::text) AND (technical_version = 1))) OR ((catalog_id = 375) AND (engine_id = 'technology.raid-capacity'::text) AND (technical_version = 1))) OR ((catalog_id = 380) AND (engine_id = 'technology.battery-runtime'::text) AND (technical_version = 1))) OR ((catalog_id = 381) AND (engine_id = 'technology.ups-runtime'::text) AND (technical_version = 1))) OR ((catalog_id = 387) AND (engine_id = 'technology.password-entropy'::text) AND (technical_version = 1))))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_usage_grant_id_fkey",
+            "FOREIGN KEY (grant_id) REFERENCES technology_five_embed_grants(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_usage_issuer_id_fkey",
+            "FOREIGN KEY (issuer_id) REFERENCES profiles(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_usage_organization_id_fkey",
+            "FOREIGN KEY (organization_id) REFERENCES organizations(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_usage_pkey",
+            "PRIMARY KEY (grant_id, request_id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_usage_request_hash_check",
+            "CHECK ((request_hash ~ '^[a-f0-9]{64}$'::text))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_usage_result_hash_check",
+            "CHECK ((result_hash ~ '^[a-f0-9]{64}$'::text))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_usage_units_check",
+            "CHECK ((units = 1))",
+            true,
+            false,
+            false
+          ]
+        ],
+        "replicaIdentity": "d"
+      },
+      {
+        "acl": "{postgres=arwdDxtm/postgres}",
+        "rls": true,
+        "name": "technology_five_jobs",
+        "owner": "postgres",
+        "columns": [
+          [
+            "id",
+            "uuid",
+            true,
+            "gen_random_uuid()",
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "api_key_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "organization_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "issuer_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "request_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "catalog_id",
+            "integer",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "engine_id",
+            "text",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "technical_version",
+            "integer",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "payload",
+            "jsonb",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "input_rows",
+            "jsonb",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "output_rows",
+            "jsonb",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "job_snapshot",
+            "jsonb",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "created_at",
+            "timestamp with time zone",
+            true,
+            "now()",
+            null,
+            "",
+            "",
+            "0"
+          ]
+        ],
+        "indexes": [
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_jobs_api_key_id_request_id_key",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": true,
+            "primary": false,
+            "definition": "CREATE UNIQUE INDEX technology_five_jobs_api_key_id_request_id_key ON public.technology_five_jobs USING btree (api_key_id, request_id)",
+            "replicaIdentity": false
+          },
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_jobs_pkey",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": true,
+            "primary": true,
+            "definition": "CREATE UNIQUE INDEX technology_five_jobs_pkey ON public.technology_five_jobs USING btree (id)",
+            "replicaIdentity": false
+          }
+        ],
+        "options": null,
+        "forceRls": false,
+        "policies": null,
+        "triggers": [
+          [
+            "CREATE TRIGGER technology_five_job_immutable BEFORE DELETE OR UPDATE ON public.technology_five_jobs FOR EACH ROW EXECUTE FUNCTION technology_five_evidence_identity_v1()",
+            "O",
+            false,
+            false
+          ]
+        ],
+        "constraints": [
+          [
+            "technology_five_jobs_api_key_id_fkey",
+            "FOREIGN KEY (api_key_id) REFERENCES business_api_keys(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_jobs_api_key_id_request_id_key",
+            "UNIQUE (api_key_id, request_id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_jobs_exact_native_tuple_check",
+            "CHECK ((((((((((((((((((((catalog_id = 370) AND (engine_id = 'technology.bandwidth'::text) AND (technical_version = 1)) OR ((catalog_id = 371) AND (engine_id = 'technology.download-time'::text) AND (technical_version = 1))) OR ((catalog_id = 372) AND (engine_id = 'technology.upload-time'::text) AND (technical_version = 1))) OR ((catalog_id = 373) AND (engine_id = 'technology.data-transfer'::text) AND (technical_version = 1))) OR ((catalog_id = 386) AND (engine_id = 'technology.base64-size'::text) AND (technical_version = 1))) OR ((catalog_id = 374) AND (engine_id = 'technology.storage-conversion'::text) AND (technical_version = 1))) OR ((catalog_id = 377) AND (engine_id = 'technology.aspect-ratio'::text) AND (technical_version = 1))) OR ((catalog_id = 378) AND (engine_id = 'technology.resolution'::text) AND (technical_version = 1))) OR ((catalog_id = 379) AND (engine_id = 'technology.dpi'::text) AND (technical_version = 1))) OR ((catalog_id = 382) AND (engine_id = 'technology.power-supply'::text) AND (technical_version = 1))) OR ((catalog_id = 383) AND (engine_id = 'technology.website-bandwidth'::text) AND (technical_version = 2))) OR ((catalog_id = 384) AND (engine_id = 'technology.cloud-storage-cost'::text) AND (technical_version = 1))) OR ((catalog_id = 385) AND (engine_id = 'technology.cloud-data-transfer-cost'::text) AND (technical_version = 1))) OR ((catalog_id = 369) AND (engine_id = 'technology.cidr'::text) AND (technical_version = 1))) OR ((catalog_id = 375) AND (engine_id = 'technology.raid-capacity'::text) AND (technical_version = 1))) OR ((catalog_id = 380) AND (engine_id = 'technology.battery-runtime'::text) AND (technical_version = 1))) OR ((catalog_id = 381) AND (engine_id = 'technology.ups-runtime'::text) AND (technical_version = 1))) OR ((catalog_id = 387) AND (engine_id = 'technology.password-entropy'::text) AND (technical_version = 1))))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_jobs_input_rows_check",
+            "CHECK (((jsonb_typeof(input_rows) = 'array'::text) AND ((jsonb_array_length(input_rows) >= 1) AND (jsonb_array_length(input_rows) <= 100))))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_jobs_issuer_id_fkey",
+            "FOREIGN KEY (issuer_id) REFERENCES profiles(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_jobs_organization_id_fkey",
+            "FOREIGN KEY (organization_id) REFERENCES organizations(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_jobs_pkey",
+            "PRIMARY KEY (id)",
+            true,
+            false,
+            false
+          ]
+        ],
+        "replicaIdentity": "d"
+      },
+      {
+        "acl": "{postgres=arwdDxtm/postgres}",
+        "rls": true,
+        "name": "technology_five_webhook_attempts",
+        "owner": "postgres",
+        "columns": [
+          [
+            "id",
+            "uuid",
+            true,
+            "gen_random_uuid()",
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "delivery_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "attempt",
+            "integer",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "lease_token",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "started_at",
+            "timestamp with time zone",
+            true,
+            "clock_timestamp()",
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "finished_at",
+            "timestamp with time zone",
+            false,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "outcome",
+            "text",
+            true,
+            "'leased'::text",
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "http_status",
+            "integer",
+            false,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "error",
+            "text",
+            false,
+            null,
+            null,
+            "",
+            "",
+            "100"
+          ]
+        ],
+        "indexes": [
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_webhook_attempts_delivery_id_attempt_key",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": true,
+            "primary": false,
+            "definition": "CREATE UNIQUE INDEX technology_five_webhook_attempts_delivery_id_attempt_key ON public.technology_five_webhook_attempts USING btree (delivery_id, attempt)",
+            "replicaIdentity": false
+          },
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_webhook_attempts_lease_token_key",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": true,
+            "primary": false,
+            "definition": "CREATE UNIQUE INDEX technology_five_webhook_attempts_lease_token_key ON public.technology_five_webhook_attempts USING btree (lease_token)",
+            "replicaIdentity": false
+          },
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_webhook_attempts_pkey",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": true,
+            "primary": true,
+            "definition": "CREATE UNIQUE INDEX technology_five_webhook_attempts_pkey ON public.technology_five_webhook_attempts USING btree (id)",
+            "replicaIdentity": false
+          }
+        ],
+        "options": null,
+        "forceRls": false,
+        "policies": null,
+        "triggers": [
+          [
+            "CREATE TRIGGER technology_five_attempt_identity BEFORE DELETE OR UPDATE ON public.technology_five_webhook_attempts FOR EACH ROW EXECUTE FUNCTION technology_five_evidence_identity_v1()",
+            "O",
+            false,
+            false
+          ]
+        ],
+        "constraints": [
+          [
+            "technology_five_webhook_attempts_attempt_check",
+            "CHECK (((attempt >= 1) AND (attempt <= 8)))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_attempts_delivery_id_attempt_key",
+            "UNIQUE (delivery_id, attempt)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_attempts_delivery_id_fkey",
+            "FOREIGN KEY (delivery_id) REFERENCES technology_five_webhook_outbox(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_attempts_lease_token_key",
+            "UNIQUE (lease_token)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_attempts_outcome_check",
+            "CHECK ((outcome = ANY (ARRAY['leased'::text, 'expired'::text, 'delivered'::text, 'failed'::text])))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_attempts_pkey",
+            "PRIMARY KEY (id)",
+            true,
+            false,
+            false
+          ]
+        ],
+        "replicaIdentity": "d"
+      },
+      {
+        "acl": "{postgres=arwdDxtm/postgres}",
+        "rls": true,
+        "name": "technology_five_webhook_outbox",
+        "owner": "postgres",
+        "columns": [
+          [
+            "id",
+            "uuid",
+            true,
+            "gen_random_uuid()",
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "event_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "organization_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "api_key_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "issuer_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "endpoint_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "endpoint_snapshot",
+            "jsonb",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "payload",
+            "jsonb",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "payload_text",
+            "text",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "status",
+            "text",
+            true,
+            "'queued'::text",
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "attempt_count",
+            "integer",
+            true,
+            "0",
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "next_attempt_at",
+            "timestamp with time zone",
+            true,
+            "now()",
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "lease_token",
+            "uuid",
+            false,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "lease_until",
+            "timestamp with time zone",
+            false,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "last_error",
+            "text",
+            false,
+            null,
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "last_http_status",
+            "integer",
+            false,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "delivered_at",
+            "timestamp with time zone",
+            false,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ]
+        ],
+        "indexes": [
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_webhook_due",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": false,
+            "primary": false,
+            "definition": "CREATE INDEX technology_five_webhook_due ON public.technology_five_webhook_outbox USING btree (status, next_attempt_at)",
+            "replicaIdentity": false
+          },
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_webhook_outbox_event_id_key",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": true,
+            "primary": false,
+            "definition": "CREATE UNIQUE INDEX technology_five_webhook_outbox_event_id_key ON public.technology_five_webhook_outbox USING btree (event_id)",
+            "replicaIdentity": false
+          },
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_webhook_outbox_pkey",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": true,
+            "primary": true,
+            "definition": "CREATE UNIQUE INDEX technology_five_webhook_outbox_pkey ON public.technology_five_webhook_outbox USING btree (id)",
+            "replicaIdentity": false
+          }
+        ],
+        "options": null,
+        "forceRls": false,
+        "policies": null,
+        "triggers": [
+          [
+            "CREATE TRIGGER technology_five_outbox_identity BEFORE DELETE OR UPDATE ON public.technology_five_webhook_outbox FOR EACH ROW EXECUTE FUNCTION technology_five_evidence_identity_v1()",
+            "O",
+            false,
+            false
+          ]
+        ],
+        "constraints": [
+          [
+            "technology_five_webhook_outbox_api_key_id_fkey",
+            "FOREIGN KEY (api_key_id) REFERENCES business_api_keys(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_outbox_attempt_count_check",
+            "CHECK (((attempt_count >= 0) AND (attempt_count <= 8)))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_outbox_check",
+            "CHECK ((payload_text = (payload)::text))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_outbox_check1",
+            "CHECK (((status = 'leased'::text) = ((lease_token IS NOT NULL) AND (lease_until IS NOT NULL))))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_outbox_endpoint_id_fkey",
+            "FOREIGN KEY (endpoint_id) REFERENCES business_webhook_endpoints(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_outbox_event_id_fkey",
+            "FOREIGN KEY (event_id) REFERENCES technology_five_jobs(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_outbox_event_id_key",
+            "UNIQUE (event_id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_outbox_issuer_id_fkey",
+            "FOREIGN KEY (issuer_id) REFERENCES profiles(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_outbox_organization_id_fkey",
+            "FOREIGN KEY (organization_id) REFERENCES organizations(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_outbox_pkey",
+            "PRIMARY KEY (id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_outbox_status_check",
+            "CHECK ((status = ANY (ARRAY['queued'::text, 'leased'::text, 'failed'::text, 'delivered'::text, 'dead_letter'::text, 'cancelled'::text])))",
+            true,
+            false,
+            false
+          ]
+        ],
+        "replicaIdentity": "d"
+      }
+    ],
+    "functions": [
+      {
+        "acl": "{postgres=X/postgres,service_role=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "check_technology_five_dispatch_v1(uuid,uuid)",
+        "definition": "CREATE OR REPLACE FUNCTION public.check_technology_five_dispatch_v1(p_delivery_id uuid, p_lease_token uuid)\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE d public.technology_five_webhook_outbox%ROWTYPE;k public.business_api_keys%ROWTYPE;e public.business_webhook_endpoints%ROWTYPE;j public.technology_five_jobs%ROWTYPE;\nBEGIN\n IF current_setting('role',true) IS DISTINCT FROM 'service_role' THEN RAISE EXCEPTION 'Trusted service caller required' USING ERRCODE='PT403';END IF;\n SELECT * INTO d FROM public.technology_five_webhook_outbox WHERE id=p_delivery_id FOR UPDATE;\n IF NOT FOUND OR d.status<>'leased' OR d.lease_token IS DISTINCT FROM p_lease_token OR d.lease_until<=clock_timestamp() THEN RETURN false;END IF;\n SELECT * INTO k FROM public.business_api_keys WHERE id=d.api_key_id;\n PERFORM public.technology_five_key_authority_v1(k.id,k.key_hash,d.organization_id);SELECT * INTO j FROM public.technology_five_jobs WHERE id=d.event_id;PERFORM public.technology_five_require_publication_v1(j.catalog_id,j.technical_version);\n SELECT * INTO e FROM public.business_webhook_endpoints WHERE id=d.endpoint_id AND organization_id=d.organization_id AND status='active' AND jsonb_typeof(event_types)='array' AND event_types ? 'calculation.completed' FOR SHARE;\n RETURN FOUND AND d.issuer_id=k.created_by AND d.payload=jsonb_build_object('id',j.id,'type','calculation.completed','created_at',to_char(j.created_at AT TIME ZONE 'UTC','YYYY-MM-DD\"T\"HH24:MI:SS.US\"Z\"'),'data',j.job_snapshot) AND j.job_snapshot=public.technology_five_job_snapshot_v1(j) AND d.endpoint_snapshot=jsonb_build_object('url',e.endpoint_url,'secret_ciphertext',e.secret_ciphertext,'created_by',e.created_by);\nEXCEPTION WHEN SQLSTATE 'PT403' OR SQLSTATE 'PT404' THEN RETURN false;\nEND $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "acl": "{postgres=X/postgres,service_role=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "claim_technology_five_webhook_v1(uuid)",
+        "definition": "CREATE OR REPLACE FUNCTION public.claim_technology_five_webhook_v1(p_lease_token uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE d public.technology_five_webhook_outbox%ROWTYPE;j public.technology_five_jobs%ROWTYPE;\nBEGIN\n IF current_setting('role',true) IS DISTINCT FROM 'service_role' THEN RAISE EXCEPTION 'Trusted service caller required' USING ERRCODE='PT403';END IF;\n IF p_lease_token IS NULL THEN RAISE EXCEPTION 'Lease identity required';END IF;\n SELECT * INTO d FROM public.technology_five_webhook_outbox WHERE ((status IN('queued','failed') AND next_attempt_at<=clock_timestamp()) OR (status='leased' AND lease_until<=clock_timestamp())) ORDER BY next_attempt_at,id LIMIT 1 FOR UPDATE SKIP LOCKED;\n IF NOT FOUND THEN RETURN jsonb_build_object('status','missing');END IF;\n IF d.attempt_count>=8 THEN UPDATE public.technology_five_webhook_outbox SET status='dead_letter',lease_token=NULL,lease_until=NULL,last_error='Retry bound reached' WHERE id=d.id;UPDATE public.technology_five_webhook_attempts SET outcome='expired',finished_at=clock_timestamp() WHERE delivery_id=d.id AND outcome='leased';RETURN jsonb_build_object('status','dead_letter');END IF;\n UPDATE public.technology_five_webhook_attempts SET outcome='expired',finished_at=clock_timestamp() WHERE delivery_id=d.id AND outcome='leased';\n UPDATE public.technology_five_webhook_outbox SET status='leased',attempt_count=attempt_count+1,lease_token=p_lease_token,lease_until=clock_timestamp()+interval '1 minute' WHERE id=d.id RETURNING * INTO d;\n IF NOT public.check_technology_five_dispatch_v1(d.id,p_lease_token) THEN UPDATE public.technology_five_webhook_outbox SET status='cancelled',lease_token=NULL,lease_until=NULL,last_error='Current authority, publication or endpoint unavailable' WHERE id=d.id;RETURN jsonb_build_object('status','cancelled');END IF;\n INSERT INTO public.technology_five_webhook_attempts(delivery_id,attempt,lease_token) VALUES(d.id,d.attempt_count,p_lease_token);\n SELECT * INTO j FROM public.technology_five_jobs WHERE id=d.event_id;\n RETURN jsonb_build_object('status','claimed','id',d.id,'eventId',d.event_id,'leaseToken',p_lease_token,'payloadText',d.payload_text,'endpointUrl',d.endpoint_snapshot->>'url','secretCiphertext',d.endpoint_snapshot->>'secret_ciphertext','organizationId',d.organization_id,'issuerId',d.issuer_id,'catalogId',j.catalog_id,'version',j.technical_version);\nEND $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "acl": "{postgres=X/postgres,service_role=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "consume_native_business_api_quota_v1(uuid)",
+        "definition": "CREATE OR REPLACE FUNCTION public.consume_native_business_api_quota_v1(p_api_key_id uuid)\n RETURNS boolean\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog'\nAS $function$\nBEGIN\n IF encode(sha256(convert_to(pg_get_functiondef('public.consume_business_api_quota(uuid)'::regprocedure),'UTF8')),'hex')\n   IS DISTINCT FROM '51d70f9e682f87017cccd782b9cf944da4bf2790c8472c322472122b4e1f9a69' THEN\n  RAISE EXCEPTION 'NATIVE_QUOTA_ADOPTION_REQUIRED';\n END IF;\n RETURN public.consume_business_api_quota(p_api_key_id);\nEND $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "acl": "{postgres=X/postgres,service_role=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "consume_technology_five_embed_v1(uuid,uuid,text,text)",
+        "definition": "CREATE OR REPLACE FUNCTION public.consume_technology_five_embed_v1(p_grant_id uuid, p_request_id uuid, p_request_hash text, p_result_hash text)\n RETURNS text\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE g public.technology_five_embed_grants%ROWTYPE;k public.business_api_keys%ROWTYPE;\nBEGIN\n IF current_setting('role',true) IS DISTINCT FROM 'service_role' THEN RAISE EXCEPTION 'Trusted service caller required' USING ERRCODE='PT403';END IF;\n SELECT * INTO g FROM public.technology_five_embed_grants WHERE id=p_grant_id FOR UPDATE;IF NOT FOUND THEN RETURN 'denied';END IF;\n SELECT * INTO k FROM public.business_api_keys WHERE id=g.api_key_id FOR UPDATE;IF NOT FOUND OR jsonb_typeof(k.scopes) IS DISTINCT FROM 'array' THEN RETURN 'denied';END IF;\n PERFORM public.technology_five_require_publication_v1(g.catalog_id,g.technical_version);\n RETURN public.technology_five_embed_debit_core_v1(p_grant_id,p_request_id,p_request_hash,p_result_hash);\nEXCEPTION WHEN SQLSTATE 'PT404' THEN RETURN 'denied';\nEND $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "acl": "{postgres=X/postgres,service_role=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "finish_technology_five_webhook_v1(uuid,uuid,boolean,integer,text)",
+        "definition": "CREATE OR REPLACE FUNCTION public.finish_technology_five_webhook_v1(p_delivery_id uuid, p_lease_token uuid, p_delivered boolean, p_http_status integer, p_error text)\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE d public.technology_five_webhook_outbox%ROWTYPE;\nBEGIN\n IF current_setting('role',true) IS DISTINCT FROM 'service_role' THEN RAISE EXCEPTION 'Trusted service caller required' USING ERRCODE='PT403';END IF;\n IF p_delivered IS NULL OR (p_http_status IS NOT NULL AND p_http_status NOT BETWEEN 100 AND 599) OR (p_delivered AND (p_http_status IS NULL OR p_http_status NOT BETWEEN 200 AND 299)) THEN RAISE EXCEPTION 'Invalid dispatch result';END IF;\n SELECT * INTO d FROM public.technology_five_webhook_outbox WHERE id=p_delivery_id FOR UPDATE;\n IF NOT FOUND OR d.status<>'leased' OR d.lease_token IS DISTINCT FROM p_lease_token OR d.lease_until<=clock_timestamp() THEN RETURN false;END IF;\n UPDATE public.technology_five_webhook_attempts SET outcome=CASE WHEN p_delivered THEN 'delivered' ELSE 'failed' END,finished_at=clock_timestamp(),http_status=p_http_status,error=left(p_error,500) WHERE delivery_id=d.id AND lease_token=p_lease_token AND outcome='leased';IF NOT FOUND THEN RAISE EXCEPTION 'Durable attempt missing';END IF;\n UPDATE public.technology_five_webhook_outbox SET status=CASE WHEN p_delivered THEN 'delivered' WHEN attempt_count>=8 THEN 'dead_letter' ELSE 'failed' END,lease_token=NULL,lease_until=NULL,last_http_status=p_http_status,last_error=CASE WHEN p_delivered THEN NULL ELSE left(p_error,500) END,delivered_at=CASE WHEN p_delivered THEN clock_timestamp() ELSE NULL END,next_attempt_at=clock_timestamp()+make_interval(mins=>least(power(2,attempt_count-1)::integer,120)) WHERE id=d.id;\n RETURN true;\nEND $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "acl": "{postgres=X/postgres,service_role=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "read_technology_five_job_v1(uuid,text,uuid,uuid)",
+        "definition": "CREATE OR REPLACE FUNCTION public.read_technology_five_job_v1(p_api_key_id uuid, p_key_hash text, p_organization_id uuid, p_request_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE j public.technology_five_jobs%ROWTYPE;\nBEGIN\n IF current_setting('role',true) IS DISTINCT FROM 'service_role' THEN RAISE EXCEPTION 'Trusted service caller required' USING ERRCODE='PT403';END IF;\n PERFORM public.technology_five_key_authority_v1(p_api_key_id,p_key_hash,p_organization_id);\n SELECT * INTO j FROM public.technology_five_jobs WHERE api_key_id=p_api_key_id AND request_id=p_request_id;\n IF NOT FOUND THEN RETURN jsonb_build_object('status','missing');END IF;\n PERFORM public.technology_five_require_publication_v1(j.catalog_id,j.technical_version);\n IF j.organization_id IS DISTINCT FROM p_organization_id OR j.job_snapshot IS DISTINCT FROM public.technology_five_job_snapshot_v1(j) OR j.payload->'rows' IS DISTINCT FROM j.input_rows OR j.payload->'catalogId' IS DISTINCT FROM to_jsonb(j.catalog_id) OR j.payload->'version' IS DISTINCT FROM to_jsonb(j.technical_version) THEN RAISE EXCEPTION 'Immutable batch evidence differs';END IF;\n RETURN jsonb_build_object('status','completed','request_id',p_request_id,'job',j.job_snapshot);\nEND $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "acl": "{postgres=X/postgres,service_role=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "submit_technology_five_job_v1(uuid,text,uuid,uuid,integer,integer,jsonb,jsonb,uuid)",
+        "definition": "CREATE OR REPLACE FUNCTION public.submit_technology_five_job_v1(p_api_key_id uuid, p_key_hash text, p_organization_id uuid, p_request_id uuid, p_catalog_id integer, p_version integer, p_input_rows jsonb, p_output_rows jsonb, p_endpoint_id uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE issuer uuid;prior public.technology_five_jobs%ROWTYPE;j public.technology_five_jobs%ROWTYPE;payload jsonb;engine text;endpoint public.business_webhook_endpoints%ROWTYPE;event jsonb;duplicate boolean:=false;\nBEGIN\n IF current_setting('role',true) IS DISTINCT FROM 'service_role' THEN RAISE EXCEPTION 'Trusted service caller required' USING ERRCODE='PT403';END IF;\n IF current_setting('transaction_isolation')<>'read committed' OR p_request_id IS NULL OR jsonb_typeof(p_input_rows) IS DISTINCT FROM 'array' OR jsonb_array_length(p_input_rows) NOT BETWEEN 1 AND 100 OR EXISTS(SELECT FROM jsonb_array_elements(p_input_rows)r WHERE jsonb_typeof(r)<>'object') THEN RAISE EXCEPTION 'Invalid bounded batch';END IF;\n issuer:=public.technology_five_key_authority_v1(p_api_key_id,p_key_hash,p_organization_id);PERFORM public.technology_five_require_publication_v1(p_catalog_id,p_version);\n payload:=jsonb_build_object('catalogId',p_catalog_id,'version',p_version,'rows',p_input_rows,'webhookEndpointId',p_endpoint_id);\n SELECT * INTO prior FROM public.technology_five_jobs WHERE api_key_id=p_api_key_id AND request_id=p_request_id;\n IF FOUND THEN\n  IF prior.payload IS DISTINCT FROM payload OR prior.organization_id IS DISTINCT FROM p_organization_id OR prior.job_snapshot IS DISTINCT FROM public.technology_five_job_snapshot_v1(prior) THEN RAISE EXCEPTION 'Request identity conflicts with immutable batch' USING ERRCODE='PT409';END IF;j:=prior;duplicate:=true;\n ELSE\n  IF p_output_rows IS NULL THEN RETURN jsonb_build_object('status','missing');END IF;\n  IF jsonb_typeof(p_output_rows) IS DISTINCT FROM 'array' OR jsonb_array_length(p_output_rows)<>jsonb_array_length(p_input_rows) OR EXISTS(SELECT FROM jsonb_array_elements(p_output_rows) WITH ORDINALITY r(row,n) WHERE jsonb_typeof(row)<>'object' OR row->'index' IS DISTINCT FROM to_jsonb(n-1) OR jsonb_typeof(row->'ok') IS DISTINCT FROM 'boolean' OR (row->'ok'='true'::jsonb AND (jsonb_typeof(row->'result') IS DISTINCT FROM 'object' OR row->'result'->'catalogId' IS DISTINCT FROM to_jsonb(p_catalog_id) OR row->'result'->'version' IS DISTINCT FROM to_jsonb(p_version))) OR (row->'ok'='false'::jsonb AND jsonb_typeof(row->'error') IS DISTINCT FROM 'string')) THEN RAISE EXCEPTION 'Invalid deterministic result rows';END IF;\n  SELECT t.engine INTO engine FROM(VALUES(370,'technology.bandwidth'),(371,'technology.download-time'),(372,'technology.upload-time'),(373,'technology.data-transfer'),(386,'technology.base64-size'),(374,'technology.storage-conversion'),(377,'technology.aspect-ratio'),(378,'technology.resolution'),(379,'technology.dpi'),(382,'technology.power-supply'),(383,'technology.website-bandwidth'),(384,'technology.cloud-storage-cost'),(385,'technology.cloud-data-transfer-cost'),(369,'technology.cidr'),(375,'technology.raid-capacity'),(380,'technology.battery-runtime'),(381,'technology.ups-runtime'),(387,'technology.password-entropy'))t(id,engine) WHERE t.id=p_catalog_id;\n  IF EXISTS(SELECT FROM jsonb_array_elements(p_output_rows)r WHERE r->'ok'='true'::jsonb AND r->'result'->>'engineId' IS DISTINCT FROM engine) THEN RAISE EXCEPTION 'Exact engine differs';END IF;\n  IF p_endpoint_id IS NOT NULL THEN SELECT * INTO endpoint FROM public.business_webhook_endpoints WHERE id=p_endpoint_id AND organization_id=p_organization_id AND status='active' AND jsonb_typeof(event_types)='array' AND event_types ? 'calculation.completed' FOR SHARE;IF NOT FOUND THEN RAISE EXCEPTION 'Webhook endpoint unavailable' USING ERRCODE='PT403';END IF;END IF;\n END IF;\n -- Existing custom batch policy: one request unit per accepted POST, including\n -- duplicate POST; missing probe and GET recovery have no debit.\n IF NOT public.consume_native_business_api_quota_v1(p_api_key_id) THEN RAISE EXCEPTION 'API quota exceeded' USING ERRCODE='PT429';END IF;\n IF NOT duplicate THEN\n  j.id:=gen_random_uuid();j.api_key_id:=p_api_key_id;j.organization_id:=p_organization_id;j.issuer_id:=issuer;j.request_id:=p_request_id;j.catalog_id:=p_catalog_id;j.engine_id:=engine;j.technical_version:=p_version;j.payload:=payload;j.input_rows:=p_input_rows;j.output_rows:=p_output_rows;j.created_at:=now();j.job_snapshot:=public.technology_five_job_snapshot_v1(j);\n  INSERT INTO public.technology_five_jobs SELECT j.*;\n  IF p_endpoint_id IS NOT NULL THEN\n   event:=jsonb_build_object('id',j.id,'type','calculation.completed','created_at',to_char(j.created_at AT TIME ZONE 'UTC','YYYY-MM-DD\"T\"HH24:MI:SS.US\"Z\"'),'data',j.job_snapshot);\n   INSERT INTO public.technology_five_webhook_outbox(event_id,organization_id,api_key_id,issuer_id,endpoint_id,endpoint_snapshot,payload,payload_text) VALUES(j.id,p_organization_id,p_api_key_id,issuer,p_endpoint_id,jsonb_build_object('url',endpoint.endpoint_url,'secret_ciphertext',endpoint.secret_ciphertext,'created_by',endpoint.created_by),event,event::text);\n  END IF;\n END IF;\n RETURN jsonb_build_object('status','completed','request_id',p_request_id,'duplicate',duplicate,'job',j.job_snapshot);\nEND $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog, public"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "technology_five_embed_debit_core_v1(uuid,uuid,text,text)",
+        "definition": "CREATE OR REPLACE FUNCTION public.technology_five_embed_debit_core_v1(p_grant_id uuid, p_request_id uuid, p_request_hash text, p_result_hash text)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog', 'public'\nAS $function$\nDECLARE g public.technology_five_embed_grants%ROWTYPE; k public.business_api_keys%ROWTYPE; prior public.technology_five_embed_usage%ROWTYPE;\n attempt_count bigint; owner_id uuid; issuer_role text; owner_plan text; issuer_plan text;\nBEGIN\n IF current_setting('transaction_isolation')<>'read committed' THEN RAISE EXCEPTION 'READ COMMITTED required'; END IF;\n IF p_request_id IS NULL OR p_request_hash !~ '^[a-f0-9]{64}$' OR p_result_hash !~ '^[a-f0-9]{64}$' OR p_request_hash IS NULL OR p_result_hash IS NULL THEN RETURN 'invalid'; END IF;\n -- Every redemption/retry rechecks current persisted authority, even if already metered.\n SELECT * INTO g FROM public.technology_five_embed_grants WHERE id=p_grant_id FOR UPDATE;\n IF NOT FOUND OR g.revoked_at IS NOT NULL OR g.expires_at<=clock_timestamp() OR g.issued_at>clock_timestamp() THEN RETURN 'denied'; END IF;\n SELECT * INTO k FROM public.business_api_keys WHERE id=g.api_key_id FOR UPDATE;\n IF NOT FOUND OR k.status<>'active' OR k.organization_id<>g.organization_id OR k.created_by<>g.issuer_id OR NOT (k.scopes ? 'calculations:run') THEN RETURN 'denied'; END IF;\n SELECT owner_user_id INTO owner_id FROM public.organizations WHERE id=g.organization_id FOR SHARE;\n IF NOT FOUND THEN RETURN 'denied'; END IF;\n SELECT role INTO issuer_role FROM public.organization_members WHERE organization_id=g.organization_id AND user_id=g.issuer_id FOR SHARE;\n IF NOT FOUND OR issuer_role NOT IN ('owner','admin') OR (issuer_role='owner' AND owner_id<>g.issuer_id) THEN RETURN 'denied'; END IF;\n -- Match quota key->profile lock order; Business authority is fenced through debit/audit commit.\n SELECT plan INTO issuer_plan FROM public.profiles WHERE id=g.issuer_id FOR SHARE;\n SELECT plan INTO owner_plan FROM public.profiles WHERE id=owner_id FOR SHARE;\n IF issuer_plan IS DISTINCT FROM 'business' OR owner_plan IS DISTINCT FROM 'business' THEN RETURN 'denied'; END IF;\n SELECT count(*) INTO attempt_count FROM public.technology_five_embed_attempts WHERE api_key_id=g.api_key_id AND created_at>=clock_timestamp()-interval '1 minute';\n IF attempt_count>=k.rate_limit_per_minute THEN RETURN 'limited'; END IF;\n INSERT INTO public.technology_five_embed_attempts(grant_id,organization_id,issuer_id,api_key_id,request_id) VALUES(g.id,g.organization_id,g.issuer_id,g.api_key_id,p_request_id);\n SELECT * INTO prior FROM public.technology_five_embed_usage WHERE grant_id=g.id AND request_id=p_request_id;\n IF FOUND THEN\n  IF prior.request_hash=p_request_hash AND prior.result_hash=p_result_hash THEN RETURN 'replayed'; END IF;\n  RETURN 'conflict';\n END IF;\n IF NOT public.consume_native_business_api_quota_v1(g.api_key_id) THEN RETURN 'limited'; END IF;\n INSERT INTO public.technology_five_embed_usage(grant_id,request_id,organization_id,issuer_id,api_key_id,catalog_id,engine_id,technical_version,request_hash,result_hash)\n VALUES(g.id,p_request_id,g.organization_id,g.issuer_id,g.api_key_id,g.catalog_id,g.engine_id,g.technical_version,p_request_hash,p_result_hash);\n RETURN 'accepted';\nEND $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "technology_five_embed_identity_v1()",
+        "definition": "CREATE OR REPLACE FUNCTION public.technology_five_embed_identity_v1()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog'\nAS $function$\nBEGIN\n IF TG_TABLE_NAME<>'technology_five_embed_grants' OR TG_OP='DELETE' THEN RAISE EXCEPTION 'Immutable native embed audit';END IF;\n IF (to_jsonb(NEW)-'revoked_at') IS DISTINCT FROM (to_jsonb(OLD)-'revoked_at') THEN RAISE EXCEPTION 'Immutable native grant identity';END IF;\n IF OLD.revoked_at IS NOT NULL AND NEW.revoked_at IS DISTINCT FROM OLD.revoked_at THEN RAISE EXCEPTION 'Native grant revocation is monotonic';END IF;RETURN NEW;\nEND $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "technology_five_evidence_identity_v1()",
+        "definition": "CREATE OR REPLACE FUNCTION public.technology_five_evidence_identity_v1()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE allowed text[];\nBEGIN\n IF TG_OP='DELETE' OR TG_TABLE_NAME='technology_five_jobs' THEN RAISE EXCEPTION 'Immutable native job evidence';END IF;\n IF TG_TABLE_NAME='technology_five_webhook_outbox' THEN allowed:=ARRAY['status','attempt_count','next_attempt_at','lease_token','lease_until','last_error','last_http_status','delivered_at'];\n ELSE allowed:=ARRAY['finished_at','outcome','http_status','error'];IF OLD.outcome<>'leased' AND NEW IS DISTINCT FROM OLD THEN RAISE EXCEPTION 'Immutable completed native attempt';END IF;END IF;\n IF (to_jsonb(NEW)-allowed) IS DISTINCT FROM (to_jsonb(OLD)-allowed) THEN RAISE EXCEPTION 'Immutable native evidence identity';END IF;RETURN NEW;\nEND $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "i",
+        "leakproof": false,
+        "signature": "technology_five_job_snapshot_v1(technology_five_jobs)",
+        "definition": "CREATE OR REPLACE FUNCTION public.technology_five_job_snapshot_v1(j technology_five_jobs)\n RETURNS jsonb\n LANGUAGE sql\n IMMUTABLE SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$ SELECT jsonb_build_object('id',j.id,'catalog_id',j.catalog_id,'engine_id',j.engine_id,'technical_version',j.technical_version,'status','completed','input_rows',j.input_rows,'output_rows',j.output_rows) $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "technology_five_key_authority_v1(uuid,text,uuid)",
+        "definition": "CREATE OR REPLACE FUNCTION public.technology_five_key_authority_v1(p_key uuid, p_hash text, p_org uuid)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE k public.business_api_keys%ROWTYPE;owner_id uuid;member_role text;owner_plan text;issuer_plan text;\nBEGIN\n SELECT * INTO k FROM public.business_api_keys WHERE id=p_key FOR UPDATE;\n IF NOT FOUND OR k.key_hash IS DISTINCT FROM p_hash OR k.organization_id IS DISTINCT FROM p_org OR k.status IS DISTINCT FROM 'active' OR jsonb_typeof(k.scopes) IS DISTINCT FROM 'array' OR NOT(k.scopes ? 'calculations:batch') THEN RAISE EXCEPTION 'Batch authority unavailable' USING ERRCODE='PT403'; END IF;\n SELECT owner_user_id INTO owner_id FROM public.organizations WHERE id=p_org FOR SHARE;IF NOT FOUND THEN RAISE EXCEPTION 'Organization unavailable' USING ERRCODE='PT403';END IF;\n SELECT role INTO member_role FROM public.organization_members WHERE organization_id=p_org AND user_id=k.created_by FOR SHARE;\n IF NOT FOUND OR member_role NOT IN ('owner','admin') OR (member_role='owner' AND owner_id<>k.created_by) THEN RAISE EXCEPTION 'Issuer role unavailable' USING ERRCODE='PT403';END IF;\n SELECT plan INTO issuer_plan FROM public.profiles WHERE id=k.created_by FOR SHARE; SELECT plan INTO owner_plan FROM public.profiles WHERE id=owner_id FOR SHARE;\n IF issuer_plan IS DISTINCT FROM 'business' OR owner_plan IS DISTINCT FROM 'business' THEN RAISE EXCEPTION 'Business authority unavailable' USING ERRCODE='PT403';END IF;RETURN k.created_by;\nEND $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "technology_five_publication_snapshot_v1(text,text,integer)",
+        "definition": "CREATE OR REPLACE FUNCTION public.technology_five_publication_snapshot_v1(p_engine text, p_slug text, p_version integer)\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nBEGIN PERFORM id FROM public.calculator_catalog_admin WHERE calculator_key=p_engine AND slug=p_slug AND version=p_version AND lifecycle='published' FOR SHARE; RETURN FOUND; END $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "technology_five_require_publication_v1(integer,integer)",
+        "definition": "CREATE OR REPLACE FUNCTION public.technology_five_require_publication_v1(p_catalog integer, p_version integer)\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE engine text;slug text;\nBEGIN\n SELECT t.engine,t.slug INTO engine,slug FROM (VALUES(370,'technology.bandwidth','bandwidth-calculator',1),(371,'technology.download-time','download-time-calculator',1),(372,'technology.upload-time','upload-time-calculator',1),(373,'technology.data-transfer','data-transfer-calculator',1),(386,'technology.base64-size','base64-size-calculator',1),(374,'technology.storage-conversion','storage-conversion-calculator',1),(377,'technology.aspect-ratio','aspect-ratio-calculator',1),(378,'technology.resolution','resolution-calculator',1),(379,'technology.dpi','dpi-calculator',1),(382,'technology.power-supply','power-supply-calculator',1),(383,'technology.website-bandwidth','website-bandwidth-calculator',2),(384,'technology.cloud-storage-cost','cloud-storage-cost-calculator',1),(385,'technology.cloud-data-transfer-cost','cloud-data-transfer-cost-calculator',1),(369,'technology.cidr','cidr-calculator',1),(375,'technology.raid-capacity','raid-capacity-calculator',1),(380,'technology.battery-runtime','battery-runtime-calculator',1),(381,'technology.ups-runtime','ups-runtime-calculator',1),(387,'technology.password-entropy','password-entropy-calculator',1))t(catalog,engine,slug,version) WHERE t.catalog=p_catalog AND t.version=p_version;\n IF NOT FOUND OR NOT public.technology_five_publication_snapshot_v1(engine,slug,p_version) THEN RAISE EXCEPTION 'Exact publication unavailable' USING ERRCODE='PT404';END IF;\nEND $function$\n",
+        "securityDefiner": true
+      }
+    ]
+  },
+  "postimage": {
+    "tables": [
+      {
+        "acl": "{postgres=arwdDxtm/postgres}",
+        "rls": true,
+        "name": "technology_five_embed_attempts",
+        "owner": "postgres",
+        "columns": [
+          [
+            "id",
+            "uuid",
+            true,
+            "gen_random_uuid()",
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "grant_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "organization_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "issuer_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "api_key_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "request_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "created_at",
+            "timestamp with time zone",
+            true,
+            "clock_timestamp()",
+            null,
+            "",
+            "",
+            "0"
+          ]
+        ],
+        "indexes": [
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_embed_attempts_key_window",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": false,
+            "primary": false,
+            "definition": "CREATE INDEX technology_five_embed_attempts_key_window ON public.technology_five_embed_attempts USING btree (api_key_id, created_at)",
+            "replicaIdentity": false
+          },
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_embed_attempts_pkey",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": true,
+            "primary": true,
+            "definition": "CREATE UNIQUE INDEX technology_five_embed_attempts_pkey ON public.technology_five_embed_attempts USING btree (id)",
+            "replicaIdentity": false
+          }
+        ],
+        "options": null,
+        "forceRls": false,
+        "policies": null,
+        "triggers": [
+          [
+            "CREATE TRIGGER technology_five_attempt_immutable BEFORE DELETE OR UPDATE ON public.technology_five_embed_attempts FOR EACH ROW EXECUTE FUNCTION technology_five_embed_identity_v1()",
+            "O",
+            false,
+            false
+          ]
+        ],
+        "constraints": [
+          [
+            "technology_five_embed_attempts_grant_id_fkey",
+            "FOREIGN KEY (grant_id) REFERENCES technology_five_embed_grants(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_attempts_pkey",
+            "PRIMARY KEY (id)",
+            true,
+            false,
+            false
+          ]
+        ],
+        "replicaIdentity": "d"
+      },
+      {
+        "acl": "{postgres=arwdDxtm/postgres,service_role=ar/postgres}",
+        "rls": true,
+        "name": "technology_five_embed_grants",
+        "owner": "postgres",
+        "columns": [
+          [
+            "id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "organization_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "issuer_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "api_key_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "token_hash",
+            "text",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "allowed_origin",
+            "text",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "catalog_id",
+            "integer",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "engine_id",
+            "text",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "technical_version",
+            "integer",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "issued_at",
+            "timestamp with time zone",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "expires_at",
+            "timestamp with time zone",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "revoked_at",
+            "timestamp with time zone",
+            false,
+            null,
+            "{service_role=w/postgres}",
+            "",
+            "",
+            "0"
+          ]
+        ],
+        "indexes": [
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_embed_grants_pkey",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": true,
+            "primary": true,
+            "definition": "CREATE UNIQUE INDEX technology_five_embed_grants_pkey ON public.technology_five_embed_grants USING btree (id)",
+            "replicaIdentity": false
+          }
+        ],
+        "options": null,
+        "forceRls": false,
+        "policies": null,
+        "triggers": [
+          [
+            "CREATE TRIGGER technology_five_grant_identity BEFORE DELETE OR UPDATE ON public.technology_five_embed_grants FOR EACH ROW EXECUTE FUNCTION technology_five_embed_identity_v1()",
+            "O",
+            false,
+            false
+          ]
+        ],
+        "constraints": [
+          [
+            "technology_five_embed_grants_api_key_id_fkey",
+            "FOREIGN KEY (api_key_id) REFERENCES business_api_keys(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_grants_check1",
+            "CHECK (((expires_at > issued_at) AND (expires_at <= (issued_at + '01:00:00'::interval))))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_grants_exact_native_tuple_check",
+            "CHECK ((((((((((((((((((((((catalog_id = 370) AND (engine_id = 'technology.bandwidth'::text) AND (technical_version = 1)) OR ((catalog_id = 371) AND (engine_id = 'technology.download-time'::text) AND (technical_version = 1))) OR ((catalog_id = 372) AND (engine_id = 'technology.upload-time'::text) AND (technical_version = 1))) OR ((catalog_id = 373) AND (engine_id = 'technology.data-transfer'::text) AND (technical_version = 1))) OR ((catalog_id = 386) AND (engine_id = 'technology.base64-size'::text) AND (technical_version = 1))) OR ((catalog_id = 374) AND (engine_id = 'technology.storage-conversion'::text) AND (technical_version = 1))) OR ((catalog_id = 377) AND (engine_id = 'technology.aspect-ratio'::text) AND (technical_version = 1))) OR ((catalog_id = 378) AND (engine_id = 'technology.resolution'::text) AND (technical_version = 1))) OR ((catalog_id = 379) AND (engine_id = 'technology.dpi'::text) AND (technical_version = 1))) OR ((catalog_id = 382) AND (engine_id = 'technology.power-supply'::text) AND (technical_version = 1))) OR ((catalog_id = 383) AND (engine_id = 'technology.website-bandwidth'::text) AND (technical_version = 2))) OR ((catalog_id = 384) AND (engine_id = 'technology.cloud-storage-cost'::text) AND (technical_version = 1))) OR ((catalog_id = 385) AND (engine_id = 'technology.cloud-data-transfer-cost'::text) AND (technical_version = 1))) OR ((catalog_id = 369) AND (engine_id = 'technology.cidr'::text) AND (technical_version = 1))) OR ((catalog_id = 375) AND (engine_id = 'technology.raid-capacity'::text) AND (technical_version = 1))) OR ((catalog_id = 380) AND (engine_id = 'technology.battery-runtime'::text) AND (technical_version = 1))) OR ((catalog_id = 381) AND (engine_id = 'technology.ups-runtime'::text) AND (technical_version = 1))) OR ((catalog_id = 387) AND (engine_id = 'technology.password-entropy'::text) AND (technical_version = 1))) OR ((catalog_id = 368) AND (engine_id = 'technology.ip-subnet'::text) AND (technical_version = 1))) OR ((catalog_id = 376) AND (engine_id = 'technology.screen-ppi'::text) AND (technical_version = 1))))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_grants_issuer_id_fkey",
+            "FOREIGN KEY (issuer_id) REFERENCES profiles(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_grants_organization_id_fkey",
+            "FOREIGN KEY (organization_id) REFERENCES organizations(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_grants_pkey",
+            "PRIMARY KEY (id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_grants_token_hash_check",
+            "CHECK ((token_hash ~ '^[a-f0-9]{64}$'::text))",
+            true,
+            false,
+            false
+          ]
+        ],
+        "replicaIdentity": "d"
+      },
+      {
+        "acl": "{postgres=arwdDxtm/postgres}",
+        "rls": true,
+        "name": "technology_five_embed_usage",
+        "owner": "postgres",
+        "columns": [
+          [
+            "grant_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "request_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "organization_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "issuer_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "api_key_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "catalog_id",
+            "integer",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "engine_id",
+            "text",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "technical_version",
+            "integer",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "request_hash",
+            "text",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "result_hash",
+            "text",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "created_at",
+            "timestamp with time zone",
+            true,
+            "now()",
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "units",
+            "integer",
+            true,
+            "1",
+            null,
+            "",
+            "",
+            "0"
+          ]
+        ],
+        "indexes": [
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_embed_usage_pkey",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": true,
+            "primary": true,
+            "definition": "CREATE UNIQUE INDEX technology_five_embed_usage_pkey ON public.technology_five_embed_usage USING btree (grant_id, request_id)",
+            "replicaIdentity": false
+          }
+        ],
+        "options": null,
+        "forceRls": false,
+        "policies": null,
+        "triggers": [
+          [
+            "CREATE TRIGGER technology_five_usage_immutable BEFORE DELETE OR UPDATE ON public.technology_five_embed_usage FOR EACH ROW EXECUTE FUNCTION technology_five_embed_identity_v1()",
+            "O",
+            false,
+            false
+          ]
+        ],
+        "constraints": [
+          [
+            "technology_five_embed_usage_api_key_id_fkey",
+            "FOREIGN KEY (api_key_id) REFERENCES business_api_keys(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_usage_exact_native_tuple_check",
+            "CHECK ((((((((((((((((((((((catalog_id = 370) AND (engine_id = 'technology.bandwidth'::text) AND (technical_version = 1)) OR ((catalog_id = 371) AND (engine_id = 'technology.download-time'::text) AND (technical_version = 1))) OR ((catalog_id = 372) AND (engine_id = 'technology.upload-time'::text) AND (technical_version = 1))) OR ((catalog_id = 373) AND (engine_id = 'technology.data-transfer'::text) AND (technical_version = 1))) OR ((catalog_id = 386) AND (engine_id = 'technology.base64-size'::text) AND (technical_version = 1))) OR ((catalog_id = 374) AND (engine_id = 'technology.storage-conversion'::text) AND (technical_version = 1))) OR ((catalog_id = 377) AND (engine_id = 'technology.aspect-ratio'::text) AND (technical_version = 1))) OR ((catalog_id = 378) AND (engine_id = 'technology.resolution'::text) AND (technical_version = 1))) OR ((catalog_id = 379) AND (engine_id = 'technology.dpi'::text) AND (technical_version = 1))) OR ((catalog_id = 382) AND (engine_id = 'technology.power-supply'::text) AND (technical_version = 1))) OR ((catalog_id = 383) AND (engine_id = 'technology.website-bandwidth'::text) AND (technical_version = 2))) OR ((catalog_id = 384) AND (engine_id = 'technology.cloud-storage-cost'::text) AND (technical_version = 1))) OR ((catalog_id = 385) AND (engine_id = 'technology.cloud-data-transfer-cost'::text) AND (technical_version = 1))) OR ((catalog_id = 369) AND (engine_id = 'technology.cidr'::text) AND (technical_version = 1))) OR ((catalog_id = 375) AND (engine_id = 'technology.raid-capacity'::text) AND (technical_version = 1))) OR ((catalog_id = 380) AND (engine_id = 'technology.battery-runtime'::text) AND (technical_version = 1))) OR ((catalog_id = 381) AND (engine_id = 'technology.ups-runtime'::text) AND (technical_version = 1))) OR ((catalog_id = 387) AND (engine_id = 'technology.password-entropy'::text) AND (technical_version = 1))) OR ((catalog_id = 368) AND (engine_id = 'technology.ip-subnet'::text) AND (technical_version = 1))) OR ((catalog_id = 376) AND (engine_id = 'technology.screen-ppi'::text) AND (technical_version = 1))))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_usage_grant_id_fkey",
+            "FOREIGN KEY (grant_id) REFERENCES technology_five_embed_grants(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_usage_issuer_id_fkey",
+            "FOREIGN KEY (issuer_id) REFERENCES profiles(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_usage_organization_id_fkey",
+            "FOREIGN KEY (organization_id) REFERENCES organizations(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_usage_pkey",
+            "PRIMARY KEY (grant_id, request_id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_usage_request_hash_check",
+            "CHECK ((request_hash ~ '^[a-f0-9]{64}$'::text))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_usage_result_hash_check",
+            "CHECK ((result_hash ~ '^[a-f0-9]{64}$'::text))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_embed_usage_units_check",
+            "CHECK ((units = 1))",
+            true,
+            false,
+            false
+          ]
+        ],
+        "replicaIdentity": "d"
+      },
+      {
+        "acl": "{postgres=arwdDxtm/postgres}",
+        "rls": true,
+        "name": "technology_five_jobs",
+        "owner": "postgres",
+        "columns": [
+          [
+            "id",
+            "uuid",
+            true,
+            "gen_random_uuid()",
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "api_key_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "organization_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "issuer_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "request_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "catalog_id",
+            "integer",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "engine_id",
+            "text",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "technical_version",
+            "integer",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "payload",
+            "jsonb",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "input_rows",
+            "jsonb",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "output_rows",
+            "jsonb",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "job_snapshot",
+            "jsonb",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "created_at",
+            "timestamp with time zone",
+            true,
+            "now()",
+            null,
+            "",
+            "",
+            "0"
+          ]
+        ],
+        "indexes": [
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_jobs_api_key_id_request_id_key",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": true,
+            "primary": false,
+            "definition": "CREATE UNIQUE INDEX technology_five_jobs_api_key_id_request_id_key ON public.technology_five_jobs USING btree (api_key_id, request_id)",
+            "replicaIdentity": false
+          },
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_jobs_pkey",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": true,
+            "primary": true,
+            "definition": "CREATE UNIQUE INDEX technology_five_jobs_pkey ON public.technology_five_jobs USING btree (id)",
+            "replicaIdentity": false
+          }
+        ],
+        "options": null,
+        "forceRls": false,
+        "policies": null,
+        "triggers": [
+          [
+            "CREATE TRIGGER technology_five_job_immutable BEFORE DELETE OR UPDATE ON public.technology_five_jobs FOR EACH ROW EXECUTE FUNCTION technology_five_evidence_identity_v1()",
+            "O",
+            false,
+            false
+          ]
+        ],
+        "constraints": [
+          [
+            "technology_five_jobs_api_key_id_fkey",
+            "FOREIGN KEY (api_key_id) REFERENCES business_api_keys(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_jobs_api_key_id_request_id_key",
+            "UNIQUE (api_key_id, request_id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_jobs_exact_native_tuple_check",
+            "CHECK ((((((((((((((((((((((catalog_id = 370) AND (engine_id = 'technology.bandwidth'::text) AND (technical_version = 1)) OR ((catalog_id = 371) AND (engine_id = 'technology.download-time'::text) AND (technical_version = 1))) OR ((catalog_id = 372) AND (engine_id = 'technology.upload-time'::text) AND (technical_version = 1))) OR ((catalog_id = 373) AND (engine_id = 'technology.data-transfer'::text) AND (technical_version = 1))) OR ((catalog_id = 386) AND (engine_id = 'technology.base64-size'::text) AND (technical_version = 1))) OR ((catalog_id = 374) AND (engine_id = 'technology.storage-conversion'::text) AND (technical_version = 1))) OR ((catalog_id = 377) AND (engine_id = 'technology.aspect-ratio'::text) AND (technical_version = 1))) OR ((catalog_id = 378) AND (engine_id = 'technology.resolution'::text) AND (technical_version = 1))) OR ((catalog_id = 379) AND (engine_id = 'technology.dpi'::text) AND (technical_version = 1))) OR ((catalog_id = 382) AND (engine_id = 'technology.power-supply'::text) AND (technical_version = 1))) OR ((catalog_id = 383) AND (engine_id = 'technology.website-bandwidth'::text) AND (technical_version = 2))) OR ((catalog_id = 384) AND (engine_id = 'technology.cloud-storage-cost'::text) AND (technical_version = 1))) OR ((catalog_id = 385) AND (engine_id = 'technology.cloud-data-transfer-cost'::text) AND (technical_version = 1))) OR ((catalog_id = 369) AND (engine_id = 'technology.cidr'::text) AND (technical_version = 1))) OR ((catalog_id = 375) AND (engine_id = 'technology.raid-capacity'::text) AND (technical_version = 1))) OR ((catalog_id = 380) AND (engine_id = 'technology.battery-runtime'::text) AND (technical_version = 1))) OR ((catalog_id = 381) AND (engine_id = 'technology.ups-runtime'::text) AND (technical_version = 1))) OR ((catalog_id = 387) AND (engine_id = 'technology.password-entropy'::text) AND (technical_version = 1))) OR ((catalog_id = 368) AND (engine_id = 'technology.ip-subnet'::text) AND (technical_version = 1))) OR ((catalog_id = 376) AND (engine_id = 'technology.screen-ppi'::text) AND (technical_version = 1))))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_jobs_input_rows_check",
+            "CHECK (((jsonb_typeof(input_rows) = 'array'::text) AND ((jsonb_array_length(input_rows) >= 1) AND (jsonb_array_length(input_rows) <= 100))))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_jobs_issuer_id_fkey",
+            "FOREIGN KEY (issuer_id) REFERENCES profiles(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_jobs_organization_id_fkey",
+            "FOREIGN KEY (organization_id) REFERENCES organizations(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_jobs_pkey",
+            "PRIMARY KEY (id)",
+            true,
+            false,
+            false
+          ]
+        ],
+        "replicaIdentity": "d"
+      },
+      {
+        "acl": "{postgres=arwdDxtm/postgres}",
+        "rls": true,
+        "name": "technology_five_webhook_attempts",
+        "owner": "postgres",
+        "columns": [
+          [
+            "id",
+            "uuid",
+            true,
+            "gen_random_uuid()",
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "delivery_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "attempt",
+            "integer",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "lease_token",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "started_at",
+            "timestamp with time zone",
+            true,
+            "clock_timestamp()",
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "finished_at",
+            "timestamp with time zone",
+            false,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "outcome",
+            "text",
+            true,
+            "'leased'::text",
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "http_status",
+            "integer",
+            false,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "error",
+            "text",
+            false,
+            null,
+            null,
+            "",
+            "",
+            "100"
+          ]
+        ],
+        "indexes": [
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_webhook_attempts_delivery_id_attempt_key",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": true,
+            "primary": false,
+            "definition": "CREATE UNIQUE INDEX technology_five_webhook_attempts_delivery_id_attempt_key ON public.technology_five_webhook_attempts USING btree (delivery_id, attempt)",
+            "replicaIdentity": false
+          },
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_webhook_attempts_lease_token_key",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": true,
+            "primary": false,
+            "definition": "CREATE UNIQUE INDEX technology_five_webhook_attempts_lease_token_key ON public.technology_five_webhook_attempts USING btree (lease_token)",
+            "replicaIdentity": false
+          },
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_webhook_attempts_pkey",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": true,
+            "primary": true,
+            "definition": "CREATE UNIQUE INDEX technology_five_webhook_attempts_pkey ON public.technology_five_webhook_attempts USING btree (id)",
+            "replicaIdentity": false
+          }
+        ],
+        "options": null,
+        "forceRls": false,
+        "policies": null,
+        "triggers": [
+          [
+            "CREATE TRIGGER technology_five_attempt_identity BEFORE DELETE OR UPDATE ON public.technology_five_webhook_attempts FOR EACH ROW EXECUTE FUNCTION technology_five_evidence_identity_v1()",
+            "O",
+            false,
+            false
+          ]
+        ],
+        "constraints": [
+          [
+            "technology_five_webhook_attempts_attempt_check",
+            "CHECK (((attempt >= 1) AND (attempt <= 8)))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_attempts_delivery_id_attempt_key",
+            "UNIQUE (delivery_id, attempt)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_attempts_delivery_id_fkey",
+            "FOREIGN KEY (delivery_id) REFERENCES technology_five_webhook_outbox(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_attempts_lease_token_key",
+            "UNIQUE (lease_token)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_attempts_outcome_check",
+            "CHECK ((outcome = ANY (ARRAY['leased'::text, 'expired'::text, 'delivered'::text, 'failed'::text])))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_attempts_pkey",
+            "PRIMARY KEY (id)",
+            true,
+            false,
+            false
+          ]
+        ],
+        "replicaIdentity": "d"
+      },
+      {
+        "acl": "{postgres=arwdDxtm/postgres}",
+        "rls": true,
+        "name": "technology_five_webhook_outbox",
+        "owner": "postgres",
+        "columns": [
+          [
+            "id",
+            "uuid",
+            true,
+            "gen_random_uuid()",
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "event_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "organization_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "api_key_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "issuer_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "endpoint_id",
+            "uuid",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "endpoint_snapshot",
+            "jsonb",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "payload",
+            "jsonb",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "payload_text",
+            "text",
+            true,
+            null,
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "status",
+            "text",
+            true,
+            "'queued'::text",
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "attempt_count",
+            "integer",
+            true,
+            "0",
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "next_attempt_at",
+            "timestamp with time zone",
+            true,
+            "now()",
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "lease_token",
+            "uuid",
+            false,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "lease_until",
+            "timestamp with time zone",
+            false,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "last_error",
+            "text",
+            false,
+            null,
+            null,
+            "",
+            "",
+            "100"
+          ],
+          [
+            "last_http_status",
+            "integer",
+            false,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ],
+          [
+            "delivered_at",
+            "timestamp with time zone",
+            false,
+            null,
+            null,
+            "",
+            "",
+            "0"
+          ]
+        ],
+        "indexes": [
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_webhook_due",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": false,
+            "primary": false,
+            "definition": "CREATE INDEX technology_five_webhook_due ON public.technology_five_webhook_outbox USING btree (status, next_attempt_at)",
+            "replicaIdentity": false
+          },
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_webhook_outbox_event_id_key",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": true,
+            "primary": false,
+            "definition": "CREATE UNIQUE INDEX technology_five_webhook_outbox_event_id_key ON public.technology_five_webhook_outbox USING btree (event_id)",
+            "replicaIdentity": false
+          },
+          {
+            "acl": null,
+            "live": true,
+            "name": "technology_five_webhook_outbox_pkey",
+            "owner": "postgres",
+            "ready": true,
+            "valid": true,
+            "unique": true,
+            "primary": true,
+            "definition": "CREATE UNIQUE INDEX technology_five_webhook_outbox_pkey ON public.technology_five_webhook_outbox USING btree (id)",
+            "replicaIdentity": false
+          }
+        ],
+        "options": null,
+        "forceRls": false,
+        "policies": null,
+        "triggers": [
+          [
+            "CREATE TRIGGER technology_five_outbox_identity BEFORE DELETE OR UPDATE ON public.technology_five_webhook_outbox FOR EACH ROW EXECUTE FUNCTION technology_five_evidence_identity_v1()",
+            "O",
+            false,
+            false
+          ]
+        ],
+        "constraints": [
+          [
+            "technology_five_webhook_outbox_api_key_id_fkey",
+            "FOREIGN KEY (api_key_id) REFERENCES business_api_keys(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_outbox_attempt_count_check",
+            "CHECK (((attempt_count >= 0) AND (attempt_count <= 8)))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_outbox_check",
+            "CHECK ((payload_text = (payload)::text))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_outbox_check1",
+            "CHECK (((status = 'leased'::text) = ((lease_token IS NOT NULL) AND (lease_until IS NOT NULL))))",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_outbox_endpoint_id_fkey",
+            "FOREIGN KEY (endpoint_id) REFERENCES business_webhook_endpoints(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_outbox_event_id_fkey",
+            "FOREIGN KEY (event_id) REFERENCES technology_five_jobs(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_outbox_event_id_key",
+            "UNIQUE (event_id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_outbox_issuer_id_fkey",
+            "FOREIGN KEY (issuer_id) REFERENCES profiles(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_outbox_organization_id_fkey",
+            "FOREIGN KEY (organization_id) REFERENCES organizations(id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_outbox_pkey",
+            "PRIMARY KEY (id)",
+            true,
+            false,
+            false
+          ],
+          [
+            "technology_five_webhook_outbox_status_check",
+            "CHECK ((status = ANY (ARRAY['queued'::text, 'leased'::text, 'failed'::text, 'delivered'::text, 'dead_letter'::text, 'cancelled'::text])))",
+            true,
+            false,
+            false
+          ]
+        ],
+        "replicaIdentity": "d"
+      }
+    ],
+    "functions": [
+      {
+        "acl": "{postgres=X/postgres,service_role=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "check_technology_five_dispatch_v1(uuid,uuid)",
+        "definition": "CREATE OR REPLACE FUNCTION public.check_technology_five_dispatch_v1(p_delivery_id uuid, p_lease_token uuid)\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE d public.technology_five_webhook_outbox%ROWTYPE;k public.business_api_keys%ROWTYPE;e public.business_webhook_endpoints%ROWTYPE;j public.technology_five_jobs%ROWTYPE;\nBEGIN\n IF current_setting('role',true) IS DISTINCT FROM 'service_role' THEN RAISE EXCEPTION 'Trusted service caller required' USING ERRCODE='PT403';END IF;\n SELECT * INTO d FROM public.technology_five_webhook_outbox WHERE id=p_delivery_id FOR UPDATE;\n IF NOT FOUND OR d.status<>'leased' OR d.lease_token IS DISTINCT FROM p_lease_token OR d.lease_until<=clock_timestamp() THEN RETURN false;END IF;\n SELECT * INTO k FROM public.business_api_keys WHERE id=d.api_key_id;\n PERFORM public.technology_five_key_authority_v1(k.id,k.key_hash,d.organization_id);SELECT * INTO j FROM public.technology_five_jobs WHERE id=d.event_id;PERFORM public.technology_five_require_publication_v1(j.catalog_id,j.technical_version);\n SELECT * INTO e FROM public.business_webhook_endpoints WHERE id=d.endpoint_id AND organization_id=d.organization_id AND status='active' AND jsonb_typeof(event_types)='array' AND event_types ? 'calculation.completed' FOR SHARE;\n RETURN FOUND AND d.issuer_id=k.created_by AND d.payload=jsonb_build_object('id',j.id,'type','calculation.completed','created_at',to_char(j.created_at AT TIME ZONE 'UTC','YYYY-MM-DD\"T\"HH24:MI:SS.US\"Z\"'),'data',j.job_snapshot) AND j.job_snapshot=public.technology_five_job_snapshot_v1(j) AND d.endpoint_snapshot=jsonb_build_object('url',e.endpoint_url,'secret_ciphertext',e.secret_ciphertext,'created_by',e.created_by);\nEXCEPTION WHEN SQLSTATE 'PT403' OR SQLSTATE 'PT404' THEN RETURN false;\nEND $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "acl": "{postgres=X/postgres,service_role=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "claim_technology_five_webhook_v1(uuid)",
+        "definition": "CREATE OR REPLACE FUNCTION public.claim_technology_five_webhook_v1(p_lease_token uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE d public.technology_five_webhook_outbox%ROWTYPE;j public.technology_five_jobs%ROWTYPE;\nBEGIN\n IF current_setting('role',true) IS DISTINCT FROM 'service_role' THEN RAISE EXCEPTION 'Trusted service caller required' USING ERRCODE='PT403';END IF;\n IF p_lease_token IS NULL THEN RAISE EXCEPTION 'Lease identity required';END IF;\n SELECT * INTO d FROM public.technology_five_webhook_outbox WHERE ((status IN('queued','failed') AND next_attempt_at<=clock_timestamp()) OR (status='leased' AND lease_until<=clock_timestamp())) ORDER BY next_attempt_at,id LIMIT 1 FOR UPDATE SKIP LOCKED;\n IF NOT FOUND THEN RETURN jsonb_build_object('status','missing');END IF;\n IF d.attempt_count>=8 THEN UPDATE public.technology_five_webhook_outbox SET status='dead_letter',lease_token=NULL,lease_until=NULL,last_error='Retry bound reached' WHERE id=d.id;UPDATE public.technology_five_webhook_attempts SET outcome='expired',finished_at=clock_timestamp() WHERE delivery_id=d.id AND outcome='leased';RETURN jsonb_build_object('status','dead_letter');END IF;\n UPDATE public.technology_five_webhook_attempts SET outcome='expired',finished_at=clock_timestamp() WHERE delivery_id=d.id AND outcome='leased';\n UPDATE public.technology_five_webhook_outbox SET status='leased',attempt_count=attempt_count+1,lease_token=p_lease_token,lease_until=clock_timestamp()+interval '1 minute' WHERE id=d.id RETURNING * INTO d;\n IF NOT public.check_technology_five_dispatch_v1(d.id,p_lease_token) THEN UPDATE public.technology_five_webhook_outbox SET status='cancelled',lease_token=NULL,lease_until=NULL,last_error='Current authority, publication or endpoint unavailable' WHERE id=d.id;RETURN jsonb_build_object('status','cancelled');END IF;\n INSERT INTO public.technology_five_webhook_attempts(delivery_id,attempt,lease_token) VALUES(d.id,d.attempt_count,p_lease_token);\n SELECT * INTO j FROM public.technology_five_jobs WHERE id=d.event_id;\n RETURN jsonb_build_object('status','claimed','id',d.id,'eventId',d.event_id,'leaseToken',p_lease_token,'payloadText',d.payload_text,'endpointUrl',d.endpoint_snapshot->>'url','secretCiphertext',d.endpoint_snapshot->>'secret_ciphertext','organizationId',d.organization_id,'issuerId',d.issuer_id,'catalogId',j.catalog_id,'version',j.technical_version);\nEND $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "acl": "{postgres=X/postgres,service_role=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "consume_native_business_api_quota_v1(uuid)",
+        "definition": "CREATE OR REPLACE FUNCTION public.consume_native_business_api_quota_v1(p_api_key_id uuid)\n RETURNS boolean\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog'\nAS $function$\nBEGIN\n IF encode(sha256(convert_to(pg_get_functiondef('public.consume_business_api_quota(uuid)'::regprocedure),'UTF8')),'hex')\n   IS DISTINCT FROM '51d70f9e682f87017cccd782b9cf944da4bf2790c8472c322472122b4e1f9a69' THEN\n  RAISE EXCEPTION 'NATIVE_QUOTA_ADOPTION_REQUIRED';\n END IF;\n RETURN public.consume_business_api_quota(p_api_key_id);\nEND $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "acl": "{postgres=X/postgres,service_role=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "consume_technology_five_embed_v1(uuid,uuid,text,text)",
+        "definition": "CREATE OR REPLACE FUNCTION public.consume_technology_five_embed_v1(p_grant_id uuid, p_request_id uuid, p_request_hash text, p_result_hash text)\n RETURNS text\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE g public.technology_five_embed_grants%ROWTYPE;k public.business_api_keys%ROWTYPE;\nBEGIN\n IF current_setting('role',true) IS DISTINCT FROM 'service_role' THEN RAISE EXCEPTION 'Trusted service caller required' USING ERRCODE='PT403';END IF;\n SELECT * INTO g FROM public.technology_five_embed_grants WHERE id=p_grant_id FOR UPDATE;IF NOT FOUND THEN RETURN 'denied';END IF;\n SELECT * INTO k FROM public.business_api_keys WHERE id=g.api_key_id FOR UPDATE;IF NOT FOUND OR jsonb_typeof(k.scopes) IS DISTINCT FROM 'array' THEN RETURN 'denied';END IF;\n PERFORM public.technology_five_require_publication_v1(g.catalog_id,g.technical_version);\n RETURN public.technology_five_embed_debit_core_v1(p_grant_id,p_request_id,p_request_hash,p_result_hash);\nEXCEPTION WHEN SQLSTATE 'PT404' THEN RETURN 'denied';\nEND $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "acl": "{postgres=X/postgres,service_role=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "finish_technology_five_webhook_v1(uuid,uuid,boolean,integer,text)",
+        "definition": "CREATE OR REPLACE FUNCTION public.finish_technology_five_webhook_v1(p_delivery_id uuid, p_lease_token uuid, p_delivered boolean, p_http_status integer, p_error text)\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE d public.technology_five_webhook_outbox%ROWTYPE;\nBEGIN\n IF current_setting('role',true) IS DISTINCT FROM 'service_role' THEN RAISE EXCEPTION 'Trusted service caller required' USING ERRCODE='PT403';END IF;\n IF p_delivered IS NULL OR (p_http_status IS NOT NULL AND p_http_status NOT BETWEEN 100 AND 599) OR (p_delivered AND (p_http_status IS NULL OR p_http_status NOT BETWEEN 200 AND 299)) THEN RAISE EXCEPTION 'Invalid dispatch result';END IF;\n SELECT * INTO d FROM public.technology_five_webhook_outbox WHERE id=p_delivery_id FOR UPDATE;\n IF NOT FOUND OR d.status<>'leased' OR d.lease_token IS DISTINCT FROM p_lease_token OR d.lease_until<=clock_timestamp() THEN RETURN false;END IF;\n UPDATE public.technology_five_webhook_attempts SET outcome=CASE WHEN p_delivered THEN 'delivered' ELSE 'failed' END,finished_at=clock_timestamp(),http_status=p_http_status,error=left(p_error,500) WHERE delivery_id=d.id AND lease_token=p_lease_token AND outcome='leased';IF NOT FOUND THEN RAISE EXCEPTION 'Durable attempt missing';END IF;\n UPDATE public.technology_five_webhook_outbox SET status=CASE WHEN p_delivered THEN 'delivered' WHEN attempt_count>=8 THEN 'dead_letter' ELSE 'failed' END,lease_token=NULL,lease_until=NULL,last_http_status=p_http_status,last_error=CASE WHEN p_delivered THEN NULL ELSE left(p_error,500) END,delivered_at=CASE WHEN p_delivered THEN clock_timestamp() ELSE NULL END,next_attempt_at=clock_timestamp()+make_interval(mins=>least(power(2,attempt_count-1)::integer,120)) WHERE id=d.id;\n RETURN true;\nEND $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "acl": "{postgres=X/postgres,service_role=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "read_technology_five_job_v1(uuid,text,uuid,uuid)",
+        "definition": "CREATE OR REPLACE FUNCTION public.read_technology_five_job_v1(p_api_key_id uuid, p_key_hash text, p_organization_id uuid, p_request_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE j public.technology_five_jobs%ROWTYPE;\nBEGIN\n IF current_setting('role',true) IS DISTINCT FROM 'service_role' THEN RAISE EXCEPTION 'Trusted service caller required' USING ERRCODE='PT403';END IF;\n PERFORM public.technology_five_key_authority_v1(p_api_key_id,p_key_hash,p_organization_id);\n SELECT * INTO j FROM public.technology_five_jobs WHERE api_key_id=p_api_key_id AND request_id=p_request_id;\n IF NOT FOUND THEN RETURN jsonb_build_object('status','missing');END IF;\n PERFORM public.technology_five_require_publication_v1(j.catalog_id,j.technical_version);\n IF j.organization_id IS DISTINCT FROM p_organization_id OR j.job_snapshot IS DISTINCT FROM public.technology_five_job_snapshot_v1(j) OR j.payload->'rows' IS DISTINCT FROM j.input_rows OR j.payload->'catalogId' IS DISTINCT FROM to_jsonb(j.catalog_id) OR j.payload->'version' IS DISTINCT FROM to_jsonb(j.technical_version) THEN RAISE EXCEPTION 'Immutable batch evidence differs';END IF;\n RETURN jsonb_build_object('status','completed','request_id',p_request_id,'job',j.job_snapshot);\nEND $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "acl": "{postgres=X/postgres,service_role=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "submit_technology_five_job_v1(uuid,text,uuid,uuid,integer,integer,jsonb,jsonb,uuid)",
+        "definition": "CREATE OR REPLACE FUNCTION public.submit_technology_five_job_v1(p_api_key_id uuid, p_key_hash text, p_organization_id uuid, p_request_id uuid, p_catalog_id integer, p_version integer, p_input_rows jsonb, p_output_rows jsonb, p_endpoint_id uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE issuer uuid;prior public.technology_five_jobs%ROWTYPE;j public.technology_five_jobs%ROWTYPE;payload jsonb;engine text;endpoint public.business_webhook_endpoints%ROWTYPE;event jsonb;duplicate boolean:=false;\nBEGIN\n IF current_setting('role',true) IS DISTINCT FROM 'service_role' THEN RAISE EXCEPTION 'Trusted service caller required' USING ERRCODE='PT403';END IF;\n IF current_setting('transaction_isolation')<>'read committed' OR p_request_id IS NULL OR jsonb_typeof(p_input_rows) IS DISTINCT FROM 'array' OR jsonb_array_length(p_input_rows) NOT BETWEEN 1 AND 100 OR EXISTS(SELECT FROM jsonb_array_elements(p_input_rows)r WHERE jsonb_typeof(r)<>'object') THEN RAISE EXCEPTION 'Invalid bounded batch';END IF;\n issuer:=public.technology_five_key_authority_v1(p_api_key_id,p_key_hash,p_organization_id);PERFORM public.technology_five_require_publication_v1(p_catalog_id,p_version);\n payload:=jsonb_build_object('catalogId',p_catalog_id,'version',p_version,'rows',p_input_rows,'webhookEndpointId',p_endpoint_id);\n SELECT * INTO prior FROM public.technology_five_jobs WHERE api_key_id=p_api_key_id AND request_id=p_request_id;\n IF FOUND THEN\n  IF prior.payload IS DISTINCT FROM payload OR prior.organization_id IS DISTINCT FROM p_organization_id OR prior.job_snapshot IS DISTINCT FROM public.technology_five_job_snapshot_v1(prior) THEN RAISE EXCEPTION 'Request identity conflicts with immutable batch' USING ERRCODE='PT409';END IF;j:=prior;duplicate:=true;\n ELSE\n  IF p_output_rows IS NULL THEN RETURN jsonb_build_object('status','missing');END IF;\n  IF jsonb_typeof(p_output_rows) IS DISTINCT FROM 'array' OR jsonb_array_length(p_output_rows)<>jsonb_array_length(p_input_rows) OR EXISTS(SELECT FROM jsonb_array_elements(p_output_rows) WITH ORDINALITY r(row,n) WHERE jsonb_typeof(row)<>'object' OR row->'index' IS DISTINCT FROM to_jsonb(n-1) OR jsonb_typeof(row->'ok') IS DISTINCT FROM 'boolean' OR (row->'ok'='true'::jsonb AND (jsonb_typeof(row->'result') IS DISTINCT FROM 'object' OR row->'result'->'catalogId' IS DISTINCT FROM to_jsonb(p_catalog_id) OR row->'result'->'version' IS DISTINCT FROM to_jsonb(p_version))) OR (row->'ok'='false'::jsonb AND jsonb_typeof(row->'error') IS DISTINCT FROM 'string')) THEN RAISE EXCEPTION 'Invalid deterministic result rows';END IF;\n  SELECT t.engine INTO engine FROM(VALUES(370,'technology.bandwidth'),(371,'technology.download-time'),(372,'technology.upload-time'),(373,'technology.data-transfer'),(386,'technology.base64-size'),(374,'technology.storage-conversion'),(377,'technology.aspect-ratio'),(378,'technology.resolution'),(379,'technology.dpi'),(382,'technology.power-supply'),(383,'technology.website-bandwidth'),(384,'technology.cloud-storage-cost'),(385,'technology.cloud-data-transfer-cost'),(369,'technology.cidr'),(375,'technology.raid-capacity'),(380,'technology.battery-runtime'),(381,'technology.ups-runtime'),(387,'technology.password-entropy'),(368,'technology.ip-subnet'),(376,'technology.screen-ppi'))t(id,engine) WHERE t.id=p_catalog_id;\n  IF EXISTS(SELECT FROM jsonb_array_elements(p_output_rows)r WHERE r->'ok'='true'::jsonb AND r->'result'->>'engineId' IS DISTINCT FROM engine) THEN RAISE EXCEPTION 'Exact engine differs';END IF;\n  IF p_endpoint_id IS NOT NULL THEN SELECT * INTO endpoint FROM public.business_webhook_endpoints WHERE id=p_endpoint_id AND organization_id=p_organization_id AND status='active' AND jsonb_typeof(event_types)='array' AND event_types ? 'calculation.completed' FOR SHARE;IF NOT FOUND THEN RAISE EXCEPTION 'Webhook endpoint unavailable' USING ERRCODE='PT403';END IF;END IF;\n END IF;\n -- Existing custom batch policy: one request unit per accepted POST, including\n -- duplicate POST; missing probe and GET recovery have no debit.\n IF NOT public.consume_native_business_api_quota_v1(p_api_key_id) THEN RAISE EXCEPTION 'API quota exceeded' USING ERRCODE='PT429';END IF;\n IF NOT duplicate THEN\n  j.id:=gen_random_uuid();j.api_key_id:=p_api_key_id;j.organization_id:=p_organization_id;j.issuer_id:=issuer;j.request_id:=p_request_id;j.catalog_id:=p_catalog_id;j.engine_id:=engine;j.technical_version:=p_version;j.payload:=payload;j.input_rows:=p_input_rows;j.output_rows:=p_output_rows;j.created_at:=now();j.job_snapshot:=public.technology_five_job_snapshot_v1(j);\n  INSERT INTO public.technology_five_jobs SELECT j.*;\n  IF p_endpoint_id IS NOT NULL THEN\n   event:=jsonb_build_object('id',j.id,'type','calculation.completed','created_at',to_char(j.created_at AT TIME ZONE 'UTC','YYYY-MM-DD\"T\"HH24:MI:SS.US\"Z\"'),'data',j.job_snapshot);\n   INSERT INTO public.technology_five_webhook_outbox(event_id,organization_id,api_key_id,issuer_id,endpoint_id,endpoint_snapshot,payload,payload_text) VALUES(j.id,p_organization_id,p_api_key_id,issuer,p_endpoint_id,jsonb_build_object('url',endpoint.endpoint_url,'secret_ciphertext',endpoint.secret_ciphertext,'created_by',endpoint.created_by),event,event::text);\n  END IF;\n END IF;\n RETURN jsonb_build_object('status','completed','request_id',p_request_id,'duplicate',duplicate,'job',j.job_snapshot);\nEND $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog, public"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "technology_five_embed_debit_core_v1(uuid,uuid,text,text)",
+        "definition": "CREATE OR REPLACE FUNCTION public.technology_five_embed_debit_core_v1(p_grant_id uuid, p_request_id uuid, p_request_hash text, p_result_hash text)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog', 'public'\nAS $function$\nDECLARE g public.technology_five_embed_grants%ROWTYPE; k public.business_api_keys%ROWTYPE; prior public.technology_five_embed_usage%ROWTYPE;\n attempt_count bigint; owner_id uuid; issuer_role text; owner_plan text; issuer_plan text;\nBEGIN\n IF current_setting('transaction_isolation')<>'read committed' THEN RAISE EXCEPTION 'READ COMMITTED required'; END IF;\n IF p_request_id IS NULL OR p_request_hash !~ '^[a-f0-9]{64}$' OR p_result_hash !~ '^[a-f0-9]{64}$' OR p_request_hash IS NULL OR p_result_hash IS NULL THEN RETURN 'invalid'; END IF;\n -- Every redemption/retry rechecks current persisted authority, even if already metered.\n SELECT * INTO g FROM public.technology_five_embed_grants WHERE id=p_grant_id FOR UPDATE;\n IF NOT FOUND OR g.revoked_at IS NOT NULL OR g.expires_at<=clock_timestamp() OR g.issued_at>clock_timestamp() THEN RETURN 'denied'; END IF;\n SELECT * INTO k FROM public.business_api_keys WHERE id=g.api_key_id FOR UPDATE;\n IF NOT FOUND OR k.status<>'active' OR k.organization_id<>g.organization_id OR k.created_by<>g.issuer_id OR NOT (k.scopes ? 'calculations:run') THEN RETURN 'denied'; END IF;\n SELECT owner_user_id INTO owner_id FROM public.organizations WHERE id=g.organization_id FOR SHARE;\n IF NOT FOUND THEN RETURN 'denied'; END IF;\n SELECT role INTO issuer_role FROM public.organization_members WHERE organization_id=g.organization_id AND user_id=g.issuer_id FOR SHARE;\n IF NOT FOUND OR issuer_role NOT IN ('owner','admin') OR (issuer_role='owner' AND owner_id<>g.issuer_id) THEN RETURN 'denied'; END IF;\n -- Match quota key->profile lock order; Business authority is fenced through debit/audit commit.\n SELECT plan INTO issuer_plan FROM public.profiles WHERE id=g.issuer_id FOR SHARE;\n SELECT plan INTO owner_plan FROM public.profiles WHERE id=owner_id FOR SHARE;\n IF issuer_plan IS DISTINCT FROM 'business' OR owner_plan IS DISTINCT FROM 'business' THEN RETURN 'denied'; END IF;\n SELECT count(*) INTO attempt_count FROM public.technology_five_embed_attempts WHERE api_key_id=g.api_key_id AND created_at>=clock_timestamp()-interval '1 minute';\n IF attempt_count>=k.rate_limit_per_minute THEN RETURN 'limited'; END IF;\n INSERT INTO public.technology_five_embed_attempts(grant_id,organization_id,issuer_id,api_key_id,request_id) VALUES(g.id,g.organization_id,g.issuer_id,g.api_key_id,p_request_id);\n SELECT * INTO prior FROM public.technology_five_embed_usage WHERE grant_id=g.id AND request_id=p_request_id;\n IF FOUND THEN\n  IF prior.request_hash=p_request_hash AND prior.result_hash=p_result_hash THEN RETURN 'replayed'; END IF;\n  RETURN 'conflict';\n END IF;\n IF NOT public.consume_native_business_api_quota_v1(g.api_key_id) THEN RETURN 'limited'; END IF;\n INSERT INTO public.technology_five_embed_usage(grant_id,request_id,organization_id,issuer_id,api_key_id,catalog_id,engine_id,technical_version,request_hash,result_hash)\n VALUES(g.id,p_request_id,g.organization_id,g.issuer_id,g.api_key_id,g.catalog_id,g.engine_id,g.technical_version,p_request_hash,p_result_hash);\n RETURN 'accepted';\nEND $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "technology_five_embed_identity_v1()",
+        "definition": "CREATE OR REPLACE FUNCTION public.technology_five_embed_identity_v1()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog'\nAS $function$\nBEGIN\n IF TG_TABLE_NAME<>'technology_five_embed_grants' OR TG_OP='DELETE' THEN RAISE EXCEPTION 'Immutable native embed audit';END IF;\n IF (to_jsonb(NEW)-'revoked_at') IS DISTINCT FROM (to_jsonb(OLD)-'revoked_at') THEN RAISE EXCEPTION 'Immutable native grant identity';END IF;\n IF OLD.revoked_at IS NOT NULL AND NEW.revoked_at IS DISTINCT FROM OLD.revoked_at THEN RAISE EXCEPTION 'Native grant revocation is monotonic';END IF;RETURN NEW;\nEND $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "technology_five_evidence_identity_v1()",
+        "definition": "CREATE OR REPLACE FUNCTION public.technology_five_evidence_identity_v1()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE allowed text[];\nBEGIN\n IF TG_OP='DELETE' OR TG_TABLE_NAME='technology_five_jobs' THEN RAISE EXCEPTION 'Immutable native job evidence';END IF;\n IF TG_TABLE_NAME='technology_five_webhook_outbox' THEN allowed:=ARRAY['status','attempt_count','next_attempt_at','lease_token','lease_until','last_error','last_http_status','delivered_at'];\n ELSE allowed:=ARRAY['finished_at','outcome','http_status','error'];IF OLD.outcome<>'leased' AND NEW IS DISTINCT FROM OLD THEN RAISE EXCEPTION 'Immutable completed native attempt';END IF;END IF;\n IF (to_jsonb(NEW)-allowed) IS DISTINCT FROM (to_jsonb(OLD)-allowed) THEN RAISE EXCEPTION 'Immutable native evidence identity';END IF;RETURN NEW;\nEND $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "i",
+        "leakproof": false,
+        "signature": "technology_five_job_snapshot_v1(technology_five_jobs)",
+        "definition": "CREATE OR REPLACE FUNCTION public.technology_five_job_snapshot_v1(j technology_five_jobs)\n RETURNS jsonb\n LANGUAGE sql\n IMMUTABLE SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$ SELECT jsonb_build_object('id',j.id,'catalog_id',j.catalog_id,'engine_id',j.engine_id,'technical_version',j.technical_version,'status','completed','input_rows',j.input_rows,'output_rows',j.output_rows) $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "technology_five_key_authority_v1(uuid,text,uuid)",
+        "definition": "CREATE OR REPLACE FUNCTION public.technology_five_key_authority_v1(p_key uuid, p_hash text, p_org uuid)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE k public.business_api_keys%ROWTYPE;owner_id uuid;member_role text;owner_plan text;issuer_plan text;\nBEGIN\n SELECT * INTO k FROM public.business_api_keys WHERE id=p_key FOR UPDATE;\n IF NOT FOUND OR k.key_hash IS DISTINCT FROM p_hash OR k.organization_id IS DISTINCT FROM p_org OR k.status IS DISTINCT FROM 'active' OR jsonb_typeof(k.scopes) IS DISTINCT FROM 'array' OR NOT(k.scopes ? 'calculations:batch') THEN RAISE EXCEPTION 'Batch authority unavailable' USING ERRCODE='PT403'; END IF;\n SELECT owner_user_id INTO owner_id FROM public.organizations WHERE id=p_org FOR SHARE;IF NOT FOUND THEN RAISE EXCEPTION 'Organization unavailable' USING ERRCODE='PT403';END IF;\n SELECT role INTO member_role FROM public.organization_members WHERE organization_id=p_org AND user_id=k.created_by FOR SHARE;\n IF NOT FOUND OR member_role NOT IN ('owner','admin') OR (member_role='owner' AND owner_id<>k.created_by) THEN RAISE EXCEPTION 'Issuer role unavailable' USING ERRCODE='PT403';END IF;\n SELECT plan INTO issuer_plan FROM public.profiles WHERE id=k.created_by FOR SHARE; SELECT plan INTO owner_plan FROM public.profiles WHERE id=owner_id FOR SHARE;\n IF issuer_plan IS DISTINCT FROM 'business' OR owner_plan IS DISTINCT FROM 'business' THEN RAISE EXCEPTION 'Business authority unavailable' USING ERRCODE='PT403';END IF;RETURN k.created_by;\nEND $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "technology_five_publication_snapshot_v1(text,text,integer)",
+        "definition": "CREATE OR REPLACE FUNCTION public.technology_five_publication_snapshot_v1(p_engine text, p_slug text, p_version integer)\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nBEGIN PERFORM id FROM public.calculator_catalog_admin WHERE calculator_key=p_engine AND slug=p_slug AND version=p_version AND lifecycle='published' FOR SHARE; RETURN FOUND; END $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "owner": "postgres",
+        "config": [
+          "search_path=pg_catalog"
+        ],
+        "strict": false,
+        "parallel": "u",
+        "volatile": "v",
+        "leakproof": false,
+        "signature": "technology_five_require_publication_v1(integer,integer)",
+        "definition": "CREATE OR REPLACE FUNCTION public.technology_five_require_publication_v1(p_catalog integer, p_version integer)\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE engine text;slug text;\nBEGIN\n SELECT t.engine,t.slug INTO engine,slug FROM (VALUES(370,'technology.bandwidth','bandwidth-calculator',1),(371,'technology.download-time','download-time-calculator',1),(372,'technology.upload-time','upload-time-calculator',1),(373,'technology.data-transfer','data-transfer-calculator',1),(386,'technology.base64-size','base64-size-calculator',1),(374,'technology.storage-conversion','storage-conversion-calculator',1),(377,'technology.aspect-ratio','aspect-ratio-calculator',1),(378,'technology.resolution','resolution-calculator',1),(379,'technology.dpi','dpi-calculator',1),(382,'technology.power-supply','power-supply-calculator',1),(383,'technology.website-bandwidth','website-bandwidth-calculator',2),(384,'technology.cloud-storage-cost','cloud-storage-cost-calculator',1),(385,'technology.cloud-data-transfer-cost','cloud-data-transfer-cost-calculator',1),(369,'technology.cidr','cidr-calculator',1),(375,'technology.raid-capacity','raid-capacity-calculator',1),(380,'technology.battery-runtime','battery-runtime-calculator',1),(381,'technology.ups-runtime','ups-runtime-calculator',1),(387,'technology.password-entropy','password-entropy-calculator',1),(368,'technology.ip-subnet','ip-subnet-calculator',1),(376,'technology.screen-ppi','screen-ppi-calculator',1))t(catalog,engine,slug,version) WHERE t.catalog=p_catalog AND t.version=p_version;\n IF NOT FOUND OR NOT public.technology_five_publication_snapshot_v1(engine,slug,p_version) THEN RAISE EXCEPTION 'Exact publication unavailable' USING ERRCODE='PT404';END IF;\nEND $function$\n",
+        "securityDefiner": true
+      }
+    ]
+  },
+  "sources": {
+    "docs/native440/quota-readiness-wrapper.sql": "59fbc3417054f5482b2e1cc2e9a13cd98167c73fa243e35e72a067a74496de59",
+    "docs/first-five-native-20261109/embed-metering-proposal.sql": "e889df1052cbc44680939c2624c78014a32e18c6a47450a49619d572ee231294",
+    "docs/first-five-native-20261109/jobs-webhooks-proposal.sql": "59fb18da69e9008859cbffc18f56763df64fa681136cfd86f87372cfeced0e92",
+    "docs/first-five-native-20261109/embed-integrity-successor.sql": "5e56446b99fcb7c70b6f40f188cb9a2731a77d923a1e5ff0930770ce6a616d66",
+    "docs/next-cohort-native-20261110/contract-successor.sql": "aafbbc87dca61581fc68cc6aa1af65022b478879b8c91c4d791fdbba3f36917a",
+    "docs/parallel-five-20261110/native/contract-successor.sql": "a9fe9272d0a31d36949b66a84a87b07c6023f3cb466b5ee860c6877ca0e689b1"
+  }
+}

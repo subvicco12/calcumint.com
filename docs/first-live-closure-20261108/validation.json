@@ -1,0 +1,174 @@
+{
+  "baselineSHA": "ae01bc568b2af4b38eb62bc5cceb8bc483ba5cd6",
+  "baselineCI": {
+    "run": 42512874449,
+    "result": "SUCCESS_ALL_FIVE_PLUS_AGGREGATE"
+  },
+  "implementationCapture": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+  "localChecks": [
+    {
+      "name": "unit-full",
+      "result": {
+        "passed": 8332,
+        "existingSkipped": 4,
+        "unhandledErrors": 0,
+        "filesPassed": 931,
+        "filesSkipped": 2
+      },
+      "archiveLog": "logs/first-live-unit-full.log",
+      "sha256": "b882121c1fc67cf9d664be131a84e6db3fdc1a68e0ac9983bb5330f23d3f5ec6"
+    },
+    {
+      "name": "lint",
+      "result": {
+        "errors": 0,
+        "existingWarnings": 28
+      },
+      "archiveLog": "logs/first-live-lint.log",
+      "sha256": "bb308ecafc155f5bef71526621327627f27daa47e6c1cf88d5de22c71a8ece04"
+    },
+    {
+      "name": "typecheck",
+      "result": "PASS",
+      "archiveLog": "logs/first-live-typecheck.log",
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    {
+      "name": "launch",
+      "result": {
+        "passed": 45
+      },
+      "archiveLog": "logs/first-live-launch.log",
+      "sha256": "d52b9201eec2a2eb91bc784c7787cad90396ae6cc00dafbf2fd1c902871ca383"
+    },
+    {
+      "name": "certification",
+      "result": {
+        "passed": 15
+      },
+      "archiveLog": "logs/first-live-certification.log",
+      "sha256": "41abba7fbaf69741d930609625504c52de280c56d1a419f1feb6c6d47770e9c2"
+    },
+    {
+      "name": "node",
+      "result": {
+        "passed": 89
+      },
+      "archiveLog": "logs/first-live-node.log",
+      "sha256": "e87a4f47f23d821eaf6dbebad782560ac806218bf03b7e6c6753aed2e30ec6b1"
+    },
+    {
+      "name": "source-guards",
+      "result": {
+        "passed": 17
+      },
+      "archiveLog": "logs/first-live-source-guards.log",
+      "sha256": "a30f591ecb170de4f3fc6167ac14339ab31c09df78acdcca567d71d943913981"
+    },
+    {
+      "name": "webpack",
+      "result": "PASS: next build --webpack",
+      "archiveLog": "logs/first-live-webpack.log",
+      "sha256": "b3bd2cc61cfda0002d33c7b8d59540d33aa7bdb40bd1b598cd919f258cfe8779"
+    },
+    {
+      "name": "time-precision",
+      "result": {
+        "exactPairAudits": 36,
+        "nonzeroActualWitnesses": 648,
+        "signedZeros": 72,
+        "extremeIdentity": 24
+      },
+      "archiveLog": "logs/first-live-time-precision.log",
+      "sha256": "0b3c3f3ec779e4186896c7121af10ebcaf7d9780cc2267a5bf640f9bb276b6df"
+    },
+    {
+      "name": "history-browser",
+      "result": {
+        "journeys": 30,
+        "individualProfiles": 15,
+        "actualDownloads": 30
+      },
+      "archiveLog": "logs/first-live-history-browser.log",
+      "sha256": "f208f762dbd0211141a326b84e3973c475e39f47351b5cdc8f804e719278d687"
+    },
+    {
+      "name": "final-guard-lint",
+      "result": "PASS",
+      "archiveLog": "logs/first-live-final-guard-lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "independentReview": "independent-review.json",
+  "protectedUnchanged": [
+    {
+      "path": "src/calculators/conversion/catalog-batch-2.ts",
+      "sha256": "8c8021714b27b2399ea4d27a6bec595e446426ca2e6ad846815e60a9a5b35467"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-3.ts",
+      "sha256": "8605a98cbc051450fbd71089d77f174f961ea56d5ee6b743e38c8a473b87c165"
+    },
+    {
+      "path": "src/calculators/private-scenario-workflows.ts",
+      "sha256": "6e96315b71e151519b996497f41f80fab21e4d58db173f7e9bfb5b2a29ddbfa7"
+    },
+    {
+      "path": "src/calculators/private-supplied-contracts.ts",
+      "sha256": "9fcad868dc9b2d73940aa1731b1bf73db4d7dcd21662f230866deba6325c749c"
+    },
+    {
+      "path": "src/calculators/source-profile-snapshot.ts",
+      "sha256": "119f57f1468bd2d05fd2ea2e37e64621eaffff4a9bcfc0aeaa87ce89077da97f"
+    },
+    {
+      "path": "src/calculators/source-bound-profiles.ts",
+      "sha256": "f704f2e5d54097847da282ed0d3e97cb846dcb55d6d82cb5c3b07cb07d4a748d"
+    },
+    {
+      "path": "src/calculators/financial-contracts.ts",
+      "sha256": "d1d17ba463325175ce1214eb3d695bb998f492767b82c5bace76beecda501d2a"
+    },
+    {
+      "path": "src/calculators/financial-contract-core.ts",
+      "sha256": "3cae37f855a8ef6f4b99424b20619936e94fd861dff4d00fb26ef748d3c72ab0"
+    },
+    {
+      "path": "src/lib/calculation-snapshot.ts",
+      "sha256": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c"
+    },
+    {
+      "path": "src/calculators/certification-review-policy.ts",
+      "sha256": "9e9ef8336e722eb667676bd24f8a298254838d3ca01a8d76e83272e34382413e"
+    },
+    {
+      "path": "docs/acceptance-continuation-20261108/requirements-540.json",
+      "sha256": "d502cf64934fb55d35948eb4abac74ee4267f281ce6f5d22b170207871ac61c5"
+    },
+    {
+      "path": "docs/adoption1535/package/guarded-target-apply.sql",
+      "sha256": "7dfc42e461c0e9f836cacdeab368cb54bc0695b3cd2de243a5741348a537a530"
+    },
+    {
+      "path": "docs/adoption1535/package/guarded-target-reverse.sql",
+      "sha256": "733eb6ff56968bc602633b5722e4a96fa889b8944476a4870048d502460c85d6"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "934bf945aa864691a3fba7307484a7996eaf407f49b61f83c98c281780a420c9"
+    }
+  ],
+  "failedIntermediateAttempt": {
+    "kind": "BROWSER_HARNESS_KEY_EVENT",
+    "result": "Failed before first completed journey; zero failed journeys relabelled aspass",
+    "record": "history-browser-report.json#/harnessCorrection",
+    "initialReceipt": "logs/calcumint-history-browser-initial-failure.json",
+    "initialLog": "logs/first-live-history-browser-initial-failure.log",
+    "correction": "Existing CDP native Enter event includes character text; no app/assertion/timeout change"
+  },
+  "successorHostedCI": "Separate final exact-SHA checkpoint; do not infergreen",
+  "newCanonicalEngineeringComplete": 0,
+  "newPublicationEligible": 0,
+  "productionWrites": false,
+  "releaseHold": true
+}

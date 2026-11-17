@@ -1,0 +1,172 @@
+
+> calcumint@0.1.0 test
+> vitest run src/lib/calculator-factory/registry.test.ts src/lib/calculator-factory/completion/business.test.ts src/lib/calculator-factory/completion/exports.test.ts src/lib/calculator-factory/completion/sensitivity.test.ts src/lib/native-delivery/factory-embed-contract.test.ts src/lib/native-delivery/factory-automation-contract.test.ts src/lib/native-delivery/factory-embed-publication.test.ts src/lib/business/factory-nine-sharing.test.ts src/lib/registered-snapshot-verification.test.ts src/lib/wave100-history-verification.test.ts src/components/calculator-factory-portal.test.tsx src/components/calculator-factory-workbench.test.tsx src/components/calculator-factory-downloads.test.tsx src/components/calculator-factory-persisted-scenario.test.tsx src/components/calculator-factory-sensitivity.test.tsx src/components/calculator-factory-shared-workspace.test.tsx src/calculators/statistics/catalog-batch-1.test.ts src/calculators/statistics/catalog-batch-2.test.ts src/calculators/statistics/catalog-batch-3.test.ts src/calculators/statistics/catalog-batch-4.test.ts src/calculators/statistics/catalog-batch-4-probability-boundaries.test.ts src/calculators/chemistry/catalog-batch-1.test.ts
+
+
+ RUN  v3.2.7 /workspace/calcumint-next-cohort
+
+ ✓ src/components/calculator-factory-persisted-scenario.test.tsx (7 tests) 812ms
+   ✓ loads projects only on request and reuses the save UUID until input changes  391ms
+ ✓ src/components/calculator-factory-shared-workspace.test.tsx (7 tests) 670ms
+ ✓ src/components/calculator-factory-workbench.test.tsx (7 tests) 456ms
+ ✓ src/components/calculator-factory-portal.test.tsx (4 tests) 568ms
+ ✓ src/components/calculator-factory-sensitivity.test.tsx (3 tests) 308ms
+ ✓ src/components/calculator-factory-downloads.test.tsx (2 tests) 454ms
+   ✓ downloads real verified artifacts and revokes the object URL  399ms
+ ✓ src/lib/calculator-factory/registry.test.ts (7 tests) 756ms
+   ✓ factory exact integration contracts > rejects null, arrays, numeric coercion, extra fields and incomplete decimal tokens for every contract  463ms
+ ✓ src/lib/native-delivery/factory-embed-contract.test.ts (185 tests) 1026ms
+ ✓ src/calculators/chemistry/catalog-batch-1.test.ts (17 tests) 59ms
+ ❯ src/lib/native-delivery/factory-automation-contract.test.ts (92 tests | 11 failed) 456ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 218@1 packet/output 49ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 219@1 packet/output 2ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 220@1 packet/output 7ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 423@1 packet/output 21ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 430@1 packet/output 18ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 431@1 packet/output 13ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 432@1 packet/output 38ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 438@1 packet/output 4ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 440@1 packet/output 10ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 208@1 packet/output 10ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 209@1 packet/output 2ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 210@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 211@1 packet/output 9ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 212@1 packet/output 2ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 215@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 216@1 packet/output 8ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 424@1 packet/output 3ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 425@1 packet/output 38ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 427@1 packet/output 2ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 428@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 433@1 packet/output 5ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 434@1 packet/output 4ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 322@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 325@1 packet/output 7ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 327@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 255@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 256@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 259@1 packet/output 4ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 260@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 263@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 264@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 265@1 packet/output 0ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 429@1 packet/output 5ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 436@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 437@1 packet/output 0ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 439@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 261@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 262@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 266@1 packet/output 5ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 267@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 269@1 packet/output 0ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 270@1 packet/output 0ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 271@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 273@1 packet/output 5ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 213@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 221@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 223@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 224@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 225@1 packet/output 5ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 226@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 227@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 228@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 229@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 230@1 packet/output 5ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 231@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 234@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 254@1 packet/output 7ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 257@1 packet/output 22ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 258@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 268@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 272@1 packet/output 6ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 274@1 packet/output 5ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 275@1 packet/output 0ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 278@1 packet/output 6ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 279@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 280@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 328@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 331@1 packet/output 5ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 332@1 packet/output 2ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 284@1 packet/output 6ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 285@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 286@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 287@1 packet/output 2ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 288@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 289@1 packet/output 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 290@1 packet/output 6ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 291@1 packet/output 2ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > preserves 300@1 packet/output 1ms
+   × exact nine reuse unchanged factory engines in durable batch shape > preserves 329@1 packet/output 17ms
+     → expected true to be false // Object.is equality
+   × exact nine reuse unchanged factory engines in durable batch shape > preserves 333@1 packet/output 1ms
+     → expected true to be false // Object.is equality
+   × exact nine reuse unchanged factory engines in durable batch shape > preserves 334@1 packet/output 2ms
+     → expected true to be false // Object.is equality
+   × exact nine reuse unchanged factory engines in durable batch shape > preserves 335@1 packet/output 6ms
+     → expected true to be false // Object.is equality
+   × exact nine reuse unchanged factory engines in durable batch shape > preserves 336@1 packet/output 1ms
+     → expected true to be false // Object.is equality
+   × exact nine reuse unchanged factory engines in durable batch shape > preserves 337@1 packet/output 1ms
+     → expected true to be false // Object.is equality
+   × exact nine reuse unchanged factory engines in durable batch shape > preserves 338@1 packet/output 22ms
+     → expected true to be false // Object.is equality
+   × exact nine reuse unchanged factory engines in durable batch shape > preserves 339@1 packet/output 1ms
+     → expected true to be false // Object.is equality
+   × exact nine reuse unchanged factory engines in durable batch shape > preserves 340@1 packet/output 6ms
+     → expected true to be false // Object.is equality
+   × exact nine reuse unchanged factory engines in durable batch shape > preserves 341@1 packet/output 1ms
+     → expected true to be false // Object.is equality
+   × exact nine reuse unchanged factory engines in durable batch shape > preserves 342@1 packet/output 1ms
+     → expected true to be false // Object.is equality
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > retains old20 tuple identities and 383v2 6ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > rejects other factory and private physics identities, wrong versions, numeric JSON and arbitrary code 1ms
+   ✓ exact nine reuse unchanged factory engines in durable batch shape > inherits existing100 row bound without adding commercial limits 1ms
+ ✓ src/lib/wave100-history-verification.test.ts (11 tests) 58ms
+ ✓ src/calculators/statistics/catalog-batch-4.test.ts (11 tests) 28ms
+ ✓ src/calculators/statistics/catalog-batch-3.test.ts (11 tests) 31ms
+ ✓ src/lib/calculator-factory/completion/sensitivity.test.ts (3 tests) 41ms
+ ✓ src/lib/business/factory-nine-sharing.test.ts (3 tests) 68ms
+ ✓ src/calculators/statistics/catalog-batch-2.test.ts (7 tests) 45ms
+ ✓ src/lib/calculator-factory/completion/exports.test.ts (2 tests) 73ms
+ ✓ src/lib/native-delivery/factory-embed-publication.test.ts (89 tests) 174ms
+ ✓ src/calculators/statistics/catalog-batch-4-probability-boundaries.test.ts (6 tests) 17ms
+ ✓ src/calculators/statistics/catalog-batch-1.test.ts (5 tests) 7ms
+ ✓ src/lib/calculator-factory/completion/business.test.ts (3 tests) 20ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 11 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/native-delivery/factory-automation-contract.test.ts > exact nine reuse unchanged factory engines in durable batch shape > preserves 329@1 packet/output
+ FAIL  src/lib/native-delivery/factory-automation-contract.test.ts > exact nine reuse unchanged factory engines in durable batch shape > preserves 333@1 packet/output
+ FAIL  src/lib/native-delivery/factory-automation-contract.test.ts > exact nine reuse unchanged factory engines in durable batch shape > preserves 334@1 packet/output
+ FAIL  src/lib/native-delivery/factory-automation-contract.test.ts > exact nine reuse unchanged factory engines in durable batch shape > preserves 335@1 packet/output
+ FAIL  src/lib/native-delivery/factory-automation-contract.test.ts > exact nine reuse unchanged factory engines in durable batch shape > preserves 336@1 packet/output
+ FAIL  src/lib/native-delivery/factory-automation-contract.test.ts > exact nine reuse unchanged factory engines in durable batch shape > preserves 337@1 packet/output
+ FAIL  src/lib/native-delivery/factory-automation-contract.test.ts > exact nine reuse unchanged factory engines in durable batch shape > preserves 338@1 packet/output
+ FAIL  src/lib/native-delivery/factory-automation-contract.test.ts > exact nine reuse unchanged factory engines in durable batch shape > preserves 339@1 packet/output
+ FAIL  src/lib/native-delivery/factory-automation-contract.test.ts > exact nine reuse unchanged factory engines in durable batch shape > preserves 340@1 packet/output
+ FAIL  src/lib/native-delivery/factory-automation-contract.test.ts > exact nine reuse unchanged factory engines in durable batch shape > preserves 341@1 packet/output
+ FAIL  src/lib/native-delivery/factory-automation-contract.test.ts > exact nine reuse unchanged factory engines in durable batch shape > preserves 342@1 packet/output
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ src/lib/native-delivery/factory-automation-contract.test.ts:14:50
+     12|   expect(rows[0]).toMatchObject({index:0,ok:true,result:{engineId:iden…
+     13|   if([322,325,327,328,331,332].includes(identity.catalogId))expect(row…
+     14|   else expect('value' in rows[0].result!.output).toBe(false);
+       |                                                  ^
+     15|   verifyFactoryAutomationRows(identity.catalogId,1,[input],rows);
+     16|   expect(()=>verifyFactoryAutomationRows(identity.catalogId,1,[input],…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/11]⎯
+
+
+ Test Files  1 failed | 20 passed (21)
+      Tests  11 failed | 471 passed (482)
+   Start at  09:42:56
+   Duration  42.19s (transform 6.22s, setup 0ms, collect 20.49s, tests 6.13s, environment 4.08s, prepare 3.33s)
+

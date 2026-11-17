@@ -1,0 +1,6 @@
+// @vitest-environment jsdom
+import {expect,it,vi} from 'vitest';
+import {render,screen,fireEvent,within} from '@testing-library/react';
+import {TechnologyFiveSharedComparison} from '@/components/technology-five-shared-comparison';
+vi.mock('next/link',()=>({default:({children,...props}:React.AnchorHTMLAttributes<HTMLAnchorElement>)=><a {...props}>{children}</a>}));
+it('retains both actual website revision2 captures through record selection',()=>{const row=(id:string,pageSizeMb:number,value:number)=>({id,title:id,snapshot:{calculatorSlug:'website-bandwidth-calculator',calculatorVersion:2,input:{pageSizeMb,monthlyPageViews:100000},output:{value,steps:['Website Bandwidth = '+value]}}});render(<TechnologyFiveSharedComparison cohort="next" context="v2" rows={[row('A',2,200),row('B',4,400)]}/>);fireEvent.click(screen.getByText('Your A/B/C scenarios'));fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));fireEvent.change(screen.getByLabelText('Shared record for comparison'),{target:{value:'B'}});fireEvent.click(screen.getByRole('button',{name:'Capture scenario B'}));const table=screen.getByRole('region',{name:'Captured engine outputs comparison'});expect(within(table).getByText('200')).toBeTruthy();expect(within(table).getByText('400')).toBeTruthy();});

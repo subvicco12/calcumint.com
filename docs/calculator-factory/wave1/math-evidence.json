@@ -1,0 +1,161 @@
+{
+  "cohort": "basic-math",
+  "status": "private-delivery-release-held",
+  "catalogIds": [
+    208,
+    209,
+    210,
+    211,
+    212,
+    215,
+    216,
+    218,
+    219,
+    220
+  ],
+  "adapter": "src/lib/calculator-factory/cohorts/basic-math.ts#calculateBasicMath",
+  "gap": "Existing scalar engines lacked a bounded catalog-bound reusable delivery and immutable calculation capture adapter for these ten identities.",
+  "authority": "No new math, public route, canonical approval, certification or live deployment is claimed.",
+  "excludedIds": [
+    214,
+    217,
+    268
+  ],
+  "evidence": [
+    {
+      "catalogId": 208,
+      "engineId": "launch-percentage-change-calculator",
+      "scope": "Signed change divided by the absolute original value; original must be nonzero.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "blockers": []
+    },
+    {
+      "catalogId": 209,
+      "engineId": "launch-percentage-increase-calculator",
+      "scope": "Nonnegative percentage increase of a supplied real value.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "blockers": []
+    },
+    {
+      "catalogId": 210,
+      "engineId": "launch-percentage-decrease-calculator",
+      "scope": "Nonnegative percentage decrease; decreases above 100% may produce negative values.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "blockers": []
+    },
+    {
+      "catalogId": 211,
+      "engineId": "launch-ratio-calculator",
+      "scope": "Numeric quotient of two values; does not simplify an integer ratio.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "blockers": []
+    },
+    {
+      "catalogId": 212,
+      "engineId": "launch-proportion-calculator",
+      "scope": "Decimal quotient only; does not solve an unknown term in a four-term proportion.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "blockers": []
+    },
+    {
+      "catalogId": 215,
+      "engineId": "launch-fraction-to-decimal-calculator",
+      "scope": "Finite numeric quotient; no exact repeating-decimal expansion.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "blockers": []
+    },
+    {
+      "catalogId": 216,
+      "engineId": "launch-average-two-numbers-calculator",
+      "scope": "Arithmetic mean of exactly two numbers; no list or weighted mean.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "blockers": []
+    },
+    {
+      "catalogId": 218,
+      "engineId": "launch-square-calculator",
+      "scope": "Real scalar squared within finite output range.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "blockers": []
+    },
+    {
+      "catalogId": 219,
+      "engineId": "launch-cube-calculator",
+      "scope": "Real scalar cubed within finite output range.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "blockers": []
+    },
+    {
+      "catalogId": 220,
+      "engineId": "launch-square-root-calculator",
+      "scope": "Principal real square root; nonnegative input only.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "blockers": []
+    }
+  ],
+  "verification": {
+    "runtime": "Node.js v22.23.4",
+    "command": "node node_modules/vitest/vitest.mjs run src/lib/calculator-factory/cohorts/basic-math.test.ts --maxWorkers=1 --minWorkers=1",
+    "result": "13 tests passed",
+    "independence": "Expected values and invalid-domain inputs are hand specified in the cohort test; tests call both actual engines and adapter. No expected result is derived from engine examples or formulas.",
+    "captureChecks": [
+      "Parsed inputs omit unknown fields",
+      "Engine identity and version retained",
+      "Raw output captured",
+      "Input and output deeply frozen",
+      "Percentage change reports percent units",
+      "Average remains bounded to exactly two numbers"
+    ],
+    "rejectedDomains": [
+      "208 original zero",
+      "209/210 negative percent",
+      "211/212 denominator zero",
+      "215 denominator zero",
+      "216 infinite input",
+      "218 NaN and overflow",
+      "219 string input and overflow",
+      "220 negative radicand"
+    ]
+  },
+  "deliveryHold": "Private reusable adapter only; no production merge, certification, publication, canonical adoption or new calculator count."
+}

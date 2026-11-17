@@ -1,0 +1,3201 @@
+{
+  "kind": "TRACK_C_EXACT20_EXISTING_CANDIDATE_DISPOSITION_RECONCILIATION_NOT_PROMOTION",
+  "generatedAtUTC": "2026-11-14T10:39:24.134648+00:00",
+  "inputs": {
+    "ledger": {
+      "path": "docs/milestone100-20261114/requirements-540.json",
+      "sha256": "b2e7af97f65fde236b58c76a093e019b1b7595b7f0ac39fd735b4e633a6f1d72"
+    },
+    "nominations": {
+      "path": "docs/milestone100-20261114/canonical/engineering-nominations.json",
+      "sha256": "29c3b067650f1f65450d1186c31b74f95aed5d5870dbfa67a02cac54c87a8ad2"
+    },
+    "packets": {
+      "path": "docs/milestone100-20261114/canonical/unsigned-review-packets.json",
+      "sha256": "f89727418105abc2190967e6f7fb263ba1dffb4e0acb6eeeafa5ebd5e765c3bf"
+    }
+  },
+  "frozenApplication": "b1dccffe1cc9e0515030d5e7ea4bad8a72756080",
+  "instructionBoundary": "No application/source/registry/ledger/authority changes; no new research or applicability approval. Reuses existing per-ID criteria.",
+  "currentConfirmedScopedEngineering": 61,
+  "conditionalCandidateCount": 20,
+  "exactConditionalRoster": [
+    213,
+    221,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    272,
+    274,
+    275,
+    278,
+    279,
+    280,
+    328,
+    331,
+    332
+  ],
+  "qualifiedIncrement": 0,
+  "latestSourceCI": {
+    "status": "FAILED",
+    "runReference": "43577553256",
+    "head": "d102135f3922d8c094bd89584475db0ef5b945a1",
+    "provenance": "Authenticated GitHub exact-commit workflow/job/log observations. Four mandatory jobs passed; source-acceptance unit failed; aggregate failed. Frozen per-row NOT_STARTED is historical preparation, not the latest result."
+  },
+  "requiredNewQualification": [
+    "checks",
+    "build",
+    "full-product",
+    "source-acceptance",
+    "publication-factory",
+    "aggregate validation"
+  ],
+  "technicalVsCanonical": "Exact declared existing-engine scoped technical completion uses baseline61 meaning; broader canonical identity/scope/source/formula/precision/QA decisions remain human requirements and are not inferred from elementary formulas, naming or family membership.",
+  "sourceBlockedNotInRoster": [
+    234,
+    254,
+    257,
+    258,
+    268
+  ],
+  "privateNotInRoster": [
+    222,
+    276,
+    277
+  ],
+  "genuineNewPerIdEngineeringGapsFound": [],
+  "evidenceBindingMismatchCount": 0,
+  "evidenceBindingMismatches": [],
+  "rows": [
+    {
+      "catalogId": 213,
+      "title": "Fraction Calculator",
+      "exactIdentity": {
+        "engineId": "launch-fraction-calculator",
+        "slug": "fraction-calculator",
+        "version": 1,
+        "registeredNative": true
+      },
+      "disposition": "CONDITIONAL_SCOPED_TECHNICAL_NOMINEE_UNQUALIFIED",
+      "scopedTechnicalMeaning": "Finite numerator/nonzero denominator quotient only; no rational-operation family.",
+      "scopedCriteriaAsPreviouslyAssessed": {
+        "sourceProvenance": {
+          "status": "INDEPENDENT_PRIMITIVE_AND_DECLARED_POLICY_CAPTURED",
+          "record": {
+            "path": "docs/milestone100-20261114/math/source-applicability.json",
+            "sha256": "e071ceeed4413460e7667defac84aaf70514f31d090a2860a47fc94d40752a82"
+          },
+          "sections": [
+            "Number::divide"
+          ],
+          "boundary": "TC39 establishes language arithmetic, not broad catalog identity approval. Python/OpenStax define exact integer target functions where cited.230 decimal shifting is explicit local policy; Math.round capture supports its rounding primitive only."
+        },
+        "independentGoldens": {
+          "status": "BOUNDED_LITERAL_WITNESSES_PRESENT_NOT_FULL_DOMAIN_CERTIFICATION",
+          "evidence": {
+            "path": "docs/milestone100-20261114/math/vectors.json",
+            "sha256": "11471f2c81f178444639ba81ad01b3bb4cc843da1f8f3f1b53c85b1ef9164b42"
+          },
+          "test": {
+            "path": "src/lib/calculator-factory/completion/math-next100.test.ts",
+            "sha256": "6dbcd78f0247152511e242ee6725b7ba3169275ae15403facfc191a60b2bbf54"
+          },
+          "boundary": "Literal expected values and domain/refusal/inverse witnesses; no blanket proof outside declared capture bounds."
+        },
+        "UI": {
+          "status": "MET_STRICT_LOCAL_25_THREE_PLAN_BROWSER_RECEIPTS",
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "applicationSourceCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+          "proHistoryExactAgreement": true,
+          "freeHistoryExactAgreement": true,
+          "immutableOutputAndAnalysisWitness": true,
+          "boundary": "Actual25 per plan,200 read-back downloads overall. Bounded isolated acceptance; hosted equivalence and canonical acceptance not inferred."
+        },
+        "native": {
+          "status": "MET_LOCAL_SOFTWARE69_REPLAY_AND_FAILCLOSED_CHECKS",
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/independent-review-probes.json",
+            "sha256": "7402ed397da16e3dcb647733c3bf41c1df00423656a38929a4a5f67950ceac5f"
+          },
+          "boundary": "Exact registered tuple/version, defaultoutput parity, wrongversion/extra-fields refused; not live publication."
+        },
+        "Business": {
+          "status": "MET_GENUINE_LOCAL_ACCOUNT_AUTOMATION_AND_STRICT_BUSINESS_BROWSER",
+          "account": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-account-current/account-receipt.json",
+            "sha256": "707afc8b4165ba962d08e40af5db52e9e1bb3c6e5f4d64a0a932d7e2940d196f"
+          },
+          "accountPlans": [
+            "business",
+            "free",
+            "pro"
+          ],
+          "accountCasesObserved": 3,
+          "automation": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-automation-current/receipt.json",
+            "sha256": "0c11967a0a2737f3549209ea8e652d6ada783d2725a495125c3cb6e3b7cb495c"
+          },
+          "automationCaseObserved": true,
+          "boundary": "Exact25 authenticated local account/API/batch/worker/sharing/embed witnesses. Lower-publication fixture remains; production activation not granted.",
+          "browser": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "heldSQL": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-sql/receipt.json",
+            "sha256": "672e8e18d41c26d2658c5cef010c03747393eb3431a44bc7276bd81505086b9e"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          }
+        },
+        "history": {
+          "status": "MET_STRICT_EXACT_HISTORICAL_BROWSER_REPLAY",
+          "newHistoricalBinding": false,
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/history-ui-focused-tests.log",
+            "sha256": "ae4299fca3f56f94216f5114d95396565f5eb5c8787609ad304fa2cbe29b3ed2"
+          },
+          "boundary": "All25 Free/Pro historical reopens and replay verified; recorded output preserved. No version upgrade applied.",
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "proExactAgreement": true
+        }
+      },
+      "criteriaEvidenceOrigin": {
+        "nominationRow": 213,
+        "source": {
+          "path": "docs/milestone100-20261114/canonical/engineering-nominations.json",
+          "sha256": "29c3b067650f1f65450d1186c31b74f95aed5d5870dbfa67a02cac54c87a8ad2"
+        },
+        "unsignedPacket": {
+          "path": "docs/milestone100-20261114/canonical/unsigned-review-packets.json",
+          "sha256": "f89727418105abc2190967e6f7fb263ba1dffb4e0acb6eeeafa5ebd5e765c3bf"
+        }
+      },
+      "engineContract": {
+        "path": "src/lib/calculator-factory/completion/math-next100.ts",
+        "sha256": "8d9a40dccb383f9e4ff3898bb8cec3bcd422444485893005ee021d6745631599"
+      },
+      "contractHashMatchesCurrent": true,
+      "ledgerCrosscheck": {
+        "row": 213,
+        "wave100EngineeringState": "CONDITIONAL_SCOPED_NOMINEE",
+        "identityAndScopeMatchNomination": true,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "perRowCIFieldIsFrozenPreparation": "exactHeadCI=NOT_STARTED_FOR_NEW_HEAD; not treated as current qualification."
+      },
+      "genuinePerIdEngineeringGapsFound": [],
+      "sharedEngineeringQualificationGap": "Current source CI run435775 failed per latest coordinator instruction; complete new exact-head checks/build/full-product/source-acceptance/publication-factory and aggregate must all succeed. No qualified increment before that.",
+      "existingPendingCanonicalHumanRequirements": [
+        "Confirm exact immutable identity/version and bounded scope: Finite numeric numerator divided by nonzero denominator; this is fraction evaluation, not arbitrary rational arithmetic.",
+        "Independent source/formula/precision applicability acceptance for this exact scope remains unsigned.",
+        "Obtain competent exact-version canonical acceptance separately; local evidence and technical review do not sign it.",
+        "Final source/budget and exact full CI qualification remains; broader canonical scope and competent acceptance are separate pending decisions."
+      ],
+      "canonicalBoundary": {
+        "status": "PENDING_SEPARATE_FROM_ENGINEERING_NOMINATION",
+        "meaning": "Approve exact immutable catalog identity and full canonical scope/source/formula/precision/QA; technical nomination does not sign this.",
+        "notInferredFamily": "Finite numerator/nonzero denominator quotient only; no rational-operation family.",
+        "canonicalAccepted": false,
+        "certificationGranted": false,
+        "publicationAuthorized": false
+      },
+      "currentEvidencePinMismatches": [],
+      "canonicalApproved": false,
+      "sourceApplicabilityApproved": false,
+      "certificationGranted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "catalogId": 221,
+      "title": "Cube Root Calculator",
+      "exactIdentity": {
+        "engineId": "launch-cube-root-calculator",
+        "slug": "cube-root-calculator",
+        "version": 1,
+        "registeredNative": true
+      },
+      "disposition": "CONDITIONAL_SCOPED_TECHNICAL_NOMINEE_UNQUALIFIED",
+      "scopedTechnicalMeaning": "Real cube root.",
+      "scopedCriteriaAsPreviouslyAssessed": {
+        "sourceProvenance": {
+          "status": "INDEPENDENT_PRIMITIVE_AND_DECLARED_POLICY_CAPTURED",
+          "record": {
+            "path": "docs/milestone100-20261114/math/source-applicability.json",
+            "sha256": "e071ceeed4413460e7667defac84aaf70514f31d090a2860a47fc94d40752a82"
+          },
+          "sections": [
+            "Math.cbrt"
+          ],
+          "boundary": "TC39 establishes language arithmetic, not broad catalog identity approval. Python/OpenStax define exact integer target functions where cited.230 decimal shifting is explicit local policy; Math.round capture supports its rounding primitive only."
+        },
+        "independentGoldens": {
+          "status": "BOUNDED_LITERAL_WITNESSES_PRESENT_NOT_FULL_DOMAIN_CERTIFICATION",
+          "evidence": {
+            "path": "docs/milestone100-20261114/math/vectors.json",
+            "sha256": "11471f2c81f178444639ba81ad01b3bb4cc843da1f8f3f1b53c85b1ef9164b42"
+          },
+          "test": {
+            "path": "src/lib/calculator-factory/completion/math-next100.test.ts",
+            "sha256": "6dbcd78f0247152511e242ee6725b7ba3169275ae15403facfc191a60b2bbf54"
+          },
+          "boundary": "Literal expected values and domain/refusal/inverse witnesses; no blanket proof outside declared capture bounds."
+        },
+        "UI": {
+          "status": "MET_STRICT_LOCAL_25_THREE_PLAN_BROWSER_RECEIPTS",
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "applicationSourceCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+          "proHistoryExactAgreement": true,
+          "freeHistoryExactAgreement": true,
+          "immutableOutputAndAnalysisWitness": true,
+          "boundary": "Actual25 per plan,200 read-back downloads overall. Bounded isolated acceptance; hosted equivalence and canonical acceptance not inferred."
+        },
+        "native": {
+          "status": "MET_LOCAL_SOFTWARE69_REPLAY_AND_FAILCLOSED_CHECKS",
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/independent-review-probes.json",
+            "sha256": "7402ed397da16e3dcb647733c3bf41c1df00423656a38929a4a5f67950ceac5f"
+          },
+          "boundary": "Exact registered tuple/version, defaultoutput parity, wrongversion/extra-fields refused; not live publication."
+        },
+        "Business": {
+          "status": "MET_GENUINE_LOCAL_ACCOUNT_AUTOMATION_AND_STRICT_BUSINESS_BROWSER",
+          "account": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-account-current/account-receipt.json",
+            "sha256": "707afc8b4165ba962d08e40af5db52e9e1bb3c6e5f4d64a0a932d7e2940d196f"
+          },
+          "accountPlans": [
+            "business",
+            "free",
+            "pro"
+          ],
+          "accountCasesObserved": 3,
+          "automation": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-automation-current/receipt.json",
+            "sha256": "0c11967a0a2737f3549209ea8e652d6ada783d2725a495125c3cb6e3b7cb495c"
+          },
+          "automationCaseObserved": true,
+          "boundary": "Exact25 authenticated local account/API/batch/worker/sharing/embed witnesses. Lower-publication fixture remains; production activation not granted.",
+          "browser": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "heldSQL": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-sql/receipt.json",
+            "sha256": "672e8e18d41c26d2658c5cef010c03747393eb3431a44bc7276bd81505086b9e"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          }
+        },
+        "history": {
+          "status": "MET_STRICT_EXACT_HISTORICAL_BROWSER_REPLAY",
+          "newHistoricalBinding": false,
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/history-ui-focused-tests.log",
+            "sha256": "ae4299fca3f56f94216f5114d95396565f5eb5c8787609ad304fa2cbe29b3ed2"
+          },
+          "boundary": "All25 Free/Pro historical reopens and replay verified; recorded output preserved. No version upgrade applied.",
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "proExactAgreement": true
+        }
+      },
+      "criteriaEvidenceOrigin": {
+        "nominationRow": 221,
+        "source": {
+          "path": "docs/milestone100-20261114/canonical/engineering-nominations.json",
+          "sha256": "29c3b067650f1f65450d1186c31b74f95aed5d5870dbfa67a02cac54c87a8ad2"
+        },
+        "unsignedPacket": {
+          "path": "docs/milestone100-20261114/canonical/unsigned-review-packets.json",
+          "sha256": "f89727418105abc2190967e6f7fb263ba1dffb4e0acb6eeeafa5ebd5e765c3bf"
+        }
+      },
+      "engineContract": {
+        "path": "src/lib/calculator-factory/completion/math-next100.ts",
+        "sha256": "8d9a40dccb383f9e4ff3898bb8cec3bcd422444485893005ee021d6745631599"
+      },
+      "contractHashMatchesCurrent": true,
+      "ledgerCrosscheck": {
+        "row": 221,
+        "wave100EngineeringState": "CONDITIONAL_SCOPED_NOMINEE",
+        "identityAndScopeMatchNomination": true,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "perRowCIFieldIsFrozenPreparation": "exactHeadCI=NOT_STARTED_FOR_NEW_HEAD; not treated as current qualification."
+      },
+      "genuinePerIdEngineeringGapsFound": [],
+      "sharedEngineeringQualificationGap": "Current source CI run435775 failed per latest coordinator instruction; complete new exact-head checks/build/full-product/source-acceptance/publication-factory and aggregate must all succeed. No qualified increment before that.",
+      "existingPendingCanonicalHumanRequirements": [
+        "Confirm exact immutable identity/version and bounded scope: Real signed cube root.",
+        "Independent source/formula/precision applicability acceptance for this exact scope remains unsigned.",
+        "Obtain competent exact-version canonical acceptance separately; local evidence and technical review do not sign it.",
+        "Final source/budget and exact full CI qualification remains; broader canonical scope and competent acceptance are separate pending decisions."
+      ],
+      "canonicalBoundary": {
+        "status": "PENDING_SEPARATE_FROM_ENGINEERING_NOMINATION",
+        "meaning": "Approve exact immutable catalog identity and full canonical scope/source/formula/precision/QA; technical nomination does not sign this.",
+        "notInferredFamily": "Real cube root.",
+        "canonicalAccepted": false,
+        "certificationGranted": false,
+        "publicationAuthorized": false
+      },
+      "currentEvidencePinMismatches": [],
+      "canonicalApproved": false,
+      "sourceApplicabilityApproved": false,
+      "certificationGranted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "catalogId": 223,
+      "title": "Exponent Calculator",
+      "exactIdentity": {
+        "engineId": "launch-exponent-calculator",
+        "slug": "exponent-calculator",
+        "version": 1,
+        "registeredNative": true
+      },
+      "disposition": "CONDITIONAL_SCOPED_TECHNICAL_NOMINEE_UNQUALIFIED",
+      "scopedTechnicalMeaning": "Real exponentiation where historical Math.pow gives finite normal output or witnessed zero.",
+      "scopedCriteriaAsPreviouslyAssessed": {
+        "sourceProvenance": {
+          "status": "INDEPENDENT_PRIMITIVE_AND_DECLARED_POLICY_CAPTURED",
+          "record": {
+            "path": "docs/milestone100-20261114/math/source-applicability.json",
+            "sha256": "e071ceeed4413460e7667defac84aaf70514f31d090a2860a47fc94d40752a82"
+          },
+          "sections": [
+            "Math.pow"
+          ],
+          "boundary": "TC39 establishes language arithmetic, not broad catalog identity approval. Python/OpenStax define exact integer target functions where cited.230 decimal shifting is explicit local policy; Math.round capture supports its rounding primitive only."
+        },
+        "independentGoldens": {
+          "status": "BOUNDED_LITERAL_WITNESSES_PRESENT_NOT_FULL_DOMAIN_CERTIFICATION",
+          "evidence": {
+            "path": "docs/milestone100-20261114/math/vectors.json",
+            "sha256": "11471f2c81f178444639ba81ad01b3bb4cc843da1f8f3f1b53c85b1ef9164b42"
+          },
+          "test": {
+            "path": "src/lib/calculator-factory/completion/math-next100.test.ts",
+            "sha256": "6dbcd78f0247152511e242ee6725b7ba3169275ae15403facfc191a60b2bbf54"
+          },
+          "boundary": "Literal expected values and domain/refusal/inverse witnesses; no blanket proof outside declared capture bounds."
+        },
+        "UI": {
+          "status": "MET_STRICT_LOCAL_25_THREE_PLAN_BROWSER_RECEIPTS",
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "applicationSourceCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+          "proHistoryExactAgreement": true,
+          "freeHistoryExactAgreement": true,
+          "immutableOutputAndAnalysisWitness": true,
+          "boundary": "Actual25 per plan,200 read-back downloads overall. Bounded isolated acceptance; hosted equivalence and canonical acceptance not inferred."
+        },
+        "native": {
+          "status": "MET_LOCAL_SOFTWARE69_REPLAY_AND_FAILCLOSED_CHECKS",
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/independent-review-probes.json",
+            "sha256": "7402ed397da16e3dcb647733c3bf41c1df00423656a38929a4a5f67950ceac5f"
+          },
+          "boundary": "Exact registered tuple/version, defaultoutput parity, wrongversion/extra-fields refused; not live publication."
+        },
+        "Business": {
+          "status": "MET_GENUINE_LOCAL_ACCOUNT_AUTOMATION_AND_STRICT_BUSINESS_BROWSER",
+          "account": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-account-current/account-receipt.json",
+            "sha256": "707afc8b4165ba962d08e40af5db52e9e1bb3c6e5f4d64a0a932d7e2940d196f"
+          },
+          "accountPlans": [
+            "business",
+            "free",
+            "pro"
+          ],
+          "accountCasesObserved": 3,
+          "automation": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-automation-current/receipt.json",
+            "sha256": "0c11967a0a2737f3549209ea8e652d6ada783d2725a495125c3cb6e3b7cb495c"
+          },
+          "automationCaseObserved": true,
+          "boundary": "Exact25 authenticated local account/API/batch/worker/sharing/embed witnesses. Lower-publication fixture remains; production activation not granted.",
+          "browser": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "heldSQL": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-sql/receipt.json",
+            "sha256": "672e8e18d41c26d2658c5cef010c03747393eb3431a44bc7276bd81505086b9e"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          }
+        },
+        "history": {
+          "status": "MET_STRICT_EXACT_HISTORICAL_BROWSER_REPLAY",
+          "newHistoricalBinding": false,
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/history-ui-focused-tests.log",
+            "sha256": "ae4299fca3f56f94216f5114d95396565f5eb5c8787609ad304fa2cbe29b3ed2"
+          },
+          "boundary": "All25 Free/Pro historical reopens and replay verified; recorded output preserved. No version upgrade applied.",
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "proExactAgreement": true
+        }
+      },
+      "criteriaEvidenceOrigin": {
+        "nominationRow": 223,
+        "source": {
+          "path": "docs/milestone100-20261114/canonical/engineering-nominations.json",
+          "sha256": "29c3b067650f1f65450d1186c31b74f95aed5d5870dbfa67a02cac54c87a8ad2"
+        },
+        "unsignedPacket": {
+          "path": "docs/milestone100-20261114/canonical/unsigned-review-packets.json",
+          "sha256": "f89727418105abc2190967e6f7fb263ba1dffb4e0acb6eeeafa5ebd5e765c3bf"
+        }
+      },
+      "engineContract": {
+        "path": "src/lib/calculator-factory/completion/math-next100.ts",
+        "sha256": "8d9a40dccb383f9e4ff3898bb8cec3bcd422444485893005ee021d6745631599"
+      },
+      "contractHashMatchesCurrent": true,
+      "ledgerCrosscheck": {
+        "row": 223,
+        "wave100EngineeringState": "CONDITIONAL_SCOPED_NOMINEE",
+        "identityAndScopeMatchNomination": true,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "perRowCIFieldIsFrozenPreparation": "exactHeadCI=NOT_STARTED_FOR_NEW_HEAD; not treated as current qualification."
+      },
+      "genuinePerIdEngineeringGapsFound": [],
+      "sharedEngineeringQualificationGap": "Current source CI run435775 failed per latest coordinator instruction; complete new exact-head checks/build/full-product/source-acceptance/publication-factory and aggregate must all succeed. No qualified increment before that.",
+      "existingPendingCanonicalHumanRequirements": [
+        "Confirm exact immutable identity/version and bounded scope: Finite real exponent operation; distinguish same numerical formula from separate catalog identity.",
+        "Independent source/formula/precision applicability acceptance for this exact scope remains unsigned.",
+        "Obtain competent exact-version canonical acceptance separately; local evidence and technical review do not sign it.",
+        "Final source/budget and exact full CI qualification remains; broader canonical scope and competent acceptance are separate pending decisions."
+      ],
+      "canonicalBoundary": {
+        "status": "PENDING_SEPARATE_FROM_ENGINEERING_NOMINATION",
+        "meaning": "Approve exact immutable catalog identity and full canonical scope/source/formula/precision/QA; technical nomination does not sign this.",
+        "notInferredFamily": "Real exponentiation where historical Math.pow gives finite normal output or witnessed zero.",
+        "canonicalAccepted": false,
+        "certificationGranted": false,
+        "publicationAuthorized": false
+      },
+      "currentEvidencePinMismatches": [],
+      "canonicalApproved": false,
+      "sourceApplicabilityApproved": false,
+      "certificationGranted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "catalogId": 224,
+      "title": "Logarithm Calculator",
+      "exactIdentity": {
+        "engineId": "launch-logarithm-calculator",
+        "slug": "logarithm-calculator",
+        "version": 1,
+        "registeredNative": true
+      },
+      "disposition": "CONDITIONAL_SCOPED_TECHNICAL_NOMINEE_UNQUALIFIED",
+      "scopedTechnicalMeaning": "Positive argument and base>=1e-9 excluding1; ln(x)/ln(base).",
+      "scopedCriteriaAsPreviouslyAssessed": {
+        "sourceProvenance": {
+          "status": "INDEPENDENT_PRIMITIVE_AND_DECLARED_POLICY_CAPTURED",
+          "record": {
+            "path": "docs/milestone100-20261114/math/source-applicability.json",
+            "sha256": "e071ceeed4413460e7667defac84aaf70514f31d090a2860a47fc94d40752a82"
+          },
+          "sections": [
+            "Math.log",
+            "log(x, base)"
+          ],
+          "boundary": "TC39 establishes language arithmetic, not broad catalog identity approval. Python/OpenStax define exact integer target functions where cited.230 decimal shifting is explicit local policy; Math.round capture supports its rounding primitive only."
+        },
+        "independentGoldens": {
+          "status": "BOUNDED_LITERAL_WITNESSES_PRESENT_NOT_FULL_DOMAIN_CERTIFICATION",
+          "evidence": {
+            "path": "docs/milestone100-20261114/math/vectors.json",
+            "sha256": "11471f2c81f178444639ba81ad01b3bb4cc843da1f8f3f1b53c85b1ef9164b42"
+          },
+          "test": {
+            "path": "src/lib/calculator-factory/completion/math-next100.test.ts",
+            "sha256": "6dbcd78f0247152511e242ee6725b7ba3169275ae15403facfc191a60b2bbf54"
+          },
+          "boundary": "Literal expected values and domain/refusal/inverse witnesses; no blanket proof outside declared capture bounds."
+        },
+        "UI": {
+          "status": "MET_STRICT_LOCAL_25_THREE_PLAN_BROWSER_RECEIPTS",
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "applicationSourceCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+          "proHistoryExactAgreement": true,
+          "freeHistoryExactAgreement": true,
+          "immutableOutputAndAnalysisWitness": true,
+          "boundary": "Actual25 per plan,200 read-back downloads overall. Bounded isolated acceptance; hosted equivalence and canonical acceptance not inferred."
+        },
+        "native": {
+          "status": "MET_LOCAL_SOFTWARE69_REPLAY_AND_FAILCLOSED_CHECKS",
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/independent-review-probes.json",
+            "sha256": "7402ed397da16e3dcb647733c3bf41c1df00423656a38929a4a5f67950ceac5f"
+          },
+          "boundary": "Exact registered tuple/version, defaultoutput parity, wrongversion/extra-fields refused; not live publication."
+        },
+        "Business": {
+          "status": "MET_GENUINE_LOCAL_ACCOUNT_AUTOMATION_AND_STRICT_BUSINESS_BROWSER",
+          "account": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-account-current/account-receipt.json",
+            "sha256": "707afc8b4165ba962d08e40af5db52e9e1bb3c6e5f4d64a0a932d7e2940d196f"
+          },
+          "accountPlans": [
+            "business",
+            "free",
+            "pro"
+          ],
+          "accountCasesObserved": 3,
+          "automation": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-automation-current/receipt.json",
+            "sha256": "0c11967a0a2737f3549209ea8e652d6ada783d2725a495125c3cb6e3b7cb495c"
+          },
+          "automationCaseObserved": true,
+          "boundary": "Exact25 authenticated local account/API/batch/worker/sharing/embed witnesses. Lower-publication fixture remains; production activation not granted.",
+          "browser": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "heldSQL": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-sql/receipt.json",
+            "sha256": "672e8e18d41c26d2658c5cef010c03747393eb3431a44bc7276bd81505086b9e"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          }
+        },
+        "history": {
+          "status": "MET_STRICT_EXACT_HISTORICAL_BROWSER_REPLAY",
+          "newHistoricalBinding": false,
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/history-ui-focused-tests.log",
+            "sha256": "ae4299fca3f56f94216f5114d95396565f5eb5c8787609ad304fa2cbe29b3ed2"
+          },
+          "boundary": "All25 Free/Pro historical reopens and replay verified; recorded output preserved. No version upgrade applied.",
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "proExactAgreement": true
+        }
+      },
+      "criteriaEvidenceOrigin": {
+        "nominationRow": 224,
+        "source": {
+          "path": "docs/milestone100-20261114/canonical/engineering-nominations.json",
+          "sha256": "29c3b067650f1f65450d1186c31b74f95aed5d5870dbfa67a02cac54c87a8ad2"
+        },
+        "unsignedPacket": {
+          "path": "docs/milestone100-20261114/canonical/unsigned-review-packets.json",
+          "sha256": "f89727418105abc2190967e6f7fb263ba1dffb4e0acb6eeeafa5ebd5e765c3bf"
+        }
+      },
+      "engineContract": {
+        "path": "src/lib/calculator-factory/completion/math-next100.ts",
+        "sha256": "8d9a40dccb383f9e4ff3898bb8cec3bcd422444485893005ee021d6745631599"
+      },
+      "contractHashMatchesCurrent": true,
+      "ledgerCrosscheck": {
+        "row": 224,
+        "wave100EngineeringState": "CONDITIONAL_SCOPED_NOMINEE",
+        "identityAndScopeMatchNomination": true,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "perRowCIFieldIsFrozenPreparation": "exactHeadCI=NOT_STARTED_FOR_NEW_HEAD; not treated as current qualification."
+      },
+      "genuinePerIdEngineeringGapsFound": [],
+      "sharedEngineeringQualificationGap": "Current source CI run435775 failed per latest coordinator instruction; complete new exact-head checks/build/full-product/source-acceptance/publication-factory and aggregate must all succeed. No qualified increment before that.",
+      "existingPendingCanonicalHumanRequirements": [
+        "Confirm exact immutable identity/version and bounded scope: Positive argument and valid logarithm base; base 1 excluded.",
+        "Independent source/formula/precision applicability acceptance for this exact scope remains unsigned.",
+        "Obtain competent exact-version canonical acceptance separately; local evidence and technical review do not sign it.",
+        "Final source/budget and exact full CI qualification remains; broader canonical scope and competent acceptance are separate pending decisions."
+      ],
+      "canonicalBoundary": {
+        "status": "PENDING_SEPARATE_FROM_ENGINEERING_NOMINATION",
+        "meaning": "Approve exact immutable catalog identity and full canonical scope/source/formula/precision/QA; technical nomination does not sign this.",
+        "notInferredFamily": "Positive argument and base>=1e-9 excluding1; ln(x)/ln(base).",
+        "canonicalAccepted": false,
+        "certificationGranted": false,
+        "publicationAuthorized": false
+      },
+      "currentEvidencePinMismatches": [],
+      "canonicalApproved": false,
+      "sourceApplicabilityApproved": false,
+      "certificationGranted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "catalogId": 225,
+      "title": "Reciprocal Calculator",
+      "exactIdentity": {
+        "engineId": "launch-reciprocal-calculator",
+        "slug": "reciprocal-calculator",
+        "version": 1,
+        "registeredNative": true
+      },
+      "disposition": "CONDITIONAL_SCOPED_TECHNICAL_NOMINEE_UNQUALIFIED",
+      "scopedTechnicalMeaning": "Nonzero real reciprocal.",
+      "scopedCriteriaAsPreviouslyAssessed": {
+        "sourceProvenance": {
+          "status": "INDEPENDENT_PRIMITIVE_AND_DECLARED_POLICY_CAPTURED",
+          "record": {
+            "path": "docs/milestone100-20261114/math/source-applicability.json",
+            "sha256": "e071ceeed4413460e7667defac84aaf70514f31d090a2860a47fc94d40752a82"
+          },
+          "sections": [
+            "Number::divide"
+          ],
+          "boundary": "TC39 establishes language arithmetic, not broad catalog identity approval. Python/OpenStax define exact integer target functions where cited.230 decimal shifting is explicit local policy; Math.round capture supports its rounding primitive only."
+        },
+        "independentGoldens": {
+          "status": "BOUNDED_LITERAL_WITNESSES_PRESENT_NOT_FULL_DOMAIN_CERTIFICATION",
+          "evidence": {
+            "path": "docs/milestone100-20261114/math/vectors.json",
+            "sha256": "11471f2c81f178444639ba81ad01b3bb4cc843da1f8f3f1b53c85b1ef9164b42"
+          },
+          "test": {
+            "path": "src/lib/calculator-factory/completion/math-next100.test.ts",
+            "sha256": "6dbcd78f0247152511e242ee6725b7ba3169275ae15403facfc191a60b2bbf54"
+          },
+          "boundary": "Literal expected values and domain/refusal/inverse witnesses; no blanket proof outside declared capture bounds."
+        },
+        "UI": {
+          "status": "MET_STRICT_LOCAL_25_THREE_PLAN_BROWSER_RECEIPTS",
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "applicationSourceCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+          "proHistoryExactAgreement": true,
+          "freeHistoryExactAgreement": true,
+          "immutableOutputAndAnalysisWitness": true,
+          "boundary": "Actual25 per plan,200 read-back downloads overall. Bounded isolated acceptance; hosted equivalence and canonical acceptance not inferred."
+        },
+        "native": {
+          "status": "MET_LOCAL_SOFTWARE69_REPLAY_AND_FAILCLOSED_CHECKS",
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/independent-review-probes.json",
+            "sha256": "7402ed397da16e3dcb647733c3bf41c1df00423656a38929a4a5f67950ceac5f"
+          },
+          "boundary": "Exact registered tuple/version, defaultoutput parity, wrongversion/extra-fields refused; not live publication."
+        },
+        "Business": {
+          "status": "MET_GENUINE_LOCAL_ACCOUNT_AUTOMATION_AND_STRICT_BUSINESS_BROWSER",
+          "account": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-account-current/account-receipt.json",
+            "sha256": "707afc8b4165ba962d08e40af5db52e9e1bb3c6e5f4d64a0a932d7e2940d196f"
+          },
+          "accountPlans": [
+            "business",
+            "free",
+            "pro"
+          ],
+          "accountCasesObserved": 3,
+          "automation": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-automation-current/receipt.json",
+            "sha256": "0c11967a0a2737f3549209ea8e652d6ada783d2725a495125c3cb6e3b7cb495c"
+          },
+          "automationCaseObserved": true,
+          "boundary": "Exact25 authenticated local account/API/batch/worker/sharing/embed witnesses. Lower-publication fixture remains; production activation not granted.",
+          "browser": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "heldSQL": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-sql/receipt.json",
+            "sha256": "672e8e18d41c26d2658c5cef010c03747393eb3431a44bc7276bd81505086b9e"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          }
+        },
+        "history": {
+          "status": "MET_STRICT_EXACT_HISTORICAL_BROWSER_REPLAY",
+          "newHistoricalBinding": false,
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/history-ui-focused-tests.log",
+            "sha256": "ae4299fca3f56f94216f5114d95396565f5eb5c8787609ad304fa2cbe29b3ed2"
+          },
+          "boundary": "All25 Free/Pro historical reopens and replay verified; recorded output preserved. No version upgrade applied.",
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "proExactAgreement": true
+        }
+      },
+      "criteriaEvidenceOrigin": {
+        "nominationRow": 225,
+        "source": {
+          "path": "docs/milestone100-20261114/canonical/engineering-nominations.json",
+          "sha256": "29c3b067650f1f65450d1186c31b74f95aed5d5870dbfa67a02cac54c87a8ad2"
+        },
+        "unsignedPacket": {
+          "path": "docs/milestone100-20261114/canonical/unsigned-review-packets.json",
+          "sha256": "f89727418105abc2190967e6f7fb263ba1dffb4e0acb6eeeafa5ebd5e765c3bf"
+        }
+      },
+      "engineContract": {
+        "path": "src/lib/calculator-factory/completion/math-next100.ts",
+        "sha256": "8d9a40dccb383f9e4ff3898bb8cec3bcd422444485893005ee021d6745631599"
+      },
+      "contractHashMatchesCurrent": true,
+      "ledgerCrosscheck": {
+        "row": 225,
+        "wave100EngineeringState": "CONDITIONAL_SCOPED_NOMINEE",
+        "identityAndScopeMatchNomination": true,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "perRowCIFieldIsFrozenPreparation": "exactHeadCI=NOT_STARTED_FOR_NEW_HEAD; not treated as current qualification."
+      },
+      "genuinePerIdEngineeringGapsFound": [],
+      "sharedEngineeringQualificationGap": "Current source CI run435775 failed per latest coordinator instruction; complete new exact-head checks/build/full-product/source-acceptance/publication-factory and aggregate must all succeed. No qualified increment before that.",
+      "existingPendingCanonicalHumanRequirements": [
+        "Confirm exact immutable identity/version and bounded scope: Reciprocal of nonzero finite value.",
+        "Independent source/formula/precision applicability acceptance for this exact scope remains unsigned.",
+        "Obtain competent exact-version canonical acceptance separately; local evidence and technical review do not sign it.",
+        "Final source/budget and exact full CI qualification remains; broader canonical scope and competent acceptance are separate pending decisions."
+      ],
+      "canonicalBoundary": {
+        "status": "PENDING_SEPARATE_FROM_ENGINEERING_NOMINATION",
+        "meaning": "Approve exact immutable catalog identity and full canonical scope/source/formula/precision/QA; technical nomination does not sign this.",
+        "notInferredFamily": "Nonzero real reciprocal.",
+        "canonicalAccepted": false,
+        "certificationGranted": false,
+        "publicationAuthorized": false
+      },
+      "currentEvidencePinMismatches": [],
+      "canonicalApproved": false,
+      "sourceApplicabilityApproved": false,
+      "certificationGranted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "catalogId": 226,
+      "title": "Remainder Calculator",
+      "exactIdentity": {
+        "engineId": "launch-remainder-calculator",
+        "slug": "remainder-calculator",
+        "version": 1,
+        "registeredNative": true
+      },
+      "disposition": "CONDITIONAL_SCOPED_TECHNICAL_NOMINEE_UNQUALIFIED",
+      "scopedTechnicalMeaning": "JavaScript signed remainder, not Euclidean modulo.",
+      "scopedCriteriaAsPreviouslyAssessed": {
+        "sourceProvenance": {
+          "status": "INDEPENDENT_PRIMITIVE_AND_DECLARED_POLICY_CAPTURED",
+          "record": {
+            "path": "docs/milestone100-20261114/math/source-applicability.json",
+            "sha256": "e071ceeed4413460e7667defac84aaf70514f31d090a2860a47fc94d40752a82"
+          },
+          "sections": [
+            "Number::remainder"
+          ],
+          "boundary": "TC39 establishes language arithmetic, not broad catalog identity approval. Python/OpenStax define exact integer target functions where cited.230 decimal shifting is explicit local policy; Math.round capture supports its rounding primitive only."
+        },
+        "independentGoldens": {
+          "status": "BOUNDED_LITERAL_WITNESSES_PRESENT_NOT_FULL_DOMAIN_CERTIFICATION",
+          "evidence": {
+            "path": "docs/milestone100-20261114/math/vectors.json",
+            "sha256": "11471f2c81f178444639ba81ad01b3bb4cc843da1f8f3f1b53c85b1ef9164b42"
+          },
+          "test": {
+            "path": "src/lib/calculator-factory/completion/math-next100.test.ts",
+            "sha256": "6dbcd78f0247152511e242ee6725b7ba3169275ae15403facfc191a60b2bbf54"
+          },
+          "boundary": "Literal expected values and domain/refusal/inverse witnesses; no blanket proof outside declared capture bounds."
+        },
+        "UI": {
+          "status": "MET_STRICT_LOCAL_25_THREE_PLAN_BROWSER_RECEIPTS",
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "applicationSourceCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+          "proHistoryExactAgreement": true,
+          "freeHistoryExactAgreement": true,
+          "immutableOutputAndAnalysisWitness": true,
+          "boundary": "Actual25 per plan,200 read-back downloads overall. Bounded isolated acceptance; hosted equivalence and canonical acceptance not inferred."
+        },
+        "native": {
+          "status": "MET_LOCAL_SOFTWARE69_REPLAY_AND_FAILCLOSED_CHECKS",
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/independent-review-probes.json",
+            "sha256": "7402ed397da16e3dcb647733c3bf41c1df00423656a38929a4a5f67950ceac5f"
+          },
+          "boundary": "Exact registered tuple/version, defaultoutput parity, wrongversion/extra-fields refused; not live publication."
+        },
+        "Business": {
+          "status": "MET_GENUINE_LOCAL_ACCOUNT_AUTOMATION_AND_STRICT_BUSINESS_BROWSER",
+          "account": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-account-current/account-receipt.json",
+            "sha256": "707afc8b4165ba962d08e40af5db52e9e1bb3c6e5f4d64a0a932d7e2940d196f"
+          },
+          "accountPlans": [
+            "business",
+            "free",
+            "pro"
+          ],
+          "accountCasesObserved": 3,
+          "automation": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-automation-current/receipt.json",
+            "sha256": "0c11967a0a2737f3549209ea8e652d6ada783d2725a495125c3cb6e3b7cb495c"
+          },
+          "automationCaseObserved": true,
+          "boundary": "Exact25 authenticated local account/API/batch/worker/sharing/embed witnesses. Lower-publication fixture remains; production activation not granted.",
+          "browser": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "heldSQL": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-sql/receipt.json",
+            "sha256": "672e8e18d41c26d2658c5cef010c03747393eb3431a44bc7276bd81505086b9e"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          }
+        },
+        "history": {
+          "status": "MET_STRICT_EXACT_HISTORICAL_BROWSER_REPLAY",
+          "newHistoricalBinding": false,
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/history-ui-focused-tests.log",
+            "sha256": "ae4299fca3f56f94216f5114d95396565f5eb5c8787609ad304fa2cbe29b3ed2"
+          },
+          "boundary": "All25 Free/Pro historical reopens and replay verified; recorded output preserved. No version upgrade applied.",
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "proExactAgreement": true
+        }
+      },
+      "criteriaEvidenceOrigin": {
+        "nominationRow": 226,
+        "source": {
+          "path": "docs/milestone100-20261114/canonical/engineering-nominations.json",
+          "sha256": "29c3b067650f1f65450d1186c31b74f95aed5d5870dbfa67a02cac54c87a8ad2"
+        },
+        "unsignedPacket": {
+          "path": "docs/milestone100-20261114/canonical/unsigned-review-packets.json",
+          "sha256": "f89727418105abc2190967e6f7fb263ba1dffb4e0acb6eeeafa5ebd5e765c3bf"
+        }
+      },
+      "engineContract": {
+        "path": "src/lib/calculator-factory/completion/math-next100.ts",
+        "sha256": "8d9a40dccb383f9e4ff3898bb8cec3bcd422444485893005ee021d6745631599"
+      },
+      "contractHashMatchesCurrent": true,
+      "ledgerCrosscheck": {
+        "row": 226,
+        "wave100EngineeringState": "CONDITIONAL_SCOPED_NOMINEE",
+        "identityAndScopeMatchNomination": true,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "perRowCIFieldIsFrozenPreparation": "exactHeadCI=NOT_STARTED_FOR_NEW_HEAD; not treated as current qualification."
+      },
+      "genuinePerIdEngineeringGapsFound": [],
+      "sharedEngineeringQualificationGap": "Current source CI run435775 failed per latest coordinator instruction; complete new exact-head checks/build/full-product/source-acceptance/publication-factory and aggregate must all succeed. No qualified increment before that.",
+      "existingPendingCanonicalHumanRequirements": [
+        "Confirm exact immutable identity/version and bounded scope: Remainder with explicit signed convention and nonzero divisor.",
+        "Independent source/formula/precision applicability acceptance for this exact scope remains unsigned.",
+        "Obtain competent exact-version canonical acceptance separately; local evidence and technical review do not sign it.",
+        "Final source/budget and exact full CI qualification remains; broader canonical scope and competent acceptance are separate pending decisions."
+      ],
+      "canonicalBoundary": {
+        "status": "PENDING_SEPARATE_FROM_ENGINEERING_NOMINATION",
+        "meaning": "Approve exact immutable catalog identity and full canonical scope/source/formula/precision/QA; technical nomination does not sign this.",
+        "notInferredFamily": "JavaScript signed remainder, not Euclidean modulo.",
+        "canonicalAccepted": false,
+        "certificationGranted": false,
+        "publicationAuthorized": false
+      },
+      "currentEvidencePinMismatches": [],
+      "canonicalApproved": false,
+      "sourceApplicabilityApproved": false,
+      "certificationGranted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "catalogId": 227,
+      "title": "LCM Calculator",
+      "exactIdentity": {
+        "engineId": "launch-lcm-calculator",
+        "slug": "lcm-calculator",
+        "version": 1,
+        "registeredNative": true
+      },
+      "disposition": "CONDITIONAL_SCOPED_TECHNICAL_NOMINEE_UNQUALIFIED",
+      "scopedTechnicalMeaning": "Two positive safe integers and exact safe-integer LCM output.",
+      "scopedCriteriaAsPreviouslyAssessed": {
+        "sourceProvenance": {
+          "status": "INDEPENDENT_PRIMITIVE_AND_DECLARED_POLICY_CAPTURED",
+          "record": {
+            "path": "docs/milestone100-20261114/math/source-applicability.json",
+            "sha256": "e071ceeed4413460e7667defac84aaf70514f31d090a2860a47fc94d40752a82"
+          },
+          "sections": [
+            "lcm definition",
+            "LCM definition and 12/18 example"
+          ],
+          "boundary": "TC39 establishes language arithmetic, not broad catalog identity approval. Python/OpenStax define exact integer target functions where cited.230 decimal shifting is explicit local policy; Math.round capture supports its rounding primitive only."
+        },
+        "independentGoldens": {
+          "status": "BOUNDED_LITERAL_WITNESSES_PRESENT_NOT_FULL_DOMAIN_CERTIFICATION",
+          "evidence": {
+            "path": "docs/milestone100-20261114/math/vectors.json",
+            "sha256": "11471f2c81f178444639ba81ad01b3bb4cc843da1f8f3f1b53c85b1ef9164b42"
+          },
+          "test": {
+            "path": "src/lib/calculator-factory/completion/math-next100.test.ts",
+            "sha256": "6dbcd78f0247152511e242ee6725b7ba3169275ae15403facfc191a60b2bbf54"
+          },
+          "boundary": "Literal expected values and domain/refusal/inverse witnesses; no blanket proof outside declared capture bounds."
+        },
+        "UI": {
+          "status": "MET_STRICT_LOCAL_25_THREE_PLAN_BROWSER_RECEIPTS",
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "applicationSourceCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+          "proHistoryExactAgreement": true,
+          "freeHistoryExactAgreement": true,
+          "immutableOutputAndAnalysisWitness": true,
+          "boundary": "Actual25 per plan,200 read-back downloads overall. Bounded isolated acceptance; hosted equivalence and canonical acceptance not inferred."
+        },
+        "native": {
+          "status": "MET_LOCAL_SOFTWARE69_REPLAY_AND_FAILCLOSED_CHECKS",
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/independent-review-probes.json",
+            "sha256": "7402ed397da16e3dcb647733c3bf41c1df00423656a38929a4a5f67950ceac5f"
+          },
+          "boundary": "Exact registered tuple/version, defaultoutput parity, wrongversion/extra-fields refused; not live publication."
+        },
+        "Business": {
+          "status": "MET_GENUINE_LOCAL_ACCOUNT_AUTOMATION_AND_STRICT_BUSINESS_BROWSER",
+          "account": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-account-current/account-receipt.json",
+            "sha256": "707afc8b4165ba962d08e40af5db52e9e1bb3c6e5f4d64a0a932d7e2940d196f"
+          },
+          "accountPlans": [
+            "business",
+            "free",
+            "pro"
+          ],
+          "accountCasesObserved": 3,
+          "automation": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-automation-current/receipt.json",
+            "sha256": "0c11967a0a2737f3549209ea8e652d6ada783d2725a495125c3cb6e3b7cb495c"
+          },
+          "automationCaseObserved": true,
+          "boundary": "Exact25 authenticated local account/API/batch/worker/sharing/embed witnesses. Lower-publication fixture remains; production activation not granted.",
+          "browser": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "heldSQL": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-sql/receipt.json",
+            "sha256": "672e8e18d41c26d2658c5cef010c03747393eb3431a44bc7276bd81505086b9e"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          }
+        },
+        "history": {
+          "status": "MET_STRICT_EXACT_HISTORICAL_BROWSER_REPLAY",
+          "newHistoricalBinding": false,
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/history-ui-focused-tests.log",
+            "sha256": "ae4299fca3f56f94216f5114d95396565f5eb5c8787609ad304fa2cbe29b3ed2"
+          },
+          "boundary": "All25 Free/Pro historical reopens and replay verified; recorded output preserved. No version upgrade applied.",
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "proExactAgreement": true
+        }
+      },
+      "criteriaEvidenceOrigin": {
+        "nominationRow": 227,
+        "source": {
+          "path": "docs/milestone100-20261114/canonical/engineering-nominations.json",
+          "sha256": "29c3b067650f1f65450d1186c31b74f95aed5d5870dbfa67a02cac54c87a8ad2"
+        },
+        "unsignedPacket": {
+          "path": "docs/milestone100-20261114/canonical/unsigned-review-packets.json",
+          "sha256": "f89727418105abc2190967e6f7fb263ba1dffb4e0acb6eeeafa5ebd5e765c3bf"
+        }
+      },
+      "engineContract": {
+        "path": "src/lib/calculator-factory/completion/math-next100.ts",
+        "sha256": "8d9a40dccb383f9e4ff3898bb8cec3bcd422444485893005ee021d6745631599"
+      },
+      "contractHashMatchesCurrent": true,
+      "ledgerCrosscheck": {
+        "row": 227,
+        "wave100EngineeringState": "CONDITIONAL_SCOPED_NOMINEE",
+        "identityAndScopeMatchNomination": true,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "perRowCIFieldIsFrozenPreparation": "exactHeadCI=NOT_STARTED_FOR_NEW_HEAD; not treated as current qualification."
+      },
+      "genuinePerIdEngineeringGapsFound": [],
+      "sharedEngineeringQualificationGap": "Current source CI run435775 failed per latest coordinator instruction; complete new exact-head checks/build/full-product/source-acceptance/publication-factory and aggregate must all succeed. No qualified increment before that.",
+      "existingPendingCanonicalHumanRequirements": [
+        "Confirm exact immutable identity/version and bounded scope: LCM of two positive safe integers; exact safe-integer result only.",
+        "Independent source/formula/precision applicability acceptance for this exact scope remains unsigned.",
+        "Obtain competent exact-version canonical acceptance separately; local evidence and technical review do not sign it.",
+        "Final source/budget and exact full CI qualification remains; broader canonical scope and competent acceptance are separate pending decisions."
+      ],
+      "canonicalBoundary": {
+        "status": "PENDING_SEPARATE_FROM_ENGINEERING_NOMINATION",
+        "meaning": "Approve exact immutable catalog identity and full canonical scope/source/formula/precision/QA; technical nomination does not sign this.",
+        "notInferredFamily": "Two positive safe integers and exact safe-integer LCM output.",
+        "canonicalAccepted": false,
+        "certificationGranted": false,
+        "publicationAuthorized": false
+      },
+      "currentEvidencePinMismatches": [],
+      "canonicalApproved": false,
+      "sourceApplicabilityApproved": false,
+      "certificationGranted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "catalogId": 228,
+      "title": "GCF Calculator",
+      "exactIdentity": {
+        "engineId": "launch-gcf-calculator",
+        "slug": "gcf-calculator",
+        "version": 1,
+        "registeredNative": true
+      },
+      "disposition": "CONDITIONAL_SCOPED_TECHNICAL_NOMINEE_UNQUALIFIED",
+      "scopedTechnicalMeaning": "Two positive safe integers and Euclidean GCF.",
+      "scopedCriteriaAsPreviouslyAssessed": {
+        "sourceProvenance": {
+          "status": "INDEPENDENT_PRIMITIVE_AND_DECLARED_POLICY_CAPTURED",
+          "record": {
+            "path": "docs/milestone100-20261114/math/source-applicability.json",
+            "sha256": "e071ceeed4413460e7667defac84aaf70514f31d090a2860a47fc94d40752a82"
+          },
+          "sections": [
+            "gcd definition"
+          ],
+          "boundary": "TC39 establishes language arithmetic, not broad catalog identity approval. Python/OpenStax define exact integer target functions where cited.230 decimal shifting is explicit local policy; Math.round capture supports its rounding primitive only."
+        },
+        "independentGoldens": {
+          "status": "BOUNDED_LITERAL_WITNESSES_PRESENT_NOT_FULL_DOMAIN_CERTIFICATION",
+          "evidence": {
+            "path": "docs/milestone100-20261114/math/vectors.json",
+            "sha256": "11471f2c81f178444639ba81ad01b3bb4cc843da1f8f3f1b53c85b1ef9164b42"
+          },
+          "test": {
+            "path": "src/lib/calculator-factory/completion/math-next100.test.ts",
+            "sha256": "6dbcd78f0247152511e242ee6725b7ba3169275ae15403facfc191a60b2bbf54"
+          },
+          "boundary": "Literal expected values and domain/refusal/inverse witnesses; no blanket proof outside declared capture bounds."
+        },
+        "UI": {
+          "status": "MET_STRICT_LOCAL_25_THREE_PLAN_BROWSER_RECEIPTS",
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "applicationSourceCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+          "proHistoryExactAgreement": true,
+          "freeHistoryExactAgreement": true,
+          "immutableOutputAndAnalysisWitness": true,
+          "boundary": "Actual25 per plan,200 read-back downloads overall. Bounded isolated acceptance; hosted equivalence and canonical acceptance not inferred."
+        },
+        "native": {
+          "status": "MET_LOCAL_SOFTWARE69_REPLAY_AND_FAILCLOSED_CHECKS",
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/independent-review-probes.json",
+            "sha256": "7402ed397da16e3dcb647733c3bf41c1df00423656a38929a4a5f67950ceac5f"
+          },
+          "boundary": "Exact registered tuple/version, defaultoutput parity, wrongversion/extra-fields refused; not live publication."
+        },
+        "Business": {
+          "status": "MET_GENUINE_LOCAL_ACCOUNT_AUTOMATION_AND_STRICT_BUSINESS_BROWSER",
+          "account": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-account-current/account-receipt.json",
+            "sha256": "707afc8b4165ba962d08e40af5db52e9e1bb3c6e5f4d64a0a932d7e2940d196f"
+          },
+          "accountPlans": [
+            "business",
+            "free",
+            "pro"
+          ],
+          "accountCasesObserved": 3,
+          "automation": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-automation-current/receipt.json",
+            "sha256": "0c11967a0a2737f3549209ea8e652d6ada783d2725a495125c3cb6e3b7cb495c"
+          },
+          "automationCaseObserved": true,
+          "boundary": "Exact25 authenticated local account/API/batch/worker/sharing/embed witnesses. Lower-publication fixture remains; production activation not granted.",
+          "browser": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "heldSQL": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-sql/receipt.json",
+            "sha256": "672e8e18d41c26d2658c5cef010c03747393eb3431a44bc7276bd81505086b9e"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          }
+        },
+        "history": {
+          "status": "MET_STRICT_EXACT_HISTORICAL_BROWSER_REPLAY",
+          "newHistoricalBinding": false,
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/history-ui-focused-tests.log",
+            "sha256": "ae4299fca3f56f94216f5114d95396565f5eb5c8787609ad304fa2cbe29b3ed2"
+          },
+          "boundary": "All25 Free/Pro historical reopens and replay verified; recorded output preserved. No version upgrade applied.",
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "proExactAgreement": true
+        }
+      },
+      "criteriaEvidenceOrigin": {
+        "nominationRow": 228,
+        "source": {
+          "path": "docs/milestone100-20261114/canonical/engineering-nominations.json",
+          "sha256": "29c3b067650f1f65450d1186c31b74f95aed5d5870dbfa67a02cac54c87a8ad2"
+        },
+        "unsignedPacket": {
+          "path": "docs/milestone100-20261114/canonical/unsigned-review-packets.json",
+          "sha256": "f89727418105abc2190967e6f7fb263ba1dffb4e0acb6eeeafa5ebd5e765c3bf"
+        }
+      },
+      "engineContract": {
+        "path": "src/lib/calculator-factory/completion/math-next100.ts",
+        "sha256": "8d9a40dccb383f9e4ff3898bb8cec3bcd422444485893005ee021d6745631599"
+      },
+      "contractHashMatchesCurrent": true,
+      "ledgerCrosscheck": {
+        "row": 228,
+        "wave100EngineeringState": "CONDITIONAL_SCOPED_NOMINEE",
+        "identityAndScopeMatchNomination": true,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "perRowCIFieldIsFrozenPreparation": "exactHeadCI=NOT_STARTED_FOR_NEW_HEAD; not treated as current qualification."
+      },
+      "genuinePerIdEngineeringGapsFound": [],
+      "sharedEngineeringQualificationGap": "Current source CI run435775 failed per latest coordinator instruction; complete new exact-head checks/build/full-product/source-acceptance/publication-factory and aggregate must all succeed. No qualified increment before that.",
+      "existingPendingCanonicalHumanRequirements": [
+        "Confirm exact immutable identity/version and bounded scope: Euclidean GCF of two positive safe integers.",
+        "Independent source/formula/precision applicability acceptance for this exact scope remains unsigned.",
+        "Obtain competent exact-version canonical acceptance separately; local evidence and technical review do not sign it.",
+        "Final source/budget and exact full CI qualification remains; broader canonical scope and competent acceptance are separate pending decisions."
+      ],
+      "canonicalBoundary": {
+        "status": "PENDING_SEPARATE_FROM_ENGINEERING_NOMINATION",
+        "meaning": "Approve exact immutable catalog identity and full canonical scope/source/formula/precision/QA; technical nomination does not sign this.",
+        "notInferredFamily": "Two positive safe integers and Euclidean GCF.",
+        "canonicalAccepted": false,
+        "certificationGranted": false,
+        "publicationAuthorized": false
+      },
+      "currentEvidencePinMismatches": [],
+      "canonicalApproved": false,
+      "sourceApplicabilityApproved": false,
+      "certificationGranted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "catalogId": 229,
+      "title": "Factor Calculator",
+      "exactIdentity": {
+        "engineId": "launch-factor-calculator",
+        "slug": "factor-calculator",
+        "version": 1,
+        "registeredNative": true
+      },
+      "disposition": "CONDITIONAL_SCOPED_TECHNICAL_NOMINEE_UNQUALIFIED",
+      "scopedTechnicalMeaning": "Smallest divisor>1 for integer2..1e9, prime maps to itself; not factor enumeration.",
+      "scopedCriteriaAsPreviouslyAssessed": {
+        "sourceProvenance": {
+          "status": "INDEPENDENT_PRIMITIVE_AND_DECLARED_POLICY_CAPTURED",
+          "record": {
+            "path": "docs/milestone100-20261114/math/source-applicability.json",
+            "sha256": "e071ceeed4413460e7667defac84aaf70514f31d090a2860a47fc94d40752a82"
+          },
+          "sections": [
+            "Prime/composite factor definitions"
+          ],
+          "boundary": "TC39 establishes language arithmetic, not broad catalog identity approval. Python/OpenStax define exact integer target functions where cited.230 decimal shifting is explicit local policy; Math.round capture supports its rounding primitive only."
+        },
+        "independentGoldens": {
+          "status": "BOUNDED_LITERAL_WITNESSES_PRESENT_NOT_FULL_DOMAIN_CERTIFICATION",
+          "evidence": {
+            "path": "docs/milestone100-20261114/math/vectors.json",
+            "sha256": "11471f2c81f178444639ba81ad01b3bb4cc843da1f8f3f1b53c85b1ef9164b42"
+          },
+          "test": {
+            "path": "src/lib/calculator-factory/completion/math-next100.test.ts",
+            "sha256": "6dbcd78f0247152511e242ee6725b7ba3169275ae15403facfc191a60b2bbf54"
+          },
+          "boundary": "Literal expected values and domain/refusal/inverse witnesses; no blanket proof outside declared capture bounds."
+        },
+        "UI": {
+          "status": "MET_STRICT_LOCAL_25_THREE_PLAN_BROWSER_RECEIPTS",
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "applicationSourceCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+          "proHistoryExactAgreement": true,
+          "freeHistoryExactAgreement": true,
+          "immutableOutputAndAnalysisWitness": true,
+          "boundary": "Actual25 per plan,200 read-back downloads overall. Bounded isolated acceptance; hosted equivalence and canonical acceptance not inferred."
+        },
+        "native": {
+          "status": "MET_LOCAL_SOFTWARE69_REPLAY_AND_FAILCLOSED_CHECKS",
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/independent-review-probes.json",
+            "sha256": "7402ed397da16e3dcb647733c3bf41c1df00423656a38929a4a5f67950ceac5f"
+          },
+          "boundary": "Exact registered tuple/version, defaultoutput parity, wrongversion/extra-fields refused; not live publication."
+        },
+        "Business": {
+          "status": "MET_GENUINE_LOCAL_ACCOUNT_AUTOMATION_AND_STRICT_BUSINESS_BROWSER",
+          "account": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-account-current/account-receipt.json",
+            "sha256": "707afc8b4165ba962d08e40af5db52e9e1bb3c6e5f4d64a0a932d7e2940d196f"
+          },
+          "accountPlans": [
+            "business",
+            "free",
+            "pro"
+          ],
+          "accountCasesObserved": 3,
+          "automation": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-automation-current/receipt.json",
+            "sha256": "0c11967a0a2737f3549209ea8e652d6ada783d2725a495125c3cb6e3b7cb495c"
+          },
+          "automationCaseObserved": true,
+          "boundary": "Exact25 authenticated local account/API/batch/worker/sharing/embed witnesses. Lower-publication fixture remains; production activation not granted.",
+          "browser": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "heldSQL": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-sql/receipt.json",
+            "sha256": "672e8e18d41c26d2658c5cef010c03747393eb3431a44bc7276bd81505086b9e"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          }
+        },
+        "history": {
+          "status": "MET_STRICT_EXACT_HISTORICAL_BROWSER_REPLAY",
+          "newHistoricalBinding": false,
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/history-ui-focused-tests.log",
+            "sha256": "ae4299fca3f56f94216f5114d95396565f5eb5c8787609ad304fa2cbe29b3ed2"
+          },
+          "boundary": "All25 Free/Pro historical reopens and replay verified; recorded output preserved. No version upgrade applied.",
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "proExactAgreement": true
+        }
+      },
+      "criteriaEvidenceOrigin": {
+        "nominationRow": 229,
+        "source": {
+          "path": "docs/milestone100-20261114/canonical/engineering-nominations.json",
+          "sha256": "29c3b067650f1f65450d1186c31b74f95aed5d5870dbfa67a02cac54c87a8ad2"
+        },
+        "unsignedPacket": {
+          "path": "docs/milestone100-20261114/canonical/unsigned-review-packets.json",
+          "sha256": "f89727418105abc2190967e6f7fb263ba1dffb4e0acb6eeeafa5ebd5e765c3bf"
+        }
+      },
+      "engineContract": {
+        "path": "src/lib/calculator-factory/completion/math-next100.ts",
+        "sha256": "8d9a40dccb383f9e4ff3898bb8cec3bcd422444485893005ee021d6745631599"
+      },
+      "contractHashMatchesCurrent": true,
+      "ledgerCrosscheck": {
+        "row": 229,
+        "wave100EngineeringState": "CONDITIONAL_SCOPED_NOMINEE",
+        "identityAndScopeMatchNomination": true,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "perRowCIFieldIsFrozenPreparation": "exactHeadCI=NOT_STARTED_FOR_NEW_HEAD; not treated as current qualification."
+      },
+      "genuinePerIdEngineeringGapsFound": [],
+      "sharedEngineeringQualificationGap": "Current source CI run435775 failed per latest coordinator instruction; complete new exact-head checks/build/full-product/source-acceptance/publication-factory and aggregate must all succeed. No qualified increment before that.",
+      "existingPendingCanonicalHumanRequirements": [
+        "Confirm exact immutable identity/version and bounded scope: Smallest divisor greater than one for integers 2 through 1e9; not a complete factor list.",
+        "Independent source/formula/precision applicability acceptance for this exact scope remains unsigned.",
+        "Obtain competent exact-version canonical acceptance separately; local evidence and technical review do not sign it.",
+        "Final source/budget and exact full CI qualification remains; broader canonical scope and competent acceptance are separate pending decisions."
+      ],
+      "canonicalBoundary": {
+        "status": "PENDING_SEPARATE_FROM_ENGINEERING_NOMINATION",
+        "meaning": "Approve exact immutable catalog identity and full canonical scope/source/formula/precision/QA; technical nomination does not sign this.",
+        "notInferredFamily": "Smallest divisor>1 for integer2..1e9, prime maps to itself; not factor enumeration.",
+        "canonicalAccepted": false,
+        "certificationGranted": false,
+        "publicationAuthorized": false
+      },
+      "currentEvidencePinMismatches": [],
+      "canonicalApproved": false,
+      "sourceApplicabilityApproved": false,
+      "certificationGranted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "catalogId": 230,
+      "title": "Rounding Calculator",
+      "exactIdentity": {
+        "engineId": "launch-rounding-calculator",
+        "slug": "rounding-calculator",
+        "version": 1,
+        "registeredNative": true
+      },
+      "disposition": "CONDITIONAL_SCOPED_TECHNICAL_NOMINEE_UNQUALIFIED",
+      "scopedTechnicalMeaning": "Retained decimal exponent-shift rounding, nonnegative safe integer places, ties toward positive infinity and signed zero; not financial rounding.",
+      "scopedCriteriaAsPreviouslyAssessed": {
+        "sourceProvenance": {
+          "status": "INDEPENDENT_PRIMITIVE_AND_DECLARED_POLICY_CAPTURED",
+          "record": {
+            "path": "docs/milestone100-20261114/math/source-applicability.json",
+            "sha256": "e071ceeed4413460e7667defac84aaf70514f31d090a2860a47fc94d40752a82"
+          },
+          "sections": [
+            "Math.round ties and signed zero"
+          ],
+          "boundary": "TC39 establishes language arithmetic, not broad catalog identity approval. Python/OpenStax define exact integer target functions where cited.230 decimal shifting is explicit local policy; Math.round capture supports its rounding primitive only."
+        },
+        "independentGoldens": {
+          "status": "BOUNDED_LITERAL_WITNESSES_PRESENT_NOT_FULL_DOMAIN_CERTIFICATION",
+          "evidence": {
+            "path": "docs/milestone100-20261114/math/vectors.json",
+            "sha256": "11471f2c81f178444639ba81ad01b3bb4cc843da1f8f3f1b53c85b1ef9164b42"
+          },
+          "test": {
+            "path": "src/lib/calculator-factory/completion/math-next100.test.ts",
+            "sha256": "6dbcd78f0247152511e242ee6725b7ba3169275ae15403facfc191a60b2bbf54"
+          },
+          "boundary": "Literal expected values and domain/refusal/inverse witnesses; no blanket proof outside declared capture bounds."
+        },
+        "UI": {
+          "status": "MET_STRICT_LOCAL_25_THREE_PLAN_BROWSER_RECEIPTS",
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "applicationSourceCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+          "proHistoryExactAgreement": true,
+          "freeHistoryExactAgreement": true,
+          "immutableOutputAndAnalysisWitness": true,
+          "boundary": "Actual25 per plan,200 read-back downloads overall. Bounded isolated acceptance; hosted equivalence and canonical acceptance not inferred."
+        },
+        "native": {
+          "status": "MET_LOCAL_SOFTWARE69_REPLAY_AND_FAILCLOSED_CHECKS",
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/independent-review-probes.json",
+            "sha256": "7402ed397da16e3dcb647733c3bf41c1df00423656a38929a4a5f67950ceac5f"
+          },
+          "boundary": "Exact registered tuple/version, defaultoutput parity, wrongversion/extra-fields refused; not live publication."
+        },
+        "Business": {
+          "status": "MET_GENUINE_LOCAL_ACCOUNT_AUTOMATION_AND_STRICT_BUSINESS_BROWSER",
+          "account": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-account-current/account-receipt.json",
+            "sha256": "707afc8b4165ba962d08e40af5db52e9e1bb3c6e5f4d64a0a932d7e2940d196f"
+          },
+          "accountPlans": [
+            "business",
+            "free",
+            "pro"
+          ],
+          "accountCasesObserved": 3,
+          "automation": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-automation-current/receipt.json",
+            "sha256": "0c11967a0a2737f3549209ea8e652d6ada783d2725a495125c3cb6e3b7cb495c"
+          },
+          "automationCaseObserved": true,
+          "boundary": "Exact25 authenticated local account/API/batch/worker/sharing/embed witnesses. Lower-publication fixture remains; production activation not granted.",
+          "browser": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "heldSQL": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-sql/receipt.json",
+            "sha256": "672e8e18d41c26d2658c5cef010c03747393eb3431a44bc7276bd81505086b9e"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          }
+        },
+        "history": {
+          "status": "MET_STRICT_EXACT_HISTORICAL_BROWSER_REPLAY",
+          "newHistoricalBinding": false,
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/history-ui-focused-tests.log",
+            "sha256": "ae4299fca3f56f94216f5114d95396565f5eb5c8787609ad304fa2cbe29b3ed2"
+          },
+          "boundary": "All25 Free/Pro historical reopens and replay verified; recorded output preserved. No version upgrade applied.",
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "proExactAgreement": true
+        }
+      },
+      "criteriaEvidenceOrigin": {
+        "nominationRow": 230,
+        "source": {
+          "path": "docs/milestone100-20261114/canonical/engineering-nominations.json",
+          "sha256": "29c3b067650f1f65450d1186c31b74f95aed5d5870dbfa67a02cac54c87a8ad2"
+        },
+        "unsignedPacket": {
+          "path": "docs/milestone100-20261114/canonical/unsigned-review-packets.json",
+          "sha256": "f89727418105abc2190967e6f7fb263ba1dffb4e0acb6eeeafa5ebd5e765c3bf"
+        }
+      },
+      "engineContract": {
+        "path": "src/lib/calculator-factory/completion/math-next100.ts",
+        "sha256": "8d9a40dccb383f9e4ff3898bb8cec3bcd422444485893005ee021d6745631599"
+      },
+      "contractHashMatchesCurrent": true,
+      "ledgerCrosscheck": {
+        "row": 230,
+        "wave100EngineeringState": "CONDITIONAL_SCOPED_NOMINEE",
+        "identityAndScopeMatchNomination": true,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "perRowCIFieldIsFrozenPreparation": "exactHeadCI=NOT_STARTED_FOR_NEW_HEAD; not treated as current qualification."
+      },
+      "genuinePerIdEngineeringGapsFound": [],
+      "sharedEngineeringQualificationGap": "Current source CI run435775 failed per latest coordinator instruction; complete new exact-head checks/build/full-product/source-acceptance/publication-factory and aggregate must all succeed. No qualified increment before that.",
+      "existingPendingCanonicalHumanRequirements": [
+        "Confirm exact immutable identity/version and bounded scope: Decimal-place rounding; state tie convention, signed-zero policy and magnitude limits.",
+        "Independent source/formula/precision applicability acceptance for this exact scope remains unsigned.",
+        "Obtain competent exact-version canonical acceptance separately; local evidence and technical review do not sign it.",
+        "Final source/budget and exact full CI qualification remains; broader canonical scope and competent acceptance are separate pending decisions."
+      ],
+      "canonicalBoundary": {
+        "status": "PENDING_SEPARATE_FROM_ENGINEERING_NOMINATION",
+        "meaning": "Approve exact immutable catalog identity and full canonical scope/source/formula/precision/QA; technical nomination does not sign this.",
+        "notInferredFamily": "Retained decimal exponent-shift rounding, nonnegative safe integer places, ties toward positive infinity and signed zero; not financial rounding.",
+        "canonicalAccepted": false,
+        "certificationGranted": false,
+        "publicationAuthorized": false
+      },
+      "currentEvidencePinMismatches": [],
+      "canonicalApproved": false,
+      "sourceApplicabilityApproved": false,
+      "certificationGranted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "catalogId": 231,
+      "title": "Scientific Notation Calculator",
+      "exactIdentity": {
+        "engineId": "launch-scientific-notation-calculator",
+        "slug": "scientific-notation-calculator",
+        "version": 1,
+        "registeredNative": true
+      },
+      "disposition": "CONDITIONAL_SCOPED_TECHNICAL_NOMINEE_UNQUALIFIED",
+      "scopedTechnicalMeaning": "Evaluate coefficient*10^exponent, not normalized notation formatting.",
+      "scopedCriteriaAsPreviouslyAssessed": {
+        "sourceProvenance": {
+          "status": "INDEPENDENT_PRIMITIVE_AND_DECLARED_POLICY_CAPTURED",
+          "record": {
+            "path": "docs/milestone100-20261114/math/source-applicability.json",
+            "sha256": "e071ceeed4413460e7667defac84aaf70514f31d090a2860a47fc94d40752a82"
+          },
+          "sections": [
+            "Math.pow",
+            "Number::multiply"
+          ],
+          "boundary": "TC39 establishes language arithmetic, not broad catalog identity approval. Python/OpenStax define exact integer target functions where cited.230 decimal shifting is explicit local policy; Math.round capture supports its rounding primitive only."
+        },
+        "independentGoldens": {
+          "status": "BOUNDED_LITERAL_WITNESSES_PRESENT_NOT_FULL_DOMAIN_CERTIFICATION",
+          "evidence": {
+            "path": "docs/milestone100-20261114/math/vectors.json",
+            "sha256": "11471f2c81f178444639ba81ad01b3bb4cc843da1f8f3f1b53c85b1ef9164b42"
+          },
+          "test": {
+            "path": "src/lib/calculator-factory/completion/math-next100.test.ts",
+            "sha256": "6dbcd78f0247152511e242ee6725b7ba3169275ae15403facfc191a60b2bbf54"
+          },
+          "boundary": "Literal expected values and domain/refusal/inverse witnesses; no blanket proof outside declared capture bounds."
+        },
+        "UI": {
+          "status": "MET_STRICT_LOCAL_25_THREE_PLAN_BROWSER_RECEIPTS",
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "applicationSourceCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+          "proHistoryExactAgreement": true,
+          "freeHistoryExactAgreement": true,
+          "immutableOutputAndAnalysisWitness": true,
+          "boundary": "Actual25 per plan,200 read-back downloads overall. Bounded isolated acceptance; hosted equivalence and canonical acceptance not inferred."
+        },
+        "native": {
+          "status": "MET_LOCAL_SOFTWARE69_REPLAY_AND_FAILCLOSED_CHECKS",
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/independent-review-probes.json",
+            "sha256": "7402ed397da16e3dcb647733c3bf41c1df00423656a38929a4a5f67950ceac5f"
+          },
+          "boundary": "Exact registered tuple/version, defaultoutput parity, wrongversion/extra-fields refused; not live publication."
+        },
+        "Business": {
+          "status": "MET_GENUINE_LOCAL_ACCOUNT_AUTOMATION_AND_STRICT_BUSINESS_BROWSER",
+          "account": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-account-current/account-receipt.json",
+            "sha256": "707afc8b4165ba962d08e40af5db52e9e1bb3c6e5f4d64a0a932d7e2940d196f"
+          },
+          "accountPlans": [
+            "business",
+            "free",
+            "pro"
+          ],
+          "accountCasesObserved": 3,
+          "automation": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-automation-current/receipt.json",
+            "sha256": "0c11967a0a2737f3549209ea8e652d6ada783d2725a495125c3cb6e3b7cb495c"
+          },
+          "automationCaseObserved": true,
+          "boundary": "Exact25 authenticated local account/API/batch/worker/sharing/embed witnesses. Lower-publication fixture remains; production activation not granted.",
+          "browser": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "heldSQL": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-sql/receipt.json",
+            "sha256": "672e8e18d41c26d2658c5cef010c03747393eb3431a44bc7276bd81505086b9e"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          }
+        },
+        "history": {
+          "status": "MET_STRICT_EXACT_HISTORICAL_BROWSER_REPLAY",
+          "newHistoricalBinding": false,
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/history-ui-focused-tests.log",
+            "sha256": "ae4299fca3f56f94216f5114d95396565f5eb5c8787609ad304fa2cbe29b3ed2"
+          },
+          "boundary": "All25 Free/Pro historical reopens and replay verified; recorded output preserved. No version upgrade applied.",
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "proExactAgreement": true
+        }
+      },
+      "criteriaEvidenceOrigin": {
+        "nominationRow": 231,
+        "source": {
+          "path": "docs/milestone100-20261114/canonical/engineering-nominations.json",
+          "sha256": "29c3b067650f1f65450d1186c31b74f95aed5d5870dbfa67a02cac54c87a8ad2"
+        },
+        "unsignedPacket": {
+          "path": "docs/milestone100-20261114/canonical/unsigned-review-packets.json",
+          "sha256": "f89727418105abc2190967e6f7fb263ba1dffb4e0acb6eeeafa5ebd5e765c3bf"
+        }
+      },
+      "engineContract": {
+        "path": "src/lib/calculator-factory/completion/math-next100.ts",
+        "sha256": "8d9a40dccb383f9e4ff3898bb8cec3bcd422444485893005ee021d6745631599"
+      },
+      "contractHashMatchesCurrent": true,
+      "ledgerCrosscheck": {
+        "row": 231,
+        "wave100EngineeringState": "CONDITIONAL_SCOPED_NOMINEE",
+        "identityAndScopeMatchNomination": true,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "perRowCIFieldIsFrozenPreparation": "exactHeadCI=NOT_STARTED_FOR_NEW_HEAD; not treated as current qualification."
+      },
+      "genuinePerIdEngineeringGapsFound": [],
+      "sharedEngineeringQualificationGap": "Current source CI run435775 failed per latest coordinator instruction; complete new exact-head checks/build/full-product/source-acceptance/publication-factory and aggregate must all succeed. No qualified increment before that.",
+      "existingPendingCanonicalHumanRequirements": [
+        "Confirm exact immutable identity/version and bounded scope: Evaluate coefficient times ten to exponent; existing engine does not format normalized scientific notation.",
+        "Independent source/formula/precision applicability acceptance for this exact scope remains unsigned.",
+        "Obtain competent exact-version canonical acceptance separately; local evidence and technical review do not sign it.",
+        "Final source/budget and exact full CI qualification remains; broader canonical scope and competent acceptance are separate pending decisions."
+      ],
+      "canonicalBoundary": {
+        "status": "PENDING_SEPARATE_FROM_ENGINEERING_NOMINATION",
+        "meaning": "Approve exact immutable catalog identity and full canonical scope/source/formula/precision/QA; technical nomination does not sign this.",
+        "notInferredFamily": "Evaluate coefficient*10^exponent, not normalized notation formatting.",
+        "canonicalAccepted": false,
+        "certificationGranted": false,
+        "publicationAuthorized": false
+      },
+      "currentEvidencePinMismatches": [],
+      "canonicalApproved": false,
+      "sourceApplicabilityApproved": false,
+      "certificationGranted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "catalogId": 272,
+      "title": "Cone Volume Calculator",
+      "exactIdentity": {
+        "engineId": "launch-cone-volume-calculator",
+        "slug": "cone-volume-calculator",
+        "version": 1,
+        "registeredNative": true
+      },
+      "disposition": "CONDITIONAL_SCOPED_TECHNICAL_NOMINEE_UNQUALIFIED",
+      "scopedTechnicalMeaning": "Right circular cone volume with compatible lengths.",
+      "scopedCriteriaAsPreviouslyAssessed": {
+        "sourceProvenance": {
+          "status": "INDEPENDENT_BOUNDED_METHODOLOGY_CAPTURED",
+          "records": [
+            {
+              "path": "docs/milestone100-20261114/geometry/source-volume.md",
+              "sha256": "4e6db6e89ab7c7511e50466d904ba61f83a908747c2b1e5074c1c7b88eb2a6f0"
+            }
+          ],
+          "index": {
+            "path": "docs/milestone100-20261114/geometry/source-excerpts.json",
+            "sha256": "c172d9edf4722ffed5e4ba587576d560ae2baa1a3674b162a9bdf957a2b5a3de"
+          },
+          "boundary": "Exact bounded geometry relation only; no family or general-solver authorization inferred."
+        },
+        "independentGoldens": {
+          "status": "BOUNDED_LITERAL_WITNESSES_PRESENT_NOT_FULL_DOMAIN_CERTIFICATION",
+          "evidence": {
+            "path": "docs/milestone100-20261114/geometry/engineering-evidence.md",
+            "sha256": "793cbcf5f0546a1715ebb6df7c4dddb8454487a0136a308483d497193c4b25f3"
+          },
+          "test": {
+            "path": "src/lib/calculator-factory/completion/geometry-next100.test.ts",
+            "sha256": "766366cf059d0bd1b8a86c736a2e97292955cb3b69bcc045a83742914f7694cc"
+          },
+          "boundary": "Literal expected values and domain/refusal/inverse witnesses; no blanket proof outside declared capture bounds."
+        },
+        "UI": {
+          "status": "MET_STRICT_LOCAL_25_THREE_PLAN_BROWSER_RECEIPTS",
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "applicationSourceCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+          "proHistoryExactAgreement": true,
+          "freeHistoryExactAgreement": true,
+          "immutableOutputAndAnalysisWitness": true,
+          "boundary": "Actual25 per plan,200 read-back downloads overall. Bounded isolated acceptance; hosted equivalence and canonical acceptance not inferred."
+        },
+        "native": {
+          "status": "MET_LOCAL_SOFTWARE69_REPLAY_AND_FAILCLOSED_CHECKS",
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/independent-review-probes.json",
+            "sha256": "7402ed397da16e3dcb647733c3bf41c1df00423656a38929a4a5f67950ceac5f"
+          },
+          "boundary": "Exact registered tuple/version, defaultoutput parity, wrongversion/extra-fields refused; not live publication."
+        },
+        "Business": {
+          "status": "MET_GENUINE_LOCAL_ACCOUNT_AUTOMATION_AND_STRICT_BUSINESS_BROWSER",
+          "account": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-account-current/account-receipt.json",
+            "sha256": "707afc8b4165ba962d08e40af5db52e9e1bb3c6e5f4d64a0a932d7e2940d196f"
+          },
+          "accountPlans": [
+            "business",
+            "free",
+            "pro"
+          ],
+          "accountCasesObserved": 3,
+          "automation": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-automation-current/receipt.json",
+            "sha256": "0c11967a0a2737f3549209ea8e652d6ada783d2725a495125c3cb6e3b7cb495c"
+          },
+          "automationCaseObserved": true,
+          "boundary": "Exact25 authenticated local account/API/batch/worker/sharing/embed witnesses. Lower-publication fixture remains; production activation not granted.",
+          "browser": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "heldSQL": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-sql/receipt.json",
+            "sha256": "672e8e18d41c26d2658c5cef010c03747393eb3431a44bc7276bd81505086b9e"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          }
+        },
+        "history": {
+          "status": "MET_STRICT_EXACT_HISTORICAL_BROWSER_REPLAY",
+          "newHistoricalBinding": false,
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/history-ui-focused-tests.log",
+            "sha256": "ae4299fca3f56f94216f5114d95396565f5eb5c8787609ad304fa2cbe29b3ed2"
+          },
+          "boundary": "All25 Free/Pro historical reopens and replay verified; recorded output preserved. No version upgrade applied.",
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "proExactAgreement": true
+        }
+      },
+      "criteriaEvidenceOrigin": {
+        "nominationRow": 272,
+        "source": {
+          "path": "docs/milestone100-20261114/canonical/engineering-nominations.json",
+          "sha256": "29c3b067650f1f65450d1186c31b74f95aed5d5870dbfa67a02cac54c87a8ad2"
+        },
+        "unsignedPacket": {
+          "path": "docs/milestone100-20261114/canonical/unsigned-review-packets.json",
+          "sha256": "f89727418105abc2190967e6f7fb263ba1dffb4e0acb6eeeafa5ebd5e765c3bf"
+        }
+      },
+      "engineContract": {
+        "path": "src/lib/calculator-factory/completion/geometry-next100.ts",
+        "sha256": "14c87d6620be3acbe8177444759f3cb6648634181b5ec1f52cc01804f5c92a35"
+      },
+      "contractHashMatchesCurrent": true,
+      "ledgerCrosscheck": {
+        "row": 272,
+        "wave100EngineeringState": "CONDITIONAL_SCOPED_NOMINEE",
+        "identityAndScopeMatchNomination": true,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "perRowCIFieldIsFrozenPreparation": "exactHeadCI=NOT_STARTED_FOR_NEW_HEAD; not treated as current qualification."
+      },
+      "genuinePerIdEngineeringGapsFound": [],
+      "sharedEngineeringQualificationGap": "Current source CI run435775 failed per latest coordinator instruction; complete new exact-head checks/build/full-product/source-acceptance/publication-factory and aggregate must all succeed. No qualified increment before that.",
+      "existingPendingCanonicalHumanRequirements": [
+        "Confirm exact immutable identity/version and bounded scope: Right circular cone volume with compatible length units.",
+        "Independent source/formula/precision applicability acceptance for this exact scope remains unsigned.",
+        "Obtain competent exact-version canonical acceptance separately; local evidence and technical review do not sign it.",
+        "Final source/budget and exact full CI qualification remains; broader canonical scope and competent acceptance are separate pending decisions."
+      ],
+      "canonicalBoundary": {
+        "status": "PENDING_SEPARATE_FROM_ENGINEERING_NOMINATION",
+        "meaning": "Approve exact immutable catalog identity and full canonical scope/source/formula/precision/QA; technical nomination does not sign this.",
+        "notInferredFamily": "Right circular cone volume with compatible lengths.",
+        "canonicalAccepted": false,
+        "certificationGranted": false,
+        "publicationAuthorized": false
+      },
+      "currentEvidencePinMismatches": [],
+      "canonicalApproved": false,
+      "sourceApplicabilityApproved": false,
+      "certificationGranted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "catalogId": 274,
+      "title": "Surface Area Calculator",
+      "exactIdentity": {
+        "engineId": "geometry.surface-area",
+        "slug": "surface-area-calculator",
+        "version": 1,
+        "registeredNative": true
+      },
+      "disposition": "CONDITIONAL_SCOPED_TECHNICAL_NOMINEE_UNQUALIFIED",
+      "scopedTechnicalMeaning": "Rectangular prism surface area plus volume secondary output only; not generic solid family.",
+      "scopedCriteriaAsPreviouslyAssessed": {
+        "sourceProvenance": {
+          "status": "INDEPENDENT_BOUNDED_METHODOLOGY_CAPTURED",
+          "records": [
+            {
+              "path": "docs/milestone100-20261114/geometry/source-volume.md",
+              "sha256": "4e6db6e89ab7c7511e50466d904ba61f83a908747c2b1e5074c1c7b88eb2a6f0"
+            }
+          ],
+          "index": {
+            "path": "docs/milestone100-20261114/geometry/source-excerpts.json",
+            "sha256": "c172d9edf4722ffed5e4ba587576d560ae2baa1a3674b162a9bdf957a2b5a3de"
+          },
+          "boundary": "Exact bounded geometry relation only; no family or general-solver authorization inferred."
+        },
+        "independentGoldens": {
+          "status": "BOUNDED_LITERAL_WITNESSES_PRESENT_NOT_FULL_DOMAIN_CERTIFICATION",
+          "evidence": {
+            "path": "docs/milestone100-20261114/geometry/engineering-evidence.md",
+            "sha256": "793cbcf5f0546a1715ebb6df7c4dddb8454487a0136a308483d497193c4b25f3"
+          },
+          "test": {
+            "path": "src/lib/calculator-factory/completion/geometry-next100.test.ts",
+            "sha256": "766366cf059d0bd1b8a86c736a2e97292955cb3b69bcc045a83742914f7694cc"
+          },
+          "boundary": "Literal expected values and domain/refusal/inverse witnesses; no blanket proof outside declared capture bounds."
+        },
+        "UI": {
+          "status": "MET_STRICT_LOCAL_25_THREE_PLAN_BROWSER_RECEIPTS",
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "applicationSourceCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+          "proHistoryExactAgreement": true,
+          "freeHistoryExactAgreement": true,
+          "immutableOutputAndAnalysisWitness": true,
+          "boundary": "Actual25 per plan,200 read-back downloads overall. Bounded isolated acceptance; hosted equivalence and canonical acceptance not inferred."
+        },
+        "native": {
+          "status": "MET_LOCAL_SOFTWARE69_REPLAY_AND_FAILCLOSED_CHECKS",
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/independent-review-probes.json",
+            "sha256": "7402ed397da16e3dcb647733c3bf41c1df00423656a38929a4a5f67950ceac5f"
+          },
+          "boundary": "Exact registered tuple/version, defaultoutput parity, wrongversion/extra-fields refused; not live publication."
+        },
+        "Business": {
+          "status": "MET_GENUINE_LOCAL_ACCOUNT_AUTOMATION_AND_STRICT_BUSINESS_BROWSER",
+          "account": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-account-current/account-receipt.json",
+            "sha256": "707afc8b4165ba962d08e40af5db52e9e1bb3c6e5f4d64a0a932d7e2940d196f"
+          },
+          "accountPlans": [
+            "business",
+            "free",
+            "pro"
+          ],
+          "accountCasesObserved": 3,
+          "automation": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-automation-current/receipt.json",
+            "sha256": "0c11967a0a2737f3549209ea8e652d6ada783d2725a495125c3cb6e3b7cb495c"
+          },
+          "automationCaseObserved": true,
+          "boundary": "Exact25 authenticated local account/API/batch/worker/sharing/embed witnesses. Lower-publication fixture remains; production activation not granted.",
+          "browser": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "heldSQL": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-sql/receipt.json",
+            "sha256": "672e8e18d41c26d2658c5cef010c03747393eb3431a44bc7276bd81505086b9e"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          }
+        },
+        "history": {
+          "status": "MET_STRICT_EXACT_HISTORICAL_BROWSER_REPLAY",
+          "newHistoricalBinding": true,
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/history-ui-focused-tests.log",
+            "sha256": "ae4299fca3f56f94216f5114d95396565f5eb5c8787609ad304fa2cbe29b3ed2"
+          },
+          "boundary": "All25 Free/Pro historical reopens and replay verified; recorded output preserved. No version upgrade applied.",
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "proExactAgreement": true
+        }
+      },
+      "criteriaEvidenceOrigin": {
+        "nominationRow": 274,
+        "source": {
+          "path": "docs/milestone100-20261114/canonical/engineering-nominations.json",
+          "sha256": "29c3b067650f1f65450d1186c31b74f95aed5d5870dbfa67a02cac54c87a8ad2"
+        },
+        "unsignedPacket": {
+          "path": "docs/milestone100-20261114/canonical/unsigned-review-packets.json",
+          "sha256": "f89727418105abc2190967e6f7fb263ba1dffb4e0acb6eeeafa5ebd5e765c3bf"
+        }
+      },
+      "engineContract": {
+        "path": "src/lib/calculator-factory/completion/geometry-next100.ts",
+        "sha256": "14c87d6620be3acbe8177444759f3cb6648634181b5ec1f52cc01804f5c92a35"
+      },
+      "contractHashMatchesCurrent": true,
+      "ledgerCrosscheck": {
+        "row": 274,
+        "wave100EngineeringState": "CONDITIONAL_SCOPED_NOMINEE",
+        "identityAndScopeMatchNomination": true,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "perRowCIFieldIsFrozenPreparation": "exactHeadCI=NOT_STARTED_FOR_NEW_HEAD; not treated as current qualification."
+      },
+      "genuinePerIdEngineeringGapsFound": [],
+      "sharedEngineeringQualificationGap": "Current source CI run435775 failed per latest coordinator instruction; complete new exact-head checks/build/full-product/source-acceptance/publication-factory and aggregate must all succeed. No qualified increment before that.",
+      "existingPendingCanonicalHumanRequirements": [
+        "Confirm exact immutable identity/version and bounded scope: Surface area only for enumerated supported solids; shape-specific fields and results.",
+        "Independent source/formula/precision applicability acceptance for this exact scope remains unsigned.",
+        "Obtain competent exact-version canonical acceptance separately; local evidence and technical review do not sign it.",
+        "Final source/budget and exact full CI qualification remains; broader canonical scope and competent acceptance are separate pending decisions."
+      ],
+      "canonicalBoundary": {
+        "status": "PENDING_SEPARATE_FROM_ENGINEERING_NOMINATION",
+        "meaning": "Approve exact immutable catalog identity and full canonical scope/source/formula/precision/QA; technical nomination does not sign this.",
+        "notInferredFamily": "Rectangular prism surface area plus volume secondary output only; not generic solid family.",
+        "canonicalAccepted": false,
+        "certificationGranted": false,
+        "publicationAuthorized": false
+      },
+      "currentEvidencePinMismatches": [],
+      "canonicalApproved": false,
+      "sourceApplicabilityApproved": false,
+      "certificationGranted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "catalogId": 275,
+      "title": "Volume Calculator",
+      "exactIdentity": {
+        "engineId": "geometry.volume",
+        "slug": "volume-calculator",
+        "version": 1,
+        "registeredNative": true
+      },
+      "disposition": "CONDITIONAL_SCOPED_TECHNICAL_NOMINEE_UNQUALIFIED",
+      "scopedTechnicalMeaning": "Rectangular prism volume plus surface-area secondary output only; not generic solid family.",
+      "scopedCriteriaAsPreviouslyAssessed": {
+        "sourceProvenance": {
+          "status": "INDEPENDENT_BOUNDED_METHODOLOGY_CAPTURED",
+          "records": [
+            {
+              "path": "docs/milestone100-20261114/geometry/source-volume.md",
+              "sha256": "4e6db6e89ab7c7511e50466d904ba61f83a908747c2b1e5074c1c7b88eb2a6f0"
+            }
+          ],
+          "index": {
+            "path": "docs/milestone100-20261114/geometry/source-excerpts.json",
+            "sha256": "c172d9edf4722ffed5e4ba587576d560ae2baa1a3674b162a9bdf957a2b5a3de"
+          },
+          "boundary": "Exact bounded geometry relation only; no family or general-solver authorization inferred."
+        },
+        "independentGoldens": {
+          "status": "BOUNDED_LITERAL_WITNESSES_PRESENT_NOT_FULL_DOMAIN_CERTIFICATION",
+          "evidence": {
+            "path": "docs/milestone100-20261114/geometry/engineering-evidence.md",
+            "sha256": "793cbcf5f0546a1715ebb6df7c4dddb8454487a0136a308483d497193c4b25f3"
+          },
+          "test": {
+            "path": "src/lib/calculator-factory/completion/geometry-next100.test.ts",
+            "sha256": "766366cf059d0bd1b8a86c736a2e97292955cb3b69bcc045a83742914f7694cc"
+          },
+          "boundary": "Literal expected values and domain/refusal/inverse witnesses; no blanket proof outside declared capture bounds."
+        },
+        "UI": {
+          "status": "MET_STRICT_LOCAL_25_THREE_PLAN_BROWSER_RECEIPTS",
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "applicationSourceCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+          "proHistoryExactAgreement": true,
+          "freeHistoryExactAgreement": true,
+          "immutableOutputAndAnalysisWitness": true,
+          "boundary": "Actual25 per plan,200 read-back downloads overall. Bounded isolated acceptance; hosted equivalence and canonical acceptance not inferred."
+        },
+        "native": {
+          "status": "MET_LOCAL_SOFTWARE69_REPLAY_AND_FAILCLOSED_CHECKS",
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/independent-review-probes.json",
+            "sha256": "7402ed397da16e3dcb647733c3bf41c1df00423656a38929a4a5f67950ceac5f"
+          },
+          "boundary": "Exact registered tuple/version, defaultoutput parity, wrongversion/extra-fields refused; not live publication."
+        },
+        "Business": {
+          "status": "MET_GENUINE_LOCAL_ACCOUNT_AUTOMATION_AND_STRICT_BUSINESS_BROWSER",
+          "account": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-account-current/account-receipt.json",
+            "sha256": "707afc8b4165ba962d08e40af5db52e9e1bb3c6e5f4d64a0a932d7e2940d196f"
+          },
+          "accountPlans": [
+            "business",
+            "free",
+            "pro"
+          ],
+          "accountCasesObserved": 3,
+          "automation": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-automation-current/receipt.json",
+            "sha256": "0c11967a0a2737f3549209ea8e652d6ada783d2725a495125c3cb6e3b7cb495c"
+          },
+          "automationCaseObserved": true,
+          "boundary": "Exact25 authenticated local account/API/batch/worker/sharing/embed witnesses. Lower-publication fixture remains; production activation not granted.",
+          "browser": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "heldSQL": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-sql/receipt.json",
+            "sha256": "672e8e18d41c26d2658c5cef010c03747393eb3431a44bc7276bd81505086b9e"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          }
+        },
+        "history": {
+          "status": "MET_STRICT_EXACT_HISTORICAL_BROWSER_REPLAY",
+          "newHistoricalBinding": false,
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/history-ui-focused-tests.log",
+            "sha256": "ae4299fca3f56f94216f5114d95396565f5eb5c8787609ad304fa2cbe29b3ed2"
+          },
+          "boundary": "All25 Free/Pro historical reopens and replay verified; recorded output preserved. No version upgrade applied.",
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "proExactAgreement": true
+        }
+      },
+      "criteriaEvidenceOrigin": {
+        "nominationRow": 275,
+        "source": {
+          "path": "docs/milestone100-20261114/canonical/engineering-nominations.json",
+          "sha256": "29c3b067650f1f65450d1186c31b74f95aed5d5870dbfa67a02cac54c87a8ad2"
+        },
+        "unsignedPacket": {
+          "path": "docs/milestone100-20261114/canonical/unsigned-review-packets.json",
+          "sha256": "f89727418105abc2190967e6f7fb263ba1dffb4e0acb6eeeafa5ebd5e765c3bf"
+        }
+      },
+      "engineContract": {
+        "path": "src/lib/calculator-factory/completion/geometry-next100.ts",
+        "sha256": "14c87d6620be3acbe8177444759f3cb6648634181b5ec1f52cc01804f5c92a35"
+      },
+      "contractHashMatchesCurrent": true,
+      "ledgerCrosscheck": {
+        "row": 275,
+        "wave100EngineeringState": "CONDITIONAL_SCOPED_NOMINEE",
+        "identityAndScopeMatchNomination": true,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "perRowCIFieldIsFrozenPreparation": "exactHeadCI=NOT_STARTED_FOR_NEW_HEAD; not treated as current qualification."
+      },
+      "genuinePerIdEngineeringGapsFound": [],
+      "sharedEngineeringQualificationGap": "Current source CI run435775 failed per latest coordinator instruction; complete new exact-head checks/build/full-product/source-acceptance/publication-factory and aggregate must all succeed. No qualified increment before that.",
+      "existingPendingCanonicalHumanRequirements": [
+        "Confirm exact immutable identity/version and bounded scope: Volume only for enumerated supported solids; shape-specific fields and results.",
+        "Independent source/formula/precision applicability acceptance for this exact scope remains unsigned.",
+        "Obtain competent exact-version canonical acceptance separately; local evidence and technical review do not sign it.",
+        "Final source/budget and exact full CI qualification remains; broader canonical scope and competent acceptance are separate pending decisions."
+      ],
+      "canonicalBoundary": {
+        "status": "PENDING_SEPARATE_FROM_ENGINEERING_NOMINATION",
+        "meaning": "Approve exact immutable catalog identity and full canonical scope/source/formula/precision/QA; technical nomination does not sign this.",
+        "notInferredFamily": "Rectangular prism volume plus surface-area secondary output only; not generic solid family.",
+        "canonicalAccepted": false,
+        "certificationGranted": false,
+        "publicationAuthorized": false
+      },
+      "currentEvidencePinMismatches": [],
+      "canonicalApproved": false,
+      "sourceApplicabilityApproved": false,
+      "certificationGranted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "catalogId": 278,
+      "title": "Pythagorean Theorem Calculator",
+      "exactIdentity": {
+        "engineId": "launch-pythagorean-theorem-calculator",
+        "slug": "pythagorean-theorem-calculator",
+        "version": 1,
+        "registeredNative": true
+      },
+      "disposition": "CONDITIONAL_SCOPED_TECHNICAL_NOMINEE_UNQUALIFIED",
+      "scopedTechnicalMeaning": "Nonnegative perpendicular legs to hypotenuse.",
+      "scopedCriteriaAsPreviouslyAssessed": {
+        "sourceProvenance": {
+          "status": "INDEPENDENT_BOUNDED_METHODOLOGY_CAPTURED",
+          "records": [
+            {
+              "path": "docs/milestone100-20261114/geometry/source-triangles.md",
+              "sha256": "452d710829d42bad898fea7e2d0b3611b622f95b50f776dcf28ea6dd67701167"
+            }
+          ],
+          "index": {
+            "path": "docs/milestone100-20261114/geometry/source-excerpts.json",
+            "sha256": "c172d9edf4722ffed5e4ba587576d560ae2baa1a3674b162a9bdf957a2b5a3de"
+          },
+          "boundary": "Exact bounded geometry relation only; no family or general-solver authorization inferred."
+        },
+        "independentGoldens": {
+          "status": "BOUNDED_LITERAL_WITNESSES_PRESENT_NOT_FULL_DOMAIN_CERTIFICATION",
+          "evidence": {
+            "path": "docs/milestone100-20261114/geometry/engineering-evidence.md",
+            "sha256": "793cbcf5f0546a1715ebb6df7c4dddb8454487a0136a308483d497193c4b25f3"
+          },
+          "test": {
+            "path": "src/lib/calculator-factory/completion/geometry-next100.test.ts",
+            "sha256": "766366cf059d0bd1b8a86c736a2e97292955cb3b69bcc045a83742914f7694cc"
+          },
+          "boundary": "Literal expected values and domain/refusal/inverse witnesses; no blanket proof outside declared capture bounds."
+        },
+        "UI": {
+          "status": "MET_STRICT_LOCAL_25_THREE_PLAN_BROWSER_RECEIPTS",
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "applicationSourceCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+          "proHistoryExactAgreement": true,
+          "freeHistoryExactAgreement": true,
+          "immutableOutputAndAnalysisWitness": true,
+          "boundary": "Actual25 per plan,200 read-back downloads overall. Bounded isolated acceptance; hosted equivalence and canonical acceptance not inferred."
+        },
+        "native": {
+          "status": "MET_LOCAL_SOFTWARE69_REPLAY_AND_FAILCLOSED_CHECKS",
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/independent-review-probes.json",
+            "sha256": "7402ed397da16e3dcb647733c3bf41c1df00423656a38929a4a5f67950ceac5f"
+          },
+          "boundary": "Exact registered tuple/version, defaultoutput parity, wrongversion/extra-fields refused; not live publication."
+        },
+        "Business": {
+          "status": "MET_GENUINE_LOCAL_ACCOUNT_AUTOMATION_AND_STRICT_BUSINESS_BROWSER",
+          "account": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-account-current/account-receipt.json",
+            "sha256": "707afc8b4165ba962d08e40af5db52e9e1bb3c6e5f4d64a0a932d7e2940d196f"
+          },
+          "accountPlans": [
+            "business",
+            "free",
+            "pro"
+          ],
+          "accountCasesObserved": 3,
+          "automation": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-automation-current/receipt.json",
+            "sha256": "0c11967a0a2737f3549209ea8e652d6ada783d2725a495125c3cb6e3b7cb495c"
+          },
+          "automationCaseObserved": true,
+          "boundary": "Exact25 authenticated local account/API/batch/worker/sharing/embed witnesses. Lower-publication fixture remains; production activation not granted.",
+          "browser": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "heldSQL": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-sql/receipt.json",
+            "sha256": "672e8e18d41c26d2658c5cef010c03747393eb3431a44bc7276bd81505086b9e"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          }
+        },
+        "history": {
+          "status": "MET_STRICT_EXACT_HISTORICAL_BROWSER_REPLAY",
+          "newHistoricalBinding": false,
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/history-ui-focused-tests.log",
+            "sha256": "ae4299fca3f56f94216f5114d95396565f5eb5c8787609ad304fa2cbe29b3ed2"
+          },
+          "boundary": "All25 Free/Pro historical reopens and replay verified; recorded output preserved. No version upgrade applied.",
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "proExactAgreement": true
+        }
+      },
+      "criteriaEvidenceOrigin": {
+        "nominationRow": 278,
+        "source": {
+          "path": "docs/milestone100-20261114/canonical/engineering-nominations.json",
+          "sha256": "29c3b067650f1f65450d1186c31b74f95aed5d5870dbfa67a02cac54c87a8ad2"
+        },
+        "unsignedPacket": {
+          "path": "docs/milestone100-20261114/canonical/unsigned-review-packets.json",
+          "sha256": "f89727418105abc2190967e6f7fb263ba1dffb4e0acb6eeeafa5ebd5e765c3bf"
+        }
+      },
+      "engineContract": {
+        "path": "src/lib/calculator-factory/completion/geometry-next100.ts",
+        "sha256": "14c87d6620be3acbe8177444759f3cb6648634181b5ec1f52cc01804f5c92a35"
+      },
+      "contractHashMatchesCurrent": true,
+      "ledgerCrosscheck": {
+        "row": 278,
+        "wave100EngineeringState": "CONDITIONAL_SCOPED_NOMINEE",
+        "identityAndScopeMatchNomination": true,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "perRowCIFieldIsFrozenPreparation": "exactHeadCI=NOT_STARTED_FOR_NEW_HEAD; not treated as current qualification."
+      },
+      "genuinePerIdEngineeringGapsFound": [],
+      "sharedEngineeringQualificationGap": "Current source CI run435775 failed per latest coordinator instruction; complete new exact-head checks/build/full-product/source-acceptance/publication-factory and aggregate must all succeed. No qualified increment before that.",
+      "existingPendingCanonicalHumanRequirements": [
+        "Confirm exact immutable identity/version and bounded scope: Pythagorean legs-to-hypotenuse domain; clarify reverse solving applicability.",
+        "Independent source/formula/precision applicability acceptance for this exact scope remains unsigned.",
+        "Obtain competent exact-version canonical acceptance separately; local evidence and technical review do not sign it.",
+        "Final source/budget and exact full CI qualification remains; broader canonical scope and competent acceptance are separate pending decisions."
+      ],
+      "canonicalBoundary": {
+        "status": "PENDING_SEPARATE_FROM_ENGINEERING_NOMINATION",
+        "meaning": "Approve exact immutable catalog identity and full canonical scope/source/formula/precision/QA; technical nomination does not sign this.",
+        "notInferredFamily": "Nonnegative perpendicular legs to hypotenuse.",
+        "canonicalAccepted": false,
+        "certificationGranted": false,
+        "publicationAuthorized": false
+      },
+      "currentEvidencePinMismatches": [],
+      "canonicalApproved": false,
+      "sourceApplicabilityApproved": false,
+      "certificationGranted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "catalogId": 279,
+      "title": "Degrees to Radians Calculator",
+      "exactIdentity": {
+        "engineId": "launch-degrees-to-radians-calculator",
+        "slug": "degrees-to-radians-calculator",
+        "version": 1,
+        "registeredNative": true
+      },
+      "disposition": "CONDITIONAL_SCOPED_TECHNICAL_NOMINEE_UNQUALIFIED",
+      "scopedTechnicalMeaning": "Signed degrees to radians via binary64 pi; no periodic reduction.",
+      "scopedCriteriaAsPreviouslyAssessed": {
+        "sourceProvenance": {
+          "status": "INDEPENDENT_BOUNDED_METHODOLOGY_CAPTURED",
+          "records": [
+            {
+              "path": "docs/milestone100-20261114/geometry/source-angles.md",
+              "sha256": "f596cad53346e06ff47a7e373eade1024654fbbd1c187a7f3923d24a63389304"
+            }
+          ],
+          "index": {
+            "path": "docs/milestone100-20261114/geometry/source-excerpts.json",
+            "sha256": "c172d9edf4722ffed5e4ba587576d560ae2baa1a3674b162a9bdf957a2b5a3de"
+          },
+          "boundary": "Exact bounded geometry relation only; no family or general-solver authorization inferred."
+        },
+        "independentGoldens": {
+          "status": "BOUNDED_LITERAL_WITNESSES_PRESENT_NOT_FULL_DOMAIN_CERTIFICATION",
+          "evidence": {
+            "path": "docs/milestone100-20261114/geometry/engineering-evidence.md",
+            "sha256": "793cbcf5f0546a1715ebb6df7c4dddb8454487a0136a308483d497193c4b25f3"
+          },
+          "test": {
+            "path": "src/lib/calculator-factory/completion/geometry-next100.test.ts",
+            "sha256": "766366cf059d0bd1b8a86c736a2e97292955cb3b69bcc045a83742914f7694cc"
+          },
+          "boundary": "Literal expected values and domain/refusal/inverse witnesses; no blanket proof outside declared capture bounds."
+        },
+        "UI": {
+          "status": "MET_STRICT_LOCAL_25_THREE_PLAN_BROWSER_RECEIPTS",
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "applicationSourceCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+          "proHistoryExactAgreement": true,
+          "freeHistoryExactAgreement": true,
+          "immutableOutputAndAnalysisWitness": true,
+          "boundary": "Actual25 per plan,200 read-back downloads overall. Bounded isolated acceptance; hosted equivalence and canonical acceptance not inferred."
+        },
+        "native": {
+          "status": "MET_LOCAL_SOFTWARE69_REPLAY_AND_FAILCLOSED_CHECKS",
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/independent-review-probes.json",
+            "sha256": "7402ed397da16e3dcb647733c3bf41c1df00423656a38929a4a5f67950ceac5f"
+          },
+          "boundary": "Exact registered tuple/version, defaultoutput parity, wrongversion/extra-fields refused; not live publication."
+        },
+        "Business": {
+          "status": "MET_GENUINE_LOCAL_ACCOUNT_AUTOMATION_AND_STRICT_BUSINESS_BROWSER",
+          "account": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-account-current/account-receipt.json",
+            "sha256": "707afc8b4165ba962d08e40af5db52e9e1bb3c6e5f4d64a0a932d7e2940d196f"
+          },
+          "accountPlans": [
+            "business",
+            "free",
+            "pro"
+          ],
+          "accountCasesObserved": 3,
+          "automation": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-automation-current/receipt.json",
+            "sha256": "0c11967a0a2737f3549209ea8e652d6ada783d2725a495125c3cb6e3b7cb495c"
+          },
+          "automationCaseObserved": true,
+          "boundary": "Exact25 authenticated local account/API/batch/worker/sharing/embed witnesses. Lower-publication fixture remains; production activation not granted.",
+          "browser": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "heldSQL": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-sql/receipt.json",
+            "sha256": "672e8e18d41c26d2658c5cef010c03747393eb3431a44bc7276bd81505086b9e"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          }
+        },
+        "history": {
+          "status": "MET_STRICT_EXACT_HISTORICAL_BROWSER_REPLAY",
+          "newHistoricalBinding": false,
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/history-ui-focused-tests.log",
+            "sha256": "ae4299fca3f56f94216f5114d95396565f5eb5c8787609ad304fa2cbe29b3ed2"
+          },
+          "boundary": "All25 Free/Pro historical reopens and replay verified; recorded output preserved. No version upgrade applied.",
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "proExactAgreement": true
+        }
+      },
+      "criteriaEvidenceOrigin": {
+        "nominationRow": 279,
+        "source": {
+          "path": "docs/milestone100-20261114/canonical/engineering-nominations.json",
+          "sha256": "29c3b067650f1f65450d1186c31b74f95aed5d5870dbfa67a02cac54c87a8ad2"
+        },
+        "unsignedPacket": {
+          "path": "docs/milestone100-20261114/canonical/unsigned-review-packets.json",
+          "sha256": "f89727418105abc2190967e6f7fb263ba1dffb4e0acb6eeeafa5ebd5e765c3bf"
+        }
+      },
+      "engineContract": {
+        "path": "src/lib/calculator-factory/completion/geometry-next100.ts",
+        "sha256": "14c87d6620be3acbe8177444759f3cb6648634181b5ec1f52cc01804f5c92a35"
+      },
+      "contractHashMatchesCurrent": true,
+      "ledgerCrosscheck": {
+        "row": 279,
+        "wave100EngineeringState": "CONDITIONAL_SCOPED_NOMINEE",
+        "identityAndScopeMatchNomination": true,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "perRowCIFieldIsFrozenPreparation": "exactHeadCI=NOT_STARTED_FOR_NEW_HEAD; not treated as current qualification."
+      },
+      "genuinePerIdEngineeringGapsFound": [],
+      "sharedEngineeringQualificationGap": "Current source CI run435775 failed per latest coordinator instruction; complete new exact-head checks/build/full-product/source-acceptance/publication-factory and aggregate must all succeed. No qualified increment before that.",
+      "existingPendingCanonicalHumanRequirements": [
+        "Confirm exact immutable identity/version and bounded scope: Degree-to-radian conversion with unrounded internal precision.",
+        "Independent source/formula/precision applicability acceptance for this exact scope remains unsigned.",
+        "Obtain competent exact-version canonical acceptance separately; local evidence and technical review do not sign it.",
+        "Final source/budget and exact full CI qualification remains; broader canonical scope and competent acceptance are separate pending decisions."
+      ],
+      "canonicalBoundary": {
+        "status": "PENDING_SEPARATE_FROM_ENGINEERING_NOMINATION",
+        "meaning": "Approve exact immutable catalog identity and full canonical scope/source/formula/precision/QA; technical nomination does not sign this.",
+        "notInferredFamily": "Signed degrees to radians via binary64 pi; no periodic reduction.",
+        "canonicalAccepted": false,
+        "certificationGranted": false,
+        "publicationAuthorized": false
+      },
+      "currentEvidencePinMismatches": [],
+      "canonicalApproved": false,
+      "sourceApplicabilityApproved": false,
+      "certificationGranted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "catalogId": 280,
+      "title": "Radians to Degrees Calculator",
+      "exactIdentity": {
+        "engineId": "launch-radians-to-degrees-calculator",
+        "slug": "radians-to-degrees-calculator",
+        "version": 1,
+        "registeredNative": true
+      },
+      "disposition": "CONDITIONAL_SCOPED_TECHNICAL_NOMINEE_UNQUALIFIED",
+      "scopedTechnicalMeaning": "Signed radians to degrees via binary64 pi; no periodic reduction.",
+      "scopedCriteriaAsPreviouslyAssessed": {
+        "sourceProvenance": {
+          "status": "INDEPENDENT_BOUNDED_METHODOLOGY_CAPTURED",
+          "records": [
+            {
+              "path": "docs/milestone100-20261114/geometry/source-angles.md",
+              "sha256": "f596cad53346e06ff47a7e373eade1024654fbbd1c187a7f3923d24a63389304"
+            }
+          ],
+          "index": {
+            "path": "docs/milestone100-20261114/geometry/source-excerpts.json",
+            "sha256": "c172d9edf4722ffed5e4ba587576d560ae2baa1a3674b162a9bdf957a2b5a3de"
+          },
+          "boundary": "Exact bounded geometry relation only; no family or general-solver authorization inferred."
+        },
+        "independentGoldens": {
+          "status": "BOUNDED_LITERAL_WITNESSES_PRESENT_NOT_FULL_DOMAIN_CERTIFICATION",
+          "evidence": {
+            "path": "docs/milestone100-20261114/geometry/engineering-evidence.md",
+            "sha256": "793cbcf5f0546a1715ebb6df7c4dddb8454487a0136a308483d497193c4b25f3"
+          },
+          "test": {
+            "path": "src/lib/calculator-factory/completion/geometry-next100.test.ts",
+            "sha256": "766366cf059d0bd1b8a86c736a2e97292955cb3b69bcc045a83742914f7694cc"
+          },
+          "boundary": "Literal expected values and domain/refusal/inverse witnesses; no blanket proof outside declared capture bounds."
+        },
+        "UI": {
+          "status": "MET_STRICT_LOCAL_25_THREE_PLAN_BROWSER_RECEIPTS",
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "applicationSourceCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+          "proHistoryExactAgreement": true,
+          "freeHistoryExactAgreement": true,
+          "immutableOutputAndAnalysisWitness": true,
+          "boundary": "Actual25 per plan,200 read-back downloads overall. Bounded isolated acceptance; hosted equivalence and canonical acceptance not inferred."
+        },
+        "native": {
+          "status": "MET_LOCAL_SOFTWARE69_REPLAY_AND_FAILCLOSED_CHECKS",
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/independent-review-probes.json",
+            "sha256": "7402ed397da16e3dcb647733c3bf41c1df00423656a38929a4a5f67950ceac5f"
+          },
+          "boundary": "Exact registered tuple/version, defaultoutput parity, wrongversion/extra-fields refused; not live publication."
+        },
+        "Business": {
+          "status": "MET_GENUINE_LOCAL_ACCOUNT_AUTOMATION_AND_STRICT_BUSINESS_BROWSER",
+          "account": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-account-current/account-receipt.json",
+            "sha256": "707afc8b4165ba962d08e40af5db52e9e1bb3c6e5f4d64a0a932d7e2940d196f"
+          },
+          "accountPlans": [
+            "business",
+            "free",
+            "pro"
+          ],
+          "accountCasesObserved": 3,
+          "automation": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-automation-current/receipt.json",
+            "sha256": "0c11967a0a2737f3549209ea8e652d6ada783d2725a495125c3cb6e3b7cb495c"
+          },
+          "automationCaseObserved": true,
+          "boundary": "Exact25 authenticated local account/API/batch/worker/sharing/embed witnesses. Lower-publication fixture remains; production activation not granted.",
+          "browser": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "heldSQL": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-sql/receipt.json",
+            "sha256": "672e8e18d41c26d2658c5cef010c03747393eb3431a44bc7276bd81505086b9e"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          }
+        },
+        "history": {
+          "status": "MET_STRICT_EXACT_HISTORICAL_BROWSER_REPLAY",
+          "newHistoricalBinding": false,
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/history-ui-focused-tests.log",
+            "sha256": "ae4299fca3f56f94216f5114d95396565f5eb5c8787609ad304fa2cbe29b3ed2"
+          },
+          "boundary": "All25 Free/Pro historical reopens and replay verified; recorded output preserved. No version upgrade applied.",
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "proExactAgreement": true
+        }
+      },
+      "criteriaEvidenceOrigin": {
+        "nominationRow": 280,
+        "source": {
+          "path": "docs/milestone100-20261114/canonical/engineering-nominations.json",
+          "sha256": "29c3b067650f1f65450d1186c31b74f95aed5d5870dbfa67a02cac54c87a8ad2"
+        },
+        "unsignedPacket": {
+          "path": "docs/milestone100-20261114/canonical/unsigned-review-packets.json",
+          "sha256": "f89727418105abc2190967e6f7fb263ba1dffb4e0acb6eeeafa5ebd5e765c3bf"
+        }
+      },
+      "engineContract": {
+        "path": "src/lib/calculator-factory/completion/geometry-next100.ts",
+        "sha256": "14c87d6620be3acbe8177444759f3cb6648634181b5ec1f52cc01804f5c92a35"
+      },
+      "contractHashMatchesCurrent": true,
+      "ledgerCrosscheck": {
+        "row": 280,
+        "wave100EngineeringState": "CONDITIONAL_SCOPED_NOMINEE",
+        "identityAndScopeMatchNomination": true,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "perRowCIFieldIsFrozenPreparation": "exactHeadCI=NOT_STARTED_FOR_NEW_HEAD; not treated as current qualification."
+      },
+      "genuinePerIdEngineeringGapsFound": [],
+      "sharedEngineeringQualificationGap": "Current source CI run435775 failed per latest coordinator instruction; complete new exact-head checks/build/full-product/source-acceptance/publication-factory and aggregate must all succeed. No qualified increment before that.",
+      "existingPendingCanonicalHumanRequirements": [
+        "Confirm exact immutable identity/version and bounded scope: Radian-to-degree conversion with unrounded internal precision.",
+        "Independent source/formula/precision applicability acceptance for this exact scope remains unsigned.",
+        "Obtain competent exact-version canonical acceptance separately; local evidence and technical review do not sign it.",
+        "Final source/budget and exact full CI qualification remains; broader canonical scope and competent acceptance are separate pending decisions."
+      ],
+      "canonicalBoundary": {
+        "status": "PENDING_SEPARATE_FROM_ENGINEERING_NOMINATION",
+        "meaning": "Approve exact immutable catalog identity and full canonical scope/source/formula/precision/QA; technical nomination does not sign this.",
+        "notInferredFamily": "Signed radians to degrees via binary64 pi; no periodic reduction.",
+        "canonicalAccepted": false,
+        "certificationGranted": false,
+        "publicationAuthorized": false
+      },
+      "currentEvidencePinMismatches": [],
+      "canonicalApproved": false,
+      "sourceApplicabilityApproved": false,
+      "certificationGranted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "catalogId": 328,
+      "title": "Molarity Calculator",
+      "exactIdentity": {
+        "engineId": "chemistry.molarity",
+        "slug": "molarity-calculator",
+        "version": 1,
+        "registeredNative": true
+      },
+      "disposition": "CONDITIONAL_SCOPED_TECHNICAL_NOMINEE_UNQUALIFIED",
+      "scopedTechnicalMeaning": "Dissolved moles/total homogeneous solution volume L -> mol/L.",
+      "scopedCriteriaAsPreviouslyAssessed": {
+        "sourceProvenance": {
+          "status": "INDEPENDENT_BOUNDED_METHODOLOGY_CAPTURED",
+          "record": {
+            "path": "docs/milestone100-20261114/science/completion.md",
+            "sha256": "791b55b5725c836acfe94afab67603c64c40e497d17f9d84d0e33bc05a8a7a34"
+          },
+          "url": "https://openstax.org/books/chemistry-2e/pages/3-3-molarity",
+          "boundary": "Compatible explicit units and bounded source formula; supplied molar mass remains user input, no atomic-weight inference."
+        },
+        "independentGoldens": {
+          "status": "BOUNDED_LITERAL_WITNESSES_PRESENT_NOT_FULL_DOMAIN_CERTIFICATION",
+          "evidence": {
+            "path": "docs/milestone100-20261114/science/candidates.json",
+            "sha256": "0653035a494ab95ca48eae5459ccf745e6bafe02bfc2f6b3b0d04361bd4d27ed"
+          },
+          "test": {
+            "path": "src/lib/calculator-factory/completion/science-next100.test.ts",
+            "sha256": "874aac63a8566d76aee0b91f946f369e4472ad16b0afd402abbde0a3cfa57874"
+          },
+          "boundary": "Literal expected values and domain/refusal/inverse witnesses; no blanket proof outside declared capture bounds."
+        },
+        "UI": {
+          "status": "MET_STRICT_LOCAL_25_THREE_PLAN_BROWSER_RECEIPTS",
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "applicationSourceCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+          "proHistoryExactAgreement": true,
+          "freeHistoryExactAgreement": true,
+          "immutableOutputAndAnalysisWitness": true,
+          "boundary": "Actual25 per plan,200 read-back downloads overall. Bounded isolated acceptance; hosted equivalence and canonical acceptance not inferred."
+        },
+        "native": {
+          "status": "MET_LOCAL_SOFTWARE69_REPLAY_AND_FAILCLOSED_CHECKS",
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/independent-review-probes.json",
+            "sha256": "7402ed397da16e3dcb647733c3bf41c1df00423656a38929a4a5f67950ceac5f"
+          },
+          "boundary": "Exact registered tuple/version, defaultoutput parity, wrongversion/extra-fields refused; not live publication."
+        },
+        "Business": {
+          "status": "MET_GENUINE_LOCAL_ACCOUNT_AUTOMATION_AND_STRICT_BUSINESS_BROWSER",
+          "account": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-account-current/account-receipt.json",
+            "sha256": "707afc8b4165ba962d08e40af5db52e9e1bb3c6e5f4d64a0a932d7e2940d196f"
+          },
+          "accountPlans": [
+            "business",
+            "free",
+            "pro"
+          ],
+          "accountCasesObserved": 3,
+          "automation": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-automation-current/receipt.json",
+            "sha256": "0c11967a0a2737f3549209ea8e652d6ada783d2725a495125c3cb6e3b7cb495c"
+          },
+          "automationCaseObserved": true,
+          "boundary": "Exact25 authenticated local account/API/batch/worker/sharing/embed witnesses. Lower-publication fixture remains; production activation not granted.",
+          "browser": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "heldSQL": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-sql/receipt.json",
+            "sha256": "672e8e18d41c26d2658c5cef010c03747393eb3431a44bc7276bd81505086b9e"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          }
+        },
+        "history": {
+          "status": "MET_STRICT_EXACT_HISTORICAL_BROWSER_REPLAY",
+          "newHistoricalBinding": true,
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/history-ui-focused-tests.log",
+            "sha256": "ae4299fca3f56f94216f5114d95396565f5eb5c8787609ad304fa2cbe29b3ed2"
+          },
+          "boundary": "All25 Free/Pro historical reopens and replay verified; recorded output preserved. No version upgrade applied.",
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "proExactAgreement": true
+        }
+      },
+      "criteriaEvidenceOrigin": {
+        "nominationRow": 328,
+        "source": {
+          "path": "docs/milestone100-20261114/canonical/engineering-nominations.json",
+          "sha256": "29c3b067650f1f65450d1186c31b74f95aed5d5870dbfa67a02cac54c87a8ad2"
+        },
+        "unsignedPacket": {
+          "path": "docs/milestone100-20261114/canonical/unsigned-review-packets.json",
+          "sha256": "f89727418105abc2190967e6f7fb263ba1dffb4e0acb6eeeafa5ebd5e765c3bf"
+        }
+      },
+      "engineContract": {
+        "path": "src/lib/calculator-factory/completion/science-next100.ts",
+        "sha256": "98f992fa52442c19813b87e62c51bfd51b98a8aaf8efdcd984c6a2a92c58acd3"
+      },
+      "contractHashMatchesCurrent": true,
+      "ledgerCrosscheck": {
+        "row": 328,
+        "wave100EngineeringState": "CONDITIONAL_SCOPED_NOMINEE",
+        "identityAndScopeMatchNomination": true,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "perRowCIFieldIsFrozenPreparation": "exactHeadCI=NOT_STARTED_FOR_NEW_HEAD; not treated as current qualification."
+      },
+      "genuinePerIdEngineeringGapsFound": [],
+      "sharedEngineeringQualificationGap": "Current source CI run435775 failed per latest coordinator instruction; complete new exact-head checks/build/full-product/source-acceptance/publication-factory and aggregate must all succeed. No qualified increment before that.",
+      "existingPendingCanonicalHumanRequirements": [
+        "Confirm exact immutable identity/version and bounded scope: Molarity moles per positive solution volume, mol/L.",
+        "Independent source/formula/precision applicability acceptance for this exact scope remains unsigned.",
+        "Obtain competent exact-version canonical acceptance separately; local evidence and technical review do not sign it.",
+        "Final source/budget and exact full CI qualification remains; broader canonical scope and competent acceptance are separate pending decisions."
+      ],
+      "canonicalBoundary": {
+        "status": "PENDING_SEPARATE_FROM_ENGINEERING_NOMINATION",
+        "meaning": "Approve exact immutable catalog identity and full canonical scope/source/formula/precision/QA; technical nomination does not sign this.",
+        "notInferredFamily": "Dissolved moles/total homogeneous solution volume L -> mol/L.",
+        "canonicalAccepted": false,
+        "certificationGranted": false,
+        "publicationAuthorized": false
+      },
+      "currentEvidencePinMismatches": [],
+      "canonicalApproved": false,
+      "sourceApplicabilityApproved": false,
+      "certificationGranted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "catalogId": 331,
+      "title": "Moles Calculator",
+      "exactIdentity": {
+        "engineId": "chemistry.moles",
+        "slug": "moles-calculator",
+        "version": 1,
+        "registeredNative": true
+      },
+      "disposition": "CONDITIONAL_SCOPED_TECHNICAL_NOMINEE_UNQUALIFIED",
+      "scopedTechnicalMeaning": "Sample massg / supplied positive molar massg/mol -> mol.",
+      "scopedCriteriaAsPreviouslyAssessed": {
+        "sourceProvenance": {
+          "status": "INDEPENDENT_BOUNDED_METHODOLOGY_CAPTURED",
+          "record": {
+            "path": "docs/milestone100-20261114/science/completion.md",
+            "sha256": "791b55b5725c836acfe94afab67603c64c40e497d17f9d84d0e33bc05a8a7a34"
+          },
+          "url": "https://openstax.org/books/chemistry-2e/pages/3-3-molarity",
+          "boundary": "Compatible explicit units and bounded source formula; supplied molar mass remains user input, no atomic-weight inference."
+        },
+        "independentGoldens": {
+          "status": "BOUNDED_LITERAL_WITNESSES_PRESENT_NOT_FULL_DOMAIN_CERTIFICATION",
+          "evidence": {
+            "path": "docs/milestone100-20261114/science/candidates.json",
+            "sha256": "0653035a494ab95ca48eae5459ccf745e6bafe02bfc2f6b3b0d04361bd4d27ed"
+          },
+          "test": {
+            "path": "src/lib/calculator-factory/completion/science-next100.test.ts",
+            "sha256": "874aac63a8566d76aee0b91f946f369e4472ad16b0afd402abbde0a3cfa57874"
+          },
+          "boundary": "Literal expected values and domain/refusal/inverse witnesses; no blanket proof outside declared capture bounds."
+        },
+        "UI": {
+          "status": "MET_STRICT_LOCAL_25_THREE_PLAN_BROWSER_RECEIPTS",
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "applicationSourceCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+          "proHistoryExactAgreement": true,
+          "freeHistoryExactAgreement": true,
+          "immutableOutputAndAnalysisWitness": true,
+          "boundary": "Actual25 per plan,200 read-back downloads overall. Bounded isolated acceptance; hosted equivalence and canonical acceptance not inferred."
+        },
+        "native": {
+          "status": "MET_LOCAL_SOFTWARE69_REPLAY_AND_FAILCLOSED_CHECKS",
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/independent-review-probes.json",
+            "sha256": "7402ed397da16e3dcb647733c3bf41c1df00423656a38929a4a5f67950ceac5f"
+          },
+          "boundary": "Exact registered tuple/version, defaultoutput parity, wrongversion/extra-fields refused; not live publication."
+        },
+        "Business": {
+          "status": "MET_GENUINE_LOCAL_ACCOUNT_AUTOMATION_AND_STRICT_BUSINESS_BROWSER",
+          "account": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-account-current/account-receipt.json",
+            "sha256": "707afc8b4165ba962d08e40af5db52e9e1bb3c6e5f4d64a0a932d7e2940d196f"
+          },
+          "accountPlans": [
+            "business",
+            "free",
+            "pro"
+          ],
+          "accountCasesObserved": 3,
+          "automation": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-automation-current/receipt.json",
+            "sha256": "0c11967a0a2737f3549209ea8e652d6ada783d2725a495125c3cb6e3b7cb495c"
+          },
+          "automationCaseObserved": true,
+          "boundary": "Exact25 authenticated local account/API/batch/worker/sharing/embed witnesses. Lower-publication fixture remains; production activation not granted.",
+          "browser": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "heldSQL": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-sql/receipt.json",
+            "sha256": "672e8e18d41c26d2658c5cef010c03747393eb3431a44bc7276bd81505086b9e"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          }
+        },
+        "history": {
+          "status": "MET_STRICT_EXACT_HISTORICAL_BROWSER_REPLAY",
+          "newHistoricalBinding": true,
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/history-ui-focused-tests.log",
+            "sha256": "ae4299fca3f56f94216f5114d95396565f5eb5c8787609ad304fa2cbe29b3ed2"
+          },
+          "boundary": "All25 Free/Pro historical reopens and replay verified; recorded output preserved. No version upgrade applied.",
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "proExactAgreement": true
+        }
+      },
+      "criteriaEvidenceOrigin": {
+        "nominationRow": 331,
+        "source": {
+          "path": "docs/milestone100-20261114/canonical/engineering-nominations.json",
+          "sha256": "29c3b067650f1f65450d1186c31b74f95aed5d5870dbfa67a02cac54c87a8ad2"
+        },
+        "unsignedPacket": {
+          "path": "docs/milestone100-20261114/canonical/unsigned-review-packets.json",
+          "sha256": "f89727418105abc2190967e6f7fb263ba1dffb4e0acb6eeeafa5ebd5e765c3bf"
+        }
+      },
+      "engineContract": {
+        "path": "src/lib/calculator-factory/completion/science-next100.ts",
+        "sha256": "98f992fa52442c19813b87e62c51bfd51b98a8aaf8efdcd984c6a2a92c58acd3"
+      },
+      "contractHashMatchesCurrent": true,
+      "ledgerCrosscheck": {
+        "row": 331,
+        "wave100EngineeringState": "CONDITIONAL_SCOPED_NOMINEE",
+        "identityAndScopeMatchNomination": true,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "perRowCIFieldIsFrozenPreparation": "exactHeadCI=NOT_STARTED_FOR_NEW_HEAD; not treated as current qualification."
+      },
+      "genuinePerIdEngineeringGapsFound": [],
+      "sharedEngineeringQualificationGap": "Current source CI run435775 failed per latest coordinator instruction; complete new exact-head checks/build/full-product/source-acceptance/publication-factory and aggregate must all succeed. No qualified increment before that.",
+      "existingPendingCanonicalHumanRequirements": [
+        "Confirm exact immutable identity/version and bounded scope: Moles from mass and positive molar mass; compatible g and g/mol.",
+        "Independent source/formula/precision applicability acceptance for this exact scope remains unsigned.",
+        "Obtain competent exact-version canonical acceptance separately; local evidence and technical review do not sign it.",
+        "Final source/budget and exact full CI qualification remains; broader canonical scope and competent acceptance are separate pending decisions."
+      ],
+      "canonicalBoundary": {
+        "status": "PENDING_SEPARATE_FROM_ENGINEERING_NOMINATION",
+        "meaning": "Approve exact immutable catalog identity and full canonical scope/source/formula/precision/QA; technical nomination does not sign this.",
+        "notInferredFamily": "Sample massg / supplied positive molar massg/mol -> mol.",
+        "canonicalAccepted": false,
+        "certificationGranted": false,
+        "publicationAuthorized": false
+      },
+      "currentEvidencePinMismatches": [],
+      "canonicalApproved": false,
+      "sourceApplicabilityApproved": false,
+      "certificationGranted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "catalogId": 332,
+      "title": "Dilution Calculator",
+      "exactIdentity": {
+        "engineId": "chemistry.dilution",
+        "slug": "dilution-calculator",
+        "version": 1,
+        "registeredNative": true
+      },
+      "disposition": "CONDITIONAL_SCOPED_TECHNICAL_NOMINEE_UNQUALIFIED",
+      "scopedTechnicalMeaning": "Conserved solute dilution C1V1/V2 with positiveinitialVolume<=finalVolume, explicitmol/L and L.",
+      "scopedCriteriaAsPreviouslyAssessed": {
+        "sourceProvenance": {
+          "status": "INDEPENDENT_BOUNDED_METHODOLOGY_CAPTURED",
+          "record": {
+            "path": "docs/milestone100-20261114/science/completion.md",
+            "sha256": "791b55b5725c836acfe94afab67603c64c40e497d17f9d84d0e33bc05a8a7a34"
+          },
+          "url": "https://openstax.org/books/chemistry-2e/pages/3-3-molarity",
+          "boundary": "Compatible explicit units and bounded source formula; supplied molar mass remains user input, no atomic-weight inference."
+        },
+        "independentGoldens": {
+          "status": "BOUNDED_LITERAL_WITNESSES_PRESENT_NOT_FULL_DOMAIN_CERTIFICATION",
+          "evidence": {
+            "path": "docs/milestone100-20261114/science/candidates.json",
+            "sha256": "0653035a494ab95ca48eae5459ccf745e6bafe02bfc2f6b3b0d04361bd4d27ed"
+          },
+          "test": {
+            "path": "src/lib/calculator-factory/completion/science-next100.test.ts",
+            "sha256": "874aac63a8566d76aee0b91f946f369e4472ad16b0afd402abbde0a3cfa57874"
+          },
+          "boundary": "Literal expected values and domain/refusal/inverse witnesses; no blanket proof outside declared capture bounds."
+        },
+        "UI": {
+          "status": "MET_STRICT_LOCAL_25_THREE_PLAN_BROWSER_RECEIPTS",
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "applicationSourceCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+          "proHistoryExactAgreement": true,
+          "freeHistoryExactAgreement": true,
+          "immutableOutputAndAnalysisWitness": true,
+          "boundary": "Actual25 per plan,200 read-back downloads overall. Bounded isolated acceptance; hosted equivalence and canonical acceptance not inferred."
+        },
+        "native": {
+          "status": "MET_LOCAL_SOFTWARE69_REPLAY_AND_FAILCLOSED_CHECKS",
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/independent-review-probes.json",
+            "sha256": "7402ed397da16e3dcb647733c3bf41c1df00423656a38929a4a5f67950ceac5f"
+          },
+          "boundary": "Exact registered tuple/version, defaultoutput parity, wrongversion/extra-fields refused; not live publication."
+        },
+        "Business": {
+          "status": "MET_GENUINE_LOCAL_ACCOUNT_AUTOMATION_AND_STRICT_BUSINESS_BROWSER",
+          "account": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-account-current/account-receipt.json",
+            "sha256": "707afc8b4165ba962d08e40af5db52e9e1bb3c6e5f4d64a0a932d7e2940d196f"
+          },
+          "accountPlans": [
+            "business",
+            "free",
+            "pro"
+          ],
+          "accountCasesObserved": 3,
+          "automation": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-automation-current/receipt.json",
+            "sha256": "0c11967a0a2737f3549209ea8e652d6ada783d2725a495125c3cb6e3b7cb495c"
+          },
+          "automationCaseObserved": true,
+          "boundary": "Exact25 authenticated local account/API/batch/worker/sharing/embed witnesses. Lower-publication fixture remains; production activation not granted.",
+          "browser": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "heldSQL": {
+            "path": "/workspace/artifacts/milestone100-20261114/business-sql/receipt.json",
+            "sha256": "672e8e18d41c26d2658c5cef010c03747393eb3431a44bc7276bd81505086b9e"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          }
+        },
+        "history": {
+          "status": "MET_STRICT_EXACT_HISTORICAL_BROWSER_REPLAY",
+          "newHistoricalBinding": true,
+          "evidence": {
+            "path": "docs/milestone100-20261114/review/history-ui-focused-tests.log",
+            "sha256": "ae4299fca3f56f94216f5114d95396565f5eb5c8787609ad304fa2cbe29b3ed2"
+          },
+          "boundary": "All25 Free/Pro historical reopens and replay verified; recorded output preserved. No version upgrade applied.",
+          "browserReceipt": {
+            "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+            "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+          },
+          "finalAudit": {
+            "path": "/workspace/artifacts/milestone100-20261114/delivery-verification.json",
+            "sha256": "3ab56857564de2f9c0e570cf9850fdd08b9a0c9831ae525854c7ebc407a0de7e"
+          },
+          "proExactAgreement": true
+        }
+      },
+      "criteriaEvidenceOrigin": {
+        "nominationRow": 332,
+        "source": {
+          "path": "docs/milestone100-20261114/canonical/engineering-nominations.json",
+          "sha256": "29c3b067650f1f65450d1186c31b74f95aed5d5870dbfa67a02cac54c87a8ad2"
+        },
+        "unsignedPacket": {
+          "path": "docs/milestone100-20261114/canonical/unsigned-review-packets.json",
+          "sha256": "f89727418105abc2190967e6f7fb263ba1dffb4e0acb6eeeafa5ebd5e765c3bf"
+        }
+      },
+      "engineContract": {
+        "path": "src/lib/calculator-factory/completion/science-next100.ts",
+        "sha256": "98f992fa52442c19813b87e62c51bfd51b98a8aaf8efdcd984c6a2a92c58acd3"
+      },
+      "contractHashMatchesCurrent": true,
+      "ledgerCrosscheck": {
+        "row": 332,
+        "wave100EngineeringState": "CONDITIONAL_SCOPED_NOMINEE",
+        "identityAndScopeMatchNomination": true,
+        "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+        "perRowCIFieldIsFrozenPreparation": "exactHeadCI=NOT_STARTED_FOR_NEW_HEAD; not treated as current qualification."
+      },
+      "genuinePerIdEngineeringGapsFound": [],
+      "sharedEngineeringQualificationGap": "Current source CI run435775 failed per latest coordinator instruction; complete new exact-head checks/build/full-product/source-acceptance/publication-factory and aggregate must all succeed. No qualified increment before that.",
+      "existingPendingCanonicalHumanRequirements": [
+        "Confirm exact immutable identity/version and bounded scope: Dilution C1V1=C2V2 within declared concentration/volume domain.",
+        "Independent source/formula/precision applicability acceptance for this exact scope remains unsigned.",
+        "Obtain competent exact-version canonical acceptance separately; local evidence and technical review do not sign it.",
+        "Final source/budget and exact full CI qualification remains; broader canonical scope and competent acceptance are separate pending decisions."
+      ],
+      "canonicalBoundary": {
+        "status": "PENDING_SEPARATE_FROM_ENGINEERING_NOMINATION",
+        "meaning": "Approve exact immutable catalog identity and full canonical scope/source/formula/precision/QA; technical nomination does not sign this.",
+        "notInferredFamily": "Conserved solute dilution C1V1/V2 with positiveinitialVolume<=finalVolume, explicitmol/L and L.",
+        "canonicalAccepted": false,
+        "certificationGranted": false,
+        "publicationAuthorized": false
+      },
+      "currentEvidencePinMismatches": [],
+      "canonicalApproved": false,
+      "sourceApplicabilityApproved": false,
+      "certificationGranted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    }
+  ],
+  "canonicalCountsUnchanged": {
+    "COMPLETE_AND_CERTIFIED": 0,
+    "IMPLEMENTED_REVIEW_PENDING": 2,
+    "IMPLEMENTED_TEST_GAPS": 0,
+    "PARTIALLY_IMPLEMENTED": 495,
+    "NOT_IMPLEMENTED": 0,
+    "IDENTITY_OR_SCOPE_BLOCKED": 43
+  },
+  "releaseHold": true
+}

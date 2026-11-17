@@ -1,0 +1,169 @@
+{
+  "baselineSHA": "6e5b8aa3dd07b1c57993c4cc8b6f1cf1be7ce2ef",
+  "baselineCI": {
+    "run": 42485198064,
+    "conclusion": "success",
+    "verifiedBy": "Authenticated GitHub connector"
+  },
+  "deliverySHA": "Recorded in external exact-SHA checkpoint to avoid self-reference",
+  "exactHeadHostedCI": "Required after final commit; final observation recorded in external checkpoint",
+  "localChecks": [
+    {
+      "command": "npm test",
+      "result": {
+        "passed": 8139,
+        "skipped": 4,
+        "filesPassed": 927,
+        "filesSkipped": 2
+      },
+      "scope": "Complete default unit suite; four existing skips retained",
+      "archiveLog": "logs/calculator-sprint-unit-isolated-final.log",
+      "logSHA256": "df6c516a6bbe9241038dd3a0e2b32d72303f86614ecdc92d62f085267dcbbb99"
+    },
+    {
+      "command": "vitest run --config tests/calculator-sprint-20261108/cohort.vitest.config.ts",
+      "result": {
+        "passed": 213
+      },
+      "scope": "65 existing supplied private profiles; not full canonical acceptance",
+      "archiveLog": "logs/calculator-sprint-cohorts-final.log",
+      "logSHA256": "92f6dfa310a5d791922080ae51b27d07c4b2842b632a5dc54afc7607f35c6f4a"
+    },
+    {
+      "command": "node --test [new sprint, financial lineage, product lineage, bootstrap and software closure groups]",
+      "result": {
+        "passed": 95
+      },
+      "scope": "Includes the27 new standalone Node cases; counts overlap and must not be summed",
+      "archiveLog": "logs/calculator-sprint-all-source-guards.log",
+      "logSHA256": "31a85a4c57a1eeead6fb7ba189c80b8872b4b8a7119b196ffa6bb518ad238f93"
+    },
+    {
+      "command": "vitest run --config tests/owner-p0/calculus/vitest.config.mts",
+      "result": {
+        "passed": 21
+      },
+      "scope": "Separate mandatory owner-calculus configuration",
+      "archiveLog": "logs/calculator-sprint-owner-final.log",
+      "logSHA256": "309c1b0558ce03626380e6164b0a11d11bd8869ff68e2678feae20525c98f0e5"
+    },
+    {
+      "command": "npm run lint",
+      "result": {
+        "errors": 0,
+        "warnings": 28
+      },
+      "scope": "Same existing warnings",
+      "archiveLog": "logs/calculator-sprint-lint-final.log",
+      "logSHA256": "bb308ecafc155f5bef71526621327627f27daa47e6c1cf88d5de22c71a8ece04"
+    },
+    {
+      "command": "npm run typecheck",
+      "result": "PASS",
+      "scope": "Complete TypeScript check",
+      "archiveLog": "logs/calculator-sprint-typecheck-final.log",
+      "logSHA256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    {
+      "command": "npm run test:launch",
+      "result": {
+        "passed": 45
+      },
+      "scope": "Launch safeguards",
+      "archiveLog": "logs/calculator-sprint-launch-final.log",
+      "logSHA256": "1cb6aa456a763ad7e700181eacd5e134bac5d2390483f101cf3256b401013757"
+    },
+    {
+      "command": "npm run test:certification",
+      "result": {
+        "passed": 15
+      },
+      "scope": "Certification guards, not new certification",
+      "archiveLog": "logs/calculator-sprint-certification-final.log",
+      "logSHA256": "a0532bad00cefc25cdb22ae94ec0c6b95d09ae02366c39455e6b3efa0c1e75cb"
+    },
+    {
+      "command": "npm run build",
+      "result": "PASS",
+      "scope": "next build --webpack",
+      "archiveLog": "logs/calculator-sprint-webpack-final.log",
+      "logSHA256": "cd9fef4a99f0a7b62d1bee625b0e7c248f58d74c4e5478b03a439fab0210d9a1"
+    },
+    {
+      "command": "node tests/final-private-workbench/browser.mjs",
+      "result": {
+        "journeys": 174,
+        "issues": 0
+      },
+      "scope": "Existing synthetic private review workflows",
+      "archiveLog": "logs/calculator-sprint-original-workbench.log",
+      "logSHA256": "8f3d8d6446c81f57640c28016810182ebdb2d48923ad55a13c3887bddae43b32"
+    },
+    {
+      "command": "node tests/catalog-engineering-review/browser.mjs",
+      "result": {
+        "journeys": 216,
+        "issues": 0
+      },
+      "scope": "Existing native Business-profile review workflows; no production or subscription acceptance",
+      "archiveLog": "logs/calculator-sprint-original-business.log",
+      "logSHA256": "c3094023afabc0995c40585163b3708fb3dd0ff232ee7e00f32c1a0f41f03cff"
+    },
+    {
+      "command": "genuine isolated Batch17 issuance campaign",
+      "result": "PASS",
+      "scope": "GoTrue/PostgREST/PostgreSQL security/concurrency; known direct-writer reservation bypass remains characterized, not fixed",
+      "archiveLog": "logs/calculator-sprint-issuance.log",
+      "logSHA256": "c7a3e789b4bfbe05f4313758483e9a6fb73cf824db553cd5b26da0f8b9affb4a"
+    },
+    {
+      "command": "vitest run src/lib/final-rc-preview-security.test.ts src/lib/batch16-requirement-evidence.test.ts",
+      "result": {
+        "passed": 7
+      },
+      "scope": "Unchanged previously failing files pass when preview consumers are serialized",
+      "archiveLog": "logs/calculator-sprint-contention-reproduction.log",
+      "logSHA256": "1ae29798e8e4badcbfa887bfc353c9680b854347ad2a181a973bca47fbf601f3"
+    }
+  ],
+  "additionalPreflight": [
+    {
+      "index": "node-results.json",
+      "passedCommandBlocks": 31,
+      "sha256": "affd718a4dae6a9bcbf4b1633df356722f8e80e7590e2cb9e375621af8686ac5",
+      "scope": "Preflight sweep from this sprint; final source-group and exact-head hosted jobs remain authoritative after subsequent additive changes"
+    },
+    {
+      "index": "evidence-results.json",
+      "passedCommandBlocks": 38,
+      "sha256": "e18bb86dfe34fbae12edce93505f357a13aa75d2c066d2477eb5a683d58150ea",
+      "scope": "Preflight sweep from this sprint; final source-group and exact-head hosted jobs remain authoritative after subsequent additive changes"
+    }
+  ],
+  "newNativeBrowserProfiles": {
+    "count": 65,
+    "receipts": [
+      "cohort-browser-report.json",
+      "cohort-business-browser-report.json"
+    ],
+    "scope": "Actual native downloads/rendered output/replay/rejection/recovery; synthetic review fixture, not genuine provider authentication"
+  },
+  "earlierContendedRun": {
+    "archiveLog": "logs/calculator-sprint-unit-final.log",
+    "result": "FAILED",
+    "failures": [
+      "Port5173 already in use by concurrent legacy Vite preview",
+      "Existing15-second Batch16 evidence test timeout under concurrent load"
+    ],
+    "resolution": "Finished216-journey browser campaign, reproduced both files unchanged (7PASS), then repeated complete unit suite alone (8139PASS/4existingSKIP). No assertion or timeout change."
+  },
+  "environment": {
+    "local": "Existing dependency cache on Node24; supported subprocess/socket permissions",
+    "hosted": "Existing npm ci lockfile installation and all five mandatory jobs plus aggregate; no guard disabled"
+  },
+  "review": "independent-engineering-review.json",
+  "newCanonicalAcceptances": 0,
+  "newPublicationEligible": 0,
+  "productionWrites": false,
+  "releaseHold": true
+}

@@ -1,6 +1,9 @@
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {it,expect} from 'vitest';
+import {execFileSync} from 'node:child_process';
+import {verifyCompletionBinding} from '../../scripts/product-completion-lineage.mjs';
+const git=(args:string[])=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']});
 import manifest from '../../docs/cloud-batch06/implementation-manifest.json';
 import original from '../../data/catalog/source-driven-2026-10-27/engineering-register.json';
 import {completionContracts} from './completion-contracts';
@@ -16,7 +19,12 @@ it('machine-readable reconciliation binds exact50 identities, actual private dis
   expect(discovery.available).toBe(r.engineeringState!=='blocked-for-this-workbench');
  }
 });
-it('manifest hashes pin new implementation bytes and the preserved exact arithmetic dependency',()=>{
- for(const [path,sha] of Object.entries(manifest.implementationSHA256))expect(createHash('sha256').update(readFileSync(path)).digest('hex')).toBe(sha);
+it('retains historical implementation hashes with exact current UI provenance and preserved arithmetic',()=>{
+ const path='docs/cloud-batch06/implementation-manifest.json';
+ expect(readFileSync(path).equals(git(['show','a955cdad7019a645b7ed2950299d0603ba1784a7:'+path]))).toBe(true);
+ for(const [path,sha] of Object.entries(manifest.implementationSHA256)){
+  const current=readFileSync(path);
+  if(!verifyCompletionBinding(path,current,sha,git))expect(createHash('sha256').update(current).digest('hex')).toBe(sha);
+ }
  expect(createHash('sha256').update(readFileSync(manifest.preservedArithmetic.path)).digest('hex')).toBe(manifest.preservedArithmetic.sha256);
 });

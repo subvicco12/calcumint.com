@@ -1,0 +1,37 @@
+
+ RUN  v3.2.7 /tmp/calcumint-first-five-native-20261109
+
+ ❯ src/components/technology-five-delivery.test.tsx (5 tests | 1 failed) 330ms
+   ✓ offers only five exact identities and original decimal-string API examples 120ms
+   ✓ creates exact versioned grants and offers issuer revocation without publishing 86ms
+   ✓ shows fail-closed publication/readiness errors without presenting a grant 40ms
+   ✓ locks grant draft fields while issuance is pending so an issued grant is not silently discarded 45ms
+   × does not display a pending old organization grant in a new organization or allowed-key session 38ms
+     → expected <button type="button"></button> to be null
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/technology-five-delivery.test.tsx > does not display a pending old organization grant in a new organization or allowed-key session
+AssertionError: expected <button type="button"></button> to be null
+
+- Expected: 
+null
+
++ Received: 
+<button
+  type="button"
+>
+  Revoke Technology grant
+</button>
+
+ ❯ src/components/technology-five-delivery.test.tsx:9:1002
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed (5)
+   Start at  19:00:05
+   Duration  1.52s (transform 113ms, setup 0ms, collect 193ms, tests 330ms, environment 495ms, prepare 149ms)
+

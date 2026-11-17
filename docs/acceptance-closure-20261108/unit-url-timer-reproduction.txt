@@ -1,0 +1,7 @@
+// Temporary test file under src/components; removed after controlled reproduction.
+// @vitest-environment jsdom
+import './remaining-engineering-review.lossless.test';
+import {it} from 'vitest';
+it('keeps the worker alive beyond the pending download cleanup',async()=>{
+ await new Promise(resolve=>setTimeout(resolve,1100));
+});

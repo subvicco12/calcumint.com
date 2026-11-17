@@ -1,0 +1,160 @@
+✖ exact known UI receipt claim requires current successor 811bbd67bfcc635808101a351fa15eb133331369 (11.523182ms)
+✖ exact known UI receipt claim requires current successor 3c2b768ecc9e6e0821df8e74c779d134e99c4f48 (6.163184ms)
+✖ known old UI claim cannot allow old valid caller bytes or invented claims (7.043392ms)
+✖ same target UI dependency drift refused src/lib/technology-capture-trust.ts (7.588833ms)
+✖ same target UI dependency drift refused src/lib/presentation-entitlements.ts (5.173735ms)
+✖ same target UI dependency drift refused src/components/technology-worked-example.tsx (5.948706ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 0
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 53.090353
+
+✖ failing tests:
+
+test at tests/cohort22-closure-20261109/caller-source.test.mjs:8:32
+✖ exact known UI receipt claim requires current successor 811bbd67bfcc635808101a351fa15eb133331369 (11.523182ms)
+  TypeError: receipt.verifyCapturedCurrentCaller is not a function
+      at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/cohort22-closure-20261109/caller-source.test.mjs:8:125)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+
+test at tests/cohort22-closure-20261109/caller-source.test.mjs:8:32
+✖ exact known UI receipt claim requires current successor 3c2b768ecc9e6e0821df8e74c779d134e99c4f48 (6.163184ms)
+  TypeError: receipt.verifyCapturedCurrentCaller is not a function
+      at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/cohort22-closure-20261109/caller-source.test.mjs:8:125)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at tests/cohort22-closure-20261109/caller-source.test.mjs:9:1
+✖ known old UI claim cannot allow old valid caller bytes or invented claims (7.043392ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /current successor/. Input:
+  
+  'TypeError: receipt.verifyCapturedCurrentCaller is not a function'
+  
+      at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/cohort22-closure-20261109/caller-source.test.mjs:11:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: TypeError: receipt.verifyCapturedCurrentCaller is not a function
+        at file:///workspace/work/product-completion-20261108/tests/cohort22-closure-20261109/caller-source.test.mjs:11:28
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/cohort22-closure-20261109/caller-source.test.mjs:11:9)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+        at Test.postRun (node:internal/test_runner/test:1522:19)
+        at Test.run (node:internal/test_runner/test:1447:12)
+        at async Test.processPendingSubtests (node:internal/test_runner/test:960:7),
+    expected: /current successor/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/cohort22-closure-20261109/caller-source.test.mjs:15:144
+✖ same target UI dependency drift refused src/lib/technology-capture-trust.ts (7.588833ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /supplemental source bytes differ/. Input:
+  
+  'TypeError: receipt.verifyCapturedCurrentCaller is not a function'
+  
+      at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/cohort22-closure-20261109/caller-source.test.mjs:17:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: TypeError: receipt.verifyCapturedCurrentCaller is not a function
+        at file:///workspace/work/product-completion-20261108/tests/cohort22-closure-20261109/caller-source.test.mjs:17:28
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/cohort22-closure-20261109/caller-source.test.mjs:17:9)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+        at Test.postRun (node:internal/test_runner/test:1522:19)
+        at Test.run (node:internal/test_runner/test:1447:12)
+        at async Test.processPendingSubtests (node:internal/test_runner/test:960:7),
+    expected: /supplemental source bytes differ/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/cohort22-closure-20261109/caller-source.test.mjs:15:144
+✖ same target UI dependency drift refused src/lib/presentation-entitlements.ts (5.173735ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /supplemental source bytes differ/. Input:
+  
+  'TypeError: receipt.verifyCapturedCurrentCaller is not a function'
+  
+      at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/cohort22-closure-20261109/caller-source.test.mjs:17:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: TypeError: receipt.verifyCapturedCurrentCaller is not a function
+        at file:///workspace/work/product-completion-20261108/tests/cohort22-closure-20261109/caller-source.test.mjs:17:28
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/cohort22-closure-20261109/caller-source.test.mjs:17:9)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+        at Test.postRun (node:internal/test_runner/test:1522:19)
+        at Test.run (node:internal/test_runner/test:1447:12)
+        at async Test.processPendingSubtests (node:internal/test_runner/test:960:7),
+    expected: /supplemental source bytes differ/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/cohort22-closure-20261109/caller-source.test.mjs:15:144
+✖ same target UI dependency drift refused src/components/technology-worked-example.tsx (5.948706ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /supplemental source bytes differ/. Input:
+  
+  'TypeError: receipt.verifyCapturedCurrentCaller is not a function'
+  
+      at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/cohort22-closure-20261109/caller-source.test.mjs:17:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: TypeError: receipt.verifyCapturedCurrentCaller is not a function
+        at file:///workspace/work/product-completion-20261108/tests/cohort22-closure-20261109/caller-source.test.mjs:17:28
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/cohort22-closure-20261109/caller-source.test.mjs:17:9)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+        at Test.postRun (node:internal/test_runner/test:1522:19)
+        at Test.run (node:internal/test_runner/test:1447:12)
+        at async Test.processPendingSubtests (node:internal/test_runner/test:960:7),
+    expected: /supplemental source bytes differ/,
+    operator: 'throws',
+    diff: 'simple'
+  }

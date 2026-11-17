@@ -1,0 +1,55 @@
+{
+  "kind": "EXACT_SOURCE_SCHEDULER_SUCCESSOR_LOCAL_QUALIFICATION_HOSTED_PENDING",
+  "sourceProofRef": "b119e1bb084a0484bc7901f254d8881bdcdd27d6",
+  "sourceCapture": "docs/parallel-source-20261110/capture-revision37.json",
+  "sourceClosureRecords": 722,
+  "sourceGuards": {
+    "passed": 100,
+    "failed": 0
+  },
+  "normalVitestNoWorkerOverride": {
+    "files": 2,
+    "passed": 12,
+    "failed": 0,
+    "sourceChildCases": 91,
+    "seconds": 136.03,
+    "apiCaseMilliseconds": 4300,
+    "apiCaseLimitMilliseconds": 5000
+  },
+  "fullApplicationRegressionRetained": {
+    "sourceRef": "7125bf30922a2ad1c6f38ccf00b333e41ef437de",
+    "passed": 9357,
+    "skippedExisting": 4,
+    "command": "npm test -- --maxWorkers=1",
+    "sameEffectiveSchedule": true,
+    "applicationSourcesUnchanged": true
+  },
+  "precedingCI": {
+    "run": 43192412275,
+    "head": "07cea5ec95b83134f71245100a1d04ef7db862cf",
+    "conclusion": "FAILURE",
+    "passedJobs": [
+      "checks",
+      "build",
+      "full-product",
+      "publication-factory"
+    ],
+    "failedJobs": [
+      "source-acceptance",
+      "validate"
+    ],
+    "sourceUnitPassed": 9355,
+    "sourceUnitFailed": 2,
+    "existingSkips": 4
+  },
+  "newHostedCI": "NOT_STARTED_AT_DOCUMENT_COMMIT",
+  "assertionsAndTimeoutsPreserved": true,
+  "requiredJobsPreserved": true,
+  "newEngineeringComplete": 0,
+  "confirmedScopedEngineeringOverlay": 20,
+  "newCanonicalAcceptance": 0,
+  "newPublicationEligible": 0,
+  "releaseHold": true,
+  "productionOperations": false,
+  "parentValidationSHA256": "abd41a042d9d56b7af56fb547e6dc61861c8916b62a573177a932c4c36c8321e"
+}

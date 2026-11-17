@@ -1,0 +1,19 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: service_role must lack UPDATE
+
+'t' !== 'f'
+
+    at file:///tmp/calcumint-five-sharing-20261109/tests/first-five-full-contract-20261109/sharing-acl.mjs:5:592
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 't',
+  expected: 'f',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

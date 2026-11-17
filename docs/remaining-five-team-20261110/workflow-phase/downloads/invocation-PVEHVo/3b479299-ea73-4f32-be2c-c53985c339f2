@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "cloud-storage-cost-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "input": {
+        "storageGb": 1000,
+        "pricePerGbMonth": 0.02
+      },
+      "output": {
+        "steps": [
+          "Cloud Storage Cost = 20"
+        ],
+        "value": 20
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "input": {
+        "storageGb": 2000,
+        "pricePerGbMonth": 0.02
+      },
+      "output": {
+        "steps": [
+          "Cloud Storage Cost = 40"
+        ],
+        "value": 40
+      }
+    }
+  ]
+}

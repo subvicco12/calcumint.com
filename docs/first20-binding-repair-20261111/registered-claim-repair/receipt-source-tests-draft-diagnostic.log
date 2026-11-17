@@ -1,0 +1,116 @@
+TAP version 13
+# Subtest: verifies the retained cache capture against the same canonical dependency bytes
+ok 1 - verifies the retained cache capture against the same canonical dependency bytes
+  ---
+  duration_ms: 2.916808
+  type: 'test'
+  ...
+# Subtest: retains byte-for-byte hash rejection after cache relocation
+ok 2 - retains byte-for-byte hash rejection after cache relocation
+  ---
+  duration_ms: 0.906649
+  type: 'test'
+  ...
+# Subtest: canonical repository and dependency paths remain exact
+ok 3 - canonical repository and dependency paths remain exact
+  ---
+  duration_ms: 2.788203
+  type: 'test'
+  ...
+# Subtest: unknown cache aliases, traversal and absolute paths fail before any read
+ok 4 - unknown cache aliases, traversal and absolute paths fail before any read
+  ---
+  duration_ms: 0.618327
+  type: 'test'
+  ...
+# Subtest: clean checkout reads canonical dependency file without the historical cache directory
+ok 5 - clean checkout reads canonical dependency file without the historical cache directory
+  ---
+  duration_ms: 12.50392
+  type: 'test'
+  ...
+# Subtest: original receipt and dependency lock retain their exact immutable capture bytes
+ok 6 - original receipt and dependency lock retain their exact immutable capture bytes
+  ---
+  duration_ms: 41.674457
+  type: 'test'
+  ...
+# Subtest: the exact reviewed F042 verifier claim proves actual current source and every supplied dependency
+ok 7 - the exact reviewed F042 verifier claim proves actual current source and every supplied dependency
+  ---
+  duration_ms: 828.43061
+  type: 'test'
+  ...
+# Subtest: both original immutable verifier receipt claims still require the current complete binding
+ok 8 - both original immutable verifier receipt claims still require the current complete binding
+  ---
+  duration_ms: 1303.641444
+  type: 'test'
+  ...
+# Subtest: an arbitrary registered verifier claim is refused before dependency resolution
+ok 9 - an arbitrary registered verifier claim is refused before dependency resolution
+  ---
+  duration_ms: 19.98503
+  type: 'test'
+  ...
+# Subtest: the exact F042 claim cannot admit changed current verifier bytes
+not ok 10 - the exact F042 claim cannot admit changed current verifier bytes
+  ---
+  duration_ms: 642.228071
+  type: 'test'
+  location: '/workspace/work/product-completion-20261108/tests/acceptance-closure-20261108/receipt-source-path.test.mjs:57:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+    
+    Caught error:
+    
+    Error: Completion current successor differs
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/acceptance-closure-20261108/receipt-source-path.test.mjs:58:2)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: the exact F042 claim cannot admit a valid historical verifier reversion
+not ok 11 - the exact F042 claim cannot admit a valid historical verifier reversion
+  ---
+  duration_ms: 602.3017
+  type: 'test'
+  location: '/workspace/work/product-completion-20261108/tests/acceptance-closure-20261108/receipt-source-path.test.mjs:60:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+    
+    Caught error:
+    
+    Error: Completion current successor differs
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/acceptance-closure-20261108/receipt-source-path.test.mjs:62:2)
+    async Test.run (node:internal/test_runner/test:1054:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: the exact F042 claim rejects altered dependency bytes from the same supplied reader
+ok 12 - the exact F042 claim rejects altered dependency bytes from the same supplied reader
+  ---
+  duration_ms: 377.16591
+  type: 'test'
+  ...
+# Subtest: a missing supplied F042 dependency never falls back to the existing workspace file
+ok 13 - a missing supplied F042 dependency never falls back to the existing workspace file
+  ---
+  duration_ms: 19.069183
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 11
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3986.509182

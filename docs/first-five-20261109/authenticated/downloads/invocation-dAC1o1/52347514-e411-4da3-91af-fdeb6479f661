@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "bandwidth-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "methodology": "Ideal deterministic arithmetic using decimal MB (1 MB = 1,000,000 octets) and Mbps (1 Mbps = 1,000,000 bits/second), eight bits per octet. Strictly positive supplied quantities; not measured bandwidth, provider speed or a delivery guarantee. Protocol overhead, latency, congestion and changing rates are excluded.\nTechnical calculation revision: technology.bandwidth@1\n\nAverage transfer rate from data size and elapsed time.\nBandwidth (Mbps) = data MB × 8 ÷ time seconds",
+      "input": {
+        "dataMegabytes": 100,
+        "timeSeconds": 10
+      },
+      "output": {
+        "value": 80,
+        "steps": [
+          "Bandwidth = 80"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "bandwidth-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "dataMegabytes": {
+            "label": "Data (MB)",
+            "unit": "MB"
+          },
+          "timeSeconds": {
+            "label": "Time (s)",
+            "unit": "s"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Bandwidth",
+            "unit": "Mbps"
+          }
+        }
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "methodology": "Ideal deterministic arithmetic using decimal MB (1 MB = 1,000,000 octets) and Mbps (1 Mbps = 1,000,000 bits/second), eight bits per octet. Strictly positive supplied quantities; not measured bandwidth, provider speed or a delivery guarantee. Protocol overhead, latency, congestion and changing rates are excluded.\nTechnical calculation revision: technology.bandwidth@1\n\nAverage transfer rate from data size and elapsed time.\nBandwidth (Mbps) = data MB × 8 ÷ time seconds",
+      "input": {
+        "dataMegabytes": 200,
+        "timeSeconds": 10
+      },
+      "output": {
+        "value": 160,
+        "steps": [
+          "Bandwidth = 160"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "bandwidth-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "dataMegabytes": {
+            "label": "Data (MB)",
+            "unit": "MB"
+          },
+          "timeSeconds": {
+            "label": "Time (s)",
+            "unit": "s"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Bandwidth",
+            "unit": "Mbps"
+          }
+        }
+      }
+    }
+  ]
+}

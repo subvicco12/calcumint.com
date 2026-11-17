@@ -1,0 +1,515 @@
+{
+  "kind": "EXACT_SET_RECONCILIATION_UNSIGNED_REVIEW_PREPARATION",
+  "baseCommit": "f0f6b507a18bf51d7c8925734d854a05120ade10",
+  "originalCohort": {
+    "count": 27,
+    "ids": [
+      208,
+      209,
+      210,
+      211,
+      212,
+      215,
+      216,
+      218,
+      219,
+      220,
+      322,
+      323,
+      324,
+      325,
+      327,
+      423,
+      424,
+      425,
+      427,
+      428,
+      430,
+      431,
+      432,
+      433,
+      434,
+      438,
+      440
+    ],
+    "evidence": {
+      "path": "docs/calculator-factory/wave1/contracts-normal-output-v2.json",
+      "sha256": "992578ee9f2f45b254c82d3685b8e434d3860883473efb22cc41120292f68feb"
+    }
+  },
+  "confirmedScopedEngineeringBeforeWave": {
+    "count": 29,
+    "ids": [
+      218,
+      219,
+      220,
+      368,
+      369,
+      370,
+      371,
+      372,
+      373,
+      374,
+      375,
+      376,
+      377,
+      378,
+      379,
+      380,
+      381,
+      382,
+      383,
+      384,
+      385,
+      386,
+      387,
+      423,
+      430,
+      431,
+      432,
+      438,
+      440
+    ],
+    "versionException": {
+      "catalogId": 383,
+      "version": 2
+    },
+    "canonicalCompletion": false
+  },
+  "overlap": {
+    "count": 9,
+    "ids": [
+      218,
+      219,
+      220,
+      423,
+      430,
+      431,
+      432,
+      438,
+      440
+    ]
+  },
+  "remainingOriginal": {
+    "count": 18,
+    "ids": [
+      208,
+      209,
+      210,
+      211,
+      212,
+      215,
+      216,
+      322,
+      323,
+      324,
+      325,
+      327,
+      424,
+      425,
+      427,
+      428,
+      433,
+      434
+    ]
+  },
+  "confirmedOutsideOriginal": {
+    "count": 20,
+    "ids": [
+      368,
+      369,
+      370,
+      371,
+      372,
+      373,
+      374,
+      375,
+      376,
+      377,
+      378,
+      379,
+      380,
+      381,
+      382,
+      383,
+      384,
+      385,
+      386,
+      387
+    ]
+  },
+  "unionCount": 47,
+  "equations": [
+    "27 = 9 + 18",
+    "29 = 9 + 20",
+    "47 = 27 + 29 - 9",
+    "540 = 0 + 2 + 0 + 495 + 0 + 43"
+  ],
+  "canonicalCountsUnchanged": {
+    "COMPLETE_AND_CERTIFIED": 0,
+    "IMPLEMENTED_REVIEW_PENDING": 2,
+    "IMPLEMENTED_TEST_GAPS": 0,
+    "PARTIALLY_IMPLEMENTED": 495,
+    "NOT_IMPLEMENTED": 0,
+    "IDENTITY_OR_SCOPE_BLOCKED": 43
+  },
+  "canonicalCountEvidence": {
+    "path": "docs/calculator-factory/wave1/remaining-work.json",
+    "sha256": "cb0d5a48e4881fc21bccc7bbb5d28c42b50db7ab9e80291779dcdee931fbed97",
+    "pointer": "/parentLedger"
+  },
+  "newUnsignedPackets": [
+    {
+      "catalogId": 208,
+      "rank": 1,
+      "path": "docs/completion-wave-20261113/review/208-v1.json",
+      "sha256": "081fd8f603783d26010c1a6b89b6198a8cbc34811fbec2dffd66ba6c2cfe29fa"
+    },
+    {
+      "catalogId": 215,
+      "rank": 2,
+      "path": "docs/completion-wave-20261113/review/215-v1.json",
+      "sha256": "a99b1e98d3ab89a691262ec200b655d300bf0cd3a9c6a95e2f8dddff6963c7a7"
+    },
+    {
+      "catalogId": 209,
+      "rank": 3,
+      "path": "docs/completion-wave-20261113/review/209-v1.json",
+      "sha256": "9333deba860f088741df25d17bb36a63af58d648453f270b12cc32637301fe98"
+    },
+    {
+      "catalogId": 210,
+      "rank": 4,
+      "path": "docs/completion-wave-20261113/review/210-v1.json",
+      "sha256": "0fb630d2fa7d8ff051749d57f07eb44582314f4c9e616f01b4b5d2b83b973194"
+    },
+    {
+      "catalogId": 216,
+      "rank": 5,
+      "path": "docs/completion-wave-20261113/review/216-v1.json",
+      "sha256": "50c886faa78805fd94055532ad74ce1a01908fdf21bf5f9a8421e8ffe099156e"
+    },
+    {
+      "catalogId": 424,
+      "rank": 6,
+      "path": "docs/completion-wave-20261113/review/424-v1.json",
+      "sha256": "ae813945ab24973337da37e9276f127447fbdd67d15dfc345656c6c9a9b9ac40"
+    },
+    {
+      "catalogId": 425,
+      "rank": 7,
+      "path": "docs/completion-wave-20261113/review/425-v1.json",
+      "sha256": "e4eb35b06a1aa9e021861b581e5fa20d1e0721d618f58741b8f900cb5e7f5be4"
+    },
+    {
+      "catalogId": 427,
+      "rank": 8,
+      "path": "docs/completion-wave-20261113/review/427-v1.json",
+      "sha256": "7a874daff71888f9dc0ac17ec75e667f76cd2f142122e56a65bae9f59b6fe1fc"
+    },
+    {
+      "catalogId": 428,
+      "rank": 9,
+      "path": "docs/completion-wave-20261113/review/428-v1.json",
+      "sha256": "1730b1447d6ce8373b31b8101a98263e76a88188222d3551c5ebd443ddfb3529"
+    },
+    {
+      "catalogId": 433,
+      "rank": 10,
+      "path": "docs/completion-wave-20261113/review/433-v1.json",
+      "sha256": "fe364e844e4066844b1d7b6fd72de51302152449af5a9481d3b40eb82436ad1d"
+    },
+    {
+      "catalogId": 434,
+      "rank": 11,
+      "path": "docs/completion-wave-20261113/review/434-v1.json",
+      "sha256": "58e8e2154a26ded7be8127c54d4ef7ccbbf26cd4fe5e8a4462383bd7a73703fe"
+    },
+    {
+      "catalogId": 322,
+      "rank": 12,
+      "path": "docs/completion-wave-20261113/review/322-v1.json",
+      "sha256": "c0ad59698037d2e134da97d7ce5fa7d59555ba3d0887541dfb7e429fd1e159d9"
+    },
+    {
+      "catalogId": 325,
+      "rank": 13,
+      "path": "docs/completion-wave-20261113/review/325-v1.json",
+      "sha256": "eb05377a4d2552e595d1dd08686ee2fdd883850218d1a1c18e7d8fd9f5f72a88"
+    },
+    {
+      "catalogId": 327,
+      "rank": 14,
+      "path": "docs/completion-wave-20261113/review/327-v1.json",
+      "sha256": "2ee189ae779523ec3fec66a2c93aa852d89edee2e55e9332f4494e0a36027482"
+    },
+    {
+      "catalogId": 323,
+      "rank": 15,
+      "path": "docs/completion-wave-20261113/review/323-v1.json",
+      "sha256": "ccbabf0523bf935b8f6435d06cfdc47f7ee88fc42ac0e535c201525853fc3f5f"
+    },
+    {
+      "catalogId": 324,
+      "rank": 16,
+      "path": "docs/completion-wave-20261113/review/324-v1.json",
+      "sha256": "3a03a5f22f2112d139889ec8d5a96396b066cd5ea94fa6e7c80826c66a6d3445"
+    },
+    {
+      "catalogId": 211,
+      "rank": 17,
+      "path": "docs/completion-wave-20261113/review/211-v1.json",
+      "sha256": "27c08c4c90918653f070c8d40a74d877b12ffa23a6733841ae4210d5759c6ee5"
+    },
+    {
+      "catalogId": 212,
+      "rank": 18,
+      "path": "docs/completion-wave-20261113/review/212-v1.json",
+      "sha256": "3c9a4f8240bc103afacd6df8631706c7108b25683ee59836c200ff43a2dcebe3"
+    }
+  ],
+  "reusedThirteenUnsignedPackets": [
+    {
+      "masterId": 370,
+      "engineId": "technology.bandwidth",
+      "version": 1,
+      "packet": "docs/canonical-five-20261110/370-v1-review-packet.json",
+      "packetSHA256": "2bdbb5e37f66737a42bc3fbbbb43683c5dd67a82b6c878cf1456ca2a766c72e7",
+      "retainedUnmodified": true,
+      "recordedDecisionDimensions": 6,
+      "clauseAssociations": 34,
+      "canonicalAccepted": false,
+      "certificationGranted": false,
+      "publicationEligible": false,
+      "actualRetainedSHA256": "2bdbb5e37f66737a42bc3fbbbb43683c5dd67a82b6c878cf1456ca2a766c72e7"
+    },
+    {
+      "masterId": 371,
+      "engineId": "technology.download-time",
+      "version": 1,
+      "packet": "docs/canonical-five-20261110/371-v1-review-packet.json",
+      "packetSHA256": "5f375cd3eba2afcc4f7411e3796788b924532ab129b868396f966291468ede45",
+      "retainedUnmodified": true,
+      "recordedDecisionDimensions": 6,
+      "clauseAssociations": 34,
+      "canonicalAccepted": false,
+      "certificationGranted": false,
+      "publicationEligible": false,
+      "actualRetainedSHA256": "5f375cd3eba2afcc4f7411e3796788b924532ab129b868396f966291468ede45"
+    },
+    {
+      "masterId": 372,
+      "engineId": "technology.upload-time",
+      "version": 1,
+      "packet": "docs/canonical-five-20261110/372-v1-review-packet.json",
+      "packetSHA256": "773f866b5f4a1ca2518c36a71d1f6579bb3576fc096e47b17169e18c2ce5404d",
+      "retainedUnmodified": true,
+      "recordedDecisionDimensions": 6,
+      "clauseAssociations": 34,
+      "canonicalAccepted": false,
+      "certificationGranted": false,
+      "publicationEligible": false,
+      "actualRetainedSHA256": "773f866b5f4a1ca2518c36a71d1f6579bb3576fc096e47b17169e18c2ce5404d"
+    },
+    {
+      "masterId": 373,
+      "engineId": "technology.data-transfer",
+      "version": 1,
+      "packet": "docs/canonical-five-20261110/373-v1-review-packet.json",
+      "packetSHA256": "b3bded0a78c753720fa118731c2cdb0247c3f03250ba92ad14343476b98254e3",
+      "retainedUnmodified": true,
+      "recordedDecisionDimensions": 6,
+      "clauseAssociations": 34,
+      "canonicalAccepted": false,
+      "certificationGranted": false,
+      "publicationEligible": false,
+      "actualRetainedSHA256": "b3bded0a78c753720fa118731c2cdb0247c3f03250ba92ad14343476b98254e3"
+    },
+    {
+      "masterId": 374,
+      "engineId": "technology.storage-conversion",
+      "version": 1,
+      "packet": "docs/canonical-thirteen-20261110/374-v1-review-packet.json",
+      "packetSHA256": "3eadd233cc8c0df2e202360ee458360083296f314f79c0d9f8dc11e07339220e",
+      "retainedUnmodified": false,
+      "recordedDecisionDimensions": 9,
+      "clauseAssociations": 34,
+      "canonicalAccepted": false,
+      "certificationGranted": false,
+      "publicationEligible": false,
+      "actualRetainedSHA256": "3eadd233cc8c0df2e202360ee458360083296f314f79c0d9f8dc11e07339220e"
+    },
+    {
+      "masterId": 377,
+      "engineId": "technology.aspect-ratio",
+      "version": 1,
+      "packet": "docs/canonical-three-20261110/377-v1-review-packet.json",
+      "packetSHA256": "c1e2094b47d811ea1b086a554d53b62cca70f68a1297fa43b99b438d206fb730",
+      "retainedUnmodified": true,
+      "recordedDecisionDimensions": 9,
+      "clauseAssociations": 34,
+      "canonicalAccepted": false,
+      "certificationGranted": false,
+      "publicationEligible": false,
+      "actualRetainedSHA256": "c1e2094b47d811ea1b086a554d53b62cca70f68a1297fa43b99b438d206fb730"
+    },
+    {
+      "masterId": 378,
+      "engineId": "technology.resolution",
+      "version": 1,
+      "packet": "docs/canonical-three-20261110/378-v1-review-packet.json",
+      "packetSHA256": "95ae17fb30879183a476ed6bbfc57f3624580ff7a1a4567649bc9154aa1e5d15",
+      "retainedUnmodified": true,
+      "recordedDecisionDimensions": 9,
+      "clauseAssociations": 34,
+      "canonicalAccepted": false,
+      "certificationGranted": false,
+      "publicationEligible": false,
+      "actualRetainedSHA256": "95ae17fb30879183a476ed6bbfc57f3624580ff7a1a4567649bc9154aa1e5d15"
+    },
+    {
+      "masterId": 379,
+      "engineId": "technology.dpi",
+      "version": 1,
+      "packet": "docs/canonical-three-20261110/379-v1-review-packet.json",
+      "packetSHA256": "602222deed8543c7dac432ee3ccdd4910fd61ffda7f58017de99a82e0962a53d",
+      "retainedUnmodified": true,
+      "recordedDecisionDimensions": 9,
+      "clauseAssociations": 34,
+      "canonicalAccepted": false,
+      "certificationGranted": false,
+      "publicationEligible": false,
+      "actualRetainedSHA256": "602222deed8543c7dac432ee3ccdd4910fd61ffda7f58017de99a82e0962a53d"
+    },
+    {
+      "masterId": 382,
+      "engineId": "technology.power-supply",
+      "version": 1,
+      "packet": "docs/canonical-thirteen-20261110/382-v1-review-packet.json",
+      "packetSHA256": "affea7d20ab7dc410cb689996d7fa4e4fcd8e244c8d929b3f60dc65ad85780f6",
+      "retainedUnmodified": false,
+      "recordedDecisionDimensions": 9,
+      "clauseAssociations": 34,
+      "canonicalAccepted": false,
+      "certificationGranted": false,
+      "publicationEligible": false,
+      "actualRetainedSHA256": "affea7d20ab7dc410cb689996d7fa4e4fcd8e244c8d929b3f60dc65ad85780f6"
+    },
+    {
+      "masterId": 383,
+      "engineId": "technology.website-bandwidth",
+      "version": 2,
+      "packet": "docs/canonical-thirteen-20261110/383-v2-review-packet.json",
+      "packetSHA256": "6bdfa11cf6c3e532fc5ff5b04be4e31bc3832e22e6d007299e9c04d9ea5f7255",
+      "retainedUnmodified": false,
+      "recordedDecisionDimensions": 9,
+      "clauseAssociations": 34,
+      "canonicalAccepted": false,
+      "certificationGranted": false,
+      "publicationEligible": false,
+      "actualRetainedSHA256": "6bdfa11cf6c3e532fc5ff5b04be4e31bc3832e22e6d007299e9c04d9ea5f7255"
+    },
+    {
+      "masterId": 384,
+      "engineId": "technology.cloud-storage-cost",
+      "version": 1,
+      "packet": "docs/canonical-thirteen-20261110/384-v1-review-packet.json",
+      "packetSHA256": "61814d398fe00759d25510d91b6da7e1a51960809b9562a678d9d3f662888871",
+      "retainedUnmodified": false,
+      "recordedDecisionDimensions": 9,
+      "clauseAssociations": 34,
+      "canonicalAccepted": false,
+      "certificationGranted": false,
+      "publicationEligible": false,
+      "actualRetainedSHA256": "61814d398fe00759d25510d91b6da7e1a51960809b9562a678d9d3f662888871"
+    },
+    {
+      "masterId": 385,
+      "engineId": "technology.cloud-data-transfer-cost",
+      "version": 1,
+      "packet": "docs/canonical-thirteen-20261110/385-v1-review-packet.json",
+      "packetSHA256": "35e2fcbd70ae9896da411753c7bad9a357d1096e3ecae4ea7bda09dbbc59058c",
+      "retainedUnmodified": false,
+      "recordedDecisionDimensions": 9,
+      "clauseAssociations": 34,
+      "canonicalAccepted": false,
+      "certificationGranted": false,
+      "publicationEligible": false,
+      "actualRetainedSHA256": "35e2fcbd70ae9896da411753c7bad9a357d1096e3ecae4ea7bda09dbbc59058c"
+    },
+    {
+      "masterId": 386,
+      "engineId": "technology.base64-size",
+      "version": 1,
+      "packet": "docs/canonical-five-20261110/386-v1-review-packet.json",
+      "packetSHA256": "94b896bd727503d1d3ac159f0032689f412384142d003259f25a0efd5676b4ee",
+      "retainedUnmodified": true,
+      "recordedDecisionDimensions": 6,
+      "clauseAssociations": 34,
+      "canonicalAccepted": false,
+      "certificationGranted": false,
+      "publicationEligible": false,
+      "actualRetainedSHA256": "94b896bd727503d1d3ac159f0032689f412384142d003259f25a0efd5676b4ee"
+    }
+  ],
+  "reused440AppointmentEvidence": [
+    {
+      "path": "docs/competent-closure-20261108/reviewer-appointment.md",
+      "sha256": "55ae5b98217f4fd6c75af578a1f7677155767a2a41415766190c1fa97b3bc55d"
+    },
+    {
+      "path": "docs/competent-closure-20261108/reviewer-appointment-counts.json",
+      "sha256": "bbd2ed36b2dd54a8b08eda7f2ff7d7c59028fbbe9b3fe0d775be5d4424d714eb"
+    }
+  ],
+  "appointmentMeaning": "Historical read-only exact #440/#432 catalog rows and assigned counts zero; no current re-investigation, competence claim or signature. Draft/adoption prerequisite and real authorized appointment remain distinct.",
+  "existingNineEngineeringReviewPackets": [
+    {
+      "path": "docs/completion-delivery-20261112/review/218.json",
+      "sha256": "2b5af2c27d931367a42b45f1c47ccfc4e8aa3f0d00b9af8bf0f6ad735d4d643b"
+    },
+    {
+      "path": "docs/completion-delivery-20261112/review/219.json",
+      "sha256": "02771fdefbb1e715ef15262416eb7fec452ba9443ca3c70af81c5e3233e436b6"
+    },
+    {
+      "path": "docs/completion-delivery-20261112/review/220.json",
+      "sha256": "14bf9db9fc26d80be296ece78de0957b01c5257e2df920fbc8eb680f2b3a5cf9"
+    },
+    {
+      "path": "docs/completion-delivery-20261112/review/423.json",
+      "sha256": "ccd666fc3bb6aa44f059fe6e28621556a3c5d123f7871f8d7c804a1541e4b80e"
+    },
+    {
+      "path": "docs/completion-delivery-20261112/review/430.json",
+      "sha256": "0143691befd2695bd299bb4b31d49c461325a45ec905682dca3393ae0cf663b4"
+    },
+    {
+      "path": "docs/completion-delivery-20261112/review/431.json",
+      "sha256": "61b274749b50dd2905a24ec51ce3316e6e8d71fb38354050a8f544f87a61833d"
+    },
+    {
+      "path": "docs/completion-delivery-20261112/review/432.json",
+      "sha256": "938485566e5b82ee4ee4127306d52c98d2312d80d11e11c5e506b7196de13b99"
+    },
+    {
+      "path": "docs/completion-delivery-20261112/review/438.json",
+      "sha256": "871eca338302690edac12a5f727a2b718093ecf8d73b6a68f435706510fab0db"
+    },
+    {
+      "path": "docs/completion-delivery-20261112/review/440.json",
+      "sha256": "513a6c9e04ede764293826695eff4f49d9e1245d40f2d60b496310ba75a508d3"
+    }
+  ],
+  "firstPublication": {
+    "currentlyEligibleCount": 0,
+    "currentlyEligibleIds": [],
+    "smallestActualCandidateSet": [],
+    "reason": "No new actual exact-version approvals supplied. An engineering priority or unsigned packet cannot populate publication eligibility.",
+    "conditionalSingleIdentityReviewLead": 440,
+    "qualification": "Reuse retained #440 material and appointment evidence; first candidate remains conditional on real competent decisions, full canonical requirements and held lifecycle/operational gates."
+  },
+  "releaseHold": true,
+  "newApprovals": 0,
+  "newEngineeringConfirmed": 0
+}

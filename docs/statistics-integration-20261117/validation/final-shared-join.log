@@ -1,0 +1,45 @@
+
+ RUN  v3.2.7 /workspace/coordinator-statistics-20261117
+
+ ✓ src/components/calculator-factory-portal.test.tsx (4 tests) 372ms
+ ✓ src/lib/statistics-integration-20261117/integration.test.ts (9 tests) 37ms
+ ❯ src/lib/business/factory-nine-sharing.test.ts (3 tests | 1 failed) 20ms
+   × accepts only the exact registered normalized snapshots and retains historical result 9ms
+     → expected [ Array(106) ] to deeply equal [ 218, 219, 220, 423, 430, 431, …(93) ]
+   ✓ rejects unsupported versions, extra fields and tampered stored data 7ms
+   ✓ separates conversion target units for shared comparisons 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/business/factory-nine-sharing.test.ts > accepts only the exact registered normalized snapshots and retains historical result
+AssertionError: expected [ Array(106) ] to deeply equal [ 218, 219, 220, 423, 430, 431, …(93) ]
+
+- Expected
++ Received
+
+@@ -96,6 +96,13 @@
+    338,
+    339,
+    340,
+    341,
+    342,
++   292,
++   293,
++   294,
++   295,
++   296,
++   297,
++   299,
+  ]
+
+ ❯ src/lib/business/factory-nine-sharing.test.ts:5:149
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 15 passed (16)
+   Start at  09:59:51
+   Duration  5.02s (transform 2.15s, setup 126ms, collect 3.57s, tests 428ms, environment 277ms, prepare 195ms)
+

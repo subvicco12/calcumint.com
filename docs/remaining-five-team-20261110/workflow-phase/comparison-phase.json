@@ -1,0 +1,2701 @@
+{
+  "passed": true,
+  "scope": "COMPLETED_TEAM_COMPARISONS_ONLY_NOT_FULL_ACCEPTANCE",
+  "testedBaseline": "f28c045eca9b6ee04c03b937ee64d1dc21969037",
+  "sourceHashes": {
+    "src/lib/business/technology-next-sharing.ts": "e4c40c9d4eb571c265d7024d3b95888c13b10714a98b421bfbe93930c7bc30ab",
+    "src/lib/business/technology-next-sharing-server.ts": "f31775fd30611577a9e2714c385b1277c1ab479f3cb5e53476c322bcb7bd8b40",
+    "src/components/technology-five-share-form.tsx": "0928d46624a3764c7e141e0984b26f3f93dc132522441e7c179b63f81ffc7444",
+    "src/app/api/business/technology-five-shares/route.ts": "d32a0b98f4b1c9daa14cacdb6b575b30c57aca87d03d4bafd2bcf74a822f41d9",
+    "src/app/business/projects/[id]/page.tsx": "ea32badd3a5e4049963747ea018f5b399bb9a1953053dab03d88150f14423db4",
+    "src/app/business/shared/[id]/page.tsx": "e020d51eed26293dc846a5049a82b45489d178c8fb772a41b5b733bba04e29b3",
+    "src/app/business/page.tsx": "9dd6577974cfd09cb821d9e3aaf26725ccc89b5f47fa58773010a1dd3f4d4911",
+    "src/app/business/api/page.tsx": "61db8cf167d1c727e1cae52f33c35e5e62b799cd30b3c8c0c66288c99fa056c3",
+    "src/components/saved-calculation-actions.tsx": "eb10109b0dfc8a73b0ed4043d35da898cd11a3eace9e711755d8de5179928529",
+    "src/components/account-session-boundary.tsx": "ca131c33a083c5b10f7eca6828c998eaf88cc3c254c583346aa3e48b40f3c3d5",
+    "docs/next-cohort-sharing-20261110/review-only-sharing.sql": "68fcf9f69a24ca6c1d945b5f1164402cf8a65c56712b5bc194bcca17eee0a462",
+    "tests/remaining-five-team-20261110/workflows.mjs": "06c01758e2ec7a815b8ecf93d233c6181661e587c86120db9fddb91682d9d6a6",
+    "src/components/technology-five-shared-comparison.tsx": "21f8d4eb2cb0d455e420234e831f1754e9dba720d5497cd7cadc550982e4cefa",
+    "src/components/calculator-scenario-workspace.tsx": "d35ae6ea673594d23eee4e352ba32a09ac55c61df41694afc91a0c418b03c090",
+    "src/components/scenario-set-recovery.tsx": "6e44983e6b038686f398ad1393a1039bef0f45bc449ec56710f2006cb1cbb6a7",
+    "src/lib/scenario-report.ts": "82ff3dd14620b921d036b49dd6b77e8e3e76bd6900e1b863546c674d9fa030d1",
+    "src/lib/scenario-report-pdf.ts": "b0b2cd15a1280a147fd08a9a09875e059de482158693ce4009e0fa6b19099d56",
+    "src/lib/draft-history-pagination.ts": "46d906eb07088af5c3a5f1cd184ba330036182983e6dc6b2bac71fb54283b5d4",
+    "src/lib/storage-scenario-context.ts": "6f076a49301c13598c7bb4cd730bdfe9199d669de1b16c4d94253b392cbb861c",
+    "src/lib/scenario-set-recovery.ts": "5454b551650cdce18fb9ba2d0af78e777c233dcd9b41660a8e85f5bd28b1cd53",
+    "src/lib/technology-next-capture-trust.ts": "7d26d1d359895f15bb8f0bdf121dcd23b2bfb3871842124ea8b951dee9e36e22",
+    "src/lib/native-delivery/technology-next-catalog.ts": "6e6c0cdca34a7d084c3baeaa64e639aba790853ca2ef0ecfa17faae800369cc6",
+    "src/lib/technology-current-presentation.ts": "57461c97356fa79a69bb3a8e4d3e1edd50c798a1f8fa9bed3da41d05f406d3c5",
+    "src/calculators/technology-computing/catalog-batch-1.ts": "31f347fc286cc0b22cd888b9f53719e4733ffa17ab8323aa4f6dc5bc497079f6",
+    "src/calculators/technology-computing/catalog-batch-2.ts": "d352f40f8aef2cbd22afd8c09e577f28fc4eda1b925a928ec65c1ea25f4393d7",
+    "src/lib/registered-snapshot-verification.ts": "7a288d92b16613f4208b43de2ef7b2b52d2c111a4457b1677e7b0df9a9031cf8",
+    "src/lib/technology-snapshot-verification.ts": "276ad7ee37203fa90b65571a3bab1b3dde271f13c1f323a1e8d330a6bab9e521",
+    "src/lib/account-persistence.ts": "09316cd9df4ab359a3d20ac921e1c908f0e3b48831977149800262c16a01ad9e"
+  },
+  "copiedSourceHashes": {
+    "src/lib/business/technology-next-sharing.ts": "e4c40c9d4eb571c265d7024d3b95888c13b10714a98b421bfbe93930c7bc30ab",
+    "src/lib/business/technology-next-sharing-server.ts": "f31775fd30611577a9e2714c385b1277c1ab479f3cb5e53476c322bcb7bd8b40",
+    "src/components/technology-five-share-form.tsx": "0928d46624a3764c7e141e0984b26f3f93dc132522441e7c179b63f81ffc7444",
+    "src/app/api/business/technology-five-shares/route.ts": "d32a0b98f4b1c9daa14cacdb6b575b30c57aca87d03d4bafd2bcf74a822f41d9",
+    "src/app/business/projects/[id]/page.tsx": "ea32badd3a5e4049963747ea018f5b399bb9a1953053dab03d88150f14423db4",
+    "src/app/business/shared/[id]/page.tsx": "e020d51eed26293dc846a5049a82b45489d178c8fb772a41b5b733bba04e29b3",
+    "src/app/business/page.tsx": "9dd6577974cfd09cb821d9e3aaf26725ccc89b5f47fa58773010a1dd3f4d4911",
+    "src/app/business/api/page.tsx": "61db8cf167d1c727e1cae52f33c35e5e62b799cd30b3c8c0c66288c99fa056c3",
+    "src/components/saved-calculation-actions.tsx": "eb10109b0dfc8a73b0ed4043d35da898cd11a3eace9e711755d8de5179928529",
+    "src/components/account-session-boundary.tsx": "ca131c33a083c5b10f7eca6828c998eaf88cc3c254c583346aa3e48b40f3c3d5",
+    "src/components/technology-five-shared-comparison.tsx": "21f8d4eb2cb0d455e420234e831f1754e9dba720d5497cd7cadc550982e4cefa",
+    "src/components/calculator-scenario-workspace.tsx": "d35ae6ea673594d23eee4e352ba32a09ac55c61df41694afc91a0c418b03c090",
+    "src/components/scenario-set-recovery.tsx": "6e44983e6b038686f398ad1393a1039bef0f45bc449ec56710f2006cb1cbb6a7",
+    "src/lib/scenario-report.ts": "82ff3dd14620b921d036b49dd6b77e8e3e76bd6900e1b863546c674d9fa030d1",
+    "src/lib/scenario-report-pdf.ts": "b0b2cd15a1280a147fd08a9a09875e059de482158693ce4009e0fa6b19099d56",
+    "src/lib/draft-history-pagination.ts": "46d906eb07088af5c3a5f1cd184ba330036182983e6dc6b2bac71fb54283b5d4",
+    "src/lib/storage-scenario-context.ts": "6f076a49301c13598c7bb4cd730bdfe9199d669de1b16c4d94253b392cbb861c",
+    "src/lib/scenario-set-recovery.ts": "5454b551650cdce18fb9ba2d0af78e777c233dcd9b41660a8e85f5bd28b1cd53",
+    "src/lib/technology-next-capture-trust.ts": "7d26d1d359895f15bb8f0bdf121dcd23b2bfb3871842124ea8b951dee9e36e22",
+    "src/lib/native-delivery/technology-next-catalog.ts": "6e6c0cdca34a7d084c3baeaa64e639aba790853ca2ef0ecfa17faae800369cc6",
+    "src/lib/technology-current-presentation.ts": "57461c97356fa79a69bb3a8e4d3e1edd50c798a1f8fa9bed3da41d05f406d3c5",
+    "src/calculators/technology-computing/catalog-batch-1.ts": "31f347fc286cc0b22cd888b9f53719e4733ffa17ab8323aa4f6dc5bc497079f6",
+    "src/calculators/technology-computing/catalog-batch-2.ts": "d352f40f8aef2cbd22afd8c09e577f28fc4eda1b925a928ec65c1ea25f4393d7",
+    "src/lib/registered-snapshot-verification.ts": "7a288d92b16613f4208b43de2ef7b2b52d2c111a4457b1677e7b0df9a9031cf8",
+    "src/lib/technology-snapshot-verification.ts": "276ad7ee37203fa90b65571a3bab1b3dde271f13c1f323a1e8d330a6bab9e521",
+    "src/lib/account-persistence.ts": "09316cd9df4ab359a3d20ac921e1c908f0e3b48831977149800262c16a01ad9e"
+  },
+  "workflows": [
+    {
+      "slug": "storage-conversion-calculator",
+      "version": 1,
+      "aId": "5e89f740-7ae3-4539-9c62-e365562f7542",
+      "bId": "f5533a48-f46d-4d29-8ff5-7f09c140f1ea",
+      "a": {
+        "calculatorSlug": "storage-conversion-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 1,
+          "fromUnit": "GiB",
+          "toUnit": "MiB"
+        },
+        "output": {
+          "value": 1024,
+          "steps": [
+            "Storage Conversion = 1024"
+          ]
+        }
+      },
+      "b": {
+        "calculatorSlug": "storage-conversion-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 2,
+          "fromUnit": "GiB",
+          "toUnit": "MiB"
+        },
+        "output": {
+          "value": 2048,
+          "steps": [
+            "Storage Conversion = 2048"
+          ]
+        }
+      },
+      "values": [
+        "1024",
+        "2048"
+      ],
+      "templateClone": true,
+      "recovered": true,
+      "tamperRejected": true,
+      "files": [
+        "downloads/invocation-eAW6jx/701a8d44-641e-4d13-9ec0-40df1d86d7dc",
+        "downloads/invocation-YskLWM/e18b2837-890a-477f-90a2-739bf69f7775",
+        "downloads/invocation-61uaHJ/000905e6-3e03-4452-98e0-40894d146023",
+        "downloads/invocation-G5zcWB/6694655d-894e-443c-8cc7-02d9ac44bf28",
+        "downloads/invocation-k3VdMt/f90f2b9f-c804-4d60-9b4d-c4b5d4f6b4d3"
+      ]
+    },
+    {
+      "slug": "power-supply-calculator",
+      "version": 1,
+      "aId": "11798610-3f73-4b9f-8c6a-3b7017afa2ce",
+      "bId": "e60fada7-5e9b-422d-8d06-9d39da026d38",
+      "a": {
+        "calculatorSlug": "power-supply-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "systemLoadWatts": 500,
+          "headroomPercent": 20
+        },
+        "output": {
+          "value": 600,
+          "steps": [
+            "Power Supply = 600"
+          ]
+        }
+      },
+      "b": {
+        "calculatorSlug": "power-supply-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "systemLoadWatts": 1000,
+          "headroomPercent": 20
+        },
+        "output": {
+          "value": 1200,
+          "steps": [
+            "Power Supply = 1200"
+          ]
+        }
+      },
+      "values": [
+        "600",
+        "1200"
+      ],
+      "templateClone": true,
+      "recovered": true,
+      "tamperRejected": true,
+      "files": [
+        "downloads/invocation-BGvFgR/cfd1e86a-c031-4880-8c08-df6ed17dcc09",
+        "downloads/invocation-mZzWQB/5320acf5-46c9-4b5f-a343-3844421952c1",
+        "downloads/invocation-poP0Ug/7f959338-3056-499f-8311-703661c609d0",
+        "downloads/invocation-tTgdA6/c046cd8a-a8fb-4de6-81ba-6bbb56d6ae1d",
+        "downloads/invocation-87UFIS/2b938d58-32eb-49de-b185-54a2a5b23e9b"
+      ]
+    },
+    {
+      "slug": "website-bandwidth-calculator",
+      "version": 2,
+      "aId": "53feb503-cb68-4426-a7a8-552a6b173f74",
+      "bId": "539390d0-d9b9-48fa-9531-d37f96ed1eab",
+      "a": {
+        "calculatorSlug": "website-bandwidth-calculator",
+        "calculatorVersion": 2,
+        "input": {
+          "pageSizeMb": 2,
+          "monthlyPageViews": 100000
+        },
+        "output": {
+          "value": 200,
+          "steps": [
+            "Website Bandwidth = 200"
+          ]
+        }
+      },
+      "b": {
+        "calculatorSlug": "website-bandwidth-calculator",
+        "calculatorVersion": 2,
+        "input": {
+          "pageSizeMb": 4,
+          "monthlyPageViews": 100000
+        },
+        "output": {
+          "value": 400,
+          "steps": [
+            "Website Bandwidth = 400"
+          ]
+        }
+      },
+      "values": [
+        "200",
+        "400"
+      ],
+      "templateClone": true,
+      "recovered": true,
+      "tamperRejected": true,
+      "files": [
+        "downloads/invocation-fTHfwE/ed1166fb-3f21-4ace-964e-c7bf3d1da97d",
+        "downloads/invocation-iXYVG7/5904493a-2307-4eef-a536-862ae49e96f9",
+        "downloads/invocation-e7RBh8/48abe934-700e-4a3e-83a2-0549ee15bf04",
+        "downloads/invocation-lNiSvM/89f0f7e2-7571-4155-a240-13de7e085464",
+        "downloads/invocation-d8KkKR/aebe22a6-4428-4a68-96e7-a1285ae19e3d"
+      ]
+    },
+    {
+      "slug": "cloud-storage-cost-calculator",
+      "version": 1,
+      "aId": "e924c8da-8991-40c6-bc46-657798f6ade7",
+      "bId": "85953c20-6e38-43ba-bbe4-2a7a55b591e8",
+      "a": {
+        "calculatorSlug": "cloud-storage-cost-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "storageGb": 1000,
+          "pricePerGbMonth": 0.02
+        },
+        "output": {
+          "value": 20,
+          "steps": [
+            "Cloud Storage Cost = 20"
+          ]
+        }
+      },
+      "b": {
+        "calculatorSlug": "cloud-storage-cost-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "storageGb": 2000,
+          "pricePerGbMonth": 0.02
+        },
+        "output": {
+          "value": 40,
+          "steps": [
+            "Cloud Storage Cost = 40"
+          ]
+        }
+      },
+      "values": [
+        "20",
+        "40"
+      ],
+      "templateClone": true,
+      "recovered": true,
+      "tamperRejected": true,
+      "files": [
+        "downloads/invocation-PG2g0d/bb39ebe9-eaab-418e-afed-53939903849f",
+        "downloads/invocation-PVEHVo/3b479299-ea73-4f32-be2c-c53985c339f2",
+        "downloads/invocation-2kKqc4/5011a3ae-1b97-45e5-b044-4bf3979a420e",
+        "downloads/invocation-p4bLgU/70b5fb61-7b0e-423d-b5c7-f0342ec55621",
+        "downloads/invocation-JakZFi/297dd007-0245-4d7f-83cc-dd70b8176ffa"
+      ]
+    },
+    {
+      "slug": "cloud-data-transfer-cost-calculator",
+      "version": 1,
+      "aId": "272a50d6-bbf5-4590-a1d4-34da4b3d4ec1",
+      "bId": "98f2f5e6-6276-4c50-a1bb-382d0345f66b",
+      "a": {
+        "calculatorSlug": "cloud-data-transfer-cost-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "transferGb": 500,
+          "pricePerGb": 0.09
+        },
+        "output": {
+          "value": 45,
+          "steps": [
+            "Cloud Data Transfer Cost = 45"
+          ]
+        }
+      },
+      "b": {
+        "calculatorSlug": "cloud-data-transfer-cost-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "transferGb": 1000,
+          "pricePerGb": 0.09
+        },
+        "output": {
+          "value": 90,
+          "steps": [
+            "Cloud Data Transfer Cost = 90"
+          ]
+        }
+      },
+      "values": [
+        "45",
+        "90"
+      ],
+      "templateClone": true,
+      "recovered": true,
+      "tamperRejected": true,
+      "files": [
+        "downloads/invocation-1feZAs/52fb2bcc-9db6-414e-9630-8189c03113d2",
+        "downloads/invocation-jkhV0g/161d05ac-4ff3-48b1-b048-add4bd509983",
+        "downloads/invocation-upoRvm/2130f7ce-38d8-4e40-b66e-36e71447e5ec",
+        "downloads/invocation-cJJbIe/fc01c672-7ffb-4980-a5fc-735dfe85e36a",
+        "downloads/invocation-Hh3kQh/58caa56b-0a62-4de0-a21c-7434e04a63fe"
+      ]
+    }
+  ],
+  "exports": [
+    {
+      "tag": "owner:storage-conversion-calculator",
+      "file": "downloads/invocation-CpmkBy/a61c940e-c775-4aab-b43e-08f2fa0e30de",
+      "filename": "storage-conversion-calculator-v1.json",
+      "bytes": 251,
+      "sha256": "fb2abff86ede1eddcc7fb09d8f375bc8d157e8b788cfac408fe4b1b767c0513d",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "a61c940e-c775-4aab-b43e-08f2fa0e30de",
+          "suggestedFilename": "storage-conversion-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "a61c940e-c775-4aab-b43e-08f2fa0e30de",
+          "totalBytes": 251,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "a61c940e-c775-4aab-b43e-08f2fa0e30de",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "a61c940e-c775-4aab-b43e-08f2fa0e30de",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "a61c940e-c775-4aab-b43e-08f2fa0e30de",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "a61c940e-c775-4aab-b43e-08f2fa0e30de",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "a61c940e-c775-4aab-b43e-08f2fa0e30de",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-CpmkBy/a61c940e-c775-4aab-b43e-08f2fa0e30de"
+        }
+      ]
+    },
+    {
+      "tag": "owner:storage-conversion-calculator",
+      "file": "downloads/invocation-ciiAzS/17b2b2cc-cfa3-4740-bfbd-5e552391b34f",
+      "filename": "storage-conversion-calculator-v1.csv",
+      "bytes": 263,
+      "sha256": "4407fabe18c5b18e768264edd99940d67309f95bb52544b0fb6eb9e566bf0688",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "17b2b2cc-cfa3-4740-bfbd-5e552391b34f",
+          "suggestedFilename": "storage-conversion-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "17b2b2cc-cfa3-4740-bfbd-5e552391b34f",
+          "totalBytes": 263,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "17b2b2cc-cfa3-4740-bfbd-5e552391b34f",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "17b2b2cc-cfa3-4740-bfbd-5e552391b34f",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "17b2b2cc-cfa3-4740-bfbd-5e552391b34f",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "17b2b2cc-cfa3-4740-bfbd-5e552391b34f",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "17b2b2cc-cfa3-4740-bfbd-5e552391b34f",
+          "totalBytes": 263,
+          "receivedBytes": 263,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-ciiAzS/17b2b2cc-cfa3-4740-bfbd-5e552391b34f"
+        }
+      ]
+    },
+    {
+      "tag": "owner:storage-conversion-calculator",
+      "file": "downloads/invocation-vhVRBU/2b9da18b-d969-4a58-9ffa-c5320d26476c",
+      "filename": "storage-conversion-calculator-v1.pdf",
+      "bytes": 395687,
+      "sha256": "4bb88eeb187713737473b203d6dc9595817670683c1dc7f4ed84fee5cba1c118",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "2b9da18b-d969-4a58-9ffa-c5320d26476c",
+          "suggestedFilename": "storage-conversion-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "2b9da18b-d969-4a58-9ffa-c5320d26476c",
+          "totalBytes": 395687,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2b9da18b-d969-4a58-9ffa-c5320d26476c",
+          "totalBytes": 395687,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2b9da18b-d969-4a58-9ffa-c5320d26476c",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2b9da18b-d969-4a58-9ffa-c5320d26476c",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2b9da18b-d969-4a58-9ffa-c5320d26476c",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2b9da18b-d969-4a58-9ffa-c5320d26476c",
+          "totalBytes": 395687,
+          "receivedBytes": 395687,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-vhVRBU/2b9da18b-d969-4a58-9ffa-c5320d26476c"
+        }
+      ]
+    },
+    {
+      "tag": "owner:power-supply-calculator",
+      "file": "downloads/invocation-f9MBk2/0206be57-c590-4568-8206-2468fb40441f",
+      "filename": "power-supply-calculator-v1.json",
+      "bytes": 232,
+      "sha256": "d70b490306a227109e72f6f60e09394fb1fcd3f83291c5bd10331e9e1866d09d",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "0206be57-c590-4568-8206-2468fb40441f",
+          "suggestedFilename": "power-supply-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "0206be57-c590-4568-8206-2468fb40441f",
+          "totalBytes": 232,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0206be57-c590-4568-8206-2468fb40441f",
+          "totalBytes": 232,
+          "receivedBytes": 232,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0206be57-c590-4568-8206-2468fb40441f",
+          "totalBytes": 232,
+          "receivedBytes": 232,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0206be57-c590-4568-8206-2468fb40441f",
+          "totalBytes": 232,
+          "receivedBytes": 232,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0206be57-c590-4568-8206-2468fb40441f",
+          "totalBytes": 232,
+          "receivedBytes": 232,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "0206be57-c590-4568-8206-2468fb40441f",
+          "totalBytes": 232,
+          "receivedBytes": 232,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-f9MBk2/0206be57-c590-4568-8206-2468fb40441f"
+        }
+      ]
+    },
+    {
+      "tag": "owner:power-supply-calculator",
+      "file": "downloads/invocation-yOsr7r/4d46489b-3ea4-4ad9-b0b4-adb0b182ec9c",
+      "filename": "power-supply-calculator-v1.csv",
+      "bytes": 244,
+      "sha256": "f5f7f977b9df355d9abc279817a1bcde21df044b1fd8d2ffcd2cda7981afd254",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "4d46489b-3ea4-4ad9-b0b4-adb0b182ec9c",
+          "suggestedFilename": "power-supply-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "4d46489b-3ea4-4ad9-b0b4-adb0b182ec9c",
+          "totalBytes": 244,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4d46489b-3ea4-4ad9-b0b4-adb0b182ec9c",
+          "totalBytes": 244,
+          "receivedBytes": 244,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4d46489b-3ea4-4ad9-b0b4-adb0b182ec9c",
+          "totalBytes": 244,
+          "receivedBytes": 244,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4d46489b-3ea4-4ad9-b0b4-adb0b182ec9c",
+          "totalBytes": 244,
+          "receivedBytes": 244,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4d46489b-3ea4-4ad9-b0b4-adb0b182ec9c",
+          "totalBytes": 244,
+          "receivedBytes": 244,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4d46489b-3ea4-4ad9-b0b4-adb0b182ec9c",
+          "totalBytes": 244,
+          "receivedBytes": 244,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-yOsr7r/4d46489b-3ea4-4ad9-b0b4-adb0b182ec9c"
+        }
+      ]
+    },
+    {
+      "tag": "owner:power-supply-calculator",
+      "file": "downloads/invocation-lKic08/2016c0ed-5212-490d-92be-f7010f2b2779",
+      "filename": "power-supply-calculator-v1.pdf",
+      "bytes": 395425,
+      "sha256": "bc4f2ba1d33777bd77957a4729e8a69bc13a9e91ea3f10919400686c536dcfae",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "2016c0ed-5212-490d-92be-f7010f2b2779",
+          "suggestedFilename": "power-supply-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "2016c0ed-5212-490d-92be-f7010f2b2779",
+          "totalBytes": 395425,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2016c0ed-5212-490d-92be-f7010f2b2779",
+          "totalBytes": 395425,
+          "receivedBytes": 395425,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2016c0ed-5212-490d-92be-f7010f2b2779",
+          "totalBytes": 395425,
+          "receivedBytes": 395425,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2016c0ed-5212-490d-92be-f7010f2b2779",
+          "totalBytes": 395425,
+          "receivedBytes": 395425,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2016c0ed-5212-490d-92be-f7010f2b2779",
+          "totalBytes": 395425,
+          "receivedBytes": 395425,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2016c0ed-5212-490d-92be-f7010f2b2779",
+          "totalBytes": 395425,
+          "receivedBytes": 395425,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-lKic08/2016c0ed-5212-490d-92be-f7010f2b2779"
+        }
+      ]
+    },
+    {
+      "tag": "owner:website-bandwidth-calculator",
+      "file": "downloads/invocation-e4oneE/7e9218b0-d83e-40b1-9c4d-63f0ff19cf67",
+      "filename": "website-bandwidth-calculator-v2.json",
+      "bytes": 240,
+      "sha256": "aae46f688a9e8ce963f17d78ee866224eec8e0b6975a104e7effdb59c402df45",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "7e9218b0-d83e-40b1-9c4d-63f0ff19cf67",
+          "suggestedFilename": "website-bandwidth-calculator-v2.json"
+        },
+        {
+          "event": "progress",
+          "guid": "7e9218b0-d83e-40b1-9c4d-63f0ff19cf67",
+          "totalBytes": 240,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7e9218b0-d83e-40b1-9c4d-63f0ff19cf67",
+          "totalBytes": 240,
+          "receivedBytes": 240,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7e9218b0-d83e-40b1-9c4d-63f0ff19cf67",
+          "totalBytes": 240,
+          "receivedBytes": 240,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7e9218b0-d83e-40b1-9c4d-63f0ff19cf67",
+          "totalBytes": 240,
+          "receivedBytes": 240,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7e9218b0-d83e-40b1-9c4d-63f0ff19cf67",
+          "totalBytes": 240,
+          "receivedBytes": 240,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7e9218b0-d83e-40b1-9c4d-63f0ff19cf67",
+          "totalBytes": 240,
+          "receivedBytes": 240,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-e4oneE/7e9218b0-d83e-40b1-9c4d-63f0ff19cf67"
+        }
+      ]
+    },
+    {
+      "tag": "owner:website-bandwidth-calculator",
+      "file": "downloads/invocation-7oyBah/2e85deda-c351-407a-a315-0070e4adadeb",
+      "filename": "website-bandwidth-calculator-v2.csv",
+      "bytes": 252,
+      "sha256": "ed9ba1211a80a37038d1b0b1ac8bc5915ab012622cac72292e2bf0d6fa9a64d2",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "2e85deda-c351-407a-a315-0070e4adadeb",
+          "suggestedFilename": "website-bandwidth-calculator-v2.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "2e85deda-c351-407a-a315-0070e4adadeb",
+          "totalBytes": 252,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2e85deda-c351-407a-a315-0070e4adadeb",
+          "totalBytes": 252,
+          "receivedBytes": 252,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2e85deda-c351-407a-a315-0070e4adadeb",
+          "totalBytes": 252,
+          "receivedBytes": 252,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2e85deda-c351-407a-a315-0070e4adadeb",
+          "totalBytes": 252,
+          "receivedBytes": 252,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2e85deda-c351-407a-a315-0070e4adadeb",
+          "totalBytes": 252,
+          "receivedBytes": 252,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2e85deda-c351-407a-a315-0070e4adadeb",
+          "totalBytes": 252,
+          "receivedBytes": 252,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-7oyBah/2e85deda-c351-407a-a315-0070e4adadeb"
+        }
+      ]
+    },
+    {
+      "tag": "owner:website-bandwidth-calculator",
+      "file": "downloads/invocation-CdzcnY/03c94de7-5462-4ea0-98de-b4b195ad53b5",
+      "filename": "website-bandwidth-calculator-v2.pdf",
+      "bytes": 395473,
+      "sha256": "9d535410e22b67658c4b10b2fc3094f3ebde25b7e1d7277e760d5aa9be24f87e",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "03c94de7-5462-4ea0-98de-b4b195ad53b5",
+          "suggestedFilename": "website-bandwidth-calculator-v2.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "03c94de7-5462-4ea0-98de-b4b195ad53b5",
+          "totalBytes": 395473,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "03c94de7-5462-4ea0-98de-b4b195ad53b5",
+          "totalBytes": 395473,
+          "receivedBytes": 395473,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "03c94de7-5462-4ea0-98de-b4b195ad53b5",
+          "totalBytes": 395473,
+          "receivedBytes": 395473,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "03c94de7-5462-4ea0-98de-b4b195ad53b5",
+          "totalBytes": 395473,
+          "receivedBytes": 395473,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "03c94de7-5462-4ea0-98de-b4b195ad53b5",
+          "totalBytes": 395473,
+          "receivedBytes": 395473,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "03c94de7-5462-4ea0-98de-b4b195ad53b5",
+          "totalBytes": 395473,
+          "receivedBytes": 395473,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-CdzcnY/03c94de7-5462-4ea0-98de-b4b195ad53b5"
+        }
+      ]
+    },
+    {
+      "tag": "owner:cloud-storage-cost-calculator",
+      "file": "downloads/invocation-J2ryCH/84432fb9-86cf-4eff-8da2-86008d5383be",
+      "filename": "cloud-storage-cost-calculator-v1.json",
+      "bytes": 239,
+      "sha256": "39875527853dd0386ba36ad5e2e99abfb65e0dbf8cbba2695afeae840da6f1f0",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "84432fb9-86cf-4eff-8da2-86008d5383be",
+          "suggestedFilename": "cloud-storage-cost-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "84432fb9-86cf-4eff-8da2-86008d5383be",
+          "totalBytes": 239,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "84432fb9-86cf-4eff-8da2-86008d5383be",
+          "totalBytes": 239,
+          "receivedBytes": 239,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "84432fb9-86cf-4eff-8da2-86008d5383be",
+          "totalBytes": 239,
+          "receivedBytes": 239,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "84432fb9-86cf-4eff-8da2-86008d5383be",
+          "totalBytes": 239,
+          "receivedBytes": 239,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "84432fb9-86cf-4eff-8da2-86008d5383be",
+          "totalBytes": 239,
+          "receivedBytes": 239,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "84432fb9-86cf-4eff-8da2-86008d5383be",
+          "totalBytes": 239,
+          "receivedBytes": 239,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-J2ryCH/84432fb9-86cf-4eff-8da2-86008d5383be"
+        }
+      ]
+    },
+    {
+      "tag": "owner:cloud-storage-cost-calculator",
+      "file": "downloads/invocation-e7TnVu/9e1c89ff-5338-47ba-a110-1b4000ec25fa",
+      "filename": "cloud-storage-cost-calculator-v1.csv",
+      "bytes": 251,
+      "sha256": "42718cfe5341c9b2941da71822373cee5d93e1fff9535a611dbdc21a8a149138",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "9e1c89ff-5338-47ba-a110-1b4000ec25fa",
+          "suggestedFilename": "cloud-storage-cost-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "9e1c89ff-5338-47ba-a110-1b4000ec25fa",
+          "totalBytes": 251,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "9e1c89ff-5338-47ba-a110-1b4000ec25fa",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "9e1c89ff-5338-47ba-a110-1b4000ec25fa",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "9e1c89ff-5338-47ba-a110-1b4000ec25fa",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "9e1c89ff-5338-47ba-a110-1b4000ec25fa",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "9e1c89ff-5338-47ba-a110-1b4000ec25fa",
+          "totalBytes": 251,
+          "receivedBytes": 251,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-e7TnVu/9e1c89ff-5338-47ba-a110-1b4000ec25fa"
+        }
+      ]
+    },
+    {
+      "tag": "owner:cloud-storage-cost-calculator",
+      "file": "downloads/invocation-ePxuN8/81074d4e-45b1-4c75-a895-a8e44c87d94c",
+      "filename": "cloud-storage-cost-calculator-v1.pdf",
+      "bytes": 395438,
+      "sha256": "bf159df0646a8b3d6ab9a7d8e225ee2cbcf798f87f1efb5dd7c9aa2e8005d3df",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "81074d4e-45b1-4c75-a895-a8e44c87d94c",
+          "suggestedFilename": "cloud-storage-cost-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "81074d4e-45b1-4c75-a895-a8e44c87d94c",
+          "totalBytes": 395438,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "81074d4e-45b1-4c75-a895-a8e44c87d94c",
+          "totalBytes": 395438,
+          "receivedBytes": 395438,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "81074d4e-45b1-4c75-a895-a8e44c87d94c",
+          "totalBytes": 395438,
+          "receivedBytes": 395438,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "81074d4e-45b1-4c75-a895-a8e44c87d94c",
+          "totalBytes": 395438,
+          "receivedBytes": 395438,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "81074d4e-45b1-4c75-a895-a8e44c87d94c",
+          "totalBytes": 395438,
+          "receivedBytes": 395438,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "81074d4e-45b1-4c75-a895-a8e44c87d94c",
+          "totalBytes": 395438,
+          "receivedBytes": 395438,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-ePxuN8/81074d4e-45b1-4c75-a895-a8e44c87d94c"
+        }
+      ]
+    },
+    {
+      "tag": "owner:cloud-data-transfer-cost-calculator",
+      "file": "downloads/invocation-9wVMDk/f224cca8-d2f4-4e23-9a48-47603fc34db6",
+      "filename": "cloud-data-transfer-cost-calculator-v1.json",
+      "bytes": 246,
+      "sha256": "81dbf22798fd0d4249aebfba7e3c068db22d0eec35be3364edd459fb3b6227e2",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "f224cca8-d2f4-4e23-9a48-47603fc34db6",
+          "suggestedFilename": "cloud-data-transfer-cost-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "f224cca8-d2f4-4e23-9a48-47603fc34db6",
+          "totalBytes": 246,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f224cca8-d2f4-4e23-9a48-47603fc34db6",
+          "totalBytes": 246,
+          "receivedBytes": 246,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f224cca8-d2f4-4e23-9a48-47603fc34db6",
+          "totalBytes": 246,
+          "receivedBytes": 246,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f224cca8-d2f4-4e23-9a48-47603fc34db6",
+          "totalBytes": 246,
+          "receivedBytes": 246,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f224cca8-d2f4-4e23-9a48-47603fc34db6",
+          "totalBytes": 246,
+          "receivedBytes": 246,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f224cca8-d2f4-4e23-9a48-47603fc34db6",
+          "totalBytes": 246,
+          "receivedBytes": 246,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-9wVMDk/f224cca8-d2f4-4e23-9a48-47603fc34db6"
+        }
+      ]
+    },
+    {
+      "tag": "owner:cloud-data-transfer-cost-calculator",
+      "file": "downloads/invocation-FYbrpG/e55cfe24-87f9-4d50-8287-00badc8722a8",
+      "filename": "cloud-data-transfer-cost-calculator-v1.csv",
+      "bytes": 258,
+      "sha256": "d5d460facee9a51fc143d8025785d84ff9074fe9ec9a0164228ea40398b25dc4",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "e55cfe24-87f9-4d50-8287-00badc8722a8",
+          "suggestedFilename": "cloud-data-transfer-cost-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "e55cfe24-87f9-4d50-8287-00badc8722a8",
+          "totalBytes": 258,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e55cfe24-87f9-4d50-8287-00badc8722a8",
+          "totalBytes": 258,
+          "receivedBytes": 258,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e55cfe24-87f9-4d50-8287-00badc8722a8",
+          "totalBytes": 258,
+          "receivedBytes": 258,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e55cfe24-87f9-4d50-8287-00badc8722a8",
+          "totalBytes": 258,
+          "receivedBytes": 258,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e55cfe24-87f9-4d50-8287-00badc8722a8",
+          "totalBytes": 258,
+          "receivedBytes": 258,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e55cfe24-87f9-4d50-8287-00badc8722a8",
+          "totalBytes": 258,
+          "receivedBytes": 258,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-FYbrpG/e55cfe24-87f9-4d50-8287-00badc8722a8"
+        }
+      ]
+    },
+    {
+      "tag": "owner:cloud-data-transfer-cost-calculator",
+      "file": "downloads/invocation-l3duQv/1ce3adc6-caac-479c-ab7c-87c2b3a0f1e0",
+      "filename": "cloud-data-transfer-cost-calculator-v1.pdf",
+      "bytes": 395521,
+      "sha256": "091bdb6888752c161839e2213d10011f1be7132cb92ccaa9c3590ed5a0039d21",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "1ce3adc6-caac-479c-ab7c-87c2b3a0f1e0",
+          "suggestedFilename": "cloud-data-transfer-cost-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "1ce3adc6-caac-479c-ab7c-87c2b3a0f1e0",
+          "totalBytes": 395521,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1ce3adc6-caac-479c-ab7c-87c2b3a0f1e0",
+          "totalBytes": 395521,
+          "receivedBytes": 395521,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1ce3adc6-caac-479c-ab7c-87c2b3a0f1e0",
+          "totalBytes": 395521,
+          "receivedBytes": 395521,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1ce3adc6-caac-479c-ab7c-87c2b3a0f1e0",
+          "totalBytes": 395521,
+          "receivedBytes": 395521,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1ce3adc6-caac-479c-ab7c-87c2b3a0f1e0",
+          "totalBytes": 395521,
+          "receivedBytes": 395521,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1ce3adc6-caac-479c-ab7c-87c2b3a0f1e0",
+          "totalBytes": 395521,
+          "receivedBytes": 395521,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-l3duQv/1ce3adc6-caac-479c-ab7c-87c2b3a0f1e0"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:storage-conversion-calculator:Export scenario set JSON",
+      "file": "downloads/invocation-eAW6jx/701a8d44-641e-4d13-9ec0-40df1d86d7dc",
+      "filename": "storage-conversion-calculator-scenarios.json",
+      "bytes": 1485,
+      "sha256": "4f359581adc9a6a823e4172f7824f432457de04f8697bce0a24caf7cc211f900",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "701a8d44-641e-4d13-9ec0-40df1d86d7dc",
+          "suggestedFilename": "storage-conversion-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "701a8d44-641e-4d13-9ec0-40df1d86d7dc",
+          "totalBytes": 1485,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "701a8d44-641e-4d13-9ec0-40df1d86d7dc",
+          "totalBytes": 1485,
+          "receivedBytes": 1485,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "701a8d44-641e-4d13-9ec0-40df1d86d7dc",
+          "totalBytes": 1485,
+          "receivedBytes": 1485,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "701a8d44-641e-4d13-9ec0-40df1d86d7dc",
+          "totalBytes": 1485,
+          "receivedBytes": 1485,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "701a8d44-641e-4d13-9ec0-40df1d86d7dc",
+          "totalBytes": 1485,
+          "receivedBytes": 1485,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "701a8d44-641e-4d13-9ec0-40df1d86d7dc",
+          "totalBytes": 1485,
+          "receivedBytes": 1485,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-eAW6jx/701a8d44-641e-4d13-9ec0-40df1d86d7dc"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:storage-conversion-calculator:Export scenario set JSON",
+      "file": "downloads/invocation-YskLWM/e18b2837-890a-477f-90a2-739bf69f7775",
+      "filename": "storage-conversion-calculator-scenarios.json",
+      "bytes": 1485,
+      "sha256": "4f359581adc9a6a823e4172f7824f432457de04f8697bce0a24caf7cc211f900",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "e18b2837-890a-477f-90a2-739bf69f7775",
+          "suggestedFilename": "storage-conversion-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "e18b2837-890a-477f-90a2-739bf69f7775",
+          "totalBytes": 1485,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e18b2837-890a-477f-90a2-739bf69f7775",
+          "totalBytes": 1485,
+          "receivedBytes": 1485,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e18b2837-890a-477f-90a2-739bf69f7775",
+          "totalBytes": 1485,
+          "receivedBytes": 1485,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e18b2837-890a-477f-90a2-739bf69f7775",
+          "totalBytes": 1485,
+          "receivedBytes": 1485,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e18b2837-890a-477f-90a2-739bf69f7775",
+          "totalBytes": 1485,
+          "receivedBytes": 1485,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "e18b2837-890a-477f-90a2-739bf69f7775",
+          "totalBytes": 1485,
+          "receivedBytes": 1485,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-YskLWM/e18b2837-890a-477f-90a2-739bf69f7775"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:storage-conversion-calculator:Export scenario report JSON",
+      "file": "downloads/invocation-61uaHJ/000905e6-3e03-4452-98e0-40894d146023",
+      "filename": "storage-conversion-calculator-scenario-report.json",
+      "bytes": 2412,
+      "sha256": "ea9060fb8211710c81f0f2467211621007fc764b1981c34ef93215d151a44f3a",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "000905e6-3e03-4452-98e0-40894d146023",
+          "suggestedFilename": "storage-conversion-calculator-scenario-report.json"
+        },
+        {
+          "event": "progress",
+          "guid": "000905e6-3e03-4452-98e0-40894d146023",
+          "totalBytes": 2412,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "000905e6-3e03-4452-98e0-40894d146023",
+          "totalBytes": 2412,
+          "receivedBytes": 2412,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "000905e6-3e03-4452-98e0-40894d146023",
+          "totalBytes": 2412,
+          "receivedBytes": 2412,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "000905e6-3e03-4452-98e0-40894d146023",
+          "totalBytes": 2412,
+          "receivedBytes": 2412,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "000905e6-3e03-4452-98e0-40894d146023",
+          "totalBytes": 2412,
+          "receivedBytes": 2412,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "000905e6-3e03-4452-98e0-40894d146023",
+          "totalBytes": 2412,
+          "receivedBytes": 2412,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-61uaHJ/000905e6-3e03-4452-98e0-40894d146023"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:storage-conversion-calculator:Export scenario report CSV",
+      "file": "downloads/invocation-G5zcWB/6694655d-894e-443c-8cc7-02d9ac44bf28",
+      "filename": "storage-conversion-calculator-scenario-report.csv",
+      "bytes": 1567,
+      "sha256": "5aa0f11ab5bd5e9494195d7ab34a82e42ba69da7191fb9c8549970a9ec682b85",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "6694655d-894e-443c-8cc7-02d9ac44bf28",
+          "suggestedFilename": "storage-conversion-calculator-scenario-report.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "6694655d-894e-443c-8cc7-02d9ac44bf28",
+          "totalBytes": 1567,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "6694655d-894e-443c-8cc7-02d9ac44bf28",
+          "totalBytes": 1567,
+          "receivedBytes": 1567,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "6694655d-894e-443c-8cc7-02d9ac44bf28",
+          "totalBytes": 1567,
+          "receivedBytes": 1567,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "6694655d-894e-443c-8cc7-02d9ac44bf28",
+          "totalBytes": 1567,
+          "receivedBytes": 1567,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "6694655d-894e-443c-8cc7-02d9ac44bf28",
+          "totalBytes": 1567,
+          "receivedBytes": 1567,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "6694655d-894e-443c-8cc7-02d9ac44bf28",
+          "totalBytes": 1567,
+          "receivedBytes": 1567,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-G5zcWB/6694655d-894e-443c-8cc7-02d9ac44bf28"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:storage-conversion-calculator:Export scenario report PDF",
+      "file": "downloads/invocation-k3VdMt/f90f2b9f-c804-4d60-9b4d-c4b5d4f6b4d3",
+      "filename": "storage-conversion-calculator-scenario-report.pdf",
+      "bytes": 425671,
+      "sha256": "49961ba0e8c4fdf144075ec0ae0b2ddda31f6ed67fc91567d5009f7a976dfa08",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "f90f2b9f-c804-4d60-9b4d-c4b5d4f6b4d3",
+          "suggestedFilename": "storage-conversion-calculator-scenario-report.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "f90f2b9f-c804-4d60-9b4d-c4b5d4f6b4d3",
+          "totalBytes": 425671,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f90f2b9f-c804-4d60-9b4d-c4b5d4f6b4d3",
+          "totalBytes": 425671,
+          "receivedBytes": 425671,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f90f2b9f-c804-4d60-9b4d-c4b5d4f6b4d3",
+          "totalBytes": 425671,
+          "receivedBytes": 425671,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f90f2b9f-c804-4d60-9b4d-c4b5d4f6b4d3",
+          "totalBytes": 425671,
+          "receivedBytes": 425671,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f90f2b9f-c804-4d60-9b4d-c4b5d4f6b4d3",
+          "totalBytes": 425671,
+          "receivedBytes": 425671,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f90f2b9f-c804-4d60-9b4d-c4b5d4f6b4d3",
+          "totalBytes": 425671,
+          "receivedBytes": 425671,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-k3VdMt/f90f2b9f-c804-4d60-9b4d-c4b5d4f6b4d3"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:power-supply-calculator:Export scenario set JSON",
+      "file": "downloads/invocation-BGvFgR/cfd1e86a-c031-4880-8c08-df6ed17dcc09",
+      "filename": "power-supply-calculator-scenarios.json",
+      "bytes": 634,
+      "sha256": "22771b8ecdebb1fd3f7848bf3a112aefa7d96202a286cdc401b6077688c78171",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "cfd1e86a-c031-4880-8c08-df6ed17dcc09",
+          "suggestedFilename": "power-supply-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "cfd1e86a-c031-4880-8c08-df6ed17dcc09",
+          "totalBytes": 634,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "cfd1e86a-c031-4880-8c08-df6ed17dcc09",
+          "totalBytes": 634,
+          "receivedBytes": 634,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "cfd1e86a-c031-4880-8c08-df6ed17dcc09",
+          "totalBytes": 634,
+          "receivedBytes": 634,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "cfd1e86a-c031-4880-8c08-df6ed17dcc09",
+          "totalBytes": 634,
+          "receivedBytes": 634,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "cfd1e86a-c031-4880-8c08-df6ed17dcc09",
+          "totalBytes": 634,
+          "receivedBytes": 634,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "cfd1e86a-c031-4880-8c08-df6ed17dcc09",
+          "totalBytes": 634,
+          "receivedBytes": 634,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-BGvFgR/cfd1e86a-c031-4880-8c08-df6ed17dcc09"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:power-supply-calculator:Export scenario set JSON",
+      "file": "downloads/invocation-mZzWQB/5320acf5-46c9-4b5f-a343-3844421952c1",
+      "filename": "power-supply-calculator-scenarios.json",
+      "bytes": 634,
+      "sha256": "22771b8ecdebb1fd3f7848bf3a112aefa7d96202a286cdc401b6077688c78171",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "5320acf5-46c9-4b5f-a343-3844421952c1",
+          "suggestedFilename": "power-supply-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "5320acf5-46c9-4b5f-a343-3844421952c1",
+          "totalBytes": 634,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5320acf5-46c9-4b5f-a343-3844421952c1",
+          "totalBytes": 634,
+          "receivedBytes": 634,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5320acf5-46c9-4b5f-a343-3844421952c1",
+          "totalBytes": 634,
+          "receivedBytes": 634,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5320acf5-46c9-4b5f-a343-3844421952c1",
+          "totalBytes": 634,
+          "receivedBytes": 634,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5320acf5-46c9-4b5f-a343-3844421952c1",
+          "totalBytes": 634,
+          "receivedBytes": 634,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5320acf5-46c9-4b5f-a343-3844421952c1",
+          "totalBytes": 634,
+          "receivedBytes": 634,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-mZzWQB/5320acf5-46c9-4b5f-a343-3844421952c1"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:power-supply-calculator:Export scenario report JSON",
+      "file": "downloads/invocation-poP0Ug/7f959338-3056-499f-8311-703661c609d0",
+      "filename": "power-supply-calculator-scenario-report.json",
+      "bytes": 1095,
+      "sha256": "3c7f7a53b67d1ad86e3afa619c1183002875e7a288c91d9652d4bb990e07ce21",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "7f959338-3056-499f-8311-703661c609d0",
+          "suggestedFilename": "power-supply-calculator-scenario-report.json"
+        },
+        {
+          "event": "progress",
+          "guid": "7f959338-3056-499f-8311-703661c609d0",
+          "totalBytes": 1095,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7f959338-3056-499f-8311-703661c609d0",
+          "totalBytes": 1095,
+          "receivedBytes": 1095,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7f959338-3056-499f-8311-703661c609d0",
+          "totalBytes": 1095,
+          "receivedBytes": 1095,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7f959338-3056-499f-8311-703661c609d0",
+          "totalBytes": 1095,
+          "receivedBytes": 1095,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7f959338-3056-499f-8311-703661c609d0",
+          "totalBytes": 1095,
+          "receivedBytes": 1095,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "7f959338-3056-499f-8311-703661c609d0",
+          "totalBytes": 1095,
+          "receivedBytes": 1095,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-poP0Ug/7f959338-3056-499f-8311-703661c609d0"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:power-supply-calculator:Export scenario report CSV",
+      "file": "downloads/invocation-tTgdA6/c046cd8a-a8fb-4de6-81ba-6bbb56d6ae1d",
+      "filename": "power-supply-calculator-scenario-report.csv",
+      "bytes": 956,
+      "sha256": "b1f346b0ca1d965e3ca8add0c9c83f2b9525093e3c45386e1aa184b586dc3435",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "c046cd8a-a8fb-4de6-81ba-6bbb56d6ae1d",
+          "suggestedFilename": "power-supply-calculator-scenario-report.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "c046cd8a-a8fb-4de6-81ba-6bbb56d6ae1d",
+          "totalBytes": 956,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "c046cd8a-a8fb-4de6-81ba-6bbb56d6ae1d",
+          "totalBytes": 956,
+          "receivedBytes": 956,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "c046cd8a-a8fb-4de6-81ba-6bbb56d6ae1d",
+          "totalBytes": 956,
+          "receivedBytes": 956,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "c046cd8a-a8fb-4de6-81ba-6bbb56d6ae1d",
+          "totalBytes": 956,
+          "receivedBytes": 956,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "c046cd8a-a8fb-4de6-81ba-6bbb56d6ae1d",
+          "totalBytes": 956,
+          "receivedBytes": 956,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "c046cd8a-a8fb-4de6-81ba-6bbb56d6ae1d",
+          "totalBytes": 956,
+          "receivedBytes": 956,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-tTgdA6/c046cd8a-a8fb-4de6-81ba-6bbb56d6ae1d"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:power-supply-calculator:Export scenario report PDF",
+      "file": "downloads/invocation-87UFIS/2b938d58-32eb-49de-b185-54a2a5b23e9b",
+      "filename": "power-supply-calculator-scenario-report.pdf",
+      "bytes": 415816,
+      "sha256": "3e54e15af34122474ff03a7816cecde164dbdd53ac6f6a869ca920bed846f58d",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "2b938d58-32eb-49de-b185-54a2a5b23e9b",
+          "suggestedFilename": "power-supply-calculator-scenario-report.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "2b938d58-32eb-49de-b185-54a2a5b23e9b",
+          "totalBytes": 415816,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2b938d58-32eb-49de-b185-54a2a5b23e9b",
+          "totalBytes": 415816,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2b938d58-32eb-49de-b185-54a2a5b23e9b",
+          "totalBytes": 415816,
+          "receivedBytes": 415816,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2b938d58-32eb-49de-b185-54a2a5b23e9b",
+          "totalBytes": 415816,
+          "receivedBytes": 415816,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2b938d58-32eb-49de-b185-54a2a5b23e9b",
+          "totalBytes": 415816,
+          "receivedBytes": 415816,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2b938d58-32eb-49de-b185-54a2a5b23e9b",
+          "totalBytes": 415816,
+          "receivedBytes": 415816,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-87UFIS/2b938d58-32eb-49de-b185-54a2a5b23e9b"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:website-bandwidth-calculator:Export scenario set JSON",
+      "file": "downloads/invocation-fTHfwE/ed1166fb-3f21-4ace-964e-c7bf3d1da97d",
+      "filename": "website-bandwidth-calculator-scenarios.json",
+      "bytes": 642,
+      "sha256": "bef75f889eb572a8077a495dd97ebf5ee3df7eb2caf3d4d35f34785612cb45f4",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "ed1166fb-3f21-4ace-964e-c7bf3d1da97d",
+          "suggestedFilename": "website-bandwidth-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "ed1166fb-3f21-4ace-964e-c7bf3d1da97d",
+          "totalBytes": 642,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ed1166fb-3f21-4ace-964e-c7bf3d1da97d",
+          "totalBytes": 642,
+          "receivedBytes": 642,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ed1166fb-3f21-4ace-964e-c7bf3d1da97d",
+          "totalBytes": 642,
+          "receivedBytes": 642,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ed1166fb-3f21-4ace-964e-c7bf3d1da97d",
+          "totalBytes": 642,
+          "receivedBytes": 642,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ed1166fb-3f21-4ace-964e-c7bf3d1da97d",
+          "totalBytes": 642,
+          "receivedBytes": 642,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "ed1166fb-3f21-4ace-964e-c7bf3d1da97d",
+          "totalBytes": 642,
+          "receivedBytes": 642,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-fTHfwE/ed1166fb-3f21-4ace-964e-c7bf3d1da97d"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:website-bandwidth-calculator:Export scenario set JSON",
+      "file": "downloads/invocation-iXYVG7/5904493a-2307-4eef-a536-862ae49e96f9",
+      "filename": "website-bandwidth-calculator-scenarios.json",
+      "bytes": 642,
+      "sha256": "bef75f889eb572a8077a495dd97ebf5ee3df7eb2caf3d4d35f34785612cb45f4",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "5904493a-2307-4eef-a536-862ae49e96f9",
+          "suggestedFilename": "website-bandwidth-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "5904493a-2307-4eef-a536-862ae49e96f9",
+          "totalBytes": 642,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5904493a-2307-4eef-a536-862ae49e96f9",
+          "totalBytes": 642,
+          "receivedBytes": 642,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5904493a-2307-4eef-a536-862ae49e96f9",
+          "totalBytes": 642,
+          "receivedBytes": 642,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5904493a-2307-4eef-a536-862ae49e96f9",
+          "totalBytes": 642,
+          "receivedBytes": 642,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5904493a-2307-4eef-a536-862ae49e96f9",
+          "totalBytes": 642,
+          "receivedBytes": 642,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5904493a-2307-4eef-a536-862ae49e96f9",
+          "totalBytes": 642,
+          "receivedBytes": 642,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-iXYVG7/5904493a-2307-4eef-a536-862ae49e96f9"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:website-bandwidth-calculator:Export scenario report JSON",
+      "file": "downloads/invocation-e7RBh8/48abe934-700e-4a3e-83a2-0549ee15bf04",
+      "filename": "website-bandwidth-calculator-scenario-report.json",
+      "bytes": 1102,
+      "sha256": "b351ee063a158bf6ea95b5fc47d7a0b1aa9e2ae6c254129254519e1702ab04ab",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "48abe934-700e-4a3e-83a2-0549ee15bf04",
+          "suggestedFilename": "website-bandwidth-calculator-scenario-report.json"
+        },
+        {
+          "event": "progress",
+          "guid": "48abe934-700e-4a3e-83a2-0549ee15bf04",
+          "totalBytes": 1102,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "48abe934-700e-4a3e-83a2-0549ee15bf04",
+          "totalBytes": 1102,
+          "receivedBytes": 1102,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "48abe934-700e-4a3e-83a2-0549ee15bf04",
+          "totalBytes": 1102,
+          "receivedBytes": 1102,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "48abe934-700e-4a3e-83a2-0549ee15bf04",
+          "totalBytes": 1102,
+          "receivedBytes": 1102,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "48abe934-700e-4a3e-83a2-0549ee15bf04",
+          "totalBytes": 1102,
+          "receivedBytes": 1102,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "48abe934-700e-4a3e-83a2-0549ee15bf04",
+          "totalBytes": 1102,
+          "receivedBytes": 1102,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-e7RBh8/48abe934-700e-4a3e-83a2-0549ee15bf04"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:website-bandwidth-calculator:Export scenario report CSV",
+      "file": "downloads/invocation-lNiSvM/89f0f7e2-7571-4155-a240-13de7e085464",
+      "filename": "website-bandwidth-calculator-scenario-report.csv",
+      "bytes": 963,
+      "sha256": "bced4674dbb4e3b2ee9b945ba39af018af5a3d648aee57843b3791fabc0ba46e",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "89f0f7e2-7571-4155-a240-13de7e085464",
+          "suggestedFilename": "website-bandwidth-calculator-scenario-report.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "89f0f7e2-7571-4155-a240-13de7e085464",
+          "totalBytes": 963,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "89f0f7e2-7571-4155-a240-13de7e085464",
+          "totalBytes": 963,
+          "receivedBytes": 963,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "89f0f7e2-7571-4155-a240-13de7e085464",
+          "totalBytes": 963,
+          "receivedBytes": 963,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "89f0f7e2-7571-4155-a240-13de7e085464",
+          "totalBytes": 963,
+          "receivedBytes": 963,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "89f0f7e2-7571-4155-a240-13de7e085464",
+          "totalBytes": 963,
+          "receivedBytes": 963,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "89f0f7e2-7571-4155-a240-13de7e085464",
+          "totalBytes": 963,
+          "receivedBytes": 963,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-lNiSvM/89f0f7e2-7571-4155-a240-13de7e085464"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:website-bandwidth-calculator:Export scenario report PDF",
+      "file": "downloads/invocation-d8KkKR/aebe22a6-4428-4a68-96e7-a1285ae19e3d",
+      "filename": "website-bandwidth-calculator-scenario-report.pdf",
+      "bytes": 415585,
+      "sha256": "f5cdc07391ed35cb4e603972af89c2b4d2b6b4f53fd3d6690944f13cfe5ddc1b",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "aebe22a6-4428-4a68-96e7-a1285ae19e3d",
+          "suggestedFilename": "website-bandwidth-calculator-scenario-report.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "aebe22a6-4428-4a68-96e7-a1285ae19e3d",
+          "totalBytes": 415585,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "aebe22a6-4428-4a68-96e7-a1285ae19e3d",
+          "totalBytes": 415585,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "aebe22a6-4428-4a68-96e7-a1285ae19e3d",
+          "totalBytes": 415585,
+          "receivedBytes": 415585,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "aebe22a6-4428-4a68-96e7-a1285ae19e3d",
+          "totalBytes": 415585,
+          "receivedBytes": 415585,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "aebe22a6-4428-4a68-96e7-a1285ae19e3d",
+          "totalBytes": 415585,
+          "receivedBytes": 415585,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "aebe22a6-4428-4a68-96e7-a1285ae19e3d",
+          "totalBytes": 415585,
+          "receivedBytes": 415585,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-d8KkKR/aebe22a6-4428-4a68-96e7-a1285ae19e3d"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:cloud-storage-cost-calculator:Export scenario set JSON",
+      "file": "downloads/invocation-PG2g0d/bb39ebe9-eaab-418e-afed-53939903849f",
+      "filename": "cloud-storage-cost-calculator-scenarios.json",
+      "bytes": 639,
+      "sha256": "f957e49f1abd1fa01400e27929743951bc4827fdbca9240b71588fbd50eed5f9",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "bb39ebe9-eaab-418e-afed-53939903849f",
+          "suggestedFilename": "cloud-storage-cost-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "bb39ebe9-eaab-418e-afed-53939903849f",
+          "totalBytes": 639,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "bb39ebe9-eaab-418e-afed-53939903849f",
+          "totalBytes": 639,
+          "receivedBytes": 639,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "bb39ebe9-eaab-418e-afed-53939903849f",
+          "totalBytes": 639,
+          "receivedBytes": 639,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "bb39ebe9-eaab-418e-afed-53939903849f",
+          "totalBytes": 639,
+          "receivedBytes": 639,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "bb39ebe9-eaab-418e-afed-53939903849f",
+          "totalBytes": 639,
+          "receivedBytes": 639,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "bb39ebe9-eaab-418e-afed-53939903849f",
+          "totalBytes": 639,
+          "receivedBytes": 639,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-PG2g0d/bb39ebe9-eaab-418e-afed-53939903849f"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:cloud-storage-cost-calculator:Export scenario set JSON",
+      "file": "downloads/invocation-PVEHVo/3b479299-ea73-4f32-be2c-c53985c339f2",
+      "filename": "cloud-storage-cost-calculator-scenarios.json",
+      "bytes": 639,
+      "sha256": "f957e49f1abd1fa01400e27929743951bc4827fdbca9240b71588fbd50eed5f9",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "3b479299-ea73-4f32-be2c-c53985c339f2",
+          "suggestedFilename": "cloud-storage-cost-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "3b479299-ea73-4f32-be2c-c53985c339f2",
+          "totalBytes": 639,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "3b479299-ea73-4f32-be2c-c53985c339f2",
+          "totalBytes": 639,
+          "receivedBytes": 639,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "3b479299-ea73-4f32-be2c-c53985c339f2",
+          "totalBytes": 639,
+          "receivedBytes": 639,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "3b479299-ea73-4f32-be2c-c53985c339f2",
+          "totalBytes": 639,
+          "receivedBytes": 639,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "3b479299-ea73-4f32-be2c-c53985c339f2",
+          "totalBytes": 639,
+          "receivedBytes": 639,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "3b479299-ea73-4f32-be2c-c53985c339f2",
+          "totalBytes": 639,
+          "receivedBytes": 639,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-PVEHVo/3b479299-ea73-4f32-be2c-c53985c339f2"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:cloud-storage-cost-calculator:Export scenario report JSON",
+      "file": "downloads/invocation-2kKqc4/5011a3ae-1b97-45e5-b044-4bf3979a420e",
+      "filename": "cloud-storage-cost-calculator-scenario-report.json",
+      "bytes": 1096,
+      "sha256": "64612bd5de62ccb16608a4faaf978855672d53f8fcaa8e8ecf5d80b0b5fb798a",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "5011a3ae-1b97-45e5-b044-4bf3979a420e",
+          "suggestedFilename": "cloud-storage-cost-calculator-scenario-report.json"
+        },
+        {
+          "event": "progress",
+          "guid": "5011a3ae-1b97-45e5-b044-4bf3979a420e",
+          "totalBytes": 1096,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5011a3ae-1b97-45e5-b044-4bf3979a420e",
+          "totalBytes": 1096,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5011a3ae-1b97-45e5-b044-4bf3979a420e",
+          "totalBytes": 1096,
+          "receivedBytes": 1096,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5011a3ae-1b97-45e5-b044-4bf3979a420e",
+          "totalBytes": 1096,
+          "receivedBytes": 1096,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5011a3ae-1b97-45e5-b044-4bf3979a420e",
+          "totalBytes": 1096,
+          "receivedBytes": 1096,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "5011a3ae-1b97-45e5-b044-4bf3979a420e",
+          "totalBytes": 1096,
+          "receivedBytes": 1096,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-2kKqc4/5011a3ae-1b97-45e5-b044-4bf3979a420e"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:cloud-storage-cost-calculator:Export scenario report CSV",
+      "file": "downloads/invocation-p4bLgU/70b5fb61-7b0e-423d-b5c7-f0342ec55621",
+      "filename": "cloud-storage-cost-calculator-scenario-report.csv",
+      "bytes": 957,
+      "sha256": "246b9296e237c9fd4293b213ef2b666e5857f7a37c8e98e1e2eac2c211cca42f",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "70b5fb61-7b0e-423d-b5c7-f0342ec55621",
+          "suggestedFilename": "cloud-storage-cost-calculator-scenario-report.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "70b5fb61-7b0e-423d-b5c7-f0342ec55621",
+          "totalBytes": 957,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "70b5fb61-7b0e-423d-b5c7-f0342ec55621",
+          "totalBytes": 957,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "70b5fb61-7b0e-423d-b5c7-f0342ec55621",
+          "totalBytes": 957,
+          "receivedBytes": 957,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "70b5fb61-7b0e-423d-b5c7-f0342ec55621",
+          "totalBytes": 957,
+          "receivedBytes": 957,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "70b5fb61-7b0e-423d-b5c7-f0342ec55621",
+          "totalBytes": 957,
+          "receivedBytes": 957,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "70b5fb61-7b0e-423d-b5c7-f0342ec55621",
+          "totalBytes": 957,
+          "receivedBytes": 957,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-p4bLgU/70b5fb61-7b0e-423d-b5c7-f0342ec55621"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:cloud-storage-cost-calculator:Export scenario report PDF",
+      "file": "downloads/invocation-JakZFi/297dd007-0245-4d7f-83cc-dd70b8176ffa",
+      "filename": "cloud-storage-cost-calculator-scenario-report.pdf",
+      "bytes": 415811,
+      "sha256": "8871a3f30a732fe709b96018cf20217f49c6cba01c8501e7e6e77aa7e89ffef5",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "297dd007-0245-4d7f-83cc-dd70b8176ffa",
+          "suggestedFilename": "cloud-storage-cost-calculator-scenario-report.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "297dd007-0245-4d7f-83cc-dd70b8176ffa",
+          "totalBytes": 415811,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "297dd007-0245-4d7f-83cc-dd70b8176ffa",
+          "totalBytes": 415811,
+          "receivedBytes": 415811,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "297dd007-0245-4d7f-83cc-dd70b8176ffa",
+          "totalBytes": 415811,
+          "receivedBytes": 415811,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "297dd007-0245-4d7f-83cc-dd70b8176ffa",
+          "totalBytes": 415811,
+          "receivedBytes": 415811,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "297dd007-0245-4d7f-83cc-dd70b8176ffa",
+          "totalBytes": 415811,
+          "receivedBytes": 415811,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "297dd007-0245-4d7f-83cc-dd70b8176ffa",
+          "totalBytes": 415811,
+          "receivedBytes": 415811,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-JakZFi/297dd007-0245-4d7f-83cc-dd70b8176ffa"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:cloud-data-transfer-cost-calculator:Export scenario set JSON",
+      "file": "downloads/invocation-1feZAs/52fb2bcc-9db6-414e-9630-8189c03113d2",
+      "filename": "cloud-data-transfer-cost-calculator-scenarios.json",
+      "bytes": 648,
+      "sha256": "6843692ed68e196f66d377e506f77404df92377e4be007fd91e079ac614970ef",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "52fb2bcc-9db6-414e-9630-8189c03113d2",
+          "suggestedFilename": "cloud-data-transfer-cost-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "52fb2bcc-9db6-414e-9630-8189c03113d2",
+          "totalBytes": 648,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "52fb2bcc-9db6-414e-9630-8189c03113d2",
+          "totalBytes": 648,
+          "receivedBytes": 648,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "52fb2bcc-9db6-414e-9630-8189c03113d2",
+          "totalBytes": 648,
+          "receivedBytes": 648,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "52fb2bcc-9db6-414e-9630-8189c03113d2",
+          "totalBytes": 648,
+          "receivedBytes": 648,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "52fb2bcc-9db6-414e-9630-8189c03113d2",
+          "totalBytes": 648,
+          "receivedBytes": 648,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "52fb2bcc-9db6-414e-9630-8189c03113d2",
+          "totalBytes": 648,
+          "receivedBytes": 648,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-1feZAs/52fb2bcc-9db6-414e-9630-8189c03113d2"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:cloud-data-transfer-cost-calculator:Export scenario set JSON",
+      "file": "downloads/invocation-jkhV0g/161d05ac-4ff3-48b1-b048-add4bd509983",
+      "filename": "cloud-data-transfer-cost-calculator-scenarios.json",
+      "bytes": 648,
+      "sha256": "6843692ed68e196f66d377e506f77404df92377e4be007fd91e079ac614970ef",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "161d05ac-4ff3-48b1-b048-add4bd509983",
+          "suggestedFilename": "cloud-data-transfer-cost-calculator-scenarios.json"
+        },
+        {
+          "event": "progress",
+          "guid": "161d05ac-4ff3-48b1-b048-add4bd509983",
+          "totalBytes": 648,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "161d05ac-4ff3-48b1-b048-add4bd509983",
+          "totalBytes": 648,
+          "receivedBytes": 648,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "161d05ac-4ff3-48b1-b048-add4bd509983",
+          "totalBytes": 648,
+          "receivedBytes": 648,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "161d05ac-4ff3-48b1-b048-add4bd509983",
+          "totalBytes": 648,
+          "receivedBytes": 648,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "161d05ac-4ff3-48b1-b048-add4bd509983",
+          "totalBytes": 648,
+          "receivedBytes": 648,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "161d05ac-4ff3-48b1-b048-add4bd509983",
+          "totalBytes": 648,
+          "receivedBytes": 648,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-jkhV0g/161d05ac-4ff3-48b1-b048-add4bd509983"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:cloud-data-transfer-cost-calculator:Export scenario report JSON",
+      "file": "downloads/invocation-upoRvm/2130f7ce-38d8-4e40-b66e-36e71447e5ec",
+      "filename": "cloud-data-transfer-cost-calculator-scenario-report.json",
+      "bytes": 1105,
+      "sha256": "c84a53741547bfe0c6a187842581188fe6907f31f10ee5288e199253f1af6f95",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "2130f7ce-38d8-4e40-b66e-36e71447e5ec",
+          "suggestedFilename": "cloud-data-transfer-cost-calculator-scenario-report.json"
+        },
+        {
+          "event": "progress",
+          "guid": "2130f7ce-38d8-4e40-b66e-36e71447e5ec",
+          "totalBytes": 1105,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2130f7ce-38d8-4e40-b66e-36e71447e5ec",
+          "totalBytes": 1105,
+          "receivedBytes": 1105,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2130f7ce-38d8-4e40-b66e-36e71447e5ec",
+          "totalBytes": 1105,
+          "receivedBytes": 1105,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2130f7ce-38d8-4e40-b66e-36e71447e5ec",
+          "totalBytes": 1105,
+          "receivedBytes": 1105,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2130f7ce-38d8-4e40-b66e-36e71447e5ec",
+          "totalBytes": 1105,
+          "receivedBytes": 1105,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "2130f7ce-38d8-4e40-b66e-36e71447e5ec",
+          "totalBytes": 1105,
+          "receivedBytes": 1105,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-upoRvm/2130f7ce-38d8-4e40-b66e-36e71447e5ec"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:cloud-data-transfer-cost-calculator:Export scenario report CSV",
+      "file": "downloads/invocation-cJJbIe/fc01c672-7ffb-4980-a5fc-735dfe85e36a",
+      "filename": "cloud-data-transfer-cost-calculator-scenario-report.csv",
+      "bytes": 966,
+      "sha256": "c302a2b5de94a319a38af754b0db50c7607ece667e7155a69017b7bcc86b7774",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "fc01c672-7ffb-4980-a5fc-735dfe85e36a",
+          "suggestedFilename": "cloud-data-transfer-cost-calculator-scenario-report.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "fc01c672-7ffb-4980-a5fc-735dfe85e36a",
+          "totalBytes": 966,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "fc01c672-7ffb-4980-a5fc-735dfe85e36a",
+          "totalBytes": 966,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "fc01c672-7ffb-4980-a5fc-735dfe85e36a",
+          "totalBytes": 966,
+          "receivedBytes": 966,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "fc01c672-7ffb-4980-a5fc-735dfe85e36a",
+          "totalBytes": 966,
+          "receivedBytes": 966,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "fc01c672-7ffb-4980-a5fc-735dfe85e36a",
+          "totalBytes": 966,
+          "receivedBytes": 966,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "fc01c672-7ffb-4980-a5fc-735dfe85e36a",
+          "totalBytes": 966,
+          "receivedBytes": 966,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-cJJbIe/fc01c672-7ffb-4980-a5fc-735dfe85e36a"
+        }
+      ]
+    },
+    {
+      "tag": "comparison:cloud-data-transfer-cost-calculator:Export scenario report PDF",
+      "file": "downloads/invocation-Hh3kQh/58caa56b-0a62-4de0-a21c-7434e04a63fe",
+      "filename": "cloud-data-transfer-cost-calculator-scenario-report.pdf",
+      "bytes": 415931,
+      "sha256": "84287415bdf5e12ea618db9125fcc3145eac0d4c48d9c7174e01e0f19adc4926",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "91AC00C7E4C63E30986F5DC765E2DA99",
+          "guid": "58caa56b-0a62-4de0-a21c-7434e04a63fe",
+          "suggestedFilename": "cloud-data-transfer-cost-calculator-scenario-report.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "58caa56b-0a62-4de0-a21c-7434e04a63fe",
+          "totalBytes": 415931,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "58caa56b-0a62-4de0-a21c-7434e04a63fe",
+          "totalBytes": 415931,
+          "receivedBytes": 415931,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "58caa56b-0a62-4de0-a21c-7434e04a63fe",
+          "totalBytes": 415931,
+          "receivedBytes": 415931,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "58caa56b-0a62-4de0-a21c-7434e04a63fe",
+          "totalBytes": 415931,
+          "receivedBytes": 415931,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "58caa56b-0a62-4de0-a21c-7434e04a63fe",
+          "totalBytes": 415931,
+          "receivedBytes": 415931,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "58caa56b-0a62-4de0-a21c-7434e04a63fe",
+          "totalBytes": 415931,
+          "receivedBytes": 415931,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-remaining-five-team-20261110/docs/remaining-five-team-20261110/downloads/invocation-Hh3kQh/58caa56b-0a62-4de0-a21c-7434e04a63fe"
+        }
+      ]
+    }
+  ],
+  "layouts": [
+    {
+      "slug": "storage-conversion-calculator",
+      "stage": "template",
+      "configuredWidth": 360,
+      "innerWidth": 360,
+      "scrollWidth": 360
+    },
+    {
+      "slug": "power-supply-calculator",
+      "stage": "template",
+      "configuredWidth": 360,
+      "innerWidth": 360,
+      "scrollWidth": 360
+    },
+    {
+      "slug": "website-bandwidth-calculator",
+      "stage": "template",
+      "configuredWidth": 360,
+      "innerWidth": 360,
+      "scrollWidth": 360
+    },
+    {
+      "slug": "cloud-storage-cost-calculator",
+      "stage": "template",
+      "configuredWidth": 360,
+      "innerWidth": 360,
+      "scrollWidth": 360
+    },
+    {
+      "slug": "cloud-data-transfer-cost-calculator",
+      "stage": "template",
+      "configuredWidth": 360,
+      "innerWidth": 360,
+      "scrollWidth": 360
+    },
+    {
+      "slug": "storage-conversion-calculator",
+      "stage": "comparison",
+      "configuredWidth": 320,
+      "innerWidth": 320,
+      "scrollWidth": 320
+    },
+    {
+      "slug": "power-supply-calculator",
+      "stage": "comparison",
+      "configuredWidth": 320,
+      "innerWidth": 320,
+      "scrollWidth": 320
+    },
+    {
+      "slug": "website-bandwidth-calculator",
+      "stage": "comparison",
+      "configuredWidth": 320,
+      "innerWidth": 320,
+      "scrollWidth": 320
+    },
+    {
+      "slug": "cloud-storage-cost-calculator",
+      "stage": "comparison",
+      "configuredWidth": 320,
+      "innerWidth": 320,
+      "scrollWidth": 320
+    },
+    {
+      "slug": "cloud-data-transfer-cost-calculator",
+      "stage": "comparison",
+      "configuredWidth": 320,
+      "innerWidth": 320,
+      "scrollWidth": 320
+    }
+  ]
+}

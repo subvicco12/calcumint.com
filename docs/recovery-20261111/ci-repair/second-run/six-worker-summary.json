@@ -1,0 +1,53 @@
+{
+  "kind": "UNMODIFIED_CI_SIX_WORKER_REMAINDER_PREFLIGHT",
+  "mainGitAtStart": "9f375e8557842c5ca192d95f50d592be3e0ecbbe",
+  "mainGitAtCollection": "33b98fb7db5e11650914958744f55f030273118c",
+  "sourceAuthorityR14PendingAtStart": true,
+  "commands": [
+    {
+      "command": "node scripts/check-current-six-candidate-evidence.mjs",
+      "exit": 0,
+      "scope": "41exactsourcebindings;0canonical/publicationpromotions"
+    },
+    {
+      "command": "node --test tests/full-six-candidate/preview.test.mjs",
+      "exit": 0,
+      "tests": 1
+    },
+    {
+      "command": "node tests/full-six-candidate/browser.mjs",
+      "exit": 0,
+      "journeys": 18
+    },
+    {
+      "command": "node tests/product-completion-20261108/browser.mjs",
+      "exit": 0
+    }
+  ],
+  "shortestWave": {
+    "commands": [
+      "node scripts/check-shortest-publication20.mjs",
+      "node --test tests/shortest-publication-20/caller-lineage.test.mjs tests/shortest-publication-20/frequency-presentation-lineage.test.mjs tests/shortest-publication-20/completion-lineage.test.mjs",
+      "python3 -m unittest discover -s tests/shortest-publication-20 -p 'test_*.py'",
+      "python3 scripts/shortest-publication-routes.py --output <isolated artifact path>",
+      "node tests/shortest-publication-20/browser.mjs",
+      "node tests/critical440-browser/acceptance.mjs"
+    ],
+    "retainedCI42960521179StepPassed": true,
+    "rerunHere": false
+  },
+  "logs": {
+    "product-completion.log": "cbf145b40a9ae4a026110144f2dc8f300754e581c4158d6e2285a45ddd386c4b",
+    "preview.log": "178b1e831f0e7fc7cb0a7e924f11de91917ff87fb784fdf99d5c78043b1a5450",
+    "six-browser.log": "15c08b2ddc14abb80d8859e59f64e98c744a8b53a76712ae08f408e41676905f",
+    "check-current.log": "0b763944e9469a30b5b1ee3627c7fe1965df94d317481caeecf7a15d94da3583"
+  },
+  "limitations": [
+    "Private local Basic-auth Vite/workers and synthetic plan contexts, not genuine account/production acceptance",
+    "No full CI, build, SQL or production actions",
+    "No new current source authority claimed; root R14 capture admission separately required"
+  ],
+  "productionWrites": false,
+  "certificationGranted": false,
+  "releaseHold": true
+}

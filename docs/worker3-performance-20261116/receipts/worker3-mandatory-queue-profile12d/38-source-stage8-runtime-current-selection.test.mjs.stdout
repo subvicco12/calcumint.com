@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: actual HEAD and physical bytes use the fixed admitted current row while historical95 stays immutable
+ok 1 - actual HEAD and physical bytes use the fixed admitted current row while historical95 stays immutable
+  ---
+  duration_ms: 73.429838
+  type: 'test'
+  ...
+# Subtest: capture tamper or nonbinary metadata refuses before nominated object or target reads
+ok 2 - capture tamper or nonbinary metadata refuses before nominated object or target reads
+  ---
+  duration_ms: 1.539459
+  type: 'test'
+  ...
+# Subtest: path ref or blob changes inside a same-size capture cannot nominate a successor
+ok 3 - path ref or blob changes inside a same-size capture cannot nominate a successor
+  ---
+  duration_ms: 8.575719
+  type: 'test'
+  ...
+# Subtest: either captured or canonical immutable ref path object substitution refuses
+ok 4 - either captured or canonical immutable ref path object substitution refuses
+  ---
+  duration_ms: 47.137391
+  type: 'test'
+  ...
+# Subtest: actual HEAD path cannot be replaced by valid historical95 bytes
+ok 5 - actual HEAD path cannot be replaced by valid historical95 bytes
+  ---
+  duration_ms: 40.519706
+  type: 'test'
+  ...
+# Subtest: current reader substitution and physical original95 reversion both refuse
+ok 6 - current reader substitution and physical original95 reversion both refuse
+  ---
+  duration_ms: 78.278144
+  type: 'test'
+  ...
+# Subtest: native HEAD movement during proof refuses before a current binding can return
+ok 7 - native HEAD movement during proof refuses before a current binding can return
+  ---
+  duration_ms: 33.288458
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 303.209801

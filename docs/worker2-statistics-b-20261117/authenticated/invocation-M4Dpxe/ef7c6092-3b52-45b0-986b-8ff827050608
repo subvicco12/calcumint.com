@@ -1,0 +1,98 @@
+{
+  "kind": "calcumint.scoped-report",
+  "reportVersion": 1,
+  "metadata": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 296,
+      "engineId": "statistics.quartile",
+      "calculatorSlug": "quartile-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "worker2-statistics-b-20261117.1/statistics.quartile@1"
+    },
+    "scope": "Sample quartile Q1/Q2/Q3 using the retained linear-position convention h=(k/4)(n-1), equivalent to type7; no method substitution.",
+    "primaryKey": "quartile",
+    "fields": [
+      {
+        "key": "values",
+        "label": "Observed values (JSON array)",
+        "unit": "supplied common unit"
+      },
+      {
+        "key": "quartileNumber",
+        "label": "Quartile number",
+        "unit": "index"
+      }
+    ],
+    "outputs": {
+      "quartile": {
+        "label": "quartile",
+        "unit": "supplied common unit"
+      },
+      "quartileNumber": {
+        "label": "quartileNumber",
+        "unit": "index/count"
+      },
+      "position": {
+        "label": "position",
+        "unit": "index/count"
+      },
+      "count": {
+        "label": "count",
+        "unit": "index/count"
+      }
+    },
+    "sourceEvidence": [
+      "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/quantile.html",
+      "docs/worker2-statistics-b-20261117/SOURCES.md"
+    ],
+    "publisherSources": [
+      "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/quantile.html"
+    ],
+    "limitations": [
+      "Private bounded profile; canonical mapping, source adoption, competent review and publication remain pending.",
+      "Input values |x|≤1e50; nonzero magnitudes≥1e-50;1–10000 observations and shared64KiB raw-entry bound.",
+      "New capture refuses error above2^-40 relative to exact normalized binary64 formula; zero must agree exactly. This is capture policy, not a full-domain precision certificate.",
+      "Historical replay retains the full original engine domain and bypasses new capture guards."
+    ],
+    "authority": "Private engineering scope only; not canonical, certification or publication approval."
+  },
+  "packet": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 296,
+      "engineId": "statistics.quartile",
+      "calculatorSlug": "quartile-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "worker2-statistics-b-20261117.1/statistics.quartile@1"
+    },
+    "raw": {
+      "values": "[1,2,3,4]",
+      "quartileNumber": "1"
+    },
+    "snapshot": {
+      "calculatorSlug": "quartile-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "values": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "quartileNumber": 1
+      },
+      "output": {
+        "quartile": 1.75,
+        "quartileNumber": 1,
+        "position": 0.75,
+        "count": 4,
+        "steps": [
+          "Sorted count = 4",
+          "Q1 position = 0.75",
+          "Q1 = 1.75"
+        ]
+      }
+    }
+  }
+}

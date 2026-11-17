@@ -1,0 +1,36 @@
+
+> calcumint@0.1.0 test
+> vitest run src/lib/calculator-factory/completion/next-engineering-core.test.ts
+
+
+ RUN  v3.2.7 /workspace/calcumint-next-cohort
+
+ ❯ src/lib/calculator-factory/completion/next-engineering-core.test.ts (4 tests | 1 failed) 26ms
+   ✓ captures all immutable output fields and refuses omitted or invented fields 11ms
+   ✓ verifies historical original-domain values independently of capture bounds 3ms
+   ✓ refuses extra snapshot metadata and accessors before historical dispatch 1ms
+   × keeps exposed field metadata immutable 10ms
+     → expected false to be true // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/calculator-factory/completion/next-engineering-core.test.ts > keeps exposed field metadata immutable
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/lib/calculator-factory/completion/next-engineering-core.test.ts:10:192
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  09:41:12
+   Duration  635ms (transform 126ms, setup 0ms, collect 229ms, tests 26ms, environment 0ms, prepare 105ms)
+

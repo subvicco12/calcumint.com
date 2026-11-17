@@ -1,0 +1,171 @@
+TAP version 13
+# Subtest: exact known UI receipt claim requires current successor 811bbd67bfcc635808101a351fa15eb133331369
+ok 1 - exact known UI receipt claim requires current successor 811bbd67bfcc635808101a351fa15eb133331369
+  ---
+  duration_ms: 1325.365107
+  type: 'test'
+  ...
+# Subtest: exact known UI receipt claim requires current successor 3c2b768ecc9e6e0821df8e74c779d134e99c4f48
+ok 2 - exact known UI receipt claim requires current successor 3c2b768ecc9e6e0821df8e74c779d134e99c4f48
+  ---
+  duration_ms: 1311.233205
+  type: 'test'
+  ...
+# Subtest: exact known UI receipt claim requires current successor 56763645c091743508c1b7a163c7c59dcb7f4b7d
+ok 3 - exact known UI receipt claim requires current successor 56763645c091743508c1b7a163c7c59dcb7f4b7d
+  ---
+  duration_ms: 1351.803076
+  type: 'test'
+  ...
+# Subtest: exact known UI receipt claim requires current successor d1ea2fd979fa02e1d107e48aedcba72086115f6e
+ok 4 - exact known UI receipt claim requires current successor d1ea2fd979fa02e1d107e48aedcba72086115f6e
+  ---
+  duration_ms: 1301.255429
+  type: 'test'
+  ...
+# Subtest: exact known UI receipt claim requires current successor 955e2ed5df93e646275c4d94d33548cac5925380
+ok 5 - exact known UI receipt claim requires current successor 955e2ed5df93e646275c4d94d33548cac5925380
+  ---
+  duration_ms: 1244.770887
+  type: 'test'
+  ...
+# Subtest: known old UI claim cannot allow old valid caller bytes or invented claims
+ok 6 - known old UI claim cannot allow old valid caller bytes or invented claims
+  ---
+  duration_ms: 1231.020788
+  type: 'test'
+  ...
+# Subtest: same target UI dependency drift refused src/lib/technology-capture-trust.ts
+ok 7 - same target UI dependency drift refused src/lib/technology-capture-trust.ts
+  ---
+  duration_ms: 2173.514468
+  type: 'test'
+  ...
+# Subtest: same target UI dependency drift refused src/lib/presentation-entitlements.ts
+ok 8 - same target UI dependency drift refused src/lib/presentation-entitlements.ts
+  ---
+  duration_ms: 2219.556276
+  type: 'test'
+  ...
+# Subtest: same target UI dependency drift refused src/components/technology-worked-example.tsx
+ok 9 - same target UI dependency drift refused src/components/technology-worked-example.tsx
+  ---
+  duration_ms: 2334.385266
+  type: 'test'
+  ...
+# Subtest: exact567 caller byte reversion is refused despite legitimate retained receipt claim
+ok 10 - exact567 caller byte reversion is refused despite legitimate retained receipt claim
+  ---
+  duration_ms: 1480.239309
+  type: 'test'
+  ...
+# Subtest: exactd1 caller byte reversion is refused despite legitimate retained receipt claim
+ok 11 - exactd1 caller byte reversion is refused despite legitimate retained receipt claim
+  ---
+  duration_ms: 1374.866233
+  type: 'test'
+  ...
+# Subtest: current actual caller retains original20 binding contract through exact successor
+ok 12 - current actual caller retains original20 binding contract through exact successor
+  ---
+  duration_ms: 1863.86497
+  type: 'test'
+  ...
+# file:///workspace/work/product-completion-20261108/scripts/product-completion-lineage.mjs:1850
+#   if(hash(source)!==dep.sha256||!read(dep.path).equals(source))throw Error('Completion supplemental source bytes differ: '+dep.path);
+#                                                                      ^
+# Error: Completion supplemental source bytes differ: src/components/calculator-interactive.tsx
+#     at verifyCompletionBinding (file:///workspace/work/product-completion-20261108/scripts/product-completion-lineage.mjs:1850:70)
+#     at verifyPreservedSource (file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:14:59)
+#     at checkSoftwareClosure (file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:42:30)
+#     at async file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:61:84
+# Node.js v24.19.0
+# Subtest: retained and fresh outer receipt claims require exact current captured source
+ok 13 - retained and fresh outer receipt claims require exact current captured source
+  ---
+  duration_ms: 3482.45748
+  type: 'test'
+  ...
+# Subtest: exact capture and hard predecessor refusal src/components/calculator-interactive.tsx
+ok 14 - exact capture and hard predecessor refusal src/components/calculator-interactive.tsx
+  ---
+  duration_ms: 3967.284587
+  type: 'test'
+  ...
+# Subtest: target-tree dependency refusal src/components/calculator-interactive.tsx src/lib/technology-snapshot-verification.ts
+ok 15 - target-tree dependency refusal src/components/calculator-interactive.tsx src/lib/technology-snapshot-verification.ts
+  ---
+  duration_ms: 1100.565268
+  type: 'test'
+  ...
+# Subtest: target-tree dependency refusal src/components/calculator-interactive.tsx src/calculators/technology-computing/catalog-batch-2.ts
+ok 16 - target-tree dependency refusal src/components/calculator-interactive.tsx src/calculators/technology-computing/catalog-batch-2.ts
+  ---
+  duration_ms: 631.968857
+  type: 'test'
+  ...
+# Subtest: exact capture and hard predecessor refusal src/lib/registered-snapshot-verification.ts
+ok 17 - exact capture and hard predecessor refusal src/lib/registered-snapshot-verification.ts
+  ---
+  duration_ms: 3036.084711
+  type: 'test'
+  ...
+# Subtest: target-tree dependency refusal src/lib/registered-snapshot-verification.ts src/lib/technology-snapshot-verification.ts
+ok 18 - target-tree dependency refusal src/lib/registered-snapshot-verification.ts src/lib/technology-snapshot-verification.ts
+  ---
+  duration_ms: 922.12621
+  type: 'test'
+  ...
+# Subtest: target-tree dependency refusal src/lib/registered-snapshot-verification.ts src/calculators/technology-computing/catalog-batch-2.ts
+ok 19 - target-tree dependency refusal src/lib/registered-snapshot-verification.ts src/calculators/technology-computing/catalog-batch-2.ts
+  ---
+  duration_ms: 646.132055
+  type: 'test'
+  ...
+# Subtest: retained software closure reproduces unchanged historical preservation packets
+not ok 20 - retained software closure reproduces unchanged historical preservation packets
+  ---
+  duration_ms: 3064.138664
+  type: 'test'
+  location: '/workspace/work/product-completion-20261108/tests/execution-recovery-20261109/source-lineage.test.mjs:26:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Command failed: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node scripts/software-closure-evidence.mjs --check
+    file:///workspace/work/product-completion-20261108/scripts/product-completion-lineage.mjs:1850
+      if(hash(source)!==dep.sha256||!read(dep.path).equals(source))throw Error('Completion supplemental source bytes differ: '+dep.path);
+                                                                         ^
+    
+    Error: Completion supplemental source bytes differ: src/components/calculator-interactive.tsx
+        at verifyCompletionBinding (file:///workspace/work/product-completion-20261108/scripts/product-completion-lineage.mjs:1850:70)
+        at verifyPreservedSource (file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:14:59)
+        at checkSoftwareClosure (file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:42:30)
+        at async file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:61:84
+    
+    Node.js v24.19.0
+    
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    verifyCompletionBinding (file:///workspace/work/product-completion-20261108/scripts/product-completion-lineage.mjs:1850:70)
+    verifyPreservedSource (file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:14:59)
+    checkSoftwareClosure (file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:42:30)
+    async file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:61:84
+    genericNodeError (node:internal/errors:985:15)
+    wrappedFn (node:internal/errors:539:14)
+    checkExecSyncError (node:child_process:942:11)
+    execFileSync (node:child_process:978:15)
+    TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/execution-recovery-20261109/source-lineage.test.mjs:29:26)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 19
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 36277.626931

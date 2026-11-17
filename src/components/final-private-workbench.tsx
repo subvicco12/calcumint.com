@@ -1,6 +1,8 @@
 'use client';
 import {useState} from 'react';
 import {finalPrivateDiscovery,finalPrivateExamples,exportFinalPrivate,importFinalPrivate,finalPrivateHeadline,type FinalPrivateSnapshot} from '../calculators/final-private-workbench';
+import {parsePublicationFactoryInput} from '../lib/publication-factory-contracts-input';
+import {parseFinalPrivateSnapshotText} from '../lib/final-private-snapshot-text';
 const json=(value:unknown)=>JSON.stringify(value,null,2);
 /** Authenticated loopback review fixture; no public route or account storage. */
 export function FinalPrivateWorkbench(){
@@ -12,9 +14,9 @@ export function FinalPrivateWorkbench(){
  const invalidate=()=>{setSnapshot(null);setError('');};
  function choose(id:number){setSelected(id);setInput(finalPrivateExamples[id]?json(finalPrivateExamples[id]):'');invalidate();}
  function filter(value:string){setSearch(value);const rows=finalPrivateDiscovery.filter(r=>`${r.masterId} ${r.title}`.toLowerCase().includes(value.toLowerCase().trim()));if(!rows.some(r=>r.masterId===selected))choose(rows[0]?.masterId??-1);}
- function calculate(){invalidate();try{if(input.length>1_000_000)throw Error('Scenario size limit');setSnapshot(exportFinalPrivate(selected,JSON.parse(input),plan));}catch{setError('Check the selected scope, required fields, decimal-string or numeric units, identities, periods and numerical bounds.');}}
+ function calculate(){invalidate();try{if(input.length>1_000_000)throw Error('Scenario size limit');setSnapshot(exportFinalPrivate(selected,parsePublicationFactoryInput(input),plan));}catch{setError('Check the selected scope, required fields, decimal-string or numeric units, identities, periods and numerical bounds.');}}
  function restore(s:FinalPrivateSnapshot){setSearch('');setSelected(s.masterId);setInput(json(s.payload.calculation.input));setSnapshot(s);setError('');}
- function importSnapshot(){invalidate();try{if(importText.length>8_000_000)throw Error('Snapshot size limit');restore(importFinalPrivate(JSON.parse(importText)));}catch{setError('Snapshot must match its pinned identity, source, version and actual engine result.');}}
+ function importSnapshot(){invalidate();try{restore(importFinalPrivate(parseFinalPrivateSnapshotText(importText)));}catch{setError('Snapshot must match its pinned identity, source, version and actual engine result.');}}
  function download(){
   if(!snapshot)return;
   const url=URL.createObjectURL(new Blob([json(snapshot)+'\n'],{type:'application/json'}));

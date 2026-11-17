@@ -1,0 +1,47 @@
+{
+  "kind": "TARGETED_EXISTING_AUTHORITY_COMPOSITION_EXECUTION",
+  "command": "node_modules/.bin/vitest run src/lib/first-pilot-publication.test.ts --maxWorkers=1 --minWorkers=1",
+  "sourceCommit": "3350a313ebc6b5300757e64ae4c125af29bdfdb3",
+  "exitCode": 0,
+  "passedTests": 4,
+  "testDurationMs": 51,
+  "observedAtUTC": "2026-11-08T16:44:37Z",
+  "scope": [
+    "conversion.time@1",
+    "conversion.frequency@1"
+  ],
+  "evidence": "Actual authority reader, route resolver, governed discovery and sitemap; only external SDK RPC/env mocked; registry certification conditional fixture for positive transition and withdrawal; actual draft definitions refused.",
+  "sourceBindings": [
+    {
+      "path": "src/lib/first-pilot-publication.test.ts",
+      "sha256": "697fd461ed956501ded9b9b4e94648d1153a8569dd4a7dad9fb8eacd830d2065"
+    },
+    {
+      "path": "src/lib/publication-manifest.ts",
+      "sha256": "d691a9d5a80779c3627ea92e195ed5106a3f52de65ebee1c80db599f6add774b"
+    },
+    {
+      "path": "src/lib/public-calculator-route.ts",
+      "sha256": "72069848de4e58ac7f46b6bef85a4414f2e6f230b0e0e48d483dabec1a4cb630"
+    },
+    {
+      "path": "src/calculators/publication-authority.ts",
+      "sha256": "2c31a8324056873803452c675ba170941f0ee661c3bc2adc8b8305d08f8e516c"
+    },
+    {
+      "path": "src/calculators/public-route-readiness.ts",
+      "sha256": "bc2f7da67d9c3d1303d95e480939bd75e96fa53aec995048b80ba6df62323d0b"
+    },
+    {
+      "path": "src/calculators/public-content.ts",
+      "sha256": "75151eac4f4956f1f9754354dffc3659e80d71253928517cab60329cbb29db32"
+    },
+    {
+      "path": "src/app/sitemap.ts",
+      "sha256": "5de2ad16fd953ad4bcb310100cf1bdbc58e7e610f5e7a0e84b5fe172a87c1334"
+    }
+  ],
+  "productionWrites": false,
+  "newApproval": false,
+  "releaseHold": true
+}

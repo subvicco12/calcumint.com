@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "ups-runtime-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "methodology": "Deterministic calculation using the reviewed Technology & Computing engine.\nTechnical calculation revision: technology.ups-runtime@1\n\nSimplified UPS runtime from battery energy, load and explicit efficiency.\nRuntime (h) = battery Wh × efficiency ÷ load W",
+      "input": {
+        "batteryWh": 600,
+        "loadWatts": 300,
+        "efficiencyPercent": 90
+      },
+      "output": {
+        "value": 1.8,
+        "steps": [
+          "UPS Runtime = 1.8"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "ups-runtime-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "batteryWh": {
+            "label": "Battery energy (Wh)",
+            "unit": "Wh"
+          },
+          "loadWatts": {
+            "label": "Load (W)",
+            "unit": "W"
+          },
+          "efficiencyPercent": {
+            "label": "Efficiency (%)",
+            "unit": "%"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "UPS runtime",
+            "unit": "hours"
+          }
+        }
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "methodology": "Deterministic calculation using the reviewed Technology & Computing engine.\nTechnical calculation revision: technology.ups-runtime@1\n\nSimplified UPS runtime from battery energy, load and explicit efficiency.\nRuntime (h) = battery Wh × efficiency ÷ load W",
+      "input": {
+        "batteryWh": 1200,
+        "loadWatts": 300,
+        "efficiencyPercent": 90
+      },
+      "output": {
+        "value": 3.6,
+        "steps": [
+          "UPS Runtime = 3.6"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "ups-runtime-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "batteryWh": {
+            "label": "Battery energy (Wh)",
+            "unit": "Wh"
+          },
+          "loadWatts": {
+            "label": "Load (W)",
+            "unit": "W"
+          },
+          "efficiencyPercent": {
+            "label": "Efficiency (%)",
+            "unit": "%"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "UPS runtime",
+            "unit": "hours"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,161 @@
+TAP version 13
+# Subtest: broker death fails the current command and kills its immediate Git child
+ok 1 - broker death fails the current command and kills its immediate Git child
+  ---
+  duration_ms: 144.410473
+  type: 'test'
+  ...
+# Subtest: creator Worker death after READY kills broker and immediate Git while main stays alive
+ok 2 - creator Worker death after READY kills broker and immediate Git while main stays alive
+  ---
+  duration_ms: 144.359437
+  type: 'test'
+  ...
+# Subtest: creator Worker death before prctl prevents later READY or Git execution
+ok 3 - creator Worker death before prctl prevents later READY or Git execution
+  ---
+  duration_ms: 112.141692
+  type: 'test'
+  ...
+# Subtest: creator Worker death after prctl but before READY kills the broker
+ok 4 - creator Worker death after prctl but before READY kills the broker
+  ---
+  duration_ms: 131.892926
+  type: 'test'
+  ...
+# Subtest: unknown response sequence and oversized frame fail without accepted stdout
+ok 5 - unknown response sequence and oversized frame fail without accepted stdout
+  ---
+  duration_ms: 154.250075
+  type: 'test'
+  ...
+# Subtest: original outer source runner still owns Git and helper descendants in its unchanged process group
+ok 6 - original outer source runner still owns Git and helper descendants in its unchanged process group
+  ---
+  duration_ms: 191.998232
+  type: 'test'
+  ...
+# \# transport-stream {"bytes":70254592,"sha256":"d0ec96a8869d8202947c58cf257c3dcb073ad10f231b5953c53ce79bee913e80","brokerRSSBefore":9699328,"brokerRSSAfter":9977856,"brokerRSSPeak":10022912}
+# Subtest: 67MiB immutable bytes stream exactly while broker RSS stays bounded before the next fresh command
+ok 7 - 67MiB immutable bytes stream exactly while broker RSS stays bounded before the next fresh command
+  ---
+  duration_ms: 1733.147727
+  type: 'test'
+  ...
+# Subtest: private transport is available as a bounded Buffer-only command channel
+ok 8 - private transport is available as a bounded Buffer-only command channel
+  ---
+  duration_ms: 19.635855
+  type: 'test'
+  ...
+# Subtest: fresh native root and HEAD commands equal direct bytes and observe a subsequent commit
+ok 9 - fresh native root and HEAD commands equal direct bytes and observe a subsequent commit
+  ---
+  duration_ms: 200.577249
+  type: 'test'
+  ...
+# Subtest: status and index observations remain live across dirty source and index flags
+ok 10 - status and index observations remain live across dirty source and index flags
+  ---
+  duration_ms: 169.783751
+  type: 'test'
+  ...
+# Subtest: binary batch stdin and stdout are preserved including embedded NUL and newline
+ok 11 - binary batch stdin and stdout are preserved including embedded NUL and newline
+  ---
+  duration_ms: 146.434639
+  type: 'test'
+  ...
+# Subtest: missing object failures poison the channel and preserve failure bytes
+ok 12 - missing object failures poison the channel and preserve failure bytes
+  ---
+  duration_ms: 122.083098
+  type: 'test'
+  ...
+# Subtest: unsupported option and command shapes dispatch directly before any private broker starts
+ok 13 - unsupported option and command shapes dispatch directly before any private broker starts
+  ---
+  duration_ms: 27.933324
+  type: 'test'
+  ...
+# Subtest: fresh Git commands use each request environment rather than broker bootstrap environment
+ok 14 - fresh Git commands use each request environment rather than broker bootstrap environment
+  ---
+  duration_ms: 162.180207
+  type: 'test'
+  ...
+# Subtest: positive timeout stays on the direct path and retains original child cancellation
+ok 15 - positive timeout stays on the direct path and retains original child cancellation
+  ---
+  duration_ms: 397.82597
+  type: 'test'
+  ...
+# Subtest: stdout and stderr overflow fail before an unbounded response can be retained
+ok 16 - stdout and stderr overflow fail before an unbounded response can be retained
+  ---
+  duration_ms: 225.175272
+  type: 'test'
+  ...
+# Subtest: broker refuses a missing creator thread before publishing READY
+ok 17 - broker refuses a missing creator thread before publishing READY
+  ---
+  duration_ms: 35.984629
+  type: 'test'
+  ...
+# Subtest: loaded helper bytes must match the independently fixed image policy
+ok 18 - loaded helper bytes must match the independently fixed image policy
+  ---
+  duration_ms: 5.905759
+  type: 'test'
+  ...
+# Subtest: default native adapter runs a failed command once and recovers on the next independent invocation
+ok 19 - default native adapter runs a failed command once and recovers on the next independent invocation
+  ---
+  duration_ms: 218.695294
+  type: 'test'
+  ...
+# Subtest: combined stdout and stderr obey the original direct maxBuffer refusal
+ok 20 - combined stdout and stderr obey the original direct maxBuffer refusal
+  ---
+  duration_ms: 123.72691
+  type: 'test'
+  ...
+# Subtest: Worker bootstrap excludes owner NODE_OPTIONS while each Git request retains its environment
+ok 21 - Worker bootstrap excludes owner NODE_OPTIONS while each Git request retains its environment
+  ---
+  duration_ms: 97.347823
+  type: 'test'
+  ...
+# Subtest: broker empty-pipe wait preserves closed subprocess semantics
+ok 22 - broker empty-pipe wait preserves closed subprocess semantics
+  ---
+  duration_ms: 67.915586
+  type: 'test'
+  ...
+# Subtest: broker empty-pipe wait preserves inherited subprocess semantics
+ok 23 - broker empty-pipe wait preserves inherited subprocess semantics
+  ---
+  duration_ms: 98.82365
+  type: 'test'
+  ...
+# Subtest: broker empty-pipe wait preserves interrupted subprocess semantics
+ok 24 - broker empty-pipe wait preserves interrupted subprocess semantics
+  ---
+  duration_ms: 109.20722
+  type: 'test'
+  ...
+# Subtest: broker empty-pipe wait preserves positive subprocess semantics
+ok 25 - broker empty-pipe wait preserves positive subprocess semantics
+  ---
+  duration_ms: 164.308464
+  type: 'test'
+  ...
+1..25
+# tests 25
+# suites 0
+# pass 25
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2533.311057

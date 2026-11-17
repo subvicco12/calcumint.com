@@ -37,11 +37,21 @@ try {
  await assert.rejects(db.sql(supplemental[0]),/UNAPPLIED_OWNER_P0_MEMBERSHIP/);await db.sql(unguard(supplemental[0]));await db.sql("NOTIFY pgrst, 'reload schema';");
  const {data:{session:ownerSession}}=await sdk.auth.getSession();const deadline=Date.now()+5000;
  for(;;){const response=await fetch(db.url+'/rest/v1/',{headers:{apikey:db.anonKey,Authorization:'Bearer '+ownerSession.access_token,Accept:'application/openapi+json'},signal:AbortSignal.timeout(5000)});assert.equal(response.status,200);if((await response.json()).paths?.['/rpc/reserve_business_invitation'])break;if(Date.now()>deadline)throw Error('Membership cache readiness deadline');await new Promise(r=>setTimeout(r,50));}
+ const businessRows=()=>db.sql("SELECT jsonb_build_object('orgs',(SELECT jsonb_agg(to_jsonb(o) ORDER BY id) FROM organizations o),'members',(SELECT jsonb_agg(to_jsonb(m) ORDER BY organization_id,user_id) FROM organization_members m),'invites',(SELECT jsonb_agg(to_jsonb(i) ORDER BY id) FROM organization_invitations i),'audit',(SELECT jsonb_agg(to_jsonb(a) ORDER BY id) FROM organization_audit_log a))::text;");
+ // OpenAPI visibility is not proof that the authenticated RPC dispatch cache is ready.
+ // A null organization must reject before locks or writes in the exact guarded SQL.
+ const beforeReadinessProbe=await businessRows();
+ for(;;){
+  const remaining=deadline-Date.now();assert(remaining>0,'Membership RPC cache readiness deadline');
+  const probe=await sdk.rpc('reserve_business_invitation',{p_organization_id:null,p_email:recipientEmail,p_role:'viewer',p_token_hash:'0'.repeat(64)}).abortSignal(AbortSignal.timeout(remaining));
+  if(probe.error?.code!=='PGRST202'){assert.equal(probe.error?.code,'P0001','Readiness must reach the governed validation refusal');assert.equal(probe.error.message,'Invalid invitation details');break;}
+  assert(Date.now()<deadline,'Membership RPC cache readiness deadline');await new Promise(r=>setTimeout(r,Math.min(50,deadline-Date.now())));
+ }
+ assert.equal(await businessRows(),beforeReadinessProbe,'Readiness probes cannot mutate business data');
  const org=await sdk.rpc('create_business_organization',{org_name:'Combined isolated fixture',org_slug:randomUUID()});assert.equal(org.error,null);
  const token=sha(randomUUID()),reservation=await sdk.rpc('reserve_business_invitation',{p_organization_id:org.data,p_email:recipientEmail,p_role:'viewer',p_token_hash:token});assert.equal(reservation.error,null);
  const accepted=await recipient.rpc('accept_business_invitation',{invite_token_hash:token});assert.equal(accepted.error,null);assert.equal(accepted.data,org.data);
  assert.equal(await db.sql(`SELECT count(*) FROM organization_members WHERE organization_id='${org.data}';`),'2');assert.equal(await db.sql(`SELECT count(*) FROM organization_audit_log WHERE organization_id='${org.data}' AND action='member.joined';`),'1');pass('New membership protocol and narrowed caller privileges coexist with all reviewed admin/publication corrections under genuine auth');
- const businessRows=()=>db.sql("SELECT jsonb_build_object('orgs',(SELECT jsonb_agg(to_jsonb(o) ORDER BY id) FROM organizations o),'members',(SELECT jsonb_agg(to_jsonb(m) ORDER BY organization_id,user_id) FROM organization_members m),'invites',(SELECT jsonb_agg(to_jsonb(i) ORDER BY id) FROM organization_invitations i),'audit',(SELECT jsonb_agg(to_jsonb(a) ORDER BY id) FROM organization_audit_log a))::text;");
  const retainedBusiness=await businessRows();await assert.rejects(db.sql(supplemental[1]),/UNAPPLIED_OWNER_P0_ROLLBACK/);await db.sql(unguard(supplemental[1]));assert.equal((await snapshot(db.sql)).sha256,after.sha256);assert.equal(await businessRows(),retainedBusiness);pass('Membership reversal restores exact pre-membership metadata while retaining completed membership and audit rows');
  const rollback=prepareRollback(before,after);await assert.rejects(db.sql(rollback.sql),/UNAPPLIED_OWNER_P0_ROLLBACK/);assert.equal((await snapshot(db.sql)).sha256,after.sha256);
  const reverse=open(rollback.sql);await db.sql(`UPDATE user_preferences SET country_code='GB' WHERE user_id='${user}';`);await assert.rejects(db.sql(reverse),/ROLLBACK_REFUSES_COUNTRY_DATA_LOSS/);assert.equal(await db.sql(`SELECT country_code FROM user_preferences WHERE user_id='${user}';`),'GB');assert.equal((await snapshot(db.sql)).sha256,after.sha256);pass('Rollback stays guarded and refuses to discard country data introduced after adoption');

@@ -1,0 +1,30 @@
+{
+  "run": 42508601317,
+  "associatedHeadSHA": "4b632c4b99da383895cbfb06465e60e4f5b3d401",
+  "conclusion": "failure",
+  "passedJobs": [
+    "checks",
+    "build",
+    "full-product",
+    "publication-factory"
+  ],
+  "failedJobs": [
+    "source-acceptance",
+    "validate"
+  ],
+  "unitAssertionsPassed": 8288,
+  "existingSkipped": 4,
+  "unhandledErrors": 1,
+  "error": "TypeError: URL.revokeObjectURL is not a function",
+  "cause": "Test download timer fired after its JSDOM URL stub was removed",
+  "sourceChange": "Test lifecycle only; advance/drain bounded fake timers while URL stub remains, restore real timers before unstub",
+  "successorCapture": "91b19c36521943a5423c37f2754480e654f884f5",
+  "reproductionRed": "57 assertions passed,1unhandled,exit1",
+  "reproductionGreen": "57 assertions passed,no unhandled,exit0",
+  "focusedUI": "60PASS",
+  "productionSourceChanged": false,
+  "errorPolicyRelaxed": false,
+  "oldEvidenceHashesReplaced": false,
+  "newApproval": false,
+  "excerptLog": "logs/acceptance-ci-42508601317-unit-failure-excerpt.log"
+}

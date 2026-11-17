@@ -1,0 +1,246 @@
+{
+  "kind": "UNSIGNED_EXACT_VERSION_REVIEW_PREPARATION_NOT_ACCEPTANCE",
+  "catalogId": 430,
+  "engine": {
+    "catalogId": 430,
+    "engineId": "conversion.energy",
+    "calculatorSlug": "energy-converter",
+    "calculatorVersion": 1,
+    "sourceVersion": "factory-wave1-20261112.1/conversion.energy@1"
+  },
+  "frozenRuntimeSHA": "79bf64466663cc961fdb80365143d0c750dccc6f",
+  "canonicalTarget": {
+    "catalogPath": "docs/first20-publication/input/input/governing/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx",
+    "catalogRow": 431,
+    "blueprintPath": "docs/blueprint-reconciliation/native-paragraphs.txt"
+  },
+  "observedSnapshot": {
+    "calculatorSlug": "energy-converter",
+    "calculatorVersion": 1,
+    "input": {
+      "value": 1,
+      "fromUnit": "j",
+      "toUnit": "kj"
+    },
+    "output": {
+      "result": 0.001
+    }
+  },
+  "rawExample": {
+    "value": "1",
+    "fromUnit": "j",
+    "toUnit": "kj"
+  },
+  "mathematicsEvidence": {
+    "path": "src/lib/calculator-factory/completion/conversion-contracts.test.ts",
+    "independentExpectedValues": true,
+    "historicalEngineChanged": false,
+    "sha256": "4ceafc8aa5a4a972249fb5ef03f25d7575563b63b87652beee65e6cc1ef6c1b8"
+  },
+  "sourceEvidence": {
+    "path": "src/lib/calculator-factory/completion/conversion-contracts.ts",
+    "nativeUCUMCapture": {
+      "path": "docs/first-live-closure-20261108/source/ucum-v2.2-native-source.zip",
+      "sha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+      "member": "ucum-essence.xml",
+      "memberSHA256": "dfccea1b5dc284245ebae97edd1dc03c45864da4e87df55bc9851797b4fd0b61"
+    },
+    "sha256": "4b92e748f570d9a8502137687bb332b34f60d0a74a7c95da5f809938ff969fdf"
+  },
+  "browserEvidence": {
+    "receipt": "../browser-receipt.json",
+    "syntheticAccountActions": true,
+    "journeys": [
+      {
+        "catalogId": 430,
+        "plan": "free",
+        "interactionElapsedMs": 19,
+        "performanceObservation": "Local visible calculation includes CDP latency; not hosted SLA",
+        "sourceBoundRealComponent": true,
+        "staleInvalidRefusal": true,
+        "keyboard": true,
+        "mobile": true,
+        "mathAnalysis": false,
+        "conversionSource": true,
+        "persistedSyntheticSaveReloadRestore": false,
+        "syntheticAuth": true
+      },
+      {
+        "catalogId": 430,
+        "plan": "pro",
+        "interactionElapsedMs": 42.599999997764826,
+        "performanceObservation": "Local visible calculation includes CDP latency; not hosted SLA",
+        "sourceBoundRealComponent": true,
+        "staleInvalidRefusal": true,
+        "keyboard": true,
+        "mobile": true,
+        "mathAnalysis": false,
+        "conversionSource": true,
+        "persistedSyntheticSaveReloadRestore": true,
+        "syntheticAuth": true
+      },
+      {
+        "catalogId": 430,
+        "plan": "business",
+        "interactionElapsedMs": 30.300000000745058,
+        "performanceObservation": "Local visible calculation includes CDP latency; not hosted SLA",
+        "sourceBoundRealComponent": true,
+        "staleInvalidRefusal": true,
+        "keyboard": true,
+        "mobile": true,
+        "mathAnalysis": false,
+        "conversionSource": true,
+        "persistedSyntheticSaveReloadRestore": true,
+        "syntheticAuth": true
+      }
+    ],
+    "downloads": [
+      {
+        "catalogId": 430,
+        "plan": "pro",
+        "format": "json",
+        "bytes": 535,
+        "sha256": "889fc2b255c7e73cd8fbb0efaf5939c242bf3a79bdf5cce3f68672b66dc78aeb",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 430,
+        "plan": "pro",
+        "format": "csv",
+        "bytes": 398,
+        "sha256": "3d36b48efd5942ec1669f2d899bfa0dbe714c047c5aecb5ef91f154860ac5d8d",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 430,
+        "plan": "pro",
+        "format": "pdf",
+        "bytes": 16219,
+        "sha256": "967f433e4565ad10deab40f5ebbadac70b8457fa387fc43a3379e67e10c359e9",
+        "popplerReadback": true
+      },
+      {
+        "catalogId": 430,
+        "plan": "business",
+        "format": "json",
+        "bytes": 535,
+        "sha256": "889fc2b255c7e73cd8fbb0efaf5939c242bf3a79bdf5cce3f68672b66dc78aeb",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 430,
+        "plan": "business",
+        "format": "csv",
+        "bytes": 398,
+        "sha256": "3d36b48efd5942ec1669f2d899bfa0dbe714c047c5aecb5ef91f154860ac5d8d",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 430,
+        "plan": "business",
+        "format": "pdf",
+        "bytes": 16219,
+        "sha256": "967f433e4565ad10deab40f5ebbadac70b8457fa387fc43a3379e67e10c359e9",
+        "popplerReadback": true
+      }
+    ]
+  },
+  "genuineAccountRpcEvidence": {
+    "receipt": "../account-receipt.json",
+    "observations": [
+      {
+        "catalogId": 430,
+        "slug": "energy-converter",
+        "version": 1,
+        "plan": "free",
+        "input": {
+          "value": 1,
+          "fromUnit": "kwh",
+          "toUnit": "mj"
+        },
+        "output": {
+          "result": 3.6
+        },
+        "historyId": "34995e45-7cec-4a93-8f06-cb6dc76585be",
+        "scenarioId": null,
+        "registeredRestoreVerified": false,
+        "realJWT": true,
+        "exactRetry": true,
+        "conflictDenied": true,
+        "foreignReadUpdateDeleteDenied": true,
+        "freeScenarioDenied": true
+      },
+      {
+        "catalogId": 430,
+        "slug": "energy-converter",
+        "version": 1,
+        "plan": "pro",
+        "input": {
+          "value": 1,
+          "fromUnit": "kwh",
+          "toUnit": "mj"
+        },
+        "output": {
+          "result": 3.6
+        },
+        "historyId": "6945197c-b300-4c3f-9f09-42c8bfafa4af",
+        "scenarioId": "38e4862c-ca98-4153-8604-9923cfc08fbf",
+        "registeredRestoreVerified": true,
+        "realJWT": true,
+        "exactRetry": true,
+        "conflictDenied": true,
+        "foreignReadUpdateDeleteDenied": true,
+        "freeScenarioDenied": false
+      },
+      {
+        "catalogId": 430,
+        "slug": "energy-converter",
+        "version": 1,
+        "plan": "business",
+        "input": {
+          "value": 1,
+          "fromUnit": "kwh",
+          "toUnit": "mj"
+        },
+        "output": {
+          "result": 3.6
+        },
+        "historyId": "795457f8-5189-4c87-973e-b6d4740cf4a5",
+        "scenarioId": "2f3def6a-5526-466c-b43a-c12cbc099825",
+        "registeredRestoreVerified": true,
+        "realJWT": true,
+        "exactRetry": true,
+        "conflictDenied": true,
+        "foreignReadUpdateDeleteDenied": true,
+        "freeScenarioDenied": false
+      }
+    ],
+    "genuineBrowserServerActions": "SEE_SEPARATE_FINAL_VALIDATION"
+  },
+  "outstandingDecisions": [
+    "Accept/reject full canonical scope against exact catalog/Blueprint; offered bounded profile is not automatically complete",
+    "Accept/reject source applicability, formula/units, numerical precision/refusal and QA evidence",
+    "Resolve applicable organization-shared attachment and durable delivery/automation requirements; preserve proven capabilities",
+    "Record actual reviewer competence, independence, appointment authority and signed exact-version decision"
+  ],
+  "reviewerIdentity": null,
+  "appointment": null,
+  "competence": null,
+  "independence": null,
+  "signature": null,
+  "sourceDecision": "PENDING",
+  "formulaPrecisionDecision": "PENDING",
+  "canonicalQaDecision": "PENDING",
+  "canonicalAccepted": false,
+  "certified": false,
+  "publicationEligible": false,
+  "releaseHold": true,
+  "genuineNextPositiveEvidence": {
+    "path": "../genuine-browser-positive-receipt.json",
+    "sha256": "822a6c865a2aa4ffe6783a3ec377a292b2f6c13a279ea5ac8be33b5db094a088",
+    "observedPositiveJourneys": 3,
+    "paidDocumentReloadRestores": 2,
+    "wholeProducerPassed": false,
+    "ownerSwitchPostSqlVerified": false
+  }
+}

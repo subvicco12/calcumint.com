@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "base64-size-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "methodology": "Deterministic calculation using the reviewed Technology & Computing engine.\nTechnical calculation revision: technology.base64-size@1\n\nBase64 encoded payload length without line wrapping or data-URL/MIME headers.\nEncoded bytes = 4 × ceil(input bytes ÷ 3)",
+      "input": {
+        "inputBytes": 1000
+      },
+      "output": {
+        "value": 1336,
+        "steps": [
+          "Base64 Size = 1336"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "base64-size-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "inputBytes": {
+            "label": "Input bytes"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Base64 encoded size",
+            "unit": "bytes"
+          }
+        }
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "methodology": "Deterministic calculation using the reviewed Technology & Computing engine.\nTechnical calculation revision: technology.base64-size@1\n\nBase64 encoded payload length without line wrapping or data-URL/MIME headers.\nEncoded bytes = 4 × ceil(input bytes ÷ 3)",
+      "input": {
+        "inputBytes": 1003
+      },
+      "output": {
+        "value": 1340,
+        "steps": [
+          "Base64 Size = 1340"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "base64-size-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "inputBytes": {
+            "label": "Input bytes"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Base64 encoded size",
+            "unit": "bytes"
+          }
+        }
+      }
+    }
+  ]
+}

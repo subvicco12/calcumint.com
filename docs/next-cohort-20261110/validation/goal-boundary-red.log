@@ -1,0 +1,42 @@
+
+ RUN  v3.2.7 /workspace/work/product-completion-20261108
+
+ ❯ src/lib/technology-next-analysis.test.ts (12 tests | 1 failed) 24ms
+   ✓ technology.storage-conversion reuses original samples and independently checked inverse 5ms
+   ✓ technology.aspect-ratio reuses original samples and independently checked inverse 1ms
+   ✓ technology.resolution reuses original samples and independently checked inverse 1ms
+   ✓ technology.dpi reuses original samples and independently checked inverse 1ms
+   ✓ technology.power-supply reuses original samples and independently checked inverse 1ms
+   ✓ technology.website-bandwidth reuses original samples and independently checked inverse 1ms
+   ✓ technology.cloud-storage-cost reuses original samples and independently checked inverse 1ms
+   ✓ technology.cloud-data-transfer-cost reuses original samples and independently checked inverse 1ms
+   ✓ uses registered website v2 and refuses unsupported identities 1ms
+   ✓ preserves zero cases without manufacturing a unique inverse 1ms
+   ✓ refuses overflow, subnormal, invalid targets and records projected boundary refusals 2ms
+   × solves a normal website target without an underflowing unit-basis intermediate 5ms
+     → Result is outside the supported finite normal precision range.
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/technology-next-analysis.test.ts > solves a normal website target without an underflowing unit-basis intermediate
+Error: Result is outside the supported finite normal precision range.
+ ❯ validateTechnologyCapture src/lib/technology-capture-trust.ts:16:79
+     14|  if(!selected.has(id))throw Error('Technology capture scope has not be…
+     15|  const value=output.value;
+     16|  if(!Number.isFinite(value)||(value!==0&&Math.abs(value)<minimumNormal…
+       |                                                                               ^
+     17|  if(value===0&&!(zeroFields[id]??[]).some(key=>input[key]===0))throw E…
+     18|  if(id==='technology.screen-ppi')requireNormal((input.widthPixels as n…
+ ❯ validateTechnologyNextCapture src/lib/technology-next-capture-trust.ts:5:2
+ ❯ runTechnologyNext src/lib/technology-next-analysis.ts:20:197
+ ❯ solveTechnologyNext src/lib/technology-next-analysis.ts:26:60
+ ❯ src/lib/technology-next-analysis.test.ts:17:97
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 11 passed (12)
+   Start at  03:27:17
+   Duration  623ms (transform 177ms, setup 0ms, collect 266ms, tests 24ms, environment 0ms, prepare 86ms)
+

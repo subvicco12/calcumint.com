@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "startedAt": "2026-11-08T19:53:24.099Z",
+  "finishedAt": "2026-11-08T19:53:38.553Z",
+  "checks": [
+    "Observed writer ROLLBACK barrier: 3s adoption lock timeout, no partial metadata/data, writer outcome retained through retry and exact reversal",
+    "Observed writer COMMIT barrier: 3s adoption lock timeout, no partial metadata/data, writer outcome retained through retry and exact reversal"
+  ],
+  "sourceHashes": {
+    "tests/competent-closure-20261108/operational-locks.mjs": "71c08a5b4a1580430c8472f76da90804b2484820185b698c05284ebc711ca76a",
+    "tests/adoption1528/bundle.mjs": "7c53b3a0ff481c37b9dd197ae09cff992c9815012439a451b0d8139934d112ec",
+    "tests/publication540-shared/database-package.mjs": "5d6cc7a8cb960b51e8ac99bbf2ebea9ddecc6f638a761f4c47e1b9915419f3d0",
+    "scripts/adoption1535/package.mjs": "21ce816f29067fcf4832fa6062f4f06409de74fe0adad8b030009893d9b39e56"
+  },
+  "localPreimage": "b930471d73fbc3f9e4edc55654d0f3ab5ef2b2003aa8d4fb90ff6fe634142e24",
+  "localPostimage": "31ca06bc375e1e4a657dd50bb7684ce61e44f07d007dae89a840e92d0dcd8ff2",
+  "localApplyHash": "fdc4933ac81d008df3a986b38d8fb1f25b01ab7cfb7a1ea881d204e3e53c7677",
+  "localReverseHash": "ad4dac67302c9476366906fe0dacbdbfa6af9b962b469bb167bdf2f38ca515d3",
+  "provenance": {
+    "images": {
+      "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+      "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+      "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+    },
+    "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+    "autoconfirm": true,
+    "scope": "Isolated reconstruction of seven-table captured metadata; synthetic rows only; authentic provider internals outside uid/role not represented",
+    "sourceObservedAt": "2026-11-06 14:43:07.87206+00",
+    "productionWrites": false
+  },
+  "syntheticOnly": true,
+  "productionWrites": false,
+  "freezeAttested": false,
+  "limitations": [
+    "Tests existing writer blocking adoption; does not enforce external writer or provider DDL freeze.",
+    "Disposable in-memory guard removal and derived fixture metadata only; held target SQL unchanged."
+  ]
+}

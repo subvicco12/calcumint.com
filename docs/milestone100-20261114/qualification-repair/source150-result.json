@@ -1,0 +1,24 @@
+{
+  "head": "12f1a02c88e57f23cdceaff1c5929bffea65473f",
+  "seconds": 150.155,
+  "budgetSeconds": 150,
+  "timedOut": true,
+  "exitCode": 1,
+  "command": [
+    "/workspace/tools/node22-recovery/node-v22.23.4-linux-x64/bin/node",
+    "--test",
+    "--test-concurrency=2",
+    "--test-reporter=tap",
+    "--test-reporter-destination=/workspace/artifacts/milestone100-20261114/new-ci-repair/A13/source150.tap",
+    "tests/parallel-source-20261110/application-successor.test.mjs",
+    "tests/parallel-source-20261110/current.test.mjs",
+    "tests/parallel-source-20261110/git-reader.test.mjs",
+    "tests/parallel-source-20261110/retained-vitest.test.mjs",
+    "tests/parallel-source-20261110/source-object-lock.test.mjs",
+    "tests/parallel-source-20261110/retained-vitest-diagnostics.test.mjs",
+    "tests/parallel-source-20261110/historical-group.test.mjs"
+  ],
+  "instrumented": false,
+  "diagnostics": "Read-only procfs descendant snapshots at120/145s; no command/environment/proof changes.",
+  "summary": []
+}

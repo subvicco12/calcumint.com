@@ -26,14 +26,22 @@ export const loanPaymentCalculator: CalculatorDefinition<Input, Output> = {
   reviewStatus: "certified",
   inputSchema,
   goldenTests: debtAggregateIndependentGoldens.payment,
-  calculate: ({ principal, annualRatePercent, termMonths }) => {
+  calculate: (input) => {
+    const { principal, annualRatePercent, termMonths } = inputSchema.parse(input);
     const monthlyRate = annualRatePercent / 100 / 12;
     const unroundedPayment = monthlyRate === 0
       ? principal / termMonths
       : principal * monthlyRate / (1 - (1 + monthlyRate) ** -termMonths);
 
+    if (!Number.isFinite(unroundedPayment) || unroundedPayment < 0) {
+      throw new RangeError("Loan payment exceeds supported numeric range");
+    }
     const monthlyPayment = roundTo(unroundedPayment, 2);
-    const totalPayment = roundTo(monthlyPayment * termMonths, 2);
+    const unroundedTotalPayment = monthlyPayment * termMonths;
+    if (!Number.isFinite(unroundedTotalPayment)) {
+      throw new RangeError("Total loan payment exceeds supported numeric range");
+    }
+    const totalPayment = roundTo(unroundedTotalPayment, 2);
 
     return {
       monthlyPayment,

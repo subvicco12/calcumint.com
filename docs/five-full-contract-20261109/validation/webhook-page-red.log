@@ -1,0 +1,30 @@
+
+ RUN  v3.2.7 /workspace/work/product-completion-20261108
+
+ ❯ src/app/business/api/technology-delivery-integration.test.tsx (2 tests | 1 failed) 38ms
+   × binds only current active completion endpoints into the real Technology batch controls 34ms
+     → expected undefined to be truthy
+   ✓ keeps Technology management controls absent for a non-admin workspace member 2ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/business/api/technology-delivery-integration.test.tsx > binds only current active completion endpoints into the real Technology batch controls
+AssertionError: expected undefined to be truthy
+
+- Expected: 
+true
+
++ Received: 
+undefined
+
+ ❯ src/app/business/api/technology-delivery-integration.test.tsx:7:295
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  19:59:25
+   Duration  717ms (transform 194ms, setup 0ms, collect 381ms, tests 38ms, environment 0ms, prepare 80ms)
+

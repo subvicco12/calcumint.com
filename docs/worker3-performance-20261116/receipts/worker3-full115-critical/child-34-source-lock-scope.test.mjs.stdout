@@ -1,0 +1,37 @@
+TAP version 13
+# Subtest: new scopes are private and inherited scope identity cannot nominate another owner generation
+ok 1 - new scopes are private and inherited scope identity cannot nominate another owner generation
+  ---
+  duration_ms: 10.09724
+  type: 'test'
+  ...
+# Subtest: normal release registers outside the directory before callback and forgets only after rmdir
+ok 2 - normal release registers outside the directory before callback and forgets only after rmdir
+  ---
+  duration_ms: 3.842059
+  type: 'test'
+  ...
+# Subtest: a registered dead owner with a fully drained dedicated PGID is reclaimed exactly
+ok 3 - a registered dead owner with a fully drained dedicated PGID is reclaimed exactly
+  ---
+  duration_ms: 69.655181
+  type: 'test'
+  ...
+# Subtest: unknown and foreign leases never delete another directory
+ok 4 - unknown and foreign leases never delete another directory
+  ---
+  duration_ms: 1.5216
+  type: 'test'
+  ...
+# Subtest: live owners and PID-generation substitution are preserved
+ok 5 - live owners and PID-generation substitution are preserved
+  ---
+  duration_ms: 2.136181
+  type: 'test'
+  ...
+# Subtest: nonempty or replaced same-scope lock directories remain untouched
+ok 6 - nonempty or replaced same-scope lock directories remain untouched
+  ---
+  duration_ms: 144.414365
+  type: 'test'
+  ...

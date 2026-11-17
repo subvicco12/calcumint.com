@@ -1,0 +1,43 @@
+import assert from 'node:assert/strict';
+import {mkdir,readFile,writeFile} from 'node:fs/promises';
+import {randomUUID,createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+import path from 'node:path';
+import {pathToFileURL} from 'node:url';
+import {build} from 'esbuild';
+import {createClient} from '@supabase/supabase-js';
+import {startBusinessPredecessor,unhold} from '../milestone60-20261113/business-sql-fixture.mjs';
+import {registerCredentials,redactText,evidenceJSON} from '../completion-delivery-20261112/evidence.mjs';
+const ids=[213,221,223,224,225,226,227,228,229,230,231,272,274,275,278,279,280,328,331,332];
+const out=process.env.WORKER_D_ARTIFACTS||'/tmp/worker-d-shared-evidence/acceptance';await mkdir(out,{recursive:true});
+const root=process.cwd(),ok=async p=>{const r=await p;assert.equal(r.error,null,JSON.stringify(r.error));return r.data;};
+const report={kind:'WORKER_D_GENUINE_DISPOSABLE_IDENTITY_PROJECT_SCOPE_ACCEPTANCE',sourceCommit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),checks:[],targetIds:ids,productionWrites:false,releaseHold:true,limitations:['Genuine GoTrue/PostgREST/PostgreSQL and actual sharing/session/role modules; only Next cookie transport is adapted to an authenticated SDK client.','No synthetic publication authority, live runtime, certification or production equivalence is claimed.']};let db;
+try{
+ db=await startBusinessPredecessor();registerCredentials(db.anonKey,db.serviceKey);
+ for(const file of ['docs/milestone60-20261113/held-business-successor.sql','docs/milestone100-20261114/business-held-successor.sql']){const raw=await readFile(file,'utf8');await assert.rejects(db.sql(raw),/UNAPPLIED/);await db.sql(unhold(raw));}await db.sql("NOTIFY pgrst,'reload schema';");
+ const users={};for(const [name,plan]of [['owner','business'],['member','business'],['foreign','business'],['free','free'],['pro','pro']]){
+ const password='Isolated-'+randomUUID();registerCredentials(password);const client=createClient(db.url,db.anonKey,{auth:{persistSession:false,autoRefreshToken:false}}),auth=await ok(client.auth.signUp({email:randomUUID()+'@example.invalid',password}));registerCredentials(auth.session.access_token,auth.session.refresh_token);await db.sql(`UPDATE public.profiles SET plan='${plan}' WHERE id='${auth.user.id}';`);users[name]={client,id:auth.user.id};}
+ const organization=await ok(users.owner.client.rpc('create_business_organization',{org_name:'Worker D project isolation',org_slug:'worker-d-'+randomUUID()}));
+ await db.sql(`INSERT INTO public.organization_members(organization_id,user_id,role) VALUES('${organization}','${users.member.id}','member');`);
+ const project=await ok(users.owner.client.from('business_projects').insert({organization_id:organization,name:'Selected',created_by:users.owner.id}).select().single());
+ const other=await ok(users.owner.client.from('business_projects').insert({organization_id:organization,name:'Other',created_by:users.owner.id}).select().single());
+ const selected=await ok(users.owner.client.from('client_workspaces').insert({organization_id:organization,project_id:project.id,name:'Selected client',created_by:users.owner.id,created_at:'2020-01-01T00:00:00Z'}).select().single());
+ const global=await ok(users.owner.client.from('client_workspaces').insert({organization_id:organization,project_id:null,name:'Organization client',created_by:users.owner.id,created_at:'2020-01-02T00:00:00Z'}).select().single());
+ await ok(users.owner.client.from('client_workspaces').insert(Array.from({length:101},(_,i)=>({organization_id:organization,project_id:other.id,name:'Other project '+i,created_by:users.owner.id,created_at:'2026-01-01T00:00:00Z'}))));
+ const entry=path.join(out,'entry.ts');await writeFile(entry,`export {loadFactoryNineWorkspace,loadFactoryNineTemplate} from ${JSON.stringify(path.join(root,'src/lib/business/factory-nine-sharing-server.ts'))};export {getFactoryContract,getFactoryWorkflows} from ${JSON.stringify(path.join(root,'src/lib/calculator-factory/registry.ts'))};`);
+ const bundle=path.join(out,'actual-server.mjs');const bundled=await build({metafile:true,entryPoints:[entry],outfile:bundle,bundle:true,platform:'node',format:'esm',alias:{'@':path.join(root,'src')},plugins:[{name:'isolated-cookie-transport-only',setup(b){b.onResolve({filter:/supabase\/server$/},()=>({path:'isolated-session',namespace:'fixture'}));b.onLoad({filter:/.*/,namespace:'fixture'},()=>({contents:'export async function createSupabaseServerClient(){return globalThis.__workerDClient;}',loader:'js'}));}}],logLevel:'silent'});report.compiledSourceSHA256={};for(const file of Object.keys(bundled.metafile.inputs).filter(f=>f.startsWith('src/'))){report.compiledSourceSHA256[file]=createHash('sha256').update(await readFile(file)).digest('hex');}const api=await import(pathToFileURL(bundle));
+ globalThis.__workerDClient=users.owner.client;
+ const workspace=await api.loadFactoryNineWorkspace({expectedOwnerId:users.owner.id,organizationId:organization,projectId:project.id});
+ assert.deepEqual(workspace.clients.map(c=>c.id).sort(),[selected.id,global.id].sort(),'Selected/global clients must be scoped BEFORE unchanged100limit despite101newer other-project clients');report.checks.push('Actual authenticated reader returns selected and organization clients despite101newer unrelated rows');
+ const service=createClient(db.url,db.serviceKey,{auth:{persistSession:false,autoRefreshToken:false}}),records=[];
+ for(const id of ids){const contract=api.getFactoryContract(id),raw=Object.fromEntries(contract.fields.map(f=>[f.key,String(f.defaultValue)])),packet=api.getFactoryWorkflows(id).execute(raw);const record=await ok(service.rpc('share_factory_nine_snapshot',{actor_id:users.owner.id,request_payload:{organizationId:organization,projectId:project.id,clientWorkspaceId:selected.id,requestId:randomUUID(),title:'Worker D '+id,snapshot:packet.snapshot}}));const restored=await api.loadFactoryNineTemplate({expectedOwnerId:users.owner.id,organizationId:organization,projectId:project.id,recordId:record});assert.deepEqual(restored.snapshot,packet.snapshot);records.push(record);report.checks.push('Actual authenticated immutable team template recovery #'+id);}
+ globalThis.__workerDClient=users.member.client;const member=await api.loadFactoryNineWorkspace({expectedOwnerId:users.member.id,organizationId:organization,projectId:project.id});assert.equal(member.records.length,20);assert.equal(member.clients.length,2);report.checks.push('Current Business member reads20exact templates and2applicable clients');
+ await assert.rejects(api.loadFactoryNineWorkspace({expectedOwnerId:users.owner.id,organizationId:organization,projectId:project.id}),/Account context changed/);report.checks.push('Stale account identity denied');
+ for(const name of ['foreign','free','pro']){globalThis.__workerDClient=users[name].client;await assert.rejects(api.loadFactoryNineWorkspace({expectedOwnerId:users[name].id,organizationId:organization,projectId:project.id}));const rows=await ok(users[name].client.from('client_workspaces').select('id').eq('organization_id',organization));assert.equal(rows.length,0);report.checks.push(name+': actual server and RLS deny foreign workspace');}
+ await db.sql(`DELETE FROM public.organization_members WHERE organization_id='${organization}' AND user_id='${users.member.id}';`);globalThis.__workerDClient=users.member.client;await assert.rejects(api.loadFactoryNineWorkspace({expectedOwnerId:users.member.id,organizationId:organization,projectId:project.id}));report.checks.push('Revoked Business member denied with existing access JWT');
+ globalThis.__workerDClient=users.owner.client;await assert.rejects(api.loadFactoryNineTemplate({expectedOwnerId:users.owner.id,organizationId:organization,projectId:other.id,recordId:records[0]}),/unavailable/);report.checks.push('Same-organization wrong-project template denied');
+ const audits=JSON.parse(await db.sql(`SELECT count(*)::int FROM public.organization_audit_log WHERE organization_id='${organization}' AND action='factory-nine.snapshot.shared';`));assert.equal(audits,20);report.checks.push('Exactly20immutable share audits; no retry mutations');
+ for(const [file,hash]of Object.entries(report.compiledSourceSHA256))assert.equal(createHash('sha256').update(await readFile(file)).digest('hex'),hash,'Compiled source changed during acceptance');
+ report.passed=true;
+}catch(e){report.passed=false;report.failure=redactText(e.stack||String(e));process.exitCode=1;}
+finally{delete globalThis.__workerDClient;if(db)await db.close();await writeFile(path.join(out,'receipt.json'),evidenceJSON(report));console.log(JSON.stringify({passed:report.passed,checks:report.checks.length,failure:report.failure}));}

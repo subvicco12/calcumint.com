@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "cloud-storage-cost-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "methodology": "Deterministic calculation using the reviewed Technology & Computing engine.\nTechnical calculation revision: technology.cloud-storage-cost@1\n\nProvider-neutral monthly storage estimate using a user-supplied unit price.\nMonthly cost = storage GB × price per GB-month",
+      "input": {
+        "storageGb": 1000,
+        "pricePerGbMonth": 0.02
+      },
+      "output": {
+        "value": 20,
+        "steps": [
+          "Cloud Storage Cost = 20"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "cloud-storage-cost-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "storageGb": {
+            "label": "Storage (GB)",
+            "unit": "GB"
+          },
+          "pricePerGbMonth": {
+            "label": "Price per GB-month"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Monthly storage cost",
+            "unit": "currency units"
+          }
+        }
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "methodology": "Deterministic calculation using the reviewed Technology & Computing engine.\nTechnical calculation revision: technology.cloud-storage-cost@1\n\nProvider-neutral monthly storage estimate using a user-supplied unit price.\nMonthly cost = storage GB × price per GB-month",
+      "input": {
+        "storageGb": 2000,
+        "pricePerGbMonth": 0.02
+      },
+      "output": {
+        "value": 40,
+        "steps": [
+          "Cloud Storage Cost = 40"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "cloud-storage-cost-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "storageGb": {
+            "label": "Storage (GB)",
+            "unit": "GB"
+          },
+          "pricePerGbMonth": {
+            "label": "Price per GB-month"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Monthly storage cost",
+            "unit": "currency units"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "kind": "UNSIGNED_EXACT_VERSION_REVIEW_PREPARATION_NOT_ACCEPTANCE",
+  "catalogId": 440,
+  "engine": {
+    "catalogId": 440,
+    "engineId": "conversion.frequency",
+    "calculatorSlug": "frequency-converter",
+    "calculatorVersion": 1,
+    "sourceVersion": "factory-wave1-20261112.1/conversion.frequency@1"
+  },
+  "frozenRuntimeSHA": "79bf64466663cc961fdb80365143d0c750dccc6f",
+  "canonicalTarget": {
+    "catalogPath": "docs/first20-publication/input/input/governing/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx",
+    "catalogRow": 441,
+    "blueprintPath": "docs/blueprint-reconciliation/native-paragraphs.txt"
+  },
+  "observedSnapshot": {
+    "calculatorSlug": "frequency-converter",
+    "calculatorVersion": 1,
+    "input": {
+      "value": 1,
+      "fromUnit": "hz",
+      "toUnit": "khz"
+    },
+    "output": {
+      "result": 0.001
+    }
+  },
+  "rawExample": {
+    "value": "1",
+    "fromUnit": "hz",
+    "toUnit": "khz"
+  },
+  "mathematicsEvidence": {
+    "path": "src/lib/calculator-factory/completion/conversion-contracts.test.ts",
+    "independentExpectedValues": true,
+    "historicalEngineChanged": false,
+    "sha256": "4ceafc8aa5a4a972249fb5ef03f25d7575563b63b87652beee65e6cc1ef6c1b8"
+  },
+  "sourceEvidence": {
+    "path": "src/lib/calculator-factory/completion/conversion-contracts.ts",
+    "nativeUCUMCapture": {
+      "path": "docs/first-live-closure-20261108/source/ucum-v2.2-native-source.zip",
+      "sha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+      "member": "ucum-essence.xml",
+      "memberSHA256": "dfccea1b5dc284245ebae97edd1dc03c45864da4e87df55bc9851797b4fd0b61"
+    },
+    "sha256": "4b92e748f570d9a8502137687bb332b34f60d0a74a7c95da5f809938ff969fdf"
+  },
+  "browserEvidence": {
+    "receipt": "../browser-receipt.json",
+    "syntheticAccountActions": true,
+    "journeys": [
+      {
+        "catalogId": 440,
+        "plan": "free",
+        "interactionElapsedMs": 23.900000002235174,
+        "performanceObservation": "Local visible calculation includes CDP latency; not hosted SLA",
+        "sourceBoundRealComponent": true,
+        "staleInvalidRefusal": true,
+        "keyboard": true,
+        "mobile": true,
+        "mathAnalysis": false,
+        "conversionSource": true,
+        "persistedSyntheticSaveReloadRestore": false,
+        "syntheticAuth": true
+      },
+      {
+        "catalogId": 440,
+        "plan": "pro",
+        "interactionElapsedMs": 51.100000001490116,
+        "performanceObservation": "Local visible calculation includes CDP latency; not hosted SLA",
+        "sourceBoundRealComponent": true,
+        "staleInvalidRefusal": true,
+        "keyboard": true,
+        "mobile": true,
+        "mathAnalysis": false,
+        "conversionSource": true,
+        "persistedSyntheticSaveReloadRestore": true,
+        "syntheticAuth": true
+      },
+      {
+        "catalogId": 440,
+        "plan": "business",
+        "interactionElapsedMs": 30.199999999254942,
+        "performanceObservation": "Local visible calculation includes CDP latency; not hosted SLA",
+        "sourceBoundRealComponent": true,
+        "staleInvalidRefusal": true,
+        "keyboard": true,
+        "mobile": true,
+        "mathAnalysis": false,
+        "conversionSource": true,
+        "persistedSyntheticSaveReloadRestore": true,
+        "syntheticAuth": true
+      }
+    ],
+    "downloads": [
+      {
+        "catalogId": 440,
+        "plan": "pro",
+        "format": "json",
+        "bytes": 551,
+        "sha256": "f792b6f97c73a9b12d60c5e017f9fb0101f82c0c30427342c302cc2ce6886c4c",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 440,
+        "plan": "pro",
+        "format": "csv",
+        "bytes": 411,
+        "sha256": "b23a61ed368bb52466e77391c0aa6849ce448d64079a5865ec60b9c92faa4684",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 440,
+        "plan": "pro",
+        "format": "pdf",
+        "bytes": 16717,
+        "sha256": "3a76db9824b41426902c01be540cacfc68c65bc56f74ba999bc61865a32e12ab",
+        "popplerReadback": true
+      },
+      {
+        "catalogId": 440,
+        "plan": "business",
+        "format": "json",
+        "bytes": 551,
+        "sha256": "f792b6f97c73a9b12d60c5e017f9fb0101f82c0c30427342c302cc2ce6886c4c",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 440,
+        "plan": "business",
+        "format": "csv",
+        "bytes": 411,
+        "sha256": "b23a61ed368bb52466e77391c0aa6849ce448d64079a5865ec60b9c92faa4684",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 440,
+        "plan": "business",
+        "format": "pdf",
+        "bytes": 16717,
+        "sha256": "3a76db9824b41426902c01be540cacfc68c65bc56f74ba999bc61865a32e12ab",
+        "popplerReadback": true
+      }
+    ]
+  },
+  "genuineAccountRpcEvidence": {
+    "receipt": "../account-receipt.json",
+    "observations": [
+      {
+        "catalogId": 440,
+        "slug": "frequency-converter",
+        "version": 1,
+        "plan": "free",
+        "input": {
+          "value": 2.4,
+          "fromUnit": "ghz",
+          "toUnit": "mhz"
+        },
+        "output": {
+          "result": 2400
+        },
+        "historyId": "fb04a24e-613e-49d4-b220-5f2002260479",
+        "scenarioId": null,
+        "registeredRestoreVerified": false,
+        "realJWT": true,
+        "exactRetry": true,
+        "conflictDenied": true,
+        "foreignReadUpdateDeleteDenied": true,
+        "freeScenarioDenied": true
+      },
+      {
+        "catalogId": 440,
+        "slug": "frequency-converter",
+        "version": 1,
+        "plan": "pro",
+        "input": {
+          "value": 2.4,
+          "fromUnit": "ghz",
+          "toUnit": "mhz"
+        },
+        "output": {
+          "result": 2400
+        },
+        "historyId": "dbaee707-b8ea-4ec9-822a-3f75bfc24341",
+        "scenarioId": "8f164bcf-ee91-48df-a907-97b018f13521",
+        "registeredRestoreVerified": true,
+        "realJWT": true,
+        "exactRetry": true,
+        "conflictDenied": true,
+        "foreignReadUpdateDeleteDenied": true,
+        "freeScenarioDenied": false
+      },
+      {
+        "catalogId": 440,
+        "slug": "frequency-converter",
+        "version": 1,
+        "plan": "business",
+        "input": {
+          "value": 2.4,
+          "fromUnit": "ghz",
+          "toUnit": "mhz"
+        },
+        "output": {
+          "result": 2400
+        },
+        "historyId": "6742d71c-f94f-49a7-9807-38e0ad33d7eb",
+        "scenarioId": "759efab8-f6ef-464e-bb12-ecb656ff6e87",
+        "registeredRestoreVerified": true,
+        "realJWT": true,
+        "exactRetry": true,
+        "conflictDenied": true,
+        "foreignReadUpdateDeleteDenied": true,
+        "freeScenarioDenied": false
+      }
+    ],
+    "genuineBrowserServerActions": "SEE_SEPARATE_FINAL_VALIDATION"
+  },
+  "outstandingDecisions": [
+    "Accept/reject full canonical scope against exact catalog/Blueprint; offered bounded profile is not automatically complete",
+    "Accept/reject source applicability, formula/units, numerical precision/refusal and QA evidence",
+    "Resolve applicable organization-shared attachment and durable delivery/automation requirements; preserve proven capabilities",
+    "Record actual reviewer competence, independence, appointment authority and signed exact-version decision"
+  ],
+  "reviewerIdentity": null,
+  "appointment": null,
+  "competence": null,
+  "independence": null,
+  "signature": null,
+  "sourceDecision": "PENDING",
+  "formulaPrecisionDecision": "PENDING",
+  "canonicalQaDecision": "PENDING",
+  "canonicalAccepted": false,
+  "certified": false,
+  "publicationEligible": false,
+  "releaseHold": true,
+  "genuineNextPositiveEvidence": {
+    "path": "../genuine-browser-positive-receipt.json",
+    "sha256": "822a6c865a2aa4ffe6783a3ec377a292b2f6c13a279ea5ac8be33b5db094a088",
+    "observedPositiveJourneys": 3,
+    "paidDocumentReloadRestores": 2,
+    "wholeProducerPassed": false,
+    "ownerSwitchPostSqlVerified": false
+  }
+}

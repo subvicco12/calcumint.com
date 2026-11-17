@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "power-supply-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "input": {
+        "headroomPercent": 20,
+        "systemLoadWatts": 500
+      },
+      "output": {
+        "steps": [
+          "Power Supply = 600"
+        ],
+        "value": 600
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "input": {
+        "headroomPercent": 20,
+        "systemLoadWatts": 1000
+      },
+      "output": {
+        "steps": [
+          "Power Supply = 1200"
+        ],
+        "value": 1200
+      }
+    }
+  ],
+  "comparison": {
+    "schemaVersion": 1,
+    "metrics": [
+      {
+        "field": "value",
+        "label": "value",
+        "cells": [
+          {
+            "slot": "A",
+            "value": 600,
+            "difference": 0,
+            "unavailable": null
+          },
+          {
+            "slot": "B",
+            "value": 1200,
+            "difference": 600,
+            "unavailable": null
+          }
+        ]
+      }
+    ],
+    "charts": []
+  }
+}

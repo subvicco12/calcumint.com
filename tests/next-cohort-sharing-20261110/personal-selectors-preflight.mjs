@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {mkdir,writeFile,readFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {startShortestPublicationPreview} from '../../scripts/shortest-publication-preview.mjs';
+import {startBrowser} from '../next-runtime/cdp.mjs';
+import {choosePersonalUnit} from './personal-workflows.mjs';
+let fixture,browser;const checked=[];
+try{
+ fixture=await startShortestPublicationPreview();browser=await startBrowser(fixture.origin);await browser.send('Network.setExtraHTTPHeaders',{headers:{Authorization:fixture.authorization}});await browser.visit('/tests/shortest-publication-20/?id=370&plan=business');await browser.until('!!window.__first20Snapshot?.output');await browser.js(`(async()=>{window.__mountNextPersonal=(await import('/tests/execution-recovery-20261109/browser-entry.tsx')).mountTechnology})()`);
+ const cases=[['storage-conversion-calculator','value','2'],['aspect-ratio-calculator','width','1920'],['resolution-calculator','widthPixels','1920'],['dpi-calculator','pixels','3000'],['power-supply-calculator','systemLoadWatts','500'],['website-bandwidth-calculator','pageSizeMb','2'],['cloud-storage-cost-calculator','storageGb','1000'],['cloud-data-transfer-cost-calculator','transferGb','500']];
+ for(const [slug,field,value] of cases){await browser.js(`window.__mountNextPersonal(${JSON.stringify(slug)})`);await browser.until(`!!document.querySelector('#recovery-technology [data-technology-field=${field}]')&&window.__first20Snapshot?.calculatorSlug===${JSON.stringify(slug)}`);await browser.field('#recovery-technology [data-technology-field='+field+']',value);if(slug==='storage-conversion-calculator'){await choosePersonalUnit(browser,'From unit','GiB');await choosePersonalUnit(browser,'To unit','MiB');await browser.until('window.__first20Snapshot.input.fromUnit==="GiB"&&window.__first20Snapshot.input.toUnit==="MiB"');assert.equal((await browser.js('window.__first20Snapshot')).output.value,2048);}checked.push({slug,field,nativeNumericSelector:true,nativeUnitSelectors:slug==='storage-conversion-calculator'});}
+ await mkdir('docs/next-cohort-sharing-20261110',{recursive:true});await writeFile('docs/next-cohort-sharing-20261110/personal-selectors-preflight.json',JSON.stringify({passed:true,scope:'SELECTOR_PREFLIGHT_ONLY_SYNTHETIC_ACCOUNT_TRANSPORT_NOT_AUTH_OR_PERSISTENCE_ACCEPTANCE',actualSourceComponent:'CalculatorInteractive via retained Vite browser entry',helperSha256:createHash('sha256').update(await readFile('tests/next-cohort-sharing-20261110/personal-workflows.mjs')).digest('hex'),checked},null,2)+'\n');console.log('PASS8 actual component numeric selectors +374 recorded unit labels/native keyboard');
+}finally{await browser?.close();await fixture?.close();}

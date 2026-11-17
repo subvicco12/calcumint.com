@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import {afterEach,describe,expect,it,vi} from 'vitest';
 import {cleanup,fireEvent,render,screen,within} from '@testing-library/react';
+import {FinalResultPresentation} from './final-result-presentation';
 import {networkPublicationDefinitions} from '@/lib/publication20/network';
 import type {ScenarioDisplayMetadata} from '@/lib/scenario-display-metadata';
 const state=vi.hoisted(()=>({plan:'free',account:null as null|{calculatorSlug:string;calculatorVersion:number;input:Record<string,unknown>;output:Record<string,unknown>|null;scenarioDisplayMetadata?:ScenarioDisplayMetadata}}));
@@ -34,16 +35,20 @@ describe('existing technology caller workflow regressions',()=>{
     expect(state.account?.scenarioDisplayMetadata?.inputs[field.key]).toEqual({label:field.label,...(field.kind==='number'?{unit:field.key==='value'?state.account?.input.fromUnit:field.unit}:{})});
    }
   });
-  it.each(['free','pro','business'])(`${entry.catalogId} uses the current %s plan for result capabilities`,plan=>{
+  it.each(['free','pro','business'] as const)(`${entry.catalogId} uses the current %s plan for result capabilities`,plan=>{
    state.plan=plan;
-   render(<CalculatorInteractive slug={entry.definition.slug}/>);
+   const current=render(<CalculatorInteractive slug={entry.definition.slug}/>);
    expect(state.account?.output).not.toBeNull();
+   expect(current.container.querySelector('.final-calculator-renderer')).not.toBeNull();
+   // Historical component compatibility is a separate subject, never substituted for the current caller.
+   const legacy=render(<FinalResultPresentation plan={plan} result={{primaryResult:{id:'value',label:'Legacy compatibility',value:state.account!.output!.value as number}}}/>);
    for(const label of ['Advanced charts','Scenario comparison','Sensitivity analysis','Goal Solver']){
-    if(plan==='free')expect(screen.getByText(label)).toBeTruthy();
-    else expect(screen.queryByText(label)).toBeNull();
+    expect(within(current.container).queryByText(label)).toBeNull();
+    if(plan==='free')expect(within(legacy.container).getByText(label)).toBeTruthy();
+    else expect(within(legacy.container).queryByText(label)).toBeNull();
    }
   });
-  it.each(['free','pro','business'])(`${entry.catalogId} reconciles recorded inputs and output on %s`,plan=>{
+  it.each(['free','pro','business'] as const)(`${entry.catalogId} reconciles recorded inputs and output on %s`,plan=>{
    state.plan=plan;
    render(<CalculatorInteractive slug={entry.definition.slug}/>);
    const table=screen.queryByRole('table',{name:'Input and output reconciliation'});
@@ -56,7 +61,9 @@ describe('existing technology caller workflow regressions',()=>{
    const resultRow=within(table!).getByRole('rowheader',{name:'Stored result'}).closest('tr')!;
    expect(within(resultRow).getAllByRole('cell').map(cell=>cell.textContent)).toEqual([String(state.account?.output?.value),entry.outputUnit(state.account!.input)]);
    expect(screen.getByText(entry.scope)).toBeTruthy();
-   expect(screen.getByText('Result methodology',{selector:'summary'}).parentElement?.textContent).toContain(entry.definition.formulas[0].expression);
+   expect(screen.getByText('Methodology',{selector:'summary'}).parentElement?.textContent).toContain(entry.definition.formulas[0].expression);
+   const legacy=render(<FinalResultPresentation plan={plan} result={{primaryResult:{id:'value',label:'Legacy compatibility',value:state.account!.output!.value as number},methodology:entry.definition.formulas[0].expression}}/>);
+   expect(within(legacy.container).getByText('Result methodology',{selector:'summary'}).parentElement?.textContent).toContain(entry.definition.formulas[0].expression);
    fireEvent.change(screen.getByLabelText(entry.fields[0].label),{target:{value:''}});
    expect(screen.queryByRole('table',{name:'Input and output reconciliation'})).toBeNull();
   });

@@ -1,0 +1,50 @@
+CalcuMint | Calculation report
+
+
+Website Bandwidth Calculator
+Calculator: website-bandwidth-calculator | Engine version: 2
+Raw engine values: full numeric precision; no display rounding or sampled rows.
+Units appear only where supplied by the calculation or bound display metadata.
+Embedded Unicode glyphs are readable.
+Unsupported characters and controls use explicit Unicode escapes.
+Tagged PDF; PDF/UA conformance: UNVERIFIED.
+Text follows document order; charts include complete numeric text alternatives.
+
+
+INPUTS
+Page size (MB) [MB]
+input["pageSizeMb"] = 2
+Monthly page views
+input["monthlyPageViews"] = 100000
+
+
+RESULTS
+Monthly transfer [GB]
+output["value"] = 200
+output["steps"][0] = "Website Bandwidth = 200"
+
+
+METHODOLOGY
+Deterministic calculation using the reviewed Technology & Computing engine.\u000aTechnic
+al calculation revision: technology.website-bandwidth@2\u000a\u000aEstimated monthly tra
+nsfer using decimal SI megabytes and gigabytes; caching, bots and CDN behavior are not m
+odeled.\u000aMonthly GB = page MB × page views ÷ 1000
+
+
+DECLARED FORMULAS
+website-bandwidth-calculator: Monthly GB = page MB × page views ÷ 1000
+Estimated monthly transfer using decimal SI megabytes and gigabytes; caching, bots and C
+DN behavior are not modeled.
+
+
+SOURCES
+NIST — SI and binary prefixes
+https://physics.nist.gov/cuu/Units/binary.html
+NIST distinguishes decimal SI MB and GB (powers of 10) from IEC binary MiB and GiB (powe
+rs of 2).
+
+
+
+
+Engine v2 | Page 1 of 1
+

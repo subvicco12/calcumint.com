@@ -1,0 +1,246 @@
+{
+  "kind": "UNSIGNED_EXACT_VERSION_REVIEW_PREPARATION_NOT_ACCEPTANCE",
+  "catalogId": 431,
+  "engine": {
+    "catalogId": 431,
+    "engineId": "conversion.power",
+    "calculatorSlug": "power-converter",
+    "calculatorVersion": 1,
+    "sourceVersion": "factory-wave1-20261112.1/conversion.power@1"
+  },
+  "frozenRuntimeSHA": "79bf64466663cc961fdb80365143d0c750dccc6f",
+  "canonicalTarget": {
+    "catalogPath": "docs/first20-publication/input/input/governing/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx",
+    "catalogRow": 432,
+    "blueprintPath": "docs/blueprint-reconciliation/native-paragraphs.txt"
+  },
+  "observedSnapshot": {
+    "calculatorSlug": "power-converter",
+    "calculatorVersion": 1,
+    "input": {
+      "value": 1,
+      "fromUnit": "w",
+      "toUnit": "kw"
+    },
+    "output": {
+      "result": 0.001
+    }
+  },
+  "rawExample": {
+    "value": "1",
+    "fromUnit": "w",
+    "toUnit": "kw"
+  },
+  "mathematicsEvidence": {
+    "path": "src/lib/calculator-factory/completion/conversion-contracts.test.ts",
+    "independentExpectedValues": true,
+    "historicalEngineChanged": false,
+    "sha256": "4ceafc8aa5a4a972249fb5ef03f25d7575563b63b87652beee65e6cc1ef6c1b8"
+  },
+  "sourceEvidence": {
+    "path": "src/lib/calculator-factory/completion/conversion-contracts.ts",
+    "nativeUCUMCapture": {
+      "path": "docs/first-live-closure-20261108/source/ucum-v2.2-native-source.zip",
+      "sha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+      "member": "ucum-essence.xml",
+      "memberSHA256": "dfccea1b5dc284245ebae97edd1dc03c45864da4e87df55bc9851797b4fd0b61"
+    },
+    "sha256": "4b92e748f570d9a8502137687bb332b34f60d0a74a7c95da5f809938ff969fdf"
+  },
+  "browserEvidence": {
+    "receipt": "../browser-receipt.json",
+    "syntheticAccountActions": true,
+    "journeys": [
+      {
+        "catalogId": 431,
+        "plan": "free",
+        "interactionElapsedMs": 18.100000001490116,
+        "performanceObservation": "Local visible calculation includes CDP latency; not hosted SLA",
+        "sourceBoundRealComponent": true,
+        "staleInvalidRefusal": true,
+        "keyboard": true,
+        "mobile": true,
+        "mathAnalysis": false,
+        "conversionSource": true,
+        "persistedSyntheticSaveReloadRestore": false,
+        "syntheticAuth": true
+      },
+      {
+        "catalogId": 431,
+        "plan": "pro",
+        "interactionElapsedMs": 25.899999998509884,
+        "performanceObservation": "Local visible calculation includes CDP latency; not hosted SLA",
+        "sourceBoundRealComponent": true,
+        "staleInvalidRefusal": true,
+        "keyboard": true,
+        "mobile": true,
+        "mathAnalysis": false,
+        "conversionSource": true,
+        "persistedSyntheticSaveReloadRestore": true,
+        "syntheticAuth": true
+      },
+      {
+        "catalogId": 431,
+        "plan": "business",
+        "interactionElapsedMs": 26.399999998509884,
+        "performanceObservation": "Local visible calculation includes CDP latency; not hosted SLA",
+        "sourceBoundRealComponent": true,
+        "staleInvalidRefusal": true,
+        "keyboard": true,
+        "mobile": true,
+        "mathAnalysis": false,
+        "conversionSource": true,
+        "persistedSyntheticSaveReloadRestore": true,
+        "syntheticAuth": true
+      }
+    ],
+    "downloads": [
+      {
+        "catalogId": 431,
+        "plan": "pro",
+        "format": "json",
+        "bytes": 531,
+        "sha256": "98bab862e6ab50d0720ae6a26bf870769d619ed82de256a2451cf22db5933927",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 431,
+        "plan": "pro",
+        "format": "csv",
+        "bytes": 395,
+        "sha256": "fdc7c4a217cfae301f8dca9b70ec13376b3ca91873f314c1623268ab7d632431",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 431,
+        "plan": "pro",
+        "format": "pdf",
+        "bytes": 16214,
+        "sha256": "510d77f0b504a0d22e87381e801be8e46cae120440d26fcb2a654fdae4923f32",
+        "popplerReadback": true
+      },
+      {
+        "catalogId": 431,
+        "plan": "business",
+        "format": "json",
+        "bytes": 531,
+        "sha256": "98bab862e6ab50d0720ae6a26bf870769d619ed82de256a2451cf22db5933927",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 431,
+        "plan": "business",
+        "format": "csv",
+        "bytes": 395,
+        "sha256": "fdc7c4a217cfae301f8dca9b70ec13376b3ca91873f314c1623268ab7d632431",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 431,
+        "plan": "business",
+        "format": "pdf",
+        "bytes": 16214,
+        "sha256": "510d77f0b504a0d22e87381e801be8e46cae120440d26fcb2a654fdae4923f32",
+        "popplerReadback": true
+      }
+    ]
+  },
+  "genuineAccountRpcEvidence": {
+    "receipt": "../account-receipt.json",
+    "observations": [
+      {
+        "catalogId": 431,
+        "slug": "power-converter",
+        "version": 1,
+        "plan": "free",
+        "input": {
+          "value": 1,
+          "fromUnit": "kw",
+          "toUnit": "w"
+        },
+        "output": {
+          "result": 1000
+        },
+        "historyId": "3911a279-229d-4b69-8a4d-da3810219039",
+        "scenarioId": null,
+        "registeredRestoreVerified": false,
+        "realJWT": true,
+        "exactRetry": true,
+        "conflictDenied": true,
+        "foreignReadUpdateDeleteDenied": true,
+        "freeScenarioDenied": true
+      },
+      {
+        "catalogId": 431,
+        "slug": "power-converter",
+        "version": 1,
+        "plan": "pro",
+        "input": {
+          "value": 1,
+          "fromUnit": "kw",
+          "toUnit": "w"
+        },
+        "output": {
+          "result": 1000
+        },
+        "historyId": "f901f128-4dd6-4137-8824-a1022a549152",
+        "scenarioId": "93704268-bb13-4bd9-9c0f-4d07dafb0479",
+        "registeredRestoreVerified": true,
+        "realJWT": true,
+        "exactRetry": true,
+        "conflictDenied": true,
+        "foreignReadUpdateDeleteDenied": true,
+        "freeScenarioDenied": false
+      },
+      {
+        "catalogId": 431,
+        "slug": "power-converter",
+        "version": 1,
+        "plan": "business",
+        "input": {
+          "value": 1,
+          "fromUnit": "kw",
+          "toUnit": "w"
+        },
+        "output": {
+          "result": 1000
+        },
+        "historyId": "3ef76c34-5b63-4195-b6ac-ab446dd01796",
+        "scenarioId": "4adcff30-8232-49e0-9137-0e743fa2d572",
+        "registeredRestoreVerified": true,
+        "realJWT": true,
+        "exactRetry": true,
+        "conflictDenied": true,
+        "foreignReadUpdateDeleteDenied": true,
+        "freeScenarioDenied": false
+      }
+    ],
+    "genuineBrowserServerActions": "SEE_SEPARATE_FINAL_VALIDATION"
+  },
+  "outstandingDecisions": [
+    "Accept/reject full canonical scope against exact catalog/Blueprint; offered bounded profile is not automatically complete",
+    "Accept/reject source applicability, formula/units, numerical precision/refusal and QA evidence",
+    "Resolve applicable organization-shared attachment and durable delivery/automation requirements; preserve proven capabilities",
+    "Record actual reviewer competence, independence, appointment authority and signed exact-version decision"
+  ],
+  "reviewerIdentity": null,
+  "appointment": null,
+  "competence": null,
+  "independence": null,
+  "signature": null,
+  "sourceDecision": "PENDING",
+  "formulaPrecisionDecision": "PENDING",
+  "canonicalQaDecision": "PENDING",
+  "canonicalAccepted": false,
+  "certified": false,
+  "publicationEligible": false,
+  "releaseHold": true,
+  "genuineNextPositiveEvidence": {
+    "path": "../genuine-browser-positive-receipt.json",
+    "sha256": "822a6c865a2aa4ffe6783a3ec377a292b2f6c13a279ea5ac8be33b5db094a088",
+    "observedPositiveJourneys": 3,
+    "paidDocumentReloadRestores": 2,
+    "wholeProducerPassed": false,
+    "ownerSwitchPostSqlVerified": false
+  }
+}

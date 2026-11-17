@@ -1,0 +1,172 @@
+TAP version 13
+# Subtest: preserves original frequency-to-N1 proof before exact Final successor proof
+ok 1 - preserves original frequency-to-N1 proof before exact Final successor proof
+  ---
+  duration_ms: 1498.027092
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects a historical caller reversion
+ok 2 - current Final proof rejects a historical caller reversion
+  ---
+  duration_ms: 116.516977
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects arbitrary caller tamper
+ok 3 - current Final proof rejects arbitrary caller tamper
+  ---
+  duration_ms: 115.847765
+  type: 'test'
+  ...
+# Subtest: original caller hash claim cannot be replaced by current Final hash
+ok 4 - original caller hash claim cannot be replaced by current Final hash
+  ---
+  duration_ms: 3.782892
+  type: 'test'
+  ...
+# Subtest: historical N1 object corruption cannot be hidden by a valid current source
+ok 5 - historical N1 object corruption cannot be hidden by a valid current source
+  ---
+  duration_ms: 7.050303
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects dependency tamper src/components/final-calculator-renderer.tsx
+ok 6 - current Final proof rejects dependency tamper src/components/final-calculator-renderer.tsx
+  ---
+  duration_ms: 10.389385
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects dependency tamper src/calculators/final-framework/unit-conversion-presentation.ts
+ok 7 - current Final proof rejects dependency tamper src/calculators/final-framework/unit-conversion-presentation.ts
+  ---
+  duration_ms: 19.929658
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects dependency tamper src/calculators/final-framework/renderer-display.ts
+ok 8 - current Final proof rejects dependency tamper src/calculators/final-framework/renderer-display.ts
+  ---
+  duration_ms: 31.691264
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects dependency tamper src/calculators/final-framework/renderer-trust-surface.ts
+ok 9 - current Final proof rejects dependency tamper src/calculators/final-framework/renderer-trust-surface.ts
+  ---
+  duration_ms: 44.165289
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects dependency tamper src/calculators/final-framework/result-inspection.ts
+ok 10 - current Final proof rejects dependency tamper src/calculators/final-framework/result-inspection.ts
+  ---
+  duration_ms: 52.037485
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects dependency tamper src/calculators/final-framework/analysis-surface-policy.ts
+ok 11 - current Final proof rejects dependency tamper src/calculators/final-framework/analysis-surface-policy.ts
+  ---
+  duration_ms: 65.386441
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects dependency tamper src/lib/n1-publication-methodology.ts
+ok 12 - current Final proof rejects dependency tamper src/lib/n1-publication-methodology.ts
+  ---
+  duration_ms: 73.266982
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects dependency tamper src/lib/frequency-presentation.ts
+ok 13 - current Final proof rejects dependency tamper src/lib/frequency-presentation.ts
+  ---
+  duration_ms: 86.82069
+  type: 'test'
+  ...
+# Subtest: current Final proof rejects dependency tamper src/lib/publication20/conversions.ts
+ok 14 - current Final proof rejects dependency tamper src/lib/publication20/conversions.ts
+  ---
+  duration_ms: 91.560298
+  type: 'test'
+  ...
+# Subtest: composed proof reads dependencies from its target tree, not process cwd
+ok 15 - composed proof reads dependencies from its target tree, not process cwd
+  ---
+  duration_ms: 653.037474
+  type: 'test'
+  ...
+# Subtest: composed proof rejects symlinked target dependency even with correct bytes
+ok 16 - composed proof rejects symlinked target dependency even with correct bytes
+  ---
+  duration_ms: 728.676319
+  type: 'test'
+  ...
+# Subtest: composed proof rejects silent target-tree N1 reversion under the valid original manifest
+ok 17 - composed proof rejects silent target-tree N1 reversion under the valid original manifest
+  ---
+  duration_ms: 1254.239001
+  type: 'test'
+  ...
+# Subtest: 13cohort ledger preserves540 prior dispositions and adds bounded scopes only
+ok 18 - 13cohort ledger preserves540 prior dispositions and adds bounded scopes only
+  ---
+  duration_ms: 6.100422
+  type: 'test'
+  ...
+# Subtest: source facts reproduce against native bytes without changing retained output
+ok 19 - source facts reproduce against native bytes without changing retained output
+  ---
+  duration_ms: 62.848091
+  type: 'test'
+  ...
+# Subtest: isolated lock receipt binds final producer but does not attest production freeze
+ok 20 - isolated lock receipt binds final producer but does not attest production freeze
+  ---
+  duration_ms: 0.688785
+  type: 'test'
+  ...
+# Subtest: native renderer proof distinguishes13partial targets and2regressions without authority promotion
+ok 21 - native renderer proof distinguishes13partial targets and2regressions without authority promotion
+  ---
+  duration_ms: 0.36761
+  type: 'test'
+  ...
+# Subtest: all older source bindings and verifier logic remain intact except explicit checker successor
+ok 22 - all older source bindings and verifier logic remain intact except explicit checker successor
+  ---
+  duration_ms: 11.034127
+  type: 'test'
+  ...
+# Subtest: appointment absence is explicitly observed with privileged read-only visibility
+ok 23 - appointment absence is explicitly observed with privileged read-only visibility
+  ---
+  duration_ms: 0.398801
+  type: 'test'
+  ...
+# Subtest: retained cohort guard evolution preserves historical stages and exact captured targets
+ok 24 - retained cohort guard evolution preserves historical stages and exact captured targets
+  ---
+  duration_ms: 763.566435
+  type: 'test'
+  ...
+# Subtest: retained cohort inventory evolution preserves its exact caller dependency history
+ok 25 - retained cohort inventory evolution preserves its exact caller dependency history
+  ---
+  duration_ms: 61.839197
+  type: 'test'
+  ...
+# Subtest: current first-five source evolution requires exact adopted rows, source bytes and every retained stage
+ok 26 - current first-five source evolution requires exact adopted rows, source bytes and every retained stage
+  ---
+  duration_ms: 4252.04478
+  type: 'test'
+  ...
+# Subtest: current first-five evolution rejects metadata reversion, same-target dependency drift and missing provenance
+ok 27 - current first-five evolution rejects metadata reversion, same-target dependency drift and missing provenance
+  ---
+  duration_ms: 2837.884263
+  type: 'test'
+  ...
+1..27
+# tests 27
+# suites 0
+# pass 27
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 13083.27262

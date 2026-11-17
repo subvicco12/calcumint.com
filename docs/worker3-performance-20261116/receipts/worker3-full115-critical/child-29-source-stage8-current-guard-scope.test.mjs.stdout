@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: metadata authenticates once before parse and ending read authenticates identical bytes
+ok 1 - metadata authenticates once before parse and ending read authenticates identical bytes
+  ---
+  duration_ms: 1.733635
+  type: 'test'
+  ...
+# Subtest: entry tamper including valid JSON of equal size cannot install a scope
+ok 2 - entry tamper including valid JSON of equal size cannot install a scope
+  ---
+  duration_ms: 1.525058
+  type: 'test'
+  ...
+# Subtest: ending same-size substitution and wrong type are rejected
+ok 3 - ending same-size substitution and wrong type are rejected
+  ---
+  duration_ms: 0.962088
+  type: 'test'
+  ...
+# Subtest: copied selected rows are deeply frozen and original capture cannot nominate successors
+ok 4 - copied selected rows are deeply frozen and original capture cannot nominate successors
+  ---
+  duration_ms: 0.350412
+  type: 'test'
+  ...
+# Subtest: forged key and changed reader Git view or actual endpoint never fall back
+ok 5 - forged key and changed reader Git view or actual endpoint never fall back
+  ---
+  duration_ms: 1.959494
+  type: 'test'
+  ...
+# Subtest: clearing expires metadata even if the key remains reachable
+ok 6 - clearing expires metadata even if the key remains reachable
+  ---
+  duration_ms: 0.41584
+  type: 'test'
+  ...
+# Subtest: each invocation builds its own authenticated metadata and cleanup
+ok 7 - each invocation builds its own authenticated metadata and cleanup
+  ---
+  duration_ms: 0.417098
+  type: 'test'
+  ...
+# Subtest: every repeated owned selection still authenticates old and fresh current records
+ok 8 - every repeated owned selection still authenticates old and fresh current records
+  ---
+  duration_ms: 0.980601
+  type: 'test'
+  ...
+# Subtest: outside the private scope the original dynamic capture read remains fresh
+ok 9 - outside the private scope the original dynamic capture read remains fresh
+  ---
+  duration_ms: 1.133388
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 21.285202

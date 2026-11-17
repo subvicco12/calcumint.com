@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "upload-time-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "input": {
+        "bandwidthMbps": 80,
+        "dataMegabytes": 100
+      },
+      "output": {
+        "steps": [
+          "Upload Time = 10"
+        ],
+        "value": 10
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "input": {
+        "bandwidthMbps": 80,
+        "dataMegabytes": 200
+      },
+      "output": {
+        "steps": [
+          "Upload Time = 20"
+        ],
+        "value": 20
+      }
+    }
+  ],
+  "comparison": {
+    "schemaVersion": 1,
+    "metrics": [
+      {
+        "field": "value",
+        "label": "value",
+        "cells": [
+          {
+            "slot": "A",
+            "value": 10,
+            "difference": 0,
+            "unavailable": null
+          },
+          {
+            "slot": "B",
+            "value": 20,
+            "difference": 10,
+            "unavailable": null
+          }
+        ]
+      }
+    ],
+    "charts": []
+  }
+}

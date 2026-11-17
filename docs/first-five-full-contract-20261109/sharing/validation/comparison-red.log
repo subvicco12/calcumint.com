@@ -1,0 +1,75 @@
+
+ RUN  v3.2.7 /tmp/calcumint-five-sharing-20261109
+
+ ❯ src/components/technology-five-shared-comparison.test.tsx (2 tests | 2 failed) 41ms
+   × compares immutable shared records through the existing same-revision A/B controls 35ms
+     → Unable to find an element with the text: Your A/B/C scenarios. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<p>[39m
+      [0mShared comparison unavailable[0m
+    [36m</p>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × does not carry captures across calculator identities or project contexts 5ms
+     → Unable to find an element with the text: Your A/B/C scenarios. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<p>[39m
+      [0mShared comparison unavailable[0m
+    [36m</p>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/technology-five-shared-comparison.test.tsx > compares immutable shared records through the existing same-revision A/B controls
+TestingLibraryElementError: Unable to find an element with the text: Your A/B/C scenarios. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<p>[39m
+      [0mShared comparison unavailable[0m
+    [36m</p>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError ../../workspace/work/batch13-deps/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../../workspace/work/batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../../workspace/work/batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../workspace/work/batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/technology-five-shared-comparison.test.tsx:7:189
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/components/technology-five-shared-comparison.test.tsx > does not carry captures across calculator identities or project contexts
+TestingLibraryElementError: Unable to find an element with the text: Your A/B/C scenarios. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<p>[39m
+      [0mShared comparison unavailable[0m
+    [36m</p>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError ../../workspace/work/batch13-deps/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../../workspace/work/batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../../workspace/work/batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../workspace/work/batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/technology-five-shared-comparison.test.tsx:8:377
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  19:08:46
+   Duration  1.04s (transform 44ms, setup 0ms, collect 147ms, tests 41ms, environment 441ms, prepare 77ms)
+

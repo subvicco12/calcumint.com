@@ -5,7 +5,7 @@ import prepared from '../../docs/full-product-batch14/contract-evidence.json';
 import priorRequirements from '../../docs/full-product-batch14/requirements-540.json';
 import closure from '../../docs/software-closure/requirements-540.json';
 import historical from '../../docs/validation-scale/evidence-540.json';
-import {validatePreparedCanonicalEvidence} from './canonical-evidence-preparation';
+import {validateHistoricalCanonicalEvidence} from './historical-canonical-evidence';
 import {copyCalculationData} from './calculation-snapshot';
 import {allContractAdapters,allContractVectors,evaluateScaledContract,scaledContractAdapters} from '../calculators/scaled-contract-adapters';
 import {evaluateCanonicalContract} from '../calculators/canonical-contract-adapters';
@@ -19,7 +19,7 @@ const bounded=['inputs','identity-version','goldens-and-rounding','plan-parity',
 const unproven=['browser-interaction','charts','accessibility','performance'] as const;
 
 export function collectBatch16RequirementEvidence(){
- const contract=validatePreparedCanonicalEvidence(prepared);
+ const contract=validateHistoricalCanonicalEvidence(prepared);
  const sourceHashes:Record<string,string>=Object.fromEntries(paths.map(path=>[path,digest(readFileSync(path,'utf8'))]));
  const requirementDefinitions:Record<string,string>={};
  const reference=(path:string,value:unknown):Evidence=>({path,sha256:digest(JSON.stringify(value))});

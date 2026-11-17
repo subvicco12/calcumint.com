@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "download-time-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "input": {
+        "bandwidthMbps": 80,
+        "dataMegabytes": 100
+      },
+      "output": {
+        "steps": [
+          "Download Time = 10"
+        ],
+        "value": 10
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "input": {
+        "bandwidthMbps": 80,
+        "dataMegabytes": 200
+      },
+      "output": {
+        "steps": [
+          "Download Time = 20"
+        ],
+        "value": 20
+      }
+    }
+  ]
+}

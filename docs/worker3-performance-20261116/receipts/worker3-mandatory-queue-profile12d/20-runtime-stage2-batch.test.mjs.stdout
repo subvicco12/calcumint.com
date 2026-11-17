@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: literal private rows preserve original Stage2 records and gotrue NS predecessor
+ok 1 - literal private rows preserve original Stage2 records and gotrue NS predecessor
+  ---
+  duration_ms: 2.973711
+  type: 'test'
+  ...
+# Subtest: all three private paths retain exact old bytes with defensive return copies
+ok 2 - all three private paths retain exact old bytes with defensive return copies
+  ---
+  duration_ms: 2.279878
+  type: 'test'
+  ...
+# Subtest: missing or wrong admitted current claim is refused
+ok 3 - missing or wrong admitted current claim is refused
+  ---
+  duration_ms: 1.747697
+  type: 'test'
+  ...
+# Subtest: live filesystem drift is checked on each read even after an earlier good read
+ok 4 - live filesystem drift is checked on each read even after an earlier good read
+  ---
+  duration_ms: 0.832611
+  type: 'test'
+  ...
+# Subtest: current HEAD path and current Git digest remain mandatory
+ok 5 - current HEAD path and current Git digest remain mandatory
+  ---
+  duration_ms: 0.679636
+  type: 'test'
+  ...
+# Subtest: old commit and old path-to-blob joins cannot substitute another source
+ok 6 - old commit and old path-to-blob joins cannot substitute another source
+  ---
+  duration_ms: 0.906587
+  type: 'test'
+  ...
+# Subtest: old byte count and SHA are checked separately
+ok 7 - old byte count and SHA are checked separately
+  ---
+  duration_ms: 1.992754
+  type: 'test'
+  ...
+# Subtest: gotrue keeps its explicit NS route without inventing a missing application-map claim
+ok 8 - gotrue keeps its explicit NS route without inventing a missing application-map claim
+  ---
+  duration_ms: 1.035065
+  type: 'test'
+  ...
+# Subtest: every mapped and Stage2 read rejects same-byte leaf and parent symlinks
+ok 9 - every mapped and Stage2 read rejects same-byte leaf and parent symlinks
+  ---
+  duration_ms: 2.929502
+  type: 'test'
+  ...
+# Subtest: all three private Stage2 rows use only the privately bound OID path when supplied
+ok 10 - all three private Stage2 rows use only the privately bound OID path when supplied
+  ---
+  duration_ms: 1.522591
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 34.991352

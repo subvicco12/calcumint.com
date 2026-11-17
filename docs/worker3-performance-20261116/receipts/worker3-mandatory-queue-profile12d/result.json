@@ -1,0 +1,20 @@
+{
+  "success": false,
+  "error": {
+    "name": "Error",
+    "code": 1,
+    "message": "Source verifier exited 1\nTAP version 13\n# Subtest: mandatory source guard regressions exercise exact source and immutable availability without skips\nnot ok 1 - mandatory source guard regressions exercise exact source and immutable availability without skips\n  ---\n  duration_ms: 62571.621984\n  type: 'test'\n  location: '/workspace/calcumint-worker3-recovery/tests/parallel-source-20261110/current.test.mjs:208:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    Mandatory source guard child failed: tests/next-engineering-20261115/source-stage9-fixture.test.mjs\n    stdout:\n    TAP version 13\n    # Subtest: only the native fixture import and provider change; all five original bodies remain literal\n    not ok 1 - only the native fixture import and provider change; all five original bodies remain literal\n      ---\n      duration_ms: 3.043157\n      type: 'test'\n      location: '/workspace/calcumint-worker3-recovery/tests/next-engineering-20261115/source-stage9-fixture.test.mjs:19:1'\n      failureType: 'testCodeFailure'\n      error: |-\n        Expected values to be strictly equal:\n        + actual - expected\n        \n        + '5a665657c918e13fd7df0345589e7fa78dba04f57a9f8a4a4bee0f0173f2b3b9'\n        - 'dce9ab31f02577cc410559d559fcec9bbb376ccc1326c513412c69d2677de52d'\n        \n      code: 'ERR_ASSERTION'\n      name: 'AssertionError'\n      expected: 'dce9ab31f02577cc410559d559fcec9bbb376ccc1326c513412c69d2677de52d'\n      actual: '5a665657c918e13fd7df0345589e7fa78dba04f57a9f8a4a4bee0f0173f2b3b9'\n      operator: 'strictEqual'\n      stack: |-\n        TestContext.<anonymous> (file:///workspace/calcumint-worker3-recovery/tests/next-engineering-20261115/source-stage9-fixture.test.mjs:26:9)\n        Test.runInAsyncScope (node:async_hooks:214:14)\n        Test.run (node:internal/test_runner/test:1047:25)\n        Test.start (node:internal/test_runner/test:944:17)\n        startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)\n      ...\n    # Subtest: native immutable blob preload forwards binary stdin options and returns private copies\n    ok 2 - native immutable blob preload forwards binary stdin options and returns private copies\n      ---\n      duration_ms: 2.662324\n      type: 'test'\n      ...\n    # Subtest: symbolic HEAD status root and explicit options reach native invocation in original order\n    ok 3 - symbolic HEAD status root and explicit options reach native invocation in original order\n      ---\n      duration_ms: 1.012307\n      type: 'test'\n      ...\n    # Subtest: opaque adversarial providers receive each immutable query before native fallback caching\n    ok 4 - opaque adversarial providers receive each immutable query before native fallback caching\n      ---\n      duration_ms: 0.714484\n      type: 'test'\n      ...\n    1..4\n    # tests 4\n    # suites 0\n    # pass 3\n    # fail 1\n    # cancelled 0\n    # skipped 0\n    # todo 0\n    # duration_ms 21.765846\n    \n    stderr:\n    \n  code: 'ERR_TEST_FAILURE'\n  stack: |-\n    TestContext.<anonymous> (file:///workspace/calcumint-worker3-recovery/tests/parallel-source-20261110/current.test.mjs:234:67)\n    async Test.run (node:internal/test_runner/test:1054:7)\n    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 0\n# fail 1\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 62597.94303\n\n",
+    "signal": null
+  },
+  "head": "12d1bac81a0e01e46c8654f61c4f4a96ad26e92b",
+  "closingHead": "12d1bac81a0e01e46c8654f61c4f4a96ad26e92b",
+  "status": " M tests/parallel-source-20261110/current.test.mjs\n",
+  "closingStatus": " M tests/parallel-source-20261110/current.test.mjs\n",
+  "prioritySHA256": "d90a1a14250dac9210dfddae387e511d1216abcc7ccdb353742137cb4f659389",
+  "closingPrioritySHA256": "d90a1a14250dac9210dfddae387e511d1216abcc7ccdb353742137cb4f659389",
+  "unchangedInput": true,
+  "wallMS": 62894.504225,
+  "samples": 313,
+  "scope": "ADVISORY_ORIGINAL_MANDATORY40_BLOCK_ONLY_NOT_ACCEPTANCE",
+  "qualified": false
+}

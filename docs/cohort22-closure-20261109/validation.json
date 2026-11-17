@@ -1,0 +1,160 @@
+{
+  "kind": "COHORT22_VERIFICATION_NOT_APPROVAL",
+  "baseline": "ddca21413199632fa7256967fffdded928a2a9de",
+  "currentApplicationSourceCapture": "955e2ed5df93e646275c4d94d33548cac5925380",
+  "sourceProofCapture": "2ff5df6266c945aa17c3a78226269475175fafe8",
+  "fullUnit": {
+    "passed": 8695,
+    "skipped": 4,
+    "failed": 0,
+    "filesPassed": 944,
+    "filesSkipped": 2,
+    "command": "npm test -- --maxWorkers=2"
+  },
+  "additionalFinalIndependentProof": {
+    "base64DeclaredIntegerDomainTests": 2,
+    "newUnitBridgeTests": 4,
+    "passed": 6,
+    "failed": 0,
+    "scope": "Final full suite includes both Base64 tests and four bridge tests. The final focused bridge strengthens repeated CSV/PDF semantic checks after independent review."
+  },
+  "focusedFeatureTestsPassed": 187,
+  "sourceGuardsPassed": 250,
+  "retainedUnitBridgePassed": 6,
+  "freshShallow": {
+    "exactRefsFetched": 45,
+    "nodeGroups": [
+      12,
+      20
+    ],
+    "failures": 0,
+    "maximumProcessBudgetSeconds": 60
+  },
+  "nativeBrowser": {
+    "journeys": 57,
+    "precisionRefusals": 30,
+    "paidDistinctABJourneys": 38,
+    "viewportModes": [
+      "320 portrait",
+      "820 landscape",
+      "1280 desktop"
+    ],
+    "transport": "SYNTHETIC_ACCOUNT_TRANSPORT",
+    "productionPerformanceQualified": false,
+    "paidCSVandPDFExports": 38,
+    "independentExportReaders": 38
+  },
+  "operator": {
+    "correctedFocusedTestsPassed": 5,
+    "sourceTypeConfusionReproducedAndFixed": true,
+    "adoptionGo": false,
+    "productionQualification": false,
+    "retainedInitialHashSnapshotCommit": "cbf98b06fe20430a7ee03cd24b24f8d5625a39a1",
+    "initialHashSnapshot": "operations/source-evidence-hashes.json",
+    "note": "The initial4-test snapshot is retained, not represented as current5-test source proof."
+  },
+  "lint": {
+    "errors": 0,
+    "retainedWarnings": 28
+  },
+  "typecheck": {
+    "exitCode": 0
+  },
+  "build": {
+    "command": "npm run build \u2192 next build --webpack",
+    "exitCode": 0
+  },
+  "historicalEnginesAndHeldSQLChanged": false,
+  "workflowChanged": false,
+  "newFullEngineeringComplete": 0,
+  "newCanonicalAcceptances": 0,
+  "newPublicationEligible": 0,
+  "hostedExactHeadCI": "PENDING_PUSH_AND_SEPARATE_CHECKPOINT",
+  "releaseHold": true,
+  "rawLogs": {
+    "docs/cohort22-closure-20261109/validation/browser.log": {
+      "sha256": "2ddaeec787913695a4e3c8215e21c2c432d30b0dc39dcec58433e98e1f0b97e7",
+      "bytes": 82
+    },
+    "docs/cohort22-closure-20261109/validation/final-base64-and-evidence.log": {
+      "sha256": "739b721fa44786e73ea17ae82a1cfd6df68550812fb0d1f69b061645616fed15",
+      "bytes": 593
+    },
+    "docs/cohort22-closure-20261109/validation/final-bridge.log": {
+      "sha256": "646c51f224e713c606439d225cb784b906b705912ad140be789d7dc9af641d1a",
+      "bytes": 704
+    },
+    "docs/cohort22-closure-20261109/validation/final-full-unit.log": {
+      "sha256": "af87a9fc5c0ed50de00f2fce8c4dbf39639de4bd71f9033c2c1e8f46f2c13613",
+      "bytes": 279832
+    },
+    "docs/cohort22-closure-20261109/validation/final-native-export.log": {
+      "sha256": "2ddaeec787913695a4e3c8215e21c2c432d30b0dc39dcec58433e98e1f0b97e7",
+      "bytes": 82
+    },
+    "docs/cohort22-closure-20261109/validation/final-shallow43.log": {
+      "sha256": "c878708e542ef97d3bbc20fff81059e3e33d841f1c7dd175d95031e0dc7884c1",
+      "bytes": 7821
+    },
+    "docs/cohort22-closure-20261109/validation/final-shallow45.log": {
+      "sha256": "3a430000c5fbb530cfe9dde3de77e55421cb36428653c3b4340d9dba8bbde4f1",
+      "bytes": 8327
+    },
+    "docs/cohort22-closure-20261109/validation/final-webpack.log": {
+      "sha256": "1f1afb107bf80b07819b0d3c1996ff6d7dc99b12456544a3e7e520505f3d4847",
+      "bytes": 2452
+    },
+    "docs/cohort22-closure-20261109/validation/focused187.log": {
+      "sha256": "4475a88ad9a712051f7c717004211969d89eeb53868e6319ddaa621c9798394c",
+      "bytes": 588
+    },
+    "docs/cohort22-closure-20261109/validation/full-unit-green.log": {
+      "sha256": "b6f5ba1f3b0b30dfb59bf9e99b015ae5729f6adcea00c45437d520bd6e9cefee",
+      "bytes": 282794
+    },
+    "docs/cohort22-closure-20261109/validation/initial-full-selector-failures.log": {
+      "sha256": "4105eb2615051940e939d2002cde3ba75c3abbdd5606987026de260bc0d1d92f",
+      "bytes": 352268
+    },
+    "docs/cohort22-closure-20261109/validation/lint.log": {
+      "sha256": "8f9a97d82d9a6001371041c095eb3706e3d080c0503f928733ed4af098da8737",
+      "bytes": 5891
+    },
+    "docs/cohort22-closure-20261109/validation/operator-type-green.log": {
+      "sha256": "76d07ce1c7c3f79345ddb8a5d3b699a01035adafb8b2472d98c7800e1d1cbb01",
+      "bytes": 564
+    },
+    "docs/cohort22-closure-20261109/validation/operator-type-red.log": {
+      "sha256": "9ffb4b2cd6ca507634635bb697b2d253a0e3f3026fec0a2289a78febfaf65c8d",
+      "bytes": 1413
+    },
+    "docs/cohort22-closure-20261109/validation/pdf-reader-initial-layout-assumption.log": {
+      "sha256": "f1f279bd40ff819f9bc9ea48a5e9e41199f4fdc5d518cf60b0cf939ca0fa2500",
+      "bytes": 378
+    },
+    "docs/cohort22-closure-20261109/validation/ppi-current-capture-red.log": {
+      "sha256": "f2247dfcf2f93966f0f26f1f4a80d1f0be5ceae73330ade1a9682f1f09268ce3",
+      "bytes": 6420
+    },
+    "docs/cohort22-closure-20261109/validation/retained-source-scope-green.log": {
+      "sha256": "1bfa57347a14a08d1871d282ff4a77011be33151af46c1d109d7efdb78f699a3",
+      "bytes": 437
+    },
+    "docs/cohort22-closure-20261109/validation/typecheck.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/cohort22-closure-20261109/validation/webpack.log": {
+      "sha256": "482e3849c6571d733ca78d671e6883b68bbb230fe6a93608121ad31f90e01554",
+      "bytes": 2448
+    },
+    "docs/cohort22-closure-20261109/validation/worked-example-red.log": {
+      "sha256": "3d7b44718b7bcb014936c6665cb96a0f49500c0d8ef822fc02b1e02f61a53f9e",
+      "bytes": 880473
+    }
+  },
+  "currentOperatorSourceHashes": {
+    "tests/execution-recovery-20261109/cohort22-attestation.mjs": "9b25ded35ef269bacb23672f1dbbc0efd97914f39c9bef54d9a06d1de4ea1395",
+    "tests/execution-recovery-20261109/cohort22-attestation.test.mjs": "9bcc28cce28c2f9b49cfc842580489f7d8489771f8e38746cf895e4c993beafc"
+  }
+}

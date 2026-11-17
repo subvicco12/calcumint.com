@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "checks": [
+    "Actual registered outputs, immutable duplicate POST/outbox and read-only recovery with inherited request quotas",
+    "Concurrent duplicate submissions create one immutable job/event while preserving existing per-POST quota policy",
+    "Native job and existing API share the same configured last-slot quota under concurrency",
+    "Job/quota/immutable outbox commit atomically and roll back together on audit failure",
+    "Current publication withdrawal, batch-scope removal and Business downgrade deny new submissions and recovery",
+    "Exact five/version and inherited1–100 row bounds reject unsupported jobs",
+    "Malformed current key scope metadata cannot substitute for an authoritative scope array",
+    "Atomic single-worker lease, expired lease recovery and stale/foreign completion fencing preserve event identity",
+    "Actual worker and local HTTP receiver verify HMAC, unchanged event/payload retry and durable failure/success audits",
+    "Actual signed worker stops at inherited8 attempts and cannot dispatch a ninth dead-letter event",
+    "Endpoint disable and key revocation prevent dispatch, including after a lease was acquired",
+    "RLS and function/table privileges deny untrusted direct job/outbox/audit access",
+    "RPC-only job/outbox/attempt writes and owner row-identity guards reject direct fabrication and rewrite",
+    "Original candidate counterexample reproduced: direct service identity rewrite/unrevoke and fabricated usage without quota",
+    "Source-bound embed successor enforces column privileges, monotonic revocation, immutable audits and RPC-only quota-backed usage",
+    "Held source-bound disable blocks new issuance/jobs/dispatch/debits while preserving every immutable audit record"
+  ],
+  "functions": {
+    "consume_technology_five_embed_v1": "d500274dc55b8a040bc96916bad7044f48f4da5098740719108a4b3340dea19f",
+    "consume_native_business_api_quota_v1": "4cc6f6a10adafd43e3e064301d4a0631d80bed09bec54f80b1a94c7b556fe9b9",
+    "technology_five_require_publication_v1": "80b2e085d6b4e68fff9705eff10bea1c730fe4101c5d8894eddc87df5e01003a",
+    "technology_five_evidence_identity_v1": "0a3a80e3b951cbeaa11c6d52f00e2dff329415ba55b4580833ae0c924000121e",
+    "technology_five_job_snapshot_v1": "8224cf87336fe78d8bf2538145bda1f0e59d79c1ff1a58b742d982355235a28a",
+    "technology_five_publication_snapshot_v1": "e7abd843edc391fe8c1f7eee433ba12d4c1fc12917ca111f55639865239a3d1b",
+    "technology_five_key_authority_v1": "d8b14f92eb95729b60e23302445828325db0528d34b4e4c41ce55d3acd5bd158",
+    "technology_five_embed_identity_v1": "6dfac5f2e4978fe8c51adfe16a4a2c5996e37e04027cf914a0b30f1ceffd4ff9",
+    "technology_five_embed_debit_core_v1": "85397a93c3483a3124fff8c00cf1a2369e9c5f69d1324d558e17b2faa172ce25",
+    "submit_technology_five_job_v1": "a9d4c24c493897155d514c371356556557c5948925c251bb631e8c1f022aba36",
+    "read_technology_five_job_v1": "45ff585b3c2eae04be88d98901efc56fb112cff3772a3116a7199d3f8872cffb",
+    "claim_technology_five_webhook_v1": "d0dc9e30ba1b9c6a9025fb636f317d0a8a6164e27765af014c72dad2437af127",
+    "check_technology_five_dispatch_v1": "6bcf5a65c5f5936633cc6675c6e9137c181c2a7bf27ad133155fe2452a63cedf",
+    "finish_technology_five_webhook_v1": "2c3c808c1a8ede50062097c779219824e9d02b76c27046d7abf75efd2f7f40b1"
+  },
+  "productionPublicationReaderSHA256": "de15d8bfdc9361003e9a630a9c422fe5477fdda9ebc2cc68fd1c9c04dae459d0",
+  "proposalSHA256": "59fb18da69e9008859cbffc18f56763df64fa681136cfd86f87372cfeced0e92",
+  "privateComposition": "Synthetic lower publication relation and local-only HTTP transport; actual source gate/SQL authority/quota/lease/worker/signature functions. Not production certification, adoption, public HTTPS delivery or hosted-state equivalence.",
+  "commercialPolicy": "Existing calculations:batch scope;1–100 technical rows;one request unit per accepted POST including duplicatePOST; GET recovery without debit; no new commercial limits.",
+  "productionWrites": false
+}

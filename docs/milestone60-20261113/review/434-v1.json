@@ -1,0 +1,285 @@
+{
+  "kind": "UNSIGNED_EXACT_VERSION_POST_CI_REVIEW_PACKET",
+  "identity": {
+    "catalogId": 434,
+    "engineId": "conversion.data-storage",
+    "slug": "data-storage-converter",
+    "version": 1
+  },
+  "title": "Data Storage Converter",
+  "qualifiedHead": "2d5d105892134f8af46fc2a02edd5932c431b845",
+  "applicationSource": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+  "scope": "Fixed-unit scalar conversion through the exact existing v1 factor table. Decimal input is represented by binary64; physical applicability, source review and complete canonical acceptance are separate. The caller must refuse nonzero input rounded to zero by a linear conversion. Case-sensitive existing codes: B is byte, KB/MB/GB/TB are decimal, KiB/MiB/GiB are binary; no bit, compression or provider-pricing mode.",
+  "limitations": [
+    "Offered unit codes only; formal canonical and source applicability remain subject to competent acceptance."
+  ],
+  "nativeCatalog": {
+    "row": 435,
+    "cells": {
+      "G": "A \u2014 Essential",
+      "H": "Full certified core calculation",
+      "I": "Usually none",
+      "J": "History; batch/advanced conversion where useful",
+      "K": "Pro analytics + team/client/embed/API/automation",
+      "L": "Required before publish",
+      "M": "Formula verified after certification"
+    }
+  },
+  "technicalRequirements": [
+    {
+      "criterion": "identity-and-scope",
+      "remaining": "Exact engine/version/slug, displayed boundary and source-bound frozen SHA; no adapter-only proof",
+      "complexity": "low"
+    },
+    {
+      "criterion": "formula-domain-and-precision",
+      "remaining": "Fixed-unit scalar conversion through the exact existing v1 factor table. Decimal input is represented by binary64; physical applicability, source review and complete canonical acceptance are separate. The caller must refuse nonzero input rounded to zero by a linear conversion. Case-sensitive existing codes: B is byte, KB/MB/GB/TB are decimal, KiB/MiB/GiB are binary; no bit, compression or provider-pricing mode.; independent normal/extreme/refusal witnesses and provenance",
+      "complexity": "medium"
+    },
+    {
+      "criterion": "actual-three-plan-delivery",
+      "remaining": "Own ID browser calculation, entitlement denial/parity, actual JSON/CSV/PDF bytes reconcile identity/raw values; account create/reload/history replay; accessibility/recovery/performance",
+      "complexity": "medium"
+    },
+    {
+      "criterion": "declared-advanced-capabilities",
+      "remaining": "Native I Usually none supports chart omission; J history required, batch/advanced conversion where useful must be declared",
+      "complexity": "medium"
+    },
+    {
+      "criterion": "business-platform",
+      "remaining": "Native K exact identity shared/team/client/API/embed/automation composition evidence; retained common evidence reusable only when exact route/tuple covers ID. Cannot substitute local batch for durable Business batch",
+      "complexity": "high"
+    },
+    {
+      "criterion": "canonical-human-authority",
+      "remaining": "Formal source/scope adoption, competent acceptance, certification/publication remain pending; not prerequisite to accurately named scoped engineering completion",
+      "complexity": "separate authority"
+    }
+  ],
+  "basePacket": {
+    "path": "docs/completion-wave-20261113/review/434-v1.json",
+    "sha256": "58e8e2154a26ded7be8127c54d4ef7ccbbf26cd4fe5e8a4462383bd7a73703fe"
+  },
+  "currentEvidenceAddendum": {
+    "path": "docs/completion-wave-20261113/review/current-evidence-addenda.json",
+    "sha256": "994c3a5dd5c020cd4b9a1a019940e2dd0987ac8a7b51c8920636c6498a13e613",
+    "pointer": "/rows/17"
+  },
+  "qualification": {
+    "head": "2d5d105892134f8af46fc2a02edd5932c431b845",
+    "run": 43432219668,
+    "conclusion": "success",
+    "requiredJobs": [
+      "build",
+      "checks",
+      "full-product",
+      "publication-factory",
+      "source-acceptance",
+      "validate"
+    ],
+    "engineeringScopeOnly": true,
+    "sourceCapture": 62,
+    "sourceRecords": 898,
+    "authorityPins": 148,
+    "preflightRefs": 286,
+    "applicationSource": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+    "testOnlySource": "e62f0e6a1aa798ef8798a2edf7a031ad6bf1c152",
+    "versionException": {
+      "catalogId": 383,
+      "technicalVersion": 2
+    },
+    "verifiedAtUTC": "2026-11-13T13:40:49.782382+00:00"
+  },
+  "qualificationProjection": {
+    "path": "/workspace/artifacts/completion-wave-20261113/final-qualified/requirements-540-qualified.json",
+    "sha256": "f84f96007e2d344b71d92e5b0c570802f7ae42bbbd7b8025beeaec0c00160393",
+    "pointer": "/rows/433"
+  },
+  "sourceBindings": [
+    {
+      "path": "src/lib/completion-wave-20261113/math-analysis.ts",
+      "commit": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+      "bytes": 5156,
+      "sha256": "d65ec76fe393ffdbb3c5aabf8084e03c7763218878b25463d6730eaf47a44ab0"
+    },
+    {
+      "path": "src/lib/completion-wave-20261113/conversion-workflows.ts",
+      "commit": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+      "bytes": 6236,
+      "sha256": "ddc998f3f8ce6bb95f57b465cf663bf8861a9c6aff00c4c0c322109051e159e5"
+    },
+    {
+      "path": "src/lib/completion-wave-20261113/physics.ts",
+      "commit": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+      "bytes": 3840,
+      "sha256": "d675805de50a163d14a2ac0809edb0b9ad1ab4d1806b0f1f6fb71cbfa3d8aefa"
+    },
+    {
+      "path": "src/components/completion-wave-analysis.tsx",
+      "commit": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+      "bytes": 8878,
+      "sha256": "467ad4a17356b35f92255993284d04696861ff8c6c08f4f4fa6ad1f74ae15a5c"
+    },
+    {
+      "path": "src/components/completion-wave-analysis.test.tsx",
+      "commit": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+      "bytes": 6494,
+      "sha256": "d77994c3197e3f439440dd22d891f048eb8c28c90d242eb3b155e5d4f16c8b36"
+    },
+    {
+      "path": "src/lib/completion-wave-20261113/engine-evidence.test.ts",
+      "commit": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+      "bytes": 208,
+      "sha256": "74fb11e67c4c08d81364d271090a12a6a3f9e1e8104d07ea9302cd80c41fabbf"
+    },
+    {
+      "path": "src/lib/completion-wave-20261113/native-wave.test.ts",
+      "commit": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+      "bytes": 989,
+      "sha256": "40397748a1cd9ce9b318582bcab276c38ef61dbf4ef8aa0ebe0609ea2466f5bd"
+    },
+    {
+      "path": "src/components/calculator-factory-shared-workspace.test.tsx",
+      "commit": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+      "bytes": 6716,
+      "sha256": "ff66e40a5151b7f838ee06449755630b67f898a1ae855e60f737e2aa1a4a27b7"
+    }
+  ],
+  "selectedImmutableProfileClaim": "Case-sensitive product byte codes B, KB decimal and KiB binary; no bit, compression, pricing or UCUM spelling claim.",
+  "reviewEvidence": {
+    "identity": {
+      "catalogId": 434,
+      "engineId": "conversion.data-storage",
+      "slug": "data-storage-converter",
+      "version": 1
+    },
+    "registered": true,
+    "classification": "CONDITIONAL_TECHNICAL_CANDIDATE_PENDING_FULL_CI_AND_REVIEW",
+    "basePacket": {
+      "path": "docs/completion-wave-20261113/review/434-v1.json",
+      "sha256": "58e8e2154a26ded7be8127c54d4ef7ccbbf26cd4fe5e8a4462383bd7a73703fe",
+      "originalCommit": "946cc31a",
+      "technicalRequirementsPointer": "/technicalRequirements",
+      "requirementsRemainReviewQuestions": true
+    },
+    "selectedImmutableProfileClaim": "Case-sensitive product byte codes B, KB decimal and KiB binary; no bit, compression, pricing or UCUM spelling claim.",
+    "nativeGThroughM": {
+      "G": "A \u2014 Essential",
+      "H": "Full certified core calculation",
+      "I": "Usually none",
+      "J": "History; batch/advanced conversion where useful",
+      "K": "Pro analytics + team/client/embed/API/automation",
+      "L": "Required before publish",
+      "M": "Formula verified after certification"
+    },
+    "nativeDecisionStatus": {
+      "GThroughM": "PENDING_CANONICAL_REVIEW",
+      "HCertification": "PENDING",
+      "LBeforePublish": "PENDING",
+      "MFormulaAfterCertification": "PENDING",
+      "noApplicabilityWaiverInvented": true
+    },
+    "numericalAndComponentEvidence": {
+      "family": "conversion",
+      "focusedReceipt": "focused",
+      "scope": "Selected immutable engine, explicit finite witnesses and refusal cases; not full-domain, arbitrary-precision or human certification."
+    },
+    "sourceEvidence": [
+      "source61"
+    ],
+    "reviewQuestionsStillOpen": [
+      "Competent review of selected profile and original technicalRequirements",
+      "Canonical G\u2013M acceptance, QA-human signatures, certification and publication decision"
+    ],
+    "decisions": {
+      "canonicalApproval": false,
+      "qaHumanSignature": null,
+      "competentReviewerSignature": null,
+      "certification": false,
+      "publicationApproval": false
+    },
+    "deliveryEvidence": {
+      "businessReceipt": "business",
+      "businessPointers": {
+        "freeHistory": "/freeHistory/12",
+        "sharing": "/sharing/12",
+        "embed": "/embed/12",
+        "api": "/api/12",
+        "waveBatch": "/waveBatch/12"
+      },
+      "claim": "Actual Free owned SSR history/replay and export denial; Business shared comparison, immutable scenario and downloads, embed controls, scoped API and mounted two-row durable batch within declared disposable fixture.",
+      "automationReceipt": "automation",
+      "automationPointer": "/observations/12",
+      "automationClaim": "Actual HTTP handler adapter and worker, two webhook attempts with HMAC and exact original raw bytes; not Next production receiver campaign or external TLS production delivery.",
+      "pro": {
+        "receipt": "pro",
+        "pointer": "/rows/11",
+        "claim": "Genuine SSR Pro forward, three browser-downloaded JSON/CSV/PDF documents with readback and owned history reopen plus recorded history JSON.",
+        "reverseEvidence": "No reverse capability claim; selected converter target matrix and raw-preserving swap are numerical/component evidence."
+      },
+      "archivedExports": [
+        {
+          "archivePath": "exports/434/business-scenario-json.json",
+          "bytes": 1108,
+          "sha256": "6af36b5f876d3db1690fc651a517b7e81481e4560429af88c5866e5205ab71da"
+        },
+        {
+          "archivePath": "exports/434/business-whatif-json.json",
+          "bytes": 2545,
+          "sha256": "2582bde5fa396774ab628fedf79dc62ae82d69a50894a5fae43e0d5ac0bb01e9"
+        },
+        {
+          "archivePath": "exports/434/business-whatif-csv.csv",
+          "bytes": 494,
+          "sha256": "93f9f2e3f8d67bf0b391e1d70a8b2c5ccd52768123806e7f454ededcd4b5c560"
+        },
+        {
+          "archivePath": "exports/434/business-whatif-pdf.pdf",
+          "bytes": 16580,
+          "sha256": "a62291f6b4f8167f5dc873942ee292125986ef44b886b0da7e729087b8071f33"
+        },
+        {
+          "archivePath": "exports/434/pro-json.json",
+          "bytes": 559,
+          "sha256": "d316545a5138c4b0935cbc782518f5c62d977154b88075465b0cd2cb4a22a1f0"
+        },
+        {
+          "archivePath": "exports/434/pro-csv.csv",
+          "bytes": 416,
+          "sha256": "16502111ea0b09952089b575cb06cd1aa1128ba1ba92d42c7115273f242e61b4"
+        },
+        {
+          "archivePath": "exports/434/pro-pdf.pdf",
+          "bytes": 16249,
+          "sha256": "e7fbdfe44762b0b5823d56e4587e92c82eef532f6964ec68eaebf769165fa198"
+        },
+        {
+          "archivePath": "exports/434/pro-history-json.json",
+          "bytes": 187,
+          "sha256": "6289674eaae6e2e8199095ea0643a888e88e115482261789f7ddf1e90886bb53"
+        }
+      ]
+    },
+    "graphEvidence": "No graph or reverse applicability waiver inferred from native catalog None; retain original questions."
+  },
+  "qualificationUpdate": "Earlier pending full-regression/exact-head CI flags are superseded only by the successful qualified-head receipt; applicability and source/formula/precision/QA decisions remain open. Source61 cold proof remains source61, not source62 cold execution.",
+  "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+  "requiredDecisions": {
+    "reviewerIdentity": null,
+    "appointmentAuthorityRef": null,
+    "competenceRef": null,
+    "authorIdentityRef": null,
+    "independenceRef": null,
+    "specialistApplicabilityDecision": null,
+    "sourceRevisionApplicabilityDecision": null,
+    "formulaPrecisionDecision": null,
+    "canonicalQaClauseDecisions": null,
+    "fullContractAdoption": null,
+    "signature": null
+  },
+  "canonicalAccepted": false,
+  "certificationGranted": false,
+  "publicationEligible": false,
+  "releaseHold": true
+}

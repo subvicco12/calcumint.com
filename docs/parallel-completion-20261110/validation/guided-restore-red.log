@@ -1,0 +1,45 @@
+
+ RUN  v3.2.7 /workspace/work/product-completion-20261108
+
+ ✓ src/components/publication20-tool.test.tsx (16 tests) 1667ms
+   ✓ exact existing converter interfaces > wires all15 immutable engines, methodology, sources and account/scenario units on free  550ms
+   ✓ exact existing converter interfaces > wires all15 immutable engines, methodology, sources and account/scenario units on pro  385ms
+ ✓ src/components/catalog-engineering-review.test.tsx (3 tests) 909ms
+   ✓ discovers540 exact identities with classification and unknown publication, preserving blocked198  309ms
+   ✓ calculates a private business scope, invalidates edits and restores immutable scenarios  326ms
+ ❯ src/components/parallel-completion-integration.test.tsx (2 tests | 1 failed) 551ms
+   ✓ loads a registered converter example explicitly and recovers a refused editable value 169ms
+   × uses guided real business calculation, invalidates edits and restores an immutable scenario 380ms
+     → expected <p role="alert"></p> to be null
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/parallel-completion-integration.test.tsx > uses guided real business calculation, invalidates edits and restores an immutable scenario
+AssertionError: expected <p role="alert"></p> to be null
+
+- Expected: 
+null
+
++ Received: 
+<p
+  role="alert"
+>
+  Correct the marked fields before calculating.
+</p>
+
+ ❯ src/components/parallel-completion-integration.test.tsx:32:38
+     30|  fireEvent.click(screen.getByRole('button',{name:'Restore scenario 1'}…
+     31|  expect(screen.getByTestId('business-result').textContent).toBe('30');
+     32|  expect(screen.queryByRole('alert')).toBeNull();
+       |                                      ^
+     33| });
+     34| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 20 passed (21)
+   Start at  17:08:53
+   Duration  9.25s (transform 2.21s, setup 0ms, collect 4.18s, tests 3.13s, environment 1.13s, prepare 220ms)
+

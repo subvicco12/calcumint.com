@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
-import {callerPaths,verifyCallerSuccessor} from './caller-successor.mjs';
+import {callerPaths,verifyCallerSuccessor,verifyRetainedCallerSuccessor} from './caller-successor.mjs';
 const bindings=JSON.parse(readFileSync(new URL('../../docs/p0-decision-contracts/writers-acl.json',import.meta.url))).sourceBindings;
 for(const callerPath of callerPaths){
 const bytes=readFileSync(new URL('../../'+callerPath,import.meta.url));
@@ -24,11 +24,11 @@ test('Business API successor is the exact native frequency implementation Git ob
  assert.equal(execFileSync('git',['rev-parse','--verify',commit+':'+path],{cwd:root,encoding:'utf8'}).trim(),blob);
  const bytes=execFileSync('git',['cat-file','blob',blob],{cwd:root});
  assert.equal(createHash('sha256').update(bytes).digest('hex'),'b55c1948dfceddc58bfa671421f97b5c3d384a212e8f3e7e7559aba95347887d');
- verifyCallerSuccessor(path,bytes,'9139a6fb155ae56b37b3b48738faf50197d1e3c5b1f7872391b53f495b2dcbc4');
+ verifyRetainedCallerSuccessor(path,bytes,'9139a6fb155ae56b37b3b48738faf50197d1e3c5b1f7872391b53f495b2dcbc4');
  const historical=execFileSync('git',['cat-file','blob','28802b1b1655421ba90dbd3c78aa54d893d9e851'],{cwd:root});
- assert.throws(()=>verifyCallerSuccessor(path,historical,bindings[path]),/Exact draft-safety caller successor/);
+ assert.throws(()=>verifyRetainedCallerSuccessor(path,historical,bindings[path]),/Exact draft-safety caller successor/);
  const changed=Buffer.from(bytes);changed[0]^=1;
- assert.throws(()=>verifyCallerSuccessor(path,changed,bindings[path]),/Exact draft-safety caller successor/);
+ assert.throws(()=>verifyRetainedCallerSuccessor(path,changed,bindings[path]),/Exact draft-safety caller successor/);
 });
 
 test('shallow hosted CI explicitly retrieves all immutable caller provenance commits',()=>{

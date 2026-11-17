@@ -1,0 +1,7 @@
+
+> calcumint@0.1.0 typecheck
+> tsc --noEmit
+
+src/lib/full-six/candidate/statistics-report-ui.test.tsx(48,3): error TS2322: Type 'Mock<() => Promise<unknown>>' is not assignable to type '(id: CandidateCatalogId, input: unknown) => Promise<{ protocol: "six-candidate-private-1"; scope: "PRIVATE_EXPERIMENTAL"; catalogId: 283 | 235 | 251 | 275 | 276 | 282; engineId: string; baselineVersion: number; contractSHA256: string; implementationRevision: "six-private-workflows-20261106.1"; input: Record<...>; ou...'.
+  Type 'Promise<unknown>' is not assignable to type 'Promise<{ protocol: "six-candidate-private-1"; scope: "PRIVATE_EXPERIMENTAL"; catalogId: 283 | 235 | 251 | 275 | 276 | 282; engineId: string; baselineVersion: number; contractSHA256: string; implementationRevision: "six-private-workflows-20261106.1"; input: Record<...>; output: Record<...>; }>'.
+    Type 'unknown' is not assignable to type '{ protocol: "six-candidate-private-1"; scope: "PRIVATE_EXPERIMENTAL"; catalogId: 283 | 235 | 251 | 275 | 276 | 282; engineId: string; baselineVersion: number; contractSHA256: string; implementationRevision: "six-private-workflows-20261106.1"; input: Record<...>; output: Record<...>; }'.

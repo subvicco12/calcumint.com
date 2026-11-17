@@ -1,0 +1,12 @@
+import {it,expect} from 'vitest';
+import {captureScenario,scenarioSetPayload} from './scenario-set';
+import {recoverScenarioSet} from './scenario-set-recovery';
+import {createScenarioReport,serializeScenarioReportJson} from './scenario-report';
+import {calculatorRegistry} from '@/calculators/registry';
+import {runCalculator} from '@/calculators/engine';
+const identity={calculatorSlug:'storage-conversion-calculator',calculatorVersion:1};
+const snapshot=(toUnit:string)=>{const input={value:1,fromUnit:'GiB',toUnit};return {...identity,input,output:runCalculator(calculatorRegistry.getBySlug(identity.calculatorSlug)!,input).output as Record<string,unknown>};};
+const captures=()=>captureScenario(captureScenario([],'A',snapshot('GiB'),'original A'),'B',snapshot('MiB'),'original B');
+it('restores working-copy units so mixed target outputs never subtract or chart while preserving imported bytes and rows',()=>{const rows=captures(),file=scenarioSetPayload(rows),before=JSON.stringify(file),rowsBefore=JSON.stringify(rows),recovered=recoverScenarioSet(file,identity);expect(recovered.map(r=>r.snapshot.output.value)).toEqual([1,1024]);expect(recovered.map(r=>r.displayMetadata?.outputs.value.unit)).toEqual(['GiB','MiB']);const report=createScenarioReport(recovered);expect(report.metrics[0].cells[1]).toMatchObject({value:1024,difference:null,unavailable:'Display context differs from baseline'});expect(report.charts).toEqual([]);expect(JSON.stringify(file)).toBe(before);expect(JSON.stringify(rows)).toBe(rowsBefore);});
+it('validates imported comparison before restoring context and rejects altered comparison',()=>{const original=JSON.parse(serializeScenarioReportJson(captures())),before=JSON.stringify(original);expect(original.comparison.metrics[0].cells[1].difference).toBe(1023);const recovered=recoverScenarioSet(original,identity);expect(createScenarioReport(recovered).metrics[0].cells[1].difference).toBeNull();expect(JSON.stringify(original)).toBe(before);original.comparison.metrics[0].cells[1].difference=7;expect(()=>recoverScenarioSet(original,identity)).toThrow(/comparison/);});
+it('rejects conflicting recorded storage metadata rather than silently relabeling it',()=>{for(const side of ['inputs','outputs'] as const){const file=structuredClone(scenarioSetPayload(captures())) as unknown as {scenarios:{displayMetadata:unknown}[]};file.scenarios[0].displayMetadata={schemaVersion:1,...identity,inputs:{},outputs:{},[side]:{value:{label:'Misleading',unit:'KiB'}}};expect(()=>recoverScenarioSet(file,identity)).toThrow(/units/);}});

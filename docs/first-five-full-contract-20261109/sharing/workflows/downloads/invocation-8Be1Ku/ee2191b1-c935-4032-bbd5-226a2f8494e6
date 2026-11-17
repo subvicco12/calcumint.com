@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "base64-size-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "input": {
+        "inputBytes": 1000
+      },
+      "output": {
+        "steps": [
+          "Base64 Size = 1336"
+        ],
+        "value": 1336
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "input": {
+        "inputBytes": 1003
+      },
+      "output": {
+        "steps": [
+          "Base64 Size = 1340"
+        ],
+        "value": 1340
+      }
+    }
+  ],
+  "comparison": {
+    "schemaVersion": 1,
+    "metrics": [
+      {
+        "field": "value",
+        "label": "value",
+        "cells": [
+          {
+            "slot": "A",
+            "value": 1336,
+            "difference": 0,
+            "unavailable": null
+          },
+          {
+            "slot": "B",
+            "value": 1340,
+            "difference": 4,
+            "unavailable": null
+          }
+        ]
+      }
+    ],
+    "charts": []
+  }
+}

@@ -1,0 +1,387 @@
+{
+  "cases": [
+    {
+      "catalogId": 284,
+      "engineId": "statistics.z-score",
+      "slug": "z-score-calculator",
+      "version": 1,
+      "input": {
+        "value": 110,
+        "mean": 100,
+        "standardDeviation": 10
+      },
+      "output": {
+        "zScore": 1,
+        "deviation": 10,
+        "steps": [
+          "Deviation = 110 - 100 = 10",
+          "z = deviation / standard deviation = 1"
+        ]
+      }
+    },
+    {
+      "catalogId": 285,
+      "engineId": "statistics.confidence-interval",
+      "slug": "confidence-interval-calculator",
+      "version": 1,
+      "input": {
+        "estimate": 100,
+        "standardError": 5,
+        "confidenceLevel": 0.95
+      },
+      "output": {
+        "estimate": 100,
+        "marginOfError": 9.799819922700001,
+        "lowerBound": 90.2001800773,
+        "upperBound": 109.7998199227,
+        "confidenceLevel": 0.95,
+        "criticalValue": 1.95996398454,
+        "steps": [
+          "z* = 1.95996398454",
+          "Margin of error = z* × SE = 9.799819922700001",
+          "Interval = 90.2001800773 to 109.7998199227"
+        ]
+      }
+    },
+    {
+      "catalogId": 286,
+      "engineId": "statistics.sample-size",
+      "slug": "sample-size-calculator",
+      "version": 1,
+      "input": {
+        "confidenceLevel": 0.95,
+        "marginOfError": 0.05,
+        "proportion": 0.5
+      },
+      "output": {
+        "sampleSize": 385,
+        "unroundedSampleSize": 384.1458820693913,
+        "confidenceLevel": 0.95,
+        "marginOfError": 0.05,
+        "proportion": 0.5,
+        "steps": [
+          "z* = 1.95996398454",
+          "n = z*²p(1-p)/E² = 384.1458820693913",
+          "Round up = 385"
+        ]
+      }
+    },
+    {
+      "catalogId": 287,
+      "engineId": "statistics.probability",
+      "slug": "probability-calculator",
+      "version": 1,
+      "input": {
+        "probabilityOfA": 0.5,
+        "probabilityOfB": 0.4
+      },
+      "output": {
+        "probabilityOfA": 0.5,
+        "probabilityOfB": 0.4,
+        "bothIndependent": 0.2,
+        "eitherIndependent": 0.7,
+        "notA": 0.5,
+        "steps": [
+          "P(A and B) = P(A)P(B) = 0.2",
+          "P(A or B) = P(A)+P(B)-P(A and B) = 0.7",
+          "P(not A) = 0.5"
+        ]
+      }
+    },
+    {
+      "catalogId": 288,
+      "engineId": "statistics.permutation",
+      "slug": "permutation-calculator",
+      "version": 1,
+      "input": {
+        "n": 5,
+        "r": 3
+      },
+      "output": {
+        "permutations": 60,
+        "n": 5,
+        "r": 3,
+        "steps": [
+          "n = 5; r = 3",
+          "P(n,r) = n!/(n-r)! = 60"
+        ]
+      }
+    },
+    {
+      "catalogId": 289,
+      "engineId": "statistics.combination",
+      "slug": "combination-calculator",
+      "version": 1,
+      "input": {
+        "n": 5,
+        "r": 3
+      },
+      "output": {
+        "combinations": 10,
+        "n": 5,
+        "r": 3,
+        "steps": [
+          "n = 5; r = 3",
+          "C(n,r) = n!/(r!(n-r)!) = 10"
+        ]
+      }
+    },
+    {
+      "catalogId": 290,
+      "engineId": "statistics.binomial-probability",
+      "slug": "binomial-probability-calculator",
+      "version": 1,
+      "input": {
+        "n": 10,
+        "k": 3,
+        "p": 0.5
+      },
+      "output": {
+        "probability": 0.11718750000000014,
+        "n": 10,
+        "k": 3,
+        "p": 0.5,
+        "steps": [
+          "n = 10; k = 3; p = 0.5",
+          "P(X=k) = C(n,k)p^k(1-p)^(n-k) = 0.11718750000000014"
+        ]
+      }
+    },
+    {
+      "catalogId": 291,
+      "engineId": "statistics.normal-distribution",
+      "slug": "normal-distribution-calculator",
+      "version": 1,
+      "input": {
+        "x": 0,
+        "mean": 0,
+        "standardDeviation": 1
+      },
+      "output": {
+        "zScore": 0,
+        "pdf": 0.3989422804014327,
+        "cdf": 0.5000000005,
+        "upperTail": 0.4999999995,
+        "steps": [
+          "z = (x-μ)/σ = 0",
+          "PDF = 0.3989422804014327",
+          "P(X≤x) ≈ 0.5000000005"
+        ]
+      }
+    },
+    {
+      "catalogId": 300,
+      "engineId": "statistics.bayes-theorem",
+      "slug": "bayes-theorem-calculator",
+      "version": 1,
+      "input": {
+        "prior": 0.2,
+        "likelihood": 0.8,
+        "evidenceGivenNot": 0.1
+      },
+      "output": {
+        "posterior": 0.6666666666666666,
+        "numerator": 0.16000000000000003,
+        "denominator": 0.24000000000000005,
+        "steps": [
+          "P(H∩E) = 0.16000000000000003",
+          "P(E) = 0.24000000000000005",
+          "P(H|E) = 0.6666666666666666"
+        ]
+      }
+    },
+    {
+      "catalogId": 329,
+      "engineId": "chemistry.molality",
+      "slug": "molality-calculator",
+      "version": 1,
+      "input": {
+        "moles": 1,
+        "solventMassKg": 2
+      },
+      "output": {
+        "value": 0.5,
+        "steps": [
+          "Molality = 0.5"
+        ]
+      }
+    },
+    {
+      "catalogId": 333,
+      "engineId": "chemistry.ph",
+      "slug": "ph-calculator",
+      "version": 1,
+      "input": {
+        "hydrogenIonConcentration": 1e-7
+      },
+      "output": {
+        "value": 7,
+        "steps": [
+          "pH = 7"
+        ]
+      }
+    },
+    {
+      "catalogId": 334,
+      "engineId": "chemistry.ideal-gas-law",
+      "slug": "ideal-gas-law-calculator",
+      "version": 1,
+      "input": {
+        "moles": 1,
+        "temperatureKelvin": 300,
+        "volumeLiters": 24.617209824288
+      },
+      "output": {
+        "value": 0.9999999999999999,
+        "steps": [
+          "Ideal Gas Law = 0.9999999999999999"
+        ]
+      }
+    },
+    {
+      "catalogId": 335,
+      "engineId": "chemistry.gas-density",
+      "slug": "gas-density-calculator",
+      "version": 1,
+      "input": {
+        "pressureAtm": 1,
+        "molarMassGPerMol": 28,
+        "temperatureKelvin": 273.15
+      },
+      "output": {
+        "value": 1.249220935353164,
+        "steps": [
+          "Gas Density = 1.249220935353164"
+        ]
+      }
+    },
+    {
+      "catalogId": 336,
+      "engineId": "chemistry.percent-composition",
+      "slug": "percent-composition-calculator",
+      "version": 1,
+      "input": {
+        "componentMass": 25,
+        "totalMass": 100
+      },
+      "output": {
+        "value": 25,
+        "steps": [
+          "Percent Composition = 25"
+        ]
+      }
+    },
+    {
+      "catalogId": 337,
+      "engineId": "chemistry.solution-concentration",
+      "slug": "solution-concentration-calculator",
+      "version": 1,
+      "input": {
+        "soluteMassGrams": 10,
+        "solutionVolumeLiters": 2
+      },
+      "output": {
+        "value": 5,
+        "steps": [
+          "Solution Concentration = 5"
+        ]
+      }
+    },
+    {
+      "catalogId": 338,
+      "engineId": "chemistry.stoichiometry",
+      "slug": "stoichiometry-calculator",
+      "version": 1,
+      "input": {
+        "knownMoles": 2,
+        "knownCoefficient": 2,
+        "targetCoefficient": 1
+      },
+      "output": {
+        "value": 1,
+        "steps": [
+          "Stoichiometry = 1"
+        ]
+      }
+    },
+    {
+      "catalogId": 339,
+      "engineId": "chemistry.half-life",
+      "slug": "half-life-calculator",
+      "version": 1,
+      "input": {
+        "initialAmount": 100,
+        "elapsedTime": 20,
+        "halfLife": 10
+      },
+      "output": {
+        "value": 25,
+        "steps": [
+          "Half-Life = 25"
+        ]
+      }
+    },
+    {
+      "catalogId": 340,
+      "engineId": "chemistry.nernst-equation",
+      "slug": "nernst-equation-calculator",
+      "version": 1,
+      "input": {
+        "standardPotential": 1,
+        "temperatureKelvin": 298.15,
+        "electronCount": 1,
+        "reactionQuotient": 1
+      },
+      "output": {
+        "value": 1,
+        "steps": [
+          "Nernst Equation = 1"
+        ]
+      }
+    },
+    {
+      "catalogId": 341,
+      "engineId": "chemistry.beer-lambert-law",
+      "slug": "beer-lambert-law-calculator",
+      "version": 1,
+      "input": {
+        "molarAbsorptivity": 2,
+        "pathLength": 1,
+        "concentration": 0.5
+      },
+      "output": {
+        "value": 1,
+        "steps": [
+          "Beer-Lambert Law = 1"
+        ]
+      }
+    },
+    {
+      "catalogId": 342,
+      "engineId": "chemistry.titration",
+      "slug": "titration-calculator",
+      "version": 1,
+      "input": {
+        "titrantConcentration": 0.1,
+        "titrantVolume": 25,
+        "analyteVolume": 25,
+        "titrantCoefficient": 1,
+        "analyteCoefficient": 1
+      },
+      "output": {
+        "value": 0.1,
+        "steps": [
+          "Titration = 0.1"
+        ]
+      }
+    }
+  ],
+  "sourceHashes": {
+    "src/calculators/statistics/catalog-batch-1.ts": "172db736ce7c991e0b11cf99612578d7c25374bda0f95e009167e9fa887ba52f",
+    "src/calculators/statistics/catalog-batch-2.ts": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f",
+    "src/calculators/statistics/catalog-batch-3.ts": "41df470fd871e6fd1779035805c1b96cb120c91aff7a3cce40bc7628e3c3dd8e",
+    "src/calculators/statistics/catalog-batch-4.ts": "b5f186fbbbeed527bf7f2734a3b53e02d2fcd2113fcef1b71092ef6d520e35f9",
+    "src/calculators/chemistry/molecular-weight.ts": "a423344150d0042466ec7183c18cf7ff3b423d6dcb2f071cc7255d7943324772",
+    "src/calculators/chemistry/catalog-batch-1.ts": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e"
+  }
+}

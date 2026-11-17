@@ -1,0 +1,14 @@
+file:///tmp/calcumint-recovery-operations-20261109/tests/gotrue-runtime/fixture.mjs:8
+const docker=(args,input='')=>new Promise((resolve,reject)=>{const p=spawn('docker',['--host=unix:///var/run/docker.sock',...args],{env,stdio:['pipe','pipe','pipe'],timeout:30000});let out='',err='';p.stdout.on('data',x=>out+=x);p.stderr.on('data',x=>err+=x);p.on('error',reject);p.on('close',code=>code===0?resolve(out.trim()):reject(Error(`Docker ${args[0]} failed: ${err||out}`)));p.stdin.on('error',reject);p.stdin.end(input);});
+                                                                                                                                                                                                                                                                                                                                               ^
+
+Error: Docker exec failed: ERROR:  invalid input syntax for type bigint: "33333333-3333-4333-8333-333333333333"
+LINE 1: ...d,actor_id,event_type,from_state,to_state) VALUES('33333333-...
+                                                             ^
+
+    at ChildProcess.<anonymous> (file:///tmp/calcumint-recovery-operations-20261109/tests/gotrue-runtime/fixture.mjs:8:336)
+    at ChildProcess.emit (node:events:509:28)
+    at maybeClose (node:internal/child_process:1141:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:306:5)
+
+Node.js v24.19.0

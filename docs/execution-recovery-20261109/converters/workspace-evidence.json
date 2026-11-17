@@ -1,0 +1,921 @@
+{
+  "kind": "PRIVATE_CONVERTER_WORKSPACE_FINITE_RECOVERY_EVIDENCE",
+  "sourceSha256": {
+    "src/lib/conversion-successor/fixed-factor-private.ts": "b86d00832c5d9f5329e247c90a11f1463f7a8b8afb57cbbb09df99afff123e28",
+    "src/lib/conversion-successor/fixed-factor-private.test.ts": "bbee7e98dd2a186cf33a29363f564616de72437b7bd8363fa43c4b3311ddb09e",
+    "src/lib/conversion-successor/fixed-factor-workspace.ts": "6b763c0385aa1100778d398573764256402b307e681caeb12710f4877cdb59c4",
+    "src/lib/conversion-successor/fixed-factor-workspace.test.ts": "de896719107f4505b8531dea1990de06a13cd614780a9c142ce38bf7e84e87b9",
+    "src/components/private-fixed-factor-review.tsx": "4ff732e5255203b63a95a5ef8c61414d65745ad033c5d8fa7855dd6436ec635a",
+    "src/components/private-fixed-factor-review.test.tsx": "d63cc688ee9d7952bcbc39b2c036b61767cb18716cf2015d5af1e47f6d5ff48d",
+    "docs/converter-methodology-20261109/converter-successor-witnesses.json": "590b68f8a29c51b8ea0a1f4a20c047d4291bdc00ac819093c2ee04692318b1a8"
+  },
+  "scriptSha256": "0f4ed5e981d35602524ad224714adb95faba2fe01d9d44c44e2cc11db8839661",
+  "cases": [
+    {
+      "catalogId": 429,
+      "privateId": "conversion.pressure.source-factor-private",
+      "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+      "applicability": {
+        "methodology": "UCUM [psi]=[lbf_av]/[in_i]2; conventional pound-force and international inch.",
+        "sourceApplicability": "PENDING",
+        "canonicalAdoptionAuthorized": false,
+        "inputInterpretation": "Exact supplied binary64 Number; no exact decimal-text quantization claim.",
+        "nonIdentityDomain": "Zero, or 2^-970 <= abs(value) <= 2^990; nonzero output normal and finite.",
+        "identityDomain": "Every finite supplied Number; zero normalized to standard JSON zero.",
+        "relativeBound": "gamma4 = 4u/(1-4u), u=2^-53, relative to supplied Number times exact rational unit ratio.",
+        "limitations": [
+          "Fixed scalar pressure-unit conversion only; no gauge/absolute reference-model conversion or pressure-offset inference.",
+          "No competent applicability approval, canonical adoption or publication authority."
+        ]
+      },
+      "exampleA": {
+        "draft": {
+          "value": "1",
+          "fromUnit": "psi",
+          "toUnit": "pa"
+        },
+        "artifact": {
+          "transportVersion": 1,
+          "privateId": "conversion.pressure.source-factor-private",
+          "implementationRevision": "private-source-fixed-factor-20261109.1",
+          "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+          "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+          "baselineEngineId": "conversion.pressure",
+          "baselineEngineVersion": 1,
+          "allocatedSuccessorVersion": null,
+          "snapshot": {
+            "input": {
+              "value": 1,
+              "fromUnit": "psi",
+              "toUnit": "pa"
+            },
+            "output": {
+              "result": 6894.757293168362
+            }
+          }
+        }
+      },
+      "exampleB": {
+        "draft": {
+          "value": "2.00",
+          "fromUnit": "psi",
+          "toUnit": "pa"
+        },
+        "artifact": {
+          "transportVersion": 1,
+          "privateId": "conversion.pressure.source-factor-private",
+          "implementationRevision": "private-source-fixed-factor-20261109.1",
+          "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+          "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+          "baselineEngineId": "conversion.pressure",
+          "baselineEngineVersion": 1,
+          "allocatedSuccessorVersion": null,
+          "snapshot": {
+            "input": {
+              "value": 2,
+              "fromUnit": "psi",
+              "toUnit": "pa"
+            },
+            "output": {
+              "result": 13789.514586336723
+            }
+          }
+        }
+      },
+      "historyRecords": 2,
+      "scenarioSlots": [
+        "A",
+        "B"
+      ],
+      "comparison": [
+        {
+          "slot": "A",
+          "record": {
+            "draft": {
+              "value": "1",
+              "fromUnit": "psi",
+              "toUnit": "pa"
+            },
+            "artifact": {
+              "transportVersion": 1,
+              "privateId": "conversion.pressure.source-factor-private",
+              "implementationRevision": "private-source-fixed-factor-20261109.1",
+              "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+              "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+              "baselineEngineId": "conversion.pressure",
+              "baselineEngineVersion": 1,
+              "allocatedSuccessorVersion": null,
+              "snapshot": {
+                "input": {
+                  "value": 1,
+                  "fromUnit": "psi",
+                  "toUnit": "pa"
+                },
+                "output": {
+                  "result": 6894.757293168362
+                }
+              }
+            }
+          }
+        },
+        {
+          "slot": "B",
+          "record": {
+            "draft": {
+              "value": "2.00",
+              "fromUnit": "psi",
+              "toUnit": "pa"
+            },
+            "artifact": {
+              "transportVersion": 1,
+              "privateId": "conversion.pressure.source-factor-private",
+              "implementationRevision": "private-source-fixed-factor-20261109.1",
+              "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+              "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+              "baselineEngineId": "conversion.pressure",
+              "baselineEngineVersion": 1,
+              "allocatedSuccessorVersion": null,
+              "snapshot": {
+                "input": {
+                  "value": 2,
+                  "fromUnit": "psi",
+                  "toUnit": "pa"
+                },
+                "output": {
+                  "result": 13789.514586336723
+                }
+              }
+            }
+          }
+        }
+      ],
+      "exportBytes": 4577,
+      "exportSha256": "08b54dc3aa496912b70ee8abe914032549966aeca61fe3e235f26fde9195980f",
+      "completeExport": {
+        "transportVersion": 1,
+        "workspaceRevision": "private-fixed-factor-workspace-20261109.1",
+        "coreRevision": "private-source-fixed-factor-20261109.1",
+        "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+        "canonicalAdoptionAuthorized": false,
+        "current": {
+          "draft": {
+            "value": "2.00",
+            "fromUnit": "psi",
+            "toUnit": "pa"
+          },
+          "artifact": {
+            "transportVersion": 1,
+            "privateId": "conversion.pressure.source-factor-private",
+            "implementationRevision": "private-source-fixed-factor-20261109.1",
+            "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+            "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+            "baselineEngineId": "conversion.pressure",
+            "baselineEngineVersion": 1,
+            "allocatedSuccessorVersion": null,
+            "snapshot": {
+              "input": {
+                "value": 2,
+                "fromUnit": "psi",
+                "toUnit": "pa"
+              },
+              "output": {
+                "result": 13789.514586336723
+              }
+            }
+          }
+        },
+        "history": [
+          {
+            "draft": {
+              "value": "1",
+              "fromUnit": "psi",
+              "toUnit": "pa"
+            },
+            "artifact": {
+              "transportVersion": 1,
+              "privateId": "conversion.pressure.source-factor-private",
+              "implementationRevision": "private-source-fixed-factor-20261109.1",
+              "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+              "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+              "baselineEngineId": "conversion.pressure",
+              "baselineEngineVersion": 1,
+              "allocatedSuccessorVersion": null,
+              "snapshot": {
+                "input": {
+                  "value": 1,
+                  "fromUnit": "psi",
+                  "toUnit": "pa"
+                },
+                "output": {
+                  "result": 6894.757293168362
+                }
+              }
+            }
+          },
+          {
+            "draft": {
+              "value": "2.00",
+              "fromUnit": "psi",
+              "toUnit": "pa"
+            },
+            "artifact": {
+              "transportVersion": 1,
+              "privateId": "conversion.pressure.source-factor-private",
+              "implementationRevision": "private-source-fixed-factor-20261109.1",
+              "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+              "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+              "baselineEngineId": "conversion.pressure",
+              "baselineEngineVersion": 1,
+              "allocatedSuccessorVersion": null,
+              "snapshot": {
+                "input": {
+                  "value": 2,
+                  "fromUnit": "psi",
+                  "toUnit": "pa"
+                },
+                "output": {
+                  "result": 13789.514586336723
+                }
+              }
+            }
+          }
+        ],
+        "scenarios": {
+          "A": {
+            "draft": {
+              "value": "1",
+              "fromUnit": "psi",
+              "toUnit": "pa"
+            },
+            "artifact": {
+              "transportVersion": 1,
+              "privateId": "conversion.pressure.source-factor-private",
+              "implementationRevision": "private-source-fixed-factor-20261109.1",
+              "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+              "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+              "baselineEngineId": "conversion.pressure",
+              "baselineEngineVersion": 1,
+              "allocatedSuccessorVersion": null,
+              "snapshot": {
+                "input": {
+                  "value": 1,
+                  "fromUnit": "psi",
+                  "toUnit": "pa"
+                },
+                "output": {
+                  "result": 6894.757293168362
+                }
+              }
+            }
+          },
+          "B": {
+            "draft": {
+              "value": "2.00",
+              "fromUnit": "psi",
+              "toUnit": "pa"
+            },
+            "artifact": {
+              "transportVersion": 1,
+              "privateId": "conversion.pressure.source-factor-private",
+              "implementationRevision": "private-source-fixed-factor-20261109.1",
+              "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+              "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+              "baselineEngineId": "conversion.pressure",
+              "baselineEngineVersion": 1,
+              "allocatedSuccessorVersion": null,
+              "snapshot": {
+                "input": {
+                  "value": 2,
+                  "fromUnit": "psi",
+                  "toUnit": "pa"
+                },
+                "output": {
+                  "result": 13789.514586336723
+                }
+              }
+            }
+          }
+        }
+      },
+      "roundtripExact": true,
+      "historyRestoreExact": true,
+      "scenarioRestoreExact": true,
+      "tamperRejectedWithoutMutation": true,
+      "plans": [
+        "free",
+        "pro",
+        "business"
+      ],
+      "planArtifactsEqual": true,
+      "zeroOutput": 0,
+      "negativeOutput": -6894.757293168362,
+      "rendererUnit": "Pa"
+    },
+    {
+      "catalogId": 437,
+      "privateId": "conversion.density.source-factor-private",
+      "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+      "applicability": {
+        "methodology": "UCUM [lb_av]/[ft_i]3; conventional avoirdupois pound and international foot.",
+        "sourceApplicability": "PENDING",
+        "canonicalAdoptionAuthorized": false,
+        "inputInterpretation": "Exact supplied binary64 Number; no exact decimal-text quantization claim.",
+        "nonIdentityDomain": "Zero, or 2^-970 <= abs(value) <= 2^990; nonzero output normal and finite.",
+        "identityDomain": "Every finite supplied Number; zero normalized to standard JSON zero.",
+        "relativeBound": "gamma4 = 4u/(1-4u), u=2^-53, relative to supplied Number times exact rational unit ratio.",
+        "limitations": [
+          "Fixed scalar density-unit conversion; no material temperature, composition or buoyancy model.",
+          "No competent applicability approval, canonical adoption or publication authority."
+        ]
+      },
+      "exampleA": {
+        "draft": {
+          "value": "1",
+          "fromUnit": "lb_ft3",
+          "toUnit": "kg_m3"
+        },
+        "artifact": {
+          "transportVersion": 1,
+          "privateId": "conversion.density.source-factor-private",
+          "implementationRevision": "private-source-fixed-factor-20261109.1",
+          "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+          "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+          "baselineEngineId": "conversion.density",
+          "baselineEngineVersion": 1,
+          "allocatedSuccessorVersion": null,
+          "snapshot": {
+            "input": {
+              "value": 1,
+              "fromUnit": "lb_ft3",
+              "toUnit": "kg_m3"
+            },
+            "output": {
+              "result": 16.018463373960138
+            }
+          }
+        }
+      },
+      "exampleB": {
+        "draft": {
+          "value": "2.00",
+          "fromUnit": "lb_ft3",
+          "toUnit": "kg_m3"
+        },
+        "artifact": {
+          "transportVersion": 1,
+          "privateId": "conversion.density.source-factor-private",
+          "implementationRevision": "private-source-fixed-factor-20261109.1",
+          "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+          "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+          "baselineEngineId": "conversion.density",
+          "baselineEngineVersion": 1,
+          "allocatedSuccessorVersion": null,
+          "snapshot": {
+            "input": {
+              "value": 2,
+              "fromUnit": "lb_ft3",
+              "toUnit": "kg_m3"
+            },
+            "output": {
+              "result": 32.036926747920276
+            }
+          }
+        }
+      },
+      "historyRecords": 2,
+      "scenarioSlots": [
+        "A",
+        "B"
+      ],
+      "comparison": [
+        {
+          "slot": "A",
+          "record": {
+            "draft": {
+              "value": "1",
+              "fromUnit": "lb_ft3",
+              "toUnit": "kg_m3"
+            },
+            "artifact": {
+              "transportVersion": 1,
+              "privateId": "conversion.density.source-factor-private",
+              "implementationRevision": "private-source-fixed-factor-20261109.1",
+              "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+              "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+              "baselineEngineId": "conversion.density",
+              "baselineEngineVersion": 1,
+              "allocatedSuccessorVersion": null,
+              "snapshot": {
+                "input": {
+                  "value": 1,
+                  "fromUnit": "lb_ft3",
+                  "toUnit": "kg_m3"
+                },
+                "output": {
+                  "result": 16.018463373960138
+                }
+              }
+            }
+          }
+        },
+        {
+          "slot": "B",
+          "record": {
+            "draft": {
+              "value": "2.00",
+              "fromUnit": "lb_ft3",
+              "toUnit": "kg_m3"
+            },
+            "artifact": {
+              "transportVersion": 1,
+              "privateId": "conversion.density.source-factor-private",
+              "implementationRevision": "private-source-fixed-factor-20261109.1",
+              "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+              "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+              "baselineEngineId": "conversion.density",
+              "baselineEngineVersion": 1,
+              "allocatedSuccessorVersion": null,
+              "snapshot": {
+                "input": {
+                  "value": 2,
+                  "fromUnit": "lb_ft3",
+                  "toUnit": "kg_m3"
+                },
+                "output": {
+                  "result": 32.036926747920276
+                }
+              }
+            }
+          }
+        }
+      ],
+      "exportBytes": 4629,
+      "exportSha256": "231da8433f95bfe16d803dacbd26fd663a6a46a92b050b4d4946b73f4480f839",
+      "completeExport": {
+        "transportVersion": 1,
+        "workspaceRevision": "private-fixed-factor-workspace-20261109.1",
+        "coreRevision": "private-source-fixed-factor-20261109.1",
+        "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+        "canonicalAdoptionAuthorized": false,
+        "current": {
+          "draft": {
+            "value": "2.00",
+            "fromUnit": "lb_ft3",
+            "toUnit": "kg_m3"
+          },
+          "artifact": {
+            "transportVersion": 1,
+            "privateId": "conversion.density.source-factor-private",
+            "implementationRevision": "private-source-fixed-factor-20261109.1",
+            "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+            "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+            "baselineEngineId": "conversion.density",
+            "baselineEngineVersion": 1,
+            "allocatedSuccessorVersion": null,
+            "snapshot": {
+              "input": {
+                "value": 2,
+                "fromUnit": "lb_ft3",
+                "toUnit": "kg_m3"
+              },
+              "output": {
+                "result": 32.036926747920276
+              }
+            }
+          }
+        },
+        "history": [
+          {
+            "draft": {
+              "value": "1",
+              "fromUnit": "lb_ft3",
+              "toUnit": "kg_m3"
+            },
+            "artifact": {
+              "transportVersion": 1,
+              "privateId": "conversion.density.source-factor-private",
+              "implementationRevision": "private-source-fixed-factor-20261109.1",
+              "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+              "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+              "baselineEngineId": "conversion.density",
+              "baselineEngineVersion": 1,
+              "allocatedSuccessorVersion": null,
+              "snapshot": {
+                "input": {
+                  "value": 1,
+                  "fromUnit": "lb_ft3",
+                  "toUnit": "kg_m3"
+                },
+                "output": {
+                  "result": 16.018463373960138
+                }
+              }
+            }
+          },
+          {
+            "draft": {
+              "value": "2.00",
+              "fromUnit": "lb_ft3",
+              "toUnit": "kg_m3"
+            },
+            "artifact": {
+              "transportVersion": 1,
+              "privateId": "conversion.density.source-factor-private",
+              "implementationRevision": "private-source-fixed-factor-20261109.1",
+              "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+              "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+              "baselineEngineId": "conversion.density",
+              "baselineEngineVersion": 1,
+              "allocatedSuccessorVersion": null,
+              "snapshot": {
+                "input": {
+                  "value": 2,
+                  "fromUnit": "lb_ft3",
+                  "toUnit": "kg_m3"
+                },
+                "output": {
+                  "result": 32.036926747920276
+                }
+              }
+            }
+          }
+        ],
+        "scenarios": {
+          "A": {
+            "draft": {
+              "value": "1",
+              "fromUnit": "lb_ft3",
+              "toUnit": "kg_m3"
+            },
+            "artifact": {
+              "transportVersion": 1,
+              "privateId": "conversion.density.source-factor-private",
+              "implementationRevision": "private-source-fixed-factor-20261109.1",
+              "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+              "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+              "baselineEngineId": "conversion.density",
+              "baselineEngineVersion": 1,
+              "allocatedSuccessorVersion": null,
+              "snapshot": {
+                "input": {
+                  "value": 1,
+                  "fromUnit": "lb_ft3",
+                  "toUnit": "kg_m3"
+                },
+                "output": {
+                  "result": 16.018463373960138
+                }
+              }
+            }
+          },
+          "B": {
+            "draft": {
+              "value": "2.00",
+              "fromUnit": "lb_ft3",
+              "toUnit": "kg_m3"
+            },
+            "artifact": {
+              "transportVersion": 1,
+              "privateId": "conversion.density.source-factor-private",
+              "implementationRevision": "private-source-fixed-factor-20261109.1",
+              "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+              "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+              "baselineEngineId": "conversion.density",
+              "baselineEngineVersion": 1,
+              "allocatedSuccessorVersion": null,
+              "snapshot": {
+                "input": {
+                  "value": 2,
+                  "fromUnit": "lb_ft3",
+                  "toUnit": "kg_m3"
+                },
+                "output": {
+                  "result": 32.036926747920276
+                }
+              }
+            }
+          }
+        }
+      },
+      "roundtripExact": true,
+      "historyRestoreExact": true,
+      "scenarioRestoreExact": true,
+      "tamperRejectedWithoutMutation": true,
+      "plans": [
+        "free",
+        "pro",
+        "business"
+      ],
+      "planArtifactsEqual": true,
+      "zeroOutput": 0,
+      "negativeOutput": -16.018463373960138,
+      "rendererUnit": "kg/m³"
+    },
+    {
+      "catalogId": 439,
+      "privateId": "conversion.torque.source-factor-private",
+      "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+      "applicability": {
+        "methodology": "UCUM [lbf_av].[ft_i] and [lbf_av].[in_i] as moments of force.",
+        "sourceApplicability": "PENDING",
+        "canonicalAdoptionAuthorized": false,
+        "inputInterpretation": "Exact supplied binary64 Number; no exact decimal-text quantization claim.",
+        "nonIdentityDomain": "Zero, or 2^-970 <= abs(value) <= 2^990; nonzero output normal and finite.",
+        "identityDomain": "Every finite supplied Number; zero normalized to standard JSON zero.",
+        "relativeBound": "gamma4 = 4u/(1-4u), u=2^-53, relative to supplied Number times exact rational unit ratio.",
+        "limitations": [
+          "Torque/moment conversion only; equal dimensions do not reinterpret torque as energy or work.",
+          "No competent applicability approval, canonical adoption or publication authority."
+        ]
+      },
+      "exampleA": {
+        "draft": {
+          "value": "1",
+          "fromUnit": "lbf_ft",
+          "toUnit": "n_m"
+        },
+        "artifact": {
+          "transportVersion": 1,
+          "privateId": "conversion.torque.source-factor-private",
+          "implementationRevision": "private-source-fixed-factor-20261109.1",
+          "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+          "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+          "baselineEngineId": "conversion.torque",
+          "baselineEngineVersion": 1,
+          "allocatedSuccessorVersion": null,
+          "snapshot": {
+            "input": {
+              "value": 1,
+              "fromUnit": "lbf_ft",
+              "toUnit": "n_m"
+            },
+            "output": {
+              "result": 1.3558179483314003
+            }
+          }
+        }
+      },
+      "exampleB": {
+        "draft": {
+          "value": "2.00",
+          "fromUnit": "lbf_ft",
+          "toUnit": "n_m"
+        },
+        "artifact": {
+          "transportVersion": 1,
+          "privateId": "conversion.torque.source-factor-private",
+          "implementationRevision": "private-source-fixed-factor-20261109.1",
+          "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+          "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+          "baselineEngineId": "conversion.torque",
+          "baselineEngineVersion": 1,
+          "allocatedSuccessorVersion": null,
+          "snapshot": {
+            "input": {
+              "value": 2,
+              "fromUnit": "lbf_ft",
+              "toUnit": "n_m"
+            },
+            "output": {
+              "result": 2.7116358966628007
+            }
+          }
+        }
+      },
+      "historyRecords": 2,
+      "scenarioSlots": [
+        "A",
+        "B"
+      ],
+      "comparison": [
+        {
+          "slot": "A",
+          "record": {
+            "draft": {
+              "value": "1",
+              "fromUnit": "lbf_ft",
+              "toUnit": "n_m"
+            },
+            "artifact": {
+              "transportVersion": 1,
+              "privateId": "conversion.torque.source-factor-private",
+              "implementationRevision": "private-source-fixed-factor-20261109.1",
+              "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+              "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+              "baselineEngineId": "conversion.torque",
+              "baselineEngineVersion": 1,
+              "allocatedSuccessorVersion": null,
+              "snapshot": {
+                "input": {
+                  "value": 1,
+                  "fromUnit": "lbf_ft",
+                  "toUnit": "n_m"
+                },
+                "output": {
+                  "result": 1.3558179483314003
+                }
+              }
+            }
+          }
+        },
+        {
+          "slot": "B",
+          "record": {
+            "draft": {
+              "value": "2.00",
+              "fromUnit": "lbf_ft",
+              "toUnit": "n_m"
+            },
+            "artifact": {
+              "transportVersion": 1,
+              "privateId": "conversion.torque.source-factor-private",
+              "implementationRevision": "private-source-fixed-factor-20261109.1",
+              "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+              "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+              "baselineEngineId": "conversion.torque",
+              "baselineEngineVersion": 1,
+              "allocatedSuccessorVersion": null,
+              "snapshot": {
+                "input": {
+                  "value": 2,
+                  "fromUnit": "lbf_ft",
+                  "toUnit": "n_m"
+                },
+                "output": {
+                  "result": 2.7116358966628007
+                }
+              }
+            }
+          }
+        }
+      ],
+      "exportBytes": 4599,
+      "exportSha256": "5ebc358f0c8d21a82bb22c4e8dd3904a19b06f5a124ea05c4a803f9c73ac8451",
+      "completeExport": {
+        "transportVersion": 1,
+        "workspaceRevision": "private-fixed-factor-workspace-20261109.1",
+        "coreRevision": "private-source-fixed-factor-20261109.1",
+        "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+        "canonicalAdoptionAuthorized": false,
+        "current": {
+          "draft": {
+            "value": "2.00",
+            "fromUnit": "lbf_ft",
+            "toUnit": "n_m"
+          },
+          "artifact": {
+            "transportVersion": 1,
+            "privateId": "conversion.torque.source-factor-private",
+            "implementationRevision": "private-source-fixed-factor-20261109.1",
+            "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+            "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+            "baselineEngineId": "conversion.torque",
+            "baselineEngineVersion": 1,
+            "allocatedSuccessorVersion": null,
+            "snapshot": {
+              "input": {
+                "value": 2,
+                "fromUnit": "lbf_ft",
+                "toUnit": "n_m"
+              },
+              "output": {
+                "result": 2.7116358966628007
+              }
+            }
+          }
+        },
+        "history": [
+          {
+            "draft": {
+              "value": "1",
+              "fromUnit": "lbf_ft",
+              "toUnit": "n_m"
+            },
+            "artifact": {
+              "transportVersion": 1,
+              "privateId": "conversion.torque.source-factor-private",
+              "implementationRevision": "private-source-fixed-factor-20261109.1",
+              "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+              "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+              "baselineEngineId": "conversion.torque",
+              "baselineEngineVersion": 1,
+              "allocatedSuccessorVersion": null,
+              "snapshot": {
+                "input": {
+                  "value": 1,
+                  "fromUnit": "lbf_ft",
+                  "toUnit": "n_m"
+                },
+                "output": {
+                  "result": 1.3558179483314003
+                }
+              }
+            }
+          },
+          {
+            "draft": {
+              "value": "2.00",
+              "fromUnit": "lbf_ft",
+              "toUnit": "n_m"
+            },
+            "artifact": {
+              "transportVersion": 1,
+              "privateId": "conversion.torque.source-factor-private",
+              "implementationRevision": "private-source-fixed-factor-20261109.1",
+              "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+              "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+              "baselineEngineId": "conversion.torque",
+              "baselineEngineVersion": 1,
+              "allocatedSuccessorVersion": null,
+              "snapshot": {
+                "input": {
+                  "value": 2,
+                  "fromUnit": "lbf_ft",
+                  "toUnit": "n_m"
+                },
+                "output": {
+                  "result": 2.7116358966628007
+                }
+              }
+            }
+          }
+        ],
+        "scenarios": {
+          "A": {
+            "draft": {
+              "value": "1",
+              "fromUnit": "lbf_ft",
+              "toUnit": "n_m"
+            },
+            "artifact": {
+              "transportVersion": 1,
+              "privateId": "conversion.torque.source-factor-private",
+              "implementationRevision": "private-source-fixed-factor-20261109.1",
+              "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+              "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+              "baselineEngineId": "conversion.torque",
+              "baselineEngineVersion": 1,
+              "allocatedSuccessorVersion": null,
+              "snapshot": {
+                "input": {
+                  "value": 1,
+                  "fromUnit": "lbf_ft",
+                  "toUnit": "n_m"
+                },
+                "output": {
+                  "result": 1.3558179483314003
+                }
+              }
+            }
+          },
+          "B": {
+            "draft": {
+              "value": "2.00",
+              "fromUnit": "lbf_ft",
+              "toUnit": "n_m"
+            },
+            "artifact": {
+              "transportVersion": 1,
+              "privateId": "conversion.torque.source-factor-private",
+              "implementationRevision": "private-source-fixed-factor-20261109.1",
+              "contract": "supplied-binary64/nearest-source-factors/ratio-first/normal-bounded",
+              "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+              "baselineEngineId": "conversion.torque",
+              "baselineEngineVersion": 1,
+              "allocatedSuccessorVersion": null,
+              "snapshot": {
+                "input": {
+                  "value": 2,
+                  "fromUnit": "lbf_ft",
+                  "toUnit": "n_m"
+                },
+                "output": {
+                  "result": 2.7116358966628007
+                }
+              }
+            }
+          }
+        }
+      },
+      "roundtripExact": true,
+      "historyRestoreExact": true,
+      "scenarioRestoreExact": true,
+      "tamperRejectedWithoutMutation": true,
+      "plans": [
+        "free",
+        "pro",
+        "business"
+      ],
+      "planArtifactsEqual": true,
+      "zeroOutput": 0,
+      "negativeOutput": -1.3558179483314003,
+      "rendererUnit": "N·m"
+    }
+  ],
+  "uiEvidence": "Real-component tests cover controlled inputs, actual Final renderer, three presentation-plan artifact parity, local history/A/B, remount, bad storage, atomic recovery and actual Blob download. This script exercises workflow APIs; it does not claim browser execution.",
+  "reusedMathEvidence": "Existing 68-pair/1224 signed exact-rational witness packet remains byte-pinned; this command does not rerun that sweep.",
+  "canonicalAdoptionAuthorized": false,
+  "competentApplicabilityApproval": false,
+  "publicRoutingAdded": false,
+  "limitation": "Private draft surface and bounded finite workflow evidence. No account sync, publication, registered successor allocation, source identity substitution or whole-domain acceptance."
+}

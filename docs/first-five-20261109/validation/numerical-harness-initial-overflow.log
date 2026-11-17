@@ -1,0 +1,27 @@
+
+ RUN  v3.2.7 /workspace/work/product-completion-20261108
+
+ ❯ src/lib/technology-five-numerical-envelope.test.ts (3 tests | 1 failed) 23ms
+   × qualifies exact registered binary64 outputs against an independent rational half-ULP bound across supported normal magnitudes 13ms
+     → Calculated result is outside the supported finite range
+   ✓ preserves independently specified literal witnesses and rejects invalid schema inputs without rewriting the engine 8ms
+   ✓ retains exact historical subnormal-input behavior while refusing it only at the current capture boundary 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/technology-five-numerical-envelope.test.ts > qualifies exact registered binary64 outputs against an independent rational half-ULP bound across supported normal magnitudes
+Error: Calculated result is outside the supported finite range
+ ❯ checked src/calculators/technology-computing/catalog-batch-1.ts:7:57
+
+ ❯ Object.calculate src/calculators/technology-computing/catalog-batch-1.ts:16:485
+ ❯ runCalculator src/calculators/engine.ts:15:29
+ ❯ src/lib/technology-five-numerical-envelope.test.ts:19:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  16:04:47
+   Duration  789ms (transform 171ms, setup 0ms, collect 286ms, tests 23ms, environment 0ms, prepare 119ms)
+

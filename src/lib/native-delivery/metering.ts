@@ -1,3 +1,4 @@
+import {factoryDeliveryIdentity} from './factory-delivery-catalog';
 import 'server-only';
 import {createHash} from 'node:crypto';
 import {createSupabaseAdminClient} from '@/lib/supabase/admin';
@@ -18,12 +19,14 @@ export async function requireNativeEmbedKey(organizationId:string,issuerId:strin
 }
 export async function persistNativeGrant(claims:NativeEmbedGrant,token:string){
  const admin=createSupabaseAdminClient();if(!admin)throw new NativeDeliveryError(503,'Embed audit unavailable');
- const r=await admin.from('native_embed_grants').insert({id:claims.grantId,organization_id:claims.organizationId,issuer_id:claims.issuerId,api_key_id:claims.apiKeyId,token_hash:nativeDigest(token),allowed_origin:claims.allowedOrigin,catalog_id:claims.catalogId,engine_id:'conversion.frequency',technical_version:claims.version,issued_at:new Date(claims.issuedAt*1000).toISOString(),expires_at:new Date(claims.expiresAt*1000).toISOString()});
+ const identity=factoryDeliveryIdentity(claims.catalogId,claims.version);if(!identity)throw new NativeDeliveryError(403,'Embed identity unavailable');
+ const r=await admin.from('native_embed_grants').insert({id:claims.grantId,organization_id:claims.organizationId,issuer_id:claims.issuerId,api_key_id:claims.apiKeyId,token_hash:nativeDigest(token),allowed_origin:claims.allowedOrigin,catalog_id:claims.catalogId,engine_id:identity.engineId,technical_version:claims.version,issued_at:new Date(claims.issuedAt*1000).toISOString(),expires_at:new Date(claims.expiresAt*1000).toISOString()});
  if(r.error)throw new NativeDeliveryError(503,'Embed audit unavailable');
 }
 export async function requirePersistedNativeGrant(claims:NativeEmbedGrant,token:string){
  const admin=createSupabaseAdminClient();if(!admin)throw new NativeDeliveryError(503,'Embed audit unavailable');
- const r=await admin.from('native_embed_grants').select('id').eq('id',claims.grantId).eq('organization_id',claims.organizationId).eq('issuer_id',claims.issuerId).eq('api_key_id',claims.apiKeyId).eq('token_hash',nativeDigest(token)).eq('allowed_origin',claims.allowedOrigin).eq('catalog_id',440).eq('technical_version',1).is('revoked_at',null).gt('expires_at',new Date().toISOString()).maybeSingle();
+ const identity=factoryDeliveryIdentity(claims.catalogId,claims.version);if(!identity)throw new NativeDeliveryError(403,'Embed identity unavailable');
+ const r=await admin.from('native_embed_grants').select('id').eq('id',claims.grantId).eq('organization_id',claims.organizationId).eq('issuer_id',claims.issuerId).eq('api_key_id',claims.apiKeyId).eq('token_hash',nativeDigest(token)).eq('allowed_origin',claims.allowedOrigin).eq('catalog_id',claims.catalogId).eq('engine_id',identity.engineId).eq('technical_version',claims.version).is('revoked_at',null).gt('expires_at',new Date().toISOString()).maybeSingle();
  if(r.error)throw new NativeDeliveryError(503,'Embed audit unavailable');if(!r.data)throw new NativeDeliveryError(403,'Embed grant revoked or unavailable');
  await requireNativeEmbedKey(claims.organizationId,claims.issuerId,claims.apiKeyId);
 }

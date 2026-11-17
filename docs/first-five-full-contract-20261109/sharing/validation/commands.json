@@ -1,0 +1,40 @@
+{
+  "appSourceCommit": "7b248c7b53020d7a65db5932c8e12f1889f72325",
+  "commands": [
+    {
+      "command": "vitest run sharing core, HTTP, form, comparison and existing Business page/API recovery tests",
+      "exitCode": 0,
+      "testsPassed": 52
+    },
+    {
+      "command": "tsc --noEmit",
+      "exitCode": 0
+    },
+    {
+      "command": "eslint owned sharing runtime and acceptance scripts",
+      "exitCode": 0
+    },
+    {
+      "command": "node tests/first-five-full-contract-20261109/sharing-acl.mjs",
+      "redExitCode": 1,
+      "greenExitCode": 0
+    },
+    {
+      "command": "node tests/first-five-full-contract-20261109/sharing-workflows.mjs",
+      "exitCode": 0,
+      "workflowCount": 5,
+      "completedDownloads": 42
+    },
+    {
+      "command": "node tests/first-five-full-contract-20261109/sharing-artifacts.mjs",
+      "exitCode": 0,
+      "checkedDownloads": 59
+    },
+    {
+      "command": "node tests/first-five-full-contract-20261109/sharing-artifacts.mjs --check",
+      "exitCode": 0,
+      "writes": false
+    }
+  ],
+  "scope": "Observed isolated engineering verification only; no production, canonical or specialist approval"
+}

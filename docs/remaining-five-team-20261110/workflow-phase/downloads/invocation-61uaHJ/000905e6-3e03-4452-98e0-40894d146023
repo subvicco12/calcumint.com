@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "storage-conversion-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "input": {
+        "value": 1,
+        "toUnit": "MiB",
+        "fromUnit": "GiB"
+      },
+      "output": {
+        "steps": [
+          "Storage Conversion = 1024"
+        ],
+        "value": 1024
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "storage-conversion-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "value": {
+            "label": "Value",
+            "unit": "GiB"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Converted storage",
+            "unit": "MiB"
+          }
+        }
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "input": {
+        "value": 2,
+        "toUnit": "MiB",
+        "fromUnit": "GiB"
+      },
+      "output": {
+        "steps": [
+          "Storage Conversion = 2048"
+        ],
+        "value": 2048
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "storage-conversion-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "value": {
+            "label": "Value",
+            "unit": "GiB"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Converted storage",
+            "unit": "MiB"
+          }
+        }
+      }
+    }
+  ],
+  "comparison": {
+    "schemaVersion": 1,
+    "metrics": [
+      {
+        "field": "value",
+        "label": "Converted storage",
+        "unit": "MiB",
+        "cells": [
+          {
+            "slot": "A",
+            "label": "Converted storage",
+            "unit": "MiB",
+            "value": 1024,
+            "difference": 0,
+            "unavailable": null
+          },
+          {
+            "slot": "B",
+            "label": "Converted storage",
+            "unit": "MiB",
+            "value": 2048,
+            "difference": 1024,
+            "unavailable": null
+          }
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "field": "value",
+        "title": "Converted storage",
+        "unit": "MiB",
+        "points": [
+          {
+            "label": "A",
+            "value": 1024
+          },
+          {
+            "label": "B",
+            "value": 2048
+          }
+        ]
+      }
+    ]
+  }
+}

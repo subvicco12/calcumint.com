@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "kind": "CONVERSION_FACTORY_EXISTING_V1_DELIVERY_BRIDGE_EVIDENCE",
+  "baselineCommit": "9ad7e75641322696f75a018e53513c8158c39870",
+  "catalogIds": [
+    423,
+    424,
+    425,
+    427,
+    428,
+    430,
+    431,
+    432,
+    433,
+    434,
+    438,
+    440
+  ],
+  "excludedIds": {
+    "429": "Existing pressure source-factor successor prerequisite unresolved for this bridge",
+    "437": "Existing density source-factor successor prerequisite unresolved for this bridge",
+    "439": "Existing torque source-factor successor prerequisite unresolved for this bridge"
+  },
+  "ownership": [
+    "src/lib/calculator-factory/cohorts/conversions.ts",
+    "src/lib/calculator-factory/cohorts/conversions.test.ts",
+    "docs/calculator-factory/wave1/conversion-evidence.json"
+  ],
+  "requirements": {
+    "descriptorBridge": "IMPLEMENTED_BOUNDED_SOFTWARE",
+    "strictRawDecimalAndExactUnitSchema": "IMPLEMENTED_BOUNDED_SOFTWARE",
+    "currentPrecisionResultTrust": "DELEGATED_EXISTING_ENGINE",
+    "historicalReplay": "DELEGATED_EXISTING_VERIFIER_UNCHANGED",
+    "newArithmetic": "NONE",
+    "rootDeliveryIntegration": "PENDING_ROOT_INTEGRATION",
+    "competentApplicabilityReview": "NOT_ESTABLISHED_BY_THIS_BRIDGE",
+    "canonicalAcceptance": "NOT_ESTABLISHED",
+    "certification": "NOT_GRANTED",
+    "publicationEligibility": "NOT_ESTABLISHED"
+  },
+  "sourceFacts": [
+    {
+      "catalogId": 423,
+      "classification": "SUPPORTED",
+      "supportedCorrespondence": "International inch .0254 m; foot=12 inches; yard=3 feet; mile=5280 feet. All declared decimal length factors match these exact constructions and SI prefixes.",
+      "remainingDecision": "Product aliases in/ft/yd/mi correspond to international UCUM codes [in_i]/[ft_i]/[yd_i]/[mi_i], not survey variants."
+    },
+    {
+      "catalogId": 424,
+      "classification": "PARTIAL",
+      "supportedCorrespondence": "Square international foot/yard/mile and SI area factors match; hectare derives from 100 ar, ar=100 m2. Acre4046.8564224 equals 4840 international yards squared.",
+      "remainingDecision": "UCUM [acr_us] uses survey rod/foot and differs; [acr_br] uses British historical yard. Retained bytes do not directly name the international acre used by this code; require explicit mapping/source applicability, never substitute another acre."
+    },
+    {
+      "catalogId": 425,
+      "classification": "SUPPORTED",
+      "supportedCorrespondence": "Liter=dm3; cubic inch/foot derive from international inch/foot. UCUM [gal_us]=231[in_i]3 and [qt_us]=[gal_us]/4 exactly match declared US liquid gallon/quart decimals.",
+      "remainingDecision": "Product gal_us/qt_us are explicit aliases, not imperial gallon/quart."
+    },
+    {
+      "catalogId": 427,
+      "classification": "SUPPORTED",
+      "supportedCorrespondence": "Native source defines Celsius xK-273.15 and inverse xC+273.15; Fahrenheit=9/5*xK-459.67 and inverse=5/9*(xF+459.67). Existing pair formulas are algebraically consistent.",
+      "remainingDecision": "Binary64 offset/multiplier error and cancellation need separate numerical review; no physical-domain applicability inferred."
+    },
+    {
+      "catalogId": 428,
+      "classification": "SUPPORTED",
+      "supportedCorrespondence": "International mile/foot, hour=3600s and nautical mile1852m support mph=.44704, ft/s=.3048, km/h=1000/3600 and knot1852/3600 m/s.",
+      "remainingDecision": "Division expressions are binary64 approximations; exact source relationships do not establish output precision."
+    },
+    {
+      "catalogId": 430,
+      "classification": "SUPPORTED",
+      "supportedCorrespondence": "J=N.m; W=J/s; hour=3600s supports Wh/kWh. UCUM cal_th=4.184J and cal=cal_th match existing thermochemical cal/kcal.",
+      "remainingDecision": "Do not infer alternate calorie variants or nutritional applicability."
+    },
+    {
+      "catalogId": 431,
+      "classification": "SUPPORTED",
+      "supportedCorrespondence": "UCUM [HP]=550[ft_i].[lbf_av]/s derives exact745.69987158227022W. Existing literal745.6998715822702 yields the nearest binary64 to that exact value.",
+      "remainingDecision": "Decimal spelling differs by2e-14W, but there is no additional stored-number truncation beyond nearest binary64 representation. hp_mech->[HP] mapping remains explicit."
+    },
+    {
+      "catalogId": 433,
+      "classification": "SUPPORTED",
+      "supportedCorrespondence": "UCUM deg=2[pi].rad/360; gon=.9deg; circ=2[pi].rad. These support degree, grad=gon, and turn=circ formulas.",
+      "remainingDecision": "Math.PI is an approximation; UCUM itself stores a finite long decimal [pi]. Do not claim exact real-pi outputs or silently treat product rad/deg/grad/turn as UCUM literal codes."
+    },
+    {
+      "catalogId": 434,
+      "classification": "SUPPORTED",
+      "supportedCorrespondence": "UCUM By=8bit; decimal k/M/G/T prefixes=1000/1e6/1e9/1e12 and binary Ki/Mi/Gi=1024/1048576/1073741824 match byte-factor ratios exactly.",
+      "remainingDecision": "Product B/KB/MB/GB/TB mean By/kBy/MBy/GBy/TBy. Case-sensitive KB is a product alias, not a UCUM unit spelling; no bit mode or reinterpretation."
+    },
+    {
+      "catalogId": 438,
+      "classification": "SUPPORTED",
+      "supportedCorrespondence": "N=kg.m/s2; dyn=g.cm/s2=1e-5N; [lbf_av]=[lb_av].[g] with pound=.45359237kg and standard gravity9.80665m/s2 gives exact4.4482216152605N.",
+      "remainingDecision": "Standard conventional force only; no location-dependent mass/weight model or output precision approval."
+    }
+  ],
+  "sourceCaveat": "Retained source facts are correspondence evidence only. Preserve each recorded classification and remainingDecision, including PARTIAL acre mapping. Private changed-factor witnesses are context only and are not used by this v1 bridge. OWN-427 preserves algebraic temperature conversion below absolute zero.",
+  "retainedEvidence": [
+    {
+      "path": "src/lib/publication20/conversions.ts",
+      "sha256": "33294ef227aa6e4a4a14f4282dcda1834a03396e62c6a0dbc5d4fb932472ec8c"
+    },
+    {
+      "path": "src/lib/publication20/result-trust.ts",
+      "sha256": "c1e21a0f680f4245424c1542fa59012b9d83347ef4da3e1309b4b61eba6cbbd9"
+    },
+    {
+      "path": "src/lib/registered-input-successor.ts",
+      "sha256": "509826a3de1c3cf91afcf992ebed422019bfc489fd387f250f6706ea18ad28d9"
+    },
+    {
+      "path": "src/lib/publication-factory-contracts-input.ts",
+      "sha256": "d0c5d00cc0c5d024420f11f21c27534f5b38dc681cbd53d22e750eb4a8dd281f"
+    },
+    {
+      "path": "src/lib/publication20/conversions.independent.test.ts",
+      "sha256": "649a9b3e52b673b3170a5b62e37a24d8ad90000df97b5a308338ac0c34a92a6b"
+    },
+    {
+      "path": "src/lib/publication20/precision-boundary.test.ts",
+      "sha256": "769eb48f096ec97ee26d501e7410a41aeffd914cfa8312e18268fe4d2d33d230"
+    },
+    {
+      "path": "docs/competent-closure-20261108/converter-source-facts.json",
+      "sha256": "43705ad15fe61f702a32dbe154acf261890777099b8673bc7b60deeadeb6215d"
+    },
+    {
+      "path": "docs/competent-closure-20261108/converter-source-successors.json",
+      "sha256": "82db9fec1d52f1681c650945c4c81ab7b79b71306ba82d92c3edbeeb4aba6bfc"
+    },
+    {
+      "path": "docs/first-live-closure-20261108/source/ucum-v2.2-native-source.zip",
+      "sha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b"
+    },
+    {
+      "path": "docs/converter-methodology-20261109/converter-successor-witnesses.json",
+      "sha256": "590b68f8a29c51b8ea0a1f4a20c047d4291bdc00ac819093c2ee04692318b1a8"
+    }
+  ],
+  "softwareValidation": {
+    "command": "node node_modules/vitest/vitest.mjs run src/lib/calculator-factory/cohorts/conversions.test.ts",
+    "nodeVersion": "22.23.4",
+    "testFiles": 1,
+    "testsPassed": 5,
+    "scope": "Delivery adapter identity/schema/provenance/precision/replay boundaries only. Existing scalar math campaigns not repeated.",
+    "initialFailure": "Tiny normal result assertion expected exact decimal binary64 literal; observed one-ULP engine result and corrected test to relative tolerance; no engine modification.",
+    "typecheck": {
+      "command": "node node_modules/typescript/bin/tsc --noEmit --incremental false",
+      "exitCode": 0
+    },
+    "targetedLint": {
+      "command": "node node_modules/eslint/bin/eslint.js src/lib/calculator-factory/cohorts/conversions.ts src/lib/calculator-factory/cohorts/conversions.test.ts",
+      "exitCode": 0
+    }
+  }
+}

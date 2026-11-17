@@ -1,0 +1,286 @@
+{
+  "kind": "UNSIGNED_EXACT_VERSION_POST_CI_REVIEW_PACKET",
+  "identity": {
+    "catalogId": 208,
+    "engineId": "launch-percentage-change-calculator",
+    "slug": "percentage-change-calculator",
+    "version": 1
+  },
+  "title": "Percentage Change Calculator",
+  "qualifiedHead": "2d5d105892134f8af46fc2a02edd5932c431b845",
+  "applicationSource": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+  "scope": "Signed change divided by the absolute original value; original must be nonzero.",
+  "limitations": [
+    "IEEE-754 finite normal output or algebraically witnessed zero only; underflow capture is refused. No arbitrary precision.",
+    "Signed change divided by the absolute original value; original must be nonzero."
+  ],
+  "nativeCatalog": {
+    "row": 209,
+    "cells": {
+      "G": "A \u2014 Essential",
+      "H": "Full certified core calculation",
+      "I": "Steps/graph when useful",
+      "J": "Advanced steps; reverse solve; graphing; exports",
+      "K": "Pro analytics + team/client/embed/API/automation",
+      "L": "Required before publish",
+      "M": "Formula verified after certification"
+    }
+  },
+  "technicalRequirements": [
+    {
+      "criterion": "identity-and-scope",
+      "remaining": "Exact engine/version/slug, displayed boundary and source-bound frozen SHA; no adapter-only proof",
+      "complexity": "low"
+    },
+    {
+      "criterion": "formula-domain-and-precision",
+      "remaining": "100(next-old)/abs(old): nonzero old, negative baseline; inverse ambiguity must name held variable; independent normal/extreme/refusal witnesses and provenance",
+      "complexity": "medium"
+    },
+    {
+      "criterion": "actual-three-plan-delivery",
+      "remaining": "Own ID browser calculation, entitlement denial/parity, actual JSON/CSV/PDF bytes reconcile identity/raw values; account create/reload/history replay; accessibility/recovery/performance",
+      "complexity": "medium"
+    },
+    {
+      "criterion": "declared-advanced-capabilities",
+      "remaining": "Native J reverse/steps/graph applicability must be individually declared; scalar steps required; full J implementation/evidence or explicit scoped exclusion",
+      "complexity": "medium"
+    },
+    {
+      "criterion": "business-platform",
+      "remaining": "Native K exact identity shared/team/client/API/embed/automation composition evidence; retained common evidence reusable only when exact route/tuple covers ID. Cannot substitute local batch for durable Business batch",
+      "complexity": "high"
+    },
+    {
+      "criterion": "canonical-human-authority",
+      "remaining": "Formal source/scope adoption, competent acceptance, certification/publication remain pending; not prerequisite to accurately named scoped engineering completion",
+      "complexity": "separate authority"
+    }
+  ],
+  "basePacket": {
+    "path": "docs/completion-wave-20261113/review/208-v1.json",
+    "sha256": "081fd8f603783d26010c1a6b89b6198a8cbc34811fbec2dffd66ba6c2cfe29fa"
+  },
+  "currentEvidenceAddendum": {
+    "path": "docs/completion-wave-20261113/review/current-evidence-addenda.json",
+    "sha256": "994c3a5dd5c020cd4b9a1a019940e2dd0987ac8a7b51c8920636c6498a13e613",
+    "pointer": "/rows/0"
+  },
+  "qualification": {
+    "head": "2d5d105892134f8af46fc2a02edd5932c431b845",
+    "run": 43432219668,
+    "conclusion": "success",
+    "requiredJobs": [
+      "build",
+      "checks",
+      "full-product",
+      "publication-factory",
+      "source-acceptance",
+      "validate"
+    ],
+    "engineeringScopeOnly": true,
+    "sourceCapture": 62,
+    "sourceRecords": 898,
+    "authorityPins": 148,
+    "preflightRefs": 286,
+    "applicationSource": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+    "testOnlySource": "e62f0e6a1aa798ef8798a2edf7a031ad6bf1c152",
+    "versionException": {
+      "catalogId": 383,
+      "technicalVersion": 2
+    },
+    "verifiedAtUTC": "2026-11-13T13:40:49.782382+00:00"
+  },
+  "qualificationProjection": {
+    "path": "/workspace/artifacts/completion-wave-20261113/final-qualified/requirements-540-qualified.json",
+    "sha256": "f84f96007e2d344b71d92e5b0c570802f7ae42bbbd7b8025beeaec0c00160393",
+    "pointer": "/rows/207"
+  },
+  "sourceBindings": [
+    {
+      "path": "src/lib/completion-wave-20261113/math-analysis.ts",
+      "commit": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+      "bytes": 5156,
+      "sha256": "d65ec76fe393ffdbb3c5aabf8084e03c7763218878b25463d6730eaf47a44ab0"
+    },
+    {
+      "path": "src/lib/completion-wave-20261113/conversion-workflows.ts",
+      "commit": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+      "bytes": 6236,
+      "sha256": "ddc998f3f8ce6bb95f57b465cf663bf8861a9c6aff00c4c0c322109051e159e5"
+    },
+    {
+      "path": "src/lib/completion-wave-20261113/physics.ts",
+      "commit": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+      "bytes": 3840,
+      "sha256": "d675805de50a163d14a2ac0809edb0b9ad1ab4d1806b0f1f6fb71cbfa3d8aefa"
+    },
+    {
+      "path": "src/components/completion-wave-analysis.tsx",
+      "commit": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+      "bytes": 8878,
+      "sha256": "467ad4a17356b35f92255993284d04696861ff8c6c08f4f4fa6ad1f74ae15a5c"
+    },
+    {
+      "path": "src/components/completion-wave-analysis.test.tsx",
+      "commit": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+      "bytes": 6494,
+      "sha256": "d77994c3197e3f439440dd22d891f048eb8c28c90d242eb3b155e5d4f16c8b36"
+    },
+    {
+      "path": "src/lib/completion-wave-20261113/engine-evidence.test.ts",
+      "commit": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+      "bytes": 208,
+      "sha256": "74fb11e67c4c08d81364d271090a12a6a3f9e1e8104d07ea9302cd80c41fabbf"
+    },
+    {
+      "path": "src/lib/completion-wave-20261113/native-wave.test.ts",
+      "commit": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+      "bytes": 989,
+      "sha256": "40397748a1cd9ce9b318582bcab276c38ef61dbf4ef8aa0ebe0609ea2466f5bd"
+    },
+    {
+      "path": "src/components/calculator-factory-shared-workspace.test.tsx",
+      "commit": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+      "bytes": 6716,
+      "sha256": "ff66e40a5151b7f838ee06449755630b67f898a1ae855e60f737e2aa1a4a27b7"
+    }
+  ],
+  "selectedImmutableProfileClaim": "Signed percentage change using absolute nonzero original; binary64 output. Numeric/component inverse covers both baseline signs; genuine Pro selected target demonstrates one finite candidate, not both branches.",
+  "reviewEvidence": {
+    "identity": {
+      "catalogId": 208,
+      "engineId": "launch-percentage-change-calculator",
+      "slug": "percentage-change-calculator",
+      "version": 1
+    },
+    "registered": true,
+    "classification": "CONDITIONAL_TECHNICAL_CANDIDATE_PENDING_FULL_CI_AND_REVIEW",
+    "basePacket": {
+      "path": "docs/completion-wave-20261113/review/208-v1.json",
+      "sha256": "081fd8f603783d26010c1a6b89b6198a8cbc34811fbec2dffd66ba6c2cfe29fa",
+      "originalCommit": "946cc31a",
+      "technicalRequirementsPointer": "/technicalRequirements",
+      "requirementsRemainReviewQuestions": true
+    },
+    "selectedImmutableProfileClaim": "Signed percentage change using absolute nonzero original; binary64 output. Numeric/component inverse covers both baseline signs; genuine Pro selected target demonstrates one finite candidate, not both branches.",
+    "nativeGThroughM": {
+      "G": "A \u2014 Essential",
+      "H": "Full certified core calculation",
+      "I": "Steps/graph when useful",
+      "J": "Advanced steps; reverse solve; graphing; exports",
+      "K": "Pro analytics + team/client/embed/API/automation",
+      "L": "Required before publish",
+      "M": "Formula verified after certification"
+    },
+    "nativeDecisionStatus": {
+      "GThroughM": "PENDING_CANONICAL_REVIEW",
+      "HCertification": "PENDING",
+      "LBeforePublish": "PENDING",
+      "MFormulaAfterCertification": "PENDING",
+      "noApplicabilityWaiverInvented": true
+    },
+    "numericalAndComponentEvidence": {
+      "family": "math",
+      "focusedReceipt": "focused",
+      "scope": "Selected immutable engine, explicit finite witnesses and refusal cases; not full-domain, arbitrary-precision or human certification."
+    },
+    "sourceEvidence": [
+      "source61"
+    ],
+    "reviewQuestionsStillOpen": [
+      "Competent review of selected profile and original technicalRequirements",
+      "Canonical G\u2013M acceptance, QA-human signatures, certification and publication decision"
+    ],
+    "decisions": {
+      "canonicalApproval": false,
+      "qaHumanSignature": null,
+      "competentReviewerSignature": null,
+      "certification": false,
+      "publicationApproval": false
+    },
+    "deliveryEvidence": {
+      "businessReceipt": "business",
+      "businessPointers": {
+        "freeHistory": "/freeHistory/0",
+        "sharing": "/sharing/0",
+        "embed": "/embed/0",
+        "api": "/api/0",
+        "waveBatch": "/waveBatch/0"
+      },
+      "claim": "Actual Free owned SSR history/replay and export denial; Business shared comparison, immutable scenario and downloads, embed controls, scoped API and mounted two-row durable batch within declared disposable fixture.",
+      "automationReceipt": "automation",
+      "automationPointer": "/observations/0",
+      "automationClaim": "Actual HTTP handler adapter and worker, two webhook attempts with HMAC and exact original raw bytes; not Next production receiver campaign or external TLS production delivery.",
+      "pro": {
+        "receipt": "pro",
+        "pointer": "/rows/0",
+        "claim": "Genuine SSR Pro forward, three browser-downloaded JSON/CSV/PDF documents with readback and owned history reopen plus recorded history JSON.",
+        "reverseEvidence": "Actual genuine Pro selected-target reverse interaction; independent component/numeric graphs and steps are separate evidence."
+      },
+      "archivedExports": [
+        {
+          "archivePath": "exports/208/business-scenario-json.json",
+          "bytes": 1028,
+          "sha256": "3342e05ed5021f01f4e80e15d93b154f9566f6dfa31eb90f2f435da25beea902"
+        },
+        {
+          "archivePath": "exports/208/business-whatif-json.json",
+          "bytes": 2657,
+          "sha256": "638353447d37017b470a0a0f0e49d30925c8d520d344a954bff18ace815c56e0"
+        },
+        {
+          "archivePath": "exports/208/business-whatif-csv.csv",
+          "bytes": 580,
+          "sha256": "ee9ccb4dd9c67f71f6bb39eaa3ecfbdbf758206b2c0b26303e7fcaea01df68e5"
+        },
+        {
+          "archivePath": "exports/208/business-whatif-pdf.pdf",
+          "bytes": 16378,
+          "sha256": "2c099bb09e8be977b11e95cb87629947448424bf2c18430a6d39acf6e699efff"
+        },
+        {
+          "archivePath": "exports/208/pro-json.json",
+          "bytes": 596,
+          "sha256": "118d9a85abb9aad1039678e1b9281c4a2dc641de73e85f3ff4fc8e0721821940"
+        },
+        {
+          "archivePath": "exports/208/pro-csv.csv",
+          "bytes": 451,
+          "sha256": "92702dae380e42fef72c438d9018fef89881ca219f00abc19a64deefcb39541b"
+        },
+        {
+          "archivePath": "exports/208/pro-pdf.pdf",
+          "bytes": 15544,
+          "sha256": "043b2e2911e641c3842d2dc91b9a235d1a86e4f57264297e596fa792d7860100"
+        },
+        {
+          "archivePath": "exports/208/pro-history-json.json",
+          "bytes": 166,
+          "sha256": "92e2120c396bc931eb0f43ec722a8ea282c065093141e24e45dc5d76971e3d8f"
+        }
+      ]
+    },
+    "graphEvidence": "Component render and finite numeric sampled graph/table witnesses only; no new genuine browser graph journey claim."
+  },
+  "qualificationUpdate": "Earlier pending full-regression/exact-head CI flags are superseded only by the successful qualified-head receipt; applicability and source/formula/precision/QA decisions remain open. Source61 cold proof remains source61, not source62 cold execution.",
+  "canonicalDisposition": "PARTIALLY_IMPLEMENTED",
+  "requiredDecisions": {
+    "reviewerIdentity": null,
+    "appointmentAuthorityRef": null,
+    "competenceRef": null,
+    "authorIdentityRef": null,
+    "independenceRef": null,
+    "specialistApplicabilityDecision": null,
+    "sourceRevisionApplicabilityDecision": null,
+    "formulaPrecisionDecision": null,
+    "canonicalQaClauseDecisions": null,
+    "fullContractAdoption": null,
+    "signature": null
+  },
+  "canonicalAccepted": false,
+  "certificationGranted": false,
+  "publicationEligible": false,
+  "releaseHold": true
+}

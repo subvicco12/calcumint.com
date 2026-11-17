@@ -1,0 +1,451 @@
+{
+  "frozenApplication": "b1dccffe1cc9e0515030d5e7ea4bad8a72756080",
+  "preparedHead": "631e60f35c7b8798338be4f464b2d9e107dce67a",
+  "baselineCI": {
+    "run": 43492205586,
+    "SHA": "eac9a6c23ae4d8f1abb607e32f57ce0d422a3cb8",
+    "result": "SUCCESS"
+  },
+  "unitAndIntegration": {
+    "appFocused": 258,
+    "rosterAndUnitRepairFocused": 237,
+    "historyAndNativeFocused": 200,
+    "currentStrictDelivery": {
+      "passed": true,
+      "scope": "25 exact supplied private calculator identities; genuine isolated acceptance only",
+      "producerCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+      "applicationSourceCommit": "23ce3dfa7329c999e2e88d18091847669c582fbf",
+      "counts": {
+        "freeHistory": 25,
+        "sharing": 25,
+        "embed": 25,
+        "api": 25,
+        "milestoneBusinessBatch": 25
+      },
+      "proRows": 25,
+      "individualAnalysisRows": 25,
+      "fullHistoryReplayVerified": true,
+      "freeIdentityCaseCounts": [
+        5,
+        20
+      ],
+      "downloadFilesVerified": 200,
+      "forwardFormats": {
+        "json": 25,
+        "csv": 25,
+        "pdf": 25
+      },
+      "sourceDrift": [],
+      "producerDrift": [],
+      "receipts": {
+        "browser": {
+          "path": "/workspace/artifacts/milestone100-20261114/browser-current/receipt.json",
+          "sha256": "5109db3dfefa492ffaaadc60a661b29bb8978740c70bd948121d7a83fbaca2b8"
+        },
+        "account": {
+          "path": "/workspace/artifacts/milestone100-20261114/business-account-current/account-receipt.json",
+          "sha256": "707afc8b4165ba962d08e40af5db52e9e1bb3c6e5f4d64a0a932d7e2940d196f"
+        },
+        "automation": {
+          "path": "/workspace/artifacts/milestone100-20261114/business-automation-current/receipt.json",
+          "sha256": "0c11967a0a2737f3549209ea8e652d6ada783d2725a495125c3cb6e3b7cb495c"
+        },
+        "heldSQL": {
+          "path": "/workspace/artifacts/milestone100-20261114/business-sql/receipt.json",
+          "sha256": "672e8e18d41c26d2658c5cef010c03747393eb3431a44bc7276bd81505086b9e"
+        }
+      },
+      "releaseHold": true,
+      "productionWrites": false,
+      "canonicalAccepted": false
+    },
+    "wholeRegression": {
+      "head": "8e582dbc93ff6440cf424e1221b7bf4ffca36050",
+      "result": "FAIL",
+      "passed": 10014,
+      "failed": 7,
+      "skipped": 5,
+      "failedSetupHooks": 1,
+      "unhandledErrors": 1,
+      "durationSeconds": 1571.88,
+      "rawLog": "evidence/full-unit-final.log",
+      "laterSourceRepairs": "G7/A6 and G8/A7; targeted post-admission validation pending. No historical failure is relabelled."
+    }
+  },
+  "source": {
+    "currentAdmission": "A10_G12",
+    "capture": "docs/parallel-source-20261110/capture-revision77.json",
+    "captureSHA256": "6d1a759b2c15b3ef10e9995be8633ec614c4edd3e19dbfc4df2a18a0268f9528",
+    "authorityCommit": "80a29e84",
+    "authoritySHA256": "dccd2b6a3bd5f8c12757726ed1673ff14da381b39295304ab2834d6b2fb85bab",
+    "independentObjectReview": "PASS_ALL12_RECORDS_AND_LITERAL_PRIOR_ARRAYS",
+    "newMandatoryCases": 35,
+    "newMandatoryResult": "PASS",
+    "originalApiBudgetMs": 5000,
+    "lastUnprimedApiMs": 7347,
+    "lastUnprimedApiResult": "FAIL_AT_A5",
+    "priorAttempts": [
+      {
+        "admission": "A3",
+        "API_ms": 13935,
+        "result": "FAIL"
+      },
+      {
+        "admission": "A4",
+        "API_ms": 7465,
+        "result": "FAIL"
+      },
+      {
+        "admission": "A5",
+        "API_ms": 7347,
+        "result": "FAIL"
+      }
+    ],
+    "historicalEvidenceRewritten": false,
+    "assertionsOrDeadlinesRelaxed": false,
+    "newMandatoryMs": 20089,
+    "newMandatoryBudgetMs": 45000,
+    "original43Result": "PASS",
+    "original36Result": "PASS",
+    "fullCurrentCoreResult": "PASS_TRUE",
+    "uninstalledA8ProposalArchived": true,
+    "original43Ms": 10165,
+    "original43BudgetMs": 60000,
+    "original36Ms": 54447,
+    "original36BudgetMs": 60000,
+    "fullCurrentCoreMs": 21548.725,
+    "currentAuthEvidenceFile": {
+      "result": "FAIL_SETUP_HOOK_DEADLINE",
+      "hookMs": 30000,
+      "testCaseExecuted": false,
+      "skippedFromFailedSetup": 1,
+      "log": "evidence/source-admission/G12-parallel-five-auth-full.log"
+    },
+    "priorCapturesLiteralThrough": 76,
+    "globalQualification": "PENDING_FINAL_EXACT_HEAD_HOSTED_CI"
+  },
+  "lint": {
+    "exitCode": 0,
+    "errors": 0,
+    "warnings": 80,
+    "log": "evidence/final-lint.log"
+  },
+  "typecheck": {
+    "exitCode": 0,
+    "log": "evidence/final-typecheck.log"
+  },
+  "webpack": {
+    "ordinaryUnmodifiedBuild": {
+      "result": "PASS",
+      "exitCode": 0,
+      "head": "27e2483b7d2ed1ad0269e7832b026e2f23509225",
+      "applicationSource": "b1dccffe1cc9e0515030d5e7ea4bad8a72756080",
+      "registryFixture": false,
+      "command": "next build --webpack",
+      "log": "evidence/ordinary-webpack.log"
+    },
+    "isolatedDeliveryBuilds": {
+      "count": 2,
+      "sequential": true,
+      "syntheticLowerRegistryFixture": true,
+      "firstBuildPrecedesHistoryRepair": true,
+      "currentStrictBuildApplication": "b1dccffe1cc9e0515030d5e7ea4bad8a72756080"
+    }
+  },
+  "performance": {
+    "kind": "ACTUAL_ENGINE_EXECUTION_MEASUREMENTS_NOT_PRODUCTION_SLA",
+    "head": "b5a07bb4b7023dd9427e2edca36c36aebe665737",
+    "applicationSource": "b1dccffe1cc9e0515030d5e7ea4bad8a72756080",
+    "producerSHA256": "0250ccad69a6a13f76aad5db4cdcb6d718409751f091156cad761e14ab41fc16",
+    "casesSHA256": "a712d00ca926fd2869b58b5860b7ba3d80adf3a27bbb3c75388256385cc548c4",
+    "node": "v22.23.4",
+    "rows": [
+      {
+        "catalogId": 213,
+        "slug": "fraction-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.027945000000045184,
+        "medianMs": 0.029266000000006898,
+        "p95Ms": 0.12540999999987434,
+        "maxMs": 0.40435500000012325,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 221,
+        "slug": "cube-root-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.021052999999938038,
+        "medianMs": 0.022903000000042084,
+        "p95Ms": 0.07551100000000588,
+        "maxMs": 7.265280999999959,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 223,
+        "slug": "exponent-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.021145000000160508,
+        "medianMs": 0.025714000000107262,
+        "p95Ms": 0.058736000000180866,
+        "maxMs": 0.2818419999998696,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 224,
+        "slug": "logarithm-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.02215799999976298,
+        "medianMs": 0.023250000000189175,
+        "p95Ms": 0.06054900000026464,
+        "maxMs": 0.21138900000005378,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 225,
+        "slug": "reciprocal-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.016621000000213826,
+        "medianMs": 0.018064999999751308,
+        "p95Ms": 0.10642300000017713,
+        "maxMs": 0.8093920000001162,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 226,
+        "slug": "remainder-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.01777200000015,
+        "medianMs": 0.018584999999802676,
+        "p95Ms": 0.05367100000012215,
+        "maxMs": 3.088357999999971,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 227,
+        "slug": "lcm-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.019870999999966443,
+        "medianMs": 0.020674999999755528,
+        "p95Ms": 0.05508899999995265,
+        "maxMs": 0.16818400000011025,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 228,
+        "slug": "gcf-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.019073999999818625,
+        "medianMs": 0.020389000000250235,
+        "p95Ms": 0.08053900000004433,
+        "maxMs": 0.4234400000000278,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 229,
+        "slug": "factor-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.015358000000105676,
+        "medianMs": 0.016305999999985943,
+        "p95Ms": 0.04235000000016953,
+        "maxMs": 0.47083900000006906,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 230,
+        "slug": "rounding-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.019909999999981665,
+        "medianMs": 0.020864999999957945,
+        "p95Ms": 0.07685600000013437,
+        "maxMs": 1.0702289999999266,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 231,
+        "slug": "scientific-notation-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.018756999999823165,
+        "medianMs": 0.019526999999925465,
+        "p95Ms": 0.04221700000016426,
+        "maxMs": 0.19936599999982718,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 234,
+        "slug": "percent-error-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.018805000000156724,
+        "medianMs": 0.019548000000213506,
+        "p95Ms": 0.041748999999981606,
+        "maxMs": 0.18901499999992666,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 254,
+        "slug": "root-finder-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.04471000000012282,
+        "medianMs": 0.06526000000030763,
+        "p95Ms": 0.14709899999979825,
+        "maxMs": 1.004106999999749,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 257,
+        "slug": "triangle-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.0329570000003514,
+        "medianMs": 0.034733000000414904,
+        "p95Ms": 0.09797699999990073,
+        "maxMs": 5.9044419999995625,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 258,
+        "slug": "right-triangle-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.026554999999916618,
+        "medianMs": 0.04445000000032451,
+        "p95Ms": 0.16386099999999715,
+        "maxMs": 1.1056589999998323,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 268,
+        "slug": "polygon-area-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.01784700000007433,
+        "medianMs": 0.01884699999982331,
+        "p95Ms": 0.051582999999936874,
+        "maxMs": 0.911645000000135,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 272,
+        "slug": "cone-volume-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.017296999999871332,
+        "medianMs": 0.018232000000352855,
+        "p95Ms": 0.04819099999986065,
+        "maxMs": 0.15065599999979895,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 274,
+        "slug": "surface-area-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.024875999999949272,
+        "medianMs": 0.02593799999976909,
+        "p95Ms": 0.07255699999996068,
+        "maxMs": 0.22913199999993594,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 275,
+        "slug": "volume-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.024874000000181695,
+        "medianMs": 0.02563899999995556,
+        "p95Ms": 0.04304000000001906,
+        "maxMs": 0.14642899999989822,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 278,
+        "slug": "pythagorean-theorem-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.01580599999988408,
+        "medianMs": 0.016415999999935593,
+        "p95Ms": 0.022981999999956315,
+        "maxMs": 1.047418000000107,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 279,
+        "slug": "degrees-to-radians-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.013918000000103348,
+        "medianMs": 0.014633000000230822,
+        "p95Ms": 0.04342499999984284,
+        "maxMs": 0.15471500000012384,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 280,
+        "slug": "radians-to-degrees-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.014836000000286731,
+        "medianMs": 0.015518000000156462,
+        "p95Ms": 0.0743280000001505,
+        "maxMs": 0.4772549999997864,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 328,
+        "slug": "molarity-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.021638000000166357,
+        "medianMs": 0.022261000000071363,
+        "p95Ms": 0.051534000000174274,
+        "maxMs": 0.2539529999999104,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 331,
+        "slug": "moles-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.020657999999912136,
+        "medianMs": 0.021348000000216416,
+        "p95Ms": 0.03746000000001004,
+        "maxMs": 0.16599200000018755,
+        "unchangedPacket": true
+      },
+      {
+        "catalogId": 332,
+        "slug": "dilution-calculator",
+        "version": 1,
+        "runs": 200,
+        "minMs": 0.02546600000005128,
+        "medianMs": 0.02647000000024491,
+        "p95Ms": 0.06193100000018603,
+        "maxMs": 0.6817810000002282,
+        "unchangedPacket": true
+      }
+    ],
+    "releaseHold": true,
+    "productionWrites": false
+  },
+  "exactHeadHostedCI": "NOT_STARTED_FOR_NEW_HEAD",
+  "productionOperations": false,
+  "certificationGranted": false,
+  "releaseHold": true,
+  "launchAndCertificationGuards": {
+    "passed": 60,
+    "failed": 0,
+    "log": "evidence/final-launch-certification.log"
+  }
+}

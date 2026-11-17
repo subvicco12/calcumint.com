@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "cidr-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "input": {
+        "prefixLength": 24
+      },
+      "output": {
+        "steps": [
+          "CIDR = 256"
+        ],
+        "value": 256
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "input": {
+        "prefixLength": 23
+      },
+      "output": {
+        "steps": [
+          "CIDR = 512"
+        ],
+        "value": 512
+      }
+    }
+  ]
+}

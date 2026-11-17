@@ -1,0 +1,102 @@
+{
+  "status": "PASS",
+  "sourceHead": "a8b6c3a2fc4b519f156bc914e5a1684e588a93aa",
+  "startedAt": "2026-11-11T05:36:57.208723+00:00",
+  "checks": [
+    {
+      "name": "finite-test-successors",
+      "command": [
+        "node",
+        "--test",
+        "tests/parallel-five-20261110/test-only-successor.test.mjs"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/recovery-revision15-node22-validation/finite-test-successors.log",
+      "exitCode": 0,
+      "durationSeconds": 0.6254735970014735,
+      "sha256": "2ff0be2ac25fd3625604d2d98cd1b75bbb8f3887500abe1fa8b404bd4a90cdf7"
+    },
+    {
+      "name": "unit",
+      "command": [
+        "npm",
+        "test",
+        "--",
+        "--maxWorkers=2"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/recovery-revision15-node22-validation/unit.log",
+      "exitCode": 0,
+      "durationSeconds": 554.9453217070004,
+      "sha256": "6a5b6fbfe97cee4f946fd00613e8e83c566efd22ebda89f0dec7e70b3b2303df"
+    },
+    {
+      "name": "lint",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/recovery-revision15-node22-validation/lint.log",
+      "exitCode": 0,
+      "durationSeconds": 49.17611276199932,
+      "sha256": "ccd2d8479d8f5ad9f44bde515ceee31f491b672a07d3d841c42ac9d36955b757"
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/recovery-revision15-node22-validation/typecheck.log",
+      "exitCode": 0,
+      "durationSeconds": 10.696825687000455,
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    {
+      "name": "launch",
+      "command": [
+        "npm",
+        "run",
+        "test:launch"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/recovery-revision15-node22-validation/launch.log",
+      "exitCode": 0,
+      "durationSeconds": 3.4967647260000376,
+      "sha256": "e1d08a9cbb43aee781ed0d2f4c6ea88fec818428adba5ea81fe76500dae64372"
+    },
+    {
+      "name": "certification",
+      "command": [
+        "npm",
+        "run",
+        "test:certification"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/recovery-revision15-node22-validation/certification.log",
+      "exitCode": 0,
+      "durationSeconds": 3.086271852998834,
+      "sha256": "e08b7b7bdd97428e71da4f12e17aad6c95249603dd971901ac6ae10dd31a7208"
+    },
+    {
+      "name": "webpack",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/recovery-revision15-node22-validation/webpack.log",
+      "exitCode": 0,
+      "durationSeconds": 41.19281274400055,
+      "sha256": "3e3cee0d0ddda63a07980ac377acadc511103dd80efda8f05ab85901e9ff8518"
+    }
+  ],
+  "runtime": "v22.23.4",
+  "finishedAt": "2026-11-11T05:48:00.446319+00:00",
+  "headAtEnd": "a8b6c3a2fc4b519f156bc914e5a1684e588a93aa"
+}

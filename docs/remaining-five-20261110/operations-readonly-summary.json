@@ -1,0 +1,42 @@
+{
+  "kind": "FRESH_TARGETED_READ_ONLY_PUBLICATION_METADATA_NOT_ADOPTION_APPROVAL",
+  "projectId": "zpwpstsvztyshcnwdfye",
+  "projectName": "CalcuMint",
+  "coreObservedAt": "2026-11-10 09:25:42.876834+00",
+  "rpcObservedAt": "2026-11-10T09:22:39.187177+00:00",
+  "readOnlyTransactions": true,
+  "reviewedCoreQuery": "docs/adoption1528/production-readonly.sql",
+  "reviewedCoreQuerySHA256": "3342d9580a9b110032171c0b1e252a82e2f112520a762191eb247df502c0ca80",
+  "corePreimageSHA256": "56b55a34c29d2c0dc60863da60df510d5a70d962edbc6582591ba025a756c3f1",
+  "matchesHeldCorePredecessor": true,
+  "matchesRetainedNovember7Bytes": true,
+  "publishedMetadataRows": 209,
+  "publishedCanonicalIdentityCountEstablished": false,
+  "missingPublicRpcNames": [
+    "create_catalog_calculator_with_audit",
+    "record_calculator_qa_decision",
+    "assign_calculator_reviewer",
+    "transition_calculator_with_audit",
+    "prepare_catalog_inventory_drafts",
+    "publish_calculator_batch_with_audit_v1"
+  ],
+  "separateOperatorAttestationsStillRequired": [
+    "All external/privileged writer identities, pause/drain/resume and DDL freeze under authorized window",
+    "Production-scope backup and actual restoration/recovery targets",
+    "Runtime credential ownership, provisioning, least privilege and rotation",
+    "Actual deployed application SHA, every participating writer/client and full held dependency compatibility",
+    "Authorized adoption, observer, rollback/withdrawal roles and execution window"
+  ],
+  "qualifiedReviewerAppointmentEstablished": false,
+  "productionWrites": false,
+  "adoptionAuthorized": false,
+  "certificationGranted": false,
+  "publicationEligible": false,
+  "releaseHold": true,
+  "sha256": {
+    "publication-core-tool-receipt.json": "95610f46bfa2a7c7105ce191610a0217d92e2449e1f6f05061be308ba8229e30",
+    "publication-core-capture.json": "eadb5753ad6978ebb1c1995a96176db2a31c32584dfbe5b757e5ae74f1e557fb",
+    "publication-rpcs-tool-receipt.json": "60a658bbcc69a33659c913acb477c9d3878e3d27b0721565ac95663426766323",
+    "publication-rpcs-readonly.sql": "5dcedd8841af67db880ba74b9df000aab5a924cf16109f1769008f0140062c04"
+  }
+}

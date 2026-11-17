@@ -1,0 +1,18 @@
+PASS Six exact runtime signatures are invoker functions with anon EXECUTE denied and authenticated granted
+PASS Already-issued genuine owner JWT loses all six RPC authorities immediately after active=false with no row/audit effects
+PASS Concurrent identical create has one success/one unique refusal; retry refuses without duplicate catalog/QA/audit
+<anonymous_script>:1
+
+
+SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at parseJSONFromBytes (node:internal/deps/undici/undici:4394:19)
+    at successSteps (node:internal/deps/undici/undici:7048:27)
+    at consumeBody (node:internal/deps/undici/undici:7054:9)
+    at _Response.json (node:internal/deps/undici/undici:6993:18)
+    at call (file:///tmp/calcumint-publication-rpc-six-20261110/tests/publication-rpc-six-20261110/acceptance.mjs:21:277)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Promise.all (index 0)
+    at async file:///tmp/calcumint-publication-rpc-six-20261110/tests/publication-rpc-six-20261110/acceptance.mjs:31:60
+
+Node.js v24.19.0

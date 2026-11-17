@@ -1,0 +1,9 @@
+PASS Exact five catalog/engine/version tuple constraints reject cross-engine substitution
+PASS Shared configured key limit, durable exact attribution and idempotent retry/conflict
+PASS Native API and embed share the existing quota lock under concurrent last-slot requests
+PASS Different five identities share one configured last-slot quota under concurrency
+PASS Concurrent duplicate redemption produces one debit and one durable audit
+PASS Audit persistence failure rolls back the quota debit atomically
+PASS Cross-tenant attribution, revoked/expired grants and Business downgrade fail closed
+PASS RLS and caller privileges deny direct grant/audit access and metering RPC to untrusted roles
+PASS A committed revocation wins against waiting redemption with no quota or audit debit

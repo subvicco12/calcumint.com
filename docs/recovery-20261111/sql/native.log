@@ -1,0 +1,9 @@
+PASS All original13 exact tuples pass protected jobs; old13 rejects new5 with nonempty historical jobs/grants/usage
+PASS Injected function-source drift refuses adoption without changing seeded rows
+PASS Held adoption preserves historical row bytes and refuses reapplication
+PASS Exact reverse restores source/constraint/ACL/RLS/trigger metadata and all nonempty historical bytes; reapply refuses
+PASS Restored exact old13 schema permits repeat forward adoption
+PASS Exact new5 jobs pass with duplicate stability; wrong identity/version, unrelated IDs and untrusted roles refuse
+PASS All new-five exact embed grants debit protected quotas and retain durable duplicate identity
+PASS Reverse refuses new-five durable rows without deleting or mutating audit
+PASS Every unchanged function and all table ownership/ACL/RLS/columns/indexes/policies/triggers retain exact metadata

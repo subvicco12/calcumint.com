@@ -1,0 +1,93 @@
+{
+  "kind": "PUBLISHER_NATIVE_SOURCE_CAPTURE_NOT_APPLICABILITY_APPROVAL",
+  "retrievedAtUTC": "2026-11-08T19:15:38.613544+00:00",
+  "catalogId": 432,
+  "engineId": "conversion.time",
+  "version": 1,
+  "publisher": "Regenstrief Institute and UCUM Organization",
+  "publisherPage": "https://ucum.org/ucum",
+  "publisherRepository": "https://github.com/ucum-org/ucum",
+  "provenance": "Official publisher page links ucum-org/ucum repository; native bytes fetched through Git at exact v2.2 tag commit; no invented author/signature",
+  "tag": "v2.2",
+  "commit": "d060c6d3dfe3b0deb196c190b8024d95385e0b92",
+  "sourceVersion": "2.2",
+  "sourceRevision": "N/A",
+  "sourceRevisionDate": "2024-06-17",
+  "files": [
+    {
+      "publisherPath": "ucum-essence.xml",
+      "bytes": 82776,
+      "sha256": "dfccea1b5dc284245ebae97edd1dc03c45864da4e87df55bc9851797b4fd0b61",
+      "gitBlob": "ec61d23ce68da34bf10726daef7b33d70bbc1b4f",
+      "archiveEntry": "ucum-essence.xml"
+    },
+    {
+      "publisherPath": "ucum-source.xml",
+      "bytes": 286457,
+      "sha256": "f73b71889bfe726c63acb4a36fa0affc19dfc64ee3e49e1dcef4a1308940bef0",
+      "gitBlob": "e23e79800edc46dab0af5cb9f4d1da4a6d27d2f2",
+      "archiveEntry": "ucum-source.xml"
+    },
+    {
+      "publisherPath": "LICENSE.md",
+      "bytes": 14158,
+      "sha256": "b7989c84c68b7a80d42aad28cfdd824d756c2f70f26eaf1347d2e49f7838bbdf",
+      "gitBlob": "c31769a87daecbae90c0b3556651105383423931",
+      "archiveEntry": "LICENSE.md"
+    }
+  ],
+  "definitions": {
+    "min": {
+      "value": "60",
+      "unit": "s"
+    },
+    "h": {
+      "value": "60",
+      "unit": "min"
+    },
+    "d": {
+      "value": "24",
+      "unit": "h"
+    },
+    "wk": {
+      "value": "7",
+      "unit": "d"
+    }
+  },
+  "fixedWeekSeconds": 604800,
+  "missingPublisherWeekBody": "CAPTURED_NATIVE_DEFINITION",
+  "formalSourceApplicability": "PENDING_COMPETENT_ADOPTION",
+  "historicalSourceCorrection": "BIPM citation does not establish week; supplement via this exact UCUM definition, do not rewrite prior packet",
+  "sourceDiscrepancy": "Retained UCUM source prose says864000 s for day; machine-readable unit definition and corresponding table instead specify24h, consistent with BIPM day86400s. Preserve and flag apparent editorial typo for competent adjudication; do not silently repair publisher bytes. Week table/essence agree7d.",
+  "nativeHTTPAttempts": "Direct ucum.org HTML/XML requests returned403; not claimed downloaded. Original publisher Git XML bytes succeeded and are separately hashed. Firecrawl markdown is a parsed capture, not native publisher HTTP bytes.",
+  "scopeLimits": [
+    "Fixed duration, not calendar/timezone/leap-second arithmetic",
+    "No new unit roster, rounding behavior, physical/clinical or jurisdictional claims",
+    "Source capture is not formal revision/applicability adoption, competent approval, certification or publication"
+  ],
+  "releaseHold": true,
+  "productionWrites": false,
+  "archive": {
+    "path": "docs/first-live-closure-20261108/source/ucum-v2.2-native-source.zip",
+    "bytes": 147651,
+    "sha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+    "crc": "PASS",
+    "reason": "Preserve original publisher byte whitespace without normalizing or weakening source/diff guards"
+  },
+  "supplementalFrequencyFacts": {
+    "catalogId": 440,
+    "engineId": "conversion.frequency",
+    "version": 1,
+    "hertzDefinition": {
+      "value": "1",
+      "unit": "s-1"
+    },
+    "prefixes": {
+      "k": "1e3",
+      "M": "1e6",
+      "G": "1e9"
+    },
+    "status": "NATIVE_STANDARD_CORROBORATION_NOT_GOVERNING_SOURCE_REPLACEMENT",
+    "boundary": "Engine BIPM sources and historical evidence unchanged; competent reviewer must adopt any supplementary source and resolve required original BIPM evidence. No implicit substitution or waiver."
+  }
+}

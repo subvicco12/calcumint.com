@@ -1,0 +1,62 @@
+{
+  "kind": "IMMUTABLE_SOURCE_REPAIR_PROVENANCE",
+  "baseline": "d102135f3922d8c094bd89584475db0ef5b945a1",
+  "sourceHead": "0a584b06d610a5daff7a76f26915d290c5371603",
+  "purpose": "Actual common-directory coordination and availability of independently pinned authority in shallow checkouts; old admission evidence preserved.",
+  "applicationChanges": false,
+  "historyRewritten": false,
+  "commits": [
+    {
+      "sha": "746e74b8661637fc381ae51f7970e62d3ad0cff1",
+      "subject": "fix(source): coordinate supplied availability and pin current authority objects"
+    },
+    {
+      "sha": "7ef48c91767b955269a481ef3fa1822d80dfd1d3",
+      "subject": "test(source): admit locked availability and exact authority recovery"
+    },
+    {
+      "sha": "e43be96f160510e487fc749922c41c22236ba487",
+      "subject": "test(source): prepare exact authority anchor under lock and require recovery cases"
+    },
+    {
+      "sha": "e3cae23068f0310c31ed3c2d06e1b38cf02a83a9",
+      "subject": "fix(test): use a lint-safe authority module binding"
+    },
+    {
+      "sha": "4fb1b82927264f432c16521b1d6437e62a45411d",
+      "subject": "test(source): admit the lint-safe authority test successor"
+    },
+    {
+      "sha": "0a584b06d610a5daff7a76f26915d290c5371603",
+      "subject": "test(source): pin the reviewed lint-safe authority successor"
+    }
+  ],
+  "currentAuthority": {
+    "ref": "4fb1b82927264f432c16521b1d6437e62a45411d",
+    "blob": "67f3ca10a49991b7a09cc7eafd25c7f97b9bbf26",
+    "sha256": "c2bfaeb61ad809f39430ef8e547a220fcebae9bad2b9f3cf8e3935a0765acdd1",
+    "independentlyLiteralPinned": true,
+    "availabilityPreparationIsNotAdmission": true
+  },
+  "retainedCaptures": {
+    "docs/parallel-source-20261110/capture-revision69.json": "6254e8783ce1ae8cb16fd64c30f19664c48970a15171a2b8b39238c0cbd1f2da",
+    "docs/parallel-source-20261110/capture-revision70.json": "a8a53519a679ae4cb820c12bd2818906759d08da21b8d7e67c8df1e87234f1dc",
+    "docs/parallel-source-20261110/capture-revision71.json": "7869617bcc27fe17938f48a471f7b1b7489006515d3ddeb161cb42364297a74d",
+    "docs/parallel-source-20261110/capture-revision72.json": "09969f98fba97a655a471073b35d35ba4dbef7ee802a5da4f332aab26cd0c2d4",
+    "docs/parallel-source-20261110/capture-revision73.json": "e8db6d2370a932666f88e85dbc1f7e4acc21ef99443d698b6930a0f5cbbba76d",
+    "docs/parallel-source-20261110/capture-revision74.json": "94f42b25bfe3edce93d046a47dac6431ad11d90896a95754d6fa4e35c2d0a9b8",
+    "docs/parallel-source-20261110/capture-revision75.json": "8c5c8170c3f9af6bc15b30aebf6d7125fede00e7a8a08f0f75af132b2bc9da49",
+    "docs/parallel-source-20261110/capture-revision76.json": "f6a25bbbaea71ef01d003e5cc07834be88e627dab77455858c7486d28abdd274",
+    "docs/parallel-source-20261110/capture-revision77.json": "6d1a759b2c15b3ef10e9995be8633ec614c4edd3e19dbfc4df2a18a0268f9528",
+    "docs/parallel-source-20261110/capture-revision78.json": "96f89c6a74fbb3d1ce2db33d21b52f76496723511474c4af96cb70124c8b830c",
+    "docs/parallel-source-20261110/capture-revision79.json": "45eb2808887ae25b14f1dd618b78c6cdcf00ab194f916eca5666d60c98e563c4",
+    "docs/parallel-source-20261110/capture-revision80.json": "3b948671a63b9202c39404d4dffd0c4ef83ffcd84b7a60c66407ab897ebcb111",
+    "docs/parallel-source-20261110/capture-revision81.json": "41f015c69c50e517690a646e28d9e443e8c0cf2c52a890ac89127a0e92d93d4d",
+    "docs/parallel-source-20261110/capture-revision82.json": "329d78ac427278582b45c6c59b8a38b730eb29a29ac3cef8086ebbf95b25a130"
+  },
+  "unchangedTrees": {
+    "src": true,
+    "data": true,
+    "supabase/migrations": true
+  }
+}

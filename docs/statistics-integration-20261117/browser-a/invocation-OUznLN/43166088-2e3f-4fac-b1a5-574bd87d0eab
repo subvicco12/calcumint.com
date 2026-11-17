@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "identity": {
+    "catalogId": 293,
+    "engineId": "statistics.linear-regression",
+    "calculatorSlug": "linear-regression-calculator",
+    "calculatorVersion": 1,
+    "sourceVersion": "worker1-statistics-a-20261117.1/statistics.linear-regression@1"
+  },
+  "raw": {
+    "xValues": "1, 2, 3",
+    "yValues": "2, 4, 6"
+  },
+  "snapshot": {
+    "calculatorSlug": "linear-regression-calculator",
+    "calculatorVersion": 1,
+    "input": {
+      "xValues": [
+        1,
+        2,
+        3
+      ],
+      "yValues": [
+        2,
+        4,
+        6
+      ]
+    },
+    "output": {
+      "slope": 2,
+      "intercept": 0,
+      "rSquared": 0.9999999999999996,
+      "correlation": 0.9999999999999998,
+      "count": 3,
+      "steps": [
+        "n = 3; mean(x) = 2; mean(y) = 4",
+        "ŷ = 0 + 2x",
+        "R² = 0.9999999999999996"
+      ]
+    }
+  }
+}

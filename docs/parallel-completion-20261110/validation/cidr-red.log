@@ -1,0 +1,25 @@
+
+ RUN  v3.2.7 /workspace/work/product-completion-20261108
+
+ ❯ src/lib/technology-cidr-snapshot-verification.test.ts (2 tests | 1 failed) 13ms
+   × replays every original CIDR v1 prefix through the actual global snapshot reader 9ms
+     → Exact-engine verification is unavailable for this recorded contract; original history remains readable.
+   ✓ rejects altered CIDR outputs, inputs, versions and envelope extras 3ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/technology-cidr-snapshot-verification.test.ts > replays every original CIDR v1 prefix through the actual global snapshot reader
+Error: Exact-engine verification is unavailable for this recorded contract; original history remains readable.
+ ❯ verifyRegisteredSnapshot src/lib/registered-snapshot-replay.ts:24:68
+
+ ❯ verifyRegisteredSnapshot src/lib/registered-snapshot-verification.ts:15:95
+ ❯ src/lib/technology-cidr-snapshot-verification.test.ts:8:39
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  17:10:42
+   Duration  873ms (transform 397ms, setup 0ms, collect 604ms, tests 13ms, environment 0ms, prepare 80ms)
+

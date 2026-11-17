@@ -1,0 +1,53 @@
+{
+  "status": "FAIL",
+  "sourceHead": "c0f593fa2ee6dd66fd54f7903b3ca553785c10aa",
+  "startedAt": "2026-11-11T11:15:36.668551+00:00",
+  "runtime": "v22.23.4",
+  "checks": [
+    {
+      "name": "finite15",
+      "command": [
+        "node",
+        "--test",
+        "tests/parallel-five-20261110/test-only-successor.test.mjs"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/first20-binding-repair-20261111/r19-validation/finite15.log",
+      "exitCode": 0,
+      "durationSeconds": 0.9493348289979622,
+      "sha256": "e0d30ff88576c685e18adf7e131a6863c32c8db8d955b94bf60692b6a0cc5241"
+    },
+    {
+      "name": "awaited-source-bridge",
+      "command": [
+        "node_modules/.bin/vitest",
+        "run",
+        "src/lib/parallel-source-evidence.test.ts",
+        "src/lib/first-five-engineering-evidence.test.ts",
+        "src/lib/parallel-five-auth-evidence.test.ts",
+        "--maxWorkers=1"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/first20-binding-repair-20261111/r19-validation/awaited-source-bridge.log",
+      "exitCode": 0,
+      "durationSeconds": 141.84638807800002,
+      "sha256": "7a51babc1cf6b48568f57e66815fe5cba9ea89ede16251bcd78c53ff4c97cd09"
+    },
+    {
+      "name": "full-serial",
+      "command": [
+        "npm",
+        "test",
+        "--",
+        "--maxWorkers=1"
+      ],
+      "status": "FAIL",
+      "log": "/workspace/artifacts/first20-binding-repair-20261111/r19-validation/full-serial.log",
+      "exitCode": 1,
+      "durationSeconds": 955.3697630300012,
+      "sha256": "1955ebeea39e2c8f9086ff27036faaea4314de59ca366c339bf3dc33a59757eb"
+    }
+  ],
+  "finishedAt": "2026-11-11T11:33:54.849300+00:00",
+  "headAtEnd": "8374cd4c51c79a4cf32bb5e3187a004322cf3542"
+}

@@ -1,0 +1,32 @@
+{
+  "kind": "EXACT_DIAGNOSTIC_ONLY_SUCCESSOR_NOT_ASSERTION_OR_TIMEOUT_WAIVER",
+  "predecessor": {
+    "ref": "33b98fb7db5e11650914958744f55f030273118c",
+    "path": "tests/parallel-source-20261110/retained-vitest.mjs",
+    "blob": "28ad3817000d6f7362a01048fa71540d3c5800a1",
+    "sha256": "9bc2489b1756978dff552b5049abe3039f7088d373c42fbf38d38fddc22c83b8"
+  },
+  "successor": {
+    "ref": "8aa38dc34b33087b7d694ea543f227a78817ad10",
+    "path": "tests/parallel-source-20261110/retained-vitest.mjs",
+    "blob": "251632f94efd25830060d4ed1ebe345d81ce748b",
+    "sha256": "e60f19cf4eaea3fd3e145e916f36e2f880d3ca1083c2d674d995ced74fbd927a"
+  },
+  "reason": "Nonzero original3-case child JSON diagnostics were deleted by existing finally cleanup before parent could expose failed inner assertions. Outer case label cannot identify original failing case.",
+  "change": "Catch original exec failure, read failed original report before cleanup, rethrow originalfailedstatus with report messages and originalcause. Unreadable report is explicit and always rejected.",
+  "unchanged": [
+    "actualA7checkout",
+    "originalassertionbytes",
+    "selectedcasepatterns",
+    "originalcase limits",
+    "120s childlimit",
+    "assertOriginalReport",
+    "cache on success only",
+    "cleanup"
+  ],
+  "syntheticNegativeTests": "bf4838f87a674b52298e24234cbff7a5a05c97b2",
+  "negativeFixtureIsAcceptance": false,
+  "historicalEvidenceEdited": false,
+  "releaseHold": true,
+  "productionChanged": false
+}

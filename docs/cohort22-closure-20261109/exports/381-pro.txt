@@ -1,0 +1,52 @@
+CalcuMint | Calculation report
+
+
+UPS Runtime Calculator
+Calculator: ups-runtime-calculator | Engine version: 1
+Raw engine values: full numeric precision; no display rounding or sampled rows.
+Units appear only where supplied by the calculation or bound display metadata.
+Embedded Unicode glyphs are readable.
+Unsupported characters and controls use explicit Unicode escapes.
+Tagged PDF; PDF/UA conformance: UNVERIFIED.
+Text follows document order; charts include complete numeric text alternatives.
+
+
+INPUTS
+Battery energy (Wh) [Wh]
+input["batteryWh"] = 600
+Load (W) [W]
+input["loadWatts"] = 300
+Efficiency (%) [%]
+input["efficiencyPercent"] = 90
+
+
+RESULTS
+UPS runtime [hours]
+output["value"] = 1.8
+output["steps"][0] = "UPS Runtime = 1.8"
+
+
+METHODOLOGY
+Deterministic calculation using the reviewed Technology & Computing engine.\u000aTechnic
+al calculation revision: technology.ups-runtime@1\u000a\u000aSimplified UPS runtime from
+ battery energy, load and explicit efficiency.\u000aRuntime (h) = battery Wh × efficienc
+y ÷ load W
+
+
+DECLARED FORMULAS
+ups-runtime-calculator: Runtime (h) = battery Wh × efficiency ÷ load W
+Simplified UPS runtime from battery energy, load and explicit efficiency.
+
+
+SOURCES
+NIST Handbook 44 — watthour definition
+https://www.nist.gov/document/2026-nist-handbook-44-appendix-d
+NIST defines the watthour (Wh) as the practical unit of electric energy expended in one
+hour when average power is one watt; runtime here remains an idealized energy/load estim
+ate with explicit efficiency.
+
+
+
+
+Engine v1 | Page 1 of 1
+

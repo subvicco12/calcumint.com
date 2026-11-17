@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "cloud-data-transfer-cost-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "methodology": "Deterministic calculation using the reviewed Technology & Computing engine.\nTechnical calculation revision: technology.cloud-data-transfer-cost@1\n\nProvider-neutral transfer estimate using a user-supplied price; tiers and free allowances are not modeled.\nTransfer cost = transfer GB × price per GB",
+      "input": {
+        "transferGb": 500,
+        "pricePerGb": 0.09
+      },
+      "output": {
+        "value": 45,
+        "steps": [
+          "Cloud Data Transfer Cost = 45"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "cloud-data-transfer-cost-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "transferGb": {
+            "label": "Transfer (GB)",
+            "unit": "GB"
+          },
+          "pricePerGb": {
+            "label": "Price per GB"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Transfer cost",
+            "unit": "currency units"
+          }
+        }
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "methodology": "Deterministic calculation using the reviewed Technology & Computing engine.\nTechnical calculation revision: technology.cloud-data-transfer-cost@1\n\nProvider-neutral transfer estimate using a user-supplied price; tiers and free allowances are not modeled.\nTransfer cost = transfer GB × price per GB",
+      "input": {
+        "transferGb": 1000,
+        "pricePerGb": 0.09
+      },
+      "output": {
+        "value": 90,
+        "steps": [
+          "Cloud Data Transfer Cost = 90"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "cloud-data-transfer-cost-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "transferGb": {
+            "label": "Transfer (GB)",
+            "unit": "GB"
+          },
+          "pricePerGb": {
+            "label": "Price per GB"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Transfer cost",
+            "unit": "currency units"
+          }
+        }
+      }
+    }
+  ]
+}

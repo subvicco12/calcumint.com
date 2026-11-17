@@ -1,0 +1,112 @@
+{
+  "kind": "INDEPENDENT_SOFTWARE_REVIEW_NOT_CANONICAL_OR_SOURCE_APPROVAL",
+  "base": "eac9a6c23ae4d8f1abb607e32f57ce0d422a3cb8",
+  "app": "5d4df0b462991053c95ebcdd85d6d9b0f4024bc8",
+  "outcome": "DEMONSTRATED_FINDING_RESOLVED_IN_WORKING_TREE",
+  "changedSrcFilesReviewed": 12,
+  "findings": [
+    {
+      "id": "W100-R1",
+      "priority": "P2",
+      "title": "New math and geometry contract metadata loses known output units in common result and native delivery",
+      "paths": [
+        "src/lib/calculator-factory/completion/math-next100.ts",
+        "src/lib/calculator-factory/completion/geometry-next100.ts",
+        "src/lib/calculator-factory/registry.ts"
+      ],
+      "demonstratedIds": [
+        234,
+        272,
+        279,
+        280
+      ],
+      "trigger": "Call factoryResult or runFactoryEmbedCalculation with ordinary valid inputs for the listed IDs.",
+      "actual": "primaryResult.unit and native unit are undefined although adapter analysis supplies %, cubic units, radians or degrees.",
+      "impact": "The same arithmetic is displayed with units in new analysis and without units in shared result/native output, so native consumers lose the output quantity interpretation.",
+      "repair": "Expose the output unit on applicable new contracts or an exact outputUnit resolver and reuse it consistently in analysis, common result and native delivery. Dimensionless math should retain intentional empty units.",
+      "boundaryTests": [
+        "234 observed98 actual100: value2 and unit% in common result and native.",
+        "279 degrees180: valuepi and unitradians;280 radianspi: value180 and unitdegrees.",
+        "272 radius3 height5: volume and cubic-unit label.",
+        "Geometry area/volume/length/slope/root identities each retain appropriate meaning; dimensionless math has no invented unit."
+      ],
+      "status": "RESOLVED_IN_WORKING_TREE_NOT_FINAL_APP_PIN"
+    }
+  ],
+  "verified": [
+    "69 unique native tuples all registered and matched exact factory identity/version; all default outputs replayed.",
+    "All69 refuse wrongversion2 and extra-field payload.",
+    "222 poweralias collision and276277v2 remain excluded intentionally;323324441999 also excluded.",
+    "Each new forward numeric entrypoint rejects accessor fields before reading getters and rejects symbols.",
+    "Reviewed bounded inverse direction, discrete candidate search, replay checks, plain-data copying, source/scope restrictions and UI finite-sample presentation. No other demonstrated new defect established in this review."
+  ],
+  "evidence": "docs/milestone100-20261114/review/independent-review-probes.json",
+  "limitations": [
+    "Local software execution only; no authenticated browser, provider, hosted CI, production or performance acceptance.",
+    "Existing native Object.values input precheck precedes copier; hostile native getter behavior is preexisting cross-cutting code and was not treated as a new change finding.",
+    "Unsigned source/canonical acceptance remains separate; this review grants no approval or certification."
+  ],
+  "releaseHold": true,
+  "followup": {
+    "revision": "APP5d4 plus current working-tree repair; final APP pin pending",
+    "findingStatus": "W100-R1 RESOLVED_BY_EXECUTED_PROBES",
+    "unitWitnessIds": [
+      234,
+      272,
+      279,
+      280,
+      258
+    ],
+    "nativeTuplesReverified": 69,
+    "literal44Pin": "171aa03828ca3adb5880123d0c303ca6b98d598c70ab906baef3c59ef5ed61c9",
+    "full69Proof": "Exact equality retained44 + explicit25 additions, no live-roster slicing/filtering to fit predecessor. Historical SQL remains constrained to44; separate successor SQL assertions cover full69 and technology20.",
+    "focusedTestResult": {
+      "files": 5,
+      "passedFiles": 4,
+      "failedFiles": 1,
+      "passedTests": 232,
+      "failedTests": 1,
+      "failure": "Historical git preimage subprocess spawnSync git EPERM; no data comparison failure. Separate read-only git show capture independently matched eac9 catalog hash and44 literal rows."
+    },
+    "rosterChangesReviewed": [
+      "registry.test.ts extends literal roster with all28 private/registered contracts.",
+      "factory-nine-sharing.test.ts extends explicit share roster with exact25 registered successors; existing rejection cases retained.",
+      "factory-automation-contract.test.ts admits exact chemistry value+steps output shape for328331332; other output-shape assertion retained.",
+      "sql-successor.test.ts separates immutable literal44 checks from full current69 SQL-map equality."
+    ],
+    "sourceHashes": {
+      "src/lib/calculator-factory/completion/math-next100.ts": "8d9a40dccb383f9e4ff3898bb8cec3bcd422444485893005ee021d6745631599",
+      "src/lib/calculator-factory/completion/geometry-next100.ts": "b87092da5a8587cf950f8926ece8a48d556807cfdbfa070011cdfc29ec44906e",
+      "src/lib/native-delivery/factory-embed-contract.test.ts": "21f45f158b045b5cde625fb963922d00d3b620099556d4b84cbb7347a9de9df0",
+      "src/lib/completion-wave-20261113/sql-successor.test.ts": "e5e67def0a809ddea13b5d2b116d128737a579336f3e3db9da9b4c1df4d1a595",
+      "src/lib/business/factory-nine-sharing.test.ts": "1d8f22e8ee60dd0f8d5247aa1bdf7eb05e1c16e84a2d85346579868002e413df",
+      "src/lib/calculator-factory/registry.test.ts": "423295f460100cf2dc1f70b024a3ce46417c0900e22a4a43d30757affa537584",
+      "src/lib/native-delivery/factory-automation-contract.test.ts": "425b40815e864e058a362b4be335b742b2c939c48025308cbb5aa40e7cc084dc"
+    },
+    "reexecutedAtApp": "93e00d9835a7541776d39f144b32cdf88c5dc3d8",
+    "reproScript": {
+      "path": "docs/milestone100-20261114/review/independent-review-probes.mjs",
+      "sha256": "45a2f73d1d592e6cf7cfefcec61f0a4f7d38bf6bbccec19a5eee2aedb0742468",
+      "eslint": "PASS"
+    },
+    "capturedSourceBoundary": {
+      "geometryPublisherCaptures": "Genuine frozen OpenStax9.3/9.4/9.5/9.6 and NIST unit-conversion bodies with source metadata/excerpt hashes; captured evidence is separate from complete-contract acceptance.",
+      "newCandidateSupport": {
+        "272": "Cone volume bounded right-circular scope supported.",
+        "274": "Rectangular prism surface area supported; generic surface selector not established.",
+        "275": "Rectangular prism volume supported; generic volume selector not established.",
+        "278": "Pythagorean hypotenuse relation supported.",
+        "279280": "Degree/radian exact relationship supported; binary64 precision remains separately reviewed.",
+        "257258": "Partial support only; Heron/angle outputs not covered."
+      },
+      "unresolved": [
+        "254 numerical rootfinder",
+        "268 regularpolygon",
+        "276 coordinateslope",
+        "277 coordinatedistance",
+        "234 percenterror exactformula"
+      ],
+      "formalApproval": "PENDING_NOT_GRANTED"
+    }
+  }
+}

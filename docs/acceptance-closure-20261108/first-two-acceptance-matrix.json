@@ -1,0 +1,110 @@
+{
+  "kind": "EXACT_VERSION_ACCEPTANCE_OVERLAY_NOT_CANONICAL_ADOPTION",
+  "rows": [
+    {
+      "masterId": 432,
+      "engineId": "conversion.time",
+      "slug": "time-converter",
+      "version": 1,
+      "offeredScopeEngineering": "COMPLETE_RETAINED_IMPLEMENTATION",
+      "acceptanceDisposition": "IMPLEMENTED_REVIEW_PENDING",
+      "specificNewGap": "#432 authenticated atomic scenario execution previously absent; #440 narrow regression",
+      "newAuthenticatedScenarioExecution": "PASS_SCOPED_CANDIDATE_FIXTURE",
+      "publicationWithdrawalComposition": "PASS_4_TARGETED_TESTS_SHARED_BOTH_IDENTITIES",
+      "priorEvidenceReuse": "docs/calculator-sprint-20261108/first-two-packet.json",
+      "canonicalAccepted": false,
+      "competentDecision": {
+        "status": "PENDING",
+        "reviewerName": null,
+        "reviewerAuthorityProvenance": null,
+        "signedAt": null,
+        "sourceAccepted": null,
+        "formulaAccepted": null,
+        "precisionAccepted": null,
+        "technicalQaAccepted": null
+      },
+      "fullyAccepted": false,
+      "publicationEligible": false,
+      "canonicalRequirementDispositionsWritten": false
+    },
+    {
+      "masterId": 440,
+      "engineId": "conversion.frequency",
+      "slug": "frequency-converter",
+      "version": 1,
+      "offeredScopeEngineering": "COMPLETE_RETAINED_IMPLEMENTATION",
+      "acceptanceDisposition": "IMPLEMENTED_REVIEW_PENDING",
+      "specificNewGap": "#440 concurrent retry + exact calculator-specific downgrade regression",
+      "newAuthenticatedScenarioExecution": "PASS_SCOPED_CANDIDATE_FIXTURE",
+      "publicationWithdrawalComposition": "PASS_4_TARGETED_TESTS_SHARED_BOTH_IDENTITIES",
+      "priorEvidenceReuse": "docs/calculator-sprint-20261108/first-two-packet.json",
+      "canonicalAccepted": false,
+      "competentDecision": {
+        "status": "PENDING",
+        "reviewerName": null,
+        "reviewerAuthorityProvenance": null,
+        "signedAt": null,
+        "sourceAccepted": null,
+        "formulaAccepted": null,
+        "precisionAccepted": null,
+        "technicalQaAccepted": null
+      },
+      "fullyAccepted": false,
+      "publicationEligible": false,
+      "canonicalRequirementDispositionsWritten": false
+    }
+  ],
+  "closedEngineeringRequirements": [
+    {
+      "masterId": 432,
+      "requirement": "offered-authenticated-atomic-scenario-workflow",
+      "status": "ENGINEERING_COMPLETE_SCOPED_CANDIDATE_FIXTURE",
+      "proof": "Concurrent Pro/Business retries each persist one immutable row; conflict/output mutation/stale owner/foreign read-update-copy/Free denied; new writes denied on downgrade while old snapshots replay. Genuine GoTrue JWT + SDK + PostgREST + PG17.6."
+    },
+    {
+      "masterId": 440,
+      "requirement": "offered-authenticated-atomic-scenario-workflow-regression",
+      "status": "PASS_SCOPED_CANDIDATE_FIXTURE",
+      "proof": "Same focused assertions, preserving prior #440-specific genuine coverage."
+    }
+  ],
+  "retainedEvidence": [
+    "source/body/factor applicability",
+    "independent numerical and precision boundaries",
+    "Final renderer/raw reconciliation",
+    "three-plan bounded historical browser journeys",
+    "genuine three-plan authenticated history and immutable replay",
+    "bounded raw CSV/PDF and A/B export/recovery"
+  ],
+  "remainingExternalDecisions": [
+    {
+      "id": "AUTHORIZED_COMPETENT_EXACT_VERSION_REVIEW",
+      "owner": "Named reviewer with documented competence and authority; presently unassigned in retained decisions",
+      "action": "Record name, authority provenance, timestamp, explicit source/formula/precision/technical-QA accept/reject for each exact version; explicitly disposition applicable UX and retained justified-NA clauses."
+    },
+    {
+      "id": "CANONICAL_EXACT_VERSION_CONTRACT_ADOPTION",
+      "owner": "Authorized canonical lifecycle owner",
+      "action": "Adopt or reject exact master ID/engine/slug/version and complete offered input/output/feature scope with source and QA receipt references; do not substitute inventory status or CI."
+    }
+  ],
+  "lowestCostCompleteAcceptanceAction": "Review existing exact packets plus focused receipt first; require additional engineering execution only for a named applicable uncovered clause. Existing bounded evidence does not itself close full canonical browser/a11y/performance acceptance. After actual competent/canonical decisions, follow separate held source-bound certification/adoption/publication runbook.",
+  "notNewMissingProductRequirements": [
+    "No new unit roster beyond declared fixed durations and SI frequency prefixes inferred",
+    "No chart or extra modelling variable invented",
+    "No jurisdiction specialist waiver fabricated"
+  ],
+  "publicationReceipt": "docs/acceptance-closure-20261108/first-two-publication-receipt.json",
+  "releaseHold": true,
+  "productionWrites": false,
+  "newApproval": false,
+  "authReceipt": "docs/acceptance-closure-20261108/first-two-auth-receipt.json",
+  "authExecution": {
+    "passed": true,
+    "checks": 6,
+    "scenarios": 4,
+    "explicitDenials": 24,
+    "httpRequests": 82,
+    "sourceCommitMeaning": "Parent HEAD at fixture execution; new test file SHA256 captured separately in receipt.sources. Final delivery commit requires separate root attestation."
+  }
+}

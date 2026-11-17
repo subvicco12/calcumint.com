@@ -1,0 +1,235 @@
+{
+  "kind": "SOURCE_LOCK_REPAIR_VALIDATION_WITH_UNRESOLVED_LOCAL_TIMING",
+  "generatedAtUTC": "2026-11-14T11:35:57.675685+00:00",
+  "baseline": "d102135f3922d8c094bd89584475db0ef5b945a1",
+  "baselineCI": 43577553256,
+  "baselineConclusion": "FAILURE",
+  "sourceRepairHead": "e43be96f160510e487fc749922c41c22236ba487",
+  "newExactHeadCI": "NOT_STARTED",
+  "fullLocalRegressionPassing": false,
+  "allExpectedUnitFilesAttempted": true,
+  "priorFailurePreserved": true,
+  "caseDeadlinesChanged": false,
+  "sourceHistoricalHashesChanged": false,
+  "applicationSourceChanged": false,
+  "productionWrites": 0,
+  "releaseHold": true,
+  "receipts": [
+    {
+      "artifact": "targeted19.json",
+      "sha256": "3fcbde18c5d1f69ebbfcbfd4bd7ca07bf6d29e8f0d0ed2aa81f908d949dc4e9f",
+      "result": {
+        "head": "e43be96f160510e487fc749922c41c22236ba487",
+        "command": [
+          "/workspace/tools/node22-recovery/node-v22.23.4-linux-x64/bin/node",
+          "--test",
+          "--test-concurrency=1",
+          "tests/completion-wave-20261113/source-app-stage5-availability.test.mjs",
+          "tests/parallel-source-20261110/source-object-lock.test.mjs",
+          "tests/milestone100-20261114/source-stage8-supplied-lock.test.mjs",
+          "tests/milestone100-20261114/source-stage8-authority-availability.test.mjs"
+        ],
+        "seconds": 4.749126817998331,
+        "exitCode": 0
+      }
+    },
+    {
+      "artifact": "current-authority-anchor.json",
+      "sha256": "7a990aa1e33cfad2707ec5d2486c89e33d8aab4debdbb0547228f7031f90d3f0",
+      "result": {
+        "head": "e43be96f160510e487fc749922c41c22236ba487",
+        "command": [
+          "/workspace/tools/node22-recovery/node-v22.23.4-linux-x64/bin/node",
+          "--test",
+          "--test-name-pattern",
+          "the entire populated independent authority is fixed before any candidate can attest itself",
+          "tests/parallel-source-20261110/current.test.mjs"
+        ],
+        "exitCode": 0,
+        "seconds": 1.2232690249984444,
+        "scope": "One original failing anchor case selected; not a full source-suite claim"
+      }
+    },
+    {
+      "artifact": "real-shallow-authority.json",
+      "sha256": "a1b5a60dca1783a1fb689ce791e329554a4e184cc562ba8f1364acbd6ce1188d",
+      "result": {
+        "head": "e43be96f160510e487fc749922c41c22236ba487",
+        "record": {
+          "ref": "7ef48c91767b955269a481ef3fa1822d80dfd1d3",
+          "blob": "a1e984a7255bddd0d7a0e0e9a15c93341df193e5",
+          "sha256": "d9d2726a697022f6ba6618e303a22fcccdafd334b0421404c7c8be50b5415b34"
+        },
+        "syntheticHistory": false,
+        "sourceAdmission": false,
+        "productionWrites": false,
+        "before": {
+          "exitCode": 128,
+          "error": "fatal: not a tree object",
+          "shallow": "true"
+        },
+        "helperExit": 0,
+        "helper": {
+          "ref": "7ef48c91767b955269a481ef3fa1822d80dfd1d3",
+          "availabilityOnly": true,
+          "sourceAdmission": false
+        },
+        "after": {
+          "authoritySHA256": "d9d2726a697022f6ba6618e303a22fcccdafd334b0421404c7c8be50b5415b34",
+          "originalCurrentAnchorUnchanged": true,
+          "commonLockReleased": true
+        },
+        "result": "PASS_REAL_MISSING_AUTHORITY_RETRIEVED",
+        "seconds": 3.281461044000025
+      }
+    },
+    {
+      "artifact": "full-unit-result.json",
+      "sha256": "44f31bc6f514b555d938bb97718284d5fd2bfd10873fec2d63ee01f7eee6b296",
+      "result": {
+        "head": "e43be96f160510e487fc749922c41c22236ba487",
+        "command": [
+          "npm",
+          "test"
+        ],
+        "nodeVersion": "v22.23.4",
+        "nodeExecutable": "/workspace/tools/node22-recovery/node-v22.23.4-linux-x64/bin/node",
+        "ciMode": true,
+        "testFilters": null,
+        "testDeadlinesChanged": false,
+        "outerSafetySeconds": 1200,
+        "maxWorkersConfigUnchanged": true,
+        "competingValidationJobs": false,
+        "startedUTC": "2026-11-14T10:53:46Z",
+        "pid": 647980,
+        "timedOut": true,
+        "exitCode": 1,
+        "seconds": 1200.0381296760024,
+        "finishedUTC": "2026-11-14T11:13:46Z",
+        "finalHead": "e43be96f160510e487fc749922c41c22236ba487"
+      }
+    },
+    {
+      "artifact": "unit-coverage-result.json",
+      "sha256": "d4810f8ecad736635a822496f7acc16d7ffed2910ad4d705fe6420bc9f8273ee",
+      "result": {
+        "kind": "COVERAGE_RECOVERY_AFTER_FAILED_UNFILTERED_RUN_NOT_A_GREEN_AGGREGATE",
+        "head": "e43be96f160510e487fc749922c41c22236ba487",
+        "expectedFileCount": 1069,
+        "completedBeforeCutoff": 571,
+        "recoveryFileCount": 498,
+        "previousFailurePreserved": true,
+        "originalCaseAndJobDeadlinesUnchanged": true,
+        "previousUnfilteredOuterCapSeconds": 1200,
+        "recoveryOuterCapSeconds": 1200,
+        "allLocalRegressionPassing": false,
+        "pid": 814139,
+        "exitCode": 0,
+        "timedOut": false,
+        "seconds": 482.5536292729994,
+        "allExpectedFilesAttempted": true,
+        "stillUnreportedFiles": [],
+        "recoveryUnexpectedFiles": [],
+        "setupBlockedAndPriorTimedOutCasesRemainFailures": true
+      }
+    },
+    {
+      "artifact": "checks.json",
+      "sha256": "7b19914ac8c11457b8d2ae7eb1a4943fa9f89395bcfd3082dbb2c6f5e4a93f2b",
+      "result": {
+        "launch": 0,
+        "certification": 0,
+        "lint": 1,
+        "typecheck": 0
+      }
+    },
+    {
+      "artifact": "webpack-build.json",
+      "sha256": "752dc2846c66137e64586f0d7512794187e1920eb42d65027631a34b8135cbc8",
+      "result": {
+        "sourceHeadAtStart": "e43be96f160510e487fc749922c41c22236ba487",
+        "sourceHeadAtFinish": "e43be96f160510e487fc749922c41c22236ba487",
+        "command": "npm run build (next build --webpack)",
+        "exitCode": 0,
+        "seconds": 49.525386961999175,
+        "applicationUnchangedSince": "b1dccffe1cc9e0515030d5e7ea4bad8a72756080"
+      }
+    },
+    {
+      "artifact": "lint-source-successor-A15/results.json",
+      "sha256": "a6567a916ab23e96aab2a621b7c9b8ced7209c518482bddd4e8b5eb8cff88067",
+      "result": {
+        "head": "0a584b06d610a5daff7a76f26915d290c5371603",
+        "groups": [
+          {
+            "name": "targeted-lint",
+            "seconds": 2.168,
+            "budgetSeconds": 30,
+            "timedOut": false,
+            "exitCode": 0,
+            "command": [
+              "/workspace/tools/node22-recovery/node-v22.23.4-linux-x64/bin/node",
+              "node_modules/eslint/bin/eslint.js",
+              "tests/milestone100-20261114/source-stage8-authority-availability.test.mjs"
+            ],
+            "summary": []
+          },
+          {
+            "name": "availability-locks19",
+            "seconds": 3.933,
+            "budgetSeconds": 60,
+            "timedOut": false,
+            "exitCode": 0,
+            "command": [
+              "/workspace/tools/node22-recovery/node-v22.23.4-linux-x64/bin/node",
+              "--test",
+              "--test-reporter=tap",
+              "tests/completion-wave-20261113/source-app-stage5-availability.test.mjs",
+              "tests/parallel-source-20261110/source-object-lock.test.mjs",
+              "tests/milestone100-20261114/source-stage8-supplied-lock.test.mjs",
+              "tests/milestone100-20261114/source-stage8-authority-availability.test.mjs"
+            ],
+            "summary": [
+              "# tests 19",
+              "# pass 19",
+              "# fail 0",
+              "# skipped 0",
+              "# duration_ms 3882.198261"
+            ]
+          },
+          {
+            "name": "current-authority-and-source54",
+            "seconds": 45.379,
+            "budgetSeconds": 150,
+            "timedOut": false,
+            "exitCode": 0,
+            "command": [
+              "/workspace/tools/node22-recovery/node-v22.23.4-linux-x64/bin/node",
+              "--test",
+              "--test-reporter=tap",
+              "--test-name-pattern=entire populated independent authority|actual current execution passes",
+              "tests/parallel-source-20261110/current.test.mjs"
+            ],
+            "summary": [
+              "# tests 2",
+              "# pass 2",
+              "# fail 0",
+              "# skipped 0",
+              "# duration_ms 45338.846839"
+            ]
+          }
+        ],
+        "scope": "Targeted checks only. The selected current execution case retains its literal45000ms child54 deadline; no original assertions or deadlines changed."
+      }
+    }
+  ],
+  "correctedLint": {
+    "exitCode": 0,
+    "errors": 0,
+    "existingWarnings": 80,
+    "logSHA256": "bcdcf657c3b7f4a62899786fa400017f18be755ec97c856a075616b66ce4ed41",
+    "supersedesFailedAttempt": false,
+    "provenance": "Minimal new test identifier successor; failed original lint log retained."
+  },
+  "finalSourceHead": "0a584b06d610a5daff7a76f26915d290c5371603"
+}

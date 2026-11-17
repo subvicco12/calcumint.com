@@ -1,0 +1,11 @@
+# P0 default Git backend: rejected paired diagnostic
+
+One original/variant pair at exact clean b7a7c176cf6a2349a468d10ce30c25552835de5e. Original test selection is exactly Business API caller successor positive Git-object verification from caller-successor.test.mjs. Both execute1/1PASS,0fail/skip/cancel. Original Node case body, helper75record list, historical references, loop/assertion order, custom read/git callbacks and physical sources are unchanged. No broad suites, retries or source admission were performed.
+
+Raw default:50,697.322ms owned(50,635.202ms TAP). Existing privateGitBuffer variant:52,878.023ms owned(52,819.078ms TAP). Variant was2,180.701ms slower. This is one advisory noisy pair, not a general performance estimate. It provides no measured gain and is REJECTED for adoption. No code change is proposed.
+
+Both variants observed exactly11,643default Git calls in identical order. Full argv, normalized fixed cwd,ignore/pipe/pipe stdio,8MiBmaxBuffer, success/error and Bufferlength/SHA match at every observation; mismatches=0. Native raw cwd is the original URL; variant uses fileURLToPath(sameURL), recorded explicitly. Both private defaults remain args-only. Supplied callbacks are not adapted. There are162mutable observations under the explicit definition in comparison.json; their complete query/output sequence is identical. This proves the observed successful run's equivalence only, not global execFileSync/watchdog/error semantics.
+
+No caching, new preload, removed observation or source edits. Physical source SHA, clean HEAD/status and index-stage digest remain identical before/after. The owner retains the existing20-minute hosted ceiling for each original unbounded P0 case and cleans its entire owned process group. No deadline was increased. Trace writes and per-result SHA add observer overhead equally to both runs; do not promote these instrumented timings to hosted acceptance.
+
+Artifacts: raw.jsonl/private.jsonl everydefaultargv/options/result/timing; raw.stdout/private.stdout genuineTAP; input-manifest.json physical bindings; result.json owner boundaries; comparison.json exact comparison; mutable-query-sequence.csv. No calculator qualification follows; RELEASE HOLD ACTIVE.

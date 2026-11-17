@@ -1,0 +1,95 @@
+{
+  "base": "3ccdd6d026ca0ec51063ff4501901ac92e8ace6a",
+  "workerRef": "worker/remainder-private-delivery-20261115",
+  "workerSHA": "fddcb619415f7b39f78795af3cb01159117b88b8",
+  "testedApplicationCommit": "b404b3361faf5896544fe2b5417057502d0bbff4",
+  "workerChangedPaths": [
+    "docs/remainder226-20261115/REPORT.md",
+    "docs/remainder226-20261115/acceptance.json",
+    "docs/remainder226-20261115/source-policy.json",
+    "docs/remainder226-20261115/source-successor.json",
+    "src/components/calculator-factory-portal.tsx",
+    "src/components/remainder-capture-successor.tsx",
+    "src/components/remainder-private-delivery.test.tsx",
+    "src/components/remainder-private-delivery.tsx",
+    "src/lib/calculator-factory/completion/business.ts",
+    "src/lib/calculator-factory/completion/remainder-business-recovery.test.ts",
+    "src/lib/calculator-factory/completion/remainder-private-delivery.test.ts",
+    "src/lib/calculator-factory/private-delivery.ts",
+    "src/lib/surface-area-dispatch.test.ts",
+    "tests/remainder226-20261115/auth-browser.mjs",
+    "tests/remainder226-20261115/source-admission.mjs"
+  ],
+  "workerPathCount": 15,
+  "sourceProposalPaths": 9,
+  "cumulativeSourcePaths": 23,
+  "sourceAncestryEntries": 36,
+  "sourceAuthorityRevision": 116,
+  "sourceGate": {
+    "passed": 107,
+    "failed": 0,
+    "skipped": 0,
+    "runtime": "22.23.4",
+    "testedHead": "e04484c5618172ce056b598c0775d0b04a6577be"
+  },
+  "affected": {
+    "passed": 360,
+    "failed": 0,
+    "skipped": 0,
+    "files": 21
+  },
+  "sharedContracts": {
+    "passed": 250,
+    "failed": 0,
+    "files": 9
+  },
+  "authenticatedChecks": 16,
+  "nativeExportReadbacks": 6,
+  "compiledSourceFingerprints": 2090,
+  "allCompiledSourceBytesMatch": true,
+  "launchCertificationGuardTests": 60,
+  "lint": {
+    "errors": 0,
+    "warnings": 83
+  },
+  "typecheck": "PASS",
+  "productionWebpackBuild": "PASS fresh authenticated runtime",
+  "independentReview": {
+    "blockingFindings": 0,
+    "head": "e04484c5618172ce056b598c0775d0b04a6577be",
+    "competentHumanCertification": false
+  },
+  "hostedExactHeadCI": "BLOCKED: automatic approval review rejected Git push as publication; explicit Git-only authorization pending",
+  "scopedEngineeringComplete": false,
+  "canonicalAccepted": false,
+  "certified": false,
+  "publicationEligible": false,
+  "productionWrites": false,
+  "releaseHold": true,
+  "previousV48SourceGate": {
+    "passed": 96,
+    "failed": 0,
+    "skipped": 0,
+    "runtime": "22.23.4",
+    "testedHead": "9f05736c69ead25c228648f57d5090c528393ef8"
+  },
+  "fullLocalRegression": {
+    "head": "d13343d65e76eda5972cb46ae9807fa686b45c7e",
+    "passed": 10089,
+    "failed": 1,
+    "existingSkipped": 4,
+    "files": 1081,
+    "failedTest": "src/lib/calculator-factory/completion/milestone-source.test.ts: qualifies Stage7 actual current objects and literal retained Stage6 with all twenty-two refusal cases",
+    "cause": "Expected cold refs omitted new exact bootstrap sets; live Stage7 test compared old Stage8 portal hash with admitted Stage9 bytes.",
+    "followup": "Exact V49 verification-only successors; no application changes",
+    "focusedOriginalWrapper": {
+      "passed": 2,
+      "failed": 0,
+      "originalChildAssertions": 22
+    },
+    "uninterruptedFullGreenClaim": false
+  },
+  "pr1538Modified": false,
+  "remotePushCompleted": false,
+  "allSixFreshExportHashesEqualWorkerReceipt": true
+}

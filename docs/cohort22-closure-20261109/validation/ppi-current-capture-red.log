@@ -1,0 +1,98 @@
+
+ RUN  v3.2.7 /workspace/work/product-completion-20261108
+
+ ❯ src/components/technology-worked-example.test.tsx (60 tests | 1 failed | 59 skipped) 89ms
+   ↓ #368 free exposes its exact-engine worked example and recovers a refused draft
+   ↓ #370 free exposes its exact-engine worked example and recovers a refused draft
+   ↓ #371 free exposes its exact-engine worked example and recovers a refused draft
+   ↓ #372 free exposes its exact-engine worked example and recovers a refused draft
+   ↓ #373 free exposes its exact-engine worked example and recovers a refused draft
+   ↓ #374 free exposes its exact-engine worked example and recovers a refused draft
+   ↓ #375 free exposes its exact-engine worked example and recovers a refused draft
+   ↓ #376 free exposes its exact-engine worked example and recovers a refused draft
+   ↓ #377 free exposes its exact-engine worked example and recovers a refused draft
+   ↓ #378 free exposes its exact-engine worked example and recovers a refused draft
+   ↓ #379 free exposes its exact-engine worked example and recovers a refused draft
+   ↓ #380 free exposes its exact-engine worked example and recovers a refused draft
+   ↓ #381 free exposes its exact-engine worked example and recovers a refused draft
+   ↓ #382 free exposes its exact-engine worked example and recovers a refused draft
+   ↓ #383 free exposes its exact-engine worked example and recovers a refused draft
+   ↓ #384 free exposes its exact-engine worked example and recovers a refused draft
+   ↓ #385 free exposes its exact-engine worked example and recovers a refused draft
+   ↓ #386 free exposes its exact-engine worked example and recovers a refused draft
+   ↓ #387 free exposes its exact-engine worked example and recovers a refused draft
+   ↓ #368 pro exposes its exact-engine worked example and recovers a refused draft
+   ↓ #370 pro exposes its exact-engine worked example and recovers a refused draft
+   ↓ #371 pro exposes its exact-engine worked example and recovers a refused draft
+   ↓ #372 pro exposes its exact-engine worked example and recovers a refused draft
+   ↓ #373 pro exposes its exact-engine worked example and recovers a refused draft
+   ↓ #374 pro exposes its exact-engine worked example and recovers a refused draft
+   ↓ #375 pro exposes its exact-engine worked example and recovers a refused draft
+   ↓ #376 pro exposes its exact-engine worked example and recovers a refused draft
+   ↓ #377 pro exposes its exact-engine worked example and recovers a refused draft
+   ↓ #378 pro exposes its exact-engine worked example and recovers a refused draft
+   ↓ #379 pro exposes its exact-engine worked example and recovers a refused draft
+   ↓ #380 pro exposes its exact-engine worked example and recovers a refused draft
+   ↓ #381 pro exposes its exact-engine worked example and recovers a refused draft
+   ↓ #382 pro exposes its exact-engine worked example and recovers a refused draft
+   ↓ #383 pro exposes its exact-engine worked example and recovers a refused draft
+   ↓ #384 pro exposes its exact-engine worked example and recovers a refused draft
+   ↓ #385 pro exposes its exact-engine worked example and recovers a refused draft
+   ↓ #386 pro exposes its exact-engine worked example and recovers a refused draft
+   ↓ #387 pro exposes its exact-engine worked example and recovers a refused draft
+   ↓ #368 business exposes its exact-engine worked example and recovers a refused draft
+   ↓ #370 business exposes its exact-engine worked example and recovers a refused draft
+   ↓ #371 business exposes its exact-engine worked example and recovers a refused draft
+   ↓ #372 business exposes its exact-engine worked example and recovers a refused draft
+   ↓ #373 business exposes its exact-engine worked example and recovers a refused draft
+   ↓ #374 business exposes its exact-engine worked example and recovers a refused draft
+   ↓ #375 business exposes its exact-engine worked example and recovers a refused draft
+   ↓ #376 business exposes its exact-engine worked example and recovers a refused draft
+   ↓ #377 business exposes its exact-engine worked example and recovers a refused draft
+   ↓ #378 business exposes its exact-engine worked example and recovers a refused draft
+   ↓ #379 business exposes its exact-engine worked example and recovers a refused draft
+   ↓ #380 business exposes its exact-engine worked example and recovers a refused draft
+   ↓ #381 business exposes its exact-engine worked example and recovers a refused draft
+   ↓ #382 business exposes its exact-engine worked example and recovers a refused draft
+   ↓ #383 business exposes its exact-engine worked example and recovers a refused draft
+   ↓ #384 business exposes its exact-engine worked example and recovers a refused draft
+   ↓ #385 business exposes its exact-engine worked example and recovers a refused draft
+   ↓ #386 business exposes its exact-engine worked example and recovers a refused draft
+   ↓ #387 business exposes its exact-engine worked example and recovers a refused draft
+   ↓ loads immutable storage example units instead of borrowing live selector state
+   ↓ restores the explicit RAID example level and retains a detached earlier snapshot
+   × does not offer a fresh saved PPI result when squared intermediates underflow 87ms
+     → expected { value: +0, …(1) } to be null
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/technology-worked-example.test.tsx > does not offer a fresh saved PPI result when squared intermediates underflow
+AssertionError: expected { value: +0, …(1) } to be null
+
+- Expected: 
+null
+
++ Received: 
+{
+  "steps": [
+    "Screen PPI = 0",
+  ],
+  "value": 0,
+}
+
+ ❯ src/components/technology-worked-example.test.tsx:35:33
+     33|  render(<CalculatorInteractive slug='screen-ppi-calculator'/>);
+     34|  for(const label of ['Width (pixels)','Height (pixels)','Diagonal (in)…
+     35|  expect(state.snapshot?.output).toBeNull();expect(screen.getByRole('al…
+       |                                 ^
+     36| });
+     37| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 59 skipped (60)
+   Start at  14:09:53
+   Duration  3.54s (transform 1.78s, setup 0ms, collect 2.71s, tests 89ms, environment 389ms, prepare 77ms)
+

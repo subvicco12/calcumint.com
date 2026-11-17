@@ -1,0 +1,247 @@
+{
+  "fullRegression": {
+    "status": "FAIL",
+    "sourceHead": "bf5cc21356c80933de908d2efb908b81fda4c448",
+    "startedAt": "2026-11-11T15:28:27.570019+00:00",
+    "runtime": "v22.23.4",
+    "checks": [
+      {
+        "name": "source67",
+        "command": [
+          "node",
+          "--test",
+          "tests/parallel-source-20261110/application-successor.test.mjs",
+          "tests/parallel-source-20261110/current.test.mjs",
+          "tests/parallel-source-20261110/git-reader.test.mjs",
+          "tests/parallel-source-20261110/retained-vitest.test.mjs",
+          "tests/parallel-source-20261110/source-object-lock.test.mjs",
+          "tests/parallel-source-20261110/retained-vitest-diagnostics.test.mjs",
+          "tests/parallel-source-20261110/historical-group.test.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r27/source67.log",
+        "exitCode": 0,
+        "durationSeconds": 41.32145752199722,
+        "sha256": "7a3ff30fb34a5a28f6fbbf8f3ccc493b4d8949cd1a94c66414ae7eb622861af2"
+      },
+      {
+        "name": "runtime-context",
+        "command": [
+          "node",
+          "--test",
+          "tests/next-cohort-20261110/source/retained-runtime.test.mjs",
+          "tests/next-cohort-20261110/source/runtime-current-anchor.test.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r27/runtime-context.log",
+        "exitCode": 0,
+        "durationSeconds": 15.03491006600234,
+        "sha256": "d2ec543596ec53b0ada370119708849a5e63c72ad1c2e556ce833f0388a2cf89"
+      },
+      {
+        "name": "finite15",
+        "command": [
+          "node",
+          "--test",
+          "tests/parallel-five-20261110/test-only-successor.test.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r27/finite15.log",
+        "exitCode": 0,
+        "durationSeconds": 4.754038833001687,
+        "sha256": "0bb6df50eadf2a50db90297ab4874ef850766cb6ae1871e0584dd31df30797cb"
+      },
+      {
+        "name": "readback38",
+        "command": [
+          "node",
+          "tests/technology-final-two-20261111/verify.mjs",
+          "/workspace/artifacts/technology-final-two-20261111/auth-Q3-d6a4d2e3"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r27/readback38.log",
+        "exitCode": 0,
+        "durationSeconds": 1.6417480379968765,
+        "sha256": "41541a1f05ee4d87c6ea2ae8c9a5f3a62587e3ad520cf5889251500d76acaefa"
+      },
+      {
+        "name": "full-serial",
+        "command": [
+          "npm",
+          "test",
+          "--",
+          "--maxWorkers=1"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r27/full-serial.log",
+        "exitCode": 0,
+        "durationSeconds": 1099.655476068001,
+        "sha256": "534bfba973d0981a43b7b8ab75a963f5f68917660ce7880449aaf87b979c3a1a"
+      },
+      {
+        "name": "lint",
+        "command": [
+          "npm",
+          "run",
+          "lint"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r27/lint.log",
+        "exitCode": 0,
+        "durationSeconds": 46.78176407799765,
+        "sha256": "408cee6e2de647d0f073702cf9e8886b21955441cfc8bc01d332bfed49781cd5"
+      },
+      {
+        "name": "typecheck",
+        "command": [
+          "npm",
+          "run",
+          "typecheck"
+        ],
+        "status": "FAIL",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r27/typecheck.log",
+        "exitCode": 2,
+        "durationSeconds": 119.32324828700075,
+        "sha256": "a2521439fe70baafb791c6ec052b6d09c3d25393beaf81fa26abbc73d9732c31"
+      }
+    ],
+    "finishedAt": "2026-11-11T15:50:36.128667+00:00",
+    "headAtEnd": "bf5cc21356c80933de908d2efb908b81fda4c448"
+  },
+  "sourceAndQuality": {
+    "status": "PASS",
+    "sourceHead": "d84acebd4a480c71bb960c1e6049cc5600be55a8",
+    "startedAt": "2026-11-11T15:54:04.782758+00:00",
+    "runtime": "v22.23.4",
+    "checks": [
+      {
+        "name": "source67",
+        "command": [
+          "node",
+          "--test",
+          "tests/parallel-source-20261110/application-successor.test.mjs",
+          "tests/parallel-source-20261110/current.test.mjs",
+          "tests/parallel-source-20261110/git-reader.test.mjs",
+          "tests/parallel-source-20261110/retained-vitest.test.mjs",
+          "tests/parallel-source-20261110/source-object-lock.test.mjs",
+          "tests/parallel-source-20261110/retained-vitest-diagnostics.test.mjs",
+          "tests/parallel-source-20261110/historical-group.test.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/quality-r28/source67.log",
+        "exitCode": 0,
+        "durationSeconds": 43.860769366998284,
+        "sha256": "7957293bbc99a375006b081714e2c525157fcbe32f44f4b475efd7579d8ad51e"
+      },
+      {
+        "name": "runtime-context",
+        "command": [
+          "node",
+          "--test",
+          "tests/next-cohort-20261110/source/retained-runtime.test.mjs",
+          "tests/next-cohort-20261110/source/runtime-current-anchor.test.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/quality-r28/runtime-context.log",
+        "exitCode": 0,
+        "durationSeconds": 15.806154869002057,
+        "sha256": "3d56be0e4824789b80e9b2061d72adfb12676710e3aa9f76ef0fdb89a9bab5c5"
+      },
+      {
+        "name": "finite15",
+        "command": [
+          "node",
+          "--test",
+          "tests/parallel-five-20261110/test-only-successor.test.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/quality-r28/finite15.log",
+        "exitCode": 0,
+        "durationSeconds": 4.911096904994338,
+        "sha256": "f2bf126494cd73b372928f1718b84d43a6b958178811ec9b08a63604220902a1"
+      },
+      {
+        "name": "readback38",
+        "command": [
+          "node",
+          "tests/technology-final-two-20261111/verify.mjs",
+          "/workspace/artifacts/technology-final-two-20261111/auth-Q3-d6a4d2e3"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/quality-r28/readback38.log",
+        "exitCode": 0,
+        "durationSeconds": 1.560321140997985,
+        "sha256": "41541a1f05ee4d87c6ea2ae8c9a5f3a62587e3ad520cf5889251500d76acaefa"
+      },
+      {
+        "name": "lint",
+        "command": [
+          "npm",
+          "run",
+          "lint"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/quality-r28/lint.log",
+        "exitCode": 0,
+        "durationSeconds": 56.57490013100323,
+        "sha256": "408cee6e2de647d0f073702cf9e8886b21955441cfc8bc01d332bfed49781cd5"
+      },
+      {
+        "name": "typecheck",
+        "command": [
+          "npm",
+          "run",
+          "typecheck"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/quality-r28/typecheck.log",
+        "exitCode": 0,
+        "durationSeconds": 12.744842824999068,
+        "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+      },
+      {
+        "name": "launch",
+        "command": [
+          "npm",
+          "run",
+          "test:launch"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/quality-r28/launch.log",
+        "exitCode": 0,
+        "durationSeconds": 4.517307781003183,
+        "sha256": "b57c4398f4cb8391b8eb69b18114a25967b5fcf1f2c0bc6f276b275c56e77e42"
+      },
+      {
+        "name": "certification",
+        "command": [
+          "npm",
+          "run",
+          "test:certification"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/quality-r28/certification.log",
+        "exitCode": 0,
+        "durationSeconds": 4.057119608994981,
+        "sha256": "1d7524a0c515f0de3fffad12adda1b8c116e24c0346e11f617e04d3ba216c3a4"
+      },
+      {
+        "name": "webpack",
+        "command": [
+          "npm",
+          "run",
+          "build"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/quality-r28/webpack.log",
+        "exitCode": 0,
+        "durationSeconds": 47.46143635699991,
+        "sha256": "224129454ef4bd6b88ebf2db88f32ee2213706dd5a837fabc8ccf7e4f321e5d6"
+      }
+    ],
+    "finishedAt": "2026-11-11T15:57:16.293552+00:00",
+    "headAtEnd": "d84acebd4a480c71bb960c1e6049cc5600be55a8"
+  },
+  "applicationAndTestSourceIdenticalBetweenTheseCommits": true,
+  "note": "Initial full chain stopped at TS7016 after successful9180 tests. Type-only proof declaration and matching source capture were corrected; all remaining gates then passed. No assertions, app math, source contracts or timeouts changed in that correction."
+}

@@ -1,0 +1,241 @@
+{
+  "kind": "INDEPENDENT_SOURCE_CAPTURE_NOT_ACCEPTANCE",
+  "retrievedAt": "2026-11-14",
+  "metadata": [
+    "source-metadata.json",
+    "source-metadata-extra.json"
+  ],
+  "rows": [
+    {
+      "catalogId": 213,
+      "state": "SOURCE_CAPTURED_APPLICABILITY_REVIEW_PENDING",
+      "independentSources": [
+        {
+          "path": "docs/milestone100-20261114/math/ecma-numeric.md",
+          "sha256": "cbb37f968ab61d946e8434b7a8e50a98071220628a3d74c3e74a214dcf550366",
+          "section": "Number::divide",
+          "startLine": 2606,
+          "endLine": 2632,
+          "excerpt": "# 6.1.6.1.5 Number::divide ( x, y )\n\nThe abstract operation Number::divide takes arguments x (a Number) and y (a Number) and returns a Number. It performs division according to the rules of [IEEE 754-2019](https://tc39.es/ecma262/multipage/bibliography.html#sec-bibliography) binary double-precision arithmetic, producing the quotient of x and y where x is the dividend and y is the divisor. It performs the following steps when called:\n\n1. 1\\. If x is NaN or y is NaN, return NaN.\n2. 2\\. If x is either +\u221e\ud835\udd3d or -\u221e\ud835\udd3d, then\n1. 1\\. If y is either +\u221e\ud835\udd3d or -\u221e\ud835\udd3d, return NaN.\n2. 2\\. If y is +0\ud835\udd3d or y \\> +0\ud835\udd3d, return x.\n3. 3\\. Return -x.\n3. 3\\. If y is +\u221e\ud835\udd3d, then\n1. 1\\. If x is +0\ud835\udd3d or x \\> +0\ud835\udd3d, return +0\ud835\udd3d.\n2. 2\\. Return -0\ud835\udd3d.\n4. 4\\. If y is -\u221e\ud835\udd3d, then\n1. 1\\. If x is +0\ud835\udd3d or x \\> +0\ud835\udd3d, return -0\ud835\udd3d.\n2. 2\\. Return +0\ud835\udd3d.\n5. 5\\. If x is either +0\ud835\udd3d or -0\ud835\udd3d, then\n1. 1\\. If y is either +0\ud835\udd3d or -0\ud835\udd3d, return NaN.\n2. 2\\. If y \\> +0\ud835\udd3d, return x.\n3. 3\\. Return -x.\n6. 6\\. If y is +0\ud835\udd3d, then\n1. 1\\. If x \\> +0\ud835\udd3d, return +\u221e\ud835\udd3d.\n2. 2\\. Return -\u221e\ud835\udd3d.\n7. 7\\. If y is -0\ud835\udd3d, then\n1. 1\\. If x \\> +0\ud835\udd3d, return -\u221e\ud835\udd3d.\n2. 2\\. Return +\u221e\ud835\udd3d.\n8. 8\\. Return [\ud835\udd3d](https://tc39.es/ecma262/multipage/notational-conventions.html#%F0%9D%94%BD)([\u211d](https://tc39.es/ecma262/multipage/notational-conventions.html#%E2%84%9D)(x) / [\u211d](https://tc39.es/ecma262/multipage/notational-conventions.html#%E2%84%9D)(y)).\n"
+        }
+      ],
+      "sourceApprovalGranted": false,
+      "scopeApprovalGranted": false
+    },
+    {
+      "catalogId": 221,
+      "state": "SOURCE_CAPTURED_APPLICABILITY_REVIEW_PENDING",
+      "independentSources": [
+        {
+          "path": "docs/milestone100-20261114/math/ecma-math.md",
+          "sha256": "9a8f150ac69f7369bd5f9cfceb96b641a45208aa9a0360ea2d9e316b0d7d0cdd",
+          "section": "Math.cbrt",
+          "startLine": 3006,
+          "endLine": 3015,
+          "excerpt": "# 21.3.2.9 Math.cbrt ( x )\n\nThis [function](https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#function-object) returns the cube root of x.\n\nIt performs the following steps when called:\n\n1. 1\\. Let n be ?\u00a0[ToNumber](https://tc39.es/ecma262/multipage/abstract-operations.html#sec-tonumber)(x).\n2. 2\\. If n is not a [non-zero finite Number](https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#non-zero-finite-number), return n.\n3. 3\\. Return an [implementation-approximated](https://tc39.es/ecma262/multipage/overview.html#implementation-approximated) Number value representing the cube root of [\u211d](https://tc39.es/ecma262/multipage/notational-conventions.html#%E2%84%9D)(n).\n"
+        }
+      ],
+      "sourceApprovalGranted": false,
+      "scopeApprovalGranted": false
+    },
+    {
+      "catalogId": 222,
+      "state": "SOURCE_CAPTURED_APPLICABILITY_REVIEW_PENDING",
+      "independentSources": [
+        {
+          "path": "docs/milestone100-20261114/math/ecma-math.md",
+          "sha256": "9a8f150ac69f7369bd5f9cfceb96b641a45208aa9a0360ea2d9e316b0d7d0cdd",
+          "section": "Math.pow",
+          "startLine": 3271,
+          "endLine": 3278,
+          "excerpt": "# 21.3.2.27 Math.pow ( base, exponent )\n\nThis [function](https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#function-object) performs the following steps when called:\n\n1. 1\\. Set base to ?\u00a0[ToNumber](https://tc39.es/ecma262/multipage/abstract-operations.html#sec-tonumber)(base).\n2. 2\\. Set exponent to ?\u00a0[ToNumber](https://tc39.es/ecma262/multipage/abstract-operations.html#sec-tonumber)(exponent).\n3. 3\\. Return [Number::exponentiate](https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#sec-numeric-types-number-exponentiate)(base, exponent).\n"
+        },
+        {
+          "path": "docs/milestone100-20261114/math/ecma-numeric.md",
+          "sha256": "cbb37f968ab61d946e8434b7a8e50a98071220628a3d74c3e74a214dcf550366",
+          "section": "Number::exponentiate",
+          "startLine": 2539,
+          "endLine": 2580,
+          "excerpt": "# 6.1.6.1.3 Number::exponentiate ( base, exponent )\n\nThe abstract operation Number::exponentiate takes arguments base (a Number) and exponent (a Number) and returns a Number. It returns an [implementation-approximated](https://tc39.es/ecma262/multipage/overview.html#implementation-approximated) value representing the result of raising base to the exponent power. It performs the following steps when called:\n\n01. 1\\. If exponent is NaN, return NaN.\n02. 2\\. If exponent is either +0\ud835\udd3d or -0\ud835\udd3d, return 1\ud835\udd3d.\n03. 3\\. If base is NaN, return NaN.\n04. 4\\. If base is +\u221e\ud835\udd3d, then\n    1. 1\\. If exponent \\> +0\ud835\udd3d, return +\u221e\ud835\udd3d.\n    2. 2\\. Return +0\ud835\udd3d.\n05. 5\\. If base is -\u221e\ud835\udd3d, then\n    1. 1\\. If exponent \\> +0\ud835\udd3d, then\n       1. 1\\. If exponent is an odd [integral Number](https://tc39.es/ecma262/multipage/notational-conventions.html#integral-number), return -\u221e\ud835\udd3d.\n       2. 2\\. Return +\u221e\ud835\udd3d.\n    2. 2\\. If exponent is an odd [integral Number](https://tc39.es/ecma262/multipage/notational-conventions.html#integral-number), return -0\ud835\udd3d.\n    3. 3\\. Return +0\ud835\udd3d.\n06. 6\\. If base is +0\ud835\udd3d, then\n    1. 1\\. If exponent \\> +0\ud835\udd3d, return +0\ud835\udd3d.\n    2. 2\\. Return +\u221e\ud835\udd3d.\n07. 7\\. If base is -0\ud835\udd3d, then\n    1. 1\\. If exponent \\> +0\ud835\udd3d, then\n       1. 1\\. If exponent is an odd [integral Number](https://tc39.es/ecma262/multipage/notational-conventions.html#integral-number), return -0\ud835\udd3d.\n       2. 2\\. Return +0\ud835\udd3d.\n    2. 2\\. If exponent is an odd [integral Number](https://tc39.es/ecma262/multipage/notational-conventions.html#integral-number), return -\u221e\ud835\udd3d.\n    3. 3\\. Return +\u221e\ud835\udd3d.\n08. 8\\. [Assert](https://tc39.es/ecma262/multipage/notational-conventions.html#assert): base is a [non-zero finite Number](https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#non-zero-finite-number).\n09. 9\\. If exponent is +\u221e\ud835\udd3d, then\n    1. 1\\. If [abs](https://tc39.es/ecma262/multipage/notational-conventions.html#eqn-abs)([\u211d](https://tc39.es/ecma262/multipage/notational-conventions.html#%E2%84%9D)(base)) \\> 1, return +\u221e\ud835\udd3d.\n    2. 2\\. If [abs](https://tc39.es/ecma262/multipage/notational-conventions.html#eqn-abs)([\u211d](https://tc39.es/ecma262/multipage/notational-conventions.html#%E2%84%9D)(base)) = 1, return NaN.\n    3. 3\\. Return +0\ud835\udd3d.\n10. 10\\. If exponent is -\u221e\ud835\udd3d, then\n    1. 1\\. If [abs](https://tc39.es/ecma262/multipage/notational-conventions.html#eqn-abs)([\u211d](https://tc39.es/ecma262/multipage/notational-conventions.html#%E2%84%9D)(base)) \\> 1, return +0\ud835\udd3d.\n    2. 2\\. If [abs](https://tc39.es/ecma262/multipage/notational-conventions.html#eqn-abs)([\u211d](https://tc39.es/ecma262/multipage/notational-conventions.html#%E2%84%9D)(base)) = 1, return NaN.\n    3. 3\\. Return +\u221e\ud835\udd3d.\n11. 11\\. [Assert](https://tc39.es/ecma262/multipage/notational-conventions.html#assert): exponent is a [non-zero finite Number](https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#non-zero-finite-number).\n12. 12\\. If base < -0\ud835\udd3d and exponent is not an [integral Number](https://tc39.es/ecma262/multipage/notational-conventions.html#integral-number), return NaN.\n13. 13\\. Return an [implementation-approximated](https://tc39.es/ecma262/multipage/overview.html#implementation-approximated) Number value representing the result of raising [\u211d](https://tc39.es/ecma262/multipage/notational-conventions.html#%E2%84%9D)(base) to the [\u211d](https://tc39.es/ecma262/multipage/notational-conventions.html#%E2%84%9D)(exponent) power.\n\nNote\n\nThe result of base`**`exponent when base is 1\ud835\udd3d or -1\ud835\udd3d and exponent is +\u221e\ud835\udd3d or -\u221e\ud835\udd3d, or when base is 1\ud835\udd3d and exponent is NaN, differs from [IEEE 754-2019](https://tc39.es/ecma262/multipage/bibliography.html#sec-bibliography). The first edition of ECMAScript specified a result of NaN for this operation, whereas later revisions of IEEE 754 specified 1\ud835\udd3d. The historical ECMAScript behaviour is preserved for compatibility reasons.\n"
+        }
+      ],
+      "sourceApprovalGranted": false,
+      "scopeApprovalGranted": false
+    },
+    {
+      "catalogId": 223,
+      "state": "SOURCE_CAPTURED_APPLICABILITY_REVIEW_PENDING",
+      "independentSources": [
+        {
+          "path": "docs/milestone100-20261114/math/ecma-math.md",
+          "sha256": "9a8f150ac69f7369bd5f9cfceb96b641a45208aa9a0360ea2d9e316b0d7d0cdd",
+          "section": "Math.pow",
+          "startLine": 3271,
+          "endLine": 3278,
+          "excerpt": "# 21.3.2.27 Math.pow ( base, exponent )\n\nThis [function](https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#function-object) performs the following steps when called:\n\n1. 1\\. Set base to ?\u00a0[ToNumber](https://tc39.es/ecma262/multipage/abstract-operations.html#sec-tonumber)(base).\n2. 2\\. Set exponent to ?\u00a0[ToNumber](https://tc39.es/ecma262/multipage/abstract-operations.html#sec-tonumber)(exponent).\n3. 3\\. Return [Number::exponentiate](https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#sec-numeric-types-number-exponentiate)(base, exponent).\n"
+        }
+      ],
+      "sourceApprovalGranted": false,
+      "scopeApprovalGranted": false
+    },
+    {
+      "catalogId": 224,
+      "state": "SOURCE_CAPTURED_APPLICABILITY_REVIEW_PENDING",
+      "independentSources": [
+        {
+          "path": "docs/milestone100-20261114/math/ecma-math.md",
+          "sha256": "9a8f150ac69f7369bd5f9cfceb96b641a45208aa9a0360ea2d9e316b0d7d0cdd",
+          "section": "Math.log",
+          "startLine": 3174,
+          "endLine": 3187,
+          "excerpt": "# 21.3.2.21 Math.log ( x )\n\nThis [function](https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#function-object) returns the natural logarithm of x.\n\nIt performs the following steps when called:\n\n1. 1\\. Let n be ?\u00a0[ToNumber](https://tc39.es/ecma262/multipage/abstract-operations.html#sec-tonumber)(x).\n2. 2\\. If n is either NaN or +\u221e\ud835\udd3d, return n.\n3. 3\\. If n is 1\ud835\udd3d, return +0\ud835\udd3d.\n4. 4\\. If n is either +0\ud835\udd3d or -0\ud835\udd3d, return -\u221e\ud835\udd3d.\n5. 5\\. If n < -0\ud835\udd3d, return NaN.\n6. 6\\. Return an [implementation-approximated](https://tc39.es/ecma262/multipage/overview.html#implementation-approximated) Number value representing [ln](https://tc39.es/ecma262/multipage/notational-conventions.html#eqn-ln)([\u211d](https://tc39.es/ecma262/multipage/notational-conventions.html#%E2%84%9D)(n)).\n\n# 21.3.2.22 Math.log1p ( x )"
+        },
+        {
+          "path": "docs/milestone100-20261114/math/python-math.md",
+          "sha256": "c597f98855709c5a70059d17052117aeffe50e12753981bd7ca1570927d5b3e7",
+          "section": "log(x, base)",
+          "startLine": 419,
+          "endLine": 424,
+          "excerpt": "math.log( _x_\\[, _base_\\]) [\u00b6](https://docs.python.org/3/library/math.html#math.log \"Link to this definition\")\n\nWith one argument, return the natural logarithm of _x_ (to base _e_).\n\nWith two arguments, return the logarithm of _x_ to the given _base_,\ncalculated as `log(x)/log(base)`."
+        }
+      ],
+      "sourceApprovalGranted": false,
+      "scopeApprovalGranted": false
+    },
+    {
+      "catalogId": 225,
+      "state": "SOURCE_CAPTURED_APPLICABILITY_REVIEW_PENDING",
+      "independentSources": [
+        {
+          "path": "docs/milestone100-20261114/math/ecma-numeric.md",
+          "sha256": "cbb37f968ab61d946e8434b7a8e50a98071220628a3d74c3e74a214dcf550366",
+          "section": "Number::divide",
+          "startLine": 2606,
+          "endLine": 2632,
+          "excerpt": "# 6.1.6.1.5 Number::divide ( x, y )\n\nThe abstract operation Number::divide takes arguments x (a Number) and y (a Number) and returns a Number. It performs division according to the rules of [IEEE 754-2019](https://tc39.es/ecma262/multipage/bibliography.html#sec-bibliography) binary double-precision arithmetic, producing the quotient of x and y where x is the dividend and y is the divisor. It performs the following steps when called:\n\n1. 1\\. If x is NaN or y is NaN, return NaN.\n2. 2\\. If x is either +\u221e\ud835\udd3d or -\u221e\ud835\udd3d, then\n1. 1\\. If y is either +\u221e\ud835\udd3d or -\u221e\ud835\udd3d, return NaN.\n2. 2\\. If y is +0\ud835\udd3d or y \\> +0\ud835\udd3d, return x.\n3. 3\\. Return -x.\n3. 3\\. If y is +\u221e\ud835\udd3d, then\n1. 1\\. If x is +0\ud835\udd3d or x \\> +0\ud835\udd3d, return +0\ud835\udd3d.\n2. 2\\. Return -0\ud835\udd3d.\n4. 4\\. If y is -\u221e\ud835\udd3d, then\n1. 1\\. If x is +0\ud835\udd3d or x \\> +0\ud835\udd3d, return -0\ud835\udd3d.\n2. 2\\. Return +0\ud835\udd3d.\n5. 5\\. If x is either +0\ud835\udd3d or -0\ud835\udd3d, then\n1. 1\\. If y is either +0\ud835\udd3d or -0\ud835\udd3d, return NaN.\n2. 2\\. If y \\> +0\ud835\udd3d, return x.\n3. 3\\. Return -x.\n6. 6\\. If y is +0\ud835\udd3d, then\n1. 1\\. If x \\> +0\ud835\udd3d, return +\u221e\ud835\udd3d.\n2. 2\\. Return -\u221e\ud835\udd3d.\n7. 7\\. If y is -0\ud835\udd3d, then\n1. 1\\. If x \\> +0\ud835\udd3d, return -\u221e\ud835\udd3d.\n2. 2\\. Return +\u221e\ud835\udd3d.\n8. 8\\. Return [\ud835\udd3d](https://tc39.es/ecma262/multipage/notational-conventions.html#%F0%9D%94%BD)([\u211d](https://tc39.es/ecma262/multipage/notational-conventions.html#%E2%84%9D)(x) / [\u211d](https://tc39.es/ecma262/multipage/notational-conventions.html#%E2%84%9D)(y)).\n"
+        }
+      ],
+      "sourceApprovalGranted": false,
+      "scopeApprovalGranted": false
+    },
+    {
+      "catalogId": 226,
+      "state": "SOURCE_CAPTURED_APPLICABILITY_REVIEW_PENDING",
+      "independentSources": [
+        {
+          "path": "docs/milestone100-20261114/math/ecma-numeric.md",
+          "sha256": "cbb37f968ab61d946e8434b7a8e50a98071220628a3d74c3e74a214dcf550366",
+          "section": "Number::remainder",
+          "startLine": 2633,
+          "endLine": 2656,
+          "excerpt": "# 6.1.6.1.6 Number::remainder ( numerator, denominator )\n\nThe abstract operation Number::remainder takes arguments numerator (a Number) and denominator (a Number) and returns a Number. It yields the remainder from an implied division of its operands where numerator is the dividend and denominator is the divisor. It performs the following steps when called:\n\n01. 1\\. If numerator is NaN or denominator is NaN, return NaN.\n02. 2\\. If numerator is either +\u221e\ud835\udd3d or -\u221e\ud835\udd3d, return NaN.\n03. 3\\. If denominator is either +\u221e\ud835\udd3d or -\u221e\ud835\udd3d, return numerator.\n04. 4\\. If denominator is either +0\ud835\udd3d or -0\ud835\udd3d, return NaN.\n05. 5\\. If numerator is either +0\ud835\udd3d or -0\ud835\udd3d, return numerator.\n06. 6\\. [Assert](https://tc39.es/ecma262/multipage/notational-conventions.html#assert): numerator and denominator are [non-zero finite Numbers](https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#non-zero-finite-number).\n07. 7\\. Let quotient be [\u211d](https://tc39.es/ecma262/multipage/notational-conventions.html#%E2%84%9D)(numerator) / [\u211d](https://tc39.es/ecma262/multipage/notational-conventions.html#%E2%84%9D)(denominator).\n08. 8\\. Let truncatedQuotient be [truncate](https://tc39.es/ecma262/multipage/notational-conventions.html#eqn-truncate)(quotient).\n09. 9\\. Let remainder be [\u211d](https://tc39.es/ecma262/multipage/notational-conventions.html#%E2%84%9D)(numerator) \\- ([\u211d](https://tc39.es/ecma262/multipage/notational-conventions.html#%E2%84%9D)(denominator) \u00d7 truncatedQuotient).\n10. 10\\. If remainder = 0 and numerator < -0\ud835\udd3d, return -0\ud835\udd3d.\n11. 11\\. Return [\ud835\udd3d](https://tc39.es/ecma262/multipage/notational-conventions.html#%F0%9D%94%BD)(remainder).\n\nNote 1\n\nIn C and C++, the remainder operator accepts only integral operands; in ECMAScript, it also accepts floating-point operands.\n\nNote 2\n\nThe result of a floating-point remainder operation as computed by the `%` operator is not the same as the \u201cremainder\u201d operation defined by [IEEE 754-2019](https://tc39.es/ecma262/multipage/bibliography.html#sec-bibliography). The [IEEE 754-2019](https://tc39.es/ecma262/multipage/bibliography.html#sec-bibliography) \u201cremainder\u201d operation computes the remainder from a rounding division, not a truncating division, and so its behaviour is not analogous to that of the usual integer remainder operator. Instead the ECMAScript language defines `%` on floating-point operations to behave in a manner analogous to that of the Java integer remainder operator; this may be compared with the C library [function](https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#function-object) fmod.\n"
+        }
+      ],
+      "sourceApprovalGranted": false,
+      "scopeApprovalGranted": false
+    },
+    {
+      "catalogId": 227,
+      "state": "SOURCE_CAPTURED_APPLICABILITY_REVIEW_PENDING",
+      "independentSources": [
+        {
+          "path": "docs/milestone100-20261114/math/python-integer.md",
+          "sha256": "6b35191c7b929e1e6e11a4027efdce22ae39a6b7077a85260f2fb3d1b027e4b4",
+          "section": "lcm definition",
+          "startLine": 74,
+          "endLine": 81,
+          "excerpt": "math.integer.lcm( _\\*integers_) [\u00b6](https://docs.python.org/3/library/math.integer.html#math.integer.lcm \"Link to this definition\")\n\nReturn the least common multiple of the specified integer arguments.\nIf all arguments are nonzero, then the returned value is the smallest\npositive integer that is a multiple of all arguments. If any of the arguments\nis zero, then the returned value is `0`. `lcm()` without arguments\nreturns `1`.\n"
+        },
+        {
+          "path": "docs/milestone100-20261114/math/openstax-lcm.md",
+          "sha256": "9b09b175897d3448805210517f0e9d11488641e8663450466b6b222f8d0740d8",
+          "section": "LCM definition and 12/18 example",
+          "startLine": 943,
+          "endLine": 995,
+          "excerpt": "One of the reasons we look at multiples and primes is to use these techniques to find the least common multiple of two numbers. This will be useful when we add and subtract fractions with different denominators.\n\n#### Listing Multiples Method\n\nA common multiple of two numbers is a number that is a multiple of both numbers. Suppose we want to find common multiples of 101010 and 25.25.25. We can list the first several multiples of each number. Then we look for multiples that are common to both lists\u2014these are the common multiples.\n\n10:10,20,30,40,50,60,70,80,90,100,110,\u202625:25,50,75,100,125,\u202610:10,20,30,40,50,60,70,80,90,100,110,\u202625:25,50,75,100,125,\u202610:10,20,30,40,50,60,70,80,90,100,110,\u202625:25,50,75,100,125,\u2026\n\nWe see that 505050 and 100100100 appear in both lists. They are common multiples of 101010 and 25.25.25. We would find more common multiples if we continued the list of multiples for each.\n\nThe smallest number that is a multiple of two numbers is called the least common multiple (LCM). So the least LCM of 101010 and 252525 is 50.50.50.\n\n#### Find the least common multiple (LCM) of two numbers by listing multiples.\n\n1. Step 1. List the first several multiples of each number.\n2. Step 2. Look for multiples common to both lists. If there are no common multiples in the lists, write out additional multiples for each number.\n3. Step 3. Look for the smallest number that is common to both lists.\n4. Step 4. This number is the LCM.\n\nFind the LCM of 151515 and 202020 by listing multiples.\n\n#### Solution\n\nList the first several multiples of 151515 and of 20.20.20. Identify the first common multiple.\n\n15:15,30,45,60,75,90,105,12020:20,40,60,80,100,120,140,16015:15,30,45,60,75,90,105,12020:20,40,60,80,100,120,140,16015:15,30,45,60,75,90,105,12020:20,40,60,80,100,120,140,160\n\nThe smallest number to appear on both lists is 60,60,60, so 606060 is the least common multiple of 151515 and 20.20.20.\n\nNotice that 120120120 is on both lists, too. It is a common multiple, but it is not the least common multiple.\n\nFind the least common multiple (LCM) of the given numbers: 9and129and129and12\n\nFind the least common multiple (LCM) of the given numbers: 18and2418and2418and24\n\n#### Prime Factors Method\n\nAnother way to find the least common multiple of two numbers is to use their prime factors. We\u2019ll use this method to find the LCM of 121212 and 18.18.18.\n\nWe start by finding the prime factorization of each number.\n\n12=2\u22c52\u22c5318=2\u22c53\u22c5312=2\u22c52\u22c5318=2\u22c53\u22c5312=2\u22c52\u22c5318=2\u22c53\u22c53\n\nThen we write each number as a product of primes, matching primes vertically when possible.\n\n12=2\u22c52\u22c5318=2\u22c5\u20623\u22c5312=2\u22c52\u22c5318=2\u22c5\u20623\u22c5312=2\u22c52\u22c5318=2\u22c53\u22c53\n\nNow we bring down the primes in each column. The LCM is the product of these factors.\n\n![The image shows the prime factorization of 12 written as the equation 12 equals 2 times 2 times 3. Below this equation is another showing the prime factorization of 18 written as the equation 18 equals 2 times 3 times 3. The two equations line up vertically at the equal symbol. The first 2 in the prime factorization of 12 aligns with the 2 in the prime factorization of 18. Under the second 2 in the prime factorization of 12 is a gap in the prime factorization of 18. Under the 3 in the prime factorization of 12 is the first 3 in the prime factorization of 18. The second 3 in the prime factorization has no factors above it from the prime factorization of 12. A horizontal line is drawn under the prime factorization of 18. Below this line is the equation LCM equal to 2 times 2 times 3 times 3. Arrows are drawn down vertically from the prime factorization of 12 through the prime factorization of 18 ending at the LCM equation. The first arrow starts at the first 2 in the prime factorization of 12 and continues down through the 2 in the prime factorization of 18. Ending with the first 2 in the LCM. The second arrow starts at the next 2 in the prime factorization of 12 and continues down through the gap in the prime factorization of 18. Ending with the second 2 in the LCM. The third arrow starts at the 3 in the prime factorization of 12 and continues down through the first 3 in the prime factorization of 18. Ending with the first 3 in the LCM. The last arrow starts at the second 3 in the prime factorization of 18 and points down to the second 3 in the LCM.](https://openstax.org/apps/image-cdn/v1/f=webp/apps/archive/20260604.144757/resources/25149209881b3251897082f7f132799d0a2b211e)\n\nNotice that the prime factors of 121212 and the prime factors of 181818 are included in the LCM. By matching up the common primes, each common prime factor is used only once. This ensures that 363636 is the least common multiple.\n"
+        }
+      ],
+      "sourceApprovalGranted": false,
+      "scopeApprovalGranted": false
+    },
+    {
+      "catalogId": 228,
+      "state": "SOURCE_CAPTURED_APPLICABILITY_REVIEW_PENDING",
+      "independentSources": [
+        {
+          "path": "docs/milestone100-20261114/math/python-integer.md",
+          "sha256": "6b35191c7b929e1e6e11a4027efdce22ae39a6b7077a85260f2fb3d1b027e4b4",
+          "section": "gcd definition",
+          "startLine": 55,
+          "endLine": 61,
+          "excerpt": "math.integer.gcd( _\\*integers_) [\u00b6](https://docs.python.org/3/library/math.integer.html#math.integer.gcd \"Link to this definition\")\n\nReturn the greatest common divisor of the specified integer arguments.\nIf any of the arguments is nonzero, then the returned value is the largest\npositive integer that is a divisor of all arguments. If all arguments\nare zero, then the returned value is `0`. `gcd()` without arguments\nreturns `0`."
+        }
+      ],
+      "sourceApprovalGranted": false,
+      "scopeApprovalGranted": false
+    },
+    {
+      "catalogId": 229,
+      "state": "SOURCE_CAPTURED_APPLICABILITY_REVIEW_PENDING",
+      "independentSources": [
+        {
+          "path": "docs/milestone100-20261114/math/openstax-lcm.md",
+          "sha256": "9b09b175897d3448805210517f0e9d11488641e8663450466b6b222f8d0740d8",
+          "section": "Prime/composite factor definitions",
+          "startLine": 793,
+          "endLine": 799,
+          "excerpt": "### Find the Prime Factorization of a Composite Number\n\nIn the previous section, we found the factors of a number. Prime numbers have only two factors, the number 111 and the prime number itself. Composite numbers have more than two factors, and every composite number can be written as a unique product of primes. This is called the prime factorization of a number. When we write the prime factorization of a number, we are rewriting the number as a product of primes. Finding the prime factorization of a composite number will help you later in this course.\n\nThe prime factorization of a number is the product of prime numbers that equals the number.\n\nDoing the Manipulative Mathematics activity \u201cPrime Numbers\u201d will help you develop a better sense of prime numbers."
+        }
+      ],
+      "sourceApprovalGranted": false,
+      "scopeApprovalGranted": false
+    },
+    {
+      "catalogId": 230,
+      "state": "SOURCE_CAPTURED_APPLICABILITY_REVIEW_PENDING",
+      "independentSources": [
+        {
+          "path": "docs/milestone100-20261114/math/ecma-math.md",
+          "sha256": "9a8f150ac69f7369bd5f9cfceb96b641a45208aa9a0360ea2d9e316b0d7d0cdd",
+          "section": "Math.round ties and signed zero",
+          "startLine": 3285,
+          "endLine": 3307,
+          "excerpt": "# 21.3.2.29 Math.round ( x )\n\nThis [function](https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#function-object) returns the Number value that is closest to x and is integral. If two [integral Numbers](https://tc39.es/ecma262/multipage/notational-conventions.html#integral-number) are equally close to x, then the result is the Number value that is closer to +\u221e. If x is already integral, the result is x.\n\nIt performs the following steps when called:\n\n1. 1\\. Let n be ?\u00a0[ToNumber](https://tc39.es/ecma262/multipage/abstract-operations.html#sec-tonumber)(x).\n2. 2\\. If n is not a [finite Number](https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#finite-number) or n is an [integral Number](https://tc39.es/ecma262/multipage/notational-conventions.html#integral-number), return n.\n3. 3\\. If n < 0.5\ud835\udd3d and n \\> +0\ud835\udd3d, return +0\ud835\udd3d.\n4. 4\\. If n < -0\ud835\udd3d and n \u2265 -0.5\ud835\udd3d, return -0\ud835\udd3d.\n5. 5\\. Return the [integral Number](https://tc39.es/ecma262/multipage/notational-conventions.html#integral-number) closest to n, preferring the Number closer to +\u221e in the case of a tie.\n\nNote 1\n\n`Math.round(3.5)` returns 4, but `Math.round(-3.5)` returns -3.\n\nNote 2\n\nThe value of `Math.round(x)` is not always the same as the value of `Math.floor(x + 0.5)`. When `x` is -0\ud835\udd3d or `x` is less than -0\ud835\udd3d but greater than or equal to -0.5\ud835\udd3d, `Math.round(x)` returns -0\ud835\udd3d, but `Math.floor(x + 0.5)` returns +0\ud835\udd3d. `Math.round(x)` may also differ from the value of `Math.floor(x + 0.5)`because of internal rounding when computing `x + 0.5`.\n\n# 21.3.2.30 Math.sign ( x )\n\nThis [function](https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#function-object) returns the sign of x, indicating whether x is positive, negative, or zero."
+        }
+      ],
+      "sourceApprovalGranted": false,
+      "scopeApprovalGranted": false
+    },
+    {
+      "catalogId": 231,
+      "state": "SOURCE_CAPTURED_APPLICABILITY_REVIEW_PENDING",
+      "independentSources": [
+        {
+          "path": "docs/milestone100-20261114/math/ecma-math.md",
+          "sha256": "9a8f150ac69f7369bd5f9cfceb96b641a45208aa9a0360ea2d9e316b0d7d0cdd",
+          "section": "Math.pow",
+          "startLine": 3271,
+          "endLine": 3278,
+          "excerpt": "# 21.3.2.27 Math.pow ( base, exponent )\n\nThis [function](https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#function-object) performs the following steps when called:\n\n1. 1\\. Set base to ?\u00a0[ToNumber](https://tc39.es/ecma262/multipage/abstract-operations.html#sec-tonumber)(base).\n2. 2\\. Set exponent to ?\u00a0[ToNumber](https://tc39.es/ecma262/multipage/abstract-operations.html#sec-tonumber)(exponent).\n3. 3\\. Return [Number::exponentiate](https://tc39.es/ecma262/multipage/ecmascript-data-types-and-values.html#sec-numeric-types-number-exponentiate)(base, exponent).\n"
+        },
+        {
+          "path": "docs/milestone100-20261114/math/ecma-numeric.md",
+          "sha256": "cbb37f968ab61d946e8434b7a8e50a98071220628a3d74c3e74a214dcf550366",
+          "section": "Number::multiply",
+          "startLine": 2581,
+          "endLine": 2605,
+          "excerpt": "# 6.1.6.1.4 Number::multiply ( x, y )\n\nThe abstract operation Number::multiply takes arguments x (a Number) and y (a Number) and returns a Number. It performs multiplication according to the rules of [IEEE 754-2019](https://tc39.es/ecma262/multipage/bibliography.html#sec-bibliography) binary double-precision arithmetic, producing the product of x and y. It performs the following steps when called:\n\n1. 1\\. If x is NaN or y is NaN, return NaN.\n2. 2\\. If x is either +\u221e\ud835\udd3d or -\u221e\ud835\udd3d, then\n1. 1\\. If y is either +0\ud835\udd3d or -0\ud835\udd3d, return NaN.\n2. 2\\. If y \\> +0\ud835\udd3d, return x.\n3. 3\\. Return -x.\n3. 3\\. If y is either +\u221e\ud835\udd3d or -\u221e\ud835\udd3d, then\n1. 1\\. If x is either +0\ud835\udd3d or -0\ud835\udd3d, return NaN.\n2. 2\\. If x \\> +0\ud835\udd3d, return y.\n3. 3\\. Return -y.\n4. 4\\. If x is -0\ud835\udd3d, then\n1. 1\\. If y is -0\ud835\udd3d or y < -0\ud835\udd3d, return +0\ud835\udd3d.\n2. 2\\. Return -0\ud835\udd3d.\n5. 5\\. If y is -0\ud835\udd3d, then\n1. 1\\. If x < -0\ud835\udd3d, return +0\ud835\udd3d.\n2. 2\\. Return -0\ud835\udd3d.\n6. 6\\. Return [\ud835\udd3d](https://tc39.es/ecma262/multipage/notational-conventions.html#%F0%9D%94%BD)([\u211d](https://tc39.es/ecma262/multipage/notational-conventions.html#%E2%84%9D)(x) \u00d7 [\u211d](https://tc39.es/ecma262/multipage/notational-conventions.html#%E2%84%9D)(y)).\n\nNote\n\nFinite-precision multiplication is commutative, but not always associative.\n"
+        }
+      ],
+      "sourceApprovalGranted": false,
+      "scopeApprovalGranted": false
+    },
+    {
+      "catalogId": 234,
+      "state": "EXACT_EXTERNAL_PERCENT_ERROR_SOURCE_MISSING",
+      "independentSources": [],
+      "sourceApprovalGranted": false,
+      "scopeApprovalGranted": false
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "kind": "LEGACY_BOUNDARY_OBSERVATION_NOT_NEW_ACCEPTANCE",
+  "principalExactDyadic": {
+    "numerator": "48000000000001",
+    "denominator": "4"
+  },
+  "cases": [
+    {
+      "catalogReviewCandidate": 51,
+      "engineId": "finance.compound-interest",
+      "version": 1,
+      "input": {
+        "principal": 12000000000000.25,
+        "annualRatePercent": 5,
+        "years": 0,
+        "compoundsPerYear": 12
+      },
+      "actual": {
+        "futureValue": 12000000000000.26,
+        "totalInterest": 0.01
+      },
+      "independentIdentity": "Zero compounding periods: A=P and I=0",
+      "expected": {
+        "futureValue": 12000000000000.25,
+        "totalInterest": 0
+      },
+      "matchesIdentity": false
+    },
+    {
+      "catalogReviewCandidate": 1,
+      "engineId": "finance.loan-payment",
+      "version": 1,
+      "input": {
+        "principal": 12000000000000.25,
+        "annualRatePercent": 0,
+        "termMonths": 1
+      },
+      "actual": {
+        "monthlyPayment": 12000000000000.26,
+        "totalPayment": 12000000000000.27,
+        "totalInterest": 0.02
+      },
+      "independentIdentity": "One zero-rate period: monthlyPayment=totalPayment=P and totalInterest=0",
+      "expected": {
+        "monthlyPayment": 12000000000000.25,
+        "totalPayment": 12000000000000.25,
+        "totalInterest": 0
+      },
+      "matchesIdentity": false
+    }
+  ],
+  "formulaChanged": false,
+  "sourceModified": false,
+  "certificationAuthorized": false,
+  "releaseHold": true
+}

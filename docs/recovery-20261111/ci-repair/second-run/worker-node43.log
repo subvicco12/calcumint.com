@@ -1,0 +1,52 @@
+✔ retains both exact historical financial witness revisions (5.804846ms)
+✔ admits exact guard successor and frozen historical source: src/calculators/finance/compound-interest.ts (40.787439ms)
+✔ rejects changed or reverted current bytes and false historical claim: src/calculators/finance/compound-interest.ts (51.328615ms)
+✔ rejects missing or substituted predecessor and successor objects: src/calculators/finance/compound-interest.ts (76.06687ms)
+✔ admits exact guard successor and frozen historical source: src/calculators/finance/loan-payment.ts (32.532958ms)
+✔ rejects changed or reverted current bytes and false historical claim: src/calculators/finance/loan-payment.ts (53.085497ms)
+✔ rejects missing or substituted predecessor and successor objects: src/calculators/finance/loan-payment.ts (88.724856ms)
+✔ admits exact guard successor and frozen historical source: src/calculators/precision.ts (35.74776ms)
+✔ rejects changed or reverted current bytes and false historical claim: src/calculators/precision.ts (45.143538ms)
+✔ rejects missing or substituted predecessor and successor objects: src/calculators/precision.ts (65.437343ms)
+✔ unknown and unsafe paths cannot invoke the successor exception (1.062328ms)
+✔ frozen comparison admits only exact financial successors and still rejects unrelated edits (105.184502ms)
+✔ both publication caller comparisons accept exact pinned precision successor (1608.778454ms)
+{"candidateIds":[235,251,275,276,282,283],"exactSourceBindings":41,"canonicalAccepted":0,"publicationEligible":0,"releaseHold":true}
+✔ admits exact committed successor: src/calculators/finance/compound-interest.test.ts (139.454967ms)
+✔ rejects uncommitted successor tamper: src/calculators/finance/compound-interest.test.ts (1.463218ms)
+✔ rejects rewritten historical claim: src/calculators/finance/compound-interest.test.ts (0.541235ms)
+✔ rejects silent predecessor reversion: src/calculators/finance/compound-interest.test.ts (0.37607ms)
+✔ rejects unavailable or replaced Git provenance: src/calculators/finance/compound-interest.test.ts (0.369235ms)
+✔ rejects corrupted source object: src/calculators/finance/compound-interest.test.ts (25.723824ms)
+✔ admits exact committed successor: src/components/full-six/candidate-workbench.tsx (138.159082ms)
+✔ rejects uncommitted successor tamper: src/components/full-six/candidate-workbench.tsx (0.87699ms)
+✔ rejects rewritten historical claim: src/components/full-six/candidate-workbench.tsx (3.913353ms)
+✔ rejects silent predecessor reversion: src/components/full-six/candidate-workbench.tsx (2.787263ms)
+✔ rejects unavailable or replaced Git provenance: src/components/full-six/candidate-workbench.tsx (0.261441ms)
+✔ rejects corrupted source object: src/components/full-six/candidate-workbench.tsx (17.794581ms)
+✔ admits exact committed successor: .github/workflows/ci.yml (204.168971ms)
+✔ rejects uncommitted successor tamper: .github/workflows/ci.yml (1.135856ms)
+✔ rejects rewritten historical claim: .github/workflows/ci.yml (0.185188ms)
+✔ rejects silent predecessor reversion: .github/workflows/ci.yml (2.095785ms)
+✔ rejects unavailable or replaced Git provenance: .github/workflows/ci.yml (0.315125ms)
+✔ rejects corrupted source object: .github/workflows/ci.yml (20.853532ms)
+✔ does not admit any unrelated engine, UI or unsafe path (0.273613ms)
+✔ integrated checker rejects a predecessor reversion even with its valid old hash: src/calculators/finance/compound-interest.ts (34.220823ms)
+✔ integrated checker rejects a predecessor reversion even with its valid old hash: src/components/full-six/candidate-workbench.tsx (4.926982ms)
+✔ integrated checker rejects a predecessor reversion even with its valid old hash: .github/workflows/ci.yml (6.452793ms)
+✔ integrated checker rejects unrelated source tamper without new approval (0.355567ms)
+✔ workbench binding rejects supplemental comparison tamper: src/lib/full-six/candidate/scenario-comparison.ts (5.96881ms)
+✔ workbench binding rejects supplemental comparison tamper: src/components/full-six/candidate-scenario-comparison.tsx (8.322989ms)
+✔ reuses verified revisions without redundant network fetch (1.715389ms)
+✔ fetches only exact missing commits and re-verifies them (1.938166ms)
+✔ fails closed on absent or substituted revisions after fetch (1.269461ms)
+✔ standalone exact bootstrap source capture preserves frozen manifest and governing verifier sources (51.564863ms)
+✔ bootstrap source audit refuses old-valid reversion, arbitrary tamper and missing Git proof (48.384327ms)
+ℹ tests 43
+ℹ suites 0
+ℹ pass 43
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2371.794679

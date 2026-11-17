@@ -1,0 +1,23 @@
+2026-11-09T10:49:07.8516548Z ##[group]Run node scripts/software-closure-evidence.mjs --check
+2026-11-09T10:49:07.8517133Z [36;1mnode scripts/software-closure-evidence.mjs --check[0m
+2026-11-09T10:49:07.8517638Z [36;1mnode --test tests/software-closure/ci-workflow.test.mjs[0m
+2026-11-09T10:49:07.8518420Z [36;1mnode tests/calculus-recovery-workbench/browser.mjs[0m
+2026-11-09T10:49:07.8518885Z [36;1mnode tests/software-closure/recovery-browser.mjs[0m
+2026-11-09T10:49:07.8519370Z [36;1mnode --test tests/software-closure/preservation.test.mjs[0m
+2026-11-09T10:49:07.8567502Z shell: /usr/bin/bash -e {0}
+2026-11-09T10:49:07.8567786Z env:
+2026-11-09T10:49:07.8568341Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.FrhQAW/opt/google/chrome/chrome
+2026-11-09T10:49:07.8568988Z   SOFTWARE_CLOSURE_ARTIFACTS: /home/runner/work/_temp/software-closure
+2026-11-09T10:49:07.8569523Z   CALCULUS_RECOVERY_EVIDENCE: /home/runner/work/_temp/calculus-recovery
+2026-11-09T10:49:07.8569938Z ##[endgroup]
+2026-11-09T10:49:09.8391170Z file:///home/runner/work/calcumint.com/calcumint.com/scripts/software-closure-evidence.mjs:15
+2026-11-09T10:49:09.8392378Z  if(!current.equals(historical))throw Error(`Protected source changed: ${name}`);
+2026-11-09T10:49:09.8392909Z                                       ^
+2026-11-09T10:49:09.8393111Z 
+2026-11-09T10:49:09.8393745Z Error: Protected source changed: src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts
+2026-11-09T10:49:09.8394886Z     at verifyPreservedSource (file:///home/runner/work/calcumint.com/calcumint.com/scripts/software-closure-evidence.mjs:15:39)
+2026-11-09T10:49:09.8396043Z     at checkSoftwareClosure (file:///home/runner/work/calcumint.com/calcumint.com/scripts/software-closure-evidence.mjs:42:30)
+2026-11-09T10:49:09.8397068Z     at async file:///home/runner/work/calcumint.com/calcumint.com/scripts/software-closure-evidence.mjs:61:84
+2026-11-09T10:49:09.8397563Z 
+2026-11-09T10:49:09.8397668Z Node.js v22.23.4
+2026-11-09T10:49:09.8479246Z ##[error]Process completed with exit code 1.

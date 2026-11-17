@@ -1,0 +1,281 @@
+import {createSourceChildScheduler} from '../construction-ci-recovery-20261116/source-child-scheduler.mjs';
+import {describe} from 'node:test';
+import {sourceStage9Policy} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
+import {ensurePinnedAuthorityRecord} from '../milestone100-20261114/source-stage8-authority-availability.mjs';
+import test from 'node:test';
+import {execFileSync,execFile} from 'node:child_process';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {verifyParallelSource,capturePath,parseRows} from './core.mjs';
+import {sourceGit} from './baseline-runtime.mjs';
+import {ensureParallelSources} from './bootstrap.mjs';
+import {appStage5Policy,appStage5CapturePath} from '../completion-wave-20261113/source-app-stage5-policy.mjs';
+import {proveCurrentAppStage5AndHistoricalInputs} from '../completion-wave-20261113/source-test-stage6.mjs';
+import {factoryPolicy} from '../calculator-factory-source-20261112/policy.mjs';
+describe('exact current source assertions',{concurrency:2},()=>{
+const scheduleSourceChild=createSourceChildScheduler();
+const authority='tests/parallel-source-20261110/authority.mjs';
+const retainedStage6Authority={blob:'c2b5df7c2c06f13fbb62b7e61b61dd5df8c8d557',sha256:'cac1eed35a22b764bb3a665324392681689a8a0786618c6c82fdc89bba263408'};
+const retainedStage7Authority={ref:'f00acbfdb882688eb1d0c22bc68305eb4984ac41',blob:'398e63f1f3e7c465856ea9958095d2f5269f046d',sha256:'c4a951c795d43b20715d5b1ffeb1afd8d5fcea295bb3d72ffb3a56b7676813f2'};
+const retainedStage7V6Authority={ref:'49cac9941e81646aca6ef4a7e70acd7374e15d92',blob:'b2a71dd91b5d34c1e3271556004e258559fe7ef9',sha256:'7df9a80f58991d4cbd4b68758de242e62161088e01878ce318ed0273eca76691'};
+const retainedStage7V7Authority={ref:'36434788baf38632ca6e04d9b8867dc92e7ef1b8',blob:'b17ad92955b8f15479bc5a6c0c80aef10f26c623',sha256:'6d7592f29200b26a498c333b0876452fe9a305660d9caf245b72243ac9d232e2'};
+const retainedStage7V8Authority={ref:'63d2214c731332540c48d2c64c3793294d515980',blob:'9b8a853a577ffe5b424d955a732715c22569c11f',sha256:'5ff20f1e234aeb17670529b66577cef1b3e6b4d85a58a0e5ea22a48571779f5a'};
+// Independently reviewed exact clean authority successor; the original anchor is still proved below.
+const retainedStage8Authority={ref:'eac9a6c23ae4d8f1abb607e32f57ce0d422a3cb8',blob:'75fd2d0ca34e940a865013a9e3d78e3908c00fdf',sha256:'786081f5301987911d4cfccd53cd5b7df31464ff511307c323e583e2a30d68b0'};
+const retainedStage8V2Authority={ref:'b5a07bb4b7023dd9427e2edca36c36aebe665737',blob:'b797600afd2608566b717bd0ca1cedd727e92080',sha256:'b23f60a4e6b19a73a5eda7f276618a800b53d555707f9095616fd4006cf85ca2'};
+const retainedStage8V3Authority={ref:'1f8898e4afdc88f0c13f49f5fb41c9891517efc7',blob:'bd1ae56560eb444a765976b5dd5ffd9f7e391c73',sha256:'f05dc7722cacc7c5f1734689e3fb8e801fc3e32d2d42d5ae0584d4608f85f50b'};
+const retainedStage8V4Authority={ref:'a058ff261af1678854c79ecc725c54f2fc2273a1',blob:'54908614adff483d03d364e157eb10db6c0b507d',sha256:'ce5085cee2bda7b18858c7a902c9f7a1cffe54207fb54b74ae0b2db187b63250'};
+const retainedStage8V5Authority={ref:'4beb54069f0946ddf9a92328e2b252af371a02ea',blob:'1746d74804984bb1caf8c506545b1b36f2285068',sha256:'ada789af2ea5af7f53815a6d423b4e4ad6a721f16e00dc89ea59c1a40ef0fd1f'};
+const retainedStage8V6Authority={ref:'f3d53bb69754646618d56cb47e42727ed712fa59',blob:'cd51f5bd1c2b95f1bf2fd2eccd27d8b628a0ea07',sha256:'77a1f01b8d4e98501065a12aa3f07743e45ab37b3143e083d8ff675db4e788b1'};
+const retainedStage8V7Authority={ref:'53514d75971e67b08703af6fe7c1aa77e810ee3c',blob:'18ccc3522d12394a414751d4251c0cede8322cdb',sha256:'02bc4aea2ea7cf111ac172b0e2ef32288c773028fc0812d495c5130ab57382b1'};
+const retainedStage8V8Authority={ref:'34a22620e62c4321dfbeda2a8fe0a6cea032daed',blob:'48e6d4d432ac337ad63c38742a33fcbbdf2cfaa7',sha256:'e5578b7fdc8ab69fbedd627b643b0addeb0a610555b6167790be9ec46840545c'};
+const retainedStage8V9Authority={ref:'70e1b89f9a0bb7e18cfedec56b556b390a712535',blob:'455f9ea2b4cf14f0b576124b7ec0b50291872500',sha256:'afbb92d0a38489af94e9961ff7eaac9f40e292628be6c36f664fa6633488c7b7'};
+const retainedStage8V10Authority={ref:'80a29e843722e435155a0073f90202b3c41d1aa7',blob:'b87d073d73a431f2057c35270ca057fe608293a4',sha256:'dccd2b6a3bd5f8c12757726ed1673ff14da381b39295304ab2834d6b2fb85bab'};
+const retainedStage8V11Authority={ref:'0d25c657424e9aa66d253d43f45f2c27e9b44d0f',blob:'90a3df69c4feec64e25e96262cb1d9e5632270d3',sha256:'0bb8d4c4ed6dc1a62aed07cfd01f06f15de68e8fc03313d4cfcd6c3559071890'};
+const retainedStage8V12Authority={ref:'5448d902ee954bf0d2929d835b28a0df23fae282',blob:'ed4d92a8134232385d3d39d12cbd20d8b5bcc007',sha256:'c0db7d4b8b45aa4cfca0fa9a27cb6c90ebced32d59c995ceaec525d5fb8c61dd'};
+const retainedStage8V13Authority={ref:'101bdd56f6c5d195c85c340ac9ab4ff0cb643fa3',blob:'c230f9727903ddec8337bb4f966576b48ab234ec',sha256:'184fb36421da43b6ee6eb10da7edba6834f7770fec3c6bba598f09304a2415bb'};
+const retainedStage8V14Authority={ref:'7ef48c91767b955269a481ef3fa1822d80dfd1d3',blob:'a1e984a7255bddd0d7a0e0e9a15c93341df193e5',sha256:'d9d2726a697022f6ba6618e303a22fcccdafd334b0421404c7c8be50b5415b34'};
+const retainedStage8V15Authority={ref:'4fb1b82927264f432c16521b1d6437e62a45411d',blob:'67f3ca10a49991b7a09cc7eafd25c7f97b9bbf26',sha256:'c2bfaeb61ad809f39430ef8e547a220fcebae9bad2b9f3cf8e3935a0765acdd1'};
+const retainedStage8V16Authority={ref:'0c2221df406558a8d0017913ae3b621ccd51f655',blob:'49225451a774e1078b728661a17c67db730b15a2',sha256:'fc786dd109037fefe0076bc221f7b0de2f2a33f3d6da20cff7d520d262db9755'};
+const retainedStage8V17Authority={ref:'7fc8c4b561dbc2a3f41f0811576e6105b8099abc',blob:'aa01c1b64fcedab86c79995a7c4054583e058979',sha256:'21c735f94f003635b9465f6955fe17ca7b559bb36e109e1fc81c1988f0838b77'};
+const retainedStage8V18Authority={ref:'3deafda9a9c10ccc26b1fb4372883e8ced5c2d4d',blob:'bc089b70e76f0a93501db985bb4439090bef6354',sha256:'4102ee4601c51c197f1867af6bc7e9a97ea2e3bb8c28505b7f4b0a57671d8b09'};
+const retainedStage8V19Authority={ref:'3ba261b877000eadbffff7ce5cbc3f478763775d',blob:'a397a741d8f19499daa7af42984682fb199e2831',sha256:'8e1be88ddf532801b7c1938aac61b8b761f378f89d1921fd366122bcf3b47d2d'};
+const retainedStage8V20Authority={ref:'c68e764f4add773661a3fd3bb24401139f16ec80',blob:'bca14f2489ef074ac6558ac173aebd4147da4600',sha256:'2814b32cda60b6b068061e51b7767433d8c0b0319f91f3b2c1b96c57c7934312'};
+const retainedStage8V21Authority={ref:'9082899332cd5bafce60cf6114fb4a23ffb5ffc5',blob:'374681cc1db460734301aeba6b6ae52a18b53122',sha256:'3ada91ea9af64f8e73e3b061cc6e13ba10a35a0686d9664b1c86910f85985f86'};
+const retainedStage8V22Authority={ref:'f8bde88653c923c932eb3248c0c6fc4e50280c09',blob:'4cb373801a379faac3c8bc2f3c2d3fb5b766817e',sha256:'7cf7bee8b9e3b54a5aa7dfa42d72f42ff73f3e80f02d137a0b027e0922c64bf8'};
+const retainedStage8V23Authority={ref:'2759a75ab1e12effcc8798aacaa11e294b4dfb0f',blob:'a4dc95abedb21ff6f7f6882f4c1a71d41b692440',sha256:'07b7e792dba55ade6407a8125684b3b4a7733ec838ea85055429c7625191e8fa'};
+const retainedStage8V24Authority={ref:'e0abee1f8940ee0f352db60ffe338bde869c2f83',blob:'bb430eee794819333c24c9df2bcc1f0a94f06428',sha256:'5e20461a9be0888b4e3f9d835216d73017f8af8e85b7c187966ec6f5730db198'};
+const retainedStage8V25Authority={ref:'8ca7982a47763ada58eba9eeb381d8893ff47dcb',blob:'4afa73a54ee6c9aee9ea04c9f75281a9a5ae71c0',sha256:'ad00806463d05b38d8d64048d26ca2182ee0bc67e5fb8c6723ee1879d5db9cda'};
+const retainedStage8V26Authority={ref:'1ad5524bdcecb105173170b7d29125a672bc9ee3',blob:'f56dafb34ba988f2c8de4b8de55adae768dbb40a',sha256:'866326ff5a50990a87f0a9d5834c05d0bbeee2f0362f2a28ce89d349ed4f14bf'};
+const retainedStage8V27Authority={ref:'f85bb169056489b27e4bf245f56df70e30adef95',blob:'12e19e7b41937406416aec63af9199a9d32eb3fe',sha256:'ef5cd432173098fcb21286cb917249305f1ba6d05068d675bf800a15fbe5c527'};
+const retainedStage8V28Authority={ref:'1d942daadeee2ba7cc8e228b21b92e57ddb159d4',blob:'ece7a0aff0e17d0d9d7220e791194c91030c6edb',sha256:'ff337149a2bc48a217421c324fe9625d622aeb8718dbbfaa01f60370d8cdde11'};
+const retainedStage8V29Authority={ref:'3c33f2d57145225c59d6c5068b0fe25254bd95fc',blob:'4af7ccd801bf145bcaae61057cfda31ba8ee3a0f',sha256:'0abf65235770d5042f56c31127cb5a0c1cd41726852d85c42a1fe73b8e3ef013'};
+const retainedStage8V30Authority={ref:'cd1b2d7a26dadc0c6bc5fc41449db8b8cf695adf',blob:'69d68485caed3c9320c46b0e32e0fe5c7e994c2c',sha256:'7771822d3e3e195da09e29351a49cadee571d0d58fd1a4b12f2208a048c9babd'};
+const retainedStage8V31Authority={ref:'f5742221390721e3250b2371c34c3070de9efe79',blob:'586d88bbe101ead2f04d17075498614cbc750689',sha256:'e30e7c5d6ca341783996458ab19bf1646e6eb0be85ee9bcdf24ed3d5158746aa'};
+const retainedStage8V32Authority={ref:'71c1ce57dd86675ed8bfdd498e7a4103e61c0a5d',blob:'3c90cad2e910ac9f842955f1cec4611a3287c70e',sha256:'94f4c029d26799cb699dc93d4c8caba411fb85bdc32130d6a5ca1c5304631e26'};
+const retainedStage8V33Authority={ref:'09d5af6f7343db1173bd71fb9b1f2ecc0f916c0a',blob:'bd5f5fdc43a504974eebb729f7dd52e11110d64b',sha256:'603489cfa92fb45786dd0d6f6448d688424ed3aae3d2ccf0b5aa462aafcb9a76'};
+const retainedStage8V34Authority={ref:'da35b2dc249bb0312094eb6e56f52c90772c61cf',blob:'5b001ff89f7b42090b57331f2a7d6150bd8ef0ca',sha256:'64d0494f134456dbbf935bad35658e6afc4a5389ac78e170ba27e76b3b04a259'};
+const retainedStage8V35Authority={ref:'0a1701f7674b642d3e37cf7b7963b37e8a5ae3a8',blob:'138605981b36b57b36fed7635db4153791da62b5',sha256:'2cde31808c4855163b42f2c88eb6b3ad3d88a28373cfe4e2cdbcdf261f5a461c'};
+const retainedStage8V36Authority={ref:'214823a82bcd8c077be517cfb97c0c87d831986e',blob:'81637dca09fae3b6f2c0295ca564440e5353f292',sha256:'092e36419062bf5ef9759c0aedf8b768a33c1ad641cfecae3120ca28b1da0477'};
+const retainedStage8V37Authority={ref:'180b31865ab46379cb1a53b2533feea024a1e293',blob:'3fe48b5fe5e51ca7f2e3edb07021501b7e9846d5',sha256:'90e1229b6ef7505692c20d8f04d7e8b28a4bf8b8f8bb370d2f4f579b270c02e8'};
+const retainedStage8V38Authority={ref:'178cf2e6f9bde8da9f486cc0cdb627c111718f8e',blob:'fa143e4227d04d4ed65fa0cd29e6a27ddc0837a0',sha256:'08b4f8ac96efe9aa86771084eab31246447e8d6b4877add492e1d0028a8c585d'};
+const retainedStage8V39Authority={ref:'888642012e24bd7f2041aaa7def5e17bd7182d95',blob:'511721bf47aa96e0b0abb639103d2b3b9d11b8b4',sha256:'158cbd5e53c2fa7067577589d80f5eaf7653b4928633b354b8eaa98f9879cbb2'};
+const retainedStage8V40Authority={ref:'45321f7d00a0170db3a78088328afe2df821b649',blob:'2ce6c91dc680d8db8be396969ab17819cb77fece',sha256:'3f11302e23689fc70c5d9b12b9a3cc0edd763d97cb6be521d4c6e290afa1800a'};
+const retainedStage8V41Authority={ref:'acb86da4949545f16a0de969803f66f0496ecb2d',blob:'8bbd84efb8c6d94f2e04038881dfa5c028caf4f4',sha256:'a18b07fe82e56764d8689d9ee5efe4d64d91e1e0228879285d2cec515d2c4161'};
+const retainedStage8V42Authority={ref:'7d76c01533944bd6b904f44939693f7795913880',blob:'e59490eca5a323f246fa48d6886496f597966b22',sha256:'80f3aa6c272b147a5ae5b6df42e7cb7979300a8d98b1a4721831264a61441345'};
+const retainedStage8V43Authority={ref:'d4a3f238e5142d168f86e7d1551a9fb262e7a968',blob:'66d7e12999c4e41d91cacf1c8c8dd58db02cf54e',sha256:'f886066f8c9118c27b5cdd160a7591e3ff8d352fe9732e94c6b3d41a89decb89'};
+const retainedStage8V44Authority={ref:'27f16b2db22d3953ff88b344f5842b98f92ed47e',blob:'a61efa9117e6d406fc7da9f7563fc7cf6a1f3a66',sha256:'2936b041fdefb49a11216d0123bc5e1c9801ff346bb5dc9c796067c02872b52e'};
+const retainedStage8V45Authority={ref:'31a5322591af546b732096008dea8408cca23f9b',blob:'0caf235df5312b62e950064057357f66593f29a2',sha256:'81b736eadfccbf601b3780e70ad3d4134d889cf50cd4dc02e522fdb3a5ceb7b8'};
+const retainedStage8V46Authority={ref:'d0450c0d67c3dceeaa000e4bdcd8e224b6a1eaf4',blob:'882193d9a11a26d4a06adc6a37e045bb3d694638',sha256:'d394496868276f1cae3d827bdc16a9245bcbe79b8cd7c02630b12b3e239a2a3a'};
+const retainedStage8V47Authority={ref:'952ad3dbce9b2a5018cef1b17b8cca9c457f61b0',blob:'be64e9ea3b11398157efda1b2ccc1f9b3601e6a2',sha256:'bfd55e74fa070f4d7706cb8600cd089cd070d1891419e4447bab058defb32174'};
+const retainedStage8V48Authority={ref:'eea8088658089456a5b9b145c786951e4a90e43c',blob:'0a27ba0783b282eb69366c66ba3e67a9ddb8ed12',sha256:'a31c60e8e1b66e73cc5a688b637064f6139f99e0ae2482862c903bfe890d05f0'};
+const expectedAuthority={ref:'089b2d2d8114304322c62b2408f18b29cb867bb1',blob:'d8ec9dcc37e083388b6e602896b93e1a686f43f7',sha256:'60545630eccb1a48cb52f4405615f888a91035728ff080dab60235218c595a7a'};
+ensurePinnedAuthorityRecord(expectedAuthority);
+const constructionAuthority={ref:'d1e99c2eb61e89926fccdaa1385c44d2cabbe541',blob:'01fda69fa250d5219fc1a39250e49c6ddb8212a6',sha256:'3615871c0fb48f54a2e12a076ed54804d9790af898481cfc066e7a821b0349b3'};
+ensurePinnedAuthorityRecord(constructionAuthority);
+const recoveryAuthority={"ref":"f61a0ffc7b4870b0b03b6f934acccaf9acde2eb2","blob":"74d7350c692b6b72c19b47af5e590cc1b45f9513","sha256":"9f124cc6d23c7da9c09cea5640f8af09dee96b85edfa7fced55df7763ed5a6d6"};
+ensurePinnedAuthorityRecord(recoveryAuthority);
+const schedulerAuthority={"ref":"10dce0ee59803299b98a7b8475a2805534061fc1","blob":"c8e4d02101e8500b5f3e276b8d4f80251d8e9c3f","sha256":"38222c5645ee4b5814ebd5e1f3e8b92cef7d93f9e5945580859960bf660dd622"};
+ensurePinnedAuthorityRecord(schedulerAuthority);
+const browserAuthority={"ref":"4b2910e9547d8d0674d30ef17e5d9f49b0679ebe","blob":"41ea6920b721bb7820ddbe66c71449277d162dfe","sha256":"6a3b17665614e82286b3cc394bcd9a247533cc5ff7f7f509faac8d5f97cdc784"};
+ensurePinnedAuthorityRecord(browserAuthority);
+const nativePrimeAuthority={"ref":"1ad75ab601b9223481d5d817b8a46df972933cfd","blob":"6350f8f64e0fd86d82ffafe49cc12862e9cf65bf","sha256":"152e7be765225c5d474021db3a6f178a94a030699b279dab79136e266c30eb91"};
+ensurePinnedAuthorityRecord(nativePrimeAuthority);
+const nativeProcessAuthority={"ref":"621f525cbe240f56bc1fa25e7a2a7f17540af978","blob":"38d95771bfdff3787993287b2ad072e25da36ffd","sha256":"96e4a1ed32b56b962f73865ad425eff1f38d22ac9417d7217c27e798e1a393a2"};
+ensurePinnedAuthorityRecord(nativeProcessAuthority);
+const nativeLifecycleAuthority={"ref":"1f02bf8caf36874675b469f041636628b6be54a5","blob":"37335c172dac2eeb094f49d8b70a0ef657be70c1","sha256":"1a328f6ee1e0f4df2b2eeb60623326a2d2dfc2576cac8d0405da9c1ce628372d"};
+ensurePinnedAuthorityRecord(nativeLifecycleAuthority);
+const nativeTimeoutAuthority={"ref":"6da252f52b9c7eaf32011a02f387dc7529aa1e77","blob":"2c743b4fbb8840789a5651751098f5f7ebda7fef","sha256":"ad5dacef74a4a3108a757fa3577d711d87403ebdc73392f830d62b6af0b2a579"};
+ensurePinnedAuthorityRecord(nativeTimeoutAuthority);
+const jsdomHookAuthority={"ref":"69a80af17dbd80ab82e294fa508d63d32f260000","blob":"994ba16a5d35b26a19a3e49cab00861193ea71f3","sha256":"42281f1873364bab14b6c4f581fe3b1494b7878444e1d85f8d15f25e34ae2e3a"};
+ensurePinnedAuthorityRecord(jsdomHookAuthority);
+const nativePublicationAuthority={"ref":"91df780cea450d1307d87b867596d94ad498e6e3","blob":"8bde88234fd69cde17383ffd5c328bd6c30e9243","sha256":"f8a203702366cf7940e29cdbfa3d556204fb8a6f9fc825ab083aad287715ee14"};
+ensurePinnedAuthorityRecord(nativePublicationAuthority);
+const nativeArgumentAuthority={"ref":"c143f588ad19b34643f467467b28e6749a8467de","blob":"5355b102ed272532d27dd64bf995c379d092b1f7","sha256":"f8dff8de7d347ffcad7646e6918a0b9d93413dfcf159714264fb3ce821fd15b5"};
+ensurePinnedAuthorityRecord(nativeArgumentAuthority);
+const boundedWorkflowAuthority={"ref":"75252677f29a3b46cf930df5c4725b3400ae4e06","blob":"4d01bbbb5391d134499f5bb6c0f74164c52bc22d","sha256":"2f8961a3da6050ec96e2e2ef2d45074737e5cd8444c802e6b625950647ddd69c"};
+ensurePinnedAuthorityRecord(boundedWorkflowAuthority);
+const scheduledNamespaceAuthority={"ref":"b0b0c55c9aeb41c13772bc06da6dedee48e6d727","blob":"b4b7bfa3690b5f5b28798d4263caa42a61d48e2e","sha256":"a38d6d8447be307ce9fe3353f91946f077ba8cf6b4dca0b0285bb4e7f0e6cef4"};
+ensurePinnedAuthorityRecord(scheduledNamespaceAuthority);
+const exactWorkflowArgumentAuthority={"ref":"d7e4dbdea2f1294af5839e21b838392ce5a01d6e","blob":"4481ffb078603f1d1a41041f2248c584e55661aa","sha256":"6b9656b689ef31c03b6398ba70bc067b86a9c211d0a48911553d4ad88c6b4fc8"};
+ensurePinnedAuthorityRecord(exactWorkflowArgumentAuthority);
+const workflowGraphAuthority={"ref":"1a6f606eaf7458bb4494942629c3367beefd97d8","blob":"3591fd1084c83197a64cdc92be0677c15e137c73","sha256":"4df8337b0439ac17cee5a3bbe85b3e80561dfb8b2a3cdba313d096a999f21112"};
+ensurePinnedAuthorityRecord(workflowGraphAuthority);
+const boundedImmutableAuthority={"ref":"c927f57aa5e07a8596c8ead8d745bc6b19147528","blob":"4eb57ac4781fa5283b67313df77d347e5fa219a9","sha256":"19ad018c941f7932f8e0a645bf15e8624d36676584fc780928859948cc3d0957"};
+ensurePinnedAuthorityRecord(boundedImmutableAuthority);
+const immutableFixtureAuthority={"ref":"953d4ac22adf568e4cdbd1b07ec7303f911cbc92","blob":"6ba680a2982a2005f8a13620b331c0c8cdc61b5a","sha256":"4884c01a50303e5689762bab9914c53c65dae67ab4440dc2b4a0e17ced8704e4"};
+ensurePinnedAuthorityRecord(immutableFixtureAuthority);
+const negativeArgumentAuthority={"ref":"974366074bdf1305c3e3a98973f992f92bdd59fe","blob":"c574a3222444c1568401220caeee86b384c94513","sha256":"342c29f95af8dd6a2ebb31158a5c27ebb376bc95b91921b6e3e8428b5509d424"};
+ensurePinnedAuthorityRecord(negativeArgumentAuthority);
+const sourceSchedulingAuthority={"ref":"215432f25a6591004baaa09fd8962d0e4235be74","blob":"2daef12eaf7a4fb6630491246f274ec7be85173a","sha256":"44ca40e04762f6a0e75b8314c3d856e9e90efa27d1438c0532c4fe0df82f9f29"};
+ensurePinnedAuthorityRecord(sourceSchedulingAuthority);
+const worker3IntegrationAuthority={"ref":"c310cda814f8ec9f531fceb3b4ca656b7e67b2fb","blob":"3ec6ed79be76ddda0ef24a6a4890f6754a188511","sha256":"770818c1249b951adea79b48f8e3d1530576a5c49cb9cf71c489f43bc8bf04bb"};
+ensurePinnedAuthorityRecord(worker3IntegrationAuthority);
+const worker3PreflightAuthority={"ref":"b1d598b95e785d8c7fcca52f0e3e3fb20e905e4c","blob":"b4cc0a1f8e8fc1945992bba222e44af49beb1c3c","sha256":"d1deb237ec37193d913c7111d73e977e889bd4520f74aa039cc035dd580feea6"};
+ensurePinnedAuthorityRecord(worker3PreflightAuthority);
+const worker3FactoryAuthority={"ref":"2f47ffe785d00d5cfb78bd1816eebd39bef54d1d","blob":"af45e3eeae93569682477909ec6ff1f4303c0623","sha256":"df878809377bd5bba49cbfa622d7bb7fbc88c84cdfb19229fd084d72a8f8fe11"};
+ensurePinnedAuthorityRecord(worker3FactoryAuthority);
+const worker3FixtureAuthority={"ref":"4a18b682c7f994a8f897ec9eaad9249d06cc12ba","blob":"337cf169b8e3fbcea7f9bb0d327a74537673c545","sha256":"39392a3f297897c2a46ed3cb0b63bf1c667225810bb08a9c81002a9f71e76ebf"};
+ensurePinnedAuthorityRecord(worker3FixtureAuthority);
+const worker3TransportAuthority={"ref":"5534fd3f68597a6a9bd5e7d0520d21e79d41e951","blob":"98d6a36f383731f61e4733ff621bd3294c59e1ba","sha256":"b6535a723222f3332a0cba0e982f835c8c115293a3f11ef676ee70db783673fb"};
+ensurePinnedAuthorityRecord(worker3TransportAuthority);
+const worker3ImmutableFixtureAuthority={"ref":"26ee9712e27d91a02faa0301b79af33435c30bdc","blob":"022ce420fa088ff4178fb471d39b683038da6ff4","sha256":"f18758b0e235115feb8e79d551b739be9e062fc2c06846e6b34341389442bb03"};
+ensurePinnedAuthorityRecord(worker3ImmutableFixtureAuthority);
+const worker3ProofWarmAuthority={"ref":"3bbc6ca82b5c744e327e2383abe7f07a5369905c","blob":"dce778f6a9ec3fd17a31cc0c65ee5f9a3a01ab52","sha256":"6caccd39d71dd26d2630d0bc8f867f104681dc0f78c87d621831f9696d1146c3"};
+ensurePinnedAuthorityRecord(worker3ProofWarmAuthority);
+const statisticsAuthority={"ref":"3e4144fbbba81d96fb58b598b21623178312d782","blob":"882178ef20743fb4834d2413bf2de667cbe0d258","sha256":"df4358dfb6dd6fca5c25fe806cf47a1be74c8ad0f2b5843210c55d738be423ae"};
+ensurePinnedAuthorityRecord(statisticsAuthority);
+const statisticsFixtureAuthority={"ref":"885f1878951199ed0b1c92f53310d0cff3deff65","blob":"e5fc4a191923eb9818fa3d71a6e4c46c929b8d5d","sha256":"31f437f124bf3b584e809afe1f2d0712981068341286fca0e4f42d0c18a48bba"};
+ensurePinnedAuthorityRecord(statisticsFixtureAuthority);
+const statisticsPreflightAuthority={"ref":"a8079bb51097d7d4baa2b0eef5490e8c78077b45","blob":"0669b92c6aeca07a3d481775124f9965c2e7cbd2","sha256":"60b707f58c6db971699f9650040b7472b802c044b91b9e838b996f05dbb5f859"};
+ensurePinnedAuthorityRecord(statisticsPreflightAuthority);
+const statisticsBatchAuthority={"ref":"2705f37fc97d631727731a349e012bd86fd0745d","blob":"c9fb53eaf8d991be423f567ad75b5118a74d4f55","sha256":"63438bd906b922812762124d8cc8886319c7876a2e2bc5583c5bae0aa7dfa0e8"};
+ensurePinnedAuthorityRecord(statisticsBatchAuthority);
+const statisticsTransportAuthority={"ref":"d58b57d29ea8a7ae0f3269d571ea849be673159e","blob":"8d4f7753dedbbe33b6bac4efde30bb07f470a6c0","sha256":"fe0584932c22bae69604916c529c8c8c0a7477768b505f7f8333a46ab2161ce0"};
+ensurePinnedAuthorityRecord(statisticsTransportAuthority);
+const statisticsCapacityAuthority={"ref":"123fa9deef2069b1fdae5cac93cbb23ccb0d00e2","blob":"8a7cf18ab7e0df974b99da38f2dac0491d13a48c","sha256":"8eea49cd2ae994efc738505ad4e3805ec042a7334ec3118aea4ed50fb256d48e"};
+ensurePinnedAuthorityRecord(statisticsCapacityAuthority);
+const statisticsOwnedCapacityAuthority={"ref":"1f77afbd1fd2ac11fff7ea1a0c0d09e76e45bcb2","blob":"2235955a981698c57e75d64f58a777f54a274469","sha256":"f673661a1afa886b79b2fb8d9bf34b385730edcad1d67906e0ca7e3804aa1393"};
+ensurePinnedAuthorityRecord(statisticsOwnedCapacityAuthority);
+const statisticsRuntimeCapacityAuthority={"ref":"f38a5efa7f9d7b3535de87c5e8e3324262de2604","blob":"1c248d82985cc30707b72827f008619b7b04b648","sha256":"5d6747e0618c614fe1d878a2fdc7e71dafe6f8dbd2ba09fd9ed045bba870bb6e"};
+ensurePinnedAuthorityRecord(statisticsRuntimeCapacityAuthority);
+const statisticsRuntimeBindingAuthority={"ref":"5bde831a7f34dc69be5e7c7bc1cb37e8640d69d1","blob":"da144e6f5920c5ba3ee2163134d912471e022876","sha256":"8e0baf6b70e9adcdc507e967ec34a18fe27c527ecbc5aaccb10db991fdfc1b27"};
+ensurePinnedAuthorityRecord(statisticsRuntimeBindingAuthority);
+const statisticsSingleWarmAuthority={"ref":"84b4cc0971d4e5ae7ebe575c90e4729fda55fbea","blob":"d2cf295467c532a393fbed65d656fef8ae021ae7","sha256":"bff07e2e4665b17683c5fd1115f0700c0ee8a58a8faea4d76b64497db6a64588"};
+ensurePinnedAuthorityRecord(statisticsSingleWarmAuthority);
+const statisticsSharingRosterAuthority={"ref":"a59345d2035c847f3745c9456349a8c4fe01bde8","blob":"e63d145dd669a9a70577006c0e70ee4b28b40e7d","sha256":"1e65085111fc06874f8b274c44eb8eaba1ac88c2d98371c20d9e2b68d4a3a332"};
+ensurePinnedAuthorityRecord(statisticsSharingRosterAuthority);
+const statisticsShortestParallelAuthority={"ref":"849d5f8dbcd2b658f701f04c034d6eba2ae05aeb","blob":"3c0b4062a256ebf3622e4dce649614e501445db0","sha256":"543c5c8391d4f2719dccad5c59c2b5af2367fa7549be8a29638a002720a964ad"};
+ensurePinnedAuthorityRecord(statisticsShortestParallelAuthority);
+test('the entire populated independent authority is fixed before any candidate can attest itself',()=>{
+ const retainedRef='2d5d105892134f8af46fc2a02edd5932c431b845';
+ assert.equal(sourceGit(['rev-parse',retainedRef+':'+authority]).toString().trim(),retainedStage6Authority.blob);
+ const retained=sourceGit(['cat-file','blob',retainedStage6Authority.blob]);assert(retained.equals(sourceGit(['show',retainedRef+':'+authority])));assert.equal(createHash('sha256').update(retained).digest('hex'),retainedStage6Authority.sha256);
+ assert.equal(sourceGit(['rev-parse',retainedStage7Authority.ref+':'+authority]).toString().trim(),retainedStage7Authority.blob);
+ const qualified=sourceGit(['cat-file','blob',retainedStage7Authority.blob]);assert.equal(createHash('sha256').update(qualified).digest('hex'),retainedStage7Authority.sha256);assert(qualified.equals(readFileSync('docs/milestone60-20261113/source-stage7-qualified-authority64.mjs')));
+ assert.equal(sourceGit(['rev-parse',retainedStage7V6Authority.ref+':'+authority]).toString().trim(),retainedStage7V6Authority.blob);
+ const qualifiedV6=sourceGit(['cat-file','blob',retainedStage7V6Authority.blob]);assert.equal(createHash('sha256').update(qualifiedV6).digest('hex'),retainedStage7V6Authority.sha256);assert(qualifiedV6.equals(readFileSync('docs/milestone60-20261113/source-stage7-qualified-authority65.mjs')));
+ assert.equal(sourceGit(['rev-parse',retainedStage7V7Authority.ref+':'+authority]).toString().trim(),retainedStage7V7Authority.blob);
+ const qualifiedV7=sourceGit(['cat-file','blob',retainedStage7V7Authority.blob]);assert.equal(createHash('sha256').update(qualifiedV7).digest('hex'),retainedStage7V7Authority.sha256);assert(qualifiedV7.equals(readFileSync('docs/milestone60-20261113/source-stage7-qualified-authority66.mjs')));
+ assert.equal(sourceGit(['rev-parse',retainedStage7V8Authority.ref+':'+authority]).toString().trim(),retainedStage7V8Authority.blob);
+ const qualifiedV8=sourceGit(['cat-file','blob',retainedStage7V8Authority.blob]);assert.equal(createHash('sha256').update(qualifiedV8).digest('hex'),retainedStage7V8Authority.sha256);assert(qualifiedV8.equals(readFileSync('docs/milestone60-20261113/source-stage7-qualified-authority67.mjs')));
+ for(const record of [retainedStage8Authority,retainedStage8V2Authority,retainedStage8V3Authority,retainedStage8V4Authority,retainedStage8V5Authority,retainedStage8V6Authority,retainedStage8V7Authority,retainedStage8V8Authority,retainedStage8V9Authority,retainedStage8V10Authority,retainedStage8V11Authority,retainedStage8V12Authority,retainedStage8V13Authority,retainedStage8V14Authority,retainedStage8V15Authority,retainedStage8V16Authority,retainedStage8V17Authority,retainedStage8V18Authority,retainedStage8V19Authority,retainedStage8V20Authority,retainedStage8V21Authority,retainedStage8V22Authority,retainedStage8V23Authority,retainedStage8V24Authority,retainedStage8V25Authority,retainedStage8V26Authority,retainedStage8V27Authority,retainedStage8V28Authority,retainedStage8V29Authority,retainedStage8V30Authority,retainedStage8V31Authority,retainedStage8V32Authority,retainedStage8V33Authority,retainedStage8V34Authority,retainedStage8V35Authority,retainedStage8V36Authority,retainedStage8V37Authority,retainedStage8V38Authority,retainedStage8V39Authority,retainedStage8V40Authority,retainedStage8V41Authority,retainedStage8V42Authority,retainedStage8V43Authority,retainedStage8V44Authority,retainedStage8V45Authority,retainedStage8V46Authority,retainedStage8V47Authority,retainedStage8V48Authority,expectedAuthority,constructionAuthority,recoveryAuthority,schedulerAuthority,browserAuthority,nativePrimeAuthority,nativeProcessAuthority,nativeLifecycleAuthority,nativeTimeoutAuthority,jsdomHookAuthority,nativePublicationAuthority,nativeArgumentAuthority,boundedWorkflowAuthority,scheduledNamespaceAuthority,exactWorkflowArgumentAuthority,workflowGraphAuthority,boundedImmutableAuthority,immutableFixtureAuthority,negativeArgumentAuthority,sourceSchedulingAuthority,worker3IntegrationAuthority,worker3PreflightAuthority,worker3FactoryAuthority,worker3FixtureAuthority,worker3TransportAuthority,worker3ImmutableFixtureAuthority,worker3ProofWarmAuthority,statisticsAuthority,statisticsFixtureAuthority,statisticsPreflightAuthority,statisticsBatchAuthority,statisticsTransportAuthority,statisticsCapacityAuthority,statisticsOwnedCapacityAuthority,statisticsRuntimeCapacityAuthority,statisticsRuntimeBindingAuthority,statisticsSingleWarmAuthority,statisticsSharingRosterAuthority,statisticsShortestParallelAuthority]){assert.equal(sourceGit(['rev-parse',record.ref+':'+authority]).toString().trim(),record.blob);const bytes=sourceGit(['cat-file','blob',record.blob]);assert.equal(createHash('sha256').update(bytes).digest('hex'),record.sha256);}
+ const actual=readFileSync(authority);assert.equal(sourceGit(['rev-parse','HEAD:'+authority]).toString().trim(),statisticsShortestParallelAuthority.blob);assert(actual.equals(sourceGit(['cat-file','blob',statisticsShortestParallelAuthority.blob])));assert.equal(createHash('sha256').update(actual).digest('hex'),statisticsShortestParallelAuthority.sha256);
+});
+test('actual current execution passes while unchanged R5 executes at literal A7',()=>{
+ assert.equal(verifyParallelSource(),true);
+ const env={...process.env};delete env.NODE_TEST_CONTEXT;
+ let output;
+ try{output=execFileSync(process.execPath,['--test','--test-reporter=tap','--test-concurrency=2','tests/milestone100-20261114/source-stage8-saved-actions-claim.test.mjs','tests/milestone100-20261114/source-stage8-test-only-successor.test.mjs','tests/milestone100-20261114/source-stage8-guard-selection.test.mjs','tests/milestone100-20261114/source-preflight-stage8.test.mjs','tests/milestone100-20261114/source-stage8-shortest-guard.test.mjs','tests/milestone100-20261114/source-stage8-named-dependencies.test.mjs','tests/milestone100-20261114/source-stage8-shortest-fixture.test.mjs','tests/milestone100-20261114/source-stage8-publication-transport.test.mjs','tests/milestone100-20261114/source-stage8-direct-commit-cache.test.mjs','tests/milestone100-20261114/source-stage8-negative-authority.test.mjs','tests/milestone100-20261114/source-stage8-authority-availability.test.mjs','tests/milestone100-20261114/source-stage8-supplied-lock.test.mjs','tests/ci-rpc-recovery-20261113/source-node.test.mjs'],{env,encoding:'utf8',timeout:45000,maxBuffer:4000000});}catch(cause){throw new Error('Nested exact-current60 source suite failed\n'+String(cause.stdout??'')+'\n'+String(cause.stderr??''),{cause});}
+ assert.match(output,/# tests 60\b/);assert.match(output,/# pass 60\b/);assert.match(output,/# fail 0\b/);assert.match(output,/# skipped 0\b/);assert.match(output,/# cancelled 0\b/);
+});
+const capture=JSON.parse(readFileSync(capturePath));
+for(const record of capture.applicationSources)test('current source reader rejects changed exact app bytes '+record.path,()=>assert.throws(()=>verifyParallelSource(name=>name===record.path?Buffer.from('plausible changed implementation'):readFileSync(name)),/Current target source differs|Independent current target bytes differ|Current factory bytes differ/));
+for(const path of ['tests/parallel-source-20261110/core.mjs','tests/parallel-source-20261110/bootstrap.mjs','tests/parallel-source-20261110/baseline-probe.mjs','tests/parallel-source-20261110/historical-tests.mjs','tests/parallel-source-20261110/git-reader.mjs','tests/parallel-source-20261110/source-object-lock.mjs','scripts/product-completion-lineage.mjs'])test('no-op validator cannot nominate itself '+path,()=>{
+ assert.throws(()=>verifyParallelSource(name=>name===path?Buffer.from('export function verify(){return true}'):readFileSync(name)),/Independent current target bytes differ/);
+ if(path==='tests/parallel-source-20261110/git-reader.mjs'){
+  const runtime='tests/next-cohort-20261110/source/retained-runtime.mjs',old=sourceGit(['cat-file','blob','99666fd1d09a2b7f782b05d4dbd9f9656be08eea']);
+  for(const bytes of [Buffer.from('tampered owned runtime'),old])assert.throws(()=>verifyParallelSource(name=>name===runtime?bytes:readFileSync(name)),/Independent current target bytes differ/);
+ }
+});
+test('a closed asynchronous-style target map supplies every current byte without a workspace fallback',()=>{
+ const names=new Set([...capture.currentSources,...capture.applicationSources,...sourceStage9Policy.paths.map(path=>({path}))].map(r=>r.path));names.add(capturePath);names.add('tests/milestone100-20261114/source-stage8-guard-policy.mjs');const target=new Map([...names].map(p=>[p,readFileSync(p)])),seen=new Set();
+ assert.equal(verifyParallelSource(path=>{seen.add(path);assert(target.has(path),'Undeclared reader dependency '+path);return target.get(path);}),true);
+ for(const row of capture.applicationSources)assert(seen.has(row.path));assert(seen.size>=capture.currentSources.length);
+ assert.throws(()=>verifyParallelSource(()=>{throw Error('No target bytes supplied');}),/No target bytes supplied/);
+});
+test('old valid app bytes cannot replace the reviewed source',()=>{
+ const path='src/components/publication20-tool.tsx',old=sourceGit(['show',capture.baselineRef+':'+path]);assert.throws(()=>verifyParallelSource(name=>name===path?old:readFileSync(name)),/Current target source differs|Independent current target bytes differ|Current factory bytes differ/);
+});
+test('coordinated capture edits, removed dependencies and unsafe paths are not admission authority',()=>{
+ for(const mutate of [c=>{c.currentSources=[]},c=>{c.currentSources[0].path='../outside'},c=>{c.codeRef='0'.repeat(40)},c=>{c.applicationSources.pop()},c=>{c.guardSources=[]}]){
+  const altered=structuredClone(capture);mutate(altered);assert.throws(()=>verifyParallelSource(name=>name===capturePath?Buffer.from(JSON.stringify(altered)):readFileSync(name)),/Independent current target bytes differ/);
+ }
+});
+test('missing or substituted actual Git provenance is never supplied by a receipt',()=>{
+ assert.throws(()=>verifyParallelSource(readFileSync,()=>{throw Error('Missing current provenance')}),/Missing current provenance/);
+ assert.throws(()=>verifyParallelSource(readFileSync,()=>Buffer.from('0'.repeat(40))));
+});
+test('the complete binding graph cannot be truncated by a supplied caller',()=>{
+ const rows=parseRows(readFileSync('scripts/product-completion-lineage.mjs','utf8'));assert.throws(()=>verifyParallelSource(readFileSync,sourceGit,rows.slice(1)),/Only the reviewed parallel source rows/);
+});
+test('source availability refuses unsafe or multiple origins and substituted commits before fetching',()=>{
+ for(const url of ['file:///tmp/untrusted','https://example.invalid/repo','https://github.com/subvicco12/calcumint.com.git\nhttps://example.invalid/repo']){
+  const calls=[];assert.throws(()=>ensureParallelSources(capture,args=>{calls.push(args);return Buffer.from(url)}),/Exact HTTPS/);assert.equal(calls.length,1);assert.equal(calls[0][0],'remote');
+ }
+ assert.throws(()=>ensureParallelSources(capture,args=>Buffer.from(args[0]==='remote'?'https://github.com/subvicco12/calcumint.com.git':'0'.repeat(40))),/Source commit was substituted/);
+});
+
+for(const record of capture.factorySources)test('finite factory stage rejects altered or reverted bytes '+record.path,()=>{for(const bytes of [Buffer.from('tamper'),Buffer.alloc(0)])assert.throws(()=>verifyParallelSource(name=>name===record.path?bytes:readFileSync(name)),/Current factory bytes differ|Current target source differs|Independent current target bytes differ/);});
+test('factory capture and literal policy are independently governed',async context=>{
+ const scheduler=JSON.parse(readFileSync('docs/calculator-factory/unit-scheduler-successor.json'));assert.equal(scheduler.path,'vitest.config.ts');assert.equal(scheduler.predecessor.ref,'9ad7e75641322696f75a018e53513c8158c39870');assert.equal(factoryPolicy.codeRef,'b3f0844e8ec09010464afa3ea33306bc4f384c41');assert.equal(scheduler.current.ref,factoryPolicy.codeRef);
+ const contents=[];for(const record of [scheduler.predecessor,scheduler.current]){assert.equal(record.path,'vitest.config.ts');assert.equal(sourceGit(['rev-parse',record.ref+':'+record.path]).toString().trim(),record.blob);const bytes=sourceGit(['cat-file','blob',record.blob]);assert.equal(bytes.length,record.bytes);assert.equal(createHash('sha256').update(bytes).digest('hex'),record.sha256);contents.push(bytes.toString());}
+ assert.equal(contents[0].split('  test: {').length,2);assert.equal(contents[1],contents[0].replace('  test: {','  test: {\n    // Retained source suites launch bounded child workers; avoid nested outer oversubscription.\n    maxWorkers: 1,'));
+ for(const path of ['vitest.config.ts','docs/calculator-factory/unit-scheduler-successor.json','tests/calculator-factory-source-20261112/policy.mjs','docs/calculator-factory/source-stage-20261112.json','tests/calculator-factory-source-20261112/exact-stage.mjs','tests/completion-first-20261112/stage.mjs','tests/completion-first-20261112/policy.mjs','docs/completion-first-20261112/source-stage.json','tests/completion-first-20261112/workflows-stage.mjs','tests/completion-first-20261112/workflows-policy.mjs','tests/completion-first-20261112/retained-stage1-tests.mjs','docs/completion-first-20261112/source-stage2.json','tests/completion-first-20261112/non-source-stage2.mjs','tests/completion-first-20261112/non-source-policy.mjs','docs/completion-first-20261112/non-source-stage2.json','tests/completion-first-20261112/retained-runtime-stage2.mjs'])assert.throws(()=>verifyParallelSource(name=>name===path?Buffer.from('{}'):readFileSync(name)),/Independent current target bytes differ/);
+ const env={...process.env};delete env.NODE_TEST_CONTEXT;
+ // Independent read-only child suites share a bounded two-worker queue rather
+ // than accumulating their wall times inside the unchanged150s outer proof.
+ const children=[
+  [['tests/completion-first-20261112/retained-stage1-tests.mjs'],60000],
+  [['--test','tests/completion-first-20261112/personal-stage.test.mjs'],60000],
+  [['--test','tests/four-worker-integration-20261115/source-stage9.test.mjs'],15000],
+  [['--test','tests/gotrue-runtime/login-diagnostics.test.mjs'],30000],
+  [['--test','tests/full-product-batch13/workflow.test.mjs','tests/full-product-batch14/workflow.test.mjs','tests/full-product-batch17/workflow.test.mjs'],30000]
+ ];
+ const results=new Array(children.length);let childIndex=0;
+ const run=([args,timeout])=>scheduleSourceChild(()=>new Promise((resolve,reject)=>execFile(process.execPath,args,{env,encoding:'utf8',timeout,maxBuffer:4000000,signal:context.signal},(error,stdout,stderr)=>error?reject(Object.assign(error,{stdout,stderr})):resolve(stdout))),{signal:context.signal});
+ const worker=async()=>{while(childIndex<children.length){const index=childIndex++;results[index]=(await Promise.allSettled([run(children[index])]))[0];}};
+ await Promise.all([worker(),worker()]);
+ const failures=results.flatMap((result,index)=>result.status==='rejected'?[new Error('Exact source child failed: '+JSON.stringify(children[index][0])+'\n'+String(result.reason.stdout??'')+'\n'+String(result.reason.stderr??''),{cause:result.reason})]:[]);
+ if(failures.length)throw new AggregateError(failures,'Bounded exact source child failures\n'+failures.map(error=>error.message).join('\n'));
+ const [tap,stage2,stage9,diagnostics,workflowConsumers]=results.map(result=>result.value);
+ assert.match(tap,/# tests 4\b/);assert.match(tap,/# pass 4\b/);assert.match(tap,/# fail 0\b/);assert.match(tap,/# skipped 0\b/);
+ assert.match(stage2,/# tests 4\b/);assert.match(stage2,/# pass 4\b/);assert.match(stage2,/# fail 0\b/);assert.match(stage2,/# skipped 0\b/);
+ for(const [key,value]of [['tests',5],['pass',5],['fail',0],['skipped',0],['cancelled',0]])assert.match(stage9,new RegExp('^# '+key+' '+value+'$','m'));
+ assert.match(diagnostics,/# tests 4\b/);assert.match(diagnostics,/# pass 4\b/);assert.match(diagnostics,/# fail 0\b/);assert.match(diagnostics,/# skipped 0\b/);
+ assert.match(workflowConsumers,/# tests 10\b/);assert.match(workflowConsumers,/# pass 10\b/);assert.match(workflowConsumers,/# fail 0\b/);assert.match(workflowConsumers,/# skipped 0\b/);
+});
+
+
+// Stage5 reads actual complete current SRC before any literal Stage4 projection.
+test('exact Stage5 actual application source is live and finite',()=>{
+ const result=proveCurrentAppStage5AndHistoricalInputs({read:readFileSync,git:sourceGit,root:process.cwd()});assert.equal(result.testOnly.size,1);assert.equal(result.actualCurrent.size,20);
+ assert.deepEqual([...result.live.keys()],appStage5Policy.paths);assert.equal(result.live.size,19);assert.equal(appStage5Policy.ancestry.length,51);
+
+});
+for(const path of appStage5Policy.paths)test('Stage5 refuses altered actual current application bytes '+path,()=>assert.throws(()=>proveCurrentAppStage5AndHistoricalInputs({read:name=>name===path?Buffer.from('tampered actual frozen application'):readFileSync(name),git:sourceGit,root:process.cwd(),policy:appStage5Policy,capturePath:appStage5CapturePath}),/Current factory bytes differ/));
+for(const path of ['tests/completion-wave-20261113/source-app-stage5.mjs','tests/completion-wave-20261113/source-app-stage5-policy.mjs',appStage5CapturePath])test('Stage5 proof imports and finite capture remain independent authority '+path,()=>assert.throws(()=>verifyParallelSource(name=>name===path?Buffer.from('{}'):readFileSync(name)),/Independent current target bytes differ/));
+
+test('mandatory source guard regressions exercise exact source and immutable availability without skips',async context=>{
+ const env={...process.env};delete env.NODE_TEST_CONTEXT;
+ const files=[['tests/milestone100-20261114/source-stage8-negative-publication-caller.test.mjs',10],['tests/milestone100-20261114/workflow-source-evidence-batch.test.mjs',5],['tests/milestone100-20261114/source-stage8-shortest-native-driver.test.mjs',18],['source-app-stage5.test.mjs',7],['source-app-stage5-availability.test.mjs',5],['source-authority-preload.test.mjs',6],['source-preflight.test.mjs',5],['tests/milestone100-20261114/retained-stage7-preflight.mjs',5],['source-test-stage6.test.mjs',6],['tests/next-cohort-20261110/source/runtime-evidence-batch.test.mjs',11],['tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs',6],['tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs',6],['tests/milestone100-20261114/authority-observation-collector.test.mjs',23],['tests/milestone100-20261114/source-stage8-authority-scope.test.mjs',10],['tests/next-cohort-20261110/source/runtime-stage2-batch.test.mjs',10],['tests/milestone100-20261114/source-stage8-stage5-scope.test.mjs',9],['tests/milestone100-20261114/source-stage8-negative-factory.test.mjs',9],['tests/milestone100-20261114/source-stage8-current-guard-scope.test.mjs',9],['tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs',9],['tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs',9],['tests/milestone100-20261114/source-stage8-runtime-chain-prefetch.test.mjs',5],['tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs',9],['tests/parallel-source-20261110/source-lock-scope.test.mjs',9],['tests/ci-rpc-recovery-20261113/source-node-owned-lock.test.mjs',5],['tests/milestone100-20261114/source-stage8-negative-workflow-claim.test.mjs',9],['tests/milestone100-20261114/source-stage8-negative-reader-order.test.mjs',8],['tests/milestone100-20261114/composition-source-evidence-batch.test.mjs',16],['tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs',7],['tests/next-cohort-20261110/source/runtime-head-bound-batch.test.mjs',7],['tests/construction-ci-recovery-20261116/native-prime-order.test.mjs',7],['tests/construction-ci-recovery-20261116/native-git.test.mjs',25],['tests/construction-ci-recovery-20261116/workflow-scheduling.test.mjs',10],['tests/construction-ci-recovery-20261116/bounded-immutable-preload.test.mjs',6],['tests/construction-ci-recovery-20261116/immutable-fixture-setup.test.mjs',5],['tests/construction-ci-recovery-20261116/negative-source-arguments.test.mjs',5],['tests/construction-ci-recovery-20261116/source-child-scheduler.test.mjs',4],['tests/construction-ci-recovery-20261116/execution-native-transport.test.mjs',4]];
+ const run=([file],exclusive=false)=>scheduleSourceChild(()=>new Promise((resolve,reject)=>{
+  if(context.signal.aborted){reject(new Error('Mandatory source guard queue cancelled: '+file,{cause:context.signal.reason}));return;}
+  // Inherit the outer verifier's owned process group; never detach nested children.
+  execFile(process.execPath,[file.startsWith('tests/')?file:'tests/completion-wave-20261113/'+file],{env,encoding:'utf8',timeout:30000,maxBuffer:1000000,signal:context.signal},(error,stdout,stderr)=>{if(error)reject(Object.assign(error,{stdout,stderr}));else resolve(stdout);});
+ }),{exclusive,signal:context.signal});
+ const results=new Map(),cold=files.find(([file])=>file==='source-app-stage5-availability.test.mjs');
+ // The original eight-worker availability case owns its entire window alone.
+ const authorityFixture=files.find(([file])=>file==='source-authority-preload.test.mjs');
+ const remaining=files.filter(row=>row!==cold&&row!==authorityFixture);
+ let nextIndex=0;
+ const worker=async()=>{while(nextIndex<remaining.length){const row=remaining[nextIndex++],result=(await Promise.allSettled([run(row)]))[0];results.set(row[0],result);}};
+ await Promise.all([worker(),worker()]);
+ for(const row of [cold,authorityFixture])results.set(row[0],(await Promise.allSettled([run(row,true)]))[0]);
+ const failures=[];
+ // Report every child in the original declared order, even when an earlier child failed.
+ for(const [file,count]of files){
+  const result=results.get(file);
+  try{
+   if(result.status==='rejected'){const error=result.reason;throw new Error('Mandatory source guard child failed: '+file+'\nexit: '+JSON.stringify({message:error.message,code:error.code,signal:error.signal,killed:error.killed})+'\nstdout:\n'+(error.stdout??'')+'\nstderr:\n'+(error.stderr??''),{cause:error});}
+   const tap=result.value;
+   for(const [name,value]of [['tests',count],['pass',count],['fail',0],['skipped',0]])assert.match(tap,new RegExp('# '+name+' '+value+'\\b'));
+   if(file.startsWith('tests/'))assert.match(tap,/# cancelled 0\b/);
+  }catch(error){failures.push(error);}
+ }
+ if(failures.length===1)throw failures[0];
+ if(failures.length>1)throw new AggregateError(failures,'Mandatory source guard children failed: '+failures.map(error=>error.message).join('\n'));
+});
+
+});

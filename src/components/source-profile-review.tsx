@@ -1,7 +1,7 @@
 'use client';
 import {useState} from 'react';
 import {sourceBoundProfiles} from '../calculators/source-bound-profiles';
-import {exportSourceProfile,type ReviewPlan} from '../calculators/source-profile-snapshot';
+import {exportSourceProfile,importSourceProfile,type ReviewPlan} from '../calculators/source-profile-snapshot';
 import {formatRational,type Rational} from '../calculators/exact-rational';
 
 type Snapshot=ReturnType<typeof exportSourceProfile>;
@@ -25,6 +25,10 @@ export function SourceProfileReview(){
  const invalidate=()=>{setSnapshot(null);setError('');};
  const load=(next=id)=>{setInput(json(examples[next]));invalidate();};
  function calculate(){invalidate();try{if(input.length>1_000_000)throw Error('Size limit');setSnapshot(exportSourceProfile(id,JSON.parse(input),plan));}catch{setError('Check the required profile, decimal strings, classification, record identities and supported bounds.');}}
+ function restore(saved:Snapshot){
+  try{const verified=importSourceProfile(saved);setId(verified.profileId);setInput(json(verified.calculation.input));setSnapshot(verified);setError('');}
+  catch{setError('Saved snapshot must match its original source profile, version and actual engine result.');}
+ }
  function download(){
   if(!snapshot)return;
   const url=URL.createObjectURL(new Blob([json(snapshot)+'\n'],{type:'application/json'}));
@@ -54,7 +58,7 @@ export function SourceProfileReview(){
   </>}</section>
   <h2>Local history</h2><p>Up to 20 detached snapshots, retained only in this tab.</p>
   <button type="button" onClick={()=>setHistory([])}>Clear local history</button>
-  <ol data-testid="source-history">{history.map((s,i)=><li key={i}><details><summary>{s.calculation.calculatorSlug} v1 — {headline(s)}</summary><pre style={{whiteSpace:'pre-wrap'}}>{json(s)}</pre></details></li>)}</ol>
+  <ol data-testid="source-history">{history.map((s,i)=><li key={i}><details><summary>{s.calculation.calculatorSlug} v1 — {headline(s)}</summary><pre style={{whiteSpace:'pre-wrap'}}>{json(s)}</pre></details><button type="button" onClick={()=>restore(s)}>Restore snapshot {i+1}</button></li>)}</ol>
   <style>{'button{min-height:44px;padding:8px 12px} :focus-visible{outline:3px solid #1259c3;outline-offset:2px} a{color:#0645ad}'}</style>
  </main>;
 }

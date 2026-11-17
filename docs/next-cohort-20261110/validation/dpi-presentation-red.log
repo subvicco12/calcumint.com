@@ -1,0 +1,150 @@
+
+ RUN  v3.2.7 /workspace/work/product-completion-20261108
+
+ ❯ src/components/technology-next-integration.test.tsx (10 tests | 1 failed) 930ms
+   ✓ storage-conversion-calculator integrates live analysis and goal refusal/recovery without altering versioned snapshots 258ms
+   ✓ aspect-ratio-calculator integrates live analysis and goal refusal/recovery without altering versioned snapshots 103ms
+   ✓ resolution-calculator integrates live analysis and goal refusal/recovery without altering versioned snapshots 84ms
+   ✓ dpi-calculator integrates live analysis and goal refusal/recovery without altering versioned snapshots 67ms
+   ✓ power-supply-calculator integrates live analysis and goal refusal/recovery without altering versioned snapshots 74ms
+   ✓ website-bandwidth-calculator integrates live analysis and goal refusal/recovery without altering versioned snapshots 74ms
+   ✓ cloud-storage-cost-calculator integrates live analysis and goal refusal/recovery without altering versioned snapshots 64ms
+   ✓ cloud-data-transfer-cost-calculator integrates live analysis and goal refusal/recovery without altering versioned snapshots 114ms
+   ✓ refuses a subnormal primary input with a normal product and recovers without saving it 55ms
+   × presents current DPI in pixels per inch consistently in primary and new export/scenario metadata 35ms
+     → Unable to find an element with the text: 300 pixels/inch. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<section[39m
+  [33maria-label[39m=[32m"Calculation result"[39m
+[36m>[39m
+  [36m<section[39m
+    [33mclass[39m=[32m"final-calculator-renderer"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33maria-atomic[39m=[32m"true"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33mclass[39m=[32m"result-box"[39m
+      [33mrole[39m=[32m"status"[39m
+    [36m>[39m
+      [36m<span>[39m
+        [0mLinear density[0m
+      [36m</span>[39m
+      [36m<strong>[39m
+        [0m300 DPI[0m
+      [36m</strong>[39m
+    [36m</div>[39m
+    [36m<details>[39m
+      [36m<summary>[39m
+        [0mMethodology[0m
+      [36m</summary>[39m
+      [36m<p>[39m
+        [0mDeterministic calculation using the reviewed Technology & Computing engine.
+Technical calculation revision: technology.dpi@1
+
+Linear pixel/dot density from a supplied pixel count and physical length.
+DPI = pixels ÷ length inches[0m
+      [36m</p>[39m
+    [36m</details>[39m
+    [36m<details>[39m
+      [36m<summary>[39m
+        [0mSources[0m
+      [36m</summary>[39m
+      [36m<ul>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mhref[39m=[32m"https://www.nist.gov/glossary-term/28116"[39m
+            [33mrel[39m=[32m"noopener noreferrer"[39m
+            [33mtarget[39m=[32m"_blank"[39m
+          [36m>[39m
+            [0mNIST — Nominal Resolution[0m
+          [36m</a>[39m
+        [36m</li>[39m
+      [36m</ul>[39m
+    [36m</details>[39m
+  [36m</section>[39m
+[36m</section>[39m
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/technology-current-presentation.test.ts [ src/lib/technology-current-presentation.test.ts ]
+Error: Cannot find module './technology-current-presentation' imported from '/workspace/work/product-completion-20261108/src/lib/technology-current-presentation.test.ts'
+ ❯ src/lib/technology-current-presentation.test.ts:2:1
+
+
+Caused by: Error: Failed to load url ./technology-current-presentation (resolved id: ./technology-current-presentation) in /workspace/work/product-completion-20261108/src/lib/technology-current-presentation.test.ts. Does the file exist?
+ ❯ loadAndTransform ../batch13-deps/node_modules/vite/dist/node/chunks/config.js:22907:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/technology-next-integration.test.tsx > presents current DPI in pixels per inch consistently in primary and new export/scenario metadata
+TestingLibraryElementError: Unable to find an element with the text: 300 pixels/inch. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<section[39m
+  [33maria-label[39m=[32m"Calculation result"[39m
+[36m>[39m
+  [36m<section[39m
+    [33mclass[39m=[32m"final-calculator-renderer"[39m
+  [36m>[39m
+    [36m<div[39m
+      [33maria-atomic[39m=[32m"true"[39m
+      [33maria-live[39m=[32m"polite"[39m
+      [33mclass[39m=[32m"result-box"[39m
+      [33mrole[39m=[32m"status"[39m
+    [36m>[39m
+      [36m<span>[39m
+        [0mLinear density[0m
+      [36m</span>[39m
+      [36m<strong>[39m
+        [0m300 DPI[0m
+      [36m</strong>[39m
+    [36m</div>[39m
+    [36m<details>[39m
+      [36m<summary>[39m
+        [0mMethodology[0m
+      [36m</summary>[39m
+      [36m<p>[39m
+        [0mDeterministic calculation using the reviewed Technology & Computing engine.
+Technical calculation revision: technology.dpi@1
+
+Linear pixel/dot density from a supplied pixel count and physical length.
+DPI = pixels ÷ length inches[0m
+      [36m</p>[39m
+    [36m</details>[39m
+    [36m<details>[39m
+      [36m<summary>[39m
+        [0mSources[0m
+      [36m</summary>[39m
+      [36m<ul>[39m
+        [36m<li>[39m
+          [36m<a[39m
+            [33mhref[39m=[32m"https://www.nist.gov/glossary-term/28116"[39m
+            [33mrel[39m=[32m"noopener noreferrer"[39m
+            [33mtarget[39m=[32m"_blank"[39m
+          [36m>[39m
+            [0mNIST — Nominal Resolution[0m
+          [36m</a>[39m
+        [36m</li>[39m
+      [36m</ul>[39m
+    [36m</details>[39m
+  [36m</section>[39m
+[36m</section>[39m
+ ❯ Object.getElementError ../batch13-deps/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/technology-next-integration.test.tsx:20:233
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  1 failed | 9 passed (10)
+   Start at  04:13:30
+   Duration  4.55s (transform 2.03s, setup 0ms, collect 2.90s, tests 930ms, environment 391ms, prepare 136ms)
+

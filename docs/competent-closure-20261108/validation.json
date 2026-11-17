@@ -1,0 +1,259 @@
+{
+  "baselineSHA": "9c0b5dc3e3aec18ed03fb6849562ebddc854db06",
+  "baselineCI": {
+    "run": 42515194749,
+    "conclusion": "SUCCESS_ALL_FIVE_AND_AGGREGATE"
+  },
+  "customerUICapture": "95ad56ea67fcce8ef18d55a0a386d97e3ddd9061",
+  "currentVerifierCapture": "d19b8de7d74c5f85cd296946bdb69a2e3b271167",
+  "completeNegativeFixtureCapture": "877aa7584392bdde8530dbf6eae1aae30eab6c7b",
+  "localChecks": [
+    {
+      "name": "lint",
+      "result": {
+        "errors": 0,
+        "existingWarnings": 28
+      },
+      "archiveLog": "logs/competent-lint.log",
+      "sha256": "bb308ecafc155f5bef71526621327627f27daa47e6c1cf88d5de22c71a8ece04"
+    },
+    {
+      "name": "typecheck",
+      "result": "PASS",
+      "archiveLog": "logs/competent-typecheck.log",
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    {
+      "name": "unit-full",
+      "result": {
+        "passed": 8378,
+        "existingSkipped": 4,
+        "unhandledErrors": 0,
+        "filesPassed": 932,
+        "filesSkipped": 2
+      },
+      "archiveLog": "logs/competent-unit-full.log",
+      "sha256": "c3f03028624aee716686b90dd78487e6d7d91e936fe1638c7678bf016cc66cf0"
+    },
+    {
+      "name": "launch",
+      "result": {
+        "passed": 45
+      },
+      "archiveLog": "logs/competent-launch.log",
+      "sha256": "cecb1b1971bf0f089a375abb1c218899eea110150399886291cd434e27aa4f03"
+    },
+    {
+      "name": "certification",
+      "result": {
+        "passed": 15
+      },
+      "archiveLog": "logs/competent-certification.log",
+      "sha256": "4636bec2225f523f92454cb3c61045de4e0b47da32a118f4d3dadc22b0cf2cd8"
+    },
+    {
+      "name": "node-delivery-final",
+      "result": {
+        "passed": 159
+      },
+      "archiveLog": "logs/competent-node-delivery-final.log",
+      "sha256": "b8a73b1d8e18819a72ec668ae1bc14e34792311113d1ee7999f69e6229bd2aca"
+    },
+    {
+      "name": "webpack",
+      "result": "PASS: next build --webpack",
+      "archiveLog": "logs/competent-webpack.log",
+      "sha256": "146a8a1fc4e7fef455818e73b071a47d3d348f03cd47d5a761103edbe90b3757"
+    },
+    {
+      "name": "current-source-proof",
+      "result": {
+        "passed": 17
+      },
+      "archiveLog": "logs/competent-current-source-proof.log",
+      "sha256": "0ff7acf1dfdfb97c7e9866fa05a88c6bc3c391c4898ea0a11864361dfd85fbf6"
+    },
+    {
+      "name": "preserved-source-chain",
+      "result": {
+        "passed": 14
+      },
+      "archiveLog": "logs/competent-preserved-source-chain.log",
+      "sha256": "3951ff176840da0941a497461e71899ab9f3129a3f26fad4edd7c07adc31fc7c"
+    },
+    {
+      "name": "caller-fixture-final-green",
+      "result": {
+        "passed": 19
+      },
+      "archiveLog": "logs/competent-caller-fixture-final-green.log",
+      "sha256": "9be903ed29bc71de958f8ce4a6b52b33ece167a63b0d751bcbbc8c97c17f0f66"
+    },
+    {
+      "name": "source-facts-check",
+      "result": {
+        "rows": 13,
+        "supportedRelationship": 9,
+        "partial": 4,
+        "approval": false
+      },
+      "archiveLog": "logs/competent-source-facts-check.log",
+      "sha256": "59739a3ba1988dec81636f8c2303c7dc0ab0617a125d0a6279edfeb7b1b5acc2"
+    },
+    {
+      "name": "final-focused-lint",
+      "result": "PASS",
+      "archiveLog": "logs/competent-final-focused-lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "final-guard-lint",
+      "result": "PASS",
+      "archiveLog": "logs/competent-final-guard-lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "nativeAcceptance": {
+    "report": "converter-final-browser-report.json",
+    "passed": true,
+    "journeys": 60,
+    "paidKeyboardJsonReplayJourneys": 45,
+    "batchExports": 15,
+    "actualCustomerPath": true,
+    "authentication": "Read-only observer boundary; existing genuine authenticated evidence reused, not falsely claimed newly executed"
+  },
+  "newIsolatedDatabaseAcceptance": {
+    "report": "operational-locks-receipt.json",
+    "passed": true,
+    "scenarios": 2,
+    "syntheticOnly": true,
+    "productionFreezeAttested": false
+  },
+  "protectedUnchanged": [
+    {
+      "path": "src/calculators/registry.ts",
+      "sha256": "acfe4a797d5f28c146cacbd0f5d33e9f87192f54f716d7090683b626a8b7eeb5"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-1.ts",
+      "sha256": "e4c01d7544568d9ce3900b54b50895d3212824ec5ec6dbfcf3e49c92bb014da9"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-2.ts",
+      "sha256": "8c8021714b27b2399ea4d27a6bec595e446426ca2e6ad846815e60a9a5b35467"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-3.ts",
+      "sha256": "8605a98cbc051450fbd71089d77f174f961ea56d5ee6b743e38c8a473b87c165"
+    },
+    {
+      "path": "src/lib/publication20/conversions.ts",
+      "sha256": "33294ef227aa6e4a4a14f4282dcda1834a03396e62c6a0dbc5d4fb932472ec8c"
+    },
+    {
+      "path": "src/lib/publication20/batch.ts",
+      "sha256": "2dd8637472e447fd72c070e02ba6220139f6ea40d9f489d24e3646b742c5357e"
+    },
+    {
+      "path": "src/lib/frequency-presentation.ts",
+      "sha256": "b9c0015f7a6ca30426c2963a10384c05cc99b3cd5d08dc1d1782af48ddfabb05"
+    },
+    {
+      "path": "src/lib/n1-publication-methodology.ts",
+      "sha256": "45758a400444cb578cef0ea20b1640d1f06b7eb1c18b3ac9f2092cec1da1a9dd"
+    },
+    {
+      "path": "src/components/final-calculator-renderer.tsx",
+      "sha256": "95acb3ca32311c3e843371e2e39c3f74d311d99997706d866b1629957796e4b6"
+    },
+    {
+      "path": "src/calculators/final-framework/unit-conversion-presentation.ts",
+      "sha256": "84f5cbfa414e40c80d4e6cd18a9946b720148a8a3fde9abc51c679146f17f48e"
+    },
+    {
+      "path": "scripts/n1-publication-lineage.mjs",
+      "sha256": "4a6f9418054eb4df0248d1171e695bd57d1e58d94d6edbcc14cc68493ef0370e"
+    },
+    {
+      "path": "scripts/frequency-presentation-lineage.mjs",
+      "sha256": "be6ce5031756352037cfa7b5e8c3a34ad2208df8e8a360d07f4b550c1766a92e"
+    },
+    {
+      "path": "docs/shortest-publication-20/caller-lineage.json",
+      "sha256": "33394a9c3274961e78fed448acec32f59d44e81cfdcb785a165b650a880753e1"
+    },
+    {
+      "path": "docs/shortest-publication-20/implementation-manifest.json",
+      "sha256": "5b327a0c8ca14cb48f65e097266093c0068d1411c8f3897c25bf5244bcafee87"
+    },
+    {
+      "path": "docs/adoption1535/package/guarded-target-apply.sql",
+      "sha256": "7dfc42e461c0e9f836cacdeab368cb54bc0695b3cd2de243a5741348a537a530"
+    },
+    {
+      "path": "docs/adoption1535/package/guarded-target-reverse.sql",
+      "sha256": "733eb6ff56968bc602633b5722e4a96fa889b8944476a4870048d502460c85d6"
+    },
+    {
+      "path": "tests/gotrue-runtime/fixture.mjs",
+      "sha256": "98265ac37460e7676f6f5dae59a20110e82aefba1e9d567f880e0df6aa768387"
+    },
+    {
+      "path": "docs/first-live-closure-20261108/requirements-540.json",
+      "sha256": "4c894714d6c034017d3217f05e81a337344a18656f0a635a8213266d86551705"
+    },
+    {
+      "path": "src/lib/financial-successor/decimal-rounding-private.ts",
+      "sha256": "762b120dc672566d71a35e8981084fe4ddf0de59353f63c81e7e70d1dfacaf38"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "934bf945aa864691a3fba7307484a7996eaf407f49b61f83c98c281780a420c9"
+    }
+  ],
+  "allTrackedCalculatorEnginesActiveMigrationsAndCatalogDataUnchanged": true,
+  "failedIntermediateAttempts": [
+    {
+      "kind": "NATIVE_HARNESS_CONTRACT",
+      "files": [
+        "logs/converter-final-browser-initial-failure.json",
+        "logs/converter-final-browser-initial-failure.log"
+      ],
+      "reason": "Observer retains object with output:null and replay returns snapshot field; corrected harness to existing interfaces, assertions not waived"
+    },
+    {
+      "kind": "OVERBROAD_TEST_SELECTOR_EDIT",
+      "file": "logs/competent-converter-final-focused.log",
+      "reason": "Methodology rename was mistakenly applied to unchanged network tests; reverted byte-for-byte, converter assertions remain"
+    },
+    {
+      "kind": "INCOMPLETE_COPIED_TARGET_FIXTURE",
+      "file": "logs/competent-node.log",
+      "result": "5failures",
+      "reason": "New safe target dependency reader rejectedmissing new renderer files before intended denial; complete fixture and retain specific denial assertions"
+    },
+    {
+      "kind": "NEW_SUPPLEMENTAL_DIAGNOSTIC",
+      "file": "logs/competent-caller-fixture-intermediate-red.log",
+      "result": "1failure",
+      "reason": "Frequency helper tamper now rejected earlier by exact current dependency proof; assert that precise denial"
+    },
+    {
+      "kind": "OPERATIONAL_FIXTURE_SUCCESSORS",
+      "reports": [
+        "operational-locks-initial-receipt.json",
+        "operational-locks-marker-initial-receipt.json",
+        "operational-locks-receipt.json"
+      ],
+      "reason": "Improve exact fixture identity and non-overwriting output protocol; targeted reruns retain original intermediate receipts"
+    }
+  ],
+  "independentReview": "independent-review.json",
+  "newFullCanonicalEngineeringComplete": 0,
+  "newCanonicalAccepted": 0,
+  "newCertified": 0,
+  "newPublicationEligible": 0,
+  "successorHostedCI": "Separate final exact-SHA checkpoint; never inherited from baseline/local tests",
+  "productionWrites": false,
+  "releaseHold": true
+}

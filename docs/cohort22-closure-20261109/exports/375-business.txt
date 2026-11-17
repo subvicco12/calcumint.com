@@ -1,0 +1,56 @@
+CalcuMint | Calculation report
+
+
+RAID Capacity Calculator
+Calculator: raid-capacity-calculator | Engine version: 1
+Raw engine values: full numeric precision; no display rounding or sampled rows.
+Units appear only where supplied by the calculation or bound display metadata.
+Embedded Unicode glyphs are readable.
+Unsupported characters and controls use explicit Unicode escapes.
+Tagged PDF; PDF/UA conformance: UNVERIFIED.
+Text follows document order; charts include complete numeric text alternatives.
+
+
+INPUTS
+Disk count
+input["diskCount"] = 4
+Disk size (GB) [GB]
+input["diskSizeGb"] = 1000
+RAID level
+input["raidLevel"] = "10"
+
+
+RESULTS
+Usable RAID capacity [GB]
+output["value"] = 2000
+output["steps"][0] = "RAID Capacity = 2000"
+
+
+METHODOLOGY
+Deterministic calculation using the reviewed Technology & Computing engine.\u000aTechnic
+al calculation revision: technology.raid-capacity@1\u000a\u000aSimplified nominal RAID u
+sable capacity; RAID 5 requires at least 3 disks, RAID 6 at least 4, and RAID 10 an even
+ disk count of at least 4. Vendor/filesystem overhead is not modeled.\u000aUsable capaci
+ty = RAID-level-specific disk count × disk size
+
+
+DECLARED FORMULAS
+raid-capacity-calculator: Usable capacity = RAID-level-specific disk count × disk size
+Simplified nominal RAID usable capacity; RAID 5 requires at least 3 disks, RAID 6 at lea
+st 4, and RAID 10 an even disk count of at least 4. Vendor/filesystem overhead is not mo
+deled.
+
+
+SOURCES
+SNIA — Data Protection Best Practices: RAID levels
+https://www.snia.org/sites/default/files/DPCO/Data%20Protection%20BP%20White%20Paper%20F
+inal%20v1_0.pdf
+SNIA describes RAID 0 striping, RAID 1 mirroring, RAID 5 distributed parity, RAID 6 dual
+ parity, and RAID 10 striping plus mirroring. CalcuMint reports simplified nominal usabl
+e capacity and separately documents that vendor/filesystem overhead is excluded.
+
+
+
+
+Engine v1 | Page 1 of 1
+

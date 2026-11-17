@@ -1,0 +1,9 @@
+# Actual governing source references in shallow unit checks
+
+The new mandatory unit bridge executes actual caller provenance. A genuine shallow checkout exposed missing761b850479ea36b2b4ebf8039664d8400c762555, the frequency-presentation verifier's declared predecessor. N1 likewise consumes ee3d0a70cf5a908ce3588bb02b67bbb86576a8a7. The publication job's later explicit fetch could not supply those references to the earlier build/unit job.
+
+The bootstrap now includes these two explicit governing references alongside the unchanged financial/completion reference sets. They are actual verifier prerequisites, not invented historical successor stages. Fetch remains bounded to known immutable40-character revisions and re-verifies presence. No workflow changed.
+
+The original frozen implementation manifest and its bootstrap hash remain untouched. A standalone audit proves its originala7a source bytes/hash/blob, then compares exact current HEAD path objects, SHA256 and physical bytes for the bootstrap, its test and both governing verifiers. The descriptive source-capture commit is not a runtime Git dependency, avoiding a self-referential fetch loop in shallow CI. The current HEAD is already checked out; a7a is already required by the existing source proofs.
+
+Existing bootstrap negative assertions are retained. The missing-fetch regression now requires both governing refs. Additional audit checks reject legitimate-old-byte reversion, arbitrary tamper and missing Git provenance. Red evidence showed the new required-ref assertion fail before implementation; all five focused checks now pass. The root will run the same test in the normal unit bridge and final actual shallow checkout. No local full-history result is substituted for that execution, and no hosted CI result is claimed here.

@@ -1,0 +1,225 @@
+{
+  "kind": "UNREGISTERED_PRIVATE_FINANCIAL_IMPLEMENTATION_NOT_ACCEPTANCE",
+  "baselineSourceSHA": "6e5b8aa3dd07b1c57993c4cc8b6f1cf1be7ce2ef",
+  "implementationRevision": "private-financial-exact-grid-20261108.1",
+  "allocatedSuccessorVersion": null,
+  "privateProtocolVersion": 1,
+  "protocolNote": "Snapshot calculatorVersion 1 identifies private transport shape only; not a registered mathematical engine version. Envelope binds explicit implementationRevision and private slug. No version allocation or routing.",
+  "originals": [
+    {
+      "number": 1370,
+      "head": "07520eb3e89815feda1448405da3b5f0132948c8",
+      "base": "caffafe639350ca0c2c2cf33ae1f099294f5af54",
+      "state": "open",
+      "title": "Reject financial rounding overflow and invalid direct loan inputs",
+      "closedByThisWork": false,
+      "reviewPreserved": true,
+      "requirements": "Schema-valid compound-interest inputs (`principal=1e308`, `annualRatePercent=-50`, `years=10`, `compoundsPerYear=1`) produce finite future value and unrounded interest but return `-Infinity` when interest is rounded. Separately, direct loan-payment calls accept finite rates, fractional terms and term lengths outside the existing schema. This PR rejects overflow in the shared rounding helper and applies the existing loan schema to direct calls, without changing formulas or ordinary rounding behavior.\n\nThe audit compared current main `caffafe639350ca0c2c2cf33ae1f099294f5af54` with open PR #1230 at `0e00fd887b4de7e57b664898fef82cf9573aae4a` and #1231 at `4255bc9048129f74effc76f6c087a815e9ddd0b8`. Both have successful exact-head CI. Their proposed fixes were not duplicated: #1230 adds unrounded loan-output guards; #1231 adds compound-interest direct-call bounds and an unrounded total-interest guard. The rounding defect was reproduced using #1231's actual proposed source, and the loan bound bypass was reproduced using #1230's actual proposed source. Both patches apply cleanly to this branch. The corrected rounding helper also rejects the #1231 reproduction.\n\nValidation:\n\n- Baseline: 17 focused existing tests passed; the new regression tests then exposed 12 failures before correction.\n- Final: 177 tests passed across finance, rounding boundaries, engine and launch-certification suites (26 files).\n- `npm run typecheck` passed.\n- ESLint passed for all four changed files; `git diff --check` passed.\n- Full suite and build were not repeated locally. Main and the two existing PRs have successful CI; this PR must receive its own exact-head CI before release.\n\nThis is a financial-risk change requiring applicable financial specialist review and engineering review of the shared helper. Extreme rounding cases now fail closed rather than returning nonfinite results. Existing examples, deterministic formulas, Free/Pro/Business accuracy parity, certification/publication metadata, specialist approvals, HOLD/DRAFT restrictions, RLS and release controls are preserved. `npm ci` and `next build --webpack` are unchanged. No merge, deployment, database write or calculator promotion was performed.\n\nReview sequence: review this distinct safety correction alongside #1230 and #1231; retain each proposed guard, obtain applicable specialist sign-off, refresh exact-head CI after any rebase, and verify resulting main CI under normal protected release procedures. No merge is authorized by this PR.\n"
+    },
+    {
+      "number": 1231,
+      "head": "4255bc9048129f74effc76f6c087a815e9ddd0b8",
+      "base": "50ae123536f65ac4039ef43fac1abe4c6a2efc30",
+      "state": "open",
+      "title": "Enforce compound-interest direct-call bounds and finite output checks",
+      "closedByThisWork": false,
+      "reviewPreserved": true,
+      "requirements": "Financial-risk change. Direct calculate() calls now enforce the same annual rate, years and compounding-frequency bounds as inputSchema; tests cover finite values outside those bounds. Includes existing finite-output defensive check. Keep DRAFT and do not merge without applicable financial specialist review, exact-head CI and release gates. No new GitHub Actions workflows or production deployment."
+    },
+    {
+      "number": 1230,
+      "head": "0e00fd887b4de7e57b664898fef82cf9573aae4a",
+      "base": "50ae123536f65ac4039ef43fac1abe4c6a2efc30",
+      "state": "open",
+      "title": "Fail closed on nonfinite loan-payment outputs",
+      "closedByThisWork": false,
+      "reviewPreserved": true,
+      "requirements": "Financial engine hardening: guard overflow in unrounded monthly payment and total payment rather than returning Infinity/NaN. No plan-specific formula logic; existing mathematical behavior for finite inputs is unchanged. Draft pending exact-head CI and financial-risk review per governance. No new workflows or runners."
+    }
+  ],
+  "historicalBoundary": {
+    "kind": "LEGACY_BOUNDARY_OBSERVATION_NOT_NEW_ACCEPTANCE",
+    "principalExactDyadic": {
+      "numerator": "48000000000001",
+      "denominator": "4"
+    },
+    "cases": [
+      {
+        "catalogReviewCandidate": 51,
+        "engineId": "finance.compound-interest",
+        "version": 1,
+        "input": {
+          "principal": 12000000000000.25,
+          "annualRatePercent": 5,
+          "years": 0,
+          "compoundsPerYear": 12
+        },
+        "actual": {
+          "futureValue": 12000000000000.26,
+          "totalInterest": 0.01
+        },
+        "independentIdentity": "Zero compounding periods: A=P and I=0",
+        "expected": {
+          "futureValue": 12000000000000.25,
+          "totalInterest": 0
+        },
+        "matchesIdentity": false
+      },
+      {
+        "catalogReviewCandidate": 1,
+        "engineId": "finance.loan-payment",
+        "version": 1,
+        "input": {
+          "principal": 12000000000000.25,
+          "annualRatePercent": 0,
+          "termMonths": 1
+        },
+        "actual": {
+          "monthlyPayment": 12000000000000.26,
+          "totalPayment": 12000000000000.27,
+          "totalInterest": 0.02
+        },
+        "independentIdentity": "One zero-rate period: monthlyPayment=totalPayment=P and totalInterest=0",
+        "expected": {
+          "monthlyPayment": 12000000000000.25,
+          "totalPayment": 12000000000000.25,
+          "totalInterest": 0
+        },
+        "matchesIdentity": false
+      }
+    ],
+    "formulaChanged": false,
+    "sourceModified": false,
+    "certificationAuthorized": false,
+    "releaseHold": true
+  },
+  "sourceFilesSHA256": {
+    "src/calculators/finance/loan-payment.ts": "c4347c6d8d5cc7ea7d95bc2eda914a3f9eb4faba37f373d4be521f71dd2923f5",
+    "src/calculators/finance/compound-interest.ts": "7c948d1deec2565b9386f9978f1ef6f81c33993354065e9d8a393aeb5cf28b8d",
+    "src/calculators/precision.ts": "139319afc73ef22c45dd46ef94b56b85f3442ed57b239cd6a0e59f92cd68643a",
+    "src/lib/financial-exact-grid.ts": "e55bc952661b1f08c494aef90789205615e7967bc2c48ffd8625159ca47ba10e"
+  },
+  "contract": {
+    "scope": "Only finance.loan-payment v1 and finance.compound-interest v1 formula pipelines; exported legacy schemas reused by reference.",
+    "change": "At the existing rounding calls use exact binary64 decimal-grid membership to preserve an already on-grid number. Existing shared roundTo remains the sole off-grid policy.",
+    "1370": "Retain schema validation for direct loan calls and shared roundTo nonfinite safeguards. Current integral finite overflow-reproduction outputs remain finite under the existing baseline helper.",
+    "1231": "Retain compound direct schema bounds, periodic-rate check, finite unrounded future value and finite total-interest check.",
+    "1230": "Retain unrounded loan monthly payment finite/nonnegative and total payment finite checks.",
+    "historical": "Historical v1 code and outputs unchanged. Legacy snapshots are not upgraded or accepted by private replay.",
+    "immutableReplay": "Created artifact itself is a frozen implementationRevision/baselineEngineId/baselineEngineVersion/transportVersion wrapper around existing deeply frozen CalculationSnapshot. Export and replay validate the complete wrapper, including exact revision and baseline. Raw unversioned snapshots cannot be exported by assigning an identity. New private JSON replay uses parsePublicationFactoryInput to reject lossy numeric tokens at the existing 2MB bound; historical import is unchanged. Exact JSON comparison rejects mismatched fields, outputs and inputs; no writes or registry/latest fallback."
+  },
+  "validation": {
+    "focusedTests": 10,
+    "evidence": "Actual-engine zero-period and one-payment exact dyadic identities, literal historical outputs, quarter-grid boundaries, ordinary published examples, off-grid comparison, direct-call bounds/nonfinite rejection, immutable replay and tampering.",
+    "focusedSuiteTests": 28,
+    "newPrivateEngineTests": 10,
+    "typecheck": "npm equivalent tsc --noEmit passed",
+    "lint": "eslint src/lib/financial-successor/*.ts passed",
+    "diffCheck": "git diff --check passed",
+    "buildRun": false,
+    "privateReplayAdversarialCases": [
+      "Fractional raw calculatorVersion 1.0000000000000001",
+      "Fractional raw termMonths 1.0000000000000001",
+      "Underflow 1e-999",
+      "Unknown implementationRevision",
+      "Baseline engine ID/version tampering",
+      "Raw unversioned snapshot export/replay",
+      "Input extra field and output tampering"
+    ]
+  },
+  "unresolved": [
+    "Full rounding policy qualification beyond exact-grid preservation",
+    "Independent competent financial numerical review",
+    "Engineering review and exact-head CI",
+    "Successor identity allocation and explicit future routing/adoption decision"
+  ],
+  "releaseHold": true,
+  "certificationAuthorized": false,
+  "registered": false,
+  "productionWrites": false,
+  "originalPRsClosed": false,
+  "initialImplementationCapture": {
+    "sourceRef": "e80a691e86b5bb996a0cd0863fc810b432d7303d",
+    "revision": "private-financial-exact-grid-20261108.1",
+    "sourceFiles": [
+      {
+        "path": "src/lib/financial-successor/exact-grid-private.ts",
+        "blob": "2baf9129f3df1caca9390c14678475a1c5128d8f",
+        "sha256": "e3f66e441620e0fbe351796ed6bcc52493796eb784839045f8c0d46da270cdc1"
+      },
+      {
+        "path": "src/lib/financial-exact-grid.ts",
+        "blob": "d7999eb0df46e0194f1a50b6664d140c582578c2",
+        "sha256": "e55bc952661b1f08c494aef90789205615e7967bc2c48ffd8625159ca47ba10e"
+      },
+      {
+        "path": "src/calculators/finance/loan-payment.ts",
+        "blob": "9153ea4b9ef3f28567f07c06ed93ad65f8e73459",
+        "sha256": "c4347c6d8d5cc7ea7d95bc2eda914a3f9eb4faba37f373d4be521f71dd2923f5"
+      },
+      {
+        "path": "src/calculators/finance/compound-interest.ts",
+        "blob": "b905832a35146c6233cf4d522c2c1efd36cabf74",
+        "sha256": "7c948d1deec2565b9386f9978f1ef6f81c33993354065e9d8a393aeb5cf28b8d"
+      },
+      {
+        "path": "src/calculators/precision.ts",
+        "blob": "20224230a5011fdc198dcd04c5cb4f3cdb35f8c4",
+        "sha256": "139319afc73ef22c45dd46ef94b56b85f3442ed57b239cd6a0e59f92cd68643a"
+      },
+      {
+        "path": "src/lib/calculation-snapshot.ts",
+        "blob": "1a2cab16a52d88249fc33103881d6873a1da3f92",
+        "sha256": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c"
+      },
+      {
+        "path": "src/lib/recorded-json-equality.ts",
+        "blob": "7c938f6983eae11a352c2cfb67dc428d0fa635f0",
+        "sha256": "59fda934bec9e573c970d5a451b3d3e3ba14292838a9c6544cafbd10e71f0fcc"
+      },
+      {
+        "path": "src/lib/publication-factory-contracts-input.ts",
+        "blob": "1e3f689af1f5e5e4069a2c611791d812a6cd0003",
+        "sha256": "d0c5d00cc0c5d024420f11f21c27534f5b38dc681cbd53d22e750eb4a8dd281f"
+      },
+      {
+        "path": "package-lock.json",
+        "blob": "dd368ceb52d75eb3998241a001b9e533373146c5",
+        "sha256": "b564e5ff97f9dad6c934e6a2eb0977871b2ee3f0b36a23325f1715b241114273"
+      }
+    ],
+    "meaning": "Immutable isolated implementation/dependency capture; not successor allocation, financial certification or routing approval."
+  },
+  "artifactNote": "Created artifacts bind implementation revision and baseline engine identity/version before export; recomputation is integrity evidence, not a digital signature or publisher authentication.",
+  "currentOriginalPRObservations": {
+    "observedAt": "2026-11-08 15:18:44 UTC",
+    "source": "Authenticated GitHub read-only PR metadata",
+    "pullRequests": [
+      {
+        "number": 1370,
+        "state": "open",
+        "draft": true,
+        "head": "07520eb3e89815feda1448405da3b5f0132948c8",
+        "base": "caffafe639350ca0c2c2cf33ae1f099294f5af54",
+        "merged": false
+      },
+      {
+        "number": 1231,
+        "state": "open",
+        "draft": true,
+        "head": "4255bc9048129f74effc76f6c087a815e9ddd0b8",
+        "base": "50ae123536f65ac4039ef43fac1abe4c6a2efc30",
+        "merged": false
+      },
+      {
+        "number": 1230,
+        "state": "open",
+        "draft": true,
+        "head": "0e00fd887b4de7e57b664898fef82cf9573aae4a",
+        "base": "50ae123536f65ac4039ef43fac1abe4c6a2efc30",
+        "merged": false
+      }
+    ],
+    "actionsPerformed": "READ_ONLY; no close, merge or retarget"
+  }
+}

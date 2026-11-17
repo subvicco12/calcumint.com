@@ -1,0 +1,5 @@
+The first run used producer `c94733cf` and successfully built the production fixture and adopted the guarded SQL successor after all preimage checks. It passed absent-publication and key/scope refusal, then failed when the harness evaluated a cached isolated-world context during the first allowed iframe navigation. Chromium reported `Cannot find context with specified id`.
+
+This failure establishes a harness synchronization problem; it does not establish an application failure or passing cohort acceptance. The copied build source binding for the run recorded only the explicitly synthetic registry lower-reader difference. No passing receipt was written.
+
+The successor harness reacquires the matching iframe document's context and retries only explicit CDP navigation-context loss; application exceptions remain fatal. A regression test reproduces context replacement and verifies that application errors propagate. The independent retry records its own actual producer revision and artifacts.

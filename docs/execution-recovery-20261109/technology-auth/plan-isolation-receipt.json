@@ -1,0 +1,546 @@
+{
+  "passed": true,
+  "observedAt": "2026-11-09T10:07:39.749Z",
+  "freeDenialCode": "P0001",
+  "freeScenarioRows": 0,
+  "proScenarioRows": 1,
+  "sameJwtUserProjectHistoryArgumentsAndRequestId": true,
+  "changedFactor": "Privileged isolated profiles.plan free to pro only",
+  "sourceHashes": {
+    "tests/execution-recovery-20261109/technology-plan-isolation.mjs": "cec99be96f1fe04351a0e407b75cc650482f9aef74062c036e08601954082db4",
+    "tests/gotrue-full-schema/schema.mjs": "0185b1e41bb8e810296636cc633974ac4897e412cc597814a91b405c11019726",
+    "tests/gotrue-runtime/fixture.mjs": "98265ac37460e7676f6f5dae59a20110e82aefba1e9d567f880e0df6aa768387",
+    "src/lib/password-recovery.ts": "219a1cea057af6b4c1ca3815cc03c9a9986eeed2f70db7a60264fd16ab7f20cb",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/supabase-js/dist/tracingRegistry.mjs": "1682402eb4078c171f9b70e9a8e52c17eeefee593d94b167059c354ba74eac8f",
+    "../../workspace/work/batch13-deps/node_modules/tslib/tslib.es6.mjs": "0929993220938091ede542d688b0fdb87dad99a7e77678e1983c32d18a503339",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/functions-js/dist/main/helper.js": "323d5529b134ddf92d2bce3ffb1c1707d483325f182fd2665d59564ca6bb933e",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/functions-js/dist/main/types.js": "c599ec73696bd9a251cc206407bdc5a9b2fbda1b12d97ceb9868b2a060dbb514",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/functions-js/dist/main/FunctionsClient.js": "f8a4f5ab75ae570a108ba4a7aa1a30dc58ca62af8d48fb0f9a2dc7e0ea1ca1e1",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/functions-js/dist/main/index.js": "41f4ff1b0f36c0ccc0a0e0fbd6428f2654dafbe1fd3e3dd89a8736166ac5c4f5",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/postgrest-js/dist/index.mjs": "1bed557508b6bc15f77eb4c78bc6fdd620abdf7d1ad39b670df92d83547cc538",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/lib/websocket-factory.js": "cb05e6f4ab46ee28118d7baecd0ff6c6116e1a538f4896bb7d4d1de1b60ab1a9",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/lib/version.js": "1def3472b0673feb364044cbad8229e06e1a9edfb6a5f06dfdbdbe5a8a986a06",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/lib/constants.js": "4998f76316a28ee16dce3c3346845be0e9ddde85559f34eb6a3c307732fcca35",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/lib/serializer.js": "d71a6f611f1fd578287b89f510a9e8a6b9dc7048085065e607769b7eed7f1945",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/lib/transformers.js": "c6050fcfa7e19d3f5b7f0cc3e7e40e899aa753a75e10d268252be968e9fc7062",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/phoenix/priv/static/phoenix.cjs.js": "0b9d4a6280454132320c6ea886355f4d34059213ecc6697f43d7e836c98920aa",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/phoenix/presenceAdapter.js": "568992f5fe7333a3a80ea4e13bfa147759e762f699d9e76b7aa5ee2a58ec981f",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/RealtimePresence.js": "a2687fc9777849d24b7ec2b45b5191b7a2a06c4b19b4dc2ccb8c25f31679246d",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/lib/normalizeChannelError.js": "fcea2bd55b4f6c749cc0f9daf956b4d0db126d096656ff8149bb517648475efa",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/phoenix/channelAdapter.js": "07b9e487385763cfa10b923113e76872c0ff1b67b3542b7027261045edf0c875",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/RealtimePostgresFilterBuilder.js": "87b125bf675a17e13e706d65a3d579c18633dccf5630abd0fde2ff09d5fed7de",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/RealtimeChannel.js": "fe8bc4667cb634ba665b28b6ae9b1d966f40dcd6d726dd0849ccd1a8d0fb509d",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/phoenix/socketAdapter.js": "7db2e3463f86fbaa76f347159403c053ba0ffce5e0c8553708698c2ea534c630",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/RealtimeClient.js": "015dd0b89c4bda020ddbe829c6338c8ad965bf364076988391c20c827a5c60d1",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/realtime-js/dist/main/index.js": "c9b62a4332542a15618a2d2442760c5d2d5ef59f494765f98a297baeb9335582",
+    "../../workspace/work/batch13-deps/node_modules/iceberg-js/dist/index.mjs": "15ed0530ab67a7bfb541eb2cea764023c159312b7f1888e42c029840fafd381d",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/storage-js/dist/index.mjs": "f34162d316d3c45187d18bb3aa38361eae1fd52ce10cb0a3fd29b1a4f333c79e",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/version.js": "1def3472b0673feb364044cbad8229e06e1a9edfb6a5f06dfdbdbe5a8a986a06",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/constants.js": "9218c8a8da3825083fcb3b105a8c52c1c5a542a865f5abf2ab5185b7b4beabf9",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/errors.js": "3cf62e517139e8e2092891eb990ea32b25b95678a52a63b4b911ec08e363f77a",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/base64url.js": "1d97eac773480a5e06ba408f4d746e59b4269a6b8afd22aaad75f5773c7cf9d7",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/helpers.js": "e9b82e7663b66ba154d7eddf388047461e0019359d1df50274aa43adbd560678",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/fetch.js": "50fa4e318e07a49de1179256e3fa3dc927a6a46664386f0baed30ef80f3c1d0b",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/types.js": "4ba1cf76d3e6b838ad40f6b4ef88845ee054726ddd1f42ebfcdfa9efa23cef43",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/GoTrueAdminApi.js": "bd8c28a4dfaf0c06fd107250b1a5d3156a7d085fd4cd3a7ae953b7be2e2833f6",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/local-storage.js": "a3c6841d8c4dc24a2c0ac1d238b42a278c7ac05d18a7571db91c3fc140e42d93",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/locks.js": "d9ebad87448eb4aa3f1db2453f313377e19c6c144824f502154bcf3b0cd851c3",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/polyfills.js": "0b5600e6e4cda1f029ec448d93857062731b850424d3b465fa7dae4e5921ae7e",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/web3/ethereum.js": "839a33e8225db3da724f25bea5d1b127ba30cb4c272cab30dd9700232ada431d",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/webauthn.errors.js": "40cb9a8d5f58c798e4b1ea47774ba29e59a9efb455c6edd4d05c8a38c762cd78",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/webauthn.js": "016e06c91127c337b8d0536df280cd57c66c07ec236436a39b8b7083ac308db3",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/GoTrueClient.js": "3e831952d18c01fe2d9cc802b76af6ba86355adc60f33edff3325779ed9e3ef5",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/AuthAdminApi.js": "8e879ad1a0f0ad11923dc1b7bedd7e522532a298025c3fae52669419d342421a",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/AuthClient.js": "f9dbb30bd5c6511db0c98a24f1f9b077aa2d080505427c93dea757d97d981568",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/auth-js/dist/main/index.js": "a43ea0c523b8f4f8b8d59bc3b16b9ec9158cad05de53ffc92238fceb26d8bcfd",
+    "../../workspace/work/batch13-deps/node_modules/@supabase/supabase-js/dist/index.mjs": "3379e7d01b41287fdf65e7a590969c92888ea3522c43ab765390eff262c93cb7",
+    "src/lib/auth-recovery.ts": "b13709c6c6e1b03164eea4e892c1cc60a426d7c7f5fa8e0c88510190e69fc3a8",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/core/util.js": "728f52b496620336775eafcdb91c0a574380086e53f215b55c58eedc1422c49c",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/core/core.js": "c7ce485c97263e42568d16b11bb4a90133221c7e807498a9273d70f41ba16ef6",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/core/errors.js": "a0c95ef2f7085b5bc2931f7b566f524b26a0360c8df741e3f87f923745cf9792",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/core/parse.js": "fb05b91ec260f3f484f7c00a177b6126ceb8fd1b09dc90b1200afdffd4d98efd",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/core/regexes.js": "24fc98f6fc9175e50ff29d28b040e3b4ac5650de19914d45ee27b853d367ecc6",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/core/checks.js": "bc42543274218aa7ef72192b3218d2a4a399e53df8de240a04d9ff275096f563",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/core/doc.js": "be4c1b1a1ad247cc70f360a572060edd7e0cea24252c3a319f33d247899c5643",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/core/versions.js": "63b38035ff5e2a5a5cfe5665e271af72b0cf9791e770dccf5e99d977064fb96c",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/core/schemas.js": "e632b655441418f0593153abc6809fd81cf3e0782d810622d0a4fa50ef6e182e",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/core/memoizer.js": "18a3188c51229d9189a5408b0b7fbc3e121b55c2b4c3c406d79cb9b77e7ad964",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ar.js": "eec4016c2b3063ae929617d90ec609e4c425e60c97a954d3a24de0f457b6ec97",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/az.js": "5bd03646b9d18b73e71356cd28937e4e6413b806bb23e14689cc88f6f65ff3a6",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/be.js": "f969afea5d9800a71958a621658943b85a2576a2bfefdd5dea70afc4924d4af4",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/bg.js": "96741333a790320e05aef7286b5b709a4a7c48cfffc50fc5e6acff5b505275e9",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/bn.js": "6d8227b52a6864465b7c52a9ef7e09d261d904ec8a619932e15dd9f9f826e8dd",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ca.js": "67f6f38b59a6e3ee81cc5155480465331dd9a142b2471a495503a81dafba0684",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ckb.js": "bdb9ef0cfda4009f8892585a1780fff863cd409931d6f89394c271042c131137",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/cs.js": "4ffa0e484ad1842a2c0e5c7f2dfe9160155ff5be4b95ab6e524d3a30a2210488",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/da.js": "29addcd60e88422bed9ed78c6c864220a15c06b31fdb4ab7ad4f87be4098e6ae",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/de.js": "f344eb96ba18d9db907f3f9c95897ce2590ab0cde1553c023daffbb1cb5ef6f4",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/el.js": "fdea833aa0a8c381d26216db1521dd7fbc4dccb6d3aa50f9a585ffb975df91eb",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/en.js": "d5930e10d137b048b37823e168e4177947e1f696ada8419c71bb0d32da4333c0",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/eo.js": "97797bd22319ecc3f2044da6c305f1114b851803697029ffce2b66644757da3a",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/es.js": "12e762b921b1e3fdb8e265d2b554de81ce9706ceb23a81527f48ae2dddf355db",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/fa.js": "60e7eeff4c000c85f8420168374344305d3c2110a5f91a2fb672b2a2381eeddf",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/fi.js": "1e72af4193e564cd37dce4a850dc18bc1bcd6ca280f29e9f5f8c6bbab6a2cad9",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/fr.js": "477345d6401d0e4f07794b1a2cff8b78953723f1fc8cfaeb6b660c19be47125a",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/fr-CA.js": "a2ca0451ff943766bb6a88b392b25447462a1d3ed75c1adda5ddb0bc474bcd42",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/gu.js": "b1921ac6b4158e6360a8da6099df8bbf2d7bce7c1cf381d5a5e47aa0c74874d2",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/he.js": "1cfff31fac19616d900d1f3febd9690ea87711e13b5be299326ebfd3f33aad4d",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/hi.js": "c31e466c2a31dc10ba6a288e1aebf429a6e9566a26918d0240aae058693f6329",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/hr.js": "ff2bebef0761f2d6095103d58484e3b95551bc51d56770db8f161b8e0e0ec941",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/hu.js": "9816c21ee0b3be9d973f9e033e9587a608f2d35dd1b984d415b88e03242b0189",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/hy.js": "daf6d0c590d9b061759598ba9f7f97041e2874c7a58da2c64b86f152840d68fa",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/id.js": "e5c23bb0b6f696fa936bafd7969e64738504cf7a5be3ec04b24ae899d4912b58",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/is.js": "1cce1285bbf55c8a76303fea0be0fb6d39fbd0ece833137ea23a22f406ac1ae1",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/it.js": "096b497df6c5fe7de4422482b7733e764e4b344e8d7f768a7289556687acdb82",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ja.js": "2a6bbbd6dbd573687b22f35873a13cdf730c07423b4ab114e5a8b12d8777146d",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ka.js": "baf3204123cf4246df654fd1948b6c8da6917e7a06e470aeeaf7c1eaa7003628",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/km.js": "e61079f14070dfa9c7b2047eb79f5bea6d4e845f192756d103c121bbd63ee18a",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/kh.js": "78c3d1991041bb8c8fc0f7c5d745aae422d4c2e4e8f30bae44f3fef4765900a8",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/kn.js": "884b1b68a1ca02fe9a774b8de9cbfa3486892eea36192699120f57b31f0a1f42",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ko.js": "11fcef61a2f23e010bf0f569d71be0d49524afc97f3072cc03fdc6fe3ea2f14d",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/lt.js": "d2e67a35a3c6e7241a9eb9c5851e4b5b651ac8b23278854862e6055829946c48",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/mk.js": "64ddd914c432ba5690d0686bff6603651ce886a891f84823d7dc766c9c980cd1",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ms.js": "94faf0d306ffa2a4f95e57f3e53060d27220a639b9cb529f00d1d01b6270f045",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ne.js": "6da69989b702ae15baa27b799b6b2b32fd011ba3980a190dd0eccfc9233083d6",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/nl.js": "296ced8be508c5f9e82b562049d2974882029bcd5b2ab4ade14401b33ec99909",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/nn.js": "bae9756817629db30841eb54a27ed9b3c71c2a4208314d8d070be624bd2e9359",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/no.js": "f358e5586940350ee25a05db184565d23eb1c66903e182ebec812172f31cb55a",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ota.js": "66ed8c3ce00b2e9971ed5a17f002937405d8cdfeb399ebe012db9d2317f42146",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ps.js": "1c15b81fcce0cdc59dbcca18df5c4ecf4e176fc3fb7668207b9ba54df43cce46",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/pl.js": "b7f82cf9f747785beeec05cd31d3d7493c52bd3647598924141568f148c07222",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/pt.js": "93a820f60d571607bf34b69198f5b24617475584c0b22c0f8d160fcdef096a46",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/pt-BR.js": "abc52db767b9dd938954776728ea7480cdcab569a5a17664f60e5a2c1d63e60b",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ro.js": "54751d2866171c9c7ce1a72868dec09efa54d1b2b67401767594c5b360aca38a",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ru.js": "40a019b53bd1684fd4b750db87021520dd5d710f714010c0a594e5bcf5787478",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/sk.js": "ae7c49242e70149434c9051dd00209afbd517d98ba54c13692371a5340b616da",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/sl.js": "490ca48f8aae3aed660758b32856d49a9fc5c7e255dad220e75abaef8c35140b",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/sv.js": "448f36996bb0d159489b34ad7d86df03e520a13e43b1c98ea2fb18d7ed4a3c95",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ta.js": "8b6e1bc033fdaefb1acfc7edf88c9f53c3a50cc892066effdab306103e994d42",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/tg.js": "9a5c9a3b18b8ccded28d66033575b22d823df17a7afa8bb9a733f31fe071462f",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/th.js": "913cc4962ddf5cb54ed694d04b7008493ef401d3333b26426b32f4890712574e",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/tk.js": "445abfed18c5a9d79143b02c9cf9c171b41fb5dff8ffc2cb59b7aef7203e5a7f",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/tr.js": "bca07607a27f518f19877dd9c2235fada9c73eb56896f0f6e274781fab71d64e",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/uk.js": "1e59ba41296aeb5b6142a6e5ed84712931e33e54ab0b9ae5d83faf436fc3d968",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ua.js": "9391169ffbc72f777a83230b6ffcc3f4cf46ab5945ec540de9ef4609dca1f4cc",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/ur.js": "d37ed2c93408e0a6b6e1cd290117a6f0e9d7b2c83509cd34b502e1dd94899c87",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/uz.js": "2cbe07635b03064ffad0bfcc98d2d570f3264b9cd3e22bbd5c160cd0343f7872",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/vi.js": "15939adaf263e0869c602d4b34c206178a235b8bec11c8207ccd3fa50de3a141",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/zh-CN.js": "8fc02f2bd4d92f46b24b8d82da0ee95c962fc80c14dd7dd469500e14de08d320",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/zh-TW.js": "01d9b119e318d8b9f1a8fa720d06424457429425a61d0730984b750e6a5edf7d",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/yo.js": "88b33f6527c1a2faaf159568330cf727c448dc468eac72142a6fb24f8714ac1e",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/locales/index.js": "7ea85250d1e7bd9459cda61f38c78757a410d561a5421bb3f08019bba79c9849",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/core/registries.js": "f04d4b2c0bc5b4ac2d6610ea34edf2e5260eade18f20976b79916dcdbeb9fa4d",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/core/compile.js": "df28853593428e5a2a8729b09f43baf0998eaae7f1e37797993035187833b054",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/core/api.js": "03ae6016abc9585e3f3481d6b8d775a95ae4ee65badbde73ca1ed953ff14c0e7",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/core/to-json-schema.js": "85b883eb8f05e9f060c71a39fce7df9345b566af29d5bc9c8fa477fe616a051d",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/core/json-schema-processors.js": "b6d2aee72212c076b9cde38da6333591c76a24eb049a4ee4e7bd2b7825d8b817",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/core/json-schema-generator.js": "beaeab6faa654e99e443b8a9f5d8a4adc08cd8226f92a0cd32477a58ecfa1807",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/core/json-schema.js": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/core/index.js": "2a0e452323aa5b75b7d7de4879289e2579b9dd2d6af291c0416ba6806ca2199d",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/checks.js": "7543391a9ad5e7df287bbfecaa79844d46af44c75c1de0d43a411d65795d9dd1",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/errors.js": "d32f7c1ef8e2c70072f6f0ec8ba7081bbc331353cc3a7cb4429e5ece91409543",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/parse.js": "11941573401bbef138842c7a523dff554873343fccbf0e8b0a144259d2d703f1",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/schemas.js": "2bf4a631a18f734a9a7ab7fc11bcf919214774d2235a312dcec0dd53d0324c32",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/compat.js": "0e948b101771cc0e7b753e54b3f5b486929d3db9bd4c09d98fe4ce86271bcf7b",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/iso.js": "deaa026b7c5302e59719f401248e7866691d8d8a892884dd2b6868b1cb7252d8",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/from-json-schema.js": "31dc999a26cb6928f5e99ea564d648567e85cf9aa47565198fb6186dbd6c070e",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/core/visit.js": "a804062900869e09ea0b975cfa569fd3c70dc33bad7fc30b63872d451cae29f7",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/deep-partial.js": "0abffcc9838e04dc6f091229c1d522fbfd43aab9563316b52d3eb8ff2bacf26d",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/in-out.js": "34370913842ff02d14a9796b11c5ec2af160bdb35a7148edc286e9a9c6fb5c17",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/coerce.js": "fb2efe3b6eacc475c77cbb571b5fb8650d92a10f316dc869e49b722973d83c3c",
+    "../../workspace/work/batch13-deps/node_modules/zod/v4/classic/external.js": "c6b584ae70ba4e7132b2cd78c23ea4ecedc9828abf999edee312372e1fb453d6",
+    "../../workspace/work/batch13-deps/node_modules/zod/index.js": "32e7efd49a94a765f6d10a1a0a3c02c50c246def17c80c6f0225f85525d98505",
+    "src/lib/entitlements.ts": "16227499beb299e6cf02c2f8485b5804294c97e4da446ac7934b55aedbd1f731",
+    "src/lib/account-persistence.ts": "09316cd9df4ab359a3d20ac921e1c908f0e3b48831977149800262c16a01ad9e",
+    "src/calculators/geometry/catalog-completion.ts": "784b527d4380facf78f20092642a70001e83c259d1916f78af44e996a3d344ff",
+    "src/lib/calculation-snapshot.ts": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c",
+    "src/calculators/geometry/slope-versioned-compatibility.ts": "ef37c45cf7589c165f80de83603e63827439a25afb3603737762c2231a67b710",
+    "src/lib/persisted-calculation.ts": "ccc7470275310c92e3cb518afee76a5dd3553e3b52396b4937263bf18c19d914",
+    "src/calculators/technology-computing/catalog-batch-1.ts": "31f347fc286cc0b22cd888b9f53719e4733ffa17ab8323aa4f6dc5bc497079f6",
+    "src/calculators/technology-computing/catalog-batch-2.ts": "d352f40f8aef2cbd22afd8c09e577f28fc4eda1b925a928ec65c1ea25f4393d7",
+    "src/calculators/types.ts": "a8b9a16ab7d9c63e3918ae93587aace30c5d322a006226cce3d945022ba8b2d8",
+    "src/calculators/engine.ts": "41da900c997cdf101aa4d45d336d6319772ddddd0f254c24cb413ff3553b67c6",
+    "src/lib/recorded-json-equality.ts": "59fda934bec9e573c970d5a451b3d3e3ba14292838a9c6544cafbd10e71f0fcc",
+    "src/lib/technology-snapshot-verification.ts": "276ad7ee37203fa90b65571a3bab1b3dde271f13c1f323a1e8d330a6bab9e521",
+    "data/verification/codex-a-standard-risk-goldens-2026-10-15.json": "e5a9b33a487bfa5c083dffd45bb039df459393b1a46a11346d000e11ca1c1ec6",
+    "src/calculators/decimal-fraction-goldens.ts": "29a5f87e07817fed990d1efa116b4daf1c06b3c91bd00114eee15e6dde406bc5",
+    "src/calculators/launch-portfolio.ts": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f",
+    "src/lib/launch-snapshot-verification.ts": "1418dcda1a71424f34062787ad62bb716e1e96d24fc18d3b45de834affcd196f",
+    "src/calculators/physics/catalog-batch-3.ts": "b5c1870d729cbbd32db6eac439c7b6aa2b90f54c3677879bf0a05120a5f0faf6",
+    "src/lib/batch22-physics-replay.ts": "97c42822733670f5a215fa5ce51ef929ae1b902ec163d3ec676aa43586d1ef43",
+    "src/calculators/advanced-math/graph-example-fixtures.ts": "c1e5490bf9fd7da179e5138d687f25938370481ea58a40753fd4413e606cd666",
+    "src/calculators/advanced-math/expression-engine.ts": "52af6dda5267eeeeb34830776a054e1ad1e5051560e99f2483bd7879bedf3d24",
+    "src/calculators/advanced-math/catalog-batch-10.ts": "78370a3240b98b4339d88fdaa95cf57ff963f7b780b0956d6fc541909a0f93de",
+    "src/calculators/statistics/catalog-batch-1.ts": "172db736ce7c991e0b11cf99612578d7c25374bda0f95e009167e9fa887ba52f",
+    "src/lib/batch21-snapshot-replay.ts": "bbdfd0512ed1b790753c62e01e287bc7d648729179b39bf1182d387845cdcef8",
+    "src/calculators/precision.ts": "139319afc73ef22c45dd46ef94b56b85f3442ed57b239cd6a0e59f92cd68643a",
+    "src/calculators/units.ts": "74e92b7afeb83f53e31e0eed710e5afecb8716df0735556c8fac229793d142ec",
+    "src/calculators/conversion/catalog-batch-1.ts": "e4c01d7544568d9ce3900b54b50895d3212824ec5ec6dbfcf3e49c92bb014da9",
+    "src/calculators/conversion/catalog-batch-2.ts": "8c8021714b27b2399ea4d27a6bec595e446426ca2e6ad846815e60a9a5b35467",
+    "src/calculators/conversion/catalog-batch-3.ts": "8605a98cbc051450fbd71089d77f174f961ea56d5ee6b743e38c8a473b87c165",
+    "src/lib/publication20/conversions.ts": "33294ef227aa6e4a4a14f4282dcda1834a03396e62c6a0dbc5d4fb932472ec8c",
+    "src/lib/publication20/network.ts": "18ba9ac37cdb9f2634388bde49cff591186e9ed48160aacf340fb19a75432976",
+    "src/lib/publication20/index.ts": "b6b25b6307770a8a3185fe5b72366bdb139d31d33aa7b82a850e7deeab0afd0e",
+    "src/calculators/core/percentage.ts": "abb6d4dfce62afce867ceaa5ea209ec3f9f6ba885016ecd9b5aed452668b21cc",
+    "src/calculators/core/unit-conversion.ts": "b323d7311c94a07c3da809af6293e775cf97e634e7c5f352fad0710a7a7e174a",
+    "src/calculators/finance/simple-interest-independent-goldens.ts": "e7380cbb67f037566961e3ca278a4194c9b26dc9aec3a128ea90a08b4ec44036",
+    "src/calculators/finance/simple-interest.ts": "602ea32c413f5ed632bb697b4f1583aaa70f4ebe68fadf6a6dac0ae5ef82c773",
+    "src/calculators/health/bmi.ts": "e2597d2b3db50ce3a17c55d558f2b1f64ae48ce49a3815ee0c717127ee1105d6",
+    "src/calculators/finance/sip-independent-goldens.ts": "a8ebbac118762b2860d137cb4282f508b510c34912486c8d7082ad365b297a89",
+    "src/calculators/finance/sip.ts": "d829448f8d9fa930b5744dcf0128e7ea5e7139c2306e23df83cf622ce134310a",
+    "src/calculators/finance/compound-interest-independent-goldens.ts": "636f1be17ad0b4597ec0a05cfe0d6f558575cb2b8ebd49a531a80366cbc7bdd8",
+    "src/calculators/finance/compound-interest.ts": "7c948d1deec2565b9386f9978f1ef6f81c33993354065e9d8a393aeb5cf28b8d",
+    "src/calculators/finance/debt-aggregate-independent-goldens.ts": "b430852558318dc73083fdb8acf62fb5e2f7e7c54e98b35f0cf1a188d5303109",
+    "src/calculators/finance/loan-payment.ts": "c4347c6d8d5cc7ea7d95bc2eda914a3f9eb4faba37f373d4be521f71dd2923f5",
+    "src/calculators/finance/mortgage.ts": "8f4c7b87637df8e401582493a7ae3ec94b9a252ac08bee0cce00f825bb5d21bd",
+    "src/calculators/finance/debt-payoff-independent-goldens.ts": "a71ef994534e2ffa35c2d4bba721ddf2b39e67674f69fdf340fb9d944faa7277",
+    "src/calculators/finance/loan-analysis.ts": "92d37f5d5219b794d4dde2fa48d77a605fa344501964ae853549981ff81746ef",
+    "src/calculators/business/break-even.ts": "7f9cc4da38039323d768d4576c3054d151706aaf4c3734d1f0fe2045754ec5f9",
+    "src/calculators/final-framework/analysis.ts": "225af2ddbba2bb3aa3f571acc8e4a8eb263f6b553e25fbc7db3bf69254185013",
+    "src/calculators/final-framework/adapters.ts": "f4749489bbc133a9bb7ca4a89e1dff5809ec2d760979dea833473e10ffc2bfc7",
+    "src/calculators/final-framework/investment-periods.ts": "d2cfb48822b17ca40c91a35578f53e5c4cb31f8ae1a4e30cbcec6aecca331eba",
+    "src/calculators/final-framework/registered-rate-analysis.ts": "97cebcf2a1efb21369667d5a2e5aea016bd63e5af05a4b3374a13a82b82295bc",
+    "src/calculators/final-framework/mortgage-rate-analysis.ts": "250c05582df44869d3ec103339774465f61e35a7b649e6f13d6ae01a37605a7e",
+    "src/lib/registered-snapshot-replay.ts": "4d6a168ff5072e1ad0f2cfb051a69750d6a2fb0f360164038597fb24ed0128d6",
+    "src/lib/registered-snapshot-verification.ts": "7a288d92b16613f4208b43de2ef7b2b52d2c111a4457b1677e7b0df9a9031cf8",
+    "tests/critical440-auth/adapter.ts": "f6815b6c5d215ef425173a12d28ce2e06d2d76de4869a1fa58c3ac4ca797e263"
+  },
+  "installedRpcDefinitionSha256": "0e4cd20343ca05773892f308773db30353c6d47ebc6746701955617bbda5dd7a",
+  "snapshotSha256": "f2070bdc051e92cbd3a6144f3cff843f5870023385bd7f5a5a82f0d1a4f5962a",
+  "provenance": {
+    "images": {
+      "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+      "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+      "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+    },
+    "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+    "autoconfirm": true,
+    "scope": "Full repository candidate model plus locally adopted guarded review bundle; NOT raw historical-chain success or authentic captured production equivalence",
+    "authMigrationCount": 75,
+    "authUidOwner": "supabase_auth_admin",
+    "schemaCoverage": {
+      "tables": [
+        "admin_alerts",
+        "ai_usage_events",
+        "api_usage_events",
+        "batch_calculation_jobs",
+        "batch_request_receipts",
+        "billing_account_fences",
+        "billing_atomic_completions",
+        "billing_customers",
+        "billing_webhook_events",
+        "business_api_keys",
+        "business_projects",
+        "business_webhook_endpoints",
+        "calculation_history",
+        "calculation_projects",
+        "calculator_bulk_jobs",
+        "calculator_catalog_admin",
+        "calculator_qa_checks",
+        "calculator_review_events",
+        "calculator_source_evidence",
+        "client_workspaces",
+        "custom_calculator_runs",
+        "custom_calculator_versions",
+        "custom_calculators",
+        "embed_configs",
+        "embed_events",
+        "embed_lead_receipts",
+        "embed_leads",
+        "favorites",
+        "lead_consents",
+        "organization_audit_log",
+        "organization_invitations",
+        "organization_members",
+        "organizations",
+        "platform_admins",
+        "profiles",
+        "saved_scenarios",
+        "share_links",
+        "shared_calculations",
+        "subscriptions",
+        "user_preferences",
+        "webhook_deliveries"
+      ],
+      "policies": 86,
+      "publicFunctions": 88,
+      "tablesWithoutRls": null
+    },
+    "appliedHistoricalSources": [
+      "001_b3_accounts.sql",
+      "002_b4_billing.sql",
+      "003_b5_business.sql",
+      "004_b6_builder.sql",
+      "005_b7_delivery.sql",
+      "006_b8_api_automation.sql",
+      "007_b9_ai.sql",
+      "008_b10_admin_factory.sql",
+      "008b_b10_alert_automation.sql",
+      "010_b7_pro_workspace.sql",
+      "012_production_fk_indexes.sql",
+      "013_production_rpc_privilege_hardening_v2.sql",
+      "014_production_entitlement_rpc_sync.sql",
+      "016_final_certification_evidence_gate.sql",
+      "017_regulatory_rule_pack_evidence.sql",
+      "018_harden_rule_pack_required_metadata.sql",
+      "019_authoritative_lifecycle_enforcement.sql",
+      "020_post_certification_revalidation.sql",
+      "021_require_rule_pack_provenance.sql",
+      "022_harden_reviewer_waiver_authority.sql",
+      "023_structured_source_evidence.sql",
+      "024_reviewer_assignment_authority.sql",
+      "025_derived_source_count_authority.sql",
+      "026_publication_manifest_authority.sql",
+      "027_publication_trigger_privilege_hardening.sql",
+      "028_source_evidence_reviewer_index.sql",
+      "029_account_rls_auth_initplan.sql",
+      "030_billing_ai_rls_auth_initplan.sql",
+      "031_admin_identity_rls_auth_initplan.sql",
+      "032_business_builder_rls_auth_initplan.sql",
+      "033_pro_workspace_rls_auth_initplan.sql",
+      "034_billing_webhook_event_privileges.sql",
+      "035_split_overlapping_write_policies.sql",
+      "036_consolidate_ai_usage_read_policy.sql",
+      "037_builder_publish_business_entitlement.sql"
+    ],
+    "deferredToBundle": [
+      "009_country_preferences.sql",
+      "038_client_account_billing_privileges.sql",
+      "032_atomic_reviewer_qa_audit.sql",
+      "033_atomic_reviewer_assignment_audit.sql",
+      "034_atomic_lifecycle_transition_audit.sql",
+      "035_atomic_catalog_creation.sql"
+    ],
+    "legacy011": "unchanged broken source fingerprinted; existing missing-contract repair adopted only locally",
+    "sources": [
+      {
+        "path": "docs/audits/migration-contract-2026-10-20/inventory.json",
+        "sha256": "67e0cf0d7ee790de5de7cfa348f5b18ac20359dfca670ee8c1fb4870703e784b"
+      },
+      {
+        "path": "supabase/migrations/001_b3_accounts.sql",
+        "sha256": "44c6b84cbef90edd8bae8f97b9ee8f3ca3fe0a2b75c9a7bc81c40ab782641444"
+      },
+      {
+        "path": "supabase/migrations/002_b4_billing.sql",
+        "sha256": "3676dc52b3086a3445ccc96a6dc2e4aa7293d23f66736046bca22243a918df24"
+      },
+      {
+        "path": "supabase/migrations/003_b5_business.sql",
+        "sha256": "3b2a88f0cc96edcd84fda58250093eec823354748121c7eee88b3f77029cb8e5"
+      },
+      {
+        "path": "supabase/migrations/004_b6_builder.sql",
+        "sha256": "6a71738de1ccb5b57f0761fac772e7771d2736d390f81d92aed464810aad9899"
+      },
+      {
+        "path": "supabase/migrations/005_b7_delivery.sql",
+        "sha256": "5851dc2e24b1445526b2986f743fad11adeba4742667587efaf5249b882bb258"
+      },
+      {
+        "path": "supabase/migrations/006_b8_api_automation.sql",
+        "sha256": "637ec0680c7ac01f2f801cbcadd6c45c7ab1996e9db28afe35d0878c2950e1b5"
+      },
+      {
+        "path": "supabase/migrations/007_b9_ai.sql",
+        "sha256": "6b1cd86c7d45533a0a783541ca03c8a455e427e5386469557530b4fcee1bb429"
+      },
+      {
+        "path": "supabase/migrations/008_b10_admin_factory.sql",
+        "sha256": "7080c1d1d1125545f3fd4626d5881c28ed8e642100bb94d061889e0fefe94b36"
+      },
+      {
+        "path": "supabase/migrations/008b_b10_alert_automation.sql",
+        "sha256": "ee5df09520e3a4c8f8c9251bb0b7718df1cf56d861e256de96ab21c89e55d6aa"
+      },
+      {
+        "path": "supabase/migrations/010_b7_pro_workspace.sql",
+        "sha256": "a16d5bbe5092d0d0cda135aeb2e4c034512e8c85faccf3ed3ff9512b7d8b3f0e"
+      },
+      {
+        "path": "supabase/migrations/011_b8_free_save_quotas.sql",
+        "sha256": "4c0f9f7c3a2f8e7b9b343b252b586c2921cbb981ab819a323afccba5b2a29a50"
+      },
+      {
+        "path": "docs/architecture/proposals/20261020-v1-legacy-save-quota-repair.sql",
+        "sha256": "1befdc09dd6b2b7ab2d0a225cdec6e048c170f0d6d3add2a164c4a30c20d31a2"
+      },
+      {
+        "path": "supabase/migrations/012_production_fk_indexes.sql",
+        "sha256": "e953260b2a57aa83b1d050b7536f27ea4324a396aa84332593e72b727b1ee6d2"
+      },
+      {
+        "path": "supabase/migrations/013_production_rpc_privilege_hardening_v2.sql",
+        "sha256": "3e6d9402ee352faeba6af214b7650c3a31782be2ba2d74eef88d8d98d76592fa"
+      },
+      {
+        "path": "supabase/migrations/014_production_entitlement_rpc_sync.sql",
+        "sha256": "f5fe2f21ecc004231cf3e01010f96a853f281fc03864512341bea7fc49f0faff"
+      },
+      {
+        "path": "supabase/migrations/016_final_certification_evidence_gate.sql",
+        "sha256": "b2ffa0198bc303b38aa766ac7157e7c8f93a9009b42d52fe4fbd3c45bf521d5e"
+      },
+      {
+        "path": "supabase/migrations/017_regulatory_rule_pack_evidence.sql",
+        "sha256": "255266b6ac885463b09b48f70caaec1348ae3a4b7b919cfed86ee6271217f987"
+      },
+      {
+        "path": "supabase/migrations/018_harden_rule_pack_required_metadata.sql",
+        "sha256": "8de88ad1d1551adc19704660ac79ef8625c20d1197bd261f9938fa7167ee2e66"
+      },
+      {
+        "path": "supabase/migrations/019_authoritative_lifecycle_enforcement.sql",
+        "sha256": "fef6d250fe190e7ae508769d2037fcbeb79340de1837fd2c47010a854873c4f1"
+      },
+      {
+        "path": "supabase/migrations/020_post_certification_revalidation.sql",
+        "sha256": "8be8fad45bfa4ac03a0e1b6272825ec3eba7fcf75e8739039d25e462a83839d1"
+      },
+      {
+        "path": "supabase/migrations/021_require_rule_pack_provenance.sql",
+        "sha256": "2948349c3454f6533393c7f907d96b88a42157360ed10872912cc0393722fcbc"
+      },
+      {
+        "path": "supabase/migrations/022_harden_reviewer_waiver_authority.sql",
+        "sha256": "45ad7805d74f2c795c7ec6f92910e29d82851a1a7e614e86e721df3e0fda7818"
+      },
+      {
+        "path": "supabase/migrations/023_structured_source_evidence.sql",
+        "sha256": "df68de0942cb46eaa9cfabab5136297093c399319c8e78b94768752a5c649f01"
+      },
+      {
+        "path": "supabase/migrations/024_reviewer_assignment_authority.sql",
+        "sha256": "e04d659cda5b30351322831dd41cf37a3f0250e32323af6f5b5af6b04fa7e65e"
+      },
+      {
+        "path": "supabase/migrations/025_derived_source_count_authority.sql",
+        "sha256": "d979f0fbc012676c4ba18d633733db59d8400bf7a9125f171c08ac973caf01a4"
+      },
+      {
+        "path": "supabase/migrations/026_publication_manifest_authority.sql",
+        "sha256": "281590f74a5d4c3dad201612aa13bd4364f02f678d3d3429949e179aabe12c42"
+      },
+      {
+        "path": "supabase/migrations/027_publication_trigger_privilege_hardening.sql",
+        "sha256": "b001be015340eecebbacb5c5fd66ecae82347c150088a2f896c768d57d4ed070"
+      },
+      {
+        "path": "supabase/migrations/028_source_evidence_reviewer_index.sql",
+        "sha256": "c93164c647d0c015b426950a19da17c2409c74edb9cff5b3db0749fdb021d08a"
+      },
+      {
+        "path": "supabase/migrations/029_account_rls_auth_initplan.sql",
+        "sha256": "04de135a6a2c9ef351c0a7c364b81a6d8be82fecf919ca72b1af8d62f253910f"
+      },
+      {
+        "path": "supabase/migrations/030_billing_ai_rls_auth_initplan.sql",
+        "sha256": "a1d4e07e8db42a84885bfc95a5a3da0945d118c305a46125f5367f2ba3cb97a0"
+      },
+      {
+        "path": "supabase/migrations/031_admin_identity_rls_auth_initplan.sql",
+        "sha256": "9600a2261753c5cdcbb015baa04579d8063940afaccd11eaa5ac7c3f364b96c4"
+      },
+      {
+        "path": "supabase/migrations/032_business_builder_rls_auth_initplan.sql",
+        "sha256": "76da26bbc86622c664d4e322f45ea2b716357d38ec93a4e2ab238f50145e2dc9"
+      },
+      {
+        "path": "supabase/migrations/033_pro_workspace_rls_auth_initplan.sql",
+        "sha256": "4b13a12bbf5113a2605bae3d4be08ec785174f3afb9bd2806fb1c3e5b906241f"
+      },
+      {
+        "path": "supabase/migrations/034_billing_webhook_event_privileges.sql",
+        "sha256": "597177fba00c67f0ea0baca5a54c1cc44a2ab77886b7376fa9549e4d0ef3aaf4"
+      },
+      {
+        "path": "supabase/migrations/035_split_overlapping_write_policies.sql",
+        "sha256": "fedde50298d7230a29a0ae7c41afa5c8df95195e7473042fb8c1efb6fc56540d"
+      },
+      {
+        "path": "supabase/migrations/036_consolidate_ai_usage_read_policy.sql",
+        "sha256": "28edd1f34e9628f64bc255d9a9a3f643d367d0ffdcd430022d67d45f0f11d9e5"
+      },
+      {
+        "path": "supabase/migrations/037_builder_publish_business_entitlement.sql",
+        "sha256": "7582b31222aa28378cfe7e984228738a4b5bc704715f9b783f957ed23711636b"
+      }
+    ],
+    "bundle": {
+      "reviewVersion": "20261021.v1",
+      "deploymentVersion": null,
+      "productionExecutionAuthorized": false,
+      "requires": [
+        "owner dispositions for historical differences and external writers",
+        "trusted postgres ownership",
+        "reviewed write pause, timeouts, backup and restore plan",
+        "exact metadata freshness and schema/ledger preconditions"
+      ],
+      "excludes": [
+        "011 missing-only repair",
+        "historical029 replay",
+        "global default ACL changes",
+        "production execution"
+      ],
+      "sources": [
+        {
+          "path": "supabase/migrations/009_country_preferences.sql",
+          "sha256": "da461b18da708919e8679fc2e8d198234e71c46253a46d6915536c72ab412cab"
+        },
+        {
+          "path": "docs/architecture/proposals/20261021-v1-authentic-account-security.sql",
+          "sha256": "a4075c12645710adf1bada346c85d1115984b88760318a7ec63a6d05a4ed2bc7"
+        },
+        {
+          "path": "supabase/migrations/032_atomic_reviewer_qa_audit.sql",
+          "sha256": "b548046cb0a3aa91dd2838a824a5a1155b7b4c317d65cc644b6c9673a26418f1"
+        },
+        {
+          "path": "supabase/migrations/033_atomic_reviewer_assignment_audit.sql",
+          "sha256": "74ce0f947c3922c4c7992880abd108a2900a6ce14933bd45c3a5762617f2fcd8"
+        },
+        {
+          "path": "supabase/migrations/034_atomic_lifecycle_transition_audit.sql",
+          "sha256": "745efcbcb731821dd82727e91a6fe46093413890122818eb0560fd05a3414c90"
+        },
+        {
+          "path": "supabase/migrations/035_atomic_catalog_creation.sql",
+          "sha256": "426de9383b1ca63f504adbdb9e515c239c8d2c4bd37f518a6b900667d2f30b47"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-BILLING-TRANSACTION-PROPOSAL.md",
+          "sha256": "12b486c353f56007e7c65be18d50c30989d2cb784cdaf16cf53400cc6db06348"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-ACCOUNT-HISTORY.sql",
+          "sha256": "18b3ca55203fdd7709cc4d632a23d6727081ee9a0269175d1e7c87763b0e712c"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-API-QUOTA.sql",
+          "sha256": "2e3cd725261052be9c4bce71610a5912b235d2322b737c93cd87a4f74c86a436"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-BATCH-JOB.sql",
+          "sha256": "8f8113e98ee43b7f4e9c06682030d4020eb51760cf890b960587a3358d5eebe6"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-EMBED-LEAD-CONSENT.sql",
+          "sha256": "c93ded8059a77f93b43c7c8931834a560b5b13cf1f4984d5d0efe54892f1a6a5"
+        },
+        {
+          "path": "docs/architecture/proposals/20261021-v1-atomic-object-privileges.sql",
+          "sha256": "929828b851598c019c4d77856291ec57a2ffe751dcbeecfb0248239c9008116a"
+        }
+      ],
+      "sha256": "07dda25c047f8e75059402f561c5e4988322f60ed40faaa23aa87740c36534a4"
+    },
+    "productionEquivalence": "UNKNOWN",
+    "captureAvailable": false
+  },
+  "productionWrites": false,
+  "limitations": [
+    "Shared scenario entitlement gate isolated on one exact existing frequency snapshot, not another19-calculator run",
+    "Fixture-only entitlement setup; no production downgrade policy or billing-provider acceptance",
+    "Original nineteen Free attempts remain ownership-or-plan denials; new shared-gate causal proof supplements rather than rewrites them"
+  ]
+}

@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: all ten literal captures and latest exact current source bytes pass without a verdict
+ok 1 - all ten literal captures and latest exact current source bytes pass without a verdict
+  ---
+  duration_ms: 15.845538
+  type: 'test'
+  ...
+# Subtest: every capture digest is authenticated before target nominations are used
+ok 2 - every capture digest is authenticated before target nominations are used
+  ---
+  duration_ms: 56.753697
+  type: 'test'
+  ...
+# Subtest: wrong codeRef roster duplicate and malformed tuple fail even with a matching synthetic capture digest
+ok 3 - wrong codeRef roster duplicate and malformed tuple fail even with a matching synthetic capture digest
+  ---
+  duration_ms: 46.258018
+  type: 'test'
+  ...
+# Subtest: every finite target rejects fresh changed bytes with the original path diagnostic
+ok 4 - every finite target rejects fresh changed bytes with the original path diagnostic
+  ---
+  duration_ms: 772.245933
+  type: 'test'
+  ...
+# Subtest: chronological later tuples replace earlier valid historical bytes
+ok 5 - chronological later tuples replace earlier valid historical bytes
+  ---
+  duration_ms: 6.863478
+  type: 'test'
+  ...
+# Subtest: unknown paths are never added and no Git filesystem fallback or supplied policy is available
+ok 6 - unknown paths are never added and no Git filesystem fallback or supplied policy is available
+  ---
+  duration_ms: 8.254597
+  type: 'test'
+  ...
+# Subtest: missing reader bytes unsupported capture values and nonBuffer target results fail closed
+ok 7 - missing reader bytes unsupported capture values and nonBuffer target results fail closed
+  ---
+  duration_ms: 3.437845
+  type: 'test'
+  ...
+# Subtest: each invocation freshly rereads all captures and targets after a previous pass
+ok 8 - each invocation freshly rereads all captures and targets after a previous pass
+  ---
+  duration_ms: 31.923852
+  type: 'test'
+  ...
+# Subtest: the module exposes only negative refusal and no caller-selected records or proof map
+ok 9 - the module exposes only negative refusal and no caller-selected records or proof map
+  ---
+  duration_ms: 0.739395
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 994.282999

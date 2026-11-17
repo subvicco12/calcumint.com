@@ -1,0 +1,47 @@
+✔ admits exact guard successor and frozen historical source: src/calculators/finance/compound-interest.ts (38.304638ms)
+✔ rejects changed or reverted current bytes and false historical claim: src/calculators/finance/compound-interest.ts (44.563209ms)
+✔ rejects missing or substituted predecessor and successor objects: src/calculators/finance/compound-interest.ts (70.128387ms)
+✔ admits exact guard successor and frozen historical source: src/calculators/finance/loan-payment.ts (31.541146ms)
+✔ rejects changed or reverted current bytes and false historical claim: src/calculators/finance/loan-payment.ts (49.149947ms)
+✔ rejects missing or substituted predecessor and successor objects: src/calculators/finance/loan-payment.ts (64.891885ms)
+✔ admits exact guard successor and frozen historical source: src/calculators/precision.ts (32.83041ms)
+✔ rejects changed or reverted current bytes and false historical claim: src/calculators/precision.ts (45.131237ms)
+✔ rejects missing or substituted predecessor and successor objects: src/calculators/precision.ts (75.312032ms)
+✔ unknown and unsafe paths cannot invoke the successor exception (1.051166ms)
+✔ frozen comparison admits only exact financial successors and still rejects unrelated edits (147.921696ms)
+✔ both publication caller comparisons accept exact pinned precision successor (199.074221ms)
+{"candidateIds":[235,251,275,276,282,283],"exactSourceBindings":41,"canonicalAccepted":0,"publicationEligible":0,"releaseHold":true}
+✔ admits exact committed successor: src/calculators/finance/compound-interest.test.ts (29.085656ms)
+✔ rejects uncommitted successor tamper: src/calculators/finance/compound-interest.test.ts (57.304575ms)
+✔ rejects rewritten historical claim: src/calculators/finance/compound-interest.test.ts (0.687735ms)
+✔ rejects silent predecessor reversion: src/calculators/finance/compound-interest.test.ts (25.228105ms)
+✔ rejects unavailable or replaced Git provenance: src/calculators/finance/compound-interest.test.ts (0.486151ms)
+✔ rejects corrupted source object: src/calculators/finance/compound-interest.test.ts (12.167365ms)
+✔ admits exact committed successor: src/components/full-six/candidate-workbench.tsx (43.265111ms)
+✔ rejects uncommitted successor tamper: src/components/full-six/candidate-workbench.tsx (38.964848ms)
+✔ rejects rewritten historical claim: src/components/full-six/candidate-workbench.tsx (0.20508ms)
+✔ rejects silent predecessor reversion: src/components/full-six/candidate-workbench.tsx (40.76199ms)
+✔ rejects unavailable or replaced Git provenance: src/components/full-six/candidate-workbench.tsx (0.258607ms)
+✔ rejects corrupted source object: src/components/full-six/candidate-workbench.tsx (8.283713ms)
+✔ admits exact committed successor: .github/workflows/ci.yml (49.682073ms)
+✔ rejects uncommitted successor tamper: .github/workflows/ci.yml (49.476919ms)
+✔ rejects rewritten historical claim: .github/workflows/ci.yml (0.238795ms)
+✔ rejects silent predecessor reversion: .github/workflows/ci.yml (47.494019ms)
+✔ rejects unavailable or replaced Git provenance: .github/workflows/ci.yml (0.142715ms)
+✔ rejects corrupted source object: .github/workflows/ci.yml (7.776479ms)
+✔ does not admit any unrelated engine, UI or unsafe path (0.389966ms)
+✔ integrated checker rejects a predecessor reversion even with its valid old hash: src/calculators/finance/compound-interest.ts (28.092574ms)
+✔ integrated checker rejects a predecessor reversion even with its valid old hash: src/components/full-six/candidate-workbench.tsx (42.213635ms)
+✔ integrated checker rejects a predecessor reversion even with its valid old hash: .github/workflows/ci.yml (50.228654ms)
+✔ integrated checker rejects unrelated source tamper without new approval (0.392674ms)
+✔ reuses verified revisions without redundant network fetch (1.453824ms)
+✔ fetches only exact missing commits and re-verifies them (2.626759ms)
+✔ fails closed on absent or substituted revisions after fetch (1.13541ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1186.264777

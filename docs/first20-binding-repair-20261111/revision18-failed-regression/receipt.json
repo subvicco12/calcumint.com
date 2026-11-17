@@ -1,0 +1,80 @@
+{
+  "status": "FAIL",
+  "sourceHead": "15f324f18776fb1cf26866d477f2e0161f7a5278",
+  "startedAt": "2026-11-11T11:00:57.165553+00:00",
+  "runtime": "v22.23.4",
+  "checks": [
+    {
+      "name": "source60",
+      "command": [
+        "node",
+        "--test",
+        "tests/parallel-source-20261110/current.test.mjs",
+        "tests/parallel-source-20261110/git-reader.test.mjs",
+        "tests/parallel-source-20261110/retained-vitest.test.mjs",
+        "tests/parallel-source-20261110/source-object-lock.test.mjs",
+        "tests/parallel-source-20261110/retained-vitest-diagnostics.test.mjs",
+        "tests/parallel-source-20261110/historical-group.test.mjs"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/first20-binding-repair-20261111/r18-validation/source60.log",
+      "exitCode": 0,
+      "durationSeconds": 37.84257247200003,
+      "sha256": "fe042142e7b9483d23b498c7ba57dd92f3825bdc8f59906333557fee7a24bebf"
+    },
+    {
+      "name": "finite10",
+      "command": [
+        "node",
+        "--test",
+        "tests/parallel-five-20261110/test-only-successor.test.mjs"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/first20-binding-repair-20261111/r18-validation/finite10.log",
+      "exitCode": 0,
+      "durationSeconds": 0.6211962180022965,
+      "sha256": "d9122586dc7f664c0edf12cd42ff1fd0ecb1dd94ccdc3ac966461ec146964ed0"
+    },
+    {
+      "name": "first20-consumer",
+      "command": [
+        "node",
+        "scripts/first20-publication/evidence.mjs",
+        "--check"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/first20-binding-repair-20261111/r18-validation/first20-consumer.log",
+      "exitCode": 0,
+      "durationSeconds": 5.930272230001719,
+      "sha256": "ea92b7775c5dbd84ef3f2a8bcfbe405605dc457c171a76ddeeaf076738005e09"
+    },
+    {
+      "name": "first20-tests22",
+      "command": [
+        "node",
+        "--test",
+        "tests/first20-publication/evidence.test.mjs",
+        "tests/first20-publication/source-admission.test.mjs"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/first20-binding-repair-20261111/r18-validation/first20-tests22.log",
+      "exitCode": 0,
+      "durationSeconds": 6.97861599099997,
+      "sha256": "127d9410c7fa7d60bb5ff4930d1123f88546ec67487d21a28ee95ed5ec1197a2"
+    },
+    {
+      "name": "parallel-full",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "status": "FAIL",
+      "log": "/workspace/artifacts/first20-binding-repair-20261111/r18-validation/parallel-full.log",
+      "exitCode": 1,
+      "durationSeconds": 503.59303324400025,
+      "sha256": "fcd2e856c858a9e4b1ed999db5a5e81ff07d875b5cd2830542496511939d1d7a"
+    }
+  ],
+  "finishedAt": "2026-11-11T11:10:12.159107+00:00",
+  "headAtEnd": "15f324f18776fb1cf26866d477f2e0161f7a5278"
+}

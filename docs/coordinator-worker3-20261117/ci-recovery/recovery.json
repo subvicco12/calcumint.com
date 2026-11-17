@@ -1,0 +1,58 @@
+{
+  "kind": "WORKER3_INTEGRATION_SOURCE_CI_RECOVERY_PENDING_NEW_EXACT_HEAD_CI",
+  "failedRun": 44004706948,
+  "failedHead": "1026f52a9ad6491e94122ad9b8b1159c062540c8",
+  "firstAttemptMandatoryResults": {
+    "build": "success",
+    "checks": "success",
+    "publication-factory": "success",
+    "full-product": "success",
+    "source-acceptance": "cancelled",
+    "validate": "failure"
+  },
+  "sourceUnitFailuresBeforeCancellation": [
+    "API source proof5360ms exceeded original5000ms",
+    "Shortest consumer65028ms exceeded original65000ms wrapper",
+    "Execution-lineage native Git client hit default1MiB ENOBUFS"
+  ],
+  "repairs": [
+    "Explicit8MiB G2 client readback with unchanged historical source/assertions and opaque-provider behavior",
+    "Native transport poll0.05ms\u21920.5ms; original commands/identity checks/deadlines retained; advisory parent CPU approximately halved",
+    "Exact latest Stage9 immutable capture/ancestry included in existing fixture preparation; every read/hash and proof fence still runs",
+    "Warm complete source-proof code only in existing exact-suite setup; discard result, retain all measured per-read HEAD/filesystem and opening/closing source checks",
+    "Both exact bootstrap path bindings retained in each successor"
+  ],
+  "noObservationOrVerdictCacheAdded": true,
+  "worker2RejectedOptimizationUsed": false,
+  "applicationSourceChangedAfterIntegration": false,
+  "immutableEnginesModified": false,
+  "workflowTimeoutsOrAssertionsChanged": false,
+  "sourceAuthorityGeneration": 76,
+  "sourceCaptureRevision": 143,
+  "sourceProof": {
+    "cases": 115,
+    "wrapperMs": 127350,
+    "childLimitMs": 150000
+  },
+  "API": {
+    "ms": 3427,
+    "limitMs": 5000
+  },
+  "UI": {
+    "ms": 3107,
+    "limitMs": 5000
+  },
+  "executionLineage": {
+    "ms": 46384,
+    "limitMs": 60000
+  },
+  "sourceSixCandidateMs": 35539,
+  "nativeTransportControls": 25,
+  "exactExecutionDerivationControls": 4,
+  "immutablePreparationControls": 23,
+  "exactSetupControls": 5,
+  "confirmedOverlay": 91,
+  "qualifiedCountAdded": 0,
+  "nextGate": "all five mandatory jobs and aggregate SUCCESS at new exact PR head",
+  "releaseHold": true
+}

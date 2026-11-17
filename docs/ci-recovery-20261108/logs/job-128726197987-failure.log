@@ -1,0 +1,42 @@
+2026-11-08T12:11:41.4255555Z   SCALE_EVIDENCE: /home/runner/work/_temp
+2026-11-08T12:11:41.4255783Z ##[endgroup]
+2026-11-08T12:11:41.6347552Z PASS exact technical source binding; no authority/canonical acceptance inferred
+2026-11-08T12:11:41.9465424Z .FF
+2026-11-08T12:11:41.9466021Z ======================================================================
+2026-11-08T12:11:41.9466983Z FAIL: test_frozen_v1_rejects_changes_but_allows_independent_additions (__main__.FrozenSource.test_frozen_v1_rejects_changes_but_allows_independent_additions)
+2026-11-08T12:11:41.9467914Z ----------------------------------------------------------------------
+2026-11-08T12:11:41.9468424Z Traceback (most recent call last):
+2026-11-08T12:11:41.9469414Z   File "/home/runner/work/calcumint.com/calcumint.com/tests/validation-scale/source.test.py", line 12, in test_frozen_v1_rejects_changes_but_allows_independent_additions
+2026-11-08T12:11:41.9470376Z     self.assertEqual(run().returncode,0)
+2026-11-08T12:11:41.9470743Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+2026-11-08T12:11:41.9471281Z AssertionError: 1 != 0
+2026-11-08T12:11:41.9471407Z
+2026-11-08T12:11:41.9471569Z ======================================================================
+2026-11-08T12:11:41.9472247Z FAIL: test_v2_has_closed_membership_and_rejects_old_dependency_changes (__main__.FrozenSource.test_v2_has_closed_membership_and_rejects_old_dependency_changes)
+2026-11-08T12:11:41.9472859Z ----------------------------------------------------------------------
+2026-11-08T12:11:41.9473182Z Traceback (most recent call last):
+2026-11-08T12:11:41.9473795Z   File "/home/runner/work/calcumint.com/calcumint.com/tests/validation-scale/source.test.py", line 25, in test_v2_has_closed_membership_and_rejects_old_dependency_changes
+2026-11-08T12:11:41.9474393Z     self.assertEqual(run().returncode,0)
+2026-11-08T12:11:41.9474650Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+2026-11-08T12:11:41.9474875Z AssertionError: 1 != 0
+2026-11-08T12:11:41.9474997Z
+2026-11-08T12:11:41.9475175Z ----------------------------------------------------------------------
+2026-11-08T12:11:41.9475465Z Ran 3 tests in 0.263s
+2026-11-08T12:11:41.9475573Z
+2026-11-08T12:11:41.9475666Z FAILED (failures=2)
+2026-11-08T12:11:41.9562566Z ##[error]Process completed with exit code 1.
+2026-11-08T12:11:41.9676401Z Post job cleanup.
+2026-11-08T12:11:42.0358163Z [command]/usr/bin/git version
+2026-11-08T12:11:42.0397474Z git version 2.56.0
+2026-11-08T12:11:42.0427990Z Temporarily overriding HOME='/home/runner/work/_temp/67486f9f-d24a-424b-a786-a4e967bf6927' before making global git config changes
+2026-11-08T12:11:42.0429120Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-08T12:11:42.0432544Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/calcumint.com/calcumint.com
+2026-11-08T12:11:42.0467892Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-08T12:11:42.0499539Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-08T12:11:42.0773289Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-08T12:11:42.0801098Z http.https://github.com/.extraheader
+2026-11-08T12:11:42.0812212Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-08T12:11:42.0858433Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-08T12:11:42.1124465Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-08T12:11:42.1155069Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-08T12:11:42.1518338Z Cleaning up orphan processes

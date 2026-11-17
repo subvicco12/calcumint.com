@@ -1,0 +1,37 @@
+{
+  "kind": "FINITE_FIRST_FIVE_ASYNC_TEST_SOURCE_SECOND_HOP_NOT_PRODUCT_ACCEPTANCE",
+  "baselineGit": "02d1a7eac0d7853197a4410520f548f0ce8b335f",
+  "successorGit": "224b9f6684d7e27a923c69d140ddc0104f1e58e7",
+  "rows": [
+    {
+      "path": "src/lib/first-five-engineering-evidence.test.ts",
+      "baseline": {
+        "ref": "02d1a7eac0d7853197a4410520f548f0ce8b335f",
+        "blob": "b4369e1172d968848c078de5f2d793abb5623e06",
+        "sha256": "0fa791b255306f9639363ae38d41b89bffede358bf6e1dec1f8d647edd68eb1b",
+        "archive": "baseline.fixture"
+      },
+      "successor": {
+        "ref": "224b9f6684d7e27a923c69d140ddc0104f1e58e7",
+        "blob": "e3b20ddff2e4972c0b91038012e512ed5ebc7f9b",
+        "sha256": "190b29e0bb2a54b8f4900b17df252b2cf760066af1951e1ff0920caf42749752",
+        "archive": "successor.fixture"
+      }
+    }
+  ],
+  "patches": [
+    {
+      "from": "import {readFileSync} from 'node:fs';import {createHash} from 'node:crypto';import {execFileSync} from 'node:child_process';\n",
+      "to": "import {readFileSync} from 'node:fs';import {createHash} from 'node:crypto';import {execFileSync,execFile} from 'node:child_process';\nimport {promisify} from 'node:util';\nconst execFileAsync=promisify(execFile);\n"
+    },
+    {
+      "from": "it('runs all twenty-one new exact-source and unchanged-verification CI budget checks in mandatory unit discovery',()=>{\n const env={...process.env};delete env.NODE_TEST_CONTEXT;const output=execFileSync(process.execPath,['tests/parallel-source-20261110/historical-tests.mjs','--first-five-group'],{encoding:'utf8',env,timeout:45000,maxBuffer:2000000});expect(output).toContain('# tests 21');expect(output).toContain('# fail 0');\n",
+      "to": "it('runs all twenty-one new exact-source and unchanged-verification CI budget checks in mandatory unit discovery',async()=>{\n const env={...process.env};delete env.NODE_TEST_CONTEXT;const {stdout:output}=await execFileAsync(process.execPath,['tests/parallel-source-20261110/historical-tests.mjs','--first-five-group'],{encoding:'utf8',env,timeout:45000,maxBuffer:2000000});expect(output).toContain('# tests 21');expect(output).toContain('# fail 0');\n"
+    },
+    {
+      "from": "it('runs the complete coupled source-evolution guard before a late publication campaign can reach it',()=>{\n const env={...process.env};delete env.NODE_TEST_CONTEXT;const output=execFileSync(process.execPath,['--test','--test-reporter=tap','tests/acceptance-closure-20261108/converter-final-source.test.mjs'],{encoding:'utf8',env,timeout:45000,maxBuffer:3000000});expect(output).toContain('# tests 27');expect(output).toContain('# fail 0');\n",
+      "to": "it('runs the complete coupled source-evolution guard before a late publication campaign can reach it',async()=>{\n const env={...process.env};delete env.NODE_TEST_CONTEXT;const {stdout:output}=await execFileAsync(process.execPath,['--test','--test-reporter=tap','tests/acceptance-closure-20261108/converter-final-source.test.mjs'],{encoding:'utf8',env,timeout:45000,maxBuffer:3000000});expect(output).toContain('# tests 27');expect(output).toContain('# fail 0');\n"
+    }
+  ],
+  "scope": "Only promisified bounded child execution in original third/fifth cases; originalargv/assertions45s/60s retained; existingF042claim verified through priorimmutablehop"
+}

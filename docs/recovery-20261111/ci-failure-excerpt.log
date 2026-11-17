@@ -1,0 +1,28 @@
+2026-11-11T03:29:56.6964159Z ##[group]Run node scripts/check-shortest-publication20.mjs
+2026-11-11T03:29:56.6965026Z [36;1mnode scripts/check-shortest-publication20.mjs[0m
+2026-11-11T03:29:56.6968204Z [36;1mnode --test tests/shortest-publication-20/caller-lineage.test.mjs tests/shortest-publication-20/frequency-presentation-lineage.test.mjs tests/shortest-publication-20/completion-lineage.test.mjs[0m
+2026-11-11T03:29:56.6970356Z [36;1mpython3 -m unittest discover -s tests/shortest-publication-20 -p 'test_*.py'[0m
+2026-11-11T03:29:56.6971832Z [36;1mpython3 scripts/shortest-publication-routes.py --output "$RUNNER_TEMP/shortest-publication-20/production-routes.json"[0m
+2026-11-11T03:29:56.6973119Z [36;1mnode tests/shortest-publication-20/browser.mjs[0m
+2026-11-11T03:29:56.6973857Z [36;1mnode tests/critical440-browser/acceptance.mjs[0m
+2026-11-11T03:29:56.7045082Z shell: /usr/bin/bash -e {0}
+2026-11-11T03:29:56.7045538Z env:
+2026-11-11T03:29:56.7046517Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.vFOlDW/opt/google/chrome/chrome
+2026-11-11T03:29:56.7047810Z   SHORTEST_PUBLICATION_RECEIPT: /home/runner/work/_temp/shortest-publication-20
+2026-11-11T03:29:56.7048638Z   CRITICAL440_BROWSER_ARTIFACTS: /home/runner/work/_temp/critical440-browser
+2026-11-11T03:29:56.7049335Z   AUDIT_HEAD_SHA: c59a68565ad7cbb52f62ff62ecb166b9c848dac7
+2026-11-11T03:29:56.7049821Z ##[endgroup]
+2026-11-11T03:29:57.2299972Z file:///home/runner/work/calcumint.com/calcumint.com/scripts/product-completion-lineage.mjs:4050
+2026-11-11T03:29:57.2301400Z   if(hash(source)!==dep.sha256||!read(dep.path).equals(source))throw Error('Completion supplemental source bytes differ: '+dep.path);
+2026-11-11T03:29:57.2303432Z                                                                      ^
+2026-11-11T03:29:57.2304211Z 
+2026-11-11T03:29:57.2305470Z Error: Completion supplemental source bytes differ: src/lib/execution-recovery-evidence.test.ts
+2026-11-11T03:29:57.2307134Z     at verifyCompletionBinding (file:///home/runner/work/calcumint.com/calcumint.com/scripts/product-completion-lineage.mjs:4050:70)
+2026-11-11T03:29:57.2308463Z     at verifyShortestSourceBinding (file:///home/runner/work/calcumint.com/calcumint.com/scripts/check-shortest-publication20.mjs:19:5)
+2026-11-11T03:29:57.2309620Z     at file:///home/runner/work/calcumint.com/calcumint.com/scripts/check-shortest-publication20.mjs:22:67
+2026-11-11T03:29:57.2310523Z     at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+2026-11-11T03:29:57.2311415Z     at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+2026-11-11T03:29:57.2312815Z     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+2026-11-11T03:29:57.2313474Z 
+2026-11-11T03:29:57.2313711Z Node.js v22.23.4
+2026-11-11T03:29:57.2421733Z ##[error]Process completed with exit code 1.

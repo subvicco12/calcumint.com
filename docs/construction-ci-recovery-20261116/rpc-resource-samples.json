@@ -1,0 +1,671 @@
+{
+  "kind": "READ_ONLY_DIAGNOSTIC_SAMPLES_NOT_ACCEPTANCE",
+  "method": "20ms monitorEventLoopDelay, per-process resourceUsage and read-only proc sampling; originals remain outside repository",
+  "samples": [
+    {
+      "label": "RPC_FAILURE",
+      "sample": {
+        "pid": 370351,
+        "ppid": 370320,
+        "pgid": 370317,
+        "script": "process.js",
+        "at": 68170.529314,
+        "final": false,
+        "cpu": {
+          "user": 6558856,
+          "system": 5035431
+        },
+        "resources": {
+          "userCPUTime": 6558878,
+          "systemCPUTime": 5035448,
+          "maxRSS": 488536,
+          "sharedMemorySize": 0,
+          "unsharedDataSize": 0,
+          "unsharedStackSize": 0,
+          "minorPageFault": 803956,
+          "majorPageFault": 0,
+          "swappedOut": 0,
+          "fsRead": 1856,
+          "fsWrite": 72,
+          "ipcSent": 0,
+          "ipcReceived": 0,
+          "signalsCount": 0,
+          "voluntaryContextSwitches": 31387,
+          "involuntaryContextSwitches": 3480
+        },
+        "eventLoop": {
+          "idle": 482.386349,
+          "active": 67645.10329199959,
+          "utilization": 0.992919358227612
+        },
+        "eventLoopDelayMaxMs": 67343.745023,
+        "groups": {
+          "fs.read:other": {
+            "calls": 4717,
+            "ms": 118.75186000019858,
+            "errors": 0
+          },
+          "fs.read:source-metadata": {
+            "calls": 2280,
+            "ms": 319.030354000045,
+            "errors": 0
+          },
+          "fs.read:application-src": {
+            "calls": 12667,
+            "ms": 104.04164999980662,
+            "errors": 0
+          },
+          "git:cat-file": {
+            "calls": 832,
+            "ms": 5478.890827000001,
+            "errors": 0
+          },
+          "git:rev-parse": {
+            "calls": 621,
+            "ms": 3526.109955000009,
+            "errors": 0
+          },
+          "git:diff": {
+            "calls": 30,
+            "ms": 176.62196300000073,
+            "errors": 0
+          },
+          "git:status": {
+            "calls": 81,
+            "ms": 1061.9375840000196,
+            "errors": 0
+          },
+          "git:ls-tree": {
+            "calls": 129,
+            "ms": 1641.1443390000052,
+            "errors": 0
+          },
+          "git:-c": {
+            "calls": 47,
+            "ms": 264.42449300003364,
+            "errors": 0
+          },
+          "lock.acquire": {
+            "calls": 37,
+            "ms": 2.6149009999990085,
+            "errors": 0
+          },
+          "git:remote": {
+            "calls": 36,
+            "ms": 193.44778700005145,
+            "errors": 0
+          },
+          "git:worktree": {
+            "calls": 4,
+            "ms": 2238.2711979999967,
+            "errors": 0
+          },
+          "exec:node": {
+            "calls": 3,
+            "ms": 48605.406224,
+            "errors": 0
+          }
+        },
+        "stacks": {
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadCommits (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:95:22)\n    at Function.reader.<computed> [as preloadCommits] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at proveSourceStage9 (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:24:62)": {
+            "calls": 1,
+            "ms": 15.545009000000164
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadPaths (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:68:22)\n    at Function.reader.<computed> [as preloadPaths] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at proveSourceStage9 (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:26:60)": {
+            "calls": 1,
+            "ms": 11.454594999999927
+          },
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadBlobs (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:78:22)\n    at Function.reader.<computed> [as preloadBlobs] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at proveSourceStage9 (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:27:60)": {
+            "calls": 1,
+            "ms": 9.163440000000037
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at proveSourceStage9 (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:28:20)": {
+            "calls": 33,
+            "ms": 243.6367659999853
+          },
+          "diff     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:32:16)\n    at verifyExactStage (/workspace/coordinator-construction-20261116/tests/calculator-factory-source-20261112/exact-stage.mjs:17:25)": {
+            "calls": 1,
+            "ms": 6.1071280000001025
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at verifyExactStage (/workspace/coordinator-construction-20261116/tests/calculator-factory-source-20261112/exact-stage.mjs:18:13)": {
+            "calls": 75,
+            "ms": 450.66796599997656
+          },
+          "diff     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:32:16)\n    at verifyExactStage (/workspace/coordinator-construction-20261116/tests/calculator-factory-source-20261112/exact-stage.mjs:20:15)": {
+            "calls": 1,
+            "ms": 4.539609000000155
+          },
+          "status     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at verifyExactStage (/workspace/coordinator-construction-20261116/tests/calculator-factory-source-20261112/exact-stage.mjs:21:15)": {
+            "calls": 75,
+            "ms": 911.9510760000544
+          },
+          "ls-tree     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:32:16)\n    at verifyExactStage (/workspace/coordinator-construction-20261116/tests/calculator-factory-source-20261112/exact-stage.mjs:22:28)": {
+            "calls": 1,
+            "ms": 8.389498000000003
+          },
+          "ls-tree     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at tree (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:14:19)\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:51:144)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)": {
+            "calls": 4,
+            "ms": 59.6353180000001
+          },
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at blob (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:26:40)\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:40:93)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)": {
+            "calls": 8,
+            "ms": 37.02308199999993
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at proveSourceStage9 (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:30:22)": {
+            "calls": 33,
+            "ms": 187.0534689999988
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at assertSourceStage9Stable (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:45:32)": {
+            "calls": 42,
+            "ms": 235.07893799997146
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at assertSourceStage9Stable (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:47:32)": {
+            "calls": 42,
+            "ms": 250.0199359999774
+          },
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadCommits (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:95:22)\n    at Function.reader.<computed> [as preloadCommits] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at Function.git.<computed> (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:38:143)": {
+            "calls": 4,
+            "ms": 26.092675000000327
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadPaths (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:68:22)\n    at Function.reader.<computed> [as preloadPaths] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at Function.git.<computed> [as preloadPaths] (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:38:143)": {
+            "calls": 1,
+            "ms": 11.855385999999953
+          },
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadBlobs (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:78:22)\n    at Function.reader.<computed> [as preloadBlobs] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at Function.git.<computed> [as preloadBlobs] (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:38:143)": {
+            "calls": 1,
+            "ms": 6.10230700000011
+          },
+          "diff     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:32:16)\n    at git (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:36:17)": {
+            "calls": 28,
+            "ms": 165.8676620000001
+          },
+          "ls-tree     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:32:16)\n    at git (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:36:17)": {
+            "calls": 12,
+            "ms": 94.25843700000178
+          },
+          "ls-tree     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at tree (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:14:19)\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:51:144)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)": {
+            "calls": 112,
+            "ms": 1478.268924999996
+          },
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at blob (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:26:40)\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:40:93)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)": {
+            "calls": 692,
+            "ms": 4240.135321000036
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at withCoreAuthorityWitness (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/core.mjs:132:104)": {
+            "calls": 3,
+            "ms": 15.212960000008707
+          },
+          "status     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at withCoreAuthorityWitness (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/core.mjs:132:181)": {
+            "calls": 3,
+            "ms": 77.59871299999372
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at verifyParallelAuthority (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/authority.mjs:16123:26)": {
+            "calls": 6,
+            "ms": 32.53450199999247
+          },
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadBlobs (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:78:22)\n    at Function.reader.<computed> [as preloadBlobs] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at verifyParallelAuthority (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/authority.mjs:16126:60)": {
+            "calls": 1,
+            "ms": 531.8849700000001
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadPaths (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:68:22)\n    at Function.reader.<computed> [as preloadPaths] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at verifyParallelAuthority (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/authority.mjs:16127:60)": {
+            "calls": 2,
+            "ms": 74.53332799999953
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at invoke (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:22:45)\n    at suppliedAvailability (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:150:28)\n    at ensureAppStage5Objects (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:71:25)\n    at proveStage5 (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/core.mjs:25:54)": {
+            "calls": 6,
+            "ms": 37.23242999999093
+          },
+          "remote     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at git (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:36:17)": {
+            "calls": 36,
+            "ms": 193.37625999999045
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:45:24)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at git (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:36:17)": {
+            "calls": 360,
+            "ms": 1877.9936489999932
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at invoke (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:22:45)\n    at suppliedAvailability (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:150:28)\n    at ensureSourceStage7Objects (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:102:25)\n    at provePinnedSourceStage7 (/workspace/coordinator-construction-20261116/tests/milestone60-20261113/source-stage7-activation.mjs:8:28)": {
+            "calls": 9,
+            "ms": 60.44951000001765
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at invoke (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:22:45)\n    at suppliedAvailability (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:150:28)\n    at ensureTestStage6Objects (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:89:25)\n    at proveSourceTestStage6AndHistoricalInputs (/workspace/coordinator-construction-20261116/tests/completion-wave-20261113/source-test-stage6.mjs:14:111)": {
+            "calls": 9,
+            "ms": 45.925735000004806
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at invoke (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:22:45)\n    at ensureParallelSources (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:143:28)\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/core.mjs:245:23\n    at withCoreAuthorityWitness (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/core.mjs:139:10)": {
+            "calls": 3,
+            "ms": 16.97446199999058
+          },
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at blob (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:26:40)\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:51:253)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)": {
+            "calls": 4,
+            "ms": 24.607349999998405
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at invoke (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:22:45)\n    at suppliedAvailability (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:150:28)\n    at ensureAppStage5Objects (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:71:25)\n    at proveTestStageAndHistoricalInputs (/workspace/coordinator-construction-20261116/tests/completion-first-20261112/test-stage.mjs:13:24)": {
+            "calls": 3,
+            "ms": 16.458477000003768
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at invoke (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:22:45)\n    at suppliedAvailability (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:150:28)\n    at ensureTestStageObjects (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:49:25)\n    at proveTestStageAndHistoricalInputs (/workspace/coordinator-construction-20261116/tests/completion-first-20261112/test-stage.mjs:20:24)": {
+            "calls": 3,
+            "ms": 14.736039000006713
+          },
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at commit (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:31:34)\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:41:122)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)": {
+            "calls": 118,
+            "ms": 574.8323859999973
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at proveRuntimeAuxiliarySuccessor (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs:35:22)": {
+            "calls": 3,
+            "ms": 16.43914400000631
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at assertSourceStage8HeadStable (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-stage8.mjs:65:33)": {
+            "calls": 12,
+            "ms": 69.33199799999784
+          },
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadCommits (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:95:22)\n    at Function.reader.<computed> [as preloadCommits] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at preloadRuntimeAuxiliaryObjects (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs:18:48)": {
+            "calls": 1,
+            "ms": 5.5585369999998875
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadPaths (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:68:22)\n    at Function.reader.<computed> [as preloadPaths] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at preloadRuntimeAuxiliaryObjects (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs:19:46)": {
+            "calls": 1,
+            "ms": 5.383040000000619
+          },
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadBlobs (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:78:22)\n    at Function.reader.<computed> [as preloadBlobs] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at preloadRuntimeAuxiliaryObjects (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs:20:46)": {
+            "calls": 1,
+            "ms": 5.076718000000255
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at proveRuntimeAuxiliarySuccessor (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs:47:67)": {
+            "calls": 3,
+            "ms": 16.34956800000782
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at invoke (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:22:45)\n    at suppliedAvailability (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:150:28)\n    at ensureNonSourceObjects (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:30:25)\n    at verifyNonSourceStage (/workspace/coordinator-construction-20261116/tests/completion-first-20261112/non-source-stage2.mjs:22:24)": {
+            "calls": 3,
+            "ms": 15.815436999991107
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at owned (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:13:31)\n    at ensureObjects (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:21:34)\n    at verifyBalancedWorkflow (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:41:24)\n    at verifyNonSourceStage (/workspace/coordinator-construction-20261116/tests/completion-first-20261112/non-source-stage2.mjs:23:39)": {
+            "calls": 1,
+            "ms": 4.920328000000154
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at owned (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:13:31)\n    at /workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:22:49\n    at withSourceObjectLock (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/source-object-lock.mjs:18:94)\n    at ensureObjects (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:22:22)": {
+            "calls": 1,
+            "ms": 5.193728000000192
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at owned (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:13:31)\n    at present (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:22:374)\n    at /workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:22:541\n    at withSourceObjectLock (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/source-object-lock.mjs:18:94)": {
+            "calls": 3,
+            "ms": 17.65706599999976
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at owned (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:13:31)\n    at present (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:22:374)\n    at /workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:22:612\n    at withSourceObjectLock (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/source-object-lock.mjs:18:94)": {
+            "calls": 3,
+            "ms": 13.458982000000105
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at owned (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:13:31)\n    at verifyBalancedWorkflow (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:47:19)\n    at verifyNonSourceStage (/workspace/coordinator-construction-20261116/tests/completion-first-20261112/non-source-stage2.mjs:23:39)\n    at verifyWorkflowAndHistoricalCompletion (/workspace/coordinator-construction-20261116/tests/completion-first-20261112/workflows-stage.mjs:36:38)": {
+            "calls": 3,
+            "ms": 15.432667999995829
+          },
+          "worktree     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at retainedA7Proof (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:17:3)\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/core.mjs:248:32": {
+            "calls": 1,
+            "ms": 1440.6118889999998
+          },
+          "worktree     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at retainedA7Proof (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:21:24)\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/core.mjs:248:32": {
+            "calls": 1,
+            "ms": 52.299927000000025
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at withCoreAuthorityWitness (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/core.mjs:148:18)": {
+            "calls": 3,
+            "ms": 18.07002200000352
+          },
+          "status     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at withCoreAuthorityWitness (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/core.mjs:149:18)": {
+            "calls": 3,
+            "ms": 72.05045500001142
+          },
+          "worktree     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at verifyRetainedA7Case (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/retained-vitest.mjs:41:13)\n    at /workspace/coordinator-construction-20261116/src/lib/execution-recovery-evidence.test.ts:6:133": {
+            "calls": 1,
+            "ms": 706.793357999999
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at verifyRetainedA7Case (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/retained-vitest.mjs:42:29)\n    at /workspace/coordinator-construction-20261116/src/lib/execution-recovery-evidence.test.ts:6:133\n    at file:///workspace/coordinator-226-20261115/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///workspace/coordinator-226-20261115/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26": {
+            "calls": 1,
+            "ms": 8.39873599999919
+          },
+          "worktree     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at verifyRetainedA7Case (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/retained-vitest.mjs:58:34)\n    at /workspace/coordinator-construction-20261116/src/lib/execution-recovery-evidence.test.ts:6:133": {
+            "calls": 1,
+            "ms": 38.50020999999833
+          }
+        }
+      },
+      "snapshotIsPartial": true
+    },
+    {
+      "label": "ONE_TURN_YIELD_PROTOTYPE",
+      "sample": {
+        "pid": 382840,
+        "ppid": 382809,
+        "pgid": 382804,
+        "script": "process.js",
+        "at": 70037.399796,
+        "final": false,
+        "cpu": {
+          "user": 6826397,
+          "system": 5123883
+        },
+        "resources": {
+          "userCPUTime": 6826400,
+          "systemCPUTime": 5123886,
+          "maxRSS": 500544,
+          "sharedMemorySize": 0,
+          "unsharedDataSize": 0,
+          "unsharedStackSize": 0,
+          "minorPageFault": 829203,
+          "majorPageFault": 0,
+          "swappedOut": 0,
+          "fsRead": 0,
+          "fsWrite": 72,
+          "ipcSent": 0,
+          "ipcReceived": 0,
+          "signalsCount": 0,
+          "voluntaryContextSwitches": 31408,
+          "involuntaryContextSwitches": 3200
+        },
+        "eventLoop": {
+          "idle": 441.739252,
+          "active": 69536.1343540001,
+          "utilization": 0.9936874439128124
+        },
+        "eventLoopDelayMaxMs": 43654.316031,
+        "groups": {
+          "fs.read:other": {
+            "calls": 4714,
+            "ms": 99.61194099997729,
+            "errors": 0
+          },
+          "fs.read:source-metadata": {
+            "calls": 2280,
+            "ms": 312.10532299990894,
+            "errors": 0
+          },
+          "fs.read:application-src": {
+            "calls": 12667,
+            "ms": 105.52746699968361,
+            "errors": 0
+          },
+          "git:cat-file": {
+            "calls": 832,
+            "ms": 5100.560857999999,
+            "errors": 0
+          },
+          "git:rev-parse": {
+            "calls": 621,
+            "ms": 3799.5376200000364,
+            "errors": 0
+          },
+          "git:diff": {
+            "calls": 30,
+            "ms": 174.6489590000017,
+            "errors": 0
+          },
+          "git:status": {
+            "calls": 81,
+            "ms": 1128.1395330000175,
+            "errors": 0
+          },
+          "git:ls-tree": {
+            "calls": 129,
+            "ms": 1695.5025380000038,
+            "errors": 0
+          },
+          "git:-c": {
+            "calls": 47,
+            "ms": 303.57407500001455,
+            "errors": 0
+          },
+          "lock.acquire": {
+            "calls": 37,
+            "ms": 3.339296000043305,
+            "errors": 0
+          },
+          "git:remote": {
+            "calls": 36,
+            "ms": 259.89755199998126,
+            "errors": 0
+          },
+          "git:worktree": {
+            "calls": 4,
+            "ms": 2386.592123999997,
+            "errors": 0
+          },
+          "exec:node": {
+            "calls": 3,
+            "ms": 50241.74009099999,
+            "errors": 0
+          }
+        },
+        "stacks": {
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadCommits (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:95:22)\n    at Function.reader.<computed> [as preloadCommits] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at proveSourceStage9 (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:24:62)": {
+            "calls": 1,
+            "ms": 24.577899000000002
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadPaths (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:68:22)\n    at Function.reader.<computed> [as preloadPaths] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at proveSourceStage9 (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:26:60)": {
+            "calls": 1,
+            "ms": 10.952513999999837
+          },
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadBlobs (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:78:22)\n    at Function.reader.<computed> [as preloadBlobs] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at proveSourceStage9 (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:27:60)": {
+            "calls": 1,
+            "ms": 9.726722000000109
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at proveSourceStage9 (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:28:20)": {
+            "calls": 33,
+            "ms": 263.772146000023
+          },
+          "diff     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:32:16)\n    at verifyExactStage (/workspace/coordinator-construction-20261116/tests/calculator-factory-source-20261112/exact-stage.mjs:17:25)": {
+            "calls": 1,
+            "ms": 7.41593899999998
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at verifyExactStage (/workspace/coordinator-construction-20261116/tests/calculator-factory-source-20261112/exact-stage.mjs:18:13)": {
+            "calls": 75,
+            "ms": 456.21659600004136
+          },
+          "diff     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:32:16)\n    at verifyExactStage (/workspace/coordinator-construction-20261116/tests/calculator-factory-source-20261112/exact-stage.mjs:20:15)": {
+            "calls": 1,
+            "ms": 5.201694000000089
+          },
+          "status     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at verifyExactStage (/workspace/coordinator-construction-20261116/tests/calculator-factory-source-20261112/exact-stage.mjs:21:15)": {
+            "calls": 75,
+            "ms": 978.3597910000237
+          },
+          "ls-tree     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:32:16)\n    at verifyExactStage (/workspace/coordinator-construction-20261116/tests/calculator-factory-source-20261112/exact-stage.mjs:22:28)": {
+            "calls": 1,
+            "ms": 8.37814800000001
+          },
+          "ls-tree     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at tree (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:14:19)\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:51:144)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)": {
+            "calls": 4,
+            "ms": 54.05127399999992
+          },
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at blob (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:26:40)\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:40:93)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)": {
+            "calls": 8,
+            "ms": 37.173649000000296
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at proveSourceStage9 (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:30:22)": {
+            "calls": 33,
+            "ms": 198.22264200001473
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at assertSourceStage9Stable (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:45:32)": {
+            "calls": 42,
+            "ms": 244.3881130000325
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at assertSourceStage9Stable (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:47:32)": {
+            "calls": 42,
+            "ms": 243.64702899997496
+          },
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadCommits (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:95:22)\n    at Function.reader.<computed> [as preloadCommits] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at Function.git.<computed> (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:38:143)": {
+            "calls": 4,
+            "ms": 21.17556499999978
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadPaths (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:68:22)\n    at Function.reader.<computed> [as preloadPaths] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at Function.git.<computed> [as preloadPaths] (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:38:143)": {
+            "calls": 1,
+            "ms": 5.223190999999815
+          },
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadBlobs (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:78:22)\n    at Function.reader.<computed> [as preloadBlobs] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at Function.git.<computed> [as preloadBlobs] (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:38:143)": {
+            "calls": 1,
+            "ms": 5.889854000000014
+          },
+          "diff     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:32:16)\n    at git (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:36:17)": {
+            "calls": 28,
+            "ms": 161.94798099999866
+          },
+          "ls-tree     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:32:16)\n    at git (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:36:17)": {
+            "calls": 12,
+            "ms": 91.01578599999925
+          },
+          "ls-tree     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at tree (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:14:19)\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:51:144)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)": {
+            "calls": 112,
+            "ms": 1541.6020969999956
+          },
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at blob (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:26:40)\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:40:93)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)": {
+            "calls": 692,
+            "ms": 3801.7080420000034
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at withCoreAuthorityWitness (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/core.mjs:132:104)": {
+            "calls": 3,
+            "ms": 14.923245000019733
+          },
+          "status     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at withCoreAuthorityWitness (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/core.mjs:132:181)": {
+            "calls": 3,
+            "ms": 75.3555800000006
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at verifyParallelAuthority (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/authority.mjs:16123:26)": {
+            "calls": 6,
+            "ms": 32.85553000000573
+          },
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadBlobs (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:78:22)\n    at Function.reader.<computed> [as preloadBlobs] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at verifyParallelAuthority (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/authority.mjs:16126:60)": {
+            "calls": 1,
+            "ms": 550.841975
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadPaths (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:68:22)\n    at Function.reader.<computed> [as preloadPaths] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at verifyParallelAuthority (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/authority.mjs:16127:60)": {
+            "calls": 2,
+            "ms": 75.13536500000009
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at invoke (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:22:45)\n    at suppliedAvailability (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:150:28)\n    at ensureAppStage5Objects (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:71:25)\n    at proveStage5 (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/core.mjs:25:54)": {
+            "calls": 6,
+            "ms": 46.327440999997634
+          },
+          "remote     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at git (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:36:17)": {
+            "calls": 36,
+            "ms": 259.62097399995264
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:45:24)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at git (/workspace/coordinator-construction-20261116/tests/four-worker-integration-20261115/source-stage9.mjs:36:17)": {
+            "calls": 360,
+            "ms": 2101.722147999991
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at invoke (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:22:45)\n    at suppliedAvailability (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:150:28)\n    at ensureSourceStage7Objects (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:102:25)\n    at provePinnedSourceStage7 (/workspace/coordinator-construction-20261116/tests/milestone60-20261113/source-stage7-activation.mjs:8:28)": {
+            "calls": 9,
+            "ms": 47.58055200001945
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at invoke (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:22:45)\n    at suppliedAvailability (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:150:28)\n    at ensureTestStage6Objects (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:89:25)\n    at proveSourceTestStage6AndHistoricalInputs (/workspace/coordinator-construction-20261116/tests/completion-wave-20261113/source-test-stage6.mjs:14:111)": {
+            "calls": 9,
+            "ms": 47.08277600001111
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at invoke (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:22:45)\n    at ensureParallelSources (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:143:28)\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/core.mjs:245:23\n    at withCoreAuthorityWitness (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/core.mjs:139:10)": {
+            "calls": 3,
+            "ms": 20.408211999994364
+          },
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at blob (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:26:40)\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:51:253)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)": {
+            "calls": 4,
+            "ms": 24.444908000001305
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at invoke (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:22:45)\n    at suppliedAvailability (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:150:28)\n    at ensureAppStage5Objects (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:71:25)\n    at proveTestStageAndHistoricalInputs (/workspace/coordinator-construction-20261116/tests/completion-first-20261112/test-stage.mjs:13:24)": {
+            "calls": 3,
+            "ms": 17.9196350000002
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at invoke (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:22:45)\n    at suppliedAvailability (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:150:28)\n    at ensureTestStageObjects (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:49:25)\n    at proveTestStageAndHistoricalInputs (/workspace/coordinator-construction-20261116/tests/completion-first-20261112/test-stage.mjs:20:24)": {
+            "calls": 3,
+            "ms": 50.2771769999963
+          },
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at commit (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:31:34)\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:41:122)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)": {
+            "calls": 118,
+            "ms": 593.6444370000008
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at proveRuntimeAuxiliarySuccessor (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs:35:22)": {
+            "calls": 3,
+            "ms": 22.210023000006913
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at assertSourceStage8HeadStable (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-stage8.mjs:65:33)": {
+            "calls": 12,
+            "ms": 79.40544900003442
+          },
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadCommits (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:95:22)\n    at Function.reader.<computed> [as preloadCommits] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at preloadRuntimeAuxiliaryObjects (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs:18:48)": {
+            "calls": 1,
+            "ms": 7.348023999999896
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadPaths (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:68:22)\n    at Function.reader.<computed> [as preloadPaths] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at preloadRuntimeAuxiliaryObjects (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs:19:46)": {
+            "calls": 1,
+            "ms": 6.770291000000725
+          },
+          "cat-file     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at Function.reader.preloadBlobs (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:78:22)\n    at Function.reader.<computed> [as preloadBlobs] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:38:138)\n    at preloadRuntimeAuxiliaryObjects (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs:20:46)": {
+            "calls": 1,
+            "ms": 21.714726999999584
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at Object.reader [as git] (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at proveRuntimeAuxiliarySuccessor (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs:47:67)": {
+            "calls": 3,
+            "ms": 17.28007499999876
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at invoke (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:22:45)\n    at suppliedAvailability (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:150:28)\n    at ensureNonSourceObjects (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/bootstrap.mjs:30:25)\n    at verifyNonSourceStage (/workspace/coordinator-construction-20261116/tests/completion-first-20261112/non-source-stage2.mjs:22:24)": {
+            "calls": 3,
+            "ms": 18.259301000012783
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at owned (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:13:31)\n    at ensureObjects (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:21:34)\n    at verifyBalancedWorkflow (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:41:24)\n    at verifyNonSourceStage (/workspace/coordinator-construction-20261116/tests/completion-first-20261112/non-source-stage2.mjs:23:39)": {
+            "calls": 1,
+            "ms": 4.693266999999651
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at owned (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:13:31)\n    at /workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:22:49\n    at withSourceObjectLock (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/source-object-lock.mjs:18:94)\n    at ensureObjects (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:22:22)": {
+            "calls": 1,
+            "ms": 4.964791000000332
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at owned (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:13:31)\n    at present (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:22:374)\n    at /workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:22:541\n    at withSourceObjectLock (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/source-object-lock.mjs:18:94)": {
+            "calls": 3,
+            "ms": 15.726023000000168
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at owned (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:13:31)\n    at present (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:22:374)\n    at /workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:22:612\n    at withSourceObjectLock (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/source-object-lock.mjs:18:94)": {
+            "calls": 3,
+            "ms": 13.83506099999886
+          },
+          "-c     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at owned (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:13:31)\n    at verifyBalancedWorkflow (/workspace/coordinator-construction-20261116/tests/ci-balance-20261113/workflow.mjs:47:19)\n    at verifyNonSourceStage (/workspace/coordinator-construction-20261116/tests/completion-first-20261112/non-source-stage2.mjs:23:39)\n    at verifyWorkflowAndHistoricalCompletion (/workspace/coordinator-construction-20261116/tests/completion-first-20261112/workflows-stage.mjs:36:38)": {
+            "calls": 3,
+            "ms": 16.168562000003476
+          },
+          "worktree     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at retainedA7Proof (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:17:3)\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/core.mjs:248:32": {
+            "calls": 1,
+            "ms": 1480.982865
+          },
+          "worktree     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at retainedA7Proof (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:21:24)\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/core.mjs:248:32": {
+            "calls": 1,
+            "ms": 40.72020500000144
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at withCoreAuthorityWitness (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/core.mjs:148:18)": {
+            "calls": 3,
+            "ms": 17.29431499999373
+          },
+          "status     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at reader (/workspace/coordinator-construction-20261116/tests/milestone100-20261114/source-immutable-queries.mjs:29:62)\n    at withCoreAuthorityWitness (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/core.mjs:149:18)": {
+            "calls": 3,
+            "ms": 74.05166100000497
+          },
+          "worktree     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at verifyRetainedA7Case (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/retained-vitest.mjs:41:13)\n    at /workspace/coordinator-construction-20261116/src/lib/execution-recovery-evidence.test.ts:6:133": {
+            "calls": 1,
+            "ms": 811.8656650000012
+          },
+          "rev-parse     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at verifyRetainedA7Case (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/retained-vitest.mjs:42:29)\n    at /workspace/coordinator-construction-20261116/src/lib/execution-recovery-evidence.test.ts:6:133\n    at file:///workspace/coordinator-226-20261115/node_modules/@vitest/runner/dist/chunk-hooks.js:155:11\n    at file:///workspace/coordinator-226-20261115/node_modules/@vitest/runner/dist/chunk-hooks.js:752:26": {
+            "calls": 1,
+            "ms": 7.724008000001049
+          },
+          "worktree     at /tmp/construction-ci-recovery-20261116/profile.cjs:11:124\n    at /workspace/coordinator-construction-20261116/tests/parallel-source-20261110/baseline-runtime.mjs:10:69\n    at reader (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/git-reader.mjs:53:10)\n    at verifyRetainedA7Case (/workspace/coordinator-construction-20261116/tests/parallel-source-20261110/retained-vitest.mjs:58:34)\n    at /workspace/coordinator-construction-20261116/src/lib/execution-recovery-evidence.test.ts:6:133": {
+            "calls": 1,
+            "ms": 52.986156000002666
+          }
+        }
+      },
+      "snapshotIsPartial": true
+    }
+  ],
+  "localLimits": {
+    "cpuQuotaCores": 4,
+    "memoryBytes": 17179869184,
+    "observedOomKills": 0
+  },
+  "hostedResourceSnapshotAvailable": false,
+  "releaseHold": true
+}

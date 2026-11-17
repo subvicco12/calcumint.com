@@ -1,0 +1,15 @@
+# Isolated writer exclusion and recovery
+
+New targeted test: tests/competent-closure-20261108/operational-locks.mjs. It reuses existing pinned PostgreSQL17.6/GoTrue/PostgREST fixture, captured seven-table initializer, core/addon bundle generators and composition helper. No held SQL or historical receipt was edited. Guard removal exists only in disposable in-memory strings.
+
+Two adversarial schedules passed. An interactive writer inserts a synthetic alert in an open transaction, owning an observed granted RowExclusiveLock. Adoption then waits on an observed ungranted AccessExclusiveLock on the same exact table. Its unchanged 3-second lock_timeout rejects the operation. Complete metadata predecessor and every scoped visible application row remain unchanged. The writer then explicitly ROLLBACKs or COMMITs; the outcomes are distinguished by exact rows and alert count. Adoption retry succeeds only after release; exact reversal restores predecessor while preserving all rows, including the independently committed alert.
+
+This closes the missing overlapping-writer/timeout/recovery acceptance case in the composed adoption rehearsal. It demonstrates a bounded refusal and retry, not a production freeze or global writer inventory. No live backup, custody, competence, production authorization or provider control is established. The fixture does not reconstruct all production provider hooks. REVIEW/RELEASE HOLD remains active.
+
+Initial execution: one targeted run passed. An initial sandbox run could not access the Docker socket; approved escalation then ran successfully and all fixture containers/network were closed. That intermediate run used a server-file hostname read for fixture identity; its original source-bound receipt/log are preserved as operational-locks-initial*. Review required removing that dependency.
+
+The successor identifies the exact ephemeral DB with a random catalog schema capability, probes only local fixture-named DB containers through pg_namespace, requires exactly one match, drops the marker in finally and checks unchanged predecessor and rows before adoption. It reads no server files and accepts no production connection. The targeted successor run passed both schedules with exit 0 and fixture cleanup complete. Its current receipt/log retain a distinct source hash from the preserved initial method.
+
+No broader tests/build/browser or production query ran. Receipts retain fixture provenance, source hashes and derived apply/reverse hashes.
+
+Final report protocol: OPERATIONAL_LOCKS_REPORT selects the output; default is /tmp/calcumint-operational-locks-receipt.json, with parent creation. Ordinary runs do not rewrite tracked evidence. The final targeted run passed with default temporary output, verified the retained receipt stayed byte-identical during execution, then explicitly copied the successful source-bound result into the current review receipt. The previous marker-method run is preserved as operational-locks-marker-initial*; the earlier server-file method remains operational-locks-initial*. All fixture cleanup completed.

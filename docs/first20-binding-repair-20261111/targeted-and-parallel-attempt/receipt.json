@@ -1,0 +1,107 @@
+{
+  "status": "FAIL",
+  "sourceHead": "8640505041eb54ca3b37963c357c746639eb2874",
+  "startedAt": "2026-11-11T09:00:35.306921+00:00",
+  "runtime": "v22.23.4",
+  "checks": [
+    {
+      "name": "source58",
+      "command": [
+        "node",
+        "--test",
+        "tests/parallel-source-20261110/current.test.mjs",
+        "tests/parallel-source-20261110/git-reader.test.mjs",
+        "tests/parallel-source-20261110/retained-vitest.test.mjs",
+        "tests/parallel-source-20261110/source-object-lock.test.mjs",
+        "tests/parallel-source-20261110/retained-vitest-diagnostics.test.mjs"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/first20-binding-repair-20261111/validation/source58.log",
+      "exitCode": 0,
+      "durationSeconds": 11.561453968999558,
+      "sha256": "4e3f2bb202c7ffe6e1eec75b7aedd5cd7592138dbc3124c8ddd24f6c03e26747"
+    },
+    {
+      "name": "consumer22",
+      "command": [
+        "node",
+        "--test",
+        "tests/first20-publication/evidence.test.mjs",
+        "tests/first20-publication/source-admission.test.mjs"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/first20-binding-repair-20261111/validation/consumer22.log",
+      "exitCode": 0,
+      "durationSeconds": 6.1313449859990214,
+      "sha256": "e6243e7e33532bfdc5883bf83300db2fb7f38b1ab59f4298b497d28ec78c8442"
+    },
+    {
+      "name": "first20-polygon",
+      "command": [
+        "node_modules/.bin/vite-node",
+        "--config",
+        "vitest.config.ts",
+        "scripts/first20-publication/polygon-evidence.ts",
+        "--check"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/first20-binding-repair-20261111/validation/first20-polygon.log",
+      "exitCode": 0,
+      "durationSeconds": 4.3123616430020775,
+      "sha256": "c9acb5cbbcc32f9a355f3586c6ac5abeff2bfa9ebbdab37d81a1c8742aa18c71"
+    },
+    {
+      "name": "first20-manifest",
+      "command": [
+        "node",
+        "scripts/first20-publication/evidence.mjs",
+        "--check"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/first20-binding-repair-20261111/validation/first20-manifest.log",
+      "exitCode": 0,
+      "durationSeconds": 6.455693173000327,
+      "sha256": "ea92b7775c5dbd84ef3f2a8bcfbe405605dc457c171a76ddeeaf076738005e09"
+    },
+    {
+      "name": "first20-evidence",
+      "command": [
+        "node",
+        "tests/first20-publication/evidence.test.mjs"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/first20-binding-repair-20261111/validation/first20-evidence.log",
+      "exitCode": 0,
+      "durationSeconds": 0.37799025799904484,
+      "sha256": "779113840de59a133caa5174e9813ce03ac8162ebc03af35e03c70357532d1ab"
+    },
+    {
+      "name": "first20-browser",
+      "command": [
+        "node",
+        "tests/first20-publication/browser.mjs"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/first20-binding-repair-20261111/validation/first20-browser.log",
+      "exitCode": 0,
+      "durationSeconds": 196.4585535510014,
+      "sha256": "224a2b2009a5134c8f295893c25b1a3a919117567717451ed35914dda01ac06f"
+    },
+    {
+      "name": "unit",
+      "command": [
+        "npm",
+        "test",
+        "--",
+        "--maxWorkers=2"
+      ],
+      "status": "FAIL",
+      "log": "/workspace/artifacts/first20-binding-repair-20261111/validation/unit.log",
+      "exitCode": 1,
+      "durationSeconds": 581.1493398429993,
+      "sha256": "0fb5e40b2ff46489bc1983f5070566844aa3a36857b7224f3e1873d93fd56889"
+    }
+  ],
+  "finishedAt": "2026-11-11T09:14:01.778766+00:00",
+  "headAtEnd": "8640505041eb54ca3b37963c357c746639eb2874"
+}

@@ -1,0 +1,41 @@
+{
+  "failedRun": 42960521179,
+  "head": "5a869a9877368082cf130f13b6a75381ec978e3d",
+  "conclusion": "FAILURE",
+  "passedJobs": [
+    "checks",
+    "build",
+    "full-product"
+  ],
+  "failedJobs": [
+    "source-acceptance",
+    "publication-factory"
+  ],
+  "aggregate": "FAILURE",
+  "causePublication": "Six original negative inputs now refused earlier by hardened Git reader; stale diagnostic expectations, not weaker source protection. Exact Error/message/blob predicates replace stale strings.",
+  "causeUnit": "Security case charged second Vite startup/teardown to 5-second assertion budget; CI timeout phase not instrumented. Local before measurements4519/4895ms, after case-only <300ms. Both fixtures readiness and cleanup moved to hooks, all case limits/assertions retained.",
+  "productionOrRuntimeCodeChanged": false,
+  "releaseHold": true,
+  "logs": {
+    "preview-before.log": {
+      "bytes": 780,
+      "sha256": "87b0b7e0361a492e9afa94303d7f4158951946582be9674492839e03bcbeb6a5"
+    },
+    "preview-correction.json": {
+      "bytes": 1352,
+      "sha256": "05a1fa78de02bbd22ccbc2c258dd4aad57305a0a9c6439b992d7b00e7e095be8"
+    },
+    "source-acceptance-failure.log": {
+      "bytes": 11362,
+      "sha256": "977051d92875ba483a1ecb54087b1005504a0983ce770957daa9d429ddf10c20"
+    },
+    "worker-node43.log": {
+      "bytes": 4713,
+      "sha256": "d512b3b90fe82d3d4ec1d7eaf9b4b1eebe08eaada9382839fb3fc612153e37b5"
+    },
+    "preview-after.log": {
+      "bytes": 633,
+      "sha256": "ed13d3449dac5eb6a96db59d25c4ec04c0ee82706a759118faa083e74e101b9a"
+    }
+  }
+}

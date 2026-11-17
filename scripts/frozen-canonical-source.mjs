@@ -1,6 +1,8 @@
+import {createHash} from 'node:crypto';
+import {verifyFinancialSafetyBinding} from './financial-safety-lineage.mjs';
 /** Reproduce the immutable1497 ledger from its exact Git tree, independent of new application revisions. */
 import {execFileSync} from 'node:child_process';import {mkdtemp,symlink,rm,readFile} from 'node:fs/promises';import os from 'node:os';import path from 'node:path';
-export async function assertFrozenCurrentFiles(repository,root,tracked){for(const file of tracked){const [historical,current]=await Promise.all([readFile(path.join(root,file)),readFile(path.join(repository,file))]);if(!historical.equals(current))throw Error('Immutable legacy implementation/dependency changed: '+file);}}
+export async function assertFrozenCurrentFiles(repository,root,tracked){for(const file of tracked){const [historical,current]=await Promise.all([readFile(path.join(root,file)),readFile(path.join(repository,file))]);if(!historical.equals(current)){const git=args=>execFileSync('git',args,{cwd:repository,stdio:['ignore','pipe','pipe']});if(!verifyFinancialSafetyBinding(file,current,createHash('sha256').update(historical).digest('hex'),git))throw Error('Immutable legacy implementation/dependency changed: '+file);}}}
 export async function frozenCanonicalSource(repository,sha){
  if(sha!=='7eff39b23a52953c028852d50d5571211a3f8a44')throw Error('Unknown frozen canonical revision');
  const resolved=execFileSync('git',['rev-parse',sha+'^{commit}'],{cwd:repository,encoding:'utf8'}).trim();if(resolved!==sha)throw Error('Frozen source identity mismatch');

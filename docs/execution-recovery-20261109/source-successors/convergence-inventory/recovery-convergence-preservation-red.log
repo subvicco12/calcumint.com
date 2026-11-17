@@ -1,0 +1,164 @@
+✔ preserves historical hash while verifying current successor: src/calculators/finance/compound-interest.test.ts (28.233123ms)
+✔ rejects predecessor reversion before historical-equality fallback: src/calculators/finance/compound-interest.test.ts (21.360444ms)
+✔ rejects current successor tamper: src/calculators/finance/compound-interest.test.ts (24.643629ms)
+✔ rejects unavailable exact source provenance: src/calculators/finance/compound-interest.test.ts (0.325035ms)
+✔ preserves historical hash while verifying current successor: src/calculators/finance/compound-interest.ts (21.427209ms)
+✔ rejects predecessor reversion before historical-equality fallback: src/calculators/finance/compound-interest.ts (23.368245ms)
+✔ rejects current successor tamper: src/calculators/finance/compound-interest.ts (20.461828ms)
+✔ rejects unavailable exact source provenance: src/calculators/finance/compound-interest.ts (1.412323ms)
+✔ preserves historical hash while verifying current successor: src/calculators/finance/loan-payment.ts (23.06345ms)
+✔ rejects predecessor reversion before historical-equality fallback: src/calculators/finance/loan-payment.ts (22.224293ms)
+✔ rejects current successor tamper: src/calculators/finance/loan-payment.ts (22.869777ms)
+✔ rejects unavailable exact source provenance: src/calculators/finance/loan-payment.ts (0.194265ms)
+✔ preserves historical hash while verifying current successor: src/calculators/precision.ts (22.955779ms)
+✔ rejects predecessor reversion before historical-equality fallback: src/calculators/precision.ts (23.328595ms)
+✔ rejects current successor tamper: src/calculators/precision.ts (23.658292ms)
+✔ rejects unavailable exact source provenance: src/calculators/precision.ts (0.130377ms)
+✔ preserves historical hash while verifying current successor: src/calculators/source-acceptance-evidence.test.ts (21.939214ms)
+✔ rejects predecessor reversion before historical-equality fallback: src/calculators/source-acceptance-evidence.test.ts (26.219217ms)
+✔ rejects current successor tamper: src/calculators/source-acceptance-evidence.test.ts (20.040507ms)
+✔ rejects unavailable exact source provenance: src/calculators/source-acceptance-evidence.test.ts (0.127822ms)
+✔ preserves historical hash while verifying current successor: src/calculators/source-driven-evidence.test.ts (21.416401ms)
+✔ rejects predecessor reversion before historical-equality fallback: src/calculators/source-driven-evidence.test.ts (21.452631ms)
+✔ rejects current successor tamper: src/calculators/source-driven-evidence.test.ts (26.897126ms)
+✔ rejects unavailable exact source provenance: src/calculators/source-driven-evidence.test.ts (0.15137ms)
+✖ preserves historical hash while verifying current successor: src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts (0.372716ms)
+✖ rejects predecessor reversion before historical-equality fallback: src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts (1.283233ms)
+✖ rejects current successor tamper: src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts (0.44035ms)
+✖ rejects unavailable exact source provenance: src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts (0.836968ms)
+✔ unknown protected source remains byte-exact without invoking successor exceptions (4.092412ms)
+✖ full retained software-closure packets reproduce byte-for-byte with no historical writes (2823.870939ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 25
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3292.019108
+
+✖ failing tests:
+
+test at tests/software-closure/preservation.test.mjs:21:2
+✖ preserves historical hash while verifying current successor: src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts (0.372716ms)
+  Error: Protected source changed: src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts
+      at verifyPreservedSource (file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:15:39)
+      at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/software-closure/preservation.test.mjs:23:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at tests/software-closure/preservation.test.mjs:25:2
+✖ rejects predecessor reversion before historical-equality fallback: src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts (1.283233ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/software-closure/preservation.test.mjs:26:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /current successor differs/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/software-closure/preservation.test.mjs:28:2
+✖ rejects current successor tamper: src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts (0.44035ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /current successor differs/. Input:
+  
+  'Error: Protected source changed: src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts'
+  
+      at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/software-closure/preservation.test.mjs:29:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Protected source changed: src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts
+        at verifyPreservedSource (file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:15:39)
+        at file:///workspace/work/product-completion-20261108/tests/software-closure/preservation.test.mjs:29:21
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/software-closure/preservation.test.mjs:29:10)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+        at Test.postRun (node:internal/test_runner/test:1522:19)
+        at Test.run (node:internal/test_runner/test:1447:12),
+    expected: /current successor differs/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/software-closure/preservation.test.mjs:31:2
+✖ rejects unavailable exact source provenance: src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts (0.836968ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /missing immutable source/. Input:
+  
+  'Error: Protected source changed: src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts'
+  
+      at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/software-closure/preservation.test.mjs:32:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Protected source changed: src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts
+        at verifyPreservedSource (file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:15:39)
+        at file:///workspace/work/product-completion-20261108/tests/software-closure/preservation.test.mjs:32:21
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/software-closure/preservation.test.mjs:32:10)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+        at Test.postRun (node:internal/test_runner/test:1522:19)
+        at Test.run (node:internal/test_runner/test:1447:12),
+    expected: /missing immutable source/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/software-closure/preservation.test.mjs:41:1
+✖ full retained software-closure packets reproduce byte-for-byte with no historical writes (2823.870939ms)
+  Error: Command failed: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node scripts/software-closure-evidence.mjs --check
+  file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:15
+   if(!current.equals(historical))throw Error(`Protected source changed: ${name}`);
+                                        ^
+  
+  Error: Protected source changed: src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts
+      at verifyPreservedSource (file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:15:39)
+      at checkSoftwareClosure (file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:42:30)
+      at async file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:61:84
+  
+  Node.js v24.19.0
+  
+      at genericNodeError (node:internal/errors:985:15)
+      at wrappedFn (node:internal/errors:539:14)
+      at checkExecSyncError (node:child_process:942:11)
+      at execFileSync (node:child_process:978:15)
+      at TestContext.<anonymous> (file:///workspace/work/product-completion-20261108/tests/software-closure/preservation.test.mjs:44:26)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12) {
+    status: 1,
+    signal: null,
+    output: [ null, '', 'file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:15\n if(!current.equals(historical))throw Error(`Protected source changed: ${name}`);\n                                      ^\n\nError: Protected source changed: src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts\n    at verifyPreservedSource (file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:15:39)\n    at checkSoftwareClosure (file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:42:30)\n    at async file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:61:84\n\nNode.js v24.19.0\n' ],
+    pid: 224030,
+    stdout: '',
+    stderr: 'file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:15\n if(!current.equals(historical))throw Error(`Protected source changed: ${name}`);\n                                      ^\n\nError: Protected source changed: src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts\n    at verifyPreservedSource (file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:15:39)\n    at checkSoftwareClosure (file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:42:30)\n    at async file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:61:84\n\nNode.js v24.19.0\n'
+  }

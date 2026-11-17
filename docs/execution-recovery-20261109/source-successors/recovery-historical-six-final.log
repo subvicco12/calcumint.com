@@ -1,0 +1,12 @@
+file:///tmp/calcumint-recovery-source-guards-20261109/scripts/check-historical-six-packets.mjs:55
+  if(!currentFile(repositoryRoot,binding.path).equals(expected))throw Error('Current bound source bytes differ: '+binding.path);
+                                                                      ^
+
+Error: Current bound source bytes differ: tests/batch21-calculator-wave/browser.mjs
+    at checkHistoricalSixPackets (file:///tmp/calcumint-recovery-source-guards-20261109/scripts/check-historical-six-packets.mjs:55:71)
+    at file:///tmp/calcumint-recovery-source-guards-20261109/scripts/check-historical-six-packets.mjs:64:116
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.19.0

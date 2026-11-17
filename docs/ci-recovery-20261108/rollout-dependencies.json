@@ -1,0 +1,62 @@
+{
+  "releaseHold": true,
+  "newPublicationEligible": 0,
+  "firstCandidateOnly": {
+    "catalogId": 440,
+    "engine": "conversion.frequency",
+    "version": 1,
+    "status": "NOT_ELIGIBLE_PENDING_ACCEPTANCE_AND_OPERATIONS"
+  },
+  "fallbackOnly": {
+    "catalogId": 432,
+    "engine": "conversion.time",
+    "version": 1,
+    "automaticSubstitutionAuthorized": false
+  },
+  "existingRunbook": "docs/adoption1535/RUNBOOK.md",
+  "existingMinimumPath": "docs/first-pilot1536/minimum-path.json",
+  "heldSQLChanged": false,
+  "freshReadOnlyObservation": {
+    "observedAt": "2026-11-08 12:39:36.557553+00",
+    "missingRPCs": [
+      "assign_calculator_reviewer",
+      "create_catalog_calculator_with_audit",
+      "prepare_catalog_inventory_drafts",
+      "record_calculator_qa_decision",
+      "transition_calculator_with_audit"
+    ],
+    "scope": "Function-name existence only; not a fresh full schema/preimage compatibility attestation."
+  },
+  "requirements": [
+    {
+      "requirement": "Exact-version competent canonical/source/formula/precision/QA decisions",
+      "responsible": "Authorized competent reviewers and applicable specialists",
+      "status": "PENDING",
+      "next": "Complete signed exact-version packets; no AI certification."
+    },
+    {
+      "requirement": "Deployed and external privileged writer roster plus pause/drain/resume",
+      "responsible": "Application, provider and credential custodians",
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "next": "Provide named controls and deployed SHA; no plaintext secrets."
+    },
+    {
+      "requirement": "DDL/transaction quiescence, checkpoint and tested restore",
+      "responsible": "Authorized DB/recovery operators",
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "next": "Supply approved freeze plan and restore receipt, then refresh exact preimages in authorized window."
+    },
+    {
+      "requirement": "Runtime secret custody and deployment compatibility",
+      "responsible": "Deployment and credential custodians",
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "next": "Provide vault/config handles, custody and recovery ownership only."
+    },
+    {
+      "requirement": "Adoption, deployment, certification and release authority",
+      "responsible": "Owner/change authority and competent certification roles",
+      "status": "NOT_AUTHORIZED",
+      "next": "Separate scoped authorization after prerequisites; HOLD remains active."
+    }
+  ]
+}

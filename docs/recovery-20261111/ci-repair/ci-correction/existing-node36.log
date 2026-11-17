@@ -1,0 +1,45 @@
+✔ binds exact original math/parser and append-only UI successor (2003.335897ms)
+✔ rejects changed source even when a new metadata hash claims it is authorized (49.834126ms)
+✔ rejects an altered original evidence manifest (29.343868ms)
+✔ rejects wrong predecessor identity (10.436406ms)
+✔ rejects release authority promotion (20.768364ms)
+✔ rejects source member omission and traversal substitution (13.07071ms)
+✔ rejects unbound caller edits (1840.39032ms)
+✔ rejects symlinked dependencies (642.779868ms)
+✔ rejects unbound shared batch dependency src/components/publication20-batch.tsx (1935.413614ms)
+✔ rejects unbound shared batch dependency src/lib/publication20/batch.ts (1799.284791ms)
+✔ rejects presentation successor tamper src/components/publication20-tool.tsx (934.862904ms)
+✔ rejects symlinked presentation successor src/components/publication20-tool.tsx (1025.535918ms)
+✔ rejects rewritten presentation historical claim src/components/publication20-tool.tsx (1633.281678ms)
+✔ rejects presentation successor tamper src/components/publication20-batch.tsx (1536.739568ms)
+✔ rejects symlinked presentation successor src/components/publication20-batch.tsx (1523.277692ms)
+✔ rejects rewritten presentation historical claim src/components/publication20-batch.tsx (1617.050969ms)
+✔ rejects presentation successor tamper src/lib/frequency-presentation.ts (1705.080318ms)
+✔ rejects symlinked presentation successor src/lib/frequency-presentation.ts (2200.302579ms)
+✔ retains twenty original bindings with two supplemental presentation bindings (2036.713636ms)
+{"identities":20,"callerBindings":20,"sourceBindings":41,"canonicalAccepted":0,"publicationEligible":0,"releaseHold":true}
+✔ exact current committed source accepted: .github/workflows/ci.yml (4.212878ms)
+✔ predecessor reversion denied even with original hash: .github/workflows/ci.yml (10.359045ms)
+✔ tampering denied: .github/workflows/ci.yml (2.998725ms)
+✔ provenance loss denied: .github/workflows/ci.yml (0.464837ms)
+✔ exact current committed source accepted: scripts/publication20-caller-lineage.mjs (1.979264ms)
+✔ predecessor reversion denied even with original hash: scripts/publication20-caller-lineage.mjs (7.868125ms)
+✔ tampering denied: scripts/publication20-caller-lineage.mjs (2.455421ms)
+✔ provenance loss denied: scripts/publication20-caller-lineage.mjs (0.60146ms)
+✔ exact current committed source accepted: scripts/check-shortest-publication20.mjs (0.738543ms)
+✔ predecessor reversion denied even with original hash: scripts/check-shortest-publication20.mjs (6.507012ms)
+✔ tampering denied: scripts/check-shortest-publication20.mjs (0.749072ms)
+✔ provenance loss denied: scripts/check-shortest-publication20.mjs (0.253082ms)
+✔ unrelated historical binding remains strict (0.316896ms)
+✔ historical manifest cannot silently rewrite current source claims (7.818099ms)
+✔ requires independent successor Git object bytes even when current file matches its pinned SHA (20.318188ms)
+✔ requires exact predecessor path object even when historical SHA claim is unchanged (5.87689ms)
+✔ full shortest-publication guard binds the current verifier and preserves historical caller claims (7385.865398ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 22707.111661

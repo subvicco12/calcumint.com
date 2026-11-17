@@ -1,0 +1,136 @@
+TAP version 13
+# Subtest: literal immutable path/blob requests equal actual Git and share cached tree/blob reads
+ok 1 - literal immutable path/blob requests equal actual Git and share cached tree/blob reads
+  ---
+  duration_ms: 99.476986
+  type: 'test'
+  ...
+# Subtest: one actual binary cat-file batch preloads unique blobs and rejects missing objects
+ok 2 - one actual binary cat-file batch preloads unique blobs and rejects missing objects
+  ---
+  duration_ms: 28.829448
+  type: 'test'
+  ...
+# Subtest: symbolic HEAD and unknown argument forms always use the fresh actual transport
+ok 3 - symbolic HEAD and unknown argument forms always use the fresh actual transport
+  ---
+  duration_ms: 0.469306
+  type: 'test'
+  ...
+# Subtest: missing paths and immutable refs propagate actual Git errors
+ok 4 - missing paths and immutable refs propagate actual Git errors
+  ---
+  duration_ms: 47.82828
+  type: 'test'
+  ...
+# Subtest: batch validates object identity, type, size, delimiter, content address and trailing bytes
+ok 5 - batch validates object identity, type, size, delimiter, content address and trailing bytes
+  ---
+  duration_ms: 3.117309
+  type: 'test'
+  ...
+# Subtest: completion checks reuse only the same actual immutable transport and defensive buffers
+ok 6 - completion checks reuse only the same actual immutable transport and defensive buffers
+  ---
+  duration_ms: 32.290291
+  type: 'test'
+  ...
+# Subtest: shared completion transport never reuses symbolic HEAD or another providers missing provenance
+ok 7 - shared completion transport never reuses symbolic HEAD or another providers missing provenance
+  ---
+  duration_ms: 48.692401
+  type: 'test'
+  ...
+# Subtest: immutable enrollment computes actual SHA256 and returns the original copy without exposing ownership
+ok 8 - immutable enrollment computes actual SHA256 and returns the original copy without exposing ownership
+  ---
+  duration_ms: 7.189713
+  type: 'test'
+  ...
+# Subtest: direct copy mutation and public ArrayBuffer mutation cannot reuse an earlier digest
+ok 9 - direct copy mutation and public ArrayBuffer mutation cannot reuse an earlier digest
+  ---
+  duration_ms: 0.638751
+  type: 'test'
+  ...
+# Subtest: source mutation and pooled backing aliases never alter an owned digest preimage
+ok 10 - source mutation and pooled backing aliases never alter an owned digest preimage
+  ---
+  duration_ms: 0.545817
+  type: 'test'
+  ...
+# Subtest: slices copies altered prototypes and mismatched enrollment use their complete actual bytes
+ok 11 - slices copies altered prototypes and mismatched enrollment use their complete actual bytes
+  ---
+  duration_ms: 0.539186
+  type: 'test'
+  ...
+# Subtest: shared resizable detached and proxy inputs never grant stale immutable byte facts
+ok 12 - shared resizable detached and proxy inputs never grant stale immutable byte facts
+  ---
+  duration_ms: 1.721633
+  type: 'test'
+  ...
+# Subtest: crypto factory and Hash method replacement disables reuse and preserves live hash callbacks
+ok 13 - crypto factory and Hash method replacement disables reuse and preserves live hash callbacks
+  ---
+  duration_ms: 1.651395
+  type: 'test'
+  ...
+# Subtest: Buffer WeakMap Map and descriptor poisoning cannot turn equality into authority
+ok 14 - Buffer WeakMap Map and descriptor poisoning cannot turn equality into authority
+  ---
+  duration_ms: 2.13815
+  type: 'test'
+  ...
+# Subtest: enrollment never executes caller getters and cannot attach a nominated preimage or digest
+ok 15 - enrollment never executes caller getters and cannot attach a nominated preimage or digest
+  ---
+  duration_ms: 0.31481
+  type: 'test'
+  ...
+# Subtest: Git reader keeps every existing immutable transport invocation and Buffer.from callback
+ok 16 - Git reader keeps every existing immutable transport invocation and Buffer.from callback
+  ---
+  duration_ms: 2.068707
+  type: 'test'
+  ...
+# Subtest: immutable digest preserves native behavior around inherited descriptor-field getters
+ok 17 - immutable digest preserves native behavior around inherited descriptor-field getters
+  ---
+  duration_ms: 99.369798
+  type: 'test'
+  ...
+# Subtest: immutable digest preserves native behavior around caller Buffer Symbol.hasInstance getters
+ok 18 - immutable digest preserves native behavior around caller Buffer Symbol.hasInstance getters
+  ---
+  duration_ms: 59.220736
+  type: 'test'
+  ...
+# Subtest: immutable digest preserves native behavior around replaced Array iterators
+ok 19 - immutable digest preserves native behavior around replaced Array iterators
+  ---
+  duration_ms: 59.904521
+  type: 'test'
+  ...
+# Subtest: opaque symbolic observations stay live while immutable digest facts remain byte scoped
+ok 20 - opaque symbolic observations stay live while immutable digest facts remain byte scoped
+  ---
+  duration_ms: 0.580431
+  type: 'test'
+  ...
+# Subtest: the entire public pooled ArrayBuffer cannot alias a private digest preimage
+ok 21 - the entire public pooled ArrayBuffer cannot alias a private digest preimage
+  ---
+  duration_ms: 39.015945
+  type: 'test'
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 21
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 464.07822

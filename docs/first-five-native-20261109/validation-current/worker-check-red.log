@@ -1,0 +1,39 @@
+
+ RUN  v3.2.7 /tmp/calcumint-first-five-native-20261109
+
+ ❯ src/lib/native-delivery/technology-five-webhook-worker.test.ts (5 tests | 1 failed) 35ms
+   ✓ signs exact immutable stored payload and confirms a leased audited success only after dispatch checks 12ms
+   ✓ treats redirects as failure, leaving retry scheduling exclusively to the atomic storage function 2ms
+   ✓ cannot send after current authority or lease becomes unavailable and never confirms an unpersisted result 7ms
+   ✓ bounded worker stops after the existing20 events and rejects a substituted lease token 2ms
+   × enforces dispatch authority itself even if a lower transport neglects its late-check callback 11ms
+     → expected { processed: 1, delivered: 1, …(2) } to match object { failed: 1, delivered: +0 }
+(2 matching properties omitted from actual)
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/native-delivery/technology-five-webhook-worker.test.ts > enforces dispatch authority itself even if a lower transport neglects its late-check callback
+AssertionError: expected { processed: 1, delivered: 1, …(2) } to match object { failed: 1, delivered: +0 }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "delivered": 0,
+-   "failed": 1,
++   "delivered": 1,
++   "failed": 0,
+  }
+
+ ❯ src/lib/native-delivery/technology-five-webhook-worker.test.ts:8:244
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed (5)
+   Start at  19:06:51
+   Duration  531ms (transform 77ms, setup 0ms, collect 159ms, tests 35ms, environment 0ms, prepare 87ms)
+

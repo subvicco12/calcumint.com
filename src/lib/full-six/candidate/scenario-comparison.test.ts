@@ -1,0 +1,12 @@
+import {describe,it,expect} from 'vitest';
+import {calculateCandidate,type CandidateArtifact} from './workflow';
+import {compareStatisticsScenarios} from './scenario-comparison';
+const make=(id:282|283=282,mode='population',unit='m',encoding='raw')=>calculateCandidate(id,{dataset:{mode,unit,encoding,rows:encoding==='raw'?[{value:'1'},{value:'3'}]:[{value:'1',frequency:'1'},{value:'3',frequency:'1'}]},bins:2});
+describe('statistics scenario comparison applicability',()=>{
+ it('preserves exact result strings and permits equivalent raw/frequency summaries',()=>{const a=make(),b=make(282,'population','m','frequency'),before=JSON.stringify([a,b]);const r=compareStatisticsScenarios(a,b);expect(r.compatible).toBe(true);expect(r.a).toMatchObject({mode:'population',unit:'m',encoding:'raw',effectiveN:2});expect(r.b.encoding).toBe('frequency');expect(r.metrics.find(x=>x.name==='variance')).toEqual({name:'variance',a:'1',b:'1',unit:'m^2'});expect(JSON.stringify([a,b])).toBe(before);});
+ it('refuses direct comparison across different units without guessing conversion',()=>{const r=compareStatisticsScenarios(make(),make(282,'population','cm'));expect(r.compatible).toBe(false);expect(r.reasons).toContain('Observation units differ; no unit conversion is inferred.');expect(r.metrics).toEqual([]);});
+ it('refuses a population/sample comparison and retains the recorded estimands',()=>{const r=compareStatisticsScenarios(make(),make(282,'sample'));expect(r.compatible).toBe(false);expect(r.a.mode).toBe('population');expect(r.b.mode).toBe('sample');expect(r.reasons).toContain('Population/sample estimands differ.');});
+ it.each(['catalogId','implementationRevision','contractSHA256','engineId','baselineVersion'] as const)('refuses a mismatched immutable %s',key=>{const a=make(),b={...make(),[key]:key==='catalogId'?283:key==='baselineVersion'?2:'unknown'} as CandidateArtifact;expect(compareStatisticsScenarios(a,b).compatible).toBe(false);});
+ it('refuses unsuccessful or missing summary artifacts',()=>{const a=make();expect(compareStatisticsScenarios(a,{...a,output:{status:'error'}}).compatible).toBe(false);});
+ it('uses squared units for variance and centered M2, original units for standard deviation',()=>{const r=compareStatisticsScenarios(make(283),make(283));expect(r.metrics.find(x=>x.name==='variance')?.unit).toBe('m^2');expect(r.metrics.find(x=>x.name==='centeredM2')?.unit).toBe('m^2');expect(r.metrics.find(x=>x.name==='standardDeviation')?.unit).toBe('m');});
+});

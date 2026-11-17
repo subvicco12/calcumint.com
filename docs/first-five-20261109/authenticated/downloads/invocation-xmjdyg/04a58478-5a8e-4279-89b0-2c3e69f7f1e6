@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "data-transfer-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "methodology": "Ideal deterministic arithmetic using decimal MB (1 MB = 1,000,000 octets) and Mbps (1 Mbps = 1,000,000 bits/second), eight bits per octet. Strictly positive supplied quantities; not measured bandwidth, provider speed or a delivery guarantee. Protocol overhead, latency, congestion and changing rates are excluded.\nTechnical calculation revision: technology.data-transfer@1\n\nIdealized transferred data from bandwidth and duration.\nData (MB) = bandwidth Mbps × seconds ÷ 8",
+      "input": {
+        "bandwidthMbps": 80,
+        "timeSeconds": 10
+      },
+      "output": {
+        "value": 100,
+        "steps": [
+          "Data Transfer = 100"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "data-transfer-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "bandwidthMbps": {
+            "label": "Bandwidth (Mbps)",
+            "unit": "Mbps"
+          },
+          "timeSeconds": {
+            "label": "Time (s)",
+            "unit": "s"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Transferred data",
+            "unit": "MB"
+          }
+        }
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "methodology": "Ideal deterministic arithmetic using decimal MB (1 MB = 1,000,000 octets) and Mbps (1 Mbps = 1,000,000 bits/second), eight bits per octet. Strictly positive supplied quantities; not measured bandwidth, provider speed or a delivery guarantee. Protocol overhead, latency, congestion and changing rates are excluded.\nTechnical calculation revision: technology.data-transfer@1\n\nIdealized transferred data from bandwidth and duration.\nData (MB) = bandwidth Mbps × seconds ÷ 8",
+      "input": {
+        "bandwidthMbps": 160,
+        "timeSeconds": 10
+      },
+      "output": {
+        "value": 200,
+        "steps": [
+          "Data Transfer = 200"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "data-transfer-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "bandwidthMbps": {
+            "label": "Bandwidth (Mbps)",
+            "unit": "Mbps"
+          },
+          "timeSeconds": {
+            "label": "Time (s)",
+            "unit": "s"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Transferred data",
+            "unit": "MB"
+          }
+        }
+      }
+    }
+  ]
+}

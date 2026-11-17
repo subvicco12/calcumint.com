@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "raid-capacity-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "input": {
+        "diskCount": 4,
+        "raidLevel": "10",
+        "diskSizeGb": 1000
+      },
+      "output": {
+        "steps": [
+          "RAID Capacity = 2000"
+        ],
+        "value": 2000
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "input": {
+        "diskCount": 4,
+        "raidLevel": "10",
+        "diskSizeGb": 2000
+      },
+      "output": {
+        "steps": [
+          "RAID Capacity = 4000"
+        ],
+        "value": 4000
+      }
+    }
+  ],
+  "comparison": {
+    "schemaVersion": 1,
+    "metrics": [
+      {
+        "field": "value",
+        "label": "value",
+        "cells": [
+          {
+            "slot": "A",
+            "value": 2000,
+            "difference": 0,
+            "unavailable": null
+          },
+          {
+            "slot": "B",
+            "value": 4000,
+            "difference": 2000,
+            "unavailable": null
+          }
+        ]
+      }
+    ],
+    "charts": []
+  }
+}

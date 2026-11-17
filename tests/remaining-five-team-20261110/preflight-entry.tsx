@@ -1,0 +1,4 @@
+import React from 'react';
+import {createRoot} from 'react-dom/client';
+import {TechnologyFiveSharedComparison} from '@/components/technology-five-shared-comparison';
+export function mountComparison(){const old=document.getElementById('root')!;old.hidden=true;old.inert=true;const node=document.createElement('div');node.id='comparison-preflight';document.body.append(node);createRoot(node).render(<TechnologyFiveSharedComparison cohort="next" context="preflight" rows={[{id:'A',title:'A',snapshot:{calculatorSlug:'website-bandwidth-calculator',calculatorVersion:2,input:{pageSizeMb:2,monthlyPageViews:100000},output:{value:200,steps:['Website Bandwidth = 200']}}},{id:'B',title:'B',snapshot:{calculatorSlug:'website-bandwidth-calculator',calculatorVersion:2,input:{pageSizeMb:4,monthlyPageViews:100000},output:{value:400,steps:['Website Bandwidth = 400']}}}]}/>);}

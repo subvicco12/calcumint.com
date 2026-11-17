@@ -1,0 +1,335 @@
+{
+  "sourceQualifiedHead": "29fa4b6e492f4088638dc14907ab7e649eda512f",
+  "priorHostedRun": {
+    "id": 43054191271,
+    "sourceHead": "23a946abe241f17132d55f080499979a394dcb24",
+    "conclusion": "FAILURE",
+    "checks": "SUCCESS",
+    "build": "SUCCESS",
+    "fullProduct": "FAILURE: two retained P0 caller-context assertions",
+    "sourceAcceptance": "FAILURE: required Poppler installation DNS resolution failed at security.ubuntu.com",
+    "publicationFactory": "FAILURE: unchanged 180-second six-candidate step timed out; final command not observable",
+    "aggregate": "FAILURE as required"
+  },
+  "correction": "Historical P0 source arrays preserved; exact named current Git/HEAD/live dependency proof before accepting successor context. Finite helper source authority and additive capture29; no generic exemption.",
+  "localFullValidation": {
+    "status": "PASS",
+    "sourceHead": "29fa4b6e492f4088638dc14907ab7e649eda512f",
+    "startedAt": "2026-11-11T16:53:56.617146+00:00",
+    "runtime": "v22.23.4",
+    "checks": [
+      {
+        "name": "current-p0-callers",
+        "command": [
+          "node",
+          "--test",
+          "tests/p0-decision-contracts/caller-successor.test.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r30/current-p0-callers.log",
+        "exitCode": 0,
+        "durationSeconds": 3.166140421999444,
+        "sha256": "63c53d780e4d51a1105822ddf4c96f35ed64052e7c37647a55bd703b3092629e"
+      },
+      {
+        "name": "source67",
+        "command": [
+          "node",
+          "--test",
+          "tests/parallel-source-20261110/application-successor.test.mjs",
+          "tests/parallel-source-20261110/current.test.mjs",
+          "tests/parallel-source-20261110/git-reader.test.mjs",
+          "tests/parallel-source-20261110/retained-vitest.test.mjs",
+          "tests/parallel-source-20261110/source-object-lock.test.mjs",
+          "tests/parallel-source-20261110/retained-vitest-diagnostics.test.mjs",
+          "tests/parallel-source-20261110/historical-group.test.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r30/source67.log",
+        "exitCode": 0,
+        "durationSeconds": 41.25291729900346,
+        "sha256": "a7ec74bf7f4e8c78077769a88477975a17e31fe177e051f51708636fc1a35604"
+      },
+      {
+        "name": "runtime-context",
+        "command": [
+          "node",
+          "--test",
+          "tests/next-cohort-20261110/source/retained-runtime.test.mjs",
+          "tests/next-cohort-20261110/source/runtime-current-anchor.test.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r30/runtime-context.log",
+        "exitCode": 0,
+        "durationSeconds": 16.51744290300121,
+        "sha256": "7c99c5b860f05e40640c6ebf2a9bf32af986501a5eff954a194557170c03da00"
+      },
+      {
+        "name": "finite15",
+        "command": [
+          "node",
+          "--test",
+          "tests/parallel-five-20261110/test-only-successor.test.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r30/finite15.log",
+        "exitCode": 0,
+        "durationSeconds": 4.835518626001431,
+        "sha256": "d365e5430d3c48cf432da0468f428dd9705f0422997731d192b84a3173fed71a"
+      },
+      {
+        "name": "readback38",
+        "command": [
+          "node",
+          "tests/technology-final-two-20261111/verify.mjs",
+          "/workspace/artifacts/technology-final-two-20261111/auth-Q3-d6a4d2e3"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r30/readback38.log",
+        "exitCode": 0,
+        "durationSeconds": 1.4631047579969163,
+        "sha256": "41541a1f05ee4d87c6ea2ae8c9a5f3a62587e3ad520cf5889251500d76acaefa"
+      },
+      {
+        "name": "full-serial",
+        "command": [
+          "npm",
+          "test",
+          "--",
+          "--maxWorkers=1"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r30/full-serial.log",
+        "exitCode": 0,
+        "durationSeconds": 1073.6281346920005,
+        "sha256": "69d78b72cd012a7905dd24e53284f443ae875cdce802890ac94ad776d6058eb0"
+      },
+      {
+        "name": "lint",
+        "command": [
+          "npm",
+          "run",
+          "lint"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r30/lint.log",
+        "exitCode": 0,
+        "durationSeconds": 52.25321251300193,
+        "sha256": "408cee6e2de647d0f073702cf9e8886b21955441cfc8bc01d332bfed49781cd5"
+      },
+      {
+        "name": "typecheck",
+        "command": [
+          "npm",
+          "run",
+          "typecheck"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r30/typecheck.log",
+        "exitCode": 0,
+        "durationSeconds": 8.26288899100473,
+        "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+      },
+      {
+        "name": "launch",
+        "command": [
+          "npm",
+          "run",
+          "test:launch"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r30/launch.log",
+        "exitCode": 0,
+        "durationSeconds": 3.0622058529988863,
+        "sha256": "f195fcd0136927b94e30273c5cb11e7eb40e868ea33b16239f55dda226b4e482"
+      },
+      {
+        "name": "certification",
+        "command": [
+          "npm",
+          "run",
+          "test:certification"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r30/certification.log",
+        "exitCode": 0,
+        "durationSeconds": 3.1786019369974383,
+        "sha256": "f61bdef956d2169c85e021135e672d382dd46f673cc82bac9e95d956afb98057"
+      },
+      {
+        "name": "webpack",
+        "command": [
+          "npm",
+          "run",
+          "build"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r30/webpack.log",
+        "exitCode": 0,
+        "durationSeconds": 41.60671234199981,
+        "sha256": "7361de56ee66e3b1632d068f6e08bb351a457771029ea759cf4901eb2df25111"
+      }
+    ],
+    "finishedAt": "2026-11-11T17:14:45.870333+00:00",
+    "headAtEnd": "29fa4b6e492f4088638dc14907ab7e649eda512f"
+  },
+  "priorLocalFullValidation": {
+    "status": "FAIL",
+    "sourceHead": "29fa4b6e492f4088638dc14907ab7e649eda512f",
+    "startedAt": "2026-11-11T16:29:51.232572+00:00",
+    "runtime": "v22.23.4",
+    "checks": [
+      {
+        "name": "current-p0-callers",
+        "command": [
+          "node",
+          "--test",
+          "tests/p0-decision-contracts/caller-successor.test.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r29/current-p0-callers.log",
+        "exitCode": 0,
+        "durationSeconds": 3.1558255569980247,
+        "sha256": "35a80656fc0d1643da542c1b2effe62c6aa4147157e8906c2fdeb2fd3f5be4b3"
+      },
+      {
+        "name": "source67",
+        "command": [
+          "node",
+          "--test",
+          "tests/parallel-source-20261110/application-successor.test.mjs",
+          "tests/parallel-source-20261110/current.test.mjs",
+          "tests/parallel-source-20261110/git-reader.test.mjs",
+          "tests/parallel-source-20261110/retained-vitest.test.mjs",
+          "tests/parallel-source-20261110/source-object-lock.test.mjs",
+          "tests/parallel-source-20261110/retained-vitest-diagnostics.test.mjs",
+          "tests/parallel-source-20261110/historical-group.test.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r29/source67.log",
+        "exitCode": 0,
+        "durationSeconds": 40.29028983799799,
+        "sha256": "88a5bbab16301c28b10788e316a94770817c06d69f0af02a695757f8556e2c46"
+      },
+      {
+        "name": "runtime-context",
+        "command": [
+          "node",
+          "--test",
+          "tests/next-cohort-20261110/source/retained-runtime.test.mjs",
+          "tests/next-cohort-20261110/source/runtime-current-anchor.test.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r29/runtime-context.log",
+        "exitCode": 0,
+        "durationSeconds": 16.495783047997975,
+        "sha256": "949f9adf6ab0959e61ed5812d6c58041eed3e524b9f609d9df9d2dadd09ae825"
+      },
+      {
+        "name": "finite15",
+        "command": [
+          "node",
+          "--test",
+          "tests/parallel-five-20261110/test-only-successor.test.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r29/finite15.log",
+        "exitCode": 0,
+        "durationSeconds": 5.078077027006657,
+        "sha256": "cba7645ea9844f70cab4373cd9180833f93e9d93a234d18156b93741b232450d"
+      },
+      {
+        "name": "readback38",
+        "command": [
+          "node",
+          "tests/technology-final-two-20261111/verify.mjs",
+          "/workspace/artifacts/technology-final-two-20261111/auth-Q3-d6a4d2e3"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r29/readback38.log",
+        "exitCode": 0,
+        "durationSeconds": 1.7975681960015208,
+        "sha256": "41541a1f05ee4d87c6ea2ae8c9a5f3a62587e3ad520cf5889251500d76acaefa"
+      },
+      {
+        "name": "full-serial",
+        "command": [
+          "npm",
+          "test",
+          "--",
+          "--maxWorkers=1"
+        ],
+        "status": "FAIL",
+        "log": "/workspace/artifacts/seven-recovery-20261111/full-validation-r29/full-serial.log",
+        "exitCode": 1,
+        "durationSeconds": 1135.910589485,
+        "sha256": "8fb01febe1a83208972a3e4a92fb8914be9a10a39b17792c59d70bd3041b1725"
+      }
+    ],
+    "finishedAt": "2026-11-11T16:49:53.981925+00:00",
+    "headAtEnd": "29fa4b6e492f4088638dc14907ab7e649eda512f"
+  },
+  "isolatedDeadlineReproduction": {
+    "sourceHead": "29fa4b6e492f4088638dc14907ab7e649eda512f",
+    "passed": 6,
+    "failed": 0,
+    "receiptSourceCaseMilliseconds": 34620,
+    "logSHA256": "10fa10b1529e3445d7ec428c106df4bb321ad861a8c9acce24f055448138c64a"
+  },
+  "unchangedPublicationStep": {
+    "sourceHead": "29fa4b6e492f4088638dc14907ab7e649eda512f",
+    "workflowSHA256": "39703e767294bee42f65f6495f2f9c3c8807c2f237cef79d1a48659196aca243",
+    "timeoutSeconds": 180,
+    "startedAt": "2026-11-11T16:35:48.377736+00:00",
+    "status": "PASS",
+    "exitCode": 0,
+    "durationSeconds": 55.61778988500009,
+    "logSHA256": "66562dc3b681732fd769e4721f6a5f6eee0011b7d1fec15c7689cf50091ad37e",
+    "finishedAt": "2026-11-11T16:36:43.996365+00:00"
+  },
+  "p0Group": {
+    "passed": 205,
+    "failed": 0,
+    "logSHA256": "b8667e64421d88fa756644262cd5a90818d7e098217b33b465f700cfd8238701"
+  },
+  "workflowUnchanged": true,
+  "historicalReceiptsUnchanged": true,
+  "registeredMathematicsUnchanged": true,
+  "review": {
+    "sevenRepair": {
+      "status": "NO_BLOCKING_FINDINGS",
+      "mode": "independent static read-only",
+      "scope": "Finite test successors, retained/current source separation and invocation-local proof; no mutable proof cache"
+    },
+    "hostedP0Repair": {
+      "status": "NO_BLOCKING_FINDINGS",
+      "range": "23a946abe241f17132d55f080499979a394dcb24..29fa4b6e492f4088638dc14907ab7e649eda512f",
+      "mode": "independent static read-only",
+      "findings": "Finite caller roster and historical claims preserved; changed context requires named successor proof, exact predecessor hash, matching HEAD blob and supplied/live bytes; capture28 retained"
+    },
+    "physicsRetainedChecker": {
+      "status": "NO_BLOCKING_FINDINGS",
+      "producer": "06a30b465c6f7ea7e9a99bb4c37099904a1d6d71",
+      "verifier": "8cc6a46aeee74cd922de3b424c51b95075831caf",
+      "mode": "independent static read-only, no raw execution rerun",
+      "findings": "Complete quoted CSV row multiset preserves identities, values and multiplicities for JSONB key ordering; header/identity strict; no producer relabeling",
+      "limits": "Row interleaving permitted within declared multiset contract; reviewer did not inspect raw CSV artifacts"
+    }
+  },
+  "nextHostedCI": "REQUIRED_AFTER_NORMAL_PUSH_NOT_YET_STARTED_AT_THIS_COMMIT",
+  "confirmedEngineeringOverlay": 18,
+  "locallyQualifiedPendingHostedCI": [
+    368,
+    376
+  ],
+  "overlayIfAllFiveAndAggregatePass": 20,
+  "canonical540": {
+    "completeCertified": 0,
+    "reviewPending": 2,
+    "partialUnproven": 495,
+    "identityScopeBlocked": 43,
+    "total": 540
+  },
+  "newPublicationEligible": 0,
+  "releaseHold": true
+}

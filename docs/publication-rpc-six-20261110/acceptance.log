@@ -1,0 +1,7 @@
+PASS Six exact runtime signatures are invoker functions with anon EXECUTE denied and authenticated granted
+PASS Already-issued genuine owner JWT loses all six RPC authorities immediately after active=false with no row/audit effects
+PASS Concurrent identical create has one success/one unique refusal; retry refuses without duplicate catalog/QA/audit
+PASS Same expected lifecycle concurrent calls yield one success/one stale refusal; retry cannot duplicate transition audit
+PASS Assigned reviewer already-issued JWT cannot submit QA after authority revocation; historical assignment grants no bypass
+PASS Successful create inside caller-aborted transaction leaves no catalog, pending QA or audit
+PASS Unchanged exact guarded reverse restores predecessor metadata and preserves every synthetic application row

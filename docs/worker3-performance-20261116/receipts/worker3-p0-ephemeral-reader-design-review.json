@@ -1,0 +1,23 @@
+{
+  "kind": "READ_ONLY_P0_DEFAULT_IMMUTABLE_READER_DESIGN_REVIEW",
+  "adopted": false,
+  "source": "tests/publication-workflows-20261109/business-caller-successor.mjs:396",
+  "conclusion": "Conditionally plausible under existing immutable-object model; not sufficient to claim behavioral equivalence or approve adoption from design alone.",
+  "preservedByProposedDesign": [
+    "Per-invocation cache lifetime, no cross-call current verdict cache",
+    "Default-only reader/Git path; custom read or Git stays raw",
+    "Raw sourceGit ctor URL cwd, inherited env, stdio, 8MiB budget",
+    "HEAD status index symbolic requests pass through",
+    "Args-only wrapper exposes no new preload capabilities",
+    "One stable wrapper identity inside scoped source proof"
+  ],
+  "unresolved": [
+    "Caller-controlled bytes passes repeatedly through Buffer.from; arbitrary objects and conversion overrides may execute callbacks even when read and git are defaults. Buffer.isBuffer alone does not establish no conversion callbacks.",
+    "Existing makeGitReader full-OID path lookup caches ls-tree output without independently authenticating tree against commit; existing immutable-object assumptions apply, not dynamic replacement-ref equivalence.",
+    "Same 8MiB physical output budget now applies to full ls-tree output where original rev-parse returned a short path ID; exact repository bound needs validation.",
+    "Existing seven reader negatives do not cover newly optimized Business default boundary or custom-input fallback."
+  ],
+  "recommendation": "Do not adopt solely on call-count evidence. Establish narrow trusted-input eligibility and exact boundary controls, or keep raw path.",
+  "testsRun": false,
+  "sourceWrites": false
+}

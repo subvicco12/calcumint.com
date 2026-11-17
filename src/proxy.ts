@@ -1,9 +1,10 @@
+import {technologyFiveFramePolicy} from '@/lib/native-delivery/technology-five-frame-policy';
 import {nativeFramePolicy} from '@/lib/native-delivery/frame-policy';
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import { readableSessionCookies } from "@/lib/supabase/session-cookies";
 
-function protectNativeFrame(request:NextRequest,response:NextResponse){if(request.nextUrl.pathname.startsWith('/embed/native/')){response.headers.set('Content-Security-Policy',nativeFramePolicy(request.nextUrl.pathname.slice('/embed/native/'.length),process.env.EMBED_SESSION_SECRET??''));response.headers.set('Cache-Control','no-store');response.headers.set('Referrer-Policy','no-referrer');}return response;}
+function protectNativeFrame(request:NextRequest,response:NextResponse){if(request.nextUrl.pathname.startsWith('/embed/native/')){response.headers.set('Content-Security-Policy',nativeFramePolicy(request.nextUrl.pathname.slice('/embed/native/'.length),process.env.EMBED_SESSION_SECRET??''));response.headers.set('Cache-Control','no-store');response.headers.set('Referrer-Policy','no-referrer');}if(request.nextUrl.pathname.startsWith('/embed/technology/')){response.headers.set('Content-Security-Policy',technologyFiveFramePolicy(request.nextUrl.pathname.slice('/embed/technology/'.length),process.env.EMBED_SESSION_SECRET??''));response.headers.set('Cache-Control','no-store');response.headers.set('Referrer-Policy','no-referrer');}return response;}
 export async function proxy(request: NextRequest) {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;

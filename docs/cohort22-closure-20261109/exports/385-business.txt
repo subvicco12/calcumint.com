@@ -1,0 +1,52 @@
+CalcuMint | Calculation report
+
+
+Cloud Data Transfer Cost Calculator
+Calculator: cloud-data-transfer-cost-calculator | Engine version: 1
+Raw engine values: full numeric precision; no display rounding or sampled rows.
+Units appear only where supplied by the calculation or bound display metadata.
+Embedded Unicode glyphs are readable.
+Unsupported characters and controls use explicit Unicode escapes.
+Tagged PDF; PDF/UA conformance: UNVERIFIED.
+Text follows document order; charts include complete numeric text alternatives.
+
+
+INPUTS
+Transfer (GB) [GB]
+input["transferGb"] = 500
+Price per GB
+input["pricePerGb"] = 0.09
+
+
+RESULTS
+Transfer cost [currency units]
+output["value"] = 45
+output["steps"][0] = "Cloud Data Transfer Cost = 45"
+
+
+METHODOLOGY
+Deterministic calculation using the reviewed Technology & Computing engine.\u000aTechnic
+al calculation revision: technology.cloud-data-transfer-cost@1\u000a\u000aProvider-neutr
+al transfer estimate using a user-supplied price; tiers and free allowances are not mode
+led.\u000aTransfer cost = transfer GB × price per GB
+
+
+DECLARED FORMULAS
+cloud-data-transfer-cost-calculator: Transfer cost = transfer GB × price per GB
+Provider-neutral transfer estimate using a user-supplied price; tiers and free allowance
+s are not modeled.
+
+
+SOURCES
+NIST SP 1181 — Unit Pricing Guide
+https://www.nist.gov/publications/nist-sp-1181-unit-pricing-guide-best-practice-approach
+-unit-pricing-2025-ed
+NIST documents unit pricing as expressing price relative to a unit quantity. These provi
+der-neutral estimators multiply a user-supplied quantity by a user-supplied unit price;
+provider tiers and allowances remain outside the calculation.
+
+
+
+
+Engine v1 | Page 1 of 1
+

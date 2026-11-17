@@ -1,0 +1,608 @@
+{
+  "kind": "MILESTONE60_SCOPED_EVIDENCE_FINAL_GATES_PENDING",
+  "releaseHold": true,
+  "counts": {
+    "confirmedEngineering": 41,
+    "conditionalEngineering": 20,
+    "conditionalUnion": 61,
+    "newCertified": 0,
+    "newPublicationEligible": 0
+  },
+  "canonicalCountsUnchanged": {
+    "COMPLETE_AND_CERTIFIED": 0,
+    "IMPLEMENTED_REVIEW_PENDING": 2,
+    "IMPLEMENTED_TEST_GAPS": 0,
+    "PARTIALLY_IMPLEMENTED": 495,
+    "NOT_IMPLEMENTED": 0,
+    "IDENTITY_OR_SCOPE_BLOCKED": 43
+  },
+  "applicationCommit": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+  "lastWholeSuiteAttempt": {
+    "commit": "49810cb675b0827fcc2d7582ffcd398ba3b46bae",
+    "passed": false,
+    "exitCode": 1,
+    "testsPassed": 9860,
+    "testsFailed": 1,
+    "testsSkipped": 4,
+    "testFilesPassed": 1060,
+    "testFilesFailed": 1,
+    "testFilesSkipped": 2,
+    "durationSeconds": 1404.82,
+    "failure": "Unchanged original API source-evidence case exceeded5000ms; measured5794ms in full run and5103ms focused reproduction.",
+    "log": {
+      "path": "/workspace/artifacts/milestone60-20261113/full-unit-final.log",
+      "sha256": "fd165c408f639c65745f2ab46f98c180a1b71425ba04bfff9be5d672b0a9f377"
+    }
+  },
+  "focusedSource": {
+    "commit": "f00acbfdb882688eb1d0c22bc68305eb4984ac41",
+    "passed": true,
+    "cases": 115,
+    "skipped": 0,
+    "durationSeconds": 122.18,
+    "historical21CaseDurationSeconds": 38.83,
+    "unchangedHistoricalBudgetSeconds": 45
+  },
+  "actualCold": {
+    "receipt": {
+      "path": "/workspace/artifacts/milestone60-20261113/source/real-cold-calcumint-milestone60-real-cold-20261113/receipt.json",
+      "sha256": "64d085ba3e19cc6b09700601f55fdad9a9698880d33074447d4a36e116daad11"
+    },
+    "commit": "f00acbfdb882688eb1d0c22bc68305eb4984ac41",
+    "depth": 1,
+    "sharedObjects": false,
+    "alternates": false,
+    "fetchedExactRefs": 289,
+    "fetchCommands": 1,
+    "firstAPI6Passed": true,
+    "firstAPICaseMilliseconds": 4983,
+    "unchangedAPIBudgetMilliseconds": 5000,
+    "marginMilliseconds": 17,
+    "sourceCases": 22,
+    "sourceSkipped": 0,
+    "scope": "Observed first unprimed actual cold run only; no stable latency/SLA claim."
+  },
+  "account": {
+    "passed": true,
+    "scope": "Final replay-helper source requalification; actual disposable account persistence/RLS only.",
+    "receiptPath": "/workspace/artifacts/milestone60-20261113/business-account20-final/account-receipt.json",
+    "receiptSHA256": "4825120086d30b8dedf782766f1909169410791edc594000f5907701f7a361d0",
+    "observations": 60,
+    "catalogIds": [
+      255,
+      256,
+      259,
+      260,
+      263,
+      264,
+      265,
+      429,
+      436,
+      437,
+      439,
+      261,
+      262,
+      266,
+      267,
+      269,
+      270,
+      271,
+      273,
+      424
+    ],
+    "bundledSourceFiles": 80,
+    "sourceDrift": [],
+    "casesPath": "docs/milestone60-20261113/business-browser-cases.json",
+    "casesSHA256": "371a79df92c447dacd5f5626c5e3680cc070efbd12e7c56d1d0de03ca0d2be2b",
+    "checkedAtUTC": "2026-11-13T15:30:30.496Z",
+    "productionWrites": false,
+    "releaseHold": true,
+    "publicationGranted": false,
+    "certificationGranted": false,
+    "limitations": [
+      "Real disposable GoTrue/PostgREST/Postgres repository candidate schema with existing guarded review bundle locally adopted; production equivalence UNKNOWN.",
+      "Direct actual atomic RPC acceptance, not browser or Next server-action journey.",
+      "Server-trusted SQL persists actual current engine snapshots; this does not prove SQL recomputes mathematics.",
+      "Plans assigned to disposable test profiles; same calculateFactory current engine called for each plan, no billing acceptance.",
+      "No synthetic public publication, certification or reviewer facts."
+    ]
+  },
+  "heldSQL": {
+    "passed": true,
+    "kind": "MILESTONE60_HELD_BUSINESS_SQL_EXACT_ROUNDTRIP",
+    "receiptPath": "/workspace/artifacts/milestone60-20261113/business-sql/receipt.json",
+    "receiptSHA256": "65f1010b854e09efb85b9a3f7ebf83102b262dcba20de72eb5daa39d8d5e7ee2",
+    "catalogIds": [
+      218,
+      219,
+      220,
+      423,
+      430,
+      431,
+      432,
+      438,
+      440,
+      208,
+      209,
+      210,
+      211,
+      212,
+      215,
+      216,
+      424,
+      425,
+      427,
+      428,
+      433,
+      434,
+      322,
+      325,
+      327,
+      255,
+      256,
+      259,
+      260,
+      263,
+      264,
+      265,
+      429,
+      436,
+      437,
+      439,
+      261,
+      262,
+      266,
+      267,
+      269,
+      270,
+      271,
+      273
+    ],
+    "checks": [
+      "Exact ACTUAL25 predecessor four function SHA/owner/ACL and four constraints match captured prior receipt",
+      "Unchanged hold, function ACL drift and table RLS drift refuse before mutation",
+      "Exact44 successor refuses replay; reverse rollback preserves postimage; reverse restores exact definitions owner ACL constraints and table RLS; forward reapplies",
+      "All19 new exact tuples retain genuine publication denial without synthetic approval functions"
+    ],
+    "sourceSHA256": "487113fa011516c89146ccf001368d69a9fc832f1aec0dda4e086664b401dbe9",
+    "reverseSHA256": "8d9027f3a0a47dd8fe4a8b1e0c13e64cb44951b608c775cd304f52f467791036",
+    "releaseHold": true,
+    "productionWrites": false,
+    "limitations": [
+      "Disposable genuine Postgres/GoTrue/PostgREST fixture only; production equivalence UNKNOWN.",
+      "No positive publication substitution: new tuples retain genuine publication denial.",
+      "Empty fixture roundtrip; durable row reverse refusal and authenticated concurrency/RLS require separate acceptance."
+    ]
+  },
+  "automation": {
+    "passed": true,
+    "scope": "Actual HTTP handler adapter (not Next production build), real isolated GoTrue/PostgREST/PG and actual worker; explicit synthetic lower publication and loopback receiver transport. No production equivalence, human approval or full completion.",
+    "receiptPath": "/workspace/artifacts/milestone60-20261113/business-automation-final/receipt.json",
+    "receiptSHA256": "5615ed88b20176ccf5c9f500198e8cbacc770db51b2764f20eb5c1cb53a3700b",
+    "observations": 19,
+    "checks": 27,
+    "catalogIds": [
+      255,
+      256,
+      259,
+      260,
+      263,
+      264,
+      265,
+      429,
+      436,
+      437,
+      439,
+      261,
+      262,
+      266,
+      267,
+      269,
+      270,
+      271,
+      273
+    ],
+    "sourcePins": 373,
+    "sourceDrift": [],
+    "casesPath": "docs/milestone60-20261113/business-account-cases.json",
+    "casesSHA256": "436c201162ad9683c46394054f00c3141548ce2af9c7d251404f71fe7fde8af5",
+    "casesMatchRetainedObservations": true,
+    "checkedAtUTC": "2026-11-13T15:31:19.669Z",
+    "lowerRegistry": {
+      "originalSHA256": "acfe4a797d5f28c146cacbd0f5d33e9f87192f54f716d7090683b626a8b7eeb5",
+      "fixtureSHA256": "6165971394553d5581afbab5ecdeaba893983f74c0dd56633d477b557b79e2ef",
+      "scope": "Explicit synthetic lower registry reviewStatus only; no published/canonical approval"
+    },
+    "productionWrites": false,
+    "sqlActivated": false,
+    "releaseHold": true,
+    "limitations": [
+      "Actual HTTP handler adapter and worker with real disposable GoTrue/PostgREST/Postgres.",
+      "Explicit synthetic lower registry certification and publication fixture; no authentic publication/certification approval.",
+      "Loopback receiver transport; no external webhook service acceptance."
+    ]
+  },
+  "browserEvidence": {
+    "kind": "VERIFIED_DISTINCT_RUN_SCOPED_BROWSER_EVIDENCE_NOT_CANONICAL_ACCEPTANCE",
+    "applicationSource": "edb2463a87cacb4999762cc797ae546ca6a2b01e",
+    "ids": [
+      255,
+      256,
+      259,
+      260,
+      261,
+      262,
+      263,
+      264,
+      265,
+      266,
+      267,
+      269,
+      270,
+      271,
+      273,
+      424,
+      429,
+      436,
+      437,
+      439
+    ],
+    "business": {
+      "receipt": "/workspace/artifacts/milestone60-20261113/browser/receipt.json",
+      "sha256": "859a8a088a86330740eae576a74b96b4932e7e2064917da6ca5f2b05da2db796",
+      "outerPassed": false,
+      "scope": "All20 Free/Business/iframe/API/batch sections complete; outerfalse preserved because laterProproducer race, superseded only for Pro by separate successful receipt.",
+      "counts": {
+        "freeHistory": 20,
+        "sharing": 20,
+        "embed": 20,
+        "api": 20,
+        "milestoneBusinessBatch": 20
+      },
+      "conditionalLowerPublicationFixture": true,
+      "actualResponsive320Passed": true
+    },
+    "pro": {
+      "receipt": "/workspace/artifacts/milestone60-20261113/pro-only/receipt.json",
+      "sha256": "adaeec859fd6c7cbe6014f892a7e890a372f1e8557ca6b40006297ee6ad77493",
+      "passed": true,
+      "rows": 20,
+      "scenarios": 20,
+      "historyReopens": 20,
+      "forwardDownloads": 60,
+      "recordedHistoryExports": 20,
+      "plots": 15,
+      "reverse": 15,
+      "registryFixtureUsed": false,
+      "businessMutationsPerformed": false
+    },
+    "verification": {
+      "downloadFilesReadBack": 80,
+      "allByteLengthsAndSHA256Match": true,
+      "all2061CurrentSourcePinsMatch": true,
+      "allProBuiltSourceHashesEqualOriginal": true,
+      "all20ProForwardOutputsEqualRetainedFreeBusiness": true
+    },
+    "canonicalAccepted": false,
+    "certificationGranted": false,
+    "publicationEligible": false,
+    "releaseHold": true
+  },
+  "cleanEquivalence": {
+    "path": "/workspace/artifacts/milestone60-20261113/clean-equivalence-review.json",
+    "sha256": "fc1c21e148f90bf38df40d59142ea1d0e6b49c9b47c837296aface57e50bef42"
+  },
+  "pending": [
+    "Final integrated documentation/source SHA freeze and actual final cold/CI qualification",
+    "Mandatory unfiltered unit regression on exact-head hosted CI",
+    "All five required CI jobs plus aggregate at final integrated SHA"
+  ],
+  "finalQualifiedCommit": null,
+  "finalAllFiveJobsPassed": false,
+  "productionWrites": false,
+  "certificationGranted": false,
+  "sourceQualifiedAPPref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
+  "finalDeliverySHA": null,
+  "selfReferentialCommitHashEmbedded": false,
+  "retainedBrowserApplicability": {
+    "originalEvidenceAPP": "edb2463a87cacb4999762cc797ae546ca6a2b01e",
+    "cleanAPP": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+    "APP2": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
+    "sourcePinsCompared": 2061,
+    "byteIdenticalPins": 2058,
+    "testOnlyExceptionPaths": [
+      "src/lib/calculator-factory/completion/conversion-next.test.ts",
+      "src/lib/calculator-factory/completion/milestone-source.test.ts",
+      "src/lib/completion-wave-20261113/sql-successor.test.ts"
+    ],
+    "originalReceiptFlagsPreserved": true,
+    "newCleanBuildDeploymentClaimed": false
+  },
+  "externalFinalDeliveryRecordPending": true,
+  "qualifiedRuntimeAPPref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+  "APP2BrowserByteEquivalence": {
+    "receipt": "/workspace/artifacts/milestone60-20261113/clean-equivalence-APP2-review.json",
+    "sha256": "afc8e92d0892d2eedbaff4a77eef09b46d17bb7fc0f3f0d2aa8593fb9eaba7c9",
+    "sourcePinsCompared": 2061,
+    "byteIdenticalPins": 2058,
+    "testOnlyExceptionPaths": [
+      "src/lib/calculator-factory/completion/conversion-next.test.ts",
+      "src/lib/calculator-factory/completion/milestone-source.test.ts",
+      "src/lib/completion-wave-20261113/sql-successor.test.ts"
+    ],
+    "runtimeOrEngineChanges": false,
+    "durableRepositoryReceipt": "docs/milestone60-20261113/operations/CLEAN-APP2-EQUIVALENCE.json",
+    "durableReceiptSHA256": "afc8e92d0892d2eedbaff4a77eef09b46d17bb7fc0f3f0d2aa8593fb9eaba7c9"
+  },
+  "testSuccessorIndependentReview": {
+    "receipt98PatchAccepted": true,
+    "SQLSuccessorTestsPassed": 5,
+    "SQLSuccessorTestsTotal": 5,
+    "sourceV6CasesPassed": 24,
+    "sourceV6CasesTotal": 24,
+    "sourceV6Skips": 0,
+    "fullFinalQualificationClaimed": false
+  },
+  "sourceAdmission": {
+    "APP2": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
+    "G5": "9c1a6cae1dd5b8b922cbb23585956b69e5e57d14",
+    "authorityCommit": "49cac9941e81646aca6ef4a7e70acd7374e15d92",
+    "concreteSelfPinCommit": "b5d9c4a53c02ae68e4eaebf59fdc6b20adbf22e1",
+    "capture65SHA256": "ce3894d2ceab616e21a7f424867c128bbdd981583a5b7c2070131ac55a74875c",
+    "authority75SHA256": "7df9a80f58991d4cbd4b68758de242e62161088e01878ce318ed0273eca76691",
+    "retainedCanonicalCaptureAndPolicyUnchanged": true,
+    "retained66AuthorityRecordsUnchanged": true,
+    "reviewedSourcePaths": 22,
+    "newAuthorityRecords": 75,
+    "safeBootstrapRefs": 7,
+    "installed": true,
+    "focusedAndWholeSuiteRerunsPending": true
+  },
+  "latestCompletedBuildAndStaticChecks": {
+    "webpack": {
+      "passed": true,
+      "exitCode": 0,
+      "log": {
+        "path": "/workspace/artifacts/milestone60-20261113/webpack-final.log",
+        "sha256": "07f94e4b9d435f57b4c41311409c24d8798ba9eaae254e1b4eee0da72947b46d"
+      }
+    },
+    "lint": {
+      "passed": true,
+      "errors": 0,
+      "warnings": 62,
+      "log": {
+        "path": "/workspace/artifacts/milestone60-20261113/lint-prefetch-final.log",
+        "sha256": "1f33744a685abe765e6bb534445d36c72825535d33e221b7793a620ef5cb4614"
+      }
+    },
+    "typecheck": {
+      "passed": true,
+      "log": {
+        "path": "/workspace/artifacts/milestone60-20261113/typecheck-final.log",
+        "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+      }
+    },
+    "scope": "Local webpack/typecheck passed; latest lint0errors62warnings and launch/certification60 tests pass. Focused source13/API6/operations7 pass. Final unfiltered qualification remains mandatory exact-head hosted CI."
+  },
+  "postAdmissionFocused": {
+    "sourceCommit": "b5d9c4a53c02ae68e4eaebf59fdc6b20adbf22e1",
+    "nativeEvidence": {
+      "passed": true,
+      "cases": 6,
+      "originalApiBudgetMs": 5000,
+      "actualApiCaseMs": 4698,
+      "logSHA256": "7753bdc73ebf3cc4a37b2242cdcd7017c65b11714357e26a5a2e7fdb4fbbd7a5"
+    },
+    "authenticatedSourceReceipt": {
+      "passed": true,
+      "innerCases": 98,
+      "innerFailed": 0,
+      "innerSkipped": 0,
+      "outerFocusedPassed": 1,
+      "outerUnselected": 5,
+      "durationMs": 39867,
+      "unchangedChildBudgetMs": 60000,
+      "logSHA256": "eb6264c3ee71fa6f080bac75cde56b3f3169575a841d46f9812ffb30b442836b"
+    },
+    "retained25AndCurrent44SQL": {
+      "passed": true,
+      "cases": 5
+    },
+    "preservation": {
+      "originalCases": 22,
+      "additiveCases": 2,
+      "passed": true
+    },
+    "fullUnfilteredRerun": "PENDING",
+    "hostedExactHeadCI": "PENDING"
+  },
+  "retainedWholeSuiteAttempts": [
+    {
+      "commit": "f00acbfdb882688eb1d0c22bc68305eb4984ac41",
+      "passed": false,
+      "exitCode": 1,
+      "testsPassed": 9858,
+      "testsFailed": 2,
+      "testsSkipped": 4,
+      "testFilesPassed": 1059,
+      "testFilesFailed": 2,
+      "testFilesSkipped": 2,
+      "durationSeconds": 1348.46,
+      "failures": [
+        "receipt-source-path.test.mjs stale F042 bytes == current source assertion; independently reviewed exact historical/current successor patch pending G5 admission",
+        "sql-successor.test.ts retained exact25 predecessor compared to expanded current44 catalog; explicit retained/current successor test pending review"
+      ],
+      "log": {
+        "path": "/workspace/artifacts/milestone60-20261113/full-unit.log",
+        "sha256": "ce9fe0b7f6f8ae06f545577f6328831f9099ab44fd31a77d1beda2828513d445"
+      }
+    },
+    {
+      "commit": "49810cb675b0827fcc2d7582ffcd398ba3b46bae",
+      "passed": false,
+      "exitCode": 1,
+      "testsPassed": 9860,
+      "testsFailed": 1,
+      "testsSkipped": 4,
+      "testFilesPassed": 1060,
+      "testFilesFailed": 1,
+      "testFilesSkipped": 2,
+      "durationSeconds": 1404.82,
+      "failure": "Unchanged original API source-evidence case exceeded5000ms; measured5794ms in full run and5103ms focused reproduction.",
+      "log": {
+        "path": "/workspace/artifacts/milestone60-20261113/full-unit-final.log",
+        "sha256": "fd165c408f639c65745f2ab46f98c180a1b71425ba04bfff9be5d672b0a9f377"
+      }
+    }
+  ],
+  "immutableHintSuccessor": {
+    "G6": "f35d489f32f72b465fdf3f548e918bc89a9a2350",
+    "reviewedHintEvidenceSHA256": "a4de8bf52bedb48a88ca42d556892e6b60c9efcfa010c84bd5586de1f87cf0ad",
+    "trackedHintSHA256": "a954aa0522f24041919d1589942a6ef5c71054765e0a594a56d1adc45978b99f",
+    "capture66SHA256": "d7ef794bebb51be6d27cd17432db51ee13fd73d19c47ab9f6e53740de06a4a4b",
+    "reviewedNewAuthorityRecords": 79,
+    "legacyPathHints": 221,
+    "coldBlobHints": 39,
+    "mutableChecksOrDeadlinesChanged": false,
+    "performanceBenefitVerified": true,
+    "actualPostAdmissionAPIPending": false,
+    "admittedSelfPinCommit": "4fd05e0b4b9c005cef1704cef888133580f8c2cf",
+    "authorityCommit": "36434788baf38632ca6e04d9b8867dc92e7ef1b8",
+    "qualificationScope": "One original unmodified isolated API-file run; no full-suite or production SLA conclusion."
+  },
+  "immutablePrefetchObservedResult": {
+    "receipt": "/workspace/artifacts/milestone60-20261113/source/pure-prefetch-original-api-comparison.json",
+    "sha256": "289fcfd49045db1b40eb8af4d9810822854d3e88b7ba2c132c658997798b4c12",
+    "qualifiedSourceHead": "4fd05e0b4b9c005cef1704cef888133580f8c2cf",
+    "passed": true,
+    "testsPassed": 6,
+    "testsFailed": 0,
+    "APICaseMilliseconds": 4128,
+    "unchangedAPIDeadlineMilliseconds": 5000,
+    "marginMilliseconds": 872,
+    "observedReductionMilliseconds": 975,
+    "scope": "One original unmodified isolated API-file run; no full-suite or production SLA conclusion.",
+    "proofLogicOrMutableTargetReadCacheChanged": false,
+    "timeoutOrAssertionsChanged": false
+  },
+  "activeSourceAdmission": {
+    "APP2": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
+    "G6": "f35d489f32f72b465fdf3f548e918bc89a9a2350",
+    "authorityCommit": "36434788baf38632ca6e04d9b8867dc92e7ef1b8",
+    "concreteSelfPinCommit": "4fd05e0b4b9c005cef1704cef888133580f8c2cf",
+    "capture66SHA256": "d7ef794bebb51be6d27cd17432db51ee13fd73d19c47ab9f6e53740de06a4a4b",
+    "authority79SHA256": "6d7592f29200b26a498c333b0876452fe9a305660d9caf245b72243ac9d232e2",
+    "authority79GitBlob": "b17ad92955b8f15479bc5a6c0c80aef10f26c623",
+    "newAuthorityRecords": 79,
+    "retainedAuthorityRecords": [
+      75,
+      66,
+      148
+    ],
+    "sourcePaths": 22,
+    "safeAddedBootstrapRefSet": 9,
+    "installed": true,
+    "immutablePrefetchOnly": true,
+    "currentTargetProofsAndDeadlinesUnchanged": true
+  },
+  "localFocusedQualification": {
+    "commit": "4fd05e0b4b9c005cef1704cef888133580f8c2cf",
+    "passed": true,
+    "outerCases": 13,
+    "outerCasesFailed": 0,
+    "outerCasesSkipped": 0,
+    "durationSeconds": 253.85,
+    "coverage": [
+      "Retained source115 and consumer/nomination/tamper/refusal bridge",
+      "Authenticated receipt98 with original historical claims and exact reviewed successors",
+      "Original mandatory22 source/cold cases plus2 additive literal-preservation cases",
+      "Exact retained25 and current44 held SQL test5"
+    ],
+    "log": {
+      "path": "/workspace/artifacts/milestone60-20261113/source/final-prefetch-all-source.log",
+      "sha256": "df6734b4e52cbd1b5bd70849a21b51cbecd4c79652e32951742f89d92790bfd4"
+    }
+  },
+  "localFocusedQualifiedCommit": "4fd05e0b4b9c005cef1704cef888133580f8c2cf",
+  "finalUnfilteredQualification": {
+    "status": "PENDING_MANDATORY_EXACT_HEAD_HOSTED_CI",
+    "localFullSuitePassClaimed": false,
+    "previousFailedUnfilteredAttemptsRetained": true,
+    "required": "Run unfiltered unit regression in mandatory hosted CI at the final integrated SHA; require all five jobs and aggregate success before promoting20 conditional."
+  },
+  "operationsReferencePreflight": {
+    "passed": true,
+    "cases": 7,
+    "failed": 0,
+    "skipped": 0,
+    "durationMilliseconds": 324.285186,
+    "log": {
+      "path": "/workspace/artifacts/milestone60-20261113/operations-final.log",
+      "sha256": "5f5413389e4a89027b4c9aba23a4470c858eb1b1e4bddc19876a7ad609c6b5fd"
+    },
+    "productionAuthorityGranted": false
+  },
+  "launchAndCertificationSoftwareTests": {
+    "passed": true,
+    "cases": 60,
+    "failed": 0,
+    "durationSeconds": 4.98,
+    "log": {
+      "path": "/workspace/artifacts/milestone60-20261113/launch-certification-final.log",
+      "sha256": "d9dbf1519f274a41bdadd8edd75b118292f5559378eb6c77be1668c9a7db2c71"
+    },
+    "canonicalCertificationGranted": false
+  },
+  "latestHostedAttempt": {
+    "head": "912abe1256680203bc7f44a0f06265f9af27481a",
+    "run": 43482554486,
+    "conclusion": "FAILURE",
+    "jobs": {
+      "checks": "SUCCESS",
+      "build": "SUCCESS",
+      "full-product": "SUCCESS",
+      "source-acceptance": "SUCCESS",
+      "publication-factory": "FAILURE",
+      "validate": "FAILURE"
+    },
+    "unfilteredUnitTests": {
+      "passed": 9861,
+      "failed": 0,
+      "existingSkipped": 4,
+      "durationSeconds": 974.3,
+      "originalApiCaseMs": 3540
+    },
+    "preciseFailure": "Fresh FIRST_TWO_FRESH_RECEIPT current registered-snapshot-verification SHA0d96 was absent from historical-only helper claim list.",
+    "remediation": "Only the exact source SHA from independently pinned Stage7 Git codeRef is additionally admitted; full dependency proof and historical/tamper/refusal assertions retained.",
+    "sourceApplicationUnchanged": true,
+    "remediationSourceRef": "c3aaff5bf19f2d073cf3aeb7ba9d0cdf74719b1c",
+    "capture67SHA256": "1d25a08384eefc54eb822598f78962e4a0120e681f3168683be6274fa0089e38",
+    "freshLocalProducerAnd99SourceCases": "PENDING",
+    "successorAllFiveAndAggregate": "PENDING"
+  },
+  "receiptLineageCompletion": {
+    "applicationSourceUnchanged": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
+    "previousLocalFreshHead": "16691120f3cbc90c11967a77db9599b86e1ac5e2",
+    "genuineChecksPassed": 6,
+    "freshCurrentReceiptPredicatePassed": true,
+    "sourceGroupPassed": 72,
+    "sourceGroupFailed": 1,
+    "sourceGroupRegistered": 73,
+    "preciseAdmissionGap": "Legacy graph still equated current checker with historical71f. Actual current helper passed but retained26 cases could not register.",
+    "correctionGit": "00cc3b859dfd7db79c3ebe475ce95b9e67a492a2",
+    "correction": "Exact old71f to reviewedc3 helper edge; retain prior and881 intermediates, add71f beforec3; unchanged full SRC proof then narrow MJS extension, no projection.",
+    "capture68SHA256": "e9bc59cd40b54da57bef70ccba322b22fc2bab255b31261a3a65d72cd2744fd3",
+    "independentlyReviewedRecords": 87,
+    "historicalAuthorityRecordsPreserved": [
+      148,
+      66,
+      75,
+      79,
+      83
+    ],
+    "nextFresh6And99AndBrowser": "PENDING",
+    "nextExactHeadAllFiveAndAggregate": "PENDING",
+    "newConfirmed": 0
+  }
+}

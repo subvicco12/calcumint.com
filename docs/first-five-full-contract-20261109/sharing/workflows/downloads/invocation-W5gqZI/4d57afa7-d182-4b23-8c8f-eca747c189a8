@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "data-transfer-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "input": {
+        "timeSeconds": 10,
+        "bandwidthMbps": 80
+      },
+      "output": {
+        "steps": [
+          "Data Transfer = 100"
+        ],
+        "value": 100
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "input": {
+        "timeSeconds": 10,
+        "bandwidthMbps": 160
+      },
+      "output": {
+        "steps": [
+          "Data Transfer = 200"
+        ],
+        "value": 200
+      }
+    }
+  ],
+  "comparison": {
+    "schemaVersion": 1,
+    "metrics": [
+      {
+        "field": "value",
+        "label": "value",
+        "cells": [
+          {
+            "slot": "A",
+            "value": 100,
+            "difference": 0,
+            "unavailable": null
+          },
+          {
+            "slot": "B",
+            "value": 200,
+            "difference": 100,
+            "unavailable": null
+          }
+        ]
+      }
+    ],
+    "charts": []
+  }
+}

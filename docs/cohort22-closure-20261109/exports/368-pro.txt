@@ -1,0 +1,50 @@
+CalcuMint | Calculation report
+
+
+IP Subnet Calculator
+Calculator: ip-subnet-calculator | Engine version: 1
+Raw engine values: full numeric precision; no display rounding or sampled rows.
+Units appear only where supplied by the calculation or bound display metadata.
+Embedded Unicode glyphs are readable.
+Unsupported characters and controls use explicit Unicode escapes.
+Tagged PDF; PDF/UA conformance: UNVERIFIED.
+Text follows document order; charts include complete numeric text alternatives.
+
+
+INPUTS
+IPv4 address
+input["address"] = "192.168.1.10"
+CIDR prefix
+input["prefixLength"] = 24
+
+
+RESULTS
+Subnet addresses [addresses]
+output["value"] = 256
+output["steps"][0] = "IP Subnet = 256"
+
+
+METHODOLOGY
+Deterministic calculation using the reviewed Technology & Computing engine.\u000aTechnic
+al calculation revision: technology.ip-subnet@1\u000a\u000aIPv4 subnet size from an addr
+ess and CIDR prefix; the result reports the total IPv4 address count represented by the
+supplied subnet.\u000aNetwork size = 2^(32 − prefix length)
+
+
+DECLARED FORMULAS
+ip-subnet-calculator: Network size = 2^(32 − prefix length)
+IPv4 subnet size from an address and CIDR prefix; the result reports the total IPv4 addr
+ess count represented by the supplied subnet.
+
+
+SOURCES
+RFC 4632 — Classless Inter-domain Routing (CIDR)
+https://www.rfc-editor.org/rfc/rfc4632
+CIDR uses an IPv4 prefix length from 0 through 32; a prefix describes a power-of-two-siz
+ed block from one through 2^32 addresses.
+
+
+
+
+Engine v1 | Page 1 of 1
+

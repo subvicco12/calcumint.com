@@ -1,0 +1,10 @@
+PASS Unchanged proposal guard rejects execution with no function installed
+PASS Foreign owner, cross-tenant target, manager, Free admin and invalid invitation denied
+PASS Stored fields preserve normalized email, caller actor, role and exact 604800-second lifetime bounded by database clock
+PASS Concurrent distinct genuine JWT requests reserve final seat once; members plus live pending enforce five-seat quota
+PASS Participating Batch16 redemption converts pending to member without freeing an occupied seat
+PASS Concurrent same request succeeds once and retains existing duplicate rejection rather than inventing idempotency
+PASS Expired unaccepted invitation consumes no reservation; live pending rows consume seats
+PASS Business admin caller succeeds independently of owner entitlement
+PASS Accepted invitations do not count as pending reservations
+PASS CHARACTERIZED BLOCKER: existing authenticated direct insert bypasses reservation quota

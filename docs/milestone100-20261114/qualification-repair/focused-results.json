@@ -1,0 +1,99 @@
+{
+  "head": "12f1a02c88e57f23cdceaff1c5929bffea65473f",
+  "groups": [
+    {
+      "name": "new-source45",
+      "budgetSeconds": 45,
+      "seconds": 19.087,
+      "exitCode": 0,
+      "timedOut": false,
+      "command": [
+        "/workspace/tools/node22-recovery/node-v22.23.4-linux-x64/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/milestone100-20261114/source-preflight-stage8.test.mjs",
+        "tests/milestone100-20261114/source-stage8-guard-selection.test.mjs",
+        "tests/milestone100-20261114/source-stage8-named-dependencies.test.mjs",
+        "tests/milestone100-20261114/source-stage8-publication-transport.test.mjs",
+        "tests/milestone100-20261114/source-stage8-saved-actions-claim.test.mjs",
+        "tests/milestone100-20261114/source-stage8-shortest-fixture.test.mjs",
+        "tests/milestone100-20261114/source-stage8-shortest-guard.test.mjs",
+        "tests/milestone100-20261114/source-stage8-test-only-successor.test.mjs",
+        "tests/milestone100-20261114/source-stage8-direct-commit-cache.test.mjs",
+        "tests/milestone100-20261114/source-stage8-negative-authority.test.mjs"
+      ],
+      "summary": [
+        "# tests 45",
+        "# pass 45",
+        "# fail 0",
+        "# skipped 0",
+        "# duration_ms 18986.34871"
+      ]
+    },
+    {
+      "name": "adoption-original11",
+      "budgetSeconds": 60,
+      "seconds": 3.819,
+      "exitCode": 0,
+      "timedOut": false,
+      "command": [
+        "/workspace/tools/node22-recovery/node-v22.23.4-linux-x64/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "tests/adoption1535/lineage.test.mjs"
+      ],
+      "summary": [
+        "# tests 11",
+        "# pass 11",
+        "# fail 0",
+        "# skipped 0",
+        "# duration_ms 3766.867152"
+      ]
+    },
+    {
+      "name": "shortest-original36",
+      "budgetSeconds": 60,
+      "seconds": 42.764,
+      "exitCode": 0,
+      "timedOut": false,
+      "command": [
+        "/workspace/tools/node22-recovery/node-v22.23.4-linux-x64/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "tests/shortest-publication-20/caller-lineage.test.mjs",
+        "tests/shortest-publication-20/frequency-presentation-lineage.test.mjs",
+        "tests/shortest-publication-20/completion-lineage.test.mjs"
+      ],
+      "summary": [
+        "# tests 36",
+        "# pass 36",
+        "# fail 0",
+        "# skipped 0",
+        "# duration_ms 42711.655277"
+      ]
+    },
+    {
+      "name": "source-original43",
+      "budgetSeconds": 60,
+      "seconds": 11.535,
+      "exitCode": 0,
+      "timedOut": false,
+      "command": [
+        "/workspace/tools/node22-recovery/node-v22.23.4-linux-x64/bin/node",
+        "--test",
+        "--test-reporter=tap",
+        "tests/financial-safety-lineage.test.mjs",
+        "tests/product-completion-lineage.test.mjs",
+        "tests/source-lineage-bootstrap.test.mjs"
+      ],
+      "summary": [
+        "# tests 43",
+        "# pass 43",
+        "# fail 0",
+        "# skipped 0",
+        "# duration_ms 11473.626627"
+      ]
+    }
+  ]
+}

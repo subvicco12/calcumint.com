@@ -1,0 +1,85 @@
+{
+  "completedAt": "2026-11-11T03:18:48.457247+00:00",
+  "git": "c715d0ee695c3224c4c34ffa0de56ff5e8d65033",
+  "native": {
+    "exitCode": 0,
+    "checks": 9,
+    "passed": true,
+    "historicalComparison": {
+      "preHash": true,
+      "postHash": true,
+      "sources": true,
+      "successorSHA256": true,
+      "reverseSHA256": true
+    },
+    "scope": "SQL calls as postgres and SET ROLE service_role/anon/authenticated; pinned genuine PG17.6 with GoTrue/PostgREST running; not HTTP-authenticated native acceptance; synthetic lower publication/outputs explicitly used"
+  },
+  "sharing": {
+    "exitCode": 0,
+    "checks": 32,
+    "passed": true,
+    "sourceHashesMatchHistorical": true,
+    "scope": "Genuine GoTrue signups and authenticated PostgREST RPC/table calls; service-key RPC verified actor storage; full repository model, not hosted production equivalence; synthetic snapshot mathematics not actual-engine proof"
+  },
+  "sourceBindings": [
+    {
+      "path": "docs/parallel-five-20261110/native/contract-successor.sql",
+      "sha256": "a9fe9272d0a31d36949b66a84a87b07c6023f3cb466b5ee860c6877ca0e689b1",
+      "currentGitByteExact": true,
+      "postRunByteExact": true
+    },
+    {
+      "path": "docs/parallel-five-20261110/native/contract-reverse.sql",
+      "sha256": "2be70d58d68246d21fe06de60107568d7a3d682d64db49cc41fda7a6e28edfa9",
+      "currentGitByteExact": true,
+      "postRunByteExact": true
+    },
+    {
+      "path": "docs/parallel-five-20261110/sharing/contract-successor.sql",
+      "sha256": "e13fc6570528031bbe32dd01cfa0b11b5661758c601c11ef4b3798c8ea567c9d",
+      "currentGitByteExact": true,
+      "postRunByteExact": true
+    },
+    {
+      "path": "docs/parallel-five-20261110/sharing/contract-reverse.sql",
+      "sha256": "56538cd3b3caefa32945d10f62bb5e05d1bbc398911eebdf10d3a8dd0bfdcad5",
+      "currentGitByteExact": true,
+      "postRunByteExact": true
+    },
+    {
+      "path": "tests/parallel-five-native-20261110/contract.postgres.mjs",
+      "sha256": "08ec1cb4ccbfb04a1c361405005df3dd9e486cbce49cc89e3d367215e4141ca0",
+      "currentGitByteExact": true,
+      "postRunByteExact": true
+    },
+    {
+      "path": "docs/parallel-five-20261110/sharing/acceptance.mjs",
+      "sha256": "b9fd0dee2989be9eb7009e155c56c723292c2dfa9f2291f16bfa4f6934afaa35",
+      "currentGitByteExact": true,
+      "postRunByteExact": true
+    }
+  ],
+  "mainHistoricalReceiptsPreserved": [
+    {
+      "path": "docs/parallel-five-20261110/native/receipt.json",
+      "mainByteExactHistoricalGit": true
+    },
+    {
+      "path": "docs/parallel-five-20261110/native/preimage.json",
+      "mainByteExactHistoricalGit": true
+    },
+    {
+      "path": "docs/parallel-five-20261110/sharing/pg/receipt.json",
+      "mainByteExactHistoricalGit": true
+    }
+  ],
+  "productionWrites": false,
+  "activeMigrationChanges": false,
+  "certificationGranted": false,
+  "publicationGranted": false,
+  "limitations": [
+    "Held successors were unguarded only inside disposable isolated fixture as existing tests specify",
+    "No target production schema/provider equivalence or production SQL adoption established",
+    "Random seeded records differ naturally; exact historical preservation is asserted inside each transaction campaign, not between random runs"
+  ]
+}

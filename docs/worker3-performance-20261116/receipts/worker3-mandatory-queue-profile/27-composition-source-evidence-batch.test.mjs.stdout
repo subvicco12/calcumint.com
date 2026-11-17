@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: fixed composition declaration is exactly31 unique frozen source claims
+ok 1 - fixed composition declaration is exactly31 unique frozen source claims
+  ---
+  duration_ms: 0.967703
+  type: 'test'
+  ...
+# Subtest: complete synchronous callback proves fresh context twice and returns undefined
+ok 2 - complete synchronous callback proves fresh context twice and returns undefined
+  ---
+  duration_ms: 2.043946
+  type: 'test'
+  ...
+# Subtest: missing coverage fails
+ok 3 - missing coverage fails
+  ---
+  duration_ms: 1.535696
+  type: 'test'
+  ...
+# Subtest: unknown and duplicate rows poison even when caught
+ok 4 - unknown and duplicate rows poison even when caught
+  ---
+  duration_ms: 1.141851
+  type: 'test'
+  ...
+# Subtest: expired callback and nested invocation refuse
+ok 5 - expired callback and nested invocation refuse
+  ---
+  duration_ms: 0.544677
+  type: 'test'
+  ...
+# Subtest: Promise or nonundefined return refuses
+ok 6 - Promise or nonundefined return refuses
+  ---
+  duration_ms: 2.135255
+  type: 'test'
+  ...
+# Subtest: HEAD move, status change and physical substitution fail
+ok 7 - HEAD move, status change and physical substitution fail
+  ---
+  duration_ms: 0.827343
+  type: 'test'
+  ...
+# Subtest: wrong claim, loaded bytes and current immutable tuple fail
+ok 8 - wrong claim, loaded bytes and current immutable tuple fail
+  ---
+  duration_ms: 0.983989
+  type: 'test'
+  ...
+# Subtest: closing proof runs even when callback throws
+ok 9 - closing proof runs even when callback throws
+  ---
+  duration_ms: 0.517523
+  type: 'test'
+  ...
+# Subtest: captured closing map changes refuse after a completed row
+ok 10 - captured closing map changes refuse after a completed row
+  ---
+  duration_ms: 0.898811
+  type: 'test'
+  ...
+# Subtest: original historical Git content substitution refuses
+ok 11 - original historical Git content substitution refuses
+  ---
+  duration_ms: 0.379147
+  type: 'test'
+  ...
+# Subtest: actual live HEAD:path substitution refuses
+ok 12 - actual live HEAD:path substitution refuses
+  ---
+  duration_ms: 0.259241
+  type: 'test'
+  ...
+# Subtest: caught fresh filesystem refusal stays poisoned
+ok 13 - caught fresh filesystem refusal stays poisoned
+  ---
+  duration_ms: 0.222218
+  type: 'test'
+  ...
+# Subtest: nested malformed arity poisons outer scope even when caught
+ok 14 - nested malformed arity poisons outer scope even when caught
+  ---
+  duration_ms: 0.262123
+  type: 'test'
+  ...
+# Subtest: binding transport has at most16 concurrent reads and copies all1794 bytes in order
+ok 15 - binding transport has at most16 concurrent reads and copies all1794 bytes in order
+  ---
+  duration_ms: 21.628557
+  type: 'test'
+  ...
+# Subtest: failed bounded transport drains started reads and stops its queue before rejecting
+ok 16 - failed bounded transport drains started reads and stops its queue before rejecting
+  ---
+  duration_ms: 0.485885
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 47.615194

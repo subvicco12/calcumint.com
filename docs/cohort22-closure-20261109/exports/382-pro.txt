@@ -1,0 +1,51 @@
+CalcuMint | Calculation report
+
+
+Power Supply Calculator
+Calculator: power-supply-calculator | Engine version: 1
+Raw engine values: full numeric precision; no display rounding or sampled rows.
+Units appear only where supplied by the calculation or bound display metadata.
+Embedded Unicode glyphs are readable.
+Unsupported characters and controls use explicit Unicode escapes.
+Tagged PDF; PDF/UA conformance: UNVERIFIED.
+Text follows document order; charts include complete numeric text alternatives.
+
+
+INPUTS
+System load (W) [W]
+input["systemLoadWatts"] = 500
+Headroom (%) [%]
+input["headroomPercent"] = 20
+
+
+RESULTS
+Planning wattage [W]
+output["value"] = 600
+output["steps"][0] = "Power Supply = 600"
+
+
+METHODOLOGY
+Deterministic calculation using the reviewed Technology & Computing engine.\u000aTechnic
+al calculation revision: technology.power-supply@1\u000a\u000aPlanning wattage from meas
+ured/estimated system load plus explicit headroom; not a PSU model recommendation.\u000a
+Required W = system load × (1 + headroom %)
+
+
+DECLARED FORMULAS
+power-supply-calculator: Required W = system load × (1 + headroom %)
+Planning wattage from measured/estimated system load plus explicit headroom; not a PSU m
+odel recommendation.
+
+
+SOURCES
+NIST SP 330 — watt (unit of power)
+https://www.nist.gov/pml/special-publication-330/sp-330-appendix-1
+NIST defines the watt as a unit of power. The calculator applies only the user-selected
+headroom to a supplied load; it does not encode a mandatory PSU-sizing standard or recom
+mend a hardware model.
+
+
+
+
+Engine v1 | Page 1 of 1
+
