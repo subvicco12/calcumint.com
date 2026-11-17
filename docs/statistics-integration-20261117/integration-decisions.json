@@ -1,0 +1,76 @@
+{
+  "base": "6fa8f87433ee8434d1d89aaf93deea0216eb17cb",
+  "workerHeads": [
+    "0253dc320e6af34afa4ef2f0a1af08bd1812d871",
+    "556ca86b38e9f1f28973df07b832ed863f86b4ed"
+  ],
+  "normalMerges": true,
+  "overlappingWorkerPaths": [],
+  "worker1SourceManifestObjects": 9,
+  "worker2SourceManifestObjects": 10,
+  "worker2ReceiptManifestFilesVerified": 68,
+  "worker1ReviewedSourceSuccessors": [
+    {
+      "path": "src/lib/worker1-statistics-a-20261117/account.ts",
+      "predecessorRef": "0253dc320e6af34afa4ef2f0a1af08bd1812d871",
+      "predecessorBlob": "ea749e05f8080d50d4360a99b7dd96aaf350e86a",
+      "predecessorSHA256": "e4710ea0f28e4ae9c16d18795e8a3f9d9fa2ae46391dbecc38c4a1eb29745699",
+      "currentSourceObject": "bfef306d8c3fc8608feadba880d4eb2afca2e210",
+      "currentSHA256": "f4fe09af764340437b2d8d65cb69072d4b2731947cb9263884f79c55ee152f35",
+      "reason": "Proven server-action active reviewer authorization gap; failing regression then exact owner/reviewer checks. Original worker bytes remain immutable in Git."
+    },
+    {
+      "path": "src/lib/worker1-statistics-a-20261117/account.test.ts",
+      "predecessorRef": "0253dc320e6af34afa4ef2f0a1af08bd1812d871",
+      "predecessorBlob": "6ab8760fdef9a4e4855b9fbe62206294a00dc5d9",
+      "predecessorSHA256": "a27c061f7f1f110390ea158cf031b142561ec7c901fe9b0955caec10d380b433",
+      "currentSourceObject": "bfef306d8c3fc8608feadba880d4eb2afca2e210",
+      "currentSHA256": "3c79a41015fab2a2698af420c8fb3e0778565a0a1c68ba232652e993110dd6e6",
+      "reason": "Proven server-action active reviewer authorization gap; failing regression then exact owner/reviewer checks. Original worker bytes remain immutable in Git."
+    }
+  ],
+  "construction348349": "UNCHANGED_CAPTURE_REFUSALS_AND_HISTORICAL_REPLAY",
+  "immutableEngineDelta": [],
+  "priorAuthorityPrefix": "BYTE_IDENTICAL_THROUGH_V76",
+  "newAuthority": "V77_CAPTURE144_79_CUMULATIVE_PATHS_58_ANCESTRY",
+  "blocked298": true,
+  "independentReview": {
+    "critical": 0,
+    "important": 0,
+    "actionableMinor": 0,
+    "notQualificationOrCanonicalApproval": true
+  },
+  "reviewLimits": [
+    "Browser code/receipts reviewed; journeys separately executed in actual loopback cookie runtime",
+    "Production equivalence UNKNOWN, held SQL not applied in production",
+    "Canonical applicability and specialist certification not granted",
+    "Full CI separate mandatory gate",
+    "Prior111 unchanged-source preservation and affected regression, no repeated broad audit"
+  ],
+  "releaseHold": true,
+  "provenHarnessRepairs": [
+    {
+      "cause": "V77 imported and fetched but omitted from selected finite authority refs",
+      "repair": "Add exact immutable V77 refs to selected allowlist; V78 exact pins all modified guards",
+      "assertionsPreserved": true
+    },
+    {
+      "cause": "Two distinct account paths legitimately share identical immutable content; fixture batch assumed unique blobs",
+      "repair": "Deduplicate immutable batch identifiers, as the actual reader does; still authenticate every path/record",
+      "assertionsPreserved": true
+    }
+  ],
+  "sourceGeneration": "V81/capture148 pending installation; Stage9 exact79 paths/58ancestry",
+  "fixtureCorrection": "Keep raw per-path blob IDs for authority preload assertions; use the unique batchIDs only at both actual cat-file transport boundaries. All6 adversarial fixture tests pass.",
+  "preflightCorrection": "Both exact paths explicitly rebound at every successor generation, even when bytes unchanged.",
+  "finalTransportRepair": {
+    "scope": "Stage9 test Git provider only",
+    "changes": "Existing execNativeGit plus makeGitReader immutable commit/tree/blob batching; test bodies identical",
+    "mutableObservationsCached": false,
+    "deadlineMs": 15000,
+    "priorMs": 15755.99,
+    "nativeOnlyMs": 14515.63,
+    "immutableBatchMs": 1295.41,
+    "testsPassed": 5
+  }
+}
