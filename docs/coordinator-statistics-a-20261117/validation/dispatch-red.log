@@ -1,0 +1,27 @@
+
+ RUN  v3.2.7 /workspace/work/worker1-statistics-a-20261117
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/coordinator-statistics-a-20261117/shared-integration.test.ts [ src/lib/coordinator-statistics-a-20261117/shared-integration.test.ts ]
+Error: Cannot find module './contracts' imported from '/workspace/work/worker1-statistics-a-20261117/src/lib/coordinator-statistics-a-20261117/shared-integration.test.ts'
+ ❯ src/lib/coordinator-statistics-a-20261117/shared-integration.test.ts:10:1
+      8| import {verifyFactoryNineSnapshot} from '@/lib/business/factory-nine-s…
+      9| import {linearRegressionCalculator,weightedMeanCalculator,percentileCa…
+     10| import {statisticsBusinessDeliveryProposal} from './contracts';
+       | ^
+     11| it.each(statisticsContracts)('shared/private dispatch retains the exac…
+     12|  const raw=Object.fromEntries(c.fields.map(f=>[f.key,String(f.defaultV…
+
+Caused by: Error: Failed to load url ./contracts (resolved id: ./contracts) in /workspace/work/worker1-statistics-a-20261117/src/lib/coordinator-statistics-a-20261117/shared-integration.test.ts. Does the file exist?
+ ❯ loadAndTransform ../batch13-deps/node_modules/vite/dist/node/chunks/config.js:22907:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  05:21:57
+   Duration  2.26s (transform 1.08s, setup 27ms, collect 0ms, tests 0ms, environment 0ms, prepare 112ms)
+

@@ -1,0 +1,92 @@
+
+ RUN  v3.2.7 /workspace/work/worker1-statistics-a-20261117
+
+ ✓ src/lib/calculator-factory/registry.test.ts (7 tests) 471ms
+ ❯ src/lib/calculator-factory/completion/geometry-worker-b.integration.test.ts (9 tests | 8 failed) 345ms
+   × Worker B individual bounded geometry acceptance, not certification > verifies original engine, domain, replay, scenarios and real exports #272 132ms
+     → spawnSync pdftotext EPERM
+   × Worker B individual bounded geometry acceptance, not certification > verifies original engine, domain, replay, scenarios and real exports #274 55ms
+     → spawnSync pdftotext EPERM
+   × Worker B individual bounded geometry acceptance, not certification > verifies original engine, domain, replay, scenarios and real exports #275 49ms
+     → spawnSync pdftotext EPERM
+   × Worker B individual bounded geometry acceptance, not certification > verifies original engine, domain, replay, scenarios and real exports #278 28ms
+     → spawnSync pdftotext EPERM
+   × Worker B individual bounded geometry acceptance, not certification > verifies original engine, domain, replay, scenarios and real exports #279 31ms
+     → spawnSync pdftotext EPERM
+   × Worker B individual bounded geometry acceptance, not certification > verifies original engine, domain, replay, scenarios and real exports #280 32ms
+     → spawnSync pdftotext EPERM
+   ✓ Worker B individual bounded geometry acceptance, not certification > checks independent integer prism and Pythagorean families 2ms
+   × Worker B individual bounded geometry acceptance, not certification > verifies retained publisher bytes without granting formal applicability 2ms
+     → ENOENT: no such file or directory, open 'docs/milestone100-20261114/geometry/source-excerpts.json'
+   × Worker B individual bounded geometry acceptance, not certification > preserves original engine and source excerpt bytes at the immutable baseline 12ms
+     → spawnSync git EPERM
+ ❯ src/lib/calculator-factory/completion/science-worker-c.integration.test.ts (6 tests | 4 failed) 185ms
+   × exact science contract and delivery #328 71ms
+     → spawnSync pdftotext EPERM
+   × exact science contract and delivery #331 65ms
+     → spawnSync pdftotext EPERM
+   × exact science contract and delivery #332 40ms
+     → spawnSync pdftotext EPERM
+   ✓ independently verifies exact rational amount and concentration witnesses 1ms
+   ✓ preserves historical dilution records without imposing new capture policy 1ms
+   × preserves immutable engines and retained source evidence bytes 6ms
+     → spawnSync git EPERM
+ ✓ src/lib/coordinator-statistics-a-20261117/shared-integration.test.ts (8 tests) 107ms
+ ✓ src/lib/business/factory-nine-sharing.test.ts (3 tests) 22ms
+ ✓ src/lib/calculator-factory/completion/remainder-business-recovery.test.ts (6 tests) 20ms
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 12 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/calculator-factory/completion/geometry-worker-b.integration.test.ts > Worker B individual bounded geometry acceptance, not certification > verifies original engine, domain, replay, scenarios and real exports #272
+ FAIL  src/lib/calculator-factory/completion/geometry-worker-b.integration.test.ts > Worker B individual bounded geometry acceptance, not certification > verifies original engine, domain, replay, scenarios and real exports #274
+ FAIL  src/lib/calculator-factory/completion/geometry-worker-b.integration.test.ts > Worker B individual bounded geometry acceptance, not certification > verifies original engine, domain, replay, scenarios and real exports #275
+ FAIL  src/lib/calculator-factory/completion/geometry-worker-b.integration.test.ts > Worker B individual bounded geometry acceptance, not certification > verifies original engine, domain, replay, scenarios and real exports #278
+ FAIL  src/lib/calculator-factory/completion/geometry-worker-b.integration.test.ts > Worker B individual bounded geometry acceptance, not certification > verifies original engine, domain, replay, scenarios and real exports #279
+ FAIL  src/lib/calculator-factory/completion/geometry-worker-b.integration.test.ts > Worker B individual bounded geometry acceptance, not certification > verifies original engine, domain, replay, scenarios and real exports #280
+Error: spawnSync pdftotext EPERM
+ ❯ src/lib/calculator-factory/completion/geometry-worker-b.integration.test.ts:35:74
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/12]⎯
+
+ FAIL  src/lib/calculator-factory/completion/geometry-worker-b.integration.test.ts > Worker B individual bounded geometry acceptance, not certification > verifies retained publisher bytes without granting formal applicability
+Error: ENOENT: no such file or directory, open 'docs/milestone100-20261114/geometry/source-excerpts.json'
+ ❯ src/lib/calculator-factory/completion/geometry-worker-b.integration.test.ts:45:28
+     43|  });
+     44|  it('verifies retained publisher bytes without granting formal applica…
+     45|   const capture=JSON.parse(readFileSync('docs/milestone100-20261114/ge…
+       |                            ^
+     46|   for(const source of capture.sources){const bytes=readFileSync(source…
+     47|  });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/12]⎯
+
+ FAIL  src/lib/calculator-factory/completion/geometry-worker-b.integration.test.ts > Worker B individual bounded geometry acceptance, not certification > preserves original engine and source excerpt bytes at the immutable baseline
+Error: spawnSync git EPERM
+ ❯ src/lib/calculator-factory/completion/geometry-worker-b.integration.test.ts:49:202
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/12]⎯
+
+ FAIL  src/lib/calculator-factory/completion/science-worker-c.integration.test.ts > exact science contract and delivery #328
+ FAIL  src/lib/calculator-factory/completion/science-worker-c.integration.test.ts > exact science contract and delivery #331
+ FAIL  src/lib/calculator-factory/completion/science-worker-c.integration.test.ts > exact science contract and delivery #332
+Error: spawnSync pdftotext EPERM
+ ❯ src/lib/calculator-factory/completion/science-worker-c.integration.test.ts:28:68
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/12]⎯
+
+ FAIL  src/lib/calculator-factory/completion/science-worker-c.integration.test.ts > preserves immutable engines and retained source evidence bytes
+Error: spawnSync git EPERM
+ ❯ src/lib/calculator-factory/completion/science-worker-c.integration.test.ts:45:206
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/12]⎯
+
+
+ Test Files  2 failed | 4 passed (6)
+      Tests  12 failed | 27 passed (39)
+   Start at  05:22:47
+   Duration  6.34s (transform 1.17s, setup 65ms, collect 3.48s, tests 1.15s, environment 1ms, prepare 535ms)
+

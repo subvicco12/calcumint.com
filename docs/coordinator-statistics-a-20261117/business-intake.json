@@ -1,0 +1,144 @@
+{
+  "kind": "HELD_STATISTICS_A_BUSINESS_INTAKE_NOT_SQL_ADOPTION",
+  "predecessorBindings": [
+    {
+      "path": "docs/coordinator-worker3-20261117/business/postimage.json",
+      "bytes": 99338,
+      "sha256": "0b142f528b5f0f844f64f0e1cf22bc0c2e9ca23a679523cfe338933611efd3f2"
+    },
+    {
+      "path": "docs/coordinator-worker3-20261117/business/held-successor.sql",
+      "bytes": 109022,
+      "sha256": "7b9c765be6c1ba9907a8d1b0d6e4aa689975d85703bb1498fc3a6ec1c8b76918"
+    },
+    {
+      "path": "docs/coordinator-worker3-20261117/business/held-reverse.sql",
+      "bytes": 84426,
+      "sha256": "d43fec869c6ce7c63431cdb2a8d91aff8c44aeaa561b6eb075d7eed34cbdfc1f"
+    },
+    {
+      "path": "src/lib/native-delivery/factory-delivery-catalog.ts",
+      "bytes": 5636,
+      "sha256": "ff90112e11c1a182ccb4051dfdb882d6020db8c662be51bd21f6598743df26a9"
+    }
+  ],
+  "proposals": [
+    {
+      "catalogId": 292,
+      "engineId": "statistics.correlation",
+      "slug": "correlation-calculator",
+      "version": 1,
+      "captureSourceVersion": "worker1-statistics-a-20261117.1/statistics.correlation@1",
+      "activation": "HELD_NOT_ADOPTED",
+      "requiredOutputShape": [
+        "correlation",
+        "count",
+        "meanX",
+        "meanY",
+        "steps"
+      ],
+      "inputTransport": "Exact paired numeric observation arrays; percentile also has a scalar percentile input.",
+      "stepsType": "array<string>",
+      "numericOutputType": "finite binary64 JSON number",
+      "historicalVerification": "verifyStatisticsSnapshot — immutable v1 forward agreement; never capture guards."
+    },
+    {
+      "catalogId": 293,
+      "engineId": "statistics.linear-regression",
+      "slug": "linear-regression-calculator",
+      "version": 1,
+      "captureSourceVersion": "worker1-statistics-a-20261117.1/statistics.linear-regression@1",
+      "activation": "HELD_NOT_ADOPTED",
+      "requiredOutputShape": [
+        "slope",
+        "intercept",
+        "rSquared",
+        "correlation",
+        "count",
+        "steps"
+      ],
+      "inputTransport": "Exact paired numeric observation arrays; percentile also has a scalar percentile input.",
+      "stepsType": "array<string>",
+      "numericOutputType": "finite binary64 JSON number",
+      "historicalVerification": "verifyStatisticsSnapshot — immutable v1 forward agreement; never capture guards."
+    },
+    {
+      "catalogId": 294,
+      "engineId": "statistics.weighted-mean",
+      "slug": "weighted-mean-calculator",
+      "version": 1,
+      "captureSourceVersion": "worker1-statistics-a-20261117.1/statistics.weighted-mean@1",
+      "activation": "HELD_NOT_ADOPTED",
+      "requiredOutputShape": [
+        "weightedMean",
+        "totalWeight",
+        "count",
+        "steps"
+      ],
+      "inputTransport": "Exact paired numeric observation arrays; percentile also has a scalar percentile input.",
+      "stepsType": "array<string>",
+      "numericOutputType": "finite binary64 JSON number",
+      "historicalVerification": "verifyStatisticsSnapshot — immutable v1 forward agreement; never capture guards."
+    },
+    {
+      "catalogId": 295,
+      "engineId": "statistics.percentile",
+      "slug": "percentile-calculator",
+      "version": 1,
+      "captureSourceVersion": "worker1-statistics-a-20261117.1/statistics.percentile@1",
+      "activation": "HELD_NOT_ADOPTED",
+      "requiredOutputShape": [
+        "percentile",
+        "position",
+        "count",
+        "steps"
+      ],
+      "inputTransport": "Exact paired numeric observation arrays; percentile also has a scalar percentile input.",
+      "stepsType": "array<string>",
+      "numericOutputType": "finite binary64 JSON number",
+      "historicalVerification": "verifyStatisticsSnapshot — immutable v1 forward agreement; never capture guards."
+    }
+  ],
+  "currentNativeTupleCount": 99,
+  "proposedCombinedCountWithoutWorker2": 103,
+  "predecessorFunctionSignatures": [
+    {
+      "signature": "factory_native_embed_publication_v1(integer,integer)",
+      "sha256": "bd9b7e1d5283441336fc8352d2f7f2a73fe341b8a6f25da179def38fb7227f44",
+      "owner": "postgres",
+      "acl": "{postgres=X/postgres}"
+    },
+    {
+      "signature": "share_factory_nine_snapshot(uuid,jsonb)",
+      "sha256": "2ed0c0efa86096c3d99ef787c8918b4d646bf0724be7f60d978be448e913a461",
+      "owner": "postgres",
+      "acl": "{postgres=X/postgres,service_role=X/postgres}"
+    },
+    {
+      "signature": "submit_technology_five_job_v1(uuid,text,uuid,uuid,integer,integer,jsonb,jsonb,uuid)",
+      "sha256": "f541f9ccd5861ebd3a81ee8a9733dd965d9f6665572f39a56d0416b8b21d1eee",
+      "owner": "postgres",
+      "acl": "{postgres=X/postgres,service_role=X/postgres}"
+    },
+    {
+      "signature": "technology_five_require_publication_v1(integer,integer)",
+      "sha256": "cc652fd49c6dfa19274474a6d49a8f06937e4447a4f3eec0a75cbfdc2e88f65b",
+      "owner": "postgres",
+      "acl": "{postgres=X/postgres}"
+    }
+  ],
+  "schemaMetadataMeaning": "Retained isolated repository-model postimage, NOT a current production capture.",
+  "sourceIntegration": "Private registry, packet validation and immutable stored recovery prepared; native catalog unchanged.",
+  "adoptionReady": false,
+  "blocked": [
+    "Worker 2 #296–299 handoff and shared-file ownership reconciliation remain pending.",
+    "Existing predecessor generator is pinned to the prior 79-to-99 transition, its twenty identities and scalar output-shape branches; it is not automatically a reviewed 99-to-103/107 generator.",
+    "Review exact new tuple/output/input constraints with a successor generator, source/ACL preconditions, genuine role/RLS/concurrency and reversal acceptance before adoption.",
+    "Reconcile actual hosted schema and participating writers; operator freeze/recovery/credential and release approvals remain required.",
+    "No native API/embed/jobs/webhooks or shared writes are enabled for these four IDs."
+  ],
+  "sqlGenerated": false,
+  "sqlActivated": false,
+  "productionWrites": false,
+  "releaseHold": true
+}

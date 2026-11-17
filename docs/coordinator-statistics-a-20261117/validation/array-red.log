@@ -1,0 +1,49 @@
+
+ RUN  v3.2.7 /workspace/work/worker1-statistics-a-20261117
+
+ ❯ src/lib/coordinator-statistics-a-20261117/array-workbench.test.tsx (2 tests | 2 failed) 182ms
+   × restores verified statistics arrays through the actual shared workbench 157ms
+     → expected <p role="alert"></p> to be null
+   × shared array restore retains precision refusal rather than recreating a legacy zero capture 24ms
+     → expected 'Unsupported stored input' to match /precision/
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/coordinator-statistics-a-20261117/array-workbench.test.tsx > restores verified statistics arrays through the actual shared workbench
+AssertionError: expected <p role="alert"></p> to be null
+
+- Expected: 
+null
+
++ Received: 
+<p
+  role="alert"
+>
+  Unsupported stored input
+</p>
+
+ ❯ src/lib/coordinator-statistics-a-20261117/array-workbench.test.tsx:12:38
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/lib/coordinator-statistics-a-20261117/array-workbench.test.tsx > shared array restore retains precision refusal rather than recreating a legacy zero capture
+AssertionError: expected 'Unsupported stored input' to match /precision/
+
+- Expected: 
+/precision/
+
++ Received: 
+"Unsupported stored input"
+
+ ❯ src/lib/coordinator-statistics-a-20261117/array-workbench.test.tsx:17:123
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed (2)
+   Start at  05:25:19
+   Duration  2.95s (transform 961ms, setup 20ms, collect 1.65s, tests 182ms, environment 741ms, prepare 80ms)
+

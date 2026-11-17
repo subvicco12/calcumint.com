@@ -1,0 +1,45 @@
+
+ RUN  v3.2.7 /workspace/work/worker1-statistics-a-20261117
+
+ ✓ src/lib/coordinator-statistics-a-20261117/shared-integration.test.ts (8 tests) 120ms
+ ❯ src/lib/calculator-factory/registry.test.ts (7 tests | 1 failed) 405ms
+   × factory exact integration contracts > retains all27 narrow contracts and admits exactly19 source-scoped registered successors with executable defaults 14ms
+     → expected [ Array(108) ] to deeply equal [ 208, 209, 210, 211, 212, 215, …(98) ]
+   ✓ factory exact integration contracts > rejects null, arrays, numeric coercion, extra fields and incomplete decimal tokens for every contract 198ms
+   ✓ factory exact integration contracts > preserves exact entered raw provenance and rejects identity, version, output and raw packet tampering 4ms
+   ✓ factory exact integration contracts > binds private physics arithmetic revision into exported source identity 0ms
+   ✓ factory exact integration contracts > preserves case-sensitive target and percentage presentation units 2ms
+   ✓ factory exact integration contracts > gates paid local workflows without changing shared mathematics 179ms
+   ✓ uses source-defined case-sensitive symbols in every scoped converter control and result 4ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/calculator-factory/registry.test.ts > factory exact integration contracts > retains all27 narrow contracts and admits exactly19 source-scoped registered successors with executable defaults
+AssertionError: expected [ Array(108) ] to deeply equal [ 208, 209, 210, 211, 212, 215, …(98) ]
+
+- Expected
++ Received
+
+@@ -101,6 +101,10 @@
+    338,
+    339,
+    340,
+    341,
+    342,
++   292,
++   293,
++   294,
++   295,
+  ]
+
+ ❯ src/lib/calculator-factory/registry.test.ts:8:52
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 14 passed (15)
+   Start at  05:22:24
+   Duration  3.15s (transform 1.03s, setup 28ms, collect 1.90s, tests 524ms, environment 0ms, prepare 180ms)
+
