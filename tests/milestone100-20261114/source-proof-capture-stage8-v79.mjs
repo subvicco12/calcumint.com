@@ -10,7 +10,7 @@ import {readFileSync,writeFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {resolve} from 'node:path';
-const predecessorAuthorityRef='40de5b300b87b74137cb0886849ce988e82f987b';
+const predecessorAuthorityRef='def1aa5663a6c9feaafee640a30c74d818a17f3a';
 const retainedPath='docs/parallel-source-20261110/capture-revision145.json';
 const retainedSHA256='3b15b9d33288edd395a4cf2cddab4426cba32260d30582fbdab77193fa43069e';
 const sha=b=>createHash('sha256').update(b).digest('hex');
