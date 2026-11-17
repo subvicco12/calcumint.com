@@ -24577,8 +24577,94 @@ export const acceptedStage8V86=Object.freeze([
   }
 ]);
 export const additionalStage8V86BootstrapRefs=Object.freeze(["0253dc320e6af34afa4ef2f0a1af08bd1812d871","032298bee22dcd6ba2bd7f9997f01c7a923092ab","054854bceed263ba59e8cd0052f1f3e9b1ea8e30","089b2d2d8114304322c62b2408f18b29cb867bb1","0ab903ea3a5dda24506cc329c699cc7c2a837760","0eb375bc79c8331f4b6250848c64d9036831e20c","103fe68fa45bedf708b6880bdc6f085eec3e31b5","10b2f67e949724565e6057fe9a1e44fbf050d61a","10baaaaf64212ca0eeac22f1f05aca93a9ab4cb4","10fc06bb0d08b853876daeda639d0c5942d7259b","178cf2e6f9bde8da9f486cc0cdb627c111718f8e","19d017f9e34228e8e59a744bf6f5f4f970235bf8","20f01db68d93ce8c22f8458ce7da1920ade164e4","257a18f2ebab091410129a2fcd58bd7edff843e9","27f16b2db22d3953ff88b344f5842b98f92ed47e","28370a4c3f06f707a5cde46bb9f444f4eeecc542","2a59a85c6e935c43e9a5a71ae15c9954e4fcab42","31a5322591af546b732096008dea8408cca23f9b","3ccdd6d026ca0ec51063ff4501901ac92e8ace6a","3cffab3ee5e5caf3d0c9d7ae208264df44887680","4309bc8aa7a5bbf46bb509c4308edcef502f6d12","45321f7d00a0170db3a78088328afe2df821b649","4f998c5bf59a4ac13e9a22bfae539b0bee3955fe","4fda315aba11b0aec54587784dc2f9896322c1b4","530a0c190a0b21d3efed2a5b37b37d906ae13963","556ca86b38e9f1f28973df07b832ed863f86b4ed","56844ec40292b010bc89ad7371c2d0340340bafe","5af28386c798cbc18309ca76ba86fcc6ba9ae1c1","5e69ccc2124b176ff806efdfbfd60427cf1719c9","5f6c82af79fb2a956abaaa295bcca11f76f34ea5","62dc399a6e2fe0f235d0dd4b61a614cb66e4767c","64c86e4fe5f77816f2b5b45ea2177ed56520b292","66d0bd6a24d816ddb77d72a5f17334aa48d3e86c","6bbcfa39a637e401e297433a3b128170f6d18ed8","70991d90040ce21d1ca38090604ae75d394df11e","76d2ff2a394344696cdd1b116a5124961f952f07","7a8bff2504e8fb1b76e8ad975330587acdc26ce8","7b77d27c242facd1e9cc2b50c6318a7baeb10d14","7d76c01533944bd6b904f44939693f7795913880","8296454dc7244205ef4cf0b6e0b41c38f90af20f","888642012e24bd7f2041aaa7def5e17bd7182d95","88de7068ba2674aab85df5611840c4b029ef68c0","952ad3dbce9b2a5018cef1b17b8cca9c457f61b0","9f05736c69ead25c228648f57d5090c528393ef8","9fa7614e903ef0027298ee6ac63be93bbae5eb47","a440a7fab73350df4d48e39f95543a23fd82e390","a507d214da476ec32cc58e2f287a1cba7a93ffd5","abd1cc4f7905e961b3ddffc049f16c65c836f55e","acb86da4949545f16a0de969803f66f0496ecb2d","ad4d574296d4684a06f2efd99cf80600d166e3fc","b08da690c219987230d8a5b83cb3a92e9a035254","b404b3361faf5896544fe2b5417057502d0bbff4","b4de3253bae372b7a0565c2ad8cd2bd1c5236efd","b76bee92a77aa6d3a0df2945996d74502f522cb1","b9b0ae266d6c11cfc36cccbf010919f93fa5657e","bdf5f656a6917c222d15daf3eef410368ea93aff","bfef306d8c3fc8608feadba880d4eb2afca2e210","c016caa2faac3f75497f1c6bd788a6fc18b72c96","c08ad333917917e248188b4a2e6a8e3ff0cc5d44","cdaa4a3b5e71db919ebced8f2d71485e92fb3332","ce972a8368378882d2f3a0ee196ff71c06509ae4","d0450c0d67c3dceeaa000e4bdcd8e224b6a1eaf4","d13343d65e76eda5972cb46ae9807fa686b45c7e","d16921887fb50083cbe55c7fc50077ca0c7ec06d","d4a3f238e5142d168f86e7d1551a9fb262e7a968","d9b017f46616ee632f622e1bca29b1910cc87f4d","dc8544422dbb4ebccfc96e03431e64ebcf871fc9","dd0c2cef1800117d6b28ec821a848a28e7bf6599","e04484c5618172ce056b598c0775d0b04a6577be","eb0303469e1ad30017c11a053a43ecbb2b9889bd","eea8088658089456a5b9b145c786951e4a90e43c","f3cac16a17e99fa1ce9fd80475806436440239b9","faca9876f93f1d8dec3fb3430511793150da4771","fc0e99eaf35eb606fd97434528484a92f02e55b1","fddcb619415f7b39f78795af3cb01159117b88b8"]);
-export const acceptedStage8V87=Object.freeze([]);
-export const additionalStage8V87BootstrapRefs=Object.freeze([]);
+export const acceptedStage8V87=Object.freeze([
+  {
+    "path": "scripts/fetch-source-lineage.mjs",
+    "blob": "f54ec611dc8fb6d6d3585b093a3c17d29b6432d9",
+    "sha256": "d34328eb0cf36692e7de78c793f450943a306469220c35f4751642c92ee0b58a"
+  },
+  {
+    "path": "tests/completion-first-20261112/personal-stage.mjs",
+    "blob": "f8f77d1e98abbf67706248cfab4a3532f6a504f5",
+    "sha256": "307c3dfec37ed1a5ce4331a1a79cecd803c3eb653252f020dc7c51b0c8d36198"
+  },
+  {
+    "path": "tests/four-worker-integration-20261115/source-stage9-policy.mjs",
+    "blob": "138a6e90bee5e920d20865c495445fadcd99b7d6",
+    "sha256": "5715bfc90d6f3b27577f339f7483a2813308e0732fd5d311731ec9ca1f3bf940"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-preflight-stage8.mjs",
+    "blob": "d8bce5c2ea484dd355a8b2382b767a561685cf32",
+    "sha256": "5b1ae163bc18383e3a5941a6790a2eabca01a72e6c29281017255ed55e994e57"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-guard-selection.mjs",
+    "blob": "7916b839309ec615d59808746d58551fa00b00c1",
+    "sha256": "1f63b92bfe788934fcbcbfc927bf7915a3645af3e709dedbeaa3d24307d0a474"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-negative-current-src.mjs",
+    "blob": "09891edf6e247319f7f297753308d79651c60f14",
+    "sha256": "d935768aec8b7dc463af78c73e72d2b72a52f8a36000b280781e6211e2a26bc3"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs",
+    "blob": "feaf457b625aa5ca8a863e196ac98a3a47a9f062",
+    "sha256": "f6e9ca10d6a2c6d9e33695c9077c34429ae9f8eb637b09ffc4f95eee438459fb"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs",
+    "blob": "14f4ea092b531a03adcf915622b2a2b2533263f8",
+    "sha256": "d7a8698b6ce57177274314504dd01843f8062d8f0d3c482ecb4e605743bf6c7b"
+  },
+  {
+    "path": "tests/milestone60-20261113/source-cold-preflight.test.mjs",
+    "blob": "3f02b97f4beb45dc9caf8c4915068d2d59ca598f",
+    "sha256": "cc0bb2f035135fcd9567017bb8c31bff55c6e738925a3186cbc36a00d4ca5cf1"
+  },
+  {
+    "path": "tests/parallel-source-20261110/bootstrap.mjs",
+    "blob": "0f337516f136c980c7bbe182f468be35bef23ae4",
+    "sha256": "3a963dfded5a3eaa23edd00006e9df9a85df0c1fef46babbddb5d3d890d5d851"
+  },
+  {
+    "path": "tests/parallel-source-20261110/core.mjs",
+    "blob": "0b3812ad8546573a5143650561a9878338da99d7",
+    "sha256": "1c185371a2f0e4d57e5b0855dfb2dc34e275f5a697ec9dd0b9c38cee9b81d962"
+  },
+  {
+    "path": "docs/milestone100-20261114/source-qualified-authority153.mjs",
+    "blob": "d2cf295467c532a393fbed65d656fef8ae021ae7",
+    "sha256": "bff07e2e4665b17683c5fd1115f0700c0ee8a58a8faea4d76b64497db6a64588"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-proof-capture-stage8-v87.mjs",
+    "blob": "9984ec137a98cc77300bb5303d1d7fe6cd1307cb",
+    "sha256": "792b82d855d52dee65f406bda856f4e674b3aa3c4361ee26d089fbe388f7ac5d"
+  },
+  {
+    "path": "docs/statistics-integration-20261117/source-stage9-statistics-revision2.json",
+    "blob": "0cf7489b78ff251a30da9386ed4c4af08991dbab",
+    "sha256": "0f66789c7cf6c08516b10454dd18f424b14d0c58da8fe845cf9d85563cdb8f31"
+  },
+  {
+    "path": "docs/statistics-integration-20261117/test-only-source-successor.json",
+    "blob": "55a7955cf14d83ba5581b1d0d34f5428b215fdb2",
+    "sha256": "7ec966792faa07b1227067cc1d93d3d24581fef73dde82e0a83b6ee00be17aa2"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision154.json",
+    "blob": "76f2c12719083ff12dc457f58934d5d33c13598f",
+    "sha256": "89f4e3ba58667e605e2256bfbb36f8ab9eed424e21a57d9fd6020273e57583b5"
+  },
+  {
+    "path": "src/lib/business/factory-nine-sharing.test.ts",
+    "blob": "6d4b2f67561c5d5d0d62412ac50180ccd2c96c40",
+    "sha256": "f943f49b8c6a94d6f785d7a26f04e2f8f2847a865de089f301b45bc3a1bb301f"
+  }
+]);
+export const additionalStage8V87BootstrapRefs=Object.freeze(["0253dc320e6af34afa4ef2f0a1af08bd1812d871","032298bee22dcd6ba2bd7f9997f01c7a923092ab","054854bceed263ba59e8cd0052f1f3e9b1ea8e30","089b2d2d8114304322c62b2408f18b29cb867bb1","0ab903ea3a5dda24506cc329c699cc7c2a837760","0eb375bc79c8331f4b6250848c64d9036831e20c","103fe68fa45bedf708b6880bdc6f085eec3e31b5","10b2f67e949724565e6057fe9a1e44fbf050d61a","10baaaaf64212ca0eeac22f1f05aca93a9ab4cb4","10fc06bb0d08b853876daeda639d0c5942d7259b","178cf2e6f9bde8da9f486cc0cdb627c111718f8e","19d017f9e34228e8e59a744bf6f5f4f970235bf8","20f01db68d93ce8c22f8458ce7da1920ade164e4","257a18f2ebab091410129a2fcd58bd7edff843e9","27f16b2db22d3953ff88b344f5842b98f92ed47e","28370a4c3f06f707a5cde46bb9f444f4eeecc542","2a59a85c6e935c43e9a5a71ae15c9954e4fcab42","304a66cf10a76d38198d92832867284e27160337","31a5322591af546b732096008dea8408cca23f9b","3ccdd6d026ca0ec51063ff4501901ac92e8ace6a","3cffab3ee5e5caf3d0c9d7ae208264df44887680","4309bc8aa7a5bbf46bb509c4308edcef502f6d12","45321f7d00a0170db3a78088328afe2df821b649","4f998c5bf59a4ac13e9a22bfae539b0bee3955fe","4fda315aba11b0aec54587784dc2f9896322c1b4","530a0c190a0b21d3efed2a5b37b37d906ae13963","556ca86b38e9f1f28973df07b832ed863f86b4ed","56844ec40292b010bc89ad7371c2d0340340bafe","5af28386c798cbc18309ca76ba86fcc6ba9ae1c1","5e69ccc2124b176ff806efdfbfd60427cf1719c9","5f6c82af79fb2a956abaaa295bcca11f76f34ea5","62dc399a6e2fe0f235d0dd4b61a614cb66e4767c","63866c0ceab931b3d92a5d22285cb8c261017c2c","64c86e4fe5f77816f2b5b45ea2177ed56520b292","66d0bd6a24d816ddb77d72a5f17334aa48d3e86c","6bbcfa39a637e401e297433a3b128170f6d18ed8","76d2ff2a394344696cdd1b116a5124961f952f07","7a8bff2504e8fb1b76e8ad975330587acdc26ce8","7b77d27c242facd1e9cc2b50c6318a7baeb10d14","7d065017c8f57eb7cc8d78a57b96410fe540a448","7d76c01533944bd6b904f44939693f7795913880","8296454dc7244205ef4cf0b6e0b41c38f90af20f","888642012e24bd7f2041aaa7def5e17bd7182d95","88de7068ba2674aab85df5611840c4b029ef68c0","952ad3dbce9b2a5018cef1b17b8cca9c457f61b0","9f05736c69ead25c228648f57d5090c528393ef8","9fa7614e903ef0027298ee6ac63be93bbae5eb47","a440a7fab73350df4d48e39f95543a23fd82e390","a507d214da476ec32cc58e2f287a1cba7a93ffd5","abd1cc4f7905e961b3ddffc049f16c65c836f55e","acb86da4949545f16a0de969803f66f0496ecb2d","ad4d574296d4684a06f2efd99cf80600d166e3fc","b08da690c219987230d8a5b83cb3a92e9a035254","b404b3361faf5896544fe2b5417057502d0bbff4","b4de3253bae372b7a0565c2ad8cd2bd1c5236efd","b76bee92a77aa6d3a0df2945996d74502f522cb1","b9b0ae266d6c11cfc36cccbf010919f93fa5657e","bdf5f656a6917c222d15daf3eef410368ea93aff","bfef306d8c3fc8608feadba880d4eb2afca2e210","c016caa2faac3f75497f1c6bd788a6fc18b72c96","c08ad333917917e248188b4a2e6a8e3ff0cc5d44","cdaa4a3b5e71db919ebced8f2d71485e92fb3332","ce972a8368378882d2f3a0ee196ff71c06509ae4","d0450c0d67c3dceeaa000e4bdcd8e224b6a1eaf4","d13343d65e76eda5972cb46ae9807fa686b45c7e","d16921887fb50083cbe55c7fc50077ca0c7ec06d","d4a3f238e5142d168f86e7d1551a9fb262e7a968","d9b017f46616ee632f622e1bca29b1910cc87f4d","dc8544422dbb4ebccfc96e03431e64ebcf871fc9","dd0c2cef1800117d6b28ec821a848a28e7bf6599","e04484c5618172ce056b598c0775d0b04a6577be","eb0303469e1ad30017c11a053a43ecbb2b9889bd","eea8088658089456a5b9b145c786951e4a90e43c","f3cac16a17e99fa1ce9fd80475806436440239b9","faca9876f93f1d8dec3fb3430511793150da4771","fddcb619415f7b39f78795af3cb01159117b88b8"]);
 export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8,...acceptedStage8V3,...acceptedStage8V4,...acceptedStage8V5,...acceptedStage8V6,...acceptedStage8V7,...acceptedStage8V8,...acceptedStage8V9,...acceptedStage8V10,...acceptedStage8V11,...acceptedStage8V12,...acceptedStage8V13,...acceptedStage8V14,...acceptedStage8V15,...acceptedStage8V16,...acceptedStage8V17,...acceptedStage8V18,...acceptedStage8V19,...acceptedStage8V20,...acceptedStage8V21,...acceptedStage8V22,...acceptedStage8V23,...acceptedStage8V24,...acceptedStage8V25,...acceptedStage8V26,...acceptedStage8V27,...acceptedStage8V28,...acceptedStage8V29,...acceptedStage8V30,...acceptedStage8V31,...acceptedStage8V32,...acceptedStage8V33,...acceptedStage8V34,...acceptedStage8V35,...acceptedStage8V36,...acceptedStage8V37,...acceptedStage8V38,...acceptedStage8V39,...acceptedStage8V40,...acceptedStage8V41,...acceptedStage8V42,...acceptedStage8V43,...acceptedStage8V44,...acceptedStage8V45,...acceptedStage8V46,...acceptedStage8V47,...acceptedStage8V48,...acceptedStage8V49,...acceptedStage8V50,...acceptedStage8V51,...acceptedStage8V52,...acceptedStage8V53,...acceptedStage8V54,...acceptedStage8V55,...acceptedStage8V56,...acceptedStage8V57,...acceptedStage8V58,...acceptedStage8V59,...acceptedStage8V60,...acceptedStage8V61,...acceptedStage8V62,...acceptedStage8V63,...acceptedStage8V64,...acceptedStage8V65,...acceptedStage8V66,...acceptedStage8V67,...acceptedStage8V68,...acceptedStage8V69,...acceptedStage8V70,...acceptedStage8V71,...acceptedStage8V72,...acceptedStage8V73,...acceptedStage8V74,...acceptedStage8V75,...acceptedStage8V76,...acceptedStage8V77,...acceptedStage8V78,...acceptedStage8V79,...acceptedStage8V80,...acceptedStage8V81,...acceptedStage8V82,...acceptedStage8V83,...acceptedStage8V84,...acceptedStage8V85,...acceptedStage8V86,...acceptedStage8V87].map(row=>[row.path,row])).values()]);
 for(const record of accepted)Object.freeze(record);
 export function verifyParallelAuthority(read,git){
