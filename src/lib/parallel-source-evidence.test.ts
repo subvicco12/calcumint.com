@@ -25,11 +25,18 @@ it('executes fresh current-source, full-authority, reader, reversion and nominat
 
 it('executes the actual shortest-publication CI consumer with current immutable graph edges',async(ctx)=>{
  const env={...process.env};delete env.NODE_TEST_CONTEXT;
- const output=await runNode(['scripts/check-shortest-publication20.mjs'],{env,signal:ctx.signal,encoding:'utf8',timeout:60000,maxBuffer:4000000});
- expect(JSON.parse(output)).toMatchObject({identities:20,callerBindings:20,canonicalAccepted:0,publicationEligible:0,releaseHold:true});
  const directory=mkdtempSync(join(tmpdir(),'calcumint-shortest-current-')),report=join(directory,'cases.tap');
  try{
-  await runNode(['--test','--test-reporter=tap','--test-reporter-destination='+report,'tests/shortest-publication-20/caller-lineage.test.mjs','tests/shortest-publication-20/frequency-presentation-lineage.test.mjs','tests/shortest-publication-20/completion-lineage.test.mjs'],{env,signal:ctx.signal,stdio:'inherit',timeout:60000});
+  // Two independent read-only consumers share this unchanged65s envelope.
+  // Wait for both outcomes; neither a failed child nor its assertions may hide the other.
+  const results=await Promise.allSettled([
+   runNode(['scripts/check-shortest-publication20.mjs'],{env,signal:ctx.signal,encoding:'utf8',timeout:60000,maxBuffer:4000000}),
+   runNode(['--test','--test-reporter=tap','--test-reporter-destination='+report,'tests/shortest-publication-20/caller-lineage.test.mjs','tests/shortest-publication-20/frequency-presentation-lineage.test.mjs','tests/shortest-publication-20/completion-lineage.test.mjs'],{env,signal:ctx.signal,stdio:'inherit',timeout:60000}),
+  ]);
+  const failures=results.flatMap(result=>result.status==='rejected'?[result.reason]:[]);
+  if(failures.length)throw new AggregateError(failures,'Shortest exact-source consumer failures');
+  const script=results[0];if(script.status!=='fulfilled')throw script.reason;
+  expect(JSON.parse(script.value)).toMatchObject({identities:20,callerBindings:20,canonicalAccepted:0,publicationEligible:0,releaseHold:true});
   const tap=readFileSync(report,'utf8');expect(tap).toMatch(/# tests 36\b/);expect(tap).toMatch(/# pass 36\b/);expect(tap).toMatch(/# fail 0\b/);expect(tap).toMatch(/# skipped 0\b/);
  }finally{rmSync(directory,{recursive:true,force:true});}
 },65000);
