@@ -24146,8 +24146,59 @@ export const acceptedStage8V79=Object.freeze([
   }
 ]);
 export const additionalStage8V79BootstrapRefs=Object.freeze(["0253dc320e6af34afa4ef2f0a1af08bd1812d871","032298bee22dcd6ba2bd7f9997f01c7a923092ab","054854bceed263ba59e8cd0052f1f3e9b1ea8e30","089b2d2d8114304322c62b2408f18b29cb867bb1","0ab903ea3a5dda24506cc329c699cc7c2a837760","0eb375bc79c8331f4b6250848c64d9036831e20c","103fe68fa45bedf708b6880bdc6f085eec3e31b5","10b2f67e949724565e6057fe9a1e44fbf050d61a","10baaaaf64212ca0eeac22f1f05aca93a9ab4cb4","10fc06bb0d08b853876daeda639d0c5942d7259b","178cf2e6f9bde8da9f486cc0cdb627c111718f8e","19d017f9e34228e8e59a744bf6f5f4f970235bf8","20f01db68d93ce8c22f8458ce7da1920ade164e4","257a18f2ebab091410129a2fcd58bd7edff843e9","27f16b2db22d3953ff88b344f5842b98f92ed47e","28370a4c3f06f707a5cde46bb9f444f4eeecc542","2a59a85c6e935c43e9a5a71ae15c9954e4fcab42","31a5322591af546b732096008dea8408cca23f9b","3ccdd6d026ca0ec51063ff4501901ac92e8ace6a","3cffab3ee5e5caf3d0c9d7ae208264df44887680","4309bc8aa7a5bbf46bb509c4308edcef502f6d12","45321f7d00a0170db3a78088328afe2df821b649","4f998c5bf59a4ac13e9a22bfae539b0bee3955fe","4fda315aba11b0aec54587784dc2f9896322c1b4","530a0c190a0b21d3efed2a5b37b37d906ae13963","556ca86b38e9f1f28973df07b832ed863f86b4ed","56844ec40292b010bc89ad7371c2d0340340bafe","5af28386c798cbc18309ca76ba86fcc6ba9ae1c1","5e69ccc2124b176ff806efdfbfd60427cf1719c9","5f6c82af79fb2a956abaaa295bcca11f76f34ea5","62dc399a6e2fe0f235d0dd4b61a614cb66e4767c","64c86e4fe5f77816f2b5b45ea2177ed56520b292","66d0bd6a24d816ddb77d72a5f17334aa48d3e86c","6bbcfa39a637e401e297433a3b128170f6d18ed8","76d2ff2a394344696cdd1b116a5124961f952f07","7a8bff2504e8fb1b76e8ad975330587acdc26ce8","7b77d27c242facd1e9cc2b50c6318a7baeb10d14","7d76c01533944bd6b904f44939693f7795913880","8296454dc7244205ef4cf0b6e0b41c38f90af20f","888642012e24bd7f2041aaa7def5e17bd7182d95","88de7068ba2674aab85df5611840c4b029ef68c0","952ad3dbce9b2a5018cef1b17b8cca9c457f61b0","9f05736c69ead25c228648f57d5090c528393ef8","9fa7614e903ef0027298ee6ac63be93bbae5eb47","a440a7fab73350df4d48e39f95543a23fd82e390","a507d214da476ec32cc58e2f287a1cba7a93ffd5","abd1cc4f7905e961b3ddffc049f16c65c836f55e","acb86da4949545f16a0de969803f66f0496ecb2d","ad4d574296d4684a06f2efd99cf80600d166e3fc","b08da690c219987230d8a5b83cb3a92e9a035254","b404b3361faf5896544fe2b5417057502d0bbff4","b4de3253bae372b7a0565c2ad8cd2bd1c5236efd","b76bee92a77aa6d3a0df2945996d74502f522cb1","b9b0ae266d6c11cfc36cccbf010919f93fa5657e","bafccdd0bcde1e78a8625d0240a105675fa51801","bdf5f656a6917c222d15daf3eef410368ea93aff","bfef306d8c3fc8608feadba880d4eb2afca2e210","c016caa2faac3f75497f1c6bd788a6fc18b72c96","c08ad333917917e248188b4a2e6a8e3ff0cc5d44","cdaa4a3b5e71db919ebced8f2d71485e92fb3332","ce972a8368378882d2f3a0ee196ff71c06509ae4","d0450c0d67c3dceeaa000e4bdcd8e224b6a1eaf4","d13343d65e76eda5972cb46ae9807fa686b45c7e","d16921887fb50083cbe55c7fc50077ca0c7ec06d","d4a3f238e5142d168f86e7d1551a9fb262e7a968","d9b017f46616ee632f622e1bca29b1910cc87f4d","dc8544422dbb4ebccfc96e03431e64ebcf871fc9","def1aa5663a6c9feaafee640a30c74d818a17f3a","e04484c5618172ce056b598c0775d0b04a6577be","eb0303469e1ad30017c11a053a43ecbb2b9889bd","eea8088658089456a5b9b145c786951e4a90e43c","f3cac16a17e99fa1ce9fd80475806436440239b9","faca9876f93f1d8dec3fb3430511793150da4771","fddcb619415f7b39f78795af3cb01159117b88b8"]);
-export const acceptedStage8V80=Object.freeze([]);
-export const additionalStage8V80BootstrapRefs=Object.freeze([]);
+export const acceptedStage8V80=Object.freeze([
+  {
+    "path": "scripts/fetch-source-lineage.mjs",
+    "blob": "19108cebcd189bdcd2ad8d4521de7cb69716ed7c",
+    "sha256": "4c5a487ca6c3d53508f28dd521e86de917c0ee9f203eec8d43e5ba30f0d82bdf"
+  },
+  {
+    "path": "tests/completion-wave-20261113/source-authority-preload.test.mjs",
+    "blob": "a934847b1214942d340b72519340ca48c6bedab2",
+    "sha256": "74f0b0baabede807ecceb7911035fdcc269641e33db7ad2b450b71d85db6450c"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-preflight-stage8.mjs",
+    "blob": "bcec9ac0f2c7719753585eeb530c48ba0800c1fd",
+    "sha256": "41f4dcf622eb9490f46ce42764b36a49b9e50e67edaeef033b7b1996f9759c88"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-guard-selection.mjs",
+    "blob": "06ee6443526dc3e0e7923ae941e98c6a9697e5cf",
+    "sha256": "4861b85ac0fddd853631d6e453fc327be825d902ede50b7e8249d17acd61aa25"
+  },
+  {
+    "path": "tests/milestone60-20261113/source-cold-preflight.test.mjs",
+    "blob": "1707f45d39d1e72b25604c9cf979bbe62a0fa795",
+    "sha256": "cf1a2ad672c3121a957016701e26e6f804c48fe121d5bbe3efe356ab95019eba"
+  },
+  {
+    "path": "tests/parallel-source-20261110/bootstrap.mjs",
+    "blob": "1f5e05450556e3bbfcf5e48543030ef5310e1602",
+    "sha256": "6e43f1e8fda095276cdb961e1640200dc4fe56acfe3f832c69ee74a12bf3b375"
+  },
+  {
+    "path": "tests/parallel-source-20261110/core.mjs",
+    "blob": "8c2d871e3256b4f1b0c7990cdec1426a5aee12b9",
+    "sha256": "663a9525ff79094a9666ebf73a5fc560bb4f7515ebfca6a62b5a2426e829a99b"
+  },
+  {
+    "path": "docs/milestone100-20261114/source-qualified-authority146.mjs",
+    "blob": "0669b92c6aeca07a3d481775124f9965c2e7cbd2",
+    "sha256": "60b707f58c6db971699f9650040b7472b802c044b91b9e838b996f05dbb5f859"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-proof-capture-stage8-v80.mjs",
+    "blob": "7f1ed2cd71c935e067d05ab4b3c04740eb4ce1ef",
+    "sha256": "0c2ee1a88cbcacc5e4e184d934604ba92c9cc3bd98adae86b23241b06101657b"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision147.json",
+    "blob": "0912d43592f0970d5e6403b37e37fd51b5aa165c",
+    "sha256": "19cb805f9cb004e120a2d457920023c61a538e2d59fdb2b781976cf856553be7"
+  }
+]);
+export const additionalStage8V80BootstrapRefs=Object.freeze(["0253dc320e6af34afa4ef2f0a1af08bd1812d871","032298bee22dcd6ba2bd7f9997f01c7a923092ab","054854bceed263ba59e8cd0052f1f3e9b1ea8e30","089b2d2d8114304322c62b2408f18b29cb867bb1","0ab903ea3a5dda24506cc329c699cc7c2a837760","0eb375bc79c8331f4b6250848c64d9036831e20c","103fe68fa45bedf708b6880bdc6f085eec3e31b5","10b2f67e949724565e6057fe9a1e44fbf050d61a","10baaaaf64212ca0eeac22f1f05aca93a9ab4cb4","10fc06bb0d08b853876daeda639d0c5942d7259b","178cf2e6f9bde8da9f486cc0cdb627c111718f8e","19d017f9e34228e8e59a744bf6f5f4f970235bf8","20f01db68d93ce8c22f8458ce7da1920ade164e4","257a18f2ebab091410129a2fcd58bd7edff843e9","27f16b2db22d3953ff88b344f5842b98f92ed47e","28370a4c3f06f707a5cde46bb9f444f4eeecc542","2a59a85c6e935c43e9a5a71ae15c9954e4fcab42","31a5322591af546b732096008dea8408cca23f9b","3ccdd6d026ca0ec51063ff4501901ac92e8ace6a","3cffab3ee5e5caf3d0c9d7ae208264df44887680","4309bc8aa7a5bbf46bb509c4308edcef502f6d12","45321f7d00a0170db3a78088328afe2df821b649","4f998c5bf59a4ac13e9a22bfae539b0bee3955fe","4fda315aba11b0aec54587784dc2f9896322c1b4","530a0c190a0b21d3efed2a5b37b37d906ae13963","556ca86b38e9f1f28973df07b832ed863f86b4ed","56844ec40292b010bc89ad7371c2d0340340bafe","5af28386c798cbc18309ca76ba86fcc6ba9ae1c1","5e69ccc2124b176ff806efdfbfd60427cf1719c9","5f6c82af79fb2a956abaaa295bcca11f76f34ea5","62dc399a6e2fe0f235d0dd4b61a614cb66e4767c","64c86e4fe5f77816f2b5b45ea2177ed56520b292","66d0bd6a24d816ddb77d72a5f17334aa48d3e86c","6bbcfa39a637e401e297433a3b128170f6d18ed8","76d2ff2a394344696cdd1b116a5124961f952f07","7a8bff2504e8fb1b76e8ad975330587acdc26ce8","7b77d27c242facd1e9cc2b50c6318a7baeb10d14","7d76c01533944bd6b904f44939693f7795913880","8296454dc7244205ef4cf0b6e0b41c38f90af20f","82d5da688d2c0ed7b1cddb64805b34f3bc6453b5","888642012e24bd7f2041aaa7def5e17bd7182d95","88de7068ba2674aab85df5611840c4b029ef68c0","949ef51e865f0afeb5da376f9a1c831f75382c59","952ad3dbce9b2a5018cef1b17b8cca9c457f61b0","9f05736c69ead25c228648f57d5090c528393ef8","9fa7614e903ef0027298ee6ac63be93bbae5eb47","a440a7fab73350df4d48e39f95543a23fd82e390","a507d214da476ec32cc58e2f287a1cba7a93ffd5","abd1cc4f7905e961b3ddffc049f16c65c836f55e","acb86da4949545f16a0de969803f66f0496ecb2d","ad4d574296d4684a06f2efd99cf80600d166e3fc","b08da690c219987230d8a5b83cb3a92e9a035254","b404b3361faf5896544fe2b5417057502d0bbff4","b4de3253bae372b7a0565c2ad8cd2bd1c5236efd","b76bee92a77aa6d3a0df2945996d74502f522cb1","b9b0ae266d6c11cfc36cccbf010919f93fa5657e","bdf5f656a6917c222d15daf3eef410368ea93aff","bfef306d8c3fc8608feadba880d4eb2afca2e210","c016caa2faac3f75497f1c6bd788a6fc18b72c96","c08ad333917917e248188b4a2e6a8e3ff0cc5d44","cdaa4a3b5e71db919ebced8f2d71485e92fb3332","ce972a8368378882d2f3a0ee196ff71c06509ae4","d0450c0d67c3dceeaa000e4bdcd8e224b6a1eaf4","d13343d65e76eda5972cb46ae9807fa686b45c7e","d16921887fb50083cbe55c7fc50077ca0c7ec06d","d4a3f238e5142d168f86e7d1551a9fb262e7a968","d9b017f46616ee632f622e1bca29b1910cc87f4d","dc8544422dbb4ebccfc96e03431e64ebcf871fc9","e04484c5618172ce056b598c0775d0b04a6577be","eb0303469e1ad30017c11a053a43ecbb2b9889bd","eea8088658089456a5b9b145c786951e4a90e43c","f3cac16a17e99fa1ce9fd80475806436440239b9","faca9876f93f1d8dec3fb3430511793150da4771","fddcb619415f7b39f78795af3cb01159117b88b8"]);
 export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8,...acceptedStage8V3,...acceptedStage8V4,...acceptedStage8V5,...acceptedStage8V6,...acceptedStage8V7,...acceptedStage8V8,...acceptedStage8V9,...acceptedStage8V10,...acceptedStage8V11,...acceptedStage8V12,...acceptedStage8V13,...acceptedStage8V14,...acceptedStage8V15,...acceptedStage8V16,...acceptedStage8V17,...acceptedStage8V18,...acceptedStage8V19,...acceptedStage8V20,...acceptedStage8V21,...acceptedStage8V22,...acceptedStage8V23,...acceptedStage8V24,...acceptedStage8V25,...acceptedStage8V26,...acceptedStage8V27,...acceptedStage8V28,...acceptedStage8V29,...acceptedStage8V30,...acceptedStage8V31,...acceptedStage8V32,...acceptedStage8V33,...acceptedStage8V34,...acceptedStage8V35,...acceptedStage8V36,...acceptedStage8V37,...acceptedStage8V38,...acceptedStage8V39,...acceptedStage8V40,...acceptedStage8V41,...acceptedStage8V42,...acceptedStage8V43,...acceptedStage8V44,...acceptedStage8V45,...acceptedStage8V46,...acceptedStage8V47,...acceptedStage8V48,...acceptedStage8V49,...acceptedStage8V50,...acceptedStage8V51,...acceptedStage8V52,...acceptedStage8V53,...acceptedStage8V54,...acceptedStage8V55,...acceptedStage8V56,...acceptedStage8V57,...acceptedStage8V58,...acceptedStage8V59,...acceptedStage8V60,...acceptedStage8V61,...acceptedStage8V62,...acceptedStage8V63,...acceptedStage8V64,...acceptedStage8V65,...acceptedStage8V66,...acceptedStage8V67,...acceptedStage8V68,...acceptedStage8V69,...acceptedStage8V70,...acceptedStage8V71,...acceptedStage8V72,...acceptedStage8V73,...acceptedStage8V74,...acceptedStage8V75,...acceptedStage8V76,...acceptedStage8V77,...acceptedStage8V78,...acceptedStage8V79,...acceptedStage8V80].map(row=>[row.path,row])).values()]);
 for(const record of accepted)Object.freeze(record);
 export function verifyParallelAuthority(read,git){
