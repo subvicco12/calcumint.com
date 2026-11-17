@@ -4,8 +4,8 @@ import {calculateFactory,factoryResult,factoryContracts,getFactoryWorkflows,runF
 const ids=[208,209,210,211,212,215,216,218,219,220,423,424,425,427,428,430,431,432,433,434,438,440,322,323,324,325,327];
 const defaults=(row:(typeof factoryContracts)[number])=>Object.fromEntries(row.fields.map(field=>[field.key,String(field.defaultValue??'')]));
 describe('factory exact integration contracts',()=>{
- it('retains all27 narrow contracts and admits exactly19 source-scoped registered successors with executable defaults',()=>{
-  expect(factoryContracts.map(row=>row.catalogId)).toEqual([...ids,...[255, 256, 259, 260, 263, 264, 265, 261, 262, 266, 267, 269, 270, 271, 273, 429, 436, 437, 439],...[213,221,222,223,224,225,226,227,228,229,230,231,234,254,257,258,268,272,274,275,276,277,278,279,280,328,331,332],...[343,344,345,346,348,349,350,354,355,356],...[284,285,286,287,288,289,290,291,300,329,333,334,335,336,337,338,339,340,341,342]]);
+ it('retains the explicit predecessor roster and admits exactly four statistics capture tuples with executable defaults',()=>{
+  expect(factoryContracts.map(row=>row.catalogId)).toEqual([...ids,...[255, 256, 259, 260, 263, 264, 265, 261, 262, 266, 267, 269, 270, 271, 273, 429, 436, 437, 439],...[213,221,222,223,224,225,226,227,228,229,230,231,234,254,257,258,268,272,274,275,276,277,278,279,280,328,331,332],...[343,344,345,346,348,349,350,354,355,356],...[284,285,286,287,288,289,290,291,300,329,333,334,335,336,337,338,339,340,341,342],...[292,293,294,295]]);
   for(const row of factoryContracts){expect(row.fields.length,row.title).toBeGreaterThan(0);const packet=getFactoryWorkflows(row.catalogId).execute(defaults(row));expect(packet.snapshot.calculatorSlug).toBe(row.slug);expect(packet.snapshot.calculatorVersion).toBe(row.version);expect(Object.values(packet.snapshot.output).some(value=>typeof value==='number'&&Number.isFinite(value))).toBe(true);expect(packet.raw).toEqual(defaults(row));}
  });
  it('rejects null, arrays, numeric coercion, extra fields and incomplete decimal tokens for every contract',()=>{

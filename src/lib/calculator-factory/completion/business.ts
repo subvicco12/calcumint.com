@@ -1,3 +1,4 @@
+import {statisticsContracts,verifyStatisticsSnapshot} from '@/lib/worker1-statistics-a-20261117/cohort';
 import {constructionContracts,verifyConstructionSnapshot} from '@/lib/worker1-construction-20261116/cohort';
 import {nextEngineeringContracts,verifyNextEngineeringSnapshot} from './next-engineering';
 import {z} from 'zod';
@@ -21,6 +22,7 @@ export function verifyFactoryPacket(value:unknown):FactoryExecutionPacket {
 /** Stored scenarios contain normalized snapshots, not original raw keystrokes or source packets. */
 export function verifyFactoryStoredSnapshot(value:CalculationSnapshot){
  const snapshot=createCalculationSnapshot(value);
+ if(statisticsContracts.some(row=>row.slug===snapshot.calculatorSlug)){const verified=verifyStatisticsSnapshot(snapshot);return Object.freeze({catalogId:verified.catalogId,snapshot:verified.snapshot});}
  if(constructionContracts.some(row=>row.slug===snapshot.calculatorSlug)){const verified=verifyConstructionSnapshot(snapshot);return Object.freeze({catalogId:verified.catalogId,snapshot:verified.snapshot});}
  const contract=factoryContracts.find(row=>row.registered&&row.slug===snapshot.calculatorSlug&&row.version===snapshot.calculatorVersion);
  if(!contract)throw Error('Exact registered factory snapshot version unavailable');

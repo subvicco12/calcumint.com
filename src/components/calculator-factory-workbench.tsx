@@ -40,7 +40,12 @@ export function CalculatorFactoryWorkbench({workflows,title,fields,plan='free',r
  <button onClick={()=>act(()=>setExportText(workflows.exportPacket(packet,'csv',plan)))}>Export CSV</button>
  {(['A','B','C'] as const).map(slot=><button key={slot} onClick={()=>act(()=>setScenarios(workflows.scenario(scenarios,slot,packet,'',plan)))}>Capture scenario {slot}</button>)}</>}
  {renderWorkflows&&<WorkflowPanel render={renderWorkflows} packet={packet} onRestore={snapshot=>act(()=>{
-  const restoredRaw=Object.fromEntries(Object.entries(snapshot.input).map(([key,value])=>{if(typeof value!=='number'&&typeof value!=='string')throw Error('Unsupported stored input');return [key,typeof value==='number'&&Object.is(value,-0)?'-0':String(value)];}));
+  const restoredRaw=Object.fromEntries(Object.entries(snapshot.input).map(([key,value])=>{if(Array.isArray(value)){
+   const field=fields.find(field=>field.key===key);
+   if(field?.kind!=='text'||value.length>10000||value.some(item=>typeof item!=='number'||!Number.isFinite(item)))throw Error('Unsupported stored observation array');
+   return [key,value.map(item=>Object.is(item,-0)?'-0':String(item)).join(', ')];
+  }
+  if(typeof value!=='number'&&typeof value!=='string')throw Error('Unsupported stored input');return [key,typeof value==='number'&&Object.is(value,-0)?'-0':String(value)];}));
   const restored=workflows.execute(restoredRaw);
   if(!equalCompletionJson(restored.snapshot,snapshot))throw Error('Stored scenario does not match this exact engine version');
   setRaw({...restored.raw});setPacket(restored);setExportText('');
