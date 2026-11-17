@@ -1,0 +1,202 @@
+
+ RUN  v3.2.7 /workspace/coordinator-statistics-20261117
+
+ ❯ src/lib/worker1-statistics-a-20261117/account.test.ts (7 tests | 1 failed) 86ms
+   ✓ unit: actual #292 snapshot goes through existing atomic history and scenario actions 28ms
+   ✓ unit: actual #293 snapshot goes through existing atomic history and scenario actions 12ms
+   ✓ unit: actual #294 snapshot goes through existing atomic history and scenario actions 10ms
+   ✓ unit: actual #295 snapshot goes through existing atomic history and scenario actions 6ms
+   ✓ unit: stale owner, downgrade, foreign project and forged packet fail before persistence 9ms
+   ✓ unit: context read cannot activate Business writes or native commercial capability 3ms
+   × revoked reviewer cannot persist or read private Business context 16ms
+     → promise resolved "{ id: '33333333-3333-4333-8333-33333…' }" instead of rejecting
+ ❯ src/lib/statistics-integration-20261117/integration.test.ts (9 tests | 8 failed) 29ms
+   × adopts exact #292 packet, replay and delivery without recapture 13ms
+     → expected undefined to be 'statistics.correlation' // Object.is equality
+   × adopts exact #293 packet, replay and delivery without recapture 3ms
+     → expected undefined to be 'statistics.linear-regression' // Object.is equality
+   × adopts exact #294 packet, replay and delivery without recapture 2ms
+     → expected undefined to be 'statistics.weighted-mean' // Object.is equality
+   × adopts exact #295 packet, replay and delivery without recapture 2ms
+     → expected undefined to be 'statistics.percentile' // Object.is equality
+   × adopts exact #296 packet, replay and delivery without recapture 3ms
+     → expected undefined to be 'statistics.quartile' // Object.is equality
+   × adopts exact #297 packet, replay and delivery without recapture 2ms
+     → expected undefined to be 'statistics.interquartile-range' // Object.is equality
+   × adopts exact #299 packet, replay and delivery without recapture 2ms
+     → expected undefined to be 'statistics.expected-value' // Object.is equality
+   ✓ keeps blocked298 unavailable 0ms
+   × routes cancellation history through original v1 while refusing new capture 2ms
+     → Exact registered factory snapshot version unavailable
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/statistics-integration-20261117/integration.test.ts > adopts exact #292 packet, replay and delivery without recapture
+AssertionError: expected undefined to be 'statistics.correlation' // Object.is equality
+
+- Expected: 
+"statistics.correlation"
+
++ Received: 
+undefined
+
+ ❯ src/lib/statistics-integration-20261117/integration.test.ts:12:52
+     10|  const raw=Object.fromEntries(c.fields.map(f=>[f.key,String(f.defaultV…
+     11|  const packet=(c.catalogId<=295?aw:bw)(c.catalogId).execute(raw);
+     12|  expect(getFactoryContract(c.catalogId)?.engineId).toBe(c.engineId);
+       |                                                    ^
+     13|  expect(getFactoryWorkflows(c.catalogId).execute(raw)).toEqual(packet);
+     14|  expect(verifyFactoryPacket(packet)).toEqual(packet);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+ FAIL  src/lib/statistics-integration-20261117/integration.test.ts > adopts exact #293 packet, replay and delivery without recapture
+AssertionError: expected undefined to be 'statistics.linear-regression' // Object.is equality
+
+- Expected: 
+"statistics.linear-regression"
+
++ Received: 
+undefined
+
+ ❯ src/lib/statistics-integration-20261117/integration.test.ts:12:52
+     10|  const raw=Object.fromEntries(c.fields.map(f=>[f.key,String(f.defaultV…
+     11|  const packet=(c.catalogId<=295?aw:bw)(c.catalogId).execute(raw);
+     12|  expect(getFactoryContract(c.catalogId)?.engineId).toBe(c.engineId);
+       |                                                    ^
+     13|  expect(getFactoryWorkflows(c.catalogId).execute(raw)).toEqual(packet);
+     14|  expect(verifyFactoryPacket(packet)).toEqual(packet);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+ FAIL  src/lib/statistics-integration-20261117/integration.test.ts > adopts exact #294 packet, replay and delivery without recapture
+AssertionError: expected undefined to be 'statistics.weighted-mean' // Object.is equality
+
+- Expected: 
+"statistics.weighted-mean"
+
++ Received: 
+undefined
+
+ ❯ src/lib/statistics-integration-20261117/integration.test.ts:12:52
+     10|  const raw=Object.fromEntries(c.fields.map(f=>[f.key,String(f.defaultV…
+     11|  const packet=(c.catalogId<=295?aw:bw)(c.catalogId).execute(raw);
+     12|  expect(getFactoryContract(c.catalogId)?.engineId).toBe(c.engineId);
+       |                                                    ^
+     13|  expect(getFactoryWorkflows(c.catalogId).execute(raw)).toEqual(packet);
+     14|  expect(verifyFactoryPacket(packet)).toEqual(packet);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/9]⎯
+
+ FAIL  src/lib/statistics-integration-20261117/integration.test.ts > adopts exact #295 packet, replay and delivery without recapture
+AssertionError: expected undefined to be 'statistics.percentile' // Object.is equality
+
+- Expected: 
+"statistics.percentile"
+
++ Received: 
+undefined
+
+ ❯ src/lib/statistics-integration-20261117/integration.test.ts:12:52
+     10|  const raw=Object.fromEntries(c.fields.map(f=>[f.key,String(f.defaultV…
+     11|  const packet=(c.catalogId<=295?aw:bw)(c.catalogId).execute(raw);
+     12|  expect(getFactoryContract(c.catalogId)?.engineId).toBe(c.engineId);
+       |                                                    ^
+     13|  expect(getFactoryWorkflows(c.catalogId).execute(raw)).toEqual(packet);
+     14|  expect(verifyFactoryPacket(packet)).toEqual(packet);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/9]⎯
+
+ FAIL  src/lib/statistics-integration-20261117/integration.test.ts > adopts exact #296 packet, replay and delivery without recapture
+AssertionError: expected undefined to be 'statistics.quartile' // Object.is equality
+
+- Expected: 
+"statistics.quartile"
+
++ Received: 
+undefined
+
+ ❯ src/lib/statistics-integration-20261117/integration.test.ts:12:52
+     10|  const raw=Object.fromEntries(c.fields.map(f=>[f.key,String(f.defaultV…
+     11|  const packet=(c.catalogId<=295?aw:bw)(c.catalogId).execute(raw);
+     12|  expect(getFactoryContract(c.catalogId)?.engineId).toBe(c.engineId);
+       |                                                    ^
+     13|  expect(getFactoryWorkflows(c.catalogId).execute(raw)).toEqual(packet);
+     14|  expect(verifyFactoryPacket(packet)).toEqual(packet);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/9]⎯
+
+ FAIL  src/lib/statistics-integration-20261117/integration.test.ts > adopts exact #297 packet, replay and delivery without recapture
+AssertionError: expected undefined to be 'statistics.interquartile-range' // Object.is equality
+
+- Expected: 
+"statistics.interquartile-range"
+
++ Received: 
+undefined
+
+ ❯ src/lib/statistics-integration-20261117/integration.test.ts:12:52
+     10|  const raw=Object.fromEntries(c.fields.map(f=>[f.key,String(f.defaultV…
+     11|  const packet=(c.catalogId<=295?aw:bw)(c.catalogId).execute(raw);
+     12|  expect(getFactoryContract(c.catalogId)?.engineId).toBe(c.engineId);
+       |                                                    ^
+     13|  expect(getFactoryWorkflows(c.catalogId).execute(raw)).toEqual(packet);
+     14|  expect(verifyFactoryPacket(packet)).toEqual(packet);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/9]⎯
+
+ FAIL  src/lib/statistics-integration-20261117/integration.test.ts > adopts exact #299 packet, replay and delivery without recapture
+AssertionError: expected undefined to be 'statistics.expected-value' // Object.is equality
+
+- Expected: 
+"statistics.expected-value"
+
++ Received: 
+undefined
+
+ ❯ src/lib/statistics-integration-20261117/integration.test.ts:12:52
+     10|  const raw=Object.fromEntries(c.fields.map(f=>[f.key,String(f.defaultV…
+     11|  const packet=(c.catalogId<=295?aw:bw)(c.catalogId).execute(raw);
+     12|  expect(getFactoryContract(c.catalogId)?.engineId).toBe(c.engineId);
+       |                                                    ^
+     13|  expect(getFactoryWorkflows(c.catalogId).execute(raw)).toEqual(packet);
+     14|  expect(verifyFactoryPacket(packet)).toEqual(packet);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/9]⎯
+
+ FAIL  src/lib/statistics-integration-20261117/integration.test.ts > routes cancellation history through original v1 while refusing new capture
+Error: Exact registered factory snapshot version unavailable
+ ❯ verifyFactoryStoredSnapshot src/lib/calculator-factory/completion/business.ts:26:21
+
+ ❯ src/lib/statistics-integration-20261117/integration.test.ts:24:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/9]⎯
+
+ FAIL  src/lib/worker1-statistics-a-20261117/account.test.ts > revoked reviewer cannot persist or read private Business context
+AssertionError: promise resolved "{ id: '33333333-3333-4333-8333-33333…' }" instead of rejecting
+
+- Expected
++ Received
+
+- Error {
+-   "message": "rejected promise",
++ {
++   "id": "33333333-3333-4333-8333-333333333333",
+  }
+
+ ❯ src/lib/worker1-statistics-a-20261117/account.test.ts:39:86
+     37|  rows.platform_admins=null;
+     38|  const packet=statisticsWorkflows(294).execute({values:'10,20',weights…
+     39|  await expect(saveStatisticsHistory({expectedOwnerId:owner,requestId:r…
+       |                                                                                      ^
+     40|  await expect(statisticsBusinessProjects({expectedOwnerId:owner,organi…
+     41|  expect(mock.history).not.toHaveBeenCalled();expect(mock.business).not…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/9]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  9 failed | 7 passed (16)
+   Start at  08:09:10
+   Duration  2.40s (transform 914ms, setup 22ms, collect 1.56s, tests 115ms, environment 0ms, prepare 253ms)
+

@@ -1,4 +1,4 @@
-import {execNativeGit} from '../../construction-ci-recovery-20261116/native-git.mjs';
+import {execCumulativeNativeGit as execNativeGit} from '../../parallel-source-20261110/baseline-runtime.mjs';
 import {nonSourceRecords} from '../../completion-first-20261112/non-source-stage2.mjs';
 import {runClosedSynchronousBatch,assertAPIEvidencePaths} from './runtime-evidence-batch.mjs';
 import {proveNamedCurrentContext,preloadRetainedImmutableObjects,primeRetainedImmutableObjects} from '../../parallel-source-20261110/core.mjs';

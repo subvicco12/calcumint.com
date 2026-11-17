@@ -1,0 +1,19 @@
+{
+  "markdown": "|     |     |\n| --- | --- |\n| weighted.mean {stats} | R Documentation |\n\n## Weighted Arithmetic Mean\n\n### Description\n\nCompute a weighted mean.\n\n### Usage\n\n```r\nweighted.mean(x, w, ...)\n\n## Default S3 method:\nweighted.mean(x, w, ..., na.rm = FALSE)\n```\n\n### Arguments\n\n|     |     |\n| --- | --- |\n| `x` | an object containing the values whose weighted mean is to be<br>computed. |\n| `w` | a numerical vector of weights the same length as `x` giving<br>the weights to use for elements of `x`. |\n| `...` | arguments to be passed to or from methods. |\n| `na.rm` | a logical value indicating whether `NA`<br>values in `x` should be stripped before the computation proceeds. |\n\n### Details\n\nThis is a generic function and methods can be defined for the first\nargument `x`: apart from the default methods there are methods\nfor the date-time classes `\"POSIXct\"`, `\"POSIXlt\"`,\n`\"difftime\"` and `\"Date\"`. The default method will work for\nany numeric-like object for which `[`, multiplication, division\\\nand `sum` have suitable methods, including complex vectors.\\\n\\\nIf `w` is missing then all elements of `x` are given the\\\nsame weight, otherwise the weights\\\nare normalized to sum to one (if possible: if\\\ntheir sum is zero or infinite the value is likely to be `NaN`).\\\n\\\nMissing values in `w` are not handled specially and so give a\\\nmissing value as the result. However, zero weights _are_ handled\\\nspecially and the corresponding `x` values are omitted from the\\\nsum.\\\n\\\n### Value\\\n\\\nFor the default method, a length-one numeric vector.\\\n\\\n### See Also\\\n\\\n`mean`\\\n\\\n### Examples\\\n\\\n```r\\\n## GPA from Siegel 1994\\\nwt <- c(5,  5,  4,  1)/15\\\nx <- c(3.7,3.3,3.5,2.8)\\\nxm <- weighted.mean(x, wt)\\\n```\\\n\\\n* * *\\\n\\\n\\[Package _stats_ version 4.6.0 [Index](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html)\\]",
+  "metadata": {
+    "viewport": "width=device-width, initial-scale=1.0, user-scalable=yes",
+    "title": "R: Weighted Arithmetic Mean",
+    "scrapeId": "01a1e894-dd17-7039-b549-695c4ff75018",
+    "sourceURL": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/weighted.mean.html",
+    "url": "https://stat.ethz.ch/R-manual/R-devel/library/stats/html/weighted.mean.html",
+    "statusCode": 200,
+    "contentType": "text/html; charset=UTF-8",
+    "timezone": "America/New_York",
+    "proxyUsed": "basic",
+    "cacheState": "miss",
+    "indexId": "1eec593d-a062-4fd0-bd3a-eb103af69922",
+    "creditsUsed": 1,
+    "concurrencyLimited": false
+  },
+  "conversationId": "3f1f8a23-adc6-8dd1-baf7-9b26a788fd92"
+}

@@ -6,13 +6,13 @@ import test from 'node:test';import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';import {resolve} from 'node:path';
 import {accepted,verifyParallelAuthority} from '../parallel-source-20261110/authority.mjs';
 import {makeGitReader} from '../parallel-source-20261110/git-reader.mjs';
-const root=resolve(new URL('../../',import.meta.url).pathname),ids=accepted.map(r=>r.blob);
+const root=resolve(new URL('../../',import.meta.url).pathname),ids=accepted.map(r=>r.blob),batchIDs=[...new Set(ids)];
 const actual=(args,options={})=>execFileSync('git',args,{cwd:root,stdio:['ignore','pipe','pipe'],maxBuffer:128*1024*1024,...options});
-const fullBatch=actual(['cat-file','--batch'],{input:Buffer.from(ids.join('\n')+'\n'),stdio:['pipe','pipe','pipe']});
+const fullBatch=actual(['cat-file','--batch'],{input:Buffer.from(batchIDs.join('\n')+'\n'),stdio:['pipe','pipe','pipe']});
 // This is the same real immutable batch used by the adversarial fixtures below.
 // Authenticate every object before constructing fixture content; avoid one Git
 // subprocess per blob. No live source, HEAD, status or index observation is reused.
-const fixtureObjects=makeGitReader((args,options)=>{assert.deepEqual(args,['cat-file','--batch']);assert.equal(options.input.toString(),ids.join('\n')+'\n');return fullBatch;});
+const fixtureObjects=makeGitReader((args,options)=>{assert.deepEqual(args,['cat-file','--batch']);assert.equal(options.input.toString(),batchIDs.join('\n')+'\n');return fullBatch;});
 fixtureObjects.preloadBlobs(ids);
 const content=new Map(accepted.map(r=>[r.blob,fixtureObjects(['cat-file','blob',r.blob])])),byPath=new Map(accepted.map(r=>[r.path,r]));
 const sourceCapture=JSON.parse(readFileSync(sourceStage8CapturePath)),sourceNames=[sourceStage8CapturePath,sourceStage9CapturePath,...new Set([...sourceStage8Policy.paths,...sourceStage9Policy.paths])],sourceContent=new Map(sourceNames.map(path=>[path,readFileSync(path)]));
@@ -22,7 +22,7 @@ const head=actual(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),ta
 function fixture({preload=true}={}){
  const events=[],sourceReads=new Set(),sourceObjects=makeGitReader(sourceGit);let batches=0,batchOverride=null,pathOverride=false,rawOverride=false,preloadFailure=false,phase='idle',sourceGitReads=0,pendingAuthorityRead,sourceOverride=null;
  const sourceFirst=()=>{assert.equal(sourceReads.size,sourcePaths.size,'Every actual source read must precede authority operations');assert(sourceGitReads>0,'Real source Git proof must precede authority operations');};
- const objects=makeGitReader((args,options)=>{assert.deepEqual(args,['cat-file','--batch']);assert.equal(options.input.toString(),ids.join('\n')+'\n');batches++;return batchOverride?.(batches)??fullBatch;});
+ const objects=makeGitReader((args,options)=>{assert.deepEqual(args,['cat-file','--batch']);assert.equal(options.input.toString(),batchIDs.join('\n')+'\n');batches++;return batchOverride?.(batches)??fullBatch;});
  const git=(args,options)=>{
   if(phase==='source'){
    const authorityPath=args[0]==='rev-parse'&&args.length===2&&args[1].startsWith(head+':')?args[1].slice(41):null;

@@ -1,0 +1,134 @@
+{
+  "kind": "COORDINATOR_BOUNDED_METHOD_REVIEW_NOT_CANONICAL_APPROVAL",
+  "reviewer": "Coordinator software integration review",
+  "rows": [
+    {
+      "catalogId": 292,
+      "method": "Pearson correlation",
+      "admittedScope": "Paired finite observations, positive X/Y variance; descriptive Pearson product-moment association, no missing-data imputation, inference or causality",
+      "capturedPublisherEvidence": {
+        "path": "docs/statistics-integration-20261117/pearson-capture.json",
+        "bytes": 8884,
+        "sha256": "29b0954dcf25cdd90cc5309b71d2e5a5589a2e9d6ed29a8f7f5044eb32370fa3"
+      },
+      "precisionAndRefusalPolicy": "Private 1e-12 relative rational centered-moment and squared-correlation agreement; zero exact; sign checked. Binary64 endpoints remain approximate.",
+      "decision": "Method evidence applicable only to the stated deterministic private arithmetic scope. This coordinator review is not specialist certification, canonical mapping adoption, empirical applicability approval, or an error bound over all inputs.",
+      "QA": [
+        "Worker numerical golden/boundary/cancellation/tamper cases retained",
+        "Independent rational identities reviewed against retained formula and source definition",
+        "Historical v1 output and steps remain immutable; new capture is allowed to refuse",
+        "Browser/mobile, Business and exact-head CI gates remain independently required"
+      ]
+    },
+    {
+      "catalogId": 293,
+      "method": "OLS straight line",
+      "admittedScope": "Unweighted y-on-x least-squares slope and intercept for supplied paired observations, positive X variance; no fit adequacy, intervals, prediction or causal claims",
+      "capturedPublisherEvidence": {
+        "path": "docs/statistics-integration-20261117/least-squares-capture.json",
+        "bytes": 7970,
+        "sha256": "5b5fe336f3f388f54b22d3d9254b40e0029e26acb66e36b92094638c1edae961"
+      },
+      "precisionAndRefusalPolicy": "Private 1e-12 rational slope/intercept/squared-correlation agreement. Constant-Y correlation/R-squared0 is the retained software convention, not inferred inferential R-squared; original steps preserved.",
+      "decision": "Method evidence applicable only to the stated deterministic private arithmetic scope. This coordinator review is not specialist certification, canonical mapping adoption, empirical applicability approval, or an error bound over all inputs.",
+      "QA": [
+        "Worker numerical golden/boundary/cancellation/tamper cases retained",
+        "Independent rational identities reviewed against retained formula and source definition",
+        "Historical v1 output and steps remain immutable; new capture is allowed to refuse",
+        "Browser/mobile, Business and exact-head CI gates remain independently required"
+      ]
+    },
+    {
+      "catalogId": 294,
+      "method": "Weighted arithmetic mean",
+      "admittedScope": "Paired finite values and strictly positive weights; sum(wx)/sum(w); stricter than publisher zero/missing weight behavior, which is excluded",
+      "capturedPublisherEvidence": {
+        "path": "docs/statistics-integration-20261117/weighted-mean-capture.json",
+        "bytes": 2656,
+        "sha256": "a8e3b16396e096c581ce28cbd82694ac234354bda382c9d3835304b907d662e8"
+      },
+      "precisionAndRefusalPolicy": "Private 1e-12 exact normalized binary64 sum/weighted mean agreement. Cancellation that yields spurious zero refuses; no alternate decimal output is substituted.",
+      "decision": "Method evidence applicable only to the stated deterministic private arithmetic scope. This coordinator review is not specialist certification, canonical mapping adoption, empirical applicability approval, or an error bound over all inputs.",
+      "QA": [
+        "Worker numerical golden/boundary/cancellation/tamper cases retained",
+        "Independent rational identities reviewed against retained formula and source definition",
+        "Historical v1 output and steps remain immutable; new capture is allowed to refuse",
+        "Browser/mobile, Business and exact-head CI gates remain independently required"
+      ]
+    },
+    {
+      "catalogId": 295,
+      "method": "Linear percentile",
+      "admittedScope": "Finite ordered sample, p in[0,100], h=(p/100)(n-1), adjacent linear interpolation; algebraically R type7, not nearest rank",
+      "capturedPublisherEvidence": {
+        "path": "docs/worker2-statistics-b-20261117/r-quantile.md",
+        "bytes": 9103,
+        "sha256": "7bc00fd29ee2cb5f14bbee34d7dd02781b7c91fb0cde3bf90d5ad4013e0defc3"
+      },
+      "precisionAndRefusalPolicy": "Private 1e-12 exact rational normalized binary64 percentile/position agreement; historical outputs preserved.",
+      "decision": "Method evidence applicable only to the stated deterministic private arithmetic scope. This coordinator review is not specialist certification, canonical mapping adoption, empirical applicability approval, or an error bound over all inputs.",
+      "QA": [
+        "Worker numerical golden/boundary/cancellation/tamper cases retained",
+        "Independent rational identities reviewed against retained formula and source definition",
+        "Historical v1 output and steps remain immutable; new capture is allowed to refuse",
+        "Browser/mobile, Business and exact-head CI gates remain independently required"
+      ]
+    },
+    {
+      "catalogId": 296,
+      "method": "Linear quartile",
+      "admittedScope": "Qk, k=1/2/3, same type7 convention h=(k/4)(n-1); no hinges or population quantile accuracy claim",
+      "capturedPublisherEvidence": {
+        "path": "docs/worker2-statistics-b-20261117/r-quantile.md",
+        "bytes": 9103,
+        "sha256": "7bc00fd29ee2cb5f14bbee34d7dd02781b7c91fb0cde3bf90d5ad4013e0defc3"
+      },
+      "precisionAndRefusalPolicy": "Private 2^-40 relative exact binary64 agreement for every displayed Q1/Q2/Q3; zero exact.",
+      "decision": "Method evidence applicable only to the stated deterministic private arithmetic scope. This coordinator review is not specialist certification, canonical mapping adoption, empirical applicability approval, or an error bound over all inputs.",
+      "QA": [
+        "Worker numerical golden/boundary/cancellation/tamper cases retained",
+        "Independent rational identities reviewed against retained formula and source definition",
+        "Historical v1 output and steps remain immutable; new capture is allowed to refuse",
+        "Browser/mobile, Business and exact-head CI gates remain independently required"
+      ]
+    },
+    {
+      "catalogId": 297,
+      "method": "Interquartile range",
+      "admittedScope": "Q3-Q1 using the same supplied-sample type7 convention; no outlier classification",
+      "capturedPublisherEvidence": {
+        "path": "docs/worker2-statistics-b-20261117/r-quantile.md",
+        "bytes": 9103,
+        "sha256": "7bc00fd29ee2cb5f14bbee34d7dd02781b7c91fb0cde3bf90d5ad4013e0defc3"
+      },
+      "precisionAndRefusalPolicy": "Private 2^-40 relative exact binary64 agreement for primary IQR and every displayed quartile; zero exact.",
+      "decision": "Method evidence applicable only to the stated deterministic private arithmetic scope. This coordinator review is not specialist certification, canonical mapping adoption, empirical applicability approval, or an error bound over all inputs.",
+      "QA": [
+        "Worker numerical golden/boundary/cancellation/tamper cases retained",
+        "Independent rational identities reviewed against retained formula and source definition",
+        "Historical v1 output and steps remain immutable; new capture is allowed to refuse",
+        "Browser/mobile, Business and exact-head CI gates remain independently required"
+      ]
+    },
+    {
+      "catalogId": 299,
+      "method": "Discrete expectation",
+      "admittedScope": "Supplied finite paired outcomes/probabilities, probabilities[0,1], binary64 sum exactly1; arithmetic sum(x*p), no normalization or model applicability inference",
+      "capturedPublisherEvidence": {
+        "path": "docs/worker2-statistics-b-20261117/openstax-expected-value.md",
+        "bytes": 31773,
+        "sha256": "f9b138166213d4f04a0438ecf9525ffc331a521da11aef76a654df6e4da802c3"
+      },
+      "precisionAndRefusalPolicy": "Private 2^-40 relative exact binary64 contribution sum; zero exact. Existing v1 probability tolerance remains unchanged for historical replay.",
+      "decision": "Method evidence applicable only to the stated deterministic private arithmetic scope. This coordinator review is not specialist certification, canonical mapping adoption, empirical applicability approval, or an error bound over all inputs.",
+      "QA": [
+        "Worker numerical golden/boundary/cancellation/tamper cases retained",
+        "Independent rational identities reviewed against retained formula and source definition",
+        "Historical v1 output and steps remain immutable; new capture is allowed to refuse",
+        "Browser/mobile, Business and exact-head CI gates remain independently required"
+      ]
+    }
+  ],
+  "blocked298": "No applicability, ownership or version decision made. No implementation or promotion.",
+  "releaseHold": true
+}

@@ -1,0 +1,12 @@
+{
+  "scope": "Test harness only; production source verifier unchanged",
+  "originalIsolatedMs": 40923.02,
+  "concurrentDeadlineMs": 60000,
+  "outerDeadlineMs": 150000,
+  "failedExclusiveLeaseReverted": true,
+  "change": "Execute the same unasserted default warm-up once before the synthetic per-row mutation loop, instead of repeating it before each row. Every mutation/provenance assertion and final full current-context proof remains.",
+  "assertionOccurrencesBeforeAndAfter": 71,
+  "requiredTests": 4,
+  "observationCacheAdded": false,
+  "releaseHold": true
+}

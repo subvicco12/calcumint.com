@@ -8,7 +8,15 @@ import {fileURLToPath} from 'node:url';
 import {makeGitReader} from './git-reader.mjs';
 export const baselineRef='a7bab5b5534d51cea25ba5ffe4aa9b3630176909';
 const root=fileURLToPath(new URL('../../',import.meta.url));
-export const sourceGit=makeGitReader((args,options={})=>execNativeGit(args,{cwd:root,stdio:['ignore','pipe','pipe'],maxBuffer:16*1024*1024,...options}));
+// This owned cumulative proof exceeds the generic128MiB byte envelope. Keep
+// generic readers and native callers' original options unchanged. Deadlines and
+// all immutable authentication remain in makeGitReader; no observation is cached.
+const runtimeGit=(args,options={})=>{
+ const cumulativeBatch=args.length===2&&args[0]==='cat-file'&&args[1]==='--batch'&&options.maxBuffer===128*1024*1024&&options.timeout===30000&&Buffer.isBuffer(options.input);
+ return execNativeGit(args,{cwd:root,stdio:['ignore','pipe','pipe'],maxBuffer:16*1024*1024,...options,...(cumulativeBatch?{maxBuffer:192*1024*1024}:{})});
+};
+export const execCumulativeNativeGit=runtimeGit;
+export const sourceGit=makeGitReader(runtimeGit);
 let cached;
 export function retainedA7Proof(){
  if(cached)return cached;
