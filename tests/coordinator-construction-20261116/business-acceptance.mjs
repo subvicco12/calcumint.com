@@ -58,13 +58,21 @@ try{
  const org=await ok(owner.rpc('create_business_organization',{org_name:'Construction isolated acceptance',org_slug:'construction-'+randomUUID()}));
  const project=await ok(owner.from('business_projects').insert({organization_id:org,name:'Exact construction',created_by:user.id}).select('id').single());
  const service=createClient(db.url,db.serviceKey,{auth:{persistSession:false,autoRefreshToken:false}});
+ // Replace only the Next cookie/client factories with genuine disposable clients.
+ // Session validation, current profile/membership/capability and actor selection
+ // execute the unchanged application functions against real GoTrue/PostgREST.
+ globalThis.__calcumintConstructionFixture={client:owner,service};
+ await build({stdin:{contents:"export {storeFactoryNineShare,loadFactoryNineTemplate} from './src/lib/business/factory-nine-sharing-server';",resolveDir:process.cwd(),sourcefile:'construction-server-seam.ts'},outfile:out+'/server-seam.mjs',bundle:true,platform:'node',format:'esm',plugins:[{name:'disposable-client-factories',setup(builder){
+  builder.onResolve({filter:/^@\/lib\/supabase\/(server|admin)$/},args=>({path:args.path,namespace:'construction-fixture'}));
+  builder.onLoad({filter:/.*/,namespace:'construction-fixture'},args=>({contents:args.path.endsWith('/server')?'export const createSupabaseServerClient=async()=>globalThis.__calcumintConstructionFixture.client;':'export const createSupabaseAdminClient=()=>globalThis.__calcumintConstructionFixture.service;',loader:'js'}));
+ }}]});
+ const app=await import(pathToFileURL(out+'/server-seam.mjs'));
  const submit=(actor,payload)=>service.rpc('share_factory_nine_snapshot',{actor_id:actor,request_payload:payload});
  await db.sql("NOTIFY pgrst,'reload schema'");
  const schemaDeadline=Date.now()+10000;
  for(;;){
-  const response=await fetch(db.url+'/rest/v1/',{headers:{apikey:db.serviceKey,Authorization:'Bearer '+db.serviceKey},signal:AbortSignal.timeout(2000)});
-  assert.equal(response.status,200);const schema=await response.json();
-  if(schema.paths?.['/rpc/share_factory_nine_snapshot'])break;
+  const probe=await submit(user.id,{}); // Invalid payload must never write a row.
+  if(probe.error?.code!=='PGRST202'){assert(probe.error,'Readiness probe must refuse invalid payload');break;}
   assert(Date.now()<schemaDeadline,'Held sharing RPC absent from refreshed disposable schema');
   await new Promise(resolve=>setTimeout(resolve,100));
  }
@@ -85,8 +93,26 @@ try{
   for(const mutate of mutations){const bad=structuredClone(payload);bad.requestId=randomUUID();mutate(bad);await refused(user.id,bad);}
   const conflict=structuredClone(payload);conflict.title+=' changed';assert((await submit(user.id,conflict)).error);
   assert.equal(await db.sql(`SELECT count(*) FROM public.technology_next_shared_snapshots WHERE request_id='${payload.requestId}'`),'1');
-  observations.push({catalogId:c.id,concurrentIdempotentWrite:true,exactReadback:true,foreignRlsReadDenied:true,foreignActorDenied:true,authenticatedDirectRpcDenied:true,freeProDowngradeDenied:true,malformedRefusals:mutations.length,requestCollisionDenied:true});
+  const appPayload={...payload,requestId:randomUUID(),title:'Construction server seam '+c.id};
+  await assert.rejects(app.storeFactoryNineShare(outsider.id,appPayload),/Account context changed/);
+  assert.equal(await db.sql(`SELECT count(*) FROM public.technology_next_shared_snapshots WHERE request_id='${appPayload.requestId}'`),'0');
+  const appSaved=await app.storeFactoryNineShare(user.id,appPayload);
+  assert.equal(await app.storeFactoryNineShare(user.id,appPayload),appSaved);
+  const template=await app.loadFactoryNineTemplate({expectedOwnerId:user.id,organizationId:org,projectId:project.id,recordId:appSaved});
+  assert.deepEqual(template.snapshot,c.snapshot);
+  const audit=JSON.parse(await db.sql(`SELECT jsonb_agg(metadata) FROM public.organization_audit_log WHERE organization_id='${org}' AND action='factory-nine.snapshot.shared' AND entity_id IN('${saved}','${appSaved}')`));
+  assert.equal(audit.length,2);for(const row of audit){assert.equal(row.calculatorSlug,c.slug);assert.equal(row.calculatorVersion,1);assert.equal(row.projectId,project.id);}
+  observations.push({catalogId:c.id,concurrentIdempotentWrite:true,exactReadback:true,foreignRlsReadDenied:true,foreignActorDenied:true,authenticatedDirectRpcDenied:true,freeProDowngradeDenied:true,malformedRefusals:mutations.length,requestCollisionDenied:true,realApplicationSessionActorSeam:true,applicationTemplateReadback:true,staleOwnerDeniedBeforePersistence:true,exactlyOneAuditPerDistinctRequest:true});
  }
+ globalThis.__calcumintConstructionFixture.client=foreign;
+ await db.sql(`INSERT INTO public.organization_members(organization_id,user_id,role) VALUES('${org}','${outsider.id}','viewer')`);
+ const permissionPayload={organizationId:org,projectId:project.id,clientWorkspaceId:null,requestId:randomUUID(),title:'Membership recovery',snapshot:cases[0].snapshot};
+ await assert.rejects(app.storeFactoryNineShare(outsider.id,permissionPayload),/permission/);
+ await db.sql(`UPDATE public.organization_members SET role='member' WHERE organization_id='${org}' AND user_id='${outsider.id}'`);
+ assert.match(await app.storeFactoryNineShare(outsider.id,permissionPayload),/^[a-f0-9-]{36}$/);
+ await db.sql(`DELETE FROM public.organization_members WHERE organization_id='${org}' AND user_id='${outsider.id}'`);
+ await assert.rejects(app.storeFactoryNineShare(outsider.id,{...permissionPayload,requestId:randomUUID()}),/permission/);
+ checks.push('Actual server session-to-actor functions with real GoTrue clients: stale owner, viewer, member recovery, membership revocation and exact immutable template readback; cookie/browser transport unchanged and reused');
  await assert.rejects(db.sql(unhold(reverse)),/durable evidence prevents reverse/i);
  checks.push('All10 genuine GoTrue/PostgREST Business snapshots: concurrent retry, exact readback, cross-tenant RLS, plan/actor/direct-RPC/shape/version/collision refusals and durable reverse refusal');
  const receipt={passed:true,kind:'CONSTRUCTION_INDEPENDENT_HELD_BUSINESS79_ACCEPTANCE',predecessorTuples:69,successorTuples:79,tuples,checks,observations,forwardSHA256:sha(forward),reverseSHA256:sha(reverse),preimageSHA256:sha(await readFile(out+'/preimage.json')),postimageSHA256:sha(await readFile(out+'/postimage.json')),fixture:db.provenance,productionWrites:false,sqlActivated:false,publicationSubstitution:false,releaseHold:true};

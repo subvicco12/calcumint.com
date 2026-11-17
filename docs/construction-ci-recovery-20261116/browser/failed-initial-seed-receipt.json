@@ -1,0 +1,17 @@
+{
+  "sourceCommit": "691b27a380e3b38657d837ca9c2600404be7ac08",
+  "historicalRows": "SYNTHETIC_EXACT_V1_FIXTURE_ROWS_NOT_CUSTOMER_RECORDS",
+  "baseline": "8296454dc7244205ef4cf0b6e0b41c38f90af20f",
+  "rows": [],
+  "checks": [
+    "Unauthenticated private route denied",
+    "Authenticated non-reviewer private route denied"
+  ],
+  "downloads": [],
+  "productionWrites": false,
+  "releaseHold": true,
+  "publicationFixture": false,
+  "canonicalApproval": false,
+  "scope": "Disposable repository-model PostgreSQL17/GoTrue/PostgREST; actual private page and existing atomic account actions. Loopback transport is not production equivalence. Focused Tile/Drywall refusal and read-only historical recovery; no publication capability.",
+  "failure": "Error: Docker exec failed: ERROR:  HISTORY_WRITE_REJECTED\nCONTEXT:  PL/pgSQL function public.atomic_account_plan(uuid) line 5 at RAISE\nPL/pgSQL function public.guard_atomic_history() line 7 at assignment\n\n    at ChildProcess.<anonymous> (file:///workspace/coordinator-construction-20261116/tests/gotrue-runtime/fixture.mjs:8:336)\n    at ChildProcess.emit (node:events:519:28)\n    at maybeClose (node:internal/child_process:1101:16)\n    at ChildProcess._handle.onexit (node:internal/child_process:304:5)"
+}

@@ -1,3 +1,6 @@
+import {rejectChangedSourceArgument} from '../construction-ci-recovery-20261116/negative-source-arguments.mjs';
+import {restoreWorkflowGraphVerifier} from '../construction-ci-recovery-20261116/workflow-scheduling.mjs';
+import {workflowSchedulePolicy} from '../construction-ci-recovery-20261116/workflow-scheduling-policy.mjs';
 import {workflowSourceEvidenceClaims} from '../milestone100-20261114/workflow-source-evidence-claims.mjs';
 import {negativeReject as rejectWrongWorkflowClaim} from '../milestone100-20261114/source-stage8-negative-workflow-claim.mjs';
 import {runCompositionSourceEvidenceBatch} from '../milestone100-20261114/composition-source-evidence-batch.mjs';
@@ -24,7 +27,7 @@ const stage5Input=(read,git)=>({read,git,root,policy:appStage5Policy,capturePath
 const stage5Rows=read=>new Map([...appStage5Records({read,policy:appStage5Policy,capturePath:appStage5CapturePath}),...testStage6Records(read),...pinnedSourceStage7Records(read)]);
 function proveStage5(read,git){ensureAppStage5Objects(git);return proveCurrentAppStage5AndHistoricalInputs(stage5Input(read,git)).stage7Actual;}
 
-import {retainedWorkflowRecord} from '../ci-balance-20261113/workflow.mjs';
+import {retainedWorkflowRecord,retainedBalancedWorkflowRecord,proveBalancedWorkflowCurrentSuccessor} from '../ci-balance-20261113/workflow.mjs';
 import {readFileSync,lstatSync,realpathSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {resolve,isAbsolute} from 'node:path';
@@ -56,7 +59,7 @@ export const retainedStage7V6CapturePath='docs/parallel-source-20261110/capture-
 export const retainedStage7V7CapturePath='docs/parallel-source-20261110/capture-revision66.json';
 export const retainedStage7V8CapturePath='docs/parallel-source-20261110/capture-revision67.json';
 const retainedStage8CapturePath='docs/parallel-source-20261110/capture-revision68.json';
-export const capturePath='docs/parallel-source-20261110/capture-revision117.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision136.json';
 const root=resolve(fileURLToPath(new URL('../../',import.meta.url))),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -161,7 +164,8 @@ function applicationSuccession(capture,read,git,witness,stage5){
  const {historicalFactory:factory,historicalCompletion:completion,live:workflow,nonSource,personal,personalAuxiliary}=verifyPersonalAndHistoricalWorkflow({git,read,root},witness);
  assert.deepEqual([...personal.values()].map(r=>r.current),capture.personalSources);assert.deepEqual([...personalAuxiliary.values()].map(r=>r.current),capture.personalAuxiliarySources);
  assert.deepEqual([...workflow.values()].map(r=>r.current),capture.workflowSources,'Workflow sources must enter closed current capture');
- assert.deepEqual([...nonSource.values()].map(r=>r.current),capture.workflowNonSourceSources,'Exact NS current sources required');
+ const retainedNSWorkflow=retainedBalancedWorkflowRecord(read);assert.deepEqual(capture.workflowNonSourceSources.filter(row=>row.path===retainedNSWorkflow.path),[retainedNSWorkflow],'Literal retained NS workflow must remain exact');immutableRecord(retainedNSWorkflow,git);
+ assert.deepEqual([...nonSource.values()].map(r=>r.current),capture.workflowNonSourceSources.map(row=>row.path===retainedNSWorkflow.path?{...workflowSchedulePolicy.current}:row),'Exact NS current sources required');
  assert.deepEqual(capture.workflowGuardSources.map(r=>r.path),workflowPolicy.guardPaths);for(const row of capture.workflowGuardSources){assert.equal(row.ref,workflowPolicy.guardRef);sourceRecord(row,read,git,stage5);}
  assert.deepEqual([...completion.values()].map(r=>r.current),capture.completionSources,'Completion sources must enter closed current capture');
  assert.deepEqual([...factory.values()].map(r=>r.current),capture.factorySources,'Factory sources must enter closed current capture');
@@ -258,11 +262,12 @@ function retainedVerifyParallelSource(read=readFileSync,git=sourceGit,suppliedRo
  const metadata='scripts/product-completion-lineage.mjs',old=git(['show',baselineRef+':'+metadata]).toString(),current=read(metadata).toString();
  const qualifiedStage7Graph=git(['show',receiptLineagePolicy.retainedGraphRef+':'+metadata]).toString();
  verifyStage7Lineage({previous:git(['show',sourceStage7Policy.predecessorRef+':'+metadata]).toString(),current:qualifiedStage7Graph,records:pinnedSourceStage7Records(read)});
- verifyReceiptLineageExtension({previous:qualifiedStage7Graph,current,git});
+ const retainedGraph=restoreWorkflowGraphVerifier(current);
+ verifyReceiptLineageExtension({previous:qualifiedStage7Graph,current:retainedGraph,git});
  const historicalTail=old.slice(old.indexOf('export const completionSourceRefs'));
  const insertion=" if(claim!==b.predecessorSHA256)throw Error('Completion predecessor claim differs: '+name);";
  assert.equal(historicalTail.split(insertion).length,2,'Exact unchanged guard insertion preimage required');
- assert.equal(current.slice(current.indexOf('export const completionSourceRefs')),historicalTail.replace(insertion,insertion+'\n git=completionGitReader(git);'),'Only the independently bound immutable Git transport insertion may extend the unchanged executable guard');
+ assert.equal(retainedGraph.slice(retainedGraph.indexOf('export const completionSourceRefs')),historicalTail.replace(insertion,insertion+'\n git=completionGitReader(git);'),'Only the independently bound immutable Git transport insertion may extend the unchanged executable guard');
  assert.equal(capture.workflowGraphPredecessor.path,metadata);assert.equal(capture.workflowGraphPredecessor.ref,workflowPolicy.predecessorRef);
  const workflowPrior=parseRows(immutableRecord(capture.workflowGraphPredecessor,git).toString());
  const before=parseRows(old),after=parseRows(current);assert.deepEqual(after.map(r=>r.path),before.map(r=>r.path));if(suppliedRows)assert.deepEqual(suppliedRows,after,'Only the reviewed parallel source rows are admitted');
@@ -284,7 +289,7 @@ function retainedVerifyParallelSource(read=readFileSync,git=sourceGit,suppliedRo
  const nodeRecord=capture.currentSources.find(r=>r.path===nodePath);assert(nodeRecord,'Exact current caller-tamper test must remain captured');
  assert.equal(git(['rev-parse',nodeRef+':'+nodePath]).toString().trim(),nodeRecord.blob);assert.equal(hash(git(['show',nodeRef+':'+nodePath])),nodeRecord.sha256);
  assert.deepEqual(before.filter(b=>b.supplementalSources?.some(d=>d.path===nodePath)).map(b=>b.path),['scripts/publication20-caller-lineage.mjs']);
- const ownedEvolutions=new Map([...apps,...auxiliary]);ownedEvolutions.set(nodePath,{...nodeRecord,ref:nodeRef});evolutions.set(nodePath,{...nodeRecord,ref:nodeRef});
+ const ownedEvolutions=new Map([...apps,...auxiliary]);const frozenWorkflow=retainedBalancedWorkflowRecord(read);immutableRecord(frozenWorkflow,git);ownedEvolutions.set(frozenWorkflow.path,frozenWorkflow);evolutions.set(frozenWorkflow.path,frozenWorkflow);ownedEvolutions.set(nodePath,{...nodeRecord,ref:nodeRef});evolutions.set(nodePath,{...nodeRecord,ref:nodeRef});
  const diagnosticPath='tests/product-completion-lineage.test.mjs',diagnosticRef='a963ef7aaa04664d07709cc431d6214511bc0573';
  const diagnostic=capture.currentSources.find(r=>r.path===diagnosticPath);assert(diagnostic,'Exact reviewed Git diagnostic successor must remain captured');
  assert.equal(git(['rev-parse',diagnosticRef+':'+diagnosticPath]).toString().trim(),diagnostic.blob);assert.equal(hash(git(['show',diagnosticRef+':'+diagnosticPath])),diagnostic.sha256);
@@ -315,7 +320,7 @@ function retainedVerifyParallelSource(read=readFileSync,git=sourceGit,suppliedRo
  const checkedEdges=new Set();
  for(const row of after)for(const dep of row.supplementalSources??[]){
   const identity=dep.ref+':'+dep.path+':'+dep.blob;if(checkedEdges.has(identity))continue;checkedEdges.add(identity);
-  const bytes=git(['cat-file','blob',dep.blob]);sourceRecord({...dep,bytes:bytes.length},read,git,stage5);
+  const bytes=git(['cat-file','blob',dep.blob]);if(dep.path==='.github/workflows/ci.yml')proveBalancedWorkflowCurrentSuccessor({record:{...dep,bytes:bytes.length},currentBytes:read(dep.path),input:{read,git,root}});else sourceRecord({...dep,bytes:bytes.length},read,git,stage5);
  }
  for(const r of [...apps.values(),...auxiliary.values()])assert(after.some(b=>b.path===r.path||b.supplementalSources?.some(d=>d.path===r.path)),'Application or explicit NS dependency missing from current binding graph');
  return true;
@@ -340,7 +345,13 @@ export function preloadRetainedImmutableObjects(read,git){verifyParallelAuthorit
 /** Availability only: immutable object transport setup never attests current source. */
 export function primeRetainedImmutableObjects(read,git){primeRetainedImmutableAvailability(read,git);}
 
-function currentStage8Input(read,git){return provePinnedSourceStage8({read,git,root});}
+function currentStage8Input(read,git){
+ const view=provePinnedSourceStage8({read,git,root});
+ // Availability only, after fresh live verification. Supplied/opaque readers
+ // retain their original path; every positive proof and final fence still runs.
+ if(read===readFileSync&&typeof git.preloadCommits==='function'&&typeof git.preloadBlobs==='function')primeRetainedImmutableAvailability(read,git);
+ return view;
+}
 function completeStage8(view,run){const result=run();assertSourceStage8HeadStable(view);return result;}
 function rejectChangedUnchangedFactoryBytes(currentRead){
  // Negative-only fast refusal: every positive input still executes the full proof.
@@ -367,7 +378,7 @@ function rejectChangedCurrentAuthorityBytes(read,git){
 }
 export function verifyParallelSource(read=readFileSync,git=sourceGit,suppliedRows){rejectChangedCurrentAuthorityBytes(read,git);const p=currentStage8Input(read,git);return completeStage8(p,()=>retainedVerifyParallelSource(p.historicalInput.read,p.historicalInput.git,suppliedRows));}
 export function proveNamedCurrentContext(read=readFileSync,git=sourceGit){const p=currentStage8Input(read,git);return completeStage8(p,()=>{const rows=retainedProveNamedCurrentContext(p.historicalInput.read,p.historicalInput.git);for(const [path,row]of [...p.live,...p.stage9Live]){const prior=rows.get(path);rows.set(path,{current:row.current,recordedSHA256:prior?.recordedSHA256??row.predecessor?.sha256});}return rows;});}
-export function assertNamedApplicationSuccessor(file,recordedSHA256,currentBytes,read=readFileSync,git=sourceGit){if(read===readFileSync&&git===sourceGit)rejectWrongWorkflowClaim(file,recordedSHA256,read);const p=currentStage8Input(read,git);return completeStage8(p,()=>{const row=p.stage9Live.get(file)??p.live.get(file);if(!row)return retainedAssertNamedApplicationSuccessor(file,recordedSHA256,currentBytes,p.historicalInput.read,p.historicalInput.git);const prior=retainedProveNamedCurrentContext(p.historicalInput.read,p.historicalInput.git).get(file);if(prior)assert.equal(recordedSHA256,prior.recordedSHA256);else if(file===apiRuntimeAnchor.fixed.path)assertApiRuntimeHistoricalObjectJoin({file,recordedSHA256,row,currentBytes,git});else proveSavedActionsClaim({file,recordedSHA256,row,currentBytes,git});assert(currentBytes.equals(git(['cat-file','blob',row.current.blob])),'Current named application successor differs');return {file,recordedApplicationGit:appRef,currentApplicationGit:row.current.ref,historicalEvidenceOnly:true};});}
+export function assertNamedApplicationSuccessor(file,recordedSHA256,currentBytes,read=readFileSync,git=sourceGit){if(read===readFileSync&&git===sourceGit){rejectWrongWorkflowClaim(file,recordedSHA256,read);rejectChangedSourceArgument(file,currentBytes,read,'Current named application successor differs');}const p=currentStage8Input(read,git);return completeStage8(p,()=>{const row=p.stage9Live.get(file)??p.live.get(file);if(!row)return retainedAssertNamedApplicationSuccessor(file,recordedSHA256,currentBytes,p.historicalInput.read,p.historicalInput.git);const prior=retainedProveNamedCurrentContext(p.historicalInput.read,p.historicalInput.git).get(file);if(prior)assert.equal(recordedSHA256,prior.recordedSHA256);else if(file===apiRuntimeAnchor.fixed.path)assertApiRuntimeHistoricalObjectJoin({file,recordedSHA256,row,currentBytes,git});else proveSavedActionsClaim({file,recordedSHA256,row,currentBytes,git});assert(currentBytes.equals(git(['cat-file','blob',row.current.blob])),'Current named application successor differs');return {file,recordedApplicationGit:appRef,currentApplicationGit:row.current.ref,historicalEvidenceOnly:true};});}
 export function assertSevenTestSuccessor(file,claim,currentBytes,read=readFileSync,git=sourceGit){const p=currentStage8Input(read,git);return completeStage8(p,()=>retainedAssertSevenTestSuccessor(file,claim,currentBytes,p.historicalInput.read,p.historicalInput.git));}
 export function assertFinalTwoScopeTestSuccessor(file,intermediateBytes,currentBytes,git=sourceGit){const p=currentStage8Input(readFileSync,git);return completeStage8(p,()=>retainedAssertFinalTwoScopeTestSuccessor(file,intermediateBytes,currentBytes,p.historicalInput.git,p.historicalInput.read));}
 

@@ -1,10 +1,12 @@
+import {restoreWorkflowGraphVerifier} from '../construction-ci-recovery-20261116/workflow-scheduling.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
-import {receiptLineagePolicy,verifyReceiptLineageExtension} from './source-receipt-lineage.mjs';
+import {receiptLineagePolicy,verifyReceiptLineageExtension as retainedReceiptLineageExtension} from './source-receipt-lineage.mjs';
 import {acceptedStage7,acceptedStage7V6,acceptedStage7V7,acceptedStage7V8} from '../parallel-source-20261110/authority.mjs';
+const verifyReceiptLineageExtension=({previous,current,git})=>retainedReceiptLineageExtension({previous,current:restoreWorkflowGraphVerifier(current),git});
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const originalRef='f00acbfdb882688eb1d0c22bc68305eb4984ac41';
 const original=path=>execFileSync('git',['show',originalRef+':'+path],{maxBuffer:32*1024*1024});

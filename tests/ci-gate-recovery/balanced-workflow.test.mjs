@@ -1,3 +1,4 @@
+import {workflowSchedulePolicy} from '../construction-ci-recovery-20261116/workflow-scheduling-policy.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -7,7 +8,7 @@ import {balancePolicy} from '../ci-balance-20261113/policy.mjs';
 const source=readFileSync('.github/workflows/ci.yml','utf8');
 const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],timeout:30000,maxBuffer:8000000});
 test('all existing campaigns relocate byte-for-byte while five jobs and deadlines remain mandatory',()=>{
- assert.equal(verifyBalancedWorkflow().current.ref,balancePolicy.codeRef);assert.equal(historicalWorkflowBeforeBalance(source),git(['show',balancePolicy.predecessorRef+':.github/workflows/ci.yml']).toString());
+ assert.equal(git(['show',balancePolicy.codeRef+':.github/workflows/ci.yml']).toString(),git(['show',workflowSchedulePolicy.predecessor.ref+':.github/workflows/ci.yml']).toString());assert.equal(verifyBalancedWorkflow().current.ref,workflowSchedulePolicy.current.ref);assert.equal(historicalWorkflowBeforeBalance(source),git(['show',balancePolicy.predecessorRef+':.github/workflows/ci.yml']).toString());
 });
 test('campaign removal, weakening, duplicate, moved-unit and deadline changes fail closed',()=>{
  for(const candidate of [source.replace('npm run test:final-reference-browser','echo omitted'),source.replace('node tests/canonical-calculus-workbench/browser.mjs','node tests/canonical-calculus-workbench/browser.mjs || true'),source.replace('timeout-minutes: 20','timeout-minutes: 21'),source.replace('run: npm test','run: echo omitted')])assert.throws(()=>historicalWorkflowBeforeBalance(candidate));

@@ -1,0 +1,114 @@
+{
+  "sourceCommit": "f194092fa3ecf135ad098117b7452b13a3f16ca5",
+  "historicalRows": "SYNTHETIC_EXACT_V1_FIXTURE_ROWS_NOT_CUSTOMER_RECORDS",
+  "baseline": "8296454dc7244205ef4cf0b6e0b41c38f90af20f",
+  "rows": [
+    {
+      "id": 348,
+      "plan": "free",
+      "refusal": "EXACT_NORMALIZED_CEILING198_RETAINED_V1_199",
+      "historical199ReadOnly": true,
+      "foreignHistoryDenied": true,
+      "validInputRecovery": true,
+      "historyUnmodified": true
+    },
+    {
+      "id": 349,
+      "plan": "free",
+      "refusal": "EXACT_NORMALIZED_CEILING198_RETAINED_V1_199",
+      "historical199ReadOnly": true,
+      "foreignHistoryDenied": true,
+      "validInputRecovery": true,
+      "historyUnmodified": true
+    },
+    {
+      "id": 348,
+      "plan": "pro",
+      "refusal": "EXACT_NORMALIZED_CEILING198_RETAINED_V1_199",
+      "historical199ReadOnly": true,
+      "foreignHistoryDenied": true,
+      "scenario199ReadOnly": true,
+      "validInputRecovery": true,
+      "historyUnmodified": true
+    },
+    {
+      "id": 349,
+      "plan": "pro",
+      "refusal": "EXACT_NORMALIZED_CEILING198_RETAINED_V1_199",
+      "historical199ReadOnly": true,
+      "foreignHistoryDenied": true,
+      "scenario199ReadOnly": true,
+      "validInputRecovery": true,
+      "historyUnmodified": true
+    },
+    {
+      "id": 348,
+      "plan": "business",
+      "refusal": "EXACT_NORMALIZED_CEILING198_RETAINED_V1_199",
+      "historical199ReadOnly": true,
+      "foreignHistoryDenied": true,
+      "scenario199ReadOnly": true,
+      "validInputRecovery": true,
+      "historyUnmodified": true
+    },
+    {
+      "id": 349,
+      "plan": "business",
+      "refusal": "EXACT_NORMALIZED_CEILING198_RETAINED_V1_199",
+      "historical199ReadOnly": true,
+      "foreignHistoryDenied": true,
+      "scenario199ReadOnly": true,
+      "validInputRecovery": true,
+      "historyUnmodified": true
+    }
+  ],
+  "checks": [
+    "Unauthenticated private route denied",
+    "Authenticated non-reviewer private route denied"
+  ],
+  "downloads": [
+    {
+      "id": 348,
+      "plan": "pro",
+      "format": "recorded-json",
+      "file": "invocation-RKRIUF/84d6201d-00de-47bc-a05f-857e87c3f3f7",
+      "bytes": 262,
+      "sha256": "3baafaa013b55d1e1b85cbd1790ff4f226bf1a8e3a350f7d52c64479d39b370b"
+    },
+    {
+      "id": 349,
+      "plan": "pro",
+      "format": "recorded-json",
+      "file": "invocation-TfRcXj/abd760d8-faa9-4e39-b06d-d3443f31a7a5",
+      "bytes": 277,
+      "sha256": "b4fd4839a0e09786976ed1c798812ccc39d346bb1b1de73296bdafa9c112342e"
+    },
+    {
+      "id": 348,
+      "plan": "business",
+      "format": "recorded-json",
+      "file": "invocation-MNn486/e329593d-ec80-4dfa-9892-c42ed1f0e774",
+      "bytes": 262,
+      "sha256": "3baafaa013b55d1e1b85cbd1790ff4f226bf1a8e3a350f7d52c64479d39b370b"
+    },
+    {
+      "id": 349,
+      "plan": "business",
+      "format": "recorded-json",
+      "file": "invocation-fRzBtg/52fef4c3-82d2-41bc-802f-8e935e319281",
+      "bytes": 277,
+      "sha256": "b4fd4839a0e09786976ed1c798812ccc39d346bb1b1de73296bdafa9c112342e"
+    }
+  ],
+  "productionWrites": false,
+  "releaseHold": true,
+  "publicationFixture": false,
+  "canonicalApproval": false,
+  "scope": "Disposable repository-model PostgreSQL17/GoTrue/PostgREST; actual private page and existing atomic account actions. Loopback transport is not production equivalence. Focused Tile/Drywall refusal and read-only historical recovery; no publication capability.",
+  "images": {
+    "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+    "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+    "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+  },
+  "passed": true
+}

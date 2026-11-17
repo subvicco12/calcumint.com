@@ -1,3 +1,4 @@
+import {workflowGraphPredecessor} from '../tests/construction-ci-recovery-20261116/workflow-scheduling.mjs';
 /** Exact test/presentation successors; no mathematical or certification approval. */
 import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
@@ -5808,7 +5809,9 @@ export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
   if(git(['rev-parse','--verify',dep.ref+'^{commit}']).toString().trim()!==dep.ref)throw Error('Completion supplemental source revision unavailable');
   if(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim()!==dep.blob)throw Error('Completion supplemental source object differs');
   const source=git(['cat-file','blob',dep.blob]);
-  if(hash(source)!==dep.sha256||!read(dep.path).equals(source))throw Error('Completion supplemental source bytes differ: '+dep.path);
+  if(hash(source)!==dep.sha256)throw Error('Completion supplemental source bytes differ: '+dep.path);
+  const supplied=read(dep.path),current=dep.path==='.github/workflows/ci.yml'?workflowGraphPredecessor(supplied,read,git):supplied;
+  if(!current.equals(source))throw Error('Completion supplemental source bytes differ: '+dep.path);
  }
  for(const middle of b.intermediateSources??[]){
   if(git(['rev-parse','--verify',middle.ref+'^{commit}']).toString().trim()!==middle.ref)throw Error('Completion exact source revision unavailable');
@@ -5819,6 +5822,7 @@ export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
   const ref=b[stage+'Ref'];if(git(['rev-parse','--verify',ref+'^{commit}']).toString().trim()!==ref)throw Error('Completion exact source revision unavailable');
   const blob=git(['rev-parse',ref+':'+name]).toString().trim();if(blob!==b[stage+'Blob'])throw Error('Completion source object differs');
   const source=git(['cat-file','blob',blob]);if(hash(source)!==b[stage+'SHA256'])throw Error('Completion source bytes differ');
+  if(stage==='successor'&&name==='.github/workflows/ci.yml')bytes=workflowGraphPredecessor(bytes,read,git);
   if(stage==='successor'&&(!bytes.equals(source)||hash(bytes)!==b.successorSHA256))throw Error('Completion current successor differs');
  }return true;
 }

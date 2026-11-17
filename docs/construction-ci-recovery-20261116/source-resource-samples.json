@@ -1,0 +1,932 @@
+{
+  "kind": "READ_ONLY_DIAGNOSTIC_SAMPLES_NOT_ACCEPTANCE",
+  "head": "dbad9080",
+  "wrapperMs": 137420,
+  "unchangedDeadlineMs": 150000,
+  "instrumentation": "Same20ms event-loop sampler and Git/fs/lock timing wrappers as baseline; no caching or altered return values",
+  "samples": [
+    {
+      "sample": {
+        "pid": 625594,
+        "ppid": 578875,
+        "pgid": 578875,
+        "script": "retained-vitest-diagnostics.test.mjs",
+        "at": 25447.163433,
+        "final": true,
+        "cpu": {
+          "user": 5876953,
+          "system": 4276418
+        },
+        "resources": {
+          "userCPUTime": 5876961,
+          "systemCPUTime": 4276424,
+          "maxRSS": 431840,
+          "sharedMemorySize": 0,
+          "unsharedDataSize": 0,
+          "unsharedStackSize": 0,
+          "minorPageFault": 736700,
+          "majorPageFault": 0,
+          "swappedOut": 0,
+          "fsRead": 0,
+          "fsWrite": 24,
+          "ipcSent": 0,
+          "ipcReceived": 0,
+          "signalsCount": 0,
+          "voluntaryContextSwitches": 26934,
+          "involuntaryContextSwitches": 5189
+        },
+        "eventLoop": {
+          "idle": 0,
+          "active": 2.939545001834631,
+          "utilization": 1
+        },
+        "eventLoopDelayMaxMs": 0,
+        "groups": {
+          "fs.read:other": {
+            "calls": 4967,
+            "ms": 125.88985899998839,
+            "errors": 1
+          },
+          "fs.read:source-metadata": {
+            "calls": 2284,
+            "ms": 277.8175169999131,
+            "errors": 0
+          },
+          "fs.read:application-src": {
+            "calls": 12669,
+            "ms": 121.11656500008081,
+            "errors": 0
+          },
+          "git:cat-file": {
+            "calls": 833,
+            "ms": 5923.952493999968,
+            "errors": 0
+          },
+          "git:rev-parse": {
+            "calls": 623,
+            "ms": 4289.263247999968,
+            "errors": 0
+          },
+          "git:diff": {
+            "calls": 30,
+            "ms": 267.20180600000197,
+            "errors": 0
+          },
+          "git:status": {
+            "calls": 81,
+            "ms": 1328.045247000001,
+            "errors": 0
+          },
+          "git:ls-tree": {
+            "calls": 129,
+            "ms": 2104.8006570000043,
+            "errors": 0
+          },
+          "git:-c": {
+            "calls": 47,
+            "ms": 317.220259000007,
+            "errors": 0
+          },
+          "fs.read:proc": {
+            "calls": 518,
+            "ms": 6.465027000018154,
+            "errors": 0
+          },
+          "fs.read:boot-id": {
+            "calls": 518,
+            "ms": 3.5342010000113078,
+            "errors": 0
+          },
+          "lock.acquire": {
+            "calls": 37,
+            "ms": 3.76466399999822,
+            "errors": 0
+          },
+          "git:remote": {
+            "calls": 36,
+            "ms": 277.3817010000016,
+            "errors": 0
+          },
+          "git:worktree": {
+            "calls": 8,
+            "ms": 4023.8576980000016,
+            "errors": 0
+          },
+          "exec:node": {
+            "calls": 4,
+            "ms": 2029.1773719999965,
+            "errors": 3
+          }
+        }
+      },
+      "snapshotIsPartial": false
+    },
+    {
+      "sample": {
+        "pid": 616828,
+        "ppid": 598573,
+        "pgid": 578875,
+        "script": "historical-tests.mjs",
+        "at": 21863.51519,
+        "final": true,
+        "cpu": {
+          "user": 4798112,
+          "system": 3999290
+        },
+        "resources": {
+          "userCPUTime": 4798120,
+          "systemCPUTime": 3999297,
+          "maxRSS": 425396,
+          "sharedMemorySize": 0,
+          "unsharedDataSize": 0,
+          "unsharedStackSize": 0,
+          "minorPageFault": 657897,
+          "majorPageFault": 0,
+          "swappedOut": 0,
+          "fsRead": 0,
+          "fsWrite": 40,
+          "ipcSent": 0,
+          "ipcReceived": 0,
+          "signalsCount": 0,
+          "voluntaryContextSwitches": 25680,
+          "involuntaryContextSwitches": 4415
+        },
+        "eventLoop": {
+          "idle": 0,
+          "active": 0,
+          "utilization": 0
+        },
+        "eventLoopDelayMaxMs": 0,
+        "groups": {
+          "fs.read:other": {
+            "calls": 3344,
+            "ms": 80.67717899994773,
+            "errors": 0
+          },
+          "fs.read:source-metadata": {
+            "calls": 1524,
+            "ms": 169.30360199997284,
+            "errors": 0
+          },
+          "fs.read:application-src": {
+            "calls": 8444,
+            "ms": 89.57419200001948,
+            "errors": 0
+          },
+          "git:cat-file": {
+            "calls": 840,
+            "ms": 6078.250109999983,
+            "errors": 0
+          },
+          "git:rev-parse": {
+            "calls": 539,
+            "ms": 3072.090350999978,
+            "errors": 0
+          },
+          "git:diff": {
+            "calls": 30,
+            "ms": 179.93688900000132,
+            "errors": 0
+          },
+          "git:status": {
+            "calls": 54,
+            "ms": 879.6412669999934,
+            "errors": 0
+          },
+          "git:ls-tree": {
+            "calls": 129,
+            "ms": 1933.206826999997,
+            "errors": 0
+          },
+          "git:-c": {
+            "calls": 34,
+            "ms": 226.10520399999996,
+            "errors": 0
+          },
+          "fs.read:proc": {
+            "calls": 431,
+            "ms": 4.545692000025838,
+            "errors": 0
+          },
+          "fs.read:boot-id": {
+            "calls": 431,
+            "ms": 2.9564970000462836,
+            "errors": 0
+          },
+          "lock.acquire": {
+            "calls": 26,
+            "ms": 3.8238149999906454,
+            "errors": 1
+          },
+          "git:remote": {
+            "calls": 24,
+            "ms": 155.31507600000396,
+            "errors": 0
+          },
+          "Atomics.wait": {
+            "calls": 1,
+            "ms": 25.455151000000114,
+            "errors": 0
+          },
+          "git:worktree": {
+            "calls": 4,
+            "ms": 2283.7326230000026,
+            "errors": 0
+          },
+          "exec:node": {
+            "calls": 2,
+            "ms": 3004.958589,
+            "errors": 1
+          }
+        }
+      },
+      "snapshotIsPartial": false
+    },
+    {
+      "sample": {
+        "pid": 607846,
+        "ppid": 606978,
+        "pgid": 578875,
+        "script": "source-lineage.test.mjs",
+        "at": 14134.737128,
+        "final": true,
+        "cpu": {
+          "user": 1593755,
+          "system": 2062459
+        },
+        "resources": {
+          "userCPUTime": 1593759,
+          "systemCPUTime": 2062459,
+          "maxRSS": 53712,
+          "sharedMemorySize": 0,
+          "unsharedDataSize": 0,
+          "unsharedStackSize": 0,
+          "minorPageFault": 571760,
+          "majorPageFault": 0,
+          "swappedOut": 0,
+          "fsRead": 0,
+          "fsWrite": 0,
+          "ipcSent": 0,
+          "ipcReceived": 0,
+          "signalsCount": 0,
+          "voluntaryContextSwitches": 15731,
+          "involuntaryContextSwitches": 6065
+        },
+        "eventLoop": {
+          "idle": 5.995561,
+          "active": 8981.615779999604,
+          "utilization": 0.9993329082920342
+        },
+        "eventLoopDelayMaxMs": 3200.253951,
+        "groups": {
+          "fs.read:other": {
+            "calls": 22,
+            "ms": 2.1806790000022573,
+            "errors": 0
+          },
+          "git:show": {
+            "calls": 178,
+            "ms": 944.6247429999888,
+            "errors": 0
+          },
+          "fs.read:application-src": {
+            "calls": 795,
+            "ms": 33.72678500000984,
+            "errors": 0
+          },
+          "git:rev-parse": {
+            "calls": 2426,
+            "ms": 8585.177723000048,
+            "errors": 0
+          },
+          "git:cat-file": {
+            "calls": 1213,
+            "ms": 4246.456537999965,
+            "errors": 0
+          }
+        }
+      },
+      "snapshotIsPartial": false
+    },
+    {
+      "sample": {
+        "pid": 599675,
+        "ppid": 599640,
+        "pgid": 578875,
+        "script": "source-stage9.test.mjs",
+        "at": 8395.443735,
+        "final": true,
+        "cpu": {
+          "user": 1178305,
+          "system": 1162650
+        },
+        "resources": {
+          "userCPUTime": 1178308,
+          "systemCPUTime": 1162653,
+          "maxRSS": 49456,
+          "sharedMemorySize": 0,
+          "unsharedDataSize": 0,
+          "unsharedStackSize": 0,
+          "minorPageFault": 290192,
+          "majorPageFault": 0,
+          "swappedOut": 0,
+          "fsRead": 0,
+          "fsWrite": 0,
+          "ipcSent": 0,
+          "ipcReceived": 0,
+          "signalsCount": 0,
+          "voluntaryContextSwitches": 6782,
+          "involuntaryContextSwitches": 3589
+        },
+        "eventLoop": {
+          "idle": 0,
+          "active": 7.6388899981975555,
+          "utilization": 1
+        },
+        "eventLoopDelayMaxMs": 0,
+        "groups": {
+          "fs.read:other": {
+            "calls": 239,
+            "ms": 8.912147000000338,
+            "errors": 0
+          },
+          "fs.read:source-metadata": {
+            "calls": 1,
+            "ms": 0.13245900000000432,
+            "errors": 0
+          },
+          "fs.read:application-src": {
+            "calls": 3793,
+            "ms": 46.65428000000304,
+            "errors": 0
+          },
+          "git:rev-parse": {
+            "calls": 869,
+            "ms": 3475.3473449999924,
+            "errors": 0
+          },
+          "git:cat-file": {
+            "calls": 1125,
+            "ms": 4451.247080999991,
+            "errors": 0
+          },
+          "git:diff": {
+            "calls": 6,
+            "ms": 28.179770999998937,
+            "errors": 0
+          },
+          "git:status": {
+            "calls": 7,
+            "ms": 83.64705900000149,
+            "errors": 0
+          },
+          "git:ls-tree": {
+            "calls": 2,
+            "ms": 12.38355000000081,
+            "errors": 0
+          },
+          "fs.mkdir": {
+            "calls": 39,
+            "ms": 0.21944300000086514,
+            "errors": 0
+          }
+        }
+      },
+      "snapshotIsPartial": false
+    },
+    {
+      "sample": {
+        "pid": 598591,
+        "ppid": 598573,
+        "pgid": 578875,
+        "script": "historical-tests.mjs",
+        "at": 35007.929889,
+        "final": true,
+        "cpu": {
+          "user": 5078580,
+          "system": 3757799
+        },
+        "resources": {
+          "userCPUTime": 5078598,
+          "systemCPUTime": 3757811,
+          "maxRSS": 444560,
+          "sharedMemorySize": 0,
+          "unsharedDataSize": 0,
+          "unsharedStackSize": 0,
+          "minorPageFault": 649149,
+          "majorPageFault": 0,
+          "swappedOut": 0,
+          "fsRead": 0,
+          "fsWrite": 32,
+          "ipcSent": 0,
+          "ipcReceived": 0,
+          "signalsCount": 0,
+          "voluntaryContextSwitches": 26021,
+          "involuntaryContextSwitches": 4537
+        },
+        "eventLoop": {
+          "idle": 0,
+          "active": 0.6928379982709885,
+          "utilization": 1
+        },
+        "eventLoopDelayMaxMs": 0,
+        "groups": {
+          "fs.read:other": {
+            "calls": 3349,
+            "ms": 79.9191020001095,
+            "errors": 0
+          },
+          "fs.read:source-metadata": {
+            "calls": 1524,
+            "ms": 220.0166700001313,
+            "errors": 0
+          },
+          "fs.read:application-src": {
+            "calls": 8444,
+            "ms": 81.72126000006043,
+            "errors": 0
+          },
+          "git:cat-file": {
+            "calls": 840,
+            "ms": 5635.537009000011,
+            "errors": 0
+          },
+          "git:rev-parse": {
+            "calls": 539,
+            "ms": 3391.8814929999944,
+            "errors": 0
+          },
+          "git:diff": {
+            "calls": 30,
+            "ms": 185.55093999999966,
+            "errors": 0
+          },
+          "git:status": {
+            "calls": 54,
+            "ms": 809.6754330000031,
+            "errors": 0
+          },
+          "git:ls-tree": {
+            "calls": 129,
+            "ms": 1715.2064530000032,
+            "errors": 0
+          },
+          "git:-c": {
+            "calls": 34,
+            "ms": 197.88807700002621,
+            "errors": 0
+          },
+          "fs.read:proc": {
+            "calls": 449,
+            "ms": 4.62812299998609,
+            "errors": 0
+          },
+          "fs.read:boot-id": {
+            "calls": 449,
+            "ms": 2.7748369999649185,
+            "errors": 0
+          },
+          "lock.acquire": {
+            "calls": 29,
+            "ms": 4.056230999960235,
+            "errors": 4
+          },
+          "git:remote": {
+            "calls": 24,
+            "ms": 146.04554199999006,
+            "errors": 0
+          },
+          "Atomics.wait": {
+            "calls": 4,
+            "ms": 100.44205099999726,
+            "errors": 0
+          },
+          "git:worktree": {
+            "calls": 4,
+            "ms": 1986.9016790000005,
+            "errors": 0
+          },
+          "exec:node": {
+            "calls": 2,
+            "ms": 17079.910303999997,
+            "errors": 0
+          }
+        }
+      },
+      "snapshotIsPartial": false
+    },
+    {
+      "sample": {
+        "pid": 594092,
+        "ppid": 594077,
+        "pgid": 578875,
+        "script": "personal-stage.test.mjs",
+        "at": 50051.640683,
+        "final": true,
+        "cpu": {
+          "user": 17339050,
+          "system": 11705361
+        },
+        "resources": {
+          "userCPUTime": 17339076,
+          "systemCPUTime": 11705379,
+          "maxRSS": 464776,
+          "sharedMemorySize": 0,
+          "unsharedDataSize": 0,
+          "unsharedStackSize": 0,
+          "minorPageFault": 1909141,
+          "majorPageFault": 0,
+          "swappedOut": 0,
+          "fsRead": 0,
+          "fsWrite": 296,
+          "ipcSent": 0,
+          "ipcReceived": 0,
+          "signalsCount": 0,
+          "voluntaryContextSwitches": 46986,
+          "involuntaryContextSwitches": 14170
+        },
+        "eventLoop": {
+          "idle": 0,
+          "active": 5.41966500133276,
+          "utilization": 1
+        },
+        "eventLoopDelayMaxMs": 0,
+        "groups": {
+          "fs.read:other": {
+            "calls": 13431,
+            "ms": 235.73870299959773,
+            "errors": 0
+          },
+          "fs.read:source-metadata": {
+            "calls": 7205,
+            "ms": 856.6372329999359,
+            "errors": 0
+          },
+          "fs.read:application-src": {
+            "calls": 66841,
+            "ms": 576.0349300003219,
+            "errors": 0
+          },
+          "git:-c": {
+            "calls": 295,
+            "ms": 2033.5283730000274,
+            "errors": 0
+          },
+          "fs.read:proc": {
+            "calls": 6263,
+            "ms": 56.138232000004805,
+            "errors": 0
+          },
+          "fs.read:boot-id": {
+            "calls": 6263,
+            "ms": 33.73487499994249,
+            "errors": 0
+          },
+          "lock.acquire": {
+            "calls": 409,
+            "ms": 63.739166999974955,
+            "errors": 146
+          },
+          "git:remote": {
+            "calls": 262,
+            "ms": 1804.31047699998,
+            "errors": 0
+          },
+          "git:rev-parse": {
+            "calls": 2074,
+            "ms": 15266.164071000001,
+            "errors": 0
+          },
+          "git:cat-file": {
+            "calls": 389,
+            "ms": 3386.5961199999692,
+            "errors": 0
+          },
+          "git:diff": {
+            "calls": 97,
+            "ms": 620.5965429999934,
+            "errors": 0
+          },
+          "git:status": {
+            "calls": 528,
+            "ms": 8335.933002999976,
+            "errors": 0
+          },
+          "git:ls-tree": {
+            "calls": 107,
+            "ms": 1457.5981560000002,
+            "errors": 0
+          },
+          "Atomics.wait": {
+            "calls": 146,
+            "ms": 3684.8128780000097,
+            "errors": 0
+          }
+        }
+      },
+      "snapshotIsPartial": false
+    },
+    {
+      "sample": {
+        "pid": 578885,
+        "ppid": 578875,
+        "pgid": 578875,
+        "script": "application-successor.test.mjs",
+        "at": 50468.8307,
+        "final": true,
+        "cpu": {
+          "user": 13673978,
+          "system": 12431951
+        },
+        "resources": {
+          "userCPUTime": 13673981,
+          "systemCPUTime": 12431954,
+          "maxRSS": 641568,
+          "sharedMemorySize": 0,
+          "unsharedDataSize": 0,
+          "unsharedStackSize": 0,
+          "minorPageFault": 1827387,
+          "majorPageFault": 0,
+          "swappedOut": 0,
+          "fsRead": 0,
+          "fsWrite": 144,
+          "ipcSent": 0,
+          "ipcReceived": 0,
+          "signalsCount": 0,
+          "voluntaryContextSwitches": 60706,
+          "involuntaryContextSwitches": 12247
+        },
+        "eventLoop": {
+          "idle": 64.456795,
+          "active": 12074.909407000529,
+          "utilization": 0.9946902668617594
+        },
+        "eventLoopDelayMaxMs": 6819.938303,
+        "groups": {
+          "fs.read:other": {
+            "calls": 13272,
+            "ms": 281.5836330003741,
+            "errors": 0
+          },
+          "fs.read:source-metadata": {
+            "calls": 7651,
+            "ms": 1166.1175450000194,
+            "errors": 0
+          },
+          "git:rev-parse": {
+            "calls": 1872,
+            "ms": 13803.838685999921,
+            "errors": 0
+          },
+          "git:ls-tree": {
+            "calls": 206,
+            "ms": 2818.720850999992,
+            "errors": 0
+          },
+          "git:diff": {
+            "calls": 90,
+            "ms": 664.7452250000083,
+            "errors": 0
+          },
+          "fs.read:application-src": {
+            "calls": 46658,
+            "ms": 395.352123999878,
+            "errors": 0
+          },
+          "git:cat-file": {
+            "calls": 1133,
+            "ms": 8376.277487999945,
+            "errors": 0
+          },
+          "git:status": {
+            "calls": 307,
+            "ms": 4918.097377999892,
+            "errors": 0
+          },
+          "git:-c": {
+            "calls": 149,
+            "ms": 1100.8814110000135,
+            "errors": 0
+          },
+          "fs.read:proc": {
+            "calls": 2223,
+            "ms": 23.07607999986385,
+            "errors": 0
+          },
+          "fs.read:boot-id": {
+            "calls": 2223,
+            "ms": 14.069909999844185,
+            "errors": 0
+          },
+          "lock.acquire": {
+            "calls": 209,
+            "ms": 29.36568099996248,
+            "errors": 76
+          },
+          "git:remote": {
+            "calls": 132,
+            "ms": 1014.0154430000107,
+            "errors": 0
+          },
+          "Atomics.wait": {
+            "calls": 76,
+            "ms": 1912.810619999991,
+            "errors": 0
+          },
+          "git:worktree": {
+            "calls": 2,
+            "ms": 1420.5386320000016,
+            "errors": 0
+          },
+          "exec:node": {
+            "calls": 1,
+            "ms": 1864.0307869999997,
+            "errors": 0
+          }
+        }
+      },
+      "snapshotIsPartial": false
+    },
+    {
+      "sample": {
+        "pid": 578886,
+        "ppid": 578875,
+        "pgid": 578875,
+        "script": "current.test.mjs",
+        "at": 134967.828837,
+        "final": true,
+        "cpu": {
+          "user": 10199734,
+          "system": 7150721
+        },
+        "resources": {
+          "userCPUTime": 10199736,
+          "systemCPUTime": 7150721,
+          "maxRSS": 635012,
+          "sharedMemorySize": 0,
+          "unsharedDataSize": 0,
+          "unsharedStackSize": 0,
+          "minorPageFault": 1036498,
+          "majorPageFault": 0,
+          "swappedOut": 0,
+          "fsRead": 0,
+          "fsWrite": 64,
+          "ipcSent": 0,
+          "ipcReceived": 0,
+          "signalsCount": 0,
+          "voluntaryContextSwitches": 48550,
+          "involuntaryContextSwitches": 7906
+        },
+        "eventLoop": {
+          "idle": 88134.316412,
+          "active": 4003.616059998036,
+          "utilization": 0.04345241913491806
+        },
+        "eventLoopDelayMaxMs": 2673.868799,
+        "groups": {
+          "fs.read:other": {
+            "calls": 8253,
+            "ms": 150.46338300045244,
+            "errors": 0
+          },
+          "fs.read:source-metadata": {
+            "calls": 3567,
+            "ms": 479.982676999869,
+            "errors": 0
+          },
+          "git:-c": {
+            "calls": 128,
+            "ms": 818.6125179999871,
+            "errors": 0
+          },
+          "fs.read:proc": {
+            "calls": 1167,
+            "ms": 12.060370999974054,
+            "errors": 0
+          },
+          "fs.read:boot-id": {
+            "calls": 1167,
+            "ms": 8.966076999988104,
+            "errors": 0
+          },
+          "lock.acquire": {
+            "calls": 102,
+            "ms": 10.954706999987536,
+            "errors": 29
+          },
+          "git:ls-tree": {
+            "calls": 184,
+            "ms": 2558.931850000017,
+            "errors": 0
+          },
+          "git:cat-file": {
+            "calls": 893,
+            "ms": 6015.511285000053,
+            "errors": 0
+          },
+          "git:rev-parse": {
+            "calls": 743,
+            "ms": 5045.66611500004,
+            "errors": 0
+          },
+          "fs.read:application-src": {
+            "calls": 23585,
+            "ms": 180.19038300054171,
+            "errors": 0
+          },
+          "git:diff": {
+            "calls": 30,
+            "ms": 184.83067500000016,
+            "errors": 0
+          },
+          "git:status": {
+            "calls": 122,
+            "ms": 1891.8295999998763,
+            "errors": 0
+          },
+          "Atomics.wait": {
+            "calls": 29,
+            "ms": 730.3426669999981,
+            "errors": 0
+          },
+          "git:remote": {
+            "calls": 63,
+            "ms": 475.15905900002053,
+            "errors": 0
+          },
+          "git:worktree": {
+            "calls": 2,
+            "ms": 1628.8129449999997,
+            "errors": 0
+          },
+          "exec:node": {
+            "calls": 2,
+            "ms": 19466.645652,
+            "errors": 0
+          }
+        }
+      },
+      "snapshotIsPartial": false
+    },
+    {
+      "sample": {
+        "pid": 578854,
+        "ppid": 578823,
+        "pgid": 578758,
+        "script": "process.js",
+        "at": 137297.67903,
+        "final": false,
+        "cpu": {
+          "user": 1607401,
+          "system": 292970
+        },
+        "resources": {
+          "userCPUTime": 1607438,
+          "systemCPUTime": 292970,
+          "maxRSS": 61692,
+          "sharedMemorySize": 0,
+          "unsharedDataSize": 0,
+          "unsharedStackSize": 0,
+          "minorPageFault": 21421,
+          "majorPageFault": 0,
+          "swappedOut": 0,
+          "fsRead": 232,
+          "fsWrite": 0,
+          "ipcSent": 0,
+          "ipcReceived": 0,
+          "signalsCount": 0,
+          "voluntaryContextSwitches": 18319,
+          "involuntaryContextSwitches": 521
+        },
+        "eventLoop": {
+          "idle": 135730.183008,
+          "active": 1518.1395859981712,
+          "utilization": 0.011061261495261139
+        },
+        "eventLoopDelayMaxMs": 68.747263,
+        "groups": {
+          "fs.read:proc": {
+            "calls": 1,
+            "ms": 0.053942000000006374,
+            "errors": 0
+          },
+          "fs.read:boot-id": {
+            "calls": 1,
+            "ms": 0.019984000000022206,
+            "errors": 0
+          },
+          "fs.mkdir": {
+            "calls": 1,
+            "ms": 0.024074999999982083,
+            "errors": 0
+          }
+        }
+      },
+      "snapshotIsPartial": true
+    }
+  ],
+  "nestedDurationsMustNotBeSummedAsElapsedWallTime": true,
+  "localOomKills": 0,
+  "hostedProcessSnapshotAvailable": false,
+  "releaseHold": true
+}

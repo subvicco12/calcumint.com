@@ -1,3 +1,5 @@
+import {createSourceChildScheduler} from '../construction-ci-recovery-20261116/source-child-scheduler.mjs';
+import {describe} from 'node:test';
 import {sourceStage9Policy} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import {ensurePinnedAuthorityRecord} from '../milestone100-20261114/source-stage8-authority-availability.mjs';
 import test from 'node:test';
@@ -11,6 +13,8 @@ import {ensureParallelSources} from './bootstrap.mjs';
 import {appStage5Policy,appStage5CapturePath} from '../completion-wave-20261113/source-app-stage5-policy.mjs';
 import {proveCurrentAppStage5AndHistoricalInputs} from '../completion-wave-20261113/source-test-stage6.mjs';
 import {factoryPolicy} from '../calculator-factory-source-20261112/policy.mjs';
+describe('exact current source assertions',{concurrency:2},()=>{
+const scheduleSourceChild=createSourceChildScheduler();
 const authority='tests/parallel-source-20261110/authority.mjs';
 const retainedStage6Authority={blob:'c2b5df7c2c06f13fbb62b7e61b61dd5df8c8d557',sha256:'cac1eed35a22b764bb3a665324392681689a8a0786618c6c82fdc89bba263408'};
 const retainedStage7Authority={ref:'f00acbfdb882688eb1d0c22bc68305eb4984ac41',blob:'398e63f1f3e7c465856ea9958095d2f5269f046d',sha256:'c4a951c795d43b20715d5b1ffeb1afd8d5fcea295bb3d72ffb3a56b7676813f2'};
@@ -68,6 +72,44 @@ const retainedStage8V47Authority={ref:'952ad3dbce9b2a5018cef1b17b8cca9c457f61b0'
 const retainedStage8V48Authority={ref:'eea8088658089456a5b9b145c786951e4a90e43c',blob:'0a27ba0783b282eb69366c66ba3e67a9ddb8ed12',sha256:'a31c60e8e1b66e73cc5a688b637064f6139f99e0ae2482862c903bfe890d05f0'};
 const expectedAuthority={ref:'089b2d2d8114304322c62b2408f18b29cb867bb1',blob:'d8ec9dcc37e083388b6e602896b93e1a686f43f7',sha256:'60545630eccb1a48cb52f4405615f888a91035728ff080dab60235218c595a7a'};
 ensurePinnedAuthorityRecord(expectedAuthority);
+const constructionAuthority={ref:'d1e99c2eb61e89926fccdaa1385c44d2cabbe541',blob:'01fda69fa250d5219fc1a39250e49c6ddb8212a6',sha256:'3615871c0fb48f54a2e12a076ed54804d9790af898481cfc066e7a821b0349b3'};
+ensurePinnedAuthorityRecord(constructionAuthority);
+const recoveryAuthority={"ref":"f61a0ffc7b4870b0b03b6f934acccaf9acde2eb2","blob":"74d7350c692b6b72c19b47af5e590cc1b45f9513","sha256":"9f124cc6d23c7da9c09cea5640f8af09dee96b85edfa7fced55df7763ed5a6d6"};
+ensurePinnedAuthorityRecord(recoveryAuthority);
+const schedulerAuthority={"ref":"10dce0ee59803299b98a7b8475a2805534061fc1","blob":"c8e4d02101e8500b5f3e276b8d4f80251d8e9c3f","sha256":"38222c5645ee4b5814ebd5e1f3e8b92cef7d93f9e5945580859960bf660dd622"};
+ensurePinnedAuthorityRecord(schedulerAuthority);
+const browserAuthority={"ref":"4b2910e9547d8d0674d30ef17e5d9f49b0679ebe","blob":"41ea6920b721bb7820ddbe66c71449277d162dfe","sha256":"6a3b17665614e82286b3cc394bcd9a247533cc5ff7f7f509faac8d5f97cdc784"};
+ensurePinnedAuthorityRecord(browserAuthority);
+const nativePrimeAuthority={"ref":"1ad75ab601b9223481d5d817b8a46df972933cfd","blob":"6350f8f64e0fd86d82ffafe49cc12862e9cf65bf","sha256":"152e7be765225c5d474021db3a6f178a94a030699b279dab79136e266c30eb91"};
+ensurePinnedAuthorityRecord(nativePrimeAuthority);
+const nativeProcessAuthority={"ref":"621f525cbe240f56bc1fa25e7a2a7f17540af978","blob":"38d95771bfdff3787993287b2ad072e25da36ffd","sha256":"96e4a1ed32b56b962f73865ad425eff1f38d22ac9417d7217c27e798e1a393a2"};
+ensurePinnedAuthorityRecord(nativeProcessAuthority);
+const nativeLifecycleAuthority={"ref":"1f02bf8caf36874675b469f041636628b6be54a5","blob":"37335c172dac2eeb094f49d8b70a0ef657be70c1","sha256":"1a328f6ee1e0f4df2b2eeb60623326a2d2dfc2576cac8d0405da9c1ce628372d"};
+ensurePinnedAuthorityRecord(nativeLifecycleAuthority);
+const nativeTimeoutAuthority={"ref":"6da252f52b9c7eaf32011a02f387dc7529aa1e77","blob":"2c743b4fbb8840789a5651751098f5f7ebda7fef","sha256":"ad5dacef74a4a3108a757fa3577d711d87403ebdc73392f830d62b6af0b2a579"};
+ensurePinnedAuthorityRecord(nativeTimeoutAuthority);
+const jsdomHookAuthority={"ref":"69a80af17dbd80ab82e294fa508d63d32f260000","blob":"994ba16a5d35b26a19a3e49cab00861193ea71f3","sha256":"42281f1873364bab14b6c4f581fe3b1494b7878444e1d85f8d15f25e34ae2e3a"};
+ensurePinnedAuthorityRecord(jsdomHookAuthority);
+const nativePublicationAuthority={"ref":"91df780cea450d1307d87b867596d94ad498e6e3","blob":"8bde88234fd69cde17383ffd5c328bd6c30e9243","sha256":"f8a203702366cf7940e29cdbfa3d556204fb8a6f9fc825ab083aad287715ee14"};
+ensurePinnedAuthorityRecord(nativePublicationAuthority);
+const nativeArgumentAuthority={"ref":"c143f588ad19b34643f467467b28e6749a8467de","blob":"5355b102ed272532d27dd64bf995c379d092b1f7","sha256":"f8dff8de7d347ffcad7646e6918a0b9d93413dfcf159714264fb3ce821fd15b5"};
+ensurePinnedAuthorityRecord(nativeArgumentAuthority);
+const boundedWorkflowAuthority={"ref":"75252677f29a3b46cf930df5c4725b3400ae4e06","blob":"4d01bbbb5391d134499f5bb6c0f74164c52bc22d","sha256":"2f8961a3da6050ec96e2e2ef2d45074737e5cd8444c802e6b625950647ddd69c"};
+ensurePinnedAuthorityRecord(boundedWorkflowAuthority);
+const scheduledNamespaceAuthority={"ref":"b0b0c55c9aeb41c13772bc06da6dedee48e6d727","blob":"b4b7bfa3690b5f5b28798d4263caa42a61d48e2e","sha256":"a38d6d8447be307ce9fe3353f91946f077ba8cf6b4dca0b0285bb4e7f0e6cef4"};
+ensurePinnedAuthorityRecord(scheduledNamespaceAuthority);
+const exactWorkflowArgumentAuthority={"ref":"d7e4dbdea2f1294af5839e21b838392ce5a01d6e","blob":"4481ffb078603f1d1a41041f2248c584e55661aa","sha256":"6b9656b689ef31c03b6398ba70bc067b86a9c211d0a48911553d4ad88c6b4fc8"};
+ensurePinnedAuthorityRecord(exactWorkflowArgumentAuthority);
+const workflowGraphAuthority={"ref":"1a6f606eaf7458bb4494942629c3367beefd97d8","blob":"3591fd1084c83197a64cdc92be0677c15e137c73","sha256":"4df8337b0439ac17cee5a3bbe85b3e80561dfb8b2a3cdba313d096a999f21112"};
+ensurePinnedAuthorityRecord(workflowGraphAuthority);
+const boundedImmutableAuthority={"ref":"c927f57aa5e07a8596c8ead8d745bc6b19147528","blob":"4eb57ac4781fa5283b67313df77d347e5fa219a9","sha256":"19ad018c941f7932f8e0a645bf15e8624d36676584fc780928859948cc3d0957"};
+ensurePinnedAuthorityRecord(boundedImmutableAuthority);
+const immutableFixtureAuthority={"ref":"953d4ac22adf568e4cdbd1b07ec7303f911cbc92","blob":"6ba680a2982a2005f8a13620b331c0c8cdc61b5a","sha256":"4884c01a50303e5689762bab9914c53c65dae67ab4440dc2b4a0e17ced8704e4"};
+ensurePinnedAuthorityRecord(immutableFixtureAuthority);
+const negativeArgumentAuthority={"ref":"974366074bdf1305c3e3a98973f992f92bdd59fe","blob":"c574a3222444c1568401220caeee86b384c94513","sha256":"342c29f95af8dd6a2ebb31158a5c27ebb376bc95b91921b6e3e8428b5509d424"};
+ensurePinnedAuthorityRecord(negativeArgumentAuthority);
+const sourceSchedulingAuthority={"ref":"215432f25a6591004baaa09fd8962d0e4235be74","blob":"2daef12eaf7a4fb6630491246f274ec7be85173a","sha256":"44ca40e04762f6a0e75b8314c3d856e9e90efa27d1438c0532c4fe0df82f9f29"};
+ensurePinnedAuthorityRecord(sourceSchedulingAuthority);
 test('the entire populated independent authority is fixed before any candidate can attest itself',()=>{
  const retainedRef='2d5d105892134f8af46fc2a02edd5932c431b845';
  assert.equal(sourceGit(['rev-parse',retainedRef+':'+authority]).toString().trim(),retainedStage6Authority.blob);
@@ -80,8 +122,8 @@ test('the entire populated independent authority is fixed before any candidate c
  const qualifiedV7=sourceGit(['cat-file','blob',retainedStage7V7Authority.blob]);assert.equal(createHash('sha256').update(qualifiedV7).digest('hex'),retainedStage7V7Authority.sha256);assert(qualifiedV7.equals(readFileSync('docs/milestone60-20261113/source-stage7-qualified-authority66.mjs')));
  assert.equal(sourceGit(['rev-parse',retainedStage7V8Authority.ref+':'+authority]).toString().trim(),retainedStage7V8Authority.blob);
  const qualifiedV8=sourceGit(['cat-file','blob',retainedStage7V8Authority.blob]);assert.equal(createHash('sha256').update(qualifiedV8).digest('hex'),retainedStage7V8Authority.sha256);assert(qualifiedV8.equals(readFileSync('docs/milestone60-20261113/source-stage7-qualified-authority67.mjs')));
- for(const record of [retainedStage8Authority,retainedStage8V2Authority,retainedStage8V3Authority,retainedStage8V4Authority,retainedStage8V5Authority,retainedStage8V6Authority,retainedStage8V7Authority,retainedStage8V8Authority,retainedStage8V9Authority,retainedStage8V10Authority,retainedStage8V11Authority,retainedStage8V12Authority,retainedStage8V13Authority,retainedStage8V14Authority,retainedStage8V15Authority,retainedStage8V16Authority,retainedStage8V17Authority,retainedStage8V18Authority,retainedStage8V19Authority,retainedStage8V20Authority,retainedStage8V21Authority,retainedStage8V22Authority,retainedStage8V23Authority,retainedStage8V24Authority,retainedStage8V25Authority,retainedStage8V26Authority,retainedStage8V27Authority,retainedStage8V28Authority,retainedStage8V29Authority,retainedStage8V30Authority,retainedStage8V31Authority,retainedStage8V32Authority,retainedStage8V33Authority,retainedStage8V34Authority,retainedStage8V35Authority,retainedStage8V36Authority,retainedStage8V37Authority,retainedStage8V38Authority,retainedStage8V39Authority,retainedStage8V40Authority,retainedStage8V41Authority,retainedStage8V42Authority,retainedStage8V43Authority,retainedStage8V44Authority,retainedStage8V45Authority,retainedStage8V46Authority,retainedStage8V47Authority,retainedStage8V48Authority,expectedAuthority]){assert.equal(sourceGit(['rev-parse',record.ref+':'+authority]).toString().trim(),record.blob);const bytes=sourceGit(['cat-file','blob',record.blob]);assert.equal(createHash('sha256').update(bytes).digest('hex'),record.sha256);}
- const actual=readFileSync(authority);assert.equal(sourceGit(['rev-parse','HEAD:'+authority]).toString().trim(),expectedAuthority.blob);assert(actual.equals(sourceGit(['cat-file','blob',expectedAuthority.blob])));assert.equal(createHash('sha256').update(actual).digest('hex'),expectedAuthority.sha256);
+ for(const record of [retainedStage8Authority,retainedStage8V2Authority,retainedStage8V3Authority,retainedStage8V4Authority,retainedStage8V5Authority,retainedStage8V6Authority,retainedStage8V7Authority,retainedStage8V8Authority,retainedStage8V9Authority,retainedStage8V10Authority,retainedStage8V11Authority,retainedStage8V12Authority,retainedStage8V13Authority,retainedStage8V14Authority,retainedStage8V15Authority,retainedStage8V16Authority,retainedStage8V17Authority,retainedStage8V18Authority,retainedStage8V19Authority,retainedStage8V20Authority,retainedStage8V21Authority,retainedStage8V22Authority,retainedStage8V23Authority,retainedStage8V24Authority,retainedStage8V25Authority,retainedStage8V26Authority,retainedStage8V27Authority,retainedStage8V28Authority,retainedStage8V29Authority,retainedStage8V30Authority,retainedStage8V31Authority,retainedStage8V32Authority,retainedStage8V33Authority,retainedStage8V34Authority,retainedStage8V35Authority,retainedStage8V36Authority,retainedStage8V37Authority,retainedStage8V38Authority,retainedStage8V39Authority,retainedStage8V40Authority,retainedStage8V41Authority,retainedStage8V42Authority,retainedStage8V43Authority,retainedStage8V44Authority,retainedStage8V45Authority,retainedStage8V46Authority,retainedStage8V47Authority,retainedStage8V48Authority,expectedAuthority,constructionAuthority,recoveryAuthority,schedulerAuthority,browserAuthority,nativePrimeAuthority,nativeProcessAuthority,nativeLifecycleAuthority,nativeTimeoutAuthority,jsdomHookAuthority,nativePublicationAuthority,nativeArgumentAuthority,boundedWorkflowAuthority,scheduledNamespaceAuthority,exactWorkflowArgumentAuthority,workflowGraphAuthority,boundedImmutableAuthority,immutableFixtureAuthority,negativeArgumentAuthority,sourceSchedulingAuthority]){assert.equal(sourceGit(['rev-parse',record.ref+':'+authority]).toString().trim(),record.blob);const bytes=sourceGit(['cat-file','blob',record.blob]);assert.equal(createHash('sha256').update(bytes).digest('hex'),record.sha256);}
+ const actual=readFileSync(authority);assert.equal(sourceGit(['rev-parse','HEAD:'+authority]).toString().trim(),sourceSchedulingAuthority.blob);assert(actual.equals(sourceGit(['cat-file','blob',sourceSchedulingAuthority.blob])));assert.equal(createHash('sha256').update(actual).digest('hex'),sourceSchedulingAuthority.sha256);
 });
 test('actual current execution passes while unchanged R5 executes at literal A7',()=>{
  assert.equal(verifyParallelSource(),true);
@@ -128,21 +170,32 @@ test('source availability refuses unsafe or multiple origins and substituted com
 });
 
 for(const record of capture.factorySources)test('finite factory stage rejects altered or reverted bytes '+record.path,()=>{for(const bytes of [Buffer.from('tamper'),Buffer.alloc(0)])assert.throws(()=>verifyParallelSource(name=>name===record.path?bytes:readFileSync(name)),/Current factory bytes differ|Current target source differs|Independent current target bytes differ/);});
-test('factory capture and literal policy are independently governed',()=>{
+test('factory capture and literal policy are independently governed',async context=>{
  const scheduler=JSON.parse(readFileSync('docs/calculator-factory/unit-scheduler-successor.json'));assert.equal(scheduler.path,'vitest.config.ts');assert.equal(scheduler.predecessor.ref,'9ad7e75641322696f75a018e53513c8158c39870');assert.equal(factoryPolicy.codeRef,'b3f0844e8ec09010464afa3ea33306bc4f384c41');assert.equal(scheduler.current.ref,factoryPolicy.codeRef);
  const contents=[];for(const record of [scheduler.predecessor,scheduler.current]){assert.equal(record.path,'vitest.config.ts');assert.equal(sourceGit(['rev-parse',record.ref+':'+record.path]).toString().trim(),record.blob);const bytes=sourceGit(['cat-file','blob',record.blob]);assert.equal(bytes.length,record.bytes);assert.equal(createHash('sha256').update(bytes).digest('hex'),record.sha256);contents.push(bytes.toString());}
  assert.equal(contents[0].split('  test: {').length,2);assert.equal(contents[1],contents[0].replace('  test: {','  test: {\n    // Retained source suites launch bounded child workers; avoid nested outer oversubscription.\n    maxWorkers: 1,'));
  for(const path of ['vitest.config.ts','docs/calculator-factory/unit-scheduler-successor.json','tests/calculator-factory-source-20261112/policy.mjs','docs/calculator-factory/source-stage-20261112.json','tests/calculator-factory-source-20261112/exact-stage.mjs','tests/completion-first-20261112/stage.mjs','tests/completion-first-20261112/policy.mjs','docs/completion-first-20261112/source-stage.json','tests/completion-first-20261112/workflows-stage.mjs','tests/completion-first-20261112/workflows-policy.mjs','tests/completion-first-20261112/retained-stage1-tests.mjs','docs/completion-first-20261112/source-stage2.json','tests/completion-first-20261112/non-source-stage2.mjs','tests/completion-first-20261112/non-source-policy.mjs','docs/completion-first-20261112/non-source-stage2.json','tests/completion-first-20261112/retained-runtime-stage2.mjs'])assert.throws(()=>verifyParallelSource(name=>name===path?Buffer.from('{}'):readFileSync(name)),/Independent current target bytes differ/);
  const env={...process.env};delete env.NODE_TEST_CONTEXT;
- const tap=execFileSync(process.execPath,['tests/completion-first-20261112/retained-stage1-tests.mjs'],{env,encoding:'utf8',timeout:60000,maxBuffer:4000000});
+ // Independent read-only child suites share a bounded two-worker queue rather
+ // than accumulating their wall times inside the unchanged150s outer proof.
+ const children=[
+  [['tests/completion-first-20261112/retained-stage1-tests.mjs'],60000],
+  [['--test','tests/completion-first-20261112/personal-stage.test.mjs'],60000],
+  [['--test','tests/four-worker-integration-20261115/source-stage9.test.mjs'],15000],
+  [['--test','tests/gotrue-runtime/login-diagnostics.test.mjs'],30000],
+  [['--test','tests/full-product-batch13/workflow.test.mjs','tests/full-product-batch14/workflow.test.mjs','tests/full-product-batch17/workflow.test.mjs'],30000]
+ ];
+ const results=new Array(children.length);let childIndex=0;
+ const run=([args,timeout])=>scheduleSourceChild(()=>new Promise((resolve,reject)=>execFile(process.execPath,args,{env,encoding:'utf8',timeout,maxBuffer:4000000,signal:context.signal},(error,stdout,stderr)=>error?reject(Object.assign(error,{stdout,stderr})):resolve(stdout))),{signal:context.signal});
+ const worker=async()=>{while(childIndex<children.length){const index=childIndex++;results[index]=(await Promise.allSettled([run(children[index])]))[0];}};
+ await Promise.all([worker(),worker()]);
+ const failures=results.flatMap((result,index)=>result.status==='rejected'?[new Error('Exact source child failed: '+JSON.stringify(children[index][0])+'\n'+String(result.reason.stdout??'')+'\n'+String(result.reason.stderr??''),{cause:result.reason})]:[]);
+ if(failures.length)throw new AggregateError(failures,'Bounded exact source child failures\n'+failures.map(error=>error.message).join('\n'));
+ const [tap,stage2,stage9,diagnostics,workflowConsumers]=results.map(result=>result.value);
  assert.match(tap,/# tests 4\b/);assert.match(tap,/# pass 4\b/);assert.match(tap,/# fail 0\b/);assert.match(tap,/# skipped 0\b/);
- const stage2=execFileSync(process.execPath,['--test','tests/completion-first-20261112/personal-stage.test.mjs'],{env,encoding:'utf8',timeout:60000,maxBuffer:4000000});
  assert.match(stage2,/# tests 4\b/);assert.match(stage2,/# pass 4\b/);assert.match(stage2,/# fail 0\b/);assert.match(stage2,/# skipped 0\b/);
- const stage9=execFileSync(process.execPath,['--test','tests/four-worker-integration-20261115/source-stage9.test.mjs'],{env,encoding:'utf8',timeout:15000,maxBuffer:4000000});
  for(const [key,value]of [['tests',5],['pass',5],['fail',0],['skipped',0],['cancelled',0]])assert.match(stage9,new RegExp('^# '+key+' '+value+'$','m'));
- const diagnostics=execFileSync(process.execPath,['--test','tests/gotrue-runtime/login-diagnostics.test.mjs'],{env,encoding:'utf8',timeout:30000,maxBuffer:4000000});
  assert.match(diagnostics,/# tests 4\b/);assert.match(diagnostics,/# pass 4\b/);assert.match(diagnostics,/# fail 0\b/);assert.match(diagnostics,/# skipped 0\b/);
- const workflowConsumers=execFileSync(process.execPath,['--test','tests/full-product-batch13/workflow.test.mjs','tests/full-product-batch14/workflow.test.mjs','tests/full-product-batch17/workflow.test.mjs'],{env,encoding:'utf8',timeout:30000,maxBuffer:4000000});
  assert.match(workflowConsumers,/# tests 10\b/);assert.match(workflowConsumers,/# pass 10\b/);assert.match(workflowConsumers,/# fail 0\b/);assert.match(workflowConsumers,/# skipped 0\b/);
 });
 
@@ -158,25 +211,26 @@ for(const path of ['tests/completion-wave-20261113/source-app-stage5.mjs','tests
 
 test('mandatory source guard regressions exercise exact source and immutable availability without skips',async context=>{
  const env={...process.env};delete env.NODE_TEST_CONTEXT;
- const files=[['tests/milestone100-20261114/source-stage8-negative-publication-caller.test.mjs',10],['tests/milestone100-20261114/workflow-source-evidence-batch.test.mjs',5],['tests/milestone100-20261114/source-stage8-shortest-native-driver.test.mjs',18],['source-app-stage5.test.mjs',7],['source-app-stage5-availability.test.mjs',5],['source-authority-preload.test.mjs',6],['source-preflight.test.mjs',5],['tests/milestone100-20261114/retained-stage7-preflight.mjs',5],['source-test-stage6.test.mjs',6],['tests/next-cohort-20261110/source/runtime-evidence-batch.test.mjs',11],['tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs',6],['tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs',6],['tests/milestone100-20261114/authority-observation-collector.test.mjs',23],['tests/milestone100-20261114/source-stage8-authority-scope.test.mjs',10],['tests/next-cohort-20261110/source/runtime-stage2-batch.test.mjs',10],['tests/milestone100-20261114/source-stage8-stage5-scope.test.mjs',9],['tests/milestone100-20261114/source-stage8-negative-factory.test.mjs',9],['tests/milestone100-20261114/source-stage8-current-guard-scope.test.mjs',9],['tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs',9],['tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs',9],['tests/milestone100-20261114/source-stage8-runtime-chain-prefetch.test.mjs',5],['tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs',9],['tests/parallel-source-20261110/source-lock-scope.test.mjs',9],['tests/ci-rpc-recovery-20261113/source-node-owned-lock.test.mjs',5],['tests/milestone100-20261114/source-stage8-negative-workflow-claim.test.mjs',9],['tests/milestone100-20261114/source-stage8-negative-reader-order.test.mjs',8],['tests/milestone100-20261114/composition-source-evidence-batch.test.mjs',16],['tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs',7],['tests/next-cohort-20261110/source/runtime-head-bound-batch.test.mjs',7]];
- const run=([file])=>new Promise((resolve,reject)=>{
+ const files=[['tests/milestone100-20261114/source-stage8-negative-publication-caller.test.mjs',10],['tests/milestone100-20261114/workflow-source-evidence-batch.test.mjs',5],['tests/milestone100-20261114/source-stage8-shortest-native-driver.test.mjs',18],['source-app-stage5.test.mjs',7],['source-app-stage5-availability.test.mjs',5],['source-authority-preload.test.mjs',6],['source-preflight.test.mjs',5],['tests/milestone100-20261114/retained-stage7-preflight.mjs',5],['source-test-stage6.test.mjs',6],['tests/next-cohort-20261110/source/runtime-evidence-batch.test.mjs',11],['tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs',6],['tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs',6],['tests/milestone100-20261114/authority-observation-collector.test.mjs',23],['tests/milestone100-20261114/source-stage8-authority-scope.test.mjs',10],['tests/next-cohort-20261110/source/runtime-stage2-batch.test.mjs',10],['tests/milestone100-20261114/source-stage8-stage5-scope.test.mjs',9],['tests/milestone100-20261114/source-stage8-negative-factory.test.mjs',9],['tests/milestone100-20261114/source-stage8-current-guard-scope.test.mjs',9],['tests/milestone100-20261114/source-stage8-negative-workflow.test.mjs',9],['tests/milestone100-20261114/source-stage8-immutable-prime.test.mjs',9],['tests/milestone100-20261114/source-stage8-runtime-chain-prefetch.test.mjs',5],['tests/milestone100-20261114/source-stage8-negative-current-src.test.mjs',9],['tests/parallel-source-20261110/source-lock-scope.test.mjs',9],['tests/ci-rpc-recovery-20261113/source-node-owned-lock.test.mjs',5],['tests/milestone100-20261114/source-stage8-negative-workflow-claim.test.mjs',9],['tests/milestone100-20261114/source-stage8-negative-reader-order.test.mjs',8],['tests/milestone100-20261114/composition-source-evidence-batch.test.mjs',16],['tests/milestone100-20261114/source-stage8-runtime-prime-coalescing.test.mjs',7],['tests/next-cohort-20261110/source/runtime-head-bound-batch.test.mjs',7],['tests/construction-ci-recovery-20261116/native-prime-order.test.mjs',7],['tests/construction-ci-recovery-20261116/native-git.test.mjs',25],['tests/construction-ci-recovery-20261116/workflow-scheduling.test.mjs',10],['tests/construction-ci-recovery-20261116/bounded-immutable-preload.test.mjs',6],['tests/construction-ci-recovery-20261116/immutable-fixture-setup.test.mjs',4],['tests/construction-ci-recovery-20261116/negative-source-arguments.test.mjs',5],['tests/construction-ci-recovery-20261116/source-child-scheduler.test.mjs',4],['tests/construction-ci-recovery-20261116/execution-native-transport.test.mjs',4]];
+ const run=([file],exclusive=false)=>scheduleSourceChild(()=>new Promise((resolve,reject)=>{
   if(context.signal.aborted){reject(new Error('Mandatory source guard queue cancelled: '+file,{cause:context.signal.reason}));return;}
   // Inherit the outer verifier's owned process group; never detach nested children.
   execFile(process.execPath,[file.startsWith('tests/')?file:'tests/completion-wave-20261113/'+file],{env,encoding:'utf8',timeout:30000,maxBuffer:1000000,signal:context.signal},(error,stdout,stderr)=>{if(error)reject(Object.assign(error,{stdout,stderr}));else resolve(stdout);});
- });
+ }),{exclusive,signal:context.signal});
  const results=new Map(),cold=files.find(([file])=>file==='source-app-stage5-availability.test.mjs');
  // The original eight-worker availability case owns its entire window alone.
- results.set(cold[0],(await Promise.allSettled([run(cold)]))[0]);
- const remaining=files.filter(row=>row!==cold);
+ const authorityFixture=files.find(([file])=>file==='source-authority-preload.test.mjs');
+ const remaining=files.filter(row=>row!==cold&&row!==authorityFixture);
  let nextIndex=0;
  const worker=async()=>{while(nextIndex<remaining.length){const row=remaining[nextIndex++],result=(await Promise.allSettled([run(row)]))[0];results.set(row[0],result);}};
  await Promise.all([worker(),worker()]);
+ for(const row of [cold,authorityFixture])results.set(row[0],(await Promise.allSettled([run(row,true)]))[0]);
  const failures=[];
  // Report every child in the original declared order, even when an earlier child failed.
  for(const [file,count]of files){
   const result=results.get(file);
   try{
-   if(result.status==='rejected'){const error=result.reason;throw new Error('Mandatory source guard child failed: '+file+'\nstdout:\n'+(error.stdout??'')+'\nstderr:\n'+(error.stderr??''),{cause:error});}
+   if(result.status==='rejected'){const error=result.reason;throw new Error('Mandatory source guard child failed: '+file+'\nexit: '+JSON.stringify({message:error.message,code:error.code,signal:error.signal,killed:error.killed})+'\nstdout:\n'+(error.stdout??'')+'\nstderr:\n'+(error.stderr??''),{cause:error});}
    const tap=result.value;
    for(const [name,value]of [['tests',count],['pass',count],['fail',0],['skipped',0]])assert.match(tap,new RegExp('# '+name+' '+value+'\\b'));
    if(file.startsWith('tests/'))assert.match(tap,/# cancelled 0\b/);
@@ -184,4 +238,6 @@ test('mandatory source guard regressions exercise exact source and immutable ava
  }
  if(failures.length===1)throw failures[0];
  if(failures.length>1)throw new AggregateError(failures,'Mandatory source guard children failed: '+failures.map(error=>error.message).join('\n'));
+});
+
 });

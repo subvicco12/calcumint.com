@@ -1,3 +1,4 @@
+import {execNativeGit} from '../construction-ci-recovery-20261116/native-git.mjs';
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
 import {mkdtempSync,rmSync,readFileSync} from 'node:fs';
@@ -7,7 +8,7 @@ import {fileURLToPath} from 'node:url';
 import {makeGitReader} from './git-reader.mjs';
 export const baselineRef='a7bab5b5534d51cea25ba5ffe4aa9b3630176909';
 const root=fileURLToPath(new URL('../../',import.meta.url));
-export const sourceGit=makeGitReader((args,options={})=>execFileSync('git',args,{cwd:root,stdio:['ignore','pipe','pipe'],maxBuffer:16*1024*1024,...options}));
+export const sourceGit=makeGitReader((args,options={})=>execNativeGit(args,{cwd:root,stdio:['ignore','pipe','pipe'],maxBuffer:16*1024*1024,...options}));
 let cached;
 export function retainedA7Proof(){
  if(cached)return cached;

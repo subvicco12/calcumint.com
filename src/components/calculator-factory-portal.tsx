@@ -1,5 +1,6 @@
 'use client';
 import {RemainderPrivateDelivery} from './remainder-private-delivery';
+import {NextEngineeringAnalysis} from './next-engineering-analysis';
 import {Wave100CalculatorAnalysis} from './wave100-calculator-analysis';
 import './calculator-factory-controls.css';
 import {useRef,useState} from 'react';
@@ -25,7 +26,7 @@ export function CalculatorFactoryPortal({ownerId,plan}:{ownerId:string;plan:Calc
  <p>{contract.scope}</p><p>Exact engine: {contract.engineId}@{contract.version}. Canonical acceptance, certification and publication remain pending.</p>
  <CalculatorFactoryConversionMethodology catalogId={catalogId}/>
  <ul>{contract.limitations.map(limit=><li key={limit}>{limit}</li>)}</ul>
- <>{catalogId===226?<RemainderPrivateDelivery key={ownerId} ownerId={ownerId} plan={plan}/>:<CalculatorFactoryWorkbench key={`${ownerId}:${contract.engineId}@${contract.version}`} title={contract.title} fields={contract.fields} plan={plan} workflows={getFactoryWorkflows(catalogId)} renderResult={packet=><><FinalResultPresentation plan={plan} result={factoryResult(catalogId,packet.raw)}/><CalculatorFactoryMathAnalysis catalogId={catalogId} x={Number(packet.snapshot.input.x)} plan={plan}/><CalculatorFactorySensitivity packet={packet} plan={plan}/></>} renderWorkflows={(packet,restore)=>{const restoreChecked=(snapshot:Parameters<typeof restore>[0],id:number)=>{if(id!==catalogId)throw Error('Choose the matching calculator before restoring this scenario');restore(snapshot);};return <>{packet&&<Wave100CalculatorAnalysis packet={packet} plan={plan} onRestore={restore}/>}
+ <>{catalogId===226?<RemainderPrivateDelivery key={ownerId} ownerId={ownerId} plan={plan}/>:<CalculatorFactoryWorkbench key={`${ownerId}:${contract.engineId}@${contract.version}`} title={contract.title} fields={contract.fields} plan={plan} workflows={getFactoryWorkflows(catalogId)} renderResult={packet=><><FinalResultPresentation plan={plan} result={factoryResult(catalogId,packet.raw)}/><CalculatorFactoryMathAnalysis catalogId={catalogId} x={Number(packet.snapshot.input.x)} plan={plan}/><CalculatorFactorySensitivity packet={packet} plan={plan}/></>} renderWorkflows={(packet,restore)=>{const restoreChecked=(snapshot:Parameters<typeof restore>[0],id:number)=>{if(id!==catalogId)throw Error('Choose the matching calculator before restoring this scenario');restore(snapshot);};return <>{packet&&<NextEngineeringAnalysis packet={packet} plan={plan} onRestore={restore}/>}{packet&&<Wave100CalculatorAnalysis packet={packet} plan={plan} onRestore={restore}/>}
 {packet&&<MilestoneCalculatorAnalysis packet={packet} plan={plan} onRestore={restore}/>}
 {packet&&<CompletionWaveAnalysis catalogId={catalogId} packet={packet} plan={plan} onRestore={restore}/>}
 {contract.registered&&plan!=='free'&&<CalculatorFactoryPersistedScenario ownerId={ownerId} packet={packet} onRestore={restoreChecked}/>}

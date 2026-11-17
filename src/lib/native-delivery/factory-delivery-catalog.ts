@@ -1,4 +1,5 @@
 import {constructionContracts} from '@/lib/worker1-construction-20261116/cohort';
+import {nextEngineeringContracts} from '../calculator-factory/completion/next-engineering';
 import {next100MathContracts} from '../calculator-factory/completion/math-next100';
 import {geometryNext100Contracts} from '../calculator-factory/completion/geometry-next100';
 import {nextScienceContracts} from '../calculator-factory/completion/science-next100';
@@ -52,5 +53,6 @@ export const factoryDeliveryCatalog=Object.freeze([
 ...geometryNext100Contracts.filter(row=>row.registered&&row.version===1).map(({catalogId,engineId,slug,version})=>({catalogId,engineId,slug,version})),
 ...nextScienceContracts.map(({catalogId,engineId,slug,version})=>({catalogId,engineId,slug,version})),
 ...constructionContracts.map(({catalogId,engineId,slug,version})=>({catalogId,engineId,slug,version})),
+...nextEngineeringContracts.map(({catalogId,engineId,slug,version})=>({catalogId,engineId,slug,version})),
 ].map(row=>Object.freeze(row)));
 export function factoryDeliveryIdentity(catalogId:number,version:number){return factoryDeliveryCatalog.find(row=>row.catalogId===catalogId&&row.version===version);}
