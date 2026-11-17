@@ -1,0 +1,148 @@
+TAP version 13
+# Subtest: live source verification precedes native immutable availability and its original view is returned
+ok 1 - live source verification precedes native immutable availability and its original view is returned
+  ---
+  duration_ms: 9.101652
+  type: 'test'
+  ...
+# Subtest: failed live verification never invokes availability
+ok 2 - failed live verification never invokes availability
+  ---
+  duration_ms: 1.03927
+  type: 'test'
+  ...
+# Subtest: a failed immutable transport propagates without a verdict and retries the full live proof
+ok 3 - a failed immutable transport propagates without a verdict and retries the full live proof
+  ---
+  duration_ms: 0.451941
+  type: 'test'
+  ...
+# Subtest: opaque supplied transports keep their original path without manufactured hooks
+ok 4 - opaque supplied transports keep their original path without manufactured hooks
+  ---
+  duration_ms: 0.358303
+  type: 'test'
+  ...
+# Subtest: custom read callbacks preserve their original source-first supplied behavior
+ok 5 - custom read callbacks preserve their original source-first supplied behavior
+  ---
+  duration_ms: 0.477063
+  type: 'test'
+  ...
+# Subtest: warm immutable transport never caches a successful proof or metadata reads
+ok 6 - warm immutable transport never caches a successful proof or metadata reads
+  ---
+  duration_ms: 0.639233
+  type: 'test'
+  ...
+# Subtest: partial capabilities are neither completed nor substituted and providers remain distinct
+ok 7 - partial capabilities are neither completed nor substituted and providers remain distinct
+  ---
+  duration_ms: 0.636291
+  type: 'test'
+  ...
+# Subtest: availability prime returns undefined and transports the same finite immutable objects
+ok 8 - availability prime returns undefined and transports the same finite immutable objects
+  ---
+  duration_ms: 5.631486
+  type: 'test'
+  ...
+# Subtest: old full preloader always executes original authority before availability
+ok 9 - old full preloader always executes original authority before availability
+  ---
+  duration_ms: 2.227501
+  type: 'test'
+  ...
+# Subtest: prime alone cannot grant a verdict or bypass later full authority refusal
+ok 10 - prime alone cannot grant a verdict or bypass later full authority refusal
+  ---
+  duration_ms: 7.299739
+  type: 'test'
+  ...
+# Subtest: every finite capture tamper is denied before any ensure or preload callback
+ok 11 - every finite capture tamper is denied before any ensure or preload callback
+  ---
+  duration_ms: 45.711038
+  type: 'test'
+  ...
+# Subtest: missing accepted record missing reader data and nonBuffer captures fail closed
+ok 12 - missing accepted record missing reader data and nonBuffer captures fail closed
+  ---
+  duration_ms: 2.820045
+  type: 'test'
+  ...
+# Subtest: capture68 is authenticated before the canonical availability lock path runs
+ok 13 - capture68 is authenticated before the canonical availability lock path runs
+  ---
+  duration_ms: 1.296149
+  type: 'test'
+  ...
+# Subtest: optional path batch remains optional without manufacturing capabilities
+ok 14 - optional path batch remains optional without manufacturing capabilities
+  ---
+  duration_ms: 3.264902
+  type: 'test'
+  ...
+# Subtest: authenticated invalid JSON and unsupported blob data cannot preload arbitrary objects
+ok 15 - authenticated invalid JSON and unsupported blob data cannot preload arbitrary objects
+  ---
+  duration_ms: 1.261827
+  type: 'test'
+  ...
+# Subtest: all invocations reread authenticate and preload through only the provided endpoints
+ok 16 - all invocations reread authenticate and preload through only the provided endpoints
+  ---
+  duration_ms: 1.942952
+  type: 'test'
+  ...
+# Subtest: old prime must coalesce all six literal refs paths and blobs before helper batches
+ok 17 - old prime must coalesce all six literal refs paths and blobs before helper batches
+  ---
+  duration_ms: 6.518636
+  type: 'test'
+  ...
+# Subtest: auxiliary current module bytes are freshly authenticated before availability or preloads
+ok 18 - auxiliary current module bytes are freshly authenticated before availability or preloads
+  ---
+  duration_ms: 61.132612
+  type: 'test'
+  ...
+# Subtest: conflicting immutable path nominations refuse without installing preload batches
+ok 19 - conflicting immutable path nominations refuse without installing preload batches
+  ---
+  duration_ms: 1.994221
+  type: 'test'
+  ...
+# Subtest: only existing supplied capabilities run and absent optional path method stays absent
+ok 20 - only existing supplied capabilities run and absent optional path method stays absent
+  ---
+  duration_ms: 1.618679
+  type: 'test'
+  ...
+# Subtest: original supplied preload errors propagate with no native fallback
+ok 21 - original supplied preload errors propagate with no native fallback
+  ---
+  duration_ms: 4.525879
+  type: 'test'
+  ...
+# Subtest: coalescing arguments cannot mutate literal frozen runtime records
+ok 22 - coalescing arguments cannot mutate literal frozen runtime records
+  ---
+  duration_ms: 1.773838
+  type: 'test'
+  ...
+# Subtest: full exported preloader still verifies authority first and all helper immutable checks remain
+ok 23 - full exported preloader still verifies authority first and all helper immutable checks remain
+  ---
+  duration_ms: 3.963276
+  type: 'test'
+  ...
+1..23
+# tests 23
+# suites 0
+# pass 23
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 501.592974

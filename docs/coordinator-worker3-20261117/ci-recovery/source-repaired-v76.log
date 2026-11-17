@@ -1,0 +1,13 @@
+
+ RUN  v3.2.7 /workspace/coordinator-worker3-20261117
+
+Source-owned lock cleanup preserved [{"lock":"/tmp/calcumint-source-lock-BzA5BK/calcumint-source-object-availability.lock","reason":"ENOENT: no such file or directory, lstat '/tmp/calcumint-source-lock-BzA5BK'"},{"lock":"/tmp/calcumint-source-lock-4pKQdn/calcumint-source-object-availability.lock","reason":"ENOENT: no such file or directory, lstat '/tmp/calcumint-source-lock-4pKQdn'"}]
+ ✓ src/lib/parallel-source-evidence.test.ts (6 tests | 4 skipped) 162891ms
+   ✓ executes fresh current-source, full-authority, reader, reversion and nomination negatives  127350ms
+   ✓ executes the actual six-candidate CI lineage consumer with exact tamper refusals  35539ms
+
+ Test Files  1 passed (1)
+      Tests  2 passed | 4 skipped (6)
+   Start at  03:36:32
+   Duration  163.19s (transform 65ms, setup 12ms, collect 63ms, tests 162.89s, environment 0ms, prepare 58ms)
+

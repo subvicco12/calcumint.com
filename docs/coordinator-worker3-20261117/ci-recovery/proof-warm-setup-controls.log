@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: only the exact five-contract suite registers immutable fixture setup under the existing hook deadline
+ok 1 - only the exact five-contract suite registers immutable fixture setup under the existing hook deadline
+  ---
+  duration_ms: 0.945462
+  type: 'test'
+  ...
+# Subtest: similar, jsdom and unrelated paths do not load or prime runtime fixtures
+ok 2 - similar, jsdom and unrelated paths do not load or prime runtime fixtures
+  ---
+  duration_ms: 1.493261
+  type: 'test'
+  ...
+# Subtest: the original execution recovery file retains its one-turn yield and no fixture hook
+ok 3 - the original execution recovery file retains its one-turn yield and no fixture hook
+  ---
+  duration_ms: 0.255281
+  type: 'test'
+  ...
+# Subtest: immutable fixture preparation failures propagate and fail suite setup
+ok 4 - immutable fixture preparation failures propagate and fail suite setup
+  ---
+  duration_ms: 0.513138
+  type: 'test'
+  ...
+# Subtest: warm proof refusal aborts setup and its result is never reused by a test
+ok 5 - warm proof refusal aborts setup and its result is never reused by a test
+  ---
+  duration_ms: 0.828191
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 72.025365
