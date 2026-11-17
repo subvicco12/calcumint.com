@@ -1,0 +1,195 @@
+{
+  "cases": [
+    {
+      "catalogId": 292,
+      "engineId": "statistics.correlation",
+      "slug": "correlation-calculator",
+      "version": 1,
+      "input": {
+        "xValues": [
+          1,
+          2,
+          3
+        ],
+        "yValues": [
+          2,
+          4,
+          6
+        ]
+      },
+      "output": {
+        "correlation": 0.9999999999999998,
+        "count": 3,
+        "meanX": 2,
+        "meanY": 4,
+        "steps": [
+          "n = 3; mean(x) = 2; mean(y) = 4",
+          "r = Σ((x-x̄)(y-ȳ))/√(Σ(x-x̄)²Σ(y-ȳ)²) = 0.9999999999999998"
+        ]
+      }
+    },
+    {
+      "catalogId": 293,
+      "engineId": "statistics.linear-regression",
+      "slug": "linear-regression-calculator",
+      "version": 1,
+      "input": {
+        "xValues": [
+          1,
+          2,
+          3
+        ],
+        "yValues": [
+          2,
+          4,
+          6
+        ]
+      },
+      "output": {
+        "slope": 2,
+        "intercept": 0,
+        "rSquared": 0.9999999999999996,
+        "correlation": 0.9999999999999998,
+        "count": 3,
+        "steps": [
+          "n = 3; mean(x) = 2; mean(y) = 4",
+          "ŷ = 0 + 2x",
+          "R² = 0.9999999999999996"
+        ]
+      }
+    },
+    {
+      "catalogId": 294,
+      "engineId": "statistics.weighted-mean",
+      "slug": "weighted-mean-calculator",
+      "version": 1,
+      "input": {
+        "values": [
+          10,
+          20
+        ],
+        "weights": [
+          1,
+          3
+        ]
+      },
+      "output": {
+        "weightedMean": 17.5,
+        "totalWeight": 4,
+        "count": 2,
+        "steps": [
+          "Weighted sum = 70",
+          "Total weight = 4",
+          "Weighted mean = 17.5"
+        ]
+      }
+    },
+    {
+      "catalogId": 295,
+      "engineId": "statistics.percentile",
+      "slug": "percentile-calculator",
+      "version": 1,
+      "input": {
+        "values": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "percentile": 75
+      },
+      "output": {
+        "percentile": 3.25,
+        "position": 2.25,
+        "count": 4,
+        "steps": [
+          "Sorted count = 4",
+          "Position = 2.25",
+          "Percentile = 3.25"
+        ]
+      }
+    },
+    {
+      "catalogId": 296,
+      "engineId": "statistics.quartile",
+      "slug": "quartile-calculator",
+      "version": 1,
+      "input": {
+        "values": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "quartileNumber": 1
+      },
+      "output": {
+        "quartile": 1.75,
+        "quartileNumber": 1,
+        "position": 0.75,
+        "count": 4,
+        "steps": [
+          "Sorted count = 4",
+          "Q1 position = 0.75",
+          "Q1 = 1.75"
+        ]
+      }
+    },
+    {
+      "catalogId": 297,
+      "engineId": "statistics.interquartile-range",
+      "slug": "interquartile-range-calculator",
+      "version": 1,
+      "input": {
+        "values": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "output": {
+        "q1": 1.75,
+        "q3": 3.25,
+        "interquartileRange": 1.5,
+        "count": 4,
+        "steps": [
+          "Q1 = 1.75",
+          "Q3 = 3.25",
+          "IQR = Q3 − Q1 = 1.5"
+        ]
+      }
+    },
+    {
+      "catalogId": 299,
+      "engineId": "statistics.expected-value",
+      "slug": "expected-value-calculator",
+      "version": 1,
+      "input": {
+        "outcomes": [
+          0,
+          10
+        ],
+        "probabilities": [
+          0.7,
+          0.3
+        ]
+      },
+      "output": {
+        "expectedValue": 3,
+        "steps": [
+          "Σp = 1",
+          "E(X) = Σx·p(x) = 3"
+        ]
+      }
+    }
+  ],
+  "sourceHashes": {
+    "src/calculators/statistics/catalog-batch-1.ts": "172db736ce7c991e0b11cf99612578d7c25374bda0f95e009167e9fa887ba52f",
+    "src/calculators/statistics/catalog-batch-2.ts": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f",
+    "src/calculators/statistics/catalog-batch-3.ts": "41df470fd871e6fd1779035805c1b96cb120c91aff7a3cce40bc7628e3c3dd8e",
+    "src/calculators/statistics/catalog-batch-4.ts": "b5f186fbbbeed527bf7f2734a3b53e02d2fcd2113fcef1b71092ef6d520e35f9",
+    "src/calculators/chemistry/molecular-weight.ts": "a423344150d0042466ec7183c18cf7ff3b423d6dcb2f071cc7255d7943324772",
+    "src/calculators/chemistry/catalog-batch-1.ts": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e"
+  }
+}

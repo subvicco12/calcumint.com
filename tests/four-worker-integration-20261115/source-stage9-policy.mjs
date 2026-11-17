@@ -1,9 +1,10 @@
-/** Exact cumulative admission: construction and twenty Worker3 scoped contracts. */
-export const sourceStage9CapturePath="docs/coordinator-worker3-20261117/source-stage9-worker3-integration.json";
+/** Cumulative exact source admission; immutable engines and all prior stages retained. */
+export const sourceStage9CapturePath="docs/statistics-integration-20261117/source-stage9-statistics.json";
 export const sourceStage9Policy=Object.freeze({
   "predecessorRef": "dc8544422dbb4ebccfc96e03431e64ebcf871fc9",
-  "codeRef": "4fda315aba11b0aec54587784dc2f9896322c1b4",
+  "codeRef": "bfef306d8c3fc8608feadba880d4eb2afca2e210",
   "ancestry": [
+    "bfef306d8c3fc8608feadba880d4eb2afca2e210",
     "4fda315aba11b0aec54587784dc2f9896322c1b4",
     "530a0c190a0b21d3efed2a5b37b37d906ae13963",
     "8296454dc7244205ef4cf0b6e0b41c38f90af20f",
@@ -62,10 +63,14 @@ export const sourceStage9Policy=Object.freeze({
     "56844ec40292b010bc89ad7371c2d0340340bafe",
     "dc8544422dbb4ebccfc96e03431e64ebcf871fc9"
   ],
-  "captureSHA256": "a8de0dcff130de1096b0be35c1444d8f15ea2bfe4e2e2226e71a343207e8fd83",
+  "captureSHA256": "4f448f9fe6f7ac2be7450ce6fe27c21b3c2556f93d3bae83c8b3d3811d8c7d50",
   "paths": [
     "src/app/admin/worker1-construction-20261116/actions.ts",
     "src/app/admin/worker1-construction-20261116/page.tsx",
+    "src/app/admin/worker1-statistics-a-20261117/actions.ts",
+    "src/app/admin/worker1-statistics-a-20261117/page.tsx",
+    "src/app/admin/worker2-statistics-b-20261117/actions.ts",
+    "src/app/admin/worker2-statistics-b-20261117/page.tsx",
     "src/components/calculator-factory-portal.tsx",
     "src/components/geometry-worker-b.test.tsx",
     "src/components/next-engineering-analysis.test.tsx",
@@ -78,6 +83,12 @@ export const sourceStage9Policy=Object.freeze({
     "src/components/worker1-construction-20261116/persistence.tsx",
     "src/components/worker1-construction-20261116/portal.test.tsx",
     "src/components/worker1-construction-20261116/portal.tsx",
+    "src/components/worker1-statistics-a-20261117/portal.test.tsx",
+    "src/components/worker1-statistics-a-20261117/portal.tsx",
+    "src/components/worker2-statistics-b-20261117/persistence.tsx",
+    "src/components/worker2-statistics-b-20261117/portal.test.tsx",
+    "src/components/worker2-statistics-b-20261117/portal.tsx",
+    "src/components/worker2-statistics-b-20261117/workbench.tsx",
     "src/lib/business/factory-nine-sharing-server.test.ts",
     "src/lib/business/factory-nine-sharing-server.ts",
     "src/lib/business/factory-nine-sharing.test.ts",
@@ -117,12 +128,21 @@ export const sourceStage9Policy=Object.freeze({
     "src/lib/registered-snapshot-verification.ts",
     "src/lib/science-dispatch.test.ts",
     "src/lib/science-worker-c-snapshot-verification.ts",
+    "src/lib/statistics-integration-20261117/cohort.ts",
+    "src/lib/statistics-integration-20261117/integration.test.ts",
     "src/lib/surface-area-dispatch.test.ts",
     "src/lib/surface-area-snapshot-verification.ts",
     "src/lib/worker1-construction-20261116/account.test.ts",
     "src/lib/worker1-construction-20261116/account.ts",
     "src/lib/worker1-construction-20261116/cohort.test.ts",
-    "src/lib/worker1-construction-20261116/cohort.ts"
+    "src/lib/worker1-construction-20261116/cohort.ts",
+    "src/lib/worker1-statistics-a-20261117/account.test.ts",
+    "src/lib/worker1-statistics-a-20261117/account.ts",
+    "src/lib/worker1-statistics-a-20261117/cohort.test.ts",
+    "src/lib/worker1-statistics-a-20261117/cohort.ts",
+    "src/lib/worker2-statistics-b-20261117/account.test.ts",
+    "src/lib/worker2-statistics-b-20261117/account.ts",
+    "src/lib/worker2-statistics-b-20261117/cohort.test.ts",
+    "src/lib/worker2-statistics-b-20261117/cohort.ts"
   ]
 });
-Object.freeze(sourceStage9Policy.paths);Object.freeze(sourceStage9Policy.ancestry);
