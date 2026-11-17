@@ -15,6 +15,7 @@ const runtimeGit=(args,options={})=>{
  const cumulativeBatch=args.length===2&&args[0]==='cat-file'&&args[1]==='--batch'&&options.maxBuffer===128*1024*1024&&options.timeout===30000&&Buffer.isBuffer(options.input);
  return execNativeGit(args,{cwd:root,stdio:['ignore','pipe','pipe'],maxBuffer:16*1024*1024,...options,...(cumulativeBatch?{maxBuffer:192*1024*1024}:{})});
 };
+export const execCumulativeNativeGit=runtimeGit;
 export const sourceGit=makeGitReader(runtimeGit);
 let cached;
 export function retainedA7Proof(){
