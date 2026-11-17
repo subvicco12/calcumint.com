@@ -22,7 +22,7 @@ const head=actual(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),ta
 function fixture({preload=true}={}){
  const events=[],sourceReads=new Set(),sourceObjects=makeGitReader(sourceGit);let batches=0,batchOverride=null,pathOverride=false,rawOverride=false,preloadFailure=false,phase='idle',sourceGitReads=0,pendingAuthorityRead,sourceOverride=null;
  const sourceFirst=()=>{assert.equal(sourceReads.size,sourcePaths.size,'Every actual source read must precede authority operations');assert(sourceGitReads>0,'Real source Git proof must precede authority operations');};
- const objects=makeGitReader((args,options)=>{assert.deepEqual(args,['cat-file','--batch']);assert.equal(options.input.toString(),ids.join('\n')+'\n');batches++;return batchOverride?.(batches)??fullBatch;});
+ const objects=makeGitReader((args,options)=>{assert.deepEqual(args,['cat-file','--batch']);assert.equal(options.input.toString(),batchIDs.join('\n')+'\n');batches++;return batchOverride?.(batches)??fullBatch;});
  const git=(args,options)=>{
   if(phase==='source'){
    const authorityPath=args[0]==='rev-parse'&&args.length===2&&args[1].startsWith(head+':')?args[1].slice(41):null;
