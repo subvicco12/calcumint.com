@@ -1,0 +1,154 @@
+TAP version 13
+# Subtest: bounded preload uses complete wire sizes, original SHA1 validation and immutable-only cache
+ok 1 - bounded preload uses complete wire sizes, original SHA1 validation and immutable-only cache
+  ---
+  duration_ms: 173.315252
+  type: 'test'
+  ...
+# Subtest: size identity, type, unsafe size, cardinality and trailing bytes reject before data chunks
+ok 2 - size identity, type, unsafe size, cardinality and trailing bytes reject before data chunks
+  ---
+  duration_ms: 2.01954
+  type: 'test'
+  ...
+# Subtest: late corrupt SHA1, truncation and trailing bytes install no earlier immutable object
+ok 3 - late corrupt SHA1, truncation and trailing bytes install no earlier immutable object
+  ---
+  duration_ms: 187.795359
+  type: 'test'
+  ...
+# Subtest: ordinary, mutable and original supplied transports retain exact invocation semantics
+ok 4 - ordinary, mutable and original supplied transports retain exact invocation semantics
+  ---
+  duration_ms: 13.476379
+  type: 'test'
+  ...
+# Subtest: oversized single object chooses original fallback before any data chunk
+ok 5 - oversized single object chooses original fallback before any data chunk
+  ---
+  duration_ms: 0.425758
+  type: 'test'
+  ...
+# Subtest: all chunks share the unchanged overall deadline and failed chunks never replay
+ok 6 - all chunks share the unchanged overall deadline and failed chunks never replay
+  ---
+  duration_ms: 25.416177
+  type: 'test'
+  ...
+# Subtest: only the exact native import and constructor transform changes the literal G2 checker
+ok 7 - only the exact native import and constructor transform changes the literal G2 checker
+  ---
+  duration_ms: 1.699303
+  type: 'test'
+  ...
+# Subtest: missing duplicated or changed predecessor options and an existing import refuse
+ok 8 - missing duplicated or changed predecessor options and an existing import refuse
+  ---
+  duration_ms: 1.0872
+  type: 'test'
+  ...
+# Subtest: early argument bytes authenticate the immutable old ref path length and SHA
+ok 9 - early argument bytes authenticate the immutable old ref path length and SHA
+  ---
+  duration_ms: 0.578669
+  type: 'test'
+  ...
+# Subtest: current admitted tuple and exact current bytes pass the full one-path relation
+ok 10 - current admitted tuple and exact current bytes pass the full one-path relation
+  ---
+  duration_ms: 1.044013
+  type: 'test'
+  ...
+# Subtest: tamper historical reversion and wrong current object all refuse
+ok 11 - tamper historical reversion and wrong current object all refuse
+  ---
+  duration_ms: 1.260521
+  type: 'test'
+  ...
+# Subtest: capture or compiled current authority substitutions cannot nominate another path
+ok 12 - capture or compiled current authority substitutions cannot nominate another path
+  ---
+  duration_ms: 0.8078
+  type: 'test'
+  ...
+# Subtest: missing supplied reader and changed actual HEAD remain mandatory
+ok 13 - missing supplied reader and changed actual HEAD remain mandatory
+  ---
+  duration_ms: 0.767117
+  type: 'test'
+  ...
+# Subtest: the five immutable guard records stay literal and the other four paths gain no transform
+ok 14 - the five immutable guard records stay literal and the other four paths gain no transform
+  ---
+  duration_ms: 0.15595
+  type: 'test'
+  ...
+# Subtest: native options default limits and supplied overrides remain exact in the transformed checker
+ok 15 - native options default limits and supplied overrides remain exact in the transformed checker
+  ---
+  duration_ms: 0.239462
+  type: 'test'
+  ...
+# Subtest: both exact supplemental test drivers preserve their own immutable predecessor tuples
+ok 16 - both exact supplemental test drivers preserve their own immutable predecessor tuples
+  ---
+  duration_ms: 24.002505
+  type: 'test'
+  ...
+# Subtest: supplemental current paths require exact admitted bytes and reject tamper or reversion
+ok 17 - supplemental current paths require exact admitted bytes and reject tamper or reversion
+  ---
+  duration_ms: 10.294237
+  type: 'test'
+  ...
+# Subtest: unknown supplemental paths cannot invoke Git or nominate a transform
+ok 18 - unknown supplemental paths cannot invoke Git or nominate a transform
+  ---
+  duration_ms: 0.290134
+  type: 'test'
+  ...
+# Subtest: real native batch capabilities preserve defaults and mutable reads: scripts/check-shortest-publication20.mjs
+ok 19 - real native batch capabilities preserve defaults and mutable reads: scripts/check-shortest-publication20.mjs
+  ---
+  duration_ms: 68.220666
+  type: 'test'
+  ...
+# Subtest: real native batch capabilities preserve defaults and mutable reads: tests/shortest-publication-20/completion-lineage.test.mjs
+ok 20 - real native batch capabilities preserve defaults and mutable reads: tests/shortest-publication-20/completion-lineage.test.mjs
+  ---
+  duration_ms: 68.145501
+  type: 'test'
+  ...
+# Subtest: real native batch capabilities preserve defaults and mutable reads: tests/shortest-publication-20/frequency-presentation-lineage.test.mjs
+ok 21 - real native batch capabilities preserve defaults and mutable reads: tests/shortest-publication-20/frequency-presentation-lineage.test.mjs
+  ---
+  duration_ms: 58.341856
+  type: 'test'
+  ...
+# Subtest: caller negative argument pin is the exact immutable capture68 application successor
+ok 22 - caller negative argument pin is the exact immutable capture68 application successor
+  ---
+  duration_ms: 12.762665
+  type: 'test'
+  ...
+# Subtest: only malformed current caller arguments refuse early with the exact old diagnostic
+ok 23 - only malformed current caller arguments refuse early with the exact old diagnostic
+  ---
+  duration_ms: 7.427698
+  type: 'test'
+  ...
+# Subtest: registered history is skipped and a valid negative precheck never suppresses the full proof
+ok 24 - registered history is skipped and a valid negative precheck never suppresses the full proof
+  ---
+  duration_ms: 0.702318
+  type: 'test'
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 24
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 564.075602
