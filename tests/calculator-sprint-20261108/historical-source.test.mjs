@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {verifyCompletionBinding} from '../../scripts/product-completion-stage8.mjs';
-const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']});
+const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024});
 for(const path of ['src/components/final-private-workbench.tsx','src/components/catalog-engineering-review.tsx']){
 const original=git(['show','a955cdad7019a645b7ed2950299d0603ba1784a7:'+path]);
 const claim=createHash('sha256').update(original).digest('hex');
