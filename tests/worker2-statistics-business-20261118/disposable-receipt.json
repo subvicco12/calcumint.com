@@ -1,0 +1,84 @@
+{
+  "passed": true,
+  "baseSourceCommit": "b70c0952e9bb82bd9254dc7f0da1b38e915cffd2",
+  "producerSHA256": "7e250942d3a5f889e7711debc4362ca754df35cc27d465bfe0f1e71ae3d2f31f",
+  "bundleSHA256": "f0bf1c00b4db0af0e40cc9aba44b0e88561c1997fae6312355d09e88d9bb2840",
+  "heldSqlSHA256": "fe5ba8dd311bbfba7ca2f88f838c0e5d7adb859de5796d8bc9f712d996c0ec71",
+  "scope": "Actual HTTP handler adapter (not Next production build), real isolated GoTrue/PostgREST/PG and actual worker; explicit synthetic lower publication and loopback receiver transport. No production equivalence, human approval or full completion.",
+  "lowerRegistry": {
+    "originalSHA256": "acfe4a797d5f28c146cacbd0f5d33e9f87192f54f716d7090683b626a8b7eeb5",
+    "fixtureSHA256": "4c289c5f6aa95c39541f937b6b0fcd1519474b31a8cd40dbc1a25b2aec81068b",
+    "scope": "Explicit synthetic lower registry reviewStatus only; no published/canonical approval"
+  },
+  "checks": [
+    "292 real GoTrue/PostgREST/HTTP submit duplicate GET conflict quota preserve original raw packet/result",
+    "293 real GoTrue/PostgREST/HTTP submit duplicate GET conflict quota preserve original raw packet/result",
+    "294 real GoTrue/PostgREST/HTTP submit duplicate GET conflict quota preserve original raw packet/result",
+    "295 real GoTrue/PostgREST/HTTP submit duplicate GET conflict quota preserve original raw packet/result",
+    "296 real GoTrue/PostgREST/HTTP submit duplicate GET conflict quota preserve original raw packet/result",
+    "297 real GoTrue/PostgREST/HTTP submit duplicate GET conflict quota preserve original raw packet/result",
+    "299 real GoTrue/PostgREST/HTTP submit duplicate GET conflict quota preserve original raw packet/result",
+    "292 API and native embed exact packet, shared quota, idempotent debit and revoked-key denial",
+    "293 API and native embed exact packet, shared quota, idempotent debit and revoked-key denial",
+    "294 API and native embed exact packet, shared quota, idempotent debit and revoked-key denial",
+    "295 API and native embed exact packet, shared quota, idempotent debit and revoked-key denial",
+    "296 API and native embed exact packet, shared quota, idempotent debit and revoked-key denial",
+    "297 API and native embed exact packet, shared quota, idempotent debit and revoked-key denial",
+    "299 API and native embed exact packet, shared quota, idempotent debit and revoked-key denial",
+    "Seven actual worker/PostgREST leases deliver identical HMAC payloads through500-to204 retry with no extra API debit",
+    "Durable terminal states reconcile after retry and revoked-key cancellation"
+  ],
+  "catalogIds": [
+    292,
+    293,
+    294,
+    295,
+    296,
+    297,
+    299
+  ],
+  "jobs": 8,
+  "outboxStates": [
+    {
+      "status": "delivered",
+      "attempt_count": 2
+    },
+    {
+      "status": "cancelled",
+      "attempt_count": 1
+    },
+    {
+      "status": "delivered",
+      "attempt_count": 2
+    },
+    {
+      "status": "delivered",
+      "attempt_count": 2
+    },
+    {
+      "status": "delivered",
+      "attempt_count": 2
+    },
+    {
+      "status": "delivered",
+      "attempt_count": 2
+    },
+    {
+      "status": "delivered",
+      "attempt_count": 2
+    },
+    {
+      "status": "delivered",
+      "attempt_count": 2
+    }
+  ],
+  "retainedAttempts": 14,
+  "fixtureImages": {
+    "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+    "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+    "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+  },
+  "productionWrites": false,
+  "sqlActivated": false,
+  "releaseHold": true
+}
