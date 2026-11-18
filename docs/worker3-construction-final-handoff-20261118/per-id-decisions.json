@@ -1,0 +1,650 @@
+{
+  "kind": "UNSIGNED_DECISION_REQUESTS_NOT_APPROVAL",
+  "evidenceCommit": "044ce193a0df4ba63ddd86d9a1bc1ef67b60d3e8",
+  "executionCommit": "8e92ffa761b86a97870fc0192aeeeb348c6e33df",
+  "ids": [
+    {
+      "identity": {
+        "catalogId": 347,
+        "engineId": "engineering.roofing",
+        "calculatorSlug": "roofing-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker1-construction-b-20261118.1/engineering.roofing@1",
+        "engineFile": "src/calculators/engineering-construction/catalog-batch-1.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/engineering-construction/catalog-batch-1.ts",
+        "gitBlob": "e8527fe39408a7aebccb940969c11947d917b403",
+        "sha256": "5fffb904e82954a759e33f228e14fddf7a2d84a85845b20a946ff05cb3faaa1a",
+        "bytes": 6154,
+        "unchangedFromImplementation": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "existingPerIdEvidence": {
+        "commit": "044ce193a0df4ba63ddd86d9a1bc1ef67b60d3e8",
+        "path": "docs/worker3-construction-acceptance-20261118/per-id-evidence.json",
+        "jsonPointer": "/ids/0"
+      },
+      "privateReplay": "PASS",
+      "exceptionalHistoricalReadOnlyCount": 0,
+      "outstandingDecisions": [
+        {
+          "id": "347-SOURCE",
+          "status": "PENDING",
+          "ownerRole": "Authorized competent independent source/applicability reviewer",
+          "question": "Gable-equivalent plan/slope model, roofing square=100ft\u00b2 and user waste applicability; SI/unit citation alone does not establish roof-estimating method.",
+          "requiredRecord": "Exact publisher revision/capture bytes and source-admission disposition, method applicability, rationale and actual attributed review; capture tag is not publisher-source approval."
+        },
+        {
+          "id": "347-PRECISION",
+          "status": "PENDING",
+          "ownerRole": "Authorized competent independent numerical reviewer",
+          "question": "Accept bounded binary64 sqrt/product/division envelope and justified error/display tolerance; finite positive normal new result; preserve historical v1.",
+          "requiredRecord": "Bounded domain, input quantization, admitted/refused boundaries, raw/display/export policy, independent evidence and actual attributed acceptance/rejection/defer decision."
+        },
+        {
+          "id": "347-QA",
+          "status": "PENDING",
+          "ownerRole": "Authorized scoped technical-QA reviewer and contract owner",
+          "question": "Roofing pitch/waste/units and gable scope, output rounding versus stored raw value; disposition applicability of any advanced-analysis promises.",
+          "requiredRecord": "Per-clause accept/reject/defer/justified-NA against full selected contract. Reuse27 journeys/export/RLS/mobile receipts; decide remaining responsive/assistive/performance/editorial/abuse/plan requirements where applicable. Neither physical-device testing nor a blanket universal graph/GoalSolver requirement is invented."
+        },
+        {
+          "id": "347-IMMUTABLE-REPLAY",
+          "status": "PENDING_COORDINATOR_ADMISSION",
+          "ownerRole": "Coordinator immutable-registry/history/source-admission owner",
+          "question": "Admit exact engineering.roofing@1 / roofing-calculator and capture revision worker1-construction-b-20261118.1/engineering.roofing@1 to applicable generic replay/integration contracts without upgrading historical records. Private construction replay passes; generic integration is not granted by this packet.",
+          "requiredRecord": "Exact source/version binding and dispatch, unknown/successor-version and tamper refusal, historical readability versus new-capture restrictions; source provenance/admission and integrated-path evidence. Reuse private replay positives and negative controls; add only genuinely missing generic-path evidence."
+        },
+        {
+          "id": "347-BUSINESS",
+          "status": "UNAVAILABLE_PENDING_SEPARATE_CAPABILITY_ADOPTION",
+          "ownerRole": "Business delivery owner with coordinator (Worker2-owned implementation)",
+          "question": "Decide full applicable team/client/shared-storage/API/embed/metered-job/webhook contract for ID347, exact slug/v1/source tag. Current-member generic reader and revoked-membership denial pass; they do not establish any new delivery capability.",
+          "requiredRecord": "Reviewed exact tuple allowlist/storage/caller/source capability admission and applicable authenticated tenant/role/revocation/quota/audit/origin/job/webhook evidence, or attributed justified applicability decision. Existing unavailable state remains until adoption; do not widen allowlists from this handoff."
+        },
+        {
+          "id": "347-INTEGRATED-CI",
+          "status": "PENDING_EXACT_INTEGRATION_HEAD",
+          "ownerRole": "PR coordinator / integration owner",
+          "question": "Reconcile ID347 on the chosen isolated integration candidate and obtain all five mandatory jobs (checks,build,publication-factory,full-product,source-acceptance) plus aggregate validate success at one exact integrated head.",
+          "requiredRecord": "Run URL, exact head SHA, final job conclusions and source-bound evidence acceptance. Local production build/TypeScript and28 focused tests pass; they are not mandatory hosted integrated CI or per-ID qualification."
+        }
+      ],
+      "actualReviewerIdentity": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 351,
+        "engineId": "engineering.stair",
+        "calculatorSlug": "stair-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker1-construction-b-20261118.1/engineering.stair@1",
+        "engineFile": "src/calculators/engineering-construction/catalog-batch-2.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/engineering-construction/catalog-batch-2.ts",
+        "gitBlob": "80692b8f10940cf1d1b59a9f61280fd877bd38dd",
+        "sha256": "ec16883a8b9a7c9766fa7eb67e13f441a80993da0eef811f475e696ad254f36b",
+        "bytes": 6088,
+        "unchangedFromImplementation": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "existingPerIdEvidence": {
+        "commit": "044ce193a0df4ba63ddd86d9a1bc1ef67b60d3e8",
+        "path": "docs/worker3-construction-acceptance-20261118/per-id-evidence.json",
+        "jsonPointer": "/ids/1"
+      },
+      "privateReplay": "PASS",
+      "exceptionalHistoricalReadOnlyCount": 1,
+      "outstandingDecisions": [
+        {
+          "id": "351-SOURCE",
+          "status": "PENDING",
+          "ownerRole": "Authorized competent independent source/applicability reviewer",
+          "question": "User-supplied target riser height and equal-riser count scope; no inferred building-code suitability.",
+          "requiredRecord": "Exact publisher revision/capture bytes and source-admission disposition, method applicability, rationale and actual attributed review; capture tag is not publisher-source approval."
+        },
+        {
+          "id": "351-PRECISION",
+          "status": "PENDING",
+          "ownerRole": "Authorized competent independent numerical reviewer",
+          "question": "Accept exact entered-decimal ceiling refusal versus tolerant v1:1.0000000000000002 gives historical1 while exact ceiling2; safe integer new count and preserved read-only old result.",
+          "requiredRecord": "Bounded domain, input quantization, admitted/refused boundaries, raw/display/export policy, independent evidence and actual attributed acceptance/rejection/defer decision."
+        },
+        {
+          "id": "351-QA",
+          "status": "PENDING",
+          "ownerRole": "Authorized scoped technical-QA reviewer and contract owner",
+          "question": "Riser count/target-height language and code-compliance exclusions; justify applicable scenario/advanced features individually.",
+          "requiredRecord": "Per-clause accept/reject/defer/justified-NA against full selected contract. Reuse27 journeys/export/RLS/mobile receipts; decide remaining responsive/assistive/performance/editorial/abuse/plan requirements where applicable. Neither physical-device testing nor a blanket universal graph/GoalSolver requirement is invented."
+        },
+        {
+          "id": "351-IMMUTABLE-REPLAY",
+          "status": "PENDING_COORDINATOR_ADMISSION",
+          "ownerRole": "Coordinator immutable-registry/history/source-admission owner",
+          "question": "Admit exact engineering.stair@1 / stair-calculator and capture revision worker1-construction-b-20261118.1/engineering.stair@1 to applicable generic replay/integration contracts without upgrading historical records. Private construction replay passes; generic integration is not granted by this packet.",
+          "requiredRecord": "Exact source/version binding and dispatch, unknown/successor-version and tamper refusal, historical readability versus new-capture restrictions; source provenance/admission and integrated-path evidence. Reuse private replay positives and negative controls; add only genuinely missing generic-path evidence."
+        },
+        {
+          "id": "351-BUSINESS",
+          "status": "UNAVAILABLE_PENDING_SEPARATE_CAPABILITY_ADOPTION",
+          "ownerRole": "Business delivery owner with coordinator (Worker2-owned implementation)",
+          "question": "Decide full applicable team/client/shared-storage/API/embed/metered-job/webhook contract for ID351, exact slug/v1/source tag. Current-member generic reader and revoked-membership denial pass; they do not establish any new delivery capability.",
+          "requiredRecord": "Reviewed exact tuple allowlist/storage/caller/source capability admission and applicable authenticated tenant/role/revocation/quota/audit/origin/job/webhook evidence, or attributed justified applicability decision. Existing unavailable state remains until adoption; do not widen allowlists from this handoff."
+        },
+        {
+          "id": "351-INTEGRATED-CI",
+          "status": "PENDING_EXACT_INTEGRATION_HEAD",
+          "ownerRole": "PR coordinator / integration owner",
+          "question": "Reconcile ID351 on the chosen isolated integration candidate and obtain all five mandatory jobs (checks,build,publication-factory,full-product,source-acceptance) plus aggregate validate success at one exact integrated head.",
+          "requiredRecord": "Run URL, exact head SHA, final job conclusions and source-bound evidence acceptance. Local production build/TypeScript and28 focused tests pass; they are not mandatory hosted integrated CI or per-ID qualification."
+        }
+      ],
+      "actualReviewerIdentity": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 352,
+        "engineId": "engineering.fence",
+        "calculatorSlug": "fence-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker1-construction-b-20261118.1/engineering.fence@1",
+        "engineFile": "src/calculators/engineering-construction/catalog-batch-2.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/engineering-construction/catalog-batch-2.ts",
+        "gitBlob": "80692b8f10940cf1d1b59a9f61280fd877bd38dd",
+        "sha256": "ec16883a8b9a7c9766fa7eb67e13f441a80993da0eef811f475e696ad254f36b",
+        "bytes": 6088,
+        "unchangedFromImplementation": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "existingPerIdEvidence": {
+        "commit": "044ce193a0df4ba63ddd86d9a1bc1ef67b60d3e8",
+        "path": "docs/worker3-construction-acceptance-20261118/per-id-evidence.json",
+        "jsonPointer": "/ids/2"
+      },
+      "privateReplay": "PASS",
+      "exceptionalHistoricalReadOnlyCount": 1,
+      "outstandingDecisions": [
+        {
+          "id": "352-SOURCE",
+          "status": "PENDING",
+          "ownerRole": "Authorized competent independent source/applicability reviewer",
+          "question": "Length/panel-width and user waste estimate; decide exclusions for gates/corners/site geometry and governing source revision.",
+          "requiredRecord": "Exact publisher revision/capture bytes and source-admission disposition, method applicability, rationale and actual attributed review; capture tag is not publisher-source approval."
+        },
+        {
+          "id": "352-PRECISION",
+          "status": "PENDING",
+          "ownerRole": "Authorized competent independent numerical reviewer",
+          "question": "Accept entered-decimal ratio/waste ceiling check, safe-integer output and tolerant-v1 historical/refusal distinction.",
+          "requiredRecord": "Bounded domain, input quantization, admitted/refused boundaries, raw/display/export policy, independent evidence and actual attributed acceptance/rejection/defer decision."
+        },
+        {
+          "id": "352-QA",
+          "status": "PENDING",
+          "ownerRole": "Authorized scoped technical-QA reviewer and contract owner",
+          "question": "Whole-panel/waste units and gate/corner/site scope; disposition useful batch/scenarios and advanced-feature applicability.",
+          "requiredRecord": "Per-clause accept/reject/defer/justified-NA against full selected contract. Reuse27 journeys/export/RLS/mobile receipts; decide remaining responsive/assistive/performance/editorial/abuse/plan requirements where applicable. Neither physical-device testing nor a blanket universal graph/GoalSolver requirement is invented."
+        },
+        {
+          "id": "352-IMMUTABLE-REPLAY",
+          "status": "PENDING_COORDINATOR_ADMISSION",
+          "ownerRole": "Coordinator immutable-registry/history/source-admission owner",
+          "question": "Admit exact engineering.fence@1 / fence-calculator and capture revision worker1-construction-b-20261118.1/engineering.fence@1 to applicable generic replay/integration contracts without upgrading historical records. Private construction replay passes; generic integration is not granted by this packet.",
+          "requiredRecord": "Exact source/version binding and dispatch, unknown/successor-version and tamper refusal, historical readability versus new-capture restrictions; source provenance/admission and integrated-path evidence. Reuse private replay positives and negative controls; add only genuinely missing generic-path evidence."
+        },
+        {
+          "id": "352-BUSINESS",
+          "status": "UNAVAILABLE_PENDING_SEPARATE_CAPABILITY_ADOPTION",
+          "ownerRole": "Business delivery owner with coordinator (Worker2-owned implementation)",
+          "question": "Decide full applicable team/client/shared-storage/API/embed/metered-job/webhook contract for ID352, exact slug/v1/source tag. Current-member generic reader and revoked-membership denial pass; they do not establish any new delivery capability.",
+          "requiredRecord": "Reviewed exact tuple allowlist/storage/caller/source capability admission and applicable authenticated tenant/role/revocation/quota/audit/origin/job/webhook evidence, or attributed justified applicability decision. Existing unavailable state remains until adoption; do not widen allowlists from this handoff."
+        },
+        {
+          "id": "352-INTEGRATED-CI",
+          "status": "PENDING_EXACT_INTEGRATION_HEAD",
+          "ownerRole": "PR coordinator / integration owner",
+          "question": "Reconcile ID352 on the chosen isolated integration candidate and obtain all five mandatory jobs (checks,build,publication-factory,full-product,source-acceptance) plus aggregate validate success at one exact integrated head.",
+          "requiredRecord": "Run URL, exact head SHA, final job conclusions and source-bound evidence acceptance. Local production build/TypeScript and28 focused tests pass; they are not mandatory hosted integrated CI or per-ID qualification."
+        }
+      ],
+      "actualReviewerIdentity": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 353,
+        "engineId": "engineering.decking",
+        "calculatorSlug": "decking-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker1-construction-b-20261118.1/engineering.decking@1",
+        "engineFile": "src/calculators/engineering-construction/catalog-batch-2.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/engineering-construction/catalog-batch-2.ts",
+        "gitBlob": "80692b8f10940cf1d1b59a9f61280fd877bd38dd",
+        "sha256": "ec16883a8b9a7c9766fa7eb67e13f441a80993da0eef811f475e696ad254f36b",
+        "bytes": 6088,
+        "unchangedFromImplementation": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "existingPerIdEvidence": {
+        "commit": "044ce193a0df4ba63ddd86d9a1bc1ef67b60d3e8",
+        "path": "docs/worker3-construction-acceptance-20261118/per-id-evidence.json",
+        "jsonPointer": "/ids/3"
+      },
+      "privateReplay": "PASS",
+      "exceptionalHistoricalReadOnlyCount": 1,
+      "outstandingDecisions": [
+        {
+          "id": "353-SOURCE",
+          "status": "PENDING",
+          "ownerRole": "Authorized competent independent source/applicability reviewer",
+          "question": "Face-area board coverage and entered waste; decide spacing/cutting/structural exclusions and authoritative method evidence.",
+          "requiredRecord": "Exact publisher revision/capture bytes and source-admission disposition, method applicability, rationale and actual attributed review; capture tag is not publisher-source approval."
+        },
+        {
+          "id": "353-PRECISION",
+          "status": "PENDING",
+          "ownerRole": "Authorized competent independent numerical reviewer",
+          "question": "Accept entered-decimal area/(width\u00d7length) and waste ceiling check, safe-integer output and preserved tolerant-v1 mismatch.",
+          "requiredRecord": "Bounded domain, input quantization, admitted/refused boundaries, raw/display/export policy, independent evidence and actual attributed acceptance/rejection/defer decision."
+        },
+        {
+          "id": "353-QA",
+          "status": "PENDING",
+          "ownerRole": "Authorized scoped technical-QA reviewer and contract owner",
+          "question": "Board face dimensions, waste/cut/spacing limitations and output reconciliation; disposition applicable advanced analysis.",
+          "requiredRecord": "Per-clause accept/reject/defer/justified-NA against full selected contract. Reuse27 journeys/export/RLS/mobile receipts; decide remaining responsive/assistive/performance/editorial/abuse/plan requirements where applicable. Neither physical-device testing nor a blanket universal graph/GoalSolver requirement is invented."
+        },
+        {
+          "id": "353-IMMUTABLE-REPLAY",
+          "status": "PENDING_COORDINATOR_ADMISSION",
+          "ownerRole": "Coordinator immutable-registry/history/source-admission owner",
+          "question": "Admit exact engineering.decking@1 / decking-calculator and capture revision worker1-construction-b-20261118.1/engineering.decking@1 to applicable generic replay/integration contracts without upgrading historical records. Private construction replay passes; generic integration is not granted by this packet.",
+          "requiredRecord": "Exact source/version binding and dispatch, unknown/successor-version and tamper refusal, historical readability versus new-capture restrictions; source provenance/admission and integrated-path evidence. Reuse private replay positives and negative controls; add only genuinely missing generic-path evidence."
+        },
+        {
+          "id": "353-BUSINESS",
+          "status": "UNAVAILABLE_PENDING_SEPARATE_CAPABILITY_ADOPTION",
+          "ownerRole": "Business delivery owner with coordinator (Worker2-owned implementation)",
+          "question": "Decide full applicable team/client/shared-storage/API/embed/metered-job/webhook contract for ID353, exact slug/v1/source tag. Current-member generic reader and revoked-membership denial pass; they do not establish any new delivery capability.",
+          "requiredRecord": "Reviewed exact tuple allowlist/storage/caller/source capability admission and applicable authenticated tenant/role/revocation/quota/audit/origin/job/webhook evidence, or attributed justified applicability decision. Existing unavailable state remains until adoption; do not widen allowlists from this handoff."
+        },
+        {
+          "id": "353-INTEGRATED-CI",
+          "status": "PENDING_EXACT_INTEGRATION_HEAD",
+          "ownerRole": "PR coordinator / integration owner",
+          "question": "Reconcile ID353 on the chosen isolated integration candidate and obtain all five mandatory jobs (checks,build,publication-factory,full-product,source-acceptance) plus aggregate validate success at one exact integrated head.",
+          "requiredRecord": "Run URL, exact head SHA, final job conclusions and source-bound evidence acceptance. Local production build/TypeScript and28 focused tests pass; they are not mandatory hosted integrated CI or per-ID qualification."
+        }
+      ],
+      "actualReviewerIdentity": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 357,
+        "engineId": "engineering.wallpaper",
+        "calculatorSlug": "wallpaper-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker1-construction-b-20261118.1/engineering.wallpaper@1",
+        "engineFile": "src/calculators/engineering-construction/catalog-batch-2.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/engineering-construction/catalog-batch-2.ts",
+        "gitBlob": "80692b8f10940cf1d1b59a9f61280fd877bd38dd",
+        "sha256": "ec16883a8b9a7c9766fa7eb67e13f441a80993da0eef811f475e696ad254f36b",
+        "bytes": 6088,
+        "unchangedFromImplementation": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "existingPerIdEvidence": {
+        "commit": "044ce193a0df4ba63ddd86d9a1bc1ef67b60d3e8",
+        "path": "docs/worker3-construction-acceptance-20261118/per-id-evidence.json",
+        "jsonPointer": "/ids/4"
+      },
+      "privateReplay": "PASS",
+      "exceptionalHistoricalReadOnlyCount": 1,
+      "outstandingDecisions": [
+        {
+          "id": "357-SOURCE",
+          "status": "PENDING",
+          "ownerRole": "Authorized competent independent source/applicability reviewer",
+          "question": "Supplied usable roll coverage and waste; decide pattern matching/cuts applicability and method/source sufficiency.",
+          "requiredRecord": "Exact publisher revision/capture bytes and source-admission disposition, method applicability, rationale and actual attributed review; capture tag is not publisher-source approval."
+        },
+        {
+          "id": "357-PRECISION",
+          "status": "PENDING",
+          "ownerRole": "Authorized competent independent numerical reviewer",
+          "question": "Accept entered-decimal coverage/waste ceiling, safe-integer output and read-only tolerant-v1 refusal distinction.",
+          "requiredRecord": "Bounded domain, input quantization, admitted/refused boundaries, raw/display/export policy, independent evidence and actual attributed acceptance/rejection/defer decision."
+        },
+        {
+          "id": "357-QA",
+          "status": "PENDING",
+          "ownerRole": "Authorized scoped technical-QA reviewer and contract owner",
+          "question": "Usable-coverage/roll/waste labels and pattern/cut exclusions; disposition applicable batch/scenarios and advanced features.",
+          "requiredRecord": "Per-clause accept/reject/defer/justified-NA against full selected contract. Reuse27 journeys/export/RLS/mobile receipts; decide remaining responsive/assistive/performance/editorial/abuse/plan requirements where applicable. Neither physical-device testing nor a blanket universal graph/GoalSolver requirement is invented."
+        },
+        {
+          "id": "357-IMMUTABLE-REPLAY",
+          "status": "PENDING_COORDINATOR_ADMISSION",
+          "ownerRole": "Coordinator immutable-registry/history/source-admission owner",
+          "question": "Admit exact engineering.wallpaper@1 / wallpaper-calculator and capture revision worker1-construction-b-20261118.1/engineering.wallpaper@1 to applicable generic replay/integration contracts without upgrading historical records. Private construction replay passes; generic integration is not granted by this packet.",
+          "requiredRecord": "Exact source/version binding and dispatch, unknown/successor-version and tamper refusal, historical readability versus new-capture restrictions; source provenance/admission and integrated-path evidence. Reuse private replay positives and negative controls; add only genuinely missing generic-path evidence."
+        },
+        {
+          "id": "357-BUSINESS",
+          "status": "UNAVAILABLE_PENDING_SEPARATE_CAPABILITY_ADOPTION",
+          "ownerRole": "Business delivery owner with coordinator (Worker2-owned implementation)",
+          "question": "Decide full applicable team/client/shared-storage/API/embed/metered-job/webhook contract for ID357, exact slug/v1/source tag. Current-member generic reader and revoked-membership denial pass; they do not establish any new delivery capability.",
+          "requiredRecord": "Reviewed exact tuple allowlist/storage/caller/source capability admission and applicable authenticated tenant/role/revocation/quota/audit/origin/job/webhook evidence, or attributed justified applicability decision. Existing unavailable state remains until adoption; do not widen allowlists from this handoff."
+        },
+        {
+          "id": "357-INTEGRATED-CI",
+          "status": "PENDING_EXACT_INTEGRATION_HEAD",
+          "ownerRole": "PR coordinator / integration owner",
+          "question": "Reconcile ID357 on the chosen isolated integration candidate and obtain all five mandatory jobs (checks,build,publication-factory,full-product,source-acceptance) plus aggregate validate success at one exact integrated head.",
+          "requiredRecord": "Run URL, exact head SHA, final job conclusions and source-bound evidence acceptance. Local production build/TypeScript and28 focused tests pass; they are not mandatory hosted integrated CI or per-ID qualification."
+        }
+      ],
+      "actualReviewerIdentity": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 358,
+        "engineId": "engineering.insulation",
+        "calculatorSlug": "insulation-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker1-construction-b-20261118.1/engineering.insulation@1",
+        "engineFile": "src/calculators/engineering-construction/catalog-batch-2.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/engineering-construction/catalog-batch-2.ts",
+        "gitBlob": "80692b8f10940cf1d1b59a9f61280fd877bd38dd",
+        "sha256": "ec16883a8b9a7c9766fa7eb67e13f441a80993da0eef811f475e696ad254f36b",
+        "bytes": 6088,
+        "unchangedFromImplementation": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "existingPerIdEvidence": {
+        "commit": "044ce193a0df4ba63ddd86d9a1bc1ef67b60d3e8",
+        "path": "docs/worker3-construction-acceptance-20261118/per-id-evidence.json",
+        "jsonPointer": "/ids/5"
+      },
+      "privateReplay": "PASS",
+      "exceptionalHistoricalReadOnlyCount": 1,
+      "outstandingDecisions": [
+        {
+          "id": "358-SOURCE",
+          "status": "PENDING",
+          "ownerRole": "Authorized competent independent source/applicability reviewer",
+          "question": "Pack coverage and waste applicability; no thermal-performance/product-specification authority inferred.",
+          "requiredRecord": "Exact publisher revision/capture bytes and source-admission disposition, method applicability, rationale and actual attributed review; capture tag is not publisher-source approval."
+        },
+        {
+          "id": "358-PRECISION",
+          "status": "PENDING",
+          "ownerRole": "Authorized competent independent numerical reviewer",
+          "question": "Accept entered-decimal coverage/waste ceiling, safe-integer output and preserved tolerant-v1 mismatch/refusal policy.",
+          "requiredRecord": "Bounded domain, input quantization, admitted/refused boundaries, raw/display/export policy, independent evidence and actual attributed acceptance/rejection/defer decision."
+        },
+        {
+          "id": "358-QA",
+          "status": "PENDING",
+          "ownerRole": "Authorized scoped technical-QA reviewer and contract owner",
+          "question": "Coverage/pack/waste units and thermal/specification exclusions; disposition applicable advanced and batch/scenario clauses.",
+          "requiredRecord": "Per-clause accept/reject/defer/justified-NA against full selected contract. Reuse27 journeys/export/RLS/mobile receipts; decide remaining responsive/assistive/performance/editorial/abuse/plan requirements where applicable. Neither physical-device testing nor a blanket universal graph/GoalSolver requirement is invented."
+        },
+        {
+          "id": "358-IMMUTABLE-REPLAY",
+          "status": "PENDING_COORDINATOR_ADMISSION",
+          "ownerRole": "Coordinator immutable-registry/history/source-admission owner",
+          "question": "Admit exact engineering.insulation@1 / insulation-calculator and capture revision worker1-construction-b-20261118.1/engineering.insulation@1 to applicable generic replay/integration contracts without upgrading historical records. Private construction replay passes; generic integration is not granted by this packet.",
+          "requiredRecord": "Exact source/version binding and dispatch, unknown/successor-version and tamper refusal, historical readability versus new-capture restrictions; source provenance/admission and integrated-path evidence. Reuse private replay positives and negative controls; add only genuinely missing generic-path evidence."
+        },
+        {
+          "id": "358-BUSINESS",
+          "status": "UNAVAILABLE_PENDING_SEPARATE_CAPABILITY_ADOPTION",
+          "ownerRole": "Business delivery owner with coordinator (Worker2-owned implementation)",
+          "question": "Decide full applicable team/client/shared-storage/API/embed/metered-job/webhook contract for ID358, exact slug/v1/source tag. Current-member generic reader and revoked-membership denial pass; they do not establish any new delivery capability.",
+          "requiredRecord": "Reviewed exact tuple allowlist/storage/caller/source capability admission and applicable authenticated tenant/role/revocation/quota/audit/origin/job/webhook evidence, or attributed justified applicability decision. Existing unavailable state remains until adoption; do not widen allowlists from this handoff."
+        },
+        {
+          "id": "358-INTEGRATED-CI",
+          "status": "PENDING_EXACT_INTEGRATION_HEAD",
+          "ownerRole": "PR coordinator / integration owner",
+          "question": "Reconcile ID358 on the chosen isolated integration candidate and obtain all five mandatory jobs (checks,build,publication-factory,full-product,source-acceptance) plus aggregate validate success at one exact integrated head.",
+          "requiredRecord": "Run URL, exact head SHA, final job conclusions and source-bound evidence acceptance. Local production build/TypeScript and28 focused tests pass; they are not mandatory hosted integrated CI or per-ID qualification."
+        }
+      ],
+      "actualReviewerIdentity": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 359,
+        "engineId": "engineering.pool-volume",
+        "calculatorSlug": "pool-volume-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker1-construction-b-20261118.1/engineering.pool-volume@1",
+        "engineFile": "src/calculators/engineering-construction/catalog-batch-3.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/engineering-construction/catalog-batch-3.ts",
+        "gitBlob": "bf10a2abde08d1a5a54f086948d5f42216f4bea9",
+        "sha256": "c771e0b347e2150fa4144e0b1e1e11eb8d009eb0887dcc5eb35e53e1fe849c92",
+        "bytes": 8578,
+        "unchangedFromImplementation": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "existingPerIdEvidence": {
+        "commit": "044ce193a0df4ba63ddd86d9a1bc1ef67b60d3e8",
+        "path": "docs/worker3-construction-acceptance-20261118/per-id-evidence.json",
+        "jsonPointer": "/ids/6"
+      },
+      "privateReplay": "PASS",
+      "exceptionalHistoricalReadOnlyCount": 0,
+      "outstandingDecisions": [
+        {
+          "id": "359-SOURCE",
+          "status": "PENDING",
+          "ownerRole": "Authorized competent independent source/applicability reviewer",
+          "question": "Rectangular plan using supplied average depth, m\u00b3; decide irregular-pool/survey applicability and source revision.",
+          "requiredRecord": "Exact publisher revision/capture bytes and source-admission disposition, method applicability, rationale and actual attributed review; capture tag is not publisher-source approval."
+        },
+        {
+          "id": "359-PRECISION",
+          "status": "PENDING",
+          "ownerRole": "Authorized competent independent numerical reviewer",
+          "question": "Accept bounded binary64 product precision/overflow/underflow envelope; positive finite normal new capture versus original historical behavior.",
+          "requiredRecord": "Bounded domain, input quantization, admitted/refused boundaries, raw/display/export policy, independent evidence and actual attributed acceptance/rejection/defer decision."
+        },
+        {
+          "id": "359-QA",
+          "status": "PENDING",
+          "ownerRole": "Authorized scoped technical-QA reviewer and contract owner",
+          "question": "Average-depth interpretation, m\u00b3 labels and surveyed/irregular-shape limitations; disposition scenario/advanced applicability.",
+          "requiredRecord": "Per-clause accept/reject/defer/justified-NA against full selected contract. Reuse27 journeys/export/RLS/mobile receipts; decide remaining responsive/assistive/performance/editorial/abuse/plan requirements where applicable. Neither physical-device testing nor a blanket universal graph/GoalSolver requirement is invented."
+        },
+        {
+          "id": "359-IMMUTABLE-REPLAY",
+          "status": "PENDING_COORDINATOR_ADMISSION",
+          "ownerRole": "Coordinator immutable-registry/history/source-admission owner",
+          "question": "Admit exact engineering.pool-volume@1 / pool-volume-calculator and capture revision worker1-construction-b-20261118.1/engineering.pool-volume@1 to applicable generic replay/integration contracts without upgrading historical records. Private construction replay passes; generic integration is not granted by this packet.",
+          "requiredRecord": "Exact source/version binding and dispatch, unknown/successor-version and tamper refusal, historical readability versus new-capture restrictions; source provenance/admission and integrated-path evidence. Reuse private replay positives and negative controls; add only genuinely missing generic-path evidence."
+        },
+        {
+          "id": "359-BUSINESS",
+          "status": "UNAVAILABLE_PENDING_SEPARATE_CAPABILITY_ADOPTION",
+          "ownerRole": "Business delivery owner with coordinator (Worker2-owned implementation)",
+          "question": "Decide full applicable team/client/shared-storage/API/embed/metered-job/webhook contract for ID359, exact slug/v1/source tag. Current-member generic reader and revoked-membership denial pass; they do not establish any new delivery capability.",
+          "requiredRecord": "Reviewed exact tuple allowlist/storage/caller/source capability admission and applicable authenticated tenant/role/revocation/quota/audit/origin/job/webhook evidence, or attributed justified applicability decision. Existing unavailable state remains until adoption; do not widen allowlists from this handoff."
+        },
+        {
+          "id": "359-INTEGRATED-CI",
+          "status": "PENDING_EXACT_INTEGRATION_HEAD",
+          "ownerRole": "PR coordinator / integration owner",
+          "question": "Reconcile ID359 on the chosen isolated integration candidate and obtain all five mandatory jobs (checks,build,publication-factory,full-product,source-acceptance) plus aggregate validate success at one exact integrated head.",
+          "requiredRecord": "Run URL, exact head SHA, final job conclusions and source-bound evidence acceptance. Local production build/TypeScript and28 focused tests pass; they are not mandatory hosted integrated CI or per-ID qualification."
+        }
+      ],
+      "actualReviewerIdentity": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 360,
+        "engineId": "engineering.water-tank",
+        "calculatorSlug": "water-tank-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker1-construction-b-20261118.1/engineering.water-tank@1",
+        "engineFile": "src/calculators/engineering-construction/catalog-batch-3.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/engineering-construction/catalog-batch-3.ts",
+        "gitBlob": "bf10a2abde08d1a5a54f086948d5f42216f4bea9",
+        "sha256": "c771e0b347e2150fa4144e0b1e1e11eb8d009eb0887dcc5eb35e53e1fe849c92",
+        "bytes": 8578,
+        "unchangedFromImplementation": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "existingPerIdEvidence": {
+        "commit": "044ce193a0df4ba63ddd86d9a1bc1ef67b60d3e8",
+        "path": "docs/worker3-construction-acceptance-20261118/per-id-evidence.json",
+        "jsonPointer": "/ids/7"
+      },
+      "privateReplay": "PASS",
+      "exceptionalHistoricalReadOnlyCount": 0,
+      "outstandingDecisions": [
+        {
+          "id": "360-SOURCE",
+          "status": "PENDING",
+          "ownerRole": "Authorized competent independent source/applicability reviewer",
+          "question": "Rectangular internal-dimension m\u00b3 capacity; decide wall thickness/headspace/operating-volume exclusions and source revision.",
+          "requiredRecord": "Exact publisher revision/capture bytes and source-admission disposition, method applicability, rationale and actual attributed review; capture tag is not publisher-source approval."
+        },
+        {
+          "id": "360-PRECISION",
+          "status": "PENDING",
+          "ownerRole": "Authorized competent independent numerical reviewer",
+          "question": "Accept bounded binary64 product precision/overflow/underflow envelope and historical/new-capture boundary.",
+          "requiredRecord": "Bounded domain, input quantization, admitted/refused boundaries, raw/display/export policy, independent evidence and actual attributed acceptance/rejection/defer decision."
+        },
+        {
+          "id": "360-QA",
+          "status": "PENDING",
+          "ownerRole": "Authorized scoped technical-QA reviewer and contract owner",
+          "question": "Internal versus nominal/operating capacity language and m\u00b3 reconciliation; disposition applicable scenarios and advanced features.",
+          "requiredRecord": "Per-clause accept/reject/defer/justified-NA against full selected contract. Reuse27 journeys/export/RLS/mobile receipts; decide remaining responsive/assistive/performance/editorial/abuse/plan requirements where applicable. Neither physical-device testing nor a blanket universal graph/GoalSolver requirement is invented."
+        },
+        {
+          "id": "360-IMMUTABLE-REPLAY",
+          "status": "PENDING_COORDINATOR_ADMISSION",
+          "ownerRole": "Coordinator immutable-registry/history/source-admission owner",
+          "question": "Admit exact engineering.water-tank@1 / water-tank-calculator and capture revision worker1-construction-b-20261118.1/engineering.water-tank@1 to applicable generic replay/integration contracts without upgrading historical records. Private construction replay passes; generic integration is not granted by this packet.",
+          "requiredRecord": "Exact source/version binding and dispatch, unknown/successor-version and tamper refusal, historical readability versus new-capture restrictions; source provenance/admission and integrated-path evidence. Reuse private replay positives and negative controls; add only genuinely missing generic-path evidence."
+        },
+        {
+          "id": "360-BUSINESS",
+          "status": "UNAVAILABLE_PENDING_SEPARATE_CAPABILITY_ADOPTION",
+          "ownerRole": "Business delivery owner with coordinator (Worker2-owned implementation)",
+          "question": "Decide full applicable team/client/shared-storage/API/embed/metered-job/webhook contract for ID360, exact slug/v1/source tag. Current-member generic reader and revoked-membership denial pass; they do not establish any new delivery capability.",
+          "requiredRecord": "Reviewed exact tuple allowlist/storage/caller/source capability admission and applicable authenticated tenant/role/revocation/quota/audit/origin/job/webhook evidence, or attributed justified applicability decision. Existing unavailable state remains until adoption; do not widen allowlists from this handoff."
+        },
+        {
+          "id": "360-INTEGRATED-CI",
+          "status": "PENDING_EXACT_INTEGRATION_HEAD",
+          "ownerRole": "PR coordinator / integration owner",
+          "question": "Reconcile ID360 on the chosen isolated integration candidate and obtain all five mandatory jobs (checks,build,publication-factory,full-product,source-acceptance) plus aggregate validate success at one exact integrated head.",
+          "requiredRecord": "Run URL, exact head SHA, final job conclusions and source-bound evidence acceptance. Local production build/TypeScript and28 focused tests pass; they are not mandatory hosted integrated CI or per-ID qualification."
+        }
+      ],
+      "actualReviewerIdentity": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 361,
+        "engineId": "engineering.pipe-volume",
+        "calculatorSlug": "pipe-volume-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker1-construction-b-20261118.1/engineering.pipe-volume@1",
+        "engineFile": "src/calculators/engineering-construction/catalog-batch-3.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/engineering-construction/catalog-batch-3.ts",
+        "gitBlob": "bf10a2abde08d1a5a54f086948d5f42216f4bea9",
+        "sha256": "c771e0b347e2150fa4144e0b1e1e11eb8d009eb0887dcc5eb35e53e1fe849c92",
+        "bytes": 8578,
+        "unchangedFromImplementation": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "existingPerIdEvidence": {
+        "commit": "044ce193a0df4ba63ddd86d9a1bc1ef67b60d3e8",
+        "path": "docs/worker3-construction-acceptance-20261118/per-id-evidence.json",
+        "jsonPointer": "/ids/8"
+      },
+      "privateReplay": "PASS",
+      "exceptionalHistoricalReadOnlyCount": 0,
+      "outstandingDecisions": [
+        {
+          "id": "361-SOURCE",
+          "status": "PENDING",
+          "ownerRole": "Authorized competent independent source/applicability reviewer",
+          "question": "Circular internal diameter and cylinder capacity; distinguish nominal pipe size, flow/pressure design and authoritative geometric source.",
+          "requiredRecord": "Exact publisher revision/capture bytes and source-admission disposition, method applicability, rationale and actual attributed review; capture tag is not publisher-source approval."
+        },
+        {
+          "id": "361-PRECISION",
+          "status": "PENDING",
+          "ownerRole": "Authorized competent independent numerical reviewer",
+          "question": "Accept \u03c0 approximation plus diameter-square/product precision and overflow/underflow envelope; preserve original historical-v1 dispatch.",
+          "requiredRecord": "Bounded domain, input quantization, admitted/refused boundaries, raw/display/export policy, independent evidence and actual attributed acceptance/rejection/defer decision."
+        },
+        {
+          "id": "361-QA",
+          "status": "PENDING",
+          "ownerRole": "Authorized scoped technical-QA reviewer and contract owner",
+          "question": "Internal diameter/radius distinction, m\u00b3 capacity and flow/pressure exclusions; disposition applicable batch/scenario/advanced clauses.",
+          "requiredRecord": "Per-clause accept/reject/defer/justified-NA against full selected contract. Reuse27 journeys/export/RLS/mobile receipts; decide remaining responsive/assistive/performance/editorial/abuse/plan requirements where applicable. Neither physical-device testing nor a blanket universal graph/GoalSolver requirement is invented."
+        },
+        {
+          "id": "361-IMMUTABLE-REPLAY",
+          "status": "PENDING_COORDINATOR_ADMISSION",
+          "ownerRole": "Coordinator immutable-registry/history/source-admission owner",
+          "question": "Admit exact engineering.pipe-volume@1 / pipe-volume-calculator and capture revision worker1-construction-b-20261118.1/engineering.pipe-volume@1 to applicable generic replay/integration contracts without upgrading historical records. Private construction replay passes; generic integration is not granted by this packet.",
+          "requiredRecord": "Exact source/version binding and dispatch, unknown/successor-version and tamper refusal, historical readability versus new-capture restrictions; source provenance/admission and integrated-path evidence. Reuse private replay positives and negative controls; add only genuinely missing generic-path evidence."
+        },
+        {
+          "id": "361-BUSINESS",
+          "status": "UNAVAILABLE_PENDING_SEPARATE_CAPABILITY_ADOPTION",
+          "ownerRole": "Business delivery owner with coordinator (Worker2-owned implementation)",
+          "question": "Decide full applicable team/client/shared-storage/API/embed/metered-job/webhook contract for ID361, exact slug/v1/source tag. Current-member generic reader and revoked-membership denial pass; they do not establish any new delivery capability.",
+          "requiredRecord": "Reviewed exact tuple allowlist/storage/caller/source capability admission and applicable authenticated tenant/role/revocation/quota/audit/origin/job/webhook evidence, or attributed justified applicability decision. Existing unavailable state remains until adoption; do not widen allowlists from this handoff."
+        },
+        {
+          "id": "361-INTEGRATED-CI",
+          "status": "PENDING_EXACT_INTEGRATION_HEAD",
+          "ownerRole": "PR coordinator / integration owner",
+          "question": "Reconcile ID361 on the chosen isolated integration candidate and obtain all five mandatory jobs (checks,build,publication-factory,full-product,source-acceptance) plus aggregate validate success at one exact integrated head.",
+          "requiredRecord": "Run URL, exact head SHA, final job conclusions and source-bound evidence acceptance. Local production build/TypeScript and28 focused tests pass; they are not mandatory hosted integrated CI or per-ID qualification."
+        }
+      ],
+      "actualReviewerIdentity": null,
+      "actualApprovalRef": null
+    }
+  ],
+  "canonicalAdoption": "PENDING_SEPARATE_ACCOUNTABLE_OWNER_DECISION",
+  "productionEquivalence": "UNKNOWN",
+  "releaseHold": true,
+  "newlyQualified": 0
+}
