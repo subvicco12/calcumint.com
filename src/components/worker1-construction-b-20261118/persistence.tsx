@@ -5,13 +5,19 @@ import {loadProjects,saveScenario,restoreScenario,readHistory,loadBusiness} from
 import type {FactoryExecutionPacket} from '@/lib/calculator-factory/workflows';
 import type {CalculationSnapshot} from '@/lib/calculation-snapshot';
 import type {CalcuMintPlan} from '@/lib/entitlements';
+import {equalCompletionJson} from '@/calculators/completion-contracts';
 export function ConstructionPersistence({catalogId,draftRevision,ownerId,plan,packet,onRestore}:{catalogId:number;draftRevision:number;ownerId:string;plan:CalcuMintPlan;packet:FactoryExecutionPacket|null;onRestore:(s:CalculationSnapshot,id:number)=>void}){
  const [projects,setProjects]=useState<{id:string;name:string}[]>([]),[project,setProject]=useState(''),[name,setName]=useState(''),[scenario,setScenario]=useState(''),[history,setHistory]=useState(''),[org,setOrg]=useState('');
  const key=JSON.stringify([ownerId,packet,draftRevision,catalogId]),generation=useRef(0),mounted=useRef(false),pending=useRef(false),retry=useRef<{key:string;id:string}|null>(null);
  const [historical,setHistorical]=useState<CalculationSnapshot|null>(null);
+ const restoreAcknowledgement=useRef<{ownerId:string;catalogId:number;draftRevision:number;snapshot:CalculationSnapshot}|null>(null);
  const [status,setStatus]=useState({key,message:'',busy:false});const visible=status.key===key?status:{key,message:'',busy:false};
  useLayoutEffect(()=>{mounted.current=true;return()=>{mounted.current=false;};},[]);
- useLayoutEffect(()=>{generation.current++;pending.current=false;retry.current=null;},[key]);
+ useLayoutEffect(()=>{
+  generation.current++;pending.current=false;retry.current=null;
+  const acknowledgement=restoreAcknowledgement.current;restoreAcknowledgement.current=null;
+  if(acknowledgement&&acknowledgement.ownerId===ownerId&&acknowledgement.catalogId===catalogId&&acknowledgement.draftRevision===draftRevision&&packet&&equalCompletionJson(acknowledgement.snapshot,packet.snapshot))setStatus({key,message:'Verified owned snapshot restored',busy:false});
+ },[key,ownerId,catalogId,draftRevision,packet]);
  async function run(operation:(valid:()=>boolean)=>Promise<string>){
   if(pending.current)return;pending.current=true;const token=++generation.current;setStatus({key,message:'',busy:true});const valid=()=>mounted.current&&generation.current===token;
   try{const message=await operation(valid);if(valid())setStatus({key,message,busy:false});}catch(e){if(valid())setStatus({key,message:e instanceof Error?e.message:'Request unavailable',busy:false});}finally{if(valid())pending.current=false;}
@@ -22,7 +28,7 @@ export function ConstructionPersistence({catalogId,draftRevision,ownerId,plan,pa
   const checked=prepareConstructionRecovery(result.snapshot);
   if(checked.catalogId!==catalogId)throw Error('Historical construction identity differs');
   if(!checked.currentCaptureAvailable){setHistorical(checked.snapshot);return 'Verified historical snapshot opened read-only; its original v1 result is preserved and is not a new capture.';}
-  setHistorical(null);onRestore(checked.snapshot,checked.catalogId);return 'Verified owned snapshot restored';
+  setHistorical(null);restoreAcknowledgement.current={ownerId,catalogId,draftRevision,snapshot:checked.snapshot};onRestore(checked.snapshot,checked.catalogId);return 'Verified owned snapshot restored';
  }
  function downloadHistorical(){
   if(!historical||plan==='free')return;
