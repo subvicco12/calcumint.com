@@ -80,7 +80,7 @@ try{
    await browser.click('Calculate');await browser.until(resultPresent);
    assert.equal(await browser.js('!!document.querySelector("[role=alert]")'),false);assert(await browser.js('document.documentElement.scrollWidth<=innerWidth+1'),'Mobile overflow');
    const ax=await browser.send('Accessibility.getFullAXTree');for(const f of c.fields)assert(ax.nodes.some(n=>!n.ignored&&n.name?.value?.includes(f.label)),f.label+' accessible name');
-   const targets=await browser.js(`(()=>[...document.querySelectorAll('.worker1-everyday-controls input,.worker1-everyday-controls select,.worker1-everyday-controls button,.worker1-everyday-controls textarea')].filter(e=>e.getClientRects().length).map(e=>({tag:e.tagName,name:e.getAttribute('name'),height:e.getBoundingClientRect().height})))()`);assert(targets.every(t=>t.height>=44),'44px visible controls');
+   const targets=await browser.js(`(()=>[...document.querySelectorAll('.worker3-everyday-controls input,.worker3-everyday-controls select,.worker3-everyday-controls button,.worker3-everyday-controls textarea')].filter(e=>e.getClientRects().length).map(e=>({tag:e.tagName,name:e.getAttribute('name'),height:e.getBoundingClientRect().height})))()`);assert(targets.length>=c.fields.length+1,'Nonempty profile-scoped controls required');assert(targets.every(t=>t.height>=44),'44px visible controls');
    await browser.click('Save calculation');await waitStatus('Authenticated immutable history saved:');
    let history=await ok(user.sdk.from('calculation_history').select('*').eq('calculator_slug',c.slug));assert.equal(history.length,1);history=history[0];histories[plan]=history;
    assert.deepEqual(history.input_data,c.packet.snapshot.input);assert.deepEqual(history.output_data,c.packet.snapshot.output);
