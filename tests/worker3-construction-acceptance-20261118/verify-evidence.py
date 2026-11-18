@@ -39,4 +39,9 @@ for row in report['downloads'] + report['historical']:
     assert hashlib.sha256(file.read_bytes()).hexdigest() == row['sha256']
 for name, expected in report['sourceBindings'].items():
     assert hashlib.sha256((root / name).read_bytes()).hexdigest() == expected, name
+build_sources = json.loads((evidence / 'build-source-sha256.json').read_text())
+for name, binding in build_sources.items():
+    assert binding['explicitLowerPublicationFixture'] is False, name
+    assert binding['originalSHA256'] == binding['builtSHA256'], name
+    assert hashlib.sha256((root / name).read_bytes()).hexdigest() == binding['builtSHA256'], name
 print('PASS: nine identities,27 account journeys,27 downloads,nine revocations,five historical records; release hold active.')

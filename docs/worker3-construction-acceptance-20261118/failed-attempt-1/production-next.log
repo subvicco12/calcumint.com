@@ -1,0 +1,14 @@
+▲ Next.js 16.3.5 (webpack)
+✓ Running next.config.ts took 42ms
+- Experiments (use with caution):
+  · optimizePackageImports
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 25.9s
+  Running TypeScript ...
+src/lib/worker1-construction-b-20261118/cohort.test.ts(18,51): error TS2352: Conversion of type '{ buildingLengthFeet: string; buildingWidthFeet: string; pitchRisePer12: string; wastePercent: string; totalRiseCm?: undefined; targetRiserHeightCm?: undefined; fenceLengthMeters?: undefined; ... 12 more ...; internalDiameterMeters?: undefined; } | ... 7 more ... | { ...; }' to type 'Record<string, string>' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type '{ lengthMeters: string; internalDiameterMeters: string; buildingLengthFeet?: undefined; buildingWidthFeet?: undefined; pitchRisePer12?: undefined; wastePercent?: undefined; totalRiseCm?: undefined; ... 12 more ...; heightMeters?: undefined; }' is not comparable to type 'Record<string, string>'.
+    Property '"buildingLengthFeet"' is incompatible with index signature.
+      Type 'undefined' is not comparable to type 'string'.
+Failed to type check.
+
