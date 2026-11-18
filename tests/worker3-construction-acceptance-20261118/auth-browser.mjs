@@ -23,6 +23,8 @@ let db,next,browser,api,cases;
 const checkpoint=async()=>writeFile(path.join(out,'progress.json'),evidenceJSON(report));
 const pass=async value=>{report.checks.push(value);console.log('PASS '+value);await checkpoint();};
 const route='/admin/worker1-construction-b-20261118';
+const resultPresent='!!document.querySelector('+JSON.stringify('[aria-label="Calculation result"]')+')';
+const workflowStatuses='[...document.querySelectorAll('+JSON.stringify('section[aria-label="Authenticated construction workflows"] [role=status]')+')]';
 try{
  await mkdir(out,{recursive:true});
  await build({entryPoints:[path.join(root,'src/lib/worker1-construction-b-20261118/cohort.ts')],outfile:path.join(out,'cohort.mjs'),platform:'node',format:'esm',bundle:true,alias:{'@':path.join(root,'src')},logLevel:'silent'});
@@ -64,7 +66,7 @@ try{
  };
  const byLabel=async text=>browser.js(`(()=>{const l=[...document.querySelectorAll('label')].find(l=>l.textContent.startsWith(${JSON.stringify(text)}));if(!l)throw Error('Missing label');const e=l.querySelector('input,textarea');e.setAttribute('data-worker3-field',${JSON.stringify(text)});return '[data-worker3-field='+JSON.stringify(${JSON.stringify(text)})+']'})()`);
  const field=async(text,value)=>browser.field(await byLabel(text),value);
- const status=()=>browser.js('[...document.querySelectorAll("section[aria-label=\"Authenticated construction workflows\"] [role=status]")].map(e=>e.textContent).join("\n")');
+ const status=()=>browser.js(workflowStatuses+'.map(e=>e.textContent).join("\\n")');
  const waitStatus=async text=>browser.until('[...document.querySelectorAll("[role=status]")].some(e=>e.textContent.includes('+JSON.stringify(text)+'))');
  const screenshot=async name=>writeFile(path.join(out,name),Buffer.from((await browser.send('Page.captureScreenshot',{format:'png'})).data,'base64'));
  await visit(route);assert.match(await browser.js('location.pathname'),/^\/login/);await pass('Unauthenticated private route denied');
@@ -75,7 +77,7 @@ try{
   const histories={};
   for(const plan of ['free','pro','business']){
    const user=users[plan];await identity(user);await browser.send('Emulation.setDeviceMetricsOverride',{width:320,height:1000,deviceScaleFactor:1,mobile:true});await visit(route);await choose(c);
-   await browser.click('Calculate');await browser.until('!!document.querySelector("[aria-label=\"Calculation result\"]")');
+   await browser.click('Calculate');await browser.until(resultPresent);
    assert.equal(await browser.js('!!document.querySelector("[role=alert]")'),false);assert(await browser.js('document.documentElement.scrollWidth<=innerWidth+1'),'Mobile overflow');
    const ax=await browser.send('Accessibility.getFullAXTree');for(const f of c.fields)assert(ax.nodes.some(n=>!n.ignored&&n.name?.value?.includes(f.label)),f.label+' accessible name');
    const targets=await browser.js(`(()=>[...document.querySelectorAll('.worker1-construction-controls input,.worker1-construction-controls select,.worker1-construction-controls button,.worker1-construction-controls textarea')].filter(e=>e.getClientRects().length).map(e=>({tag:e.tagName,name:e.getAttribute('name'),height:e.getBoundingClientRect().height})))()`);assert(targets.every(t=>t.height>=44),'44px visible controls');
@@ -99,7 +101,7 @@ try{
     row.scenarioRestore=true;row.foreignScenarioReadDenied=true;
     if(plan==='pro'){
      // The other genuine account's identifiers reach the real server action, not a mocked transport.
-     await field('Saved history ID',histories.free.id);await browser.click('Restore owned history');await browser.until('[...document.querySelectorAll("section[aria-label=\"Authenticated construction workflows\"] [role=status]")].some(e=>e.textContent&&!/Working/.test(e.textContent)&&!e.textContent.includes("Verified owned snapshot restored"))');assert(!(await status()).includes('Verified owned snapshot restored'));row.foreignHistoryActionDenied=true;
+     await field('Saved history ID',histories.free.id);await browser.click('Restore owned history');await browser.until(workflowStatuses+'.some(e=>e.textContent&&!/Working/.test(e.textContent)&&!e.textContent.includes("Verified owned snapshot restored"))');assert(!(await status()).includes('Verified owned snapshot restored'));row.foreignHistoryActionDenied=true;
      for(const format of ['json','csv','pdf']){
       const d=await recordedDownload(browser,{label:'Download '+format.toUpperCase(),filename:c.slug+'-v1.'+format,directory:out});
       if(format==='json')assert.deepEqual(api.constructionWorkflows(c.id).replay(d.bytes.toString()),c.packet);
@@ -109,13 +111,13 @@ try{
      }
      await writeFile(path.join(out,c.id+'-ax.json'),evidenceJSON(ax));await screenshot(c.id+'-mobile.png');
      // A real downloaded packet goes through the native browser replay control.
-     await field('Packet JSON to replay',api.constructionWorkflows(c.id).exportPacket(c.packet,'json','pro'));await browser.click('Replay packet');await browser.until('!!document.querySelector("[aria-label=\"Calculation result\"]")');
-     const altered=structuredClone(c.packet);altered.snapshot.output.value+=1;await field('Packet JSON to replay',JSON.stringify(altered));await browser.click('Replay packet');await browser.until('!!document.querySelector("[role=alert]")');assert.equal(await browser.js('!!document.querySelector("[aria-label=\"Calculation result\"]")'),false);
+     await field('Packet JSON to replay',api.constructionWorkflows(c.id).exportPacket(c.packet,'json','pro'));await browser.click('Replay packet');await browser.until(resultPresent);
+     const altered=structuredClone(c.packet);altered.snapshot.output.value+=1;await field('Packet JSON to replay',JSON.stringify(altered));await browser.click('Replay packet');await browser.until('!!document.querySelector("[role=alert]")');assert.equal(await browser.js(resultPresent),false);
      row.nativeReplayAndTamperRefusal=true;
     }
    }
-   await browser.field('input[name='+c.fields[0].key+']','');await browser.click('Calculate');await browser.until('!!document.querySelector("[role=alert]")');assert.equal(await browser.js('!!document.querySelector("[aria-label=\"Calculation result\"]")'),false);
-   await browser.field('input[name='+c.fields[0].key+']',c.raw[c.fields[0].key]);await press('Enter','Enter',13);await browser.until('!!document.querySelector("[aria-label=\"Calculation result\"]")');row.keyboardErrorRecovery=true;
+   await browser.field('input[name='+c.fields[0].key+']','');await browser.click('Calculate');await browser.until('!!document.querySelector("[role=alert]")');assert.equal(await browser.js(resultPresent),false);
+   await browser.field('input[name='+c.fields[0].key+']',c.raw[c.fields[0].key]);await press('Enter','Enter',13);await browser.until(resultPresent);row.keyboardErrorRecovery=true;
    report.rows.push(row);await pass(plan+' #'+c.id);
   }
   await db.sql(`INSERT INTO public.organization_members(organization_id,user_id,role) VALUES('${org}','${users.member.id}','member');`);
@@ -123,7 +125,7 @@ try{
   await identity(users.member);await visit(route);await choose(c);await field('Business organization ID',org);await browser.click('Check current Business capability');await waitStatus('Verified Business role: member');assert.match(await browser.text(),/require separately reviewed/);
   await db.sql(`DELETE FROM public.organization_members WHERE organization_id='${org}' AND user_id='${users.member.id}';`);
   assert.equal((await ok(users.member.sdk.from('business_projects').select('id').eq('id',businessProject.id))).length,0);
-  await browser.click('Check current Business capability');await browser.until('[...document.querySelectorAll("section[aria-label=\"Authenticated construction workflows\"] [role=status]")].some(e=>e.textContent&&!/Working/.test(e.textContent)&&!e.textContent.includes("Verified Business role"))');assert(!(await status()).includes('Verified Business role'));
+  await browser.click('Check current Business capability');await browser.until(workflowStatuses+'.some(e=>e.textContent&&!/Working/.test(e.textContent)&&!e.textContent.includes("Verified Business role"))');assert(!(await status()).includes('Verified Business role'));
   report.negativeControls.push({catalogId:c.id,currentMemberReader:true,revokedMembershipRlsReadDenied:true,revokedMembershipActionDenied:true,constructionDeliveryStillBlocked:true});
   // Exact dispatch and immutable historical recovery are not conflated with current capture.
   const flow=api.constructionWorkflows(c.id);
@@ -135,7 +137,7 @@ try{
    // Owned persisted historical v1 remains viewable in the real browser, without recapture.
    const h=await ok(users.pro.sdk.from('calculation_history').insert({user_id:users.pro.id,calculator_slug:c.slug,calculator_version:1,input_data:input,output_data:snapshot.output}).select('id').single());
    await identity(users.pro);await visit(route);await choose(c);await field('Saved history ID',h.id);await browser.click('Restore owned history');await waitStatus('Verified historical snapshot opened read-only');
-   const rendered=JSON.parse(await browser.js('document.querySelector("[aria-label=\"Verified historical construction snapshot\"]").textContent'));assert.deepEqual(rendered,snapshot);
+   const rendered=JSON.parse(await browser.js('document.querySelector('+JSON.stringify('[aria-label="Verified historical construction snapshot"]')+').textContent'));assert.deepEqual(rendered,snapshot);
    const d=await recordedDownload(browser,{label:'Export recorded construction JSON',filename:c.slug+'-v1-recorded.json',directory:out});assert.deepEqual(JSON.parse(d.bytes.toString()),snapshot);
    report.historical.push({catalogId:c.id,originalV1Count:1,newCaptureRefused:true,ownedReadOnlyBrowser:true,recordedDownload:path.relative(out,d.file),sha256:sha(d.bytes)});
   }
