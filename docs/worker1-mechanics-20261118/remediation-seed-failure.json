@@ -1,0 +1,15 @@
+{
+  "baseline": "50787d4b77914b58b67b33b77473ccf235cbe365",
+  "rows": [],
+  "checks": [
+    "Revoked membership denied with controlled feedback across same session, reload, navigation and lost cookies"
+  ],
+  "downloads": [],
+  "productionWrites": false,
+  "releaseHold": true,
+  "publicationFixture": false,
+  "canonicalApproval": false,
+  "scope": "Disposable repository-model PostgreSQL17/GoTrue/PostgREST; actual private page and existing atomic account actions. Loopback transport is not production equivalence. Business team/native/job capabilities remain blocked.",
+  "passed": false,
+  "failure": "Error: Docker exec failed: ERROR:  HISTORY_WRITE_REJECTED\nCONTEXT:  PL/pgSQL function public.atomic_account_plan(uuid) line 5 at RAISE\nPL/pgSQL function public.guard_atomic_history() line 7 at assignment\n\n    at ChildProcess.<anonymous> (file:///workspace/work/worker1-mechanics/tests/gotrue-runtime/fixture.mjs:8:336)\n    at ChildProcess.emit (node:events:519:28)\n    at maybeClose (node:internal/child_process:1101:16)\n    at ChildProcess._handle.onexit (node:internal/child_process:304:5)"
+}
