@@ -1,0 +1,16 @@
+# Private automotive power cohort
+
+RELEASE HOLD ACTIVE. Base commit: `49ea243b5be7e1ee9f3cd8af7f936ab784402cf7`. Two contiguous registered candidates in the [540-row reconciliation](../blueprint-reconciliation/blueprint-to-540.json) and [overlay](../canonical-calculus/engineering-overlay-540.json) have exact v1 bindings and still require full contract review. The reconciliation SHA-256 is `24aa0e34882bcc947ba9841e698ec4bf0e95335ccd082f70f3798f8f5db772fc`. No existing private factory capture was located for either. All additions are in a Worker 2 namespace. The historical engine file SHA-256 is `96bb0a427eceaca0fb7d22fdf43fda9cdc694de4e711249f4fe94c42cf77c144`.
+
+| Master ID | Engine / slug / version | Evidence and scope |
+|---|---|---|
+| 475 | `automotive.horsepower` / `horsepower-calculator` / 1 | kW to mechanical hp, retained binary64 divisor 745.6999 W/hp. Independent fixture 0.7456999 kW → 1 hp. Negative power refused. Declared [NIST source](https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b8). |
+| 476 | `automotive.engine-horsepower` / `engine-horsepower-calculator` / 1 | Supplied lb·ft and rpm, retained approximate divisor 5252. Independent cancellation fixture 125 lb·ft at 10504 rpm → 250 hp. Zero rpm refused. Declared [dyno reference](https://www.hotrod.com/how-to/reading-dyno-sheet) and NIST mechanical unit reference. |
+
+These are the retained declared formula sources. No publisher body or approved normative precision is inferred from that metadata. #474 was outside this power cohort: tire geometry has a separate applicability and fixture discrepancy.
+
+The reviewer-only page reuses Final presentation and the shared private workbench. Both capture paths preserve v1 output with a separate private source revision. The workbench handles bounded local batch (100 rows, 64 KiB), scenarios, replay and plan-aware JSON/CSV/PDF export. History and scenario server actions verify the packet and recheck session, reviewer status and ownership. Paid project operations recheck plan. Recovery validates original v1 results independently of new input bounds, and displays out-of-bound historical records read-only. Stored normalized data does not reconstruct the original entry text.
+
+Verification: 21 focused tests passed, including the two exact candidate workflows, historical refusals, Final UI field/result recovery, and retained engine and shared batch/download tests. The [disposable receipt](../../tests/worker2-automotive-power-20261118/disposable-receipt.json) records six actions journeys through genuine PostgreSQL, GoTrue and PostgREST. Both IDs passed historical save, idempotent retry and immutable readback on all three plans. Free scenario writes were denied, Pro and Business personal scenarios saved and restored, and foreign RLS reads, stale owner and absent/revoked reviewer were denied. The fixture substitutes Next cookie and revalidation transport. It neither exercises a browser nor establishes hosted equivalence.
+
+Remaining gates: publisher-body and applicability review, approved v1 scope and precision, source and registry adoption, independent final browser/hosted verification, and separate authority for any Business team, API, embed or durable batch integration. No shared registry, manifests, proposal SQL, CI or publication change.
