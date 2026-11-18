@@ -3,7 +3,7 @@ import {readFileSync} from 'node:fs';
 import {constructionContracts,constructionWorkflows,verifyConstructionSnapshot,prepareConstructionRecovery} from './cohort';
 import {factoryDownload} from '@/lib/calculator-factory/completion/exports';
 const expected=[12, 4, 3, 3, 3, 3, 24, 24, 3*Math.PI];
-const inputs=[
+const inputs:Record<string,string>[]=[
  {buildingLengthFeet:'30',buildingWidthFeet:'40',pitchRisePer12:'0',wastePercent:'0'},
  {totalRiseCm:'60',targetRiserHeightCm:'15'},
  {fenceLengthMeters:'5',panelWidthMeters:'2',wastePercent:'0'},
@@ -13,9 +13,9 @@ const inputs=[
  {lengthMeters:'4',widthMeters:'3',averageDepthMeters:'2'},
  {lengthMeters:'4',widthMeters:'3',heightMeters:'2'},
  {lengthMeters:'3',internalDiameterMeters:'2'},
-] satisfies Record<string,string>[];
+];
 it.each(constructionContracts)('verifies bounded workflows and catalog identity for #$catalogId',c=>{
- const index=constructionContracts.indexOf(c),raw=inputs[index] as Record<string,string>,flow=constructionWorkflows(c.catalogId),p=flow.execute(raw);
+ const index=constructionContracts.indexOf(c),raw=inputs[index],flow=constructionWorkflows(c.catalogId),p=flow.execute(raw);
  expect(readFileSync('data/catalog/master-catalog-2026.csv','utf8')).toContain(`"${c.catalogId}","Engineering & Construction","${c.title}"`);
  expect(c.version).toBe(1);
  expect(p.snapshot.output.value).toBeCloseTo(expected[index],13);

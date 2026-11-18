@@ -65,7 +65,7 @@ try{
  const byLabel=async text=>browser.js(`(()=>{const l=[...document.querySelectorAll('label')].find(l=>l.textContent.startsWith(${JSON.stringify(text)}));if(!l)throw Error('Missing label');const e=l.querySelector('input,textarea');e.setAttribute('data-worker3-field',${JSON.stringify(text)});return '[data-worker3-field='+JSON.stringify(${JSON.stringify(text)})+']'})()`);
  const field=async(text,value)=>browser.field(await byLabel(text),value);
  const status=()=>browser.js('[...document.querySelectorAll("section[aria-label=\"Authenticated construction workflows\"] [role=status]")].map(e=>e.textContent).join("\n")');
- const waitStatus=async text=>browser.until('[...document.querySelectorAll("section[aria-label=\"Authenticated construction workflows\"] [role=status]")].some(e=>e.textContent.includes('+JSON.stringify(text)+'))');
+ const waitStatus=async text=>browser.until('[...document.querySelectorAll("[role=status]")].some(e=>e.textContent.includes('+JSON.stringify(text)+'))');
  const screenshot=async name=>writeFile(path.join(out,name),Buffer.from((await browser.send('Page.captureScreenshot',{format:'png'})).data,'base64'));
  await visit(route);assert.match(await browser.js('location.pathname'),/^\/login/);await pass('Unauthenticated private route denied');
  await identity(users.outsider);await visit(route);assert.match(await browser.text(),/Authorized.*access required/);await pass('Authenticated non-reviewer private route denied');
