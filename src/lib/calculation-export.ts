@@ -1,6 +1,19 @@
 import {frequencyPresentationUnit} from './frequency-presentation';
 import { createCalculationSnapshot,type CalculationSnapshot,copyCalculationData } from "./calculation-snapshot";
 export { serializeCalculationPdf, type CalculationPdfOptions } from './calculation-export-pdf';
+/** Encode validated calculation data as JSON within a CSV cell, including signed zero. */
+function encodeStructuredCell(value: unknown): string {
+  if (Object.is(value, -0)) return "-0";
+  if (Array.isArray(value)) return `[${value.map(encodeStructuredCell).join(",")}]`;
+  if (value !== null && typeof value === "object") {
+    const fields = Object.entries(value).map(([key, entry]) =>
+      `${JSON.stringify(key)}:${encodeStructuredCell(entry)}`
+    );
+    return `{${fields.join(",")}}`;
+  }
+  return JSON.stringify(value);
+}
+
 /** Export raw engine values; formatting and on-screen sampling do not affect CSV. */
 export function serializeCalculationCsv(input: Record<string, unknown>, output: Record<string, unknown>): string {
   ({input,output}=copyCalculationData(input,output));
@@ -12,13 +25,7 @@ export function serializeCalculationCsv(input: Record<string, unknown>, output: 
     if (typeof value === "string") return /^[\s]*[=+\-@]/u.test(value) ? `'${value}` : value;
     if (value === null) return "null";
     if (typeof value === "boolean") return String(value);
-    const encoded = JSON.stringify(value, (_key, cell: unknown) => {
-      if (typeof cell === "number" && !Number.isFinite(cell)) throw new Error("Non-finite export value");
-      if (typeof cell === "undefined" || typeof cell === "bigint" || typeof cell === "function" || typeof cell === "symbol") throw new Error("Unsupported export value");
-      return cell;
-    });
-    if (encoded === undefined) throw new Error("Unsupported export value");
-    return encoded;
+    return encodeStructuredCell(value);
   };
   const rows = [["section", "field", "value"], ...Object.entries(input).map(([key, value]) => ["input", text(key), text(value)]), ...Object.entries(output).map(([key, value]) => ["output", text(key), text(value)])];
   return rows.map(row => row.map(cell => `"${cell.replaceAll('"', '""')}"`).join(",")).join("\n");
