@@ -24,7 +24,7 @@ it.each(ids)('independent literal v1 witness,raw replay,batch,scenarios and expo
 it.each(ids)('refuses malformed,extra,negative,subnormal and lossy inputs #%s',id=>{
  const index=ids.indexOf(id),flow=everydayWorkflows(id),raw=inputs[index],first=everydayContracts[index].fields[0].key;
  for(const value of ['', 'NaN','Infinity','1x','1e-323','9007199254740993','-1'])expect(()=>flow.execute({...raw,[first]:value})).toThrow();
- expect(()=>flow.execute({...raw,extra:'2'})).toThrow();const packet=flow.execute(raw);const changed=structuredClone(packet);changed.identity.sourceVersion+='tamper';expect(()=>flow.replay(JSON.stringify(changed))).toThrow();
+ expect(()=>flow.execute({...raw,extra:'2'})).toThrow();const packet=flow.execute(raw);const changed={...packet,identity:{...packet.identity,sourceVersion:packet.identity.sourceVersion+'tamper'}};expect(()=>flow.replay(JSON.stringify(changed))).toThrow();
 });
 it.each([513,514,515])('rejects fractional people in new capture while preserving historical v1 #%s',id=>{
  const c=everydayContracts.find(x=>x.catalogId===id)!;const raw=inputs[ids.indexOf(id)];expect(()=>everydayWorkflows(id).execute({...raw,people:'1.5'})).toThrow(/whole/);
