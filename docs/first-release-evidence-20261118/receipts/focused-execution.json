@@ -1,0 +1,45 @@
+[
+  {
+    "name": "focused-unit",
+    "command": [
+      "node",
+      "node_modules/vitest/vitest.mjs",
+      "run",
+      "src/calculators/conversion/catalog-batch-3.test.ts",
+      "src/calculators/conversion/catalog-batch-3-direct-validation.test.ts",
+      "src/lib/calculator-factory/completion/conversion-contracts.test.ts",
+      "src/lib/native-delivery/factory-embed-contract.test.ts",
+      "src/lib/native-delivery/contract.test.ts",
+      "src/lib/native-delivery/authorization.test.ts",
+      "src/lib/native-delivery/publication.test.ts",
+      "src/lib/native-delivery/embed-request.test.ts",
+      "src/lib/native-delivery/factory-embed-publication.test.ts",
+      "src/lib/registered-snapshot-replay.test.ts",
+      "src/lib/wave100-history-verification.test.ts",
+      "src/components/publication20-workflow-regression.test.tsx",
+      "src/components/native-frequency-embed.test.tsx",
+      "src/lib/publication20/release-preflight.test.ts",
+      "src/lib/publication20/precision-boundary.test.ts",
+      "src/lib/publication20/export-acceptance.test.ts",
+      "--reporter=json",
+      "--outputFile=/workspace/calcumint-first-release-package/receipts/focused-vitest.json"
+    ],
+    "environment": {},
+    "startedUTC": "2026-11-18T11:52:07.893974+00:00",
+    "seconds": 16.065104770999824,
+    "exitCode": 1
+  },
+  {
+    "name": "numerics",
+    "command": [
+      "node",
+      "tests/frequency440-acceptance/run-numerics.mjs"
+    ],
+    "environment": {
+      "FREQUENCY440_ARTIFACTS": "/workspace/calcumint-first-release-package/receipts/numerics"
+    },
+    "startedUTC": "2026-11-18T11:52:23.959697+00:00",
+    "seconds": 0.39621231499950227,
+    "exitCode": 0
+  }
+]
