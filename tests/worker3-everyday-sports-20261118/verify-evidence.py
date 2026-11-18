@@ -33,7 +33,7 @@ for catalog_id in ids:
     negatives = [row for row in report['negativeControls'] if row['catalogId'] == catalog_id]
     assert len(negatives) == 1 and all(negatives[0][key] for key in [
         'currentMemberReader', 'revokedMembershipRlsReadDenied',
-        'revokedMembershipActionDenied', 'constructionDeliveryStillBlocked'])
+        'revokedMembershipActionDenied', 'everydayDeliveryStillBlocked'])
 assert {row['catalogId'] for row in report['historical']} == {513, 514, 515}
 for row in report['downloads'] + report['historical']:
     file = evidence / row.get('file', row.get('recordedDownload'))

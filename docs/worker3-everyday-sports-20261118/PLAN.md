@@ -6,9 +6,9 @@ Design: reuse the proven private workbench and cohort-local persistence pattern.
 
 All ownership is confined to new worker3-everyday-sports-20261118 namespaces in src/lib,src/components,src/app/admin,tests,docs. Original engines, prior construction code, Worker1/2 files, shared registries/Business delivery/CI/held SQL and publication controls stay unchanged. Sources currently establish catalog/dimensional scope, not competent source/precision acceptance. All nine remain implemented-not-qualified.
 
-- [ ] Record canonical540 candidate rows, exact tuples, exclusions, observed worker branch deltas and engine bindings.
-- [ ] Add failing focused literal-witness/refusal/replay tests, then implement cohort-local adapter only.
-- [ ] Reuse existing private account actions, Final workbench, stale response guards and download serialization in new namespace; add focused UI/recovery tests.
-- [ ] Genuine disposable PostgreSQL17.6/GoTrue/PostgREST acceptance:representative508 first, then remaining8; Free/Pro/Business, owned history/scenario, cross-account denial,320px/AX/44px/keyboard, JSON/CSV/PDF native readback, batch and replay, current then revoked membership.
-- [ ] Verify historical fractional-person snapshots remain read-only/exportable for513–515 without recapture or engine mutation.
-- [ ] Preserve failures, exact source/build pins, per-ID limitations/decisions and changed-file manifest; push isolated branch, verify remote SHA. No qualification/count/certification/publication promotion.
+- [x] Record canonical540 candidate rows, exact tuples, exclusions, observed worker branch deltas and engine bindings.
+- [x] Add failing focused literal-witness/refusal/replay tests, then implement cohort-local adapter only.
+- [x] Reuse existing private account actions, Final workbench, stale response guards and download serialization in new namespace; add focused UI/recovery tests.
+- [x] Genuine disposable PostgreSQL17.6/GoTrue/PostgREST acceptance:representative508 first, then remaining8; Free/Pro/Business, owned history/scenario, cross-account denial,320px/AX/44px/keyboard, JSON/CSV/PDF native readback, batch and replay, current then revoked membership.
+- [x] Verify historical fractional-person snapshots remain read-only/exportable for513–515 without recapture or engine mutation.
+- [x] Preserve failures, exact source/build pins, per-ID limitations/decisions and changed-file manifest; push isolated branch, verify remote SHA. No qualification/count/certification/publication promotion.

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "identity": {
+    "catalogId": 508,
+    "engineId": "travel.trip-cost",
+    "calculatorSlug": "trip-cost-calculator",
+    "calculatorVersion": 1,
+    "sourceVersion": "worker3-everyday-sports-20261118.1/travel.trip-cost@1"
+  },
+  "raw": {
+    "foodCost": "200",
+    "otherCost": "100",
+    "lodgingCost": "500",
+    "transportCost": "300"
+  },
+  "snapshot": {
+    "calculatorSlug": "trip-cost-calculator",
+    "calculatorVersion": 1,
+    "input": {
+      "transportCost": 300,
+      "lodgingCost": 500,
+      "foodCost": 200,
+      "otherCost": 100
+    },
+    "output": {
+      "value": 1100,
+      "steps": [
+        "Trip cost = 1100"
+      ]
+    }
+  }
+}

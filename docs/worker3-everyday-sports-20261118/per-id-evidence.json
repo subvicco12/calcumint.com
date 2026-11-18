@@ -1,0 +1,1107 @@
+{
+  "baselineCommit": "a802d36db823c67fcea24ec001a7dfa27d43aca5",
+  "executedCommit": "15829bca2931e13d0aa777f178e8c944515585c6",
+  "ids": [
+    {
+      "identity": {
+        "catalogId": 508,
+        "engineId": "travel.trip-cost",
+        "calculatorSlug": "trip-cost-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker3-everyday-sports-20261118.1/travel.trip-cost@1",
+        "engineFile": "src/calculators/travel/catalog-batch-2.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/travel/catalog-batch-2.ts",
+        "gitBlob": "5f2ef56a8b828e26f5408e8fa3d68c8dc7537c9c",
+        "sha256": "b3b7afaaaaa14e37159c4b08c9116bb33b2417925b455e069ae77d9569e950ab",
+        "bytes": 2729,
+        "unchanged": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "genuineAcceptance": "PASS",
+      "planJourneys": [
+        {
+          "catalogId": 508,
+          "plan": "free",
+          "width": 320,
+          "historyId": "8f472dfa-e02d-44ef-ba4d-509e518dc2da",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "freeEntitlementDenied": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 508,
+          "plan": "pro",
+          "width": 320,
+          "historyId": "56aeff17-8854-4510-845c-645674e9d3ae",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "09a9e086-7d89-4317-a0db-99157f7def63",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "foreignHistoryActionDenied": true,
+          "nativeBatchRefusalCorrectionReplay": true,
+          "nativeScenarioAB": true,
+          "nativeReplayAndTamperRefusal": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 508,
+          "plan": "business",
+          "width": 320,
+          "historyId": "5ecbf307-b8aa-492b-9f4d-b6f020adedc3",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "67854fc1-6b1a-4de3-9f3f-9be046cf4d50",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "keyboardErrorRecovery": true
+        }
+      ],
+      "exportReadbacks": [
+        {
+          "catalogId": 508,
+          "format": "json",
+          "file": "invocation-zmKaUv/93144f96-6792-4b36-bac8-e2f0dbb7a960",
+          "bytes": 682,
+          "sha256": "2042862cf8ee0759c43d782a5f3aa614d04f14823dd0178ea15fdf81ba107e4a",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 508,
+          "format": "csv",
+          "file": "invocation-DFy9uz/f9068d87-85ac-42df-86f0-64cf217b5adf",
+          "bytes": 759,
+          "sha256": "3495a1689f29f6ab1864dd69fdafafda33aa44127fb439342e4c2258b08f984c",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 508,
+          "format": "pdf",
+          "file": "invocation-Nlluh2/d119e5f4-a565-479f-94c0-ae6f74e70703",
+          "bytes": 406964,
+          "sha256": "69f0ee4fc30b9a08d8875b7ce079f80814be201aab2ecb33bb7e88ed85cc2c6b",
+          "nativeCompleted": true
+        }
+      ],
+      "membershipRevocation": [
+        {
+          "catalogId": 508,
+          "currentMemberReader": true,
+          "revokedMembershipRlsReadDenied": true,
+          "revokedMembershipActionDenied": true,
+          "everydayDeliveryStillBlocked": true
+        }
+      ],
+      "historicalException": [],
+      "nativeBatchEvidence": "accepted/508-native-batch.json",
+      "nativeScenarioEvidence": "accepted/508-native-scenarios.json",
+      "mobileScreenshot": "accepted/508-mobile.png",
+      "AXEvidence": "accepted/508-ax.json",
+      "sourceDecision": "PENDING; exact per-ID question in DECISIONS.md",
+      "precisionDecision": "PENDING; exact per-ID question in DECISIONS.md",
+      "QAAdoption": "PENDING per applicable clause",
+      "genericReplayAdmission": "PENDING; private verifier passes only",
+      "BusinessDelivery": "UNAVAILABLE_PENDING_SEPARATE_ADOPTION",
+      "integratedExactHeadCI": "PENDING_COORDINATOR",
+      "actualReviewer": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 513,
+        "engineId": "travel.hotel-cost-split",
+        "calculatorSlug": "hotel-cost-split-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker3-everyday-sports-20261118.1/travel.hotel-cost-split@1",
+        "engineFile": "src/calculators/travel/catalog-batch-1.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/travel/catalog-batch-1.ts",
+        "gitBlob": "62377f5f350718d7a4571b7d0dee9d66a67d54a2",
+        "sha256": "f2e7adc8729f0a28feaf615f18b7f9c56bb4db8a7f5f2ccd0b414d04a743cfee",
+        "bytes": 3600,
+        "unchanged": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "genuineAcceptance": "PASS",
+      "planJourneys": [
+        {
+          "catalogId": 513,
+          "plan": "free",
+          "width": 320,
+          "historyId": "b18f1309-ab88-41d2-a523-b8075b329161",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "freeEntitlementDenied": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 513,
+          "plan": "pro",
+          "width": 320,
+          "historyId": "379f2ec2-543f-4085-821c-90bb271d7212",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "796ebbe9-1da5-4e3e-9f7a-c63e1def7796",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "foreignHistoryActionDenied": true,
+          "nativeBatchRefusalCorrectionReplay": true,
+          "nativeScenarioAB": true,
+          "nativeReplayAndTamperRefusal": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 513,
+          "plan": "business",
+          "width": 320,
+          "historyId": "7f4e75ac-26f9-4e0a-8931-f46679de80f1",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "6ea3f030-cf5f-43e3-9135-18686daa11f1",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "keyboardErrorRecovery": true
+        }
+      ],
+      "exportReadbacks": [
+        {
+          "catalogId": 513,
+          "format": "json",
+          "file": "invocation-MVlohk/600780cc-95b6-4aa1-93c3-53a2ea66fe7e",
+          "bytes": 610,
+          "sha256": "a923822a02de5641d9964af9e0b598e8a3399ffbe69b3fd5b5836fdcd7b7e02a",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 513,
+          "format": "csv",
+          "file": "invocation-CgnHOJ/2d1d8101-2bf3-4e46-9537-0647851cbff0",
+          "bytes": 608,
+          "sha256": "60e88042b1c24ba9664293803f67939fc28e911e72a09b832a8d60557fa66d37",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 513,
+          "format": "pdf",
+          "file": "invocation-3SGYMc/38eaa3d2-173a-47f2-866f-73535e70dc89",
+          "bytes": 405441,
+          "sha256": "9eb0f2f2ab11b0fc205d7a59ebbab1578aaaf731ce1ece19398c372e86813e99",
+          "nativeCompleted": true
+        }
+      ],
+      "membershipRevocation": [
+        {
+          "catalogId": 513,
+          "currentMemberReader": true,
+          "revokedMembershipRlsReadDenied": true,
+          "revokedMembershipActionDenied": true,
+          "everydayDeliveryStillBlocked": true
+        }
+      ],
+      "historicalException": [
+        {
+          "catalogId": 513,
+          "recordedV1Value": 800,
+          "newCaptureRefused": true,
+          "ownedReadOnlyBrowser": true,
+          "recordedDownload": "invocation-GbvpZE/3fae5dd4-fb70-4dfd-b042-aa81f9435f33",
+          "sha256": "3aa65595c5a5c761bdf9416edd6b8daf4dea718370c843f71cd626de7477e881"
+        }
+      ],
+      "nativeBatchEvidence": "accepted/513-native-batch.json",
+      "nativeScenarioEvidence": "accepted/513-native-scenarios.json",
+      "mobileScreenshot": "accepted/513-mobile.png",
+      "AXEvidence": "accepted/513-ax.json",
+      "sourceDecision": "PENDING; exact per-ID question in DECISIONS.md",
+      "precisionDecision": "PENDING; exact per-ID question in DECISIONS.md",
+      "QAAdoption": "PENDING per applicable clause",
+      "genericReplayAdmission": "PENDING; private verifier passes only",
+      "BusinessDelivery": "UNAVAILABLE_PENDING_SEPARATE_ADOPTION",
+      "integratedExactHeadCI": "PENDING_COORDINATOR",
+      "actualReviewer": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 514,
+        "engineId": "travel.group-expense-split",
+        "calculatorSlug": "group-expense-split-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker3-everyday-sports-20261118.1/travel.group-expense-split@1",
+        "engineFile": "src/calculators/travel/catalog-batch-1.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/travel/catalog-batch-1.ts",
+        "gitBlob": "62377f5f350718d7a4571b7d0dee9d66a67d54a2",
+        "sha256": "f2e7adc8729f0a28feaf615f18b7f9c56bb4db8a7f5f2ccd0b414d04a743cfee",
+        "bytes": 3600,
+        "unchanged": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "genuineAcceptance": "PASS",
+      "planJourneys": [
+        {
+          "catalogId": 514,
+          "plan": "free",
+          "width": 320,
+          "historyId": "102a8c16-2e1b-4c6d-a19a-133f86a8422b",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "freeEntitlementDenied": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 514,
+          "plan": "pro",
+          "width": 320,
+          "historyId": "8175668a-2607-43c3-8405-01578bedc829",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "c9c80f10-80ff-40e2-bb60-0c8b1b9f418b",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "foreignHistoryActionDenied": true,
+          "nativeBatchRefusalCorrectionReplay": true,
+          "nativeScenarioAB": true,
+          "nativeReplayAndTamperRefusal": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 514,
+          "plan": "business",
+          "width": 320,
+          "historyId": "0e776a7a-c02c-4677-beb6-37e12abab33a",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "860e660e-d66a-4798-8b45-497087dac0aa",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "keyboardErrorRecovery": true
+        }
+      ],
+      "exportReadbacks": [
+        {
+          "catalogId": 514,
+          "format": "json",
+          "file": "invocation-WVx4NV/7055650b-3a4c-45a6-a3de-4acf4b20f0be",
+          "bytes": 619,
+          "sha256": "560195b6c3be544c46ae740eb4f8d5de2a7109066c0f08623c8cf23e4a4165d7",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 514,
+          "format": "csv",
+          "file": "invocation-qWzozh/e1e02bf5-9029-40c4-93b6-5981dd4f92f5",
+          "bytes": 612,
+          "sha256": "26a79bde57401d701ab6e812e3d29d066fd8b22de1565a13b9ba896b9f272051",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 514,
+          "format": "pdf",
+          "file": "invocation-cPoOAj/5d63152d-c6dd-4da4-b0fa-ff1f2e3f19ce",
+          "bytes": 405476,
+          "sha256": "6a219df31bd74a917ad8a3955d5be343135cf345e98d55e94579306a604b9089",
+          "nativeCompleted": true
+        }
+      ],
+      "membershipRevocation": [
+        {
+          "catalogId": 514,
+          "currentMemberReader": true,
+          "revokedMembershipRlsReadDenied": true,
+          "revokedMembershipActionDenied": true,
+          "everydayDeliveryStillBlocked": true
+        }
+      ],
+      "historicalException": [
+        {
+          "catalogId": 514,
+          "recordedV1Value": 300,
+          "newCaptureRefused": true,
+          "ownedReadOnlyBrowser": true,
+          "recordedDownload": "invocation-yR5qGk/2810b6b9-5471-49d6-a1ec-b7b63b6b7b22",
+          "sha256": "932f6927ac3f7b8ab0265b4ddddc864cac04c4ba3afd29a76174426ae0ef0469"
+        }
+      ],
+      "nativeBatchEvidence": "accepted/514-native-batch.json",
+      "nativeScenarioEvidence": "accepted/514-native-scenarios.json",
+      "mobileScreenshot": "accepted/514-mobile.png",
+      "AXEvidence": "accepted/514-ax.json",
+      "sourceDecision": "PENDING; exact per-ID question in DECISIONS.md",
+      "precisionDecision": "PENDING; exact per-ID question in DECISIONS.md",
+      "QAAdoption": "PENDING per applicable clause",
+      "genericReplayAdmission": "PENDING; private verifier passes only",
+      "BusinessDelivery": "UNAVAILABLE_PENDING_SEPARATE_ADOPTION",
+      "integratedExactHeadCI": "PENDING_COORDINATOR",
+      "actualReviewer": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 515,
+        "engineId": "travel.tip-split",
+        "calculatorSlug": "tip-split-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker3-everyday-sports-20261118.1/travel.tip-split@1",
+        "engineFile": "src/calculators/travel/catalog-batch-1.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/travel/catalog-batch-1.ts",
+        "gitBlob": "62377f5f350718d7a4571b7d0dee9d66a67d54a2",
+        "sha256": "f2e7adc8729f0a28feaf615f18b7f9c56bb4db8a7f5f2ccd0b414d04a743cfee",
+        "bytes": 3600,
+        "unchanged": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "genuineAcceptance": "PASS",
+      "planJourneys": [
+        {
+          "catalogId": 515,
+          "plan": "free",
+          "width": 320,
+          "historyId": "81dd4bae-280c-447f-979b-b415dda71081",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "freeEntitlementDenied": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 515,
+          "plan": "pro",
+          "width": 320,
+          "historyId": "2ba858cc-ccb9-461f-b9c3-145f165462d5",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "e81e566f-a9f3-4372-ab79-94846095537f",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "foreignHistoryActionDenied": true,
+          "nativeBatchRefusalCorrectionReplay": true,
+          "nativeScenarioAB": true,
+          "nativeReplayAndTamperRefusal": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 515,
+          "plan": "business",
+          "width": 320,
+          "historyId": "e2016486-3ace-49d0-aaf7-28a09feda8e8",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "b5892fac-e7c8-48d1-99db-05bb3371990e",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "keyboardErrorRecovery": true
+        }
+      ],
+      "exportReadbacks": [
+        {
+          "catalogId": 515,
+          "format": "json",
+          "file": "invocation-VNl50R/b9d3c169-b6af-4be8-8a8f-1dc50de2ebc3",
+          "bytes": 633,
+          "sha256": "c6cdf4a6311cd5829560a4fc6493ae4f6cd32da62dedecc138b04ffa3b507c06",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 515,
+          "format": "csv",
+          "file": "invocation-KtK3Tz/6ce1b891-081c-4583-a2f3-5ce2075a5120",
+          "bytes": 647,
+          "sha256": "0ab62e7220e1631482a8a6fd83c0c18432b45ae6522d9b54b2976ccb626b80ad",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 515,
+          "format": "pdf",
+          "file": "invocation-EK5EY8/bff01bc8-35cf-44a6-8122-f97f2cba53d0",
+          "bytes": 406166,
+          "sha256": "8b02e340f536caa0946980bef8bcb1e51683e89f7b30a44930fb6d0931e44c7a",
+          "nativeCompleted": true
+        }
+      ],
+      "membershipRevocation": [
+        {
+          "catalogId": 515,
+          "currentMemberReader": true,
+          "revokedMembershipRlsReadDenied": true,
+          "revokedMembershipActionDenied": true,
+          "everydayDeliveryStillBlocked": true
+        }
+      ],
+      "historicalException": [
+        {
+          "catalogId": 515,
+          "recordedV1Value": 80,
+          "newCaptureRefused": true,
+          "ownedReadOnlyBrowser": true,
+          "recordedDownload": "invocation-jHdjuG/7eadd5cc-940d-4c8e-8567-8d2a7516ca95",
+          "sha256": "f74a1dcc587db424d7ccf6cc63c98f32046668453ddc4965cd967196558d14cc"
+        }
+      ],
+      "nativeBatchEvidence": "accepted/515-native-batch.json",
+      "nativeScenarioEvidence": "accepted/515-native-scenarios.json",
+      "mobileScreenshot": "accepted/515-mobile.png",
+      "AXEvidence": "accepted/515-ax.json",
+      "sourceDecision": "PENDING; exact per-ID question in DECISIONS.md",
+      "precisionDecision": "PENDING; exact per-ID question in DECISIONS.md",
+      "QAAdoption": "PENDING per applicable clause",
+      "genericReplayAdmission": "PENDING; private verifier passes only",
+      "BusinessDelivery": "UNAVAILABLE_PENDING_SEPARATE_ADOPTION",
+      "integratedExactHeadCI": "PENDING_COORDINATOR",
+      "actualReviewer": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 519,
+        "engineId": "travel.household-utility-cost",
+        "calculatorSlug": "household-utility-cost-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker3-everyday-sports-20261118.1/travel.household-utility-cost@1",
+        "engineFile": "src/calculators/travel/catalog-batch-3.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/travel/catalog-batch-3.ts",
+        "gitBlob": "8ae71fe01c627e08214b851199cd7779c25ef381",
+        "sha256": "39ef5f34eb37931fdb2ec9e8e28c567191df073f628857c767452447b388c6c8",
+        "bytes": 2916,
+        "unchanged": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "genuineAcceptance": "PASS",
+      "planJourneys": [
+        {
+          "catalogId": 519,
+          "plan": "free",
+          "width": 320,
+          "historyId": "7dc623c2-5a75-4ddd-9995-91f9c2c4d599",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "freeEntitlementDenied": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 519,
+          "plan": "pro",
+          "width": 320,
+          "historyId": "c18a5d08-d2d2-49ad-8268-0cdaea3d4155",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "2cbf08e7-a93a-4c71-85d8-3346ebfa0ca6",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "foreignHistoryActionDenied": true,
+          "nativeBatchRefusalCorrectionReplay": true,
+          "nativeScenarioAB": true,
+          "nativeReplayAndTamperRefusal": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 519,
+          "plan": "business",
+          "width": 320,
+          "historyId": "ef5fdb8a-4f5e-4fc0-a236-697ba68c6ef0",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "2a15606a-47f0-42ec-80cc-f33716b1f35f",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "keyboardErrorRecovery": true
+        }
+      ],
+      "exportReadbacks": [
+        {
+          "catalogId": 519,
+          "format": "json",
+          "file": "invocation-Vwr0Pi/a8672e8c-2e3e-49a1-8172-b817d53df841",
+          "bytes": 745,
+          "sha256": "96da3b7a0fbfb218b76a2c4d8af6159db44f8221ef50cd42461da3ba66c73f17",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 519,
+          "format": "csv",
+          "file": "invocation-EXG8nV/fcd6a239-4001-4eae-a341-717c428bac95",
+          "bytes": 824,
+          "sha256": "8e4c36c96f175c9c4e8b5b49d45b2a33df39bc001ce82403574e1f056d38322a",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 519,
+          "format": "pdf",
+          "file": "invocation-s023sZ/9b51a343-b957-4879-bf55-c7603a8399a1",
+          "bytes": 407937,
+          "sha256": "e61e1c517ca8e434b80b4d892659b097a09240b57fa24ce845f8949c6bf1bfa9",
+          "nativeCompleted": true
+        }
+      ],
+      "membershipRevocation": [
+        {
+          "catalogId": 519,
+          "currentMemberReader": true,
+          "revokedMembershipRlsReadDenied": true,
+          "revokedMembershipActionDenied": true,
+          "everydayDeliveryStillBlocked": true
+        }
+      ],
+      "historicalException": [],
+      "nativeBatchEvidence": "accepted/519-native-batch.json",
+      "nativeScenarioEvidence": "accepted/519-native-scenarios.json",
+      "mobileScreenshot": "accepted/519-mobile.png",
+      "AXEvidence": "accepted/519-ax.json",
+      "sourceDecision": "PENDING; exact per-ID question in DECISIONS.md",
+      "precisionDecision": "PENDING; exact per-ID question in DECISIONS.md",
+      "QAAdoption": "PENDING per applicable clause",
+      "genericReplayAdmission": "PENDING; private verifier passes only",
+      "BusinessDelivery": "UNAVAILABLE_PENDING_SEPARATE_ADOPTION",
+      "integratedExactHeadCI": "PENDING_COORDINATOR",
+      "actualReviewer": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 520,
+        "engineId": "travel.moving-cost",
+        "calculatorSlug": "moving-cost-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker3-everyday-sports-20261118.1/travel.moving-cost@1",
+        "engineFile": "src/calculators/travel/catalog-batch-3.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/travel/catalog-batch-3.ts",
+        "gitBlob": "8ae71fe01c627e08214b851199cd7779c25ef381",
+        "sha256": "39ef5f34eb37931fdb2ec9e8e28c567191df073f628857c767452447b388c6c8",
+        "bytes": 2916,
+        "unchanged": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "genuineAcceptance": "PASS",
+      "planJourneys": [
+        {
+          "catalogId": 520,
+          "plan": "free",
+          "width": 320,
+          "historyId": "42dd84d1-95d1-417b-b410-d2ec232619b1",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "freeEntitlementDenied": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 520,
+          "plan": "pro",
+          "width": 320,
+          "historyId": "88e868e0-cedd-4b83-9408-1e4300a5d888",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "9a009feb-a7c1-43d8-a481-bda72eb5d6b1",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "foreignHistoryActionDenied": true,
+          "nativeBatchRefusalCorrectionReplay": true,
+          "nativeScenarioAB": true,
+          "nativeReplayAndTamperRefusal": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 520,
+          "plan": "business",
+          "width": 320,
+          "historyId": "3ad79e55-d567-4605-866b-ef772dcc9a6d",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "a6b14118-6374-48a0-a260-fd425a668a9d",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "keyboardErrorRecovery": true
+        }
+      ],
+      "exportReadbacks": [
+        {
+          "catalogId": 520,
+          "format": "json",
+          "file": "invocation-1iu5mh/5e27acba-9104-4e70-8819-0594530a4d1c",
+          "bytes": 710,
+          "sha256": "ac3c87c4b6d40daeda1bf7202809e1457d328a1c8ad665d2f4a232c43afc4445",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 520,
+          "format": "csv",
+          "file": "invocation-djwTgD/3564b037-84f4-4304-a22e-2072651e9fac",
+          "bytes": 801,
+          "sha256": "20b8b3f50e9ff81b212acd5a51d46a8845bb239a48384e75225c4c609c6a54a2",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 520,
+          "format": "pdf",
+          "file": "invocation-l84gSt/44558b81-6048-4318-a61a-c66e62fe0a11",
+          "bytes": 407811,
+          "sha256": "dc87fd2e9c8d8d75823f2341c3a2e1df8b63f6ddca244832fdd0cc2698a5b164",
+          "nativeCompleted": true
+        }
+      ],
+      "membershipRevocation": [
+        {
+          "catalogId": 520,
+          "currentMemberReader": true,
+          "revokedMembershipRlsReadDenied": true,
+          "revokedMembershipActionDenied": true,
+          "everydayDeliveryStillBlocked": true
+        }
+      ],
+      "historicalException": [],
+      "nativeBatchEvidence": "accepted/520-native-batch.json",
+      "nativeScenarioEvidence": "accepted/520-native-scenarios.json",
+      "mobileScreenshot": "accepted/520-mobile.png",
+      "AXEvidence": "accepted/520-ax.json",
+      "sourceDecision": "PENDING; exact per-ID question in DECISIONS.md",
+      "precisionDecision": "PENDING; exact per-ID question in DECISIONS.md",
+      "QAAdoption": "PENDING per applicable clause",
+      "genericReplayAdmission": "PENDING; private verifier passes only",
+      "BusinessDelivery": "UNAVAILABLE_PENDING_SEPARATE_ADOPTION",
+      "integratedExactHeadCI": "PENDING_COORDINATOR",
+      "actualReviewer": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 521,
+        "engineId": "sports.running-pace",
+        "calculatorSlug": "running-pace-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker3-everyday-sports-20261118.1/sports.running-pace@1",
+        "engineFile": "src/calculators/sports/catalog-batch-1.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/sports/catalog-batch-1.ts",
+        "gitBlob": "0718258d506324e9a72a15285a86c6fd094f2ba1",
+        "sha256": "9b00fb4013c05f359657b95dd129cc272197e6e62cfc1d8c7580e80a4668f284",
+        "bytes": 3666,
+        "unchanged": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "genuineAcceptance": "PASS",
+      "planJourneys": [
+        {
+          "catalogId": 521,
+          "plan": "free",
+          "width": 320,
+          "historyId": "a2c5fef9-2527-45c3-bedb-2552738cbbbb",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "freeEntitlementDenied": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 521,
+          "plan": "pro",
+          "width": 320,
+          "historyId": "11b3a12e-35be-446f-ab33-87b8585ebef4",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "34a989c8-dc33-44dd-8bd4-63513ac0bf3d",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "foreignHistoryActionDenied": true,
+          "nativeBatchRefusalCorrectionReplay": true,
+          "nativeScenarioAB": true,
+          "nativeReplayAndTamperRefusal": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 521,
+          "plan": "business",
+          "width": 320,
+          "historyId": "932ec7c9-1207-440a-8683-82b9d635a7ad",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "522f579f-3912-48ef-99b3-b7092ca9a7f1",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "keyboardErrorRecovery": true
+        }
+      ],
+      "exportReadbacks": [
+        {
+          "catalogId": 521,
+          "format": "json",
+          "file": "invocation-6T8AWQ/fe69e0b9-0017-490b-b2d9-48b50a99c2f6",
+          "bytes": 594,
+          "sha256": "e713bc7e01ace462a19c33de1cfafd533fc55404381cacd839898d4aee9cbf81",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 521,
+          "format": "csv",
+          "file": "invocation-cVFJo8/655dd259-5165-4b93-86dc-e4b1a2c8efcb",
+          "bytes": 545,
+          "sha256": "320b639495773c76a10ab4982b5e847ebdf8b2d385cc1babfb7aa339f4167764",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 521,
+          "format": "pdf",
+          "file": "invocation-Srf50U/65bbc639-c423-4f4b-8bb8-4f543fbf6446",
+          "bytes": 405177,
+          "sha256": "c4160797306345af498975bdc7c6af6678a6d7f200c33d376961c57862943fad",
+          "nativeCompleted": true
+        }
+      ],
+      "membershipRevocation": [
+        {
+          "catalogId": 521,
+          "currentMemberReader": true,
+          "revokedMembershipRlsReadDenied": true,
+          "revokedMembershipActionDenied": true,
+          "everydayDeliveryStillBlocked": true
+        }
+      ],
+      "historicalException": [],
+      "nativeBatchEvidence": "accepted/521-native-batch.json",
+      "nativeScenarioEvidence": "accepted/521-native-scenarios.json",
+      "mobileScreenshot": "accepted/521-mobile.png",
+      "AXEvidence": "accepted/521-ax.json",
+      "sourceDecision": "PENDING; exact per-ID question in DECISIONS.md",
+      "precisionDecision": "PENDING; exact per-ID question in DECISIONS.md",
+      "QAAdoption": "PENDING per applicable clause",
+      "genericReplayAdmission": "PENDING; private verifier passes only",
+      "BusinessDelivery": "UNAVAILABLE_PENDING_SEPARATE_ADOPTION",
+      "integratedExactHeadCI": "PENDING_COORDINATOR",
+      "actualReviewer": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 523,
+        "engineId": "sports.cycling-speed",
+        "calculatorSlug": "cycling-speed-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker3-everyday-sports-20261118.1/sports.cycling-speed@1",
+        "engineFile": "src/calculators/sports/catalog-batch-1.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/sports/catalog-batch-1.ts",
+        "gitBlob": "0718258d506324e9a72a15285a86c6fd094f2ba1",
+        "sha256": "9b00fb4013c05f359657b95dd129cc272197e6e62cfc1d8c7580e80a4668f284",
+        "bytes": 3666,
+        "unchanged": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "genuineAcceptance": "PASS",
+      "planJourneys": [
+        {
+          "catalogId": 523,
+          "plan": "free",
+          "width": 320,
+          "historyId": "b371db13-b1c0-421b-b52f-44a6ff4d7cfb",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "freeEntitlementDenied": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 523,
+          "plan": "pro",
+          "width": 320,
+          "historyId": "9c224b0b-eef1-420a-a2a2-52bc2057094e",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "839c5698-60b8-422a-af5b-b411c12a036a",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "foreignHistoryActionDenied": true,
+          "nativeBatchRefusalCorrectionReplay": true,
+          "nativeScenarioAB": true,
+          "nativeReplayAndTamperRefusal": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 523,
+          "plan": "business",
+          "width": 320,
+          "historyId": "e4315d40-ef2c-424b-80b4-8295d95c65c4",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "b11b89ec-6048-402f-a759-ef74d38c5662",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "keyboardErrorRecovery": true
+        }
+      ],
+      "exportReadbacks": [
+        {
+          "catalogId": 523,
+          "format": "json",
+          "file": "invocation-Netx37/3a82c51c-93c0-437b-bb3c-60094f3aa73b",
+          "bytes": 593,
+          "sha256": "6f22e54e466a34e5642041bc12420d27215e046a37bfe8dc6d5c3e349bfaae18",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 523,
+          "format": "csv",
+          "file": "invocation-0US69M/f169b15b-43c0-4f91-bb21-286efc955764",
+          "bytes": 537,
+          "sha256": "ac3ae6692a4526289d5f603b98765f2c155c3346f0e0f82c65473222169af061",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 523,
+          "format": "pdf",
+          "file": "invocation-2zxcca/5a6d5fda-3baa-42a7-9b3d-27e497c461ad",
+          "bytes": 405153,
+          "sha256": "123d4e90ca49fcc1f7624332cbf0b3517d7ed35f1df3a9caa2aa6bc2e2100c6f",
+          "nativeCompleted": true
+        }
+      ],
+      "membershipRevocation": [
+        {
+          "catalogId": 523,
+          "currentMemberReader": true,
+          "revokedMembershipRlsReadDenied": true,
+          "revokedMembershipActionDenied": true,
+          "everydayDeliveryStillBlocked": true
+        }
+      ],
+      "historicalException": [],
+      "nativeBatchEvidence": "accepted/523-native-batch.json",
+      "nativeScenarioEvidence": "accepted/523-native-scenarios.json",
+      "mobileScreenshot": "accepted/523-mobile.png",
+      "AXEvidence": "accepted/523-ax.json",
+      "sourceDecision": "PENDING; exact per-ID question in DECISIONS.md",
+      "precisionDecision": "PENDING; exact per-ID question in DECISIONS.md",
+      "QAAdoption": "PENDING per applicable clause",
+      "genericReplayAdmission": "PENDING; private verifier passes only",
+      "BusinessDelivery": "UNAVAILABLE_PENDING_SEPARATE_ADOPTION",
+      "integratedExactHeadCI": "PENDING_COORDINATOR",
+      "actualReviewer": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 524,
+        "engineId": "sports.swimming-pace",
+        "calculatorSlug": "swimming-pace-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker3-everyday-sports-20261118.1/sports.swimming-pace@1",
+        "engineFile": "src/calculators/sports/catalog-batch-1.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/sports/catalog-batch-1.ts",
+        "gitBlob": "0718258d506324e9a72a15285a86c6fd094f2ba1",
+        "sha256": "9b00fb4013c05f359657b95dd129cc272197e6e62cfc1d8c7580e80a4668f284",
+        "bytes": 3666,
+        "unchanged": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "genuineAcceptance": "PASS",
+      "planJourneys": [
+        {
+          "catalogId": 524,
+          "plan": "free",
+          "width": 320,
+          "historyId": "70ed1f1d-516b-4295-80b1-ef9666e783c0",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "freeEntitlementDenied": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 524,
+          "plan": "pro",
+          "width": 320,
+          "historyId": "78bdb8d1-a395-42ac-bde3-082b7e1a64dd",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "25c68755-2e53-490a-8789-d022ee3c2e96",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "foreignHistoryActionDenied": true,
+          "nativeBatchRefusalCorrectionReplay": true,
+          "nativeScenarioAB": true,
+          "nativeReplayAndTamperRefusal": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 524,
+          "plan": "business",
+          "width": 320,
+          "historyId": "8472381a-9839-4c05-97f2-c3365b414213",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "f953ee6d-6f4c-4f3f-abb7-76efbd78b022",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "keyboardErrorRecovery": true
+        }
+      ],
+      "exportReadbacks": [
+        {
+          "catalogId": 524,
+          "format": "json",
+          "file": "invocation-Tjie7O/7bf251e3-02f4-4844-aaea-e988c749e923",
+          "bytes": 613,
+          "sha256": "dbd9cb9f22a663e9214f075101d09aa22cb4328b5d2b2182d383c7b92a1e52c1",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 524,
+          "format": "csv",
+          "file": "invocation-VWP89S/d1331f44-87b0-43bc-b8d8-c09b8622db32",
+          "bytes": 569,
+          "sha256": "d69dcc734e2c284eb0e0a9fc949ea79926dd4d4faa769ba5ccb2c743af01a363",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 524,
+          "format": "pdf",
+          "file": "invocation-9E9pT1/e86824eb-5d53-426c-a068-545ecb108b08",
+          "bytes": 405199,
+          "sha256": "10c9b544719b192b4fb2ba9f486b07f290ec37f108dfa6fe4a620bb1d9d40184",
+          "nativeCompleted": true
+        }
+      ],
+      "membershipRevocation": [
+        {
+          "catalogId": 524,
+          "currentMemberReader": true,
+          "revokedMembershipRlsReadDenied": true,
+          "revokedMembershipActionDenied": true,
+          "everydayDeliveryStillBlocked": true
+        }
+      ],
+      "historicalException": [],
+      "nativeBatchEvidence": "accepted/524-native-batch.json",
+      "nativeScenarioEvidence": "accepted/524-native-scenarios.json",
+      "mobileScreenshot": "accepted/524-mobile.png",
+      "AXEvidence": "accepted/524-ax.json",
+      "sourceDecision": "PENDING; exact per-ID question in DECISIONS.md",
+      "precisionDecision": "PENDING; exact per-ID question in DECISIONS.md",
+      "QAAdoption": "PENDING per applicable clause",
+      "genericReplayAdmission": "PENDING; private verifier passes only",
+      "BusinessDelivery": "UNAVAILABLE_PENDING_SEPARATE_ADOPTION",
+      "integratedExactHeadCI": "PENDING_COORDINATOR",
+      "actualReviewer": null,
+      "actualApprovalRef": null
+    }
+  ],
+  "newlyQualified": 0,
+  "countsUpdated": false,
+  "releaseHold": true
+}
