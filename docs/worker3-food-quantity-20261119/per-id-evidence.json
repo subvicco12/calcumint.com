@@ -1,0 +1,1033 @@
+{
+  "baselineCommit": "56553c471d8a944ddfcd58a2bb21399b478746e2",
+  "executedCommit": "0eb45e0360001e9cd22db69bb00f271283a45a29",
+  "ids": [
+    {
+      "identity": {
+        "catalogId": 496,
+        "engineId": "food.recipe-scaling",
+        "calculatorSlug": "recipe-scaling-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker3-food-quantity-20261119.1/food.recipe-scaling@1",
+        "engineFile": "src/calculators/food/catalog-batch-2.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/food/catalog-batch-2.ts",
+        "gitBlob": "a08ae19036fb285f7f0b554e05b62645f042596f",
+        "sha256": "5ad8babfdb2f307f0057ba2683e8c1459a7b422fb780f6c0cb37cd26b3d12740",
+        "bytes": 3965,
+        "unchanged": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "genuineAcceptance": "PASS",
+      "planJourneys": [
+        {
+          "catalogId": 496,
+          "plan": "free",
+          "width": 320,
+          "historyId": "5956ca5d-c1fa-404e-a28f-1c69c1fc935a",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "freeEntitlementDenied": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 496,
+          "plan": "pro",
+          "width": 320,
+          "historyId": "ba87ae4f-8815-4547-9464-5285ea41ab17",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "02d2efb2-1a4e-401e-9f27-9ae61ac9a426",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "foreignHistoryActionDenied": true,
+          "nativeBatchRefusalCorrectionReplay": true,
+          "nativeScenarioAB": true,
+          "nativeReplayAndTamperRefusal": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 496,
+          "plan": "business",
+          "width": 320,
+          "historyId": "6a45e74d-c9be-45ef-865d-a4f63c09173f",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "22f77a0c-7414-4b98-905e-08f6e6305c4a",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "keyboardErrorRecovery": true
+        }
+      ],
+      "exportReadbacks": [
+        {
+          "catalogId": 496,
+          "format": "json",
+          "file": "invocation-lN8tbo/82de7eb8-9c0b-4e9b-a14b-0141e86b2832",
+          "bytes": 673,
+          "sha256": "34a494def8667e9bdc048a6076b4b77998ddb633e44f2029aa7cfabeaa6c23aa",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 496,
+          "format": "csv",
+          "file": "invocation-xi4tm6/3338afdb-eada-4d59-b436-7efbd9ec232c",
+          "bytes": 692,
+          "sha256": "f1d812453844161187a80cea143119e61317147b06ac2bede067044932bed0c3",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 496,
+          "format": "pdf",
+          "file": "invocation-jWRJ4V/afb291f7-535d-40b5-9e1c-d1f862910143",
+          "bytes": 406259,
+          "sha256": "0a995cf8d0109904568a634ce5664ce86e107d0c1a3a823d6d2488ff5b124b55",
+          "nativeCompleted": true
+        }
+      ],
+      "membershipRevocation": [
+        {
+          "catalogId": 496,
+          "currentMemberReader": true,
+          "revokedMembershipRlsReadDenied": true,
+          "revokedMembershipActionDenied": true,
+          "foodDeliveryStillBlocked": true
+        }
+      ],
+      "historicalRoundedZero": [
+        {
+          "catalogId": 496,
+          "recordedV1Value": 0,
+          "newCaptureRefused": true,
+          "ownedReadOnlyBrowser": true,
+          "recordedDownload": "invocation-IjWq7p/8fc73c33-dc6e-4505-bd8c-9d99981426aa",
+          "sha256": "6ff51c4606a6b4460a6d6f739fc887d1537354e3018a24201ca449eced152a5b"
+        }
+      ],
+      "nativeBatchEvidence": "accepted/496-native-batch.json",
+      "nativeScenarioEvidence": "accepted/496-native-scenarios.json",
+      "mobileScreenshot": "accepted/496-mobile.png",
+      "AXEvidence": "accepted/496-ax.json",
+      "sourceDecision": "PENDING; exact question in DECISIONS.md",
+      "precisionDecision": "PENDING; exact question in DECISIONS.md",
+      "fullScopedQA": "PENDING",
+      "genericReplayAdmission": "PENDING; private verifier passes",
+      "BusinessDelivery": "UNAVAILABLE_PENDING_SEPARATE_ADOPTION",
+      "integratedCI": "PENDING_EXACT_INTEGRATION_HEAD",
+      "actualReviewer": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 497,
+        "engineId": "food.serving-size",
+        "calculatorSlug": "serving-size-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker3-food-quantity-20261119.1/food.serving-size@1",
+        "engineFile": "src/calculators/food/catalog-batch-2.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/food/catalog-batch-2.ts",
+        "gitBlob": "a08ae19036fb285f7f0b554e05b62645f042596f",
+        "sha256": "5ad8babfdb2f307f0057ba2683e8c1459a7b422fb780f6c0cb37cd26b3d12740",
+        "bytes": 3965,
+        "unchanged": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "genuineAcceptance": "PASS",
+      "planJourneys": [
+        {
+          "catalogId": 497,
+          "plan": "free",
+          "width": 320,
+          "historyId": "c99ca3c0-5e82-40af-a450-f0f2d5e0fabc",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "freeEntitlementDenied": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 497,
+          "plan": "pro",
+          "width": 320,
+          "historyId": "91cfc8c4-fb05-41c5-a0c4-51b14e225896",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "a8311338-c793-4e43-b70c-db154bb7fa13",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "foreignHistoryActionDenied": true,
+          "nativeBatchRefusalCorrectionReplay": true,
+          "nativeScenarioAB": true,
+          "nativeReplayAndTamperRefusal": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 497,
+          "plan": "business",
+          "width": 320,
+          "historyId": "1a37dff4-7abd-4686-bd3e-07281f3e9371",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "e4e20dd7-dbe6-410a-9e79-865cbab90a3f",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "keyboardErrorRecovery": true
+        }
+      ],
+      "exportReadbacks": [
+        {
+          "catalogId": 497,
+          "format": "json",
+          "file": "invocation-rwJ7MS/68af618b-bc4f-41e5-b79e-0c566c8e6c61",
+          "bytes": 587,
+          "sha256": "0fbc9c868986274f254742337e72ab0a352ff154cf3578cc453fcc9711ff0b60",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 497,
+          "format": "csv",
+          "file": "invocation-HsU2RC/9e0814d2-9fc9-421e-8757-d47d7b4aec42",
+          "bytes": 576,
+          "sha256": "c5b11823fb8fb97261092dfebc5f6b0dbdfb26b48b4c6827117eecf89d00b28e",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 497,
+          "format": "pdf",
+          "file": "invocation-mJu4oM/eb1803b2-fc1d-4b8b-af2f-a7bd4985d0db",
+          "bytes": 405368,
+          "sha256": "e4b7a1d4fae55aa0f21df8367a645e79ac9e77d6dcaa66ff18530efe44352342",
+          "nativeCompleted": true
+        }
+      ],
+      "membershipRevocation": [
+        {
+          "catalogId": 497,
+          "currentMemberReader": true,
+          "revokedMembershipRlsReadDenied": true,
+          "revokedMembershipActionDenied": true,
+          "foodDeliveryStillBlocked": true
+        }
+      ],
+      "historicalRoundedZero": [
+        {
+          "catalogId": 497,
+          "recordedV1Value": 0,
+          "newCaptureRefused": true,
+          "ownedReadOnlyBrowser": true,
+          "recordedDownload": "invocation-uZlNHd/baf99e1c-f444-4129-9581-669002f0b6c9",
+          "sha256": "b23c67cc94c192881b0db76310bc948819fbd22aec8209b712e7d8a45a9c191a"
+        }
+      ],
+      "nativeBatchEvidence": "accepted/497-native-batch.json",
+      "nativeScenarioEvidence": "accepted/497-native-scenarios.json",
+      "mobileScreenshot": "accepted/497-mobile.png",
+      "AXEvidence": "accepted/497-ax.json",
+      "sourceDecision": "PENDING; exact question in DECISIONS.md",
+      "precisionDecision": "PENDING; exact question in DECISIONS.md",
+      "fullScopedQA": "PENDING",
+      "genericReplayAdmission": "PENDING; private verifier passes",
+      "BusinessDelivery": "UNAVAILABLE_PENDING_SEPARATE_ADOPTION",
+      "integratedCI": "PENDING_EXACT_INTEGRATION_HEAD",
+      "actualReviewer": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 499,
+        "engineId": "food.bakers-percentage",
+        "calculatorSlug": "bakers-percentage-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker3-food-quantity-20261119.1/food.bakers-percentage@1",
+        "engineFile": "src/calculators/food/catalog-batch-1.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/food/catalog-batch-1.ts",
+        "gitBlob": "333aa666eb36cd102265ee00d0356ab1737597f5",
+        "sha256": "46244d45761804666c6fc760d09a9a1465e1826112bc39aa4c27b94faf44b2b7",
+        "bytes": 4887,
+        "unchanged": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "genuineAcceptance": "PASS",
+      "planJourneys": [
+        {
+          "catalogId": 499,
+          "plan": "free",
+          "width": 320,
+          "historyId": "35c5cd62-ed6f-48c0-82be-06358463f86d",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "freeEntitlementDenied": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 499,
+          "plan": "pro",
+          "width": 320,
+          "historyId": "20663cb7-fcb4-49e6-ab00-f4492340bc5c",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "efa583b3-2d0a-4e00-b093-bfa515193156",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "foreignHistoryActionDenied": true,
+          "nativeBatchRefusalCorrectionReplay": true,
+          "nativeScenarioAB": true,
+          "nativeReplayAndTamperRefusal": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 499,
+          "plan": "business",
+          "width": 320,
+          "historyId": "4f90aeb2-7369-411c-b408-6f62ac557068",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "13f043c4-eb0a-495c-a8ae-73968e100cba",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "keyboardErrorRecovery": true
+        }
+      ],
+      "exportReadbacks": [
+        {
+          "catalogId": 499,
+          "format": "json",
+          "file": "invocation-yl96Qz/ee203cbd-a7cf-460b-9982-c9072b8bca78",
+          "bytes": 647,
+          "sha256": "0214cfdf0317faf19f3014a958d887a87e8d6a90c32d6f73eebb289549df3ce0",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 499,
+          "format": "csv",
+          "file": "invocation-7Oge2x/2ac19643-e28c-4705-94f3-6eb5d797dd83",
+          "bytes": 601,
+          "sha256": "36e4e1b383e0588db762ae2d59101f98160477af0440376cf2816b418b60685d",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 499,
+          "format": "pdf",
+          "file": "invocation-mydR6Q/a2cbb467-c984-4e8e-89b2-e49564fba797",
+          "bytes": 405275,
+          "sha256": "e939cb98d691140b215c67ffdbe499dcc4fa9d32ff467a82a76b61a03cfad21a",
+          "nativeCompleted": true
+        }
+      ],
+      "membershipRevocation": [
+        {
+          "catalogId": 499,
+          "currentMemberReader": true,
+          "revokedMembershipRlsReadDenied": true,
+          "revokedMembershipActionDenied": true,
+          "foodDeliveryStillBlocked": true
+        }
+      ],
+      "historicalRoundedZero": [
+        {
+          "catalogId": 499,
+          "recordedV1Value": 0,
+          "newCaptureRefused": true,
+          "ownedReadOnlyBrowser": true,
+          "recordedDownload": "invocation-qm7vt0/48e41c2b-db8a-4f54-90d4-630cc1534924",
+          "sha256": "a77e2b1f36a78d2e0e2c080699c74ffaa07dc757f6965fd371d3b90ad0f29cc9"
+        }
+      ],
+      "nativeBatchEvidence": "accepted/499-native-batch.json",
+      "nativeScenarioEvidence": "accepted/499-native-scenarios.json",
+      "mobileScreenshot": "accepted/499-mobile.png",
+      "AXEvidence": "accepted/499-ax.json",
+      "sourceDecision": "PENDING; exact question in DECISIONS.md",
+      "precisionDecision": "PENDING; exact question in DECISIONS.md",
+      "fullScopedQA": "PENDING",
+      "genericReplayAdmission": "PENDING; private verifier passes",
+      "BusinessDelivery": "UNAVAILABLE_PENDING_SEPARATE_ADOPTION",
+      "integratedCI": "PENDING_EXACT_INTEGRATION_HEAD",
+      "actualReviewer": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 500,
+        "engineId": "food.dough-hydration",
+        "calculatorSlug": "dough-hydration-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker3-food-quantity-20261119.1/food.dough-hydration@1",
+        "engineFile": "src/calculators/food/catalog-batch-1.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/food/catalog-batch-1.ts",
+        "gitBlob": "333aa666eb36cd102265ee00d0356ab1737597f5",
+        "sha256": "46244d45761804666c6fc760d09a9a1465e1826112bc39aa4c27b94faf44b2b7",
+        "bytes": 4887,
+        "unchanged": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "genuineAcceptance": "PASS",
+      "planJourneys": [
+        {
+          "catalogId": 500,
+          "plan": "free",
+          "width": 320,
+          "historyId": "a7c4350e-84b7-41f7-88c9-7294af9f0c04",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "freeEntitlementDenied": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 500,
+          "plan": "pro",
+          "width": 320,
+          "historyId": "985aa3d7-152b-4fee-aa59-ba1eef876229",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "10ec8231-6332-4516-bb13-4cbf24e3c340",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "foreignHistoryActionDenied": true,
+          "nativeBatchRefusalCorrectionReplay": true,
+          "nativeScenarioAB": true,
+          "nativeReplayAndTamperRefusal": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 500,
+          "plan": "business",
+          "width": 320,
+          "historyId": "cd33a2b7-105b-4a06-b555-a57da7271176",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "9d42bed1-5c17-46f1-886e-76edb1c73f97",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "keyboardErrorRecovery": true
+        }
+      ],
+      "exportReadbacks": [
+        {
+          "catalogId": 500,
+          "format": "json",
+          "file": "invocation-HPIw5b/4af49ef0-96d8-45db-a014-92ef8604dbcb",
+          "bytes": 626,
+          "sha256": "89b45f65a6d55937786767d81d885ddd6bd1bc50ef7525584b7ba9c70ce1026c",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 500,
+          "format": "csv",
+          "file": "invocation-jYusya/b35c9499-a9af-479f-8c32-3080a1879e31",
+          "bytes": 577,
+          "sha256": "f12fb12262c032a988c3b6b6c307b71d11ae51442a6664f3b7fa2f2c6efa2539",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 500,
+          "format": "pdf",
+          "file": "invocation-EwEyqo/c54f44a4-9ce1-4e34-ba11-1ba8a7840d56",
+          "bytes": 405204,
+          "sha256": "fabdbe8e610ad8099a089059d08bbd9f9660ec6803115a87b6c855f78b08ab74",
+          "nativeCompleted": true
+        }
+      ],
+      "membershipRevocation": [
+        {
+          "catalogId": 500,
+          "currentMemberReader": true,
+          "revokedMembershipRlsReadDenied": true,
+          "revokedMembershipActionDenied": true,
+          "foodDeliveryStillBlocked": true
+        }
+      ],
+      "historicalRoundedZero": [
+        {
+          "catalogId": 500,
+          "recordedV1Value": 0,
+          "newCaptureRefused": true,
+          "ownedReadOnlyBrowser": true,
+          "recordedDownload": "invocation-v2nVAu/46748a54-cb88-48a0-8e3f-291b1a771e34",
+          "sha256": "8fc52dd3e5af32ae902ac74c8656d155f68ddbe9b84306a75eac45786701bbb9"
+        }
+      ],
+      "nativeBatchEvidence": "accepted/500-native-batch.json",
+      "nativeScenarioEvidence": "accepted/500-native-scenarios.json",
+      "mobileScreenshot": "accepted/500-mobile.png",
+      "AXEvidence": "accepted/500-ax.json",
+      "sourceDecision": "PENDING; exact question in DECISIONS.md",
+      "precisionDecision": "PENDING; exact question in DECISIONS.md",
+      "fullScopedQA": "PENDING",
+      "genericReplayAdmission": "PENDING; private verifier passes",
+      "BusinessDelivery": "UNAVAILABLE_PENDING_SEPARATE_ADOPTION",
+      "integratedCI": "PENDING_EXACT_INTEGRATION_HEAD",
+      "actualReviewer": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 501,
+        "engineId": "food.cake-pan-conversion",
+        "calculatorSlug": "cake-pan-conversion-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker3-food-quantity-20261119.1/food.cake-pan-conversion@1",
+        "engineFile": "src/calculators/food/catalog-batch-3.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/food/catalog-batch-3.ts",
+        "gitBlob": "7fe00d57bc4f40cc048ba4cbd9f52c32d28f9034",
+        "sha256": "d3deb7587f49b53721bc4a0d9aa47a0fae91185208d729516723c95361fb8c99",
+        "bytes": 2285,
+        "unchanged": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "genuineAcceptance": "PASS",
+      "planJourneys": [
+        {
+          "catalogId": 501,
+          "plan": "free",
+          "width": 320,
+          "historyId": "764e0d78-5162-480d-a7f6-7586ee88ed59",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "freeEntitlementDenied": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 501,
+          "plan": "pro",
+          "width": 320,
+          "historyId": "261f0bfe-a28b-4b09-93ea-a7dacee5d439",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "5a28b410-ada8-4389-886a-f918965a1aa9",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "foreignHistoryActionDenied": true,
+          "nativeBatchRefusalCorrectionReplay": true,
+          "nativeScenarioAB": true,
+          "nativeReplayAndTamperRefusal": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 501,
+          "plan": "business",
+          "width": 320,
+          "historyId": "86fa805f-e275-43b8-8f43-8247db4ca7d8",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "b2ce363f-6506-42c6-a492-a462561bdcc2",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "keyboardErrorRecovery": true
+        }
+      ],
+      "exportReadbacks": [
+        {
+          "catalogId": 501,
+          "format": "json",
+          "file": "invocation-Qs3xjD/387ecbd6-82e3-4a0a-b16e-d46b3720e933",
+          "bytes": 729,
+          "sha256": "4cf4eef08d03a6401bbf187efd42e28aebed46caaf41e82cca1b5ee8855a62ea",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 501,
+          "format": "csv",
+          "file": "invocation-UapkdB/e8978191-0394-41a6-85d9-241ba91a122c",
+          "bytes": 765,
+          "sha256": "750a19bff9ebe44065bbdd5057714c406be5cec36958a5dea9130d19fc9aee82",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 501,
+          "format": "pdf",
+          "file": "invocation-wEKGdO/b96594d4-1bae-4103-8635-412bb94c3610",
+          "bytes": 406410,
+          "sha256": "066078843e5e2bb50a5a699e028446ed3b78b347623732f50e4f3af55d38a267",
+          "nativeCompleted": true
+        }
+      ],
+      "membershipRevocation": [
+        {
+          "catalogId": 501,
+          "currentMemberReader": true,
+          "revokedMembershipRlsReadDenied": true,
+          "revokedMembershipActionDenied": true,
+          "foodDeliveryStillBlocked": true
+        }
+      ],
+      "historicalRoundedZero": [
+        {
+          "catalogId": 501,
+          "recordedV1Value": 0,
+          "newCaptureRefused": true,
+          "ownedReadOnlyBrowser": true,
+          "recordedDownload": "invocation-dziCTl/1b08cdce-8a74-4907-80d3-142839257b9a",
+          "sha256": "af4aca422c83c3ecdc6b6ca56d58c7e12b26bae28f4ef7fb667b23da5351ed8d"
+        }
+      ],
+      "nativeBatchEvidence": "accepted/501-native-batch.json",
+      "nativeScenarioEvidence": "accepted/501-native-scenarios.json",
+      "mobileScreenshot": "accepted/501-mobile.png",
+      "AXEvidence": "accepted/501-ax.json",
+      "sourceDecision": "PENDING; exact question in DECISIONS.md",
+      "precisionDecision": "PENDING; exact question in DECISIONS.md",
+      "fullScopedQA": "PENDING",
+      "genericReplayAdmission": "PENDING; private verifier passes",
+      "BusinessDelivery": "UNAVAILABLE_PENDING_SEPARATE_ADOPTION",
+      "integratedCI": "PENDING_EXACT_INTEGRATION_HEAD",
+      "actualReviewer": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 503,
+        "engineId": "food.nutrition-scaling",
+        "calculatorSlug": "nutrition-scaling-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker3-food-quantity-20261119.1/food.nutrition-scaling@1",
+        "engineFile": "src/calculators/food/catalog-batch-2.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/food/catalog-batch-2.ts",
+        "gitBlob": "a08ae19036fb285f7f0b554e05b62645f042596f",
+        "sha256": "5ad8babfdb2f307f0057ba2683e8c1459a7b422fb780f6c0cb37cd26b3d12740",
+        "bytes": 3965,
+        "unchanged": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "genuineAcceptance": "PASS",
+      "planJourneys": [
+        {
+          "catalogId": 503,
+          "plan": "free",
+          "width": 320,
+          "historyId": "97affa16-c75e-4017-91f4-f43f0b6229eb",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "freeEntitlementDenied": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 503,
+          "plan": "pro",
+          "width": 320,
+          "historyId": "6bc7c4c9-d907-4326-9ce1-f1a2b25edd1d",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "676ef06a-8ade-4152-91ea-a7fd49fac72a",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "foreignHistoryActionDenied": true,
+          "nativeBatchRefusalCorrectionReplay": true,
+          "nativeScenarioAB": true,
+          "nativeReplayAndTamperRefusal": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 503,
+          "plan": "business",
+          "width": 320,
+          "historyId": "d6ddf8bb-ac01-4e94-9ef9-accd6bca8d59",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "41e73faf-36b5-41b6-a5c7-c68f109404fa",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "keyboardErrorRecovery": true
+        }
+      ],
+      "exportReadbacks": [
+        {
+          "catalogId": 503,
+          "format": "json",
+          "file": "invocation-Yzy0VH/9b01f1bc-f0a9-4452-acfc-868bff99f965",
+          "bytes": 632,
+          "sha256": "642961e5544064f0e3f6cfe6e4fbc5287bae13dae7bcfa7b51997808a040cc64",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 503,
+          "format": "csv",
+          "file": "invocation-Y4M6Bj/50a2611b-031e-470f-8753-6de482a08034",
+          "bytes": 632,
+          "sha256": "bc6d72e9d6d6fb95230e24d2fbee36489f25630ca1a52dff203203954d1812b5",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 503,
+          "format": "pdf",
+          "file": "invocation-BOHQne/7d7d3d22-bc42-4bd1-8370-75f536ead444",
+          "bytes": 405410,
+          "sha256": "07570ebaa27e00d174514beeb9cfde56a65870a5b5db8fd13f0fcdfd0c425f1f",
+          "nativeCompleted": true
+        }
+      ],
+      "membershipRevocation": [
+        {
+          "catalogId": 503,
+          "currentMemberReader": true,
+          "revokedMembershipRlsReadDenied": true,
+          "revokedMembershipActionDenied": true,
+          "foodDeliveryStillBlocked": true
+        }
+      ],
+      "historicalRoundedZero": [
+        {
+          "catalogId": 503,
+          "recordedV1Value": 0,
+          "newCaptureRefused": true,
+          "ownedReadOnlyBrowser": true,
+          "recordedDownload": "invocation-sFa1ER/4987ced7-292d-46f8-afb6-472737ba3d39",
+          "sha256": "d8a42ccdcaf43aa28623762ed708219eec5fcca29c59b7355c387d305e49672c"
+        }
+      ],
+      "nativeBatchEvidence": "accepted/503-native-batch.json",
+      "nativeScenarioEvidence": "accepted/503-native-scenarios.json",
+      "mobileScreenshot": "accepted/503-mobile.png",
+      "AXEvidence": "accepted/503-ax.json",
+      "sourceDecision": "PENDING; exact question in DECISIONS.md",
+      "precisionDecision": "PENDING; exact question in DECISIONS.md",
+      "fullScopedQA": "PENDING",
+      "genericReplayAdmission": "PENDING; private verifier passes",
+      "BusinessDelivery": "UNAVAILABLE_PENDING_SEPARATE_ADOPTION",
+      "integratedCI": "PENDING_EXACT_INTEGRATION_HEAD",
+      "actualReviewer": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 504,
+        "engineId": "food.coffee-ratio",
+        "calculatorSlug": "coffee-ratio-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker3-food-quantity-20261119.1/food.coffee-ratio@1",
+        "engineFile": "src/calculators/food/catalog-batch-2.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/food/catalog-batch-2.ts",
+        "gitBlob": "a08ae19036fb285f7f0b554e05b62645f042596f",
+        "sha256": "5ad8babfdb2f307f0057ba2683e8c1459a7b422fb780f6c0cb37cd26b3d12740",
+        "bytes": 3965,
+        "unchanged": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "genuineAcceptance": "PASS",
+      "planJourneys": [
+        {
+          "catalogId": 504,
+          "plan": "free",
+          "width": 320,
+          "historyId": "a791114c-64a4-4aaf-81e0-655743adaec2",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "freeEntitlementDenied": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 504,
+          "plan": "pro",
+          "width": 320,
+          "historyId": "decce249-00a9-40e8-8bac-cbdb49dd3960",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "5fbca9a5-8dec-49d1-ac50-a3872e3a8bd7",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "foreignHistoryActionDenied": true,
+          "nativeBatchRefusalCorrectionReplay": true,
+          "nativeScenarioAB": true,
+          "nativeReplayAndTamperRefusal": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 504,
+          "plan": "business",
+          "width": 320,
+          "historyId": "20ec8ac8-d06c-416c-94bd-38f0938603f1",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "3d08767b-40e7-4144-9b3e-218c47c32fe8",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "keyboardErrorRecovery": true
+        }
+      ],
+      "exportReadbacks": [
+        {
+          "catalogId": 504,
+          "format": "json",
+          "file": "invocation-ZRqgDJ/6473b630-c0cd-48af-87cb-0219e9a3f75b",
+          "bytes": 603,
+          "sha256": "710f06d0ee94f30a535727ef60dfe7a214a903fc95c5c748bc4acceee54622df",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 504,
+          "format": "csv",
+          "file": "invocation-3GCRXy/64ffd6f3-bf54-479f-8775-b54b3b73f7c1",
+          "bytes": 555,
+          "sha256": "f4814e441be1a64627b0fad07f02fd148ab62168c9f0da4addebf0dc7089b440",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 504,
+          "format": "pdf",
+          "file": "invocation-Uqbc87/cbf9c2b5-cfa5-4551-ac23-da3c146ebd32",
+          "bytes": 405160,
+          "sha256": "e9e1fdaf965f85cd1cde376cf7f92dc9a1ca2a515b88884ba6f6620ae2b3ba2a",
+          "nativeCompleted": true
+        }
+      ],
+      "membershipRevocation": [
+        {
+          "catalogId": 504,
+          "currentMemberReader": true,
+          "revokedMembershipRlsReadDenied": true,
+          "revokedMembershipActionDenied": true,
+          "foodDeliveryStillBlocked": true
+        }
+      ],
+      "historicalRoundedZero": [
+        {
+          "catalogId": 504,
+          "recordedV1Value": 0,
+          "newCaptureRefused": true,
+          "ownedReadOnlyBrowser": true,
+          "recordedDownload": "invocation-Q9jEz8/a0c12aaa-496d-4226-a42d-2c3579047c57",
+          "sha256": "627348156d4d1139be979624aaff9de4cb8466c62a3d93ce1f61cf5010bdb5b4"
+        }
+      ],
+      "nativeBatchEvidence": "accepted/504-native-batch.json",
+      "nativeScenarioEvidence": "accepted/504-native-scenarios.json",
+      "mobileScreenshot": "accepted/504-mobile.png",
+      "AXEvidence": "accepted/504-ax.json",
+      "sourceDecision": "PENDING; exact question in DECISIONS.md",
+      "precisionDecision": "PENDING; exact question in DECISIONS.md",
+      "fullScopedQA": "PENDING",
+      "genericReplayAdmission": "PENDING; private verifier passes",
+      "BusinessDelivery": "UNAVAILABLE_PENDING_SEPARATE_ADOPTION",
+      "integratedCI": "PENDING_EXACT_INTEGRATION_HEAD",
+      "actualReviewer": null,
+      "actualApprovalRef": null
+    },
+    {
+      "identity": {
+        "catalogId": 505,
+        "engineId": "food.water-to-rice-ratio",
+        "calculatorSlug": "water-to-rice-ratio-calculator",
+        "calculatorVersion": 1,
+        "sourceVersion": "worker3-food-quantity-20261119.1/food.water-to-rice-ratio@1",
+        "engineFile": "src/calculators/food/catalog-batch-2.ts"
+      },
+      "engineBinding": {
+        "path": "src/calculators/food/catalog-batch-2.ts",
+        "gitBlob": "a08ae19036fb285f7f0b554e05b62645f042596f",
+        "sha256": "5ad8babfdb2f307f0057ba2683e8c1459a7b422fb780f6c0cb37cd26b3d12740",
+        "bytes": 3965,
+        "unchanged": true
+      },
+      "disposition": "IMPLEMENTED_NOT_QUALIFIED",
+      "genuineAcceptance": "PASS",
+      "planJourneys": [
+        {
+          "catalogId": 505,
+          "plan": "free",
+          "width": 320,
+          "historyId": "f4e825eb-1ef0-4162-8dd4-1d7d171c88d4",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "freeEntitlementDenied": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 505,
+          "plan": "pro",
+          "width": 320,
+          "historyId": "78f0b3c6-fcfe-4a08-942a-7c4a1ba7ce89",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "ada76027-8c64-4829-8960-418223b71fa2",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "foreignHistoryActionDenied": true,
+          "nativeBatchRefusalCorrectionReplay": true,
+          "nativeScenarioAB": true,
+          "nativeReplayAndTamperRefusal": true,
+          "keyboardErrorRecovery": true
+        },
+        {
+          "catalogId": 505,
+          "plan": "business",
+          "width": 320,
+          "historyId": "84d2318b-381b-47e8-a410-3fb1185dd649",
+          "mathematicalParity": true,
+          "idempotentHistory": true,
+          "mobileAndAX": true,
+          "minimumTargetHeight": 44,
+          "foreignHistoryReadAndWriteDenied": true,
+          "ownedHistoryRestore": true,
+          "scenarioId": "6c728435-f6b6-43ef-a970-461394417eb1",
+          "scenarioRestore": true,
+          "foreignScenarioReadDenied": true,
+          "keyboardErrorRecovery": true
+        }
+      ],
+      "exportReadbacks": [
+        {
+          "catalogId": 505,
+          "format": "json",
+          "file": "invocation-Ta7LzU/a0d315b3-f44e-4535-a268-1086e6875ac6",
+          "bytes": 626,
+          "sha256": "f886e65fb4f599b0a5a0cbf2547e19d5e72ddc34799c9ea20fa16583e8ea896b",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 505,
+          "format": "csv",
+          "file": "invocation-xCvvAm/0f36b5b8-2af7-4100-8563-155b47b2abe2",
+          "bytes": 625,
+          "sha256": "4ba976fd697f0d7a8f8076fe336b1e5ba100841cb46561ee18fc85582c9933f8",
+          "nativeCompleted": true
+        },
+        {
+          "catalogId": 505,
+          "format": "pdf",
+          "file": "invocation-W2qlDH/2d3e646f-c24f-41cc-8b9e-4139fd7a364c",
+          "bytes": 405394,
+          "sha256": "fb93f1933272e6744e0b7c55978bbbdc59cd88fdb4f02e4278c0fb02ea78d05b",
+          "nativeCompleted": true
+        }
+      ],
+      "membershipRevocation": [
+        {
+          "catalogId": 505,
+          "currentMemberReader": true,
+          "revokedMembershipRlsReadDenied": true,
+          "revokedMembershipActionDenied": true,
+          "foodDeliveryStillBlocked": true
+        }
+      ],
+      "historicalRoundedZero": [
+        {
+          "catalogId": 505,
+          "recordedV1Value": 0,
+          "newCaptureRefused": true,
+          "ownedReadOnlyBrowser": true,
+          "recordedDownload": "invocation-hn3aJO/8f875e2a-4caa-47f7-b95a-730e0996c43d",
+          "sha256": "ac72aa71fe890b20bae548118a2031590a9b971759b0e1c756ecdedbbb1edd83"
+        }
+      ],
+      "nativeBatchEvidence": "accepted/505-native-batch.json",
+      "nativeScenarioEvidence": "accepted/505-native-scenarios.json",
+      "mobileScreenshot": "accepted/505-mobile.png",
+      "AXEvidence": "accepted/505-ax.json",
+      "sourceDecision": "PENDING; exact question in DECISIONS.md",
+      "precisionDecision": "PENDING; exact question in DECISIONS.md",
+      "fullScopedQA": "PENDING",
+      "genericReplayAdmission": "PENDING; private verifier passes",
+      "BusinessDelivery": "UNAVAILABLE_PENDING_SEPARATE_ADOPTION",
+      "integratedCI": "PENDING_EXACT_INTEGRATION_HEAD",
+      "actualReviewer": null,
+      "actualApprovalRef": null
+    }
+  ],
+  "newlyQualified": 0,
+  "countsUpdated": false,
+  "releaseHold": true
+}
