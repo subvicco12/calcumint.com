@@ -1,6 +1,6 @@
 import type {CalculatorDefinition} from '@/calculators/types';
 import type {PresentationDefinition,StructuredCalculationResult} from '@/calculators/final-framework/types';
-import type {FactoryWorkbenchField} from '@/components/calculator-factory-workbench';
+import type {FactoryWorkbenchField} from '@/components/sole-civil-time-20261119/workbench';
 import {copyCalculationData,createCalculationSnapshot} from '@/lib/calculation-snapshot';
 import {equalCompletionJson} from '@/calculators/completion-contracts';
 import {requiredCalculatorNumber} from '@/lib/registered-input-successor';
@@ -9,17 +9,18 @@ import {createFactoryWorkflows,type FactoryExecutionPacket} from '../workflows';
 import {serializeCalculationCsv} from '@/lib/calculation-export';
 
 type Field = FactoryWorkbenchField & {encoding?: 'json' | 'boolean'};
-type Metadata = {
+type Metadata<F extends Field> = {
  catalogId:number;
  revision:string;
- fields:readonly Field[];
+ fields:readonly F[];
  limitations:string;
  unit:string;
+ outputUnit?:(input:Record<string,unknown>)=>string;
  project:(output:Record<string,unknown>)=>Pick<StructuredCalculationResult,'primaryResult'|'metrics'>;
  presentation:PresentationDefinition;
 };
 
-export function compilePrivateFinal<I extends Record<string,unknown>,O extends Record<string,unknown>>(engine:CalculatorDefinition<I,O>, metadata:Metadata){
+export function compilePrivateFinal<I extends Record<string,unknown>,O extends Record<string,unknown>,F extends Field>(engine:CalculatorDefinition<I,O>, metadata:Metadata<F>){
  const fields=Object.freeze(metadata.fields.map(field=>Object.freeze({
   ...field, defaultValue:field.defaultValue??encode(engine.examples[0]?.input[field.key]),
  })));
@@ -44,7 +45,7 @@ export function compilePrivateFinal<I extends Record<string,unknown>,O extends R
   const packet=flow.verify(args[0]);
   return serializeCalculationCsv({identity:packet.identity,raw:packet.raw,input:packet.snapshot.input,
    inputUnits:Object.fromEntries(fields.filter(field=>field.unit).map(field=>[field.key,field.unit]))},
-   {...packet.snapshot.output,outputUnit:metadata.unit});
+   {...packet.snapshot.output,outputUnit:metadata.outputUnit?.(packet.snapshot.input)??metadata.unit});
  }});
  function verifyHistorical(value:unknown){
   const clean=copyCalculationData({value},{}).input.value;
@@ -65,8 +66,13 @@ export function compilePrivateFinal<I extends Record<string,unknown>,O extends R
  });
 }
 
+function stableObjectKeys(_key:string,value:unknown){
+ if(!value||typeof value!=='object'||Array.isArray(value))return value;
+ return Object.fromEntries(Object.entries(value).sort(([left],[right])=>left.localeCompare(right)));
+}
+
 function encode(value:unknown):string {
- return typeof value==='string'?value:value===undefined?'':Object.is(value,-0)?'-0':JSON.stringify(value);
+ return typeof value==='string'?value:value===undefined?'':Object.is(value,-0)?'-0':JSON.stringify(value,stableObjectKeys);
 }
 
 function decode(field:Field,text:string):unknown {

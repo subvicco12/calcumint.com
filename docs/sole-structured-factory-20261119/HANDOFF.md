@@ -1,0 +1,20 @@
+# Day 2 structured Final factory
+
+Single isolated execution from `5652d72c3c2b1f62c753658397d2df789aca067d`. PR #1538 remains frozen at `49ea243b5be7e1ee9f3cd8af7f936ab784402cf7`. RELEASE HOLD ACTIVE.
+
+The screening delta assigns all 79 prior screening candidates a disposition: 17 already implemented, 43 authority-blocked, seven identity/version conflicts, 10 bespoke, one shared-adapter requirement, and one factory-ready. Worker 2 energy and mobility receipts remain prior implementations. The bounded registration pass matches candidate engine ID, slug and version against the compiled registry. It finds 18 unique exact tuples, 132 ambiguous/shared matches, and 97 with no exact match among retained candidates, out of 247. The 18 resolves the registration lookup only. Zero canonical identities or qualification decisions are promoted. The existing 540-row ledger remains the source of record.
+
+The factory compiles typed editor metadata into the existing workbench. It reuses the civil-time workbench's structured field and snapshot restore hook. Restored array objects use stable key order independent of JSONB, and captured raw input remains source-tagged. The existing Final renderer supplies trust and summary, with an accessible exact-output table for multi-output data. Matrix and vector coordinates use labelled inputs; complex operations use a select; shifts use a bounded JSON textarea; scientific conversion resolves the result unit from the verified input. Signed zero is presented explicitly in exact detail cells. Computation and registered refusal rules are preserved. The first build caught an overly broad Day 1 field type. The compiler preserves the caller's field subtype so the existing scalar client remains compatible. The second build caught narrow inference across the mixed structured profile definitions. They now explicitly select the common structured field type. Neither preflight failure produced native evidence. The first corrected native run completed nine journeys and nine downloads before the coordinate-driven downloader recorded no start event. The final harness focuses the enabled download button and activates it once with a trusted keyboard event. It retains native Chrome observer, timeout and byte checks. Only the complete final receipt is used for acceptance.
+
+| ID | Role | Exact v1 witness |
+| --- | --- | --- |
+| 474 Tire Size | New adoption | 225/45R17 to 245/40R18 gives 634.3 mm and 653.2 mm, approximately +2.97966%. Zero aspect ratio refuses. |
+| 240 Matrix | Retained reference | Exact 2×2 output, operation, determinant and trace. |
+| 245 Vector | Retained reference | Exact magnitudes, dot/cross products and null angle convention. |
+| 244 Complex | Retained reference | Exact rectangular result, magnitude and argument. |
+| 450 Time Card | Retained reference | Nested shift arrays, booleans and original whole-minute totals restore from JSONB. |
+| 534 Astronomical Distance | Retained reference | Selects canonical unit codes and uses the verified target unit in results and CSV. |
+
+Reference profiles exist only in a reviewer-only validation route. Their existing implementation pointers and isolated receipts remain authoritative. The only new evidence-ledger adoption is #474. Its nominal geometry is not a fitment, safety or vehicle approval determination. Exact source applicability, the finite precision envelope, independent QA, shared Business capabilities and central admission remain outstanding on that ID. No prior release or qualification status changed.
+
+Days 3–5 forecast is conditional on screening and source approval. Throughput observed here is one newly adopted private profile on Day 2, plus five native reference integrations. Review the 18 unique tuples against canonical scope and existing delivery first, then address the sole shared-adapter gap. Treat each next validated cohort as a measured batch. The current evidence does not support a 20-identity-per-day or full-catalog completion estimate. The hold, hosted operational gates and reviewer requirements remain in force.
