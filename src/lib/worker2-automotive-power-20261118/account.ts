@@ -3,7 +3,7 @@ import {createSupabaseServerClient} from '@/lib/supabase/server';
 import {readAccountEntitlements} from '@/lib/account-persistence';
 import {saveCalculationHistory,saveProjectScenario} from '@/app/account/actions';
 import {readPersistedCalculationSnapshot} from '@/lib/persisted-calculation';
-import {verifyPowerPacket,verifyPowerSnapshot} from './cohort';
+import {powerContracts,verifyPowerPacket,verifyPowerSnapshot} from './cohort';
 
 async function account(expectedOwner:string,scenario=false){
  const owner=z.uuid().parse(expectedOwner),client=await createSupabaseServerClient();if(!client)throw Error('Authentication unavailable');
@@ -32,14 +32,21 @@ export async function savePowerScenario(input:{expectedOwnerId:string;projectId:
  const form=new FormData();for(const [k,v] of Object.entries({expectedOwnerId:owner,projectId:clean.projectId,historyId:result.id,name:clean.name,requestId:clean.requestId}))form.set(k,v);
  await saveProjectScenario(form);return {historyId:result.id,scenarioId:clean.requestId};
 }
+function recoverOwnedPowerRecord(row:{calculator_slug:string;calculator_version:number;input_data:unknown;output_data:unknown}){
+ const contract=powerContracts.find(candidate=>candidate.slug===row.calculator_slug);
+ if(!contract)return {status:'unavailable'} as const;
+ if(row.calculator_version!==contract.version)return {status:'unsupported-version'} as const;
+ return verifyPowerSnapshot(readPersistedCalculationSnapshot(row));
+}
 export async function restorePowerScenario(input:{expectedOwnerId:string;scenarioId:string}){
  const clean=z.object({expectedOwnerId:z.uuid(),scenarioId:z.uuid()}).strict().parse(input),{owner,client}=await account(clean.expectedOwnerId,true);
- const row=await client.from('saved_scenarios').select('id,name,project_id,calculator_slug,calculator_version,input_data,output_data').eq('id',clean.scenarioId).eq('user_id',owner).maybeSingle();if(row.error||!row.data)throw Error('Owned scenario unavailable');
- const project=await client.from('calculation_projects').select('id').eq('id',row.data.project_id).eq('user_id',owner).maybeSingle();if(project.error||!project.data)throw Error('Owned project unavailable');
- return {...verifyPowerSnapshot(readPersistedCalculationSnapshot(row.data)),scenarioId:row.data.id};
+ const row=await client.from('saved_scenarios').select('id,name,project_id,calculator_slug,calculator_version,input_data,output_data').eq('id',clean.scenarioId).eq('user_id',owner).maybeSingle();if(row.error||!row.data)return {status:'unavailable'} as const;
+ const project=await client.from('calculation_projects').select('id').eq('id',row.data.project_id).eq('user_id',owner).maybeSingle();if(project.error||!project.data)return {status:'unavailable'} as const;
+ const result=recoverOwnedPowerRecord(row.data);
+ return 'status' in result?result:{...result,scenarioId:row.data.id};
 }
 export async function readPowerHistory(input:{expectedOwnerId:string;historyId:string}){
  const clean=z.object({expectedOwnerId:z.uuid(),historyId:z.uuid()}).strict().parse(input),{owner,client}=await account(clean.expectedOwnerId);
- const row=await client.from('calculation_history').select('calculator_slug,calculator_version,input_data,output_data').eq('id',clean.historyId).eq('user_id',owner).maybeSingle();if(row.error||!row.data)throw Error('Owned history unavailable');
- return verifyPowerSnapshot(readPersistedCalculationSnapshot(row.data));
+ const row=await client.from('calculation_history').select('calculator_slug,calculator_version,input_data,output_data').eq('id',clean.historyId).eq('user_id',owner).maybeSingle();if(row.error||!row.data)return {status:'unavailable'} as const;
+ return recoverOwnedPowerRecord(row.data);
 }

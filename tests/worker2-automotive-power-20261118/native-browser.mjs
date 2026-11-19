@@ -18,7 +18,7 @@ const stage=process.env.WORKER2_POWER_BROWSER_STAGE??'all';
 assert(['all','history','revocation'].includes(stage));
 const sha=b=>createHash('sha256').update(b).digest('hex');
 const ok=async p=>{const r=await p;assert.equal(r.error,null,JSON.stringify(r.error));return r.data;};
-const report={baseline:'8d0c1df303ff8b2551e73aa1fe742f70e1fcc5ca',rows:[],checks:[],downloads:[],productionWrites:false,releaseHold:true,publicationFixture:false,canonicalApproval:false,scope:'Disposable repository-model PostgreSQL17/GoTrue/PostgREST; actual private page and existing atomic account actions. Loopback transport is not production equivalence. Business team/native/job capabilities remain blocked.'};
+const report={baseline:'5a9a119473c4ac9da7902ecef86d6f1a663bb5d9',rows:[],checks:[],downloads:[],productionWrites:false,releaseHold:true,publicationFixture:false,canonicalApproval:false,scope:'Disposable repository-model PostgreSQL17/GoTrue/PostgREST; actual private page and existing atomic account actions. Loopback transport is not production equivalence. Business team/native/job capabilities remain blocked.'};
 let db,next,browser;
 const pass=s=>{report.checks.push(s);console.log('PASS '+s);};
 try{
@@ -99,13 +99,33 @@ try{
  if(stage!=='revocation'){
  const power=api.powerContract(475),input={kilowatts:1e-70},output=power.engine.calculate(input,{});
  const older=await ok(users.pro.sdk.from('calculation_history').insert({user_id:users.pro.id,calculator_slug:power.slug,calculator_version:1,input_data:input,output_data:output}).select('id').single());
- const unknown=await ok(users.pro.sdk.from('calculation_history').insert({user_id:users.pro.id,calculator_slug:power.slug,calculator_version:2,input_data:input,output_data:output}).select('id').single());
- await identity(users.pro);await visit('/admin/worker2-automotive-power-20261118');await choose(475);
  const historyInput='section[aria-label="Authenticated automotive power workflows"] label:first-of-type input';
- await browser.field(historyInput,unknown.id);await browser.click('Restore owned history');
- await browser.until('/Exact historical automotive power identity unavailable|Minified React error #441/.test(document.body.innerText)');
- assert.equal(await browser.js(q('[aria-label="Verified historical automotive power snapshot"]')),false);
- assert.equal(await browser.js(q('[aria-label="Calculation result"]')),false);
+ for(const c of cases){
+  const row={user_id:users.pro.id,calculator_slug:c.slug,calculator_version:2,input_data:c.packet.snapshot.input,output_data:{privateMarker:'Private v2 fixture payload'}};
+  const unknown=await ok(users.pro.sdk.from('calculation_history').insert(row).select('id').single());
+  const scenario=await ok(users.pro.sdk.from('saved_scenarios').insert({...row,project_id:users.pro.project.id,name:'V2 fixture'}).select('id').single());
+  const current=await ok(users.pro.sdk.from('calculation_history').insert({...row,calculator_version:1,output_data:c.packet.snapshot.output}).select('id').single());
+  const scenarioInput='section[aria-label="Authenticated automotive power workflows"] label:last-of-type input';
+  await identity(users.pro);await visit('/admin/worker2-automotive-power-20261118');await choose(c.id);
+  for(const [selector,id,control] of [[historyInput,unknown.id,'Restore owned history'],[scenarioInput,scenario.id,'Restore saved scenario']]){
+   await browser.field(selector,id);await browser.click(control);
+   await browser.until('document.body.innerText.includes("This saved calculator version is unsupported. Choose a version 1 record to restore.")');
+   assert.equal(await browser.js(q('[aria-label="Verified historical automotive power snapshot"]')),false);
+   assert.equal(await browser.js(q('[aria-label="Calculation result"]')),false);
+   assert.doesNotMatch(await browser.text(),/Private v2 fixture payload|Minified React error/);
+  }
+  await browser.field(historyInput,current.id);await browser.click('Restore owned history');
+  await browser.until(q('[aria-label="Calculation result"]'));
+  await identity(users.business);await visit('/admin/worker2-automotive-power-20261118');await choose(c.id);
+  for(const [selector,id,control] of [[historyInput,unknown.id,'Restore owned history'],[scenarioInput,scenario.id,'Restore saved scenario']]){
+   await browser.field(selector,id);await browser.click(control);
+   await browser.until('document.body.innerText.includes("Saved record unavailable.")');
+   assert.equal(await browser.js(q('[aria-label="Calculation result"]')),false);
+   assert.doesNotMatch(await browser.text(),/Private v2 fixture payload|version is unsupported/);
+  }
+  pass('Owned v2 history and scenario controlled refusal, v1 replay and foreign denial: #'+c.id);
+ }
+ await identity(users.pro);await visit('/admin/worker2-automotive-power-20261118');await choose(475);
  await browser.field(historyInput,older.id);await browser.click('Restore owned history');
  await browser.until(q('[aria-label="Verified historical automotive power snapshot"]'));
  const recorded={calculatorSlug:power.slug,calculatorVersion:1,input,output};

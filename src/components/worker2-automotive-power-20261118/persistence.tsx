@@ -16,8 +16,14 @@ export function PowerPersistence({catalogId,draftRevision,ownerId,plan,packet,on
   if(pending.current)return;pending.current=true;const token=++generation.current;setStatus({key,message:'',busy:true});const valid=()=>mounted.current&&generation.current===token;
   try{const message=await operation(valid);if(valid())setStatus({key,message,busy:false});}catch(e){if(valid())setStatus({key,message:e instanceof Error?e.message:'Request unavailable',busy:false});}finally{if(valid())pending.current=false;}
  }
- function recover(result:{catalogId:number;snapshot:CalculationSnapshot},valid:()=>boolean){
+ function recover(result:{catalogId:number;snapshot:CalculationSnapshot}|{status:'unsupported-version'|'unavailable'},valid:()=>boolean){
   if(!valid())return 'Stale response ignored';
+  if('status' in result){
+   setHistorical(null);
+   return result.status==='unsupported-version'
+    ? 'This saved calculator version is unsupported. Choose a version 1 record to restore.'
+    : 'Saved record unavailable.';
+  }
   if(result.catalogId!==catalogId)throw Error('Choose the matching automotive power profile before restoring');
   const checked=preparePowerRecovery(result.snapshot);
   if(checked.catalogId!==catalogId)throw Error('Historical automotive power identity differs');
