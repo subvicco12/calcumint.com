@@ -1,0 +1,77 @@
+{
+  "kind": "calcumint.scoped-report",
+  "reportVersion": 1,
+  "metadata": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 463,
+      "engineId": "automotive.ev-charging-time",
+      "calculatorSlug": "ev-charging-time-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.energy-mobility.20261119.1/automotive.ev-charging-time@1"
+    },
+    "scope": "Energy divided by supplied average charging power. No charging curve or vehicle-specific prediction.",
+    "primaryKey": "value",
+    "fields": [
+      {
+        "key": "energyToAddKwh",
+        "label": "Energy to add",
+        "kind": "number",
+        "defaultValue": "40",
+        "unit": "kWh"
+      },
+      {
+        "key": "averageChargingPowerKw",
+        "label": "Average charging power",
+        "kind": "number",
+        "defaultValue": "10",
+        "unit": "kW"
+      }
+    ],
+    "outputs": {
+      "value": {
+        "label": "Charging time",
+        "unit": "h"
+      }
+    },
+    "sourceEvidence": [
+      "docs/worker2-energy-mobility-20261119/EVIDENCE.md"
+    ],
+    "publisherSources": [
+      "https://afdc.energy.gov/vehicles/electric.html"
+    ],
+    "limitations": [
+      "Private engineering contract; canonical acceptance, certification and publication remain pending.",
+      "Capture uses binary64 finite inputs |x| ≤ 1e50; nonzero magnitudes ≥ 1e-50. Original historical domain is preserved."
+    ],
+    "authority": "Private bounded review. Source applicability and canonical approval remain pending."
+  },
+  "packet": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 463,
+      "engineId": "automotive.ev-charging-time",
+      "calculatorSlug": "ev-charging-time-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.energy-mobility.20261119.1/automotive.ev-charging-time@1"
+    },
+    "raw": {
+      "energyToAddKwh": "40",
+      "averageChargingPowerKw": "10"
+    },
+    "snapshot": {
+      "calculatorSlug": "ev-charging-time-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "energyToAddKwh": 40,
+        "averageChargingPowerKw": 10
+      },
+      "output": {
+        "value": 4,
+        "steps": [
+          "EV Charging Time = 4"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "kind": "calcumint.scoped-report",
+  "reportVersion": 1,
+  "metadata": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 461,
+      "engineId": "automotive.trip-fuel",
+      "calculatorSlug": "trip-fuel-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.energy-mobility.20261119.1/automotive.trip-fuel@1"
+    },
+    "scope": "Trip distance and supplied average consumption only; no route or driving model.",
+    "primaryKey": "value",
+    "fields": [
+      {
+        "key": "distanceKm",
+        "label": "Distance",
+        "kind": "number",
+        "defaultValue": "500",
+        "unit": "km"
+      },
+      {
+        "key": "fuelConsumptionLitersPer100Km",
+        "label": "Average fuel consumption",
+        "kind": "number",
+        "defaultValue": "8",
+        "unit": "L/100 km"
+      }
+    ],
+    "outputs": {
+      "value": {
+        "label": "Trip fuel",
+        "unit": "L"
+      }
+    },
+    "sourceEvidence": [
+      "docs/worker2-energy-mobility-20261119/EVIDENCE.md"
+    ],
+    "publisherSources": [
+      "https://www.fueleconomy.gov/"
+    ],
+    "limitations": [
+      "Private engineering contract; canonical acceptance, certification and publication remain pending.",
+      "Capture uses binary64 finite inputs |x| ≤ 1e50; nonzero magnitudes ≥ 1e-50. Original historical domain is preserved."
+    ],
+    "authority": "Private bounded review. Source applicability and canonical approval remain pending."
+  },
+  "packet": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 461,
+      "engineId": "automotive.trip-fuel",
+      "calculatorSlug": "trip-fuel-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.energy-mobility.20261119.1/automotive.trip-fuel@1"
+    },
+    "raw": {
+      "distanceKm": "500",
+      "fuelConsumptionLitersPer100Km": "8"
+    },
+    "snapshot": {
+      "calculatorSlug": "trip-fuel-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "distanceKm": 500,
+        "fuelConsumptionLitersPer100Km": 8
+      },
+      "output": {
+        "value": 40,
+        "steps": [
+          "Trip fuel = 40"
+        ]
+      }
+    }
+  }
+}
