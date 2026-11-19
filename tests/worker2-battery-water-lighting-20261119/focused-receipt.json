@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "tests": 25,
+  "focusedLint": true,
+  "files": [
+    {
+      "path": "src/calculators/energy/catalog-batch-3.test.ts",
+      "assertions": [
+        "keeps catalog #489 identity and governance as DRAFT",
+        "calculates lighting energy from quantity, wattage, and runtime",
+        "accepts zero runtime as zero energy",
+        "rejects invalid fixture quantities"
+      ]
+    },
+    {
+      "path": "src/calculators/engineering-construction/catalog-batch-3.test.ts",
+      "assertions": [
+        "matches verified examples",
+        "rejects invalid physical inputs",
+        "validates bounded efficiency percentages",
+        "guards overflow"
+      ]
+    },
+    {
+      "path": "src/calculators/technology-computing/catalog-batch-2.test.ts",
+      "assertions": [
+        "passes every golden fixture through the authoritative engine",
+        "rejects impossible battery efficiency",
+        "handles zero-byte Base64 payload exactly",
+        "rejects invalid password character pools",
+        "rejects non-positive resolution dimensions",
+        "rejects zero physical length for DPI",
+        "rejects zero loads for runtime calculators",
+        "accepts zero PSU headroom and rejects negative headroom",
+        "returns zero for zero website traffic and cloud usage",
+        "validates Base64 integer byte counts",
+        "validates password length and computes binary-pool entropy"
+      ]
+    },
+    {
+      "path": "src/lib/worker2-battery-water-lighting-20261119/cohort.test.ts",
+      "assertions": [
+        "#482 reconciles independent results, exact replay, refusal, batch and exports",
+        "#483 reconciles independent results, exact replay, refusal, batch and exports",
+        "#486 reconciles independent results, exact replay, refusal, batch and exports",
+        "#489 reconciles independent results, exact replay, refusal, batch and exports",
+        "keeps the historical water result below the new capture boundary readable without upgrading it",
+        "retains percentage and whole-count upper boundaries"
+      ]
+    }
+  ]
+}
