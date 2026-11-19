@@ -1,0 +1,2252 @@
+{
+  "executed": false,
+  "tests": [
+    {
+      "testId": "I01-build-typecheck",
+      "ids": [
+        326,
+        330,
+        509,
+        474,
+        458,
+        252,
+        162,
+        163,
+        179,
+        254,
+        493
+      ],
+      "sourceDependencies": [
+        {
+          "id": 326,
+          "sourceVersion": "sole-final-factory-20261119.1/physics.torque@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/physics/catalog-batch-3.ts",
+            "sha256": "b5c1870d729cbbd32db6eac439c7b6aa2b90f54c3677879bf0a05120a5f0faf6",
+            "bytes": 4930
+          }
+        },
+        {
+          "id": 330,
+          "sourceVersion": "sole-final-factory-20261119.1/chemistry.molecular-weight@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/chemistry/molecular-weight.ts",
+            "sha256": "a423344150d0042466ec7183c18cf7ff3b423d6dcb2f071cc7255d7943324772",
+            "bytes": 3376
+          }
+        },
+        {
+          "id": 509,
+          "sourceVersion": "sole-final-factory-20261119.1/travel.fuel-trip-cost@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/travel/catalog-batch-2.ts",
+            "sha256": "b3b7afaaaaa14e37159c4b08c9116bb33b2417925b455e069ae77d9569e950ab",
+            "bytes": 2729
+          }
+        },
+        {
+          "id": 474,
+          "sourceVersion": "sole-structured-factory-20261119.1/automotive.tire-size@1",
+          "implementation": {
+            "commit": "ffa3e485b903cbf8c7df95e4ee4216a1ac30927f",
+            "path": "src/lib/sole-structured-factory-20261119/cohort.ts",
+            "sha256": "fec0db3cf1f8c76f4940954cd4150947d39ba215206f073e12f776b776fc9eed",
+            "bytes": 5119
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/automotive/catalog-batch-3.ts",
+            "sha256": "96bb0a427eceaca0fb7d22fdf43fda9cdc694de4e711249f4fe94c42cf77c144",
+            "bytes": 6132
+          }
+        },
+        {
+          "id": 458,
+          "sourceVersion": "sole-specialized-factory-20261119.1/launch-fuel-cost-calculator@1",
+          "implementation": {
+            "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+            "path": "src/lib/sole-specialized-factory-20261119/cohort.ts",
+            "sha256": "c2ecd597587cae5ccd30739784fee035264b1688835525f3fffab2aaa9afff6f",
+            "bytes": 4352
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/launch-portfolio.ts",
+            "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f",
+            "bytes": 52072
+          }
+        },
+        {
+          "id": 252,
+          "sourceVersion": "sole-specialized-factory-20261119.1/advanced-math.function-plotter-3d@1",
+          "implementation": {
+            "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+            "path": "src/lib/sole-specialized-factory-20261119/cohort.ts",
+            "sha256": "c2ecd597587cae5ccd30739784fee035264b1688835525f3fffab2aaa9afff6f",
+            "bytes": 4352
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/advanced-math/catalog-final.ts",
+            "sha256": "dd4526c7417726e2ec607c0fa304a1d159afff3f8c60511ba44d88080d2237d4",
+            "bytes": 5110
+          }
+        },
+        {
+          "id": 162,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.monthly-recurring-revenue@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-1.ts",
+            "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c",
+            "bytes": 5888
+          }
+        },
+        {
+          "id": 163,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.annual-recurring-revenue@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-1.ts",
+            "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c",
+            "bytes": 5888
+          }
+        },
+        {
+          "id": 179,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.cash-runway@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-2.ts",
+            "sha256": "0fe5e0b1af5c8b509287338f630183d587394bc61d38ce3fa1444e1325d6c2f0",
+            "bytes": 5535
+          }
+        },
+        {
+          "id": 254,
+          "sourceVersion": "sole-verified-delivery-20261119.1/advanced-math.root-finder@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/advanced-math/catalog-batch-8.ts",
+            "sha256": "2ddc4c3dc3eba93c8f73480157646efe440adb8a4994db62c97ca0a5e979b9f8",
+            "bytes": 6576
+          }
+        },
+        {
+          "id": 493,
+          "sourceVersion": "sole-verified-delivery-20261119.1/earth-science.air-density@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/earth-science/catalog-batch-2.ts",
+            "sha256": "bc395d363a4564313798f487580145c4e5a94cf7dce3ea822290f5e14cd1c03f",
+            "bytes": 3927
+          }
+        }
+      ],
+      "priorEvidence": [
+        {
+          "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+          "path": "docs/sole-final-factory-20261119/build.log",
+          "sha256": "b089f80c67b3fbe33913bfae29116186798c18f39f1050867e363f64f55288ec",
+          "bytes": 3266
+        },
+        {
+          "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+          "path": "docs/sole-final-factory-20261119/build.log",
+          "sha256": "b089f80c67b3fbe33913bfae29116186798c18f39f1050867e363f64f55288ec",
+          "bytes": 3266
+        },
+        {
+          "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+          "path": "docs/sole-final-factory-20261119/build.log",
+          "sha256": "b089f80c67b3fbe33913bfae29116186798c18f39f1050867e363f64f55288ec",
+          "bytes": 3266
+        },
+        {
+          "commit": "ffa3e485b903cbf8c7df95e4ee4216a1ac30927f",
+          "path": "docs/sole-structured-factory-20261119/build.log",
+          "sha256": "d43ca505c35d28842585bb0abfd5c0b24d5edda6686005c290b5c3a9b79e485a",
+          "bytes": 3315
+        },
+        {
+          "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+          "path": "docs/sole-specialized-factory-20261119/build.log",
+          "sha256": "8f6c909cb57e67ea0566b7d1e78792006a23bc7654d4c864dafdfa7b26ddfae7",
+          "bytes": 3364
+        },
+        {
+          "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+          "path": "docs/sole-specialized-factory-20261119/build.log",
+          "sha256": "8f6c909cb57e67ea0566b7d1e78792006a23bc7654d4c864dafdfa7b26ddfae7",
+          "bytes": 3364
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/build.log",
+          "sha256": "29dbd676213fbe22c0547779dd774851a944615dbf970bab2c4840123e8847d2",
+          "bytes": 3408
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/build.log",
+          "sha256": "29dbd676213fbe22c0547779dd774851a944615dbf970bab2c4840123e8847d2",
+          "bytes": 3408
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/build.log",
+          "sha256": "29dbd676213fbe22c0547779dd774851a944615dbf970bab2c4840123e8847d2",
+          "bytes": 3408
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/build.log",
+          "sha256": "29dbd676213fbe22c0547779dd774851a944615dbf970bab2c4840123e8847d2",
+          "bytes": 3408
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/build.log",
+          "sha256": "29dbd676213fbe22c0547779dd774851a944615dbf970bab2c4840123e8847d2",
+          "bytes": 3408
+        }
+      ],
+      "postIntegrationExecution": "REQUIRED_AFTER_AUTHORIZATION",
+      "requiredHead": "NEW_CANDIDATE_EXACT_SHA_TO_BE_RECORDED",
+      "criteria": "Production next build --webpack and lint/typecheck pass on exactly the integrated head; production defaults and authority guards unchanged."
+    },
+    {
+      "testId": "I02-engine-and-packet",
+      "ids": [
+        326,
+        330,
+        509,
+        474,
+        458,
+        252,
+        162,
+        163,
+        179,
+        254,
+        493
+      ],
+      "sourceDependencies": [
+        {
+          "id": 326,
+          "sourceVersion": "sole-final-factory-20261119.1/physics.torque@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/physics/catalog-batch-3.ts",
+            "sha256": "b5c1870d729cbbd32db6eac439c7b6aa2b90f54c3677879bf0a05120a5f0faf6",
+            "bytes": 4930
+          }
+        },
+        {
+          "id": 330,
+          "sourceVersion": "sole-final-factory-20261119.1/chemistry.molecular-weight@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/chemistry/molecular-weight.ts",
+            "sha256": "a423344150d0042466ec7183c18cf7ff3b423d6dcb2f071cc7255d7943324772",
+            "bytes": 3376
+          }
+        },
+        {
+          "id": 509,
+          "sourceVersion": "sole-final-factory-20261119.1/travel.fuel-trip-cost@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/travel/catalog-batch-2.ts",
+            "sha256": "b3b7afaaaaa14e37159c4b08c9116bb33b2417925b455e069ae77d9569e950ab",
+            "bytes": 2729
+          }
+        },
+        {
+          "id": 474,
+          "sourceVersion": "sole-structured-factory-20261119.1/automotive.tire-size@1",
+          "implementation": {
+            "commit": "ffa3e485b903cbf8c7df95e4ee4216a1ac30927f",
+            "path": "src/lib/sole-structured-factory-20261119/cohort.ts",
+            "sha256": "fec0db3cf1f8c76f4940954cd4150947d39ba215206f073e12f776b776fc9eed",
+            "bytes": 5119
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/automotive/catalog-batch-3.ts",
+            "sha256": "96bb0a427eceaca0fb7d22fdf43fda9cdc694de4e711249f4fe94c42cf77c144",
+            "bytes": 6132
+          }
+        },
+        {
+          "id": 458,
+          "sourceVersion": "sole-specialized-factory-20261119.1/launch-fuel-cost-calculator@1",
+          "implementation": {
+            "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+            "path": "src/lib/sole-specialized-factory-20261119/cohort.ts",
+            "sha256": "c2ecd597587cae5ccd30739784fee035264b1688835525f3fffab2aaa9afff6f",
+            "bytes": 4352
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/launch-portfolio.ts",
+            "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f",
+            "bytes": 52072
+          }
+        },
+        {
+          "id": 252,
+          "sourceVersion": "sole-specialized-factory-20261119.1/advanced-math.function-plotter-3d@1",
+          "implementation": {
+            "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+            "path": "src/lib/sole-specialized-factory-20261119/cohort.ts",
+            "sha256": "c2ecd597587cae5ccd30739784fee035264b1688835525f3fffab2aaa9afff6f",
+            "bytes": 4352
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/advanced-math/catalog-final.ts",
+            "sha256": "dd4526c7417726e2ec607c0fa304a1d159afff3f8c60511ba44d88080d2237d4",
+            "bytes": 5110
+          }
+        },
+        {
+          "id": 162,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.monthly-recurring-revenue@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-1.ts",
+            "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c",
+            "bytes": 5888
+          }
+        },
+        {
+          "id": 163,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.annual-recurring-revenue@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-1.ts",
+            "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c",
+            "bytes": 5888
+          }
+        },
+        {
+          "id": 179,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.cash-runway@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-2.ts",
+            "sha256": "0fe5e0b1af5c8b509287338f630183d587394bc61d38ce3fa1444e1325d6c2f0",
+            "bytes": 5535
+          }
+        },
+        {
+          "id": 254,
+          "sourceVersion": "sole-verified-delivery-20261119.1/advanced-math.root-finder@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/advanced-math/catalog-batch-8.ts",
+            "sha256": "2ddc4c3dc3eba93c8f73480157646efe440adb8a4994db62c97ca0a5e979b9f8",
+            "bytes": 6576
+          }
+        },
+        {
+          "id": 493,
+          "sourceVersion": "sole-verified-delivery-20261119.1/earth-science.air-density@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/earth-science/catalog-batch-2.ts",
+            "sha256": "bc395d363a4564313798f487580145c4e5a94cf7dce3ea822290f5e14cd1c03f",
+            "bytes": 3927
+          }
+        }
+      ],
+      "priorEvidence": [
+        {
+          "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+          "path": "docs/sole-final-factory-20261119/focused-tests.log",
+          "sha256": "3b971a7f46b16b48f773c2faabaa73ba550c0fffc1cf6fe7a876a7eba6aec91c",
+          "bytes": 294
+        },
+        {
+          "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+          "path": "docs/sole-final-factory-20261119/focused-tests.log",
+          "sha256": "3b971a7f46b16b48f773c2faabaa73ba550c0fffc1cf6fe7a876a7eba6aec91c",
+          "bytes": 294
+        },
+        {
+          "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+          "path": "docs/sole-final-factory-20261119/focused-tests.log",
+          "sha256": "3b971a7f46b16b48f773c2faabaa73ba550c0fffc1cf6fe7a876a7eba6aec91c",
+          "bytes": 294
+        },
+        {
+          "commit": "ffa3e485b903cbf8c7df95e4ee4216a1ac30927f",
+          "path": "docs/sole-structured-factory-20261119/focused-tests.log",
+          "sha256": "7fb67afa0748376e1d37a2b4c30395fbadbd279e6e043d4ae7344ed2d73ddf9e",
+          "bytes": 373
+        },
+        {
+          "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+          "path": "docs/sole-specialized-factory-20261119/focused-tests.log",
+          "sha256": "a5e7ddd8f576094c662e9004fab3497dd7cb4a8c8ef7c0f9a80ec85abc5c2165",
+          "bytes": 291
+        },
+        {
+          "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+          "path": "docs/sole-specialized-factory-20261119/focused-tests.log",
+          "sha256": "a5e7ddd8f576094c662e9004fab3497dd7cb4a8c8ef7c0f9a80ec85abc5c2165",
+          "bytes": 291
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/focused-tests.log",
+          "sha256": "377dcbd2cd2664e4e29d2871111ed25eca82ccecebf9c563ff0c06da984ead49",
+          "bytes": 290
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/focused-tests.log",
+          "sha256": "377dcbd2cd2664e4e29d2871111ed25eca82ccecebf9c563ff0c06da984ead49",
+          "bytes": 290
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/focused-tests.log",
+          "sha256": "377dcbd2cd2664e4e29d2871111ed25eca82ccecebf9c563ff0c06da984ead49",
+          "bytes": 290
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/focused-tests.log",
+          "sha256": "377dcbd2cd2664e4e29d2871111ed25eca82ccecebf9c563ff0c06da984ead49",
+          "bytes": 290
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/focused-tests.log",
+          "sha256": "377dcbd2cd2664e4e29d2871111ed25eca82ccecebf9c563ff0c06da984ead49",
+          "bytes": 290
+        }
+      ],
+      "postIntegrationExecution": "REQUIRED_AFTER_AUTHORIZATION",
+      "requiredHead": "NEW_CANDIDATE_EXACT_SHA_TO_BE_RECORDED",
+      "criteria": "Independent witnesses, invalid inputs, rejected versions and source substitutions, zero/complex/structured fidelity and registered engine hashes match."
+    },
+    {
+      "testId": "I03-shared-adapter-parity",
+      "ids": [
+        326,
+        330,
+        509
+      ],
+      "sourceDependencies": [
+        {
+          "id": 326,
+          "sourceVersion": "sole-final-factory-20261119.1/physics.torque@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/physics/catalog-batch-3.ts",
+            "sha256": "b5c1870d729cbbd32db6eac439c7b6aa2b90f54c3677879bf0a05120a5f0faf6",
+            "bytes": 4930
+          }
+        },
+        {
+          "id": 330,
+          "sourceVersion": "sole-final-factory-20261119.1/chemistry.molecular-weight@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/chemistry/molecular-weight.ts",
+            "sha256": "a423344150d0042466ec7183c18cf7ff3b423d6dcb2f071cc7255d7943324772",
+            "bytes": 3376
+          }
+        },
+        {
+          "id": 509,
+          "sourceVersion": "sole-final-factory-20261119.1/travel.fuel-trip-cost@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/travel/catalog-batch-2.ts",
+            "sha256": "b3b7afaaaaa14e37159c4b08c9116bb33b2417925b455e069ae77d9569e950ab",
+            "bytes": 2729
+          }
+        }
+      ],
+      "priorEvidence": [
+        {
+          "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+          "path": "docs/sole-final-factory-20261119/native-receipt.json",
+          "sha256": "2d197dd490f74a9eab33d6ba2859629ddd9e546750db7049748eb24d506d7bdf",
+          "bytes": 6997
+        },
+        {
+          "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+          "path": "docs/sole-final-factory-20261119/native-receipt.json",
+          "sha256": "2d197dd490f74a9eab33d6ba2859629ddd9e546750db7049748eb24d506d7bdf",
+          "bytes": 6997
+        },
+        {
+          "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+          "path": "docs/sole-final-factory-20261119/native-receipt.json",
+          "sha256": "2d197dd490f74a9eab33d6ba2859629ddd9e546750db7049748eb24d506d7bdf",
+          "bytes": 6997
+        }
+      ],
+      "postIntegrationExecution": "REQUIRED_AFTER_AUTHORIZATION",
+      "requiredHead": "NEW_CANDIDATE_EXACT_SHA_TO_BE_RECORDED",
+      "criteria": "Revalidate Day 1 inputs, result projections, browser save/replay, batch and exports under the cumulative adapter. No claim of exact-source receipt reuse for this changed dependency."
+    },
+    {
+      "testId": "I04-tire-reference-isolation",
+      "ids": [
+        474
+      ],
+      "sourceDependencies": [
+        {
+          "id": 474,
+          "sourceVersion": "sole-structured-factory-20261119.1/automotive.tire-size@1",
+          "implementation": {
+            "commit": "ffa3e485b903cbf8c7df95e4ee4216a1ac30927f",
+            "path": "src/lib/sole-structured-factory-20261119/cohort.ts",
+            "sha256": "fec0db3cf1f8c76f4940954cd4150947d39ba215206f073e12f776b776fc9eed",
+            "bytes": 5119
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/automotive/catalog-batch-3.ts",
+            "sha256": "96bb0a427eceaca0fb7d22fdf43fda9cdc694de4e711249f4fe94c42cf77c144",
+            "bytes": 6132
+          }
+        }
+      ],
+      "priorEvidence": [
+        {
+          "commit": "ffa3e485b903cbf8c7df95e4ee4216a1ac30927f",
+          "path": "docs/sole-structured-factory-20261119/native-receipt.json",
+          "sha256": "81c8b1a13858fdd2dcc6c1899bdf827702b1a886be944c043c0761cd1e0657b6",
+          "bytes": 12878
+        }
+      ],
+      "postIntegrationExecution": "REQUIRED_AFTER_AUTHORIZATION",
+      "requiredHead": "NEW_CANDIDATE_EXACT_SHA_TO_BE_RECORDED",
+      "criteria": "Only #474 admitted; five reference profiles remain isolated. Revalidate units, values, native switch and authorization."
+    },
+    {
+      "testId": "I05-auth-rls-and-revocation",
+      "ids": [
+        326,
+        330,
+        509,
+        474,
+        458,
+        252,
+        162,
+        163,
+        179,
+        254,
+        493
+      ],
+      "sourceDependencies": [
+        {
+          "id": 326,
+          "sourceVersion": "sole-final-factory-20261119.1/physics.torque@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/physics/catalog-batch-3.ts",
+            "sha256": "b5c1870d729cbbd32db6eac439c7b6aa2b90f54c3677879bf0a05120a5f0faf6",
+            "bytes": 4930
+          }
+        },
+        {
+          "id": 330,
+          "sourceVersion": "sole-final-factory-20261119.1/chemistry.molecular-weight@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/chemistry/molecular-weight.ts",
+            "sha256": "a423344150d0042466ec7183c18cf7ff3b423d6dcb2f071cc7255d7943324772",
+            "bytes": 3376
+          }
+        },
+        {
+          "id": 509,
+          "sourceVersion": "sole-final-factory-20261119.1/travel.fuel-trip-cost@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/travel/catalog-batch-2.ts",
+            "sha256": "b3b7afaaaaa14e37159c4b08c9116bb33b2417925b455e069ae77d9569e950ab",
+            "bytes": 2729
+          }
+        },
+        {
+          "id": 474,
+          "sourceVersion": "sole-structured-factory-20261119.1/automotive.tire-size@1",
+          "implementation": {
+            "commit": "ffa3e485b903cbf8c7df95e4ee4216a1ac30927f",
+            "path": "src/lib/sole-structured-factory-20261119/cohort.ts",
+            "sha256": "fec0db3cf1f8c76f4940954cd4150947d39ba215206f073e12f776b776fc9eed",
+            "bytes": 5119
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/automotive/catalog-batch-3.ts",
+            "sha256": "96bb0a427eceaca0fb7d22fdf43fda9cdc694de4e711249f4fe94c42cf77c144",
+            "bytes": 6132
+          }
+        },
+        {
+          "id": 458,
+          "sourceVersion": "sole-specialized-factory-20261119.1/launch-fuel-cost-calculator@1",
+          "implementation": {
+            "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+            "path": "src/lib/sole-specialized-factory-20261119/cohort.ts",
+            "sha256": "c2ecd597587cae5ccd30739784fee035264b1688835525f3fffab2aaa9afff6f",
+            "bytes": 4352
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/launch-portfolio.ts",
+            "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f",
+            "bytes": 52072
+          }
+        },
+        {
+          "id": 252,
+          "sourceVersion": "sole-specialized-factory-20261119.1/advanced-math.function-plotter-3d@1",
+          "implementation": {
+            "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+            "path": "src/lib/sole-specialized-factory-20261119/cohort.ts",
+            "sha256": "c2ecd597587cae5ccd30739784fee035264b1688835525f3fffab2aaa9afff6f",
+            "bytes": 4352
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/advanced-math/catalog-final.ts",
+            "sha256": "dd4526c7417726e2ec607c0fa304a1d159afff3f8c60511ba44d88080d2237d4",
+            "bytes": 5110
+          }
+        },
+        {
+          "id": 162,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.monthly-recurring-revenue@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-1.ts",
+            "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c",
+            "bytes": 5888
+          }
+        },
+        {
+          "id": 163,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.annual-recurring-revenue@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-1.ts",
+            "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c",
+            "bytes": 5888
+          }
+        },
+        {
+          "id": 179,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.cash-runway@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-2.ts",
+            "sha256": "0fe5e0b1af5c8b509287338f630183d587394bc61d38ce3fa1444e1325d6c2f0",
+            "bytes": 5535
+          }
+        },
+        {
+          "id": 254,
+          "sourceVersion": "sole-verified-delivery-20261119.1/advanced-math.root-finder@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/advanced-math/catalog-batch-8.ts",
+            "sha256": "2ddc4c3dc3eba93c8f73480157646efe440adb8a4994db62c97ca0a5e979b9f8",
+            "bytes": 6576
+          }
+        },
+        {
+          "id": 493,
+          "sourceVersion": "sole-verified-delivery-20261119.1/earth-science.air-density@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/earth-science/catalog-batch-2.ts",
+            "sha256": "bc395d363a4564313798f487580145c4e5a94cf7dce3ea822290f5e14cd1c03f",
+            "bytes": 3927
+          }
+        }
+      ],
+      "priorEvidence": [
+        {
+          "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+          "path": "docs/sole-final-factory-20261119/native-receipt.json",
+          "sha256": "2d197dd490f74a9eab33d6ba2859629ddd9e546750db7049748eb24d506d7bdf",
+          "bytes": 6997
+        },
+        {
+          "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+          "path": "docs/sole-final-factory-20261119/native-receipt.json",
+          "sha256": "2d197dd490f74a9eab33d6ba2859629ddd9e546750db7049748eb24d506d7bdf",
+          "bytes": 6997
+        },
+        {
+          "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+          "path": "docs/sole-final-factory-20261119/native-receipt.json",
+          "sha256": "2d197dd490f74a9eab33d6ba2859629ddd9e546750db7049748eb24d506d7bdf",
+          "bytes": 6997
+        },
+        {
+          "commit": "ffa3e485b903cbf8c7df95e4ee4216a1ac30927f",
+          "path": "docs/sole-structured-factory-20261119/native-receipt.json",
+          "sha256": "81c8b1a13858fdd2dcc6c1899bdf827702b1a886be944c043c0761cd1e0657b6",
+          "bytes": 12878
+        },
+        {
+          "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+          "path": "docs/sole-specialized-factory-20261119/native-receipt.json",
+          "sha256": "c9ba7b2db0eb64fd3ab8f2a0a0c4a29b13f2abb9e450b15e6e0ef698ce571fa5",
+          "bytes": 5042
+        },
+        {
+          "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+          "path": "docs/sole-specialized-factory-20261119/native-receipt.json",
+          "sha256": "c9ba7b2db0eb64fd3ab8f2a0a0c4a29b13f2abb9e450b15e6e0ef698ce571fa5",
+          "bytes": 5042
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/native-receipt.json",
+          "sha256": "8dc01744545a9e6f100bd50f1198b1593c9b17a765a5fbb2261bd4a53b8da703",
+          "bytes": 10916
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/native-receipt.json",
+          "sha256": "8dc01744545a9e6f100bd50f1198b1593c9b17a765a5fbb2261bd4a53b8da703",
+          "bytes": 10916
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/native-receipt.json",
+          "sha256": "8dc01744545a9e6f100bd50f1198b1593c9b17a765a5fbb2261bd4a53b8da703",
+          "bytes": 10916
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/native-receipt.json",
+          "sha256": "8dc01744545a9e6f100bd50f1198b1593c9b17a765a5fbb2261bd4a53b8da703",
+          "bytes": 10916
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/native-receipt.json",
+          "sha256": "8dc01744545a9e6f100bd50f1198b1593c9b17a765a5fbb2261bd4a53b8da703",
+          "bytes": 10916
+        }
+      ],
+      "postIntegrationExecution": "REQUIRED_AFTER_AUTHORIZATION",
+      "requiredHead": "NEW_CANDIDATE_EXACT_SHA_TO_BE_RECORDED",
+      "criteria": "Genuine disposable auth, role and plan checks, foreign account/tenant denial, and live membership/reviewer revocation under the same session."
+    },
+    {
+      "testId": "I06-history-scenarios-rollback",
+      "ids": [
+        326,
+        330,
+        509,
+        474,
+        458,
+        252,
+        162,
+        163,
+        179,
+        254,
+        493
+      ],
+      "sourceDependencies": [
+        {
+          "id": 326,
+          "sourceVersion": "sole-final-factory-20261119.1/physics.torque@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/physics/catalog-batch-3.ts",
+            "sha256": "b5c1870d729cbbd32db6eac439c7b6aa2b90f54c3677879bf0a05120a5f0faf6",
+            "bytes": 4930
+          }
+        },
+        {
+          "id": 330,
+          "sourceVersion": "sole-final-factory-20261119.1/chemistry.molecular-weight@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/chemistry/molecular-weight.ts",
+            "sha256": "a423344150d0042466ec7183c18cf7ff3b423d6dcb2f071cc7255d7943324772",
+            "bytes": 3376
+          }
+        },
+        {
+          "id": 509,
+          "sourceVersion": "sole-final-factory-20261119.1/travel.fuel-trip-cost@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/travel/catalog-batch-2.ts",
+            "sha256": "b3b7afaaaaa14e37159c4b08c9116bb33b2417925b455e069ae77d9569e950ab",
+            "bytes": 2729
+          }
+        },
+        {
+          "id": 474,
+          "sourceVersion": "sole-structured-factory-20261119.1/automotive.tire-size@1",
+          "implementation": {
+            "commit": "ffa3e485b903cbf8c7df95e4ee4216a1ac30927f",
+            "path": "src/lib/sole-structured-factory-20261119/cohort.ts",
+            "sha256": "fec0db3cf1f8c76f4940954cd4150947d39ba215206f073e12f776b776fc9eed",
+            "bytes": 5119
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/automotive/catalog-batch-3.ts",
+            "sha256": "96bb0a427eceaca0fb7d22fdf43fda9cdc694de4e711249f4fe94c42cf77c144",
+            "bytes": 6132
+          }
+        },
+        {
+          "id": 458,
+          "sourceVersion": "sole-specialized-factory-20261119.1/launch-fuel-cost-calculator@1",
+          "implementation": {
+            "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+            "path": "src/lib/sole-specialized-factory-20261119/cohort.ts",
+            "sha256": "c2ecd597587cae5ccd30739784fee035264b1688835525f3fffab2aaa9afff6f",
+            "bytes": 4352
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/launch-portfolio.ts",
+            "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f",
+            "bytes": 52072
+          }
+        },
+        {
+          "id": 252,
+          "sourceVersion": "sole-specialized-factory-20261119.1/advanced-math.function-plotter-3d@1",
+          "implementation": {
+            "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+            "path": "src/lib/sole-specialized-factory-20261119/cohort.ts",
+            "sha256": "c2ecd597587cae5ccd30739784fee035264b1688835525f3fffab2aaa9afff6f",
+            "bytes": 4352
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/advanced-math/catalog-final.ts",
+            "sha256": "dd4526c7417726e2ec607c0fa304a1d159afff3f8c60511ba44d88080d2237d4",
+            "bytes": 5110
+          }
+        },
+        {
+          "id": 162,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.monthly-recurring-revenue@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-1.ts",
+            "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c",
+            "bytes": 5888
+          }
+        },
+        {
+          "id": 163,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.annual-recurring-revenue@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-1.ts",
+            "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c",
+            "bytes": 5888
+          }
+        },
+        {
+          "id": 179,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.cash-runway@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-2.ts",
+            "sha256": "0fe5e0b1af5c8b509287338f630183d587394bc61d38ce3fa1444e1325d6c2f0",
+            "bytes": 5535
+          }
+        },
+        {
+          "id": 254,
+          "sourceVersion": "sole-verified-delivery-20261119.1/advanced-math.root-finder@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/advanced-math/catalog-batch-8.ts",
+            "sha256": "2ddc4c3dc3eba93c8f73480157646efe440adb8a4994db62c97ca0a5e979b9f8",
+            "bytes": 6576
+          }
+        },
+        {
+          "id": 493,
+          "sourceVersion": "sole-verified-delivery-20261119.1/earth-science.air-density@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/earth-science/catalog-batch-2.ts",
+            "sha256": "bc395d363a4564313798f487580145c4e5a94cf7dce3ea822290f5e14cd1c03f",
+            "bytes": 3927
+          }
+        }
+      ],
+      "priorEvidence": [
+        {
+          "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+          "path": "docs/sole-final-factory-20261119/native-receipt.json",
+          "sha256": "2d197dd490f74a9eab33d6ba2859629ddd9e546750db7049748eb24d506d7bdf",
+          "bytes": 6997
+        },
+        {
+          "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+          "path": "docs/sole-final-factory-20261119/native-receipt.json",
+          "sha256": "2d197dd490f74a9eab33d6ba2859629ddd9e546750db7049748eb24d506d7bdf",
+          "bytes": 6997
+        },
+        {
+          "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+          "path": "docs/sole-final-factory-20261119/native-receipt.json",
+          "sha256": "2d197dd490f74a9eab33d6ba2859629ddd9e546750db7049748eb24d506d7bdf",
+          "bytes": 6997
+        },
+        {
+          "commit": "ffa3e485b903cbf8c7df95e4ee4216a1ac30927f",
+          "path": "docs/sole-structured-factory-20261119/native-receipt.json",
+          "sha256": "81c8b1a13858fdd2dcc6c1899bdf827702b1a886be944c043c0761cd1e0657b6",
+          "bytes": 12878
+        },
+        {
+          "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+          "path": "docs/sole-specialized-factory-20261119/native-receipt.json",
+          "sha256": "c9ba7b2db0eb64fd3ab8f2a0a0c4a29b13f2abb9e450b15e6e0ef698ce571fa5",
+          "bytes": 5042
+        },
+        {
+          "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+          "path": "docs/sole-specialized-factory-20261119/native-receipt.json",
+          "sha256": "c9ba7b2db0eb64fd3ab8f2a0a0c4a29b13f2abb9e450b15e6e0ef698ce571fa5",
+          "bytes": 5042
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/native-receipt.json",
+          "sha256": "8dc01744545a9e6f100bd50f1198b1593c9b17a765a5fbb2261bd4a53b8da703",
+          "bytes": 10916
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/native-receipt.json",
+          "sha256": "8dc01744545a9e6f100bd50f1198b1593c9b17a765a5fbb2261bd4a53b8da703",
+          "bytes": 10916
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/native-receipt.json",
+          "sha256": "8dc01744545a9e6f100bd50f1198b1593c9b17a765a5fbb2261bd4a53b8da703",
+          "bytes": 10916
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/native-receipt.json",
+          "sha256": "8dc01744545a9e6f100bd50f1198b1593c9b17a765a5fbb2261bd4a53b8da703",
+          "bytes": 10916
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/native-receipt.json",
+          "sha256": "8dc01744545a9e6f100bd50f1198b1593c9b17a765a5fbb2261bd4a53b8da703",
+          "bytes": 10916
+        }
+      ],
+      "postIntegrationExecution": "REQUIRED_AFTER_AUTHORIZATION",
+      "requiredHead": "NEW_CANDIDATE_EXACT_SHA_TO_BE_RECORDED",
+      "criteria": "Owned history/scenarios restore after reload, retained versions and packet tags still resolve, tampering and wrong versions refused. Frozen tree supports pre-existing stored data."
+    },
+    {
+      "testId": "I07-mobile-exports",
+      "ids": [
+        326,
+        330,
+        509,
+        474,
+        458,
+        252,
+        162,
+        163,
+        179,
+        254,
+        493
+      ],
+      "sourceDependencies": [
+        {
+          "id": 326,
+          "sourceVersion": "sole-final-factory-20261119.1/physics.torque@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/physics/catalog-batch-3.ts",
+            "sha256": "b5c1870d729cbbd32db6eac439c7b6aa2b90f54c3677879bf0a05120a5f0faf6",
+            "bytes": 4930
+          }
+        },
+        {
+          "id": 330,
+          "sourceVersion": "sole-final-factory-20261119.1/chemistry.molecular-weight@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/chemistry/molecular-weight.ts",
+            "sha256": "a423344150d0042466ec7183c18cf7ff3b423d6dcb2f071cc7255d7943324772",
+            "bytes": 3376
+          }
+        },
+        {
+          "id": 509,
+          "sourceVersion": "sole-final-factory-20261119.1/travel.fuel-trip-cost@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/travel/catalog-batch-2.ts",
+            "sha256": "b3b7afaaaaa14e37159c4b08c9116bb33b2417925b455e069ae77d9569e950ab",
+            "bytes": 2729
+          }
+        },
+        {
+          "id": 474,
+          "sourceVersion": "sole-structured-factory-20261119.1/automotive.tire-size@1",
+          "implementation": {
+            "commit": "ffa3e485b903cbf8c7df95e4ee4216a1ac30927f",
+            "path": "src/lib/sole-structured-factory-20261119/cohort.ts",
+            "sha256": "fec0db3cf1f8c76f4940954cd4150947d39ba215206f073e12f776b776fc9eed",
+            "bytes": 5119
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/automotive/catalog-batch-3.ts",
+            "sha256": "96bb0a427eceaca0fb7d22fdf43fda9cdc694de4e711249f4fe94c42cf77c144",
+            "bytes": 6132
+          }
+        },
+        {
+          "id": 458,
+          "sourceVersion": "sole-specialized-factory-20261119.1/launch-fuel-cost-calculator@1",
+          "implementation": {
+            "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+            "path": "src/lib/sole-specialized-factory-20261119/cohort.ts",
+            "sha256": "c2ecd597587cae5ccd30739784fee035264b1688835525f3fffab2aaa9afff6f",
+            "bytes": 4352
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/launch-portfolio.ts",
+            "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f",
+            "bytes": 52072
+          }
+        },
+        {
+          "id": 252,
+          "sourceVersion": "sole-specialized-factory-20261119.1/advanced-math.function-plotter-3d@1",
+          "implementation": {
+            "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+            "path": "src/lib/sole-specialized-factory-20261119/cohort.ts",
+            "sha256": "c2ecd597587cae5ccd30739784fee035264b1688835525f3fffab2aaa9afff6f",
+            "bytes": 4352
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/advanced-math/catalog-final.ts",
+            "sha256": "dd4526c7417726e2ec607c0fa304a1d159afff3f8c60511ba44d88080d2237d4",
+            "bytes": 5110
+          }
+        },
+        {
+          "id": 162,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.monthly-recurring-revenue@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-1.ts",
+            "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c",
+            "bytes": 5888
+          }
+        },
+        {
+          "id": 163,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.annual-recurring-revenue@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-1.ts",
+            "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c",
+            "bytes": 5888
+          }
+        },
+        {
+          "id": 179,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.cash-runway@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-2.ts",
+            "sha256": "0fe5e0b1af5c8b509287338f630183d587394bc61d38ce3fa1444e1325d6c2f0",
+            "bytes": 5535
+          }
+        },
+        {
+          "id": 254,
+          "sourceVersion": "sole-verified-delivery-20261119.1/advanced-math.root-finder@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/advanced-math/catalog-batch-8.ts",
+            "sha256": "2ddc4c3dc3eba93c8f73480157646efe440adb8a4994db62c97ca0a5e979b9f8",
+            "bytes": 6576
+          }
+        },
+        {
+          "id": 493,
+          "sourceVersion": "sole-verified-delivery-20261119.1/earth-science.air-density@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/earth-science/catalog-batch-2.ts",
+            "sha256": "bc395d363a4564313798f487580145c4e5a94cf7dce3ea822290f5e14cd1c03f",
+            "bytes": 3927
+          }
+        }
+      ],
+      "priorEvidence": [
+        {
+          "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+          "path": "docs/sole-final-factory-20261119/native-receipt.json",
+          "sha256": "2d197dd490f74a9eab33d6ba2859629ddd9e546750db7049748eb24d506d7bdf",
+          "bytes": 6997
+        },
+        {
+          "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+          "path": "docs/sole-final-factory-20261119/native-receipt.json",
+          "sha256": "2d197dd490f74a9eab33d6ba2859629ddd9e546750db7049748eb24d506d7bdf",
+          "bytes": 6997
+        },
+        {
+          "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+          "path": "docs/sole-final-factory-20261119/native-receipt.json",
+          "sha256": "2d197dd490f74a9eab33d6ba2859629ddd9e546750db7049748eb24d506d7bdf",
+          "bytes": 6997
+        },
+        {
+          "commit": "ffa3e485b903cbf8c7df95e4ee4216a1ac30927f",
+          "path": "docs/sole-structured-factory-20261119/native-receipt.json",
+          "sha256": "81c8b1a13858fdd2dcc6c1899bdf827702b1a886be944c043c0761cd1e0657b6",
+          "bytes": 12878
+        },
+        {
+          "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+          "path": "docs/sole-specialized-factory-20261119/native-receipt.json",
+          "sha256": "c9ba7b2db0eb64fd3ab8f2a0a0c4a29b13f2abb9e450b15e6e0ef698ce571fa5",
+          "bytes": 5042
+        },
+        {
+          "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+          "path": "docs/sole-specialized-factory-20261119/native-receipt.json",
+          "sha256": "c9ba7b2db0eb64fd3ab8f2a0a0c4a29b13f2abb9e450b15e6e0ef698ce571fa5",
+          "bytes": 5042
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/native-receipt.json",
+          "sha256": "8dc01744545a9e6f100bd50f1198b1593c9b17a765a5fbb2261bd4a53b8da703",
+          "bytes": 10916
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/native-receipt.json",
+          "sha256": "8dc01744545a9e6f100bd50f1198b1593c9b17a765a5fbb2261bd4a53b8da703",
+          "bytes": 10916
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/native-receipt.json",
+          "sha256": "8dc01744545a9e6f100bd50f1198b1593c9b17a765a5fbb2261bd4a53b8da703",
+          "bytes": 10916
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/native-receipt.json",
+          "sha256": "8dc01744545a9e6f100bd50f1198b1593c9b17a765a5fbb2261bd4a53b8da703",
+          "bytes": 10916
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/native-receipt.json",
+          "sha256": "8dc01744545a9e6f100bd50f1198b1593c9b17a765a5fbb2261bd4a53b8da703",
+          "bytes": 10916
+        }
+      ],
+      "postIntegrationExecution": "AFFECTED_NATIVE_SURFACES_REQUIRED_AFTER_AUTHORIZATION",
+      "requiredHead": "NEW_CANDIDATE_EXACT_SHA_TO_BE_RECORDED",
+      "criteria": "Verify labelled controls, keyboard/error recovery, mobile width, batch correction, and complete JSON/CSV/PDF by native readback/hash. Replay JSON; confirm output unit and exact numeric/structured behavior."
+    },
+    {
+      "testId": "I08-business-capability",
+      "ids": [
+        326,
+        330,
+        509,
+        474,
+        458,
+        252,
+        162,
+        163,
+        179,
+        254,
+        493
+      ],
+      "sourceDependencies": [
+        {
+          "id": 326,
+          "sourceVersion": "sole-final-factory-20261119.1/physics.torque@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/physics/catalog-batch-3.ts",
+            "sha256": "b5c1870d729cbbd32db6eac439c7b6aa2b90f54c3677879bf0a05120a5f0faf6",
+            "bytes": 4930
+          }
+        },
+        {
+          "id": 330,
+          "sourceVersion": "sole-final-factory-20261119.1/chemistry.molecular-weight@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/chemistry/molecular-weight.ts",
+            "sha256": "a423344150d0042466ec7183c18cf7ff3b423d6dcb2f071cc7255d7943324772",
+            "bytes": 3376
+          }
+        },
+        {
+          "id": 509,
+          "sourceVersion": "sole-final-factory-20261119.1/travel.fuel-trip-cost@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/travel/catalog-batch-2.ts",
+            "sha256": "b3b7afaaaaa14e37159c4b08c9116bb33b2417925b455e069ae77d9569e950ab",
+            "bytes": 2729
+          }
+        },
+        {
+          "id": 474,
+          "sourceVersion": "sole-structured-factory-20261119.1/automotive.tire-size@1",
+          "implementation": {
+            "commit": "ffa3e485b903cbf8c7df95e4ee4216a1ac30927f",
+            "path": "src/lib/sole-structured-factory-20261119/cohort.ts",
+            "sha256": "fec0db3cf1f8c76f4940954cd4150947d39ba215206f073e12f776b776fc9eed",
+            "bytes": 5119
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/automotive/catalog-batch-3.ts",
+            "sha256": "96bb0a427eceaca0fb7d22fdf43fda9cdc694de4e711249f4fe94c42cf77c144",
+            "bytes": 6132
+          }
+        },
+        {
+          "id": 458,
+          "sourceVersion": "sole-specialized-factory-20261119.1/launch-fuel-cost-calculator@1",
+          "implementation": {
+            "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+            "path": "src/lib/sole-specialized-factory-20261119/cohort.ts",
+            "sha256": "c2ecd597587cae5ccd30739784fee035264b1688835525f3fffab2aaa9afff6f",
+            "bytes": 4352
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/launch-portfolio.ts",
+            "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f",
+            "bytes": 52072
+          }
+        },
+        {
+          "id": 252,
+          "sourceVersion": "sole-specialized-factory-20261119.1/advanced-math.function-plotter-3d@1",
+          "implementation": {
+            "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+            "path": "src/lib/sole-specialized-factory-20261119/cohort.ts",
+            "sha256": "c2ecd597587cae5ccd30739784fee035264b1688835525f3fffab2aaa9afff6f",
+            "bytes": 4352
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/advanced-math/catalog-final.ts",
+            "sha256": "dd4526c7417726e2ec607c0fa304a1d159afff3f8c60511ba44d88080d2237d4",
+            "bytes": 5110
+          }
+        },
+        {
+          "id": 162,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.monthly-recurring-revenue@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-1.ts",
+            "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c",
+            "bytes": 5888
+          }
+        },
+        {
+          "id": 163,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.annual-recurring-revenue@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-1.ts",
+            "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c",
+            "bytes": 5888
+          }
+        },
+        {
+          "id": 179,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.cash-runway@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-2.ts",
+            "sha256": "0fe5e0b1af5c8b509287338f630183d587394bc61d38ce3fa1444e1325d6c2f0",
+            "bytes": 5535
+          }
+        },
+        {
+          "id": 254,
+          "sourceVersion": "sole-verified-delivery-20261119.1/advanced-math.root-finder@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/advanced-math/catalog-batch-8.ts",
+            "sha256": "2ddc4c3dc3eba93c8f73480157646efe440adb8a4994db62c97ca0a5e979b9f8",
+            "bytes": 6576
+          }
+        },
+        {
+          "id": 493,
+          "sourceVersion": "sole-verified-delivery-20261119.1/earth-science.air-density@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/earth-science/catalog-batch-2.ts",
+            "sha256": "bc395d363a4564313798f487580145c4e5a94cf7dce3ea822290f5e14cd1c03f",
+            "bytes": 3927
+          }
+        }
+      ],
+      "priorEvidence": [
+        {
+          "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+          "path": "docs/sole-final-factory-20261119/native-receipt.json",
+          "sha256": "2d197dd490f74a9eab33d6ba2859629ddd9e546750db7049748eb24d506d7bdf",
+          "bytes": 6997
+        },
+        {
+          "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+          "path": "docs/sole-final-factory-20261119/native-receipt.json",
+          "sha256": "2d197dd490f74a9eab33d6ba2859629ddd9e546750db7049748eb24d506d7bdf",
+          "bytes": 6997
+        },
+        {
+          "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+          "path": "docs/sole-final-factory-20261119/native-receipt.json",
+          "sha256": "2d197dd490f74a9eab33d6ba2859629ddd9e546750db7049748eb24d506d7bdf",
+          "bytes": 6997
+        },
+        {
+          "commit": "ffa3e485b903cbf8c7df95e4ee4216a1ac30927f",
+          "path": "docs/sole-structured-factory-20261119/native-receipt.json",
+          "sha256": "81c8b1a13858fdd2dcc6c1899bdf827702b1a886be944c043c0761cd1e0657b6",
+          "bytes": 12878
+        },
+        {
+          "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+          "path": "docs/sole-specialized-factory-20261119/native-receipt.json",
+          "sha256": "c9ba7b2db0eb64fd3ab8f2a0a0c4a29b13f2abb9e450b15e6e0ef698ce571fa5",
+          "bytes": 5042
+        },
+        {
+          "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+          "path": "docs/sole-specialized-factory-20261119/native-receipt.json",
+          "sha256": "c9ba7b2db0eb64fd3ab8f2a0a0c4a29b13f2abb9e450b15e6e0ef698ce571fa5",
+          "bytes": 5042
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/native-receipt.json",
+          "sha256": "8dc01744545a9e6f100bd50f1198b1593c9b17a765a5fbb2261bd4a53b8da703",
+          "bytes": 10916
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/native-receipt.json",
+          "sha256": "8dc01744545a9e6f100bd50f1198b1593c9b17a765a5fbb2261bd4a53b8da703",
+          "bytes": 10916
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/native-receipt.json",
+          "sha256": "8dc01744545a9e6f100bd50f1198b1593c9b17a765a5fbb2261bd4a53b8da703",
+          "bytes": 10916
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/native-receipt.json",
+          "sha256": "8dc01744545a9e6f100bd50f1198b1593c9b17a765a5fbb2261bd4a53b8da703",
+          "bytes": 10916
+        },
+        {
+          "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+          "path": "docs/sole-verified-delivery-20261119/native-receipt.json",
+          "sha256": "8dc01744545a9e6f100bd50f1198b1593c9b17a765a5fbb2261bd4a53b8da703",
+          "bytes": 10916
+        }
+      ],
+      "postIntegrationExecution": "BLOCKED_PENDING_TUPLE_CAPABILITY_APPROVAL",
+      "requiredHead": "NEW_CANDIDATE_EXACT_SHA_TO_BE_RECORDED",
+      "criteria": "Deny shared project writes, native API/embed, jobs/webhooks by default. If separately approved, prove exact allowed tuple with role, cross-tenant denial, replay/revocation, idempotency, quota, signatures and durable audit."
+    },
+    {
+      "testId": "I09-mandatory-hosted",
+      "ids": [
+        326,
+        330,
+        509,
+        474,
+        458,
+        252,
+        162,
+        163,
+        179,
+        254,
+        493
+      ],
+      "sourceDependencies": [
+        {
+          "id": 326,
+          "sourceVersion": "sole-final-factory-20261119.1/physics.torque@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/physics/catalog-batch-3.ts",
+            "sha256": "b5c1870d729cbbd32db6eac439c7b6aa2b90f54c3677879bf0a05120a5f0faf6",
+            "bytes": 4930
+          }
+        },
+        {
+          "id": 330,
+          "sourceVersion": "sole-final-factory-20261119.1/chemistry.molecular-weight@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/chemistry/molecular-weight.ts",
+            "sha256": "a423344150d0042466ec7183c18cf7ff3b423d6dcb2f071cc7255d7943324772",
+            "bytes": 3376
+          }
+        },
+        {
+          "id": 509,
+          "sourceVersion": "sole-final-factory-20261119.1/travel.fuel-trip-cost@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/travel/catalog-batch-2.ts",
+            "sha256": "b3b7afaaaaa14e37159c4b08c9116bb33b2417925b455e069ae77d9569e950ab",
+            "bytes": 2729
+          }
+        },
+        {
+          "id": 474,
+          "sourceVersion": "sole-structured-factory-20261119.1/automotive.tire-size@1",
+          "implementation": {
+            "commit": "ffa3e485b903cbf8c7df95e4ee4216a1ac30927f",
+            "path": "src/lib/sole-structured-factory-20261119/cohort.ts",
+            "sha256": "fec0db3cf1f8c76f4940954cd4150947d39ba215206f073e12f776b776fc9eed",
+            "bytes": 5119
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/automotive/catalog-batch-3.ts",
+            "sha256": "96bb0a427eceaca0fb7d22fdf43fda9cdc694de4e711249f4fe94c42cf77c144",
+            "bytes": 6132
+          }
+        },
+        {
+          "id": 458,
+          "sourceVersion": "sole-specialized-factory-20261119.1/launch-fuel-cost-calculator@1",
+          "implementation": {
+            "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+            "path": "src/lib/sole-specialized-factory-20261119/cohort.ts",
+            "sha256": "c2ecd597587cae5ccd30739784fee035264b1688835525f3fffab2aaa9afff6f",
+            "bytes": 4352
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/launch-portfolio.ts",
+            "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f",
+            "bytes": 52072
+          }
+        },
+        {
+          "id": 252,
+          "sourceVersion": "sole-specialized-factory-20261119.1/advanced-math.function-plotter-3d@1",
+          "implementation": {
+            "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+            "path": "src/lib/sole-specialized-factory-20261119/cohort.ts",
+            "sha256": "c2ecd597587cae5ccd30739784fee035264b1688835525f3fffab2aaa9afff6f",
+            "bytes": 4352
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/advanced-math/catalog-final.ts",
+            "sha256": "dd4526c7417726e2ec607c0fa304a1d159afff3f8c60511ba44d88080d2237d4",
+            "bytes": 5110
+          }
+        },
+        {
+          "id": 162,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.monthly-recurring-revenue@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-1.ts",
+            "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c",
+            "bytes": 5888
+          }
+        },
+        {
+          "id": 163,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.annual-recurring-revenue@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-1.ts",
+            "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c",
+            "bytes": 5888
+          }
+        },
+        {
+          "id": 179,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.cash-runway@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-2.ts",
+            "sha256": "0fe5e0b1af5c8b509287338f630183d587394bc61d38ce3fa1444e1325d6c2f0",
+            "bytes": 5535
+          }
+        },
+        {
+          "id": 254,
+          "sourceVersion": "sole-verified-delivery-20261119.1/advanced-math.root-finder@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/advanced-math/catalog-batch-8.ts",
+            "sha256": "2ddc4c3dc3eba93c8f73480157646efe440adb8a4994db62c97ca0a5e979b9f8",
+            "bytes": 6576
+          }
+        },
+        {
+          "id": 493,
+          "sourceVersion": "sole-verified-delivery-20261119.1/earth-science.air-density@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/earth-science/catalog-batch-2.ts",
+            "sha256": "bc395d363a4564313798f487580145c4e5a94cf7dce3ea822290f5e14cd1c03f",
+            "bytes": 3927
+          }
+        }
+      ],
+      "priorEvidence": [],
+      "postIntegrationExecution": "BLOCKED_PENDING_OWNER_AND_CI_SAFETY_ATTESTATION",
+      "requiredHead": "NEW_CANDIDATE_EXACT_SHA_TO_BE_RECORDED",
+      "criteria": "Five required jobs and aggregate succeed with original deadlines at the exact candidate head. Retained isolated CI cannot satisfy this gate."
+    },
+    {
+      "testId": "I10-rollback",
+      "ids": [
+        326,
+        330,
+        509,
+        474,
+        458,
+        252,
+        162,
+        163,
+        179,
+        254,
+        493
+      ],
+      "sourceDependencies": [
+        {
+          "id": 326,
+          "sourceVersion": "sole-final-factory-20261119.1/physics.torque@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/physics/catalog-batch-3.ts",
+            "sha256": "b5c1870d729cbbd32db6eac439c7b6aa2b90f54c3677879bf0a05120a5f0faf6",
+            "bytes": 4930
+          }
+        },
+        {
+          "id": 330,
+          "sourceVersion": "sole-final-factory-20261119.1/chemistry.molecular-weight@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/chemistry/molecular-weight.ts",
+            "sha256": "a423344150d0042466ec7183c18cf7ff3b423d6dcb2f071cc7255d7943324772",
+            "bytes": 3376
+          }
+        },
+        {
+          "id": 509,
+          "sourceVersion": "sole-final-factory-20261119.1/travel.fuel-trip-cost@1",
+          "implementation": {
+            "commit": "5652d72c3c2b1f62c753658397d2df789aca067d",
+            "path": "src/lib/sole-final-factory-20261119/cohort.ts",
+            "sha256": "f78b5c01d48c47d42581d689ee5e456861ae95bcffed1a4c09227bb77b14beec",
+            "bytes": 4112
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/travel/catalog-batch-2.ts",
+            "sha256": "b3b7afaaaaa14e37159c4b08c9116bb33b2417925b455e069ae77d9569e950ab",
+            "bytes": 2729
+          }
+        },
+        {
+          "id": 474,
+          "sourceVersion": "sole-structured-factory-20261119.1/automotive.tire-size@1",
+          "implementation": {
+            "commit": "ffa3e485b903cbf8c7df95e4ee4216a1ac30927f",
+            "path": "src/lib/sole-structured-factory-20261119/cohort.ts",
+            "sha256": "fec0db3cf1f8c76f4940954cd4150947d39ba215206f073e12f776b776fc9eed",
+            "bytes": 5119
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/automotive/catalog-batch-3.ts",
+            "sha256": "96bb0a427eceaca0fb7d22fdf43fda9cdc694de4e711249f4fe94c42cf77c144",
+            "bytes": 6132
+          }
+        },
+        {
+          "id": 458,
+          "sourceVersion": "sole-specialized-factory-20261119.1/launch-fuel-cost-calculator@1",
+          "implementation": {
+            "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+            "path": "src/lib/sole-specialized-factory-20261119/cohort.ts",
+            "sha256": "c2ecd597587cae5ccd30739784fee035264b1688835525f3fffab2aaa9afff6f",
+            "bytes": 4352
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/launch-portfolio.ts",
+            "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f",
+            "bytes": 52072
+          }
+        },
+        {
+          "id": 252,
+          "sourceVersion": "sole-specialized-factory-20261119.1/advanced-math.function-plotter-3d@1",
+          "implementation": {
+            "commit": "19823b130982886f2d62a69d30caaf4be151831f",
+            "path": "src/lib/sole-specialized-factory-20261119/cohort.ts",
+            "sha256": "c2ecd597587cae5ccd30739784fee035264b1688835525f3fffab2aaa9afff6f",
+            "bytes": 4352
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/advanced-math/catalog-final.ts",
+            "sha256": "dd4526c7417726e2ec607c0fa304a1d159afff3f8c60511ba44d88080d2237d4",
+            "bytes": 5110
+          }
+        },
+        {
+          "id": 162,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.monthly-recurring-revenue@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-1.ts",
+            "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c",
+            "bytes": 5888
+          }
+        },
+        {
+          "id": 163,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.annual-recurring-revenue@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-1.ts",
+            "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c",
+            "bytes": 5888
+          }
+        },
+        {
+          "id": 179,
+          "sourceVersion": "sole-verified-delivery-20261119.1/business.cash-runway@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/business/catalog-batch-2.ts",
+            "sha256": "0fe5e0b1af5c8b509287338f630183d587394bc61d38ce3fa1444e1325d6c2f0",
+            "bytes": 5535
+          }
+        },
+        {
+          "id": 254,
+          "sourceVersion": "sole-verified-delivery-20261119.1/advanced-math.root-finder@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/advanced-math/catalog-batch-8.ts",
+            "sha256": "2ddc4c3dc3eba93c8f73480157646efe440adb8a4994db62c97ca0a5e979b9f8",
+            "bytes": 6576
+          }
+        },
+        {
+          "id": 493,
+          "sourceVersion": "sole-verified-delivery-20261119.1/earth-science.air-density@1",
+          "implementation": {
+            "commit": "5ff9d515af3cf4187087452e0e07ad8e607e7690",
+            "path": "src/lib/sole-verified-delivery-20261119/cohort.ts",
+            "sha256": "0e14da33cdac3f6a23955cd5119b2d22cb95745f06a1b20d8617ad74dd613082",
+            "bytes": 5325
+          },
+          "engine": {
+            "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+            "path": "src/calculators/earth-science/catalog-batch-2.ts",
+            "sha256": "bc395d363a4564313798f487580145c4e5a94cf7dce3ea822290f5e14cd1c03f",
+            "bytes": 3927
+          }
+        }
+      ],
+      "priorEvidence": [],
+      "postIntegrationExecution": "REQUIRED_IN_ISOLATION_AFTER_AUTHORIZATION",
+      "requiredHead": "NEW_CANDIDATE_EXACT_SHA_TO_BE_RECORDED",
+      "criteria": "Discard or revert candidate-only source; restore frozen file hashes, preserve historical refs and records, and verify replay, RLS, publication denial and absence of migration/hosted effects."
+    }
+  ],
+  "businessDependencies": [
+    {
+      "id": 326,
+      "engineId": "physics.torque",
+      "technicalVersion": 1,
+      "ownedScopes": "Isolated native owned history/scenario and current-member reader only",
+      "sharedProjects": "NOT_ADMITTED",
+      "api": "NOT_ADMITTED",
+      "embed": "NOT_ADMITTED",
+      "meteredJobs": "NOT_ADMITTED",
+      "webhook": "NOT_ADMITTED",
+      "necessaryForFirstSourceIntake": false,
+      "requirement": "Separate exact tuple/caller capability and applicability approval; preserve default denial and existing limits"
+    },
+    {
+      "id": 330,
+      "engineId": "chemistry.molecular-weight",
+      "technicalVersion": 1,
+      "ownedScopes": "Isolated native owned history/scenario and current-member reader only",
+      "sharedProjects": "NOT_ADMITTED",
+      "api": "NOT_ADMITTED",
+      "embed": "NOT_ADMITTED",
+      "meteredJobs": "NOT_ADMITTED",
+      "webhook": "NOT_ADMITTED",
+      "necessaryForFirstSourceIntake": false,
+      "requirement": "Separate exact tuple/caller capability and applicability approval; preserve default denial and existing limits"
+    },
+    {
+      "id": 509,
+      "engineId": "travel.fuel-trip-cost",
+      "technicalVersion": 1,
+      "ownedScopes": "Isolated native owned history/scenario and current-member reader only",
+      "sharedProjects": "NOT_ADMITTED",
+      "api": "NOT_ADMITTED",
+      "embed": "NOT_ADMITTED",
+      "meteredJobs": "NOT_ADMITTED",
+      "webhook": "NOT_ADMITTED",
+      "necessaryForFirstSourceIntake": false,
+      "requirement": "Separate exact tuple/caller capability and applicability approval; preserve default denial and existing limits"
+    },
+    {
+      "id": 474,
+      "engineId": "automotive.tire-size",
+      "technicalVersion": 1,
+      "ownedScopes": "Isolated native owned history/scenario and current-member reader only",
+      "sharedProjects": "NOT_ADMITTED",
+      "api": "NOT_ADMITTED",
+      "embed": "NOT_ADMITTED",
+      "meteredJobs": "NOT_ADMITTED",
+      "webhook": "NOT_ADMITTED",
+      "necessaryForFirstSourceIntake": false,
+      "requirement": "Separate exact tuple/caller capability and applicability approval; preserve default denial and existing limits"
+    },
+    {
+      "id": 458,
+      "engineId": "launch-fuel-cost-calculator",
+      "technicalVersion": 1,
+      "ownedScopes": "Isolated native owned history/scenario and current-member reader only",
+      "sharedProjects": "NOT_ADMITTED",
+      "api": "NOT_ADMITTED",
+      "embed": "NOT_ADMITTED",
+      "meteredJobs": "NOT_ADMITTED",
+      "webhook": "NOT_ADMITTED",
+      "necessaryForFirstSourceIntake": false,
+      "requirement": "Separate exact tuple/caller capability and applicability approval; preserve default denial and existing limits"
+    },
+    {
+      "id": 252,
+      "engineId": "advanced-math.function-plotter-3d",
+      "technicalVersion": 1,
+      "ownedScopes": "Isolated native owned history/scenario and current-member reader only",
+      "sharedProjects": "NOT_ADMITTED",
+      "api": "NOT_ADMITTED",
+      "embed": "NOT_ADMITTED",
+      "meteredJobs": "NOT_ADMITTED",
+      "webhook": "NOT_ADMITTED",
+      "necessaryForFirstSourceIntake": false,
+      "requirement": "Separate exact tuple/caller capability and applicability approval; preserve default denial and existing limits"
+    },
+    {
+      "id": 162,
+      "engineId": "business.monthly-recurring-revenue",
+      "technicalVersion": 1,
+      "ownedScopes": "Isolated native owned history/scenario and current-member reader only",
+      "sharedProjects": "NOT_ADMITTED",
+      "api": "NOT_ADMITTED",
+      "embed": "NOT_ADMITTED",
+      "meteredJobs": "NOT_ADMITTED",
+      "webhook": "NOT_ADMITTED",
+      "necessaryForFirstSourceIntake": false,
+      "requirement": "Separate exact tuple/caller capability and applicability approval; preserve default denial and existing limits"
+    },
+    {
+      "id": 163,
+      "engineId": "business.annual-recurring-revenue",
+      "technicalVersion": 1,
+      "ownedScopes": "Isolated native owned history/scenario and current-member reader only",
+      "sharedProjects": "NOT_ADMITTED",
+      "api": "NOT_ADMITTED",
+      "embed": "NOT_ADMITTED",
+      "meteredJobs": "NOT_ADMITTED",
+      "webhook": "NOT_ADMITTED",
+      "necessaryForFirstSourceIntake": false,
+      "requirement": "Separate exact tuple/caller capability and applicability approval; preserve default denial and existing limits"
+    },
+    {
+      "id": 179,
+      "engineId": "business.cash-runway",
+      "technicalVersion": 1,
+      "ownedScopes": "Isolated native owned history/scenario and current-member reader only",
+      "sharedProjects": "NOT_ADMITTED",
+      "api": "NOT_ADMITTED",
+      "embed": "NOT_ADMITTED",
+      "meteredJobs": "NOT_ADMITTED",
+      "webhook": "NOT_ADMITTED",
+      "necessaryForFirstSourceIntake": false,
+      "requirement": "Separate exact tuple/caller capability and applicability approval; preserve default denial and existing limits"
+    },
+    {
+      "id": 254,
+      "engineId": "advanced-math.root-finder",
+      "technicalVersion": 1,
+      "ownedScopes": "Isolated native owned history/scenario and current-member reader only",
+      "sharedProjects": "NOT_ADMITTED",
+      "api": "NOT_ADMITTED",
+      "embed": "NOT_ADMITTED",
+      "meteredJobs": "NOT_ADMITTED",
+      "webhook": "NOT_ADMITTED",
+      "necessaryForFirstSourceIntake": false,
+      "requirement": "Separate exact tuple/caller capability and applicability approval; preserve default denial and existing limits"
+    },
+    {
+      "id": 493,
+      "engineId": "earth-science.air-density",
+      "technicalVersion": 1,
+      "ownedScopes": "Isolated native owned history/scenario and current-member reader only",
+      "sharedProjects": "NOT_ADMITTED",
+      "api": "NOT_ADMITTED",
+      "embed": "NOT_ADMITTED",
+      "meteredJobs": "NOT_ADMITTED",
+      "webhook": "NOT_ADMITTED",
+      "necessaryForFirstSourceIntake": false,
+      "requirement": "Separate exact tuple/caller capability and applicability approval; preserve default denial and existing limits"
+    }
+  ]
+}
