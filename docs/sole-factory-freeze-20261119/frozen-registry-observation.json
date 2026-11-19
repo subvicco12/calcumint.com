@@ -1,0 +1,884 @@
+{
+  "kind": "observed-frozen-compiled-factory-registry",
+  "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+  "sourceSha256": {
+    "src/calculators/precision.ts": "139319afc73ef22c45dd46ef94b56b85f3442ed57b239cd6a0e59f92cd68643a",
+    "src/calculators/core/percentage.ts": "abb6d4dfce62afce867ceaa5ea209ec3f9f6ba885016ecd9b5aed452668b21cc",
+    "src/calculators/units.ts": "74e92b7afeb83f53e31e0eed710e5afecb8716df0735556c8fac229793d142ec",
+    "src/calculators/core/unit-conversion.ts": "b323d7311c94a07c3da809af6293e775cf97e634e7c5f352fad0710a7a7e174a",
+    "src/calculators/finance/compound-interest-independent-goldens.ts": "636f1be17ad0b4597ec0a05cfe0d6f558575cb2b8ebd49a531a80366cbc7bdd8",
+    "src/calculators/finance/compound-interest.ts": "7c948d1deec2565b9386f9978f1ef6f81c33993354065e9d8a393aeb5cf28b8d",
+    "src/calculators/finance/debt-aggregate-independent-goldens.ts": "b430852558318dc73083fdb8acf62fb5e2f7e7c54e98b35f0cf1a188d5303109",
+    "src/calculators/finance/loan-payment.ts": "c4347c6d8d5cc7ea7d95bc2eda914a3f9eb4faba37f373d4be521f71dd2923f5",
+    "src/calculators/finance/mortgage.ts": "8f4c7b87637df8e401582493a7ae3ec94b9a252ac08bee0cce00f825bb5d21bd",
+    "src/calculators/finance/debt-payoff-independent-goldens.ts": "a71ef994534e2ffa35c2d4bba721ddf2b39e67674f69fdf340fb9d944faa7277",
+    "src/calculators/finance/loan-analysis.ts": "92d37f5d5219b794d4dde2fa48d77a605fa344501964ae853549981ff81746ef",
+    "src/calculators/finance/loan-refinance.ts": "c056bacfc51a189210880dd3569ffd88b15f72293a66ebd2e48bcad3748e11fd",
+    "src/calculators/finance/loan-prepayment.ts": "94c613d8333db7459df1718baae2c93b6f417938168fccb4e20451164d8f3a29",
+    "src/calculators/finance/loan-comparison.ts": "346a180bfa3b146de75a6787627ea6e1ae39d7963242e277a791aabcf7c0868c",
+    "src/calculators/finance/loan-affordability.ts": "66da8c1e94eb65c63c2d3e98a0c64b3390f5791394ef1ad8ba263602599dcb36",
+    "src/calculators/finance/debt-payoff.ts": "8d3a06f4ccf4368699afe331b049904fcbf30006ac8ffded0635315b377259b9",
+    "src/calculators/finance/credit-card-payoff.ts": "d593379c7972731b19ef6870a21abf7933550d0164b53b5de818d71128c01cbc",
+    "src/calculators/finance/term-deposit-independent-goldens.ts": "d911da3e25dddddf2f86bb999bc1ab9c640575fcad086687bbe2acc1e4fc7277",
+    "src/calculators/finance/term-deposit.ts": "5d5667156843d9a8a64ee63bf4d6d9143f4ecf8a1ab1d1b78a32559732b2feef",
+    "src/calculators/finance/recurring-deposit-independent-goldens.ts": "d94577bbe27131fa1464dbecb971284755c42b6864c3fca5bb3d3b18e02a510d",
+    "src/calculators/finance/recurring-deposit.ts": "1e0a39d9c34a8d814b2962b009f08ee9b61de65753aaf1e8f72477b5613d7e1e",
+    "src/calculators/finance/sip-independent-goldens.ts": "a8ebbac118762b2860d137cb4282f508b510c34912486c8d7082ad365b297a89",
+    "src/calculators/finance/sip.ts": "d829448f8d9fa930b5744dcf0128e7ea5e7139c2306e23df83cf622ce134310a",
+    "src/calculators/finance/investment-cashflow-independent-goldens.ts": "91fedaf53ad6b4ad059fee5751f0820120bce453ec965d773ab4e0cb416d337f",
+    "src/calculators/finance/step-up-sip.ts": "48409de2f3903a7022d26055f3bf7e6a2060b4901ff645dad60a5fd9d1e0e1f6",
+    "src/calculators/finance/investment-math.ts": "a16d2dc25d157c6253741d45bd1168ed63331835303e1e73cc260abdf365079e",
+    "src/calculators/finance/swp.ts": "05c71cdb936b1b564b4a225e650739b2d1c1b36344fbf12aa4dec2793ffc1092",
+    "src/calculators/finance/planning-independent-goldens.ts": "5bf99dbe2cb5509ec95bbd03b9e992f5eed146228b7f5b3f5054100695cfb34d",
+    "src/calculators/finance/rate-conversion.ts": "6e157a83c6344e7c6b709e9174c1fdf6d81bac5587b855d195ca11780d3e9608",
+    "src/calculators/finance/savings-goal.ts": "9edbe2a841d15318a22917e1c8f27739951c7d926740070825c2dceb0439d7ea",
+    "src/calculators/finance/roi.ts": "33b13a26a7539dbeac88a2aa764488520ee357787b66fed6c4effd5a7476c2c2",
+    "src/calculators/finance/net-worth.ts": "707072aa5877103f6d018ae6e00dc2ca05e4f7a18c6cf48dbd91fbd5b6387b57",
+    "src/calculators/finance/inflation.ts": "49c39abe7dbf306efe32fdeb38201e99b0602bf3111a791c883a816ff1bfa839",
+    "src/calculators/finance/simple-interest-independent-goldens.ts": "e7380cbb67f037566961e3ca278a4194c9b26dc9aec3a128ea90a08b4ec44036",
+    "src/calculators/finance/simple-interest.ts": "602ea32c413f5ed632bb697b4f1583aaa70f4ebe68fadf6a6dac0ae5ef82c773",
+    "src/calculators/finance/emergency-fund.ts": "8d23710209a00cb34bd5ef07d6f101a44ff0606bb8068c87ac5666b5d8fe944f",
+    "data/verification/codex-a-standard-risk-goldens-2026-10-15.json": "e5a9b33a487bfa5c083dffd45bb039df459393b1a46a11346d000e11ca1c1ec6",
+    "src/calculators/decimal-fraction-goldens.ts": "29a5f87e07817fed990d1efa116b4daf1c06b3c91bd00114eee15e6dde406bc5",
+    "src/calculators/launch-portfolio.ts": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f",
+    "src/calculators/health/bmi.ts": "e2597d2b3db50ce3a17c55d558f2b1f64ae48ce49a3815ee0c717127ee1105d6",
+    "src/calculators/health/catalog-batch-1.ts": "9ba383a5ebef9a107250c330c7697911c6b0fcf0ecc037455606351b0b43c9d4",
+    "src/calculators/health/catalog-batch-2.ts": "33832771a7fa59c471a73600c742c0dfae79b8ce9b258aa56c7ecfe17fe52a56",
+    "src/calculators/business/break-even.ts": "7f9cc4da38039323d768d4576c3054d151706aaf4c3734d1f0fe2045754ec5f9",
+    "src/calculators/business/catalog-batch-1.ts": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c",
+    "src/calculators/business/catalog-batch-2.ts": "0fe5e0b1af5c8b509287338f630183d587394bc61d38ce3fa1444e1325d6c2f0",
+    "src/calculators/energy/catalog-batch-1.ts": "43eab5317a4a9d92975d5a747d3c99f7105cbffc7f747d9909a3cd91f076fe48",
+    "src/calculators/energy/catalog-batch-2.ts": "1eaba45a2f79407ad7828a98089d7b4c2d8ad5197fcb1b71138a3fc549366b67",
+    "src/calculators/energy/catalog-batch-3.ts": "2a7cd952c5e0ed4619ec5fa254efc0d94e2d15ae94dc42d6adf972932f3e3ea0",
+    "src/calculators/automotive/catalog-batch-1.ts": "4826a3f6f02ca1beaec234c46d727c544e8d2f0c1f8c5767cd244c97764e7bd1",
+    "src/calculators/automotive/catalog-batch-2.ts": "6b0463fd727ee335e73a9ef87193d38e2cbd222d57e6b641860d848eedf48632",
+    "src/calculators/automotive/catalog-batch-3.ts": "96bb0a427eceaca0fb7d22fdf43fda9cdc694de4e711249f4fe94c42cf77c144",
+    "src/calculators/food/catalog-batch-1.ts": "46244d45761804666c6fc760d09a9a1465e1826112bc39aa4c27b94faf44b2b7",
+    "src/calculators/food/catalog-batch-2.ts": "5ad8babfdb2f307f0057ba2683e8c1459a7b422fb780f6c0cb37cd26b3d12740",
+    "src/calculators/food/catalog-batch-3.ts": "d3deb7587f49b53721bc4a0d9aa47a0fae91185208d729516723c95361fb8c99",
+    "src/calculators/advanced-math/catalog-batch-5.ts": "e98001a65ed437da15dab7eaec36deef4b41d0d700ccc5a8c66a42f66b73679a",
+    "src/calculators/advanced-math/catalog-batch-6.ts": "22b299e5a083fe842b26ac266fc0c7cd8489ea1161f118fc573cd8d145a97780",
+    "src/calculators/advanced-math/catalog-batch-7.ts": "f904cd5773c1af7a309d3eec309e187d382e959312dcf42ab55d1b7d57a51583",
+    "src/calculators/advanced-math/catalog-batch-8.ts": "2ddc4c3dc3eba93c8f73480157646efe440adb8a4994db62c97ca0a5e979b9f8",
+    "src/calculators/advanced-math/expression-engine.ts": "52af6dda5267eeeeb34830776a054e1ad1e5051560e99f2483bd7879bedf3d24",
+    "src/calculators/advanced-math/numerical-calculus.ts": "e520eef484e8e9ac0da8205ac31141897ba202c7dd6de527176dfee096820555",
+    "src/calculators/advanced-math/catalog-batch-9.ts": "37e07d82438874849d13ec95a19ea2acc9d7b542aabe94a72de0c276eac5f855",
+    "src/calculators/advanced-math/graph-example-fixtures.ts": "c1e5490bf9fd7da179e5138d687f25938370481ea58a40753fd4413e606cd666",
+    "src/calculators/advanced-math/catalog-batch-10.ts": "78370a3240b98b4339d88fdaa95cf57ff963f7b780b0956d6fc541909a0f93de",
+    "src/calculators/advanced-math/catalog-final.ts": "dd4526c7417726e2ec607c0fa304a1d159afff3f8c60511ba44d88080d2237d4",
+    "src/calculators/geometry/catalog-completion.ts": "784b527d4380facf78f20092642a70001e83c259d1916f78af44e996a3d344ff",
+    "src/calculators/statistics/catalog-batch-1.ts": "172db736ce7c991e0b11cf99612578d7c25374bda0f95e009167e9fa887ba52f",
+    "src/calculators/statistics/catalog-batch-2.ts": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f",
+    "src/calculators/statistics/catalog-batch-3.ts": "41df470fd871e6fd1779035805c1b96cb120c91aff7a3cce40bc7628e3c3dd8e",
+    "src/calculators/statistics/catalog-batch-4.ts": "b5f186fbbbeed527bf7f2734a3b53e02d2fcd2113fcef1b71092ef6d520e35f9",
+    "src/calculators/physics/catalog-batch-1.ts": "c3e93d1e67efe9a5a36316b8bc4c46d72ea131bb01fa8ddc058d6e4daf5f8432",
+    "src/calculators/physics/catalog-batch-2.ts": "9616404307a9e0bcf5cd3678c2720288e514a00c8faf79bdb3ef1af8845e036d",
+    "src/calculators/physics/catalog-batch-3.ts": "b5c1870d729cbbd32db6eac439c7b6aa2b90f54c3677879bf0a05120a5f0faf6",
+    "src/calculators/physics/catalog-batch-4.ts": "ad1d13a5809b551edf42ed7a5b1bcccb9d51ec69cd18cc6354ddbc2891be26da",
+    "src/calculators/physics/catalog-batch-5.ts": "65365cfb3fddccd06e69f8afdcbf796eeea1b9c97502c15f407bef07bb17e7ed",
+    "src/calculators/chemistry/molecular-weight.ts": "a423344150d0042466ec7183c18cf7ff3b423d6dcb2f071cc7255d7943324772",
+    "src/calculators/chemistry/catalog-batch-1.ts": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e",
+    "src/calculators/engineering-construction/catalog-batch-1.ts": "5fffb904e82954a759e33f228e14fddf7a2d84a85845b20a946ff05cb3faaa1a",
+    "src/calculators/engineering-construction/catalog-batch-2.ts": "ec16883a8b9a7c9766fa7eb67e13f441a80993da0eef811f475e696ad254f36b",
+    "src/calculators/engineering-construction/catalog-batch-3.ts": "c771e0b347e2150fa4144e0b1e1e11eb8d009eb0887dcc5eb35e53e1fe849c92",
+    "src/calculators/technology-computing/catalog-batch-1.ts": "31f347fc286cc0b22cd888b9f53719e4733ffa17ab8323aa4f6dc5bc497079f6",
+    "src/calculators/technology-computing/catalog-batch-2.ts": "d352f40f8aef2cbd22afd8c09e577f28fc4eda1b925a928ec65c1ea25f4393d7",
+    "src/calculators/technology-computing/catalog-batch-3.ts": "87794ca04801ddcff1b68ec740d0b5df16346d415aca6a041a07a9dc7615cd5f",
+    "src/calculators/astronomy/catalog-batch-1.ts": "f4b488471dd6e09e520c18c1dd09172974c6cacf629f2dddf811b0a16c4fe578",
+    "src/calculators/astronomy/catalog-batch-2.ts": "c48e38f86ae73fd65bdc88a53477abefa3d46c71fa24f72ddcdaf15564efd060",
+    "src/calculators/biology/catalog-batch-1.ts": "fa857a72b5aaa6e9cddcd1b29eaba332f376a57096aa93758dfc56ba385e4e41",
+    "src/calculators/biology/catalog-batch-2.ts": "779521e1f846f7909ab2a956a3278a3795c5d175996f6ac36777fdaaa2217545",
+    "src/calculators/biology/catalog-batch-3.ts": "e689dbd9af8c05efd65beec6c7105db3a1813b46d397e92c383523755026b3f1",
+    "src/calculators/biology/catalog-batch-4.ts": "8966fbcbaa70951ac309f6311dafaaf2bc4f8382f8fbdb6ae00c701a9b17ef0b",
+    "src/calculators/biology/catalog-batch-5.ts": "550fa7010e4c2387b3b4df70b3427cf9b0e75948583839baf354ae20a6214ba4",
+    "src/calculators/biology/catalog-batch-6.ts": "176aaa874707d02609dc6ad65d2e576e9ab4cc3a58339735f82cb6c9b33d1789",
+    "src/calculators/biology/catalog-batch-7.ts": "d2cfeb025471e82881a5a16e30d6cdbe05740898088b1b4af2e648096506dca7",
+    "src/calculators/biology/catalog-batch-8.ts": "f913c7dbbf7621781913fd963521dcee71e97d9cab124cae90c47659b6c6847c",
+    "src/calculators/biology/catalog-batch-9.ts": "6e670ab5c4ec140f0119a1fff345f9d7ced192d2af47ab51027134cac9704ab8",
+    "src/calculators/biology/catalog-batch-10.ts": "c7b339db13c5776937bb880a4ae8af1417306f3b84cfa35b1f59e4e9151c2da4",
+    "src/calculators/earth-science/catalog-batch-1.ts": "65b3ecdb748ac4dc042d98be0f413d7e5fbdab7378a73a8573848ed7cc641220",
+    "src/calculators/earth-science/catalog-batch-2.ts": "bc395d363a4564313798f487580145c4e5a94cf7dce3ea822290f5e14cd1c03f",
+    "src/calculators/earth-science/catalog-batch-3.ts": "1aca52fae468bc5279cd7fb4f1c09806f48000c8582a4da091068bc2a60a0f0c",
+    "src/calculators/engineering/fluid-mechanics-batch-1.ts": "9bd48e8dd909c9faf6c69dbb81803eed1944c75ca0b980acc8984bb942fd5ded",
+    "src/calculators/engineering/fluid-mechanics-batch-2.ts": "660b4dfa005344b24225c402e07272c7d90e4a8f107cb8421b2331281c7af022",
+    "src/calculators/engineering/fluid-mechanics-batch-3.ts": "725deec938a52e1e32f6cd95013a0c88183271fc9a9766d400060ac481a4b9a5",
+    "src/calculators/engineering/material-mechanics-batch-1.ts": "dc0a78ed532732f487aacdd31ef0b7d36257b5759374522f92c5f4fbdf4c3ae6",
+    "src/calculators/engineering/material-mechanics-batch-2.ts": "8b535e4963599c320b286829e34c04aef55b21fc3eedbfdb4809fecbd2cb70a5",
+    "src/calculators/engineering/material-mechanics-batch-3.ts": "3607db69dd8720960876b256ad00957a3abb472fcb2d7b732f0e77d3e23495a4",
+    "src/calculators/engineering/material-mechanics-batch-4.ts": "9a7d38b8bf1f745ff9e893616ba6bcd29e01eade173fd081b61861e976db13a3",
+    "src/calculators/engineering/material-mechanics-batch-5.ts": "8240dc739a79259b953968c14edc8cb7dc29ba62ae6458fc7054427e8f056d03",
+    "src/calculators/engineering/structural-mechanics-batch-1.ts": "bb17f0e5653cd51bc35fbf12b6b5d7ebab791316d8dd50c5ea452b89547fc19d",
+    "src/calculators/engineering/structural-mechanics-batch-2.ts": "92f9e83ad926376cd53a657632700ac23a5eb98d5f07373e2540905cf616ea3e",
+    "src/calculators/engineering/structural-mechanics-batch-3.ts": "345cec23cafd85385f59318278da6f1bbc945fc25a7032633f0394cd0dc0d9d3",
+    "src/calculators/engineering/structural-mechanics-batch-4.ts": "8e452e2c2523375b165f093ec54146cd7c7eab0d24b6505248a1a42078cf6488",
+    "src/calculators/engineering/section-properties-batch-1.ts": "5a6f5f46a22ff20cfcf8a74ad1c9f2a7f756ed1e00871ece029a1d630f9fdda6",
+    "src/calculators/engineering/section-properties-batch-2.ts": "3604ce9adcc57a4786a5d7f8b9c813621c299458d2d7f893bdd0bd03213fcbcd",
+    "src/calculators/geometry/geometry-batch-1.ts": "62385ab4198d720da8e473a80a8e4a7eca513b7e1fd3e1e6b203a033fa22f340",
+    "src/calculators/geometry/geometry-batch-2.ts": "5e63745210af76229b44f582cb6a115941c7bd5d9e1b89fb13ac5e889513c549",
+    "src/calculators/geometry/geometry-batch-3.ts": "fd339ae67994186739fc699758a23438f45b0d1871e502c06eecdaa898c209ba",
+    "src/calculators/geometry/geometry-batch-4.ts": "d5821b14e63d82f173d6c35130497b33813630aeb740919e4c5ef7e8fe472536",
+    "src/calculators/geometry/geometry-batch-5.ts": "cbf468d4ff6e92ad68440f7a5690019ec6081c9ae3f4a57a5747ca8baa370feb",
+    "src/calculators/numeric/exact-positive-product.ts": "6c7be9dc65ee41126b7e26112f46fe9fd762c9245f07f7ddd22ec9e199da1958",
+    "src/calculators/geometry/solid-geometry-batch-1.ts": "49560119c7f2cb1b92a8901315d8c75cdd22e0b447d4369afac804c7d42ddeee",
+    "src/calculators/geometry/solid-geometry-batch-2.ts": "706b5f85dfde3ecee7a8c3c5fc3cd1e126aaf324f8d79b263b53a20ac07a00f7",
+    "src/calculators/geometry/solid-geometry-batch-3.ts": "93e9da5c19eb47a80551b6d7f07ac4e11b0fd3adb0765b46cd0694c6c424ada0",
+    "src/calculators/geometry/solid-geometry-batch-4.ts": "06d7a130edbf28d191ce8fbb6fd3f8bf4ee08d55362c0978416392097d0cfe7c",
+    "src/calculators/geometry/solid-geometry-batch-5.ts": "c385851797bd77a8cadcb9b879a1acc15ff5b2b4afa46a07fafe37ad5db08df9",
+    "src/calculators/geometry/solid-geometry-batch-6.ts": "09bea83526af631c0b323e2846a2c31a42aef5474820995daf25eda72f1cf8c8",
+    "src/calculators/geometry/solid-geometry-batch-7.ts": "f03cc9143366a4cac73ff6eb98ee42f2f970e5969363a82b6365619f7b4d4add",
+    "src/calculators/geometry/solid-geometry-batch-8.ts": "99fd6e08e2a7754cde556e82158752e5cb840d1387fc94e57f0394db6d7f416f",
+    "src/calculators/geometry/solid-geometry-batch-9.ts": "904f9c1ddf10640d1be880c22844cdcd1f6a7f8cdddd6790638ee436ad0ca210",
+    "src/calculators/geometry/solid-geometry-batch-10.ts": "d131c41863321bdada3278d42b95f943559bedf82e06b35a8370ef2ff79b56d6",
+    "src/calculators/conversion/catalog-batch-1.ts": "e4c01d7544568d9ce3900b54b50895d3212824ec5ec6dbfcf3e49c92bb014da9",
+    "src/calculators/conversion/catalog-batch-2.ts": "8c8021714b27b2399ea4d27a6bec595e446426ca2e6ad846815e60a9a5b35467",
+    "src/calculators/conversion/catalog-batch-3.ts": "8605a98cbc051450fbd71089d77f174f961ea56d5ee6b743e38c8a473b87c165",
+    "src/calculators/conversion/catalog-batch-4.ts": "4358ecb067e980b3f7070f470eaba300f95ca9025046297fa9bd6ddc95034883",
+    "src/calculators/date-time/catalog-batch-1.ts": "401d8eee881a349686bda1d26a05dd5cc594d93223f9a5597687705b70ee5c26",
+    "src/calculators/date-time/catalog-batch-2.ts": "35797f610a32d13b76c2ea9115608c9d3b163cfa1ed11c319f615f3b3af3c63a",
+    "src/calculators/date-time/catalog-batch-3.ts": "bcce15de3064a8bf0bf153147593398a9e160709bea680be96aebac6796ed268",
+    "src/calculators/date-time/catalog-batch-4.ts": "915d97086aff8dc1402e6aa99c561ea36d867b439eb806d27692ccccc4855169",
+    "src/calculators/travel/catalog-batch-2.ts": "b3b7afaaaaa14e37159c4b08c9116bb33b2417925b455e069ae77d9569e950ab",
+    "src/calculators/travel/catalog-batch-1.ts": "f2e7adc8729f0a28feaf615f18b7f9c56bb4db8a7f5f2ccd0b414d04a743cfee",
+    "src/calculators/sports/catalog-batch-1.ts": "9b00fb4013c05f359657b95dd129cc272197e6e62cfc1d8c7580e80a4668f284",
+    "src/calculators/travel/catalog-batch-3.ts": "39ef5f34eb37931fdb2ec9e8e28c567191df073f628857c767452447b388c6c8",
+    "src/calculators/registry.ts": "acfe4a797d5f28c146cacbd0f5d33e9f87192f54f716d7090683b626a8b7eeb5",
+    "src/lib/calculation-snapshot.ts": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c",
+    "src/lib/publication-factory-contracts-input.ts": "d0c5d00cc0c5d024420f11f21c27534f5b38dc681cbd53d22e750eb4a8dd281f",
+    "src/lib/final-private-snapshot-text.ts": "f23931b6e7f8ad3d8236b0e23bdf275bb521f9e3cac103cdaf2114249df106e2",
+    "src/calculators/types.ts": "a8b9a16ab7d9c63e3918ae93587aace30c5d322a006226cce3d945022ba8b2d8",
+    "src/calculators/engine.ts": "41da900c997cdf101aa4d45d336d6319772ddddd0f254c24cb413ff3553b67c6",
+    "data/catalog/source-driven-2026-10-27/engineering-register.json": "5eb13eef4484fb708bb61e85b8ec9b6353e439489f35c97f328ed15b42dd0205",
+    "src/calculators/exact-rational.ts": "cccb4e1366200c799eb82f3542d4f90ecfc0341d8678db29f93d347f39af806a",
+    "src/calculators/completion-math.ts": "2069c86d5ef7d994664037b01c719a5764f84ec4624f090c4a9478d03233b0ed",
+    "src/calculators/retirement-contracts.ts": "87097a3cef9495f9dd699ab4afeae57de353ad5e18e73a5d5d0ed69b91709ec9",
+    "src/calculators/accounting-completion-contracts.ts": "f934a60876029aac97d282818a32c28b2109669484cdb111df4e7196cbc04242",
+    "src/calculators/completion-contracts.ts": "86a3ee18faee1a951c6d43b63762b9158497e2885fdde83bb9e310a80c1730aa",
+    "src/lib/scenario-display-metadata.ts": "6eb96f8a21f938f7cd97c0f011b1f67461da47c95203fcf625821da86a76508e",
+    "src/lib/frequency-presentation.ts": "b9c0015f7a6ca30426c2963a10384c05cc99b3cd5d08dc1d1782af48ddfabb05",
+    "src/lib/pdf-font/dejavu-mono.ts": "5b610525088da893e7fe35c71289623b2698a1a8ef5641b4bf9258a308029c4b",
+    "src/lib/calculation-export-pdf.ts": "4ef6c414166bf89414b70dab1750611e4a3daf4f6a483c82d2b572b2ea117958",
+    "src/lib/calculation-export.ts": "97992314804275537dd23de65fff89376d4883b644ad2619cdc266b07f31c1d6",
+    "src/lib/scenario-set.ts": "e5802bc5f55ed08929923ad7243634a9c009111ffe09f42de75ab6feb7130502",
+    "src/lib/entitlements.ts": "16227499beb299e6cf02c2f8485b5804294c97e4da446ac7934b55aedbd1f731",
+    "src/lib/calculator-factory/workflows.ts": "fd85e9a03a46aeea2149a08bdc70553779a72f9470c7a1949a4914692d4fb833",
+    "src/lib/recorded-json-equality.ts": "59fda934bec9e573c970d5a451b3d3e3ba14292838a9c6544cafbd10e71f0fcc",
+    "src/lib/registered-input-successor.ts": "509826a3de1c3cf91afcf992ebed422019bfc489fd387f250f6706ea18ad28d9",
+    "src/lib/worker1-statistics-a-20261117/cohort.ts": "5ff24425886e2b76d639534bd42978df0107a0bfe27e81dbf5f263601ea29c5a",
+    "src/lib/worker2-statistics-b-20261117/cohort.ts": "673f43c39e18da66afc7fdb414f856c0a633e188d71b8116dccd49a0b0e4fcab",
+    "src/lib/statistics-integration-20261117/cohort.ts": "fffae61f40c1b863a04763ecdbe5b01f617ff83ad451835d658efbedeeb4d680",
+    "src/calculators/final-framework/concrete-adapter.ts": "f975f4c6daf7f45c3c11aba7895b9c97398c09a8abc727057699fbdfa04e81cd",
+    "src/calculators/final-framework/square-footage-adapter.ts": "bddb882911053a0e9d5b543594d3e8ff1fb2c6ccbd6dd8d4c91fc845770d4dda",
+    "src/calculators/final-framework/flooring-adapter.ts": "395fc672a7c14f5bf6def36712185451bf854ebae8777ffd89c91e5c9b69c395",
+    "src/calculators/final-framework/lumber-adapter.ts": "5fa450e272482d9929b4f6e56bf2c595e06a615d3226a9c8708ac0c8662ac1e4",
+    "src/lib/worker1-construction-20261116/cohort.ts": "33e804da40b59fa3469cbd47cb6d937e114345e18142b46a022269e9a4618e67",
+    "src/lib/calculator-factory/completion/scoped-engineering-metadata.ts": "775f343f4ab27930ddc52e0b34108e600177e0c7a0df6e268ac1050ad2f999dc",
+    "src/lib/calculator-factory/completion/next-engineering-core.ts": "b50db1e836a0a0858281005dc384cf312ea7fba117a14257020cc962e1ce33ec",
+    "src/lib/calculator-factory/completion/next-engineering-statistics-a.ts": "3fcbab24b57ff249d77477370ae4dca301e729245ef2591e01719b34962eb755",
+    "src/lib/calculator-factory/completion/next-engineering-statistics-b.ts": "3ac2447f87852d50ba76f51aa852964116fab7a9cf7e3269df932d35e0204b5b",
+    "src/lib/calculator-factory/completion/next-engineering-chemistry-a.ts": "d03e9bb0c3a59f5b232b68ffea3205297a07c49b0016fae1b04bf0b9d9ded37a",
+    "src/lib/calculator-factory/completion/next-engineering-chemistry-b.ts": "835435adab7b7c2caab0c8e045e041f94009d779cfe4a59d9d99717502444580",
+    "src/lib/calculator-factory/completion/next-engineering.ts": "82ba8f13c54e165b2a4d56420a7e65df4d99da453329f7040cff7d162cea1ad4",
+    "src/lib/calculator-factory/completion/math-next100.ts": "8d9a40dccb383f9e4ff3898bb8cec3bcd422444485893005ee021d6745631599",
+    "src/lib/calculator-factory/completion/geometry-next100.ts": "14c87d6620be3acbe8177444759f3cb6648634181b5ec1f52cc01804f5c92a35",
+    "src/lib/calculator-factory/completion/science-next100.ts": "98f992fa52442c19813b87e62c51bfd51b98a8aaf8efdcd984c6a2a92c58acd3",
+    "src/lib/calculator-factory/completion/math-next.ts": "1c30d83f9e82ca111feb129dae95c27b39e5f1902e5aed81f293abc557ba8201",
+    "src/lib/publication20/conversions.ts": "33294ef227aa6e4a4a14f4282dcda1834a03396e62c6a0dbc5d4fb932472ec8c",
+    "src/calculators/core/draft-exact-decimal.ts": "b84e48d133781af98c4dafda12d7ed94ff77ef1b042745c1291b5b4ed90bd097",
+    "src/calculators/conversion/draft-master-435.ts": "657246a8a64e6f017729677d6d66a544eaeaaac6c6df42910776cc7f5776f7d3",
+    "src/calculators/conversion/draft-master-441.ts": "c54b69c7e3b20dcaabaced2ba5d16faa085a5db4da23b030928bb9e08f76d944",
+    "src/lib/calculator-factory/completion/conversion-contracts.ts": "4b92e748f570d9a8502137687bb332b34f60d0a74a7c95da5f809938ff969fdf",
+    "src/lib/calculator-factory/completion/conversion-next.ts": "5897a8e0ac464df7cc715fe50018644e8729f4a98d12b1dd68437ae5f7855350",
+    "src/lib/calculator-factory/cohorts/basic-math.ts": "f3cc211b284db9964dd13784fe7bf0a42d2a8b310a0924f30128a0711f622d39",
+    "src/lib/publication20/result-trust.ts": "c1e21a0f680f4245424c1542fa59012b9d83347ef4da3e1309b4b61eba6cbbd9",
+    "src/lib/cooking-snapshot-verification.ts": "a3591c9ece41e7fb6bccf2756dca8e025fe06d5c41683c8ca9db3478dd2a3170",
+    "src/lib/technology-snapshot-verification.ts": "276ad7ee37203fa90b65571a3bab1b3dde271f13c1f323a1e8d330a6bab9e521",
+    "src/lib/launch-snapshot-verification.ts": "1418dcda1a71424f34062787ad62bb716e1e96d24fc18d3b45de834affcd196f",
+    "src/lib/batch22-physics-replay.ts": "97c42822733670f5a215fa5ce51ef929ae1b902ec163d3ec676aa43586d1ef43",
+    "src/lib/batch21-snapshot-replay.ts": "bbdfd0512ed1b790753c62e01e287bc7d648729179b39bf1182d387845cdcef8",
+    "src/lib/publication20/network.ts": "18ba9ac37cdb9f2634388bde49cff591186e9ed48160aacf340fb19a75432976",
+    "src/lib/publication20/index.ts": "b6b25b6307770a8a3185fe5b72366bdb139d31d33aa7b82a850e7deeab0afd0e",
+    "src/calculators/final-framework/analysis.ts": "225af2ddbba2bb3aa3f571acc8e4a8eb263f6b553e25fbc7db3bf69254185013",
+    "src/calculators/final-framework/adapters.ts": "f4749489bbc133a9bb7ca4a89e1dff5809ec2d760979dea833473e10ffc2bfc7",
+    "src/calculators/final-framework/investment-periods.ts": "d2cfb48822b17ca40c91a35578f53e5c4cb31f8ae1a4e30cbcec6aecca331eba",
+    "src/calculators/final-framework/registered-rate-analysis.ts": "97cebcf2a1efb21369667d5a2e5aea016bd63e5af05a4b3374a13a82b82295bc",
+    "src/calculators/final-framework/mortgage-rate-analysis.ts": "250c05582df44869d3ec103339774465f61e35a7b649e6f13d6ae01a37605a7e",
+    "src/lib/registered-snapshot-replay.ts": "4d6a168ff5072e1ad0f2cfb051a69750d6a2fb0f360164038597fb24ed0128d6",
+    "src/lib/science-worker-c-snapshot-verification.ts": "061c0b884ccbc6653c1760d78cfbf0ec5997d33e5ed609d3845f40de8a6d11e6",
+    "src/lib/surface-area-snapshot-verification.ts": "41dc30b33754f903bdd7a05c8663b36140ed42707868c148ed8afeced5872f9a",
+    "src/lib/technology-cidr-snapshot-verification.ts": "d045b50ed69dd3c906a7d7a622f9df63630e56860812c676b3869eccc6a7aec9",
+    "src/lib/registered-snapshot-verification.ts": "0e78c4a09091df92e0d0f53fd8604f3fd81c1d847129816dc68be562144d7acd",
+    "src/lib/calculator-factory/cohorts/conversions.ts": "214ed4ab94d6b86e4f5693c0d32d95d41154bb0285c4bda61e7ba6042e72b95b",
+    "src/lib/calculator-factory/experimental/physics-scaled.ts": "744a6d0b6134f01ff66ec9ca8ffdb4a4b8ea73f4745c01a0df79e8426441fc74",
+    "src/lib/calculator-factory/cohorts/physics.ts": "81a4fc21cd9a790b33922f6624dcc76f2da9ed53cc7b8c9aa2dd96f66bc7ba95",
+    "src/lib/calculator-factory/registry.ts": "0c3fb8891a4b5f43f13bce55c909426a227b031eca51f270fe3c8f8177780757"
+  },
+  "registeredCount": 574,
+  "factory": [
+    {
+      "catalogId": 208,
+      "engineId": "launch-percentage-change-calculator",
+      "slug": "percentage-change-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 209,
+      "engineId": "launch-percentage-increase-calculator",
+      "slug": "percentage-increase-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 210,
+      "engineId": "launch-percentage-decrease-calculator",
+      "slug": "percentage-decrease-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 211,
+      "engineId": "launch-ratio-calculator",
+      "slug": "ratio-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 212,
+      "engineId": "launch-proportion-calculator",
+      "slug": "proportion-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 215,
+      "engineId": "launch-fraction-to-decimal-calculator",
+      "slug": "fraction-to-decimal-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 216,
+      "engineId": "launch-average-two-numbers-calculator",
+      "slug": "average-two-numbers-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 218,
+      "engineId": "launch-square-calculator",
+      "slug": "square-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 219,
+      "engineId": "launch-cube-calculator",
+      "slug": "cube-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 220,
+      "engineId": "launch-square-root-calculator",
+      "slug": "square-root-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 423,
+      "engineId": "conversion.length",
+      "slug": "length-converter",
+      "version": 1
+    },
+    {
+      "catalogId": 424,
+      "engineId": "conversion.area",
+      "slug": "area-converter",
+      "version": 1
+    },
+    {
+      "catalogId": 425,
+      "engineId": "conversion.volume",
+      "slug": "volume-converter",
+      "version": 1
+    },
+    {
+      "catalogId": 427,
+      "engineId": "conversion.temperature",
+      "slug": "temperature-converter",
+      "version": 1
+    },
+    {
+      "catalogId": 428,
+      "engineId": "conversion.speed",
+      "slug": "speed-converter",
+      "version": 1
+    },
+    {
+      "catalogId": 430,
+      "engineId": "conversion.energy",
+      "slug": "energy-converter",
+      "version": 1
+    },
+    {
+      "catalogId": 431,
+      "engineId": "conversion.power",
+      "slug": "power-converter",
+      "version": 1
+    },
+    {
+      "catalogId": 432,
+      "engineId": "conversion.time",
+      "slug": "time-converter",
+      "version": 1
+    },
+    {
+      "catalogId": 433,
+      "engineId": "conversion.angle",
+      "slug": "angle-converter",
+      "version": 1
+    },
+    {
+      "catalogId": 434,
+      "engineId": "conversion.data-storage",
+      "slug": "data-storage-converter",
+      "version": 1
+    },
+    {
+      "catalogId": 438,
+      "engineId": "conversion.force",
+      "slug": "force-converter",
+      "version": 1
+    },
+    {
+      "catalogId": 440,
+      "engineId": "conversion.frequency",
+      "slug": "frequency-converter",
+      "version": 1
+    },
+    {
+      "catalogId": 322,
+      "engineId": "physics.capacitance",
+      "slug": "capacitance-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 323,
+      "engineId": "private.physics-scaled.coulomb-force",
+      "slug": "private-physics-scaled-coulomb-force",
+      "version": 1
+    },
+    {
+      "catalogId": 324,
+      "engineId": "private.physics-scaled.projectile-range",
+      "slug": "private-physics-scaled-projectile-range",
+      "version": 1
+    },
+    {
+      "catalogId": 325,
+      "engineId": "physics.free-fall",
+      "slug": "free-fall-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 327,
+      "engineId": "physics.angular-velocity",
+      "slug": "angular-velocity-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 255,
+      "engineId": "launch-hypotenuse-calculator",
+      "slug": "hypotenuse-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 256,
+      "engineId": "launch-triangle-area-calculator",
+      "slug": "triangle-area-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 259,
+      "engineId": "launch-rectangle-area-calculator",
+      "slug": "rectangle-area-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 260,
+      "engineId": "launch-rectangle-perimeter-calculator",
+      "slug": "rectangle-perimeter-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 263,
+      "engineId": "launch-circle-area-calculator",
+      "slug": "circle-area-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 264,
+      "engineId": "launch-circle-circumference-calculator",
+      "slug": "circle-circumference-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 265,
+      "engineId": "launch-circle-diameter-calculator",
+      "slug": "circle-diameter-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 261,
+      "engineId": "launch-square-area-calculator",
+      "slug": "square-area-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 262,
+      "engineId": "launch-square-perimeter-calculator",
+      "slug": "square-perimeter-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 266,
+      "engineId": "launch-parallelogram-area-calculator",
+      "slug": "parallelogram-area-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 267,
+      "engineId": "launch-trapezoid-area-calculator",
+      "slug": "trapezoid-area-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 269,
+      "engineId": "launch-sphere-volume-calculator",
+      "slug": "sphere-volume-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 270,
+      "engineId": "launch-sphere-surface-area-calculator",
+      "slug": "sphere-surface-area-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 271,
+      "engineId": "launch-cylinder-volume-calculator",
+      "slug": "cylinder-volume-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 273,
+      "engineId": "launch-rectangular-prism-volume-calculator",
+      "slug": "rectangular-prism-volume-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 429,
+      "engineId": "conversion.pressure",
+      "slug": "pressure-converter",
+      "version": 1
+    },
+    {
+      "catalogId": 436,
+      "engineId": "conversion.cooking-measurement",
+      "slug": "cooking-measurement-converter",
+      "version": 1
+    },
+    {
+      "catalogId": 437,
+      "engineId": "conversion.density",
+      "slug": "density-converter",
+      "version": 1
+    },
+    {
+      "catalogId": 439,
+      "engineId": "conversion.torque",
+      "slug": "torque-converter",
+      "version": 1
+    },
+    {
+      "catalogId": 213,
+      "engineId": "launch-fraction-calculator",
+      "slug": "fraction-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 221,
+      "engineId": "launch-cube-root-calculator",
+      "slug": "cube-root-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 222,
+      "engineId": "launch-power-calculator",
+      "slug": "power-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 223,
+      "engineId": "launch-exponent-calculator",
+      "slug": "exponent-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 224,
+      "engineId": "launch-logarithm-calculator",
+      "slug": "logarithm-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 225,
+      "engineId": "launch-reciprocal-calculator",
+      "slug": "reciprocal-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 226,
+      "engineId": "launch-remainder-calculator",
+      "slug": "remainder-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 227,
+      "engineId": "launch-lcm-calculator",
+      "slug": "lcm-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 228,
+      "engineId": "launch-gcf-calculator",
+      "slug": "gcf-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 229,
+      "engineId": "launch-factor-calculator",
+      "slug": "factor-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 230,
+      "engineId": "launch-rounding-calculator",
+      "slug": "rounding-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 231,
+      "engineId": "launch-scientific-notation-calculator",
+      "slug": "scientific-notation-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 234,
+      "engineId": "launch-percent-error-calculator",
+      "slug": "percent-error-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 254,
+      "engineId": "advanced-math.root-finder",
+      "slug": "root-finder-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 257,
+      "engineId": "geometry.triangle",
+      "slug": "triangle-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 258,
+      "engineId": "geometry.right-triangle",
+      "slug": "right-triangle-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 268,
+      "engineId": "launch-polygon-area-calculator",
+      "slug": "polygon-area-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 272,
+      "engineId": "launch-cone-volume-calculator",
+      "slug": "cone-volume-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 274,
+      "engineId": "geometry.surface-area",
+      "slug": "surface-area-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 275,
+      "engineId": "geometry.volume",
+      "slug": "volume-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 276,
+      "engineId": "geometry.slope",
+      "slug": "slope-calculator",
+      "version": 2
+    },
+    {
+      "catalogId": 277,
+      "engineId": "geometry.distance",
+      "slug": "distance-calculator",
+      "version": 2
+    },
+    {
+      "catalogId": 278,
+      "engineId": "launch-pythagorean-theorem-calculator",
+      "slug": "pythagorean-theorem-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 279,
+      "engineId": "launch-degrees-to-radians-calculator",
+      "slug": "degrees-to-radians-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 280,
+      "engineId": "launch-radians-to-degrees-calculator",
+      "slug": "radians-to-degrees-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 328,
+      "engineId": "chemistry.molarity",
+      "slug": "molarity-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 331,
+      "engineId": "chemistry.moles",
+      "slug": "moles-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 332,
+      "engineId": "chemistry.dilution",
+      "slug": "dilution-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 343,
+      "engineId": "engineering.concrete",
+      "slug": "concrete-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 344,
+      "engineId": "engineering.square-footage",
+      "slug": "square-footage-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 345,
+      "engineId": "engineering.paint",
+      "slug": "paint-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 346,
+      "engineId": "engineering.flooring",
+      "slug": "flooring-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 348,
+      "engineId": "engineering.tile",
+      "slug": "tile-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 349,
+      "engineId": "engineering.drywall",
+      "slug": "drywall-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 350,
+      "engineId": "engineering.lumber",
+      "slug": "lumber-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 354,
+      "engineId": "engineering.gravel",
+      "slug": "gravel-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 355,
+      "engineId": "engineering.asphalt",
+      "slug": "asphalt-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 356,
+      "engineId": "engineering.excavation",
+      "slug": "excavation-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 284,
+      "engineId": "statistics.z-score",
+      "slug": "z-score-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 285,
+      "engineId": "statistics.confidence-interval",
+      "slug": "confidence-interval-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 286,
+      "engineId": "statistics.sample-size",
+      "slug": "sample-size-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 287,
+      "engineId": "statistics.probability",
+      "slug": "probability-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 288,
+      "engineId": "statistics.permutation",
+      "slug": "permutation-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 289,
+      "engineId": "statistics.combination",
+      "slug": "combination-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 290,
+      "engineId": "statistics.binomial-probability",
+      "slug": "binomial-probability-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 291,
+      "engineId": "statistics.normal-distribution",
+      "slug": "normal-distribution-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 300,
+      "engineId": "statistics.bayes-theorem",
+      "slug": "bayes-theorem-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 329,
+      "engineId": "chemistry.molality",
+      "slug": "molality-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 333,
+      "engineId": "chemistry.ph",
+      "slug": "ph-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 334,
+      "engineId": "chemistry.ideal-gas-law",
+      "slug": "ideal-gas-law-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 335,
+      "engineId": "chemistry.gas-density",
+      "slug": "gas-density-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 336,
+      "engineId": "chemistry.percent-composition",
+      "slug": "percent-composition-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 337,
+      "engineId": "chemistry.solution-concentration",
+      "slug": "solution-concentration-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 338,
+      "engineId": "chemistry.stoichiometry",
+      "slug": "stoichiometry-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 339,
+      "engineId": "chemistry.half-life",
+      "slug": "half-life-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 340,
+      "engineId": "chemistry.nernst-equation",
+      "slug": "nernst-equation-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 341,
+      "engineId": "chemistry.beer-lambert-law",
+      "slug": "beer-lambert-law-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 342,
+      "engineId": "chemistry.titration",
+      "slug": "titration-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 292,
+      "engineId": "statistics.correlation",
+      "slug": "correlation-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 293,
+      "engineId": "statistics.linear-regression",
+      "slug": "linear-regression-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 294,
+      "engineId": "statistics.weighted-mean",
+      "slug": "weighted-mean-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 295,
+      "engineId": "statistics.percentile",
+      "slug": "percentile-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 296,
+      "engineId": "statistics.quartile",
+      "slug": "quartile-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 297,
+      "engineId": "statistics.interquartile-range",
+      "slug": "interquartile-range-calculator",
+      "version": 1
+    },
+    {
+      "catalogId": 299,
+      "engineId": "statistics.expected-value",
+      "slug": "expected-value-calculator",
+      "version": 1
+    }
+  ]
+}
