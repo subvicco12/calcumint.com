@@ -1,0 +1,137 @@
+{
+  "baseline": "f146b080dcbedb8fd6c515b89a35ff1605425c6b",
+  "rows": [
+    {
+      "id": 504,
+      "plan": "free",
+      "historyId": "b6ef0dc2-777b-45cc-ade7-670356c12223",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "historyRestore": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 505,
+      "plan": "free",
+      "historyId": "0453f9e7-0ba2-44ed-8136-e724c41c0fc5",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "historyRestore": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 504,
+      "plan": "pro",
+      "historyId": "bdd09be6-d4ea-4e90-bdf8-e8bddc1c9872",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "historyRestore": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 505,
+      "plan": "pro",
+      "historyId": "3b1df2c7-f28f-4574-8f55-41c042aafdbe",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "historyRestore": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 504,
+      "plan": "business",
+      "historyId": "60228bc5-9c11-4880-8841-6326ea6c2e69",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "historyRestore": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "businessCapability": "AUTHENTIC_OWNER_READ_WRITE_BLOCKED",
+      "keyboardRecovery": true
+    },
+    {
+      "id": 505,
+      "plan": "business",
+      "historyId": "35dfe793-8082-46a3-826e-e385d6b125d1",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "historyRestore": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "businessCapability": "AUTHENTIC_OWNER_READ_WRITE_BLOCKED",
+      "keyboardRecovery": true
+    }
+  ],
+  "checks": [
+    "Unauthenticated private route denied",
+    "Authenticated non-reviewer private route denied",
+    "Same browser cookie denied after membership revocation"
+  ],
+  "downloads": [
+    {
+      "id": 504,
+      "format": "json",
+      "file": "invocation-1kxHHn/eb4f7104-4e88-439f-93c8-973d31619525",
+      "bytes": 601,
+      "sha256": "defc364a820f02dbf88132b4a75e76b4be36edb6984a4a2e065fef4d20fdff2f"
+    },
+    {
+      "id": 504,
+      "format": "csv",
+      "file": "invocation-nlS52w/663af3d1-9112-45cd-a3e5-d75edaf7071f",
+      "bytes": 553,
+      "sha256": "7440638135689c9003f3b73437be21d39f0ec0ea21c2f26e9bb6633c8656c98b"
+    },
+    {
+      "id": 504,
+      "format": "pdf",
+      "file": "invocation-q3R1de/7e417403-8666-458b-b682-e5a31b6fd1a4",
+      "bytes": 405144,
+      "sha256": "5693b7cc1208b4629780176e0e10313e04206f2989ab7d4cceee3275c9106dcb"
+    },
+    {
+      "id": 505,
+      "format": "json",
+      "file": "invocation-nSHeNA/73709b08-6402-44db-9c15-cace3aaf6664",
+      "bytes": 624,
+      "sha256": "7e4b84f9d9aed08e540856801e3b8860f947970a966d9eb69ed1930bbf172737"
+    },
+    {
+      "id": 505,
+      "format": "csv",
+      "file": "invocation-X5r3fH/b9d31050-0c49-4d2b-a845-ee85a55fff9d",
+      "bytes": 621,
+      "sha256": "3f563a01caa02a018f4eb17233ca0896e61ea23b1c8d4bdad838deeebdd0e2ec"
+    },
+    {
+      "id": 505,
+      "format": "pdf",
+      "file": "invocation-HnxuYo/b3ef6e5c-2b79-463c-bd79-6c28a148dde7",
+      "bytes": 405354,
+      "sha256": "b64cceda4551469371d079085890083a10e486f3240164c219f2be2b691da858"
+    }
+  ],
+  "productionWrites": false,
+  "releaseHold": true,
+  "publicationFixture": false,
+  "canonicalApproval": false,
+  "scope": "Disposable repository-model PostgreSQL17/GoTrue/PostgREST; actual private page and existing atomic account actions. Loopback transport is not production equivalence. Business team/native/job capabilities remain blocked.",
+  "browserErrors": [],
+  "expectedRows": 6,
+  "images": {
+    "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+    "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+    "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+  },
+  "passed": true
+}
