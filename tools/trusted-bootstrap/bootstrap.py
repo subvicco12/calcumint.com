@@ -169,6 +169,23 @@ def verify_source(git, root, parent):
     head()
 
 
+def verify_child_sources(git, root, graph):
+    """Verify current and historical executable objects without launching the child."""
+    for row in graph["files"]:
+        path, ref, blob = row["path"], row["ref"], row["blob"]
+        require(candidate_git(git, root, ["rev-parse", ref + ":" + path]).decode().strip() == blob,
+                "Child source object binding differs")
+        raw = candidate_git(git, root, ["cat-file", "blob", blob])
+        require(len(raw) == row["bytes"], "Child source byte count differs")
+        identity(raw, row["sha256"], "Child source")
+        if row["scope"] == "live":
+            live = root / path
+            require(live.resolve(strict=True) == live and live.read_bytes() == raw,
+                    "Live child source substitution")
+    verify_candidate(candidate_git(git, root, ["rev-parse", "HEAD"]).decode().strip(),
+                     candidate_git(git, root, ["rev-parse", "HEAD^{tree}"]).decode().strip())
+
+
 def run_verified_launcher(root, paths, interfaces, members):
     """Fresh-process handoff, qualified on a fixture only in preparation mode."""
     verify_runtime(paths, interfaces)
@@ -214,6 +231,7 @@ def main():
     verify_runtime(runtime, interfaces)
     root = Path(os.environ["BOOTSTRAP_CANDIDATE"]).resolve(strict=True)
     verify_source(runtime["git"], root, json.loads(members["parent-graph.json"]))
+    verify_child_sources(runtime["git"], root, json.loads(members["child-graph.json"]))
     print(json.dumps({"candidate": COMMIT, "tree": TREE, "archive": ARCHIVE, "packet": PACKET,
                       "ownerComment": COMMENT, "workflowSha": os.environ["GITHUB_WORKFLOW_SHA"],
                       "admitted": False, "activated": False, "launcherExecuted": False}))
