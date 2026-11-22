@@ -1,0 +1,36 @@
+.workbench {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    margin-block: 2rem;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    gap: 1rem;
+}
+.field {
+    display: grid;
+    align-content: start;
+    gap: 0.25rem;
+}
+.workbench input, .workbench select, .workbench button {
+    box-sizing: border-box;
+    max-width: 100%;
+    min-height: 44px;
+    font: inherit;
+}
+.workbench :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+}
+.row {
+    min-width: 0;
+    margin: 1rem 0;
+}
+.workbench button {
+    margin: 0.5rem 0.5rem 0.5rem 0;
+}
+.result dd {
+    margin-inline-start: 0;
+    font-weight: 600;
+}
