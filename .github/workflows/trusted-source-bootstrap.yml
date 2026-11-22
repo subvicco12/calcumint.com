@@ -1,0 +1,62 @@
+name: Isolated source bootstrap preparation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prepare:
+    if: >-
+      github.repository == 'subvicco12/calcumint.com' &&
+      github.ref == 'refs/heads/engineering/trusted-bootstrap-20261122' &&
+      github.ref_protected
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: calcumint-source-bootstrap
+    env:
+      BOOTSTRAP_ENVIRONMENT: calcumint-source-bootstrap
+      BOOTSTRAP_PREPARATION_ONLY: 'true'
+    steps:
+      - name: Verify independently configured workflow revision
+        env:
+          TRUSTED_WORKFLOW_SHA: ${{ vars.CALCUMINT_BOOTSTRAP_WORKFLOW_SHA }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$TRUSTED_WORKFLOW_SHA" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$GITHUB_SHA" == "$TRUSTED_WORKFLOW_SHA" ]]
+          [[ "$GITHUB_WORKFLOW_SHA" == "$TRUSTED_WORKFLOW_SHA" ]]
+          [[ "$GITHUB_WORKFLOW_REF" == "$GITHUB_REPOSITORY/.github/workflows/trusted-source-bootstrap.yml@$GITHUB_REF" ]]
+
+      - name: Check out the trusted verifier commit
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
+        with:
+          ref: ${{ github.workflow_sha }}
+          persist-credentials: false
+          path: trusted
+
+      - name: Run refusal fixtures
+        run: python3 -m unittest discover -s trusted/tools/trusted-bootstrap -p 'test_bootstrap.py'
+
+      - name: Fetch approved source as data
+        shell: bash
+        run: |
+          set -euo pipefail
+          export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null
+          candidate="$RUNNER_TEMP/calcumint-approved-source"
+          git -c init.templateDir= init "$candidate"
+          git -C "$candidate" -c core.hooksPath=/dev/null fetch --no-tags             https://github.com/subvicco12/calcumint.com.git fb91016fd550baeea05e02e030fe5d3772aeb2f1
+          git -C "$candidate" -c core.hooksPath=/dev/null checkout --detach FETCH_HEAD
+          printf 'BOOTSTRAP_CANDIDATE=%s\n' "$candidate" >> "$GITHUB_ENV"
+
+      - name: Authenticate and verify without protected activation
+        env:
+          TRUSTED_WORKFLOW_SHA: ${{ vars.CALCUMINT_BOOTSTRAP_WORKFLOW_SHA }}
+          BOOTSTRAP_DRIVE_TOKEN: ${{ secrets.CALCUMINT_BOOTSTRAP_DRIVE_TOKEN }}
+          BOOTSTRAP_SOURCE_FILE_ID: ${{ vars.CALCUMINT_BOOTSTRAP_SOURCE_FILE_ID }}
+          BOOTSTRAP_PACKET_FILE_ID: ${{ vars.CALCUMINT_BOOTSTRAP_PACKET_FILE_ID }}
+          BOOTSTRAP_NODE: ${{ vars.CALCUMINT_BOOTSTRAP_NODE }}
+          BOOTSTRAP_GIT: ${{ vars.CALCUMINT_BOOTSTRAP_GIT }}
+        run: python3 -I trusted/tools/trusted-bootstrap/bootstrap.py
