@@ -54,7 +54,16 @@ const guardTransitions=Object.freeze([
   previous:Object.freeze({ref:'f4fa576cb070a31a3408f46c267c13b1e7b1f4eb',blob:'5aa7324b1bef1c902c3b2c2b878a1da5bac58527',bytes:2562,sha256:'a172e54eb4ded89123ccaff6123e0621d7314429a9b81ddea1863fd337100479'}),
   current:Object.freeze({ref:'89590fffd72ed94000343a6f81380e82b7c0c506',blob:'859347d677bed99d2982a083cdea210df9a24490',bytes:2566,sha256:'33b036c1c4afe418237b78724dc123a7ff8c9abc9d9c68340a32297e7916d47d'}),
  }),
+ Object.freeze({
+  path:'tests/parallel-source-20261110/baseline-runtime.mjs',
+  previous:Object.freeze({ref:'a1dad88b204d51128633edb936ca0920fa799291',blob:'80d1da581d5c40c62a90481dd1c0c3d9879163ec',bytes:2095,sha256:'5e037dc7dfd8152f2fcb2a7f7f9f1823409caa5b68837111323ff75c9fd4f087'}),
+  current:Object.freeze({ref:'60366fe6a2425aa9efcee50a724c85fa7a0e0ec5',blob:'0545b08d885398daf022b5bf5eec809d7b9b7074',bytes:2287,sha256:'0f763f3fb1e35b75834757092a6244d94e3444b8c7a4b5a6223a16ee243744fd'}),
+ }),
 ]);
+const a7ChildBootstrap=Object.freeze({
+ path:'tests/parallel-source-20261110/a7-child-bootstrap.mjs',
+ current:Object.freeze({ref:'60366fe6a2425aa9efcee50a724c85fa7a0e0ec5',blob:'6a14b41561b6933cec4a273eb55467801cdbfbae',bytes:11339,sha256:'22271f2822fc591db1c3ed258f85af18142154a7be0cd83cba3069d0bdc35286'}),
+});
 const a7BatchDependency=Object.freeze({
  path:'tests/parallel-source-20261110/a7-batch-input.mjs',
  current:Object.freeze({ref:'89590fffd72ed94000343a6f81380e82b7c0c506',blob:'48c46baf527c28b37b6f2961a7d0c4e66c8ba889',bytes:933,sha256:'ca8667a300dc71c7d07f32b5a838d45fe7043a80eeeaedb70ade66bd86cb6175'}),
@@ -62,7 +71,7 @@ const a7BatchDependency=Object.freeze({
 
 function verifyReviewedGuards({git,read,head,root}){
  assert.equal(text(git,headQuery),head,'Native HEAD moved before reviewed guard verification');
- for(const {path,previous,current} of [...guardTransitions,a7BatchDependency]){
+ for(const {path,previous,current} of [...guardTransitions,a7BatchDependency,a7ChildBootstrap]){
   if(previous)verifyRecord(git,path,previous);
   const bytes=verifyRecord(git,path,current);
   assert.equal(text(git,['rev-parse',head+':'+path]),current.blob,'Unexpected reviewed guard path: '+path);
