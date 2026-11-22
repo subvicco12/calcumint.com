@@ -12,8 +12,8 @@ const historical='0fd467880b5b0142898d3010c4d3ab9fe1b64958';
 const input={read:readFileSync,root:process.cwd()};
 
 test('ordinary or lookalike readers have no native authority capability',()=>{
- assert.equal(nativeNinePathAuthorityInput(git),undefined);
- assert.equal(nativeNinePathAuthorityInput(args=>git(args)),undefined);
+ assert.equal(nativeNinePathAuthorityInput(readFileSync,git),undefined);
+ assert.equal(nativeNinePathAuthorityInput(readFileSync,args=>git(args)),undefined);
 });
 test('a historical core blob is not accepted as the native authority blob',async()=>{
  const historicalBlob=git(['rev-parse',historical+':'+core]);

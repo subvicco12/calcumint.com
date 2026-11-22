@@ -4,18 +4,24 @@ import {lstatSync,realpathSync} from 'node:fs';
 import {resolve} from 'node:path';
 import {proveSourceStage9,assertSourceStage9Stable} from '../four-worker-integration-20261115/source-stage9.mjs';
 import {immutableTreeQueryReader} from '../milestone100-20261114/source-immutable-queries.mjs';
-import {proveSourceStage8AndHistoricalInputs} from '../milestone100-20261114/source-stage8.mjs';
+import {proveSourceStage8AndHistoricalInputs,sourceStage8HistoricalView} from '../milestone100-20261114/source-stage8.mjs';
 import {sourceStage8Policy,sourceStage8CapturePath} from '../milestone100-20261114/source-stage8-policy-v3.mjs';
 
 export const capturePath='tests/nine-path-source-repair-20261122/proposal.json';
 const captureSHA256='c6c991d4ba4829fd8a70d41097695ec2b727e1d3923da290df67ce770c798c82';
 let nativeAuthorityScope;
-export function nativeNinePathAuthorityInput(view){
- if(!nativeAuthorityScope||!view?.actualInput)return undefined;
- const actual=view.actualInput;
- assert.equal(actual.root,nativeAuthorityScope.root,'Native authority root differs');
- assert.equal(text(actual.git,headQuery),nativeAuthorityScope.historicalHead,'Historical context differs from the verified scope');
- return nativeAuthorityScope;
+export function nativeNinePathAuthorityInput(read,git){
+ if(!nativeAuthorityScope)return undefined;
+ const {actual,historicalHead,projectedRead,verifiedTransports}=nativeAuthorityScope;
+ const view=sourceStage8HistoricalView(git);
+ if(view){
+  assert.equal(read,view.historicalInput.read,'Historical authority reader differs');
+  assert.equal(view.actualInput.root,actual.root,'Native authority root differs');
+  assert.equal(view.actualInput.read,projectedRead,'Native authority projection differs');
+  assert.equal(text(view.actualInput.git,headQuery),historicalHead,'Historical context differs from the verified scope');
+  verifiedTransports.add(view.actualInput.git);
+ }else if(read!==projectedRead||!verifiedTransports.has(git))return undefined;
+ return actual;
 }
 const headQuery=['rev-parse','--verify','HEAD^{commit}'];
 const statusQuery=['status','--porcelain','--untracked-files=all','--','src'];
@@ -95,7 +101,7 @@ function withHistoricalStage9Input(input,verify){
  };
  const historicalGit=immutableTreeQueryReader(git);
  assert.equal(nativeAuthorityScope,undefined,'Nested nine-path authority scope refused');
- nativeAuthorityScope=Object.freeze({...actual,head,historicalHead:proposal.stage9});
+ nativeAuthorityScope={actual:Object.freeze({...actual,head}),historicalHead:proposal.stage9,projectedRead:read,verifiedTransports:new WeakSet([historicalGit])};
  let result;
  try{result=verify({git:historicalGit,read,root});}
  finally{nativeAuthorityScope=undefined;}

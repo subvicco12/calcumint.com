@@ -24765,18 +24765,19 @@ export function verifyParallelAuthority(read,git){
  assert(acceptedStage8.length>0,'Independently reviewed Stage8 authority is not installed');
  const view=sourceStage8HistoricalView(git);
  provePinnedSourceStage8({read,git,root:process.cwd()});
- const native=view&&nativeNinePathAuthorityInput(view);
+ const native=nativeNinePathAuthorityInput(read,git);
  const actual=native??view?.actualInput??{read,git};
  const records=view?[...accepted.filter(row=>!row.path.startsWith('src/')),...retainedStage8Authority.filter(row=>row.path.startsWith('src/'))]:accepted;
  // Symbolic identities are live once per invocation, never cached across calls.
  const actualHead=actual.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.match(actualHead,/^[0-9a-f]{40}$/);
  if(native)assert.equal(actualHead,native.head,'Native HEAD moved before current authority verification');
- const historicalHead=view?git(['rev-parse','--verify','HEAD^{commit}']).toString().trim():actualHead;assert.match(historicalHead,/^[0-9a-f]{40}$/);
+ const historicalHead=view||native?git(['rev-parse','--verify','HEAD^{commit}']).toString().trim():actualHead;assert.match(historicalHead,/^[0-9a-f]{40}$/);
+ const historicalSource=record=>(view||native)&&record.path.startsWith('src/');
  // Only an originally supplied capability may batch immutable objects/paths.
  if(typeof actual.git.preloadBlobs==='function')actual.git.preloadBlobs(records.map(row=>row.blob));
- if(typeof actual.git.preloadPaths==='function')actual.git.preloadPaths(records.map(row=>({ref:view&&row.path.startsWith('src/')?historicalHead:actualHead,path:row.path,blob:row.blob})));
+ if(typeof actual.git.preloadPaths==='function')actual.git.preloadPaths(records.map(row=>({ref:historicalSource(row)?historicalHead:actualHead,path:row.path,blob:row.blob})));
  for(const record of records){
-  const input=view&&record.path.startsWith('src/')?{read,git}:actual,head=view&&record.path.startsWith('src/')?historicalHead:actualHead;
+  const input=historicalSource(record)?{read,git}:actual,head=historicalSource(record)?historicalHead:actualHead;
   assert.equal(input.git(['rev-parse',head+':'+record.path]).toString().trim(),record.blob,'Independent parallel HEAD authority differs: '+record.path);
   if(!record.path.startsWith('src/')){const target=resolve(actual.root??process.cwd(),record.path),stat=lstatSync(target);assert(stat.isFile()&&!stat.isSymbolicLink(),'Regular current guard required: '+record.path);assert.equal(realpathSync(target),target,'Redirected current guard: '+record.path);}
   const bytes=input.git(['cat-file','blob',record.blob]);assert.equal(createHash('sha256').update(bytes).digest('hex'),record.sha256);
