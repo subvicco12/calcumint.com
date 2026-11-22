@@ -3,6 +3,7 @@ import {createHash} from 'node:crypto';
 import {lstatSync,realpathSync} from 'node:fs';
 import {resolve} from 'node:path';
 import {proveSourceStage9,assertSourceStage9Stable} from '../four-worker-integration-20261115/source-stage9.mjs';
+import {verifyParallelSource} from '../parallel-source-20261110/core.mjs';
 import {proveSourceStage8AndHistoricalInputs} from '../milestone100-20261114/source-stage8.mjs';
 import {sourceStage8Policy,sourceStage8CapturePath} from '../milestone100-20261114/source-stage8-policy-v3.mjs';
 
@@ -66,7 +67,7 @@ function verifyLive({git,read,root}){
 }
 
 /** Review entry only. Historical projections exist only after verification and stay private. */
-export function proveNinePathSuccessor(input){
+function withHistoricalStage9Input(input,verify){
  const root=realpathSync(input.root);
  const actual={git:input.git,read:input.read,root};
  const {proposal,head,original}=verifyLive(actual);
@@ -84,11 +85,24 @@ export function proveNinePathSuccessor(input){
   }
   return actual.git(args.map(arg=>arg.startsWith('HEAD:src/')?proposal.stage9+arg.slice(4):arg),options);
  };
- const stage9=proveSourceStage9({git,read,root});
- const stage8=proveSourceStage8AndHistoricalInputs({...stage9.historicalInput,policy:sourceStage8Policy,capturePath:sourceStage8CapturePath});
- assertSourceStage9Stable(stage9);
+ const result=verify({git,read,root});
  assert.equal(verifyLive(actual).head,head,'Native HEAD moved since entry');
- return Object.freeze({nativeHead:head,historicalCount:stage9.live.size,approvedPaths:proposal.sourcePaths.map(row=>row.path),stage8Verified:!!stage8});
+ return {result,head,paths:proposal.sourcePaths.map(row=>row.path)};
+}
+
+export function proveNinePathSuccessor(input){
+ const {head,paths,result}=withHistoricalStage9Input(input,historical=>{
+  const stage9=proveSourceStage9(historical);
+  const stage8=proveSourceStage8AndHistoricalInputs({...stage9.historicalInput,policy:sourceStage8Policy,capturePath:sourceStage8CapturePath});
+  assertSourceStage9Stable(stage9);
+  return {historicalCount:stage9.live.size,stage8Verified:!!stage8};
+ });
+ return Object.freeze({nativeHead:head,approvedPaths:paths,...result});
+}
+
+/** Run the original retained core, including its unchanged negative filters and final fence. */
+export function verifyNinePathRetainedCore(input){
+ return withHistoricalStage9Input(input,({read,git})=>verifyParallelSource(read,git)).result;
 }
 
 /** Verify the finite extra membership against immutable source before projecting it away. */

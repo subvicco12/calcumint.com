@@ -42,7 +42,14 @@ test('Batch14 permits precisely the two immutable engine additions without alter
  const current=sort([...history,supplemental,...additions]);
  assert.deepEqual(reconcileBatch14Membership(input,current,raw),sort([...history,supplemental]));
  assert.throws(()=>reconcileBatch14Membership(input,current.slice(1),raw),/414 !== 415/);
+ const unexpected=sort([...current.slice(1),{path:'src/calculators/unbound.ts',sha256:'0'.repeat(64)}]);
+ assert.throws(()=>reconcileBatch14Membership(input,unexpected,raw),/Exact Batch14 current membership differs/);
  assert.throws(()=>reconcileBatch14Membership(input,current,Buffer.from('{}')),/artifact differs/);
  const changed=current.map(value=>value.path===additions[0].path?{...value,sha256:'0'.repeat(64)}:value);
  assert.throws(()=>reconcileBatch14Membership(input,changed,raw),/engine digest differs/);
+});
+
+test('substituted protected live dependency fails closed',()=>{
+ const target=proposal.protectedRecords[0].path;
+ assert.throws(()=>proveNinePathSuccessor({...input,read:path=>path===target?Buffer.from('forged'):readFileSync(path)}),/Protected live bytes differ/);
 });
