@@ -5,6 +5,7 @@ import { PrivateModelWorkbench } from './private-model-workbench';
 
 afterEach(cleanup);
 const fill = (label: string, value: string) => fireEvent.change(screen.getByLabelText(label), { target: { value } });
+const confirmRefund = () => fireEvent.click(screen.getByRole('checkbox', { name: 'Sale price includes all refundable proceeds' }));
 const calculate = () => fireEvent.click(screen.getByRole('button', { name: 'Calculate' }));
 
 it.each([
@@ -15,7 +16,7 @@ it.each([
     [204, 'private.business.return-rate-impact@1', {
         'Currency code': 'USD', 'Number of sales': '100', 'Price per sale': '50', 'Cost per sale': '20',
         'Refund per return': '50', 'Handling cost per return': '4', 'Incremental fee per return': '1',
-        'Recovered inventory value per return': '15', 'Before return rate': '0.1', 'After return rate': '0.2',
+        'Recovered inventory value per return': '15', 'Eligible inventory cost per sale': '15', 'Before return rate': '0.1', 'After return rate': '0.2',
     }, 'Number of sales', '1.0000000000000001', '-400 USD'],
     [485, 'private.environment.supplied-factor-carbon-footprint@1', {
         'Reporting period': '2026', 'Reporting boundary': 'Fixture', 'Unique activity ID': 'electricity',
@@ -31,7 +32,10 @@ it.each([
     fill('Private calculator', String(id));
     expect(screen.getByText(engine)).toBeTruthy();
     for (const [label, value] of Object.entries(values)) fill(label, value);
-    if (id === 204) fireEvent.click(screen.getByRole('checkbox', { name: /incremental and counted only once/i }));
+    if (id === 204) {
+        confirmRefund();
+        fireEvent.click(screen.getByRole('checkbox', { name: /incremental and counted only once/i }));
+    }
     calculate();
     expect(screen.getByRole('status').textContent).toContain(result);
     fill(invalidLabel, invalidValue);
@@ -62,8 +66,9 @@ it('checks sales text exactly while preserving zero and the maximum whole count'
     for (const [label, value] of Object.entries({
         'Currency code': 'USD', 'Price per sale': '50', 'Cost per sale': '20', 'Refund per return': '50',
         'Handling cost per return': '4', 'Incremental fee per return': '1',
-        'Recovered inventory value per return': '15', 'Before return rate': '0.1', 'After return rate': '0.2',
+        'Recovered inventory value per return': '15', 'Eligible inventory cost per sale': '15', 'Before return rate': '0.1', 'After return rate': '0.2',
     })) fill(label, value);
+    confirmRefund();
     fireEvent.click(screen.getByRole('checkbox', { name: /incremental and counted only once/i }));
     for (const [sales, expected] of [['0', '0 USD'], ['1000000000.000', '-4000000000 USD']]) {
         fill('Number of sales', sales);
@@ -125,8 +130,9 @@ it('withholds return impact without explicit non-overlap confirmation', () => {
     for (const [label, value] of Object.entries({
         'Currency code': 'USD', 'Number of sales': '100', 'Price per sale': '50', 'Cost per sale': '20',
         'Refund per return': '50', 'Handling cost per return': '4', 'Incremental fee per return': '4',
-        'Recovered inventory value per return': '15', 'Before return rate': '0.1', 'After return rate': '0.2',
+        'Recovered inventory value per return': '15', 'Eligible inventory cost per sale': '15', 'Before return rate': '0.1', 'After return rate': '0.2',
     })) fill(label, value);
+    confirmRefund();
     calculate();
     expect(screen.getByRole('alert')).toBeTruthy();
     expect(screen.getByRole('status').textContent).toBe('');
@@ -140,4 +146,48 @@ it('withholds return impact without explicit non-overlap confirmation', () => {
     expect(screen.getByRole('status').textContent).toBe('');
     calculate();
     expect(screen.getByRole('alert')).toBeTruthy();
+});
+
+it('enforces exact accounting caps and invalidates dependent declarations', () => {
+    render(<PrivateModelWorkbench />);
+    fill('Private calculator', '204');
+    for (const [label, value] of Object.entries({
+        'Currency code': 'USD', 'Number of sales': '100', 'Price per sale': '50', 'Cost per sale': '20',
+        'Refund per return': '50', 'Handling cost per return': '4', 'Incremental fee per return': '1',
+        'Recovered inventory value per return': '15', 'Eligible inventory cost per sale': '15',
+        'Before return rate': '0.1', 'After return rate': '0.2',
+    })) fill(label, value);
+    const status = screen.getByRole('status');
+    const refundBasis = screen.getByRole<HTMLInputElement>('checkbox', { name: 'Sale price includes all refundable proceeds' });
+    const costBasis = screen.getByRole<HTMLInputElement>('checkbox', { name: /incremental and counted only once/i });
+    fireEvent.click(costBasis);
+    calculate();
+    expect(refundBasis.getAttribute('aria-invalid')).toBe('true');
+    expect(status.textContent).toBe('');
+    confirmRefund();
+    calculate();
+    expect(status.textContent).toContain('-400 USD');
+
+    const rejects = (label: string, value: string, restore: string) => {
+        fill(label, value);
+        expect(status.textContent).toBe('');
+        calculate();
+        expect(screen.getByRole('alert')).toBeTruthy();
+        expect(screen.getByLabelText(label).getAttribute('aria-invalid')).toBe('true');
+        expect(status.textContent).toBe('');
+        fill(label, restore);
+    };
+    rejects('Refund per return', '50.000001', '50');
+    rejects('Recovered inventory value per return', '15.000001', '15');
+    for (const value of ['20.000001', '', '-1', '1e2', 'NaN', 'Infinity']) {
+        rejects('Eligible inventory cost per sale', value, '15');
+    }
+    calculate();
+    expect(status.textContent).toContain('-400 USD');
+    fill('Price per sale', '51');
+    expect(refundBasis.checked).toBe(false);
+    expect(status.textContent).toBe('');
+    fill('Cost per sale', '19');
+    expect(costBasis.checked).toBe(false);
+    expect(screen.getByLabelText<HTMLInputElement>('Eligible inventory cost per sale').value).toBe('');
 });

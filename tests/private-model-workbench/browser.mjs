@@ -14,9 +14,9 @@ const cases = [
     }, 'discountPerPeriod', '-1', '8 USD'],
     [204, 'private.business.return-rate-impact@1', {
         currency: 'USD', sales: '100', price: '50', saleCost: '20', refund: '50',
-        returnHandling: '4', incrementalReturnFee: '1', recoveredInventoryValue: '15',
+        returnHandling: '4', incrementalReturnFee: '1', recoveredInventoryValue: '15', eligibleInventoryCost: '15',
         beforeRate: '0.1', afterRate: '0.2',
-    }, 'sales', '1.0000000000000001', '-400 USD'],
+    }, 'refund', '50.000001', '-400 USD'],
     [485, 'private.environment.supplied-factor-carbon-footprint@1', {
         reportingPeriod: '2026', boundary: 'Fixture', 'activities.0.id': 'electricity',
         'activities.0.quantity': '1000', 'activities.0.unit': 'kWh',
@@ -65,11 +65,13 @@ try {
                 const confirmation = 'input[name=returnCostsConfirmed]';
                 await browser.until(`document.querySelector('${confirmation}').getAttribute('aria-invalid') === 'true'`);
                 assert.equal(await browser.js('document.querySelector("[role=status]").textContent'), '');
-                await browser.js(`document.querySelector('${confirmation}').focus()`);
-                for (const type of ['keyDown', 'keyUp']) {
-                    await browser.send('Input.dispatchKeyEvent', { type, key: ' ', code: 'Space', windowsVirtualKeyCode: 32 });
+                for (const selector of [confirmation, 'input[name=refundablePriceConfirmed]']) {
+                    await browser.js(`document.querySelector('${selector}').focus()`);
+                    for (const type of ['keyDown', 'keyUp']) {
+                        await browser.send('Input.dispatchKeyEvent', { type, key: ' ', code: 'Space', windowsVirtualKeyCode: 32 });
+                    }
+                    assert.equal(await browser.js(`document.querySelector('${selector}').checked`), true);
                 }
-                assert.equal(await browser.js(`document.querySelector('${confirmation}').checked`), true);
             }
             await browser.field(`input[name="${invalid}"]`, bad);
             await enter();

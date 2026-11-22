@@ -2,6 +2,7 @@
 
 import { useId, useRef, useState, type FormEvent } from 'react';
 import { z, ZodError } from 'zod';
+import { decimal, subtract, type Rational } from '../calculators/exact-rational';
 import { cohortLifetimeValue, returnRateImpact } from '../calculators/business/private-cohort-economics';
 import { suppliedExponentRaceTime, suppliedFactorCarbonFootprint } from '../calculators/private-supplied-forecast-models';
 import styles from './private-model-workbench.module.css';
@@ -65,8 +66,34 @@ const returnCostConfirmation: Field = {
     hint: 'Use the same sale and cost basis for both rates. Do not repeat charges already entered as sale costs or other return charges.',
     checkbox: true,
 };
-const returnCostConfirmationSchema = z.object({
+const refundablePriceConfirmation: Field = {
+    key: 'refundablePriceConfirmed',
+    label: 'Sale price includes all refundable proceeds',
+    hint: 'This comparison supports only refunds on the same basis as the original sale price.',
+    checkbox: true,
+};
+const eligibleInventoryCost = amount('eligibleInventoryCost', 'Eligible inventory cost per sale');
+const returnAccountingSchema = returnRateImpact.inputSchema.pick({
+    price: true, saleCost: true, refund: true, recoveredInventoryValue: true,
+}).extend({
     returnCostsConfirmed: z.literal('on', { message: 'Confirm that the handling and fee entries contain no duplicate charges.' }),
+    refundablePriceConfirmed: z.literal('on', { message: 'Confirm that the sale price includes all refundable proceeds.' }),
+    eligibleInventoryCost: returnRateImpact.inputSchema.shape.saleCost,
+}).transform(input => ({
+    price: decimal(input.price),
+    saleCost: decimal(input.saleCost),
+    refund: decimal(input.refund),
+    recoveredInventoryValue: decimal(input.recoveredInventoryValue),
+    eligibleInventoryCost: decimal(input.eligibleInventoryCost),
+})).superRefine((input, context) => {
+    function capped(field: 'refund' | 'eligibleInventoryCost' | 'recoveredInventoryValue', cap: Rational, message: string) {
+        if (BigInt(subtract(input[field], cap).numerator) > 0n) {
+            context.addIssue({ code: 'custom', path: [field], message });
+        }
+    }
+    capped('refund', input.price, 'Refund must not exceed the declared refundable sale price.');
+    capped('eligibleInventoryCost', input.saleCost, 'Eligible inventory cost must not exceed the original sale cost.');
+    capped('recoveredInventoryValue', input.eligibleInventoryCost, 'Recovery must not exceed the eligible inventory cost.');
 });
 const footprintFields: Field[] = [{ key: 'reportingPeriod', label: 'Reporting period' }, { key: 'boundary', label: 'Reporting boundary' }];
 const raceFields: Field[] = [
@@ -102,10 +129,19 @@ export const privateModelProfiles: Profile[] = [
         },
     },
     {
-        ...returnRateImpact, title: 'Return Rate Impact', fields: [...returnFields, returnCostConfirmation],
+        ...returnRateImpact, title: 'Return Rate Impact', fields: [...returnFields, refundablePriceConfirmation, eligibleInventoryCost, returnCostConfirmation],
         run(data) {
-            returnCostConfirmationSchema.parse({ returnCostsConfirmed: data.get(returnCostConfirmation.key) });
-            const result = returnRateImpact.calculate({ ...readFields(data, returnFields), sales: boundedDecimal(data, 'sales', 0n, 1_000_000_000n, true) });
+            const amounts = readFields(data, returnFields);
+            returnAccountingSchema.parse({
+                price: amounts.price,
+                saleCost: amounts.saleCost,
+                refund: amounts.refund,
+                recoveredInventoryValue: amounts.recoveredInventoryValue,
+                returnCostsConfirmed: data.get(returnCostConfirmation.key),
+                refundablePriceConfirmed: data.get(refundablePriceConfirmation.key),
+                eligibleInventoryCost: text(data, eligibleInventoryCost.key),
+            });
+            const result = returnRateImpact.calculate({ ...amounts, sales: boundedDecimal(data, 'sales', 0n, 1_000_000_000n, true) });
             return [
                 money('Before contribution', result.beforeContribution, result.currency),
                 money('After contribution', result.afterContribution, result.currency),
@@ -169,10 +205,20 @@ function ModelForm({ profile }: { profile: Profile }) {
     }
     function changed(event: FormEvent<HTMLFormElement>) {
         const field = event.target;
-        if (profile.masterId === 204 && field instanceof HTMLInputElement
-            && ['currency', 'saleCost', 'returnHandling', 'incrementalReturnFee'].includes(field.name)) {
-            const confirmation = event.currentTarget.elements.namedItem(returnCostConfirmation.key);
-            if (confirmation instanceof HTMLInputElement) confirmation.checked = false;
+        if (profile.masterId === 204 && field instanceof HTMLInputElement) {
+            const element = (key: string) => event.currentTarget.elements.namedItem(key);
+            if (['currency', 'saleCost', 'returnHandling', 'incrementalReturnFee'].includes(field.name)) {
+                const confirmation = element(returnCostConfirmation.key);
+                if (confirmation instanceof HTMLInputElement) confirmation.checked = false;
+            }
+            if (['currency', 'price'].includes(field.name)) {
+                const confirmation = element(refundablePriceConfirmation.key);
+                if (confirmation instanceof HTMLInputElement) confirmation.checked = false;
+            }
+            if (['currency', 'saleCost'].includes(field.name)) {
+                const cost = element(eligibleInventoryCost.key);
+                if (cost instanceof HTMLInputElement) cost.value = '';
+            }
         }
         clear();
     }
