@@ -52,7 +52,6 @@ try {
             })()`);
             await browser.until(`document.querySelector('code')?.textContent === ${JSON.stringify(engine)}`);
             for (const [field, value] of Object.entries(inputs)) await browser.field(`input[name="${field}"]`, value);
-            await browser.field(`input[name="${invalid}"]`, bad);
             const enter = async () => {
                 for (const type of ['keyDown', 'keyUp']) {
                     await browser.send('Input.dispatchKeyEvent', {
@@ -61,6 +60,18 @@ try {
                     });
                 }
             };
+            if (id === 204) {
+                await enter();
+                const confirmation = 'input[name=returnCostsConfirmed]';
+                await browser.until(`document.querySelector('${confirmation}').getAttribute('aria-invalid') === 'true'`);
+                assert.equal(await browser.js('document.querySelector("[role=status]").textContent'), '');
+                await browser.js(`document.querySelector('${confirmation}').focus()`);
+                for (const type of ['keyDown', 'keyUp']) {
+                    await browser.send('Input.dispatchKeyEvent', { type, key: ' ', code: 'Space', windowsVirtualKeyCode: 32 });
+                }
+                assert.equal(await browser.js(`document.querySelector('${confirmation}').checked`), true);
+            }
+            await browser.field(`input[name="${invalid}"]`, bad);
             await enter();
             await browser.until('!!document.querySelector("[role=alert]")');
             assert.equal(await browser.js('document.querySelector("[role=status]").textContent'), '');
@@ -68,10 +79,13 @@ try {
             await browser.field(`input[name="${invalid}"]`, inputs[invalid]);
             await enter();
             await browser.until(`document.querySelector('[role=status]').textContent.includes(${JSON.stringify(expected)})`);
+            if (id === 173) {
+                assert((await browser.js('document.querySelector("[role=status]").textContent')).includes('No display rounding applied.'));
+            }
             assert.equal(await browser.js('document.documentElement.scrollWidth <= innerWidth'), true);
             const violations = await browser.js('axe.run({runOnly:{type:"tag",values:["wcag2a","wcag2aa","wcag21aa"]}}).then(r=>r.violations.map(v=>v.id))');
             assert.deepEqual(violations, []);
-            journeys.push({ id, width, engine, result: expected, keyboardRefusalRecovery: true, horizontalOverflow: false, axeViolations: violations });
+            journeys.push({ id, width, engine, result: expected, keyboardRefusalRecovery: true, exactDisclosureVerified: id === 173, nonOverlapConfirmationVerified: id === 204, horizontalOverflow: false, axeViolations: violations });
         }
     }
     assert.deepEqual(browser.errors, []);

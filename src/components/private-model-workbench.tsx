@@ -1,12 +1,12 @@
 'use client';
 
 import { useId, useRef, useState, type FormEvent } from 'react';
-import { ZodError } from 'zod';
+import { z, ZodError } from 'zod';
 import { cohortLifetimeValue, returnRateImpact } from '../calculators/business/private-cohort-economics';
 import { suppliedExponentRaceTime, suppliedFactorCarbonFootprint } from '../calculators/private-supplied-forecast-models';
 import styles from './private-model-workbench.module.css';
 
-type Field = { key: string; label: string; hint?: string; options?: readonly string[] };
+type Field = { key: string; label: string; hint?: string; options?: readonly string[]; checkbox?: true };
 type Result = { label: string; value: string };
 const numberHint = 'Use a decimal point and omit thousands separators.';
 const currency: Field = { key: 'currency', label: 'Currency code', hint: 'Enter three uppercase letters, e.g. USD. All amounts must use this currency.' };
@@ -59,6 +59,15 @@ const returnFields: Field[] = [
     { key: 'beforeRate', label: 'Before return rate', hint: fractionHint },
     { key: 'afterRate', label: 'After return rate', hint: fractionHint },
 ];
+const returnCostConfirmation: Field = {
+    key: 'returnCostsConfirmed',
+    label: 'Handling and fees are incremental and counted only once',
+    hint: 'Use the same sale and cost basis for both rates. Do not repeat charges already entered as sale costs or other return charges.',
+    checkbox: true,
+};
+const returnCostConfirmationSchema = z.object({
+    returnCostsConfirmed: z.literal('on', { message: 'Confirm that the handling and fee entries contain no duplicate charges.' }),
+});
 const footprintFields: Field[] = [{ key: 'reportingPeriod', label: 'Reporting period' }, { key: 'boundary', label: 'Reporting boundary' }];
 const raceFields: Field[] = [
     amount('referenceDistanceMetres', 'Reference distance (metres)'),
@@ -74,6 +83,7 @@ type Profile = {
     masterId: number;
     title: string;
     methodology: string;
+    resultDisclosure?: string;
     fields: Field[];
     group?: { key: string; label: string; min: number; max: number; fields: Field[] };
     run: (data: FormData, rowCount: number) => Result[];
@@ -81,6 +91,7 @@ type Profile = {
 export const privateModelProfiles: Profile[] = [
     {
         ...cohortLifetimeValue, title: 'Customer Lifetime Value', fields: cohortFields,
+        resultDisclosure: 'Mathematically exact under the supplied inputs and model. No display rounding applied.',
         group: { key: 'periods', label: 'Cash-flow period', min: 0, max: 60, fields: periodFields },
         run(data, count) {
             const result = cohortLifetimeValue.calculate({
@@ -91,8 +102,9 @@ export const privateModelProfiles: Profile[] = [
         },
     },
     {
-        ...returnRateImpact, title: 'Return Rate Impact', fields: returnFields,
+        ...returnRateImpact, title: 'Return Rate Impact', fields: [...returnFields, returnCostConfirmation],
         run(data) {
+            returnCostConfirmationSchema.parse({ returnCostsConfirmed: data.get(returnCostConfirmation.key) });
             const result = returnRateImpact.calculate({ ...readFields(data, returnFields), sales: boundedDecimal(data, 'sales', 0n, 1_000_000_000n, true) });
             return [
                 money('Before contribution', result.beforeContribution, result.currency),
@@ -155,6 +167,15 @@ function ModelForm({ profile }: { profile: Profile }) {
         setErrors({});
         setRefused(false);
     }
+    function changed(event: FormEvent<HTMLFormElement>) {
+        const field = event.target;
+        if (profile.masterId === 204 && field instanceof HTMLInputElement
+            && ['currency', 'saleCost', 'returnHandling', 'incrementalReturnFee'].includes(field.name)) {
+            const confirmation = event.currentTarget.elements.namedItem(returnCostConfirmation.key);
+            if (confirmation instanceof HTMLInputElement) confirmation.checked = false;
+        }
+        clear();
+    }
     function submit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         clear();
@@ -167,7 +188,7 @@ function ModelForm({ profile }: { profile: Profile }) {
             }
         }
     }
-    function field({ key, label, hint, options }: Field, prefix = '') {
+    function field({ key, label, hint, options, checkbox }: Field, prefix = '') {
         const name = prefix + key;
         const inputId = `${id}-${name}`;
         const description = [hint && `${inputId}-hint`, errors[name] && `${inputId}-error`].filter(Boolean).join(' ');
@@ -175,7 +196,7 @@ function ModelForm({ profile }: { profile: Profile }) {
         return <div key={key} className={styles.field}>
             <label htmlFor={inputId}>{label}</label>
             {options ? <select {...props}>{options.map(option => <option key={option}>{option}</option>)}</select>
-                : <input {...props} maxLength={120} />}
+                : checkbox ? <input {...props} type="checkbox" /> : <input {...props} maxLength={120} />}
             {hint && <small id={`${inputId}-hint`}>{hint}</small>}
             {errors[name] && <small id={`${inputId}-error`}>{errors[name]}</small>}
         </div>;
@@ -184,7 +205,7 @@ function ModelForm({ profile }: { profile: Profile }) {
         <h3>{profile.title}</h3>
         <p>Exact engine <code>{profile.id}@{profile.version}</code></p>
         <p>{profile.methodology}</p>
-        <form onSubmit={submit} onChange={clear} noValidate>
+        <form onSubmit={submit} onChange={changed} noValidate>
             <div className={styles.grid}>{profile.fields.map(item => field(item))}</div>
             {group && <>
                 {rows.map((row, index) => <fieldset className={styles.row} key={row}>
@@ -204,9 +225,12 @@ function ModelForm({ profile }: { profile: Profile }) {
         </form>
         {refused && <p role="alert">Calculation refused. Correct the marked inputs and calculate again.</p>}
         <div role="status" aria-atomic="true">
-            {result && <dl className={styles.result}>
-                {result.map(({ label, value }, index) => <div key={index}><dt>{label}</dt><dd>{value}</dd></div>)}
-            </dl>}
+            {result && <>
+                {profile.resultDisclosure && <p>{profile.resultDisclosure}</p>}
+                <dl className={styles.result}>
+                    {result.map(({ label, value }, index) => <div key={index}><dt>{label}</dt><dd>{value}</dd></div>)}
+                </dl>
+            </>}
         </div>
     </>;
 }

@@ -31,6 +31,7 @@ it.each([
     fill('Private calculator', String(id));
     expect(screen.getByText(engine)).toBeTruthy();
     for (const [label, value] of Object.entries(values)) fill(label, value);
+    if (id === 204) fireEvent.click(screen.getByRole('checkbox', { name: /incremental and counted only once/i }));
     calculate();
     expect(screen.getByRole('status').textContent).toContain(result);
     fill(invalidLabel, invalidValue);
@@ -63,6 +64,7 @@ it('checks sales text exactly while preserving zero and the maximum whole count'
         'Handling cost per return': '4', 'Incremental fee per return': '1',
         'Recovered inventory value per return': '15', 'Before return rate': '0.1', 'After return rate': '0.2',
     })) fill(label, value);
+    fireEvent.click(screen.getByRole('checkbox', { name: /incremental and counted only once/i }));
     for (const [sales, expected] of [['0', '0 USD'], ['1000000000.000', '-4000000000 USD']]) {
         fill('Number of sales', sales);
         calculate();
@@ -94,4 +96,48 @@ it('checks both distance fields against exact metre boundaries', () => {
         expect(screen.getByRole('alert')).toBeTruthy();
         expect(screen.getByLabelText('Target distance (metres)').getAttribute('aria-invalid')).toBe('true');
     }
+});
+
+it.each([
+    ['0', '1', '2/3 USD'],
+    ['1', '1.5', '0 USD'],
+    ['1', '0', '-1 USD'],
+])('discloses exact, unrounded lifetime value for %s upfront and %s revenue', (cost, revenue, result) => {
+    render(<PrivateModelWorkbench />);
+    for (const [label, value] of Object.entries({
+        'Currency code': 'USD', 'Upfront acquisition cost per customer': cost, 'Discount per period': '0.5',
+        'Activity probability': '1', 'Revenue if active': revenue, 'Cost if active': '0', 'Unconditional cost': '0',
+    })) fill(label, value);
+    calculate();
+    const status = screen.getByRole('status');
+    expect(status.textContent).toContain(result);
+    expect(status.textContent).toContain('Mathematically exact under the supplied inputs and model. No display rounding applied.');
+    fill('Discount per period', '-1');
+    expect(status.textContent).toBe('');
+    calculate();
+    expect(screen.getByRole('alert')).toBeTruthy();
+    expect(status.textContent).toBe('');
+});
+
+it('withholds return impact without explicit non-overlap confirmation', () => {
+    render(<PrivateModelWorkbench />);
+    fill('Private calculator', '204');
+    for (const [label, value] of Object.entries({
+        'Currency code': 'USD', 'Number of sales': '100', 'Price per sale': '50', 'Cost per sale': '20',
+        'Refund per return': '50', 'Handling cost per return': '4', 'Incremental fee per return': '4',
+        'Recovered inventory value per return': '15', 'Before return rate': '0.1', 'After return rate': '0.2',
+    })) fill(label, value);
+    calculate();
+    expect(screen.getByRole('alert')).toBeTruthy();
+    expect(screen.getByRole('status').textContent).toBe('');
+    const confirm = screen.getByRole('checkbox', { name: /incremental and counted only once/i });
+    expect(confirm.getAttribute('aria-invalid')).toBe('true');
+    fireEvent.click(confirm);
+    calculate();
+    expect(screen.getByRole('status').textContent).toContain('-430 USD');
+    fill('Handling cost per return', '5');
+    expect((confirm as HTMLInputElement).checked).toBe(false);
+    expect(screen.getByRole('status').textContent).toBe('');
+    calculate();
+    expect(screen.getByRole('alert')).toBeTruthy();
 });
