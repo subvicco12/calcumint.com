@@ -105,6 +105,10 @@ export function verifyNinePathRetainedCore(input){
  return withHistoricalStage9Input(input,({read,git})=>verifyParallelSource(read,git)).result;
 }
 
+export function verifyNinePathLiveHead(input){
+ return verifyLive({...input,root:realpathSync(input.root)}).head;
+}
+
 /** Verify the finite extra membership against immutable source before projecting it away. */
 export function reconcileBatch14Membership(input,currentFiles,rawHistorical){
  const actual={...input,root:realpathSync(input.root)};

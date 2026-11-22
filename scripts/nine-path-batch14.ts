@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 import {copyCalculationData} from '../src/lib/calculation-snapshot';
 import {prepareCanonicalContractEvidence,type CanonicalContractEvidence} from '../src/lib/canonical-evidence-preparation';
 import {verifyFinancialSafetyBinding} from './financial-safety-lineage.mjs';
-import {reconcileBatch14Membership} from '../tests/nine-path-source-repair-20261122/proof.mjs';
+import {reconcileBatch14Membership,verifyNinePathLiveHead} from '../tests/nine-path-source-repair-20261122/proof.mjs';
 
 const revision='a955cdad7019a645b7ed2950299d0603ba1784a7';
 const artifact='docs/full-product-batch14/contract-evidence.json';
@@ -15,6 +15,8 @@ const git=(args:string[])=>execFileSync('git',args,{stdio:['ignore','pipe','pipe
 // Scoped successor of the original historical verifier. The complete original
 // comparison follows the exact membership projection and is still mandatory.
 export function validateNinePathBatch14(rawBytes:Buffer):CanonicalContractEvidence{
+ const input={git,read:readFileSync,root:process.cwd()};
+ const entryHead=verifyNinePathLiveHead(input);
  const raw:unknown=JSON.parse(rawBytes.toString());
  const clean=copyCalculationData({value:raw},{}).input.value;
  if(git(['rev-parse',revision+':'+artifact]).toString().trim()!==artifactBlob)throw Error('Historical canonical evidence object differs');
@@ -27,7 +29,7 @@ export function validateNinePathBatch14(rawBytes:Buffer):CanonicalContractEviden
  const supplemental={path:'src/calculators/final-framework/technology-scalar-presentation.ts',
   ref:'7086b85437b025225f5736fb6b849415e518dc08',blob:'d0d4a738021a84e08984bad3b45333c57a8030e1',
   sha256:'bb82638b8347e696e9276fa5e9b062696b1808d3fe8ff82a001538af7c0d5330'};
- const currentFiles=reconcileBatch14Membership({git,read:readFileSync,root:process.cwd()},current.implementationSourceSnapshot.files,rawBytes);
+ const currentFiles=reconcileBatch14Membership(input,current.implementationSourceSnapshot.files,rawBytes);
  const expectedPaths=[...oldFiles.map(file=>file.path),supplemental.path].sort();
  if(JSON.stringify(currentFiles.map(file=>file.path))!==JSON.stringify(expectedPaths))throw Error('Historical canonical source membership differs');
  if(git(['rev-parse','--verify',supplemental.ref+'^{commit}']).toString().trim()!==supplemental.ref||
@@ -49,5 +51,6 @@ export function validateNinePathBatch14(rawBytes:Buffer):CanonicalContractEviden
  const restored={...body,implementationSourceSnapshot:{...body.implementationSourceSnapshot,files,sourceTreeSHA256:hash(JSON.stringify(files))}};
  const expected={...restored,contentSHA256:hash(JSON.stringify(restored))};
  if(JSON.stringify(expected)!==JSON.stringify(original))throw Error('Historical canonical evidence differs from current metadata, identities or restrictions');
+ if(verifyNinePathLiveHead(input)!==entryHead)throw Error('Native HEAD moved during Batch14 verification');
  return original;
 }
