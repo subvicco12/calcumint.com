@@ -47,14 +47,23 @@ const guardTransitions=Object.freeze([
  Object.freeze({
   path:'tests/milestone100-20261114/source-stage8-guard-selection.mjs',
   previous:Object.freeze({ref:historicalGuardRef,blob:'6210d33b3adf1625795cad887cfb081e9406cec7',bytes:4050,sha256:'ccf3924b1cbb4a0295d394164cbeca4377ad679b5cc925adabf6cdce4cd952d3'}),
-  current:Object.freeze({ref:'7251517133a8843ef7322e1f286774dd869008ef',blob:'00ee5a684a6590c7bde458946041c01dc971ba12',bytes:4206,sha256:'45be3854f79d595ff8a1525c07ec369823fcf57148a0e703aa361270776335e6'}),
+  current:Object.freeze({ref:'a9f4ce179f72a45a9c315e404b66b39d35e9b245',blob:'6a2596d0ffe97c97c2b8c66e2380d6134278a69f',bytes:4221,sha256:'0f7803d37dfe19feae9397a97cbffb1af1249e042a82f818d91d99734db2259f'}),
+ }),
+ Object.freeze({
+  path:'tests/parallel-source-20261110/baseline-probe.mjs',
+  previous:Object.freeze({ref:'f4fa576cb070a31a3408f46c267c13b1e7b1f4eb',blob:'5aa7324b1bef1c902c3b2c2b878a1da5bac58527',bytes:2562,sha256:'a172e54eb4ded89123ccaff6123e0621d7314429a9b81ddea1863fd337100479'}),
+  current:Object.freeze({ref:'89590fffd72ed94000343a6f81380e82b7c0c506',blob:'859347d677bed99d2982a083cdea210df9a24490',bytes:2566,sha256:'33b036c1c4afe418237b78724dc123a7ff8c9abc9d9c68340a32297e7916d47d'}),
  }),
 ]);
+const a7BatchDependency=Object.freeze({
+ path:'tests/parallel-source-20261110/a7-batch-input.mjs',
+ current:Object.freeze({ref:'89590fffd72ed94000343a6f81380e82b7c0c506',blob:'48c46baf527c28b37b6f2961a7d0c4e66c8ba889',bytes:933,sha256:'ca8667a300dc71c7d07f32b5a838d45fe7043a80eeeaedb70ade66bd86cb6175'}),
+});
 
 function verifyReviewedGuards({git,read,head,root}){
  assert.equal(text(git,headQuery),head,'Native HEAD moved before reviewed guard verification');
- for(const {path,previous,current} of guardTransitions){
-  verifyRecord(git,path,previous);
+ for(const {path,previous,current} of [...guardTransitions,a7BatchDependency]){
+  if(previous)verifyRecord(git,path,previous);
   const bytes=verifyRecord(git,path,current);
   assert.equal(text(git,['rev-parse',head+':'+path]),current.blob,'Unexpected reviewed guard path: '+path);
   const file=resolve(root,path);
