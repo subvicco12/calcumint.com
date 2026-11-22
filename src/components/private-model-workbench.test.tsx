@@ -16,7 +16,7 @@ it.each([
         'Currency code': 'USD', 'Number of sales': '100', 'Price per sale': '50', 'Cost per sale': '20',
         'Refund per return': '50', 'Handling cost per return': '4', 'Incremental fee per return': '1',
         'Recovered inventory value per return': '15', 'Before return rate': '0.1', 'After return rate': '0.2',
-    }, 'After return rate', '1.1', '-400 USD'],
+    }, 'Number of sales', '1.0000000000000001', '-400 USD'],
     [485, 'private.environment.supplied-factor-carbon-footprint@1', {
         'Reporting period': '2026', 'Reporting boundary': 'Fixture', 'Unique activity ID': 'electricity',
         'Activity quantity': '1000', 'Activity unit': 'kWh', 'Factor in kg CO₂e per unit': '0.13096',
@@ -25,7 +25,7 @@ it.each([
     [522, 'private.sports.supplied-exponent-race-time@1', {
         'Reference distance (metres)': '5000', 'Target distance (metres)': '10000',
         'Reference time (seconds)': '1500', 'Model exponent (0.1 to 3)': '2', 'Calibration reference': 'Fixture',
-    }, 'Reference distance (metres)', '0', '6000 seconds'],
+    }, 'Reference distance (metres)', '1000000.00000000001', '6000 seconds'],
 ] as const)('binds #%s to its exact engine and recovers after refusal', (id, engine, values, invalidLabel, invalidValue, result) => {
     render(<PrivateModelWorkbench />);
     fill('Private calculator', String(id));
@@ -53,4 +53,45 @@ it('preserves surviving row inputs when an earlier cash-flow period is removed',
     fireEvent.change(probabilities[1], { target: { value: '0.75' } });
     fireEvent.click(screen.getByRole('button', { name: 'Remove cash-flow period 1' }));
     expect(screen.getByLabelText<HTMLInputElement>('Activity probability').value).toBe('0.75');
+});
+
+it('checks sales text exactly while preserving zero and the maximum whole count', () => {
+    render(<PrivateModelWorkbench />);
+    fill('Private calculator', '204');
+    for (const [label, value] of Object.entries({
+        'Currency code': 'USD', 'Price per sale': '50', 'Cost per sale': '20', 'Refund per return': '50',
+        'Handling cost per return': '4', 'Incremental fee per return': '1',
+        'Recovered inventory value per return': '15', 'Before return rate': '0.1', 'After return rate': '0.2',
+    })) fill(label, value);
+    for (const [sales, expected] of [['0', '0 USD'], ['1000000000.000', '-4000000000 USD']]) {
+        fill('Number of sales', sales);
+        calculate();
+        expect(screen.queryByRole('alert')).toBeNull();
+        expect(screen.getByRole('status').textContent).toContain(expected);
+    }
+    for (const sales of ['', '-1', '1e2', '0.01', '1000000000.00000001', '1000000001']) {
+        fill('Number of sales', sales);
+        expect(screen.getByRole('status').textContent).toBe('');
+        calculate();
+        expect(screen.getByRole('alert')).toBeTruthy();
+        expect(screen.getByLabelText('Number of sales').getAttribute('aria-invalid')).toBe('true');
+    }
+});
+
+it('checks both distance fields against exact metre boundaries', () => {
+    render(<PrivateModelWorkbench />);
+    fill('Private calculator', '522');
+    for (const [label, value] of Object.entries({
+        'Reference distance (metres)': '1', 'Target distance (metres)': '1000000.000',
+        'Reference time (seconds)': '1', 'Model exponent (0.1 to 3)': '1', 'Calibration reference': 'Fixture',
+    })) fill(label, value);
+    calculate();
+    expect(screen.getByRole('status').textContent).toContain('1000000 seconds');
+    for (const distance of ['1000000.00000000001', '0.99999999999999999', '1000001', '-1', '1e6']) {
+        fill('Target distance (metres)', distance);
+        expect(screen.getByRole('status').textContent).toBe('');
+        calculate();
+        expect(screen.getByRole('alert')).toBeTruthy();
+        expect(screen.getByLabelText('Target distance (metres)').getAttribute('aria-invalid')).toBe('true');
+    }
 });

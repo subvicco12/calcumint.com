@@ -16,7 +16,7 @@ const cases = [
         currency: 'USD', sales: '100', price: '50', saleCost: '20', refund: '50',
         returnHandling: '4', incrementalReturnFee: '1', recoveredInventoryValue: '15',
         beforeRate: '0.1', afterRate: '0.2',
-    }, 'afterRate', '1.1', '-400 USD'],
+    }, 'sales', '1.0000000000000001', '-400 USD'],
     [485, 'private.environment.supplied-factor-carbon-footprint@1', {
         reportingPeriod: '2026', boundary: 'Fixture', 'activities.0.id': 'electricity',
         'activities.0.quantity': '1000', 'activities.0.unit': 'kWh',
@@ -26,7 +26,7 @@ const cases = [
     [522, 'private.sports.supplied-exponent-race-time@1', {
         referenceDistanceMetres: '5000', targetDistanceMetres: '10000',
         referenceTimeSeconds: '1500', exponent: '2', calibrationReference: 'Fixture',
-    }, 'referenceDistanceMetres', '0', '6000 seconds'],
+    }, 'referenceDistanceMetres', '1000000.00000000001', '6000 seconds'],
 ];
 const server = await createServer({
     configFile: false,

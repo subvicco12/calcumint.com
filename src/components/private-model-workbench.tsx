@@ -17,6 +17,17 @@ const numeric = (data: FormData, key: string) => {
     const value = text(data, key);
     return /^\d+(?:\.\d+)?$/.test(value) && value.length <= 32 ? Number(value) : NaN;
 };
+// Check the decimal text before binary64 rounding can erase a fractional count
+// or move an out-of-range distance onto an accepted endpoint.
+const boundedDecimal = (data: FormData, key: string, min: bigint, max: bigint, wholeOnly = false) => {
+    const value = text(data, key);
+    const parts = value.length <= 32 ? /^(\d+)(?:\.(\d+))?$/.exec(value) : null;
+    if (!parts) return NaN;
+    const whole = BigInt(parts[1]);
+    const hasFraction = /[1-9]/.test(parts[2] ?? '');
+    if (whole < min || whole > max || (hasFraction && (wholeOnly || whole === max))) return NaN;
+    return Number(value);
+};
 const readFields = (data: FormData, fields: Field[], prefix = '') =>
     Object.fromEntries(fields.map(field => [field.key, text(data, prefix + field.key)]));
 const money = (label: string, value: string, unit: string) => ({ label, value: `${value} ${unit}` });
@@ -82,7 +93,7 @@ export const privateModelProfiles: Profile[] = [
     {
         ...returnRateImpact, title: 'Return Rate Impact', fields: returnFields,
         run(data) {
-            const result = returnRateImpact.calculate({ ...readFields(data, returnFields), sales: numeric(data, 'sales') });
+            const result = returnRateImpact.calculate({ ...readFields(data, returnFields), sales: boundedDecimal(data, 'sales', 0n, 1_000_000_000n, true) });
             return [
                 money('Before contribution', result.beforeContribution, result.currency),
                 money('After contribution', result.afterContribution, result.currency),
@@ -118,8 +129,8 @@ export const privateModelProfiles: Profile[] = [
         ...suppliedExponentRaceTime, title: 'Race Time Predictor', fields: raceFields,
         run(data) {
             const result = suppliedExponentRaceTime.calculate({
-                referenceDistanceMetres: numeric(data, 'referenceDistanceMetres'),
-                targetDistanceMetres: numeric(data, 'targetDistanceMetres'),
+                referenceDistanceMetres: boundedDecimal(data, 'referenceDistanceMetres', 1n, 1_000_000n),
+                targetDistanceMetres: boundedDecimal(data, 'targetDistanceMetres', 1n, 1_000_000n),
                 referenceTimeSeconds: numeric(data, 'referenceTimeSeconds'),
                 exponent: numeric(data, 'exponent'), calibrationReference: text(data, 'calibrationReference'),
             });
