@@ -36,6 +36,47 @@ function verifyRecord(git,path,{ref,blob,bytes,sha256}){
  return data;
 }
 
+// Review-only successors. Original declaration rows and historical objects remain literal.
+const historicalGuardRef='887b70cecdc61de50d780ba58520a568365f9f62';
+const guardTransitions=Object.freeze([
+ Object.freeze({
+  path:'tests/parallel-source-20261110/core.mjs',
+  previous:Object.freeze({ref:historicalGuardRef,blob:'4d985c3b727f1a96a72f9ba9e8dc2084de5e9180',bytes:52073,sha256:'c829cf8cddc3aa31206ed117d040992d65714528360ac15f6ef6631c081d7b22'}),
+  current:Object.freeze({ref:'149700e6a45fb82e2c0531b4ac16c591da7276bf',blob:'57743a58de8af330542b54b6f0bb345a0d04cebf',bytes:52696,sha256:'106561a5e6d48c9c1be7556be351ac13b6adc4c7b62da0ea7b4fbe29e20185d2'}),
+ }),
+ Object.freeze({
+  path:'tests/milestone100-20261114/source-stage8-guard-selection.mjs',
+  previous:Object.freeze({ref:historicalGuardRef,blob:'6210d33b3adf1625795cad887cfb081e9406cec7',bytes:4050,sha256:'ccf3924b1cbb4a0295d394164cbeca4377ad679b5cc925adabf6cdce4cd952d3'}),
+  current:Object.freeze({ref:'7251517133a8843ef7322e1f286774dd869008ef',blob:'00ee5a684a6590c7bde458946041c01dc971ba12',bytes:4206,sha256:'45be3854f79d595ff8a1525c07ec369823fcf57148a0e703aa361270776335e6'}),
+ }),
+]);
+
+function verifyReviewedGuards({git,read,head,root}){
+ assert.equal(text(git,headQuery),head,'Native HEAD moved before reviewed guard verification');
+ for(const {path,previous,current} of guardTransitions){
+  verifyRecord(git,path,previous);
+  const bytes=verifyRecord(git,path,current);
+  assert.equal(text(git,['rev-parse',head+':'+path]),current.blob,'Unexpected reviewed guard path: '+path);
+  const file=resolve(root,path);
+  assert(lstatSync(file).isFile()&&realpathSync(file)===file,'Regular reviewed guard required: '+path);
+  assert(bytes.equals(read(path)),'Current reviewed guard bytes differ: '+path);
+ }
+ assert.equal(text(git,headQuery),head,'Native HEAD moved during reviewed guard verification');
+}
+
+export function reviewedNinePathGuardSuccessor(record){
+ if(!nativeAuthorityScope?.reviewGuards||!record)return undefined;
+ const transition=guardTransitions.find(({path})=>path===record.path);
+ if(!transition)return undefined;
+ const {path,previous,current}=transition;
+ for(const key of ['blob','sha256'])assert.equal(record[key],previous[key],'Historical reviewed guard declaration differs: '+path);
+ if(Object.hasOwn(record,'ref')){
+  assert.equal(record.ref,previous.ref,'Historical guard ref differs');
+  assert.equal(record.bytes,previous.bytes,'Historical guard byte count differs');
+ }
+ return Object.freeze({path,...current});
+}
+
 function verifyLive({git,read,root}){
  const capture=read(capturePath);
  assert(Buffer.isBuffer(capture)&&sha(capture)===captureSHA256,'Approved proposal digest differs');
@@ -81,10 +122,11 @@ function verifyLive({git,read,root}){
 }
 
 /** Review entry only. Historical projections exist only after verification and stay private. */
-function withHistoricalStage9Input(input,verify){
+function withHistoricalStage9Input(input,verify,{reviewGuards=false}={}){
  const root=realpathSync(input.root);
  const actual={git:input.git,read:input.read,root};
  const {proposal,head,original}=verifyLive(actual);
+ if(reviewGuards)verifyReviewedGuards({...actual,head});
  const read=path=>{
   if(!original.has(path))return actual.read(path);
   const bytes=original.get(path);
@@ -101,10 +143,13 @@ function withHistoricalStage9Input(input,verify){
  };
  const historicalGit=immutableTreeQueryReader(git);
  assert.equal(nativeAuthorityScope,undefined,'Nested nine-path authority scope refused');
- nativeAuthorityScope={actual:Object.freeze({...actual,head}),historicalHead:proposal.stage9,projectedRead:read,verifiedTransports:new WeakSet([historicalGit])};
+ nativeAuthorityScope={actual:Object.freeze({...actual,head}),historicalHead:proposal.stage9,reviewGuards,projectedRead:read,verifiedTransports:new WeakSet([historicalGit])};
  let result;
  try{result=verify({git:historicalGit,read,root});}
- finally{nativeAuthorityScope=undefined;}
+ finally{
+  nativeAuthorityScope=undefined;
+  if(reviewGuards)verifyReviewedGuards({...actual,head});
+ }
 
  assert.equal(verifyLive(actual).head,head,'Native HEAD moved since entry');
  return {result,head,paths:proposal.sourcePaths.map(row=>row.path)};
@@ -123,7 +168,9 @@ export function proveNinePathSuccessor(input){
 /** Run the original retained core, including its unchanged negative filters and final fence. */
 export async function verifyNinePathRetainedCore(input){
  const {verifyParallelSource}=await import('../parallel-source-20261110/core.mjs');
- return withHistoricalStage9Input(input,({read,git})=>verifyParallelSource(read,git)).result;
+ const {withReviewedNinePathAuthority}=await import('../parallel-source-20261110/authority.mjs');
+ return withHistoricalStage9Input(input,({read,git})=>
+  withReviewedNinePathAuthority(read,git,()=>verifyParallelSource(read,git)),{reviewGuards:true}).result;
 }
 
 export function verifyNinePathLiveHead(input){
