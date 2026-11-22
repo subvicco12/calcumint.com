@@ -3,12 +3,20 @@ import {createHash} from 'node:crypto';
 import {lstatSync,realpathSync} from 'node:fs';
 import {resolve} from 'node:path';
 import {proveSourceStage9,assertSourceStage9Stable} from '../four-worker-integration-20261115/source-stage9.mjs';
-import {verifyParallelSource} from '../parallel-source-20261110/core.mjs';
+import {immutableTreeQueryReader} from '../milestone100-20261114/source-immutable-queries.mjs';
 import {proveSourceStage8AndHistoricalInputs} from '../milestone100-20261114/source-stage8.mjs';
 import {sourceStage8Policy,sourceStage8CapturePath} from '../milestone100-20261114/source-stage8-policy-v3.mjs';
 
 export const capturePath='tests/nine-path-source-repair-20261122/proposal.json';
 const captureSHA256='c6c991d4ba4829fd8a70d41097695ec2b727e1d3923da290df67ce770c798c82';
+let nativeAuthorityScope;
+export function nativeNinePathAuthorityInput(view){
+ if(!nativeAuthorityScope||!view?.actualInput)return undefined;
+ const actual=view.actualInput;
+ assert.equal(actual.root,nativeAuthorityScope.root,'Native authority root differs');
+ assert.equal(text(actual.git,headQuery),nativeAuthorityScope.historicalHead,'Historical context differs from the verified scope');
+ return nativeAuthorityScope;
+}
 const headQuery=['rev-parse','--verify','HEAD^{commit}'];
 const statusQuery=['status','--porcelain','--untracked-files=all','--','src'];
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
@@ -85,7 +93,13 @@ function withHistoricalStage9Input(input,verify){
   }
   return actual.git(args.map(arg=>arg.startsWith('HEAD:src/')?proposal.stage9+arg.slice(4):arg),options);
  };
- const result=verify({git,read,root});
+ const historicalGit=immutableTreeQueryReader(git);
+ assert.equal(nativeAuthorityScope,undefined,'Nested nine-path authority scope refused');
+ nativeAuthorityScope=Object.freeze({...actual,head,historicalHead:proposal.stage9});
+ let result;
+ try{result=verify({git:historicalGit,read,root});}
+ finally{nativeAuthorityScope=undefined;}
+
  assert.equal(verifyLive(actual).head,head,'Native HEAD moved since entry');
  return {result,head,paths:proposal.sourcePaths.map(row=>row.path)};
 }
@@ -101,7 +115,8 @@ export function proveNinePathSuccessor(input){
 }
 
 /** Run the original retained core, including its unchanged negative filters and final fence. */
-export function verifyNinePathRetainedCore(input){
+export async function verifyNinePathRetainedCore(input){
+ const {verifyParallelSource}=await import('../parallel-source-20261110/core.mjs');
  return withHistoricalStage9Input(input,({read,git})=>verifyParallelSource(read,git)).result;
 }
 

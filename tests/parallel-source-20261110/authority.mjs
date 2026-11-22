@@ -1,3 +1,4 @@
+import {nativeNinePathAuthorityInput} from '../nine-path-source-repair-20261122/proof.mjs';
 import {lstatSync,realpathSync} from 'node:fs';
 import {resolve} from 'node:path';
 import {provePinnedSourceStage8} from '../milestone100-20261114/source-stage8-activation.mjs';
@@ -24764,10 +24765,12 @@ export function verifyParallelAuthority(read,git){
  assert(acceptedStage8.length>0,'Independently reviewed Stage8 authority is not installed');
  const view=sourceStage8HistoricalView(git);
  provePinnedSourceStage8({read,git,root:process.cwd()});
- const actual=view?.actualInput??{read,git};
+ const native=view&&nativeNinePathAuthorityInput(view);
+ const actual=native??view?.actualInput??{read,git};
  const records=view?[...accepted.filter(row=>!row.path.startsWith('src/')),...retainedStage8Authority.filter(row=>row.path.startsWith('src/'))]:accepted;
  // Symbolic identities are live once per invocation, never cached across calls.
  const actualHead=actual.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.match(actualHead,/^[0-9a-f]{40}$/);
+ if(native)assert.equal(actualHead,native.head,'Native HEAD moved before current authority verification');
  const historicalHead=view?git(['rev-parse','--verify','HEAD^{commit}']).toString().trim():actualHead;assert.match(historicalHead,/^[0-9a-f]{40}$/);
  // Only an originally supplied capability may batch immutable objects/paths.
  if(typeof actual.git.preloadBlobs==='function')actual.git.preloadBlobs(records.map(row=>row.blob));
@@ -24779,5 +24782,6 @@ export function verifyParallelAuthority(read,git){
   const bytes=input.git(['cat-file','blob',record.blob]);assert.equal(createHash('sha256').update(bytes).digest('hex'),record.sha256);
   const current=input.read(record.path);assert(current.equals(bytes),'Independent current target bytes differ: '+record.path);assert.equal(createHash('sha256').update(current).digest('hex'),record.sha256);
  }
+ if(native)assert.equal(actual.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),native.head,'Native HEAD moved during current authority verification');
  return true;
 }
