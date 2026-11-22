@@ -1,3 +1,4 @@
+import {nativeNinePathAuthorityInput} from '../nine-path-source-repair-20261122/proof.mjs';
 import {sourceStage9Policy,sourceStage9CapturePath} from '../four-worker-integration-20261115/source-stage9-policy.mjs';
 import {rejectChangedSourceArgument} from '../construction-ci-recovery-20261116/negative-source-arguments.mjs';
 import {restoreWorkflowGraphVerifier} from '../construction-ci-recovery-20261116/workflow-scheduling.mjs';
@@ -113,10 +114,15 @@ function exactCurrentSourceRecord(record,read,git){
  assert.equal(typeof record.path,'string');assert(!isAbsolute(record.path)&&!record.path.split('/').includes('..'));
  assert.match(record.ref,/^[0-9a-f]{40}$/);assert.equal(git(['rev-parse','--verify',record.ref+'^{commit}']).toString().trim(),record.ref);
  assert.equal(git(['rev-parse',record.ref+':'+record.path]).toString().trim(),record.blob,'Exact reviewed source object differs: '+record.path);
- assert.equal(git(['rev-parse','HEAD:'+record.path]).toString().trim(),record.blob,'Current HEAD source object differs: '+record.path);
+ const native=record.path.startsWith('src/')?undefined:nativeNinePathAuthorityInput(read,git);
+ const currentGit=native?.git??git;
+ const currentRead=native?.read??read;
+ if(native)assert.equal(currentGit(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),native.head,'Native HEAD moved before current source verification');
+ assert.equal(currentGit(['rev-parse',(native?.head??'HEAD')+':'+record.path]).toString().trim(),record.blob,'Current HEAD source object differs: '+record.path);
  const expected=git(['cat-file','blob',record.blob]);assert.equal(expected.length,record.bytes);assert.equal(hash(expected),record.sha256);
  const target=resolve(root,record.path),stat=lstatSync(target);assert(stat.isFile()&&!stat.isSymbolicLink(),'Regular current source required: '+record.path);assert.equal(realpathSync(target),target,'Current source path was redirected');
- assert(read(record.path).equals(expected),'Current target source differs; Independent current target bytes differ: '+record.path);
+ assert(currentRead(record.path).equals(expected),'Current target source differs; Independent current target bytes differ: '+record.path);
+ if(native)assert.equal(currentGit(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),native.head,'Native HEAD moved during current source verification');
 }
 /** Historical objects are validated as historical; they never fill a current reader. */
 function immutableRecord(record,git){
