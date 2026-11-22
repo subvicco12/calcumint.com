@@ -20,7 +20,7 @@ test('a historical core blob is not accepted as the native authority blob',async
  assert.notEqual(historicalBlob.toString(),git(['rev-parse',nativeHead+':'+core]).toString());
  await assert.rejects(verifyNinePathRetainedCore({...input,git:args=>
   args[0]==='rev-parse'&&args[1]===nativeHead+':'+core?historicalBlob:git(args)
- }),/Independent parallel HEAD authority differs: tests\/parallel-source-20261110\/core\.mjs/);
+ }),/Unexpected reviewed guard path: tests\/parallel-source-20261110\/core\.mjs/);
 });
 test('native HEAD movement during current authority verification is refused',async()=>{
  let enteredAuthority=false;
@@ -28,5 +28,19 @@ test('native HEAD movement during current authority verification is refused',asy
   if(args[0]==='rev-parse'&&args[1]===nativeHead+':'+core)enteredAuthority=true;
   if(enteredAuthority&&args.join(' ')===headQuery.join(' '))return Buffer.from(historical+'\n');
   return git(args);
- }}),/Native HEAD moved during current authority verification/);
+ }}),/Native HEAD moved during reviewed guard verification/);
+});
+
+test('missing historical core object refuses before authority selection',async()=>{
+ const missing='4d985c3b727f1a96a72f9ba9e8dc2084de5e9180';
+ await assert.rejects(verifyNinePathRetainedCore({...input,git:args=>{
+  if(args[0]==='cat-file'&&args[2]===missing)throw Error('Missing historical core object');
+  return git(args);
+ }}),/Missing historical core object/);
+});
+test('substituted live reviewed guard bytes refuse before capture selection',async()=>{
+ const path='tests/milestone100-20261114/source-stage8-guard-selection.mjs';
+ await assert.rejects(verifyNinePathRetainedCore({...input,git,read:name=>
+  name===path?Buffer.from('unexpected selector bytes'):readFileSync(name)
+ }),/Current reviewed guard bytes differ/);
 });
