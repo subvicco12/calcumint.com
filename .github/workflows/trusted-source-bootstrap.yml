@@ -10,13 +10,13 @@ jobs:
   prepare:
     if: >-
       github.repository == 'subvicco12/calcumint.com' &&
-      github.ref == 'refs/heads/engineering/trusted-bootstrap-20261122' &&
+      github.ref == 'refs/heads/engineering/trusted-bootstrap-runtime-20261123' &&
       github.ref_protected
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    environment: calcumint-source-bootstrap
+    environment: calcumint-source-bootstrap-runtime
     env:
-      BOOTSTRAP_ENVIRONMENT: calcumint-source-bootstrap
+      BOOTSTRAP_ENVIRONMENT: calcumint-source-bootstrap-runtime
       BOOTSTRAP_PREPARATION_ONLY: 'true'
     steps:
       - name: Verify independently configured workflow revision

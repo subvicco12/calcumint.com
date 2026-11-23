@@ -12,8 +12,8 @@ from urllib.request import Request, urlopen
 
 REPO = "subvicco12/calcumint.com"
 WORKFLOW = ".github/workflows/trusted-source-bootstrap.yml"
-REF = "refs/heads/engineering/trusted-bootstrap-20261122"
-ENVIRONMENT = "calcumint-source-bootstrap"
+REF = "refs/heads/engineering/trusted-bootstrap-runtime-20261123"
+ENVIRONMENT = "calcumint-source-bootstrap-runtime"
 DOCUMENT = "1KU7fGtv86RQz_n3HCdl9HscTyN2Z7SlXz8U8EF3f3MY"
 COMMENT = "doco.99YAEt3IFT2z1P1SzIkt5A"
 OWNER = "Subrata Singha Roy"
