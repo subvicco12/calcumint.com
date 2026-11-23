@@ -51,12 +51,16 @@ jobs:
           git -C "$candidate" -c core.hooksPath=/dev/null checkout --detach FETCH_HEAD
           printf 'BOOTSTRAP_CANDIDATE=%s\n' "$candidate" >> "$GITHUB_ENV"
 
+      - name: Provision exact reviewed runtime
+        env:
+          BOOTSTRAP_DRIVE_TOKEN: ${{ secrets.CALCUMINT_BOOTSTRAP_DRIVE_TOKEN }}
+          BOOTSTRAP_RUNTIME_FILE_ID: ${{ vars.CALCUMINT_BOOTSTRAP_RUNTIME_FILE_ID }}
+        run: python3 -I trusted/tools/trusted-bootstrap/provision_runtime.py --root "$RUNNER_TEMP"
+
       - name: Authenticate and verify without protected activation
         env:
           TRUSTED_WORKFLOW_SHA: ${{ vars.CALCUMINT_BOOTSTRAP_WORKFLOW_SHA }}
           BOOTSTRAP_DRIVE_TOKEN: ${{ secrets.CALCUMINT_BOOTSTRAP_DRIVE_TOKEN }}
           BOOTSTRAP_SOURCE_FILE_ID: ${{ vars.CALCUMINT_BOOTSTRAP_SOURCE_FILE_ID }}
           BOOTSTRAP_PACKET_FILE_ID: ${{ vars.CALCUMINT_BOOTSTRAP_PACKET_FILE_ID }}
-          BOOTSTRAP_NODE: ${{ vars.CALCUMINT_BOOTSTRAP_NODE }}
-          BOOTSTRAP_GIT: ${{ vars.CALCUMINT_BOOTSTRAP_GIT }}
         run: python3 -I trusted/tools/trusted-bootstrap/bootstrap.py
