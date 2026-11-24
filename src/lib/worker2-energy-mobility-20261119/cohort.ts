@@ -1,3 +1,7 @@
+import {evChargingEnergyDraftCalculator} from '@/calculators/energy/draft-master-484';
+import {sleepDurationCalculator} from '@/calculators/travel/draft-master-518';
+import {powerWeightRatioDraftCalculator} from '@/calculators/sports/draft-master-529';
+import {planetaryWeightCalculator,GRAVITY_REFERENCE_VERSION} from '@/calculators/astronomy/draft-master-531';
 import {rainwaterHarvestingDraftCalculator} from '@/calculators/energy/draft-master-487';
 import {privateCatalogAdapters} from '@/calculators/private-catalog-adapters';
 import {privateOwnerBusinessCore} from '@/calculators/private-owner-business-core';
@@ -236,7 +240,37 @@ function batch44Profile(definition:CalculatorDefinition<unknown,unknown>,catalog
  },label,secondary,`src/calculators/${source}.ts`);
 }
 
+const overnightExample={sleepStart:'2026-01-01T23:00Z',wakeEnd:'2026-01-02T07:00Z',awakeMinutes:30};
+const gravityExample={bodyMass:1,massUnit:'kg',body:'standard-earth',referenceVersion:GRAVITY_REFERENCE_VERSION} as const;
+const batch41Ids = new Set([484,518,529,531]);
+
 export const mobilityContracts=Object.freeze([
+ profile(evChargingEnergyDraftCalculator,{
+  catalogId:484,primaryKey:'wallEnergyKwh',unit:'kWh',registered:false,
+  scope:'Supplied battery-side energy divided by the entered charging efficiency fraction. Includes the implied energy loss. Excludes tariffs, charge curves and vehicle-specific predictions.',
+  fieldUnits:{batteryEnergyAddedKwh:'kWh',chargingEfficiency:'fraction'},
+ },'Estimated wall energy',{lossKwh:{label:'Estimated charging loss',unit:'kWh'}},'src/calculators/energy/draft-master-484.ts'),
+ profile({...sleepDurationCalculator,examples:[{label:'Overnight interval with awake time',input:overnightExample,
+  expected:sleepDurationCalculator.calculate(overnightExample,{})}]},{
+  catalogId:518,primaryKey:'estimatedSleepMinutes',unit:'minutes',registered:false,
+  scope:'Explicit-offset minute timestamps. Subtract entered awake minutes from interval length. The estimate excludes clinical interpretation and named timezone rules.',
+  textFields:['sleepStart','wakeEnd'],fieldUnits:{awakeMinutes:'minutes'},
+ },'Estimated sleep duration',{elapsedMinutes:{label:'Elapsed interval',unit:'minutes'}},'src/calculators/travel/draft-master-518.ts'),
+ profile(powerWeightRatioDraftCalculator,{
+  catalogId:529,primaryKey:'wattsPerKg',unit:'W/kg',registered:false,
+  scope:'Supplied power in watts divided by the selected physical mass in kilograms. Choose the mass basis before entry and use the same basis across comparisons. Excludes performance benchmarks.',
+  fieldUnits:{powerWatts:'W',massKg:'kg'},
+ },'Power per supplied mass',{},'src/calculators/sports/draft-master-529.ts'),
+ profile({...planetaryWeightCalculator,examples:[{label:'Standard Earth gravity convention',input:gravityExample,
+  expected:planetaryWeightCalculator.calculate(gravityExample,{})}]},{
+  catalogId:531,primaryKey:'weightNewtons',unit:'N',registered:false,
+  scope:'Spherical reference gravity, excluding rotation, oblateness and site variation. Standard Earth gravity is a separate convention. Physical mass is unchanged.',
+  fieldOptions:{massUnit:['kg','lb'],body:['earth','mars','jupiter','moon','standard-earth'],referenceVersion:[GRAVITY_REFERENCE_VERSION]},
+ },'Reference-model weight force',{
+  bodyMassKg:{label:'Physical mass',unit:'kg'},referenceGravityMps2:{label:'Reference gravitational acceleration',unit:'m/s²'},
+  earthEquivalentKg:{label:'Earth-equivalent indicated mass',unit:'kg equivalent'},
+ },'src/calculators/astronomy/draft-master-531.ts'),
+
  profile(rainwaterHarvestingDraftCalculator,{
   catalogId:487,primaryKey:'collectedLiters',unit:'L',registered:false,
   scope:'Single supplied rainfall depth and catchment area with a supplied collection fraction from 0 to 1. Excludes tank sizing, rainfall time series and safe drinking-water claims.',
@@ -339,7 +373,7 @@ export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):bo
 }
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
- const capture=id===487?'private.worker2.rainwater-capture.20261124.1':batch44Ids.has(id)?'private.worker2.batch44.20261124.1':id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
+ const capture=batch41Ids.has(id)?'private.worker2.batch41.20261124.1':id===487?'private.worker2.rainwater-capture.20261124.1':batch44Ids.has(id)?'private.worker2.batch44.20261124.1':id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
   sourceVersion:`${capture}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{
