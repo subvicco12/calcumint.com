@@ -6,7 +6,7 @@ import {requiredCalculatorNumber} from '../../registered-input-successor';
 import {sameRecordedJson} from '../../recorded-json-equality';
 
 export type EngineeringContract=FactoryContract&Readonly<{verifyHistorical:(snapshot:CalculationSnapshot)=>Readonly<{snapshot:CalculationSnapshot;engineId:string;engineVersion:number;scope:string}>}>;
-export type EngineeringOptions<I,O>={catalogId:number;primaryKey:keyof O&string;unit:string;scope:string;sourceEvidence:readonly string[];registered?:false;primaryStringList?:true;fieldUnits?:Readonly<Record<string,string>>;itemLists?:readonly string[];numberLists?:readonly string[];textFields?:readonly string[];fieldOptions?:Readonly<Record<string,readonly string[]>>;validate?:(input:I,output:O)=>void};
+export type EngineeringOptions<I,O>={catalogId:number;primaryKey:keyof O&string;unit:string;scope:string;sourceEvidence:readonly string[];registered?:false;nullablePrimary?:true;structuredFields?:readonly string[];primaryStringList?:true;fieldUnits?:Readonly<Record<string,string>>;itemLists?:readonly string[];numberLists?:readonly string[];textFields?:readonly string[];fieldOptions?:Readonly<Record<string,readonly string[]>>;validate?:(input:I,output:O)=>void};
 /** Private captures reuse immutable engines. Historical replay deliberately bypasses capture-only guards. */
 export function createEngineeringContract<I extends object,O extends object>(engine:CalculatorDefinition<I,O>,options:EngineeringOptions<I,O>):EngineeringContract{
  const example=engine.examples[0]?.input;
@@ -15,9 +15,11 @@ export function createEngineeringContract<I extends object,O extends object>(eng
  const exampleValues=example as Record<string,unknown>;
  const fieldOptions=options.fieldOptions??{};
  const itemLists=new Set(options.itemLists);
+ const structuredFields=new Set(options.structuredFields);
  const numberLists=new Set(options.numberLists);
  const textFields=new Set(options.textFields);
  if(Object.keys(fieldOptions).some(key=>!keys.includes(key))||keys.some(key=>{
+  if(structuredFields.has(key))return !Array.isArray(exampleValues[key])&&typeof exampleValues[key]!=='boolean';
   if(itemLists.has(key)||numberLists.has(key))return !Array.isArray(exampleValues[key]);
   if(textFields.has(key))return typeof exampleValues[key]!=='string';
   const choices=fieldOptions[key];
@@ -30,13 +32,19 @@ export function createEngineeringContract<I extends object,O extends object>(eng
   return engine.inputSchema.parse(clean);
  };
  const record=(input:I,output:O)=>createCalculationSnapshot({calculatorSlug:engine.slug,calculatorVersion:engine.version,input:input as Record<string,unknown>,output:output as Record<string,unknown>});
- return Object.freeze({catalogId:options.catalogId,engineId:engine.id,slug:engine.slug,version:engine.version,title:engine.title,registered:options.registered??true,captureRevision:'private.next-engineering.20261115.1',primaryKey:options.primaryKey,unit:options.unit,scope:options.scope,sourceEvidence:Object.freeze([...options.sourceEvidence]),limitations:Object.freeze(['Private engineering contract; canonical acceptance, certification and publication remain pending.','Capture uses binary64 finite inputs |x| ≤ 1e50; nonzero magnitudes ≥ 1e-50. Original historical domain is preserved.']),fields:Object.freeze(keys.map(key=>Object.freeze({key,label:key,...(itemLists.has(key)||numberLists.has(key)?{kind:'text' as const,multilineJson:true as const}:textFields.has(key)?{kind:'text' as const}:fieldOptions[key]?{kind:'select' as const,options:fieldOptions[key]}:{kind:'number' as const}),defaultValue:itemLists.has(key)||numberLists.has(key)?JSON.stringify(exampleValues[key]):String(exampleValues[key]),...(options.fieldUnits?.[key]?{unit:options.fieldUnits[key]}:{})}))),
+ return Object.freeze({catalogId:options.catalogId,engineId:engine.id,slug:engine.slug,version:engine.version,title:engine.title,registered:options.registered??true,captureRevision:'private.next-engineering.20261115.1',primaryKey:options.primaryKey,unit:options.unit,scope:options.scope,sourceEvidence:Object.freeze([...options.sourceEvidence]),limitations:Object.freeze(['Private engineering contract; canonical acceptance, certification and publication remain pending.','Capture uses binary64 finite inputs |x| ≤ 1e50; nonzero magnitudes ≥ 1e-50. Original historical domain is preserved.']),fields:Object.freeze(keys.map(key=>Object.freeze({key,label:key,...(itemLists.has(key)||numberLists.has(key)||structuredFields.has(key)?{kind:'text' as const,multilineJson:true as const}:textFields.has(key)?{kind:'text' as const}:fieldOptions[key]?{kind:'select' as const,options:fieldOptions[key]}:{kind:'number' as const}),defaultValue:itemLists.has(key)||numberLists.has(key)||structuredFields.has(key)?JSON.stringify(exampleValues[key]):String(exampleValues[key]),...(options.fieldUnits?.[key]?{unit:options.fieldUnits[key]}:{})}))),
  execute(raw){
   const clean=copyCalculationData(raw,{}).input;
   if(Object.values(clean).some(value=>typeof value!=='string'))throw Error('Explicit numeric text fields required');
   const values=Object.fromEntries(Object.entries(clean).map(([key,value])=>{
    const text=value as string,choices=fieldOptions[key];
    if(textFields.has(key))return [key,text];
+   if(structuredFields.has(key)){
+    if(text.length>65536)throw Error('Structured entry exceeds the 64 KiB input limit');
+    const value=parseFinalPrivateSnapshotText(text);
+    if(!Array.isArray(value)&&typeof value!=='boolean')throw Error('Enter a JSON list or boolean');
+    return [key,value];
+   }
    if(numberLists.has(key)){
     if(text.length>65536)throw Error('Data list exceeds the 64 KiB input limit');
     const list=parseFinalPrivateSnapshotText(text);
@@ -64,7 +72,7 @@ export function createEngineeringContract<I extends object,O extends object>(eng
   const primary=snapshot.output[options.primaryKey];
   if(options.primaryStringList){
    if(!Array.isArray(primary)||!primary.length||!primary.every(item=>typeof item==='string'&&item.length>0))throw Error('Exact outcome list required');
-  }else if(typeof primary!=='number'||!Number.isFinite(primary)||(primary!==0&&Math.abs(primary)<2**-1022))throw Error('Primary result outside finite normal range');
+  }else if(!(options.nullablePrimary&&primary===null)&&(typeof primary!=='number'||!Number.isFinite(primary)||(primary!==0&&Math.abs(primary)<2**-1022)))throw Error('Primary result outside finite normal range');
   return snapshot;
  },
  verifyHistorical(raw){

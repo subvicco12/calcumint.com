@@ -14,10 +14,13 @@ export function MobilityPortal({ownerId,plan}:{ownerId:string;plan:CalcuMintPlan
  <p>{c.engineId}@{c.version}. {c.scope} {c.limitations.join(' ')}</p>
  <details><summary>Formula and assumptions</summary><ul>{c.engine.formulas.map(f=><li key={f.id}><code>{f.expression}</code> — {f.description}</li>)}</ul></details>
  <CalculatorFactoryWorkbench key={ownerId+':'+id} workflows={mobilityWorkflows(id)} fields={c.fields} title={c.title+' — Result unit: '+c.unit+' — private review'} plan={plan} renderResult={packet=><><FinalResultPresentation plan={plan} result={{
-  primaryResult:{id:c.primaryKey,label:c.primaryLabel,value:id===418?(packet.snapshot.output.offspring as string[]).join(' · '):packet.snapshot.output[c.primaryKey] as number,unit:c.outputUnit?.(packet.snapshot.input)??c.unit},
+  primaryResult:{id:c.primaryKey,label:c.primaryLabel,value:packet.snapshot.output[c.primaryKey]===null?'Unavailable':id===418?(packet.snapshot.output.offspring as string[]).join(' · '):packet.snapshot.output[c.primaryKey] as number,unit:packet.snapshot.output[c.primaryKey]===null?undefined:c.outputUnit?.(packet.snapshot.input)??c.unit},
   metrics:Object.entries(c.outputs).filter(([key])=>key!==c.primaryKey).map(([key,meta])=>({id:key,label:meta.label,unit:packet.snapshot.output[key]===null?undefined:meta.unit,value:packet.snapshot.output[key]===null?'Unavailable':packet.snapshot.output[key] as number})),
   ...((id===235||id===251)&&Array.isArray(packet.snapshot.output.points)?{series:[{id:'samples',label:'Sampled f(x)',points:packet.snapshot.output.points as ResultSeries['points']}]}:{}),
   ...(id===418?{metrics:Object.entries(packet.snapshot.output.genotypeProbabilities as Record<string,number>).map(([genotype,fraction])=>({id:genotype,label:genotype,value:100*fraction,unit:'%'}))}:{}),
+  ...(packet.snapshot.output.details&&typeof packet.snapshot.output.details==='object'?{metrics:Object.entries(packet.snapshot.output.details)
+   .filter(([,value])=>typeof value==='number')
+   .map(([key,value])=>({id:key,label:key.replace(/([a-z])([A-Z])/g,'$1 $2'),value:value as number}))}:{}),
   methodology:c.scope,sources:c.engine.sources,warnings:c.limitations,
  }}/>{chargingRoundedToZero(id,packet.snapshot)&&<p role="status">The estimate is positive but rounds to zero at this calculator version’s six-decimal precision.</p>}</>} onSave={async packet=>{
   const key=JSON.stringify([ownerId,packet]);if(retry.current?.key!==key)retry.current={key,id:crypto.randomUUID()};
