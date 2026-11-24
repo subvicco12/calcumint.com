@@ -44,7 +44,8 @@ export function MobilityPortal({ownerId,plan}:{ownerId:string;plan:CalcuMintPlan
     {id:method+'-interest',label:method+' total interest',value:row.totalInterest,unit:'supplied currency'}];
   })}:{}),
   methodology:c.scope,sources:c.engine.sources,warnings:c.limitations,
- }}/>{chargingRoundedToZero(id,packet.snapshot)&&<p role="status">The estimate is positive but rounds to zero at this calculator version’s six-decimal precision.</p>}</>} onSave={async packet=>{
+ }}/>{id===535&&<SolarEvents output={packet.snapshot.output}/>}
+  {chargingRoundedToZero(id,packet.snapshot)&&<p role="status">The estimate is positive but rounds to zero at this calculator version’s six-decimal precision.</p>}</>} onSave={async packet=>{
   const key=JSON.stringify([ownerId,packet]);if(retry.current?.key!==key)retry.current={key,id:crypto.randomUUID()};
   const result=await saveHistory({expectedOwnerId:ownerId,requestId:retry.current.id,packet});return `Authenticated immutable history saved: ${result.id}`;
  }} renderWorkflows={(packet,restore)=><MobilityPersistence catalogId={id} draftRevision={draftRevision} ownerId={ownerId} plan={plan} packet={packet} onRestore={(snapshot,restoredId)=>{if(restoredId!==id)throw Error('Choose the matching power profile before restoring');restore(snapshot);}}/>}/>
