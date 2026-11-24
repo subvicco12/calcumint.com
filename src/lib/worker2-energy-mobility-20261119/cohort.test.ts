@@ -1,6 +1,6 @@
 import {expect,it} from 'vitest';
 import {factoryDownload} from '@/lib/calculator-factory/completion/exports';
-import {mobilityContract,mobilityWorkflows,prepareMobilityRecovery,verifyMobilitySnapshot} from './cohort';
+import {chargingRoundedToZero,mobilityContract,mobilityWorkflows,prepareMobilityRecovery,verifyMobilitySnapshot} from './cohort';
 
 const witnesses: Array<{id:number;raw:Record<string,string>;invalid:Record<string,string>;expected:Record<string,number>}>=[
  {id:459,raw:{distanceKm:'200',fuelUsedLiters:'16'},invalid:{fuelUsedLiters:'0'},expected:{value:12.5}},
@@ -40,4 +40,20 @@ it('keeps historically valid below-bound input readable without treating it as n
  const history={calculatorSlug:'fuel-economy-calculator',calculatorVersion:1,input:{distanceKm:1e-70,fuelUsedLiters:1},output:{value:1e-70,steps:['Fuel economy = 1e-70']}};
  expect(prepareMobilityRecovery(history)).toMatchObject({snapshot:history,currentCaptureAvailable:false});
  expect(()=>mobilityWorkflows(459).execute({distanceKm:'1e-70',fuelUsedLiters:'1'})).toThrow();
+});
+
+it.each([
+ {id:462,field:'batteryEnergyAddedKwh',raw:{batteryEnergyAddedKwh:'1e-7',electricityRatePerKwh:'1',chargingEfficiencyPercent:'100'}},
+ {id:463,field:'energyToAddKwh',raw:{energyToAddKwh:'1e-7',averageChargingPowerKw:'1'}},
+])('#$id distinguishes rounded zero from exact zero without changing replay',({id,field,raw})=>{
+ const flow=mobilityWorkflows(id);
+ const packet=flow.execute(raw);
+ expect(packet.snapshot.output.value).toBe(0);
+ expect(chargingRoundedToZero(id,packet.snapshot)).toBe(true);
+ expect(chargingRoundedToZero(id,flow.execute({...raw,[field]:'0'}).snapshot)).toBe(false);
+ expect(chargingRoundedToZero(id,flow.execute({...raw,[field]:'0.000001'}).snapshot)).toBe(false);
+ expect(chargingRoundedToZero(id,{...packet.snapshot,calculatorVersion:2})).toBe(false);
+ expect(verifyMobilitySnapshot(packet.snapshot).snapshot).toEqual(packet.snapshot);
+ const download=factoryDownload(flow,packet,'json','pro',mobilityContract(id).title);
+ expect(flow.replay(new TextDecoder().decode(download.bytes))).toEqual(packet);
 });

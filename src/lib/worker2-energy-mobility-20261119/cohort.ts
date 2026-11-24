@@ -41,6 +41,14 @@ export function mobilityContract(id:number){
  if(!contract)throw Error('Exact energy and mobility contract unavailable');
  return contract;
 }
+export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):boolean{
+ if(snapshot.calculatorVersion!==1||snapshot.output.value!==0)return false;
+ const {input}=snapshot;
+ if(id===462&&snapshot.calculatorSlug===evChargingCostCalculator.slug){
+  return Number(input.batteryEnergyAddedKwh)>0&&Number(input.electricityRatePerKwh)>0;
+ }
+ return id===463&&snapshot.calculatorSlug===evChargingTimeCalculator.slug&&Number(input.energyToAddKwh)>0;
+}
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
