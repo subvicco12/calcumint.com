@@ -1,3 +1,5 @@
+import {getFactoryContract} from '@/lib/calculator-factory/registry';
+import {calculatorRegistry} from '@/calculators/registry';
 import {basicDraftCalculator} from '@/calculators/core/draft-master-205';
 import {draftMaster441Calculator} from '@/calculators/conversion/draft-master-441';
 import {evChargingEnergyDraftCalculator} from '@/calculators/energy/draft-master-484';
@@ -249,7 +251,32 @@ const batch41Ids = new Set([205,441,484,518,529,531]);
 const densityExample={value:'96',fromUnit:'dpi',toUnit:'dppx'} as const;
 const densityUnits=['dpi','dpcm','dppx'] as const;
 
+const mathCaptureIds = new Set([
+ 208,209,210,211,212,215,216,218,219,220,221,223,224,225,227,228,230,231,234,
+ 255,256,257,258,259,260,261,262,263,264,
+]);
+
+function retainedMathProfile(catalogId:number){
+ const retained=getFactoryContract(catalogId);
+ if(!retained?.registered||retained.fields.some(field=>field.kind!=='number'))throw Error('Exact retained numeric factory contract required');
+ const definition=calculatorRegistry.getById(retained.engineId);
+ if(!definition||definition.slug!==retained.slug||definition.version!==retained.version)throw Error('Exact retained registered engine required');
+ const engine=definition as CalculatorDefinition<Record<string,unknown>,Record<string,unknown>>;
+ const raw=Object.fromEntries(retained.fields.map(field=>[field.key,String(field.defaultValue)]));
+ const snapshot=retained.execute(raw);
+ const unit=retained.unit||'dimensionless';
+ const fields=retained.fields.map(({key,label,kind,defaultValue,unit})=>({key,label,kind,defaultValue,...(unit?{unit}:{})}));
+ const secondary=Object.fromEntries(Object.entries(snapshot.output)
+  .filter(([key,value])=>key!==retained.primaryKey&&typeof value==='number')
+  .map(([key])=>[key,{label:labelForField(key),unit:key.startsWith('angle')?'degrees':key==='area'?'square supplied units':key==='perimeter'?'supplied units':undefined}]));
+ const bound={...engine,examples:[{label:'Retained factory example',input:snapshot.input,expected:snapshot.output}]};
+ const contract=profile(bound,{catalogId,primaryKey:retained.primaryKey,unit,scope:retained.scope,registered:false},'Result',secondary);
+ return Object.freeze({...contract,fields,execute:retained.execute,
+  sourceEvidence:retained.sourceEvidence,limitations:retained.limitations});
+}
+
 export const mobilityContracts=Object.freeze([
+ ...Array.from(mathCaptureIds,retainedMathProfile),
  profile(basicDraftCalculator,{
   catalogId:205,primaryKey:'result',unit:'dimensionless',registered:false,primaryDecimalText:true,
   scope:'Four arithmetic operations on two plain decimal operands. Exact decimal presentation follows the retained engine precision.',
@@ -389,7 +416,7 @@ export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):bo
 }
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
- const capture=batch41Ids.has(id)?'private.worker2.batch41.20261124.1':id===487?'private.worker2.rainwater-capture.20261124.1':batch44Ids.has(id)?'private.worker2.batch44.20261124.1':id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
+ const capture=mathCaptureIds.has(id)?'private.worker2.math-capture.20261124.1':batch41Ids.has(id)?'private.worker2.batch41.20261124.1':id===487?'private.worker2.rainwater-capture.20261124.1':batch44Ids.has(id)?'private.worker2.batch44.20261124.1':id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
   sourceVersion:`${capture}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{
