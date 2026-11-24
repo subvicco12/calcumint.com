@@ -122,7 +122,7 @@ jobs:
           [[ "$GITHUB_WORKFLOW_REF" == "$GITHUB_REPOSITORY/.github/workflows/solo440-hosted-qualification.yml@$GITHUB_REF" ]]
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
         with:
-          ref: 63b18f1564811c2c1a39941fa26876ea0e709a63
+          ref: cd03c0506e1e003a1af24acbf39974af6e3d63ed
           persist-credentials: false
           path: app
       - name: Initialize disposable authentication role before service retry
@@ -132,6 +132,11 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22.23.4'
+      - name: Verify unchanged pinned Node executable
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s  %s\n' 94efd062ed066c1a0b332e18249859c905e920eeada5df55d24c99b919629a90 "$(command -v node)" | sha256sum -c -
       - name: Prepare private service config and unprivileged application workspace
         env:
           POSTGRES_SERVICE_ID: ${{ job.services.postgres.id }}
@@ -148,12 +153,12 @@ jobs:
           command -v google-chrome
           python3 app/tests/gotrue-services/write-config.py "$RUNNER_TEMP/mass426-services.json"
           mkdir -p "$RUNNER_TEMP/mass426-evidence" "$RUNNER_TEMP/mass426-home"
-          sudo chown -R 65532:65532 app "$RUNNER_TEMP/mass426-evidence" "$RUNNER_TEMP/mass426-home" "$RUNNER_TEMP/mass426-services.json"
+          sudo chown -R 65534:65534 app "$RUNNER_TEMP/mass426-evidence" "$RUNNER_TEMP/mass426-home" "$RUNNER_TEMP/mass426-services.json"
       - name: Run unchanged mass426 driver without Docker or provider credentials
         shell: bash
         run: |
           set -euo pipefail
-          sudo -n setpriv --reuid=65532 --regid=65532 --clear-groups --no-new-privs env -i \
+          sudo -n setpriv --reuid=65534 --regid=65534 --clear-groups --no-new-privs env -i \
             PATH="$PATH" HOME="$RUNNER_TEMP/mass426-home" \
             APP_SOURCE="$GITHUB_WORKSPACE/app" GITHUB_ACTIONS=true \
             GITHUB_RUN_ID="$GITHUB_RUN_ID" GITHUB_WORKFLOW_SHA="$GITHUB_WORKFLOW_SHA" \

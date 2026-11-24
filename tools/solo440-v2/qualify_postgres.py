@@ -82,4 +82,4 @@ def partition():
  assert store.reconcile(grant)['state']=='ABSENT'
  assert store.reconcile(g)['state']=='CLAIMED_NO_RECEIPT'
 check('actual-client-network-partition-fails-closed',partition)
-print(json.dumps({'executionBoundary':'workflow-managed PostgreSQL; fresh libpq clients; cross-host identity NOT established','postgresVersion':client('SELECT current_setting(\'server_version_num\')::integer;',role='postgres'),'runId':config['runId'],'serviceId':config['serviceIds']['postgres'],'crossHostQualified':False,'productionAccess':False,'sourceAdmissionPerformed':False,'activationPerformed':False,'results':results},indent=2))
+print(json.dumps({'executionBoundary':'workflow-managed PostgreSQL; fresh psql clients; cross-host identity NOT established','postgresVersion':client('SELECT current_setting(\'server_version_num\')::integer;',role='postgres'),'runId':config['runId'],'serviceId':config['serviceIds']['postgres'],'crossHostQualified':False,'productionAccess':False,'sourceAdmissionPerformed':False,'activationPerformed':False,'results':results},indent=2))
