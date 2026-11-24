@@ -28,3 +28,23 @@ it('uses SI frequency symbols for human labels while retaining original account 
 it('keeps other converters unit labels unchanged',()=>{state.plan='free';render(<Publication20Tool slug="power-converter"/>);expect(screen.getAllByRole('option',{name:'mw'})[0].getAttribute('value')).toBe('mw');expect(screen.queryByRole('option',{name:'MHz'})).toBeNull();});
 
 it.each([['energy-converter','thermochemical'],['data-storage-converter','SI symbol is kB']])('carries the exact v1 convention into UI and export/scenario methodology for %s',(slug,disclosure)=>{state.plan='free';render(<Publication20Tool slug={slug}/>);expect(screen.getByText('Methodology',{selector:'summary'}).parentElement?.textContent).toContain(disclosure);expect(state.account?.exportMethodology).toContain(disclosure);if(slug==='data-storage-converter'){fireEvent.change(screen.getByLabelText('To unit'),{target:{value:'KB'}});expect(state.account?.input.toUnit).toBe('KB');expect(state.account?.scenarioDisplayMetadata?.outputs.result.unit).toBe('KB');}});
+
+it('links #440 refused precision to the value without leaving a capturable result, and recovers through a unit change',()=>{
+ state.plan='pro';
+ render(<Publication20Tool slug="frequency-converter"/>);
+ const value=screen.getByLabelText('Value');
+ fireEvent.change(screen.getByLabelText('From unit'),{target:{value:'hz'}});
+ fireEvent.change(screen.getByLabelText('To unit'),{target:{value:'ghz'}});
+ fireEvent.change(value,{target:{value:'1e-308'}});
+ expect(capturedOutput()).toBeNull();
+ expect(value.getAttribute('aria-invalid')).toBe('true');
+ expect(document.getElementById(value.getAttribute('aria-describedby')!)).toBe(screen.getByRole('alert'));
+ expect((value as HTMLInputElement).value).toBe('1e-308');
+ fireEvent.change(value,{target:{value:'1e-300'}});
+ expect(capturedOutput()).toBeNull();
+ fireEvent.change(screen.getByLabelText('To unit'),{target:{value:'hz'}});
+ expect(capturedOutput()).toEqual({result:1e-300});
+ expect(value.getAttribute('aria-invalid')).toBe('false');
+ expect(value.hasAttribute('aria-describedby')).toBe(false);
+ expect(state.account?.calculatorVersion).toBe(1);
+});
