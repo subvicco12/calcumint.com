@@ -1,3 +1,6 @@
+import {tireSizeCalculator} from '@/calculators/automotive/catalog-batch-3';
+import {orbitalPeriodCalculator,escapeVelocityCalculator} from '@/calculators/astronomy/catalog-batch-1';
+import {astronomicalDistanceConverter} from '@/calculators/astronomy/catalog-batch-2';
 import {fuelTripCostCalculator} from '@/calculators/travel/catalog-batch-2';
 import {fuelEconomyCalculator,gasMileageCalculator,tripFuelCalculator} from '@/calculators/automotive/catalog-batch-2';
 import {evChargingCostCalculator,evChargingTimeCalculator,evRangeCalculator} from '@/calculators/energy/catalog-batch-1';
@@ -10,6 +13,16 @@ import type {CalculatorDefinition} from '@/calculators/types';
 import type {ScenarioFieldDisplay} from '@/lib/scenario-display-metadata';
 
 const sourceEvidence=['docs/worker2-energy-mobility-20261119/EVIDENCE.md'];
+const additions: Readonly<Partial<Record<number,string>>>={
+ 474:'src/calculators/automotive/catalog-batch-3.ts',
+ 532:'src/calculators/astronomy/catalog-batch-1.ts',
+ 533:'src/calculators/astronomy/catalog-batch-1.ts',
+ 534:'src/calculators/astronomy/catalog-batch-2.ts',
+};
+function requirePositiveAstronomyResult(_input:object,output:{value:number}){
+ if(output.value===0)throw Error('Estimate rounds to zero at v1 six-decimal precision');
+}
+const astronomyUnits=['km','au','ly','pc'] as const;
 const currency='supplied currency';
 const labels:Record<string,string>={
  distanceKm:'Distance',distanceMiles:'Distance',fuelUsedLiters:'Fuel used',fuelUsedUsGallons:'Fuel used',
@@ -18,14 +31,20 @@ const labels:Record<string,string>={
  averageChargingPowerKw:'Average charging power',usableBatteryKwh:'Usable battery energy',
  consumptionKwhPer100Km:'Average energy consumption',powerWatts:'Appliance power',hoursUsed:'Hours used',
  litersPer100Km:'Average fuel consumption',pricePerLiter:'Fuel price',
+ currentWidthMm:'Current tire width',currentAspectRatio:'Current aspect ratio',currentRimInches:'Current rim diameter',
+ newWidthMm:'New tire width',newAspectRatio:'New aspect ratio',newRimInches:'New rim diameter',
+ semiMajorAxisAu:'Orbital semi-major axis',centralMassSolar:'Central mass',massKg:'Body mass',radiusM:'Body radius',
+ value:'Distance',fromUnit:'From unit',toUnit:'To unit',
  ratePerKwh:'Electricity rate',averagePowerWatts:'Average power',hoursPerDay:'Hours used per day',days:'Period length',
 };
 function profile<I extends object,O extends object>(
  engine:CalculatorDefinition<I,O>, options:Omit<EngineeringOptions<I,O>,'sourceEvidence'>,
  primaryLabel:string, secondary:Readonly<Record<string,ScenarioFieldDisplay>>={},
 ){
- const contract=createEngineeringContract(engine,{...options,sourceEvidence});
- return Object.freeze({...contract,engine,primaryLabel,outputs:{[contract.primaryKey]:{label:primaryLabel,unit:contract.unit},...secondary},
+ const path=additions[options.catalogId];
+ const contract=createEngineeringContract(engine,{...options,sourceEvidence:path?[path]:sourceEvidence});
+ const outputUnit=options.catalogId===534?(input:Record<string,unknown>)=>String(input.toUnit):undefined;
+ return Object.freeze({...contract,outputUnit,engine,primaryLabel,outputs:{[contract.primaryKey]:{label:primaryLabel,unit:contract.unit},...secondary},
   fields:contract.fields.map(field=>({...field,label:labels[field.key]}))});
 }
 export const mobilityContracts=Object.freeze([
@@ -38,6 +57,10 @@ export const mobilityContracts=Object.freeze([
  profile(applianceRunningCostCalculator,{catalogId:478,primaryKey:'cost',unit:currency,scope:'Supplied appliance power and total runtime with a flat entered rate. No standby profile or demand charges.',fieldUnits:{powerWatts:'W',hoursUsed:'h',ratePerKwh:currency+'/kWh'}},'Running cost',{energyKwh:{label:'Energy used',unit:'kWh'}}),
  profile(homeEnergyConsumptionCalculator,{catalogId:479,primaryKey:'periodEnergyKwh',unit:'kWh',scope:'Supplied average power, daily operating time and custom period. Cost uses an entered flat rate.',fieldUnits:{averagePowerWatts:'W',hoursPerDay:'h/day',days:'days',ratePerKwh:currency+'/kWh'}},'Period energy',{dailyEnergyKwh:{label:'Daily energy',unit:'kWh'},periodCost:{label:'Period cost',unit:currency}}),
  profile(fuelTripCostCalculator,{catalogId:509,primaryKey:'value',unit:currency,scope:'Fuel-only cost from supplied trip distance, average fuel consumption and a single entered price. Tolls, other expenses and currency conversion are excluded.',fieldUnits:{distanceKm:'km',litersPer100Km:'L/100 km',pricePerLiter:currency+'/L'}},'Fuel trip cost'),
+ profile(tireSizeCalculator,{catalogId:474,primaryKey:'diameterDifferencePercent',unit:'%',scope:'Nominal diameter comparison from marked width, aspect ratio and rim diameter. Actual dimensions vary. No fitment, clearance, load, speed-rating or safety determination.',fieldUnits:{currentWidthMm:'mm',currentAspectRatio:'%',currentRimInches:'in',newWidthMm:'mm',newAspectRatio:'%',newRimInches:'in'}},'Diameter difference',{currentDiameterMm:{label:'Current nominal diameter',unit:'mm'},newDiameterMm:{label:'New nominal diameter',unit:'mm'}}),
+ profile(orbitalPeriodCalculator,{catalogId:532,primaryKey:'value',unit:'yr',scope:'Ideal two-body period in years using AU and solar masses. Orbiting mass is negligible. This normalized approximation excludes perturbations and ephemeris prediction; v1 rounds to six decimal places.',fieldUnits:{semiMajorAxisAu:'AU',centralMassSolar:'solar masses'},validate:requirePositiveAstronomyResult},'Orbital period'),
+ profile(escapeVelocityCalculator,{catalogId:533,primaryKey:'value',unit:'km/s',scope:'Newtonian surface escape speed from supplied mass and radius using G = 6.67430e-11 m³/(kg·s²). Assumes spherical symmetry, no rotation and no atmosphere. The scope excludes compact relativistic bodies; v1 rounds to six decimal places.',fieldUnits:{massKg:'kg',radiusM:'m'},validate:requirePositiveAstronomyResult},'Escape speed'),
+ profile(astronomicalDistanceConverter,{catalogId:534,primaryKey:'result',unit:'selected target unit',scope:'Fixed distance conversion among kilometres, AU, Julian light-years and parsecs. The result uses the selected target unit. v1 uses binary64 factors; it does not report observational accuracy.',fieldOptions:{fromUnit:astronomyUnits,toUnit:astronomyUnits}},'Converted distance'),
 ]);
 export function mobilityContract(id:number){
  const contract=mobilityContracts.find(row=>row.catalogId===id);
@@ -54,11 +77,12 @@ export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):bo
 }
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
+ const capture=additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
-  sourceVersion:`${id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1'}/${contract.engineId}@${contract.version}`};
+  sourceVersion:`${capture}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{
   schemaVersion:1,identity,scope:contract.scope,primaryKey:contract.primaryKey,fields:contract.fields,
-  outputs:contract.outputs,sourceEvidence:id===509?['src/calculators/travel/catalog-batch-2.ts']:sourceEvidence,publisherSources:contract.engine.sources.flatMap(source=>source.url?[source.url]:[]),
+  outputs:contract.outputs,sourceEvidence:id===509?['src/calculators/travel/catalog-batch-2.ts']:contract.sourceEvidence,publisherSources:contract.engine.sources.flatMap(source=>source.url?[source.url]:[]),
   limitations:contract.limitations,authority:'Private bounded review. Source applicability and canonical approval remain pending.',
  }});
 }

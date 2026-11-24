@@ -13,7 +13,7 @@ export function MobilityPortal({ownerId,plan}:{ownerId:string;plan:CalcuMintPlan
  <p>{c.engineId}@{c.version}. {c.scope} {c.limitations.join(' ')}</p>
  <details><summary>Formula and assumptions</summary><ul>{c.engine.formulas.map(f=><li key={f.id}><code>{f.expression}</code> — {f.description}</li>)}</ul></details>
  <CalculatorFactoryWorkbench key={ownerId+':'+id} workflows={mobilityWorkflows(id)} fields={c.fields} title={c.title+' — Result unit: '+c.unit+' — private review'} plan={plan} renderResult={packet=><><FinalResultPresentation plan={plan} result={{
-  primaryResult:{id:c.primaryKey,label:c.primaryLabel,value:packet.snapshot.output[c.primaryKey] as number,unit:c.unit},
+  primaryResult:{id:c.primaryKey,label:c.primaryLabel,value:packet.snapshot.output[c.primaryKey] as number,unit:c.outputUnit?.(packet.snapshot.input)??c.unit},
   metrics:Object.entries(c.outputs).filter(([key])=>key!==c.primaryKey).map(([key,meta])=>({id:key,label:meta.label,unit:meta.unit,value:packet.snapshot.output[key] as number})),
   methodology:c.scope,sources:c.engine.sources,warnings:c.limitations,
  }}/>{chargingRoundedToZero(id,packet.snapshot)&&<p role="status">The estimate is positive but rounds to zero at this calculator version’s six-decimal precision.</p>}</>} onSave={async packet=>{
