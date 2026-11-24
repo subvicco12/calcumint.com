@@ -1,3 +1,4 @@
+import {ingredientWeightVolumeDraftCalculator} from '@/calculators/food/draft-master-498';
 import {draftMaster435Calculator} from '@/calculators/conversion/draft-master-435';
 import {airDensityCalculator} from '@/calculators/earth-science/catalog-batch-2';
 import {weightedGradeCalculator} from '@/calculators/travel/draft-master-517';
@@ -9,7 +10,7 @@ import {completionContracts,completionExamples} from '@/calculators/completion-c
 import {finalPrivateExamples} from '@/calculators/final-private-workbench';
 import {privateWorkflowDefinitions} from '@/calculators/private-scenario-workflows';
 import Decimal from 'decimal.js';
-import {voltageDropCalculator,resistorCalculator,hvacBtuCalculator,solarPanelRequirementCalculator} from '@/calculators/engineering-construction/catalog-batch-3';
+import {electricalLoadCalculator,voltageDropCalculator,resistorCalculator,hvacBtuCalculator,solarPanelRequirementCalculator} from '@/calculators/engineering-construction/catalog-batch-3';
 import {annualRecurringRevenueCalculator,monthlyRecurringRevenueCalculator} from '@/calculators/business/catalog-batch-1';
 import {arpuCalculator,cashRunwayCalculator} from '@/calculators/business/catalog-batch-2';
 import {scientificDraftCalculator,type ScientificDraftInput} from '@/calculators/core/draft-master-206';
@@ -492,6 +493,7 @@ const retirementValuationRows=[
  [80,'requiredInitialCapital','Required initial corpus'],
  [81,'balance','Ending savings balance'],
  [84,'requiredInitialCapital','Inflation-adjusted initial need'],
+ [96,'vestedBalance','Vested balance'],
 ] as const;
 
 function retainedRetirementProfile([catalogId,primaryKey,label]:typeof retirementValuationRows[number]){
@@ -500,7 +502,7 @@ function retainedRetirementProfile([catalogId,primaryKey,label]:typeof retiremen
  const expected=engine.calculate(input,{});
  return profile({...engine,examples:[{label:'Retained finite-period witness',input,expected}]},{
   catalogId,primaryKey,unit:'supplied currency',scope:engine.formulas[0].description+' Private capture accepts up to 60 explicit periods.',
-  registered:false,structuredFields:['steps'],fieldOptions:{timing:['begin','end']},
+  registered:false,structuredFields:catalogId===96?['steps','tranches']:['steps'],fieldOptions:{timing:['begin','end']},
   textFields:Object.keys(input).filter(key=>key!=='timing'&&typeof input[key]==='string'),
   validateStructuredPrimary:requireRationalPrimary,
   validate:entered=>{if((entered.steps as unknown[]).length>60)throw Error('Up to 60 explicit periods for this capture');},
@@ -519,6 +521,12 @@ const fuelEconomyProfile=profile({...draftMaster435Calculator,examples:[{label:'
  catalogId:435,primaryKey:'result',unit:'selected fuel-economy unit',registered:false,textFields:['value'],primaryDecimalText:true,
  fieldOptions:{fromUnit:fuelEconomyUnits,toUnit:fuelEconomyUnits},scope:draftMaster435Calculator.formulas[0].description,
 },'Converted fuel economy',{},'src/calculators/conversion/draft-master-435.ts');
+const ingredientDensityProfile=profile(ingredientWeightVolumeDraftCalculator,{
+ catalogId:498,primaryKey:'convertedValue',unit:'g or mL by direction',registered:false,
+ fieldOptions:{direction:['massToVolume','volumeToMass']},
+ fieldUnits:{value:'g for mass to volume, mL for volume to mass',densityGPerMl:'g/mL'},
+ scope:'Conversion with a positive supplied density for the stated ingredient preparation and temperature. No assumed density or universal kitchen conversion.',
+},'Converted quantity',{},'src/calculators/food/draft-master-498.ts');
 export const mobilityContracts=Object.freeze([
  profile(rational214,{
   catalogId:214,primaryKey:'result',unit:'dimensionless',registered:false,
@@ -533,6 +541,11 @@ export const mobilityContracts=Object.freeze([
   scope:'Sample the retained 17 × 17 grid of the supplied surface. Undefined points are omitted. Extrema refer to retained samples.',
  },'Sampled maximum',{minimum:{label:'Sampled minimum',unit:'z coordinate'}},'src/calculators/advanced-math/catalog-final.ts'),
  oddsProfile(),
+ Object.freeze({...ingredientDensityProfile,outputUnit:(input:Record<string,unknown>)=>input.direction==='massToVolume'?'mL':'g'}),
+ profile(electricalLoadCalculator,{
+  catalogId:362,primaryKey:'value',unit:'VA',registered:false,fieldUnits:{voltageVolts:'V',currentAmps:'A'},
+  scope:'Apparent load from supplied voltage and current magnitudes. Power factor, real power, circuit loading limits and equipment selection are outside this model.',
+ },'Apparent load',{},'src/calculators/engineering-construction/catalog-batch-3.ts'),
  profile(voltageDropCalculator,{
   catalogId:363,primaryKey:'value',unit:'V',registered:false,
   fieldUnits:{currentAmps:'A',oneWayLengthMeters:'m',resistanceOhmsPerMeter:'Ω/m',conductors:'1 or 2'},
@@ -779,7 +792,7 @@ export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):bo
 }
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
- const capture=id===435||id===493?'private.worker2.units-dry-air.20261124.1':id===471||id===517?'private.worker2.structured-intake.20261124.1':id===52||id===54||id===55?'private.worker2.investment-delivery.20261124.1':retainedValuationIds.has(id)?'private.worker2.valuation-energy.20261124.1':id===512?'private.worker2.currency-travel.20261124.1':electricalHvacIds.has(id)?'private.worker2.electrical-hvac-usage.20261124.1':businessMetricIds.has(id)?'private.worker2.business-metrics.20261124.1':id===206?'private.worker2.scientific.20261124.1':id===232||id===233?'private.worker2.exact-integers.20261124.1':id===252||id===301?'private.worker2.surface-odds.20261124.1':id===254||id===281?'private.worker2.remaining-mathematics.20261124.1':statisticsFollowupIds.has(id)?'private.worker2.statistics-followup.20261124.1':chemistryIds.has(id)?'private.worker2.chemistry.20261124.1':geometryFollowupIds.has(id)?'private.worker2.geometry-followup.20261124.1':structuredMathIds.has(id)?'private.worker2.structured-math.20261124.1':carryoverIds.has(id)?'private.worker2.carryover-modes.20261124.1':mathCaptureIds.has(id)?'private.worker2.math-capture.20261124.1':batch41Ids.has(id)?'private.worker2.batch41.20261124.1':id===487?'private.worker2.rainwater-capture.20261124.1':batch44Ids.has(id)?'private.worker2.batch44.20261124.1':id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
+ const capture=id===96||id===362||id===498?'private.worker2.bounded-evidence-recovery.20261124.1':id===435||id===493?'private.worker2.units-dry-air.20261124.1':id===471||id===517?'private.worker2.structured-intake.20261124.1':id===52||id===54||id===55?'private.worker2.investment-delivery.20261124.1':retainedValuationIds.has(id)?'private.worker2.valuation-energy.20261124.1':id===512?'private.worker2.currency-travel.20261124.1':electricalHvacIds.has(id)?'private.worker2.electrical-hvac-usage.20261124.1':businessMetricIds.has(id)?'private.worker2.business-metrics.20261124.1':id===206?'private.worker2.scientific.20261124.1':id===232||id===233?'private.worker2.exact-integers.20261124.1':id===252||id===301?'private.worker2.surface-odds.20261124.1':id===254||id===281?'private.worker2.remaining-mathematics.20261124.1':statisticsFollowupIds.has(id)?'private.worker2.statistics-followup.20261124.1':chemistryIds.has(id)?'private.worker2.chemistry.20261124.1':geometryFollowupIds.has(id)?'private.worker2.geometry-followup.20261124.1':structuredMathIds.has(id)?'private.worker2.structured-math.20261124.1':carryoverIds.has(id)?'private.worker2.carryover-modes.20261124.1':mathCaptureIds.has(id)?'private.worker2.math-capture.20261124.1':batch41Ids.has(id)?'private.worker2.batch41.20261124.1':id===487?'private.worker2.rainwater-capture.20261124.1':batch44Ids.has(id)?'private.worker2.batch44.20261124.1':id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
   sourceVersion:`${capture}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{

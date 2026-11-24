@@ -43,6 +43,7 @@ function displayedValuation(id:number,output:Record<string,unknown>):number|stri
  if(id===467)return (output.schedule as {year:number;value:number}[]).at(-1)?.value;
  if(id===80||id===84)return formatRational(output.requiredInitialCapital as Rational);
  if(id===81)return formatRational(output.balance as Rational);
+ if(id===96)return formatRational(output.vestedBalance as Rational);
  if(id===488)return formatRational(output.annualSavings as Rational);
  return undefined;
 }
@@ -88,6 +89,10 @@ export function MobilityPortal({ownerId,plan}:{ownerId:string;plan:CalcuMintPlan
    <dt>Existing annual cost</dt><dd>{formatRational(packet.snapshot.output.existingCost as Rational)}</dd>
    <dt>Heat pump annual cost</dt><dd>{formatRational(packet.snapshot.output.heatPumpCost as Rational)}</dd>
    <dt>Simple payback</dt><dd>{packet.snapshot.output.simplePaybackYears===null?'Undefined without positive annual savings':formatRational(packet.snapshot.output.simplePaybackYears as Rational)+' years'}</dd>
+  </dl>}
+  {id===96&&<dl aria-label="Supplied vesting outputs">
+   <dt>Total balance</dt><dd>{formatRational(packet.snapshot.output.totalBalance as Rational)}</dd>
+   <dt>Unvested balance</dt><dd>{formatRational(packet.snapshot.output.unvestedBalance as Rational)}</dd>
   </dl>}
   {(id===80||id===81||id===84)&&<details><summary>Exact period details</summary><ol>
    {(packet.snapshot.output.rows as Record<string,unknown>[]).map((row,index)=><li key={index}>
