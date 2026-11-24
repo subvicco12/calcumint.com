@@ -1,3 +1,7 @@
+import {linearEquationCalculator,quadraticFormulaCalculator,matrixDeterminantCalculator} from '@/calculators/advanced-math/catalog-batch-5';
+import {systemOfEquationsCalculator,matrixInverseCalculator,complexNumberCalculator} from '@/calculators/advanced-math/catalog-batch-6';
+import {rrefCalculator,vectorCalculator} from '@/calculators/advanced-math/catalog-batch-7';
+import {matrixCalculator} from '@/calculators/advanced-math/catalog-final';
 import {privateScientificDefinitions} from '@/calculators/private-scientific-definitions';
 import type {FactoryWorkbenchField} from '@/components/calculator-factory-workbench';
 import {getFactoryContract} from '@/lib/calculator-factory/registry';
@@ -323,7 +327,41 @@ function modeSpecificProfile([id,bindings,source,primary,unit,label]:typeof owne
 const sunEventsEngine=privateScientificDefinitions.find(row=>row.masterId===535)!.definition as CalculatorDefinition<Record<string,unknown>,Record<string,unknown>>;
 const sunExample={date:'2024-03-20',latitude:0,longitude:0,utcOffsetMinutes:60};
 
+const structuredMathRows = [
+ [237,linearEquationCalculator,'solution','Solution x','batch-5'],
+ [238,quadraticFormulaCalculator,'discriminant','Discriminant','batch-5'],
+ [239,systemOfEquationsCalculator,'x','Solution x','batch-6'],
+ [240,matrixCalculator,'determinant','Result determinant','final'],
+ [241,matrixDeterminantCalculator,'determinant','Determinant','batch-5'],
+ [242,matrixInverseCalculator,'determinant','Input determinant','batch-6'],
+ [243,rrefCalculator,'rank','Rank','batch-7'],
+ [244,complexNumberCalculator,'real','Real component','batch-6'],
+ [245,vectorCalculator,'dot','Dot product','batch-7'],
+] as const;
+const structuredMathIds=new Set<number>([214,...structuredMathRows.map(([id])=>id)]);
+const rational214=calculatorRegistry.getById('launch-decimal-to-fraction-calculator') as CalculatorDefinition<{decimal:number;precision:number},{result:number}>;
+function structuredMathProfile([catalogId,definition,primaryKey,label,source]:typeof structuredMathRows[number]){
+ const engine=definition as unknown as CalculatorDefinition<Record<string,unknown>,Record<string,unknown>>;
+ const expected=engine.examples[0].expected;
+ const fieldOptions=catalogId===240?{operation:['add','subtract','multiply']}:catalogId===244?{operation:['add','subtract','multiply','divide']}:undefined;
+ const secondary=Object.fromEntries(Object.entries(expected)
+  .filter(([key,value])=>key!==primaryKey&&typeof value==='number')
+  .map(([key])=>[key,{label:labelForField(key),...(key==='angleRadians'||key==='argument'?{unit:'rad'}:{})}]));
+ return profile(engine,{catalogId,primaryKey,unit:'dimensionless',scope:engine.formulas[0].description,registered:false,fieldOptions},
+  label,secondary,`src/calculators/advanced-math/catalog-${source}.ts`);
+}
+
 export const mobilityContracts=Object.freeze([
+ profile(rational214,{
+  catalogId:214,primaryKey:'result',unit:'dimensionless',registered:false,
+  scope:'Reduced fraction after the retained decimal rounding rule at the chosen precision (0–12 places). New captures require a safe scaled integer. Saved v1 numeric snapshots retain their original replay domain.',
+  validate:input=>{
+   const scaled=Math.round((input.decimal+Number.EPSILON)*10**input.precision);
+   if(!Number.isSafeInteger(scaled))throw Error('Scaled numerator exceeds the exact fraction range');
+  },
+ },'Reduced fraction',{},'src/calculators/launch-portfolio.ts'),
+ ...structuredMathRows.map(structuredMathProfile),
+
  ...ownerModes.map(modeSpecificProfile),
  profile({...sunEventsEngine,examples:[{label:'Equatorial equinox fixed-offset witness',input:sunExample,expected:sunEventsEngine.calculate(sunExample,{})}]},{
   catalogId:535,primaryKey:'status',unit:'fixed-offset civil day',registered:false,
@@ -472,7 +510,7 @@ export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):bo
 }
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
- const capture=carryoverIds.has(id)?'private.worker2.carryover-modes.20261124.1':mathCaptureIds.has(id)?'private.worker2.math-capture.20261124.1':batch41Ids.has(id)?'private.worker2.batch41.20261124.1':id===487?'private.worker2.rainwater-capture.20261124.1':batch44Ids.has(id)?'private.worker2.batch44.20261124.1':id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
+ const capture=structuredMathIds.has(id)?'private.worker2.structured-math.20261124.1':carryoverIds.has(id)?'private.worker2.carryover-modes.20261124.1':mathCaptureIds.has(id)?'private.worker2.math-capture.20261124.1':batch41Ids.has(id)?'private.worker2.batch41.20261124.1':id===487?'private.worker2.rainwater-capture.20261124.1':batch44Ids.has(id)?'private.worker2.batch44.20261124.1':id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
   sourceVersion:`${capture}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{
