@@ -265,7 +265,7 @@ function retainedMathProfile(catalogId:number){
  const raw=Object.fromEntries(retained.fields.map(field=>[field.key,String(field.defaultValue)]));
  const snapshot=retained.execute(raw);
  const unit=retained.unit||'dimensionless';
- const fields=retained.fields.map(({key,label,kind,defaultValue,unit})=>({key,label,kind,defaultValue,...(unit?{unit}:{})}));
+ const fields:readonly import('@/components/calculator-factory-workbench').FactoryWorkbenchField[]=retained.fields.map(({key,label,kind,defaultValue,unit})=>({key,label,kind,defaultValue,...(unit?{unit}:{})}));
  const secondary=Object.fromEntries(Object.entries(snapshot.output)
   .filter(([key,value])=>key!==retained.primaryKey&&typeof value==='number')
   .map(([key])=>[key,{label:labelForField(key),unit:key.startsWith('angle')?'degrees':key==='area'?'square supplied units':key==='perimeter'?'supplied units':undefined}]));
