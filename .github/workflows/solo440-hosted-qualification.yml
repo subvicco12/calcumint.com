@@ -151,29 +151,40 @@ jobs:
           set -euo pipefail
           command -v pdftotext
           command -v google-chrome
-          python3 app/tests/gotrue-services/write-config.py "$RUNNER_TEMP/mass426-services.json"
-          mkdir -p "$RUNNER_TEMP/mass426-evidence" "$RUNNER_TEMP/mass426-home"
-          sudo chown -R 65534:65534 app "$RUNNER_TEMP/mass426-evidence" "$RUNNER_TEMP/mass426-home" "$RUNNER_TEMP/mass426-services.json"
+          base=$(mktemp -d /tmp/calcumint-mass426.XXXXXX)
+          chmod 755 "$base"
+          cp -a app "$base/app"
+          mkdir "$base/evidence" "$base/home"
+          python3 app/tests/gotrue-services/write-config.py "$base/services.json"
+          sudo chown -R 65534:65534 "$base/app" "$base/evidence" "$base/home" "$base/services.json"
+          printf 'MASS426_BASE=%s\n' "$base" >> "$GITHUB_ENV"
       - name: Run unchanged mass426 driver without Docker or provider credentials
         shell: bash
         run: |
           set -euo pipefail
           sudo -n setpriv --reuid=65534 --regid=65534 --clear-groups --no-new-privs env -i \
-            PATH="$PATH" HOME="$RUNNER_TEMP/mass426-home" \
-            APP_SOURCE="$GITHUB_WORKSPACE/app" GITHUB_ACTIONS=true \
+            PATH="$PATH" HOME="$MASS426_BASE/home" \
+            APP_SOURCE="$MASS426_BASE/app" GITHUB_ACTIONS=true \
             GITHUB_RUN_ID="$GITHUB_RUN_ID" GITHUB_WORKFLOW_SHA="$GITHUB_WORKFLOW_SHA" \
-            CALCUMINT_REQUIRE_SOCKET_FREE=true CALCUMINT_SERVICE_CONFIG="$RUNNER_TEMP/mass426-services.json" \
-            WORKER2_MOBILITY_BROWSER_ARTIFACTS="$RUNNER_TEMP/mass426-evidence" \
+            CALCUMINT_REQUIRE_SOCKET_FREE=true CALCUMINT_SERVICE_CONFIG="$MASS426_BASE/services.json" \
+            WORKER2_MOBILITY_BROWSER_ARTIFACTS="$MASS426_BASE/evidence" \
             CHROMIUM_PATH=/usr/bin/google-chrome \
-            bash app/tests/gotrue-services/run-unprivileged.sh
-      - name: Remove only the disposable local service config
+            bash "$MASS426_BASE/app/tests/gotrue-services/run-unprivileged.sh"
+      - name: Remove private config and collect only disposable evidence
         if: always()
-        run: sudo rm -f "$RUNNER_TEMP/mass426-services.json"
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "${MASS426_BASE:-}" == /tmp/calcumint-mass426.* ]]; then
+            rm -f "$MASS426_BASE/services.json"
+            sudo find -P "$MASS426_BASE/evidence" -type l -delete
+            sudo chown -hR "$(id -u):$(id -g)" "$MASS426_BASE/evidence"
+          fi
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
           name: mass426-authenticated-acceptance
-          path: ${{ runner.temp }}/mass426-evidence
+          path: ${{ env.MASS426_BASE }}/evidence
           if-no-files-found: error
   provider-readback:
     if: >-
