@@ -1,0 +1,95 @@
+{
+  "kind": "calcumint.scoped-report",
+  "reportVersion": 1,
+  "metadata": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 483,
+      "engineId": "engineering.battery-storage",
+      "calculatorSlug": "battery-storage-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.battery-water-lighting.20261119.1/engineering.battery-storage@1"
+    },
+    "scope": "Nominal storage from daily energy, backup duration, usable depth of discharge and supplied system efficiency. No installation, equipment sizing or code decision.",
+    "primaryKey": "value",
+    "fields": [
+      {
+        "key": "dailyEnergyKwh",
+        "label": "Daily energy",
+        "kind": "number",
+        "defaultValue": "10",
+        "unit": "kWh/day"
+      },
+      {
+        "key": "backupDays",
+        "label": "Backup duration",
+        "kind": "number",
+        "defaultValue": "1",
+        "unit": "days"
+      },
+      {
+        "key": "depthOfDischargePercent",
+        "label": "Usable depth of discharge",
+        "kind": "number",
+        "defaultValue": "80",
+        "unit": "%"
+      },
+      {
+        "key": "systemEfficiencyPercent",
+        "label": "System efficiency",
+        "kind": "number",
+        "defaultValue": "90",
+        "unit": "%"
+      }
+    ],
+    "outputs": {
+      "value": {
+        "label": "Nominal storage",
+        "unit": "kWh"
+      }
+    },
+    "sourceEvidence": [
+      "docs/worker2-battery-water-lighting-20261119/EVIDENCE.md"
+    ],
+    "publisherSources": [
+      "https://www.nrel.gov/docs/fy24osti/90582.pdf"
+    ],
+    "limitations": [
+      "Private engineering contract; canonical acceptance, certification and publication remain pending.",
+      "Capture uses binary64 finite inputs |x| ≤ 1e50; nonzero magnitudes ≥ 1e-50. Original historical domain is preserved."
+    ],
+    "authority": "Private bounded review. Source applicability and canonical approval remain pending."
+  },
+  "packet": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 483,
+      "engineId": "engineering.battery-storage",
+      "calculatorSlug": "battery-storage-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.battery-water-lighting.20261119.1/engineering.battery-storage@1"
+    },
+    "raw": {
+      "backupDays": "1",
+      "dailyEnergyKwh": "10",
+      "depthOfDischargePercent": "80",
+      "systemEfficiencyPercent": "90"
+    },
+    "snapshot": {
+      "calculatorSlug": "battery-storage-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "dailyEnergyKwh": 10,
+        "backupDays": 1,
+        "depthOfDischargePercent": 80,
+        "systemEfficiencyPercent": 90
+      },
+      "output": {
+        "value": 13.888888888888888,
+        "steps": [
+          "Battery Storage = 13.888888888888888"
+        ]
+      }
+    }
+  }
+}
