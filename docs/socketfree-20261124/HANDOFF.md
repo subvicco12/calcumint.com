@@ -31,7 +31,7 @@ No actual PostgreSQL qualification ran. Local Docker inventory was rejected by a
 
 [AUTHORIZATION.md](AUTHORIZATION.md) freezes the exact3 jobs, permitted resources,10/20/10-minute budgets, registration/protected-configuration sequence and one bounded attempt-one authorization statement. Existing locks cannot be advanced. The environment currently allows only the old frozen runtime ref; new exact execution-ref protection/allowance and the exact new SHA variable require separate authorization. Required provider reviews remain mandatory.
 
-A job-local PostgreSQL service cannot establish cross-host replay. Two independent runners must address one nominated existing approved non-production PostgreSQL store with exact identity/access/credential bindings. None is supplied. No public exposure, tunnel, new permanent service, VPS or new platform credentials are proposed. The3-job package can establish independent-client PostgreSQL behavior and #426 acceptance, not cross-host or publication readiness.
+A job-local PostgreSQL service cannot establish cross-host replay. Two independent runners must address one nominated existing approved non-production PostgreSQL store with exact identity/access/credential bindings. None is supplied. The loopback-only client cannot be silently redirected; an exact TLS/access binding would require separately reviewed source once that store is identified. No public exposure, tunnel, new permanent service, VPS or new platform credentials are proposed. The3-job package can establish independent-client PostgreSQL behavior and #426 acceptance, not cross-host or publication readiness.
 
 ## Portfolio acceptance ledger
 

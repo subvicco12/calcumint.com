@@ -33,10 +33,12 @@ gh workflow run solo440-hosted-qualification.yml \
   --ref engineering/solo440-owner-v2-execution
 ```
 
-Run attempt must be1. A rerun, source change or remediation requires a new exact-head decision. Independently read back workflow/run/job IDs, exact head, actor, attempt and conclusions, then archive artifacts with hashes. The workflow ID/run IDs do not yet exist for this unregistered/unexecuted package; none are invented.
+Run attempt must be1. A rerun, source change or remediation requires a new exact-head decision. Independently read back workflow/run/job IDs, exact head, actor, attempt and conclusions, then archive artifacts with hashes. Require SUCCESS for each of the three named jobs; an aggregate success or SKIPPED job does not qualify anything. The workflow ID/run IDs do not yet exist for this unregistered/unexecuted package; none are invented.
 
 ## One bounded authorization statement for owner decision
 
 > Authorize provider-compliant registration of workflow blob af6bc1f8eb1bbe7601ed4ae837e48ac6803ac292 from commit b2c84b5296f85d97d77c6604334b6d64f1a0a2a5/treeb3081a3e2dd3a10b0d5c4545e74fbefe9f8ddd79, and one attempt-one non-production run of its three named qualification jobs, with exact fixture bab4fd87e91309b15cce9600d81ec523f645f158 and reviewed source archive SHA-256257bf0017446c81f8039ea432e01b8daee49c99f610b2e8b5dcb34d3cb3799b2. Permit only the specifically listed new-ref protection, exact environment branch allowance and exact workflow-SHA variable operation needed for that run, after the existing provider review requirements are satisfied. Reuse only the named existing credentials, pinned images, ephemeral job services and synthetic accounts. Do not advance frozen refs or modify rulesets27851420/27907165. This grants no PR1538 merge, unrelated merge, broad host Docker socket access, source admission, activation, production SQL, deployment, certification, publication, cross-host store exposure or RELEASE HOLD removal.
 
 This proposed statement does not itself authorize anything. No actual source grant is requested. A real cross-host qualification additionally needs a nominated existing approved non-production PostgreSQL endpoint accessible from two independent runners, exact identity/access controls and already authorized credential references. No such endpoint is identified, and job-local services or exported database snapshots cannot substitute for it.
+
+The current native client deliberately rejects non-loopback endpoints. Once an existing cross-host store is nominated, its exact TLS/identity/access transport binding must be separately implemented and reviewed. No authorization for an unspecified future adapter or service is requested.
