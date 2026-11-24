@@ -6,7 +6,7 @@ import {requiredCalculatorNumber} from '../../registered-input-successor';
 import {sameRecordedJson} from '../../recorded-json-equality';
 
 export type EngineeringContract=FactoryContract&Readonly<{verifyHistorical:(snapshot:CalculationSnapshot)=>Readonly<{snapshot:CalculationSnapshot;engineId:string;engineVersion:number;scope:string}>}>;
-export type EngineeringOptions<I,O>={catalogId:number;primaryKey:keyof O&string;unit:string;scope:string;sourceEvidence:readonly string[];fieldUnits?:Readonly<Record<string,string>>;itemLists?:readonly string[];numberLists?:readonly string[];textFields?:readonly string[];fieldOptions?:Readonly<Record<string,readonly string[]>>;validate?:(input:I,output:O)=>void};
+export type EngineeringOptions<I,O>={catalogId:number;primaryKey:keyof O&string;unit:string;scope:string;sourceEvidence:readonly string[];primaryStringList?:true;fieldUnits?:Readonly<Record<string,string>>;itemLists?:readonly string[];numberLists?:readonly string[];textFields?:readonly string[];fieldOptions?:Readonly<Record<string,readonly string[]>>;validate?:(input:I,output:O)=>void};
 /** Private captures reuse immutable engines. Historical replay deliberately bypasses capture-only guards. */
 export function createEngineeringContract<I extends object,O extends object>(engine:CalculatorDefinition<I,O>,options:EngineeringOptions<I,O>):EngineeringContract{
  const example=engine.examples[0]?.input;
@@ -62,7 +62,9 @@ export function createEngineeringContract<I extends object,O extends object>(eng
   // Preserve all structured fields. The snapshot copier rejects nonfinite/exotic data recursively.
   const snapshot=record(input,output);
   const primary=snapshot.output[options.primaryKey];
-  if(typeof primary!=='number'||!Number.isFinite(primary)||(primary!==0&&Math.abs(primary)<2**-1022))throw Error('Primary result outside finite normal range');
+  if(options.primaryStringList){
+   if(!Array.isArray(primary)||!primary.length||!primary.every(item=>typeof item==='string'&&item.length>0))throw Error('Exact outcome list required');
+  }else if(typeof primary!=='number'||!Number.isFinite(primary)||(primary!==0&&Math.abs(primary)<2**-1022))throw Error('Primary result outside finite normal range');
   return snapshot;
  },
  verifyHistorical(raw){

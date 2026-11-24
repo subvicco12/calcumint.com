@@ -1,3 +1,4 @@
+import {punnettSquareCalculator} from '@/calculators/biology/catalog-batch-3';
 import {hardyWeinbergCalculator} from '@/calculators/biology/catalog-batch-2';
 import {proteinIntakeCalculator,carbohydrateIntakeCalculator,fatIntakeCalculator,caloriesBurnedCalculator} from '@/calculators/health/catalog-batch-2';
 import {loanPaymentCalculator} from '@/calculators/finance/loan-payment';
@@ -45,7 +46,7 @@ const additions: Readonly<Partial<Record<number,string>>>={
 const batch20Sources:Readonly<Partial<Record<number,string>>>={
  391:'health/catalog-batch-1',392:'health/catalog-batch-1',393:'health/catalog-batch-1',394:'health/catalog-batch-1',
  398:'health/catalog-batch-2',399:'health/catalog-batch-2',400:'health/catalog-batch-2',401:'health/catalog-batch-2',
- 411:'biology/catalog-batch-1',417:'biology/catalog-batch-2',
+ 411:'biology/catalog-batch-1',417:'biology/catalog-batch-2',418:'biology/catalog-batch-3',
 };
 const nextSources:Readonly<Partial<Record<number,string>>>={
  275:'geometry/catalog-completion',412:'biology/catalog-batch-1',
@@ -84,6 +85,7 @@ const labels:Record<string,string>={
  length:'Prism length',width:'Prism width',height:'Prism height',growthConstant:'Continuous growth constant',
  tdeeKcal:'Supplied daily expenditure',dailyAdjustmentKcal:'Supplied daily adjustment',bmi:'Supplied BMI',targetBmi:'Selected reference BMI',
  dailyCalories:'Supplied daily energy',met:'Supplied activity MET',minutes:'Activity duration',
+ parent1:'First parent genotype',parent2:'Second parent genotype',
  initialPopulation:'Initial model population',time:'Elapsed time',allelePFrequency:'Allele p frequency',
  x1:'First x-coordinate',y1:'First y-coordinate',x2:'Second x-coordinate',y2:'Second y-coordinate',values:'Observations (JSON list of numbers)',kind:'Denominator convention',
  expression:'Function of x',minX:'Minimum x',maxX:'Maximum x',weightKg:'Weight',heightCm:'Height',sex:'Equation reference group',ageYears:'Age',
@@ -175,6 +177,7 @@ export const mobilityContracts=Object.freeze([
  profile(caloriesBurnedCalculator,{catalogId:401,primaryKey:'value',unit:'kcal',scope:'Gross estimated activity energy from supplied MET, body weight and duration. No automatic MET selection or net expenditure claim. '+adultEstimate,fieldUnits:{weightKg:'kg',met:'MET',minutes:'min'}},'Estimated gross activity energy'),
  profile(populationGrowthCalculator,{catalogId:411,primaryKey:'value',unit:'modeled individuals',scope:'Ideal constant-rate continuous exponential model, without resource limits or demographic forecasts. v1 rounds to six decimals. Refuses a positive model value that rounds to zero.',fieldUnits:{initialPopulation:'modeled individuals',growthConstant:'per supplied time unit',time:'supplied time unit'},validate:requirePositiveAstronomyResult},'Modeled population'),
  profile(hardyWeinbergCalculator,{catalogId:417,primaryKey:'twoPq',unit:'fraction',scope:'Educational two-allele diploid equilibrium model with random mating and no selection, migration, mutation or drift. Reports theoretical fractions, not observed genetics or clinical risk.',fieldUnits:{allelePFrequency:'fraction (0–1)'}},'Heterozygote fraction',{p:{label:'Allele p',unit:'fraction'},q:{label:'Allele q',unit:'fraction'},p2:{label:'Homozygote p²',unit:'fraction'},q2:{label:'Homozygote q²',unit:'fraction'}}),
+ profile(punnettSquareCalculator,{catalogId:418,primaryKey:'offspring',unit:'equally likely combinations',scope:'Educational single-locus diploid cross. Enter two copies of a single allele letter for each parent, using case to distinguish variants. Reports four equally likely Mendelian outcomes and grouped genotype fractions, without phenotype, disease or real offspring prediction.',textFields:['parent1','parent2'],primaryStringList:true},'Offspring combinations'),
 ]);
 export function mobilityContract(id:number){
  const contract=mobilityContracts.find(row=>row.catalogId===id);
