@@ -1,0 +1,42 @@
+name: Isolated singleton440 owner-v2 qualification
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qualify-only:
+    if: >-
+      github.repository == 'subvicco12/calcumint.com' &&
+      github.ref == 'refs/heads/engineering/solo440-owner-v2-execution' &&
+      github.ref_protected && github.actor == 'subvicco12' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: calcumint-source-bootstrap-runtime
+    env:
+      TRUSTED_WORKFLOW_SHA: ${{ vars.CALCUMINT_SOLO440_V2_WORKFLOW_SHA }}
+    steps:
+      - name: Verify externally pinned qualification source
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$TRUSTED_WORKFLOW_SHA" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$GITHUB_SHA" == "$TRUSTED_WORKFLOW_SHA" ]]
+          [[ "$GITHUB_WORKFLOW_SHA" == "$TRUSTED_WORKFLOW_SHA" ]]
+          [[ "$GITHUB_WORKFLOW_REF" == "$GITHUB_REPOSITORY/.github/workflows/solo440-owner-v2-qualification.yml@$GITHUB_REF" ]]
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
+        with:
+          ref: ${{ github.workflow_sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Verify v2 decision and receipt controls
+        run: python3 -B -m unittest discover -s tools/solo440-v2 -p 'test_*.py'
+      - name: Verify disposable fresh-process reference only
+        run: |
+          mkdir -p "$RUNNER_TEMP/solo440-v2-qualification"
+          python3 -B tools/solo440-v2/qualify_local.py > "$RUNNER_TEMP/solo440-v2-qualification/local-reference.json"
+      - name: Preserve qualification evidence only
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: solo440-v2-qualification-only
+          path: ${{ runner.temp }}/solo440-v2-qualification/local-reference.json
+          if-no-files-found: error
