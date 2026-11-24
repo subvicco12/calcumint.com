@@ -1,0 +1,140 @@
+2026-11-24T10:43:23.5984726Z {"sourceRevisions":561,"fetched":561,"releaseHold":true,"productionWrites":false}
+2026-11-24T10:44:48.3913060Z ##[warning]  12:9   warning  'startProductionRuntime' is defined but never used     @typescript-eslint/no-unused-vars
+2026-11-24T10:44:48.4135131Z ##[warning]  12:9   warning  'startProductionRuntime' is defined but never used     @typescript-eslint/no-unused-vars
+2026-11-24T10:46:09.3817804Z PASS repo schema dependencies: auth trigger, membership helper, member/outsider builder RLS, profile plan ACL
+2026-11-24T10:46:11.5535075Z PASS PostgREST rejects wrong JWT signature
+2026-11-24T10:46:11.6365323Z PASS Owner profile display update succeeds but plan update is denied
+2026-11-24T10:46:11.6530449Z PASS RLS prevents cross-account project reads and writes through real HTTP
+2026-11-24T10:46:11.7806995Z PASS Client roles cannot TRUNCATE tables or execute internal service RPC
+2026-11-24T10:46:11.9157087Z PASS Membership role and organization identity fencing survives HTTP writes
+2026-11-24T10:46:12.0657119Z PASS Identical concurrent HTTP lead requests persist one complete receipt
+2026-11-24T10:46:12.3248500Z PASS Late consent failure rolls back the complete HTTP transaction and retry recovers
+2026-11-24T10:46:12.3881445Z PASS Missing and inaccessible RPC signatures fail closed through HTTP
+2026-11-24T10:46:22.9064680Z ℹ pass 6
+2026-11-24T10:46:40.5717681Z ℹ pass 10
+2026-11-24T10:46:43.8717698Z PASS repo schema dependencies: auth trigger, membership helper, member/outsider builder RLS, profile plan ACL
+2026-11-24T10:47:02.1236227Z PASS Anonymous HTTP and malformed auth cookie fail closed
+2026-11-24T10:47:02.1251811Z ##[notice]PASS Anonymous HTTP and malformed auth cookie fail closed
+2026-11-24T10:47:02.2493607Z PASS Installed SDK rejects forged local JWT through HTTP auth verifier
+2026-11-24T10:47:02.2496189Z ##[notice]PASS Installed SDK rejects forged local JWT through HTTP auth verifier
+2026-11-24T10:47:08.4139318Z PASS RSC permission controls owner
+2026-11-24T10:47:08.4145156Z ##[notice]PASS RSC permission controls owner
+2026-11-24T10:47:13.5257482Z PASS RSC permission controls admin
+2026-11-24T10:47:13.5262430Z ##[notice]PASS RSC permission controls admin
+2026-11-24T10:47:15.7459484Z PASS RSC permission controls manager
+2026-11-24T10:47:15.7461917Z ##[notice]PASS RSC permission controls manager
+2026-11-24T10:47:17.8232998Z PASS RSC permission controls member
+2026-11-24T10:47:17.8234736Z ##[notice]PASS RSC permission controls member
+2026-11-24T10:47:19.9219716Z PASS RSC permission controls viewer
+2026-11-24T10:47:19.9220765Z ##[notice]PASS RSC permission controls viewer
+2026-11-24T10:47:21.3594058Z PASS Native Next server action persists project and client
+2026-11-24T10:47:21.3595711Z ##[notice]PASS Native Next server action persists project and client
+2026-11-24T10:47:26.0353886Z PASS Native invitation creation and acceptance persist membership
+2026-11-24T10:47:26.0355998Z ##[notice]PASS Native invitation creation and acceptance persist membership
+2026-11-24T10:47:31.3026482Z PASS Native API key action keeps disclosure out of URLs logs and refreshed HTML
+2026-11-24T10:47:31.3028905Z ##[notice]PASS Native API key action keeps disclosure out of URLs logs and refreshed HTML
+2026-11-24T10:47:33.0020521Z PASS Real Next client credential action rechecks stale role with generic recovery
+2026-11-24T10:47:33.0022862Z ##[notice]PASS Real Next client credential action rechecks stale role with generic recovery
+2026-11-24T10:47:34.4037591Z PASS Actual calculation HTTP auth scope metering and quota
+2026-11-24T10:47:34.4040172Z ##[notice]PASS Actual calculation HTTP auth scope metering and quota
+2026-11-24T10:47:36.1411419Z PASS Actual batch commit recovery conflict and owner isolation
+2026-11-24T10:47:36.1413192Z ##[notice]PASS Actual batch commit recovery conflict and owner isolation
+2026-11-24T10:47:44.3491433Z PASS Real RSC outage and retry profiles
+2026-11-24T10:47:44.3492883Z ##[notice]PASS Real RSC outage and retry profiles
+2026-11-24T10:47:52.9171640Z PASS Real RSC outage and retry organization_members
+2026-11-24T10:47:52.9173634Z ##[notice]PASS Real RSC outage and retry organization_members
+2026-11-24T10:48:01.2105721Z PASS Real RSC outage and retry business_projects
+2026-11-24T10:48:01.2107318Z ##[notice]PASS Real RSC outage and retry business_projects
+2026-11-24T10:48:09.8830448Z PASS Real RSC outage and retry business_api_keys
+2026-11-24T10:48:09.8832033Z ##[notice]PASS Real RSC outage and retry business_api_keys
+2026-11-24T10:48:18.2662355Z PASS Real RSC outage and retry api_usage_events
+2026-11-24T10:48:18.2663933Z ##[notice]PASS Real RSC outage and retry api_usage_events
+2026-11-24T10:48:19.6623068Z PASS Repeated synthetic owner selection preserves an in-flight SDK verification
+2026-11-24T10:48:19.6625711Z ##[notice]PASS Repeated synthetic owner selection preserves an in-flight SDK verification
+2026-11-24T10:48:25.2342155Z PASS Delayed JavaScript keeps SSR embed controls safe until hydration
+2026-11-24T10:48:25.2344626Z ##[notice]PASS Delayed JavaScript keeps SSR embed controls safe until hydration
+2026-11-24T10:48:30.5698913Z PASS Embed hydration consent persisted analytics and stale renewal
+2026-11-24T10:48:30.5700592Z ##[notice]PASS Embed hydration consent persisted analytics and stale renewal
+2026-11-24T10:48:34.5493198Z PASS Actual Next CSS and labeled forms 320
+2026-11-24T10:48:34.5494628Z ##[notice]PASS Actual Next CSS and labeled forms 320
+2026-11-24T10:48:38.5868570Z PASS Actual Next CSS and labeled forms 1280
+2026-11-24T10:48:38.5870703Z ##[notice]PASS Actual Next CSS and labeled forms 1280
+2026-11-24T10:48:40.3841400Z PASS Native revoke action invalidates real HTTP API key
+2026-11-24T10:48:40.3843543Z ##[notice]PASS Native revoke action invalidates real HTTP API key
+2026-11-24T10:48:41.9153594Z PASS Native browser stale-role failure offers safe workspace recovery
+2026-11-24T10:48:41.9155393Z ##[notice]PASS Native browser stale-role failure offers safe workspace recovery
+2026-11-24T10:48:47.5523184Z PASS Owned historical saved records reopen without recalculation after downgrade
+2026-11-24T10:48:47.5525351Z ##[notice]PASS Owned historical saved records reopen without recalculation after downgrade
+2026-11-24T10:48:49.5769873Z PASS Saved record owner isolation and session boundary in actual Next runtime
+2026-11-24T10:48:49.5771629Z ##[notice]PASS Saved record owner isolation and session boundary in actual Next runtime
+2026-11-24T10:48:55.2172931Z PASS Owned history browsing reaches older records without cursor gaps or cross-account leakage
+2026-11-24T10:48:55.2174521Z ##[notice]PASS Owned history browsing reaches older records without cursor gaps or cross-account leakage
+2026-11-24T10:48:57.9154248Z PASS Native owner-bound regional preference form persists explicit country defaults
+2026-11-24T10:48:57.9184815Z ##[notice]PASS Native owner-bound regional preference form persists explicit country defaults
+2026-11-24T10:49:03.4246299Z PASS Native projects browse reaches project26 and scopes older scenario pagination
+2026-11-24T10:49:03.4262710Z ##[notice]PASS Native projects browse reaches project26 and scopes older scenario pagination
+2026-11-24T10:49:09.0961329Z PASS Native project cursor replay owner isolation and session boundary fail closed
+2026-11-24T10:49:09.0963654Z ##[notice]PASS Native project cursor replay owner isolation and session boundary fail closed
+2026-11-24T10:49:12.7665637Z PASS Native oldest history capture traverses project pages and preserves atomic snapshot
+2026-11-24T10:49:12.7668488Z ##[notice]PASS Native oldest history capture traverses project pages and preserves atomic snapshot
+2026-11-24T10:49:15.3700687Z PASS Native downgraded account retains owned projects without paid scenario controls
+2026-11-24T10:49:15.3703204Z ##[notice]PASS Native downgraded account retains owned projects without paid scenario controls
+2026-11-24T10:49:18.9191819Z PASS Native regional locale survives full reload CA
+2026-11-24T10:49:18.9193643Z ##[notice]PASS Native regional locale survives full reload CA
+2026-11-24T10:49:21.8571027Z PASS Native regional locale survives full reload AU
+2026-11-24T10:49:21.8595969Z ##[notice]PASS Native regional locale survives full reload AU
+2026-11-24T10:49:27.8826173Z PASS Native project metadata remains readable with narrow layout and keyboard pagination
+2026-11-24T10:49:27.8827661Z ##[notice]PASS Native project metadata remains readable with narrow layout and keyboard pagination
+2026-11-24T10:49:34.4232365Z PASS Private calculator preview denies ordinary accounts before disclosing engine controls
+2026-11-24T10:49:34.4235071Z ##[notice]PASS Private calculator preview denies ordinary accounts before disclosing engine controls
+2026-11-24T10:49:37.7616712Z PASS Native reviewer navigates master catalog candidates and calculates the real engine
+2026-11-24T10:49:37.7620264Z ##[notice]PASS Native reviewer navigates master catalog candidates and calculates the real engine
+2026-11-24T10:49:37.9916592Z PASS Native reviewer preview exports immutable real JSON CSV PDF and fits mobile
+2026-11-24T10:49:37.9920251Z ##[notice]PASS Native reviewer preview exports immutable real JSON CSV PDF and fits mobile
+2026-11-24T10:49:42.1375539Z PASS Native reviewer private contracts use the pinned loan and ratio engines without public registration
+2026-11-24T10:49:42.1378418Z ##[notice]PASS Native reviewer private contracts use the pinned loan and ratio engines without public registration
+2026-11-24T10:49:50.3817748Z PASS Private scientific previews preserve duplicate identities, units and absent polar events
+2026-11-24T10:49:50.3820293Z ##[notice]PASS Private scientific previews preserve duplicate identities, units and absent polar events
+2026-11-24T10:49:51.8760881Z PASS Owner-approved bounded calculator #145 private modes and snapshots
+2026-11-24T10:49:51.8762806Z ##[notice]PASS Owner-approved bounded calculator #145 private modes and snapshots
+2026-11-24T10:49:53.4438417Z PASS Owner-approved bounded calculator #156 private modes and snapshots
+2026-11-24T10:49:53.4440561Z ##[notice]PASS Owner-approved bounded calculator #156 private modes and snapshots
+2026-11-24T10:49:54.9067678Z PASS Owner-approved bounded calculator #157 private modes and snapshots
+2026-11-24T10:49:54.9069871Z ##[notice]PASS Owner-approved bounded calculator #157 private modes and snapshots
+2026-11-24T10:49:56.4263791Z PASS Owner-approved bounded calculator #158 private modes and snapshots
+2026-11-24T10:49:56.4265702Z ##[notice]PASS Owner-approved bounded calculator #158 private modes and snapshots
+2026-11-24T10:49:57.9084068Z PASS Owner-approved bounded calculator #161 private modes and snapshots
+2026-11-24T10:49:57.9086265Z ##[notice]PASS Owner-approved bounded calculator #161 private modes and snapshots
+2026-11-24T10:49:59.4382200Z PASS Owner-approved bounded calculator #177 private modes and snapshots
+2026-11-24T10:49:59.4384374Z ##[notice]PASS Owner-approved bounded calculator #177 private modes and snapshots
+2026-11-24T10:50:00.9900051Z PASS Owner-approved bounded calculator #181 private modes and snapshots
+2026-11-24T10:50:02.5750939Z ##[notice]PASS Owner-approved bounded calculator #181 private modes and snapshots
+2026-11-24T10:50:02.5752362Z PASS Owner-approved bounded calculator #44 private modes and snapshots
+2026-11-24T10:50:02.5753789Z ##[notice]PASS Owner-approved bounded calculator #44 private modes and snapshots
+2026-11-24T10:50:04.0320182Z PASS Owner-approved bounded calculator #159 private modes and snapshots
+2026-11-24T10:50:04.0322396Z ##[notice]PASS Owner-approved bounded calculator #159 private modes and snapshots
+2026-11-24T10:50:05.4670549Z PASS Owner-approved bounded calculator #160 private modes and snapshots
+2026-11-24T10:50:05.4673765Z ##[notice]PASS Owner-approved bounded calculator #160 private modes and snapshots
+2026-11-24T10:50:06.9458276Z PASS Owner-approved bounded calculator #194 private modes and snapshots
+2026-11-24T10:50:06.9460881Z ##[notice]PASS Owner-approved bounded calculator #194 private modes and snapshots
+2026-11-24T10:50:08.4728797Z PASS Owner-approved bounded calculator #195 private modes and snapshots
+2026-11-24T10:50:08.4730928Z ##[notice]PASS Owner-approved bounded calculator #195 private modes and snapshots
+2026-11-24T10:50:09.9706441Z PASS Owner-approved bounded calculator #200 private modes and snapshots
+2026-11-24T10:50:09.9708534Z ##[notice]PASS Owner-approved bounded calculator #200 private modes and snapshots
+2026-11-24T10:50:11.5204978Z PASS Owner-approved bounded calculator #201 private modes and snapshots
+2026-11-24T10:50:11.5207029Z ##[notice]PASS Owner-approved bounded calculator #201 private modes and snapshots
+2026-11-24T10:50:13.1964905Z PASS Owner-approved bounded calculator #203 private modes and snapshots
+2026-11-24T10:50:13.1966846Z ##[notice]PASS Owner-approved bounded calculator #203 private modes and snapshots
+2026-11-24T10:50:15.3371953Z PASS Owner-approved bounded calculator #109 private modes and snapshots
+2026-11-24T10:50:15.3374308Z ##[notice]PASS Owner-approved bounded calculator #109 private modes and snapshots
+2026-11-24T10:50:16.9070385Z PASS Owner-approved bounded calculator #467 private modes and snapshots
+2026-11-24T10:50:16.9072917Z ##[notice]PASS Owner-approved bounded calculator #467 private modes and snapshots
+2026-11-24T10:50:18.3950064Z PASS Owner-approved bounded calculator #471 private modes and snapshots
+2026-11-24T10:50:18.3952075Z ##[notice]PASS Owner-approved bounded calculator #471 private modes and snapshots
+2026-11-24T10:50:19.9042974Z PASS Owner-approved bounded calculator #512 private modes and snapshots
+2026-11-24T10:50:19.9048251Z ##[notice]PASS Owner-approved bounded calculator #512 private modes and snapshots
+2026-11-24T10:50:21.3429027Z PASS Owner-approved bounded calculator #507 private modes and snapshots
+2026-11-24T10:50:24.5344567Z ##[notice]PASS Owner-approved bounded calculator #507 private modes and snapshots
+2026-11-24T10:50:24.5346869Z PASS Private reviewer navigation rejects role revocation and account replacement
+2026-11-24T10:50:24.5351122Z ##[notice]PASS Private reviewer navigation rejects role revocation and account replacement
+2026-11-24T10:58:10.0165891Z PASS native workbook SHA/CRC, revisions, native cells/units, five-decimal factor, calendar period and missing!=zero

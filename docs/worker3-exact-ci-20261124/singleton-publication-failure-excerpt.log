@@ -1,0 +1,9 @@
+2026-11-24T10:44:23.7447070Z [36;1mnode scripts/check-calculator-closure-history.mjs --full-six-only[0m
+2026-11-24T10:44:24.4514212Z file:///home/runner/work/calcumint.com/calcumint.com/tests/milestone100-20261114/source-stage8-negative-publication-caller.mjs:10
+2026-11-24T10:44:24.4516969Z   const bytes=read(row.path);if(!Buffer.isBuffer(bytes)||bytes.length!==row.bytes||hash(bytes)!==row.sha256)throw Error((row.kind==='batch'?'Caller source hash differs: ':'Completion supplemental source bytes differ: ')+row.path);
+2026-11-24T10:44:24.4520191Z Error: Completion supplemental source bytes differ: src/components/publication20-tool.tsx
+2026-11-24T10:44:24.4522023Z     at rejectPublication20CallerEvidence (file:///home/runner/work/calcumint.com/calcumint.com/tests/milestone100-20261114/source-stage8-negative-publication-caller.mjs:10:115)
+2026-11-24T10:44:24.4526016Z     at verifyCallerSuccessor (file:///home/runner/work/calcumint.com/calcumint.com/scripts/check-calculator-closure-history.mjs:39:15)
+2026-11-24T10:44:24.4528074Z     at checkCalculatorClosureHistory (file:///home/runner/work/calcumint.com/calcumint.com/scripts/check-calculator-closure-history.mjs:46:17)
+2026-11-24T10:44:24.4529748Z     at file:///home/runner/work/calcumint.com/calcumint.com/scripts/check-calculator-closure-history.mjs:72:80
+2026-11-24T10:44:24.4577828Z ##[error]Process completed with exit code 1.

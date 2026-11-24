@@ -1,0 +1,117 @@
+✖ retained NS reader retrieves its exact absent predecessor before proving immutable ancestry (310.571514ms)
+✖ available exact NS commits require no fetch (14.345607ms)
+✔ NS recovery refuses unknown origin, unavailable objects and substitution (21.84222ms)
+✖ test-only successor proves both exact tests before constructing its historical input (572.112443ms)
+✔ test-only successor refuses retained-valid reversion and arbitrary current test tampering (68.847893ms)
+✔ test-only successor refuses substituted current Git identities (23.271754ms)
+✔ test-only successor refuses extra current source and dirty source (60.902459ms)
+✖ test-only successor refuses modified capture metadata before using any historical view (17.694077ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 4
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 951.073058
+
+✖ failing tests:
+
+test at tests/completion-first-20261112/non-source-availability.test.mjs:20:1
+✖ retained NS reader retrieves its exact absent predecessor before proving immutable ancestry (310.571514ms)
+  AssertionError [ERR_ASSERTION]: Exact source unavailable after one bounded fetch
+      at file:///workspace/calcumint-worker3-singleton440-20261124/tests/parallel-source-20261110/bootstrap.mjs:153:320
+      at withSourceObjectLock (file:///workspace/calcumint-worker3-singleton440-20261124/tests/parallel-source-20261110/source-object-lock.mjs:18:94)
+      at suppliedAvailability (file:///workspace/calcumint-worker3-singleton440-20261124/tests/parallel-source-20261110/bootstrap.mjs:151:9)
+      at ensureNonSourceObjects (file:///workspace/calcumint-worker3-singleton440-20261124/tests/parallel-source-20261110/bootstrap.mjs:30:25)
+      at TestContext.<anonymous> (file:///workspace/calcumint-worker3-singleton440-20261124/tests/completion-first-20261112/non-source-availability.test.mjs:21:35)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/completion-first-20261112/non-source-availability.test.mjs:23:1
+✖ available exact NS commits require no fetch (14.345607ms)
+  AssertionError [ERR_ASSERTION]: Exact source unavailable after one bounded fetch
+      at file:///workspace/calcumint-worker3-singleton440-20261124/tests/parallel-source-20261110/bootstrap.mjs:153:320
+      at withSourceObjectLock (file:///workspace/calcumint-worker3-singleton440-20261124/tests/parallel-source-20261110/source-object-lock.mjs:18:94)
+      at suppliedAvailability (file:///workspace/calcumint-worker3-singleton440-20261124/tests/parallel-source-20261110/bootstrap.mjs:151:9)
+      at ensureNonSourceObjects (file:///workspace/calcumint-worker3-singleton440-20261124/tests/parallel-source-20261110/bootstrap.mjs:30:25)
+      at verifyNonSourceStage (file:///workspace/calcumint-worker3-singleton440-20261124/tests/completion-first-20261112/non-source-stage2.mjs:22:2)
+      at TestContext.<anonymous> (file:///workspace/calcumint-worker3-singleton440-20261124/tests/completion-first-20261112/non-source-availability.test.mjs:23:102)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/completion-first-20261112/test-stage.test.mjs:11:1
+✖ test-only successor proves both exact tests before constructing its historical input (572.112443ms)
+  AssertionError [ERR_ASSERTION]: Unreviewed current source delta
+  
+  81 !== 0
+  
+      at verifyExactStage (file:///workspace/calcumint-worker3-singleton440-20261124/tests/calculator-factory-source-20261112/exact-stage.mjs:20:9)
+      at exact (file:///workspace/calcumint-worker3-singleton440-20261124/tests/four-worker-integration-20261115/source-stage9.mjs:13:187)
+      at proveSourceStage9 (file:///workspace/calcumint-worker3-singleton440-20261124/tests/four-worker-integration-20261115/source-stage9.mjs:29:13)
+      at provePinnedSourceStage8 (file:///workspace/calcumint-worker3-singleton440-20261124/tests/milestone100-20261114/source-stage8-activation.mjs:11:20)
+      at proveCurrentAppStage5AndHistoricalInputs (file:///workspace/calcumint-worker3-singleton440-20261124/tests/completion-wave-20261113/source-test-stage6.mjs:22:15)
+      at proveTestStageAndHistoricalInputs (file:///workspace/calcumint-worker3-singleton440-20261124/tests/completion-first-20261112/test-stage.mjs:14:15)
+      at TestContext.<anonymous> (file:///workspace/calcumint-worker3-singleton440-20261124/tests/completion-first-20261112/test-stage.test.mjs:12:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 81,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/completion-first-20261112/test-stage.test.mjs:25:1
+✖ test-only successor refuses modified capture metadata before using any historical view (17.694077ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /capture digest/. Input:
+  
+  'AssertionError [ERR_ASSERTION]: Unreviewed current source delta\n\n81 !== 0\n'
+  
+      at TestContext.<anonymous> (file:///workspace/calcumint-worker3-singleton440-20261124/tests/completion-first-20261112/test-stage.test.mjs:26:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: AssertionError [ERR_ASSERTION]: Unreviewed current source delta
+    
+    81 !== 0
+    
+        at verifyExactStage (file:///workspace/calcumint-worker3-singleton440-20261124/tests/calculator-factory-source-20261112/exact-stage.mjs:20:9)
+        at exact (file:///workspace/calcumint-worker3-singleton440-20261124/tests/four-worker-integration-20261115/source-stage9.mjs:13:187)
+        at proveSourceStage9 (file:///workspace/calcumint-worker3-singleton440-20261124/tests/four-worker-integration-20261115/source-stage9.mjs:29:13)
+        at provePinnedSourceStage8 (file:///workspace/calcumint-worker3-singleton440-20261124/tests/milestone100-20261114/source-stage8-activation.mjs:11:20)
+        at proveCurrentAppStage5AndHistoricalInputs (file:///workspace/calcumint-worker3-singleton440-20261124/tests/completion-wave-20261113/source-test-stage6.mjs:22:15)
+        at proveTestStageAndHistoricalInputs (file:///workspace/calcumint-worker3-singleton440-20261124/tests/completion-first-20261112/test-stage.mjs:14:15)
+        at file:///workspace/calcumint-worker3-singleton440-20261124/tests/completion-first-20261112/test-stage.test.mjs:26:20
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (file:///workspace/calcumint-worker3-singleton440-20261124/tests/completion-first-20261112/test-stage.test.mjs:26:9),
+    expected: /capture digest/,
+    operator: 'throws',
+    diff: 'simple'
+  }
