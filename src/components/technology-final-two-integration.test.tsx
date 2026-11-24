@@ -33,3 +33,23 @@ it('connects refused targets to the existing help and clears refusal on editing'
  submit();
  expect(screen.getByRole('status').textContent).toContain('24');
 });
+
+it('recovers mixed IPv4 batch rows accessibly while preserving the scalar snapshot',()=>{
+ render(<CalculatorInteractive slug='ip-subnet-calculator'/>);
+ const before=structuredClone(state.snapshot);
+ const batch=screen.getByRole('region',{name:'Bounded batch calculation'});
+ const rows=within(batch).getByLabelText('Batch IPv4 address and prefix rows');
+ fireEvent.change(rows,{target:{value:'192.0.2.7,24\n2001:db8::1,24'}});
+ fireEvent.click(within(batch).getByRole('button',{name:'Evaluate rows'}));
+ expect(rows.getAttribute('aria-invalid')).toBe('true');
+ expect(document.getElementById(rows.getAttribute('aria-describedby')!)).toBe(within(batch).getByRole('alert'));
+ expect(within(batch).getByRole('button',{name:'Download batch JSON'}).hasAttribute('disabled')).toBe(true);
+ expect(within(batch).getByRole('table',{name:'Batch results'}).textContent).toContain('256');
+ fireEvent.change(rows,{target:{value:'192.0.2.7,24'}});
+ fireEvent.click(within(batch).getByRole('button',{name:'Evaluate rows'}));
+ expect(rows.hasAttribute('aria-invalid')).toBe(false);
+ expect(within(batch).getByRole('button',{name:'Download batch JSON'}).hasAttribute('disabled')).toBe(false);
+ expect(state.snapshot).toEqual(before);
+ fireEvent.change(screen.getByLabelText('IPv4 address'),{target:{value:'192.0.2.8'}});
+ expect((within(batch).getByLabelText('Batch IPv4 address and prefix rows') as HTMLTextAreaElement).value).toBe('192.0.2.7,24');
+});

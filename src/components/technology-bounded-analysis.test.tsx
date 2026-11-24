@@ -7,7 +7,7 @@ for(const plan of ['free','pro','business'] as const)it(plan+' retains identical
  render(<TechnologyBoundedAnalysis id='technology.raid-capacity' input={{diskCount:4,diskSizeGb:1000,raidLevel:'10'}} plan={plan}/>);
  const table=screen.getByRole('table',{name:'Relationship samples'});expect(within(table).getByText('4000')).toBeTruthy();expect(screen.getByRole('img')).toBeTruthy();
  if(plan==='free'){expect(screen.queryByRole('form',{name:'Target calculation'})).toBeNull();expect(screen.queryByRole('table',{name:'Relative result changes'})).toBeNull();}else{fireEvent.change(screen.getByLabelText(/Target result/),{target:{value:'4000'}});fireEvent.submit(screen.getByRole('form',{name:'Target calculation'}));expect(screen.getByRole('status').textContent).toContain('2000');expect(screen.getByRole('table',{name:'Relative result changes'})).toBeTruthy();}
- expect(screen.getByText(/Batch delivery is not available/)).toBeTruthy();expect(screen.queryByRole('button',{name:/batch/i})).toBeNull();
+ expect(screen.getByRole('region',{name:'Bounded batch calculation'})).toBeTruthy();
 });
 it('keyboard-form target errors recover and every input-context change clears target and solution',()=>{
  const input={capacityWh:1000,loadWatts:200,efficiencyPercent:90};const view=render(<TechnologyBoundedAnalysis id='technology.battery-runtime' input={input} plan='pro'/>);
@@ -20,7 +20,7 @@ it('discrete password analysis has unconnected points and refuses unattainable t
  fireEvent.change(screen.getByLabelText(/Target result/),{target:{value:'16.5'}});fireEvent.submit(screen.getByRole('form',{name:'Target calculation'}));expect(screen.getByRole('alert')).toBeTruthy();
 });
 it('invalid current input renders an accessible refusal without stale analysis or goals',()=>{
- render(<TechnologyBoundedAnalysis id='technology.ups-runtime' input={{batteryWh:600,loadWatts:0,efficiencyPercent:90}} plan='business'/>);expect(screen.getByRole('alert').textContent).toContain('valid current inputs');expect(screen.queryByRole('table')).toBeNull();expect(screen.queryByRole('form')).toBeNull();
+ render(<TechnologyBoundedAnalysis id='technology.ups-runtime' input={{batteryWh:600,loadWatts:0,efficiencyPercent:90}} plan='business'/>);expect(screen.getByRole('alert').textContent).toContain('valid current inputs');const analysis=within(screen.getByRole('region',{name:'Analysis'}));expect(analysis.queryByRole('table')).toBeNull();expect(analysis.queryByRole('form')).toBeNull();
 });
 it('CIDR boundary samples remain discrete and exact supported target solves prefix',()=>{
  render(<TechnologyBoundedAnalysis id='technology.cidr' input={{prefixLength:0}} plan='pro'/>);const table=screen.getByRole('table',{name:'Relationship samples'});expect(within(table).getAllByText('4294967296').length).toBeGreaterThan(0);fireEvent.change(screen.getByLabelText(/Target result/),{target:{value:'256'}});fireEvent.submit(screen.getByRole('form',{name:'Target calculation'}));expect(screen.getByRole('status').textContent).toContain('24');

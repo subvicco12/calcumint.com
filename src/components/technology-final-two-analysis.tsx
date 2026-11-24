@@ -1,12 +1,13 @@
 'use client';
 import {useId,useState} from 'react';
-import {analyzeTechnologyFinalTwo,solveTechnologyFinalTwo} from '@/lib/technology-final-two-analysis';
+import {analyzeTechnologyFinalTwo,solveTechnologyFinalTwo,technologyFinalTwoDefinitions} from '@/lib/technology-final-two-analysis';
 import {requiredCalculatorNumber} from '@/lib/registered-input-successor';
 import {canUseFinalCapability,type FinalPlan} from '@/calculators/final-framework/product-capabilities';
+import {TechnologyNextBatchPanel} from './technology-next-batch';
 type Props={id:string;input:Readonly<Record<string,unknown>>;plan:FinalPlan};
 export function TechnologyFinalTwoAnalysis(props:Props){
  // An input change starts a new goal session, including clearing the entered target.
- return <AnalysisSession key={JSON.stringify([props.id,props.input])} {...props}/>;
+ return <><AnalysisSession key={JSON.stringify([props.id,props.input])} {...props}/>{technologyFinalTwoDefinitions.some(({id})=>id===props.id)&&<TechnologyNextBatchPanel key={props.id} id={props.id}/>}</>;
 }
 function AnalysisSession({id,input,plan}:Props){
  const uid=useId(),[target,setTarget]=useState(''),[attempt,setAttempt]=useState<{message?:string;error?:string}|null>(null);
