@@ -44,6 +44,9 @@ function displayedValuation(id:number,output:Record<string,unknown>):number|stri
  if(id===80||id===84)return formatRational(output.requiredInitialCapital as Rational);
  if(id===81)return formatRational(output.balance as Rational);
  if(id===96)return formatRational(output.vestedBalance as Rational);
+ if(id===126)return formatRational(output.gst as Rational);
+ if(id===133)return formatRational(output.totalTax as Rational);
+ if(id===516)return output.gpa===null?'No graded units':formatRational(output.gpa as Rational);
  if(id===488)return formatRational(output.annualSavings as Rational);
  return undefined;
 }

@@ -1,3 +1,4 @@
+import {sourceBoundProfiles} from '@/calculators/source-bound-profiles';
 import {ingredientWeightVolumeDraftCalculator} from '@/calculators/food/draft-master-498';
 import {draftMaster435Calculator} from '@/calculators/conversion/draft-master-435';
 import {airDensityCalculator} from '@/calculators/earth-science/catalog-batch-2';
@@ -527,6 +528,23 @@ const ingredientDensityProfile=profile(ingredientWeightVolumeDraftCalculator,{
  fieldUnits:{value:'g for mass to volume, mL for volume to mass',densityGPerMl:'g/mL'},
  scope:'Conversion with a positive supplied density for the stated ingredient preparation and temperature. No assumed density or universal kitchen conversion.',
 },'Converted quantity',{},'src/calculators/food/draft-master-498.ts');
+const retainedPolicyRows=[
+ [126,'nz-gst-prices','gst','GST from supplied classifications','NZD','lines'],
+ [133,'assessment-levies','totalTax','Total supplied assessment levy','supplied currency','levies'],
+ [516,'stanford-transcript-gpa','gpa','Exact transcript GPA','grade points per graded unit','rows'],
+] as const;
+const retainedPolicyIds=new Set<number>(retainedPolicyRows.map(([id])=>id));
+
+function retainedPolicyProfile([catalogId,name,primaryKey,label,unit,rows]:typeof retainedPolicyRows[number]){
+ const engine=sourceBoundProfiles.find(row=>row.id===`private.profile.${name}`)! as CalculatorDefinition<Record<string,unknown>,Record<string,unknown>>;
+ const input=finalPrivateExamples[catalogId];
+ return profile({...engine,examples:[{label:'Retained source-snapshot witness',input,expected:engine.calculate(input,{})}]},{
+  catalogId,primaryKey,unit,scope:engine.formulas[0].description,registered:false,
+  structuredFields:[rows],textFields:Object.keys(input).filter(key=>typeof input[key]==='string'),
+  validateStructuredPrimary:value=>{if(catalogId!==516||value!==null)requireRationalPrimary(value);},
+ },label,{},'src/calculators/source-bound-profiles.ts');
+}
+
 export const mobilityContracts=Object.freeze([
  profile(rational214,{
   catalogId:214,primaryKey:'result',unit:'dimensionless',registered:false,
@@ -613,6 +631,7 @@ export const mobilityContracts=Object.freeze([
   fieldUnits:{annualRatePercent:'% nominal annual',termMonths:'months',compoundingPerYear:'periods per year'},
   scope:'One supplied principal under the entered fixed nominal rate and compounding frequency. Uses the retained maturity and annual yield rounding. Excludes tax, fees and early redemption.',
  },'Maturity value',{interestEarned:{label:'Interest earned',unit:'supplied currency'},effectiveAnnualYieldPercent:{label:'Effective annual yield',unit:'%'}},'src/calculators/finance/term-deposit.ts'),
+ ...retainedPolicyRows.map(retainedPolicyProfile),
  ...retirementValuationRows.map(retainedRetirementProfile),
  profile({...leaseEngine,examples:[{label:'Retained disclosed-payment witness',input:leaseInput,expected:leaseEngine.calculate(leaseInput,{})}]},{
   catalogId:469,primaryKey:'totalPayment',unit:'supplied currency per payment',registered:false,textFields:['currency','period'],
@@ -792,7 +811,7 @@ export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):bo
 }
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
- const capture=id===96||id===362||id===498?'private.worker2.bounded-evidence-recovery.20261124.1':id===435||id===493?'private.worker2.units-dry-air.20261124.1':id===471||id===517?'private.worker2.structured-intake.20261124.1':id===52||id===54||id===55?'private.worker2.investment-delivery.20261124.1':retainedValuationIds.has(id)?'private.worker2.valuation-energy.20261124.1':id===512?'private.worker2.currency-travel.20261124.1':electricalHvacIds.has(id)?'private.worker2.electrical-hvac-usage.20261124.1':businessMetricIds.has(id)?'private.worker2.business-metrics.20261124.1':id===206?'private.worker2.scientific.20261124.1':id===232||id===233?'private.worker2.exact-integers.20261124.1':id===252||id===301?'private.worker2.surface-odds.20261124.1':id===254||id===281?'private.worker2.remaining-mathematics.20261124.1':statisticsFollowupIds.has(id)?'private.worker2.statistics-followup.20261124.1':chemistryIds.has(id)?'private.worker2.chemistry.20261124.1':geometryFollowupIds.has(id)?'private.worker2.geometry-followup.20261124.1':structuredMathIds.has(id)?'private.worker2.structured-math.20261124.1':carryoverIds.has(id)?'private.worker2.carryover-modes.20261124.1':mathCaptureIds.has(id)?'private.worker2.math-capture.20261124.1':batch41Ids.has(id)?'private.worker2.batch41.20261124.1':id===487?'private.worker2.rainwater-capture.20261124.1':batch44Ids.has(id)?'private.worker2.batch44.20261124.1':id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
+ const capture=retainedPolicyIds.has(id)?'private.worker2.retained-policy.20261124.1':id===96||id===362||id===498?'private.worker2.bounded-evidence-recovery.20261124.1':id===435||id===493?'private.worker2.units-dry-air.20261124.1':id===471||id===517?'private.worker2.structured-intake.20261124.1':id===52||id===54||id===55?'private.worker2.investment-delivery.20261124.1':retainedValuationIds.has(id)?'private.worker2.valuation-energy.20261124.1':id===512?'private.worker2.currency-travel.20261124.1':electricalHvacIds.has(id)?'private.worker2.electrical-hvac-usage.20261124.1':businessMetricIds.has(id)?'private.worker2.business-metrics.20261124.1':id===206?'private.worker2.scientific.20261124.1':id===232||id===233?'private.worker2.exact-integers.20261124.1':id===252||id===301?'private.worker2.surface-odds.20261124.1':id===254||id===281?'private.worker2.remaining-mathematics.20261124.1':statisticsFollowupIds.has(id)?'private.worker2.statistics-followup.20261124.1':chemistryIds.has(id)?'private.worker2.chemistry.20261124.1':geometryFollowupIds.has(id)?'private.worker2.geometry-followup.20261124.1':structuredMathIds.has(id)?'private.worker2.structured-math.20261124.1':carryoverIds.has(id)?'private.worker2.carryover-modes.20261124.1':mathCaptureIds.has(id)?'private.worker2.math-capture.20261124.1':batch41Ids.has(id)?'private.worker2.batch41.20261124.1':id===487?'private.worker2.rainwater-capture.20261124.1':batch44Ids.has(id)?'private.worker2.batch44.20261124.1':id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
   sourceVersion:`${capture}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{
