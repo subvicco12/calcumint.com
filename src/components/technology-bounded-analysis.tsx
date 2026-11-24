@@ -1,12 +1,13 @@
 'use client';
 import {useId,useState} from 'react';
-import {analyzeTechnologyNextFive,solveTechnologyNextFive} from '@/lib/technology-next-five-analysis';
+import {analyzeTechnologyNextFive,solveTechnologyNextFive,technologyNextFiveDefinitions} from '@/lib/technology-next-five-analysis';
 import {requiredCalculatorNumber} from '@/lib/registered-input-successor';
 import {canUseFinalCapability,type FinalPlan} from '@/calculators/final-framework/product-capabilities';
+import {TechnologyNextBatchPanel} from './technology-next-batch';
 type Props={id:string;input:Readonly<Record<string,unknown>>;plan:FinalPlan};
 export function TechnologyBoundedAnalysis(props:Props){
  // An input change starts a new goal session, including clearing the entered target.
- return <AnalysisSession key={JSON.stringify([props.id,props.input])} {...props}/>;
+ return <><AnalysisSession key={JSON.stringify([props.id,props.input])} {...props}/>{technologyNextFiveDefinitions.some(({id})=>id===props.id)&&<TechnologyNextBatchPanel key={props.id} id={props.id}/>}</>;
 }
 function AnalysisSession({id,input,plan}:Props){
  const uid=useId(),[target,setTarget]=useState(''),[attempt,setAttempt]=useState<{message?:string;error?:string}|null>(null);
@@ -21,7 +22,7 @@ function AnalysisSession({id,input,plan}:Props){
  <p>Samples outside the supported domain are refused individually; a partial set does not extend the calculator domain.</p>
  {canUseFinalCapability(plan,'sensitivityAnalysis')?<section aria-label='Sensitivity comparison'><h4>Sensitivity comparison</h4><table aria-label='Relative result changes'><thead><tr><th scope='col'>Sample</th><th scope='col'>Result change</th></tr></thead><tbody>{a.points.map((p,i)=><tr key={i}><th scope='row'>{p.label}</th><td>{change(p.result)}</td></tr>)}</tbody></table></section>:<p>Sensitivity comparison uses the centrally governed account capability.</p>}
  {canUseFinalCapability(plan,'scenarioComparison')?<section aria-label='Projection scenarios'><h4>Projection scenarios</h4><p>These unsaved projections keep the supplied context below. They do not change saved calculations or create persisted scenarios.</p><dl>{Object.entries(input).filter(([key])=>key!==a.axis.key).map(([key,value])=><div key={key}><dt>{key}</dt><dd>{String(value)}</dd></div>)}</dl></section>:<p>Persisted scenarios use the centrally governed account workflow.</p>}
- {canUseFinalCapability(plan,'goalSolver')?<form aria-label='Target calculation' onSubmit={event=>{event.preventDefault();try{const solved=solveTechnologyNextFive(id,input,requiredCalculatorNumber(target));setAttempt({message:`${solved.label}: ${solved.value} ${solved.unit}. Forward verified result: ${solved.forwardValue} ${a.axis.resultUnit}.`});}catch(error){setAttempt({error:error instanceof Error?error.message:'Target cannot be verified'});}}}><label htmlFor={uid}>Target result ({a.axis.resultUnit})</label><input id={uid} inputMode='decimal' value={target} onChange={event=>{setTarget(event.target.value);setAttempt(null);}} aria-describedby={uid+'-help'}/><p id={uid+'-help'}>Only supported targets with an exact forward verification are returned. An unattainable target is refused.</p><button type='submit'>Solve target</button>{attempt?.error&&<p role='alert'>{attempt.error}</p>}{attempt?.message&&<p role='status'>{attempt.message}</p>}</form>:<p>Goal solving requires an active goal-solver capability.</p>}
- <p>Batch delivery is not available in this analysis panel; its exact Business contract remains a separate requirement.</p><p>Technical calculation revision: {a.id}@{a.version}. Analysis does not change saved snapshots.</p>
+ {canUseFinalCapability(plan,'goalSolver')?<form aria-label='Target calculation' onSubmit={event=>{event.preventDefault();try{const solved=solveTechnologyNextFive(id,input,requiredCalculatorNumber(target));setAttempt({message:`${solved.label}: ${solved.value} ${solved.unit}. Forward verified result: ${solved.forwardValue} ${a.axis.resultUnit}.`});}catch(error){setAttempt({error:error instanceof Error?error.message:'Target cannot be verified'});}}}><label htmlFor={uid}>Target result ({a.axis.resultUnit})</label><input id={uid} inputMode='decimal' value={target} onChange={event=>{setTarget(event.target.value);setAttempt(null);}} aria-invalid={attempt?.error?true:undefined} aria-describedby={uid+'-help'+(attempt?.error?' '+uid+'-error':'')}/><p id={uid+'-help'}>Only supported targets with an exact forward verification are returned. An unattainable target is refused.</p><button type='submit'>Solve target</button>{attempt?.error&&<p id={uid+'-error'} role='alert'>{attempt.error}</p>}{attempt?.message&&<p role='status'>{attempt.message}</p>}</form>:<p>Goal solving requires an active goal-solver capability.</p>}
+ <p>Technical calculation revision: {a.id}@{a.version}. Analysis does not change saved snapshots.</p>
  </section>;
 }

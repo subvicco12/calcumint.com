@@ -9,6 +9,8 @@ import type {FinalPlan} from '@/calculators/final-framework/product-capabilities
 export function TechnologyFiveAnalysis({id,input,plan}:{id:string;input:Record<string,unknown>;plan:FinalPlan}){
  const uid=useId(),[target,setTarget]=useState(''),[attempt,setAttempt]=useState<{context:string;message?:string;error?:string}|null>(null);
  const context=JSON.stringify({id,input,plan});
+ // Preserve draft text across context changes, but discard results from a previous calculation.
+ if(attempt&&attempt.context!==context)setAttempt(null);
  let analysis;try{analysis=analyzeTechnologyFive(id,input);}catch{return <section aria-label='Analysis'><p>Analysis requires valid current inputs within the supported calculation domain.</p></section>;}
  const currentAttempt=attempt?.context===context?attempt:null;
  const base64=id==='technology.base64-size';
@@ -34,9 +36,9 @@ export function TechnologyFiveAnalysis({id,input,plan}:{id:string;input:Record<s
   {canUseFinalCapability(plan,'sensitivityAnalysis')?<section aria-label='Sensitivity comparison'><h4>Sensitivity comparison</h4><p>Other supplied inputs remain constant. Percentage changes are relative to the current engine result.</p><table aria-label='Relative result changes'><thead><tr><th scope='col'>Sample</th><th scope='col'>Result change</th></tr></thead><tbody>{analysis.points.map(p=><tr key={p.inputValue}><th scope='row'>{p.label}</th><td>{percent(p.result)}</td></tr>)}</tbody></table></section>:<p>Sensitivity preview: the relationship samples show how changing one input affects the result ({resolveFinalCapability(plan,'sensitivityAnalysis')}).</p>}
   {canUseFinalCapability(plan,'scenarioComparison')?<section aria-label='Projection scenarios'><h4>Projection scenarios</h4><p>Read-only candidate scenarios use the displayed {analysis.variable.toLowerCase()} samples and retain every other supplied input:</p><dl>{Object.entries(input).filter(([key])=>key!==(base64?'inputBytes':analysis.variableUnit==='Mbps'?'bandwidthMbps':'timeSeconds')).map(([key,value])=><div key={key}><dt>{key}</dt><dd>{String(value)}</dd></div>)}</dl><p>These projections are not saved records. Save distinct current calculations through the calculator’s account actions for persisted comparison and replay.</p></section>:<p>Scenario comparison uses the centrally controlled account workflow ({resolveFinalCapability(plan,'scenarioComparison')}).</p>}
   {canSolve?<form aria-label='Target calculation' onSubmit={event=>{event.preventDefault();try{const solved=solveTechnologyFive(id,input,requiredCalculatorNumber(target));const answer=solved.interval?solved.interval.join('–'):String(solved.value);setAttempt({context,message:`${solved.label}: ${answer} ${solved.unit}. Forward verified result: ${solved.forwardValue} ${analysis.resultUnit}.`});}catch(cause){setAttempt({context,error:cause instanceof Error?cause.message:'Target cannot be verified'});}}}>
-   <label htmlFor={uid}>Target result ({analysis.resultUnit})</label><input id={uid} inputMode='decimal' value={target} onChange={event=>{setTarget(event.target.value);setAttempt(null);}}/>
+   <label htmlFor={uid}>Target result ({analysis.resultUnit})</label><input id={uid} inputMode={base64?'numeric':'decimal'} aria-invalid={currentAttempt?.error?true:undefined} aria-describedby={currentAttempt?.error?uid+'-error':undefined} value={target} onChange={event=>{setTarget(event.target.value);setAttempt(null);}}/>
    <button type='submit'>Solve target</button>
-   {currentAttempt?.error&&<p role='alert'>{currentAttempt.error}</p>}{currentAttempt?.message&&<p role='status'>{currentAttempt.message}</p>}
+   {currentAttempt?.error&&<p id={uid+'-error'} role='alert'>{currentAttempt.error}</p>}{currentAttempt?.message&&<p role='status'>{currentAttempt.message}</p>}
   </form>:<p>Goal solving is available with an active goal-solver capability.</p>}
   <TechnologyFiveBatchPanel key={id} id={id}/>
   <p>Technical calculation revision: {analysis.id}@{analysis.version}. Analysis does not alter the current calculation or saved snapshots.</p>

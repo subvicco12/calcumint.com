@@ -36,3 +36,27 @@ export function replayConversionBatch(bytes:string):ConversionBatch{
   for(let i=0;i<checked.rows.length;i++){const expected=checked.rows[i].snapshot,actual=b.rows[i].snapshot;if(!expected||!actual||actual.calculatorSlug!==expected.calculatorSlug||actual.calculatorVersion!==expected.calculatorVersion||Object.keys(actual.input).length!==3||actual.input.value!==expected.input.value||actual.input.fromUnit!==expected.input.fromUnit||actual.input.toUnit!==expected.input.toUnit||JSON.stringify(actual.output)!==JSON.stringify(expected.output))throw Error('Batch replay does not match the recorded raw input and exact v1 result.');}
  return checked;
 }
+
+const csvCatalogIds=new Set([424,425,427,428,429,430,431,433,434,437,438,439]);
+export function supportsConversionBatchCsv(slug:string):boolean {
+ const entry=getPublication20Definition(slug);
+ return Boolean(entry&&csvCatalogIds.has(entry.catalogId));
+}
+
+export function conversionBatchCsv(batch:ConversionBatch):string {
+ if(!supportsConversionBatchCsv(batch.calculatorSlug))throw Error('This converter is outside the batch CSV scope.');
+ const checked=replayConversionBatch(serializeConversionBatch(batch));
+ const entry=getPublication20Definition(checked.calculatorSlug)!;
+ const rows=[
+  ['row','calculator_id','calculator_slug','calculator_version','input_value','from_unit','result','to_unit'],
+  ...checked.rows.map((row,index)=>{
+   const snapshot=row.snapshot!;
+   return [
+    index+1,entry.definition.id,snapshot.calculatorSlug,snapshot.calculatorVersion,
+    snapshot.input.value,checked.fromUnit,snapshot.output.result,checked.toUnit
+   ];
+  }),
+ ];
+ const quote=(value:unknown)=>'"'+String(value).replaceAll('"','""')+'"';
+ return rows.map(row=>row.map(quote).join(',')).join('\r\n');
+}

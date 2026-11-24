@@ -15,3 +15,16 @@ for(const [slug,value,target] of rows)it(slug+' integrates live analysis and goa
  fireEvent.change(targetInput,{target:{value:'invalid'}});fireEvent.submit(within(analysis).getByRole('form',{name:'Target calculation'}));expect(within(analysis).getByRole('alert')).toBeTruthy();expect(state.snapshot).toEqual(before);
  const field=document.querySelector('input[data-technology-field]')!;fireEvent.change(field,{target:{value:''}});expect(state.snapshot?.output).toBeNull();expect(screen.queryByRole('form',{name:'Target calculation'})).toBeNull();fireEvent.click(screen.getByRole('button',{name:'Use worked example'}));expect(state.snapshot).toEqual(before);expect(screen.getByRole('form',{name:'Target calculation'})).toBeTruthy();
 });
+
+it('refuses fractional #386 byte drafts, including a fraction that rounds onto the cap',()=>{
+ render(<CalculatorInteractive slug="base64-size-calculator"/>);
+ const input=screen.getByLabelText('Input bytes') as HTMLInputElement;
+ for(const text of ['0.5','1000000000000000.01']){
+  fireEvent.change(input,{target:{value:text}});
+  expect(input.value).toBe(text);
+  expect(screen.getByRole('alert')).toBeTruthy();
+  expect(state.snapshot?.output).toBeNull();
+ }
+ fireEvent.change(input,{target:{value:'4'}});
+ expect(state.snapshot).toMatchObject({calculatorVersion:1,input:{inputBytes:4},output:{value:8}});
+});

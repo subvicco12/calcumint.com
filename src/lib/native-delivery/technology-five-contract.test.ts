@@ -6,3 +6,11 @@ it('preserves entered decimal provenance and original output without allowing nu
 for(const body of [{catalogId:440,version:1,input:{}},{catalogId:370,version:2,input:{}},{catalogId:386,version:1,input:{inputBytes:4}},{catalogId:386,version:1,input:{inputBytes:'9007199254740993'}},{catalogId:370,version:1,input:{dataMegabytes:'1e-323',timeSeconds:'1'}},{catalogId:386,version:1,input:{inputBytes:'4',formula:'x*9'}}])it('refuses identity/precision/schema substitution '+JSON.stringify(body),()=>expect(()=>runTechnologyFiveCalculation(body)).toThrow());
 it('retains valid base64 zero and refuses fractional payload bytes',()=>{expect(runTechnologyFiveCalculation({catalogId:386,version:1,input:{inputBytes:'0'}}).output.value).toBe(0);expect(()=>runTechnologyFiveCalculation({catalogId:386,version:1,input:{inputBytes:'0.1'}})).toThrow();});
 for(const row of cases)for(const malformed of ['1junk','9007199254740993'])it('maps malformed/lossy input to422 for exact tuple '+row.catalogId+' '+malformed,()=>{const key=Object.keys(row.input)[0],input={...row.input,[key]:malformed};expect(()=>runTechnologyFiveCalculation({catalogId:row.catalogId,version:1,input})).toThrow(expect.objectContaining({status:422}));});
+
+it('rejects fractional #386 payload bytes at the numeric cap without rounding onto it',()=>{
+ const calculate=(inputBytes:string)=>runTechnologyFiveCalculation({catalogId:386,version:1,input:{inputBytes}});
+ for(const raw of ['0.5','1000000000000000.01']){
+  expect(()=>calculate(raw)).toThrow(expect.objectContaining({status:422}));
+ }
+ expect(calculate('1000000000000000')).toMatchObject({version:1,output:{value:1333333333333336}});
+});
