@@ -5,6 +5,7 @@ import {CalculatorFactoryWorkbench} from '../calculator-factory-workbench';
 import {FinalResultPresentation} from '../final-result-presentation';
 import {MobilityPersistence} from './persistence';
 import {saveHistory} from '@/app/admin/worker2-energy-mobility-20261119/actions';
+import type {ResultSeries} from '@/calculators/final-framework/types';
 import type {CalcuMintPlan} from '@/lib/entitlements';
 export function MobilityPortal({ownerId,plan}:{ownerId:string;plan:CalcuMintPlan}){
  const [id,setId]=useState<number>(mobilityContracts[0].catalogId),[draftRevision,setDraftRevision]=useState(0);const c=mobilityContract(id),retry=useRef<{key:string;id:string}|null>(null);
@@ -15,6 +16,7 @@ export function MobilityPortal({ownerId,plan}:{ownerId:string;plan:CalcuMintPlan
  <CalculatorFactoryWorkbench key={ownerId+':'+id} workflows={mobilityWorkflows(id)} fields={c.fields} title={c.title+' — Result unit: '+c.unit+' — private review'} plan={plan} renderResult={packet=><><FinalResultPresentation plan={plan} result={{
   primaryResult:{id:c.primaryKey,label:c.primaryLabel,value:packet.snapshot.output[c.primaryKey] as number,unit:c.outputUnit?.(packet.snapshot.input)??c.unit},
   metrics:Object.entries(c.outputs).filter(([key])=>key!==c.primaryKey).map(([key,meta])=>({id:key,label:meta.label,unit:packet.snapshot.output[key]===null?undefined:meta.unit,value:packet.snapshot.output[key]===null?'Unavailable':packet.snapshot.output[key] as number})),
+  ...((id===235||id===251)&&Array.isArray(packet.snapshot.output.points)?{series:[{id:'samples',label:'Sampled f(x)',points:packet.snapshot.output.points as ResultSeries['points']}]}:{}),
   methodology:c.scope,sources:c.engine.sources,warnings:c.limitations,
  }}/>{chargingRoundedToZero(id,packet.snapshot)&&<p role="status">The estimate is positive but rounds to zero at this calculator version’s six-decimal precision.</p>}</>} onSave={async packet=>{
   const key=JSON.stringify([ownerId,packet]);if(retry.current?.key!==key)retry.current={key,id:crypto.randomUUID()};

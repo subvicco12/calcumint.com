@@ -1,3 +1,13 @@
+import {loanPaymentCalculator} from '@/calculators/finance/loan-payment';
+import {creditCardPayoffCalculator} from '@/calculators/finance/credit-card-payoff';
+import {mortgageCalculator} from '@/calculators/finance/mortgage';
+import {stepUpSipCalculator} from '@/calculators/finance/step-up-sip';
+import {recurringDepositCalculator} from '@/calculators/finance/recurring-deposit';
+import {slopeCalculator} from '@/calculators/geometry/catalog-completion';
+import {standardDeviationCalculator,varianceCalculator} from '@/calculators/statistics/catalog-batch-1';
+import {graphingCalculator,functionPlotter2dCalculator} from '@/calculators/advanced-math/catalog-batch-10';
+import {bmiCalculator} from '@/calculators/health/bmi';
+import {bmrCalculator,tdeeCalculator,leanBodyMassCalculator,bodySurfaceAreaCalculator} from '@/calculators/health/catalog-batch-1';
 import {plantPopulationCalculator} from '@/calculators/biology/catalog-batch-4';
 import {agriculturalYieldCalculator} from '@/calculators/biology/catalog-batch-5';
 import {simpleInterestCalculator} from '@/calculators/finance/simple-interest';
@@ -29,6 +39,12 @@ const additions: Readonly<Partial<Record<number,string>>>={
  533:'src/calculators/astronomy/catalog-batch-1.ts',
  534:'src/calculators/astronomy/catalog-batch-2.ts',
 };
+const familySources:Readonly<Partial<Record<number,string>>>={
+ 1:'finance/loan-payment',18:'finance/credit-card-payoff',26:'finance/mortgage',53:'finance/step-up-sip',56:'finance/recurring-deposit',
+ 235:'advanced-math/catalog-batch-10',251:'advanced-math/catalog-batch-10',276:'geometry/catalog-completion',
+ 282:'statistics/catalog-batch-1',283:'statistics/catalog-batch-1',388:'health/bmi',389:'health/catalog-batch-1',
+ 390:'health/catalog-batch-1',395:'health/catalog-batch-1',396:'health/catalog-batch-1',
+};
 const agricultureSources:Readonly<Partial<Record<number,string>>>={
  421:'src/calculators/biology/catalog-batch-5.ts',422:'src/calculators/biology/catalog-batch-4.ts',
 };
@@ -51,6 +67,12 @@ const labels:Record<string,string>={
  currentWidthMm:'Current tire width',currentAspectRatio:'Current aspect ratio',currentRimInches:'Current rim diameter',
  newWidthMm:'New tire width',newAspectRatio:'New aspect ratio',newRimInches:'New rim diameter',
  semiMajorAxisAu:'Orbital semi-major axis',centralMassSolar:'Central mass',massKg:'Body mass',radiusM:'Body radius',
+ termMonths:'Term',balance:'Opening balance',annualAprPercent:'Annual APR',monthlyPayment:'Monthly payment',extraMonthlyPayment:'Extra monthly payment',
+ initialMonthlyContribution:'Initial monthly contribution',annualStepUpPercent:'Annual contribution increase',annualReturnPercent:'Assumed annual return',contributionTiming:'Contribution timing',
+ monthlyDeposit:'Monthly deposit',annualInterestPercent:'Nominal annual interest rate',depositTiming:'Deposit timing',
+ x1:'First x-coordinate',y1:'First y-coordinate',x2:'Second x-coordinate',y2:'Second y-coordinate',values:'Observations (JSON list of numbers)',kind:'Denominator convention',
+ expression:'Function of x',minX:'Minimum x',maxX:'Maximum x',weightKg:'Weight',heightCm:'Height',sex:'Equation reference group',ageYears:'Age',
+ bmrKcal:'Supplied resting energy',activityMultiplier:'Supplied activity multiplier',
  earsPerAcre:'Ears per acre',kernelRowsPerEar:'Average kernel rows per ear',kernelsPerRow:'Average kernels per row',kernelsPerBushel:'Assumed kernels per bushel',
  plantCount:'Plants counted',sampleRowLengthFeet:'Sample row length',rowSpacingInches:'Row spacing',
  principal:'Starting principal',annualRatePercent:'Annual rate',years:'Elapsed years',compoundsPerYear:'Compounding periods per year',
@@ -67,13 +89,23 @@ function profile<I extends object,O extends object>(
  engine:CalculatorDefinition<I,O>, options:Omit<EngineeringOptions<I,O>,'sourceEvidence'>,
  primaryLabel:string, secondary:Readonly<Record<string,ScenarioFieldDisplay>>={},
 ){
- const finance=financeSources[options.catalogId];
+ const finance=financeSources[options.catalogId]??familySources[options.catalogId];
  const path=finance?`src/calculators/${finance}.ts`:additions[options.catalogId]??agricultureSources[options.catalogId];
  const contract=createEngineeringContract(engine,{...options,sourceEvidence:path?[path]:sourceEvidence});
  const outputUnit=options.catalogId===534?(input:Record<string,unknown>)=>String(input.toUnit):undefined;
  return Object.freeze({...contract,outputUnit,engine,primaryLabel,outputs:{[contract.primaryKey]:{label:primaryLabel,unit:contract.unit},...secondary},
   fields:contract.fields.map(field=>({...field,label:labels[field.key]}))});
 }
+const timing=['beginning','end'] as const;
+const groups=['male','female'] as const;
+const currencyMetric=(label:string)=>({label,unit:currency});
+const loanMetrics={totalPayment:currencyMetric('Total payments'),totalInterest:currencyMetric('Total interest')};
+const loanFields={principal:currency,annualRatePercent:'% per year',termMonths:'months'};
+const plotScope='Samples up to 81 finite points on an evenly spaced x-grid using the restricted expression grammar. Displayed extrema are sampled values. Undefined samples are omitted; no continuity or root guarantee.';
+const dispersionScope='Uses the supplied list in one common unit. Population divides by n; sample divides by n − 1 and requires at least two observations. No missing-data imputation. Variance uses squared input units.';
+const dispersionFields={fieldOptions:{kind:['population','sample']},numberLists:['values']} as const;
+const observationCount={label:'Observation count',unit:'observations'};
+const adultEstimate='Educational estimate for the adult methodology scope. No individual diagnosis, treatment, dose or nutrition prescription. Population and clinical applicability require competent review.';
 export const mobilityContracts=Object.freeze([
  profile(fuelEconomyCalculator,{catalogId:459,primaryKey:'value',unit:'km/L',scope:'Supplied kilometres divided by litres consumed; no reciprocal consumption conversion.',fieldUnits:{distanceKm:'km',fuelUsedLiters:'L'}},'Fuel economy'),
  profile(gasMileageCalculator,{catalogId:460,primaryKey:'value',unit:'mi/US gal',scope:'Supplied miles divided by US gallons consumed; no imperial gallon conversion.',fieldUnits:{distanceMiles:'mi',fuelUsedUsGallons:'US gal'}},'Gas mileage'),
@@ -100,6 +132,22 @@ export const mobilityContracts=Object.freeze([
  profile(conversionRateCalculator,{catalogId:191,primaryKey:'value',unit:'%',scope:'Entered conversions divided by visitors in one measurement window, using a consistent conversion definition. No statistical inference or attribution model.',fieldUnits:{conversions:'count',totalVisitors:'count'}},'Conversion rate'),
  profile(agriculturalYieldCalculator,{catalogId:421,primaryKey:'bushelsPerAcre',unit:'bu/acre',scope:'Corn yield-component estimate from supplied ears, average rows and kernels, and assumed kernels per bushel. Kernel size and weight vary. v1 rounds the estimate to two decimal places.',fieldUnits:{earsPerAcre:'ears/acre',kernelRowsPerEar:'rows/ear',kernelsPerRow:'kernels/row',kernelsPerBushel:'kernels/bu'},validate:(_,result)=>{if(result.bushelsPerAcre===0)throw Error('Yield estimate rounds to zero at v1 precision');}},'Estimated corn yield',{kernelsPerAcre:{label:'Estimated kernels',unit:'kernels/acre'}}),
  profile(plantPopulationCalculator,{catalogId:422,primaryKey:'plantsPerAcre',unit:'plants/acre',scope:'Scales one fixed-width row sample using its length and row spacing. The estimate assumes representative sampling and 43,560 square feet per acre. v1 rounds population to two decimals and area to six.',fieldUnits:{plantCount:'plants',sampleRowLengthFeet:'ft',rowSpacingInches:'in'},validate:(_,result)=>{if(result.sampleAreaSquareFeet===0||result.plantsPerAcre===0)throw Error('Sample area or population rounds to zero at v1 precision');}},'Estimated plant population',{sampleAreaSquareFeet:{label:'Sample area',unit:'ft²'}}),
+ profile(loanPaymentCalculator,{catalogId:1,primaryKey:'monthlyPayment',unit:currency+'/month',scope:'Fixed-rate monthly amortization with the first payment one month after origination. The nominal rate is divided by 12. v1 totals use the rounded monthly payment. Excludes fees and actual lender schedules.',fieldUnits:loanFields},'Principal and interest payment',loanMetrics),
+ profile(creditCardPayoffCalculator,{catalogId:18,primaryKey:'payoffMonths',unit:'months',scope:'One balance, fixed APR divided by 12, end-of-month fixed payments and no new charges, fees or rate changes. v1 retains its monthly cent rounding and final partial payment.',fieldUnits:{balance:currency,annualAprPercent:'% per year',monthlyPayment:currency+'/month',extraMonthlyPayment:currency+'/month'}},'Payoff period',{totalInterest:currencyMetric('Total interest'),totalPaid:currencyMetric('Total paid'),effectiveMonthlyPayment:currencyMetric('Combined monthly payment'),firstMonthInterest:currencyMetric('First month interest')}),
+ profile(mortgageCalculator,{catalogId:26,primaryKey:'monthlyPayment',unit:currency+'/month',scope:'Fixed-rate principal and interest only, assuming monthly end-of-period payments. No property taxes, insurance, escrow, HOA fees or closing costs. v1 totals use the rounded monthly payment.',fieldUnits:loanFields},'Mortgage principal and interest',loanMetrics),
+ profile(stepUpSipCalculator,{catalogId:53,primaryKey:'futureValue',unit:currency,scope:'Monthly contributions increase annually. Uses the entered nominal return and selected within-month contribution timing. The usual investment uncertainty, taxes and fees are outside this estimate.',fieldOptions:{contributionTiming:timing},fieldUnits:{initialMonthlyContribution:currency+'/month',annualStepUpPercent:'%',annualReturnPercent:'%',termMonths:'months'}},'Estimated future value',{investedAmount:currencyMetric('Invested amount'),estimatedGain:currencyMetric('Estimated gain'),finalMonthlyContribution:currencyMetric('Final monthly contribution')}),
+ profile(recurringDepositCalculator,{catalogId:56,primaryKey:'maturityValue',unit:currency,scope:'Fixed monthly deposits with user-selected within-month timing and nominal rate divided by 12. v1 rounds the maturity estimate to two decimals. No product-specific compounding rules, tax, fees or early withdrawal.',fieldOptions:{depositTiming:timing},fieldUnits:{monthlyDeposit:currency+'/month',annualInterestPercent:'%',termMonths:'months'}},'Estimated maturity value',{depositedAmount:currencyMetric('Deposited amount'),interestEarned:currencyMetric('Interest earned')}),
+ profile(graphingCalculator,{catalogId:235,primaryKey:'maximum',unit:'y units',scope:plotScope,textFields:['expression']},'Largest sampled value',{minimum:{label:'Smallest sampled value',unit:'y units'}}),
+ profile(functionPlotter2dCalculator,{catalogId:251,primaryKey:'maximum',unit:'y units',scope:plotScope,textFields:['expression']},'Largest sampled value',{minimum:{label:'Smallest sampled value',unit:'y units'}}),
+ profile(slopeCalculator,{catalogId:276,primaryKey:'value',unit:'y units / x units',scope:'Slope from two coordinates with consistent units on each axis. Vertical lines have no finite slope and are refused. Uses the recorded v2 arithmetic.'},'Slope',{dx:{label:'Change in x',unit:'x units'},dy:{label:'Change in y',unit:'y units'}}),
+ profile(standardDeviationCalculator,{catalogId:282,primaryKey:'standardDeviation',unit:'input unit',scope:dispersionScope,...dispersionFields},'Standard deviation',{mean:{label:'Mean',unit:'input unit'},count:observationCount}),
+ profile(varianceCalculator,{catalogId:283,primaryKey:'variance',unit:'squared input unit',scope:dispersionScope,...dispersionFields},'Variance',{mean:{label:'Mean',unit:'input unit'},count:observationCount}),
+ profile(bmiCalculator,{catalogId:388,primaryKey:'bmi',unit:'kg/m²',scope:'Adult educational weight-to-height index, not a direct measure of body composition. v1 rounds BMI to one decimal. '+adultEstimate,fieldUnits:{weightKg:'kg',heightCm:'cm'}},'Body mass index'),
+ profile(bmrCalculator,{catalogId:389,primaryKey:'value',unit:'kcal/day',scope:'Mifflin–St Jeor adult resting-energy estimate, ages 18–120 in the engine schema. Encoded age bounds are not proof of population validation. '+adultEstimate,fieldOptions:{sex:groups},fieldUnits:{weightKg:'kg',heightCm:'cm',ageYears:'years'},validate:(_,out)=>{if(out.value<=0)throw Error('Estimated resting energy is outside the supported positive domain');}},'Estimated resting energy'),
+ profile(tdeeCalculator,{catalogId:390,primaryKey:'value',unit:'kcal/day',scope:'Multiplies supplied resting energy by the entered factor, from 1 to 2.5. No automatic activity or recommended-intake classification. '+adultEstimate,fieldUnits:{bmrKcal:'kcal/day',activityMultiplier:'ratio'}},'Estimated daily energy expenditure'),
+ profile(leanBodyMassCalculator,{catalogId:395,primaryKey:'value',unit:'kg',scope:'Boer linear estimate from weight, height and its two equation branches. No direct body-composition measurement. '+adultEstimate,fieldOptions:{sex:groups},fieldUnits:{weightKg:'kg',heightCm:'cm'},validate:(input,out)=>{if(out.value<=0||out.value>input.weightKg)throw Error('Estimated lean mass is outside the supported positive domain');}},'Estimated lean body mass'),
+ profile(bodySurfaceAreaCalculator,{catalogId:396,primaryKey:'value',unit:'m²',scope:'Mosteller estimate, square root of centimetres times kilograms divided by 3,600. '+adultEstimate,fieldUnits:{weightKg:'kg',heightCm:'cm'}},'Estimated body surface area'),
+
 ]);
 export function mobilityContract(id:number){
  const contract=mobilityContracts.find(row=>row.catalogId===id);
@@ -116,7 +164,7 @@ export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):bo
 }
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
- const capture=agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
+ const capture=familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
   sourceVersion:`${capture}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{
