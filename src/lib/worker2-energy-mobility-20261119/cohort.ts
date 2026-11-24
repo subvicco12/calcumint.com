@@ -1,3 +1,4 @@
+import {fuelTripCostCalculator} from '@/calculators/travel/catalog-batch-2';
 import {fuelEconomyCalculator,gasMileageCalculator,tripFuelCalculator} from '@/calculators/automotive/catalog-batch-2';
 import {evChargingCostCalculator,evChargingTimeCalculator,evRangeCalculator} from '@/calculators/energy/catalog-batch-1';
 import {applianceRunningCostCalculator,homeEnergyConsumptionCalculator} from '@/calculators/energy/catalog-batch-2';
@@ -16,6 +17,7 @@ const labels:Record<string,string>={
  electricityRatePerKwh:'Electricity rate',chargingEfficiencyPercent:'Charging efficiency',energyToAddKwh:'Energy to add',
  averageChargingPowerKw:'Average charging power',usableBatteryKwh:'Usable battery energy',
  consumptionKwhPer100Km:'Average energy consumption',powerWatts:'Appliance power',hoursUsed:'Hours used',
+ litersPer100Km:'Average fuel consumption',pricePerLiter:'Fuel price',
  ratePerKwh:'Electricity rate',averagePowerWatts:'Average power',hoursPerDay:'Hours used per day',days:'Period length',
 };
 function profile<I extends object,O extends object>(
@@ -35,6 +37,7 @@ export const mobilityContracts=Object.freeze([
  profile(evRangeCalculator,{catalogId:464,primaryKey:'value',unit:'km',scope:'Usable battery energy and a supplied average consumption rate. No route, temperature or reserve model.',fieldUnits:{usableBatteryKwh:'kWh',consumptionKwhPer100Km:'kWh/100 km'}},'Estimated range'),
  profile(applianceRunningCostCalculator,{catalogId:478,primaryKey:'cost',unit:currency,scope:'Supplied appliance power and total runtime with a flat entered rate. No standby profile or demand charges.',fieldUnits:{powerWatts:'W',hoursUsed:'h',ratePerKwh:currency+'/kWh'}},'Running cost',{energyKwh:{label:'Energy used',unit:'kWh'}}),
  profile(homeEnergyConsumptionCalculator,{catalogId:479,primaryKey:'periodEnergyKwh',unit:'kWh',scope:'Supplied average power, daily operating time and custom period. Cost uses an entered flat rate.',fieldUnits:{averagePowerWatts:'W',hoursPerDay:'h/day',days:'days',ratePerKwh:currency+'/kWh'}},'Period energy',{dailyEnergyKwh:{label:'Daily energy',unit:'kWh'},periodCost:{label:'Period cost',unit:currency}}),
+ profile(fuelTripCostCalculator,{catalogId:509,primaryKey:'value',unit:currency,scope:'Fuel-only cost from supplied trip distance, average fuel consumption and a single entered price. Tolls, other expenses and currency conversion are excluded.',fieldUnits:{distanceKm:'km',litersPer100Km:'L/100 km',pricePerLiter:currency+'/L'}},'Fuel trip cost'),
 ]);
 export function mobilityContract(id:number){
  const contract=mobilityContracts.find(row=>row.catalogId===id);
@@ -52,10 +55,10 @@ export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):bo
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
-  sourceVersion:`private.worker2.energy-mobility.20261119.1/${contract.engineId}@${contract.version}`};
+  sourceVersion:`${id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1'}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{
   schemaVersion:1,identity,scope:contract.scope,primaryKey:contract.primaryKey,fields:contract.fields,
-  outputs:contract.outputs,sourceEvidence,publisherSources:contract.engine.sources.flatMap(source=>source.url?[source.url]:[]),
+  outputs:contract.outputs,sourceEvidence:id===509?['src/calculators/travel/catalog-batch-2.ts']:sourceEvidence,publisherSources:contract.engine.sources.flatMap(source=>source.url?[source.url]:[]),
   limitations:contract.limitations,authority:'Private bounded review. Source applicability and canonical approval remain pending.',
  }});
 }
