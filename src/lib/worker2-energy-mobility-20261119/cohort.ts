@@ -46,12 +46,19 @@ const additions: Readonly<Partial<Record<number,string>>>={
  533:'src/calculators/astronomy/catalog-batch-1.ts',
  534:'src/calculators/astronomy/catalog-batch-2.ts',
 };
+const batch39ComponentIds=[22,24,27,28,29,30,33,104,105] as const;
+const batch39RemainingIds=[70,74,79,94,101,102,110,113,477,480] as const;
+const batch39BusinessIds=[141,144,148,149,151,152,153,164,174,175,176,180,183,185,188,189,197,202] as const;
+const batch39Ids=new Set<number>([...batch39ComponentIds,...batch39RemainingIds,...batch39BusinessIds]);
 const borrowerIds=[3,4,5,6,7,8,11,12,13,14,15,16,17] as const;
 const batch35FinanceIds=[25,37,45,47,68,71,72,73,75,76,77,83,93,100,106,107,108,465,466,473] as const;
 const batch35Ids=new Set<number>([...borrowerIds,...batch35FinanceIds]);
 const supplementalBusinessIds=[142,143,165,166,167,169,171,178,182,186,187,190,192,193,196] as const;
 const supplementalFinanceIds=[57,58,59,60,61,62,69,78,114,115,66,111,63,67] as const;
 const supplementalSources:Readonly<Partial<Record<number,string>>>=Object.fromEntries([
+ ...batch39ComponentIds.map(id=>[id,'component-contracts']),
+ ...batch39RemainingIds.map(id=>[id,'remaining-contracts']),
+ ...batch39BusinessIds.map(id=>[id,'business-contracts']),
  ...borrowerIds.map(id=>[id,'component-contracts']),
  ...batch35FinanceIds.map(id=>[id,'remaining-contracts']),
  ...supplementalBusinessIds.map(id=>[id,'business-contracts']),
@@ -162,7 +169,7 @@ function suppliedProfile(id:number, family:'business'|'remaining'|'component'){
  const example=engine.inputSchema.parse(samples[id]) as Record<string,unknown>;
  const expected=engine.calculate(example,{});
  const definition={...engine,examples:[{label:'Retained supplied basis',input:example,expected}]} as CalculatorDefinition<Record<string,unknown>,Record<string,unknown>>;
- const scope=engine.formulas[0].description+(id===3?' This capture displays the original scheduled amortization with zero extra payment.':id===5?' This capture evaluates a positive extra payment and shows interest saved against the original schedule.':'');
+ const scope=engine.formulas[0].description+(id===3?' This capture displays the original scheduled amortization with zero extra payment.':id===5?' This capture evaluates a positive extra payment and shows interest saved against the original schedule.':id===24?' This view evaluates net lifetime refinancing savings.':id===33?' This view evaluates the month when supplied refinancing costs are recovered from positive payment savings.':'');
  const fieldOptions=Object.fromEntries(Object.entries(example)
   .filter(([key,value])=>typeof value==='string'&&(key==='scope'||key==='timing'||key==='monthRule'||key==='contributionTiming'||key==='ownershipBasis'||(id===178&&key==='period')))
   .map(([key,value])=>[key,key==='monthRule'?['clamp-original-day','end-of-month']:key==='contributionTiming'?['beginning','end']:[String(value)]]));
@@ -177,7 +184,7 @@ function suppliedProfile(id:number, family:'business'|'remaining'|'component'){
   textFields,structuredFields,validate:input=>{
    if(id===3&&input.extraMonthlyPayment!==0)throw Error('Use the Extra Payment profile to compare positive extra payments');
    if(id===5&&Number(input.extraMonthlyPayment)<=0)throw Error('Enter a positive extra monthly payment');
-  }},id===5?'Estimated interest saved':'Supplied-input result',Object.fromEntries(scalarCompanions));
+  }},id===5?'Estimated interest saved':id===24?'Net lifetime savings':id===33?'Break-even period':'Supplied-input result',Object.fromEntries(scalarCompanions));
 }
 export const mobilityContracts=Object.freeze([
  profile(fuelEconomyCalculator,{catalogId:459,primaryKey:'value',unit:'km/L',scope:'Supplied kilometres divided by litres consumed; no reciprocal consumption conversion.',fieldUnits:{distanceKm:'km',fuelUsedLiters:'L'}},'Fuel economy'),
@@ -236,6 +243,9 @@ export const mobilityContracts=Object.freeze([
  profile(punnettSquareCalculator,{catalogId:418,primaryKey:'offspring',unit:'equally likely combinations',scope:'Educational single-locus diploid cross. Enter two copies of a single allele letter for each parent, using case to distinguish variants. Reports four equally likely Mendelian outcomes and grouped genotype fractions, without phenotype, disease or real offspring prediction.',textFields:['parent1','parent2'],primaryStringList:true},'Offspring combinations'),
  suppliedMargin(139,'Gross margin from entered revenue and direct costs in the same period, currency and measurement basis. No inventory, cost attribution or accounting policy is inferred.'),
  suppliedMargin(140,'Net margin from entered net income and revenue in the same period, currency and measurement basis. No recognition, taxation or formal financial statement judgment is inferred.'),
+ ...batch39ComponentIds.map(id=>suppliedProfile(id,'component')),
+ ...batch39RemainingIds.map(id=>suppliedProfile(id,'remaining')),
+ ...batch39BusinessIds.map(id=>suppliedProfile(id,'business')),
  ...borrowerIds.map(id=>suppliedProfile(id,'component')),
  ...batch35FinanceIds.map(id=>suppliedProfile(id,'remaining')),
  ...supplementalBusinessIds.map(id=>suppliedProfile(id,'business')),
@@ -256,7 +266,7 @@ export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):bo
 }
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
- const capture=id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
+ const capture=batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
   sourceVersion:`${capture}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{
