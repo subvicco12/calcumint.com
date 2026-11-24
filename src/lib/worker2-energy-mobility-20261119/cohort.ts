@@ -1,3 +1,5 @@
+import {basicDraftCalculator} from '@/calculators/core/draft-master-205';
+import {draftMaster441Calculator} from '@/calculators/conversion/draft-master-441';
 import {evChargingEnergyDraftCalculator} from '@/calculators/energy/draft-master-484';
 import {sleepDurationCalculator} from '@/calculators/travel/draft-master-518';
 import {powerWeightRatioDraftCalculator} from '@/calculators/sports/draft-master-529';
@@ -147,7 +149,7 @@ function profile<I extends object,O extends object>(
  const finance=financeSources[options.catalogId]??familySources[options.catalogId]??nextSources[options.catalogId]??batch20Sources[options.catalogId]??marginSources[options.catalogId]??supplementalSources[options.catalogId];
  const path=finance?`src/calculators/${finance}.ts`:additions[options.catalogId]??agricultureSources[options.catalogId];
  const contract=createEngineeringContract(engine,{...options,sourceEvidence:engineSource?[engineSource]:path?[path]:sourceEvidence});
- const outputUnit=options.catalogId===534?(input:Record<string,unknown>)=>String(input.toUnit):undefined;
+ const outputUnit=(options.catalogId===534||options.catalogId===441)?(input:Record<string,unknown>)=>String(input.toUnit):undefined;
  return Object.freeze({...contract,outputUnit,engine,primaryLabel,outputs:{[contract.primaryKey]:{label:primaryLabel,unit:contract.unit},...secondary},
   fields:contract.fields.map(field=>({...field,label:labelForField(field.key)}))});
 }
@@ -242,9 +244,23 @@ function batch44Profile(definition:CalculatorDefinition<unknown,unknown>,catalog
 
 const overnightExample={sleepStart:'2026-01-01T23:00Z',wakeEnd:'2026-01-02T07:00Z',awakeMinutes:30};
 const gravityExample={bodyMass:1,massUnit:'kg',body:'standard-earth',referenceVersion:GRAVITY_REFERENCE_VERSION} as const;
-const batch41Ids = new Set([484,518,529,531]);
+const batch41Ids = new Set([205,441,484,518,529,531]);
+
+const densityExample={value:'96',fromUnit:'dpi',toUnit:'dppx'} as const;
+const densityUnits=['dpi','dpcm','dppx'] as const;
 
 export const mobilityContracts=Object.freeze([
+ profile(basicDraftCalculator,{
+  catalogId:205,primaryKey:'result',unit:'dimensionless',registered:false,primaryDecimalText:true,
+  scope:'Four arithmetic operations on two plain decimal operands. Exact decimal presentation follows the retained engine precision.',
+  textFields:['left','right'],fieldOptions:{operation:['add','subtract','multiply','divide']},
+ },'Decimal result',{},'src/calculators/core/draft-master-205.ts'),
+ profile({...draftMaster441Calculator,examples:[{label:'CSS reference pixel conversion',input:densityExample,expected:{result:'1'}}]},{
+  catalogId:441,primaryKey:'result',unit:'selected resolution unit',registered:false,primaryDecimalText:true,
+  scope:'CSS resolution density only. Uses rational conversion factors and 34 significant digits with half-even rounding. Excludes physical device and print size estimates.',
+  textFields:['value'],fieldOptions:{fromUnit:densityUnits,toUnit:densityUnits},
+ },'Converted resolution',{},'src/calculators/conversion/draft-master-441.ts'),
+
  profile(evChargingEnergyDraftCalculator,{
   catalogId:484,primaryKey:'wallEnergyKwh',unit:'kWh',registered:false,
   scope:'Supplied battery-side energy divided by the entered charging efficiency fraction. Includes the implied energy loss. Excludes tariffs, charge curves and vehicle-specific predictions.',

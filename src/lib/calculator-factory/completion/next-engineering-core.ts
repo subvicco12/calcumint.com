@@ -6,7 +6,7 @@ import {requiredCalculatorNumber} from '../../registered-input-successor';
 import {sameRecordedJson} from '../../recorded-json-equality';
 
 export type EngineeringContract=FactoryContract&Readonly<{verifyHistorical:(snapshot:CalculationSnapshot)=>Readonly<{snapshot:CalculationSnapshot;engineId:string;engineVersion:number;scope:string}>}>;
-export type EngineeringOptions<I,O>={catalogId:number;primaryKey:keyof O&string;unit:string;scope:string;sourceEvidence:readonly string[];registered?:false;nullablePrimary?:true;structuredFields?:readonly string[];primaryStringList?:true;fieldUnits?:Readonly<Record<string,string>>;itemLists?:readonly string[];numberLists?:readonly string[];textFields?:readonly string[];fieldOptions?:Readonly<Record<string,readonly string[]>>;validate?:(input:I,output:O)=>void};
+export type EngineeringOptions<I,O>={catalogId:number;primaryKey:keyof O&string;unit:string;scope:string;sourceEvidence:readonly string[];registered?:false;nullablePrimary?:true;structuredFields?:readonly string[];primaryStringList?:true;primaryDecimalText?:true;fieldUnits?:Readonly<Record<string,string>>;itemLists?:readonly string[];numberLists?:readonly string[];textFields?:readonly string[];fieldOptions?:Readonly<Record<string,readonly string[]>>;validate?:(input:I,output:O)=>void};
 /** Private captures reuse immutable engines. Historical replay deliberately bypasses capture-only guards. */
 export function createEngineeringContract<I extends object,O extends object>(engine:CalculatorDefinition<I,O>,options:EngineeringOptions<I,O>):EngineeringContract{
  const example=engine.examples[0]?.input;
@@ -72,6 +72,8 @@ export function createEngineeringContract<I extends object,O extends object>(eng
   const primary=snapshot.output[options.primaryKey];
   if(options.primaryStringList){
    if(!Array.isArray(primary)||!primary.length||!primary.every(item=>typeof item==='string'&&item.length>0))throw Error('Exact outcome list required');
+  }else if(options.primaryDecimalText){
+   if(typeof primary!=='string'||!/^[-+]?(?:\d+(?:\.\d+)?)(?:e[-+]?\d+)?$/i.test(primary))throw Error('Exact decimal result text required');
   }else if(!(options.nullablePrimary&&primary===null)&&(typeof primary!=='number'||!Number.isFinite(primary)||(primary!==0&&Math.abs(primary)<2**-1022)))throw Error('Primary result outside finite normal range');
   return snapshot;
  },
