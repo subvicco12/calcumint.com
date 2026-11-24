@@ -1,0 +1,72 @@
+{
+  "kind": "calcumint.scoped-report",
+  "reportVersion": 1,
+  "metadata": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 256,
+      "engineId": "launch-triangle-area-calculator",
+      "calculatorSlug": "triangle-area-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.math-capture.20261124.1/launch-triangle-area-calculator@1"
+    },
+    "scope": "Nonnegative dimensions in one consistent length unit. A = base × height / 2. Area uses square units; volume uses cubic units.",
+    "primaryKey": "result",
+    "fields": [
+      {
+        "key": "base",
+        "label": "Base",
+        "kind": "number",
+        "defaultValue": 10
+      },
+      {
+        "key": "height",
+        "label": "Height",
+        "kind": "number",
+        "defaultValue": 6
+      }
+    ],
+    "outputs": {
+      "result": {
+        "label": "Result",
+        "unit": "dimensionless"
+      }
+    },
+    "sourceEvidence": [
+      "docs/calculator-first/authority-catalog.json",
+      "src/calculators/launch-portfolio.ts",
+      "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+    ],
+    "publisherSources": [],
+    "limitations": [
+      "IEEE-754 binary64; finite normal results or witnessed zero only.",
+      "Reverse solves one named dimension with other dimensions fixed; degenerate nonunique solutions are refused."
+    ],
+    "authority": "Private bounded review. Source applicability and canonical approval remain pending."
+  },
+  "packet": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 256,
+      "engineId": "launch-triangle-area-calculator",
+      "calculatorSlug": "triangle-area-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.math-capture.20261124.1/launch-triangle-area-calculator@1"
+    },
+    "raw": {
+      "base": "10",
+      "height": "6"
+    },
+    "snapshot": {
+      "calculatorSlug": "triangle-area-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "base": 10,
+        "height": 6
+      },
+      "output": {
+        "result": 30
+      }
+    }
+  }
+}

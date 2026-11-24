@@ -1,0 +1,106 @@
+{
+  "kind": "calcumint.scoped-report",
+  "reportVersion": 1,
+  "metadata": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 257,
+      "engineId": "geometry.triangle",
+      "calculatorSlug": "triangle-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.math-capture.20261124.1/geometry.triangle@1"
+    },
+    "scope": "SSS triangles; reverse targets perimeter",
+    "primaryKey": "perimeter",
+    "fields": [
+      {
+        "key": "a",
+        "label": "a",
+        "kind": "number",
+        "defaultValue": 3
+      },
+      {
+        "key": "b",
+        "label": "b",
+        "kind": "number",
+        "defaultValue": 4
+      },
+      {
+        "key": "c",
+        "label": "c",
+        "kind": "number",
+        "defaultValue": 5
+      }
+    ],
+    "outputs": {
+      "perimeter": {
+        "label": "Result",
+        "unit": "length units"
+      },
+      "area": {
+        "label": "Area",
+        "unit": "square supplied units"
+      },
+      "angleA": {
+        "label": "Angle A",
+        "unit": "degrees"
+      },
+      "angleB": {
+        "label": "Angle B",
+        "unit": "degrees"
+      },
+      "angleC": {
+        "label": "Angle C",
+        "unit": "degrees"
+      }
+    },
+    "sourceEvidence": [
+      "docs/calculator-first/authority-catalog.json",
+      "docs/milestone100-20261114/geometry/source-excerpts.json",
+      "src/calculators/geometry/catalog-completion.ts"
+    ],
+    "publisherSources": [],
+    "limitations": [
+      "Private engineering scope; HOLD remains.",
+      "Finite binary64 inputs bounded to |x| <= 1e50; nonzero magnitudes >= 1e-50.",
+      "Reverse replay may refuse numerically unresolved or nonunique targets."
+    ],
+    "authority": "Private bounded review. Source applicability and canonical approval remain pending."
+  },
+  "packet": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 257,
+      "engineId": "geometry.triangle",
+      "calculatorSlug": "triangle-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.math-capture.20261124.1/geometry.triangle@1"
+    },
+    "raw": {
+      "a": "3",
+      "b": "4",
+      "c": "5"
+    },
+    "snapshot": {
+      "calculatorSlug": "triangle-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "a": 3,
+        "b": 4,
+        "c": 5
+      },
+      "output": {
+        "area": 5.999999999999998,
+        "perimeter": 12,
+        "angleA": 36.86989764584401,
+        "angleB": 53.130102354155994,
+        "angleC": 89.99999999999999,
+        "steps": [
+          "s = (a+b+c)/2 = 6",
+          "Area = √(s(s-a)(s-b)(s-c)) ≈ 6",
+          "Angles ≈ 36.8698976458°, 53.1301023542°, 90°"
+        ]
+      }
+    }
+  }
+}

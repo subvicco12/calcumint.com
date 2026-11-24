@@ -1,0 +1,178 @@
+{
+  "commit": "bf3d97a9d6740284b6bca71ecd888010e3df44b1",
+  "tree": "ab418e939c4fd771104fb5665587855cd44acc41",
+  "parent": "7cfb855fe453afa0c15eabe4c6c364a95bc6ba3b",
+  "calculators": [
+    {
+      "id": 50,
+      "name": "Simple Interest Calculator",
+      "candidate": {
+        "engineId": "finance.simple-interest",
+        "version": 1,
+        "slug": "simple-interest-calculator"
+      },
+      "source": "src/calculators/finance/simple-interest.ts",
+      "blob": "0d54982add07e5c872bf8769f66bfd329b4f96d5",
+      "observedInterface": "EXISTING_WEBSITE_INTERFACE_CANDIDATE",
+      "firstQualification": "Check balance and interest under the selected rate and period convention.",
+      "ownership": "WORKER2_PROVISIONAL_NO_OBSERVED_CONFLICT",
+      "canonicalAcceptance": "PENDING",
+      "sha256": "602ea32c413f5ed632bb697b4f1583aaa70f4ebe68fadf6a6dac0ae5ef82c773",
+      "bytes": 2253
+    },
+    {
+      "id": 51,
+      "name": "Compound Interest Calculator",
+      "candidate": {
+        "engineId": "finance.compound-interest",
+        "version": 1,
+        "slug": "compound-interest-calculator"
+      },
+      "source": "src/calculators/finance/compound-interest.ts",
+      "blob": "b905832a35146c6233cf4d522c2c1efd36cabf74",
+      "observedInterface": "EXISTING_WEBSITE_INTERFACE_CANDIDATE",
+      "firstQualification": "Check effective compounding periods and versioned scenario parity.",
+      "ownership": "WORKER2_PROVISIONAL_NO_OBSERVED_CONFLICT",
+      "canonicalAcceptance": "PENDING",
+      "sha256": "7c948d1deec2565b9386f9978f1ef6f81c33993354065e9d8a393aeb5cf28b8d",
+      "bytes": 2543
+    },
+    {
+      "id": 64,
+      "name": "ROI Calculator",
+      "candidate": {
+        "engineId": "finance.roi",
+        "version": 1,
+        "slug": "roi-calculator"
+      },
+      "source": "src/calculators/finance/roi.ts",
+      "blob": "ca95705dd3d5d94842c6fdc260d79eead2e64d75",
+      "observedInterface": "EXISTING_WEBSITE_INTERFACE_CANDIDATE",
+      "firstQualification": "Check supplied cost, gain and horizon assumptions and zero denominators.",
+      "ownership": "WORKER2_PROVISIONAL_NO_OBSERVED_CONFLICT",
+      "canonicalAcceptance": "PENDING",
+      "sha256": "33b13a26a7539dbeac88a2aa764488520ee357787b66fed6c4effd5a7476c2c2",
+      "bytes": 3630
+    },
+    {
+      "id": 99,
+      "name": "Net Worth Calculator",
+      "candidate": {
+        "engineId": "finance.net-worth",
+        "version": 1,
+        "slug": "net-worth-calculator"
+      },
+      "source": "src/calculators/finance/net-worth.ts",
+      "blob": "f3d24edaf56837554fc44a0d31a582a5f2093820",
+      "observedInterface": "EXISTING_WEBSITE_INTERFACE_CANDIDATE",
+      "firstQualification": "Check supplied asset and liability totals, currency convention and signed values.",
+      "ownership": "WORKER2_PROVISIONAL_NO_OBSERVED_CONFLICT",
+      "canonicalAcceptance": "PENDING",
+      "sha256": "707072aa5877103f6d018ae6e00dc2ca05e4f7a18c6cf48dbd91fbd5b6387b57",
+      "bytes": 2945
+    },
+    {
+      "id": 103,
+      "name": "Emergency Fund Calculator",
+      "candidate": {
+        "engineId": "finance.emergency-fund",
+        "version": 1,
+        "slug": "emergency-fund-calculator"
+      },
+      "source": "src/calculators/finance/emergency-fund.ts",
+      "blob": "9e784d0acbd2295972df07e53626e120e5901cc1",
+      "observedInterface": "EXISTING_WEBSITE_INTERFACE_CANDIDATE",
+      "firstQualification": "Check supplied expense, target months, existing savings and refusal boundaries.",
+      "ownership": "WORKER2_PROVISIONAL_NO_OBSERVED_CONFLICT",
+      "canonicalAcceptance": "PENDING",
+      "sha256": "8d23710209a00cb34bd5ef07d6f101a44ff0606bb8068c87ac5666b5d8fe944f",
+      "bytes": 3685
+    },
+    {
+      "id": 138,
+      "name": "Break-even Calculator",
+      "candidate": {
+        "engineId": "business.break-even",
+        "version": 1,
+        "slug": "break-even-calculator"
+      },
+      "source": "src/calculators/business/break-even.ts",
+      "blob": "019513aa43a089d3bbc9963044a27530b204e87e",
+      "observedInterface": "EXISTING_WEBSITE_INTERFACE_CANDIDATE",
+      "firstQualification": "Check contribution margin and boundary before accepting a break-even result.",
+      "ownership": "WORKER2_PROVISIONAL_NO_OBSERVED_CONFLICT",
+      "canonicalAcceptance": "PENDING",
+      "sha256": "7f9cc4da38039323d768d4576c3054d151706aaf4c3734d1f0fe2045754ec5f9",
+      "bytes": 2846
+    },
+    {
+      "id": 168,
+      "name": "Net Revenue Retention Calculator",
+      "candidate": {
+        "engineId": "business.net-revenue-retention",
+        "version": 1,
+        "slug": "net-revenue-retention-calculator"
+      },
+      "source": "src/calculators/business/catalog-batch-2.ts",
+      "blob": "c4cbeaef3926a272486e3573ff56369b1e358c26",
+      "observedInterface": "ENGINE_CONTRACT_FORM_EVIDENCE",
+      "firstQualification": "Check cohort denominator, expansion, contraction and churn inputs.",
+      "ownership": "WORKER2_PROVISIONAL_NO_OBSERVED_CONFLICT",
+      "canonicalAcceptance": "PENDING",
+      "sha256": "0fe5e0b1af5c8b509287338f630183d587394bc61d38ce3fa1444e1325d6c2f0",
+      "bytes": 5535
+    },
+    {
+      "id": 172,
+      "name": "Customer Acquisition Cost Calculator",
+      "candidate": {
+        "engineId": "business.customer-acquisition-cost",
+        "version": 1,
+        "slug": "customer-acquisition-cost-calculator"
+      },
+      "source": "src/calculators/business/catalog-batch-1.ts",
+      "blob": "f53c37d45aeb2a4b6ccf2c7c6d02501885d8ccd6",
+      "observedInterface": "ENGINE_CONTRACT_FORM_EVIDENCE",
+      "firstQualification": "Check entered acquisition spend and positive acquired customers.",
+      "ownership": "WORKER2_PROVISIONAL_NO_OBSERVED_CONFLICT",
+      "canonicalAcceptance": "PENDING",
+      "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c",
+      "bytes": 5888
+    },
+    {
+      "id": 184,
+      "name": "ROAS Calculator",
+      "candidate": {
+        "engineId": "business.roas",
+        "version": 1,
+        "slug": "roas-calculator"
+      },
+      "source": "src/calculators/business/catalog-batch-2.ts",
+      "blob": "c4cbeaef3926a272486e3573ff56369b1e358c26",
+      "observedInterface": "ENGINE_CONTRACT_FORM_EVIDENCE",
+      "firstQualification": "Check attributable revenue and positive ad spend.",
+      "ownership": "WORKER2_PROVISIONAL_NO_OBSERVED_CONFLICT",
+      "canonicalAcceptance": "PENDING",
+      "sha256": "0fe5e0b1af5c8b509287338f630183d587394bc61d38ce3fa1444e1325d6c2f0",
+      "bytes": 5535
+    },
+    {
+      "id": 191,
+      "name": "Conversion Rate Calculator",
+      "candidate": {
+        "engineId": "business.conversion-rate",
+        "version": 1,
+        "slug": "conversion-rate-calculator"
+      },
+      "source": "src/calculators/business/catalog-batch-1.ts",
+      "blob": "f53c37d45aeb2a4b6ccf2c7c6d02501885d8ccd6",
+      "observedInterface": "ENGINE_CONTRACT_FORM_EVIDENCE",
+      "firstQualification": "Check input count correspondence and nonzero denominator.",
+      "ownership": "WORKER2_PROVISIONAL_NO_OBSERVED_CONFLICT",
+      "canonicalAcceptance": "PENDING",
+      "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c",
+      "bytes": 5888
+    }
+  ],
+  "acceptedBase": "352169ac6ddbe5965696e85667c20c19b6ae0072"
+}

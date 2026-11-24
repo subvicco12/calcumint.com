@@ -1,0 +1,633 @@
+[
+  {
+    "id": 10,
+    "name": "Interest Rate Calculator",
+    "family": "Borrower models",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/9",
+    "recordedProductionSupports": [],
+    "internalWork": "Confirm convergence and root domain for the private rate inversion.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 21,
+    "name": "Debt Consolidation Calculator",
+    "family": "Borrower models",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/20",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 31,
+    "name": "Down Payment Calculator",
+    "family": "Borrower models",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/30",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "core.percentage-of-value",
+        "slug": "percentage-of-value-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 00:34:03.970244+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/percentage-of-value-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 32,
+    "name": "Rent vs Buy Calculator",
+    "family": "Borrower models",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/31",
+    "recordedProductionSupports": [],
+    "internalWork": "Freeze term and resale assumptions before comparison delivery.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 35,
+    "name": "Closing Cost Calculator",
+    "family": "Borrower models",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/34",
+    "recordedProductionSupports": [],
+    "internalWork": "Freeze supplied cost categories and avoid inferred jurisdiction rates.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 49,
+    "name": "Mortgage + Rental Combined Model",
+    "family": "Borrower models",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/48",
+    "recordedProductionSupports": [],
+    "internalWork": "Review timing, debt-service and cash-flow source requirements.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 36,
+    "name": "Rental Property Calculator",
+    "family": "Property operating estimates",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/35",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 38,
+    "name": "Net Operating Income Calculator",
+    "family": "Property operating estimates",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/37",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 39,
+    "name": "Cap Rate Calculator",
+    "family": "Property operating estimates",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/38",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 40,
+    "name": "Cash-on-Cash Return Calculator",
+    "family": "Property operating estimates",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/39",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 41,
+    "name": "DSCR Calculator",
+    "family": "Property operating estimates",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/40",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 42,
+    "name": "Gross Rent Multiplier Calculator",
+    "family": "Property operating estimates",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/41",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 43,
+    "name": "Rental ROI Calculator",
+    "family": "Property operating estimates",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/42",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 44,
+    "name": "Vacancy Impact Calculator",
+    "family": "Property operating estimates",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/43",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 46,
+    "name": "House Flipping Profit Calculator",
+    "family": "Property operating estimates",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/45",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 65,
+    "name": "IRR Calculator",
+    "family": "Household and supplied financial measures",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/64",
+    "recordedProductionSupports": [],
+    "internalWork": "Require explicit time periods, sign changes and root ambiguity refusal.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 109,
+    "name": "Cost of Living Comparison Calculator",
+    "family": "Household and supplied financial measures",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/108",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 116,
+    "name": "Tip Calculator",
+    "family": "Household and supplied financial measures",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/115",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "launch-tip-amount-calculator",
+        "slug": "tip-amount-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/everyday/tip-amount-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 117,
+    "name": "Discount Calculator",
+    "family": "Household and supplied financial measures",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/116",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "launch-discount-amount-calculator",
+        "slug": "discount-amount-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/everyday/discount-amount-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Check against #118 before treating discount and percent-off as separate products.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 119,
+    "name": "Commission Calculator",
+    "family": "Household and supplied financial measures",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/118",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "core.percentage-of-value",
+        "slug": "percentage-of-value-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 00:34:03.970244+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/percentage-of-value-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Reconcile #197 and percentage-of-value before promoting a distinct contract.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 134,
+    "name": "Tax Effective Rate Calculator",
+    "family": "Household and supplied financial measures",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/133",
+    "recordedProductionSupports": [],
+    "internalWork": "Supplied tax and denominator only; no tax liability or rate determination.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 145,
+    "name": "Revenue Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/144",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 146,
+    "name": "Cost of Goods Sold Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/145",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 147,
+    "name": "Operating Margin Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/146",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false
+      },
+      {
+        "calculator_key": "core.percentage-of-value",
+        "slug": "percentage-of-value-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 00:34:03.970244+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/percentage-of-value-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 150,
+    "name": "Quick Ratio Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/149",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 154,
+    "name": "Return on Assets Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/153",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false
+      },
+      {
+        "calculator_key": "core.percentage-of-value",
+        "slug": "percentage-of-value-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 00:34:03.970244+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/percentage-of-value-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 155,
+    "name": "Return on Equity Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/154",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false
+      },
+      {
+        "calculator_key": "core.percentage-of-value",
+        "slug": "percentage-of-value-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 00:34:03.970244+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/percentage-of-value-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 156,
+    "name": "Project Profitability Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/155",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 157,
+    "name": "Freelancer Hourly Rate Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/156",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 158,
+    "name": "Agency Pricing Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/157",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 159,
+    "name": "Discount Impact Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/158",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 160,
+    "name": "Price Increase Impact Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/159",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 161,
+    "name": "Unit Economics Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/160",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 177,
+    "name": "Rule of 40 Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/176",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 181,
+    "name": "Subscription Pricing Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/180",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 194,
+    "name": "Ad Budget Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/193",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 195,
+    "name": "Target ROAS Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/194",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 200,
+    "name": "Marketplace Profit Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/199",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 201,
+    "name": "Promotion Profitability Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/200",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 203,
+    "name": "Shipping Profit Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/202",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 494,
+    "name": "Altitude Pressure Calculator",
+    "family": "Energy and science",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/493",
+    "recordedProductionSupports": [],
+    "internalWork": "Draft private presentation implemented. Authenticate acceptance and preserve #537 identity hold.",
+    "ownership": "WORKER_2_PRIVATE_DRAFT",
+    "activity": "DRAFT_IMPLEMENTED"
+  },
+  {
+    "id": 529,
+    "name": "Power-to-Weight Ratio Calculator",
+    "family": "Energy and science",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/528",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify exact power and mass unit mapping and physics worker ownership.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 531,
+    "name": "Planetary Weight Calculator",
+    "family": "Energy and science",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/530",
+    "recordedProductionSupports": [],
+    "internalWork": "Confirm supplied gravity or planetary reference and physics worker ownership before edits.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  },
+  {
+    "id": 535,
+    "name": "Sunrise/Sunset Calculator",
+    "family": "Energy and science",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/534",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify astronomy ownership, location/time basis and polar-event refusal before edits.",
+    "ownership": "PROVISIONAL_REQUIRE_EXACT_REF_AND_SCOPE_CHECK",
+    "activity": "QUEUED"
+  }
+]

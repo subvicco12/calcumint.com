@@ -1,0 +1,73 @@
+{
+  "kind": "calcumint.scoped-report",
+  "reportVersion": 1,
+  "metadata": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 234,
+      "engineId": "launch-percent-error-calculator",
+      "calculatorSlug": "percent-error-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.math-capture.20261124.1/launch-percent-error-calculator@1"
+    },
+    "scope": "Absolute percent error; accepted value at least 1e-9.",
+    "primaryKey": "result",
+    "fields": [
+      {
+        "key": "observed",
+        "label": "Observed value",
+        "kind": "number",
+        "defaultValue": 98
+      },
+      {
+        "key": "actual",
+        "label": "Accepted value",
+        "kind": "number",
+        "defaultValue": 100
+      }
+    ],
+    "outputs": {
+      "result": {
+        "label": "Result",
+        "unit": "%"
+      }
+    },
+    "sourceEvidence": [
+      "docs/calculator-first/authority-catalog.json",
+      "src/calculators/launch-portfolio.ts",
+      "data/verification/codex-a-standard-risk-goldens-2026-10-15.json",
+      "docs/milestone100-20261114/math/source-applicability.json"
+    ],
+    "publisherSources": [],
+    "limitations": [
+      "IEEE-754 binary64; finite normal inputs/results or algebraically witnessed zero only. No arbitrary precision.",
+      "Reverse search is explicitly bounded and never claims an exhaustive inverse. Catalog scope and external certification remain subject to review."
+    ],
+    "authority": "Private bounded review. Source applicability and canonical approval remain pending."
+  },
+  "packet": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 234,
+      "engineId": "launch-percent-error-calculator",
+      "calculatorSlug": "percent-error-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.math-capture.20261124.1/launch-percent-error-calculator@1"
+    },
+    "raw": {
+      "actual": "100",
+      "observed": "98"
+    },
+    "snapshot": {
+      "calculatorSlug": "percent-error-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "observed": 98,
+        "actual": 100
+      },
+      "output": {
+        "result": 2
+      }
+    }
+  }
+}

@@ -1,0 +1,126 @@
+diff --git a/src/components/publication20-tool.test.tsx b/src/components/publication20-tool.test.tsx
+index abf86ca5..b2eb7a7c 100644
+--- a/src/components/publication20-tool.test.tsx
++++ b/src/components/publication20-tool.test.tsx
+@@ -28,3 +28,23 @@ it('uses SI frequency symbols for human labels while retaining original account
+ it('keeps other converters unit labels unchanged',()=>{state.plan='free';render(<Publication20Tool slug="power-converter"/>);expect(screen.getAllByRole('option',{name:'mw'})[0].getAttribute('value')).toBe('mw');expect(screen.queryByRole('option',{name:'MHz'})).toBeNull();});
+ 
+ it.each([['energy-converter','thermochemical'],['data-storage-converter','SI symbol is kB']])('carries the exact v1 convention into UI and export/scenario methodology for %s',(slug,disclosure)=>{state.plan='free';render(<Publication20Tool slug={slug}/>);expect(screen.getByText('Methodology',{selector:'summary'}).parentElement?.textContent).toContain(disclosure);expect(state.account?.exportMethodology).toContain(disclosure);if(slug==='data-storage-converter'){fireEvent.change(screen.getByLabelText('To unit'),{target:{value:'KB'}});expect(state.account?.input.toUnit).toBe('KB');expect(state.account?.scenarioDisplayMetadata?.outputs.result.unit).toBe('KB');}});
++
++it('links #440 refused precision to the value without leaving a capturable result, and recovers through a unit change',()=>{
++ state.plan='pro';
++ render(<Publication20Tool slug="frequency-converter"/>);
++ const value=screen.getByLabelText('Value');
++ fireEvent.change(screen.getByLabelText('From unit'),{target:{value:'hz'}});
++ fireEvent.change(screen.getByLabelText('To unit'),{target:{value:'ghz'}});
++ fireEvent.change(value,{target:{value:'1e-308'}});
++ expect(capturedOutput()).toBeNull();
++ expect(value.getAttribute('aria-invalid')).toBe('true');
++ expect(document.getElementById(value.getAttribute('aria-describedby')!)).toBe(screen.getByRole('alert'));
++ expect((value as HTMLInputElement).value).toBe('1e-308');
++ fireEvent.change(value,{target:{value:'1e-300'}});
++ expect(capturedOutput()).toBeNull();
++ fireEvent.change(screen.getByLabelText('To unit'),{target:{value:'hz'}});
++ expect(capturedOutput()).toEqual({result:1e-300});
++ expect(value.getAttribute('aria-invalid')).toBe('false');
++ expect(value.hasAttribute('aria-describedby')).toBe(false);
++ expect(state.account?.calculatorVersion).toBe(1);
++});
+diff --git a/src/components/publication20-tool.tsx b/src/components/publication20-tool.tsx
+index e04f45cf..a8e7d0de 100644
+--- a/src/components/publication20-tool.tsx
++++ b/src/components/publication20-tool.tsx
+@@ -31,6 +31,7 @@ function ConversionSession({entry}:{entry:Publication20Definition}){
+  let output:Record<string,unknown>|null=null,error='';
+  if(parsed.success){try{const actual=runCalculator(definition,input).output;validatePublication20Result(entry,input,actual);output=actual;}catch(e){error=e instanceof Error?e.message:'The result is outside the supported numeric range.';}}
+  else error='Correct the fields identified above. Blank, malformed or lossy numeric values cannot be calculated.';
++ const frequencyCaptureErrorId=entry.catalogId===440&&parsed.success&&error?prefix+'-capture-error':undefined;
+  const unit=entry.outputUnit(input),primary=output?.[entry.primaryKey];
+  const presentationUnit=(code:string)=>frequencyPresentationUnit(definition.slug,definition.version,code);
+  const baseMethodology=[entry.catalogId===427?entry.scope:'Fixed-unit value conversion using the selected source and target units.',...definition.formulas.map(f=>`${f.description}\n${f.expression}`)].join('\n\n');
+@@ -40,8 +41,8 @@ function ConversionSession({entry}:{entry:Publication20Definition}){
+  const display=displayBase?{...displayBase,inputs:{...displayBase.inputs,value:{label:'Value',unit:String(input.fromUnit)}}}:undefined;
+  return <div className="calculator-ui" data-publication20-slug={definition.slug}>
+   {entry.catalogId===427&&<p data-temperature-scope="algebraic-value">{entry.scope}</p>}
+-  <div className="field-grid">{entry.fields.map(field=>{const message=fieldErrors.get(field.key),errorId=`${prefix}-${field.key}-error`;return <div key={field.key}><label className="field"><span>{field.label}</span>{field.kind==='select'?<select data-publication20-field={field.key} value={draft[field.key]??''} aria-invalid={Boolean(message)} aria-describedby={message?errorId:undefined} onChange={e=>setDraft(d=>({...d,[field.key]:e.target.value}))}>{field.options?.map(value=><option key={value} value={value}>{presentationUnit(value)}</option>)}</select>:<input data-publication20-field={field.key} type="text" inputMode="decimal" maxLength={4096} required value={draft[field.key]??''} aria-invalid={Boolean(message)} aria-describedby={message?errorId:undefined} onChange={e=>setDraft(d=>({...d,[field.key]:e.target.value}))}/>}</label>{message&&<p id={errorId} className="muted-copy">{message}</p>}</div>;})}</div>
+-  {result?<><div data-publication20-result={String(primary)}><FinalCalculatorRenderer result={{...result,primaryResult:{...result.primaryResult,unit:presentationUnit(unit)}}} plan={plan} presentation={unitConversionPresentation}/><p>The headline may be rounded; the raw table and exports retain the stored value.</p></div><table className="schedule-table"><caption>Conversion reconciliation</caption><thead><tr><th scope="col">Field</th><th scope="col">Recorded value</th><th scope="col">Unit</th></tr></thead><tbody><tr><th scope="row">Input value</th><td>{String(input.value)}</td><td>{presentationUnit(String(input.fromUnit))}</td></tr><tr><th scope="row">Stored result</th><td>{Object.is(primary,-0)?'-0':String(primary)}</td><td>{presentationUnit(unit)}</td></tr></tbody></table><details><summary>Scope and limitations</summary><p>{entry.scope}</p></details></>:<div role="alert" aria-live="polite"><strong>Enter valid inputs.</strong> {error}</div>}
++  <div className="field-grid">{entry.fields.map(field=>{const message=fieldErrors.get(field.key),errorId=`${prefix}-${field.key}-error`;return <div key={field.key}><label className="field"><span>{field.label}</span>{field.kind==='select'?<select data-publication20-field={field.key} value={draft[field.key]??''} aria-invalid={Boolean(message)} aria-describedby={message?errorId:undefined} onChange={e=>setDraft(d=>({...d,[field.key]:e.target.value}))}>{field.options?.map(value=><option key={value} value={value}>{presentationUnit(value)}</option>)}</select>:<input data-publication20-field={field.key} type="text" inputMode="decimal" maxLength={4096} required value={draft[field.key]??''} aria-invalid={Boolean(message||frequencyCaptureErrorId)} aria-describedby={message?errorId:frequencyCaptureErrorId} onChange={e=>setDraft(d=>({...d,[field.key]:e.target.value}))}/>}</label>{message&&<p id={errorId} className="muted-copy">{message}</p>}</div>;})}</div>
++  {result?<><div data-publication20-result={String(primary)}><FinalCalculatorRenderer result={{...result,primaryResult:{...result.primaryResult,unit:presentationUnit(unit)}}} plan={plan} presentation={unitConversionPresentation}/><p>The headline may be rounded; the raw table and exports retain the stored value.</p></div><table className="schedule-table"><caption>Conversion reconciliation</caption><thead><tr><th scope="col">Field</th><th scope="col">Recorded value</th><th scope="col">Unit</th></tr></thead><tbody><tr><th scope="row">Input value</th><td>{String(input.value)}</td><td>{presentationUnit(String(input.fromUnit))}</td></tr><tr><th scope="row">Stored result</th><td>{Object.is(primary,-0)?'-0':String(primary)}</td><td>{presentationUnit(unit)}</td></tr></tbody></table><details><summary>Scope and limitations</summary><p>{entry.scope}</p></details></>:<div id={frequencyCaptureErrorId} role="alert" aria-live="polite"><strong>Enter valid inputs.</strong> {error}</div>}
+   {(plan==='pro'||plan==='business')&&<Publication20Batch slug={definition.slug} fromUnit={String(input.fromUnit)} toUnit={String(input.toUnit)} onSelect={(value,fromUnit,toUnit)=>setDraft(d=>({...d,value,fromUnit,toUnit}))}/>}
+   <ConverterWorkedExamples slug={definition.slug} onUse={example=>setDraft({...example})}/>
+   <CalculatorAccountActions calculatorSlug={definition.slug} calculatorVersion={definition.version} input={input} output={output} scenarioDisplayMetadata={display} exportMethodology={output?methodology:undefined}/>
+diff --git a/src/components/technology-five-integration.test.tsx b/src/components/technology-five-integration.test.tsx
+index 9445f03e..933816df 100644
+--- a/src/components/technology-five-integration.test.tsx
++++ b/src/components/technology-five-integration.test.tsx
+@@ -15,3 +15,16 @@ for(const [slug,value,target] of rows)it(slug+' integrates live analysis and goa
+  fireEvent.change(targetInput,{target:{value:'invalid'}});fireEvent.submit(within(analysis).getByRole('form',{name:'Target calculation'}));expect(within(analysis).getByRole('alert')).toBeTruthy();expect(state.snapshot).toEqual(before);
+  const field=document.querySelector('input[data-technology-field]')!;fireEvent.change(field,{target:{value:''}});expect(state.snapshot?.output).toBeNull();expect(screen.queryByRole('form',{name:'Target calculation'})).toBeNull();fireEvent.click(screen.getByRole('button',{name:'Use worked example'}));expect(state.snapshot).toEqual(before);expect(screen.getByRole('form',{name:'Target calculation'})).toBeTruthy();
+ });
++
++it('refuses fractional #386 byte drafts, including a fraction that rounds onto the cap',()=>{
++ render(<CalculatorInteractive slug="base64-size-calculator"/>);
++ const input=screen.getByLabelText('Input bytes') as HTMLInputElement;
++ for(const text of ['0.5','1000000000000000.01']){
++  fireEvent.change(input,{target:{value:text}});
++  expect(input.value).toBe(text);
++  expect(screen.getByRole('alert')).toBeTruthy();
++  expect(state.snapshot?.output).toBeNull();
++ }
++ fireEvent.change(input,{target:{value:'4'}});
++ expect(state.snapshot).toMatchObject({calculatorVersion:1,input:{inputBytes:4},output:{value:8}});
++});
+diff --git a/src/lib/native-delivery/technology-five-contract.test.ts b/src/lib/native-delivery/technology-five-contract.test.ts
+index 6a962b0f..e1e0a85b 100644
+--- a/src/lib/native-delivery/technology-five-contract.test.ts
++++ b/src/lib/native-delivery/technology-five-contract.test.ts
+@@ -6,3 +6,11 @@ it('preserves entered decimal provenance and original output without allowing nu
+ for(const body of [{catalogId:440,version:1,input:{}},{catalogId:370,version:2,input:{}},{catalogId:386,version:1,input:{inputBytes:4}},{catalogId:386,version:1,input:{inputBytes:'9007199254740993'}},{catalogId:370,version:1,input:{dataMegabytes:'1e-323',timeSeconds:'1'}},{catalogId:386,version:1,input:{inputBytes:'4',formula:'x*9'}}])it('refuses identity/precision/schema substitution '+JSON.stringify(body),()=>expect(()=>runTechnologyFiveCalculation(body)).toThrow());
+ it('retains valid base64 zero and refuses fractional payload bytes',()=>{expect(runTechnologyFiveCalculation({catalogId:386,version:1,input:{inputBytes:'0'}}).output.value).toBe(0);expect(()=>runTechnologyFiveCalculation({catalogId:386,version:1,input:{inputBytes:'0.1'}})).toThrow();});
+ for(const row of cases)for(const malformed of ['1junk','9007199254740993'])it('maps malformed/lossy input to422 for exact tuple '+row.catalogId+' '+malformed,()=>{const key=Object.keys(row.input)[0],input={...row.input,[key]:malformed};expect(()=>runTechnologyFiveCalculation({catalogId:row.catalogId,version:1,input})).toThrow(expect.objectContaining({status:422}));});
++
++it('rejects fractional #386 payload bytes at the numeric cap without rounding onto it',()=>{
++ const calculate=(inputBytes:string)=>runTechnologyFiveCalculation({catalogId:386,version:1,input:{inputBytes}});
++ for(const raw of ['0.5','1000000000000000.01']){
++  expect(()=>calculate(raw)).toThrow(expect.objectContaining({status:422}));
++ }
++ expect(calculate('1000000000000000')).toMatchObject({version:1,output:{value:1333333333333336}});
++});
+diff --git a/src/lib/technology-capture-trust.ts b/src/lib/technology-capture-trust.ts
+index c167228a..4c5e6c8b 100644
+--- a/src/lib/technology-capture-trust.ts
++++ b/src/lib/technology-capture-trust.ts
+@@ -1,7 +1,7 @@
+ /** After original schema/engine validation: new-capture precision boundary only, never historical replay. */
+ const minimumNormal=2**-1022;
+-const selected=new Set(['technology.ip-subnet','technology.raid-capacity','technology.screen-ppi','technology.aspect-ratio','technology.resolution','technology.dpi','technology.battery-runtime','technology.ups-runtime','technology.power-supply','technology.website-bandwidth','technology.cloud-storage-cost','technology.cloud-data-transfer-cost','technology.base64-size','technology.password-entropy']);
+-const network=new Set(['technology.bandwidth','technology.download-time','technology.upload-time','technology.data-transfer','technology.storage-conversion']);
++const selected=new Set(['technology.storage-conversion','technology.ip-subnet','technology.raid-capacity','technology.screen-ppi','technology.aspect-ratio','technology.resolution','technology.dpi','technology.battery-runtime','technology.ups-runtime','technology.power-supply','technology.website-bandwidth','technology.cloud-storage-cost','technology.cloud-data-transfer-cost','technology.base64-size','technology.password-entropy']);
++const network=new Set(['technology.bandwidth','technology.download-time','technology.upload-time','technology.data-transfer']);
+ const zeroFields:Record<string,readonly string[]>={
+  'technology.website-bandwidth':['monthlyPageViews'],
+  'technology.cloud-storage-cost':['storageGb','pricePerGbMonth'],
+@@ -10,7 +10,7 @@ const zeroFields:Record<string,readonly string[]>={
+ };
+ function requireNormal(value:number){if(!Number.isFinite(value)||value===0||Math.abs(value)<minimumNormal)throw Error('The current version underflows its supported precision range at these inputs. Your input is preserved; use compatible magnitudes.');}
+ export function validateTechnologyCapture(id:string,input:Readonly<Record<string,unknown>>,output:{value:number}):void{
+- if(network.has(id))return; // These five have their existing publication20 result-trust boundary.
++ if(network.has(id))return; // These four have their existing publication20 result-trust boundary.
+  if(!selected.has(id))throw Error('Technology capture scope has not been established.');
+  const value=output.value;
+  if(!Number.isFinite(value)||(value!==0&&Math.abs(value)<minimumNormal))throw Error('Result is outside the supported finite normal precision range.');
+diff --git a/src/lib/technology-next-capture-trust.test.ts b/src/lib/technology-next-capture-trust.test.ts
+index b4c316c2..06c48fdd 100644
+--- a/src/lib/technology-next-capture-trust.test.ts
++++ b/src/lib/technology-next-capture-trust.test.ts
+@@ -3,3 +3,10 @@ import {validateTechnologyNextCapture} from './technology-next-capture-trust';
+ it('refuses subnormal inputs despite a normal finite product',()=>{expect(()=>validateTechnologyNextCapture('technology.resolution',{widthPixels:1e-320,heightPixels:1e100},{value:1e-220})).toThrow(/input/);});
+ it('preserves genuine zero, fractional and large binary64 quantity results',()=>{expect(()=>validateTechnologyNextCapture('technology.cloud-storage-cost',{storageGb:0,pricePerGbMonth:0.02},{value:0})).not.toThrow();expect(()=>validateTechnologyNextCapture('technology.resolution',{widthPixels:0.5,heightPixels:1e100},{value:5e99})).not.toThrow();});
+ it('retains original result and false-zero refusals',()=>{for(const value of [NaN,Infinity,1e-320,0])expect(()=>validateTechnologyNextCapture('technology.resolution',{widthPixels:1,heightPixels:1},{value})).toThrow();expect(()=>validateTechnologyNextCapture('technology.resolution',{widthPixels:NaN,heightPixels:1},{value:1})).toThrow();});
++
++it('binds #374 positive finite-normal output independently of a publication profile',()=>{
++ const units={fromUnit:'B',toUnit:'TiB'};
++ expect(()=>validateTechnologyNextCapture('technology.storage-conversion',{value:2**-1022,...units},{value:2**-1062})).toThrow(/precision/i);
++ expect(()=>validateTechnologyNextCapture('technology.storage-conversion',{value:2**-1022,...units},{value:0})).toThrow(/precision/i);
++ expect(()=>validateTechnologyNextCapture('technology.storage-conversion',{value:2**-982,...units},{value:2**-1022})).not.toThrow();
++});

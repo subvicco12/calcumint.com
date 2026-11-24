@@ -1,0 +1,85 @@
+{
+  "baseline": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+  "rows": [
+    {
+      "id": 487,
+      "plan": "free",
+      "ownedHistoryRestored": true,
+      "historyId": "179fe843-65e2-4725-aa88-4ff07457ec77",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "batchAndReplay": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 487,
+      "plan": "pro",
+      "ownedHistoryRestored": true,
+      "historyId": "9fa71b0a-050b-4fb7-b403-bceed9f990d2",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "batchAndReplay": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 487,
+      "plan": "business",
+      "ownedHistoryRestored": true,
+      "historyId": "755e133f-123e-4a65-9a88-7e77c2363d61",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "batchAndReplay": true,
+      "keyboardRecovery": true
+    }
+  ],
+  "checks": [
+    "Unauthenticated private route denied",
+    "Authenticated non-reviewer private route denied",
+    "Foreign Business user denied; same-session membership revocation removes project access; owner retains access",
+    "Revoked reviewer cannot save through the already-loaded private server action"
+  ],
+  "downloads": [
+    {
+      "id": 487,
+      "format": "json",
+      "file": "invocation-tX8ws4/679c3c32-124c-4061-8edb-fd38e1a1527d",
+      "bytes": 2826,
+      "sha256": "9071caffc9077f2f8ffc9f5cd59a7c9e291c1c2263adfbeec3c4e687660ebe59"
+    },
+    {
+      "id": 487,
+      "format": "csv",
+      "file": "invocation-jWDD5U/9d62548a-d640-46b8-9898-b5ff2335f611",
+      "bytes": 2239,
+      "sha256": "937457c5c011a20f87fb7b076365d5d2914c50a9b3f54b43fc9da1863a32ed85"
+    },
+    {
+      "id": 487,
+      "format": "pdf",
+      "file": "invocation-Gb2suw/4fdac9a0-0968-4ac8-9edc-37596362b853",
+      "bytes": 412017,
+      "sha256": "7e82dee0f01fbda9c447c8d8a9cfafa6d15e79b04d988f0ed1d353ae7ee1beae"
+    }
+  ],
+  "productionWrites": false,
+  "releaseHold": true,
+  "publicationFixture": false,
+  "canonicalApproval": false,
+  "scope": "Disposable repository-model PostgreSQL17/GoTrue/PostgREST; actual private page and existing atomic account actions. Loopback transport is not production equivalence. Business team/native/job capabilities remain blocked.",
+  "expectedRows": 3,
+  "images": {
+    "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+    "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+    "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+  },
+  "runtime": "v24.19.0",
+  "sourceFingerprintCount": 2159,
+  "passed": true
+}

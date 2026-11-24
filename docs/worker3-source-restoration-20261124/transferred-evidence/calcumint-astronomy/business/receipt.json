@@ -1,0 +1,78 @@
+{
+  "baseline": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+  "rows": [
+    {
+      "id": 474,
+      "plan": "business",
+      "ownedHistoryRestored": true,
+      "historyId": "96f9a4a9-49f8-4c91-ae4d-29b76220f9fe",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "batchAndReplay": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 532,
+      "plan": "business",
+      "ownedHistoryRestored": true,
+      "historyId": "06f536e5-4b96-4c5e-8e90-4e5a9f23d3e8",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "batchAndReplay": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 533,
+      "plan": "business",
+      "ownedHistoryRestored": true,
+      "historyId": "59e619bf-e98c-4857-8470-5f92af936314",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "batchAndReplay": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 534,
+      "plan": "business",
+      "ownedHistoryRestored": true,
+      "historyId": "c2732687-0f04-4adb-964d-9c38309c1a39",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "batchAndReplay": true,
+      "keyboardRecovery": true
+    }
+  ],
+  "checks": [
+    "Unauthenticated private route denied",
+    "Authenticated non-reviewer private route denied",
+    "Foreign Business user denied; same-session membership revocation removes project access; owner retains access",
+    "Revoked reviewer cannot save through the already-loaded private server action"
+  ],
+  "downloads": [],
+  "productionWrites": false,
+  "releaseHold": true,
+  "publicationFixture": false,
+  "canonicalApproval": false,
+  "scope": "Disposable repository-model PostgreSQL17/GoTrue/PostgREST; actual private page and existing atomic account actions. Loopback transport is not production equivalence. Business team/native/job capabilities remain blocked.",
+  "expectedRows": 4,
+  "images": {
+    "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+    "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+    "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+  },
+  "runtime": "v24.19.0",
+  "sourceFingerprintCount": 2144,
+  "passed": true
+}

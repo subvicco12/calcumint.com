@@ -1,0 +1,24 @@
+import {writeFileSync,readFileSync} from 'node:fs';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {mobilityContracts,mobilityWorkflows} from '/workspace/calcumint-worker3-portfolio-integration-20261124/src/lib/worker2-energy-mobility-20261119/cohort';
+import {resourceContracts,resourceWorkflows} from '/workspace/calcumint-worker3-portfolio-integration-20261124/src/lib/worker2-battery-water-lighting-20261119/cohort';
+import {powerContracts,powerWorkflows} from '/workspace/calcumint-worker3-portfolio-integration-20261124/src/lib/worker2-automotive-power-20261118/cohort';
+const all=[...mobilityContracts,...resourceContracts,...powerContracts];
+const root='/workspace/calcumint-worker3-portfolio-integration-20261124';
+const git=(...args:string[])=>execFileSync('git',args,{cwd:root,encoding:'utf8'}).trim();
+const ledger=JSON.parse(readFileSync('/workspace/worker3-restoration-20261124/evidence/calcumint-math44/engineering-ledger.json','utf8'));
+const ids=ledger.rows.filter((x:any)=>x.integrationReady).map((x:any)=>x.id).sort((a:number,b:number)=>a-b);
+const actual=all.map(c=>c.catalogId).sort((a,b)=>a-b);
+console.log(JSON.stringify({ledgerCount:ids.length,contractCount:actual.length,missing:ids.filter((x:number)=>!actual.includes(x)),extra:actual.filter(x=>!ids.includes(x))}));
+if(ids.some((id:number)=>!actual.includes(id)))throw Error('Ledger identity missing');
+const rows=all.filter(c=>ids.includes(c.catalogId)).map(c=>{
+ const raw=Object.fromEntries(c.fields.filter(f=>!f.visibilityModes||f.visibilityModes.includes(String(c.fields.find(x=>x.key==='mode')?.defaultValue))).map(f=>[f.key,String(f.defaultValue??'')]));
+ const flow=mobilityContracts.includes(c as any)?mobilityWorkflows(c.catalogId):resourceContracts.includes(c as any)?resourceWorkflows(c.catalogId):powerWorkflows(c.catalogId);
+ const packet=flow.execute(raw);
+ const fallback:Record<number,string>={459:'automotive/catalog-batch-2',460:'automotive/catalog-batch-2',461:'automotive/catalog-batch-2',462:'energy/catalog-batch-1',463:'energy/catalog-batch-1',464:'energy/catalog-batch-1',478:'energy/catalog-batch-2',479:'energy/catalog-batch-2',509:'travel/catalog-batch-2',494:'remaining-contracts',489:'energy/catalog-batch-3',475:'automotive/catalog-batch-3',476:'automotive/catalog-batch-3'};
+ const sources=(fallback[c.catalogId]?['src/calculators/'+fallback[c.catalogId]+'.ts']:c.sourceEvidence.filter(p=>p.startsWith('src/'))).map(path=>{const bytes=execFileSync('git',['show',`HEAD:${path}`],{cwd:root});return {path,blob:git('rev-parse',`HEAD:${path}`),sha256:createHash('sha256').update(bytes).digest('hex')};});
+ return {id:c.catalogId,engineId:c.engineId,version:c.version,slug:c.slug,sourceVersion:packet.identity.sourceVersion,sourceBindings:sources,privateEngineering:'INTEGRATED_NOT_QUALIFIED',competentReview:'PENDING',canonicalCertification:false,publication:false};
+});
+writeFileSync('/workspace/worker3-restoration-20261124/receipts/per-id-integration.json',JSON.stringify({commit:git('rev-parse','HEAD'),tree:git('rev-parse','HEAD^{tree}'),count:rows.length,rows},null,2));
+console.log('Exact ledger/contract identity set match:',rows.length);

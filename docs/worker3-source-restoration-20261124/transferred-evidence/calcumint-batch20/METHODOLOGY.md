@@ -1,0 +1,18 @@
+# Bounded contract methodology and review requirements
+
+All qualified statuses refer to exact private engineering checkpoints. Forgeable external inputs are checked by the declared engine schema and exact replay contract. The registered engines and original historical records remain immutable.
+
+- #275: Rectangular prism only. Positive dimensions in one common length unit. The volume is their product; surface area is a secondary result. Generic Volume catalog scope still needs adoption.
+- #411/#412: Ideal continuous constant-rate arithmetic for an abstract population model. No extrapolation to biological fitness or realized populations. Rate uses reciprocal supplied time. Doubling time requires a positive supplied rate. Precision and methodology require competent review.
+- #417/#418: Educational Mendelian models. #417 reports diploid two-allele theoretical equilibrium frequencies under the stated assumptions. #418 accepts one locus and reports four equally likely combinations and grouped genotype fractions. These outputs do not determine phenotypes, disease risk or real reproductive outcomes. Population applicability and source approval remain independent.
+- #391–394: Supplied positive energy arithmetic, Deurenberg adult body-fat estimate, historical Devine equation and adult BMI-equivalent weight. Approve population boundaries, independently review precision, and assess title wording. No diagnosis, target weight, calorie prescription, intervention or suitability statement.
+- #398–401: Illustrations of adult reference arithmetic and supplied MET-based gross expenditure. Clinical and scientific reviewers must approve selection, assumptions and applicability. A scalar output cannot establish an individual dietary recommendation or net energy use.
+- #397: Current v1 returns protein grams only while validating a three-share allocation. The worksheet does not establish a complete macro result. Requires owner's explicit scope decision and governed successor/extension review if all three grams are required. No engine or delivery change was made.
+- #459/#460/#464/#479: Retained exact mobility checkpoints cover km/L, mi/US gal, supplied consumption/usable energy range and average load × daily hours × days. Owner/competent acceptance must address the gallons convention, use of estimates, boundaries, units and tariff limitations.
+- #475/#476: Retain mechanical horsepower, the kW factor and the supplied torque/RPM relation using its approximate divisor. No performance or drivetrain guarantee. Historical replay and the targeted unsupported-version refusal remain separate exact receipts.
+
+Across all 20, confirm identity and supported use, competent source applicability and precision, exact-head integration and required CI, canonical certification and release authorization. User-supplied health examples were synthetic and acceptance ran in disposable isolated services. RELEASE HOLD ACTIVE.
+
+The next intake is provisional. #139/#140 already have recorded production tuples, so their new private supplied-margin drafts are remediation/comparison work only. Compare the exact public mappings before proposing any replacement. The other 25 are privately implemented candidates with delivery and scope work still to assess.
+
+Source references already carried by the immutable engines include [Deurenberg et al.](https://pubmed.ncbi.nlm.nih.gov/2043597/), the [Devine equation commentary](https://pmc.ncbi.nlm.nih.gov/articles/PMC8646317/), and the [NHLBI adult BMI reference](https://www.nhlbi.nih.gov/calculate-your-bmi). These links index methodology review. They do not establish validation of a particular user's result.

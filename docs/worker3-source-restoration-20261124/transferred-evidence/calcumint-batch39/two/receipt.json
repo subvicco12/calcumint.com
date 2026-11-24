@@ -1,0 +1,143 @@
+{
+  "baseline": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+  "rows": [
+    {
+      "id": 63,
+      "plan": "free",
+      "ownedHistoryRestored": true,
+      "historyId": "39dc029a-77f6-4b55-a22e-e75782a32e6e",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "batchAndReplay": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 67,
+      "plan": "free",
+      "ownedHistoryRestored": true,
+      "historyId": "940c1ed4-b9f1-4b94-92d4-94230d9e82db",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "batchAndReplay": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 63,
+      "plan": "pro",
+      "ownedHistoryRestored": true,
+      "historyId": "7e774a9c-94f6-4c42-a128-ae8921cd5bb9",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "batchAndReplay": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 67,
+      "plan": "pro",
+      "ownedHistoryRestored": true,
+      "historyId": "b820cdde-3ed2-46a3-b43d-d5753ee87730",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "batchAndReplay": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 63,
+      "plan": "business",
+      "ownedHistoryRestored": true,
+      "historyId": "5abd3e9c-a4af-4a81-b86b-048e4a24c881",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "batchAndReplay": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 67,
+      "plan": "business",
+      "ownedHistoryRestored": true,
+      "historyId": "2d9b232b-b377-4ee8-b3ca-540fb70bea8d",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "batchAndReplay": true,
+      "keyboardRecovery": true
+    }
+  ],
+  "checks": [
+    "Unauthenticated private route denied",
+    "Authenticated non-reviewer private route denied",
+    "Foreign Business user denied; same-session membership revocation removes project access; owner retains access",
+    "Revoked reviewer cannot save through the already-loaded private server action"
+  ],
+  "downloads": [
+    {
+      "id": 63,
+      "format": "json",
+      "file": "invocation-pSUJxl/95f16e42-0a86-4f79-a457-e483b3836252",
+      "bytes": 3720,
+      "sha256": "0d30fa4ec5665402254a14469e224cbd916627a7e2b960c27304827e30030917"
+    },
+    {
+      "id": 63,
+      "format": "csv",
+      "file": "invocation-gnD4Bv/0a413a99-3b15-4106-b1f1-428a1fae826c",
+      "bytes": 2918,
+      "sha256": "228f9cf3f6d8a6feffe9145a67eb0357681e968232131358d230db6f82e7385b"
+    },
+    {
+      "id": 63,
+      "format": "pdf",
+      "file": "invocation-nWTxvk/fdb24d73-4cf0-499e-95e3-5543040abea8",
+      "bytes": 416276,
+      "sha256": "8b8be56a1e0948e01e358b134d8b7f772b884265a749b1984398a31aee8827c3"
+    },
+    {
+      "id": 67,
+      "format": "json",
+      "file": "invocation-vq71Jm/1e5e4c92-5719-4fbf-b7e6-83245f56ca19",
+      "bytes": 3568,
+      "sha256": "3a36156e540a43ff521d19d40a7114cbfcb4a82e3cfe0094cddbfdfcf97c3967"
+    },
+    {
+      "id": 67,
+      "format": "csv",
+      "file": "invocation-WSFfqM/1128f3ca-d644-4e47-88da-b9437bf61e8d",
+      "bytes": 2632,
+      "sha256": "dbe89cd41cee4c9bc080bf1088eb4ae77bd925c33f80f49cbb76cc40c5c97c60"
+    },
+    {
+      "id": 67,
+      "format": "pdf",
+      "file": "invocation-XLnanU/11e7d7e4-97dc-472f-a780-e8e0670c1f38",
+      "bytes": 416405,
+      "sha256": "93d81412ccafba9c5d7b4a301e575e9789237bf2642da08b83166af2c37b42ed"
+    }
+  ],
+  "productionWrites": false,
+  "releaseHold": true,
+  "publicationFixture": false,
+  "canonicalApproval": false,
+  "scope": "Disposable repository-model PostgreSQL17/GoTrue/PostgREST; actual private page and existing atomic account actions. Loopback transport is not production equivalence. Business team/native/job capabilities remain blocked.",
+  "expectedRows": 6,
+  "images": {
+    "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+    "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+    "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+  },
+  "runtime": "v24.19.0",
+  "sourceFingerprintCount": 2155,
+  "passed": true
+}

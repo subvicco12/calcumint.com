@@ -1,0 +1,2672 @@
+[
+  {
+    "id": 10,
+    "name": "Interest Rate Calculator",
+    "family": "Borrower models",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/9",
+    "recordedProductionSupports": [],
+    "internalWork": "Confirm convergence and root domain for the private rate inversion.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "DISTINCT_CONTRACT_READY",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/9",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/9",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/9",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/9",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/9",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/9"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Existing reverse helper solves principal only, not these two target variables.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.catalog.10",
+      "slug": "private-catalog-10",
+      "version": 1,
+      "output": "nominalAnnualRatePercent"
+    },
+    "source": "src/calculators/private-catalog-adapters.ts",
+    "blob": "78cbe973e487b21e46d95555dc45750637c8cb0d",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Qualify exact bounded private contract on existing workbench.",
+    "overlap": [],
+    "bindingSha256": "6e8eff73ef312a2e577783b112ee196832beae1adf9841b20c18ca993690e2b5",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 21,
+    "name": "Debt Consolidation Calculator",
+    "family": "Borrower models",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/20",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "IDENTITY_DECISION_REQUIRED",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/20",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/20",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/20",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/20",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/20",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/20"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Owner has not selected complete intended product contract.",
+      "Qualified independent financial/tax/contract applicability review remains required where relevant; no case-specific legal exemption established.",
+      "Approved catalog ID/version/full-SHA/dependency mapping and actual engine boundary/rounding goldens absent."
+    ],
+    "engine": {
+      "id": "private.financial.21",
+      "slug": "private-financial-21",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "financial-21",
+          "expression": "interest=openingDebt*rate; payment=min(requested,openingDebt+interest); closingDebt=openingDebt+interest-payment; PV=sum(outflow[t]/(1+r)^t)+(terminalDebt-terminalAsset)/(1+r)^H",
+          "description": "Existing loan cashflows versus consolidated financing, including separately paid and capitalized fees. Principal must reconcile. Terminal debts included at the same horizon; positive difference favors consolidation. Supplied currency and identical explicit period. Fractional rate per exact period, interest before end-period payment, capped payment, no APR conversion or invoice rounding. Finite IEEE-754 arithmetic, compensated sums and underflow/overflow rejection. No tax, depreciation, lender/provider/eligibility or source-effective-date decisions. RELEASE HOLD."
+        }
+      ]
+    },
+    "source": "src/calculators/financial-contracts.ts",
+    "blob": "20799a7374b2d35e4ce34793582f6753ac118c78",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Owner must select the comparison basis, financed/upfront fees and disclosed terminal debt horizon.",
+    "overlap": [],
+    "bindingSha256": "d1d17ba463325175ce1214eb3d695bb998f492767b82c5bace76beecda501d2a",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 31,
+    "name": "Down Payment Calculator",
+    "family": "Borrower models",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/30",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "core.percentage-of-value",
+        "slug": "percentage-of-value-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 00:34:03.970244+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/percentage-of-value-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "SHARED_ENGINE_DISTINCT_SCOPE",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/30",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/30",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/30",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/30",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/30",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/30"
+    },
+    "canonicalRequirements": [
+      "Adjudicate canonical mapping and verify the applicable public route, render and calculation",
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Does not decide required minimum down payment or lender eligibility; dedicated presentation adapter needed.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.component.31",
+      "slug": "private-component-31",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "component-31",
+          "expression": "Supplied price*supplied down payment percentage/100; remainder price-down payment. No minimum percentage, loan eligibility, closing costs or provider policy.",
+          "description": "Supplied price*supplied down payment percentage/100; remainder price-down payment. No minimum percentage, loan eligibility, closing costs or provider policy. Inputs bounded0..1e12; positive monetary amounts at least0.01. Unrepresentable annuity denominators and incomplete/zero-displayed-payment schedules are rejected. Strict closed named input. Output includes full actual immutable component runs. Private scope only; canonical requirements and specialist applicability remain unresolved. RELEASE HOLD."
+        }
+      ]
+    },
+    "source": "src/calculators/component-contracts.ts",
+    "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+    "productionTuples": [
+      {
+        "calculator_key": "core.percentage-of-value",
+        "slug": "percentage-of-value-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 00:34:03.970244+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/percentage-of-value-calculator",
+        "historicalRender": false,
+        "matchesFrozenRegistry": true
+      }
+    ],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Qualify exact bounded private contract on existing workbench.",
+    "overlap": [],
+    "bindingSha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [
+      "https://calcumint.com/calculators/math/percentage-of-value-calculator"
+    ],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 32,
+    "name": "Rent vs Buy Calculator",
+    "family": "Borrower models",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/31",
+    "recordedProductionSupports": [],
+    "internalWork": "Freeze term and resale assumptions before comparison delivery.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "IDENTITY_DECISION_REQUIRED",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/31",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/31",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/31",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/31",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/31",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/31"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Owner has not selected complete intended product contract.",
+      "Qualified independent financial/tax/contract applicability review remains required where relevant; no case-specific legal exemption established.",
+      "Approved catalog ID/version/full-SHA/dependency mapping and actual engine boundary/rounding goldens absent."
+    ],
+    "engine": {
+      "id": "private.financial.32",
+      "slug": "private-financial-32",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "financial-32",
+          "expression": "interest=openingDebt*rate; payment=min(requested,openingDebt+interest); closingDebt=openingDebt+interest-payment; PV=sum(outflow[t]/(1+r)^t)+(terminalDebt-terminalAsset)/(1+r)^H",
+          "description": "Rent upfront/payments less supplied terminal refund versus purchase equity/upfront costs/running costs/actual payments and terminal sale equity. Selling costs and debt payoff exactly once. Positive difference favors buying. Supplied currency and identical explicit period. Fractional rate per exact period, interest before end-period payment, capped payment, no APR conversion or invoice rounding. Finite IEEE-754 arithmetic, compensated sums and underflow/overflow rejection. No tax, depreciation, lender/provider/eligibility or source-effective-date decisions. RELEASE HOLD."
+        }
+      ]
+    },
+    "source": "src/calculators/financial-contracts.ts",
+    "blob": "20799a7374b2d35e4ce34793582f6753ac118c78",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Owner must confirm the comparable cash-flow horizon, terminal property and rental refunds, and undiscounted versus discounted decision measure.",
+    "overlap": [],
+    "bindingSha256": "d1d17ba463325175ce1214eb3d695bb998f492767b82c5bace76beecda501d2a",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 35,
+    "name": "Closing Cost Calculator",
+    "family": "Borrower models",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/34",
+    "recordedProductionSupports": [],
+    "internalWork": "Freeze supplied cost categories and avoid inferred jurisdiction rates.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "IDENTITY_DECISION_REQUIRED",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/34",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/34",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/34",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/34",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/34",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/34"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Owner has not selected complete intended product contract.",
+      "Qualified independent financial/tax/contract applicability review remains required where relevant; no case-specific legal exemption established.",
+      "Approved catalog ID/version/full-SHA/dependency mapping and actual engine boundary/rounding goldens absent."
+    ],
+    "engine": {
+      "id": "private.completion.35",
+      "slug": "private-completion-35",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "completion-35",
+          "expression": "Closing costs are the sum of disjoint named loan/other/prepaid/escrow lines. Cash to close = price-base acquisition loan + closing costs - separately financed costs - deposit - credits - costs paid before closing. Loan amount includes financed costs once. Negative cash denotes supplied cash-back accounting, not eligibility approval. Deposits and prior-paid line costs must be disjoint; no legal fee limits inferred.",
+          "description": "Closing costs are the sum of disjoint named loan/other/prepaid/escrow lines. Cash to close = price-base acquisition loan + closing costs - separately financed costs - deposit - credits - costs paid before closing. Loan amount includes financed costs once. Negative cash denotes supplied cash-back accounting, not eligibility approval. Deposits and prior-paid line costs must be disjoint; no legal fee limits inferred. Exact rational numerator/denominator string output. Decimal strings: at most12 integer/6 fractional digits, nonnegative money; explicit period effective rates/inflation in(-1,1]. Maximum600 periods/lines and50 employer tranches. No annual/monthly conversion, display rounding or default policy. Scope and unknown fields validated. RELEASE HOLD."
+        }
+      ]
+    },
+    "source": "src/calculators/completion-contracts.ts",
+    "blob": "5441bde037dbed1feb054973d042f261bd56464f",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Owner must confirm the supplied cost-line scope and financed-cost convention. Rational output requires exact display support.",
+    "overlap": [],
+    "bindingSha256": "86a3ee18faee1a951c6d43b63762b9158497e2885fdde83bb9e310a80c1730aa",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 49,
+    "name": "Mortgage + Rental Combined Model",
+    "family": "Borrower models",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/48",
+    "recordedProductionSupports": [],
+    "internalWork": "Review timing, debt-service and cash-flow source requirements.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "IDENTITY_DECISION_REQUIRED",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/48",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/48",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/48",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/48",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/48",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/48"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Full tax/depreciation model, if retained, needs basis allocation, service date, GDS/ADS eligibility, mid-month tables/disposition and applicable tax-year review; building basis / 27.5 alone is insufficient.",
+      "Owner has not selected complete intended product contract.",
+      "Qualified independent financial/tax/contract applicability review remains required where relevant; no case-specific legal exemption established."
+    ],
+    "engine": {
+      "id": "private.financial.49",
+      "slug": "private-financial-49",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "financial-49",
+          "expression": "interest=openingDebt*rate; payment=min(requested,openingDebt+interest); closingDebt=openingDebt+interest-payment; PV=sum(outflow[t]/(1+r)^t)+(terminalDebt-terminalAsset)/(1+r)^H",
+          "description": "Mortgage financing trace reconciles opening principal, interest, payment, principal change and terminal debt with rental NOI, capex and reserve flows. Remaining debt reduces terminal equity once; present cost discounts the derived ledger. Supplied currency and identical explicit period. Fractional rate per exact period, interest before end-period payment, capped payment, no APR conversion or invoice rounding. Finite IEEE-754 arithmetic, compensated sums and underflow/overflow rejection. No tax, depreciation, lender/provider/eligibility or source-effective-date decisions. RELEASE HOLD."
+        }
+      ]
+    },
+    "source": "src/calculators/financial-contracts.ts",
+    "blob": "20799a7374b2d35e4ce34793582f6753ac118c78",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Owner must define the mortgage trace versus #36/#43 and approve terminal-debt treatment.",
+    "overlap": [
+      36,
+      43
+    ],
+    "bindingSha256": "d1d17ba463325175ce1214eb3d695bb998f492767b82c5bace76beecda501d2a",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 36,
+    "name": "Rental Property Calculator",
+    "family": "Property operating estimates",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/35",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "IDENTITY_DECISION_REQUIRED",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/35",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/35",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/35",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/35",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/35",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/35"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Full tax/depreciation model, if retained, needs basis allocation, service date, GDS/ADS eligibility, mid-month tables/disposition and applicable tax-year review; building basis / 27.5 alone is insufficient.",
+      "Owner has not selected complete intended product contract.",
+      "Qualified independent financial/tax/contract applicability review remains required where relevant; no case-specific legal exemption established."
+    ],
+    "engine": {
+      "id": "private.financial.36",
+      "slug": "private-financial-36",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "financial-36",
+          "expression": "interest=openingDebt*rate; payment=min(requested,openingDebt+interest); closingDebt=openingDebt+interest-payment; PV=sum(outflow[t]/(1+r)^t)+(terminalDebt-terminalAsset)/(1+r)^H",
+          "description": "Collected rent = scheduled minus uncollected. NOI excludes debt service, capex and reserves. Owner cashflow subtracts these separately. Unspent ring-fenced reserves remain an asset, returned once at exit. No taxable-income interpretation. Supplied currency and identical explicit period. Fractional rate per exact period, interest before end-period payment, capped payment, no APR conversion or invoice rounding. Finite IEEE-754 arithmetic, compensated sums and underflow/overflow rejection. No tax, depreciation, lender/provider/eligibility or source-effective-date decisions. RELEASE HOLD."
+        }
+      ]
+    },
+    "source": "src/calculators/financial-contracts.ts",
+    "blob": "20799a7374b2d35e4ce34793582f6753ac118c78",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Owner must define rental operating, financing and tax boundaries before choosing between #37, #43 and #49.",
+    "overlap": [
+      37,
+      43,
+      49
+    ],
+    "bindingSha256": "d1d17ba463325175ce1214eb3d695bb998f492767b82c5bace76beecda501d2a",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 38,
+    "name": "Net Operating Income Calculator",
+    "family": "Property operating estimates",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/37",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "DISTINCT_CONTRACT_READY",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/37",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/37",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/37",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/37",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/37",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/37"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Generic ROI/profit arithmetic does not expose these distinct input/output contracts; accounting inclusions must be explicit.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.catalog.38",
+      "slug": "private-catalog-38",
+      "version": 1,
+      "output": "netOperatingIncome"
+    },
+    "source": "src/calculators/private-catalog-adapters.ts",
+    "blob": "78cbe973e487b21e46d95555dc45750637c8cb0d",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Qualify exact bounded private contract on existing workbench.",
+    "overlap": [],
+    "bindingSha256": "6e8eff73ef312a2e577783b112ee196832beae1adf9841b20c18ca993690e2b5",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 39,
+    "name": "Cap Rate Calculator",
+    "family": "Property operating estimates",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/38",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "SHARED_ENGINE_DISTINCT_SCOPE",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/38",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/38",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/38",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/38",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/38",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/38"
+    },
+    "canonicalRequirements": [
+      "Adjudicate canonical mapping and verify the applicable public route, render and calculation",
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Domain naming, providedNOI/income/dividends and positive denominator validation need dedicated adapter; no property accounting or dividend forecast.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.catalog.39",
+      "slug": "private-catalog-39",
+      "version": 1,
+      "output": "capitalizationRatePercent"
+    },
+    "source": "src/calculators/private-catalog-adapters.ts",
+    "blob": "78cbe973e487b21e46d95555dc45750637c8cb0d",
+    "productionTuples": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false,
+        "matchesFrozenRegistry": true
+      }
+    ],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Qualify exact bounded private contract on existing workbench.",
+    "overlap": [],
+    "bindingSha256": "6e8eff73ef312a2e577783b112ee196832beae1adf9841b20c18ca993690e2b5",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [
+      "https://calcumint.com/calculators/math/ratio-calculator"
+    ],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 40,
+    "name": "Cash-on-Cash Return Calculator",
+    "family": "Property operating estimates",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/39",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "SHARED_ENGINE_DISTINCT_SCOPE",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/39",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/39",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/39",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/39",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/39",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/39"
+    },
+    "canonicalRequirements": [
+      "Adjudicate canonical mapping and verify the applicable public route, render and calculation",
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Domain naming, providedNOI/income/dividends and positive denominator validation need dedicated adapter; no property accounting or dividend forecast.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.catalog.40",
+      "slug": "private-catalog-40",
+      "version": 1,
+      "output": "cashOnCashReturnPercent"
+    },
+    "source": "src/calculators/private-catalog-adapters.ts",
+    "blob": "78cbe973e487b21e46d95555dc45750637c8cb0d",
+    "productionTuples": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false,
+        "matchesFrozenRegistry": true
+      }
+    ],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Qualify exact bounded private contract on existing workbench.",
+    "overlap": [],
+    "bindingSha256": "6e8eff73ef312a2e577783b112ee196832beae1adf9841b20c18ca993690e2b5",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [
+      "https://calcumint.com/calculators/math/ratio-calculator"
+    ],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 41,
+    "name": "DSCR Calculator",
+    "family": "Property operating estimates",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/40",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "SHARED_ENGINE_DISTINCT_SCOPE",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/40",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/40",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/40",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/40",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/40",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/40"
+    },
+    "canonicalRequirements": [
+      "Adjudicate canonical mapping and verify the applicable public route, render and calculation",
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Domain naming, providedNOI/income/dividends and positive denominator validation need dedicated adapter; no property accounting or dividend forecast.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.catalog.41",
+      "slug": "private-catalog-41",
+      "version": 1,
+      "output": "debtServiceCoverageRatio"
+    },
+    "source": "src/calculators/private-catalog-adapters.ts",
+    "blob": "78cbe973e487b21e46d95555dc45750637c8cb0d",
+    "productionTuples": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false,
+        "matchesFrozenRegistry": true
+      }
+    ],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Qualify exact bounded private contract on existing workbench.",
+    "overlap": [],
+    "bindingSha256": "6e8eff73ef312a2e577783b112ee196832beae1adf9841b20c18ca993690e2b5",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [
+      "https://calcumint.com/calculators/math/ratio-calculator"
+    ],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 42,
+    "name": "Gross Rent Multiplier Calculator",
+    "family": "Property operating estimates",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/41",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "SHARED_ENGINE_DISTINCT_SCOPE",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/41",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/41",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/41",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/41",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/41",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/41"
+    },
+    "canonicalRequirements": [
+      "Adjudicate canonical mapping and verify the applicable public route, render and calculation",
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Domain naming, providedNOI/income/dividends and positive denominator validation need dedicated adapter; no property accounting or dividend forecast.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.catalog.42",
+      "slug": "private-catalog-42",
+      "version": 1,
+      "output": "grossRentMultiplier"
+    },
+    "source": "src/calculators/private-catalog-adapters.ts",
+    "blob": "78cbe973e487b21e46d95555dc45750637c8cb0d",
+    "productionTuples": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false,
+        "matchesFrozenRegistry": true
+      }
+    ],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Qualify exact bounded private contract on existing workbench.",
+    "overlap": [],
+    "bindingSha256": "6e8eff73ef312a2e577783b112ee196832beae1adf9841b20c18ca993690e2b5",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [
+      "https://calcumint.com/calculators/math/ratio-calculator"
+    ],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 43,
+    "name": "Rental ROI Calculator",
+    "family": "Property operating estimates",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/42",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "IDENTITY_DECISION_REQUIRED",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/42",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/42",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/42",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/42",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/42",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/42"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Full tax/depreciation model, if retained, needs basis allocation, service date, GDS/ADS eligibility, mid-month tables/disposition and applicable tax-year review; building basis / 27.5 alone is insufficient.",
+      "Owner has not selected complete intended product contract.",
+      "Qualified independent financial/tax/contract applicability review remains required where relevant; no case-specific legal exemption established."
+    ],
+    "engine": {
+      "id": "private.financial.43",
+      "slug": "private-financial-43",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "financial-43",
+          "expression": "interest=openingDebt*rate; payment=min(requested,openingDebt+interest); closingDebt=openingDebt+interest-payment; PV=sum(outflow[t]/(1+r)^t)+(terminalDebt-terminalAsset)/(1+r)^H",
+          "description": "Total holding-period return, not annualized or IRR: (distributions-contributions)/contributions. Contributions include initial equity and interim/exit cash deficits; distributions include positive owner cashflows and positive exit equity. Zero contributions yield null. Supplied currency and identical explicit period. Fractional rate per exact period, interest before end-period payment, capped payment, no APR conversion or invoice rounding. Finite IEEE-754 arithmetic, compensated sums and underflow/overflow rejection. No tax, depreciation, lender/provider/eligibility or source-effective-date decisions. RELEASE HOLD."
+        }
+      ]
+    },
+    "source": "src/calculators/financial-contracts.ts",
+    "blob": "20799a7374b2d35e4ce34793582f6753ac118c78",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Owner must select holding-period return versus annualized metric and avoid duplicating #36/#49.",
+    "overlap": [
+      36,
+      49
+    ],
+    "bindingSha256": "d1d17ba463325175ce1214eb3d695bb998f492767b82c5bace76beecda501d2a",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 44,
+    "name": "Vacancy Impact Calculator",
+    "family": "Property operating estimates",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/43",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "DISTINCT_CONTRACT_READY",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/43",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/43",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/43",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/43",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/43",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/43"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "No complete product-specific cash-flow contract in574registry; jurisdiction and accounting inclusions not established by title.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.owner.44",
+      "slug": "private-owner-44",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "owner-44",
+          "expression": "lost rent = potential gross rent \u00d7 vacancy fraction",
+          "description": "Gross rent loss comparison only; same supplied currency and rent period. Approved bounded scope: Same rent period/currency; no NOI or net-profit impact without itemized avoidable costs."
+        }
+      ]
+    },
+    "source": "src/calculators/private-owner-business-impact.ts",
+    "blob": "c0a5c186650f91a8539e5c5fa0ebe81f12543afa",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Qualify exact bounded private contract on existing workbench.",
+    "overlap": [],
+    "bindingSha256": "7b9926fa716c6faa2866e6f809db8fd02d31f3baf74651b46e6b5cb08362cb2d",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 46,
+    "name": "House Flipping Profit Calculator",
+    "family": "Property operating estimates",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/45",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "IDENTITY_DECISION_REQUIRED",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/45",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/45",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/45",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/45",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/45",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/45"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Owner has not selected complete intended product contract.",
+      "Qualified independent financial/tax/contract applicability review remains required where relevant; no case-specific legal exemption established.",
+      "Approved catalog ID/version/full-SHA/dependency mapping and actual engine boundary/rounding goldens absent."
+    ],
+    "engine": {
+      "id": "private.financial.46",
+      "slug": "private-financial-46",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "financial-46",
+          "expression": "interest=openingDebt*rate; payment=min(requested,openingDebt+interest); closingDebt=openingDebt+interest-payment; PV=sum(outflow[t]/(1+r)^t)+(terminalDebt-terminalAsset)/(1+r)^H",
+          "description": "Flip profit is terminal sale proceeds less acquisition equity, upfront costs, running/rehabilitation costs, actual financing payments, selling costs and remaining debt. Loan advance is excluded from equity paid, not subtracted again as a cost. Supplied currency and identical explicit period. Fractional rate per exact period, interest before end-period payment, capped payment, no APR conversion or invoice rounding. Finite IEEE-754 arithmetic, compensated sums and underflow/overflow rejection. No tax, depreciation, lender/provider/eligibility or source-effective-date decisions. RELEASE HOLD."
+        }
+      ]
+    },
+    "source": "src/calculators/financial-contracts.ts",
+    "blob": "20799a7374b2d35e4ce34793582f6753ac118c78",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Owner must settle financing and terminal-equity scope and tax exclusion for the supplied flip model.",
+    "overlap": [],
+    "bindingSha256": "d1d17ba463325175ce1214eb3d695bb998f492767b82c5bace76beecda501d2a",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 65,
+    "name": "IRR Calculator",
+    "family": "Household and supplied financial measures",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/64",
+    "recordedProductionSupports": [],
+    "internalWork": "Require explicit time periods, sign changes and root ambiguity refusal.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "DISTINCT_CONTRACT_READY",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/64",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/64",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/64",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/64",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/64",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/64"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Existing scalar CAGR/ROI/FV or bounded cubic rootfinder is not a substitute for distinct cash-flow/valuation input contract. Dates/multiple-root conventions still need definition where applicable.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.catalog.65",
+      "slug": "private-catalog-65",
+      "version": 1,
+      "output": "periodRatePercent"
+    },
+    "source": "src/calculators/private-cashflow-rate.ts",
+    "blob": "de02213df23fb7beeae358ab8832d1c7ad723a4d",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Qualify exact bounded private contract on existing workbench.",
+    "overlap": [],
+    "bindingSha256": "bb364b2a0ee4994699c81989193b159946eaca1b5c5591e62586e902e64f630e",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 109,
+    "name": "Cost of Living Comparison Calculator",
+    "family": "Household and supplied financial measures",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/108",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "DISTINCT_CONTRACT_READY",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/108",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/108",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/108",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/108",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/108",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/108"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Arithmetic primitives exist; product inputs/rules/currency/periods not fixed by title. Do not call generic percentage a full budget/payroll implementation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.owner.109",
+      "slug": "private-owner-109",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "owner-109",
+          "expression": "difference = second \u2212 first; percentage = 100 \u00d7 difference / positive first",
+          "description": "Like-for-like supplied expense baskets in one currency and period; no cost-of-living index. Approved bounded scope: Same currency and time period, user-supplied category amounts; no city dataset, CPI or purchasing-power claim."
+        }
+      ]
+    },
+    "source": "src/calculators/private-owner-everyday.ts",
+    "blob": "7458e4392cc00ed4077437ad4445b73eb3c6488e",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Qualify exact bounded private contract on existing workbench.",
+    "overlap": [],
+    "bindingSha256": "85a678fefd99d8f1e827b7f7bab2143c0279f5aa92ff5160432404501c14433e",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 116,
+    "name": "Tip Calculator",
+    "family": "Household and supplied financial measures",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/115",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "launch-tip-amount-calculator",
+        "slug": "tip-amount-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/everyday/tip-amount-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "IDENTITY_DECISION_REQUIRED",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/115",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/115",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/115",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/115",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/115",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/115"
+    },
+    "canonicalRequirements": [
+      "Adjudicate canonical mapping and verify the applicable public route, render and calculation",
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Tip amount only; bill-with-tip and tip-split variants available separately.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.remaining.116",
+      "slug": "private-remaining-116",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "remaining-116",
+          "expression": "Supplied bill*tipPercent/100, then bill+tip and equal division by positive integral people; raw original tip arithmetic, no cent allocation or tax base inferred.",
+          "description": "Supplied bill*tipPercent/100, then bill+tip and equal division by positive integral people; raw original tip arithmetic, no cent allocation or tax base inferred. Finite amounts0..1e12; positive money at least0.01; closed I/O with original engine/helper traces. Schema ranges are not blanket numerical convergence or specialist applicability guarantees. No canonical mapping, provider/jurisdiction rule, certification or publication approved. RELEASE HOLD."
+        }
+      ]
+    },
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "productionTuples": [
+      {
+        "calculator_key": "launch-tip-amount-calculator",
+        "slug": "tip-amount-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/everyday/tip-amount-calculator",
+        "historicalRender": false,
+        "matchesFrozenRegistry": true
+      }
+    ],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "The tip amount is already a recorded public support. Related bill-total and tip-split contracts exist, including #515. Select canonical scope before adding a route.",
+    "overlap": [
+      515
+    ],
+    "bindingSha256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [
+      "https://calcumint.com/calculators/everyday/tip-amount-calculator"
+    ],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 117,
+    "name": "Discount Calculator",
+    "family": "Household and supplied financial measures",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/116",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "launch-discount-amount-calculator",
+        "slug": "discount-amount-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/everyday/discount-amount-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Check against #118 before treating discount and percent-off as separate products.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "IDENTITY_DECISION_REQUIRED",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/116",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/116",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/116",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/116",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/116",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/116"
+    },
+    "canonicalRequirements": [
+      "Adjudicate canonical mapping and verify the applicable public route, render and calculation",
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Amount vs remaining sale price differ; sale-price-calculator covers remainder; preserve percent and amount semantics.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.remaining.117",
+      "slug": "private-remaining-117",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "remaining-117",
+          "expression": "Single supplied percent discount on stated price; separate discount amount and remaining price. No stacked discounts, tax base or promotional policy.",
+          "description": "Single supplied percent discount on stated price; separate discount amount and remaining price. No stacked discounts, tax base or promotional policy. Finite amounts0..1e12; positive money at least0.01; closed I/O with original engine/helper traces. Schema ranges are not blanket numerical convergence or specialist applicability guarantees. No canonical mapping, provider/jurisdiction rule, certification or publication approved. RELEASE HOLD."
+        }
+      ]
+    },
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "productionTuples": [
+      {
+        "calculator_key": "launch-discount-amount-calculator",
+        "slug": "discount-amount-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/everyday/discount-amount-calculator",
+        "historicalRender": false,
+        "matchesFrozenRegistry": true
+      }
+    ],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Same entered price and discount as #118 and existing public discount/sale-price components. Choose the approved canonical distinction.",
+    "overlap": [
+      118
+    ],
+    "bindingSha256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [
+      "https://calcumint.com/calculators/everyday/discount-amount-calculator"
+    ],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 119,
+    "name": "Commission Calculator",
+    "family": "Household and supplied financial measures",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/118",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "core.percentage-of-value",
+        "slug": "percentage-of-value-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 00:34:03.970244+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/percentage-of-value-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Reconcile #197 and percentage-of-value before promoting a distinct contract.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "IDENTITY_DECISION_REQUIRED",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/118",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/118",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/118",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/118",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/118",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/118"
+    },
+    "canonicalRequirements": [
+      "Adjudicate canonical mapping and verify the applicable public route, render and calculation",
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "No definitionofnetincome, tiers,caps,clawbacks or legalpayroll rules; source-backed boundedarithmetic only.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved.",
+      "Per-ID approved identity/version and complete input/output/feature requirements are not established."
+    ],
+    "engine": {
+      "id": "private.remaining.119",
+      "slug": "private-remaining-119",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "remaining-119",
+          "expression": "Supplied eligible sales*single fixed commission percentage; inherited12-decimal rounding. No tier, cap, clawback, payroll or provider fee policy.",
+          "description": "Supplied eligible sales*single fixed commission percentage; inherited12-decimal rounding. No tier, cap, clawback, payroll or provider fee policy. Finite amounts0..1e12; positive money at least0.01; closed I/O with original engine/helper traces. Schema ranges are not blanket numerical convergence or specialist applicability guarantees. No canonical mapping, provider/jurisdiction rule, certification or publication approved. RELEASE HOLD."
+        }
+      ]
+    },
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "productionTuples": [
+      {
+        "calculator_key": "core.percentage-of-value",
+        "slug": "percentage-of-value-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 00:34:03.970244+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/percentage-of-value-calculator",
+        "historicalRender": false,
+        "matchesFrozenRegistry": true
+      }
+    ],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Same single commission percentage as #197. Decide disjoint base, tiers or applicability before separate delivery.",
+    "overlap": [
+      197
+    ],
+    "bindingSha256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [
+      "https://calcumint.com/calculators/math/percentage-of-value-calculator"
+    ],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 134,
+    "name": "Tax Effective Rate Calculator",
+    "family": "Household and supplied financial measures",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/133",
+    "recordedProductionSupports": [],
+    "internalWork": "Supplied tax and denominator only; no tax liability or rate determination.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "IDENTITY_DECISION_REQUIRED",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/133",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/133",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/133",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/133",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/133",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/133"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "OWNER_SELECTION_REQUIRED: jurisdiction/year/profile and output contract remain unselected.",
+      "SOURCE_GAP: preserve exact governing clauses/content provenance and obtain missing official boundary/exception/rounding evidence for selected profile.",
+      "Implementation mapping/full SHA, approved authoritative expected cases, actual engine execution and independent review remain pending; obligation applicability screening unresolved."
+    ],
+    "engine": {
+      "id": "private.completion.134",
+      "slug": "private-completion-134",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "completion-134",
+          "expression": "Effective ratio =100*sum(supplied nonnegative liability amounts)/explicit positive selected denominator. Same supplied currency/period. Numerator inclusion and denominator basis are caller choices, not statutory definitions. No tax computation or qualified applicability approval.",
+          "description": "Effective ratio =100*sum(supplied nonnegative liability amounts)/explicit positive selected denominator. Same supplied currency/period. Numerator inclusion and denominator basis are caller choices, not statutory definitions. No tax computation or qualified applicability approval. Exact rational numerator/denominator string output. Decimal strings: at most12 integer/6 fractional digits, nonnegative money; explicit period effective rates/inflation in(-1,1]. Maximum600 periods/lines and50 employer tranches. No annual/monthly conversion, display rounding or default policy. Scope and unknown fields validated. RELEASE HOLD."
+        }
+      ]
+    },
+    "source": "src/calculators/completion-contracts.ts",
+    "blob": "5441bde037dbed1feb054973d042f261bd56464f",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Owner must select jurisdiction/year or explicitly adopt supplied arithmetic without statutory claims. Exact rational output requires reviewed display.",
+    "overlap": [],
+    "bindingSha256": "86a3ee18faee1a951c6d43b63762b9158497e2885fdde83bb9e310a80c1730aa",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 145,
+    "name": "Revenue Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/144",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "DISTINCT_CONTRACT_READY",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/144",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/144",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/144",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/144",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/144",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/144"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.owner.145",
+      "slug": "private-owner-145",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "owner-145",
+          "expression": "grossSales = \u03a3(price \u00d7 quantity)",
+          "description": "Supplied gross sales in one declared currency and period; no recognition, tax or discount assumptions. Approved bounded scope: Gross modeled sales only unless a qualified accounting recognition policy is supplied."
+        }
+      ]
+    },
+    "source": "src/calculators/private-owner-business-core.ts",
+    "blob": "91d2c56efc4e6dbb7a753963de80fdb8ddbf4687",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Qualify exact bounded private contract on existing workbench.",
+    "overlap": [],
+    "bindingSha256": "53d9f8922552b224d35d2e6da6f1ed58a2fabf3a6f5f0a18ddbe66870d88a467",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 146,
+    "name": "Cost of Goods Sold Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/145",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "DISTINCT_CONTRACT_READY",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/145",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/145",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/145",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/145",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/145",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/145"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Two-decimal aggregate output; excludes freight/returns/manufacturing adjustments unless supplied; no inventory valuation policy.",
+      "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.catalog.146",
+      "slug": "private-catalog-146",
+      "version": 1,
+      "output": "costOfGoodsSold"
+    },
+    "source": "src/calculators/private-catalog-adapters.ts",
+    "blob": "78cbe973e487b21e46d95555dc45750637c8cb0d",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Qualify exact bounded private contract on existing workbench.",
+    "overlap": [],
+    "bindingSha256": "6e8eff73ef312a2e577783b112ee196832beae1adf9841b20c18ca993690e2b5",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 147,
+    "name": "Operating Margin Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/146",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false
+      },
+      {
+        "calculator_key": "core.percentage-of-value",
+        "slug": "percentage-of-value-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 00:34:03.970244+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/percentage-of-value-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "SHARED_ENGINE_DISTINCT_SCOPE",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/146",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/146",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/146",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/146",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/146",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/146"
+    },
+    "canonicalRequirements": [
+      "Adjudicate canonical mapping and verify the applicable public route, render and calculation",
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "No earnings bridge, accounting classifications, averaging, negative-equity policy or automatic period matching; percentage adapter required.",
+      "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.catalog.147",
+      "slug": "private-catalog-147",
+      "version": 1,
+      "output": "operatingMarginPercent"
+    },
+    "source": "src/calculators/private-catalog-adapters.ts",
+    "blob": "78cbe973e487b21e46d95555dc45750637c8cb0d",
+    "productionTuples": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false,
+        "matchesFrozenRegistry": true
+      },
+      {
+        "calculator_key": "core.percentage-of-value",
+        "slug": "percentage-of-value-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 00:34:03.970244+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/percentage-of-value-calculator",
+        "historicalRender": false,
+        "matchesFrozenRegistry": true
+      }
+    ],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Qualify exact bounded private contract on existing workbench.",
+    "overlap": [],
+    "bindingSha256": "6e8eff73ef312a2e577783b112ee196832beae1adf9841b20c18ca993690e2b5",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [
+      "https://calcumint.com/calculators/math/ratio-calculator",
+      "https://calcumint.com/calculators/math/percentage-of-value-calculator"
+    ],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 150,
+    "name": "Quick Ratio Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/149",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "SHARED_ENGINE_DISTINCT_SCOPE",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/149",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/149",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/149",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/149",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/149",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/149"
+    },
+    "canonicalRequirements": [
+      "Adjudicate canonical mapping and verify the applicable public route, render and calculation",
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Must explicitly select quick-asset components; not automatic exclusion of inventory/prepayments. Net-worth helper rounds monetary aggregate to2 decimals; preserve/document that precision or use raw ratio with supplied exact quickAssets.",
+      "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.catalog.150",
+      "slug": "private-catalog-150",
+      "version": 1,
+      "output": "quickRatio"
+    },
+    "source": "src/calculators/private-catalog-adapters.ts",
+    "blob": "78cbe973e487b21e46d95555dc45750637c8cb0d",
+    "productionTuples": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false,
+        "matchesFrozenRegistry": true
+      }
+    ],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Qualify exact bounded private contract on existing workbench.",
+    "overlap": [],
+    "bindingSha256": "6e8eff73ef312a2e577783b112ee196832beae1adf9841b20c18ca993690e2b5",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [
+      "https://calcumint.com/calculators/math/ratio-calculator"
+    ],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 154,
+    "name": "Return on Assets Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/153",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false
+      },
+      {
+        "calculator_key": "core.percentage-of-value",
+        "slug": "percentage-of-value-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 00:34:03.970244+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/percentage-of-value-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "SHARED_ENGINE_DISTINCT_SCOPE",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/153",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/153",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/153",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/153",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/153",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/153"
+    },
+    "canonicalRequirements": [
+      "Adjudicate canonical mapping and verify the applicable public route, render and calculation",
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "No earnings bridge, accounting classifications, averaging, negative-equity policy or automatic period matching; percentage adapter required.",
+      "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.catalog.154",
+      "slug": "private-catalog-154",
+      "version": 1,
+      "output": "returnOnAssetsPercent"
+    },
+    "source": "src/calculators/private-catalog-adapters.ts",
+    "blob": "78cbe973e487b21e46d95555dc45750637c8cb0d",
+    "productionTuples": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false,
+        "matchesFrozenRegistry": true
+      },
+      {
+        "calculator_key": "core.percentage-of-value",
+        "slug": "percentage-of-value-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 00:34:03.970244+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/percentage-of-value-calculator",
+        "historicalRender": false,
+        "matchesFrozenRegistry": true
+      }
+    ],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Qualify exact bounded private contract on existing workbench.",
+    "overlap": [],
+    "bindingSha256": "6e8eff73ef312a2e577783b112ee196832beae1adf9841b20c18ca993690e2b5",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [
+      "https://calcumint.com/calculators/math/ratio-calculator",
+      "https://calcumint.com/calculators/math/percentage-of-value-calculator"
+    ],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 155,
+    "name": "Return on Equity Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "UNVERIFIED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/154",
+    "recordedProductionSupports": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false
+      },
+      {
+        "calculator_key": "core.percentage-of-value",
+        "slug": "percentage-of-value-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 00:34:03.970244+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/percentage-of-value-calculator",
+        "historicalRender": false
+      }
+    ],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "SHARED_ENGINE_DISTINCT_SCOPE",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/154",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/154",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/154",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/154",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/154",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/154"
+    },
+    "canonicalRequirements": [
+      "Adjudicate canonical mapping and verify the applicable public route, render and calculation",
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "No earnings bridge, accounting classifications, averaging, negative-equity policy or automatic period matching; percentage adapter required.",
+      "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.catalog.155",
+      "slug": "private-catalog-155",
+      "version": 1,
+      "output": "returnOnEquityPercent"
+    },
+    "source": "src/calculators/private-catalog-adapters.ts",
+    "blob": "78cbe973e487b21e46d95555dc45750637c8cb0d",
+    "productionTuples": [
+      {
+        "calculator_key": "launch-ratio-calculator",
+        "slug": "ratio-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 18:32:02.787874+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/ratio-calculator",
+        "historicalRender": false,
+        "matchesFrozenRegistry": true
+      },
+      {
+        "calculator_key": "core.percentage-of-value",
+        "slug": "percentage-of-value-calculator",
+        "version": 1,
+        "published_at": "2026-09-30 00:34:03.970244+00",
+        "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+        "url": "https://calcumint.com/calculators/math/percentage-of-value-calculator",
+        "historicalRender": false,
+        "matchesFrozenRegistry": true
+      }
+    ],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Qualify exact bounded private contract on existing workbench.",
+    "overlap": [],
+    "bindingSha256": "6e8eff73ef312a2e577783b112ee196832beae1adf9841b20c18ca993690e2b5",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [
+      "https://calcumint.com/calculators/math/ratio-calculator",
+      "https://calcumint.com/calculators/math/percentage-of-value-calculator"
+    ],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 156,
+    "name": "Project Profitability Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/155",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "REUSABLE_RETAINED_EVIDENCE",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/155",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/155",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/155",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/155",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/155",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/155"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.owner.156",
+      "slug": "private-owner-156",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "owner-156",
+          "expression": "profit = revenue \u2212 costs; margin% = 100 \u00d7 profit/revenue; NPV = \u03a3 CF/(1+r)^((date\u2212valuationDate)/365)",
+          "description": "User selects profit, margin or dated NPV. ACT365F uses actual UTC calendar days divided by 365, including signed dates before valuation; rate is annual effective and supplied as percent. Approved bounded scope: No silently chosen profit/ROI/NPV identity; costs and cash-flow periods supplied."
+        }
+      ]
+    },
+    "source": "src/calculators/private-owner-business-core.ts",
+    "blob": "91d2c56efc4e6dbb7a753963de80fdb8ddbf4687",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Three retained modes need distinct input shapes including dated ACT365F cash flows; retained engine evidence is reusable after multi-mode delivery.",
+    "overlap": [],
+    "bindingSha256": "53d9f8922552b224d35d2e6da6f1ed58a2fabf3a6f5f0a18ddbe66870d88a467",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 157,
+    "name": "Freelancer Hourly Rate Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/156",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "DISTINCT_CONTRACT_READY",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/156",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/156",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/156",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/156",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/156",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/156"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.owner.157",
+      "slug": "private-owner-157",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "owner-157",
+          "expression": "hourlyRevenue = annualRevenueTarget/billableHours",
+          "description": "Supplied annual revenue target and annual billable capacity; no tax or utilization assumptions. Approved bounded scope: Target and billable capacity supplied; no invented tax gross-up, utilization or labor entitlement."
+        }
+      ]
+    },
+    "source": "src/calculators/private-owner-business-core.ts",
+    "blob": "91d2c56efc4e6dbb7a753963de80fdb8ddbf4687",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Qualify exact bounded private contract on existing workbench.",
+    "overlap": [],
+    "bindingSha256": "53d9f8922552b224d35d2e6da6f1ed58a2fabf3a6f5f0a18ddbe66870d88a467",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 158,
+    "name": "Agency Pricing Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/157",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "IDENTITY_DECISION_REQUIRED",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/157",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/157",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/157",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/157",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/157",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/157"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.owner.158",
+      "slug": "private-owner-158",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "owner-158",
+          "expression": "markup: cost \u00d7 (1+markup%/100); target margin: cost/(1\u2212margin%/100)",
+          "description": "Explicit cost-plus markup or target margin on supplied agency costs. Approved bounded scope: Markup and margin distinct; no hidden utilization or market-optimal price."
+        }
+      ]
+    },
+    "source": "src/calculators/private-owner-business-core.ts",
+    "blob": "91d2c56efc4e6dbb7a753963de80fdb8ddbf4687",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Exact same retained pricing schema and engine arithmetic as #181. Require a real agency versus subscription decision boundary.",
+    "overlap": [
+      181
+    ],
+    "bindingSha256": "53d9f8922552b224d35d2e6da6f1ed58a2fabf3a6f5f0a18ddbe66870d88a467",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 159,
+    "name": "Discount Impact Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/158",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "IDENTITY_DECISION_REQUIRED",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/158",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/158",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/158",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/158",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/158",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/158"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.owner.159",
+      "slug": "private-owner-159",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "owner-159",
+          "expression": "revenue = price \u00d7 units; contribution = (price \u2212 unit variable cost) \u00d7 units; change = after \u2212 before",
+          "description": "Discount mode requires after price \u2264 before price; price increase mode requires after price \u2265 before price. Both volumes are supplied independently. No demand response is inferred; contribution excludes unsupplied fixed costs. Approved bounded scope: Volumes supplied separately; no assumed demand elasticity or automatic volume uplift."
+        }
+      ]
+    },
+    "source": "src/calculators/private-owner-business-impact.ts",
+    "blob": "c0a5c186650f91a8539e5c5fa0ebe81f12543afa",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Before/after contribution overlap with #202 and #201. Select the intended distinction rather than a second discount view.",
+    "overlap": [
+      160,
+      201,
+      202
+    ],
+    "bindingSha256": "7b9926fa716c6faa2866e6f809db8fd02d31f3baf74651b46e6b5cb08362cb2d",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 160,
+    "name": "Price Increase Impact Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/159",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "IDENTITY_DECISION_REQUIRED",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/159",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/159",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/159",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/159",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/159",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/159"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.owner.160",
+      "slug": "private-owner-160",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "owner-160",
+          "expression": "revenue = price \u00d7 units; contribution = (price \u2212 unit variable cost) \u00d7 units; change = after \u2212 before",
+          "description": "Discount mode requires after price \u2264 before price; price increase mode requires after price \u2265 before price. Both volumes are supplied independently. No demand response is inferred; contribution excludes unsupplied fixed costs. Approved bounded scope: No inferred demand response or unchanged-volume assumption hidden in results."
+        }
+      ]
+    },
+    "source": "src/calculators/private-owner-business-impact.ts",
+    "blob": "c0a5c186650f91a8539e5c5fa0ebe81f12543afa",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Before/after contribution recurs in #159 and #201. Clarify whether increase-specific decision evidence is required.",
+    "overlap": [
+      159,
+      201
+    ],
+    "bindingSha256": "7b9926fa716c6faa2866e6f809db8fd02d31f3baf74651b46e6b5cb08362cb2d",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 161,
+    "name": "Unit Economics Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/160",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "REUSABLE_RETAINED_EVIDENCE",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/160",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/160",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/160",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/160",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/160",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/160"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.owner.161",
+      "slug": "private-owner-161",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "owner-161",
+          "expression": "contribution = unitRevenue\u2212unitCost; selected acquisition ratio = contribution/acquisitionCostPerUnit",
+          "description": "Declared unit, cost boundary and cohort/period required. Ratio uses acquisition cost on the same supplied unit basis, without retention or lifetime inference. Approved bounded scope: Require declared unit, cost boundary and cohort/period; do not infer retention or LTV."
+        }
+      ]
+    },
+    "source": "src/calculators/private-owner-business-core.ts",
+    "blob": "91d2c56efc4e6dbb7a753963de80fdb8ddbf4687",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Retained contribution and acquisition-ratio modes use different fields. Multi-mode delivery is outstanding.",
+    "overlap": [],
+    "bindingSha256": "53d9f8922552b224d35d2e6da6f1ed58a2fabf3a6f5f0a18ddbe66870d88a467",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 177,
+    "name": "Rule of 40 Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/176",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "DISTINCT_CONTRACT_READY",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/176",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/176",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/176",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/176",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/176",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/176"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.owner.177",
+      "slug": "private-owner-177",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "owner-177",
+          "expression": "score% = revenueGrowth% + profitability%",
+          "description": "Arithmetic percentage-point sum for explicitly matching periods and declared profitability basis; no valuation recommendation. Approved bounded scope: Explicit profitability metric/basis; no automatic EBITDA/free-cash-flow choice or universal valuation claim."
+        }
+      ]
+    },
+    "source": "src/calculators/private-owner-business-core.ts",
+    "blob": "91d2c56efc4e6dbb7a753963de80fdb8ddbf4687",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Qualify exact bounded private contract on existing workbench.",
+    "overlap": [],
+    "bindingSha256": "53d9f8922552b224d35d2e6da6f1ed58a2fabf3a6f5f0a18ddbe66870d88a467",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 181,
+    "name": "Subscription Pricing Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/180",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "IDENTITY_DECISION_REQUIRED",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/180",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/180",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/180",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/180",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/180",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/180"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.owner.181",
+      "slug": "private-owner-181",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "owner-181",
+          "expression": "markup: cost \u00d7 (1+markup%/100); target margin: cost/(1\u2212margin%/100)",
+          "description": "Explicit markup or margin on supplied subscription unit/customer costs for the declared billing period; no demand optimization. Approved bounded scope: No demand optimization, competitive price or tier recommendation without a reviewed model."
+        }
+      ]
+    },
+    "source": "src/calculators/private-owner-business-core.ts",
+    "blob": "91d2c56efc4e6dbb7a753963de80fdb8ddbf4687",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Exact same retained pricing schema and engine arithmetic as #158. Require a billing/retention or other supported product distinction.",
+    "overlap": [
+      158
+    ],
+    "bindingSha256": "53d9f8922552b224d35d2e6da6f1ed58a2fabf3a6f5f0a18ddbe66870d88a467",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 194,
+    "name": "Ad Budget Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/193",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "REUSABLE_RETAINED_EVIDENCE",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/193",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/193",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/193",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/193",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/193",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/193"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.owner.194",
+      "slug": "private-owner-194",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "owner-194",
+          "expression": "spend = attributed revenue / ROAS multiple OR conversions \u00d7 CPA",
+          "description": "Explicit mode; period is the supplied attribution period. ROAS is currency revenue per currency spend; CPA is currency per conversion. No delivery guarantee. Approved bounded scope: Explicit mode, units and attribution period; no campaign optimization or demand guarantee."
+        }
+      ]
+    },
+    "source": "src/calculators/private-owner-business-impact.ts",
+    "blob": "c0a5c186650f91a8539e5c5fa0ebe81f12543afa",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Retained alternate modes imply two input shapes; complete coherent multi-mode delivery.",
+    "overlap": [],
+    "bindingSha256": "7b9926fa716c6faa2866e6f809db8fd02d31f3baf74651b46e6b5cb08362cb2d",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 195,
+    "name": "Target ROAS Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/194",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "REUSABLE_RETAINED_EVIDENCE",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/194",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/194",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/194",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/194",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/194",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/194"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.owner.195",
+      "slug": "private-owner-195",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "owner-195",
+          "expression": "profit/revenue target t: ROAS = 1/(margin \u2212 t); profit/spend target r: ROAS = (1+r)/margin",
+          "description": "Margin is pre-ad contribution divided by attributed revenue. Profit here is contribution after ad spend only, excluding unsupplied fixed costs and taxes. Targets are explicit constraints for the supplied attribution period. Approved bounded scope: No target inferred from observed ROAS alone; margin/return scope must be explicit."
+        }
+      ]
+    },
+    "source": "src/calculators/private-owner-business-impact.ts",
+    "blob": "c0a5c186650f91a8539e5c5fa0ebe81f12543afa",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Retained alternate modes imply two input shapes; complete coherent multi-mode delivery.",
+    "overlap": [],
+    "bindingSha256": "7b9926fa716c6faa2866e6f809db8fd02d31f3baf74651b46e6b5cb08362cb2d",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 200,
+    "name": "Marketplace Profit Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/199",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "DISTINCT_CONTRACT_READY",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/199",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/199",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/199",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/199",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/199",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/199"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.owner.200",
+      "slug": "private-owner-200",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "owner-200",
+          "expression": "profit = sales proceeds \u2212 fees \u2212 goods costs \u2212 fulfillment costs",
+          "description": "All cost arrays are required; empty means explicitly no supplied costs of that kind. Sales proceeds must be before listed deductions to avoid double subtraction. Profit covers listed costs only; no platform or tax defaults. Approved bounded scope: No default platform schedule, tax inference or automatic fee classification."
+        }
+      ]
+    },
+    "source": "src/calculators/private-owner-business-impact.ts",
+    "blob": "c0a5c186650f91a8539e5c5fa0ebe81f12543afa",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Qualify exact bounded private contract on existing workbench.",
+    "overlap": [],
+    "bindingSha256": "7b9926fa716c6faa2866e6f809db8fd02d31f3baf74651b46e6b5cb08362cb2d",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 201,
+    "name": "Promotion Profitability Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/200",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "IDENTITY_DECISION_REQUIRED",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/200",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/200",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/200",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/200",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/200",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/200"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.owner.201",
+      "slug": "private-owner-201",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "owner-201",
+          "expression": "scenario result = supplied total revenue \u2212 sum(supplied total costs); incremental = promotion \u2212 before",
+          "description": "Units are supplied separately for each scenario; revenue and costs are period totals, never per-unit. Contribution mode requires variable and promotion costs; profit mode requires all attributable costs including promotion costs. Completeness is caller declared; no causal demand or tax inference. Approved bounded scope: Volumes and promotion costs explicitly supplied; no causal uplift or elasticity assumption."
+        }
+      ]
+    },
+    "source": "src/calculators/private-owner-business-impact.ts",
+    "blob": "c0a5c186650f91a8539e5c5fa0ebe81f12543afa",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "The retained profit/contribution comparison overlaps #159 and #202. Establish a legitimate promotion decision scope before delivery.",
+    "overlap": [
+      159,
+      202
+    ],
+    "bindingSha256": "7b9926fa716c6faa2866e6f809db8fd02d31f3baf74651b46e6b5cb08362cb2d",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 203,
+    "name": "Shipping Profit Calculator",
+    "family": "Business operations",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/202",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify the immutable engine against the recorded narrow contract; complete any missing private authenticated delivery and replay.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "DISTINCT_CONTRACT_READY",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/202",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/202",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/202",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/202",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/202",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/202"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.owner.203",
+      "slug": "private-owner-203",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "owner-203",
+          "expression": "shipping contribution = shipping revenue \u2212 carrier \u2212 packaging \u2212 handling",
+          "description": "Every amount uses the same selected per-order or period basis. Period labels identify the supplied observation window for either basis. No overhead allocation or full-company profit claim. Approved bounded scope: Per-order or period basis explicit; no automatic overhead allocation or full-company-profit claim."
+        }
+      ]
+    },
+    "source": "src/calculators/private-owner-business-impact.ts",
+    "blob": "c0a5c186650f91a8539e5c5fa0ebe81f12543afa",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Qualify exact bounded private contract on existing workbench.",
+    "overlap": [],
+    "bindingSha256": "7b9926fa716c6faa2866e6f809db8fd02d31f3baf74651b46e6b5cb08362cb2d",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 494,
+    "name": "Altitude Pressure Calculator",
+    "family": "Energy and science",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/493",
+    "recordedProductionSupports": [],
+    "internalWork": "Draft private presentation implemented. Authenticate acceptance and preserve #537 identity hold.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "DRAFT_IMPLEMENTED",
+    "classification": "DISTINCT_CONTRACT_READY",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/493",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/493",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/493",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/493",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/493",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/493"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Lower standard-atmosphere approximation; no weather/humidity profile.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.remaining.494",
+      "slug": "private-remaining-494",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "remaining-494",
+          "expression": "Standard-atmosphere approximation P=P0*(1-2.25577e-5*h)^5.25588; caller sea-level pressure, altitude meters[-1000,11000]. Original6-decimal result; no current weather, humidity, navigation or safety applicability.",
+          "description": "Standard-atmosphere approximation P=P0*(1-2.25577e-5*h)^5.25588; caller sea-level pressure, altitude meters[-1000,11000]. Original6-decimal result; no current weather, humidity, navigation or safety applicability. Finite amounts0..1e12; positive money at least0.01; closed I/O with original engine/helper traces. Schema ranges are not blanket numerical convergence or specialist applicability guarantees. No canonical mapping, provider/jurisdiction rule, certification or publication approved. RELEASE HOLD."
+        }
+      ]
+    },
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Qualify the single-altitude estimate only. #537 remains governed and held for a supported distinct scope.",
+    "overlap": [
+      537
+    ],
+    "bindingSha256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 529,
+    "name": "Power-to-Weight Ratio Calculator",
+    "family": "Energy and science",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/528",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify exact power and mass unit mapping and physics worker ownership.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "REUSABLE_RETAINED_EVIDENCE",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/528",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/528",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/528",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/528",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/528",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/528"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved.",
+      "Per-ID approved identity/version and complete input/output/feature requirements are not established.",
+      "Independent numerical and browser acceptance for the full canonical domain is not established."
+    ],
+    "engine": {
+      "id": "sports.power-weight-ratio",
+      "slug": "power-to-weight-ratio-calculator",
+      "version": 1
+    },
+    "source": "src/calculators/sports/draft-master-529.ts",
+    "blob": "c92a9eaca33d6e5c7de8903a126f65c842c223b0",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Exact retained astronomy/sports preview exists; ownership and applicability of prior release evidence need confirmation.",
+    "overlap": [],
+    "bindingSha256": "6ca9094d07d9234742ec0656e94bc537830f8d79cca5e160cacd4f98e0a587e8",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 531,
+    "name": "Planetary Weight Calculator",
+    "family": "Energy and science",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/530",
+    "recordedProductionSupports": [],
+    "internalWork": "Confirm supplied gravity or planetary reference and physics worker ownership before edits.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "REUSABLE_RETAINED_EVIDENCE",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/530",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/530",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/530",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/530",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/530",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/530"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved.",
+      "Per-ID approved identity/version and complete input/output/feature requirements are not established.",
+      "Independent numerical and browser acceptance for the full canonical domain is not established."
+    ],
+    "engine": {
+      "id": "astronomy.planetary-weight",
+      "slug": "planetary-weight-calculator",
+      "version": 1
+    },
+    "source": "src/calculators/astronomy/draft-master-531.ts",
+    "blob": "03ca7c8cb3c22a158fb855aafeac73372c6ca079",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Exact retained planetary preview exists; reference-model provenance and ownership need confirmation.",
+    "overlap": [],
+    "bindingSha256": "e579fb5bfa3804c226d9188fd4493d81603feab7f4b55a6f38899899e6a39504",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  },
+  {
+    "id": 535,
+    "name": "Sunrise/Sunset Calculator",
+    "family": "Energy and science",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "retainedEngineEvidence": "docs/software-closure/requirements-540.json#/rows/534",
+    "recordedProductionSupports": [],
+    "internalWork": "Verify astronomy ownership, location/time basis and polar-event refusal before edits.",
+    "ownership": "Provisional; remote branch snapshot checked against available ownership objects. No public changes.",
+    "activity": "QUEUED",
+    "classification": "REUSABLE_RETAINED_EVIDENCE",
+    "canonicalEvidence": {
+      "publication": "docs/calculator-first/publication-readiness-540.json#/rows/534",
+      "batch22": "docs/full-product-batch22/publication-readiness-540.json#/rows/534",
+      "blueprint": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/534",
+      "requirements": "docs/full-product-batch16/requirements-540.json#/rows/534",
+      "implementation": "docs/software-closure/requirements-540.json#/rows/534",
+      "calculus": "docs/canonical-calculus/engineering-overlay-540.json#/rows/534"
+    },
+    "canonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "engine": {
+      "id": "private.scientific.535",
+      "slug": "private-scientific-535",
+      "version": 1,
+      "formulas": [
+        {
+          "id": "events",
+          "expression": "Crossings of geometric solar-center elevation -0.833 degrees",
+          "description": "Approximate geometric SSC solarpos, UTC years 1950\u20132050. North-positive latitude/east-positive longitude in degrees; azimuth clockwise from north, null where undefined. No refraction, terrain, altitude or precision-navigation claim. See source provenance for independent SPA comparison tolerances. Fixed-offset civil date, not named timezone/DST; UTC timestamps and nullable missing events. Near-grazing events require additional review."
+        }
+      ]
+    },
+    "source": "src/calculators/private-scientific-definitions.ts",
+    "blob": "62d320e2bc616ac331c4fa78809a7e3e96a7c635",
+    "productionTuples": [],
+    "routeDecision": "Private shared workbench only. Preserve any public supporting routes and replay bindings.",
+    "disposition": "Retained condition and event outputs require explicit no-event/polar states and local-offset presentation. Scientific method and astronomy ownership need confirmation.",
+    "overlap": [],
+    "bindingSha256": "1715802fabf47c3aef14823e5c5d4932ce0b40e779c70844c798dd435dab7f6f",
+    "recordedCandidateBindings": [],
+    "knownProductionRoutes": [],
+    "scopeEvidence": "Frozen engine formulas and catalog evidence. Complete canonical functionality has no owner sign-off.",
+    "ownershipPreflight": {
+      "remoteRefsObserved": 26,
+      "commitsUnavailableLocally": 11,
+      "directFileMatches": 0,
+      "status": "PROVISIONAL_NO_CONFIRMED_CONFLICT"
+    }
+  }
+]

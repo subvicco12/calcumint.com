@@ -1,0 +1,113 @@
+{
+  "kind": "calcumint.scoped-report",
+  "reportVersion": 1,
+  "metadata": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 195,
+      "engineId": "private.owner.195",
+      "calculatorSlug": "private-owner-195",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.carryover-modes.20261124.1/private.owner.195@1"
+    },
+    "scope": "Margin is pre-ad contribution divided by attributed revenue. Profit here is contribution after ad spend only, excluding unsupplied fixed costs and taxes. Targets are explicit constraints for the supplied attribution period. Approved bounded scope: No target inferred from observed ROAS alone; margin/return scope must be explicit.",
+    "primaryKey": "targetRoasMultiple",
+    "modeDependent": true,
+    "fields": [
+      {
+        "key": "currency",
+        "label": "Currency",
+        "kind": "text",
+        "defaultValue": "USD"
+      },
+      {
+        "key": "period",
+        "label": "Measurement period",
+        "kind": "text",
+        "defaultValue": "2026-10"
+      },
+      {
+        "key": "mode",
+        "label": "Mode",
+        "kind": "select",
+        "options": [
+          "profit-revenue",
+          "profit-ad-spend"
+        ],
+        "defaultValue": "profit-revenue"
+      },
+      {
+        "key": "contributionMarginFraction",
+        "label": "Contribution Margin Fraction",
+        "kind": "number",
+        "defaultValue": "0.5"
+      },
+      {
+        "key": "targetProfitFraction",
+        "label": "Target Profit Fraction",
+        "kind": "number",
+        "defaultValue": "0.25",
+        "visibilityModes": [
+          "profit-revenue"
+        ]
+      },
+      {
+        "key": "targetProfitPerAdSpend",
+        "label": "Target Profit Per Ad Spend",
+        "kind": "number",
+        "defaultValue": "1",
+        "visibilityModes": [
+          "profit-ad-spend"
+        ]
+      }
+    ],
+    "outputs": {
+      "targetRoasMultiple": {
+        "label": "Target ROAS",
+        "unit": "multiple"
+      }
+    },
+    "sourceEvidence": [
+      "src/calculators/private-owner-business-impact.ts"
+    ],
+    "publisherSources": [
+      "https://github.com/subvicco12/calcumint.com/blob/2a351a99fdcd3861beaed453db4ca11cccebb684/data/catalog/scope-policy-decisions-2026-10-25/owner-selections-2026-10-26.json"
+    ],
+    "limitations": [
+      "Private engineering contract; canonical acceptance, certification and publication remain pending.",
+      "Capture uses binary64 finite inputs |x| ≤ 1e50; nonzero magnitudes ≥ 1e-50. Original historical domain is preserved."
+    ],
+    "authority": "Private bounded review. Source applicability and canonical approval remain pending."
+  },
+  "packet": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 195,
+      "engineId": "private.owner.195",
+      "calculatorSlug": "private-owner-195",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.carryover-modes.20261124.1/private.owner.195@1"
+    },
+    "raw": {
+      "mode": "profit-revenue",
+      "period": "2026-10",
+      "currency": "USD",
+      "targetProfitFraction": "0.25",
+      "contributionMarginFraction": "0.5"
+    },
+    "snapshot": {
+      "calculatorSlug": "private-owner-195",
+      "calculatorVersion": 1,
+      "input": {
+        "currency": "USD",
+        "period": "2026-10",
+        "mode": "profit-revenue",
+        "contributionMarginFraction": 0.5,
+        "targetProfitFraction": 0.25
+      },
+      "output": {
+        "targetRoasMultiple": 4
+      }
+    }
+  }
+}

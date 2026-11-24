@@ -1,0 +1,125 @@
+{
+  "kind": "calcumint.scoped-report",
+  "reportVersion": 1,
+  "metadata": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 194,
+      "engineId": "private.owner.194",
+      "calculatorSlug": "private-owner-194",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.carryover-modes.20261124.1/private.owner.194@1"
+    },
+    "scope": "Explicit mode; period is the supplied attribution period. ROAS is currency revenue per currency spend; CPA is currency per conversion. No delivery guarantee. Approved bounded scope: Explicit mode, units and attribution period; no campaign optimization or demand guarantee.",
+    "primaryKey": "requiredSpend",
+    "modeDependent": true,
+    "fields": [
+      {
+        "key": "currency",
+        "label": "Currency",
+        "kind": "text",
+        "defaultValue": "USD"
+      },
+      {
+        "key": "period",
+        "label": "Measurement period",
+        "kind": "text",
+        "defaultValue": "2026-10"
+      },
+      {
+        "key": "mode",
+        "label": "Mode",
+        "kind": "select",
+        "options": [
+          "revenue-roas",
+          "conversions-cpa"
+        ],
+        "defaultValue": "revenue-roas"
+      },
+      {
+        "key": "targetAttributedRevenue",
+        "label": "Target Attributed Revenue",
+        "kind": "number",
+        "defaultValue": "1200",
+        "visibilityModes": [
+          "revenue-roas"
+        ]
+      },
+      {
+        "key": "targetRoasMultiple",
+        "label": "Target Roas Multiple",
+        "kind": "number",
+        "defaultValue": "3",
+        "visibilityModes": [
+          "revenue-roas"
+        ]
+      },
+      {
+        "key": "conversions",
+        "label": "Conversions",
+        "kind": "number",
+        "defaultValue": "20",
+        "visibilityModes": [
+          "conversions-cpa"
+        ]
+      },
+      {
+        "key": "costPerAcquisition",
+        "label": "Cost Per Acquisition",
+        "kind": "number",
+        "defaultValue": "7",
+        "visibilityModes": [
+          "conversions-cpa"
+        ]
+      }
+    ],
+    "outputs": {
+      "requiredSpend": {
+        "label": "Required advertising spend",
+        "unit": "supplied currency per period"
+      }
+    },
+    "sourceEvidence": [
+      "src/calculators/private-owner-business-impact.ts"
+    ],
+    "publisherSources": [
+      "https://github.com/subvicco12/calcumint.com/blob/2a351a99fdcd3861beaed453db4ca11cccebb684/data/catalog/scope-policy-decisions-2026-10-25/owner-selections-2026-10-26.json"
+    ],
+    "limitations": [
+      "Private engineering contract; canonical acceptance, certification and publication remain pending.",
+      "Capture uses binary64 finite inputs |x| ≤ 1e50; nonzero magnitudes ≥ 1e-50. Original historical domain is preserved."
+    ],
+    "authority": "Private bounded review. Source applicability and canonical approval remain pending."
+  },
+  "packet": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 194,
+      "engineId": "private.owner.194",
+      "calculatorSlug": "private-owner-194",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.carryover-modes.20261124.1/private.owner.194@1"
+    },
+    "raw": {
+      "mode": "revenue-roas",
+      "period": "2026-10",
+      "currency": "USD",
+      "targetRoasMultiple": "3",
+      "targetAttributedRevenue": "1200"
+    },
+    "snapshot": {
+      "calculatorSlug": "private-owner-194",
+      "calculatorVersion": 1,
+      "input": {
+        "currency": "USD",
+        "period": "2026-10",
+        "mode": "revenue-roas",
+        "targetAttributedRevenue": 1200,
+        "targetRoasMultiple": 3
+      },
+      "output": {
+        "requiredSpend": 400
+      }
+    }
+  }
+}

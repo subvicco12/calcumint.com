@@ -1,0 +1,72 @@
+{
+  "kind": "calcumint.scoped-report",
+  "reportVersion": 1,
+  "metadata": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 210,
+      "engineId": "launch-percentage-decrease-calculator",
+      "calculatorSlug": "percentage-decrease-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.math-capture.20261124.1/launch-percentage-decrease-calculator@1"
+    },
+    "scope": "Nonnegative percentage decrease; decreases above 100% may produce negative values.",
+    "primaryKey": "result",
+    "fields": [
+      {
+        "key": "value",
+        "label": "Original value",
+        "kind": "number",
+        "defaultValue": 100
+      },
+      {
+        "key": "percent",
+        "label": "Decrease (%)",
+        "kind": "number",
+        "defaultValue": 20
+      }
+    ],
+    "outputs": {
+      "result": {
+        "label": "Result",
+        "unit": "dimensionless"
+      }
+    },
+    "sourceEvidence": [
+      "docs/calculator-first/authority-catalog.json",
+      "src/calculators/launch-portfolio.ts",
+      "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+    ],
+    "publisherSources": [],
+    "limitations": [
+      "IEEE-754 finite normal output or algebraically witnessed zero only; underflow capture is refused. No arbitrary precision.",
+      "Nonnegative percentage decrease; decreases above 100% may produce negative values."
+    ],
+    "authority": "Private bounded review. Source applicability and canonical approval remain pending."
+  },
+  "packet": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 210,
+      "engineId": "launch-percentage-decrease-calculator",
+      "calculatorSlug": "percentage-decrease-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.math-capture.20261124.1/launch-percentage-decrease-calculator@1"
+    },
+    "raw": {
+      "value": "100",
+      "percent": "20"
+    },
+    "snapshot": {
+      "calculatorSlug": "percentage-decrease-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "value": 100,
+        "percent": 20
+      },
+      "output": {
+        "result": 80
+      }
+    }
+  }
+}

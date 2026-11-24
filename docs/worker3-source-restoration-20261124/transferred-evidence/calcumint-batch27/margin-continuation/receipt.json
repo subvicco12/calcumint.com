@@ -1,0 +1,121 @@
+{
+  "baseline": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+  "rows": [
+    {
+      "id": 139,
+      "plan": "pro",
+      "ownedHistoryRestored": true,
+      "historyId": "2124e113-66c1-459a-bb04-9dad5434b730",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "batchAndReplay": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 140,
+      "plan": "pro",
+      "ownedHistoryRestored": true,
+      "historyId": "81b9abdd-7399-4b73-89a0-648f360f4b90",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "batchAndReplay": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 139,
+      "plan": "business",
+      "ownedHistoryRestored": true,
+      "historyId": "80aa86e4-ae46-48b6-a1aa-605353e2a95c",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "batchAndReplay": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 140,
+      "plan": "business",
+      "ownedHistoryRestored": true,
+      "historyId": "2a7aa7f3-330c-4087-964d-cd56c3f2fe21",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "batchAndReplay": true,
+      "keyboardRecovery": true
+    }
+  ],
+  "checks": [
+    "Unauthenticated private route denied",
+    "Authenticated non-reviewer private route denied",
+    "Foreign Business user denied; same-session membership revocation removes project access; owner retains access",
+    "Revoked reviewer cannot save through the already-loaded private server action"
+  ],
+  "downloads": [
+    {
+      "id": 139,
+      "format": "json",
+      "file": "invocation-IBEwkZ/aa82422a-0cf3-4270-809c-70eb81068df1",
+      "bytes": 3623,
+      "sha256": "1eccc400eefe56e5807d5dee4e0567d189f8f740a4907ea64356f25d371bbe35"
+    },
+    {
+      "id": 139,
+      "format": "csv",
+      "file": "invocation-lLlOEI/d0475f42-65c5-4367-bda0-83a2df799834",
+      "bytes": 2785,
+      "sha256": "dbfe27cb47558c19bfcdc260e0daa3497bd47574e621957e43b506f2ac9d01ef"
+    },
+    {
+      "id": 139,
+      "format": "pdf",
+      "file": "invocation-cXZLus/a8c53e6b-e7c9-4984-8148-452a174ff384",
+      "bytes": 416674,
+      "sha256": "a3529b4117ab37e59727e1aac3f5e0460407b8369d527c7412db15dd183efb54"
+    },
+    {
+      "id": 140,
+      "format": "json",
+      "file": "invocation-Xr4jol/cebb0cbf-41fa-48e5-a5fc-e468e02c5a45",
+      "bytes": 3599,
+      "sha256": "a41c3dc061f00054b44f7de3594dfc8dbd584eaf4595a52589089cecb650da24"
+    },
+    {
+      "id": 140,
+      "format": "csv",
+      "file": "invocation-kyVfwW/02b644d7-590d-4d93-a792-7ff8a733d5ec",
+      "bytes": 2761,
+      "sha256": "574d9c17f38cb831488379d40a2640f0709ea819fac247704812cd458df41003"
+    },
+    {
+      "id": 140,
+      "format": "pdf",
+      "file": "invocation-xhqwMF/d54c0b77-28a3-440b-8ec4-ddf35d6dee1a",
+      "bytes": 416594,
+      "sha256": "85322aeca738f1f17c93b1d27887c874de90d7091925244ce64f1b0ad152156a"
+    }
+  ],
+  "productionWrites": false,
+  "releaseHold": true,
+  "publicationFixture": false,
+  "canonicalApproval": false,
+  "scope": "Disposable repository-model PostgreSQL17/GoTrue/PostgREST; actual private page and existing atomic account actions. Loopback transport is not production equivalence. Business team/native/job capabilities remain blocked.",
+  "expectedRows": 4,
+  "images": {
+    "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+    "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+    "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+  },
+  "runtime": "v24.19.0",
+  "sourceFingerprintCount": 2151,
+  "passed": true
+}

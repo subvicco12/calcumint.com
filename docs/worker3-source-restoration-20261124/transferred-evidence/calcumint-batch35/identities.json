@@ -1,0 +1,1159 @@
+[
+  {
+    "id": 25,
+    "name": "Payoff Date Goal Solver",
+    "engine": "private.remaining.25",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": null,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "requiredMonthlyPaymentForTargetMonths delegates to existing amortization formula",
+          "engineSlugs": [
+            "credit-card-payoff-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/credit-card-payoff.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 37,
+    "name": "Rental Cash Flow Calculator",
+    "engine": "private.remaining.37",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": 100,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "Property supplied-total metrics: rental cash flow, NOI, capitalization rate, cash-on-cash, DSCR and gross-rent multiplier",
+          "engineSlugs": [
+            "net-worth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/roi.ts",
+            "src/calculators/launch-portfolio.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 45,
+    "name": "Property Appreciation Calculator",
+    "engine": "private.remaining.45",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": 59,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "Constant-rate property value growth is futureValue(PV,r,t)",
+          "engineSlugs": [
+            "investment-growth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/investment-math.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 47,
+    "name": "Renovation ROI Calculator",
+    "engine": "private.remaining.47",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": 64,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "Supplied renovation investment, final incremental value, costs and received income",
+          "engineSlugs": [
+            "roi-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/roi.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 66,
+    "name": "CAGR Calculator",
+    "engine": "private.remaining.66",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "DRAFT_FOCUSED_PASS_AUTH_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "two",
+    "exactCommit": "2a69a08cc52653a2c3bc9456fe6b5dc96cce213b",
+    "exactTree": "3b36d6fb2a489c2409b4dad02561cdad1d5177ac",
+    "heldSameContractAs": null,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "Existing exported presentValueFromFuture and cagr functions",
+          "engineSlugs": [
+            "investment-growth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/investment-math.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 68,
+    "name": "Real Return Calculator",
+    "engine": "private.remaining.68",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": 69,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "Future value and exact Fisher real-return relationship",
+          "engineSlugs": [
+            "investment-growth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/investment-math.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 71,
+    "name": "Lump Sum vs SIP Calculator",
+    "engine": "private.remaining.71",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": null,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "Compare supplied lump-sum and periodic contribution models under explicit shared nominal monthly rate/timing",
+          "engineSlugs": [
+            "sip-calculator",
+            "compound-interest-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/sip.ts",
+            "src/calculators/finance/compound-interest.ts",
+            "src/calculators/scenarios.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 72,
+    "name": "Bond Yield Calculator",
+    "engine": "private.remaining.72",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": null,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "New private periodic-cashflow inverse supplies the numeric yield basis for explicit bondcashflows",
+          "engineSlugs": [],
+          "helperRefs": [
+            "src/calculators/private-cashflow-rate.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 73,
+    "name": "Bond Price Calculator",
+    "engine": "private.remaining.73",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": null,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "Bond suppliedcashflow price=sum presentValueFromFuture(abs(cashflow),yield,period)*sign",
+          "engineSlugs": [
+            "investment-growth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/investment-math.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 75,
+    "name": "Dividend Growth Calculator",
+    "engine": "private.remaining.75",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": 66,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "cagr(beginningDividend,endingDividend,years)",
+          "engineSlugs": [
+            "investment-growth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/investment-math.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 76,
+    "name": "Mutual Fund Return Calculator",
+    "engine": "private.remaining.76",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": 64,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "Supplied aggregate fund/ETF return from initial/final value, distributions, explicit costs and holdingmonths",
+          "engineSlugs": [
+            "roi-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/roi.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 77,
+    "name": "ETF Return Calculator",
+    "engine": "private.remaining.77",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": 64,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "Supplied aggregate fund/ETF return from initial/final value, distributions, explicit costs and holdingmonths",
+          "engineSlugs": [
+            "roi-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/roi.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 83,
+    "name": "Required Monthly Retirement Investment Calculator",
+    "engine": "private.remaining.83",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": 61,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "Constant monthly savings future value and reverse required monthly contribution",
+          "engineSlugs": [
+            "savings-goal-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/savings-goal.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 93,
+    "name": "Retirement Income Gap Calculator",
+    "engine": "private.remaining.93",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": null,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "Provided periodic income gap = suppliedneed - suppliedincome via aggregate subtraction adapter",
+          "engineSlugs": [
+            "net-worth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/launch-portfolio.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 100,
+    "name": "Monthly Budget Calculator",
+    "engine": "private.remaining.100",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": null,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "Supplied same-period budgetfunds minus suppliedexpensecategory totals",
+          "engineSlugs": [
+            "net-worth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/net-worth.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 106,
+    "name": "Education Savings Calculator",
+    "engine": "private.remaining.106",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": 61,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "Constant monthly savings future value and reverse required monthly contribution",
+          "engineSlugs": [
+            "savings-goal-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/savings-goal.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 107,
+    "name": "Wedding Budget Calculator",
+    "engine": "private.remaining.107",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": 100,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "Supplied same-period budgetfunds minus suppliedexpensecategory totals",
+          "engineSlugs": [
+            "net-worth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/net-worth.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 108,
+    "name": "Vacation Budget Calculator",
+    "engine": "private.remaining.108",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": 100,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "Supplied same-period budgetfunds minus suppliedexpensecategory totals",
+          "engineSlugs": [
+            "net-worth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/net-worth.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 111,
+    "name": "Hourly to Salary Calculator",
+    "engine": "private.remaining.111",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "DRAFT_FOCUSED_PASS_AUTH_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "two",
+    "exactCommit": "2a69a08cc52653a2c3bc9456fe6b5dc96cce213b",
+    "exactTree": "3b36d6fb2a489c2409b4dad02561cdad1d5177ac",
+    "heldSameContractAs": null,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "Suppliedhourlypay * suppliedannualworkhours via existingdecimalmultiplication",
+          "engineSlugs": [],
+          "helperRefs": [
+            "src/calculators/core/draft-master-205.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 465,
+    "name": "EV vs Petrol/Diesel Cost Calculator",
+    "engine": "private.remaining.465",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": null,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "Compare supplied-distance EV charging energy cost and combustion trip fuel cost",
+          "engineSlugs": [
+            "ev-charging-cost-calculator",
+            "road-trip-fuel-cost-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/scenarios.ts#compareScenarios"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 466,
+    "name": "Vehicle Total Cost of Ownership Calculator",
+    "engine": "private.remaining.466",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": null,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "sum(provided ownership expense amounts)-provided resale proceeds",
+          "engineSlugs": [
+            "net-worth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/net-worth.ts#calculateNetWorth"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 473,
+    "name": "Fuel Savings Calculator",
+    "engine": "private.remaining.473",
+    "version": 1,
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": null,
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "blob": "c64063d39d38f8377fcbe38ce061c4b9913fe8b1",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+      "bindings": [
+        {
+          "evidence": "baseline fuel trip cost versus replacement fuel trip cost; savings=baselineCost-newCost",
+          "engineSlugs": [
+            "road-trip-fuel-cost-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/scenarios.ts#compareScenarios",
+            "src/calculators/launch-portfolio.ts#launchDefinitions"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "name": "Amortization Calculator",
+    "engine": "private.component.3",
+    "version": 1,
+    "source": "src/calculators/component-contracts.ts",
+    "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": null,
+    "sourceSHA256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch08/selected-contract-evidence.json",
+      "blob": "7620b0daff368bfb227cd8538bae99b5afcf02b9",
+      "sha256": "f899fd95bc21ae7aefdb04792bbe306c1d41f97a0a43a0b87d796a4e5bc1e0f1",
+      "bindings": [
+        {
+          "evidence": "Complete month/payment/principal/interest/balance amortization schedule",
+          "engineSlugs": [
+            "loan-emi-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-analysis.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "name": "Loan Payoff Calculator",
+    "engine": "private.component.4",
+    "version": 1,
+    "source": "src/calculators/component-contracts.ts",
+    "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": null,
+    "sourceSHA256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch08/selected-contract-evidence.json",
+      "blob": "7620b0daff368bfb227cd8538bae99b5afcf02b9",
+      "sha256": "f899fd95bc21ae7aefdb04792bbe306c1d41f97a0a43a0b87d796a4e5bc1e0f1",
+      "bindings": [
+        {
+          "evidence": "Extra monthly payments shorten payoff; returns payoffMonths, interest and savings",
+          "engineSlugs": [
+            "loan-emi-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-analysis.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "name": "Extra Payment Calculator",
+    "engine": "private.component.5",
+    "version": 1,
+    "source": "src/calculators/component-contracts.ts",
+    "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": null,
+    "sourceSHA256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch08/selected-contract-evidence.json",
+      "blob": "7620b0daff368bfb227cd8538bae99b5afcf02b9",
+      "sha256": "f899fd95bc21ae7aefdb04792bbe306c1d41f97a0a43a0b87d796a4e5bc1e0f1",
+      "bindings": [
+        {
+          "evidence": "Extra monthly payments shorten payoff; returns payoffMonths, interest and savings",
+          "engineSlugs": [
+            "loan-emi-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-analysis.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "name": "Personal Loan Calculator",
+    "engine": "private.component.6",
+    "version": 1,
+    "source": "src/calculators/component-contracts.ts",
+    "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": 3,
+    "sourceSHA256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch08/selected-contract-evidence.json",
+      "blob": "7620b0daff368bfb227cd8538bae99b5afcf02b9",
+      "sha256": "f899fd95bc21ae7aefdb04792bbe306c1d41f97a0a43a0b87d796a4e5bc1e0f1",
+      "bindings": [
+        {
+          "evidence": "Generic fixed-rate fully amortizing loan arithmetic",
+          "engineSlugs": [
+            "loan-payment-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-payment.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "name": "Auto Loan Calculator",
+    "engine": "private.component.7",
+    "version": 1,
+    "source": "src/calculators/component-contracts.ts",
+    "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": 3,
+    "sourceSHA256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch08/selected-contract-evidence.json",
+      "blob": "7620b0daff368bfb227cd8538bae99b5afcf02b9",
+      "sha256": "f899fd95bc21ae7aefdb04792bbe306c1d41f97a0a43a0b87d796a4e5bc1e0f1",
+      "bindings": [
+        {
+          "evidence": "Generic fixed-rate fully amortizing loan arithmetic",
+          "engineSlugs": [
+            "loan-payment-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-payment.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "name": "Student Loan Calculator",
+    "engine": "private.component.8",
+    "version": 1,
+    "source": "src/calculators/component-contracts.ts",
+    "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": 3,
+    "sourceSHA256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch08/selected-contract-evidence.json",
+      "blob": "7620b0daff368bfb227cd8538bae99b5afcf02b9",
+      "sha256": "f899fd95bc21ae7aefdb04792bbe306c1d41f97a0a43a0b87d796a4e5bc1e0f1",
+      "bindings": [
+        {
+          "evidence": "Generic fixed-rate fully amortizing loan arithmetic",
+          "engineSlugs": [
+            "loan-payment-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-payment.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "name": "Loan Term Calculator",
+    "engine": "private.component.11",
+    "version": 1,
+    "source": "src/calculators/component-contracts.ts",
+    "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": 4,
+    "sourceSHA256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch08/selected-contract-evidence.json",
+      "blob": "7620b0daff368bfb227cd8538bae99b5afcf02b9",
+      "sha256": "f899fd95bc21ae7aefdb04792bbe306c1d41f97a0a43a0b87d796a4e5bc1e0f1",
+      "bindings": [
+        {
+          "evidence": "Bounded fixed monthly payment payoff term simulation",
+          "engineSlugs": [
+            "credit-card-payoff-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/credit-card-payoff.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 12,
+    "name": "Loan Amount Affordability Calculator",
+    "engine": "private.component.12",
+    "version": 1,
+    "source": "src/calculators/component-contracts.ts",
+    "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": null,
+    "sourceSHA256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch08/selected-contract-evidence.json",
+      "blob": "7620b0daff368bfb227cd8538bae99b5afcf02b9",
+      "sha256": "f899fd95bc21ae7aefdb04792bbe306c1d41f97a0a43a0b87d796a4e5bc1e0f1",
+      "bindings": [
+        {
+          "evidence": "DTI from debt/income and user-target debt capacity; inverse fixed-rate principal",
+          "engineSlugs": [
+            "loan-affordability-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-affordability.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 13,
+    "name": "Debt-to-Income Ratio Calculator",
+    "engine": "private.component.13",
+    "version": 1,
+    "source": "src/calculators/component-contracts.ts",
+    "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": null,
+    "sourceSHA256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch08/selected-contract-evidence.json",
+      "blob": "7620b0daff368bfb227cd8538bae99b5afcf02b9",
+      "sha256": "f899fd95bc21ae7aefdb04792bbe306c1d41f97a0a43a0b87d796a4e5bc1e0f1",
+      "bindings": [
+        {
+          "evidence": "DTI from debt/income and user-target debt capacity; inverse fixed-rate principal",
+          "engineSlugs": [
+            "loan-affordability-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-affordability.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 14,
+    "name": "Debt Payoff Calculator",
+    "engine": "private.component.14",
+    "version": 1,
+    "source": "src/calculators/component-contracts.ts",
+    "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": 16,
+    "sourceSHA256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch08/selected-contract-evidence.json",
+      "blob": "7620b0daff368bfb227cd8538bae99b5afcf02b9",
+      "sha256": "f899fd95bc21ae7aefdb04792bbe306c1d41f97a0a43a0b87d796a4e5bc1e0f1",
+      "bindings": [
+        {
+          "evidence": "Monthly debt simulation; strategy snowball/avalanche selected explicitly",
+          "engineSlugs": [
+            "debt-payoff-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/debt-payoff.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 15,
+    "name": "Debt Snowball Calculator",
+    "engine": "private.component.15",
+    "version": 1,
+    "source": "src/calculators/component-contracts.ts",
+    "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": null,
+    "sourceSHA256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch08/selected-contract-evidence.json",
+      "blob": "7620b0daff368bfb227cd8538bae99b5afcf02b9",
+      "sha256": "f899fd95bc21ae7aefdb04792bbe306c1d41f97a0a43a0b87d796a4e5bc1e0f1",
+      "bindings": [
+        {
+          "evidence": "Monthly debt simulation; strategy snowball/avalanche selected explicitly",
+          "engineSlugs": [
+            "debt-payoff-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/debt-payoff.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 16,
+    "name": "Debt Avalanche Calculator",
+    "engine": "private.component.16",
+    "version": 1,
+    "source": "src/calculators/component-contracts.ts",
+    "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": null,
+    "sourceSHA256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch08/selected-contract-evidence.json",
+      "blob": "7620b0daff368bfb227cd8538bae99b5afcf02b9",
+      "sha256": "f899fd95bc21ae7aefdb04792bbe306c1d41f97a0a43a0b87d796a4e5bc1e0f1",
+      "bindings": [
+        {
+          "evidence": "Monthly debt simulation; strategy snowball/avalanche selected explicitly",
+          "engineSlugs": [
+            "debt-payoff-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/debt-payoff.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  },
+  {
+    "id": 17,
+    "name": "Snowball vs Avalanche Calculator",
+    "engine": "private.component.17",
+    "version": 1,
+    "source": "src/calculators/component-contracts.ts",
+    "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+    "canonicalBaseline": "PARTIALLY_IMPLEMENTED",
+    "stage": "RETAIN_IMMUTABLE_ENGINE_DELIVERY_AND_SCOPE_OPEN",
+    "ownership": "PROVISIONAL_PENDING_EXACT_WORKER_CONFIRMATION",
+    "group": "group",
+    "exactCommit": "5f2c6adaf7d1cd311b289e619caa5cd256e52ab4",
+    "exactTree": "6a3d2d3c850f7c99015df47f531a7fa8fb18b678",
+    "heldSameContractAs": null,
+    "sourceSHA256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda",
+    "dependencyEvidence": {
+      "path": "docs/cloud-batch08/selected-contract-evidence.json",
+      "blob": "7620b0daff368bfb227cd8538bae99b5afcf02b9",
+      "sha256": "f899fd95bc21ae7aefdb04792bbe306c1d41f97a0a43a0b87d796a4e5bc1e0f1",
+      "bindings": [
+        {
+          "evidence": "Compare existing same-input simulations under both strategy values",
+          "engineSlugs": [
+            "debt-payoff-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/debt-payoff.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ]
+    }
+  }
+]

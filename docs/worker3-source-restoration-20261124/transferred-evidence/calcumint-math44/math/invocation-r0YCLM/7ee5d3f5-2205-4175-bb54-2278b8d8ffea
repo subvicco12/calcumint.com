@@ -1,0 +1,73 @@
+{
+  "kind": "calcumint.scoped-report",
+  "reportVersion": 1,
+  "metadata": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 231,
+      "engineId": "launch-scientific-notation-calculator",
+      "calculatorSlug": "scientific-notation-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.math-capture.20261124.1/launch-scientific-notation-calculator@1"
+    },
+    "scope": "Evaluate coefficient times ten to exponent; no normalized notation formatter.",
+    "primaryKey": "result",
+    "fields": [
+      {
+        "key": "coefficient",
+        "label": "Coefficient",
+        "kind": "number",
+        "defaultValue": 3.2
+      },
+      {
+        "key": "exponent",
+        "label": "Base-10 exponent",
+        "kind": "number",
+        "defaultValue": 6
+      }
+    ],
+    "outputs": {
+      "result": {
+        "label": "Result",
+        "unit": "dimensionless"
+      }
+    },
+    "sourceEvidence": [
+      "docs/calculator-first/authority-catalog.json",
+      "src/calculators/launch-portfolio.ts",
+      "data/verification/codex-a-standard-risk-goldens-2026-10-15.json",
+      "docs/milestone100-20261114/math/source-applicability.json"
+    ],
+    "publisherSources": [],
+    "limitations": [
+      "IEEE-754 binary64; finite normal inputs/results or algebraically witnessed zero only. No arbitrary precision.",
+      "Reverse search is explicitly bounded and never claims an exhaustive inverse. Catalog scope and external certification remain subject to review."
+    ],
+    "authority": "Private bounded review. Source applicability and canonical approval remain pending."
+  },
+  "packet": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 231,
+      "engineId": "launch-scientific-notation-calculator",
+      "calculatorSlug": "scientific-notation-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.math-capture.20261124.1/launch-scientific-notation-calculator@1"
+    },
+    "raw": {
+      "exponent": "6",
+      "coefficient": "3.2"
+    },
+    "snapshot": {
+      "calculatorSlug": "scientific-notation-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "coefficient": 3.2,
+        "exponent": 6
+      },
+      "output": {
+        "result": 3200000
+      }
+    }
+  }
+}

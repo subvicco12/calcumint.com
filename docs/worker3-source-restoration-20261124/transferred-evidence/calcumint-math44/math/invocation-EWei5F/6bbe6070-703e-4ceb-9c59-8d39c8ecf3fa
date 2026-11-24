@@ -1,0 +1,64 @@
+{
+  "kind": "calcumint.scoped-report",
+  "reportVersion": 1,
+  "metadata": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 262,
+      "engineId": "launch-square-perimeter-calculator",
+      "calculatorSlug": "square-perimeter-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.math-capture.20261124.1/launch-square-perimeter-calculator@1"
+    },
+    "scope": "Nonnegative dimensions in one consistent length unit. P = 4 × side. Area uses square units; volume uses cubic units.",
+    "primaryKey": "result",
+    "fields": [
+      {
+        "key": "side",
+        "label": "Side length",
+        "kind": "number",
+        "defaultValue": 8
+      }
+    ],
+    "outputs": {
+      "result": {
+        "label": "Result",
+        "unit": "dimensionless"
+      }
+    },
+    "sourceEvidence": [
+      "docs/calculator-first/authority-catalog.json",
+      "src/calculators/launch-portfolio.ts",
+      "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+    ],
+    "publisherSources": [],
+    "limitations": [
+      "IEEE-754 binary64; finite normal results or witnessed zero only.",
+      "Reverse solves one named dimension with other dimensions fixed; degenerate nonunique solutions are refused."
+    ],
+    "authority": "Private bounded review. Source applicability and canonical approval remain pending."
+  },
+  "packet": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 262,
+      "engineId": "launch-square-perimeter-calculator",
+      "calculatorSlug": "square-perimeter-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.math-capture.20261124.1/launch-square-perimeter-calculator@1"
+    },
+    "raw": {
+      "side": "8"
+    },
+    "snapshot": {
+      "calculatorSlug": "square-perimeter-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "side": 8
+      },
+      "output": {
+        "result": 32
+      }
+    }
+  }
+}

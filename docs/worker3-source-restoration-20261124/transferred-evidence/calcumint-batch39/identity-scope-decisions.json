@@ -1,0 +1,482 @@
+[
+  {
+    "id": 37,
+    "canonicalName": "Rental Cash Flow Calculator",
+    "catalogDomain": "Mortgage & Property Finance",
+    "recordedCanonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Generic ROI/profit arithmetic does not expose these distinct input/output contracts; accounting inclusions must be explicit.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "fullScope": "Owner-approved full input/output scope pending",
+    "peer": {
+      "id": 100,
+      "name": "Monthly Budget Calculator",
+      "recordedProductionSupports": []
+    },
+    "exactPrivateEngine": "private.remaining.37",
+    "version": 1,
+    "privateSlug": "private-remaining-37",
+    "existingPrivateDelivery": "/admin/worker2-energy-mobility-20261119",
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "recordedProductionSupports": [],
+    "overlap": "Same generic period income and expense ledger as the budget profile.",
+    "proposedDistinction": "Approve a property-level cash ledger with explicit gross rent, vacancy, operating costs and debt service; exclude transfers and tax unless reviewed.",
+    "implementationAndReuse": "Reuse summation; new fields, non-overlap checks and cash-after-debt output.",
+    "historicalCompatibility": "Keep immutable v1 source, stored results and exact-version replay. Allocate a governed successor only for approved incompatible behavior; no public route remapping.",
+    "ownerDecision": "Approve a property-level cash ledger with explicit gross rent, vacancy, operating costs and debt service; exclude transfers and tax unless reviewed. If unsupported, retain the identity and hold its standalone delivery."
+  },
+  {
+    "id": 45,
+    "canonicalName": "Property Appreciation Calculator",
+    "catalogDomain": "Mortgage & Property Finance",
+    "recordedCanonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Excludes improvements, transactions, property tax and market forecast; family reuse only.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "fullScope": "Owner-approved full input/output scope pending",
+    "peer": {
+      "id": 59,
+      "name": "Future Value Calculator",
+      "recordedProductionSupports": []
+    },
+    "exactPrivateEngine": "private.remaining.45",
+    "version": 1,
+    "privateSlug": "private-remaining-45",
+    "existingPrivateDelivery": "/admin/worker2-energy-mobility-20261119",
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "recordedProductionSupports": [],
+    "overlap": "Same initial value, compounded rate, horizon and inflation adjustment.",
+    "proposedDistinction": "Decide whether property appreciation has a genuine valuation comparison contract; keep rent, debt and ROI separate.",
+    "implementationAndReuse": "Reuse compounding if forecast arithmetic stays; no synthetic distinction from relabeling.",
+    "historicalCompatibility": "Keep immutable v1 source, stored results and exact-version replay. Allocate a governed successor only for approved incompatible behavior; no public route remapping.",
+    "ownerDecision": "Decide whether property appreciation has a genuine valuation comparison contract; keep rent, debt and ROI separate. If unsupported, retain the identity and hold its standalone delivery."
+  },
+  {
+    "id": 47,
+    "canonicalName": "Renovation ROI Calculator",
+    "catalogDomain": "Mortgage & Property Finance",
+    "recordedCanonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "User must define increment attributable to renovation; no causal valuation model.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "fullScope": "Owner-approved full input/output scope pending",
+    "peer": {
+      "id": 64,
+      "name": "ROI Calculator",
+      "recordedProductionSupports": []
+    },
+    "exactPrivateEngine": "private.remaining.47",
+    "version": 1,
+    "privateSlug": "private-remaining-47",
+    "existingPrivateDelivery": "/admin/worker2-energy-mobility-20261119",
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "recordedProductionSupports": [],
+    "overlap": "Same generic ROI inputs and outputs, including added costs and income.",
+    "proposedDistinction": "Approve an incremental renovation comparison defining attributions, outlays and the no-renovation baseline.",
+    "implementationAndReuse": "Reuse ROI primitive; require separate baseline and attribution validation.",
+    "historicalCompatibility": "Keep immutable v1 source, stored results and exact-version replay. Allocate a governed successor only for approved incompatible behavior; no public route remapping.",
+    "ownerDecision": "Approve an incremental renovation comparison defining attributions, outlays and the no-renovation baseline. If unsupported, retain the identity and hold its standalone delivery."
+  },
+  {
+    "id": 68,
+    "canonicalName": "Real Return Calculator",
+    "catalogDomain": "Investing & Wealth",
+    "recordedCanonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Nominal period/rate and inflation supplied; no asset-specific return forecast.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "fullScope": "Owner-approved full input/output scope pending",
+    "peer": {
+      "id": 69,
+      "name": "Inflation-Adjusted Return Calculator",
+      "recordedProductionSupports": []
+    },
+    "exactPrivateEngine": "private.remaining.68",
+    "version": 1,
+    "privateSlug": "private-remaining-68",
+    "existingPrivateDelivery": "/admin/worker2-energy-mobility-20261119",
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "recordedProductionSupports": [],
+    "overlap": "Same Fisher conversion already accepted for #69.",
+    "proposedDistinction": "Choose whether this identity requires a purchasing-power amount over an explicit horizon, or remains linked to #69 for review.",
+    "implementationAndReuse": "Reuse Fisher conversion; add real purchasing-power projection only if approved.",
+    "historicalCompatibility": "Keep immutable v1 source, stored results and exact-version replay. Allocate a governed successor only for approved incompatible behavior; no public route remapping.",
+    "ownerDecision": "Choose whether this identity requires a purchasing-power amount over an explicit horizon, or remains linked to #69 for review. If unsupported, retain the identity and hold its standalone delivery."
+  },
+  {
+    "id": 75,
+    "canonicalName": "Dividend Growth Calculator",
+    "catalogDomain": "Investing & Wealth",
+    "recordedCanonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "No reinvestment, dividendforecast or irregular exdates.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "fullScope": "Owner-approved full input/output scope pending",
+    "peer": {
+      "id": 66,
+      "name": "CAGR Calculator",
+      "recordedProductionSupports": []
+    },
+    "exactPrivateEngine": "private.remaining.75",
+    "version": 1,
+    "privateSlug": "private-remaining-75",
+    "existingPrivateDelivery": "/admin/worker2-energy-mobility-20261119",
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "recordedProductionSupports": [],
+    "overlap": "Same two-endpoint CAGR used by #66.",
+    "proposedDistinction": "Approve per-share dividend growth with comparable observations, split normalization basis and covered periods.",
+    "implementationAndReuse": "Reuse CAGR; add comparable-series validation and show dividend basis, no yield/total-return claims.",
+    "historicalCompatibility": "Keep immutable v1 source, stored results and exact-version replay. Allocate a governed successor only for approved incompatible behavior; no public route remapping.",
+    "ownerDecision": "Approve per-share dividend growth with comparable observations, split normalization basis and covered periods. If unsupported, retain the identity and hold its standalone delivery."
+  },
+  {
+    "id": 76,
+    "canonicalName": "Mutual Fund Return Calculator",
+    "catalogDomain": "Investing & Wealth",
+    "recordedCanonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "No datedcashflow IRR, automaticreinvestment, livequotes or timeweightedreturn.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "fullScope": "Owner-approved full input/output scope pending",
+    "peer": {
+      "id": 64,
+      "name": "ROI Calculator",
+      "recordedProductionSupports": []
+    },
+    "exactPrivateEngine": "private.remaining.76",
+    "version": 1,
+    "privateSlug": "private-remaining-76",
+    "existingPrivateDelivery": "/admin/worker2-energy-mobility-20261119",
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "recordedProductionSupports": [],
+    "overlap": "Same generic ROI can be entered unchanged for a mutual fund.",
+    "proposedDistinction": "Decide if this is a supplied total-return model with cash-flow dates, distributions and fund fees with a declared reinvestment basis.",
+    "implementationAndReuse": "Reuse return arithmetic for matched inputs; cash-flow timing may require an exact successor.",
+    "historicalCompatibility": "Keep immutable v1 source, stored results and exact-version replay. Allocate a governed successor only for approved incompatible behavior; no public route remapping.",
+    "ownerDecision": "Decide if this is a supplied total-return model with cash-flow dates, distributions and fund fees with a declared reinvestment basis. If unsupported, retain the identity and hold its standalone delivery."
+  },
+  {
+    "id": 77,
+    "canonicalName": "ETF Return Calculator",
+    "catalogDomain": "Investing & Wealth",
+    "recordedCanonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "No datedcashflow IRR, automaticreinvestment, livequotes or timeweightedreturn.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "fullScope": "Owner-approved full input/output scope pending",
+    "peer": {
+      "id": 64,
+      "name": "ROI Calculator",
+      "recordedProductionSupports": []
+    },
+    "exactPrivateEngine": "private.remaining.77",
+    "version": 1,
+    "privateSlug": "private-remaining-77",
+    "existingPrivateDelivery": "/admin/worker2-energy-mobility-20261119",
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "recordedProductionSupports": [],
+    "overlap": "Same generic ROI can be entered unchanged for an ETF.",
+    "proposedDistinction": "Require a distinct comparison basis, for example NAV versus market-price performance, only if the canonical scope supports it.",
+    "implementationAndReuse": "Reuse return calculations; independently specify quoted bases and avoid fee/distribution double counting.",
+    "historicalCompatibility": "Keep immutable v1 source, stored results and exact-version replay. Allocate a governed successor only for approved incompatible behavior; no public route remapping.",
+    "ownerDecision": "Require a distinct comparison basis, for example NAV versus market-price performance, only if the canonical scope supports it. If unsupported, retain the identity and hold its standalone delivery."
+  },
+  {
+    "id": 83,
+    "canonicalName": "Required Monthly Retirement Investment Calculator",
+    "catalogDomain": "Retirement & Financial Independence",
+    "recordedCanonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Supplied goal/return/horizon only; no educational or retirement policy.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "fullScope": "Owner-approved full input/output scope pending",
+    "peer": {
+      "id": 61,
+      "name": "Periodic Payment Calculator",
+      "recordedProductionSupports": []
+    },
+    "exactPrivateEngine": "private.remaining.83",
+    "version": 1,
+    "privateSlug": "private-remaining-83",
+    "existingPrivateDelivery": "/admin/worker2-energy-mobility-20261119",
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "recordedProductionSupports": [],
+    "overlap": "Same inverse periodic accumulation as #61 with a goal label.",
+    "proposedDistinction": "Approve retirement-specific supplied horizon, starting assets and target basis, including whether target is in current or future purchasing power.",
+    "implementationAndReuse": "Reuse inverse contribution solver if supported; explicitly model the accepted target inputs.",
+    "historicalCompatibility": "Keep immutable v1 source, stored results and exact-version replay. Allocate a governed successor only for approved incompatible behavior; no public route remapping.",
+    "ownerDecision": "Approve retirement-specific supplied horizon, starting assets and target basis, including whether target is in current or future purchasing power. If unsupported, retain the identity and hold its standalone delivery."
+  },
+  {
+    "id": 106,
+    "canonicalName": "Education Savings Calculator",
+    "catalogDomain": "Personal Finance & Household",
+    "recordedCanonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Supplied goal/return/horizon only; no educational or retirement policy.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "fullScope": "Owner-approved full input/output scope pending",
+    "peer": {
+      "id": 61,
+      "name": "Periodic Payment Calculator",
+      "recordedProductionSupports": []
+    },
+    "exactPrivateEngine": "private.remaining.106",
+    "version": 1,
+    "privateSlug": "private-remaining-106",
+    "existingPrivateDelivery": "/admin/worker2-energy-mobility-20261119",
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "recordedProductionSupports": [],
+    "overlap": "Same inverse periodic accumulation as #61 with a goal label.",
+    "proposedDistinction": "Approve dated education costs and explicit existing funding offsets, with inflation and contribution timing defined where applicable.",
+    "implementationAndReuse": "Reuse inverse solver for one compatible target; multiple dated costs would require new reviewed math.",
+    "historicalCompatibility": "Keep immutable v1 source, stored results and exact-version replay. Allocate a governed successor only for approved incompatible behavior; no public route remapping.",
+    "ownerDecision": "Approve dated education costs and explicit existing funding offsets, with inflation and contribution timing defined where applicable. If unsupported, retain the identity and hold its standalone delivery."
+  },
+  {
+    "id": 107,
+    "canonicalName": "Wedding Budget Calculator",
+    "catalogDomain": "Personal Finance & Household",
+    "recordedCanonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "No venue/travelprices, recommendedcategories, bankfeeds or forecast; suppliedledger arithmetic only.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved.",
+      "Per-ID approved identity/version and complete input/output/feature requirements are not established."
+    ],
+    "fullScope": "Owner-approved full input/output scope pending",
+    "peer": {
+      "id": 100,
+      "name": "Monthly Budget Calculator",
+      "recordedProductionSupports": []
+    },
+    "exactPrivateEngine": "private.remaining.107",
+    "version": 1,
+    "privateSlug": "private-remaining-107",
+    "existingPrivateDelivery": "/admin/worker2-energy-mobility-20261119",
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "recordedProductionSupports": [],
+    "overlap": "Same period funding and expense ledger as #100.",
+    "proposedDistinction": "Determine whether guest count, deposits and payment milestones are canonical; publish no duplicate budget entry if they are absent.",
+    "implementationAndReuse": "Reuse ledger totals; add explicit derived attendance/outlay and timing only if approved.",
+    "historicalCompatibility": "Keep immutable v1 source, stored results and exact-version replay. Allocate a governed successor only for approved incompatible behavior; no public route remapping.",
+    "ownerDecision": "Determine whether guest count, deposits and payment milestones are canonical; publish no duplicate budget entry if they are absent. If unsupported, retain the identity and hold its standalone delivery."
+  },
+  {
+    "id": 108,
+    "canonicalName": "Vacation Budget Calculator",
+    "catalogDomain": "Personal Finance & Household",
+    "recordedCanonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "No venue/travelprices, recommendedcategories, bankfeeds or forecast; suppliedledger arithmetic only.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved.",
+      "Per-ID approved identity/version and complete input/output/feature requirements are not established."
+    ],
+    "fullScope": "Owner-approved full input/output scope pending",
+    "peer": {
+      "id": 100,
+      "name": "Monthly Budget Calculator",
+      "recordedProductionSupports": []
+    },
+    "exactPrivateEngine": "private.remaining.108",
+    "version": 1,
+    "privateSlug": "private-remaining-108",
+    "existingPrivateDelivery": "/admin/worker2-energy-mobility-20261119",
+    "source": "src/calculators/remaining-contracts.ts",
+    "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+    "sourceSHA256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "recordedProductionSupports": [],
+    "overlap": "Same period funding and expense ledger as #100.",
+    "proposedDistinction": "Determine whether traveler counts, trip nights and split allocation are in canonical scope and distinct from other travel calculators.",
+    "implementationAndReuse": "Reuse ledger totals; add approved duration and traveler inputs without currency-rate inference.",
+    "historicalCompatibility": "Keep immutable v1 source, stored results and exact-version replay. Allocate a governed successor only for approved incompatible behavior; no public route remapping.",
+    "ownerDecision": "Determine whether traveler counts, trip nights and split allocation are in canonical scope and distinct from other travel calculators. If unsupported, retain the identity and hold its standalone delivery."
+  },
+  {
+    "id": 6,
+    "canonicalName": "Personal Loan Calculator",
+    "catalogDomain": "Loans & Credit",
+    "recordedCanonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Personal/auto/student/home-equity product aliases are valid only for fixed-rate loans without subsidy, grace, fees or balloon; full product mapping unsupported.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "fullScope": "Owner-approved full input/output scope pending",
+    "peer": {
+      "id": 3,
+      "name": "Amortization Calculator",
+      "recordedProductionSupports": []
+    },
+    "exactPrivateEngine": "private.component.6",
+    "version": 1,
+    "privateSlug": "private-component-6",
+    "existingPrivateDelivery": "/admin/worker2-energy-mobility-20261119",
+    "source": "src/calculators/component-contracts.ts",
+    "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+    "sourceSHA256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda",
+    "recordedProductionSupports": [],
+    "overlap": "Same fixed-rate amortization from principal, APR, term and payment basis.",
+    "proposedDistinction": "Specify whether personal-loan comparison means net disbursement after explicitly supplied fees, and which fees flow into cost.",
+    "implementationAndReuse": "Reuse payment schedule. Add a cash-flow layer only if fees are approved.",
+    "historicalCompatibility": "Keep immutable v1 source, stored results and exact-version replay. Allocate a governed successor only for approved incompatible behavior; no public route remapping.",
+    "ownerDecision": "Specify whether personal-loan comparison means net disbursement after explicitly supplied fees, and which fees flow into cost. If unsupported, retain the identity and hold its standalone delivery."
+  },
+  {
+    "id": 7,
+    "canonicalName": "Auto Loan Calculator",
+    "catalogDomain": "Loans & Credit",
+    "recordedCanonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Personal/auto/student/home-equity product aliases are valid only for fixed-rate loans without subsidy, grace, fees or balloon; full product mapping unsupported.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "fullScope": "Owner-approved full input/output scope pending",
+    "peer": {
+      "id": 3,
+      "name": "Amortization Calculator",
+      "recordedProductionSupports": []
+    },
+    "exactPrivateEngine": "private.component.7",
+    "version": 1,
+    "privateSlug": "private-component-7",
+    "existingPrivateDelivery": "/admin/worker2-energy-mobility-20261119",
+    "source": "src/calculators/component-contracts.ts",
+    "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+    "sourceSHA256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda",
+    "recordedProductionSupports": [],
+    "overlap": "Same supplied-principal amortization.",
+    "proposedDistinction": "Approve a vehicle transaction contract using supplied price, trade-in and down payment to derive principal; specify treatment of rolled-in balance and tax.",
+    "implementationAndReuse": "Reuse schedule; add explicit transaction inputs and derived principal.",
+    "historicalCompatibility": "Keep immutable v1 source, stored results and exact-version replay. Allocate a governed successor only for approved incompatible behavior; no public route remapping.",
+    "ownerDecision": "Approve a vehicle transaction contract using supplied price, trade-in and down payment to derive principal; specify treatment of rolled-in balance and tax. If unsupported, retain the identity and hold its standalone delivery."
+  },
+  {
+    "id": 8,
+    "canonicalName": "Student Loan Calculator",
+    "catalogDomain": "Loans & Credit",
+    "recordedCanonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Personal/auto/student/home-equity product aliases are valid only for fixed-rate loans without subsidy, grace, fees or balloon; full product mapping unsupported.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "fullScope": "Owner-approved full input/output scope pending",
+    "peer": {
+      "id": 3,
+      "name": "Amortization Calculator",
+      "recordedProductionSupports": []
+    },
+    "exactPrivateEngine": "private.component.8",
+    "version": 1,
+    "privateSlug": "private-component-8",
+    "existingPrivateDelivery": "/admin/worker2-energy-mobility-20261119",
+    "source": "src/calculators/component-contracts.ts",
+    "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+    "sourceSHA256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda",
+    "recordedProductionSupports": [],
+    "overlap": "Same fixed-rate amortization with no student-loan treatment.",
+    "proposedDistinction": "Approve a specific supplied schedule for grace, in-school interest and capitalization, or leave the distinction on hold.",
+    "implementationAndReuse": "Reuse post-repayment schedule; changed timing requires reviewed calculation and reference vectors.",
+    "historicalCompatibility": "Keep immutable v1 source, stored results and exact-version replay. Allocate a governed successor only for approved incompatible behavior; no public route remapping.",
+    "ownerDecision": "Approve a specific supplied schedule for grace, in-school interest and capitalization, or leave the distinction on hold. If unsupported, retain the identity and hold its standalone delivery."
+  },
+  {
+    "id": 11,
+    "canonicalName": "Loan Term Calculator",
+    "catalogDomain": "Loans & Credit",
+    "recordedCanonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Supplied monthly payment; horizon2400months, finalpartialpayment and0.005closure. No calendar dates or issuer minimum-payment policy.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "fullScope": "Owner-approved full input/output scope pending",
+    "peer": {
+      "id": 4,
+      "name": "Loan Payoff Calculator",
+      "recordedProductionSupports": []
+    },
+    "exactPrivateEngine": "private.component.11",
+    "version": 1,
+    "privateSlug": "private-component-11",
+    "existingPrivateDelivery": "/admin/worker2-energy-mobility-20261119",
+    "source": "src/calculators/component-contracts.ts",
+    "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+    "sourceSHA256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda",
+    "recordedProductionSupports": [],
+    "overlap": "Same constant payment and payoff time.",
+    "proposedDistinction": "Determine whether the catalog requires a different question or the profiles should be reconciled under one experience.",
+    "implementationAndReuse": "Reuse amortization; no distinct implementation justified without a different supplied contract.",
+    "historicalCompatibility": "Keep immutable v1 source, stored results and exact-version replay. Allocate a governed successor only for approved incompatible behavior; no public route remapping.",
+    "ownerDecision": "Determine whether the catalog requires a different question or the profiles should be reconciled under one experience. If unsupported, retain the identity and hold its standalone delivery."
+  },
+  {
+    "id": 14,
+    "canonicalName": "Debt Payoff Calculator",
+    "catalogDomain": "Loans & Credit",
+    "recordedCanonicalRequirements": [
+      "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+      "Minimum payments supplied; no issuer minimum-payment schedule.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+      "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+    ],
+    "fullScope": "Owner-approved full input/output scope pending",
+    "peer": {
+      "id": 16,
+      "name": "Debt Avalanche Calculator",
+      "recordedProductionSupports": []
+    },
+    "exactPrivateEngine": "private.component.14",
+    "version": 1,
+    "privateSlug": "private-component-14",
+    "existingPrivateDelivery": "/admin/worker2-energy-mobility-20261119",
+    "source": "src/calculators/component-contracts.ts",
+    "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+    "sourceSHA256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda",
+    "recordedProductionSupports": [],
+    "overlap": "The same avalanche engine and fixed priority.",
+    "proposedDistinction": "Determine whether this is a strategy-selection product distinct both from #16 and the existing #17 comparison.",
+    "implementationAndReuse": "Reuse simulator; implement a selector only for an approved nonduplicate decision workflow.",
+    "historicalCompatibility": "Keep immutable v1 source, stored results and exact-version replay. Allocate a governed successor only for approved incompatible behavior; no public route remapping.",
+    "ownerDecision": "Determine whether this is a strategy-selection product distinct both from #16 and the existing #17 comparison. If unsupported, retain the identity and hold its standalone delivery."
+  }
+]

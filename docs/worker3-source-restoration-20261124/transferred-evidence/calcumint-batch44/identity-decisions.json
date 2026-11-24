@@ -1,0 +1,1893 @@
+{
+  "decisions": [
+    {
+      "id": 6,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Personal/auto/student/home-equity product aliases are valid only for fixed-rate loans without subsidy, grace, fees or balloon; full product mapping unsupported.",
+        "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 6,
+        "name": "Personal Loan Calculator",
+        "privateBinding": {
+          "engine": "private.component.6",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-6"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 3,
+        "name": "Amortization Calculator",
+        "privateBinding": {
+          "engine": "private.component.3",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-3"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same fixed-rate amortization from principal, APR, term and payment basis.",
+      "proposedDistinction": "Specify whether personal-loan comparison means net disbursement after explicitly supplied fees, and which fees flow into cost.",
+      "reusableArithmetic": "Reuse the approved arithmetic only where inputs and units are equivalent.",
+      "requiredEngineering": "Reuse payment schedule. Add a cash-flow layer only if fees are approved.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 7,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Personal/auto/student/home-equity product aliases are valid only for fixed-rate loans without subsidy, grace, fees or balloon; full product mapping unsupported.",
+        "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 7,
+        "name": "Auto Loan Calculator",
+        "privateBinding": {
+          "engine": "private.component.7",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-7"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 3,
+        "name": "Amortization Calculator",
+        "privateBinding": {
+          "engine": "private.component.3",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-3"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same supplied-principal amortization.",
+      "proposedDistinction": "Approve a vehicle transaction contract using supplied price, trade-in and down payment to derive principal; specify treatment of rolled-in balance and tax.",
+      "reusableArithmetic": "Reuse the approved arithmetic only where inputs and units are equivalent.",
+      "requiredEngineering": "Reuse schedule; add explicit transaction inputs and derived principal.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 8,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Personal/auto/student/home-equity product aliases are valid only for fixed-rate loans without subsidy, grace, fees or balloon; full product mapping unsupported.",
+        "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 8,
+        "name": "Student Loan Calculator",
+        "privateBinding": {
+          "engine": "private.component.8",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-8"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 3,
+        "name": "Amortization Calculator",
+        "privateBinding": {
+          "engine": "private.component.3",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-3"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same fixed-rate amortization with no student-loan treatment.",
+      "proposedDistinction": "Approve a specific supplied schedule for grace, in-school interest and capitalization, or leave the distinction on hold.",
+      "reusableArithmetic": "Reuse the approved arithmetic only where inputs and units are equivalent.",
+      "requiredEngineering": "Reuse post-repayment schedule; changed timing requires reviewed calculation and reference vectors.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 11,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Supplied monthly payment; horizon2400months, finalpartialpayment and0.005closure. No calendar dates or issuer minimum-payment policy.",
+        "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 11,
+        "name": "Loan Term Calculator",
+        "privateBinding": {
+          "engine": "private.component.11",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-11"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 4,
+        "name": "Loan Payoff Calculator",
+        "privateBinding": {
+          "engine": "private.component.4",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-4"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same constant payment and payoff time.",
+      "proposedDistinction": "Determine whether the catalog requires a different question or the profiles should be reconciled under one experience.",
+      "reusableArithmetic": "Reuse the approved arithmetic only where inputs and units are equivalent.",
+      "requiredEngineering": "Reuse amortization; no distinct implementation justified without a different supplied contract.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 14,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Minimum payments supplied; no issuer minimum-payment schedule.",
+        "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 14,
+        "name": "Debt Payoff Calculator",
+        "privateBinding": {
+          "engine": "private.component.14",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-14"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 16,
+        "name": "Debt Avalanche Calculator",
+        "privateBinding": {
+          "engine": "private.component.16",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-16"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "The same avalanche engine and fixed priority.",
+      "proposedDistinction": "Determine whether this is a strategy-selection product distinct both from #16 and the existing #17 comparison.",
+      "reusableArithmetic": "Reuse the approved arithmetic only where inputs and units are equivalent.",
+      "requiredEngineering": "Reuse simulator; implement a selector only for an approved nonduplicate decision workflow.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 22,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Personal/auto/student/home-equity product aliases are valid only for fixed-rate loans without subsidy, grace, fees or balloon; full product mapping unsupported.",
+        "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 22,
+        "name": "Home Equity Loan Calculator",
+        "privateBinding": {
+          "engine": "private.component.22",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-22"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 3,
+        "name": "Amortization Calculator",
+        "privateBinding": {
+          "engine": "private.component.3",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-3"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "Fixed-rate amortization capture without home-equity product terms.",
+      "proposedDistinction": "Supplied home-equity draw versus net proceeds with separately entered one-time costs, if that is the intended fixed-loan product.",
+      "reusableArithmetic": "Level payment math",
+      "requiredEngineering": "Explicit draw and fee/cash-flow capture; exclude variable-rate lines unless separately approved.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 27,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Requires specialist version approval; jurisdiction/escrow rules are supplied only where supported.",
+        "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 27,
+        "name": "Mortgage Amortization Calculator",
+        "privateBinding": {
+          "engine": "private.component.27",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-27"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 3,
+        "name": "Amortization Calculator",
+        "privateBinding": {
+          "engine": "private.component.3",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-3"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same standard amortization inputs and result; mortgage label alone.",
+      "proposedDistinction": "Mortgage-specific dated schedule only if the catalog requires policy such as separately supplied escrow or nonprincipal amounts.",
+      "reusableArithmetic": "Unchanged amortization ledger",
+      "requiredEngineering": "Expose principal/interest separately; design cash boundaries before changing the schedule.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 28,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Not a complete mortgage escrow/insurance/penalty rules engine.",
+        "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 28,
+        "name": "Mortgage Payoff Calculator",
+        "privateBinding": {
+          "engine": "private.component.28",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-28"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 4,
+        "name": "Loan Payoff Calculator",
+        "privateBinding": {
+          "engine": "private.component.4",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-4"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same fixed-payment payoff calculation; no different mortgage-specific boundary.",
+      "proposedDistinction": "Compare a supplied target mortgage payoff date against the current fixed payment schedule. Verify that this is distinct from existing target-date payoff.",
+      "reusableArithmetic": "Fixed-payment schedule",
+      "requiredEngineering": "Date semantics and target feasibility if approved; otherwise retain shared payoff support.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 29,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Lump-sum prepayment is a separate loan-prepayment contract; mortgage escrow/insurance omitted.",
+        "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 29,
+        "name": "Mortgage Extra Payment Calculator",
+        "privateBinding": {
+          "engine": "private.component.29",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-29"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 5,
+        "name": "Extra Payment Calculator",
+        "privateBinding": {
+          "engine": "private.component.5",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-5"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same extra-payment comparison, without separate mortgage-specific inputs or output.",
+      "proposedDistinction": "Compare mortgage-only one-time dated curtailments against baseline if supported.",
+      "reusableArithmetic": "Principal and interest trace",
+      "requiredEngineering": "Dated input and explicit reamortization policy; hold while existing recurring-extra contract is the same.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 30,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "No lender approval, mortgage insurance, vehicle costs, statutory DTI threshold or product eligibility.",
+        "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 30,
+        "name": "Mortgage Affordability Calculator",
+        "privateBinding": {
+          "engine": "private.component.30",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-30"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 12,
+        "name": "Loan Amount Affordability Calculator",
+        "privateBinding": {
+          "engine": "private.component.12",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-12"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same monthly-payment-to-principal inversion; no mortgage underwriting.",
+      "proposedDistinction": "Mortgage-specific affordable principal conditional on supplied housing budget and recurring nonprincipal costs.",
+      "reusableArithmetic": "Existing principal inversion",
+      "requiredEngineering": "Separate escrow/fees as supplied inputs and prevent double-counting.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 37,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Generic ROI/profit arithmetic does not expose these distinct input/output contracts; accounting inclusions must be explicit.",
+        "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 37,
+        "name": "Rental Cash Flow Calculator",
+        "privateBinding": {
+          "engine": "private.remaining.37",
+          "version": 1,
+          "source": "src/calculators/remaining-contracts.ts",
+          "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+          "slug": "private-remaining-37"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 100,
+        "name": "Monthly Budget Calculator",
+        "privateBinding": {
+          "engine": "private.remaining.100",
+          "version": 1,
+          "source": "src/calculators/remaining-contracts.ts",
+          "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+          "slug": "private-remaining-100"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same generic period income and expense ledger as the budget profile.",
+      "proposedDistinction": "Approve a property-level cash ledger with explicit gross rent, vacancy, operating costs and debt service; exclude transfers and tax unless reviewed.",
+      "reusableArithmetic": "Reuse the approved arithmetic only where inputs and units are equivalent.",
+      "requiredEngineering": "Reuse summation; new fields, non-overlap checks and cash-after-debt output.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 45,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Excludes improvements, transactions, property tax and market forecast; family reuse only.",
+        "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 45,
+        "name": "Property Appreciation Calculator",
+        "privateBinding": {
+          "engine": "private.remaining.45",
+          "version": 1,
+          "source": "src/calculators/remaining-contracts.ts",
+          "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+          "slug": "private-remaining-45"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 59,
+        "name": "Future Value Calculator",
+        "privateBinding": null,
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same initial value, compounded rate, horizon and inflation adjustment.",
+      "proposedDistinction": "Decide whether property appreciation has a genuine valuation comparison contract; keep rent, debt and ROI separate.",
+      "reusableArithmetic": "Reuse the approved arithmetic only where inputs and units are equivalent.",
+      "requiredEngineering": "Reuse compounding if forecast arithmetic stays; no synthetic distinction from relabeling.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 47,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "User must define increment attributable to renovation; no causal valuation model.",
+        "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 47,
+        "name": "Renovation ROI Calculator",
+        "privateBinding": {
+          "engine": "private.remaining.47",
+          "version": 1,
+          "source": "src/calculators/remaining-contracts.ts",
+          "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+          "slug": "private-remaining-47"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 64,
+        "name": "ROI Calculator",
+        "privateBinding": null,
+        "recordedCandidateBindings": [
+          {
+            "engineId": "finance.roi",
+            "version": 1,
+            "slug": "roi-calculator",
+            "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+            "sharedCatalogIds": [
+              64
+            ],
+            "exactCurrentBinding": true,
+            "identityCandidate": true,
+            "canonicalMappingApproved": false,
+            "proposedUrl": "https://calcumint.com/calculators/finance-investment/roi-calculator",
+            "lifecycle": "UNPUBLISHED_ABSENT",
+            "hostedIdentityMatches": false,
+            "httpStatus": null,
+            "observedUrl": null,
+            "displayedVersion": null,
+            "liveVerified": false,
+            "codeReviewStatus": "draft",
+            "certificationSoftwareIssues": [
+              "Not certified; software audit is not certification authority"
+            ]
+          }
+        ],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same generic ROI inputs and outputs, including added costs and income.",
+      "proposedDistinction": "Approve an incremental renovation comparison defining attributions, outlays and the no-renovation baseline.",
+      "reusableArithmetic": "Reuse the approved arithmetic only where inputs and units are equivalent.",
+      "requiredEngineering": "Reuse ROI primitive; require separate baseline and attribution validation.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 68,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Nominal period/rate and inflation supplied; no asset-specific return forecast.",
+        "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 68,
+        "name": "Real Return Calculator",
+        "privateBinding": {
+          "engine": "private.remaining.68",
+          "version": 1,
+          "source": "src/calculators/remaining-contracts.ts",
+          "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+          "slug": "private-remaining-68"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 69,
+        "name": "Inflation-Adjusted Return Calculator",
+        "privateBinding": null,
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same Fisher conversion already accepted for #69.",
+      "proposedDistinction": "Choose whether this identity requires a purchasing-power amount over an explicit horizon, or remains linked to #69 for review.",
+      "reusableArithmetic": "Reuse the approved arithmetic only where inputs and units are equivalent.",
+      "requiredEngineering": "Reuse Fisher conversion; add real purchasing-power projection only if approved.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 75,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "No reinvestment, dividendforecast or irregular exdates.",
+        "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 75,
+        "name": "Dividend Growth Calculator",
+        "privateBinding": {
+          "engine": "private.remaining.75",
+          "version": 1,
+          "source": "src/calculators/remaining-contracts.ts",
+          "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+          "slug": "private-remaining-75"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 66,
+        "name": "CAGR Calculator",
+        "privateBinding": {
+          "engine": "private.remaining.66",
+          "version": 1,
+          "source": "src/calculators/remaining-contracts.ts",
+          "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+          "slug": "private-remaining-66"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same two-endpoint CAGR used by #66.",
+      "proposedDistinction": "Approve per-share dividend growth with comparable observations, split normalization basis and covered periods.",
+      "reusableArithmetic": "Reuse the approved arithmetic only where inputs and units are equivalent.",
+      "requiredEngineering": "Reuse CAGR; add comparable-series validation and show dividend basis, no yield/total-return claims.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 76,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "No datedcashflow IRR, automaticreinvestment, livequotes or timeweightedreturn.",
+        "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 76,
+        "name": "Mutual Fund Return Calculator",
+        "privateBinding": {
+          "engine": "private.remaining.76",
+          "version": 1,
+          "source": "src/calculators/remaining-contracts.ts",
+          "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+          "slug": "private-remaining-76"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 64,
+        "name": "ROI Calculator",
+        "privateBinding": null,
+        "recordedCandidateBindings": [
+          {
+            "engineId": "finance.roi",
+            "version": 1,
+            "slug": "roi-calculator",
+            "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+            "sharedCatalogIds": [
+              64
+            ],
+            "exactCurrentBinding": true,
+            "identityCandidate": true,
+            "canonicalMappingApproved": false,
+            "proposedUrl": "https://calcumint.com/calculators/finance-investment/roi-calculator",
+            "lifecycle": "UNPUBLISHED_ABSENT",
+            "hostedIdentityMatches": false,
+            "httpStatus": null,
+            "observedUrl": null,
+            "displayedVersion": null,
+            "liveVerified": false,
+            "codeReviewStatus": "draft",
+            "certificationSoftwareIssues": [
+              "Not certified; software audit is not certification authority"
+            ]
+          }
+        ],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same generic ROI can be entered unchanged for a mutual fund.",
+      "proposedDistinction": "Decide if this is a supplied total-return model with cash-flow dates, distributions and fund fees with a declared reinvestment basis.",
+      "reusableArithmetic": "Reuse the approved arithmetic only where inputs and units are equivalent.",
+      "requiredEngineering": "Reuse return arithmetic for matched inputs; cash-flow timing may require an exact successor.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 77,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "No datedcashflow IRR, automaticreinvestment, livequotes or timeweightedreturn.",
+        "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 77,
+        "name": "ETF Return Calculator",
+        "privateBinding": {
+          "engine": "private.remaining.77",
+          "version": 1,
+          "source": "src/calculators/remaining-contracts.ts",
+          "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+          "slug": "private-remaining-77"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 64,
+        "name": "ROI Calculator",
+        "privateBinding": null,
+        "recordedCandidateBindings": [
+          {
+            "engineId": "finance.roi",
+            "version": 1,
+            "slug": "roi-calculator",
+            "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+            "sharedCatalogIds": [
+              64
+            ],
+            "exactCurrentBinding": true,
+            "identityCandidate": true,
+            "canonicalMappingApproved": false,
+            "proposedUrl": "https://calcumint.com/calculators/finance-investment/roi-calculator",
+            "lifecycle": "UNPUBLISHED_ABSENT",
+            "hostedIdentityMatches": false,
+            "httpStatus": null,
+            "observedUrl": null,
+            "displayedVersion": null,
+            "liveVerified": false,
+            "codeReviewStatus": "draft",
+            "certificationSoftwareIssues": [
+              "Not certified; software audit is not certification authority"
+            ]
+          }
+        ],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same generic ROI can be entered unchanged for an ETF.",
+      "proposedDistinction": "Require a distinct comparison basis, for example NAV versus market-price performance, only if the canonical scope supports it.",
+      "reusableArithmetic": "Reuse the approved arithmetic only where inputs and units are equivalent.",
+      "requiredEngineering": "Reuse return calculations; independently specify quoted bases and avoid fee/distribution double counting.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 83,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Supplied goal/return/horizon only; no educational or retirement policy.",
+        "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 83,
+        "name": "Required Monthly Retirement Investment Calculator",
+        "privateBinding": {
+          "engine": "private.remaining.83",
+          "version": 1,
+          "source": "src/calculators/remaining-contracts.ts",
+          "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+          "slug": "private-remaining-83"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 61,
+        "name": "Periodic Payment Calculator",
+        "privateBinding": null,
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same inverse periodic accumulation as #61 with a goal label.",
+      "proposedDistinction": "Approve retirement-specific supplied horizon, starting assets and target basis, including whether target is in current or future purchasing power.",
+      "reusableArithmetic": "Reuse the approved arithmetic only where inputs and units are equivalent.",
+      "requiredEngineering": "Reuse inverse contribution solver if supported; explicitly model the accepted target inputs.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 104,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "No lender approval, mortgage insurance, vehicle costs, statutory DTI threshold or product eligibility.",
+        "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 104,
+        "name": "Housing Affordability Calculator",
+        "privateBinding": {
+          "engine": "private.component.104",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-104"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 12,
+        "name": "Loan Amount Affordability Calculator",
+        "privateBinding": {
+          "engine": "private.component.12",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-12"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same principal inversion; no car price, trade-in or finance-specific adjustments.",
+      "proposedDistinction": "Vehicle transaction limit from supplied trade-in, down payment and financed costs rather than generic debt-service capacity.",
+      "reusableArithmetic": "Existing principal inversion",
+      "requiredEngineering": "Separate cash price from principal and define treatment of negative trade-in equity.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 105,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "No lender approval, mortgage insurance, vehicle costs, statutory DTI threshold or product eligibility.",
+        "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 105,
+        "name": "Vehicle Affordability Calculator",
+        "privateBinding": {
+          "engine": "private.component.105",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-105"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 12,
+        "name": "Loan Amount Affordability Calculator",
+        "privateBinding": {
+          "engine": "private.component.12",
+          "version": 1,
+          "source": "src/calculators/component-contracts.ts",
+          "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+          "slug": "private-component-12"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same principal inversion without a housing budget or purchase contract.",
+      "proposedDistinction": "Maximum house purchase price using supplied cash and financing assumptions, distinct from #30 principal capacity.",
+      "reusableArithmetic": "Existing affordability primitive",
+      "requiredEngineering": "Add cash and acquisition costs; use explicit entered terms without underwriting claims.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 106,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Supplied goal/return/horizon only; no educational or retirement policy.",
+        "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 106,
+        "name": "Education Savings Calculator",
+        "privateBinding": {
+          "engine": "private.remaining.106",
+          "version": 1,
+          "source": "src/calculators/remaining-contracts.ts",
+          "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+          "slug": "private-remaining-106"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 61,
+        "name": "Periodic Payment Calculator",
+        "privateBinding": null,
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same inverse periodic accumulation as #61 with a goal label.",
+      "proposedDistinction": "Approve dated education costs and explicit existing funding offsets, with inflation and contribution timing defined where applicable.",
+      "reusableArithmetic": "Reuse the approved arithmetic only where inputs and units are equivalent.",
+      "requiredEngineering": "Reuse inverse solver for one compatible target; multiple dated costs would require new reviewed math.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 107,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "No venue/travelprices, recommendedcategories, bankfeeds or forecast; suppliedledger arithmetic only.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved.",
+        "Per-ID approved identity/version and complete input/output/feature requirements are not established."
+      ],
+      "current": {
+        "id": 107,
+        "name": "Wedding Budget Calculator",
+        "privateBinding": {
+          "engine": "private.remaining.107",
+          "version": 1,
+          "source": "src/calculators/remaining-contracts.ts",
+          "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+          "slug": "private-remaining-107"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 100,
+        "name": "Monthly Budget Calculator",
+        "privateBinding": {
+          "engine": "private.remaining.100",
+          "version": 1,
+          "source": "src/calculators/remaining-contracts.ts",
+          "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+          "slug": "private-remaining-100"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same period funding and expense ledger as #100.",
+      "proposedDistinction": "Determine whether guest count, deposits and payment milestones are canonical; publish no duplicate budget entry if they are absent.",
+      "reusableArithmetic": "Reuse the approved arithmetic only where inputs and units are equivalent.",
+      "requiredEngineering": "Reuse ledger totals; add explicit derived attendance/outlay and timing only if approved.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 108,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "No venue/travelprices, recommendedcategories, bankfeeds or forecast; suppliedledger arithmetic only.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved.",
+        "Per-ID approved identity/version and complete input/output/feature requirements are not established."
+      ],
+      "current": {
+        "id": 108,
+        "name": "Vacation Budget Calculator",
+        "privateBinding": {
+          "engine": "private.remaining.108",
+          "version": 1,
+          "source": "src/calculators/remaining-contracts.ts",
+          "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+          "slug": "private-remaining-108"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 100,
+        "name": "Monthly Budget Calculator",
+        "privateBinding": {
+          "engine": "private.remaining.100",
+          "version": 1,
+          "source": "src/calculators/remaining-contracts.ts",
+          "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+          "slug": "private-remaining-100"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same period funding and expense ledger as #100.",
+      "proposedDistinction": "Determine whether traveler counts, trip nights and split allocation are in canonical scope and distinct from other travel calculators.",
+      "reusableArithmetic": "Reuse the approved arithmetic only where inputs and units are equivalent.",
+      "requiredEngineering": "Reuse ledger totals; add approved duration and traveler inputs without currency-rate inference.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 113,
+      "canonicalRequirements": [
+        "Adjudicate canonical mapping and verify the applicable public route, render and calculation",
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "No payroll or purchasingpower adjustment.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved.",
+        "Per-ID approved identity/version and complete input/output/feature requirements are not established."
+      ],
+      "current": {
+        "id": 113,
+        "name": "Raise Percentage Calculator",
+        "privateBinding": {
+          "engine": "private.remaining.113",
+          "version": 1,
+          "source": "src/calculators/remaining-contracts.ts",
+          "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+          "slug": "private-remaining-113"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": [
+          {
+            "calculator_key": "launch-percentage-change-calculator",
+            "slug": "percentage-change-calculator",
+            "version": 1,
+            "published_at": "2026-09-30 18:32:02.787874+00",
+            "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+            "url": "https://calcumint.com/calculators/math/percentage-change-calculator",
+            "historicalRender": false
+          }
+        ]
+      },
+      "overlap": {
+        "registryDefinition": {
+          "id": "launch-percentage-change-calculator",
+          "slug": "percentage-change-calculator",
+          "version": 1
+        },
+        "slug": "percentage-change-calculator",
+        "recordedPublicTuples": [
+          {
+            "calculator_key": "launch-percentage-change-calculator",
+            "slug": "percentage-change-calculator",
+            "version": 1,
+            "published_at": "2026-09-30 18:32:02.787874+00",
+            "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+            "url": "https://calcumint.com/calculators/math/percentage-change-calculator",
+            "historicalRender": false
+          }
+        ]
+      },
+      "reason": "Same period pay values feed the identical percentage change operation.",
+      "proposedDistinction": "Use comparable pay frequency and hours only if the catalog requires converting new and old compensation before comparison.",
+      "reusableArithmetic": "Percentage change",
+      "requiredEngineering": "Different-period normalization and declared cash bases if approved.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 141,
+      "canonicalRequirements": [
+        "Adjudicate canonical mapping and verify the applicable public route, render and calculation",
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Only price-from-markup; reverse markup percentage from selling price is not supplied.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 141,
+        "name": "Markup Calculator",
+        "privateBinding": {
+          "engine": "private.business.141",
+          "version": 1,
+          "source": "src/calculators/business-contracts.ts",
+          "blob": "689a8c97d7ad1134135f3169ba9c1d33bbb28b5f",
+          "slug": "private-business-141"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": [
+          {
+            "calculator_key": "launch-markup-price-calculator",
+            "slug": "markup-price-calculator",
+            "version": 1,
+            "published_at": "2026-09-30 18:32:02.787874+00",
+            "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+            "url": "https://calcumint.com/calculators/everyday/markup-price-calculator",
+            "historicalRender": false
+          }
+        ]
+      },
+      "overlap": {
+        "registryDefinition": {
+          "id": "launch-markup-price-calculator",
+          "slug": "markup-price-calculator",
+          "version": 1
+        },
+        "slug": "markup-price-calculator",
+        "recordedPublicTuples": [
+          {
+            "calculator_key": "launch-markup-price-calculator",
+            "slug": "markup-price-calculator",
+            "version": 1,
+            "published_at": "2026-09-30 18:32:02.787874+00",
+            "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+            "url": "https://calcumint.com/calculators/everyday/markup-price-calculator",
+            "historicalRender": false
+          }
+        ]
+      },
+      "reason": "Same cost and markup inputs produce the public supporting markup price.",
+      "proposedDistinction": "Determine whether the calculator\u2019s intended question differs from producing sale price via cost plus markup.",
+      "reusableArithmetic": "Markup percentage",
+      "requiredEngineering": "Current arithmetic and route are reusable; no separate implementation justified without a supported scope.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 144,
+      "canonicalRequirements": [
+        "Adjudicate canonical mapping and verify the applicable public route, render and calculation",
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Gross arithmetic only; unspecified Profit master may also require net profit, tax or operating expenses.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 144,
+        "name": "Profit Calculator",
+        "privateBinding": {
+          "engine": "private.business.144",
+          "version": 1,
+          "source": "src/calculators/business-contracts.ts",
+          "blob": "689a8c97d7ad1134135f3169ba9c1d33bbb28b5f",
+          "slug": "private-business-144"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": [
+          {
+            "calculator_key": "launch-margin-amount-calculator",
+            "slug": "margin-amount-calculator",
+            "version": 1,
+            "published_at": "2026-09-30 18:32:02.787874+00",
+            "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+            "url": "https://calcumint.com/calculators/everyday/margin-amount-calculator",
+            "historicalRender": false
+          }
+        ]
+      },
+      "overlap": {
+        "registryDefinition": {
+          "id": "launch-margin-amount-calculator",
+          "slug": "margin-amount-calculator",
+          "version": 1
+        },
+        "slug": "margin-amount-calculator",
+        "recordedPublicTuples": [
+          {
+            "calculator_key": "launch-margin-amount-calculator",
+            "slug": "margin-amount-calculator",
+            "version": 1,
+            "published_at": "2026-09-30 18:32:02.787874+00",
+            "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+            "url": "https://calcumint.com/calculators/everyday/margin-amount-calculator",
+            "historicalRender": false
+          }
+        ]
+      },
+      "reason": "Same two supplied totals and subtraction; no classification that distinguishes the public component.",
+      "proposedDistinction": "Determine whether this identity requires itemized cash/result inputs with explicit costs and exclusions instead of subtracting two totals.",
+      "reusableArithmetic": "Subtraction and finite sums",
+      "requiredEngineering": "Only approved explicit categories and non-overlap checks can establish a new contract.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 164,
+      "canonicalRequirements": [
+        "Adjudicate canonical mapping and verify the applicable public route, render and calculation",
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Zero prior MRR excluded; no movement bridge.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 164,
+        "name": "MRR Growth Calculator",
+        "privateBinding": {
+          "engine": "private.business.164",
+          "version": 1,
+          "source": "src/calculators/business-contracts.ts",
+          "blob": "689a8c97d7ad1134135f3169ba9c1d33bbb28b5f",
+          "slug": "private-business-164"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": [
+          {
+            "calculator_key": "launch-percentage-change-calculator",
+            "slug": "percentage-change-calculator",
+            "version": 1,
+            "published_at": "2026-09-30 18:32:02.787874+00",
+            "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+            "url": "https://calcumint.com/calculators/math/percentage-change-calculator",
+            "historicalRender": false
+          }
+        ]
+      },
+      "overlap": {
+        "registryDefinition": {
+          "id": "launch-percentage-change-calculator",
+          "slug": "percentage-change-calculator",
+          "version": 1
+        },
+        "slug": "percentage-change-calculator",
+        "recordedPublicTuples": [
+          {
+            "calculator_key": "launch-percentage-change-calculator",
+            "slug": "percentage-change-calculator",
+            "version": 1,
+            "published_at": "2026-09-30 18:32:02.787874+00",
+            "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+            "url": "https://calcumint.com/calculators/math/percentage-change-calculator",
+            "historicalRender": false
+          }
+        ]
+      },
+      "reason": "Monthly recurring revenue labels and period constraint without an independent recurring-revenue computation.",
+      "proposedDistinction": "Recurring-revenue movement bridge with supplied same-period additions, churn and expansions, if not duplicative of existing retention/expansion products.",
+      "reusableArithmetic": "Percentage change and sums",
+      "requiredEngineering": "Use disjoint categories, reconcile opening to closing and define no-growth/zero-base behavior.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 188,
+      "canonicalRequirements": [
+        "Adjudicate canonical mapping and verify the applicable public route, render and calculation",
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "No bid auction or attribution model.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 188,
+        "name": "CPC Calculator",
+        "privateBinding": {
+          "engine": "private.business.188",
+          "version": 1,
+          "source": "src/calculators/business-contracts.ts",
+          "blob": "689a8c97d7ad1134135f3169ba9c1d33bbb28b5f",
+          "slug": "private-business-188"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": [
+          {
+            "calculator_key": "launch-unit-price-calculator",
+            "slug": "unit-price-calculator",
+            "version": 1,
+            "published_at": "2026-09-30 18:32:02.787874+00",
+            "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+            "url": "https://calcumint.com/calculators/everyday/unit-price-calculator",
+            "historicalRender": false
+          }
+        ]
+      },
+      "overlap": {
+        "registryDefinition": {
+          "id": "launch-unit-price-calculator",
+          "slug": "unit-price-calculator",
+          "version": 1
+        },
+        "slug": "unit-price-calculator",
+        "recordedPublicTuples": [
+          {
+            "calculator_key": "launch-unit-price-calculator",
+            "slug": "unit-price-calculator",
+            "version": 1,
+            "published_at": "2026-09-30 18:32:02.787874+00",
+            "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+            "url": "https://calcumint.com/calculators/everyday/unit-price-calculator",
+            "historicalRender": false
+          }
+        ]
+      },
+      "reason": "Spend per click is the same two-field unit-price calculation with relabeled values.",
+      "proposedDistinction": "Determine whether click-cost comparison across supplied campaigns is in scope, with spend-weighted totals and disjoint counts.",
+      "reusableArithmetic": "Quotient",
+      "requiredEngineering": "Campaign data shape and validation only if distinct scope substantiated.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 189,
+      "canonicalRequirements": [
+        "Adjudicate canonical mapping and verify the applicable public route, render and calculation",
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Labels need adaptation and nonnegative money/count binding.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 189,
+        "name": "CPM Calculator",
+        "privateBinding": {
+          "engine": "private.business.189",
+          "version": 1,
+          "source": "src/calculators/business-contracts.ts",
+          "blob": "689a8c97d7ad1134135f3169ba9c1d33bbb28b5f",
+          "slug": "private-business-189"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": [
+          {
+            "calculator_key": "launch-rate-per-thousand-calculator",
+            "slug": "rate-per-thousand-calculator",
+            "version": 1,
+            "published_at": "2026-09-30 18:32:02.787874+00",
+            "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+            "url": "https://calcumint.com/calculators/statistics/rate-per-thousand-calculator",
+            "historicalRender": false
+          }
+        ]
+      },
+      "overlap": {
+        "registryDefinition": {
+          "id": "launch-rate-per-thousand-calculator",
+          "slug": "rate-per-thousand-calculator",
+          "version": 1
+        },
+        "slug": "rate-per-thousand-calculator",
+        "recordedPublicTuples": [
+          {
+            "calculator_key": "launch-rate-per-thousand-calculator",
+            "slug": "rate-per-thousand-calculator",
+            "version": 1,
+            "published_at": "2026-09-30 18:32:02.787874+00",
+            "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+            "url": "https://calcumint.com/calculators/statistics/rate-per-thousand-calculator",
+            "historicalRender": false
+          }
+        ]
+      },
+      "reason": "Spend per thousand impressions is the direct scaled quotient.",
+      "proposedDistinction": "Determine whether multiple placements and supplied impression/spend weighting are in scope.",
+      "reusableArithmetic": "Rate per thousand",
+      "requiredEngineering": "Validate disjoint impressions and preserve original rate output.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 197,
+      "canonicalRequirements": [
+        "Adjudicate canonical mapping and verify the applicable public route, render and calculation",
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Fixed percentage only; excludes tiered, recurring, clawback and tax rules.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 197,
+        "name": "Affiliate Commission Calculator",
+        "privateBinding": {
+          "engine": "private.business.197",
+          "version": 1,
+          "source": "src/calculators/business-contracts.ts",
+          "blob": "689a8c97d7ad1134135f3169ba9c1d33bbb28b5f",
+          "slug": "private-business-197"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": [
+          {
+            "calculator_key": "core.percentage-of-value",
+            "slug": "percentage-of-value-calculator",
+            "version": 1,
+            "published_at": "2026-09-30 00:34:03.970244+00",
+            "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+            "url": "https://calcumint.com/calculators/math/percentage-of-value-calculator",
+            "historicalRender": false
+          }
+        ]
+      },
+      "overlap": {
+        "registryDefinition": {
+          "id": "core.percentage-of-value",
+          "slug": "percentage-of-value-calculator",
+          "version": 1
+        },
+        "slug": "percentage-of-value-calculator",
+        "recordedPublicTuples": [
+          {
+            "calculator_key": "core.percentage-of-value",
+            "slug": "percentage-of-value-calculator",
+            "version": 1,
+            "published_at": "2026-09-30 00:34:03.970244+00",
+            "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+            "url": "https://calcumint.com/calculators/math/percentage-of-value-calculator",
+            "historicalRender": false
+          }
+        ]
+      },
+      "reason": "Fixed eligible sales times one percentage; no tier, clawback, tax or eligibility calculation.",
+      "proposedDistinction": "Require a supported affiliate-specific payout boundary, such as supplied reversals or tier rules, distinct from #119.",
+      "reusableArithmetic": "Percentage arithmetic",
+      "requiredEngineering": "Explicit tier/eligibility and refund fields only if approved, without tax inference.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 477,
+      "canonicalRequirements": [
+        "Adjudicate canonical mapping and verify the applicable public route, render and calculation",
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "No tiers, fixed charges or taxes. Appliance/home-energy engines add wattage-time variants.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 477,
+        "name": "Electricity Cost Calculator",
+        "privateBinding": {
+          "engine": "private.remaining.477",
+          "version": 1,
+          "source": "src/calculators/remaining-contracts.ts",
+          "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+          "slug": "private-remaining-477"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": [
+          {
+            "calculator_key": "launch-energy-cost-calculator",
+            "slug": "energy-cost-calculator",
+            "version": 1,
+            "published_at": "2026-09-30 18:32:02.787874+00",
+            "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+            "url": "https://calcumint.com/calculators/everyday/energy-cost-calculator",
+            "historicalRender": false
+          }
+        ]
+      },
+      "overlap": {
+        "registryDefinition": {
+          "id": "launch-energy-cost-calculator",
+          "slug": "energy-cost-calculator",
+          "version": 1
+        },
+        "slug": "energy-cost-calculator",
+        "recordedPublicTuples": [
+          {
+            "calculator_key": "launch-energy-cost-calculator",
+            "slug": "energy-cost-calculator",
+            "version": 1,
+            "published_at": "2026-09-30 18:32:02.787874+00",
+            "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+            "url": "https://calcumint.com/calculators/everyday/energy-cost-calculator",
+            "historicalRender": false
+          }
+        ]
+      },
+      "reason": "Same flat kWh and tariff multiplication without billing adjustments.",
+      "proposedDistinction": "Determine whether the contract requires supplied fixed fees or tier boundaries beyond flat kWh times tariff.",
+      "reusableArithmetic": "Energy \u00d7 rate",
+      "requiredEngineering": "Preserve flat tariff behavior and validate any approved extra inputs distinctly.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 480,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "No degradation, discounting, maintenance or tariff model.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 480,
+        "name": "Solar Payback Calculator",
+        "privateBinding": {
+          "engine": "private.remaining.480",
+          "version": 1,
+          "source": "src/calculators/remaining-contracts.ts",
+          "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+          "slug": "private-remaining-480"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 78,
+        "name": "Payback Period Calculator",
+        "privateBinding": null,
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "Same constant undiscounted annual savings and net cost.",
+      "proposedDistinction": "Solar-specific net installed cost and validated supplied annual savings components only if the catalog separates its decision from #78.",
+      "reusableArithmetic": "Simple payback quotient",
+      "requiredEngineering": "Any approved solar inputs need explicit incentive/benefit distinctions and consistent periods.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 482,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved.",
+        "Per-ID approved identity/version and complete input/output/feature requirements are not established.",
+        "Independent numerical and browser acceptance for the full canonical domain is not established."
+      ],
+      "current": {
+        "id": 482,
+        "name": "Battery Runtime Calculator",
+        "privateBinding": null,
+        "recordedCandidateBindings": [
+          {
+            "engineId": "technology.battery-runtime",
+            "version": 1,
+            "slug": "battery-runtime-calculator",
+            "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+            "sharedCatalogIds": [
+              380,
+              482
+            ],
+            "exactCurrentBinding": true,
+            "identityCandidate": true,
+            "canonicalMappingApproved": false,
+            "proposedUrl": "https://calcumint.com/calculators/technology-computing/battery-runtime-calculator",
+            "lifecycle": "UNPUBLISHED_ABSENT",
+            "hostedIdentityMatches": false,
+            "httpStatus": null,
+            "observedUrl": null,
+            "displayedVersion": null,
+            "liveVerified": false,
+            "codeReviewStatus": "reviewed",
+            "certificationSoftwareIssues": [
+              "Not certified; software audit is not certification authority"
+            ]
+          }
+        ],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 380,
+        "name": "Battery Runtime Calculator",
+        "privateBinding": null,
+        "recordedCandidateBindings": [
+          {
+            "engineId": "technology.battery-runtime",
+            "version": 1,
+            "slug": "battery-runtime-calculator",
+            "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+            "sharedCatalogIds": [
+              380,
+              482
+            ],
+            "exactCurrentBinding": true,
+            "identityCandidate": true,
+            "canonicalMappingApproved": false,
+            "proposedUrl": "https://calcumint.com/calculators/technology-computing/battery-runtime-calculator",
+            "lifecycle": "UNPUBLISHED_ABSENT",
+            "hostedIdentityMatches": false,
+            "httpStatus": null,
+            "observedUrl": null,
+            "displayedVersion": null,
+            "liveVerified": false,
+            "codeReviewStatus": "reviewed",
+            "certificationSoftwareIssues": [
+              "Not certified; software audit is not certification authority"
+            ]
+          }
+        ],
+        "recordedPublicTuples": []
+      },
+      "reason": "Both point to the same battery-runtime engine and candidate route.",
+      "proposedDistinction": "Compare supplied loads against a required runtime and show margin by scenario.",
+      "reusableArithmetic": "Wh \u00d7 efficiency \u00f7 W",
+      "requiredEngineering": "Explicit target, multiple scenarios and independently reviewed route/version mapping.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 490,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved.",
+        "Per-ID approved identity/version and complete input/output/feature requirements are not established.",
+        "Independent numerical and browser acceptance for the full canonical domain is not established."
+      ],
+      "current": {
+        "id": 490,
+        "name": "Wind Chill Calculator",
+        "privateBinding": null,
+        "recordedCandidateBindings": [
+          {
+            "engineId": "earth-science.wind-chill",
+            "version": 1,
+            "slug": "wind-chill-calculator",
+            "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+            "sharedCatalogIds": [
+              490,
+              538
+            ],
+            "exactCurrentBinding": true,
+            "identityCandidate": true,
+            "canonicalMappingApproved": false,
+            "proposedUrl": "https://calcumint.com/calculators/earth-science/wind-chill-calculator",
+            "lifecycle": "UNPUBLISHED_ABSENT",
+            "hostedIdentityMatches": false,
+            "httpStatus": null,
+            "observedUrl": null,
+            "displayedVersion": null,
+            "liveVerified": false,
+            "codeReviewStatus": "draft",
+            "certificationSoftwareIssues": [
+              "Not certified; software audit is not certification authority"
+            ]
+          }
+        ],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 538,
+        "name": "Wind Chill Calculator",
+        "privateBinding": null,
+        "recordedCandidateBindings": [
+          {
+            "engineId": "earth-science.wind-chill",
+            "version": 1,
+            "slug": "wind-chill-calculator",
+            "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+            "sharedCatalogIds": [
+              490,
+              538
+            ],
+            "exactCurrentBinding": true,
+            "identityCandidate": true,
+            "canonicalMappingApproved": false,
+            "proposedUrl": "https://calcumint.com/calculators/earth-science/wind-chill-calculator",
+            "lifecycle": "UNPUBLISHED_ABSENT",
+            "hostedIdentityMatches": false,
+            "httpStatus": null,
+            "observedUrl": null,
+            "displayedVersion": null,
+            "liveVerified": false,
+            "codeReviewStatus": "draft",
+            "certificationSoftwareIssues": [
+              "Not certified; software audit is not certification authority"
+            ]
+          }
+        ],
+        "recordedPublicTuples": []
+      },
+      "reason": "Temperature and wind inputs map to the same scalar wind-chill engine.",
+      "proposedDistinction": "Compare supplied wind scenarios in the same selected unit. Exclude exposure advice.",
+      "reusableArithmetic": "Reviewed wind-chill primitive",
+      "requiredEngineering": "Scenario inputs and signed comparisons after domain review.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 492,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved.",
+        "Per-ID approved identity/version and complete input/output/feature requirements are not established.",
+        "Independent numerical and browser acceptance for the full canonical domain is not established."
+      ],
+      "current": {
+        "id": 492,
+        "name": "Dew Point Calculator",
+        "privateBinding": null,
+        "recordedCandidateBindings": [
+          {
+            "engineId": "earth-science.dew-point",
+            "version": 1,
+            "slug": "dew-point-calculator",
+            "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+            "sharedCatalogIds": [
+              492,
+              540
+            ],
+            "exactCurrentBinding": true,
+            "identityCandidate": true,
+            "canonicalMappingApproved": false,
+            "proposedUrl": "https://calcumint.com/calculators/earth-science/dew-point-calculator",
+            "lifecycle": "UNPUBLISHED_ABSENT",
+            "hostedIdentityMatches": false,
+            "httpStatus": null,
+            "observedUrl": null,
+            "displayedVersion": null,
+            "liveVerified": false,
+            "codeReviewStatus": "draft",
+            "certificationSoftwareIssues": [
+              "Not certified; software audit is not certification authority"
+            ]
+          }
+        ],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 540,
+        "name": "Dew Point Calculator",
+        "privateBinding": null,
+        "recordedCandidateBindings": [
+          {
+            "engineId": "earth-science.dew-point",
+            "version": 1,
+            "slug": "dew-point-calculator",
+            "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+            "sharedCatalogIds": [
+              492,
+              540
+            ],
+            "exactCurrentBinding": true,
+            "identityCandidate": true,
+            "canonicalMappingApproved": false,
+            "proposedUrl": "https://calcumint.com/calculators/earth-science/dew-point-calculator",
+            "lifecycle": "UNPUBLISHED_ABSENT",
+            "hostedIdentityMatches": false,
+            "httpStatus": null,
+            "observedUrl": null,
+            "displayedVersion": null,
+            "liveVerified": false,
+            "codeReviewStatus": "draft",
+            "certificationSoftwareIssues": [
+              "Not certified; software audit is not certification authority"
+            ]
+          }
+        ],
+        "recordedPublicTuples": []
+      },
+      "reason": "Both use one scalar dew-point engine.",
+      "proposedDistinction": "Compare surface temperature with supplied-air dew point for a bounded condensation margin. Exclude diagnosis.",
+      "reusableArithmetic": "Reviewed dew-point arithmetic",
+      "requiredEngineering": "Add surface temperature and signed margin.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 506,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Volume only. Ingredient density and non-US cups not implied.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 506,
+        "name": "Kitchen Unit Converter",
+        "privateBinding": null,
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 436,
+        "name": "Cooking Measurement Converter",
+        "privateBinding": null,
+        "recordedCandidateBindings": [
+          {
+            "engineId": "conversion.cooking-measurement",
+            "version": 1,
+            "slug": "cooking-measurement-converter",
+            "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+            "sharedCatalogIds": [
+              436
+            ],
+            "exactCurrentBinding": true,
+            "identityCandidate": true,
+            "canonicalMappingApproved": false,
+            "proposedUrl": "https://calcumint.com/calculators/unit-conversions/cooking-measurement-converter",
+            "lifecycle": "UNPUBLISHED_ABSENT",
+            "hostedIdentityMatches": false,
+            "httpStatus": null,
+            "observedUrl": null,
+            "displayedVersion": null,
+            "liveVerified": false,
+            "codeReviewStatus": "draft",
+            "certificationSoftwareIssues": [
+              "Not certified; software audit is not certification authority"
+            ]
+          }
+        ],
+        "recordedPublicTuples": []
+      },
+      "reason": "Recipe volume scope can overlap the US-liquid unit calculator. #506 has no accepted independent binding.",
+      "proposedDistinction": "Scale recipe quantities by serving count using the proposed metric mL/L contract.",
+      "reusableArithmetic": "Compatible volume primitives",
+      "requiredEngineering": "Distinct scale and unit validation. Preserve #436\u2019s U.S. liquid scope.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 525,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved.",
+        "Per-ID approved identity/version and complete input/output/feature requirements are not established.",
+        "Independent numerical and browser acceptance for the full canonical domain is not established."
+      ],
+      "current": {
+        "id": 525,
+        "name": "One Rep Max Calculator",
+        "privateBinding": null,
+        "recordedCandidateBindings": [
+          {
+            "engineId": "health.one-rep-max",
+            "version": 1,
+            "slug": "one-rep-max-calculator",
+            "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+            "sharedCatalogIds": [
+              403,
+              525
+            ],
+            "exactCurrentBinding": true,
+            "identityCandidate": true,
+            "canonicalMappingApproved": false,
+            "proposedUrl": "https://calcumint.com/calculators/health/one-rep-max-calculator",
+            "lifecycle": "UNPUBLISHED_ABSENT",
+            "hostedIdentityMatches": false,
+            "httpStatus": null,
+            "observedUrl": null,
+            "displayedVersion": null,
+            "liveVerified": false,
+            "codeReviewStatus": "draft",
+            "certificationSoftwareIssues": [
+              "Not certified; software audit is not certification authority"
+            ]
+          }
+        ],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 403,
+        "name": "One Rep Max Calculator",
+        "privateBinding": null,
+        "recordedCandidateBindings": [
+          {
+            "engineId": "health.one-rep-max",
+            "version": 1,
+            "slug": "one-rep-max-calculator",
+            "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+            "sharedCatalogIds": [
+              403,
+              525
+            ],
+            "exactCurrentBinding": true,
+            "identityCandidate": true,
+            "canonicalMappingApproved": false,
+            "proposedUrl": "https://calcumint.com/calculators/health/one-rep-max-calculator",
+            "lifecycle": "UNPUBLISHED_ABSENT",
+            "hostedIdentityMatches": false,
+            "httpStatus": null,
+            "observedUrl": null,
+            "displayedVersion": null,
+            "liveVerified": false,
+            "codeReviewStatus": "draft",
+            "certificationSoftwareIssues": [
+              "Not certified; software audit is not certification authority"
+            ]
+          }
+        ],
+        "recordedPublicTuples": []
+      },
+      "reason": "Both use the same one-repetition maximum estimation binding.",
+      "proposedDistinction": "Compare supplied sets for the same exercise using one supported selected estimation method. No clearance claims.",
+      "reusableArithmetic": "Reviewed scalar repetition estimate",
+      "requiredEngineering": "Validate set/discipline consistency and add a comparison view.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    },
+    {
+      "id": 537,
+      "canonicalRequirements": [
+        "Specify and review the complete canonical input/output/UX contract against the missing full Blueprint; compare the observed candidate before implementing gaps.",
+        "Lower standard-atmosphere approximation; no weather/humidity profile.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+        "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+      ],
+      "current": {
+        "id": 537,
+        "name": "Air Pressure vs Altitude Calculator",
+        "privateBinding": {
+          "engine": "private.remaining.537",
+          "slug": "private-remaining-537",
+          "version": 1,
+          "source": "src/calculators/remaining-contracts.ts",
+          "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+          "workbenchRoute": null
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "overlap": {
+        "id": 494,
+        "name": "Altitude Pressure Calculator",
+        "privateBinding": {
+          "engine": "private.remaining.494",
+          "slug": "private-remaining-494",
+          "version": 1,
+          "source": "src/calculators/remaining-contracts.ts",
+          "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+          "workbenchRoute": "/admin/worker2-energy-mobility-20261119"
+        },
+        "recordedCandidateBindings": [],
+        "recordedPublicTuples": []
+      },
+      "reason": "Both exact v1 private engines execute the same lower standard-atmosphere scalar approximation in Pa.",
+      "proposedDistinction": "Retain #494 for a single altitude estimate. Consider a supplied altitude-series comparison with declared reference pressure for #537 if canonical evidence supports it.",
+      "reusableArithmetic": "Same scalar pressure model within the existing altitude and pressure bounds.",
+      "requiredEngineering": "Hold #537 capture and route. If approved, validate a bounded series and display its points and limits. Exclude aviation, weather and safety use.",
+      "historicalCompatibility": "Retain frozen v1 bytes, stored snapshots and exact replay. Keep existing routes intact; make any approved divergent contract an additive, reviewed identity/version transition.",
+      "ownerDecision": "Approve the stated distinct decision boundary if canonical evidence supports it. Otherwise retain both catalog identities and hold separate delivery."
+    }
+  ],
+  "retainedScopePackets": [
+    "calcumint-batch35/INVESTMENT-57-59-SCOPE.md",
+    "calcumint-batch35/MACRO-397-REVIEW.md"
+  ],
+  "scopeChangesAuthorized": false
+}

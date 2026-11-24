@@ -1,0 +1,43 @@
+{
+  "baseline": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+  "rows": [
+    {
+      "id": 418,
+      "plan": "free",
+      "ownedHistoryRestored": true,
+      "historyId": "80e1eed7-faec-43db-a7f9-b07519cc3d56",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "batchAndReplay": true,
+      "keyboardRecovery": true
+    }
+  ],
+  "checks": [
+    "Unauthenticated private route denied",
+    "Authenticated non-reviewer private route denied"
+  ],
+  "downloads": [
+    {
+      "id": 418,
+      "format": "json",
+      "file": "invocation-ihHLUk/61f33ef2-39cb-41f6-b820-63e9449503e0",
+      "bytes": 2737,
+      "sha256": "c3056dd3489c6089b66aad5519f63b20cc1a6d99d101f03209fc9f04e309de15"
+    },
+    {
+      "id": 418,
+      "format": "csv",
+      "file": "invocation-NzXC1j/9c44fc3c-77d6-4279-ab54-00a3e7102934",
+      "bytes": 2120,
+      "sha256": "6c3ee093776e2ba90d338d0271513b96f39f76827b377d276bf964be579ae211"
+    }
+  ],
+  "productionWrites": false,
+  "releaseHold": true,
+  "publicationFixture": false,
+  "canonicalApproval": false,
+  "scope": "Disposable repository-model PostgreSQL17/GoTrue/PostgREST; actual private page and existing atomic account actions. Loopback transport is not production equivalence. Business team/native/job capabilities remain blocked.",
+  "passed": false,
+  "failure": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(text.includes('output[\"offspring\"][0] = AA'))\n\n    at file:///workspace/calcumint-batch20-punnett/tests/worker2-energy-mobility-20261119/batch20-punnett.local.mjs:88:199"
+}

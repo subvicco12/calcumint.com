@@ -1,0 +1,21 @@
+# CalcuMint 39-profile integration handoff
+
+Work is isolated and release hold remains active. The base and previously accepted source packages are preserved in the ordered recovery manifest. Worker 3 acknowledgment is pending. This package is the handoff for coordinator recovery.
+
+## Source sequence
+
+1. Fetch the prior bundles in their existing order. Then fetch `calcumint-batch35/next.bundle` to recover `067dd50695b63915ccc2a3fde0b2854346253f67` (tree `6f9618528a4ffe82193330fd77b77322ea50df5b`). This is the exact #63 and #67 draft promoted by authenticated acceptance.
+2. Fetch `calcumint-batch39/group.bundle` to recover `6b123376ce37ba35ce6dc08f57e0242bf7c96af9` (tree `4a572847be5cc87b12c4f64acaba6daa48f2aa9a`). This adds 37 bounded profiles to the existing private delivery surface and adds its focused tests. No immutable engine, catalog, public route or workflow source changed. The source commits and archived read-only production tuples are recorded per ID in `identities.json`.
+3. The optional next-intake draft `447600fd7d7ab847f477927f6c4e30823a27dd81` (tree `c2d5d8472008d5c38bb34769364d4c16e60e46e4`) is separately bundled. It adds #494 private delivery with typed pascals/metres, explicit model limits, invalid-input refusal and exact v1 replay. Authenticated acceptance and the #494/#537 distinction are open. Keep it outside this qualification.
+
+The group depends on the existing private admin workbench, factory packet identity and history/scenario/export actions, and the unchanged component, remaining and business engine file blobs. Two-browser and group-browser adapter diffs reproduce the qualification commands without changing the frozen tracked source. All recorded supporting production definitions were compared by key, slug and version against the frozen registry. These are historical support associations. Public canonical mappings and live operation remain unresolved.
+
+## Qualification and review boundaries
+
+- Disposable PostgreSQL 17, GoTrue and PostgREST; operator accounts exercised the actual loopback application with the production webpack build. The browser evidence covers calculation parity, invalid-input keyboard recovery, history and exact replay, scoped scenarios, batch, mobile accessibility, real JSON/CSV/PDF download readback and isolation. Free, Pro and Business entitlements were exercised according to the existing private product policy. Business team, native and job capabilities remain outside this bounded contract.
+- The archived browser receipts and fingerprint checks are separate from exact-head hosted acceptance. Integration intake readiness leaves exact-head integration qualification, competent review, governed source admission where applicable, certification and publication open.
+- For #63 review effective annual rate, target domain, equality/no future solution and time display. For #67 review same-period arithmetic, period comparability and distinction from compounded or money-weighted returns. For #24/#33 review current/replacement amortization, same-currency funding, timing, upfront costs and null break-even. For other finance and business contracts, competent review must approve per-ID numerator/denominator, periods and cash-flow timing, rounding, currencies and exclusion of personalized, accounting, tax or jurisdictional advice. Scope approval alone cannot substitute for these reviews.
+- The 16 retained overlaps each need the owner decision recorded in `identity-scope-decisions.json`. The 16 current duplicate deliveries remain held in `identities.json`. Preserve both original immutable results and exact-version replay for any approved change. Reuse the unchanged #57/#59 and #397 proposals and their specialist review conditions from the previous package.
+- No confirmed conflicting assignments appeared in the 26 discoverable worker refs and available ownership files. The ref snapshot identifies objects unavailable locally. All new work was isolated, and next intake assignments remain provisional.
+
+Worker 3 needs to acknowledge the exact bundled trees, apply the existing protected-source disposition on the combined head and qualify integration through the required jobs. The first release candidate #440 and its fallback #432 retain their existing standing.
