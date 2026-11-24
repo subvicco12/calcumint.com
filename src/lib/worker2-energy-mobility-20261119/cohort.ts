@@ -1,14 +1,16 @@
+import {hardyWeinbergCalculator} from '@/calculators/biology/catalog-batch-2';
+import {proteinIntakeCalculator,carbohydrateIntakeCalculator,fatIntakeCalculator,caloriesBurnedCalculator} from '@/calculators/health/catalog-batch-2';
 import {loanPaymentCalculator} from '@/calculators/finance/loan-payment';
 import {creditCardPayoffCalculator} from '@/calculators/finance/credit-card-payoff';
 import {mortgageCalculator} from '@/calculators/finance/mortgage';
 import {stepUpSipCalculator} from '@/calculators/finance/step-up-sip';
 import {recurringDepositCalculator} from '@/calculators/finance/recurring-deposit';
-import {doublingTimeCalculator} from '@/calculators/biology/catalog-batch-1';
+import {doublingTimeCalculator,populationGrowthCalculator} from '@/calculators/biology/catalog-batch-1';
 import {slopeCalculator,volumeCalculator} from '@/calculators/geometry/catalog-completion';
 import {standardDeviationCalculator,varianceCalculator} from '@/calculators/statistics/catalog-batch-1';
 import {graphingCalculator,functionPlotter2dCalculator} from '@/calculators/advanced-math/catalog-batch-10';
 import {bmiCalculator} from '@/calculators/health/bmi';
-import {bmrCalculator,tdeeCalculator,leanBodyMassCalculator,bodySurfaceAreaCalculator} from '@/calculators/health/catalog-batch-1';
+import {bmrCalculator,tdeeCalculator,leanBodyMassCalculator,bodySurfaceAreaCalculator,calorieCalculator,bodyFatCalculator,idealWeightCalculator,healthyWeightCalculator} from '@/calculators/health/catalog-batch-1';
 import {plantPopulationCalculator} from '@/calculators/biology/catalog-batch-4';
 import {agriculturalYieldCalculator} from '@/calculators/biology/catalog-batch-5';
 import {simpleInterestCalculator} from '@/calculators/finance/simple-interest';
@@ -39,6 +41,11 @@ const additions: Readonly<Partial<Record<number,string>>>={
  532:'src/calculators/astronomy/catalog-batch-1.ts',
  533:'src/calculators/astronomy/catalog-batch-1.ts',
  534:'src/calculators/astronomy/catalog-batch-2.ts',
+};
+const batch20Sources:Readonly<Partial<Record<number,string>>>={
+ 391:'health/catalog-batch-1',392:'health/catalog-batch-1',393:'health/catalog-batch-1',394:'health/catalog-batch-1',
+ 398:'health/catalog-batch-2',399:'health/catalog-batch-2',400:'health/catalog-batch-2',401:'health/catalog-batch-2',
+ 411:'biology/catalog-batch-1',417:'biology/catalog-batch-2',
 };
 const nextSources:Readonly<Partial<Record<number,string>>>={
  275:'geometry/catalog-completion',412:'biology/catalog-batch-1',
@@ -75,6 +82,9 @@ const labels:Record<string,string>={
  initialMonthlyContribution:'Initial monthly contribution',annualStepUpPercent:'Annual contribution increase',annualReturnPercent:'Assumed annual return',contributionTiming:'Contribution timing',
  monthlyDeposit:'Monthly deposit',annualInterestPercent:'Nominal annual interest rate',depositTiming:'Deposit timing',
  length:'Prism length',width:'Prism width',height:'Prism height',growthConstant:'Continuous growth constant',
+ tdeeKcal:'Supplied daily expenditure',dailyAdjustmentKcal:'Supplied daily adjustment',bmi:'Supplied BMI',targetBmi:'Selected reference BMI',
+ dailyCalories:'Supplied daily energy',met:'Supplied activity MET',minutes:'Activity duration',
+ initialPopulation:'Initial model population',time:'Elapsed time',allelePFrequency:'Allele p frequency',
  x1:'First x-coordinate',y1:'First y-coordinate',x2:'Second x-coordinate',y2:'Second y-coordinate',values:'Observations (JSON list of numbers)',kind:'Denominator convention',
  expression:'Function of x',minX:'Minimum x',maxX:'Maximum x',weightKg:'Weight',heightCm:'Height',sex:'Equation reference group',ageYears:'Age',
  bmrKcal:'Supplied resting energy',activityMultiplier:'Supplied activity multiplier',
@@ -94,7 +104,7 @@ function profile<I extends object,O extends object>(
  engine:CalculatorDefinition<I,O>, options:Omit<EngineeringOptions<I,O>,'sourceEvidence'>,
  primaryLabel:string, secondary:Readonly<Record<string,ScenarioFieldDisplay>>={},
 ){
- const finance=financeSources[options.catalogId]??familySources[options.catalogId]??nextSources[options.catalogId];
+ const finance=financeSources[options.catalogId]??familySources[options.catalogId]??nextSources[options.catalogId]??batch20Sources[options.catalogId];
  const path=finance?`src/calculators/${finance}.ts`:additions[options.catalogId]??agricultureSources[options.catalogId];
  const contract=createEngineeringContract(engine,{...options,sourceEvidence:path?[path]:sourceEvidence});
  const outputUnit=options.catalogId===534?(input:Record<string,unknown>)=>String(input.toUnit):undefined;
@@ -155,6 +165,16 @@ export const mobilityContracts=Object.freeze([
 
  profile(volumeCalculator,{catalogId:275,primaryKey:'volume',unit:'cubic supplied units',scope:'Rectangular prism only. Enter three positive dimensions in one common length unit. Output is the product of the dimensions, excluding bulk packing or capacity assumptions.',fieldUnits:{length:'supplied length unit',width:'supplied length unit',height:'supplied length unit'}},'Prism volume',{surfaceArea:{label:'Prism surface area',unit:'square supplied units'}}),
  profile(doublingTimeCalculator,{catalogId:412,primaryKey:'value',unit:'supplied time unit',scope:'Ideal positive continuous exponential model with a constant supplied growth rate. Result is ln(2) divided by the rate, in its reciprocal time unit. v1 rounds to six decimals. No resource-limit or real population projection.',fieldUnits:{growthConstant:'per supplied time unit'}},'Ideal doubling time'),
+ profile(calorieCalculator,{catalogId:391,primaryKey:'value',unit:'kcal/day',scope:'Adds a supplied daily adjustment to a supplied energy-expenditure estimate. The private capture requires a positive result. No recommendation of an adjustment or intake. '+adultEstimate,fieldUnits:{tdeeKcal:'kcal/day',dailyAdjustmentKcal:'kcal/day'},validate:(_,out)=>{if(out.value===0)throw Error('Enter assumptions yielding a positive arithmetic result');}},'Adjusted arithmetic total'),
+ profile(bodyFatCalculator,{catalogId:392,primaryKey:'value',unit:'%',scope:'Deurenberg adult equation from supplied BMI, age and equation reference group. New capture refuses results outside 0–100%. '+adultEstimate,fieldOptions:{sex:groups},fieldUnits:{bmi:'kg/m²',ageYears:'years'},validate:(_,out)=>{if(out.value<0||out.value>100)throw Error('Estimated body fat is outside 0–100%');}},'Equation estimate'),
+ profile(idealWeightCalculator,{catalogId:393,primaryKey:'value',unit:'kg',scope:'Historical Devine estimate for height 152.4–250 cm. The name identifies the original equation and is not a personal weight goal. '+adultEstimate,fieldOptions:{sex:groups},fieldUnits:{heightCm:'cm'}},'Devine equation estimate'),
+ profile(healthyWeightCalculator,{catalogId:394,primaryKey:'value',unit:'kg',scope:'Weight corresponding mathematically to the supplied adult BMI reference between 18.5 and 24.9. No judgment of health or individual recommendation. '+adultEstimate,fieldUnits:{heightCm:'cm',targetBmi:'kg/m²'}},'Reference BMI equivalent'),
+ profile(proteinIntakeCalculator,{catalogId:398,primaryKey:'value',unit:'g/day',scope:'Illustrates the general adult reference of 0.8 grams per kilogram. Pregnancy, lactation, athletics, disease and therapeutic diets are outside this scope. '+adultEstimate,fieldUnits:{weightKg:'kg'}},'Protein reference arithmetic'),
+ profile(carbohydrateIntakeCalculator,{catalogId:399,primaryKey:'value',unit:'g/day',scope:'Converts 55% of supplied energy to grams using 4 kcal/g. The midpoint of the adult 45–65% reference range is illustrative. '+adultEstimate,fieldUnits:{dailyCalories:'kcal/day'}},'Carbohydrate reference midpoint'),
+ profile(fatIntakeCalculator,{catalogId:400,primaryKey:'value',unit:'g/day',scope:'Converts 27.5% of supplied energy to grams using 9 kcal/g. The midpoint of the adult 20–35% reference range is illustrative. '+adultEstimate,fieldUnits:{dailyCalories:'kcal/day'}},'Fat reference midpoint'),
+ profile(caloriesBurnedCalculator,{catalogId:401,primaryKey:'value',unit:'kcal',scope:'Gross estimated activity energy from supplied MET, body weight and duration. No automatic MET selection or net expenditure claim. '+adultEstimate,fieldUnits:{weightKg:'kg',met:'MET',minutes:'min'}},'Estimated gross activity energy'),
+ profile(populationGrowthCalculator,{catalogId:411,primaryKey:'value',unit:'modeled individuals',scope:'Ideal constant-rate continuous exponential model, without resource limits or demographic forecasts. v1 rounds to six decimals. Refuses a positive model value that rounds to zero.',fieldUnits:{initialPopulation:'modeled individuals',growthConstant:'per supplied time unit',time:'supplied time unit'},validate:requirePositiveAstronomyResult},'Modeled population'),
+ profile(hardyWeinbergCalculator,{catalogId:417,primaryKey:'twoPq',unit:'fraction',scope:'Educational two-allele diploid equilibrium model with random mating and no selection, migration, mutation or drift. Reports theoretical fractions, not observed genetics or clinical risk.',fieldUnits:{allelePFrequency:'fraction (0–1)'}},'Heterozygote fraction',{p:{label:'Allele p',unit:'fraction'},q:{label:'Allele q',unit:'fraction'},p2:{label:'Homozygote p²',unit:'fraction'},q2:{label:'Homozygote q²',unit:'fraction'}}),
 ]);
 export function mobilityContract(id:number){
  const contract=mobilityContracts.find(row=>row.catalogId===id);
@@ -171,7 +191,7 @@ export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):bo
 }
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
- const capture=nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
+ const capture=batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
   sourceVersion:`${capture}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{
