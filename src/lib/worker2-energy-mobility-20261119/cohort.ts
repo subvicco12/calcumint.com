@@ -1,3 +1,4 @@
+import {derivativeCalculator,integralCalculator,limitCalculator} from '@/calculators/advanced-math/catalog-batch-9';
 import {seriesCalculator} from '@/calculators/advanced-math/catalog-batch-10';
 import {polynomialCalculator} from '@/calculators/advanced-math/catalog-batch-8';
 import {linearEquationCalculator,quadraticFormulaCalculator,matrixDeterminantCalculator} from '@/calculators/advanced-math/catalog-batch-5';
@@ -339,6 +340,9 @@ const structuredMathRows = [
  [243,rrefCalculator,'rank','Rank','batch-7'],
  [244,complexNumberCalculator,'real','Real component','batch-6'],
  [245,vectorCalculator,'dot','Dot product','batch-7'],
+ [246,derivativeCalculator,'value','Estimated derivative','batch-9'],
+ [247,integralCalculator,'value','Estimated definite integral','batch-9'],
+ [248,limitCalculator,'value','Estimated finite limit','batch-9'],
  [249,sequenceCalculator,'nth','Term at selected position','batch-7'],
  [250,seriesCalculator,'sum','Finite series sum','batch-10'],
  [253,polynomialCalculator,'discriminant','Cubic discriminant','batch-8'],
@@ -349,11 +353,11 @@ const rational214=calculatorRegistry.getById('launch-decimal-to-fraction-calcula
 function structuredMathProfile([catalogId,definition,primaryKey,label,source]:typeof structuredMathRows[number]){
  const engine=definition as unknown as CalculatorDefinition<Record<string,unknown>,Record<string,unknown>>;
  const expected=engine.examples[0].expected;
- const fieldOptions=catalogId===240?{operation:['add','subtract','multiply']}:catalogId===244?{operation:['add','subtract','multiply','divide']}:undefined;
+ const fieldOptions:Readonly<Record<string,readonly string[]>>|undefined=catalogId===248?{direction:['both','left','right']}:catalogId===240?{operation:['add','subtract','multiply']}:catalogId===244?{operation:['add','subtract','multiply','divide']}:undefined;
  const secondary=Object.fromEntries(Object.entries(expected)
   .filter(([key,value])=>key!==primaryKey&&typeof value==='number')
   .map(([key])=>[key,{label:labelForField(key),...(key==='angleRadians'||key==='argument'?{unit:'rad'}:{})}]));
- return profile(engine,{catalogId,primaryKey,unit:'dimensionless',scope:engine.formulas[0].description,registered:false,fieldOptions,textFields:catalogId===250?['expression']:undefined},
+ return profile(engine,{catalogId,primaryKey,unit:'dimensionless',scope:engine.formulas[0].description,registered:false,fieldOptions,textFields:(catalogId>=246&&catalogId<=248)||catalogId===250?['expression']:undefined},
   label,secondary,`src/calculators/advanced-math/catalog-${source}.ts`);
 }
 
