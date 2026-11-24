@@ -42,10 +42,12 @@ it('keeps historically valid below-bound input readable without treating it as n
  expect(()=>mobilityWorkflows(459).execute({distanceKm:'1e-70',fuelUsedLiters:'1'})).toThrow();
 });
 
-it.each([
+const roundedZeroCases: Array<{id:number;field:string;raw:Record<string,string>}>= [
  {id:462,field:'batteryEnergyAddedKwh',raw:{batteryEnergyAddedKwh:'1e-7',electricityRatePerKwh:'1',chargingEfficiencyPercent:'100'}},
  {id:463,field:'energyToAddKwh',raw:{energyToAddKwh:'1e-7',averageChargingPowerKw:'1'}},
-])('#$id distinguishes rounded zero from exact zero without changing replay',({id,field,raw})=>{
+];
+
+it.each(roundedZeroCases)('#$id distinguishes rounded zero from exact zero without changing replay',({id,field,raw})=>{
  const flow=mobilityWorkflows(id);
  const packet=flow.execute(raw);
  expect(packet.snapshot.output.value).toBe(0);
