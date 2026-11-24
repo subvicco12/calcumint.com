@@ -8,6 +8,8 @@ const env={...process.env};for(const k of ['DOCKER_HOST','DOCKER_CONTEXT','DOCKE
 const docker=(args,input='')=>new Promise((resolve,reject)=>{const p=spawn('docker',['--host=unix:///var/run/docker.sock',...args],{env,stdio:['pipe','pipe','pipe'],timeout:30000});let out='',err='';p.stdout.on('data',x=>out+=x);p.stderr.on('data',x=>err+=x);p.on('error',reject);p.on('close',code=>code===0?resolve(out.trim()):reject(Error(`Docker ${args[0]} failed: ${err||out}`)));p.stdin.on('error',reject);p.stdin.end(input);});
 async function ready(check){const deadline=Date.now()+30000;for(;;){try{return await check()}catch(e){if(Date.now()>=deadline)throw e;await new Promise(r=>setTimeout(r,100));}}}
 export async function startGoTrueFixture({initializeSchema: schemaInitializer=initializeSchema,jwtExpirySeconds}={}){
+ if(process.env.CALCUMINT_SERVICE_CONFIG){const {startServiceFixture}=await import('../gotrue-services/fixture.mjs');return startServiceFixture({initializeSchema:schemaInitializer,jwtExpirySeconds});}
+ assert.notEqual(process.env.CALCUMINT_REQUIRE_SOCKET_FREE,'true','Socket-free disposable service config missing; Docker fallback refused');
  // Optional test-only override; leave upstream default unchanged when absent.
  if(jwtExpirySeconds!==undefined)assert(Number.isInteger(jwtExpirySeconds)&&jwtExpirySeconds>=1&&jwtExpirySeconds<=3600,'jwtExpirySeconds must be an integer from 1 through 3600');
  const name='calcumint-gotrue-'+randomUUID(),containers=[];let network=false,gateway;
