@@ -2,9 +2,9 @@
 # Runs only after the workflow-owned service setup; no Docker API is used.
 set -euo pipefail
 : "${APP_SOURCE:?}" "${CALCUMINT_SERVICE_CONFIG:?}" "${WORKER2_MOBILITY_BROWSER_ARTIFACTS:?}"
-test "$(id -u)" = 65532
-test "$(id -g)" = 65532
-test "$(id -G)" = 65532
+test "$(id -u)" = 65534
+test "$(id -g)" = 65534
+test "$(id -G)" = 65534
 if test -r /var/run/docker.sock || test -w /var/run/docker.sock; then
   echo 'Application can access host Docker socket; refusing' >&2
   exit 1
