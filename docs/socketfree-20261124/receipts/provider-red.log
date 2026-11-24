@@ -1,0 +1,49 @@
+FFFF
+======================================================================
+FAIL: test_exact_hosted_run_binding (test_provider.ProviderTests.test_exact_hosted_run_binding)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-authority-hosted-20261124/tools/solo440-v2/test_provider.py", line 19, in test_exact_hosted_run_binding
+    m=self.module();env={'GITHUB_REPOSITORY':a.REPO,'GITHUB_SHA':'e'*40,'GITHUB_WORKFLOW_SHA':'e'*40,'TRUSTED_WORKFLOW_SHA':'e'*40,'GITHUB_REF':m.EXECUTION_REF,'GITHUB_REF_PROTECTED':'true','GITHUB_ACTOR':'subvicco12','GITHUB_RUN_ID':'42','GITHUB_RUN_ATTEMPT':'1','GITHUB_EVENT_NAME':'workflow_dispatch','GITHUB_WORKFLOW_REF':a.REPO+'/'+m.QUALIFICATION_WORKFLOW+'@'+m.EXECUTION_REF}
+      ^^^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-authority-hosted-20261124/tools/solo440-v2/test_provider.py", line 6, in module
+    self.assertTrue((ROOT/'provider.py').is_file(),'Provider authentication adapter missing')
+AssertionError: False is not true : Provider authentication adapter missing
+
+======================================================================
+FAIL: test_frozen_rules_and_new_execution_branch_remain_protected (test_provider.ProviderTests.test_frozen_rules_and_new_execution_branch_remain_protected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-authority-hosted-20261124/tools/solo440-v2/test_provider.py", line 25, in test_frozen_rules_and_new_execution_branch_remain_protected
+    m=self.module();rules=[{'id':27851420,'enforcement':'active','conditions':{'ref_name':{'include':['refs/heads/engineering/trusted-bootstrap-20261122']}}},{'id':27907165,'enforcement':'active','conditions':{'ref_name':{'include':['refs/heads/engineering/trusted-bootstrap-runtime-20261123']}}}]
+      ^^^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-authority-hosted-20261124/tools/solo440-v2/test_provider.py", line 6, in module
+    self.assertTrue((ROOT/'provider.py').is_file(),'Provider authentication adapter missing')
+AssertionError: False is not true : Provider authentication adapter missing
+
+======================================================================
+FAIL: test_owner_subject_and_verified_email_required (test_provider.ProviderTests.test_owner_subject_and_verified_email_required)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-authority-hosted-20261124/tools/solo440-v2/test_provider.py", line 9, in test_owner_subject_and_verified_email_required
+    m=self.module();good={'sub':a.OWNER_ID,'name':a.OWNER,'email':'subvicco12@gmail.com','email_verified':True}
+      ^^^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-authority-hosted-20261124/tools/solo440-v2/test_provider.py", line 6, in module
+    self.assertTrue((ROOT/'provider.py').is_file(),'Provider authentication adapter missing')
+AssertionError: False is not true : Provider authentication adapter missing
+
+======================================================================
+FAIL: test_provider_origins_and_redirects_are_closed (test_provider.ProviderTests.test_provider_origins_and_redirects_are_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-authority-hosted-20261124/tools/solo440-v2/test_provider.py", line 14, in test_provider_origins_and_redirects_are_closed
+    m=self.module()
+      ^^^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-authority-hosted-20261124/tools/solo440-v2/test_provider.py", line 6, in module
+    self.assertTrue((ROOT/'provider.py').is_file(),'Provider authentication adapter missing')
+AssertionError: False is not true : Provider authentication adapter missing
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (failures=4)

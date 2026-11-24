@@ -1,0 +1,27 @@
+FF
+======================================================================
+FAIL: test_no_external_database_selector (test_sql_client.ClientTests.test_no_external_database_selector)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-socketfree-20261124/tests/gotrue-services/test_sql_client.py", line 8, in test_no_external_database_selector
+    m=self.load();c={'kind':'CALCUMINT_DISPOSABLE_SERVICES_V1','runId':'1','workflowSha':'a'*40,'attempt':1,'postgres':{'host':'127.0.0.1','port':5432,'database':'postgres'}}
+      ^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-socketfree-20261124/tests/gotrue-services/test_sql_client.py", line 5, in load
+    self.assertTrue((ROOT/'sql-client.py').is_file(),'Socket-free PostgreSQL client missing')
+AssertionError: False is not true : Socket-free PostgreSQL client missing
+
+======================================================================
+FAIL: test_rejects_unapproved_role_before_connect (test_sql_client.ClientTests.test_rejects_unapproved_role_before_connect)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-socketfree-20261124/tests/gotrue-services/test_sql_client.py", line 13, in test_rejects_unapproved_role_before_connect
+    m=self.load()
+      ^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-socketfree-20261124/tests/gotrue-services/test_sql_client.py", line 5, in load
+    self.assertTrue((ROOT/'sql-client.py').is_file(),'Socket-free PostgreSQL client missing')
+AssertionError: False is not true : Socket-free PostgreSQL client missing
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (failures=2)

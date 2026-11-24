@@ -1,0 +1,23 @@
+FF..
+======================================================================
+FAIL: test_exact_hosted_run_binding (test_provider.ProviderTests.test_exact_hosted_run_binding) (key='path')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-authority-hosted-20261124/tools/solo440-v2/test_provider.py", line 23, in test_exact_hosted_run_binding
+    with self.subTest(key=key),self.assertRaises(ValueError):m.verify_run(env,{**run,key:value},m.QUALIFICATION_WORKFLOW)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_frozen_rules_and_new_execution_branch_remain_protected (test_provider.ProviderTests.test_frozen_rules_and_new_execution_branch_remain_protected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-authority-hosted-20261124/tools/solo440-v2/test_provider.py", line 28, in test_frozen_rules_and_new_execution_branch_remain_protected
+    with self.assertRaises(ValueError):m.verify_protection([rules[0],rules[0]],{'protected':True,'commit':{'sha':'e'*40}},'e'*40)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.041s
+
+FAILED (failures=2)
