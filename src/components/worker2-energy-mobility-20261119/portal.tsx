@@ -76,6 +76,7 @@ export function MobilityPortal({ownerId,plan}:{ownerId:string;plan:CalcuMintPlan
   methodology:c.scope,sources:c.engine.sources,warnings:c.limitations,
  }}/>{((id>=237&&id<=248)||id===249||id===250||id===253||id===254||id===281)&&<StructuredMathDetails id={id} output={packet.snapshot.output}/>}
   {id===233&&<details open><summary>Generated values</summary><ol>{(packet.snapshot.output.values as number[]).map((value,index)=><li key={index}>{value}</li>)}</ol></details>}
+  {id===54&&<p>{packet.snapshot.output.depleted?'The supplied corpus depleted within the modelled period.':'Funds remain at the end of the modelled period.'}</p>}
   {id===467&&<details><summary>Annual valuation schedule</summary><table><caption>End-of-year values in {String(packet.snapshot.output.currency)}</caption>
    <thead><tr><th scope="col">Year</th><th scope="col">Value</th></tr></thead>
    <tbody>{(packet.snapshot.output.schedule as {year:number;value:number}[]).map(row=><tr key={row.year}><th scope="row">{row.year}</th><td>{row.value}</td></tr>)}</tbody>
