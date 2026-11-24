@@ -4,6 +4,7 @@ import {useState,useRef} from 'react';
 import {chargingRoundedToZero,mobilityContracts,mobilityContract,mobilityWorkflows} from '@/lib/worker2-energy-mobility-20261119/cohort';
 import {CalculatorFactoryWorkbench} from '../calculator-factory-workbench';
 import {FinalResultPresentation} from '../final-result-presentation';
+import {SurfaceSamples} from './surface-samples';
 import {MobilityPersistence} from './persistence';
 import {saveHistory} from '@/app/admin/worker2-energy-mobility-20261119/actions';
 import type {ResultSeries} from '@/calculators/final-framework/types';
@@ -36,27 +37,6 @@ function StructuredMathDetails({id,output}:{id:number;output:Record<string,unkno
  {listed&&<details open><summary>{id===253?'Real roots':'Term preview (up to 20)'}</summary><ol>{listed.slice(0,20).map((value,index)=><li key={index}>{String(value)}</li>)}</ol></details>}
  {steps.length>0&&<details><summary>Calculation steps</summary><ol>{steps.map((step,index)=><li key={index}>{String(step)}</li>)}</ol></details>}
  </section>;
-}
-function SurfaceSamples({output}:{output:Record<string,unknown>}){
- const points=output.points as readonly {x:number;y:number;z:number}[];
- const mins=[Math.min(...points.map(p=>p.x)),Math.min(...points.map(p=>p.y)),Number(output.minimum)];
- const spans=[Math.max(...points.map(p=>p.x))-mins[0],Math.max(...points.map(p=>p.y))-mins[1],Number(output.maximum)-mins[2]];
- const normalize=(value:number,axis:number)=>(value-mins[axis])/(spans[axis]||1)-0.5;
- return <figure aria-label="Sampled function surface">
-  <svg viewBox="0 0 100 100" aria-hidden="true" className="mx-auto block w-full max-w-sm">
-   {points.map(({x,y,z},index)=>{
-    const px=normalize(x,0),py=normalize(y,1),pz=normalize(z,2);
-    return <circle key={index} cx={50+34*(px-py)} cy={53-17*(px+py)-30*pz} r={0.8} fill="currentColor"/>;
-   })}
-  </svg>
-  <figcaption>{points.length} finite samples from a {String(output.gridSize)} by {String(output.gridSize)} grid. Sampled z range: {String(output.minimum)} to {String(output.maximum)}.</figcaption>
-  <details><summary>Show sampled coordinates</summary>
-   <table><caption>Finite surface samples in grid order</caption>
-    <thead><tr><th scope="col">x</th><th scope="col">y</th><th scope="col">z</th></tr></thead>
-    <tbody>{points.map(({x,y,z},index)=><tr key={index}><td>{x}</td><td>{y}</td><td>{z}</td></tr>)}</tbody>
-   </table>
-  </details>
- </figure>;
 }
 export function MobilityPortal({ownerId,plan}:{ownerId:string;plan:CalcuMintPlan}){
  const [id,setId]=useState<number>(mobilityContracts[0].catalogId),[draftRevision,setDraftRevision]=useState(0);const c=mobilityContract(id),retry=useRef<{key:string;id:string}|null>(null);
