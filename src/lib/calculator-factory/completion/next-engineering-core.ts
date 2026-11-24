@@ -1,11 +1,12 @@
 import type {CalculatorDefinition} from '@/calculators/types';
+import {parseFinalPrivateSnapshotText} from '../../final-private-snapshot-text';
 import type {FactoryContract} from '../registry';
 import {copyCalculationData,createCalculationSnapshot,type CalculationSnapshot} from '../../calculation-snapshot';
 import {requiredCalculatorNumber} from '../../registered-input-successor';
 import {sameRecordedJson} from '../../recorded-json-equality';
 
 export type EngineeringContract=FactoryContract&Readonly<{verifyHistorical:(snapshot:CalculationSnapshot)=>Readonly<{snapshot:CalculationSnapshot;engineId:string;engineVersion:number;scope:string}>}>;
-export type EngineeringOptions<I,O>={catalogId:number;primaryKey:keyof O&string;unit:string;scope:string;sourceEvidence:readonly string[];fieldUnits?:Readonly<Record<string,string>>;fieldOptions?:Readonly<Record<string,readonly string[]>>;validate?:(input:I,output:O)=>void};
+export type EngineeringOptions<I,O>={catalogId:number;primaryKey:keyof O&string;unit:string;scope:string;sourceEvidence:readonly string[];fieldUnits?:Readonly<Record<string,string>>;itemLists?:readonly string[];fieldOptions?:Readonly<Record<string,readonly string[]>>;validate?:(input:I,output:O)=>void};
 /** Private captures reuse immutable engines. Historical replay deliberately bypasses capture-only guards. */
 export function createEngineeringContract<I extends object,O extends object>(engine:CalculatorDefinition<I,O>,options:EngineeringOptions<I,O>):EngineeringContract{
  const example=engine.examples[0]?.input;
@@ -13,7 +14,9 @@ export function createEngineeringContract<I extends object,O extends object>(eng
  const keys=Object.keys(example);
  const exampleValues=example as Record<string,unknown>;
  const fieldOptions=options.fieldOptions??{};
+ const itemLists=new Set(options.itemLists);
  if(Object.keys(fieldOptions).some(key=>!keys.includes(key))||keys.some(key=>{
+  if(itemLists.has(key))return !Array.isArray(exampleValues[key]);
   const choices=fieldOptions[key];
   return choices?typeof exampleValues[key]!=='string'||!choices.includes(exampleValues[key]):typeof exampleValues[key]!=='number';
  }))throw Error('Exact numeric or declared choice fields required');
@@ -24,12 +27,18 @@ export function createEngineeringContract<I extends object,O extends object>(eng
   return engine.inputSchema.parse(clean);
  };
  const record=(input:I,output:O)=>createCalculationSnapshot({calculatorSlug:engine.slug,calculatorVersion:engine.version,input:input as Record<string,unknown>,output:output as Record<string,unknown>});
- return Object.freeze({catalogId:options.catalogId,engineId:engine.id,slug:engine.slug,version:engine.version,title:engine.title,registered:true,captureRevision:'private.next-engineering.20261115.1',primaryKey:options.primaryKey,unit:options.unit,scope:options.scope,sourceEvidence:Object.freeze([...options.sourceEvidence]),limitations:Object.freeze(['Private engineering contract; canonical acceptance, certification and publication remain pending.','Capture uses binary64 finite inputs |x| ≤ 1e50; nonzero magnitudes ≥ 1e-50. Original historical domain is preserved.']),fields:Object.freeze(keys.map(key=>Object.freeze({key,label:key,...(fieldOptions[key]?{kind:'select' as const,options:fieldOptions[key]}:{kind:'number' as const}),defaultValue:String(exampleValues[key]),...(options.fieldUnits?.[key]?{unit:options.fieldUnits[key]}:{})}))),
+ return Object.freeze({catalogId:options.catalogId,engineId:engine.id,slug:engine.slug,version:engine.version,title:engine.title,registered:true,captureRevision:'private.next-engineering.20261115.1',primaryKey:options.primaryKey,unit:options.unit,scope:options.scope,sourceEvidence:Object.freeze([...options.sourceEvidence]),limitations:Object.freeze(['Private engineering contract; canonical acceptance, certification and publication remain pending.','Capture uses binary64 finite inputs |x| ≤ 1e50; nonzero magnitudes ≥ 1e-50. Original historical domain is preserved.']),fields:Object.freeze(keys.map(key=>Object.freeze({key,label:key,...(itemLists.has(key)?{kind:'json' as const}:fieldOptions[key]?{kind:'select' as const,options:fieldOptions[key]}:{kind:'number' as const}),defaultValue:itemLists.has(key)?JSON.stringify(exampleValues[key]):String(exampleValues[key]),...(options.fieldUnits?.[key]?{unit:options.fieldUnits[key]}:{})}))),
  execute(raw){
   const clean=copyCalculationData(raw,{}).input;
   if(Object.values(clean).some(value=>typeof value!=='string'))throw Error('Explicit numeric text fields required');
   const values=Object.fromEntries(Object.entries(clean).map(([key,value])=>{
    const text=value as string,choices=fieldOptions[key];
+   if(itemLists.has(key)){
+    if(text.length>65536)throw Error('Item list exceeds the 64 KiB input limit');
+    const list=parseFinalPrivateSnapshotText(text);
+    if(!Array.isArray(list)||list.some(item=>!item||typeof item!=='object'||Object.keys(item).length!==2||!Object.hasOwn(item,'name')||!Object.hasOwn(item,'amount')))throw Error('Enter a JSON list of name and amount items');
+    return [key,list];
+   }
    if(choices){
     if(!choices.includes(text))throw Error('Unsupported calculator choice');
     return [key,text];
