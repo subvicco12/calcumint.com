@@ -1,3 +1,5 @@
+import {plantPopulationCalculator} from '@/calculators/biology/catalog-batch-4';
+import {agriculturalYieldCalculator} from '@/calculators/biology/catalog-batch-5';
 import {simpleInterestCalculator} from '@/calculators/finance/simple-interest';
 import {compoundInterestCalculator} from '@/calculators/finance/compound-interest';
 import {roiCalculator} from '@/calculators/finance/roi';
@@ -27,6 +29,9 @@ const additions: Readonly<Partial<Record<number,string>>>={
  533:'src/calculators/astronomy/catalog-batch-1.ts',
  534:'src/calculators/astronomy/catalog-batch-2.ts',
 };
+const agricultureSources:Readonly<Partial<Record<number,string>>>={
+ 421:'src/calculators/biology/catalog-batch-5.ts',422:'src/calculators/biology/catalog-batch-4.ts',
+};
 const financeSources:Readonly<Partial<Record<number,string>>>={
  50:'finance/simple-interest',51:'finance/compound-interest',64:'finance/roi',99:'finance/net-worth',103:'finance/emergency-fund',
  138:'business/break-even',168:'business/catalog-batch-2',172:'business/catalog-batch-1',184:'business/catalog-batch-2',191:'business/catalog-batch-1',
@@ -46,6 +51,8 @@ const labels:Record<string,string>={
  currentWidthMm:'Current tire width',currentAspectRatio:'Current aspect ratio',currentRimInches:'Current rim diameter',
  newWidthMm:'New tire width',newAspectRatio:'New aspect ratio',newRimInches:'New rim diameter',
  semiMajorAxisAu:'Orbital semi-major axis',centralMassSolar:'Central mass',massKg:'Body mass',radiusM:'Body radius',
+ earsPerAcre:'Ears per acre',kernelRowsPerEar:'Average kernel rows per ear',kernelsPerRow:'Average kernels per row',kernelsPerBushel:'Assumed kernels per bushel',
+ plantCount:'Plants counted',sampleRowLengthFeet:'Sample row length',rowSpacingInches:'Row spacing',
  principal:'Starting principal',annualRatePercent:'Annual rate',years:'Elapsed years',compoundsPerYear:'Compounding periods per year',
  initialInvestment:'Initial investment',finalValue:'Ending value',additionalCosts:'Additional costs',incomeReceived:'Income received',holdingMonths:'Holding period',
  assets:'Assets (JSON list of name and amount)',liabilities:'Liabilities (JSON list of name and amount)',
@@ -61,7 +68,7 @@ function profile<I extends object,O extends object>(
  primaryLabel:string, secondary:Readonly<Record<string,ScenarioFieldDisplay>>={},
 ){
  const finance=financeSources[options.catalogId];
- const path=finance?`src/calculators/${finance}.ts`:additions[options.catalogId];
+ const path=finance?`src/calculators/${finance}.ts`:additions[options.catalogId]??agricultureSources[options.catalogId];
  const contract=createEngineeringContract(engine,{...options,sourceEvidence:path?[path]:sourceEvidence});
  const outputUnit=options.catalogId===534?(input:Record<string,unknown>)=>String(input.toUnit):undefined;
  return Object.freeze({...contract,outputUnit,engine,primaryLabel,outputs:{[contract.primaryKey]:{label:primaryLabel,unit:contract.unit},...secondary},
@@ -91,6 +98,8 @@ export const mobilityContracts=Object.freeze([
  profile(customerAcquisitionCostCalculator,{catalogId:172,primaryKey:'value',unit:currency+'/customer',scope:'Entered acquisition spending divided by new customers for the same period and attribution scope. No payback, blended cohort adjustment or future forecast.',fieldUnits:{salesAndMarketingCost:currency,newCustomers:'customers'}},'Customer acquisition cost'),
  profile(roasCalculator,{catalogId:184,primaryKey:'value',unit:'%',scope:'Entered conversion value divided by ad spend for the same attribution window and currency, expressed as a percentage. No incremental lift, margin or profit estimate.',fieldUnits:{conversionValue:currency,adSpend:currency}},'Return on ad spend'),
  profile(conversionRateCalculator,{catalogId:191,primaryKey:'value',unit:'%',scope:'Entered conversions divided by visitors in one measurement window, using a consistent conversion definition. No statistical inference or attribution model.',fieldUnits:{conversions:'count',totalVisitors:'count'}},'Conversion rate'),
+ profile(agriculturalYieldCalculator,{catalogId:421,primaryKey:'bushelsPerAcre',unit:'bu/acre',scope:'Corn yield-component estimate from supplied ears, average rows and kernels, and assumed kernels per bushel. Kernel size and weight vary. v1 rounds the estimate to two decimal places.',fieldUnits:{earsPerAcre:'ears/acre',kernelRowsPerEar:'rows/ear',kernelsPerRow:'kernels/row',kernelsPerBushel:'kernels/bu'},validate:(_,result)=>{if(result.bushelsPerAcre===0)throw Error('Yield estimate rounds to zero at v1 precision');}},'Estimated corn yield',{kernelsPerAcre:{label:'Estimated kernels',unit:'kernels/acre'}}),
+ profile(plantPopulationCalculator,{catalogId:422,primaryKey:'plantsPerAcre',unit:'plants/acre',scope:'Scales one fixed-width row sample using its length and row spacing. The estimate assumes representative sampling and 43,560 square feet per acre. v1 rounds population to two decimals and area to six.',fieldUnits:{plantCount:'plants',sampleRowLengthFeet:'ft',rowSpacingInches:'in'},validate:(_,result)=>{if(result.sampleAreaSquareFeet===0||result.plantsPerAcre===0)throw Error('Sample area or population rounds to zero at v1 precision');}},'Estimated plant population',{sampleAreaSquareFeet:{label:'Sample area',unit:'ft²'}}),
 ]);
 export function mobilityContract(id:number){
  const contract=mobilityContracts.find(row=>row.catalogId===id);
@@ -107,7 +116,7 @@ export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):bo
 }
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
- const capture=financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
+ const capture=agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
   sourceVersion:`${capture}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{
