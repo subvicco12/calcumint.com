@@ -1,3 +1,5 @@
+import {meanMedianModeRangeCalculator} from '@/calculators/statistics/catalog-batch-1';
+import {molecularWeightCalculator} from '@/calculators/chemistry/molecular-weight';
 import {derivativeCalculator,integralCalculator,limitCalculator} from '@/calculators/advanced-math/catalog-batch-9';
 import {seriesCalculator} from '@/calculators/advanced-math/catalog-batch-10';
 import {polynomialCalculator} from '@/calculators/advanced-math/catalog-batch-8';
@@ -265,7 +267,10 @@ const mathCaptureIds = new Set([
  255,256,257,258,259,260,261,262,263,264,
 ]);
 
-function retainedMathProfile(catalogId:number){
+const statisticsFollowupIds=new Set([284,285,286,287,288,289,291,300]);
+const chemistryIds=new Set([328,329,330,331,332,333,334,335,336,337,338,339,340,341,342]);
+
+function retainedNumericProfile(catalogId:number){
  const retained=getFactoryContract(catalogId);
  if(!retained?.registered||retained.fields.some(field=>field.kind!=='number'))throw Error('Exact retained numeric factory contract required');
  const definition=calculatorRegistry.getById(retained.engineId);
@@ -371,7 +376,18 @@ export const mobilityContracts=Object.freeze([
   },
  },'Reduced fraction',{},'src/calculators/launch-portfolio.ts'),
  ...structuredMathRows.map(structuredMathProfile),
- ...Array.from(geometryFollowupIds,retainedMathProfile),
+ ...Array.from(geometryFollowupIds,retainedNumericProfile),
+ ...Array.from(statisticsFollowupIds,retainedNumericProfile),
+ retainedNumericProfile(254),
+ profile(meanMedianModeRangeCalculator,{
+  catalogId:281,primaryKey:'mean',unit:'supplied observation unit',registered:false,numberLists:['values'],
+  scope:'Describe a supplied numeric sample in a common unit. Reports the mean, median, range and all tied modes. If no value repeats, the result has no mode.',
+ },'Mean',{median:{label:'Median'},range:{label:'Range'},minimum:{label:'Minimum'},maximum:{label:'Maximum'},count:{label:'Observation count'}},'src/calculators/statistics/catalog-batch-1.ts'),
+ ...Array.from(chemistryIds).filter(id=>id!==330).map(retainedNumericProfile),
+ profile(molecularWeightCalculator,{
+  catalogId:330,primaryKey:'value',unit:'g/mol',registered:false,textFields:['formula'],
+  scope:'Formula mass using the retained v1 element weight table and supported formula syntax. Use standard element symbols, integer subscripts, parentheses and square brackets. Isotope-specific masses and hydrate notation are outside this contract.',
+ },'Formula mass',{},'src/calculators/chemistry/molecular-weight.ts'),
 
  ...ownerModes.map(modeSpecificProfile),
  profile({...sunEventsEngine,examples:[{label:'Equatorial equinox fixed-offset witness',input:sunExample,expected:sunEventsEngine.calculate(sunExample,{})}]},{
@@ -381,7 +397,7 @@ export const mobilityContracts=Object.freeze([
   scope:'Approximate solar-center horizon crossings within the supplied fixed-offset date. Polar and unresolved grazing conditions do not imply an event timestamp.',
  },'Solar event status',{},'src/calculators/private-scientific-definitions.ts'),
 
- ...Array.from(mathCaptureIds,retainedMathProfile),
+ ...Array.from(mathCaptureIds,retainedNumericProfile),
  profile(basicDraftCalculator,{
   catalogId:205,primaryKey:'result',unit:'dimensionless',registered:false,primaryDecimalText:true,
   scope:'Four arithmetic operations on two plain decimal operands. Exact decimal presentation follows the retained engine precision.',
@@ -521,7 +537,7 @@ export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):bo
 }
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
- const capture=geometryFollowupIds.has(id)?'private.worker2.geometry-followup.20261124.1':structuredMathIds.has(id)?'private.worker2.structured-math.20261124.1':carryoverIds.has(id)?'private.worker2.carryover-modes.20261124.1':mathCaptureIds.has(id)?'private.worker2.math-capture.20261124.1':batch41Ids.has(id)?'private.worker2.batch41.20261124.1':id===487?'private.worker2.rainwater-capture.20261124.1':batch44Ids.has(id)?'private.worker2.batch44.20261124.1':id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
+ const capture=id===254||id===281?'private.worker2.remaining-mathematics.20261124.1':statisticsFollowupIds.has(id)?'private.worker2.statistics-followup.20261124.1':chemistryIds.has(id)?'private.worker2.chemistry.20261124.1':geometryFollowupIds.has(id)?'private.worker2.geometry-followup.20261124.1':structuredMathIds.has(id)?'private.worker2.structured-math.20261124.1':carryoverIds.has(id)?'private.worker2.carryover-modes.20261124.1':mathCaptureIds.has(id)?'private.worker2.math-capture.20261124.1':batch41Ids.has(id)?'private.worker2.batch41.20261124.1':id===487?'private.worker2.rainwater-capture.20261124.1':batch44Ids.has(id)?'private.worker2.batch44.20261124.1':id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
   sourceVersion:`${capture}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{

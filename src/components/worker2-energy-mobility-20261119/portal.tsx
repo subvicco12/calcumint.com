@@ -31,6 +31,8 @@ function StructuredMathDetails({id,output}:{id:number;output:Record<string,unkno
  {id===244&&<p>Complex result: {String(output.display)}</p>}
  {id===245&&<dl><dt>Cross product (x, y, z)</dt><dd>{['x','y','z'].map(axis=>String((output.cross as Record<string,unknown>)[axis])).join(', ')}</dd>
   {output.angleRadians===null&&<><dt>Angle</dt><dd>Undefined for a zero vector.</dd></>}</dl>}
+ {id===254&&<p>Final bracket: [{(output.bracket as number[]).join(', ')}]</p>}
+ {id===281&&<p>Modes: {(output.modes as number[]).join(', ')||'None (no repeated observations)'}</p>}
  {listed&&<details open><summary>{id===253?'Real roots':'Term preview (up to 20)'}</summary><ol>{listed.slice(0,20).map((value,index)=><li key={index}>{String(value)}</li>)}</ol></details>}
  {steps.length>0&&<details><summary>Calculation steps</summary><ol>{steps.map((step,index)=><li key={index}>{String(step)}</li>)}</ol></details>}
  </section>;
@@ -62,7 +64,7 @@ export function MobilityPortal({ownerId,plan}:{ownerId:string;plan:CalcuMintPlan
     {id:method+'-interest',label:method+' total interest',value:row.totalInterest,unit:'supplied currency'}];
   })}:{}),
   methodology:c.scope,sources:c.engine.sources,warnings:c.limitations,
- }}/>{((id>=237&&id<=248)||id===249||id===250||id===253)&&<StructuredMathDetails id={id} output={packet.snapshot.output}/>}
+ }}/>{((id>=237&&id<=248)||id===249||id===250||id===253||id===254||id===281)&&<StructuredMathDetails id={id} output={packet.snapshot.output}/>}
   {id===535&&<SolarEvents output={packet.snapshot.output}/>}
   {chargingRoundedToZero(id,packet.snapshot)&&<p role="status">The estimate is positive but rounds to zero at this calculator version’s six-decimal precision.</p>}</>} onSave={async packet=>{
   const key=JSON.stringify([ownerId,packet]);if(retry.current?.key!==key)retry.current={key,id:crypto.randomUUID()};
