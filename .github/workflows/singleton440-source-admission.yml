@@ -1,0 +1,69 @@
+name: Exact singleton440 source admission
+on:
+  workflow_dispatch:
+    inputs:
+      owner_comment:
+        description: Exact new owner authorization comment ID
+        required: true
+        type: string
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  admit-source-only:
+    if: >-
+      github.repository == 'subvicco12/calcumint.com' &&
+      github.ref == 'refs/heads/engineering/trusted-bootstrap-runtime-20261123' &&
+      github.ref_protected && github.actor == 'subvicco12' && github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: calcumint-source-bootstrap-runtime
+    env:
+      BOOTSTRAP_ENVIRONMENT: calcumint-source-bootstrap-runtime
+      TRUSTED_WORKFLOW_SHA: ${{ vars.CALCUMINT_SINGLETON440_WORKFLOW_SHA }}
+      SINGLETON440_REVIEWER: ${{ vars.CALCUMINT_SINGLETON440_REVIEWER }}
+      SINGLETON440_REVIEW_PR: ${{ vars.CALCUMINT_SINGLETON440_REVIEW_PR }}
+    steps:
+      - name: Verify independently configured exact executor
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$TRUSTED_WORKFLOW_SHA" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$GITHUB_SHA" == "$TRUSTED_WORKFLOW_SHA" ]]
+          [[ "$GITHUB_WORKFLOW_SHA" == "$TRUSTED_WORKFLOW_SHA" ]]
+          [[ "$GITHUB_WORKFLOW_REF" == "$GITHUB_REPOSITORY/.github/workflows/singleton440-source-admission.yml@$GITHUB_REF" ]]
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
+        with:
+          ref: ${{ github.workflow_sha }}
+          persist-credentials: false
+          fetch-depth: 0
+          path: trusted
+      - name: Offline authority refusal fixtures
+        run: python3 -B -m unittest discover -s trusted/tools/singleton440-authority -p test_authority.py
+      - name: Fetch exact calculator source as data
+        shell: bash
+        run: |
+          set -euo pipefail
+          export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null
+          candidate="$RUNNER_TEMP/singleton440-source"
+          git -c init.templateDir= init "$candidate"
+          git -C "$candidate" -c core.hooksPath=/dev/null fetch --no-tags https://github.com/subvicco12/calcumint.com.git 1637b2a2bf582ebc6e4f4452ff9f3a3fe082b35e
+          git -C "$candidate" -c core.hooksPath=/dev/null checkout --detach FETCH_HEAD
+          printf 'BOOTSTRAP_CANDIDATE=%s\n' "$candidate" >> "$GITHUB_ENV"
+      - name: Provision unchanged pinned runtime
+        env:
+          BOOTSTRAP_DRIVE_TOKEN: ${{ secrets.CALCUMINT_BOOTSTRAP_DRIVE_TOKEN }}
+          BOOTSTRAP_RUNTIME_FILE_ID: ${{ vars.CALCUMINT_BOOTSTRAP_RUNTIME_FILE_ID }}
+        run: python3 -I trusted/tools/trusted-bootstrap/provision_runtime.py --root "$RUNNER_TEMP"
+      - name: Authenticate exact authority and issue admission receipt only
+        env:
+          BOOTSTRAP_DRIVE_TOKEN: ${{ secrets.CALCUMINT_BOOTSTRAP_DRIVE_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
+          SINGLETON440_OWNER_COMMENT: ${{ inputs.owner_comment }}
+        run: python3 -I trusted/tools/singleton440-authority/execute.py
+      - name: Preserve exact receipt
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: singleton440-source-admission-receipt
+          path: ${{ runner.temp }}/singleton440-replay/admission-receipt.json
+          if-no-files-found: error
