@@ -6,7 +6,7 @@ import {requiredCalculatorNumber} from '../../registered-input-successor';
 import {sameRecordedJson} from '../../recorded-json-equality';
 
 export type EngineeringContract=FactoryContract&Readonly<{verifyHistorical:(snapshot:CalculationSnapshot)=>Readonly<{snapshot:CalculationSnapshot;engineId:string;engineVersion:number;scope:string}>}>;
-export type EngineeringOptions<I,O>={catalogId:number;primaryKey:keyof O&string;unit:string;scope:string;sourceEvidence:readonly string[];registered?:false;nullablePrimary?:true;structuredFields?:readonly string[];primaryStringList?:true;primaryDecimalText?:true;primaryChoices?:readonly string[];fieldUnits?:Readonly<Record<string,string>>;itemLists?:readonly string[];numberLists?:readonly string[];textFields?:readonly string[];fieldOptions?:Readonly<Record<string,readonly string[]>>;validate?:(input:I,output:O)=>void};
+export type EngineeringOptions<I,O>={catalogId:number;primaryKey:keyof O&string;unit:string;scope:string;sourceEvidence:readonly string[];registered?:false;nullablePrimary?:true;structuredFields?:readonly string[];structuredObjectFields?:readonly string[];primaryStringList?:true;validateStructuredPrimary?:(value:unknown)=>void;primaryDecimalText?:true;primaryChoices?:readonly string[];fieldUnits?:Readonly<Record<string,string>>;itemLists?:readonly string[];numberLists?:readonly string[];textFields?:readonly string[];fieldOptions?:Readonly<Record<string,readonly string[]>>;validate?:(input:I,output:O)=>void};
 /** Private captures reuse immutable engines. Historical replay deliberately bypasses capture-only guards. */
 export function createEngineeringContract<I extends object,O extends object>(engine:CalculatorDefinition<I,O>,options:EngineeringOptions<I,O>):EngineeringContract{
  const example=engine.examples[0]?.input;
@@ -16,9 +16,11 @@ export function createEngineeringContract<I extends object,O extends object>(eng
  const fieldOptions=options.fieldOptions??{};
  const itemLists=new Set(options.itemLists);
  const structuredFields=new Set(options.structuredFields);
+ const structuredObjects=new Set(options.structuredObjectFields);
  const numberLists=new Set(options.numberLists);
  const textFields=new Set(options.textFields);
  if(Object.keys(fieldOptions).some(key=>!keys.includes(key))||keys.some(key=>{
+  if(structuredObjects.has(key))return !exampleValues[key]||typeof exampleValues[key]!=='object'||Array.isArray(exampleValues[key]);
   if(structuredFields.has(key))return !Array.isArray(exampleValues[key])&&typeof exampleValues[key]!=='boolean';
   if(itemLists.has(key)||numberLists.has(key))return !Array.isArray(exampleValues[key]);
   if(textFields.has(key))return typeof exampleValues[key]!=='string';
@@ -32,17 +34,19 @@ export function createEngineeringContract<I extends object,O extends object>(eng
   return engine.inputSchema.parse(clean);
  };
  const record=(input:I,output:O)=>createCalculationSnapshot({calculatorSlug:engine.slug,calculatorVersion:engine.version,input:input as Record<string,unknown>,output:output as Record<string,unknown>});
- return Object.freeze({catalogId:options.catalogId,engineId:engine.id,slug:engine.slug,version:engine.version,title:engine.title,registered:options.registered??true,captureRevision:'private.next-engineering.20261115.1',primaryKey:options.primaryKey,unit:options.unit,scope:options.scope,sourceEvidence:Object.freeze([...options.sourceEvidence]),limitations:Object.freeze(['Private engineering contract; canonical acceptance, certification and publication remain pending.','Capture uses binary64 finite inputs |x| ≤ 1e50; nonzero magnitudes ≥ 1e-50. Original historical domain is preserved.']),fields:Object.freeze(keys.map(key=>Object.freeze({key,label:key,...(itemLists.has(key)||numberLists.has(key)||structuredFields.has(key)?{kind:'text' as const,multilineJson:true as const}:textFields.has(key)?{kind:'text' as const}:fieldOptions[key]?{kind:'select' as const,options:fieldOptions[key]}:{kind:'number' as const}),defaultValue:itemLists.has(key)||numberLists.has(key)||structuredFields.has(key)?JSON.stringify(exampleValues[key]):String(exampleValues[key]),...(options.fieldUnits?.[key]?{unit:options.fieldUnits[key]}:{})}))),
+ return Object.freeze({catalogId:options.catalogId,engineId:engine.id,slug:engine.slug,version:engine.version,title:engine.title,registered:options.registered??true,captureRevision:'private.next-engineering.20261115.1',primaryKey:options.primaryKey,unit:options.unit,scope:options.scope,sourceEvidence:Object.freeze([...options.sourceEvidence]),limitations:Object.freeze(['Private engineering contract; canonical acceptance, certification and publication remain pending.','Capture uses binary64 finite inputs |x| ≤ 1e50; nonzero magnitudes ≥ 1e-50. Original historical domain is preserved.']),fields:Object.freeze(keys.map(key=>Object.freeze({key,label:key,...(itemLists.has(key)||numberLists.has(key)||structuredFields.has(key)||structuredObjects.has(key)?{kind:'text' as const,multilineJson:true as const}:textFields.has(key)?{kind:'text' as const}:fieldOptions[key]?{kind:'select' as const,options:fieldOptions[key]}:{kind:'number' as const}),defaultValue:itemLists.has(key)||numberLists.has(key)||structuredFields.has(key)||structuredObjects.has(key)?JSON.stringify(exampleValues[key]):String(exampleValues[key]),...(options.fieldUnits?.[key]?{unit:options.fieldUnits[key]}:{})}))),
  execute(raw){
   const clean=copyCalculationData(raw,{}).input;
   if(Object.values(clean).some(value=>typeof value!=='string'))throw Error('Explicit numeric text fields required');
   const values=Object.fromEntries(Object.entries(clean).map(([key,value])=>{
    const text=value as string,choices=fieldOptions[key];
    if(textFields.has(key))return [key,text];
-   if(structuredFields.has(key)){
+   if(structuredFields.has(key)||structuredObjects.has(key)){
     if(text.length>65536)throw Error('Structured entry exceeds the 64 KiB input limit');
     const value=parseFinalPrivateSnapshotText(text);
-    if(!Array.isArray(value)&&typeof value!=='boolean')throw Error('Enter a JSON list or boolean');
+    if(structuredObjects.has(key)){
+     if(!value||typeof value!=='object'||Array.isArray(value))throw Error('Enter a JSON object');
+    }else if(!Array.isArray(value)&&typeof value!=='boolean')throw Error('Enter a JSON list or boolean');
     return [key,value];
    }
    if(numberLists.has(key)){
@@ -70,7 +74,9 @@ export function createEngineeringContract<I extends object,O extends object>(eng
   // Preserve all structured fields. The snapshot copier rejects nonfinite/exotic data recursively.
   const snapshot=record(input,output);
   const primary=snapshot.output[options.primaryKey];
-  if(options.primaryStringList){
+  if(options.validateStructuredPrimary){
+   options.validateStructuredPrimary(primary);
+  }else if(options.primaryStringList){
    if(!Array.isArray(primary)||!primary.length||!primary.every(item=>typeof item==='string'&&item.length>0))throw Error('Exact outcome list required');
   }else if(options.primaryChoices){
    if(typeof primary!=='string'||!options.primaryChoices.includes(primary))throw Error('Result status outside the retained model');
