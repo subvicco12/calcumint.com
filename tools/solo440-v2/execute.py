@@ -21,7 +21,7 @@ def verify_execution_context(context):
  a.require(git('rev-parse','HEAD^{tree}').decode().strip()==context.get('executorTree'),'Executor tree differs')
  a.require(env.get('GITHUB_RUN_ID')==context.get('runId') and context.get('attempt')==1,'Run differs')
  a.require(git('rev-parse',a.POLICY_COMMIT+':tools/solo440-v2/policy.json').decode().strip()==a.POLICY_BLOB,'Policy object differs')
- for filename in ('authority.py','execute.py','store.sql','policy.json','amendment.md'):
+ for filename in ('authority.py','execute.py','store.sql','policy.json','amendment.md','provider.py','disposable-sql.py'):
   path=a.ROOT/filename;a.require(not path.is_symlink() and path.read_bytes()==git('show',sha+':tools/solo440-v2/'+filename),'Mutable executor differs')
  manifest=context.get('evidenceManifestBytes')
  a.require(type(manifest) is bytes and a.digest(manifest)==context.get('evidenceSha256'),'Complete evidence manifest differs')
