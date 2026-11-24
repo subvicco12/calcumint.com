@@ -1,3 +1,4 @@
+import {rainwaterHarvestingDraftCalculator} from '@/calculators/energy/draft-master-487';
 import {privateCatalogAdapters} from '@/calculators/private-catalog-adapters';
 import {privateOwnerBusinessCore} from '@/calculators/private-owner-business-core';
 import {privateOwnerBusinessImpact} from '@/calculators/private-owner-business-impact';
@@ -236,6 +237,15 @@ function batch44Profile(definition:CalculatorDefinition<unknown,unknown>,catalog
 }
 
 export const mobilityContracts=Object.freeze([
+ profile(rainwaterHarvestingDraftCalculator,{
+  catalogId:487,primaryKey:'collectedLiters',unit:'L',registered:false,
+  scope:'Single supplied rainfall depth and catchment area with a supplied collection fraction from 0 to 1. Excludes tank sizing, rainfall time series and safe drinking-water claims.',
+  fieldUnits:{rainfallMm:'mm',catchmentAreaM2:'m²',collectionEfficiency:'fraction'},
+ },'Estimated collected water',{
+  theoreticalVolumeM3:{label:'Rainfall volume before losses',unit:'m³'},
+  collectedVolumeM3:{label:'Estimated collected water',unit:'m³'},
+ },'src/calculators/energy/draft-master-487.ts'),
+
  ...batch44Profiles.map(([id,key,unit,label])=>batch44Profile(
   privateCatalogAdapters.find(binding=>binding.masterId===id)!.definition,id,key,unit,label,
   id===65?'private-cashflow-rate':'private-catalog-adapters')),
@@ -329,7 +339,7 @@ export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):bo
 }
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
- const capture=batch44Ids.has(id)?'private.worker2.batch44.20261124.1':id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
+ const capture=id===487?'private.worker2.rainwater-capture.20261124.1':batch44Ids.has(id)?'private.worker2.batch44.20261124.1':id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
   sourceVersion:`${capture}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{
