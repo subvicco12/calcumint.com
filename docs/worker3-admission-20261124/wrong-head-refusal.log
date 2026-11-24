@@ -1,0 +1,23 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Exact singleton HEAD required
++ actual - expected
+
++ 'b06d710a3e4de5f9488fd96e545bd9c609633f9e'
+- '1637b2a2bf582ebc6e4f4452ff9f3a3fe082b35e'
+
+    at file:///workspace/calcumint-worker3-admission-package-20261124/docs/worker3-admission-20261124/singleton440/verify-nomination.mjs:22:8
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'b06d710a3e4de5f9488fd96e545bd9c609633f9e',
+  expected: '1637b2a2bf582ebc6e4f4452ff9f3a3fe082b35e',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

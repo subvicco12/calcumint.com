@@ -1,0 +1,9 @@
+import {mobilityContract,mobilityWorkflows} from '@/lib/worker2-energy-mobility-20261119/cohort';
+import {writeFileSync} from 'node:fs';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+const ids=[214,237,238,239,240,241,242,243,244,245,249,250,253,265,266,267,268,269,270,271,272,274,279,280,246,247,248];
+const rows=ids.map(id=>{const c=mobilityContract(id);return {id,engineId:c.engineId,version:c.version,slug:c.slug,scope:c.scope,sourceEvidence:c.sourceEvidence,bindings:c.sourceEvidence.filter(p=>p.startsWith('src/')).map(path=>{const b=execFileSync('git',['show','HEAD:'+path]);return {path,blob:execFileSync('git',['rev-parse','HEAD:'+path],{encoding:'utf8'}).trim(),sha256:createHash('sha256').update(b).digest('hex')};}),disposition:'INTEGRATED_NOT_QUALIFIED',competentReview:'PENDING'};});
+if(new Set(rows.map(x=>x.id)).size!==27||rows.some(x=>x.version!==1||!x.bindings.length))throw Error('Missing exact supplemental source/version binding');
+writeFileSync('/workspace/worker3-admission-remediation-20261124/supplement-per-id.json',JSON.stringify({commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),rows},null,2));
+console.log('27 exact supplemental engine/version/source bindings verified');

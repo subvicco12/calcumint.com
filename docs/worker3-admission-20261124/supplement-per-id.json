@@ -1,0 +1,540 @@
+{
+  "commit": "b06d710a3e4de5f9488fd96e545bd9c609633f9e",
+  "rows": [
+    {
+      "id": 214,
+      "engineId": "launch-decimal-to-fraction-calculator",
+      "version": 1,
+      "slug": "decimal-to-fraction-calculator",
+      "scope": "Reduced fraction after the retained decimal rounding rule at the chosen precision (0–12 places). New captures require a safe scaled integer. Saved v1 numeric snapshots retain their original replay domain.",
+      "sourceEvidence": [
+        "src/calculators/launch-portfolio.ts"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/launch-portfolio.ts",
+          "blob": "ca42438b0193ca6ecc205f4bbab748eef0772881",
+          "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 237,
+      "engineId": "advanced-math.linear-equation",
+      "version": 1,
+      "slug": "linear-equation-solver",
+      "scope": "Isolate x by subtracting b and dividing by the non-zero coefficient a.",
+      "sourceEvidence": [
+        "src/calculators/advanced-math/catalog-batch-5.ts"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/advanced-math/catalog-batch-5.ts",
+          "blob": "b32d797933aa5c04b8b0955ef22644bd30609564",
+          "sha256": "e98001a65ed437da15dab7eaec36deef4b41d0d700ccc5a8c66a42f66b73679a"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 238,
+      "engineId": "advanced-math.quadratic-formula",
+      "version": 1,
+      "slug": "quadratic-formula-calculator",
+      "scope": "Uses the discriminant to determine and calculate the two roots of ax² + bx + c = 0.",
+      "sourceEvidence": [
+        "src/calculators/advanced-math/catalog-batch-5.ts"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/advanced-math/catalog-batch-5.ts",
+          "blob": "b32d797933aa5c04b8b0955ef22644bd30609564",
+          "sha256": "e98001a65ed437da15dab7eaec36deef4b41d0d700ccc5a8c66a42f66b73679a"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 239,
+      "engineId": "advanced-math.system-equations",
+      "version": 1,
+      "slug": "system-of-equations-solver",
+      "scope": "Solves ax + by = c and dx + ey = f using the non-zero 2×2 determinant.",
+      "sourceEvidence": [
+        "src/calculators/advanced-math/catalog-batch-6.ts"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/advanced-math/catalog-batch-6.ts",
+          "blob": "870f4cbf1cb1b341040c84f91906c652c48e473d",
+          "sha256": "22b299e5a083fe842b26ac266fc0c7cd8489ea1161f118fc573cd8d145a97780"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 240,
+      "engineId": "advanced-math.matrix",
+      "version": 1,
+      "slug": "matrix-calculator",
+      "scope": "Performs deterministic addition, subtraction or multiplication on two 2×2 matrices and reports result properties.",
+      "sourceEvidence": [
+        "src/calculators/advanced-math/catalog-final.ts"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/advanced-math/catalog-final.ts",
+          "blob": "1bdc87df80ae071971b99424217515884cb6e3a8",
+          "sha256": "dd4526c7417726e2ec607c0fa304a1d159afff3f8c60511ba44d88080d2237d4"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 241,
+      "engineId": "advanced-math.matrix-determinant",
+      "version": 1,
+      "slug": "matrix-determinant-calculator",
+      "scope": "Computes the determinant of a 2×2 matrix.",
+      "sourceEvidence": [
+        "src/calculators/advanced-math/catalog-batch-5.ts"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/advanced-math/catalog-batch-5.ts",
+          "blob": "b32d797933aa5c04b8b0955ef22644bd30609564",
+          "sha256": "e98001a65ed437da15dab7eaec36deef4b41d0d700ccc5a8c66a42f66b73679a"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 242,
+      "engineId": "advanced-math.matrix-inverse",
+      "version": 1,
+      "slug": "matrix-inverse-calculator",
+      "scope": "Computes the inverse of a non-singular 2×2 matrix.",
+      "sourceEvidence": [
+        "src/calculators/advanced-math/catalog-batch-6.ts"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/advanced-math/catalog-batch-6.ts",
+          "blob": "870f4cbf1cb1b341040c84f91906c652c48e473d",
+          "sha256": "22b299e5a083fe842b26ac266fc0c7cd8489ea1161f118fc573cd8d145a97780"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 243,
+      "engineId": "advanced-math.rref",
+      "version": 1,
+      "slug": "rref-calculator",
+      "scope": "Reduces a 2×3 matrix to reduced row echelon form with deterministic elementary row operations.",
+      "sourceEvidence": [
+        "src/calculators/advanced-math/catalog-batch-7.ts"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/advanced-math/catalog-batch-7.ts",
+          "blob": "c63dc5af38132ceabc2fbcd0721dd11f8f2fdc4c",
+          "sha256": "f904cd5773c1af7a309d3eec309e187d382e959312dcf42ab55d1b7d57a51583"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 244,
+      "engineId": "advanced-math.complex-number",
+      "version": 1,
+      "slug": "complex-number-calculator",
+      "scope": "Applies deterministic complex addition, subtraction, multiplication or division and reports rectangular and polar properties.",
+      "sourceEvidence": [
+        "src/calculators/advanced-math/catalog-batch-6.ts"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/advanced-math/catalog-batch-6.ts",
+          "blob": "870f4cbf1cb1b341040c84f91906c652c48e473d",
+          "sha256": "22b299e5a083fe842b26ac266fc0c7cd8489ea1161f118fc573cd8d145a97780"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 245,
+      "engineId": "advanced-math.vector",
+      "version": 1,
+      "slug": "vector-calculator",
+      "scope": "Computes common deterministic 3D vector operations.",
+      "sourceEvidence": [
+        "src/calculators/advanced-math/catalog-batch-7.ts"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/advanced-math/catalog-batch-7.ts",
+          "blob": "c63dc5af38132ceabc2fbcd0721dd11f8f2fdc4c",
+          "sha256": "f904cd5773c1af7a309d3eec309e187d382e959312dcf42ab55d1b7d57a51583"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 249,
+      "engineId": "advanced-math.sequence",
+      "version": 1,
+      "slug": "sequence-calculator",
+      "scope": "Computes an arithmetic sequence term and finite sum.",
+      "sourceEvidence": [
+        "src/calculators/advanced-math/catalog-batch-7.ts"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/advanced-math/catalog-batch-7.ts",
+          "blob": "c63dc5af38132ceabc2fbcd0721dd11f8f2fdc4c",
+          "sha256": "f904cd5773c1af7a309d3eec309e187d382e959312dcf42ab55d1b7d57a51583"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 250,
+      "engineId": "advanced-math.series",
+      "version": 1,
+      "slug": "series-calculator",
+      "scope": "Computes a finite series by evaluating the supported expression at each integer index.",
+      "sourceEvidence": [
+        "src/calculators/advanced-math/catalog-batch-10.ts"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/advanced-math/catalog-batch-10.ts",
+          "blob": "ac5f6afd1704fc90ae2672c5ff10b49bef77c28b",
+          "sha256": "78370a3240b98b4339d88fdaa95cf57ff963f7b780b0956d6fc541909a0f93de"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 253,
+      "engineId": "advanced-math.polynomial",
+      "version": 1,
+      "slug": "polynomial-calculator",
+      "scope": "Finds the distinct real roots of a cubic polynomial using deterministic Cardano/trigonometric identities.",
+      "sourceEvidence": [
+        "src/calculators/advanced-math/catalog-batch-8.ts"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/advanced-math/catalog-batch-8.ts",
+          "blob": "9ec3bd7017ac25c288a0e4c3f737f937577e6ad7",
+          "sha256": "2ddc4c3dc3eba93c8f73480157646efe440adb8a4994db62c97ca0a5e979b9f8"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 265,
+      "engineId": "launch-circle-diameter-calculator",
+      "version": 1,
+      "slug": "circle-diameter-calculator",
+      "scope": "Nonnegative dimensions in one consistent length unit. d = 2r. Area uses square units; volume uses cubic units.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/launch-portfolio.ts",
+          "blob": "ca42438b0193ca6ecc205f4bbab748eef0772881",
+          "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 266,
+      "engineId": "launch-parallelogram-area-calculator",
+      "version": 1,
+      "slug": "parallelogram-area-calculator",
+      "scope": "Nonnegative dimensions in one consistent length unit. A = base × height. Area uses square units; volume uses cubic units.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/launch-portfolio.ts",
+          "blob": "ca42438b0193ca6ecc205f4bbab748eef0772881",
+          "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 267,
+      "engineId": "launch-trapezoid-area-calculator",
+      "version": 1,
+      "slug": "trapezoid-area-calculator",
+      "scope": "Nonnegative dimensions in one consistent length unit. A = (a + b) × height / 2. Area uses square units; volume uses cubic units.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/launch-portfolio.ts",
+          "blob": "ca42438b0193ca6ecc205f4bbab748eef0772881",
+          "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 268,
+      "engineId": "launch-polygon-area-calculator",
+      "version": 1,
+      "slug": "polygon-area-calculator",
+      "scope": "Regular polygons only",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "docs/milestone100-20261114/geometry/source-excerpts.json",
+        "src/calculators/launch-portfolio.ts"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/launch-portfolio.ts",
+          "blob": "ca42438b0193ca6ecc205f4bbab748eef0772881",
+          "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 269,
+      "engineId": "launch-sphere-volume-calculator",
+      "version": 1,
+      "slug": "sphere-volume-calculator",
+      "scope": "Nonnegative dimensions in one consistent length unit. V = 4πr³ / 3. Area uses square units; volume uses cubic units.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/launch-portfolio.ts",
+          "blob": "ca42438b0193ca6ecc205f4bbab748eef0772881",
+          "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 270,
+      "engineId": "launch-sphere-surface-area-calculator",
+      "version": 1,
+      "slug": "sphere-surface-area-calculator",
+      "scope": "Nonnegative dimensions in one consistent length unit. A = 4πr². Area uses square units; volume uses cubic units.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/launch-portfolio.ts",
+          "blob": "ca42438b0193ca6ecc205f4bbab748eef0772881",
+          "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 271,
+      "engineId": "launch-cylinder-volume-calculator",
+      "version": 1,
+      "slug": "cylinder-volume-calculator",
+      "scope": "Nonnegative dimensions in one consistent length unit. V = πr²height. Area uses square units; volume uses cubic units.",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "src/calculators/launch-portfolio.ts",
+        "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/launch-portfolio.ts",
+          "blob": "ca42438b0193ca6ecc205f4bbab748eef0772881",
+          "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 272,
+      "engineId": "launch-cone-volume-calculator",
+      "version": 1,
+      "slug": "cone-volume-calculator",
+      "scope": "Right circular cone volume",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "docs/milestone100-20261114/geometry/source-excerpts.json",
+        "src/calculators/launch-portfolio.ts"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/launch-portfolio.ts",
+          "blob": "ca42438b0193ca6ecc205f4bbab748eef0772881",
+          "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 274,
+      "engineId": "geometry.surface-area",
+      "version": 1,
+      "slug": "surface-area-calculator",
+      "scope": "Rectangular prisms only",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "docs/milestone100-20261114/geometry/source-excerpts.json",
+        "src/calculators/geometry/catalog-completion.ts"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/geometry/catalog-completion.ts",
+          "blob": "806c3f2358e3fdd556d3f286cf8ae5ae109a3deb",
+          "sha256": "784b527d4380facf78f20092642a70001e83c259d1916f78af44e996a3d344ff"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 279,
+      "engineId": "launch-degrees-to-radians-calculator",
+      "version": 1,
+      "slug": "degrees-to-radians-calculator",
+      "scope": "Signed angles; no periodic normalization",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "docs/milestone100-20261114/geometry/source-excerpts.json",
+        "src/calculators/launch-portfolio.ts"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/launch-portfolio.ts",
+          "blob": "ca42438b0193ca6ecc205f4bbab748eef0772881",
+          "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 280,
+      "engineId": "launch-radians-to-degrees-calculator",
+      "version": 1,
+      "slug": "radians-to-degrees-calculator",
+      "scope": "Signed angles; no periodic normalization",
+      "sourceEvidence": [
+        "docs/calculator-first/authority-catalog.json",
+        "docs/milestone100-20261114/geometry/source-excerpts.json",
+        "src/calculators/launch-portfolio.ts"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/launch-portfolio.ts",
+          "blob": "ca42438b0193ca6ecc205f4bbab748eef0772881",
+          "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 246,
+      "engineId": "advanced-math.derivative",
+      "version": 1,
+      "slug": "derivative-calculator",
+      "scope": "Estimates the derivative of a supported expression at a point using symmetric finite differences and refinement.",
+      "sourceEvidence": [
+        "src/calculators/advanced-math/catalog-batch-9.ts"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/advanced-math/catalog-batch-9.ts",
+          "blob": "bb4c035494de0b44107ddeebd7cfc60766832a8f",
+          "sha256": "37e07d82438874849d13ec95a19ea2acc9d7b542aabe94a72de0c276eac5f855"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 247,
+      "engineId": "advanced-math.integral",
+      "version": 1,
+      "slug": "integral-calculator",
+      "scope": "Computes a finite definite integral and reports an estimated numerical error.",
+      "sourceEvidence": [
+        "src/calculators/advanced-math/catalog-batch-9.ts"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/advanced-math/catalog-batch-9.ts",
+          "blob": "bb4c035494de0b44107ddeebd7cfc60766832a8f",
+          "sha256": "37e07d82438874849d13ec95a19ea2acc9d7b542aabe94a72de0c276eac5f855"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    },
+    {
+      "id": 248,
+      "engineId": "advanced-math.limit",
+      "version": 1,
+      "slug": "limit-calculator",
+      "scope": "Estimates finite one- or two-sided limits only when the numerical samples demonstrate stable convergence.",
+      "sourceEvidence": [
+        "src/calculators/advanced-math/catalog-batch-9.ts"
+      ],
+      "bindings": [
+        {
+          "path": "src/calculators/advanced-math/catalog-batch-9.ts",
+          "blob": "bb4c035494de0b44107ddeebd7cfc60766832a8f",
+          "sha256": "37e07d82438874849d13ec95a19ea2acc9d7b542aabe94a72de0c276eac5f855"
+        }
+      ],
+      "disposition": "INTEGRATED_NOT_QUALIFIED",
+      "competentReview": "PENDING"
+    }
+  ]
+}

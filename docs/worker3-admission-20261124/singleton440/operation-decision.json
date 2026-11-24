@@ -1,0 +1,50 @@
+{
+  "state": "DECISION_READY_NOMINATION; ADMISSION_EXECUTION_BLOCKED",
+  "candidate": "1637b2a2bf582ebc6e4f4452ff9f3a3fe082b35e",
+  "tree": "209982b9a81d7bf9f4783228505b5a274563391f",
+  "captureSha256": "715eb6258064342f269193fcea24325b1fb2c3faff41218b1b330b642db07346",
+  "policySha256": "c797bb66645088e9bc95dd5a31278cca266e6a48255e65ba33ac0af80079eaca",
+  "commandAvailableNow": "node verify-nomination.mjs --verify EXACT_SINGLETON_CHECKOUT",
+  "preflightReceipt": "singleton-nomination-preflight.json (diagnostic only, approvalAuthenticated=false, admitted=false, activated=false)",
+  "existingMechanism": {
+    "workflow": 427060083,
+    "protectedRef": "engineering/trusted-bootstrap-runtime-20261123",
+    "trustedHead": "fa6e158751568c59fe702ebdb9d7b105b4775ec8",
+    "environment": "calcumint-source-bootstrap-runtime",
+    "preparationRun": 45304929734,
+    "hardBoundCandidate": "fb91016fd550baeea05e02e030fe5d3772aeb2f1",
+    "preparationOnly": true
+  },
+  "existingRecoveredExecutorReference": {
+    "commit": "b295b3d9db3ca443f05de4e2cbc348b03669628e",
+    "tree": "6af76496f4df187c5aaaac774596fc370abecdc6",
+    "prerequisite": "fa6e158751568c59fe702ebdb9d7b105b4775ec8",
+    "bundleSha256": "06c393f93bce8ee5e17cd0198201a05580d97c2bb442e9cb1884beaad6d6e2eb",
+    "availability": "Authenticated GitHub exact-commit lookup still HTTP 422; supplied prior transfer metadata identifies frozen A7 scope, not #440 authority. No unverified executor was invoked."
+  },
+  "smallestMissingExecutionRequirement": "Independently reviewed and independently pinned additive two-path source-proof/authority successor, registered through the existing trusted executor path for this exact tuple. Existing bootstrap is preparation-only and hard-binds older tuple; it cannot be repointed by environment override or this nomination. Any reused recovered executor also needs exact retrievable bytes and scoped trust verification before execution.",
+  "minimumOwnerDecisionNow": "Approve only nomination/review of this exact two-path tuple and package digests; assign independent source authority to review the additive successor using existing infrastructure. This does NOT authorize executing an as-yet-unidentified executor revision.",
+  "minimumExecutionAuthorizationLater": "Explicit authenticated approval naming the exact reviewed trusted executor/policy revision, #440 commit/tree, complete package/capture digests, two predecessor/successor bindings, permitted admission-only action, independent observer and expected receipt; no activation/production/CI permission inferred.",
+  "requiredIndependentVerification": [
+    "Exact source Git objects and current-src closure including test file",
+    "Existing Stage8/9 and caller negative records retained unchanged beneath a freshly verified additive successor",
+    "Mutable-source freshness, ownership locks, symlink/dirty/untracked/ref substitutions and historical replay negative controls",
+    "No mutable candidate-selected verifier/runtime/import or owner-identity source",
+    "Trusted protected ref/environment/workflow identity readback and fresh-process runtime hashes",
+    "Independent authenticated provider readback of actual execution receipt"
+  ],
+  "expectedAdmissionReceiptRequiredFields": [
+    "exact executor and independently configured workflow SHA",
+    "workflow/run/job/attempt/actor/provider identity",
+    "candidate commit and tree",
+    "archive/package/capture/policy digests",
+    "both predecessor/successor rows and retained-engine binding",
+    "owner approval attribution and exact scope",
+    "fresh-process verification and preserved-negative-control results",
+    "admission disposition with activated=false and releaseHold=true"
+  ],
+  "authorizationGranted": false,
+  "admitted": false,
+  "activated": false,
+  "nominationVerifierSha256": "205b6a2fdb608c83e6dc57249265039a02bd36959c8124ad0533e1ec9b8da574"
+}
