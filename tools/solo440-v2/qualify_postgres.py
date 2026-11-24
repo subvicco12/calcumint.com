@@ -61,17 +61,17 @@ def receipt_ack():
  refused(lambda:store.finalize(grant,r))
 check('lost-receipt-ack-recovers-identical-stored-receipt',receipt_ack)
 def negatives():
- for updates in ({'attempt':2},{'attempt':True},{'candidate':'f'*40},{'activation':True},{'expiresAt':int(time.time())-1},{'issuedAt':int(time.time())+10},{'expiresAt':'OVERLONG'},{'amendmentSha256':'f'*64},{'policySha256':'f'*64},{'policyCommit':'f'*40},{'nominationSha256':'f'*64}):
+ for updates in ({'attempt':2},{'attempt':True},{'mode':'source-admission'},{'candidate':'f'*40},{'activation':True},{'expiresAt':int(time.time())-1},{'issuedAt':int(time.time())+10},{'expiresAt':'OVERLONG'},{'amendmentSha256':'f'*64},{'policySha256':'f'*64},{'policyCommit':'f'*40},{'nominationSha256':'f'*64}):
   bad={**fixture_grant(a),**updates}
   if bad['expiresAt']=='OVERLONG':bad['expiresAt']=bad['issuedAt']+601
   refused(lambda:client('SELECT solo440.claim('+a.sql_text(a.canonical(bad))+');'))
 check('server-enforces-scope-expiry-attempt-and-amendment',negatives)
 check('executor-role-cannot-mutate-claims',lambda:refused(lambda:client('DELETE FROM solo440.claims;')))
 def bad_receipt():
- grant=fixture_grant(a);store.claim(grant);r=a.receipt(grant,qualification=True);r['body']['activated']=True;r['sha256']=a.digest(a.canonical(r['body']).encode())
+ grant=fixture_grant(a);store.claim(grant);r=a.receipt(grant,qualification=True);r['body']['admitted']=True;r['sha256']=a.digest(a.canonical(r['body']).encode())
  refused(lambda:client('SELECT solo440.finish('+a.sql_text(a.canonical(grant))+','+a.sql_text(a.canonical(r))+');'))
  assert store.reconcile(grant)['state']=='CLAIMED_NO_RECEIPT'
-check('recomputed-activation-receipt-refused-by-store',bad_receipt)
+check('recomputed-admission-receipt-refused-by-qualification-store',bad_receipt)
 def partition():
  grant=fixture_grant(a)
  # A separate network namespace makes the actual database unreachable to this client.

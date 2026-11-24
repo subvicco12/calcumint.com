@@ -1,5 +1,6 @@
 -- ISOLATED SUCCESSOR SCHEMA: never apply to production or an unapproved hosted store.
 -- SQL execution qualification remains gated on an authorized disposable endpoint.
+-- Policy aa6b7a18 admits no hosted live authority endpoint: this store is QUALIFICATION ONLY.
 BEGIN;
 CREATE SCHEMA solo440_crypto;
 CREATE EXTENSION pgcrypto WITH SCHEMA solo440_crypto;
@@ -38,7 +39,7 @@ BEGIN
  FOREACH k IN ARRAY ARRAY['evidenceSha256','productDispositionSha256','applicabilitySha256'] LOOP
   IF coalesce(g->>k,'') !~ '^[0-9a-f]{64}$' THEN RAISE EXCEPTION 'Evidence identity malformed'; END IF;
  END LOOP;
- IF coalesce(g->>'runId','') !~ '^[1-9][0-9]{0,19}$' OR coalesce(g->>'nonce','') !~ '^[0-9a-f]{32}$' OR coalesce(g->>'storeIdentity','') !~ '^[A-Za-z0-9._:/-]{1,200}$' OR coalesce(g->>'mode','') NOT IN ('disposable-qualification','source-admission') THEN RAISE EXCEPTION 'Run, nonce or store differs'; END IF;
+ IF coalesce(g->>'runId','') !~ '^[1-9][0-9]{0,19}$' OR coalesce(g->>'nonce','') !~ '^[0-9a-f]{32}$' OR coalesce(g->>'storeIdentity','') !~ '^[A-Za-z0-9._:/-]{1,200}$' OR coalesce(g->>'mode','') <> 'disposable-qualification' THEN RAISE EXCEPTION 'Run, nonce or store differs'; END IF;
  IF jsonb_typeof(g->'issuedAt') IS DISTINCT FROM 'number' OR jsonb_typeof(g->'expiresAt') IS DISTINCT FROM 'number' OR coalesce(g->>'issuedAt','') !~ '^[0-9]+$' OR coalesce(g->>'expiresAt','') !~ '^[0-9]+$' THEN RAISE EXCEPTION 'Validity type differs'; END IF;
  issued:=(g->>'issuedAt')::bigint; expires:=(g->>'expiresAt')::bigint;
  IF NOT(issued<=now_seconds AND now_seconds<expires AND expires<=issued+600) THEN RAISE EXCEPTION 'Expired, future or overlong authority'; END IF;
