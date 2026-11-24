@@ -1,3 +1,6 @@
+import {draftMaster435Calculator} from '@/calculators/conversion/draft-master-435';
+import {airDensityCalculator} from '@/calculators/earth-science/catalog-batch-2';
+import {weightedGradeCalculator} from '@/calculators/travel/draft-master-517';
 import {sipCalculator} from '@/calculators/finance/sip';
 import {swpCalculator} from '@/calculators/finance/swp';
 import {termDepositCalculator} from '@/calculators/finance/term-deposit';
@@ -507,6 +510,15 @@ function retainedRetirementProfile([catalogId,primaryKey,label]:typeof retiremen
 const leaseEngine=privateWorkflowDefinitions.find(row=>row.id==='private.workflow.disclosed-lease')! as CalculatorDefinition<Record<string,unknown>,Record<string,unknown>>;
 const leaseInput=finalPrivateExamples[469];
 const heatInput=annualHeatComparison.inputSchema.parse(finalPrivateExamples[488]);
+const carComparisonEngine=privateOwnerEveryday.find(binding=>binding.masterId===471)!.definition as CalculatorDefinition<Record<string,unknown>,Record<string,unknown>>;
+const gradeExample=weightedGradeCalculator.goldenTests![0].input;
+const fuelEconomyUnits=['km_per_l','l_per_100km','mpg_us','mpg_imp'] as const;
+const fuelEconomyLabels:Readonly<Record<string,string>>={km_per_l:'km/L',l_per_100km:'L/100 km',mpg_us:'US mpg',mpg_imp:'Imperial mpg'};
+const fuelEconomyInput={value:'20',fromUnit:'km_per_l',toUnit:'l_per_100km'} as const;
+const fuelEconomyProfile=profile({...draftMaster435Calculator,examples:[{label:'Reciprocal economy witness',input:fuelEconomyInput,expected:draftMaster435Calculator.calculate(fuelEconomyInput,{})}]},{
+ catalogId:435,primaryKey:'result',unit:'selected fuel-economy unit',registered:false,textFields:['value'],primaryDecimalText:true,
+ fieldOptions:{fromUnit:fuelEconomyUnits,toUnit:fuelEconomyUnits},scope:draftMaster435Calculator.formulas[0].description,
+},'Converted fuel economy',{},'src/calculators/conversion/draft-master-435.ts');
 export const mobilityContracts=Object.freeze([
  profile(rational214,{
   catalogId:214,primaryKey:'result',unit:'dimensionless',registered:false,
@@ -556,6 +568,23 @@ export const mobilityContracts=Object.freeze([
   catalogId:512,primaryKey:'total',unit:'reporting currency',registered:false,textFields:['reportingCurrency'],structuredFields:['lines'],
   scope:'Sum dated spending lines in a supplied reporting currency using manually supplied rates and their explicit direction. Excludes live rates, fees and execution guarantees.',
  },'Converted spending',{},'src/calculators/private-owner-everyday.ts'),
+ Object.freeze({...fuelEconomyProfile,
+  fields:fuelEconomyProfile.fields.map(field=>field.kind==='select'?{...field,optionLabels:fuelEconomyLabels}:field),
+  outputUnit:(input:Record<string,unknown>)=>fuelEconomyLabels[String(input.toUnit)],
+ }),
+ profile(airDensityCalculator,{
+  catalogId:493,primaryKey:'value',unit:'kg/m³',registered:false,fieldUnits:{pressurePa:'Pa absolute',temperatureC:'°C'},
+  scope:'Ideal dry-air density from supplied local absolute pressure and temperature. Humidity, atmospheric profiling and aviation or equipment safety assessments are outside this model.',
+ },'Dry air density',{},'src/calculators/earth-science/catalog-batch-2.ts'),
+ profile(carComparisonEngine,{
+  catalogId:471,primaryKey:'difference',unit:'supplied currency',registered:false,structuredObjectFields:['new','used'],
+  scope:carComparisonEngine.formulas[0].description,
+ },'New minus used cost',{newCost:{label:'New vehicle net cost'},usedCost:{label:'Used vehicle net cost'}},'src/calculators/private-owner-everyday.ts'),
+ profile({...weightedGradeCalculator,examples:[{label:'Retained score and weight witness',input:gradeExample,expected:weightedGradeCalculator.calculate(gradeExample,{})}]},{
+  catalogId:517,primaryKey:'average',unit:'supplied score scale',registered:false,
+  fieldOptions:{mode:['weighted','unweighted'],missingPolicy:['reject','exclude']},structuredFields:['assessments'],structuredObjectFields:['scale'],
+  scope:weightedGradeCalculator.formulas[0].description,
+ },'Grade average',{usedCount:{label:'Scores contributing to average'},excludedCount:{label:'Missing scores excluded'},zeroWeightCount:{label:'Scores with zero weight'}},'src/calculators/travel/draft-master-517.ts'),
  profile(sipCalculator,{
   catalogId:52,primaryKey:'futureValue',unit:'supplied currency',registered:false,
   fieldOptions:{contributionTiming:['beginning','end']},fieldUnits:{annualReturnPercent:'% nominal annual',termMonths:'months'},
@@ -750,7 +779,7 @@ export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):bo
 }
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
- const capture=id===52||id===54||id===55?'private.worker2.investment-delivery.20261124.1':retainedValuationIds.has(id)?'private.worker2.valuation-energy.20261124.1':id===512?'private.worker2.currency-travel.20261124.1':electricalHvacIds.has(id)?'private.worker2.electrical-hvac-usage.20261124.1':businessMetricIds.has(id)?'private.worker2.business-metrics.20261124.1':id===206?'private.worker2.scientific.20261124.1':id===232||id===233?'private.worker2.exact-integers.20261124.1':id===252||id===301?'private.worker2.surface-odds.20261124.1':id===254||id===281?'private.worker2.remaining-mathematics.20261124.1':statisticsFollowupIds.has(id)?'private.worker2.statistics-followup.20261124.1':chemistryIds.has(id)?'private.worker2.chemistry.20261124.1':geometryFollowupIds.has(id)?'private.worker2.geometry-followup.20261124.1':structuredMathIds.has(id)?'private.worker2.structured-math.20261124.1':carryoverIds.has(id)?'private.worker2.carryover-modes.20261124.1':mathCaptureIds.has(id)?'private.worker2.math-capture.20261124.1':batch41Ids.has(id)?'private.worker2.batch41.20261124.1':id===487?'private.worker2.rainwater-capture.20261124.1':batch44Ids.has(id)?'private.worker2.batch44.20261124.1':id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
+ const capture=id===435||id===493?'private.worker2.units-dry-air.20261124.1':id===471||id===517?'private.worker2.structured-intake.20261124.1':id===52||id===54||id===55?'private.worker2.investment-delivery.20261124.1':retainedValuationIds.has(id)?'private.worker2.valuation-energy.20261124.1':id===512?'private.worker2.currency-travel.20261124.1':electricalHvacIds.has(id)?'private.worker2.electrical-hvac-usage.20261124.1':businessMetricIds.has(id)?'private.worker2.business-metrics.20261124.1':id===206?'private.worker2.scientific.20261124.1':id===232||id===233?'private.worker2.exact-integers.20261124.1':id===252||id===301?'private.worker2.surface-odds.20261124.1':id===254||id===281?'private.worker2.remaining-mathematics.20261124.1':statisticsFollowupIds.has(id)?'private.worker2.statistics-followup.20261124.1':chemistryIds.has(id)?'private.worker2.chemistry.20261124.1':geometryFollowupIds.has(id)?'private.worker2.geometry-followup.20261124.1':structuredMathIds.has(id)?'private.worker2.structured-math.20261124.1':carryoverIds.has(id)?'private.worker2.carryover-modes.20261124.1':mathCaptureIds.has(id)?'private.worker2.math-capture.20261124.1':batch41Ids.has(id)?'private.worker2.batch41.20261124.1':id===487?'private.worker2.rainwater-capture.20261124.1':batch44Ids.has(id)?'private.worker2.batch44.20261124.1':id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
   sourceVersion:`${capture}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{
@@ -772,7 +801,7 @@ export function verifyMobilitySnapshot(snapshot:CalculationSnapshot){
 }
 export function prepareMobilityRecovery(snapshot:CalculationSnapshot){
  const result=verifyMobilitySnapshot(snapshot);
- const raw=Object.fromEntries(Object.entries(snapshot.input).map(([key,value])=>[key,Array.isArray(value)?JSON.stringify(value):Object.is(value,-0)?'-0':String(value)]));
+ const raw=Object.fromEntries(Object.entries(snapshot.input).map(([key,value])=>[key,value!==null&&typeof value==='object'?JSON.stringify(value):Object.is(value,-0)?'-0':String(value)]));
  try{return {...result,currentCaptureAvailable:sameRecordedJson(mobilityWorkflows(result.catalogId).execute(raw).snapshot,result.snapshot)};}
  catch{return {...result,currentCaptureAvailable:false};}
 }
