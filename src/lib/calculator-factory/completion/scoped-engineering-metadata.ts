@@ -3,7 +3,7 @@ import type {FactoryIdentity} from '../workflows';
 import type {ScenarioDisplayMetadata,ScenarioFieldDisplay} from '@/lib/scenario-display-metadata';
 
 export type ScopedEngineeringMetadata=Readonly<{
- schemaVersion:1;identity:FactoryIdentity;scope:string;primaryKey:string;
+ schemaVersion:1;identity:FactoryIdentity;scope:string;primaryKey:string;modeDependent?:true;
  fields:readonly Readonly<{key:string;label:string;unit?:string}>[];
  outputs:Readonly<Record<string,ScenarioFieldDisplay>>;
  sourceEvidence:readonly string[];publisherSources:readonly string[];limitations:readonly string[];

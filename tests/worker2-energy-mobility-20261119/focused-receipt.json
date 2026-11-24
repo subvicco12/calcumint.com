@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "tests": 22,
+  "files": [
+    {
+      "path": "lib/worker2-energy-mobility-20261119/cohort.test.ts",
+      "assertions": [
+        "#459 reconciles independent results, replay, refusal, batch and exports",
+        "#460 reconciles independent results, replay, refusal, batch and exports",
+        "#461 reconciles independent results, replay, refusal, batch and exports",
+        "#462 reconciles independent results, replay, refusal, batch and exports",
+        "#463 reconciles independent results, replay, refusal, batch and exports",
+        "#464 reconciles independent results, replay, refusal, batch and exports",
+        "#478 reconciles independent results, replay, refusal, batch and exports",
+        "#479 reconciles independent results, replay, refusal, batch and exports",
+        "keeps historically valid below-bound input readable without treating it as new capture"
+      ]
+    },
+    {
+      "path": "calculators/automotive/automotive-economy-direct-domain.test.ts",
+      "assertions": [
+        "preserves all reference examples",
+        "rejects malformed direct calls",
+        "rejects zero fuel divisors and negative distances"
+      ]
+    },
+    {
+      "path": "calculators/energy/catalog-batch-1.test.ts",
+      "assertions": [
+        "matches golden examples",
+        "is draft standard-risk with evidence",
+        "rejects invalid denominators/efficiency"
+      ]
+    },
+    {
+      "path": "calculators/energy/catalog-batch-2.test.ts",
+      "assertions": [
+        "registers only genuinely missing canonical entries as standard DRAFT",
+        "calculates appliance energy and cost exactly for the fixture",
+        "calculates arbitrary-period household energy without calling it monthly",
+        "supports non-month periods with period-labelled outputs",
+        "rejects more than 24 usage hours per day"
+      ]
+    },
+    {
+      "path": "calculators/energy/energy-direct-domain-validation.test.ts",
+      "assertions": [
+        "rejects nonfinite appliance power and preserves example",
+        "rejects home hours exceeding 24 and preserves example"
+      ]
+    }
+  ],
+  "focusedLint": true
+}

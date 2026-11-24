@@ -1,0 +1,86 @@
+{
+  "kind": "calcumint.scoped-report",
+  "reportVersion": 1,
+  "metadata": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 462,
+      "engineId": "automotive.ev-charging-cost",
+      "calculatorSlug": "ev-charging-cost-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.energy-mobility.20261119.1/automotive.ev-charging-cost@1"
+    },
+    "scope": "Battery energy divided by supplied charging efficiency, multiplied by a flat entered rate. No taxes, fixed fees or time-varying tariff.",
+    "primaryKey": "value",
+    "fields": [
+      {
+        "key": "batteryEnergyAddedKwh",
+        "label": "Battery energy added",
+        "kind": "number",
+        "defaultValue": "50",
+        "unit": "kWh"
+      },
+      {
+        "key": "electricityRatePerKwh",
+        "label": "Electricity rate",
+        "kind": "number",
+        "defaultValue": "0.2",
+        "unit": "supplied currency/kWh"
+      },
+      {
+        "key": "chargingEfficiencyPercent",
+        "label": "Charging efficiency",
+        "kind": "number",
+        "defaultValue": "90",
+        "unit": "%"
+      }
+    ],
+    "outputs": {
+      "value": {
+        "label": "Charging cost",
+        "unit": "supplied currency"
+      }
+    },
+    "sourceEvidence": [
+      "docs/worker2-energy-mobility-20261119/EVIDENCE.md"
+    ],
+    "publisherSources": [
+      "https://afdc.energy.gov/vehicles/electric.html"
+    ],
+    "limitations": [
+      "Private engineering contract; canonical acceptance, certification and publication remain pending.",
+      "Capture uses binary64 finite inputs |x| ≤ 1e50; nonzero magnitudes ≥ 1e-50. Original historical domain is preserved."
+    ],
+    "authority": "Private bounded review. Source applicability and canonical approval remain pending."
+  },
+  "packet": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 462,
+      "engineId": "automotive.ev-charging-cost",
+      "calculatorSlug": "ev-charging-cost-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.energy-mobility.20261119.1/automotive.ev-charging-cost@1"
+    },
+    "raw": {
+      "batteryEnergyAddedKwh": "50",
+      "electricityRatePerKwh": "0.2",
+      "chargingEfficiencyPercent": "90"
+    },
+    "snapshot": {
+      "calculatorSlug": "ev-charging-cost-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "batteryEnergyAddedKwh": 50,
+        "electricityRatePerKwh": 0.2,
+        "chargingEfficiencyPercent": 90
+      },
+      "output": {
+        "value": 11.111111,
+        "steps": [
+          "EV Charging Cost = 11.111111"
+        ]
+      }
+    }
+  }
+}
