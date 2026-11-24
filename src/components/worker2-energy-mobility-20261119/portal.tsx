@@ -37,6 +37,27 @@ function StructuredMathDetails({id,output}:{id:number;output:Record<string,unkno
  {steps.length>0&&<details><summary>Calculation steps</summary><ol>{steps.map((step,index)=><li key={index}>{String(step)}</li>)}</ol></details>}
  </section>;
 }
+function SurfaceSamples({output}:{output:Record<string,unknown>}){
+ const points=output.points as readonly {x:number;y:number;z:number}[];
+ const mins=[Math.min(...points.map(p=>p.x)),Math.min(...points.map(p=>p.y)),Number(output.minimum)];
+ const spans=[Math.max(...points.map(p=>p.x))-mins[0],Math.max(...points.map(p=>p.y))-mins[1],Number(output.maximum)-mins[2]];
+ const normalize=(value:number,axis:number)=>(value-mins[axis])/(spans[axis]||1)-0.5;
+ return <figure aria-label="Sampled function surface">
+  <svg viewBox="0 0 100 100" aria-hidden="true" className="mx-auto block w-full max-w-sm">
+   {points.map(({x,y,z},index)=>{
+    const px=normalize(x,0),py=normalize(y,1),pz=normalize(z,2);
+    return <circle key={index} cx={50+34*(px-py)} cy={53-17*(px+py)-30*pz} r={0.8} fill="currentColor"/>;
+   })}
+  </svg>
+  <figcaption>{points.length} finite samples from a {String(output.gridSize)} by {String(output.gridSize)} grid. Sampled z range: {String(output.minimum)} to {String(output.maximum)}.</figcaption>
+  <details><summary>Show sampled coordinates</summary>
+   <table><caption>Finite surface samples in grid order</caption>
+    <thead><tr><th scope="col">x</th><th scope="col">y</th><th scope="col">z</th></tr></thead>
+    <tbody>{points.map(({x,y,z},index)=><tr key={index}><td>{x}</td><td>{y}</td><td>{z}</td></tr>)}</tbody>
+   </table>
+  </details>
+ </figure>;
+}
 export function MobilityPortal({ownerId,plan}:{ownerId:string;plan:CalcuMintPlan}){
  const [id,setId]=useState<number>(mobilityContracts[0].catalogId),[draftRevision,setDraftRevision]=useState(0);const c=mobilityContract(id),retry=useRef<{key:string;id:string}|null>(null);
  return <section onChangeCapture={event=>{const target=event.target;if((target instanceof HTMLInputElement||target instanceof HTMLTextAreaElement||target instanceof HTMLSelectElement)&&c.fields.some(f=>f.key===target.name))setDraftRevision(v=>v+1);}} className="worker2-mobility-controls" style={{maxWidth:'100%',minWidth:0,overflowWrap:'anywhere'}}>
@@ -44,8 +65,8 @@ export function MobilityPortal({ownerId,plan}:{ownerId:string;plan:CalcuMintPlan
  <p>{c.engineId}@{c.version}. {c.scope} {c.limitations.join(' ')}</p>
  <details><summary>Formula and assumptions</summary><ul>{c.engine.formulas.map(f=><li key={f.id}><code>{f.expression}</code> — {f.description}</li>)}</ul></details>
  <CalculatorFactoryWorkbench key={ownerId+':'+id} workflows={mobilityWorkflows(id)} fields={c.fields} title={c.title+' — Result unit: '+c.unit+' — private review'} plan={plan} renderResult={packet=><><FinalResultPresentation plan={plan} result={{
-  primaryResult:{id:id===156&&packet.snapshot.input.mode==='dated-npv'?'npv':c.primaryKey,label:id===156&&packet.snapshot.input.mode==='dated-npv'?'Net present value':c.primaryLabel,value:id===214?getLaunchSpec('decimal-to-fraction-calculator')!.formatResult!(packet.snapshot.input as Record<string,number>,Number(packet.snapshot.output.result)):id===535?solarStatuses[String(packet.snapshot.output.status)]:id===156&&packet.snapshot.input.mode==='dated-npv'?Number(packet.snapshot.output.npv):packet.snapshot.output[c.primaryKey]===null?(id===63?'No future equality at the supplied rate':'Unavailable'):id===418?(packet.snapshot.output.offspring as string[]).join(' · '):packet.snapshot.output[c.primaryKey] as number|string,unit:packet.snapshot.output[c.primaryKey]===null?undefined:c.outputUnit?.(packet.snapshot.input)??c.unit},
-  metrics:Object.entries(c.outputs).filter(([key])=>key!==c.primaryKey&&Object.hasOwn(packet.snapshot.output,key)&&!(id===156&&key==='npv')).map(([key,meta])=>({id:key,label:meta.label,unit:packet.snapshot.output[key]===null?undefined:meta.unit,value:packet.snapshot.output[key]===null?'Unavailable':packet.snapshot.output[key] as number})),
+  primaryResult:{id:id===232&&packet.snapshot.input.operation==='divmod'?'quotient':id===156&&packet.snapshot.input.mode==='dated-npv'?'npv':c.primaryKey,label:id===232&&packet.snapshot.input.operation==='divmod'?'Quotient':id===156&&packet.snapshot.input.mode==='dated-npv'?'Net present value':c.primaryLabel,value:id===232&&packet.snapshot.input.operation==='divmod'?String(packet.snapshot.output.quotient):id===214?getLaunchSpec('decimal-to-fraction-calculator')!.formatResult!(packet.snapshot.input as Record<string,number>,Number(packet.snapshot.output.result)):id===535?solarStatuses[String(packet.snapshot.output.status)]:id===156&&packet.snapshot.input.mode==='dated-npv'?Number(packet.snapshot.output.npv):packet.snapshot.output[c.primaryKey]===null?(id===63?'No future equality at the supplied rate':'Unavailable'):id===418?(packet.snapshot.output.offspring as string[]).join(' · '):packet.snapshot.output[c.primaryKey] as number|string,unit:packet.snapshot.output[c.primaryKey]===null?undefined:c.outputUnit?.(packet.snapshot.input)??c.unit},
+  metrics:Object.entries(c.outputs).filter(([key])=>key!==c.primaryKey&&!(id===232&&key==='quotient')&&Object.hasOwn(packet.snapshot.output,key)&&!(id===156&&key==='npv')).map(([key,meta])=>({id:key,label:meta.label,unit:packet.snapshot.output[key]===null?undefined:meta.unit,value:packet.snapshot.output[key]===null?'Unavailable':packet.snapshot.output[key] as number})),
   ...((id===235||id===251||(id>=246&&id<=248))&&Array.isArray(packet.snapshot.output.points)?{series:[{id:'samples',label:'Sampled f(x)',points:packet.snapshot.output.points as ResultSeries['points']}]}:{}),
   ...(id===418?{metrics:Object.entries(packet.snapshot.output.genotypeProbabilities as Record<string,number>).map(([genotype,fraction])=>({id:genotype,label:genotype,value:100*fraction,unit:'%'}))}:{}),
   ...(packet.snapshot.output.details&&typeof packet.snapshot.output.details==='object'?{metrics:Object.entries(packet.snapshot.output.details)
@@ -65,6 +86,9 @@ export function MobilityPortal({ownerId,plan}:{ownerId:string;plan:CalcuMintPlan
   })}:{}),
   methodology:c.scope,sources:c.engine.sources,warnings:c.limitations,
  }}/>{((id>=237&&id<=248)||id===249||id===250||id===253||id===254||id===281)&&<StructuredMathDetails id={id} output={packet.snapshot.output}/>}
+  {id===233&&<details open><summary>Generated values</summary><ol>{(packet.snapshot.output.values as number[]).map((value,index)=><li key={index}>{value}</li>)}</ol></details>}
+  {id===252&&<SurfaceSamples output={packet.snapshot.output}/>}
+  {id===301&&<p>{packet.snapshot.output.direction==='odds-to-probability'?'Odds converted to probability':'Probability converted to odds'}.</p>}
   {id===535&&<SolarEvents output={packet.snapshot.output}/>}
   {chargingRoundedToZero(id,packet.snapshot)&&<p role="status">The estimate is positive but rounds to zero at this calculator version’s six-decimal precision.</p>}</>} onSave={async packet=>{
   const key=JSON.stringify([ownerId,packet]);if(retry.current?.key!==key)retry.current={key,id:crypto.randomUUID()};

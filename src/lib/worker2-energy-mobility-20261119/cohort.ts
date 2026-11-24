@@ -1,3 +1,9 @@
+import {annualRecurringRevenueCalculator,monthlyRecurringRevenueCalculator} from '@/calculators/business/catalog-batch-1';
+import {arpuCalculator,cashRunwayCalculator} from '@/calculators/business/catalog-batch-2';
+import {scientificDraftCalculator,type ScientificDraftInput} from '@/calculators/core/draft-master-206';
+import {draftMaster232Calculator} from '@/calculators/core/draft-master-232';
+import {draftMaster233Calculator} from '@/calculators/core/draft-master-233';
+import {oddsCalculator} from '@/calculators/statistics/catalog-batch-4';
 import {meanMedianModeRangeCalculator} from '@/calculators/statistics/catalog-batch-1';
 import {molecularWeightCalculator} from '@/calculators/chemistry/molecular-weight';
 import {derivativeCalculator,integralCalculator,limitCalculator} from '@/calculators/advanced-math/catalog-batch-9';
@@ -6,7 +12,7 @@ import {polynomialCalculator} from '@/calculators/advanced-math/catalog-batch-8'
 import {linearEquationCalculator,quadraticFormulaCalculator,matrixDeterminantCalculator} from '@/calculators/advanced-math/catalog-batch-5';
 import {systemOfEquationsCalculator,matrixInverseCalculator,complexNumberCalculator} from '@/calculators/advanced-math/catalog-batch-6';
 import {rrefCalculator,sequenceCalculator,vectorCalculator} from '@/calculators/advanced-math/catalog-batch-7';
-import {matrixCalculator} from '@/calculators/advanced-math/catalog-final';
+import {functionPlotter3dCalculator,matrixCalculator} from '@/calculators/advanced-math/catalog-final';
 import {privateScientificDefinitions} from '@/calculators/private-scientific-definitions';
 import type {FactoryWorkbenchField} from '@/components/calculator-factory-workbench';
 import {getFactoryContract} from '@/lib/calculator-factory/registry';
@@ -366,6 +372,93 @@ function structuredMathProfile([catalogId,definition,primaryKey,label,source]:ty
   label,secondary,`src/calculators/advanced-math/catalog-${source}.ts`);
 }
 
+function oddsProfile(){
+ const scope='Convert probability to odds or odds to probability. Supply one quantity. Probability 1 has no finite odds. This is a mathematical conversion.';
+ const shared={catalogId:301,primaryKey:'probability',unit:'probability (0–1)',scope,registered:false} as const;
+ const path='src/calculators/statistics/catalog-batch-4.ts';
+ const forOdds=profile(oddsCalculator,{
+  ...shared,
+  validate:(input,output)=>{
+   if(input.odds!==undefined&&input.odds>0&&!(output.probability>0&&output.probability<1))throw Error('Odds exceed the probability precision of this capture');
+  },
+ },'Probability',{odds:{label:'Odds in favor',unit:'ratio'}},path);
+ const input={probability:0.75};
+ const forProbability=profile({...oddsCalculator,examples:[{label:'Convert probability',input,expected:oddsCalculator.calculate(input,{})}]},
+  shared,'Probability',{odds:{label:'Odds in favor',unit:'ratio'}},path);
+ const fields:readonly FactoryWorkbenchField[]=[
+  {key:'odds',label:'Odds in favor',kind:'number',defaultValue:'3'},
+  {key:'probability',label:'Probability (0–1)',kind:'number',defaultValue:''},
+ ];
+ return Object.freeze({...forOdds,fields,
+  execute:(raw:Parameters<typeof forOdds.execute>[0])=>{
+   if(Object.keys(raw).some(key=>key!=='odds'&&key!=='probability')||Object.values(raw).some(value=>typeof value!=='string'))throw Error('Expected odds or probability text');
+   const odds=raw.odds?.trim(),probability=raw.probability?.trim();
+   if(Boolean(odds)===Boolean(probability))throw Error('Enter exactly one of odds or probability');
+   return odds?forOdds.execute({odds}):forProbability.execute({probability:probability!});
+  },
+  verifyHistorical:(snapshot:CalculationSnapshot)=>(Object.hasOwn(snapshot.input,'odds')?forOdds:forProbability).verifyHistorical(snapshot),
+ });
+}
+
+function integerProfile(){
+ const engine=draftMaster232Calculator as CalculatorDefinition<Parameters<typeof draftMaster232Calculator.calculate>[0],Record<string,string>>;
+ const options={catalogId:232,unit:'integer',scope:engine.formulas[0].description,registered:false,primaryDecimalText:true,textFields:['left','right'],
+  fieldOptions:{operation:['add','subtract','multiply','divmod','gcd']}} as const;
+ const path='src/calculators/core/draft-master-232.ts';
+ const input={left:'-7',right:'3',operation:'divmod'} as const;
+ const normal=profile(engine,{...options,primaryKey:'result'},'Exact result',{},path);
+ const division=profile({...engine,examples:[{label:'Signed integer division',input,expected:engine.calculate(input,{})}]},
+  {...options,primaryKey:'quotient'},'Quotient',{remainder:{label:'Remainder'}},path);
+ return Object.freeze({...normal,outputs:{...normal.outputs,...division.outputs},
+  execute:(raw:Parameters<typeof normal.execute>[0])=>(raw.operation==='divmod'?division:normal).execute(raw),
+  verifyHistorical:(snapshot:CalculationSnapshot)=>(snapshot.input.operation==='divmod'?division:normal).verifyHistorical(snapshot),
+ });
+}
+function scientificProfile(){
+ const engine=scientificDraftCalculator;
+ const operations=['sin','cos','tan','asin','acos','atan','sqrt','ln','log10','exp','pow'] as const;
+ const angles=['degrees','radians'] as const;
+ const examples:readonly ScientificDraftInput[]=[
+  {operation:'sqrt',x:'4'},{operation:'pow',x:'2',y:'3'},
+  {operation:'sin',x:'180',angleMode:'degrees'},{operation:'pow',x:'2',y:'3',angleMode:'radians'},
+ ];
+ const profiles=examples.map(input=>profile({...engine,examples:[{label:'Retained scientific input shape',input,expected:engine.calculate(input,{})}]},{
+  catalogId:206,primaryKey:'result',unit:'operation-dependent',scope:engine.formulas[0].description,registered:false,primaryDecimalText:true,
+  textFields:['x',...(input.y===undefined?[]:['y'])],
+  fieldOptions:input.angleMode===undefined?{operation:operations}:{operation:operations,angleMode:angles},
+ },'Decimal result',{},'src/calculators/core/draft-master-206.ts'));
+ const select=(input:Readonly<Record<string,unknown>>)=>profiles[Number(Object.hasOwn(input,'y'))+2*Number(Object.hasOwn(input,'angleMode'))];
+ const fields:readonly FactoryWorkbenchField[]=[
+  {key:'operation',label:'Operation',kind:'select',options:operations,defaultValue:'sqrt'},
+  {key:'x',label:'x (plain decimal)',kind:'text',defaultValue:'4'},
+  {key:'y',label:'y (power only)',kind:'text',defaultValue:''},
+  {key:'angleMode',label:'Angle unit (trigonometry)',kind:'select',options:angles,defaultValue:''},
+ ];
+ return Object.freeze({...profiles[0],fields,
+  execute:(raw:Parameters<typeof profiles[0]['execute']>[0])=>{
+   const active=Object.fromEntries(Object.entries(raw).filter(([key,value])=>!((key==='y'||key==='angleMode')&&typeof value==='string'&&value.trim()==='')));
+   return select(active).execute(active);
+  },
+  verifyHistorical:(snapshot:CalculationSnapshot)=>select(snapshot.input).verifyHistorical(snapshot),
+ });
+}
+const businessMetricRows=[
+ [162,monthlyRecurringRevenueCalculator,'supplied currency per month','Customer-count run rate from recurring amounts only. Excludes one-time revenue and accounting recognition.'],
+ [163,annualRecurringRevenueCalculator,'supplied currency per year','Annualize one supplied monthly recurring amount at a constant run rate. No seasonality, forecast or recognition model.'],
+ [170,arpuCalculator,'supplied currency per user','Divide revenue by a positive whole user count for the same measurement period and population.'],
+ [179,cashRunwayCalculator,'months','Divide available cash by a positive constant monthly burn in the same currency. Excludes financing changes, forecasts and cash timing.'],
+] as const;
+const businessMetricIds=new Set<number>(businessMetricRows.map(([id])=>id));
+
+function businessMetricProfile([catalogId,definition,unit,scope]:typeof businessMetricRows[number]){
+ const engine=definition as unknown as CalculatorDefinition<Record<string,number>,{value:number;steps:readonly string[]}>;
+ return profile(engine,{catalogId,primaryKey:'value',unit,scope,registered:false,
+  validate:(input,output)=>{
+   if(catalogId===170&&!Number.isInteger(input.users))throw Error('Enter a whole user count');
+   if(output.value===0&&Object.values(input).every(value=>value>0))throw Error('Positive metric rounds to zero at retained engine precision');
+  },
+ },'Result',{},`src/calculators/business/catalog-batch-${catalogId<170?1:2}.ts`);
+}
 export const mobilityContracts=Object.freeze([
  profile(rational214,{
   catalogId:214,primaryKey:'result',unit:'dimensionless',registered:false,
@@ -375,6 +468,18 @@ export const mobilityContracts=Object.freeze([
    if(!Number.isSafeInteger(scaled))throw Error('Scaled numerator exceeds the exact fraction range');
   },
  },'Reduced fraction',{},'src/calculators/launch-portfolio.ts'),
+ profile(functionPlotter3dCalculator,{
+  catalogId:252,primaryKey:'maximum',unit:'z coordinate',registered:false,textFields:['expression'],
+  scope:'Sample the retained 17 × 17 grid of the supplied surface. Undefined points are omitted. Extrema refer to retained samples.',
+ },'Sampled maximum',{minimum:{label:'Sampled minimum',unit:'z coordinate'}},'src/calculators/advanced-math/catalog-final.ts'),
+ oddsProfile(),
+ ...businessMetricRows.map(businessMetricProfile),
+ scientificProfile(),
+ integerProfile(),
+ profile(draftMaster233Calculator,{
+  catalogId:233,primaryKey:'finalState',unit:'',registered:false,primaryDecimalText:true,textFields:['seed','stream'],
+  scope:draftMaster233Calculator.formulas[0].description,
+ },'Final generator state',{},'src/calculators/core/draft-master-233.ts'),
  ...structuredMathRows.map(structuredMathProfile),
  ...Array.from(geometryFollowupIds,retainedNumericProfile),
  ...Array.from(statisticsFollowupIds,retainedNumericProfile),
@@ -537,12 +642,12 @@ export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):bo
 }
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
- const capture=id===254||id===281?'private.worker2.remaining-mathematics.20261124.1':statisticsFollowupIds.has(id)?'private.worker2.statistics-followup.20261124.1':chemistryIds.has(id)?'private.worker2.chemistry.20261124.1':geometryFollowupIds.has(id)?'private.worker2.geometry-followup.20261124.1':structuredMathIds.has(id)?'private.worker2.structured-math.20261124.1':carryoverIds.has(id)?'private.worker2.carryover-modes.20261124.1':mathCaptureIds.has(id)?'private.worker2.math-capture.20261124.1':batch41Ids.has(id)?'private.worker2.batch41.20261124.1':id===487?'private.worker2.rainwater-capture.20261124.1':batch44Ids.has(id)?'private.worker2.batch44.20261124.1':id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
+ const capture=businessMetricIds.has(id)?'private.worker2.business-metrics.20261124.1':id===206?'private.worker2.scientific.20261124.1':id===232||id===233?'private.worker2.exact-integers.20261124.1':id===252||id===301?'private.worker2.surface-odds.20261124.1':id===254||id===281?'private.worker2.remaining-mathematics.20261124.1':statisticsFollowupIds.has(id)?'private.worker2.statistics-followup.20261124.1':chemistryIds.has(id)?'private.worker2.chemistry.20261124.1':geometryFollowupIds.has(id)?'private.worker2.geometry-followup.20261124.1':structuredMathIds.has(id)?'private.worker2.structured-math.20261124.1':carryoverIds.has(id)?'private.worker2.carryover-modes.20261124.1':mathCaptureIds.has(id)?'private.worker2.math-capture.20261124.1':batch41Ids.has(id)?'private.worker2.batch41.20261124.1':id===487?'private.worker2.rainwater-capture.20261124.1':batch44Ids.has(id)?'private.worker2.batch44.20261124.1':id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
   sourceVersion:`${capture}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{
   schemaVersion:1,identity,scope:contract.scope,primaryKey:contract.primaryKey,
-  ...(ownerModes.some(([catalogId])=>catalogId===id)?{modeDependent:true as const}:{}),fields:contract.fields,
+  ...(id===206||id===232||id===301||ownerModes.some(([catalogId])=>catalogId===id)?{modeDependent:true as const}:{}),fields:contract.fields,
   outputs:contract.outputs,sourceEvidence:id===509?['src/calculators/travel/catalog-batch-2.ts']:contract.sourceEvidence,publisherSources:contract.engine.sources.flatMap(source=>source.url?[source.url]:[]),
   limitations:contract.limitations,authority:'Private bounded review. Source applicability and canonical approval remain pending.',
  }});
