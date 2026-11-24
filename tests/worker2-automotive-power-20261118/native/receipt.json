@@ -1,0 +1,150 @@
+{
+  "passed": true,
+  "scope": "Combined verified stages on identical application sources. Genuine Chromium login, SSR cookies and disposable PostgreSQL, GoTrue and PostgREST.",
+  "baseline": "8d0c1df303ff8b2551e73aa1fe742f70e1fcc5ca",
+  "productionWrites": false,
+  "publicationFixture": false,
+  "releaseHold": true,
+  "sourceFingerprintCount": 2143,
+  "sortedBuildSourceMapSHA256": "3193602ef0501abb88eaa92758182f6d9974ccfc2a9ec50fccbd7cb9dedcd159",
+  "rows": [
+    {
+      "id": 475,
+      "plan": "free",
+      "ownedHistoryRestored": true,
+      "historyId": "114c0208-2560-4499-8fe0-ac31b2d66f0c",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 476,
+      "plan": "free",
+      "ownedHistoryRestored": true,
+      "historyId": "d0186b6e-429f-4234-bd0e-c766022d0327",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 475,
+      "plan": "pro",
+      "ownedHistoryRestored": true,
+      "historyId": "ebdbd834-b075-4f58-8988-f6ce030c865e",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 476,
+      "plan": "pro",
+      "ownedHistoryRestored": true,
+      "historyId": "c614b151-db6f-4b9a-a846-210203654af4",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 475,
+      "plan": "business",
+      "ownedHistoryRestored": true,
+      "historyId": "0b13aa15-b2dc-4212-9933-3a86b9475607",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "keyboardRecovery": true
+    },
+    {
+      "id": 476,
+      "plan": "business",
+      "ownedHistoryRestored": true,
+      "historyId": "fd73c32e-0c51-4ac4-903b-0e0c5481bf47",
+      "mathematicalParity": true,
+      "mobileAndAX": true,
+      "foreignHistoryDenied": true,
+      "scenarioRestore": true,
+      "foreignScenarioDenied": true,
+      "keyboardRecovery": true
+    }
+  ],
+  "checks": [
+    "Unauthenticated private route denied",
+    "Authenticated non-reviewer private route denied",
+    "Older #475 v1 opens read-only and downloads exactly; unknown v2 denied",
+    "Foreign Business user denied; same-session membership revocation removes project access; owner retains access",
+    "Revoked reviewer cannot save through the already-loaded private server action"
+  ],
+  "downloads": [
+    {
+      "id": 475,
+      "format": "json",
+      "file": "invocation-SAPe61/5ea49084-bf40-4e7d-bc23-a3c8f13f6ed0",
+      "bytes": 2079,
+      "sha256": "6692b876dec851083501e9ddf6aef188b680c31870c3726d5eebd30487824d33"
+    },
+    {
+      "id": 475,
+      "format": "csv",
+      "file": "invocation-z7Gy3m/9259b843-a846-4d69-87af-a46b6accba7d",
+      "bytes": 1645,
+      "sha256": "bfeae29740ea5c84061dc085f334ecb1eab1062c7a38adca653b1658291e16b9"
+    },
+    {
+      "id": 475,
+      "format": "pdf",
+      "file": "invocation-xnW5Xt/7b0fa3ee-53a4-4a54-bc14-aafb219edc7d",
+      "bytes": 409220,
+      "sha256": "ad2494241adb364670b35d54224c43f9a0498873d4c75af46030e74c62acc65b"
+    },
+    {
+      "id": 476,
+      "format": "json",
+      "file": "invocation-kNmGCz/51247c46-ab30-46fa-9206-49ec22d60ce2",
+      "bytes": 2376,
+      "sha256": "8a978d876823c9c7dedb0bdb95dd6f170ac0178843b4d1dc940fb5b135383096"
+    },
+    {
+      "id": 476,
+      "format": "csv",
+      "file": "invocation-iOZ9ZF/733cd99d-0a17-44ce-ac9b-3b4b5bd33790",
+      "bytes": 1874,
+      "sha256": "655a90bb342159cea84ac3741145e7ed92f6e9d40d52965763747c66eb2e33ad"
+    },
+    {
+      "id": 476,
+      "format": "pdf",
+      "file": "invocation-lKVKrN/75a53176-dfd7-4839-86c9-4b0a01b2135d",
+      "bytes": 410503,
+      "sha256": "2134bba893209b59a08bbe073f039dd76a84d9fe385619543be41ec3805af533"
+    },
+    {
+      "id": 475,
+      "format": "historical-json",
+      "file": "invocation-C0sXia/a32b9b9e-0047-4cd9-93b6-ea9bdc24e19f",
+      "bytes": 251,
+      "sha256": "66e2e34c15a3ce3167995dece730e223a86c4479b5c3d4113d2c75ecafdba274"
+    }
+  ],
+  "images": {
+    "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+    "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+    "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+  },
+  "node": "v22.23.4",
+  "legs": [
+    "plan-pass-receipt.json",
+    "historical-pass-receipt.json",
+    "revocation-pass-receipt.json"
+  ],
+  "failedCheckContext": "The plan pass reached all six journeys and current downloads before the v2 denial wording assertion. The historical pass finished v1 readback and v2 refusal before the project visibility assertion. The final revocation pass waited for the account boundary and completed."
+}

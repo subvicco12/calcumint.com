@@ -1,0 +1,78 @@
+{
+  "kind": "calcumint.scoped-report",
+  "reportVersion": 1,
+  "metadata": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 476,
+      "engineId": "automotive.engine-horsepower",
+      "calculatorSlug": "engine-horsepower-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.automotive-power.20261118.1/automotive.engine-horsepower@1"
+    },
+    "scope": "Calculate power from supplied torque in lb·ft and speed in rpm using the retained approximate divisor 5252.",
+    "primaryKey": "horsepower",
+    "fields": [
+      {
+        "key": "torqueLbFt",
+        "label": "Torque",
+        "kind": "number",
+        "defaultValue": "400",
+        "unit": "lb·ft"
+      },
+      {
+        "key": "rpm",
+        "label": "Engine speed",
+        "kind": "number",
+        "defaultValue": "5252",
+        "unit": "rpm"
+      }
+    ],
+    "outputs": {
+      "horsepower": {
+        "label": "Mechanical horsepower",
+        "unit": "mechanical hp"
+      }
+    },
+    "sourceEvidence": [
+      "docs/worker2-automotive-power-20261118/EVIDENCE.md"
+    ],
+    "publisherSources": [
+      "https://www.hotrod.com/how-to/reading-dyno-sheet",
+      "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b8"
+    ],
+    "limitations": [
+      "Private engineering contract; canonical acceptance, certification and publication remain pending.",
+      "Capture uses binary64 finite inputs |x| ≤ 1e50; nonzero magnitudes ≥ 1e-50. Original historical domain is preserved."
+    ],
+    "authority": "Private bounded review. Source applicability and canonical approval remain pending."
+  },
+  "packet": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 476,
+      "engineId": "automotive.engine-horsepower",
+      "calculatorSlug": "engine-horsepower-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.automotive-power.20261118.1/automotive.engine-horsepower@1"
+    },
+    "raw": {
+      "rpm": "5252",
+      "torqueLbFt": "400"
+    },
+    "snapshot": {
+      "calculatorSlug": "engine-horsepower-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "torqueLbFt": 400,
+        "rpm": 5252
+      },
+      "output": {
+        "horsepower": 400,
+        "steps": [
+          "Engine horsepower = 400"
+        ]
+      }
+    }
+  }
+}

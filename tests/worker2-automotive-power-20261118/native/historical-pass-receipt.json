@@ -1,0 +1,25 @@
+{
+  "baseline": "8d0c1df303ff8b2551e73aa1fe742f70e1fcc5ca",
+  "rows": [],
+  "checks": [
+    "Unauthenticated private route denied",
+    "Authenticated non-reviewer private route denied",
+    "Older #475 v1 opens read-only and downloads exactly; unknown v2 denied"
+  ],
+  "downloads": [
+    {
+      "id": 475,
+      "format": "historical-json",
+      "file": "invocation-C0sXia/a32b9b9e-0047-4cd9-93b6-ea9bdc24e19f",
+      "bytes": 251,
+      "sha256": "66e2e34c15a3ce3167995dece730e223a86c4479b5c3d4113d2c75ecafdba274"
+    }
+  ],
+  "productionWrites": false,
+  "releaseHold": true,
+  "publicationFixture": false,
+  "canonicalApproval": false,
+  "scope": "Disposable repository-model PostgreSQL17/GoTrue/PostgREST; actual private page and existing atomic account actions. Loopback transport is not production equivalence. Business team/native/job capabilities remain blocked.",
+  "passed": false,
+  "failure": "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Revocation witness project/. Input:\n\n'Skip to main content\\n' +\n  'Account\\n' +\n  '☰\\n' +\n  'Menu\\n' +\n  '\\n' +\n  'Verifying account session…\\n' +\n  '\\n' +\n  '© 2026 CalcuMint\\n' +\n  'Deterministic calculations. AI assists, never replaces verified math.\\n' +\n  'About · Privacy · Terms · Refunds · Cookies · Acceptable Use · Disclaimer · Data Deletion · Contact'\n\n    at file:///workspace/worker2-automotive-power/tests/worker2-automotive-power-20261118/native-browser.mjs:119:64"
+}

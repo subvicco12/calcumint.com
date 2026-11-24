@@ -1,0 +1,68 @@
+{
+  "kind": "calcumint.scoped-report",
+  "reportVersion": 1,
+  "metadata": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 475,
+      "engineId": "automotive.horsepower",
+      "calculatorSlug": "horsepower-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.automotive-power.20261118.1/automotive.horsepower@1"
+    },
+    "scope": "Convert supplied kW to mechanical horsepower using the retained divisor 745.6999 W/hp.",
+    "primaryKey": "horsepower",
+    "fields": [
+      {
+        "key": "kilowatts",
+        "label": "Power",
+        "kind": "number",
+        "defaultValue": "100",
+        "unit": "kW"
+      }
+    ],
+    "outputs": {
+      "horsepower": {
+        "label": "Mechanical horsepower",
+        "unit": "mechanical hp"
+      }
+    },
+    "sourceEvidence": [
+      "docs/worker2-automotive-power-20261118/EVIDENCE.md"
+    ],
+    "publisherSources": [
+      "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b8"
+    ],
+    "limitations": [
+      "Private engineering contract; canonical acceptance, certification and publication remain pending.",
+      "Capture uses binary64 finite inputs |x| ≤ 1e50; nonzero magnitudes ≥ 1e-50. Original historical domain is preserved."
+    ],
+    "authority": "Private bounded review. Source applicability and canonical approval remain pending."
+  },
+  "packet": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 475,
+      "engineId": "automotive.horsepower",
+      "calculatorSlug": "horsepower-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "private.worker2.automotive-power.20261118.1/automotive.horsepower@1"
+    },
+    "raw": {
+      "kilowatts": "100"
+    },
+    "snapshot": {
+      "calculatorSlug": "horsepower-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "kilowatts": 100
+      },
+      "output": {
+        "horsepower": 134.10220384902829,
+        "steps": [
+          "Mechanical horsepower = 134.10220384902829"
+        ]
+      }
+    }
+  }
+}

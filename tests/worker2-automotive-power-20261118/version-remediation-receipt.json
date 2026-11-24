@@ -1,0 +1,42 @@
+{
+  "baseline": "5a9a119473c4ac9da7902ecef86d6f1a663bb5d9",
+  "rows": [],
+  "checks": [
+    "Unauthenticated private route denied",
+    "Authenticated non-reviewer private route denied",
+    "Owned v2 history and scenario controlled refusal, v1 replay and foreign denial: #475",
+    "Owned v2 history and scenario controlled refusal, v1 replay and foreign denial: #476",
+    "Older #475 v1 opens read-only and downloads exactly; unknown v2 denied"
+  ],
+  "downloads": [
+    {
+      "id": 475,
+      "format": "historical-json",
+      "file": "native/invocation-C0sXia/a32b9b9e-0047-4cd9-93b6-ea9bdc24e19f",
+      "bytes": 251,
+      "sha256": "66e2e34c15a3ce3167995dece730e223a86c4479b5c3d4113d2c75ecafdba274"
+    }
+  ],
+  "productionWrites": false,
+  "releaseHold": true,
+  "publicationFixture": false,
+  "canonicalApproval": false,
+  "scope": "Disposable repository-model PostgreSQL17/GoTrue/PostgREST; actual private page and existing atomic account actions. Loopback transport is not production equivalence. Business team/native/job capabilities remain blocked.",
+  "stage": "history",
+  "expectedRows": 0,
+  "images": {
+    "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+    "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+    "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+  },
+  "runtime": "v22.23.4",
+  "sourceFingerprintCount": 2143,
+  "passed": true,
+  "historicalDownloadIdenticalToBaseline": true,
+  "compiledSourceHashes": {
+    "src/lib/worker2-automotive-power-20261118/account.ts": "949fd36bd6b6ca7d1bf7ddebe1cb6ad77444dcb051dab6560adbd37ea1e73d92",
+    "src/components/worker2-automotive-power-20261118/persistence.tsx": "7565a7c1dd5ad6bcd810522c02ad4e718daec6a1f3d9c264deed81336ad924ae",
+    "src/calculators/automotive/catalog-batch-3.ts": "96bb0a427eceaca0fb7d22fdf43fda9cdc694de4e711249f4fe94c42cf77c144"
+  },
+  "testSHA256": "f408f8ee43c121875c3f8f32c4ec2981515cc69e101b825a83bfac12454a2d5f"
+}
