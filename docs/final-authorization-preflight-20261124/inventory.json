@@ -1,0 +1,45 @@
+{
+  "checkedAtUtc": "2026-11-24T14:51:37.422495+00:00",
+  "readOnlyAuthorized": true,
+  "deletionsOrStopsPerformed": false,
+  "container": {
+    "name": "calcumint-solo440-v2-store",
+    "id": "60adcc84988e14f8b6b4518c97c6dc26b97b790796eb58417a51151a359d69b5",
+    "createdAt": "2026-11-24T12:55:16.116093943Z",
+    "state": "running",
+    "imageConfigId": "sha256:d741b376874687de90374fd34f55c6b2760e8f7bd7e4ae5cd47f50757fc08cf8",
+    "publishedPorts": [],
+    "memoryLimitBytes": 0,
+    "cpuLimitConfigured": false,
+    "observedMemory": "23.91MiB",
+    "observedCpu": "0.00%",
+    "pids": 6,
+    "writableLayerBytes": 63,
+    "rootFilesystemBytes": 278205998
+  },
+  "network": {
+    "name": "calcumint-solo440-v2-qualification",
+    "id": "7169401425fbe4afeaf5d306b2288c16f8b8021530f1795b8594a0004e6b82cc",
+    "internal": false,
+    "attachedContainerIds": [
+      "60adcc84988e14f8b6b4518c97c6dc26b97b790796eb58417a51151a359d69b5"
+    ],
+    "privateAddress": "172.18.0.2/16"
+  },
+  "volume": {
+    "name": "calcumint-solo440-v2-qualification",
+    "driver": "local",
+    "createdAt": "2026-11-24T12:55:16Z",
+    "mountPath": "/var/lib/postgresql/data",
+    "observedDependentContainers": [
+      "60adcc84988e"
+    ],
+    "contentInspectionPerformed": false,
+    "sensitiveContentStatus": "Not inspected; no production data/platform credentials intentionally written by Worker3"
+  },
+  "ownership": "IDs and creation timestamp match Worker3 recorded pre-addendum disposable qualification resources; no ownership labels were set",
+  "cost": "Running process consumes existing environment RAM/CPU and local volume disk; no separate paid VPS/database service identified; dollar cost and volume size not established by these metadata reads",
+  "crossHostSuitable": false,
+  "crossHostReason": "Local Docker bridge only, no published port or verified route for two independent hosted runners; do not expose or tunnel it",
+  "cleanup": "HOLD_NO_CLEANUP_AUTHORIZATION"
+}
