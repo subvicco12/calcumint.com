@@ -50,7 +50,7 @@ const borrowerIds=[3,4,5,6,7,8,11,12,13,14,15,16,17] as const;
 const batch35FinanceIds=[25,37,45,47,68,71,72,73,75,76,77,83,93,100,106,107,108,465,466,473] as const;
 const batch35Ids=new Set<number>([...borrowerIds,...batch35FinanceIds]);
 const supplementalBusinessIds=[142,143,165,166,167,169,171,178,182,186,187,190,192,193,196] as const;
-const supplementalFinanceIds=[57,58,59,60,61,62,69,78,114,115,66,111] as const;
+const supplementalFinanceIds=[57,58,59,60,61,62,69,78,114,115,66,111,63,67] as const;
 const supplementalSources:Readonly<Partial<Record<number,string>>>=Object.fromEntries([
  ...borrowerIds.map(id=>[id,'component-contracts']),
  ...batch35FinanceIds.map(id=>[id,'remaining-contracts']),
@@ -256,7 +256,7 @@ export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):bo
 }
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
- const capture=batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
+ const capture=id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
   sourceVersion:`${capture}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{
