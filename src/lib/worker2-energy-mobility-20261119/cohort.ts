@@ -1,3 +1,5 @@
+import {privateScientificDefinitions} from '@/calculators/private-scientific-definitions';
+import type {FactoryWorkbenchField} from '@/components/calculator-factory-workbench';
 import {getFactoryContract} from '@/lib/calculator-factory/registry';
 import {calculatorRegistry} from '@/calculators/registry';
 import {basicDraftCalculator} from '@/calculators/core/draft-master-205';
@@ -275,7 +277,61 @@ function retainedMathProfile(catalogId:number){
   sourceEvidence:retained.sourceEvidence,limitations:retained.limitations});
 }
 
+const carryoverIds = new Set([156,161,194,195,535]);
+const ownerModes = [
+ [156,privateOwnerBusinessCore,'private-owner-business-core','profit','supplied currency','Project profit'],
+ [161,privateOwnerBusinessCore,'private-owner-business-core','contribution','supplied currency per unit','Unit contribution'],
+ [194,privateOwnerBusinessImpact,'private-owner-business-impact','requiredSpend','supplied currency per period','Required advertising spend'],
+ [195,privateOwnerBusinessImpact,'private-owner-business-impact','targetRoasMultiple','multiple','Target ROAS'],
+] as const;
+
+function modeSpecificProfile([id,bindings,source,primary,unit,label]:typeof ownerModes[number]){
+ const engine=bindings.find(binding=>binding.masterId===id)!.definition as CalculatorDefinition<Record<string,unknown>,Record<string,unknown>>;
+ const variants=engine.examples.map(example=>{
+  const mode=String(example.input.mode);
+  const fields=Object.entries(example.input);
+  const key=mode==='dated-npv'?'npv':primary;
+  const output=engine.calculate(example.input,{});
+  const secondary=Object.fromEntries(Object.entries(output).filter(([name,value])=>name!==key&&typeof value==='number').map(([name])=>[name,{label:labelForField(name)}]));
+  return {mode,contract:profile({...engine,examples:[example]},{
+   catalogId:id,primaryKey:key,unit,scope:engine.formulas[0].description,registered:false,
+   fieldOptions:{mode:[mode]},
+   textFields:fields.filter(([key,value])=>key!=='mode'&&typeof value==='string').map(([key])=>key),
+   structuredFields:fields.filter(([,value])=>Array.isArray(value)).map(([key])=>key),
+  },mode==='dated-npv'?'Net present value':label,secondary,`src/calculators/${source}.ts`)};
+ });
+ const first=variants[0].contract;
+ const fields=new Map<string,FactoryWorkbenchField>();
+ for(const {contract} of variants)for(const field of contract.fields)if(!fields.has(field.key))fields.set(field.key,field);
+ const allModes=variants.map(row=>row.mode);
+ const visible=Array.from(fields.values(),field=>{
+  if(field.key==='mode')return {...field,options:allModes};
+  const modes=variants.filter(row=>row.contract.fields.some(candidate=>candidate.key===field.key)).map(row=>row.mode);
+  return modes.length===allModes.length?field:{...field,visibilityModes:modes};
+ });
+ const fromMode=(mode:unknown)=>{
+  const variant=variants.find(row=>row.mode===mode);
+  if(!variant)throw Error('Unsupported calculation mode');
+  return variant.contract;
+ };
+ return Object.freeze({...first,engine,fields:visible,outputs:Object.assign({},...variants.map(row=>row.contract.outputs)) as typeof first.outputs,
+  execute:(raw:Parameters<typeof first.execute>[0])=>fromMode(raw.mode).execute(raw),
+  verifyHistorical:(snapshot:CalculationSnapshot)=>fromMode(snapshot.input.mode).verifyHistorical(snapshot),
+ });
+}
+
+const sunEventsEngine=privateScientificDefinitions.find(row=>row.masterId===535)!.definition as CalculatorDefinition<Record<string,unknown>,Record<string,unknown>>;
+const sunExample={date:'2024-03-20',latitude:0,longitude:0,utcOffsetMinutes:60};
+
 export const mobilityContracts=Object.freeze([
+ ...ownerModes.map(modeSpecificProfile),
+ profile({...sunEventsEngine,examples:[{label:'Equatorial equinox fixed-offset witness',input:sunExample,expected:sunEventsEngine.calculate(sunExample,{})}]},{
+  catalogId:535,primaryKey:'status',unit:'fixed-offset civil day',registered:false,
+  primaryChoices:['events','polar-day','polar-night','grazing'],textFields:['date'],
+  fieldUnits:{latitude:'degrees',longitude:'degrees',utcOffsetMinutes:'minutes'},
+  scope:'Approximate solar-center horizon crossings within the supplied fixed-offset date. Polar and unresolved grazing conditions do not imply an event timestamp.',
+ },'Solar event status',{},'src/calculators/private-scientific-definitions.ts'),
+
  ...Array.from(mathCaptureIds,retainedMathProfile),
  profile(basicDraftCalculator,{
   catalogId:205,primaryKey:'result',unit:'dimensionless',registered:false,primaryDecimalText:true,
@@ -416,7 +472,7 @@ export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):bo
 }
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
- const capture=mathCaptureIds.has(id)?'private.worker2.math-capture.20261124.1':batch41Ids.has(id)?'private.worker2.batch41.20261124.1':id===487?'private.worker2.rainwater-capture.20261124.1':batch44Ids.has(id)?'private.worker2.batch44.20261124.1':id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
+ const capture=carryoverIds.has(id)?'private.worker2.carryover-modes.20261124.1':mathCaptureIds.has(id)?'private.worker2.math-capture.20261124.1':batch41Ids.has(id)?'private.worker2.batch41.20261124.1':id===487?'private.worker2.rainwater-capture.20261124.1':batch44Ids.has(id)?'private.worker2.batch44.20261124.1':id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
   sourceVersion:`${capture}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{

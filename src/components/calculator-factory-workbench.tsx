@@ -9,13 +9,14 @@ import type {CalcuMintPlan} from '@/lib/entitlements';
 /** Private engineering workbench; caller supplies a compiled trusted workflow.
  * No account mutation or server authorization is implied by a local plan prop.
  */
-export type FactoryWorkbenchField=Readonly<{key:string;label:string;defaultValue?:string|number;kind?:'select'|'number'|'text';options?:readonly string[];optionLabels?:Readonly<Record<string,string>>;multilineJson?:true;unit?:string}>;
+export type FactoryWorkbenchField=Readonly<{key:string;label:string;defaultValue?:string|number;kind?:'select'|'number'|'text';options?:readonly string[];optionLabels?:Readonly<Record<string,string>>;multilineJson?:true;unit?:string;visibilityModes?:readonly string[]}>;
 type WorkflowPanelProps={render:(packet:FactoryExecutionPacket|null,restore:(snapshot:CalculationSnapshot)=>void)=>ReactNode;packet:FactoryExecutionPacket|null;onRestore:(snapshot:CalculationSnapshot)=>void};
 function WorkflowPanel({render,packet,onRestore}:WorkflowPanelProps){return render(packet,onRestore);}
 export function CalculatorFactoryWorkbench({workflows,title,fields,plan='free',renderResult,renderWorkflows,onSave}:{workflows:FactoryWorkflows;title:string;fields:readonly FactoryWorkbenchField[];plan?:CalcuMintPlan;renderResult?:(packet:FactoryExecutionPacket)=>ReactNode;renderWorkflows?:(packet:FactoryExecutionPacket|null,restore:(snapshot:CalculationSnapshot)=>void)=>ReactNode;onSave?:(packet:FactoryExecutionPacket)=>Promise<string>}){
  const [raw,setRaw]=useState<Record<string,string>>(()=>Object.fromEntries(fields.map(f=>[f.key,String(f.defaultValue??'')])));
  const [packet,setPacket]=useState<FactoryExecutionPacket|null>(null),[scenarios,setScenarios]=useState<readonly FactoryScenario[]>([]),[rows,setRows]=useState<readonly FactoryBatchRow[]>([]);
  const [replayText,setReplayText]=useState(''),[batchText,setBatchText]=useState(''),[exportText,setExportText]=useState(''),[error,setError]=useState('');
+ const visibleFields=fields.filter(field=>!field.visibilityModes||field.visibilityModes.includes(raw.mode));
  const [saving,setSaving]=useState(false),[saveMessage,setSaveMessage]=useState('');
  const savePending=useRef(false),revision=useRef(0);
  const clearFeedback=()=>{revision.current++;setSaveMessage('');setError('');};
@@ -28,8 +29,8 @@ export function CalculatorFactoryWorkbench({workflows,title,fields,plan='free',r
   finally{savePending.current=false;setSaving(false);}
  };
  return <section aria-label={title}><h2>{title}</h2><p>Private engineering review. Replay checks consistency with the compiled engine and source version.</p>
- <form onSubmit={e=>{e.preventDefault();setPacket(null);setExportText('');act(()=>setPacket(workflows.execute(raw)));}}>
- {fields.map(field=>{const change=(value:string)=>{clearFeedback();setRaw({...raw,[field.key]:value});setPacket(null);setExportText('');};return <label key={field.key}>{field.label}{field.kind==='select'?<select name={field.key} value={raw[field.key]??''} onChange={e=>change(e.target.value)}><option value="">Choose {field.label}</option>{field.options?.map(option=><option key={option} value={option}>{field.optionLabels?.[option]??option}</option>)}</select>:field.multilineJson?<textarea name={field.key} value={raw[field.key]??''} onChange={e=>change(e.target.value)} rows={3} maxLength={65536}/>:<input type="text" inputMode={field.kind==='number'?'decimal':undefined} name={field.key} value={raw[field.key]??''} onChange={e=>change(e.target.value)}/>} {field.unit&&<span>{field.unit}</span>}</label>;})}
+ <form onSubmit={e=>{e.preventDefault();setPacket(null);setExportText('');act(()=>setPacket(workflows.execute(Object.fromEntries(visibleFields.map(field=>[field.key,raw[field.key]??''])))));}}>
+ {visibleFields.map(field=>{const change=(value:string)=>{clearFeedback();setRaw({...raw,[field.key]:value});setPacket(null);setExportText('');};return <label key={field.key}>{field.label}{field.kind==='select'?<select name={field.key} value={raw[field.key]??''} onChange={e=>change(e.target.value)}><option value="">Choose {field.label}</option>{field.options?.map(option=><option key={option} value={option}>{field.optionLabels?.[option]??option}</option>)}</select>:field.multilineJson?<textarea name={field.key} value={raw[field.key]??''} onChange={e=>change(e.target.value)} rows={3} maxLength={65536}/>:<input type="text" inputMode={field.kind==='number'?'decimal':undefined} name={field.key} value={raw[field.key]??''} onChange={e=>change(e.target.value)}/>} {field.unit&&<span>{field.unit}</span>}</label>;})}
  <button type="submit">Calculate</button></form>
  {error&&<p role="alert">{error}</p>}
  {saveMessage&&<p role="status">{saveMessage}</p>}
