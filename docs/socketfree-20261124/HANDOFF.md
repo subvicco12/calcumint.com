@@ -4,12 +4,12 @@
 
 ## Exact remotely preserved source
 
-- Authority/package commit `ef54c5d1203ae693a186ecbb75394c5a89cd9a6a`, tree `28cd8a8b10240ecd4fe3b07efc3782e0e28ad60d`, branch `engineering/worker3-authority-hosted-20261124`.
+- Authority/package commit `b2c84b5296f85d97d77c6604334b6d64f1a0a2a5`, tree `b3081a3e2dd3a10b0d5c4545e74fbefe9f8ddd79`, branch `engineering/worker3-authority-hosted-20261124`.
 - Fixture/application commit `bab4fd87e91309b15cce9600d81ec523f645f158`, tree `dac8a76d9ad2745e673d3194ec9da0b37905b6bb`, branch `engineering/worker3-socketfree-20261124`.
-- Workflow blob `c27a3ee13a7305c118a96f22f36fd5dbe2364cab`.
+- Workflow blob `af6bc1f8eb1bbe7601ed4ae837e48ac6803ac292`.
 - Provider adapter blob `c7b6b7dfa63c32ea2cf96af133cdfeecf2b455fe`.
 - Qualification-only SQL blob `cab111d7d95a765743a2f0ce7cdbe9de35981a97`.
-- Source archive `hosted-source.tar.gz`,1,034,641bytes, SHA-256 `2348755b682f6a89adc8b02ed3108e2741afbe9e426d6f4a0d260f08e5c538ea`.
+- Source archive `hosted-source.tar.gz`,1,034,795bytes, SHA-256 `257bf0017446c81f8039ea432e01b8daee49c99f610b2e8b5dcb34d3cb3799b2`.
 
 Accepted v2 implementation8a55882b, policyaa6b7a18, amendment/adoption records,20 passing authority tests and five local SQLite cases remain preserved. They were not rerun. Frozen original bootstrap, two-path verifier, historical engines, old approvals and source archive/nomination are unchanged. The274 portfolio stays5f4652917f707e5149d0fe1340a5118ef330ae03/treee4021139f69732bd95d8ee0adc17782739e2454a. PR1538 still resolves49ea243b5be7e1ee9f3cd8af7f936ab784402cf7. No existing six mandatory CI definitions were changed.
 
