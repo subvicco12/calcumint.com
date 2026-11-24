@@ -1,0 +1,14 @@
+.E....
+======================================================================
+ERROR: test_live_execution_requires_protected_context_and_pinned_runtime (test_execution.ExecutionTests.test_live_execution_requires_protected_context_and_pinned_runtime)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_execution.py", line 50, in test_live_execution_requires_protected_context_and_pinned_runtime
+    with self.assertRaises(ValueError):m.verify_execution_context({})
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'solo_execute' has no attribute 'verify_execution_context'
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.019s
+
+FAILED (errors=1)

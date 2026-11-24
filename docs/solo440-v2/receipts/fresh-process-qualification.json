@@ -1,0 +1,75 @@
+{
+  "schema": "solo440-v2-local-reference-qualification",
+  "crossHostQualified": false,
+  "postgresQualified": false,
+  "sourceAdmissionPerformed": false,
+  "activationPerformed": false,
+  "results": [
+    {
+      "case": "atomic-local-reference-twelve-fresh-processes",
+      "pass": true,
+      "seconds": 0.719,
+      "detail": {
+        "freshProcessIds": [
+          14394,
+          14397,
+          14398,
+          14401,
+          14402,
+          14404,
+          14409,
+          14407,
+          14410,
+          14412,
+          14414,
+          14416
+        ],
+        "accepted": 1,
+        "refused": 11,
+        "freshProcessReplayRefused": true,
+        "replacementRefused": true,
+        "crossRunNonceReuseRefused": true
+      }
+    },
+    {
+      "case": "actual-process-exit-after-claim-commit-before-ack",
+      "pass": true,
+      "seconds": 0.159,
+      "detail": {
+        "workerExit": 75,
+        "authoritativeState": "CLAIMED_NO_RECEIPT",
+        "replayRefused": true
+      }
+    },
+    {
+      "case": "actual-process-exit-after-receipt-commit-before-ack",
+      "pass": true,
+      "seconds": 0.162,
+      "detail": {
+        "authoritativeState": "RECEIPTED",
+        "exactReceiptRecovered": true,
+        "secondFinalizationRefused": true
+      }
+    },
+    {
+      "case": "missing-authority-storage-fails-closed",
+      "pass": true,
+      "seconds": 0.077,
+      "detail": {
+        "noLocalStateRecreation": true,
+        "authoritativeReconciliationRequired": true
+      }
+    },
+    {
+      "case": "synthetic-owner-acceptance-executor-reference-journey",
+      "pass": true,
+      "seconds": 0.001,
+      "detail": {
+        "state": "RECEIPTED",
+        "admitted": false,
+        "activated": false,
+        "providerProof": "SYNTHETIC TEST ONLY"
+      }
+    }
+  ]
+}

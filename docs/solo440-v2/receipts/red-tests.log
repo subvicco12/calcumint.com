@@ -1,0 +1,60 @@
+FFFFF
+======================================================================
+FAIL: test_adoption_requires_exact_owner_content_times_and_id (test_durable.DurableTests.test_adoption_requires_exact_owner_content_times_and_id)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_durable.py", line 10, in test_adoption_requires_exact_owner_content_times_and_id
+    m=self.module();owner,comment=m.adoption_fixture();m.verify_adoption(owner,comment)
+      ^^^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_durable.py", line 5, in module
+    self.assertTrue((ROOT/'authority.py').is_file(),'Versioned durable authority implementation missing')
+AssertionError: False is not true : Versioned durable authority implementation missing
+
+======================================================================
+FAIL: test_exact_amendment_policy_and_nomination (test_durable.DurableTests.test_exact_amendment_policy_and_nomination)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_durable.py", line 8, in test_exact_amendment_policy_and_nomination
+    m=self.module();p=m.verify_package();self.assertEqual(p['candidate'],m.CANDIDATE)
+      ^^^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_durable.py", line 5, in module
+    self.assertTrue((ROOT/'authority.py').is_file(),'Versioned durable authority implementation missing')
+AssertionError: False is not true : Versioned durable authority implementation missing
+
+======================================================================
+FAIL: test_grants_reject_wrong_scope_time_type_run_attempt_and_activation (test_durable.DurableTests.test_grants_reject_wrong_scope_time_type_run_attempt_and_activation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_durable.py", line 14, in test_grants_reject_wrong_scope_time_type_run_attempt_and_activation
+    m=self.module();g=m.fixture_grant();now=g['issuedAt']+1
+      ^^^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_durable.py", line 5, in module
+    self.assertTrue((ROOT/'authority.py').is_file(),'Versioned durable authority implementation missing')
+AssertionError: False is not true : Versioned durable authority implementation missing
+
+======================================================================
+FAIL: test_receipt_is_separate_and_old_receipt_shape_refuses (test_durable.DurableTests.test_receipt_is_separate_and_old_receipt_shape_refuses)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_durable.py", line 21, in test_receipt_is_separate_and_old_receipt_shape_refuses
+    m=self.module();g=m.fixture_grant();r=m.receipt(g,qualification=True);m.verify_receipt(r,g,qualification=True)
+      ^^^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_durable.py", line 5, in module
+    self.assertTrue((ROOT/'authority.py').is_file(),'Versioned durable authority implementation missing')
+AssertionError: False is not true : Versioned durable authority implementation missing
+
+======================================================================
+FAIL: test_unavailable_store_is_closed_and_no_local_fallback (test_durable.DurableTests.test_unavailable_store_is_closed_and_no_local_fallback)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_durable.py", line 27, in test_unavailable_store_is_closed_and_no_local_fallback
+    m=self.module();g=m.fixture_grant()
+      ^^^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_durable.py", line 5, in module
+    self.assertTrue((ROOT/'authority.py').is_file(),'Versioned durable authority implementation missing')
+AssertionError: False is not true : Versioned durable authority implementation missing
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.002s
+
+FAILED (failures=5)

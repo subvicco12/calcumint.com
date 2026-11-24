@@ -1,0 +1,29 @@
+FF
+======================================================================
+FAIL: test_qualification_receipts_cannot_be_consumed_as_admission (test_consumption.ConsumptionTests.test_qualification_receipts_cannot_be_consumed_as_admission)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_consumption.py", line 9, in test_qualification_receipts_cannot_be_consumed_as_admission
+    m=self.load();g=fixture_grant(a);r=a.receipt(g,True)
+      ^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_consumption.py", line 6, in load
+    p=pathlib.Path(__file__).parent/'consumption.py';self.assertTrue(p.is_file(),'Governed v2 receipt review adapter missing')
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Governed v2 receipt review adapter missing
+
+======================================================================
+FAIL: test_source_receipt_only_produces_review_data_without_activation (test_consumption.ConsumptionTests.test_source_receipt_only_produces_review_data_without_activation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_consumption.py", line 12, in test_source_receipt_only_produces_review_data_without_activation
+    m=self.load();g=fixture_grant(a);g['mode']='source-admission';r=a.receipt(g,False)
+      ^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_consumption.py", line 6, in load
+    p=pathlib.Path(__file__).parent/'consumption.py';self.assertTrue(p.is_file(),'Governed v2 receipt review adapter missing')
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : Governed v2 receipt review adapter missing
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (failures=2)

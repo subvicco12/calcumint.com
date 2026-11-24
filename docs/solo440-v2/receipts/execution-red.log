@@ -1,0 +1,60 @@
+FFFFF
+======================================================================
+FAIL: test_interruption_and_source_or_authorization_failure_leave_closed_claim (test_execution.ExecutionTests.test_interruption_and_source_or_authorization_failure_leave_closed_claim)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_execution.py", line 37, in test_interruption_and_source_or_authorization_failure_leave_closed_claim
+    m=self.module();g,p=self.fixture(m)
+      ^^^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_execution.py", line 7, in module
+    self.assertTrue((ROOT/'execute.py').is_file(),'Versioned owner-acceptance executor missing')
+AssertionError: False is not true : Versioned owner-acceptance executor missing
+
+======================================================================
+FAIL: test_owner_acceptance_does_not_forge_independence (test_execution.ExecutionTests.test_owner_acceptance_does_not_forge_independence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_execution.py", line 23, in test_owner_acceptance_does_not_forge_independence
+    m=self.module();g,p=self.fixture(m);self.assertEqual(m.verify_authority(g,p),a.digest(a.canonical(g).encode()))
+      ^^^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_execution.py", line 7, in module
+    self.assertTrue((ROOT/'execute.py').is_file(),'Versioned owner-acceptance executor missing')
+AssertionError: False is not true : Versioned owner-acceptance executor missing
+
+======================================================================
+FAIL: test_product_and_applicability_cannot_be_replaced_by_adoption (test_execution.ExecutionTests.test_product_and_applicability_cannot_be_replaced_by_adoption)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_execution.py", line 18, in test_product_and_applicability_cannot_be_replaced_by_adoption
+    m=self.module();g,p=self.fixture(m);m.verify_authority(g,p)
+      ^^^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_execution.py", line 7, in module
+    self.assertTrue((ROOT/'execute.py').is_file(),'Versioned owner-acceptance executor missing')
+AssertionError: False is not true : Versioned owner-acceptance executor missing
+
+======================================================================
+FAIL: test_qualification_refuses_source_admission_mode (test_execution.ExecutionTests.test_qualification_refuses_source_admission_mode)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_execution.py", line 46, in test_qualification_refuses_source_admission_mode
+    m=self.module();g,p=self.fixture(m);g['mode']='source-admission'
+      ^^^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_execution.py", line 7, in module
+    self.assertTrue((ROOT/'execute.py').is_file(),'Versioned owner-acceptance executor missing')
+AssertionError: False is not true : Versioned owner-acceptance executor missing
+
+======================================================================
+FAIL: test_sqlite_reference_claim_and_receipt_reconciliation (test_execution.ExecutionTests.test_sqlite_reference_claim_and_receipt_reconciliation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_execution.py", line 28, in test_sqlite_reference_claim_and_receipt_reconciliation
+    m=self.module();g,p=self.fixture(m)
+      ^^^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-solo440-20261124/tools/solo440-v2/test_execution.py", line 7, in module
+    self.assertTrue((ROOT/'execute.py').is_file(),'Versioned owner-acceptance executor missing')
+AssertionError: False is not true : Versioned owner-acceptance executor missing
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+FAILED (failures=5)
