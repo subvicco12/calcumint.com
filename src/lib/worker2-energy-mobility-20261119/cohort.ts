@@ -300,7 +300,7 @@ export const mobilityContracts=Object.freeze([
  profile(punnettSquareCalculator,{catalogId:418,primaryKey:'offspring',unit:'equally likely combinations',scope:'Educational single-locus diploid cross. Enter two copies of a single allele letter for each parent, using case to distinguish variants. Reports four equally likely Mendelian outcomes and grouped genotype fractions, without phenotype, disease or real offspring prediction.',textFields:['parent1','parent2'],primaryStringList:true},'Offspring combinations'),
  suppliedMargin(139,'Gross margin from entered revenue and direct costs in the same period, currency and measurement basis. No inventory, cost attribution or accounting policy is inferred.'),
  suppliedMargin(140,'Net margin from entered net income and revenue in the same period, currency and measurement basis. No recognition, taxation or formal financial statement judgment is inferred.'),
- profile({...remainingContracts.find(engine=>engine.id==='private.remaining.494')!,examples:[{
+ profile({...(remainingContracts.find(engine=>engine.id==='private.remaining.494')! as CalculatorDefinition<Record<string,unknown>,Record<string,unknown>>),examples:[{
   label:'Standard sea-level reference',input:{...remainingExamples[494]},expected:{value:101325,unit:'Pa',pressurePa:101325},
  }]},{catalogId:494,primaryKey:'value',unit:'Pa',registered:false,
   fieldUnits:{seaLevelPressurePa:'Pa',altitudeM:'m'},fieldOptions:{scope:['supplied-mathematical-scenario']},
