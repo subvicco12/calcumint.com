@@ -67,6 +67,11 @@ export function MobilityPortal({ownerId,plan}:{ownerId:string;plan:CalcuMintPlan
   methodology:c.scope,sources:c.engine.sources,warnings:c.limitations,
  }}/>{((id>=237&&id<=248)||id===249||id===250||id===253||id===254||id===281)&&<StructuredMathDetails id={id} output={packet.snapshot.output}/>}
   {id===233&&<details open><summary>Generated values</summary><ol>{(packet.snapshot.output.values as number[]).map((value,index)=><li key={index}>{value}</li>)}</ol></details>}
+  {id===512&&<details><summary>Converted spending lines</summary><table><caption>Conversion amounts in {String(packet.snapshot.output.reportingCurrency)}</caption>
+   <thead><tr><th scope="col">Date</th><th scope="col">Original amount</th><th scope="col">Converted amount</th></tr></thead>
+   <tbody>{(packet.snapshot.output.lines as {date:string;amount:number;baseCurrency:string;reportingAmount:number}[]).map((line,index)=>
+    <tr key={index}><td>{line.date}</td><td>{line.amount} {line.baseCurrency}</td><td>{line.reportingAmount}</td></tr>)}</tbody>
+  </table></details>}
   {id===252&&<SurfaceSamples output={packet.snapshot.output}/>}
   {id===301&&<p>{packet.snapshot.output.direction==='odds-to-probability'?'Odds converted to probability':'Probability converted to odds'}.</p>}
   {id===535&&<SolarEvents output={packet.snapshot.output}/>}
