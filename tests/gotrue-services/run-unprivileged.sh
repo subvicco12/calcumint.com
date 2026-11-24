@@ -10,6 +10,12 @@ if test -r /var/run/docker.sock || test -w /var/run/docker.sock; then
   exit 1
 fi
 cd "$APP_SOURCE"
+node - "$WORKER2_MOBILITY_BROWSER_ARTIFACTS/socket-isolation.json" <<'JS'
+const fs=require('node:fs'),assert=require('node:assert/strict');
+for(const key of ['GITHUB_TOKEN','BOOTSTRAP_DRIVE_TOKEN','ACTIONS_RUNTIME_TOKEN','ACTIONS_ID_TOKEN_REQUEST_TOKEN'])assert(!process.env[key],'Provider credential reached application');
+assert.equal(process.getuid(),65534);assert.deepEqual(process.getgroups(),[65534]);
+fs.writeFileSync(process.argv[2],JSON.stringify({uid:process.getuid(),groups:process.getgroups(),dockerSocketReadableOrWritable:false,providerCredentialsPresent:false,node:process.version,runId:process.env.GITHUB_RUN_ID,workflowSha:process.env.GITHUB_WORKFLOW_SHA})+'\n');
+JS
 npm ci --ignore-scripts --no-audit --no-fund
 node tests/worker2-energy-mobility-20261119/recovered-mass.local.mjs
 node - "$WORKER2_MOBILITY_BROWSER_ARTIFACTS/receipt.json" <<'JS'
