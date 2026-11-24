@@ -1,0 +1,36 @@
+{
+  "results": [
+    {
+      "case": "exact-head-two-path-source",
+      "pass": true,
+      "exitCode": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case": "changed-allowlisted-working-bytes",
+      "pass": true,
+      "exitCode": 1,
+      "stderrSha256": "c5c3e76ebd1c35bccb9a293cc2c6fe25886c30231f4bff14b95a0336950a7f31"
+    },
+    {
+      "case": "unrelated-untracked-source",
+      "pass": true,
+      "exitCode": 1,
+      "stderrSha256": "bcd06d1a241c84aad35232dd8114235251403c641d30be23f35bae805269b394"
+    },
+    {
+      "case": "redirected-source-symlink",
+      "pass": true,
+      "exitCode": 1,
+      "stderrSha256": "c5c3e76ebd1c35bccb9a293cc2c6fe25886c30231f4bff14b95a0336950a7f31"
+    },
+    {
+      "case": "wrong-head",
+      "pass": true,
+      "exitCode": 1,
+      "stderrSha256": "9f77061f111f70a2f855465e56448e1f1256deb8c7e3cd56a719b7eedb2dde4c"
+    }
+  ],
+  "admitted": false,
+  "activated": false
+}
