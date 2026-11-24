@@ -122,7 +122,7 @@ jobs:
           [[ "$GITHUB_WORKFLOW_REF" == "$GITHUB_REPOSITORY/.github/workflows/solo440-hosted-qualification.yml@$GITHUB_REF" ]]
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
         with:
-          ref: cd03c0506e1e003a1af24acbf39974af6e3d63ed
+          ref: bab4fd87e91309b15cce9600d81ec523f645f158
           persist-credentials: false
           path: app
       - name: Initialize disposable authentication role before service retry
