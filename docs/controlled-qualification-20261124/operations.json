@@ -1,0 +1,160 @@
+{
+  "repository": "subvicco12/calcumint.com",
+  "authorityCommit": "b2c84b5296f85d97d77c6604334b6d64f1a0a2a5",
+  "authorityTree": "b3081a3e2dd3a10b0d5c4545e74fbefe9f8ddd79",
+  "fixtureCommit": "bab4fd87e91309b15cce9600d81ec523f645f158",
+  "fixtureTree": "dac8a76d9ad2745e673d3194ec9da0b37905b6bb",
+  "existingAuthorization": {
+    "commit": "56ebaf736982d08fa9f33852fb628d63c51fbdf8",
+    "path": "docs/socketfree-20261124/AUTHORIZATION.md",
+    "sha256": "312a97950f63e24fe42529ca4ebcd748deb4f0fafd1846881c625012b1d8276f"
+  },
+  "workflow": {
+    "path": ".github/workflows/solo440-hosted-qualification.yml",
+    "blob": "af6bc1f8eb1bbe7601ed4ae837e48ac6803ac292",
+    "sha256": "64dd55015c77e30270db84514fe856da7a9f4050128671b5a92b8ee44c7e45de",
+    "bytes": 10706,
+    "trigger": "workflow_dispatch only",
+    "inputs": {}
+  },
+  "registrationPR": {
+    "baseBranch": "main",
+    "observedBaseCommit": "8dd7b1d3cb59ce7cbc858d4a28d3e68a43259c5f",
+    "proposedHeadBranch": "engineering/worker3-hosted-qualification-registration-20261124",
+    "title": "Register held socket-free #440/#426 qualification workflow",
+    "changes": [
+      {
+        "status": "added",
+        "path": ".github/workflows/solo440-hosted-qualification.yml",
+        "blob": "af6bc1f8eb1bbe7601ed4ae837e48ac6803ac292",
+        "sha256": "64dd55015c77e30270db84514fe856da7a9f4050128671b5a92b8ee44c7e45de"
+      }
+    ],
+    "otherChangesPermitted": false,
+    "baseOrContentDrift": "STOP for fresh review",
+    "currentFileStatus": "ABSENT_HTTP_404"
+  },
+  "executionRef": {
+    "ref": "refs/heads/engineering/solo440-owner-v2-execution",
+    "sha": "b2c84b5296f85d97d77c6604334b6d64f1a0a2a5",
+    "createOnlyIfAbsent": true,
+    "wrongExistingSha": "STOP_NO_OVERWRITE",
+    "observedState": "ABSENT_HTTP_404"
+  },
+  "newProtection": {
+    "name": "calcumint-solo440-owner-v2-execution-lock",
+    "target": "branch",
+    "enforcement": "active",
+    "bypass_actors": [],
+    "conditions": {
+      "ref_name": {
+        "include": [
+          "refs/heads/engineering/solo440-owner-v2-execution"
+        ],
+        "exclude": []
+      }
+    },
+    "rules": [
+      {
+        "type": "deletion"
+      },
+      {
+        "type": "non_fast_forward"
+      },
+      {
+        "type": "update"
+      }
+    ]
+  },
+  "frozenRulesetsUnchanged": [
+    27851420,
+    27907165
+  ],
+  "environment": {
+    "name": "calcumint-source-bootstrap-runtime",
+    "branchAllowanceAddition": {
+      "name": "engineering/solo440-owner-v2-execution",
+      "type": "branch"
+    },
+    "preserveExistingAllowance": "engineering/trusted-bootstrap-runtime-20261123",
+    "preserveExistingBranchPolicyConfiguration": true,
+    "variable": {
+      "name": "CALCUMINT_SOLO440_HOSTED_WORKFLOW_SHA",
+      "value": "b2c84b5296f85d97d77c6604334b6d64f1a0a2a5",
+      "unexpectedCurrentValue": "STOP",
+      "metadataReadback": "HTTP_403_CURRENT_VALUE_UNVERIFIED"
+    }
+  },
+  "credentials": {
+    "existingDriveSecret": {
+      "name": "CALCUMINT_BOOTSTRAP_DRIVE_TOKEN",
+      "location": "environment calcumint-source-bootstrap-runtime",
+      "presenceMetadata": "HTTP_403_OWNER_CONFIRMATION_REQUIRED",
+      "requiredScope": "Existing credential only: authenticated verified owner Google subject/email; OAuth userinfo; Drive about and read access to exact adoption document/comment; no writes or scope expansion",
+      "ownerSubject": "115201266201052505736",
+      "ownerEmail": "subvicco12@gmail.com",
+      "document": "1KU7fGtv86RQz_n3HCdl9HscTyN2Z7SlXz8U8EF3f3MY",
+      "comment": "doco.yCW4dzFjM3eDgvrRWjBNVA"
+    },
+    "githubJobToken": {
+      "source": "github.token",
+      "permissions": {
+        "contents": "read",
+        "actions": "read"
+      },
+      "noWriteScopes": true
+    },
+    "noNewCredentials": true,
+    "noValuesRetrieved": true,
+    "applicationReceivesProviderCredentials": false
+  },
+  "jobTimeoutMinutes": {
+    "postgres-contract": 10,
+    "mass426-authenticated": 20,
+    "provider-readback": 10
+  },
+  "combinedConfiguredRunnerMinutes": 40,
+  "services": {
+    "postgres-contract": [
+      "pinned PostgreSQL17.6 loopback service"
+    ],
+    "mass426-authenticated": [
+      "pinned PostgreSQL17.6",
+      "pinned GoTrue2.197.0",
+      "pinned PostgREST12.2.3"
+    ],
+    "provider-readback": []
+  },
+  "dispatch": {
+    "operator": "subvicco12",
+    "workflow": "solo440-hosted-qualification.yml",
+    "body": {
+      "ref": "engineering/solo440-owner-v2-execution"
+    },
+    "inputs": {},
+    "authorizedInvocations": 1,
+    "requiredRunAttempt": 1,
+    "automaticRetries": false,
+    "currentCandidateRunCount": 0,
+    "duplicateControl": "Exclusive owner-operated single dispatch; require zero matching prior runs, never retry ambiguous POST, reconcile provider runs. NOT an atomic server-side cross-dispatch lock."
+  },
+  "receipts": [
+    "solo440-postgres-qualification/postgres-qualification.json",
+    "mass426-authenticated-acceptance/receipt.json and native JSON/CSV/PDF files, hashes, build source bindings, socket-isolation.json",
+    "solo440-provider-readback/solo440-provider-readback.json"
+  ],
+  "acceptance": "Each of the three named jobs SUCCESS, no SKIPPED substitutes; verify head/actor/attempt and receipt hashes; no promotion from aggregate CI alone",
+  "crossHost": "SEPARATE_UNRESOLVED_NOT_A_PREREQUISITE_FOR_THE_THREE_JOBS",
+  "hostinger": "Auto-deployment OFF must be confirmed before registration/default-branch write; no setting change authorized by this preflight",
+  "restrictions": [
+    "No PR1538 merge",
+    "No frozen ruleset/ref changes",
+    "No broad application Docker socket access",
+    "No source admission or activation",
+    "No production SQL/deployment/certification/publication",
+    "No cross-host store exposure or provisioning",
+    "No resource cleanup or stopping"
+  ],
+  "executionAuthorizedByThisPreflight": false,
+  "releaseHold": true
+}
