@@ -21,6 +21,18 @@ export function MobilityPortal({ownerId,plan}:{ownerId:string;plan:CalcuMintPlan
   ...(packet.snapshot.output.details&&typeof packet.snapshot.output.details==='object'?{metrics:Object.entries(packet.snapshot.output.details)
    .filter(([,value])=>typeof value==='number')
    .map(([key,value])=>({id:key,label:key.replace(/([a-z])([A-Z])/g,'$1 $2'),value:value as number}))}:{}),
+  ...(Array.isArray(packet.snapshot.output.amortization)?{
+   schedule:(packet.snapshot.output.amortization as {month:number;payment:number;principal:number;interest:number;balance:number}[])
+    .map(({month,...values})=>({id:String(month),period:month,values})),
+   scheduleMetadata:{caption:'Monthly amortization in supplied currency',period:{key:'month',label:'Month'},
+    columns:[{key:'payment',label:'Payment'},{key:'principal',label:'Principal'},{key:'interest',label:'Interest'},{key:'balance',label:'Remaining balance'}],
+    granularity:'complete' as const},
+  }:{}),
+  ...(id===17?{metrics:['avalanche','snowball'].flatMap(method=>{
+   const row=packet.snapshot.output[method] as {monthsToPayoff:number;totalInterest:number};
+   return [{id:method+'-months',label:method+' payoff period',value:row.monthsToPayoff,unit:'months'},
+    {id:method+'-interest',label:method+' total interest',value:row.totalInterest,unit:'supplied currency'}];
+  })}:{}),
   methodology:c.scope,sources:c.engine.sources,warnings:c.limitations,
  }}/>{chargingRoundedToZero(id,packet.snapshot)&&<p role="status">The estimate is positive but rounds to zero at this calculator version’s six-decimal precision.</p>}</>} onSave={async packet=>{
   const key=JSON.stringify([ownerId,packet]);if(retry.current?.key!==key)retry.current={key,id:crypto.randomUUID()};

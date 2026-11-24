@@ -1,3 +1,4 @@
+import {componentContracts,componentExamples} from '@/calculators/component-contracts';
 import {remainingContracts,remainingExamples} from '@/calculators/remaining-contracts';
 import {businessContracts,businessExamples} from '@/calculators/business-contracts';
 import {punnettSquareCalculator} from '@/calculators/biology/catalog-batch-3';
@@ -45,9 +46,14 @@ const additions: Readonly<Partial<Record<number,string>>>={
  533:'src/calculators/astronomy/catalog-batch-1.ts',
  534:'src/calculators/astronomy/catalog-batch-2.ts',
 };
+const borrowerIds=[3,4,5,6,7,8,11,12,13,14,15,16,17] as const;
+const batch35FinanceIds=[25,37,45,47,68,71,72,73,75,76,77,83,93,100,106,107,108,465,466,473] as const;
+const batch35Ids=new Set<number>([...borrowerIds,...batch35FinanceIds]);
 const supplementalBusinessIds=[142,143,165,166,167,169,171,178,182,186,187,190,192,193,196] as const;
 const supplementalFinanceIds=[57,58,59,60,61,62,69,78,114,115,66,111] as const;
 const supplementalSources:Readonly<Partial<Record<number,string>>>=Object.fromEntries([
+ ...borrowerIds.map(id=>[id,'component-contracts']),
+ ...batch35FinanceIds.map(id=>[id,'remaining-contracts']),
  ...supplementalBusinessIds.map(id=>[id,'business-contracts']),
  ...supplementalFinanceIds.map(id=>[id,'remaining-contracts']),
 ]);
@@ -148,26 +154,30 @@ function suppliedMargin(id:139|140, scope:string){
   textFields:['currency','period','measurementBasis'],fieldOptions:{scope:['supplied-business-no-policy']},
   fieldUnits:{revenue:currency,directCosts:currency,netIncome:currency}},'Margin');
 }
-function suppliedProfile(id:number, family:'business'|'remaining'){
- const engines=family==='business'?businessContracts:remainingContracts;
- const samples=family==='business'?businessExamples:remainingExamples;
+function suppliedProfile(id:number, family:'business'|'remaining'|'component'){
+ const engines=family==='business'?businessContracts:family==='component'?componentContracts:remainingContracts;
+ const samples=family==='business'?businessExamples:family==='component'?componentExamples:remainingExamples;
  const engine=engines.find(definition=>definition.id===`private.${family}.${id}`);
  if(!engine)throw Error('Exact supplied-input definition unavailable');
  const example=engine.inputSchema.parse(samples[id]) as Record<string,unknown>;
  const expected=engine.calculate(example,{});
  const definition={...engine,examples:[{label:'Retained supplied basis',input:example,expected}]} as CalculatorDefinition<Record<string,unknown>,Record<string,unknown>>;
- const scope=engine.formulas[0].description;
+ const scope=engine.formulas[0].description+(id===3?' This capture displays the original scheduled amortization with zero extra payment.':id===5?' This capture evaluates a positive extra payment and shows interest saved against the original schedule.':'');
  const fieldOptions=Object.fromEntries(Object.entries(example)
-  .filter(([key,value])=>typeof value==='string'&&(key==='scope'||key==='timing'||(id===178&&key==='period')))
-  .map(([key,value])=>[key,[String(value)]]));
+  .filter(([key,value])=>typeof value==='string'&&(key==='scope'||key==='timing'||key==='monthRule'||key==='contributionTiming'||key==='ownershipBasis'||(id===178&&key==='period')))
+  .map(([key,value])=>[key,key==='monthRule'?['clamp-original-day','end-of-month']:key==='contributionTiming'?['beginning','end']:[String(value)]]));
  const structuredFields=Object.keys(example).filter(key=>typeof example[key]==='boolean'||Array.isArray(example[key]));
  const textFields=Object.keys(example).filter(key=>typeof example[key]==='string'&&!Object.hasOwn(fieldOptions,key));
- const unit=String(expected.unit);
+ const unit=id===5?'supplied currency':String(expected.unit);
+ const primaryKey=id===5?'interestSavedVsScheduled':'value';
  const scalarCompanions=Object.entries(expected)
-  .filter(([key,value])=>key!=='value'&&typeof value==='number')
+  .filter(([key,value])=>key!==primaryKey&&key!=='value'&&typeof value==='number')
   .map(([key])=>[key,{label:labelForField(key)}] as const);
- return profile(definition,{catalogId:id,primaryKey:'value',unit,scope,registered:false,nullablePrimary:true,fieldOptions,
-  textFields,structuredFields},'Supplied-input result',Object.fromEntries(scalarCompanions));
+ return profile(definition,{catalogId:id,primaryKey,unit,scope,registered:false,nullablePrimary:true,fieldOptions,
+  textFields,structuredFields,validate:input=>{
+   if(id===3&&input.extraMonthlyPayment!==0)throw Error('Use the Extra Payment profile to compare positive extra payments');
+   if(id===5&&Number(input.extraMonthlyPayment)<=0)throw Error('Enter a positive extra monthly payment');
+  }},id===5?'Estimated interest saved':'Supplied-input result',Object.fromEntries(scalarCompanions));
 }
 export const mobilityContracts=Object.freeze([
  profile(fuelEconomyCalculator,{catalogId:459,primaryKey:'value',unit:'km/L',scope:'Supplied kilometres divided by litres consumed; no reciprocal consumption conversion.',fieldUnits:{distanceKm:'km',fuelUsedLiters:'L'}},'Fuel economy'),
@@ -226,6 +236,8 @@ export const mobilityContracts=Object.freeze([
  profile(punnettSquareCalculator,{catalogId:418,primaryKey:'offspring',unit:'equally likely combinations',scope:'Educational single-locus diploid cross. Enter two copies of a single allele letter for each parent, using case to distinguish variants. Reports four equally likely Mendelian outcomes and grouped genotype fractions, without phenotype, disease or real offspring prediction.',textFields:['parent1','parent2'],primaryStringList:true},'Offspring combinations'),
  suppliedMargin(139,'Gross margin from entered revenue and direct costs in the same period, currency and measurement basis. No inventory, cost attribution or accounting policy is inferred.'),
  suppliedMargin(140,'Net margin from entered net income and revenue in the same period, currency and measurement basis. No recognition, taxation or formal financial statement judgment is inferred.'),
+ ...borrowerIds.map(id=>suppliedProfile(id,'component')),
+ ...batch35FinanceIds.map(id=>suppliedProfile(id,'remaining')),
  ...supplementalBusinessIds.map(id=>suppliedProfile(id,'business')),
  ...supplementalFinanceIds.map(id=>suppliedProfile(id,'remaining')),
 ]);
@@ -244,7 +256,7 @@ export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):bo
 }
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
- const capture=id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
+ const capture=batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
   sourceVersion:`${capture}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{
