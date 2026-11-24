@@ -1,3 +1,7 @@
+import {privateCatalogAdapters} from '@/calculators/private-catalog-adapters';
+import {privateOwnerBusinessCore} from '@/calculators/private-owner-business-core';
+import {privateOwnerBusinessImpact} from '@/calculators/private-owner-business-impact';
+import {privateOwnerEveryday} from '@/calculators/private-owner-everyday';
 import {componentContracts,componentExamples} from '@/calculators/component-contracts';
 import {remainingContracts,remainingExamples} from '@/calculators/remaining-contracts';
 import {businessContracts,businessExamples} from '@/calculators/business-contracts';
@@ -133,11 +137,11 @@ const labels:Record<string,string>={
 };
 function profile<I extends object,O extends object>(
  engine:CalculatorDefinition<I,O>, options:Omit<EngineeringOptions<I,O>,'sourceEvidence'>,
- primaryLabel:string, secondary:Readonly<Record<string,ScenarioFieldDisplay>>={},
+ primaryLabel:string, secondary:Readonly<Record<string,ScenarioFieldDisplay>>={}, engineSource?:string,
 ){
  const finance=financeSources[options.catalogId]??familySources[options.catalogId]??nextSources[options.catalogId]??batch20Sources[options.catalogId]??marginSources[options.catalogId]??supplementalSources[options.catalogId];
  const path=finance?`src/calculators/${finance}.ts`:additions[options.catalogId]??agricultureSources[options.catalogId];
- const contract=createEngineeringContract(engine,{...options,sourceEvidence:path?[path]:sourceEvidence});
+ const contract=createEngineeringContract(engine,{...options,sourceEvidence:engineSource?[engineSource]:path?[path]:sourceEvidence});
  const outputUnit=options.catalogId===534?(input:Record<string,unknown>)=>String(input.toUnit):undefined;
  return Object.freeze({...contract,outputUnit,engine,primaryLabel,outputs:{[contract.primaryKey]:{label:primaryLabel,unit:contract.unit},...secondary},
   fields:contract.fields.map(field=>({...field,label:labelForField(field.key)}))});
@@ -186,7 +190,60 @@ function suppliedProfile(id:number, family:'business'|'remaining'|'component'){
    if(id===5&&Number(input.extraMonthlyPayment)<=0)throw Error('Enter a positive extra monthly payment');
   }},id===5?'Estimated interest saved':id===24?'Net lifetime savings':id===33?'Break-even period':'Supplied-input result',Object.fromEntries(scalarCompanions));
 }
+const batch44Profiles = [
+ [10,'nominalAnnualRatePercent','% per year','Nominal annual interest rate'],
+ [38,'netOperatingIncome','supplied currency','Net operating income'],
+ [39,'capitalizationRatePercent','% per year','Capitalization rate'],
+ [40,'cashOnCashReturnPercent','% per year','Pretax cash-on-cash return'],
+ [41,'debtServiceCoverageRatio','multiple','Debt service coverage'],
+ [42,'grossRentMultiplier','multiple','Gross rent multiplier'],
+ [65,'periodRatePercent','% per supplied period','Bracketed internal rate of return'],
+ [146,'costOfGoodsSold','supplied currency','Cost of goods sold'],
+ [147,'operatingMarginPercent','%','Operating margin'],
+ [150,'quickRatio','multiple','Quick ratio'],
+ [154,'returnOnAssetsPercent','%','Return on assets'],
+ [155,'returnOnEquityPercent','%','Return on equity'],
+] as const;
+const batch44OwnerProfiles = [
+ [44,'changeLostRent','supplied currency per period','Change in lost rent',privateOwnerBusinessImpact,'private-owner-business-impact'],
+ [109,'difference','supplied currency per period','Difference between basket costs',privateOwnerEveryday,'private-owner-everyday'],
+ [145,'grossSales','supplied currency per period','Gross sales',privateOwnerBusinessCore,'private-owner-business-core'],
+ [157,'hourlyRevenue','supplied currency/hour','Required revenue per billable hour',privateOwnerBusinessCore,'private-owner-business-core'],
+ [177,'scorePercent','percentage points','Growth plus profitability',privateOwnerBusinessCore,'private-owner-business-core'],
+ [200,'profit','supplied currency per period','Marketplace profit',privateOwnerBusinessImpact,'private-owner-business-impact'],
+ [203,'shippingContribution','supplied currency per selected basis','Shipping contribution',privateOwnerBusinessImpact,'private-owner-business-impact'],
+] as const;
+const batch44Ids = new Set<number>([31,...batch44Profiles.map(row=>row[0]),...batch44OwnerProfiles.map(row=>row[0])]);
+
+function batch44Profile(definition:CalculatorDefinition<unknown,unknown>,catalogId:number,primaryKey:string,unit:string,label:string,source:string,sample?:Record<string,unknown>){
+ const engine=definition as CalculatorDefinition<Record<string,unknown>,Record<string,unknown>>;
+ const base=engine.examples[0];
+ const input=sample??base.input;
+ const result=engine.calculate(input,{});
+ const bound=sample?{...engine,examples:[{label:'Retained source vector',input,expected:result}]}:engine;
+ const choices:Record<string,readonly string[]>={};
+ if(catalogId===203)choices.basis=['per-order','period'];
+ if(catalogId===31)choices.scope=[String(input.scope)];
+ const fields=Object.entries(input);
+ const secondary=Object.fromEntries(Object.entries(result)
+  .filter(([key,value])=>key!==primaryKey&&typeof value==='number')
+  .map(([key])=>[key,{label:labelForField(key)}]));
+ return profile(bound,{
+  catalogId,primaryKey,unit,scope:engine.formulas[0].description,registered:false,fieldOptions:choices,
+  textFields:fields.filter(([key,value])=>typeof value==='string'&&!Object.hasOwn(choices,key)).map(([key])=>key),
+  structuredFields:fields.filter(([,value])=>Array.isArray(value)).map(([key])=>key),
+ },label,secondary,`src/calculators/${source}.ts`);
+}
+
 export const mobilityContracts=Object.freeze([
+ ...batch44Profiles.map(([id,key,unit,label])=>batch44Profile(
+  privateCatalogAdapters.find(binding=>binding.masterId===id)!.definition,id,key,unit,label,
+  id===65?'private-cashflow-rate':'private-catalog-adapters')),
+ ...batch44OwnerProfiles.map(([id,key,unit,label,bindings,source])=>batch44Profile(
+  bindings.find(binding=>binding.masterId===id)!.definition,id,key,unit,label,source)),
+ batch44Profile(componentContracts.find(engine=>engine.id==='private.component.31')!,31,'value',
+  'supplied currency','Down payment amount','component-contracts',componentExamples[31]),
+
  profile(fuelEconomyCalculator,{catalogId:459,primaryKey:'value',unit:'km/L',scope:'Supplied kilometres divided by litres consumed; no reciprocal consumption conversion.',fieldUnits:{distanceKm:'km',fuelUsedLiters:'L'}},'Fuel economy'),
  profile(gasMileageCalculator,{catalogId:460,primaryKey:'value',unit:'mi/US gal',scope:'Supplied miles divided by US gallons consumed; no imperial gallon conversion.',fieldUnits:{distanceMiles:'mi',fuelUsedUsGallons:'US gal'}},'Gas mileage'),
  profile(tripFuelCalculator,{catalogId:461,primaryKey:'value',unit:'L',scope:'Trip distance and supplied average consumption only; no route or driving model.',fieldUnits:{distanceKm:'km',fuelConsumptionLitersPer100Km:'L/100 km'}},'Trip fuel'),
@@ -272,7 +329,7 @@ export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):bo
 }
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
- const capture=id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
+ const capture=batch44Ids.has(id)?'private.worker2.batch44.20261124.1':id===494?'private.worker2.altitude-pressure.20261124.1':batch39Ids.has(id)?'private.worker2.batch39.20261124.1':id===63||id===67?'private.worker2.investment-horizon-average.20261124.1':batch35Ids.has(id)?'private.worker2.batch35.20261124.1':id===66||id===111?'private.worker2.annualized-inputs.20261124.1':supplementalSources[id]?'private.worker2.batch27.20261124.1':marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
   sourceVersion:`${capture}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{
