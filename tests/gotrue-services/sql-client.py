@@ -16,10 +16,11 @@ def _query(c,role,sql):
  # Preserve the existing fixture's exact psql -X -qAt/ON_ERROR_STOP semantics,
  # including statement boundaries, transaction behavior, notices and output format.
  env={'PATH':os.environ.get('PATH','/usr/bin:/bin'),'HOME':'/nonexistent','PGCONNECT_TIMEOUT':'5','PGOPTIONS':'-c statement_timeout=30000','PGSSLMODE':'disable','PGGSSENCMODE':'disable','PGCLIENTENCODING':'UTF8'}
- result=subprocess.run(['psql','-X','-qAt','-v','ON_ERROR_STOP=1','-h','127.0.0.1','-p',str(c['postgres']['port']),'-U',role,'-d','postgres'],input=sql,text=True,capture_output=True,timeout=30,env=env)
+ result=subprocess.run(['psql','-X','-qAt','-v','ON_ERROR_STOP=1','-v','VERBOSITY=sqlstate','-h','127.0.0.1','-p',str(c['postgres']['port']),'-U',role,'-d','postgres'],input=sql,text=True,capture_output=True,timeout=30,env=env)
  if result.returncode:
   if 'could not connect' in result.stderr or 'connection to server' in result.stderr:raise ValueError('Disposable PostgreSQL connection unavailable')
-  raise ValueError('Disposable PostgreSQL query refused')
+  state=re.search(r'ERROR:\s+([0-9A-Z]{5})\b',result.stderr)
+  raise ValueError('Disposable PostgreSQL query refused'+(' SQLSTATE '+state.group(1) if state else ''))
  return result.stdout.strip()
 def query(c,role,sql):
  require(role in ('postgres','solo440_executor'),'Unapproved disposable role')
