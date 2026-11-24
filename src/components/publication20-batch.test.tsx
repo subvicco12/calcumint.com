@@ -9,3 +9,22 @@ it('denies stale unit captures and refuses any partial export',()=>{cleanup();co
 it('announces processed validity and names per-row keyboard actions',()=>{cleanup();render(<Publication20Batch slug="frequency-converter" fromUnit="hz" toUnit="hz" onSelect={()=>{}}/>);fireEvent.change(screen.getByLabelText('Batch values, one per line'),{target:{value:'1\nbad'}});fireEvent.click(screen.getByRole('button',{name:'Calculate batch'}));expect(screen.getByRole('status').textContent).toContain('2 rows processed: 1 valid, 1 invalid');expect((screen.getByRole('button',{name:'Use row 2 in calculator'}) as HTMLButtonElement).disabled).toBe(true);expect((screen.getByRole('button',{name:'Use row 1 in calculator'}) as HTMLButtonElement).disabled).toBe(false);});
 it('presents SI symbols while selecting original frequency unit IDs',()=>{cleanup();const select=vi.fn();render(<Publication20Batch slug="frequency-converter" fromUnit="mhz" toUnit="khz" onSelect={select}/>);fireEvent.change(screen.getByLabelText('Batch values, one per line'),{target:{value:'1'}});fireEvent.click(screen.getByRole('button',{name:'Calculate batch'}));expect(screen.getByRole('columnheader',{name:'Entered value (MHz)'})).toBeTruthy();expect(screen.getByRole('columnheader',{name:'Stored result (kHz)'})).toBeTruthy();fireEvent.click(screen.getByRole('button',{name:'Use row 1 in calculator'}));expect(select).toHaveBeenCalledWith('1','mhz','khz');});
 it('keeps other batch unit labels unchanged',()=>{cleanup();render(<Publication20Batch slug="power-converter" fromUnit="w" toUnit="mw" onSelect={()=>{}}/>);fireEvent.change(screen.getByLabelText('Batch values, one per line'),{target:{value:'1'}});fireEvent.click(screen.getByRole('button',{name:'Calculate batch'}));expect(screen.getByRole('columnheader',{name:'Stored result (mw)'})).toBeTruthy();});
+
+it('enables reserve CSV only after complete evaluation and provides a keyboard-scrollable result region',()=>{
+ cleanup();
+ const view=render(<Publication20Batch slug="area-converter" fromUnit="m2" toUnit="km2" onSelect={()=>{}}/>);
+ const input=screen.getByLabelText('Batch values, one per line');
+ const csv=screen.getByRole('button',{name:'Export batch CSV'}) as HTMLButtonElement;
+ expect(csv.disabled).toBe(true);
+ fireEvent.change(input,{target:{value:'1\nbad'}});
+ fireEvent.click(screen.getByRole('button',{name:'Calculate batch'}));
+ expect(csv.disabled).toBe(true);
+ expect(screen.getByRole('region',{name:'Batch result table'}).getAttribute('tabindex')).toBe('0');
+ fireEvent.change(input,{target:{value:'1'}});
+ fireEvent.click(screen.getByRole('button',{name:'Calculate batch'}));
+ expect(csv.disabled).toBe(false);
+ view.rerender(<Publication20Batch slug="area-converter" fromUnit="m2" toUnit="acre" onSelect={()=>{}}/>);
+ expect(csv.disabled).toBe(true);
+ view.rerender(<Publication20Batch slug="frequency-converter" fromUnit="hz" toUnit="khz" onSelect={()=>{}}/>);
+ expect(screen.queryByRole('button',{name:'Export batch CSV'})).toBeNull();
+});
