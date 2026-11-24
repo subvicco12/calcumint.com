@@ -1,3 +1,4 @@
+import {businessContracts,businessExamples} from '@/calculators/business-contracts';
 import {punnettSquareCalculator} from '@/calculators/biology/catalog-batch-3';
 import {hardyWeinbergCalculator} from '@/calculators/biology/catalog-batch-2';
 import {proteinIntakeCalculator,carbohydrateIntakeCalculator,fatIntakeCalculator,caloriesBurnedCalculator} from '@/calculators/health/catalog-batch-2';
@@ -43,6 +44,9 @@ const additions: Readonly<Partial<Record<number,string>>>={
  533:'src/calculators/astronomy/catalog-batch-1.ts',
  534:'src/calculators/astronomy/catalog-batch-2.ts',
 };
+const marginSources:Readonly<Partial<Record<number,string>>>={
+ 139:'business-contracts',140:'business-contracts',
+};
 const batch20Sources:Readonly<Partial<Record<number,string>>>={
  391:'health/catalog-batch-1',392:'health/catalog-batch-1',393:'health/catalog-batch-1',394:'health/catalog-batch-1',
  398:'health/catalog-batch-2',399:'health/catalog-batch-2',400:'health/catalog-batch-2',401:'health/catalog-batch-2',
@@ -83,6 +87,8 @@ const labels:Record<string,string>={
  initialMonthlyContribution:'Initial monthly contribution',annualStepUpPercent:'Annual contribution increase',annualReturnPercent:'Assumed annual return',contributionTiming:'Contribution timing',
  monthlyDeposit:'Monthly deposit',annualInterestPercent:'Nominal annual interest rate',depositTiming:'Deposit timing',
  length:'Prism length',width:'Prism width',height:'Prism height',growthConstant:'Continuous growth constant',
+ revenue:'Supplied revenue',directCosts:'Supplied direct costs',netIncome:'Supplied net income',
+ currency:'Currency',period:'Measurement period',measurementBasis:'Measurement basis',scope:'Private scope',
  tdeeKcal:'Supplied daily expenditure',dailyAdjustmentKcal:'Supplied daily adjustment',bmi:'Supplied BMI',targetBmi:'Selected reference BMI',
  dailyCalories:'Supplied daily energy',met:'Supplied activity MET',minutes:'Activity duration',
  parent1:'First parent genotype',parent2:'Second parent genotype',
@@ -106,7 +112,7 @@ function profile<I extends object,O extends object>(
  engine:CalculatorDefinition<I,O>, options:Omit<EngineeringOptions<I,O>,'sourceEvidence'>,
  primaryLabel:string, secondary:Readonly<Record<string,ScenarioFieldDisplay>>={},
 ){
- const finance=financeSources[options.catalogId]??familySources[options.catalogId]??nextSources[options.catalogId]??batch20Sources[options.catalogId];
+ const finance=financeSources[options.catalogId]??familySources[options.catalogId]??nextSources[options.catalogId]??batch20Sources[options.catalogId]??marginSources[options.catalogId];
  const path=finance?`src/calculators/${finance}.ts`:additions[options.catalogId]??agricultureSources[options.catalogId];
  const contract=createEngineeringContract(engine,{...options,sourceEvidence:path?[path]:sourceEvidence});
  const outputUnit=options.catalogId===534?(input:Record<string,unknown>)=>String(input.toUnit):undefined;
@@ -123,6 +129,15 @@ const dispersionScope='Uses the supplied list in one common unit. Population div
 const dispersionFields={fieldOptions:{kind:['population','sample']},numberLists:['values']} as const;
 const observationCount={label:'Observation count',unit:'observations'};
 const adultEstimate='Educational estimate for the adult methodology scope. No individual diagnosis, treatment, dose or nutrition prescription. Population and clinical applicability require competent review.';
+function suppliedMargin(id:139|140, scope:string){
+ const engine=businessContracts.find(definition=>definition.id===`private.business.${id}`);
+ if(!engine)throw Error('Exact supplied-margin definition unavailable');
+ const example=engine.inputSchema.parse(businessExamples[id]) as Record<string,unknown>;
+ const definition={...engine,examples:[{label:'Retained supplied basis',input:example,expected:engine.calculate(example,{})}]} as CalculatorDefinition<Record<string,unknown>,Record<string,unknown>>;
+ return profile(definition,{catalogId:id,primaryKey:'value',unit:'%',scope,registered:false,
+  textFields:['currency','period','measurementBasis'],fieldOptions:{scope:['supplied-business-no-policy']},
+  fieldUnits:{revenue:currency,directCosts:currency,netIncome:currency}},'Margin');
+}
 export const mobilityContracts=Object.freeze([
  profile(fuelEconomyCalculator,{catalogId:459,primaryKey:'value',unit:'km/L',scope:'Supplied kilometres divided by litres consumed; no reciprocal consumption conversion.',fieldUnits:{distanceKm:'km',fuelUsedLiters:'L'}},'Fuel economy'),
  profile(gasMileageCalculator,{catalogId:460,primaryKey:'value',unit:'mi/US gal',scope:'Supplied miles divided by US gallons consumed; no imperial gallon conversion.',fieldUnits:{distanceMiles:'mi',fuelUsedUsGallons:'US gal'}},'Gas mileage'),
@@ -178,6 +193,8 @@ export const mobilityContracts=Object.freeze([
  profile(populationGrowthCalculator,{catalogId:411,primaryKey:'value',unit:'modeled individuals',scope:'Ideal constant-rate continuous exponential model, without resource limits or demographic forecasts. v1 rounds to six decimals. Refuses a positive model value that rounds to zero.',fieldUnits:{initialPopulation:'modeled individuals',growthConstant:'per supplied time unit',time:'supplied time unit'},validate:requirePositiveAstronomyResult},'Modeled population'),
  profile(hardyWeinbergCalculator,{catalogId:417,primaryKey:'twoPq',unit:'fraction',scope:'Educational two-allele diploid equilibrium model with random mating and no selection, migration, mutation or drift. Reports theoretical fractions, not observed genetics or clinical risk.',fieldUnits:{allelePFrequency:'fraction (0–1)'}},'Heterozygote fraction',{p:{label:'Allele p',unit:'fraction'},q:{label:'Allele q',unit:'fraction'},p2:{label:'Homozygote p²',unit:'fraction'},q2:{label:'Homozygote q²',unit:'fraction'}}),
  profile(punnettSquareCalculator,{catalogId:418,primaryKey:'offspring',unit:'equally likely combinations',scope:'Educational single-locus diploid cross. Enter two copies of a single allele letter for each parent, using case to distinguish variants. Reports four equally likely Mendelian outcomes and grouped genotype fractions, without phenotype, disease or real offspring prediction.',textFields:['parent1','parent2'],primaryStringList:true},'Offspring combinations'),
+ suppliedMargin(139,'Gross margin from entered revenue and direct costs in the same period, currency and measurement basis. No inventory, cost attribution or accounting policy is inferred.'),
+ suppliedMargin(140,'Net margin from entered net income and revenue in the same period, currency and measurement basis. No recognition, taxation or formal financial statement judgment is inferred.'),
 ]);
 export function mobilityContract(id:number){
  const contract=mobilityContracts.find(row=>row.catalogId===id);
@@ -194,7 +211,7 @@ export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):bo
 }
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
- const capture=batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
+ const capture=marginSources[id]?'private.worker2.supplied-margins.20261124.1':batch20Sources[id]?'private.worker2.batch20.20261124.1':nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
   sourceVersion:`${capture}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{
