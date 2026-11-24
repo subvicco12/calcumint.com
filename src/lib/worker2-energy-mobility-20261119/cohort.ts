@@ -3,7 +3,8 @@ import {creditCardPayoffCalculator} from '@/calculators/finance/credit-card-payo
 import {mortgageCalculator} from '@/calculators/finance/mortgage';
 import {stepUpSipCalculator} from '@/calculators/finance/step-up-sip';
 import {recurringDepositCalculator} from '@/calculators/finance/recurring-deposit';
-import {slopeCalculator} from '@/calculators/geometry/catalog-completion';
+import {doublingTimeCalculator} from '@/calculators/biology/catalog-batch-1';
+import {slopeCalculator,volumeCalculator} from '@/calculators/geometry/catalog-completion';
 import {standardDeviationCalculator,varianceCalculator} from '@/calculators/statistics/catalog-batch-1';
 import {graphingCalculator,functionPlotter2dCalculator} from '@/calculators/advanced-math/catalog-batch-10';
 import {bmiCalculator} from '@/calculators/health/bmi';
@@ -39,6 +40,9 @@ const additions: Readonly<Partial<Record<number,string>>>={
  533:'src/calculators/astronomy/catalog-batch-1.ts',
  534:'src/calculators/astronomy/catalog-batch-2.ts',
 };
+const nextSources:Readonly<Partial<Record<number,string>>>={
+ 275:'geometry/catalog-completion',412:'biology/catalog-batch-1',
+};
 const familySources:Readonly<Partial<Record<number,string>>>={
  1:'finance/loan-payment',18:'finance/credit-card-payoff',26:'finance/mortgage',53:'finance/step-up-sip',56:'finance/recurring-deposit',
  235:'advanced-math/catalog-batch-10',251:'advanced-math/catalog-batch-10',276:'geometry/catalog-completion',
@@ -70,6 +74,7 @@ const labels:Record<string,string>={
  termMonths:'Term',balance:'Opening balance',annualAprPercent:'Annual APR',monthlyPayment:'Monthly payment',extraMonthlyPayment:'Extra monthly payment',
  initialMonthlyContribution:'Initial monthly contribution',annualStepUpPercent:'Annual contribution increase',annualReturnPercent:'Assumed annual return',contributionTiming:'Contribution timing',
  monthlyDeposit:'Monthly deposit',annualInterestPercent:'Nominal annual interest rate',depositTiming:'Deposit timing',
+ length:'Prism length',width:'Prism width',height:'Prism height',growthConstant:'Continuous growth constant',
  x1:'First x-coordinate',y1:'First y-coordinate',x2:'Second x-coordinate',y2:'Second y-coordinate',values:'Observations (JSON list of numbers)',kind:'Denominator convention',
  expression:'Function of x',minX:'Minimum x',maxX:'Maximum x',weightKg:'Weight',heightCm:'Height',sex:'Equation reference group',ageYears:'Age',
  bmrKcal:'Supplied resting energy',activityMultiplier:'Supplied activity multiplier',
@@ -89,7 +94,7 @@ function profile<I extends object,O extends object>(
  engine:CalculatorDefinition<I,O>, options:Omit<EngineeringOptions<I,O>,'sourceEvidence'>,
  primaryLabel:string, secondary:Readonly<Record<string,ScenarioFieldDisplay>>={},
 ){
- const finance=financeSources[options.catalogId]??familySources[options.catalogId];
+ const finance=financeSources[options.catalogId]??familySources[options.catalogId]??nextSources[options.catalogId];
  const path=finance?`src/calculators/${finance}.ts`:additions[options.catalogId]??agricultureSources[options.catalogId];
  const contract=createEngineeringContract(engine,{...options,sourceEvidence:path?[path]:sourceEvidence});
  const outputUnit=options.catalogId===534?(input:Record<string,unknown>)=>String(input.toUnit):undefined;
@@ -148,6 +153,8 @@ export const mobilityContracts=Object.freeze([
  profile(leanBodyMassCalculator,{catalogId:395,primaryKey:'value',unit:'kg',scope:'Boer linear estimate from weight, height and its two equation branches. No direct body-composition measurement. '+adultEstimate,fieldOptions:{sex:groups},fieldUnits:{weightKg:'kg',heightCm:'cm'},validate:(input,out)=>{if(out.value<=0||out.value>input.weightKg)throw Error('Estimated lean mass is outside the supported positive domain');}},'Estimated lean body mass'),
  profile(bodySurfaceAreaCalculator,{catalogId:396,primaryKey:'value',unit:'m²',scope:'Mosteller estimate, square root of centimetres times kilograms divided by 3,600. '+adultEstimate,fieldUnits:{weightKg:'kg',heightCm:'cm'}},'Estimated body surface area'),
 
+ profile(volumeCalculator,{catalogId:275,primaryKey:'volume',unit:'cubic supplied units',scope:'Rectangular prism only. Enter three positive dimensions in one common length unit. Output is the product of the dimensions, excluding bulk packing or capacity assumptions.',fieldUnits:{length:'supplied length unit',width:'supplied length unit',height:'supplied length unit'}},'Prism volume',{surfaceArea:{label:'Prism surface area',unit:'square supplied units'}}),
+ profile(doublingTimeCalculator,{catalogId:412,primaryKey:'value',unit:'supplied time unit',scope:'Ideal positive continuous exponential model with a constant supplied growth rate. Result is ln(2) divided by the rate, in its reciprocal time unit. v1 rounds to six decimals. No resource-limit or real population projection.',fieldUnits:{growthConstant:'per supplied time unit'}},'Ideal doubling time'),
 ]);
 export function mobilityContract(id:number){
  const contract=mobilityContracts.find(row=>row.catalogId===id);
@@ -164,7 +171,7 @@ export function chargingRoundedToZero(id:number,snapshot:CalculationSnapshot):bo
 }
 export function mobilityWorkflows(id:number){
  const contract=mobilityContract(id);
- const capture=familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
+ const capture=nextSources[id]?'private.worker2.next-quantity.20261124.1':familySources[id]?'private.worker2.math-borrower-health.20261124.1':agricultureSources[id]?'private.worker2.agricultural-quantity.20261124.1':financeSources[id]?'private.worker2.finance-business.20261124.1':additions[id]?'private.worker2.astronomy-mobility.20261124.1':id===509?'private.worker2.fuel-trip.20261124.1':'private.worker2.energy-mobility.20261119.1';
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
   sourceVersion:`${capture}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{
