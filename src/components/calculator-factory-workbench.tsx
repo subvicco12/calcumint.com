@@ -9,7 +9,7 @@ import type {CalcuMintPlan} from '@/lib/entitlements';
 /** Private engineering workbench; caller supplies a compiled trusted workflow.
  * No account mutation or server authorization is implied by a local plan prop.
  */
-export type FactoryWorkbenchField=Readonly<{key:string;label:string;defaultValue?:string|number;kind?:'select'|'number'|'text'|'json';options?:readonly string[];optionLabels?:Readonly<Record<string,string>>;unit?:string}>;
+export type FactoryWorkbenchField=Readonly<{key:string;label:string;defaultValue?:string|number;kind?:'select'|'number'|'text';options?:readonly string[];optionLabels?:Readonly<Record<string,string>>;multilineJson?:true;unit?:string}>;
 type WorkflowPanelProps={render:(packet:FactoryExecutionPacket|null,restore:(snapshot:CalculationSnapshot)=>void)=>ReactNode;packet:FactoryExecutionPacket|null;onRestore:(snapshot:CalculationSnapshot)=>void};
 function WorkflowPanel({render,packet,onRestore}:WorkflowPanelProps){return render(packet,onRestore);}
 export function CalculatorFactoryWorkbench({workflows,title,fields,plan='free',renderResult,renderWorkflows,onSave}:{workflows:FactoryWorkflows;title:string;fields:readonly FactoryWorkbenchField[];plan?:CalcuMintPlan;renderResult?:(packet:FactoryExecutionPacket)=>ReactNode;renderWorkflows?:(packet:FactoryExecutionPacket|null,restore:(snapshot:CalculationSnapshot)=>void)=>ReactNode;onSave?:(packet:FactoryExecutionPacket)=>Promise<string>}){
@@ -29,7 +29,7 @@ export function CalculatorFactoryWorkbench({workflows,title,fields,plan='free',r
  };
  return <section aria-label={title}><h2>{title}</h2><p>Private engineering review. Replay checks consistency with the compiled engine and source version.</p>
  <form onSubmit={e=>{e.preventDefault();setPacket(null);setExportText('');act(()=>setPacket(workflows.execute(raw)));}}>
- {fields.map(field=>{const change=(value:string)=>{clearFeedback();setRaw({...raw,[field.key]:value});setPacket(null);setExportText('');};return <label key={field.key}>{field.label}{field.kind==='select'?<select name={field.key} value={raw[field.key]??''} onChange={e=>change(e.target.value)}><option value="">Choose {field.label}</option>{field.options?.map(option=><option key={option} value={option}>{field.optionLabels?.[option]??option}</option>)}</select>:field.kind==='json'?<textarea name={field.key} value={raw[field.key]??''} onChange={e=>change(e.target.value)} rows={3} maxLength={65536}/>:<input type="text" inputMode={field.kind==='number'?'decimal':undefined} name={field.key} value={raw[field.key]??''} onChange={e=>change(e.target.value)}/>} {field.unit&&<span>{field.unit}</span>}</label>;})}
+ {fields.map(field=>{const change=(value:string)=>{clearFeedback();setRaw({...raw,[field.key]:value});setPacket(null);setExportText('');};return <label key={field.key}>{field.label}{field.kind==='select'?<select name={field.key} value={raw[field.key]??''} onChange={e=>change(e.target.value)}><option value="">Choose {field.label}</option>{field.options?.map(option=><option key={option} value={option}>{field.optionLabels?.[option]??option}</option>)}</select>:field.multilineJson?<textarea name={field.key} value={raw[field.key]??''} onChange={e=>change(e.target.value)} rows={3} maxLength={65536}/>:<input type="text" inputMode={field.kind==='number'?'decimal':undefined} name={field.key} value={raw[field.key]??''} onChange={e=>change(e.target.value)}/>} {field.unit&&<span>{field.unit}</span>}</label>;})}
  <button type="submit">Calculate</button></form>
  {error&&<p role="alert">{error}</p>}
  {saveMessage&&<p role="status">{saveMessage}</p>}
@@ -40,7 +40,7 @@ export function CalculatorFactoryWorkbench({workflows,title,fields,plan='free',r
  <button onClick={()=>act(()=>setExportText(workflows.exportPacket(packet,'csv',plan)))}>Export CSV</button>
  {(['A','B','C'] as const).map(slot=><button key={slot} onClick={()=>act(()=>setScenarios(workflows.scenario(scenarios,slot,packet,'',plan)))}>Capture scenario {slot}</button>)}</>}
  {renderWorkflows&&<WorkflowPanel render={renderWorkflows} packet={packet} onRestore={snapshot=>act(()=>{
-  const restoredRaw=Object.fromEntries(Object.entries(snapshot.input).map(([key,value])=>{if(Array.isArray(value)&&fields.some(field=>field.key===key&&field.kind==='json'))return [key,JSON.stringify(value)];if(typeof value!=='number'&&typeof value!=='string')throw Error('Unsupported stored input');return [key,typeof value==='number'&&Object.is(value,-0)?'-0':String(value)];}));
+  const restoredRaw=Object.fromEntries(Object.entries(snapshot.input).map(([key,value])=>{if(Array.isArray(value)&&fields.some(field=>field.key===key&&field.multilineJson))return [key,JSON.stringify(value)];if(typeof value!=='number'&&typeof value!=='string')throw Error('Unsupported stored input');return [key,typeof value==='number'&&Object.is(value,-0)?'-0':String(value)];}));
   const restored=workflows.execute(restoredRaw);
   if(!equalCompletionJson(restored.snapshot,snapshot))throw Error('Stored scenario does not match this exact engine version');
   setRaw({...restored.raw});setPacket(restored);setExportText('');
