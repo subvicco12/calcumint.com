@@ -4,6 +4,7 @@ import {render,screen,within,cleanup,fireEvent} from '@testing-library/react';
 const state=vi.hoisted(()=>({plan:'business',snapshot:null as null|{calculatorSlug:string;calculatorVersion:number;input:Record<string,unknown>;output:{value:number}|null;exportMethodology?:string}}));
 vi.mock('./use-calculator-plan',()=>({useCalculatorPlan:()=>state.plan}));
 vi.mock('./calculator-account-actions',()=>({CalculatorAccountActions:(p:NonNullable<typeof state.snapshot>)=>{state.snapshot=p;return null;}}));
+import {TechnologyFinalTwoAnalysis} from './technology-final-two-analysis';
 import {CalculatorInteractive} from './calculator-interactive';
 afterEach(()=>{cleanup();state.plan='business';state.snapshot=null;});
 for(const plan of ['free','pro','business'])for(const [slug,value] of [['ip-subnet-calculator',256],['screen-ppi-calculator',141.21199808219862]]as const)it(`${plan} ${slug} keeps registered headline/capture while exposing bounded analysis`,()=>{
@@ -14,4 +15,21 @@ it('strict IPv4 text remains editable, invalid output cannot reach capture and v
 });
 it('clears a verified goal when current input changes and refuses an unattainable discrete target',()=>{
  render(<CalculatorInteractive slug='ip-subnet-calculator'/>);const analysis=screen.getByRole('region',{name:'Analysis'}),target=within(analysis).getByLabelText('Target result (addresses)');fireEvent.change(target,{target:{value:'256'}});fireEvent.click(within(analysis).getByRole('button',{name:'Solve target'}));expect(within(analysis).getByRole('status').textContent).toContain('24');fireEvent.change(screen.getByLabelText('IPv4 address'),{target:{value:'10.0.0.1'}});const current=screen.getByRole('region',{name:'Analysis'});expect((within(current).getByLabelText('Target result (addresses)') as HTMLInputElement).value).toBe('');expect(within(current).queryByRole('status')).toBeNull();fireEvent.change(within(current).getByLabelText('Target result (addresses)'),{target:{value:'300'}});fireEvent.click(within(current).getByRole('button',{name:'Solve target'}));expect(within(current).getByRole('alert').textContent).toContain('No supported integer prefix');
+});
+
+it('connects refused targets to the existing help and clears refusal on editing',()=>{
+ render(<TechnologyFinalTwoAnalysis id='technology.ip-subnet' input={{address:'192.0.2.0',prefixLength:24}} plan='pro'/>);
+ const target=screen.getByRole('textbox',{name:'Target result (addresses)'});
+ const submit=()=>fireEvent.submit(screen.getByRole('form',{name:'Target calculation'}));
+ fireEvent.change(target,{target:{value:'300'}});
+ submit();
+ expect(target.getAttribute('aria-invalid')).toBe('true');
+ const help=target.getAttribute('aria-describedby')!.split(' ').map(id=>document.getElementById(id));
+ expect(help).toContain(screen.getByRole('alert'));
+ expect(help.some(el=>el?.textContent?.startsWith('Only supported targets'))).toBe(true);
+ fireEvent.change(target,{target:{value:'256'}});
+ expect(target.hasAttribute('aria-invalid')).toBe(false);
+ expect(screen.queryByRole('alert')).toBeNull();
+ submit();
+ expect(screen.getByRole('status').textContent).toContain('24');
 });

@@ -28,3 +28,20 @@ it('CIDR boundary samples remain discrete and exact supported target solves pref
 it('UPS projection keeps fixed efficiency/load context and original runtime output',()=>{
  render(<TechnologyBoundedAnalysis id='technology.ups-runtime' input={{batteryWh:600,loadWatts:300,efficiencyPercent:90}} plan='business'/>);expect(within(screen.getByRole('table',{name:'Relationship samples'})).getByText('1.8')).toBeTruthy();const context=screen.getByRole('region',{name:'Projection scenarios'});expect(within(context).getByText('loadWatts')).toBeTruthy();expect(within(context).getByText('90')).toBeTruthy();
 });
+
+it('connects refused targets to the existing help and clears refusal on editing',()=>{
+ render(<TechnologyBoundedAnalysis id='technology.cidr' input={{prefixLength:24}} plan='pro'/>);
+ const target=screen.getByRole('textbox',{name:'Target result (addresses)'});
+ const submit=()=>fireEvent.submit(screen.getByRole('form',{name:'Target calculation'}));
+ fireEvent.change(target,{target:{value:'300'}});
+ submit();
+ expect(target.getAttribute('aria-invalid')).toBe('true');
+ const help=target.getAttribute('aria-describedby')!.split(' ').map(id=>document.getElementById(id));
+ expect(help).toContain(screen.getByRole('alert'));
+ expect(help.some(el=>el?.textContent?.startsWith('Only supported targets'))).toBe(true);
+ fireEvent.change(target,{target:{value:'256'}});
+ expect(target.hasAttribute('aria-invalid')).toBe(false);
+ expect(screen.queryByRole('alert')).toBeNull();
+ submit();
+ expect(screen.getByRole('status').textContent).toContain('24');
+});
