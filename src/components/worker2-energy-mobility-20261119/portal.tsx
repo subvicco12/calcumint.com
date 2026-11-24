@@ -1,4 +1,5 @@
 'use client';
+import {formatRational,type Rational} from '@/calculators/exact-rational';
 import {getLaunchSpec} from '@/calculators/launch-portfolio';
 import {useState,useRef} from 'react';
 import {chargingRoundedToZero,mobilityContracts,mobilityContract,mobilityWorkflows} from '@/lib/worker2-energy-mobility-20261119/cohort';
@@ -38,6 +39,14 @@ function StructuredMathDetails({id,output}:{id:number;output:Record<string,unkno
  {steps.length>0&&<details><summary>Calculation steps</summary><ol>{steps.map((step,index)=><li key={index}>{String(step)}</li>)}</ol></details>}
  </section>;
 }
+function displayedValuation(id:number,output:Record<string,unknown>):number|string|undefined{
+ if(id===467)return (output.schedule as {year:number;value:number}[]).at(-1)?.value;
+ if(id===80||id===84)return formatRational(output.requiredInitialCapital as Rational);
+ if(id===81)return formatRational(output.balance as Rational);
+ if(id===488)return formatRational(output.annualSavings as Rational);
+ return undefined;
+}
+
 export function MobilityPortal({ownerId,plan}:{ownerId:string;plan:CalcuMintPlan}){
  const [id,setId]=useState<number>(mobilityContracts[0].catalogId),[draftRevision,setDraftRevision]=useState(0);const c=mobilityContract(id),retry=useRef<{key:string;id:string}|null>(null);
  return <section onChangeCapture={event=>{const target=event.target;if((target instanceof HTMLInputElement||target instanceof HTMLTextAreaElement||target instanceof HTMLSelectElement)&&c.fields.some(f=>f.key===target.name))setDraftRevision(v=>v+1);}} className="worker2-mobility-controls" style={{maxWidth:'100%',minWidth:0,overflowWrap:'anywhere'}}>
@@ -45,7 +54,7 @@ export function MobilityPortal({ownerId,plan}:{ownerId:string;plan:CalcuMintPlan
  <p>{c.engineId}@{c.version}. {c.scope} {c.limitations.join(' ')}</p>
  <details><summary>Formula and assumptions</summary><ul>{c.engine.formulas.map(f=><li key={f.id}><code>{f.expression}</code> — {f.description}</li>)}</ul></details>
  <CalculatorFactoryWorkbench key={ownerId+':'+id} workflows={mobilityWorkflows(id)} fields={c.fields} title={c.title+' — Result unit: '+c.unit+' — private review'} plan={plan} renderResult={packet=><><FinalResultPresentation plan={plan} result={{
-  primaryResult:{id:id===232&&packet.snapshot.input.operation==='divmod'?'quotient':id===156&&packet.snapshot.input.mode==='dated-npv'?'npv':c.primaryKey,label:id===232&&packet.snapshot.input.operation==='divmod'?'Quotient':id===156&&packet.snapshot.input.mode==='dated-npv'?'Net present value':c.primaryLabel,value:id===232&&packet.snapshot.input.operation==='divmod'?String(packet.snapshot.output.quotient):id===214?getLaunchSpec('decimal-to-fraction-calculator')!.formatResult!(packet.snapshot.input as Record<string,number>,Number(packet.snapshot.output.result)):id===535?solarStatuses[String(packet.snapshot.output.status)]:id===156&&packet.snapshot.input.mode==='dated-npv'?Number(packet.snapshot.output.npv):packet.snapshot.output[c.primaryKey]===null?(id===63?'No future equality at the supplied rate':'Unavailable'):id===418?(packet.snapshot.output.offspring as string[]).join(' · '):packet.snapshot.output[c.primaryKey] as number|string,unit:packet.snapshot.output[c.primaryKey]===null?undefined:c.outputUnit?.(packet.snapshot.input)??c.unit},
+  primaryResult:{id:id===232&&packet.snapshot.input.operation==='divmod'?'quotient':id===156&&packet.snapshot.input.mode==='dated-npv'?'npv':c.primaryKey,label:id===232&&packet.snapshot.input.operation==='divmod'?'Quotient':id===156&&packet.snapshot.input.mode==='dated-npv'?'Net present value':c.primaryLabel,value:displayedValuation(id,packet.snapshot.output)??(id===232&&packet.snapshot.input.operation==='divmod'?String(packet.snapshot.output.quotient):id===214?getLaunchSpec('decimal-to-fraction-calculator')!.formatResult!(packet.snapshot.input as Record<string,number>,Number(packet.snapshot.output.result)):id===535?solarStatuses[String(packet.snapshot.output.status)]:id===156&&packet.snapshot.input.mode==='dated-npv'?Number(packet.snapshot.output.npv):packet.snapshot.output[c.primaryKey]===null?(id===63?'No future equality at the supplied rate':'Unavailable'):id===418?(packet.snapshot.output.offspring as string[]).join(' · '):packet.snapshot.output[c.primaryKey] as number|string),unit:packet.snapshot.output[c.primaryKey]===null?undefined:c.outputUnit?.(packet.snapshot.input)??c.unit},
   metrics:Object.entries(c.outputs).filter(([key])=>key!==c.primaryKey&&!(id===232&&key==='quotient')&&Object.hasOwn(packet.snapshot.output,key)&&!(id===156&&key==='npv')).map(([key,meta])=>({id:key,label:meta.label,unit:packet.snapshot.output[key]===null?undefined:meta.unit,value:packet.snapshot.output[key]===null?'Unavailable':packet.snapshot.output[key] as number})),
   ...((id===235||id===251||(id>=246&&id<=248))&&Array.isArray(packet.snapshot.output.points)?{series:[{id:'samples',label:'Sampled f(x)',points:packet.snapshot.output.points as ResultSeries['points']}]}:{}),
   ...(id===418?{metrics:Object.entries(packet.snapshot.output.genotypeProbabilities as Record<string,number>).map(([genotype,fraction])=>({id:genotype,label:genotype,value:100*fraction,unit:'%'}))}:{}),
@@ -67,6 +76,23 @@ export function MobilityPortal({ownerId,plan}:{ownerId:string;plan:CalcuMintPlan
   methodology:c.scope,sources:c.engine.sources,warnings:c.limitations,
  }}/>{((id>=237&&id<=248)||id===249||id===250||id===253||id===254||id===281)&&<StructuredMathDetails id={id} output={packet.snapshot.output}/>}
   {id===233&&<details open><summary>Generated values</summary><ol>{(packet.snapshot.output.values as number[]).map((value,index)=><li key={index}>{value}</li>)}</ol></details>}
+  {id===467&&<details><summary>Annual valuation schedule</summary><table><caption>End-of-year values in {String(packet.snapshot.output.currency)}</caption>
+   <thead><tr><th scope="col">Year</th><th scope="col">Value</th></tr></thead>
+   <tbody>{(packet.snapshot.output.schedule as {year:number;value:number}[]).map(row=><tr key={row.year}><th scope="row">{row.year}</th><td>{row.value}</td></tr>)}</tbody>
+  </table></details>}
+  {id===488&&<dl aria-label="Annual heating comparison">
+   <dt>Existing system input (kWh/year)</dt><dd>{formatRational(packet.snapshot.output.existingInputKwh as Rational)}</dd>
+   <dt>Heat pump input including outside auxiliary (kWh/year)</dt><dd>{formatRational(packet.snapshot.output.heatPumpTotalKwh as Rational)}</dd>
+   <dt>Existing annual cost</dt><dd>{formatRational(packet.snapshot.output.existingCost as Rational)}</dd>
+   <dt>Heat pump annual cost</dt><dd>{formatRational(packet.snapshot.output.heatPumpCost as Rational)}</dd>
+   <dt>Simple payback</dt><dd>{packet.snapshot.output.simplePaybackYears===null?'Undefined without positive annual savings':formatRational(packet.snapshot.output.simplePaybackYears as Rational)+' years'}</dd>
+  </dl>}
+  {(id===80||id===81||id===84)&&<details><summary>Exact period details</summary><ol>
+   {(packet.snapshot.output.rows as Record<string,unknown>[]).map((row,index)=><li key={index}>
+    <dl>{Object.entries(row).map(([key,value])=><div key={key}><dt>{key.replace(/([a-z])([A-Z])/g,'$1 $2')}</dt>
+     <dd>{value&&typeof value==='object'&&'numerator' in value?formatRational(value as Rational):String(value ?? 'Unavailable')}</dd></div>)}</dl>
+   </li>)}
+  </ol></details>}
   {id===512&&<details><summary>Converted spending lines</summary><table><caption>Conversion amounts in {String(packet.snapshot.output.reportingCurrency)}</caption>
    <thead><tr><th scope="col">Date</th><th scope="col">Original amount</th><th scope="col">Converted amount</th></tr></thead>
    <tbody>{(packet.snapshot.output.lines as {date:string;amount:number;baseCurrency:string;reportingAmount:number}[]).map((line,index)=>
