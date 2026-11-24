@@ -476,7 +476,8 @@ export function mobilityWorkflows(id:number){
  const identity={catalogId:id,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,
   sourceVersion:`${capture}/${contract.engineId}@${contract.version}`};
  return createFactoryWorkflows({identity,execute:contract.execute,scopedMetadata:{
-  schemaVersion:1,identity,scope:contract.scope,primaryKey:contract.primaryKey,fields:contract.fields,
+  schemaVersion:1,identity,scope:contract.scope,primaryKey:contract.primaryKey,
+  ...(ownerModes.some(([catalogId])=>catalogId===id)?{modeDependent:true as const}:{}),fields:contract.fields,
   outputs:contract.outputs,sourceEvidence:id===509?['src/calculators/travel/catalog-batch-2.ts']:contract.sourceEvidence,publisherSources:contract.engine.sources.flatMap(source=>source.url?[source.url]:[]),
   limitations:contract.limitations,authority:'Private bounded review. Source applicability and canonical approval remain pending.',
  }});

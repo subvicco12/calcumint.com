@@ -1,4 +1,5 @@
 import {expect,it} from 'vitest';
+import {factoryDownload} from '@/lib/calculator-factory/completion/exports';
 import {privateOwnerBusinessCore} from '@/calculators/private-owner-business-core';
 import {privateOwnerBusinessImpact} from '@/calculators/private-owner-business-impact';
 import {mobilityContract,mobilityWorkflows,prepareMobilityRecovery} from './cohort';
@@ -13,6 +14,7 @@ it.each([156,161,194,195])('delivers and replays every immutable mode of #%i',id
   expect(packet.snapshot.output).toEqual(engine.calculate(input,{}));
   expect(prepareMobilityRecovery(packet.snapshot).currentCaptureAvailable).toBe(true);
   expect(workflow.replay(workflow.exportPacket(packet,'json','pro')).snapshot).toEqual(packet.snapshot);
+  expect(new TextDecoder().decode(factoryDownload(workflow,packet,'pdf','pro',contract.title).bytes)).toMatch(/^%PDF-/);
   expect(()=>workflow.execute({...raw,unexpected:'1'})).toThrow();
   expect(contract.fields.filter(field=>!field.visibilityModes||field.visibilityModes.includes(raw.mode)).map(field=>field.key).sort()).toEqual(Object.keys(raw).sort());
  }
