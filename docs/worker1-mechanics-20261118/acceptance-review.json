@@ -1,0 +1,318 @@
+{
+  "testedImplementation": "e597d36b8b27894e931317edcb41a5c6c8e2c6c0",
+  "engineSourceBindingsSHA256": {
+    "src/calculators/physics/catalog-batch-1.ts": "c3e93d1e67efe9a5a36316b8bc4c46d72ea131bb01fa8ddc058d6e4daf5f8432",
+    "src/calculators/physics/catalog-batch-2.ts": "9616404307a9e0bcf5cd3678c2720288e514a00c8faf79bdb3ef1af8845e036d",
+    "data/catalog/master-catalog-2026.csv": "3616153c285011c042bfe1ccf2b2244159649ce9a07ff7749504e35398cb0c90",
+    "src/lib/worker1-mechanics-20261118/cohort.ts": "cf0f25241a0214a0bdd7756f0ce7e506cb187c99ff655ee0d0269b3c2f1bf32e"
+  },
+  "compiledSourceFingerprints": 2144,
+  "fingerprintManifestSHA256": "67f119f16ca01647d6fc45769763824cbaf4a99e6c308ae4ba2fd895012c4322",
+  "boundaryChecks": [
+    {
+      "id": 307,
+      "input": {
+        "force": 10,
+        "distance": 3,
+        "angleDegrees": 90
+      },
+      "v1Value": 1.83697019872103e-15,
+      "newCaptureRefused": true,
+      "exactHistoricalReplay": true,
+      "wrongVersionDenied": true
+    },
+    {
+      "id": 309,
+      "input": {
+        "mass": 1e-200,
+        "velocity": 1e-200
+      },
+      "v1Value": 0,
+      "newCaptureRefused": true,
+      "exactHistoricalReplay": true,
+      "wrongVersionDenied": true
+    }
+  ],
+  "membership": {
+    "memberReadBeforeRevocation": true,
+    "sameSessionServerDenialAfterRevocation": 403,
+    "serverLogExcerpt": "Error: Current organization permission is required. (status 403)",
+    "browserExpectedMessageAssertion": "FAILED",
+    "browserObserved": "Minified React error #441",
+    "acceptance": "SERVER_DENIAL_CONFIRMED_UI_OPEN"
+  },
+  "downloadBytesVerifiedAgainstReceipt": 30,
+  "rows": [
+    {
+      "id": 302,
+      "title": "Speed Calculator",
+      "engine": "physics.speed",
+      "slug": "speed-calculator",
+      "version": 1,
+      "formula": "d/t",
+      "outputUnit": "m/s",
+      "reviewScope": "Average scalar speed",
+      "nativePlans": [
+        "free",
+        "pro",
+        "business"
+      ],
+      "downloads": [
+        "json",
+        "csv",
+        "pdf"
+      ],
+      "reviewDecisions": {
+        "sourceApplicability": "PENDING: approve an authoritative source and reconcile full Blueprint scope with the bounded method",
+        "units": "PENDING competent decision on SI contract and conventions",
+        "precision": "PENDING competent decision on binary64, 1e-90 capture floor and refusal boundaries",
+        "QA": "PENDING competent acceptance"
+      },
+      "qualification": "PENDING_CENTRAL_ACCEPTANCE"
+    },
+    {
+      "id": 303,
+      "title": "Velocity Calculator",
+      "engine": "physics.velocity",
+      "slug": "velocity-calculator",
+      "version": 1,
+      "formula": "Δx/t",
+      "outputUnit": "m/s",
+      "reviewScope": "Average signed one-dimensional velocity",
+      "nativePlans": [
+        "free",
+        "pro",
+        "business"
+      ],
+      "downloads": [
+        "json",
+        "csv",
+        "pdf"
+      ],
+      "reviewDecisions": {
+        "sourceApplicability": "PENDING: approve an authoritative source and reconcile full Blueprint scope with the bounded method",
+        "units": "PENDING competent decision on SI contract and conventions",
+        "precision": "PENDING competent decision on binary64, 1e-90 capture floor and refusal boundaries",
+        "QA": "PENDING competent acceptance"
+      },
+      "qualification": "PENDING_CENTRAL_ACCEPTANCE"
+    },
+    {
+      "id": 304,
+      "title": "Acceleration Calculator",
+      "engine": "physics.acceleration",
+      "slug": "acceleration-calculator",
+      "version": 1,
+      "formula": "(v-u)/t",
+      "outputUnit": "m/s²",
+      "reviewScope": "Average signed one-dimensional acceleration",
+      "nativePlans": [
+        "free",
+        "pro",
+        "business"
+      ],
+      "downloads": [
+        "json",
+        "csv",
+        "pdf"
+      ],
+      "reviewDecisions": {
+        "sourceApplicability": "PENDING: approve an authoritative source and reconcile full Blueprint scope with the bounded method",
+        "units": "PENDING competent decision on SI contract and conventions",
+        "precision": "PENDING competent decision on binary64, 1e-90 capture floor and refusal boundaries",
+        "QA": "PENDING competent acceptance"
+      },
+      "qualification": "PENDING_CENTRAL_ACCEPTANCE"
+    },
+    {
+      "id": 305,
+      "title": "Distance-Time Calculator",
+      "engine": "physics.distance-time",
+      "slug": "distance-time-calculator",
+      "version": 1,
+      "formula": "vt",
+      "outputUnit": "m",
+      "reviewScope": "Constant speed and nonnegative time",
+      "nativePlans": [
+        "free",
+        "pro",
+        "business"
+      ],
+      "downloads": [
+        "json",
+        "csv",
+        "pdf"
+      ],
+      "reviewDecisions": {
+        "sourceApplicability": "PENDING: approve an authoritative source and reconcile full Blueprint scope with the bounded method",
+        "units": "PENDING competent decision on SI contract and conventions",
+        "precision": "PENDING competent decision on binary64, 1e-90 capture floor and refusal boundaries",
+        "QA": "PENDING competent acceptance"
+      },
+      "qualification": "PENDING_CENTRAL_ACCEPTANCE"
+    },
+    {
+      "id": 306,
+      "title": "Force Calculator",
+      "engine": "physics.force",
+      "slug": "force-calculator",
+      "version": 1,
+      "formula": "ma",
+      "outputUnit": "N",
+      "reviewScope": "Signed one-dimensional net force",
+      "nativePlans": [
+        "free",
+        "pro",
+        "business"
+      ],
+      "downloads": [
+        "json",
+        "csv",
+        "pdf"
+      ],
+      "reviewDecisions": {
+        "sourceApplicability": "PENDING: approve an authoritative source and reconcile full Blueprint scope with the bounded method",
+        "units": "PENDING competent decision on SI contract and conventions",
+        "precision": "PENDING competent decision on binary64, 1e-90 capture floor and refusal boundaries",
+        "QA": "PENDING competent acceptance"
+      },
+      "qualification": "PENDING_CENTRAL_ACCEPTANCE"
+    },
+    {
+      "id": 307,
+      "title": "Work Calculator",
+      "engine": "physics.work",
+      "slug": "work-calculator",
+      "version": 1,
+      "formula": "Fd cos(θ)",
+      "outputUnit": "J",
+      "reviewScope": "Constant force and relative angle in degrees",
+      "nativePlans": [
+        "free",
+        "pro",
+        "business"
+      ],
+      "downloads": [
+        "json",
+        "csv",
+        "pdf"
+      ],
+      "reviewDecisions": {
+        "sourceApplicability": "PENDING: approve an authoritative source and reconcile full Blueprint scope with the bounded method",
+        "units": "PENDING competent decision on SI contract and conventions",
+        "precision": "PENDING competent decision on binary64, 1e-90 capture floor and refusal boundaries",
+        "QA": "PENDING competent acceptance"
+      },
+      "qualification": "PENDING_CENTRAL_ACCEPTANCE"
+    },
+    {
+      "id": 308,
+      "title": "Power Calculator",
+      "engine": "physics.power",
+      "slug": "power-calculator",
+      "version": 1,
+      "formula": "work/t",
+      "outputUnit": "W",
+      "reviewScope": "Signed average power",
+      "nativePlans": [
+        "free",
+        "pro",
+        "business"
+      ],
+      "downloads": [
+        "json",
+        "csv",
+        "pdf"
+      ],
+      "reviewDecisions": {
+        "sourceApplicability": "PENDING: approve an authoritative source and reconcile full Blueprint scope with the bounded method",
+        "units": "PENDING competent decision on SI contract and conventions",
+        "precision": "PENDING competent decision on binary64, 1e-90 capture floor and refusal boundaries",
+        "QA": "PENDING competent acceptance"
+      },
+      "qualification": "PENDING_CENTRAL_ACCEPTANCE"
+    },
+    {
+      "id": 309,
+      "title": "Kinetic Energy Calculator",
+      "engine": "physics.kinetic-energy",
+      "slug": "kinetic-energy-calculator",
+      "version": 1,
+      "formula": "mv²/2",
+      "outputUnit": "J",
+      "reviewScope": "Classical translational energy with speed magnitude",
+      "nativePlans": [
+        "free",
+        "pro",
+        "business"
+      ],
+      "downloads": [
+        "json",
+        "csv",
+        "pdf"
+      ],
+      "reviewDecisions": {
+        "sourceApplicability": "PENDING: approve an authoritative source and reconcile full Blueprint scope with the bounded method",
+        "units": "PENDING competent decision on SI contract and conventions",
+        "precision": "PENDING competent decision on binary64, 1e-90 capture floor and refusal boundaries",
+        "QA": "PENDING competent acceptance"
+      },
+      "qualification": "PENDING_CENTRAL_ACCEPTANCE"
+    },
+    {
+      "id": 310,
+      "title": "Potential Energy Calculator",
+      "engine": "physics.potential-energy",
+      "slug": "potential-energy-calculator",
+      "version": 1,
+      "formula": "mgh",
+      "outputUnit": "J",
+      "reviewScope": "Uniform supplied gravity and signed datum-relative height",
+      "nativePlans": [
+        "free",
+        "pro",
+        "business"
+      ],
+      "downloads": [
+        "json",
+        "csv",
+        "pdf"
+      ],
+      "reviewDecisions": {
+        "sourceApplicability": "PENDING: approve an authoritative source and reconcile full Blueprint scope with the bounded method",
+        "units": "PENDING competent decision on SI contract and conventions",
+        "precision": "PENDING competent decision on binary64, 1e-90 capture floor and refusal boundaries",
+        "QA": "PENDING competent acceptance"
+      },
+      "qualification": "PENDING_CENTRAL_ACCEPTANCE"
+    },
+    {
+      "id": 311,
+      "title": "Momentum Calculator",
+      "engine": "physics.momentum",
+      "slug": "momentum-calculator",
+      "version": 1,
+      "formula": "mv",
+      "outputUnit": "kg·m/s",
+      "reviewScope": "Signed one-dimensional momentum",
+      "nativePlans": [
+        "free",
+        "pro",
+        "business"
+      ],
+      "downloads": [
+        "json",
+        "csv",
+        "pdf"
+      ],
+      "reviewDecisions": {
+        "sourceApplicability": "PENDING: approve an authoritative source and reconcile full Blueprint scope with the bounded method",
+        "units": "PENDING competent decision on SI contract and conventions",
+        "precision": "PENDING competent decision on binary64, 1e-90 capture floor and refusal boundaries",
+        "QA": "PENDING competent acceptance"
+      },
+      "qualification": "PENDING_CENTRAL_ACCEPTANCE"
+    }
+  ],
+  "releaseHold": true
+}
