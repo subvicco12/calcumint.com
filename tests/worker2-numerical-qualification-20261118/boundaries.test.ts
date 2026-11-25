@@ -5,8 +5,8 @@ import { coefficientOfVariationCalculator } from '../../src/calculators/statisti
 const min = Number.MIN_VALUE;
 
 it.each([
-  ['#322 capacitance', (n: number, d: number) => capacitanceCalculator.calculate({charge: n, voltage: d}).value],
-  ['#327 angular velocity', (n: number, d: number) => angularVelocityCalculator.calculate({angle: n, time: d}).value],
+  ['#322 capacitance', (n: number, d: number) => capacitanceCalculator.calculate({charge: n, voltage: d}, {}).value],
+  ['#327 angular velocity', (n: number, d: number) => angularVelocityCalculator.calculate({angle: n, time: d}, {}).value],
 ] as const)('%s rounds the exact quotient at the subnormal boundary', (_name, divide) => {
   // Expressed in units of 2^-1074, the exact quotients are 1/4, 1/2 and 1.
   expect(divide(min, 4)).toBe(0);
@@ -19,7 +19,7 @@ it.each([
 it('#298 preserves magnitude-based v1 and exposes its scale assumptions', () => {
   const engine = coefficientOfVariationCalculator;
   const cv = (mean: number, standardDeviation: number) =>
-    engine.calculate(engine.inputSchema.parse({mean, standardDeviation})).coefficientOfVariation;
+    engine.calculate(engine.inputSchema.parse({mean, standardDeviation}), {}).coefficientOfVariation;
   expect(engine.version).toBe(1);
   expect(cv(10, 2)).toBe(0.2);
   expect(cv(-10, 2)).toBe(0.2);
