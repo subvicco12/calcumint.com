@@ -1,0 +1,21 @@
+{
+  "status": "REPORTED_RAW_PREIMAGE_MISMATCH; EXACT_OBJECT_CAUSE_BLOCKED_ON_WORK_CAPTURE",
+  "historicalPreimage": "56b55a34c29d2c0dc60863da60df510d5a70d962edbc6582591ba025a756c3f1",
+  "reportedProductionPreimage": "8e564644aabd0db81afd5cdaf131577968b732578fd9e24f494f0ae6e4e2668a",
+  "productionCaptureBytesRetrieved": false,
+  "objectLevelChangesEstablished": false,
+  "normalizationCouldExplainDrift": "UNDETERMINED; no assumption of whitespace-only, semantic drift or permission changes",
+  "heldApplyWouldRefuse": true,
+  "newApplyReverseSQLGenerated": false,
+  "preparationTool": "scripts/product-p0-20261125/prepare-successor.mjs",
+  "preparationStatus": "STRICT_OFFLINE_INPUT_GATES_IMPLEMENTED; POSITIVE_CURRENT_PREIMAGE_PATH_NOT_QUALIFIED",
+  "requiredInputs": [
+    "Work exact metadata_json text and independent SHA256, current capture query/version/time/actor/read-only flags",
+    "Work metadata scope/hook coverage and independent object-diff confirmation",
+    "Disposable PostgreSQL-derived core and composed postimages, same parser/search_path, existing source pins",
+    "Genuine disposable preimage/refusal/apply/reverse/late-failure/209-row-preservation rehearsal receipts"
+  ],
+  "existingHoldsSourcesAndDeadlinesModified": false,
+  "productionInspected": false,
+  "productionWrites": false
+}

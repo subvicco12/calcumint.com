@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: distinguishes raw encoding drift from identical normalized metadata without granting authority
+ok 1 - distinguishes raw encoding drift from identical normalized metadata without granting authority
+  ---
+  duration_ms: 2.622169
+  type: 'test'
+  ...
+# Subtest: identifies exact function body, owner and ACL fields without exporting their values
+ok 2 - identifies exact function body, owner and ACL fields without exporting their values
+  ---
+  duration_ms: 0.58218
+  type: 'test'
+  ...
+# Subtest: normalizes row order but preserves column positions and function whitespace
+ok 3 - normalizes row order but preserves column positions and function whitespace
+  ---
+  duration_ms: 10.113608
+  type: 'test'
+  ...
+# Subtest: reports additions and removals rather than aligning unrelated array positions
+ok 4 - reports additions and removals rather than aligning unrelated array positions
+  ---
+  duration_ms: 0.577483
+  type: 'test'
+  ...
+# Subtest: rejects hash tampering, duplicate identity, missing scope and incompatible major
+ok 5 - rejects hash tampering, duplicate identity, missing scope and incompatible major
+  ---
+  duration_ms: 2.57553
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 76.273727

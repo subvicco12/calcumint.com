@@ -1,0 +1,52 @@
+# W3 — Revision5 P0 continuation
+
+RELEASE HOLD ACTIVE. Ledger274; release-ready0. No production, certification or publication.
+
+## Verified evidence upload
+The existing4407-byte packet was uploaded ONLY to confirmed owner-only folder `1hMUnuLRjKjtaTbDYgFo-On9zr35cbIqh`.
+[Verified Drive file](https://drive.google.com/file/d/1gWUsNS3eJ0T6oHIuul515u0E91L6t6a0/view), ID `1gWUsNS3eJ0T6oHIuul515u0E91L6t6a0`, SHA256 `d444fd625474298a8694eed6f500985781f9571a19e96ced9bba49c302428d63`. Authenticated raw re-download matched the original checksum and size. Metadata readback confirms exact parent and sole user:owner permission. No permissions, public links or credentials were changed/exported. Receipt posted in Issue1543 comment7170583749; `drive-upload-receipt.json` records it. The packet is historical; subsequent #432/#436 addendum remains applicable.
+
+## Frozen and new source
+Preserved `708fe9ad24f3f0d196e9cf1f883962c6961bebb1` and its original37 tests; preserved original790/build and all frozen authority/Ripgrep/PostgreSQL packages. Neither completed campaign was rerun.
+New isolated product source `b7cefece9f227e4285bd3a757ccf5bdb0ce07839`, tree `b9c30febbe9916786f0750bbea3aa2174adb10bd`, branch `engineering/product-p0-20261125`.
+
+Worker2 public-interface intake: archive `1_SKRCbzFCulKRkpQ3RBP3lEpMH7jgIEe`,14781 bytes, independently computed SHA256 `03a619da1c24ea006ce40b163ef3daab103c555d4964ac5ec3347fdafc72d38b`; all nine internal checksum entries and bundle prerequisite verified. Commit `1dd4018bfdb1aa4a75860c516dc84d395dfbfb0a`, tree `f785e8431658d35ffe527c19e1a9964239fe5656`, prerequisite `15829bca2931e13d0aa777f178e8c944515585c6`. Two leaf component/test paths integrated without conflicts; W3 alone applied the supplied shared `CalculatorInteractive` patch. Existing cohort blob remains `26499a52bac827f285047a217e527f091da8fc01`.
+
+**Public presentation implemented/local-accepted** for #508,#513,#514,#515,#519,#520,#521,#523,#524. This closes the reported interface placeholder on the isolated source; it does not activate a route or add completion count. Native engines, registry, private cohort/history, central workflows, SQL and release controls are unchanged. Historical fractional-person v1 replay remains separate from whole-person new-capture validation.
+
+10 leaf component cases and18 new integrated dispatcher/unpublished/unavailable refusal cases passed. Nine real Chromium320px loopback journeys through the shared dispatcher passed deterministic changed-input outputs, keyboard submit, blank refusal, focus recovery,44px controls and no horizontal overflow. These are anonymous local forms, not authenticated/live/publication QA or a claim of full accessibility conformance. Existing producer account/export evidence is retained, not rerun or newly promoted. TypeScript and targeted component lint passed. Tested working-tree bytes were frozen into the above source commit; no fresh exact-head hosted CI is claimed.
+
+The vanilla esbuild integrated harness initially failed before any journey: Next Link referenced `process.env`, which Next normally substitutes at compile time. Bounded diagnostic receipt retained. A test-only empty synthetic `process.env` definition fixed the harness; no credential injection, application logic, production CSP, timeout or assertion was changed. All nine then passed. Test source preserves the original driver and changes only dispatcher entry, synthetic environment and bounded failure receipt handling.
+
+## P0 four-converter evidence rebind
+Verified archive `1DyjVEQUbjffh3DQsSgM92NmMQAuB4Hv8`,10710 bytes, SHA256 `020c7d7dd7518f273e21f1def02cedf36a61f6607b9396e675efaa3624eaa90f`; all seven internal checksum entries verified. All15 supplied engine/caller/renderer/source/receipt blob AND SHA256 pins match the current integrated source. Detailed matches: `receipts/methodology-rebinding.json`; actual retained observations and scoped next acceptance: `p0-four-acceptance.json`.
+
+- #423 `conversion.length@1`: dedicated vs general v1 overlap requires canonical disposition. Tiny1e-8mm→km produces1e-14 dedicated vs0 general; preserve both histories/output contracts.
+- #430 `conversion.energy@1`: thermochemical cal4.184J, kcal4184J; exclude other calorie conventions.
+- #431 `conversion.power@1`: mechanical550 international ft·lbf/s;745.69987158227022W before binary64. Exclude metric/electrical/boiler hp/equipment claims.
+- #438 `conversion.force@1`: dyn1e-5N, conventional lbf4.4482216152605N. Display4.45N is not the native replay value; competent admissible numerical/display precision and applicability remain.
+
+Retained account extract contains genuine Free/Pro/Business observations for all four; retain each individual scope. Browser extract has historical successful history/scenario rows but explicitly `wholeProducerPassed:false`; never call it a complete passing campaign. Fifteen matching pins establish only that evidence dependency subset, not whole current application equivalence. Newly integrated Swap units and current public route/history/export bindings still need applicable fresh acceptance. No competent source/precision/QA approval or signature was created.
+
+Preparation identifies the exact three-plan units, history/replay/scenarios, stale-swap/export/save invalidation, native-vs-rounded export, cross-account/revocation and mobile checks. Original account driver hard-codes22 cases; original completion Business override requires16. Neither is falsely advertised as an existing four-ID selector. A narrowly selected producer adaptation and its qualification remain before a concrete four-only campaign; do not rerun those broad historical drivers by default. Existing pinned socket-free transport is reused when authorized endpoints are available.
+
+## Metadata drift: established facts and exact missing inputs
+Revision5 reports historical raw preimage `56b55a34c29d2c0dc60863da60df510d5a70d962edbc6582591ba025a756c3f1` vs current production `8e564644aabd0db81afd5cdaf131577968b732578fd9e24f494f0ae6e4e2668a`. This establishes an exact-pin mismatch if the same capture projection was used. Existing unconditional holds and exact-source/metadata checks remain; no production SQL was executed. Changed objects, semantic-vs-formatting classification, owners/ACLs/provider hooks and safe new preimage are NOT established from digest alone.
+
+The actual sanitized Work snapshot was not found in Issue1543, inspected authorized recovery folders or targeted connected search. Requested exact bytes/query/time/scope from Work in comment7170583749 and the user asynchronously. Work owns production read-only capture/diff confirmation; W3 did not duplicate its production inspection or retrieve credentials.
+
+New offline diagnostic tool `scripts/product-p0-20261125/metadata-diff.mjs` verifies raw pins, retains exact SQL definition text, matches metadata rows by identities, separates raw encoding/order from normalized semantic structure, identifies changed fields using hashes without exporting function values, rejects duplicate keys/scope/major/tampering, and never grants authority. Five new positive/negative tests pass. Historical independently pinned56b55 snapshot self-check passes. Normalized equality NEVER replaces SQL raw digest assertions.
+
+`prepare-successor.mjs` reuses existing unchanged core verifier, source pins, postimage/rollback validator and adoption1535 composer. Requires exact current reported preimage bytes, capture-query pin, derived core/addon postimages; returns only unconditionally held apply/reverse candidates. Two new negative tests verify digest/approval labels cannot replace raw evidence and old56b55 cannot be relabeled8e564. **Current-production positive generation path is NOT qualified; no new apply/reverse SQL was generated.** This is preparation tooling, not a review-approved or executable successor. Preserve all source/historical approval boundaries. It performs no network/SQL/activation.
+
+## Disposable publication/rollback rehearsal — remaining gate
+No postgres/psql executable or supplied run-bound socket-free service configuration was available in this execution environment. No host Docker socket, new service, paid infrastructure, production endpoint or fabricated GitHub runner identity was used. Therefore actual new PostgreSQL preimage/apply/reverse/publication rehearsal is NOT executed. Existing12 authority PostgreSQL receipts remain unchanged and do not prove this publication contract or cross-host durability.
+
+Minimum next inputs: Work raw capture and exact query/version; independently reviewed object-level diff; disposable PostgreSQL17.6-derived postimages; existing run-bound pinned PostgreSQL/GoTrue/PostgREST configuration or separately authorized hosted execution. Adapt the existing adoption1535 rehearsal in a separate disposable candidate to NEW preimage/delta, retaining actor/isolation/lock3s/statement30s, immutable source pins, overload/ACL/late-failure/continue-after-error refusals, committed schema-cache behavior, strict reverse assertions,209 synthetic tuples and row preservation. Keep artifacts in a NEW directory; do not overwrite historical rehearsal receipts. No held production RPC is activated. This document is not an authorization to provision or dispatch.
+
+## Coordination and qualification hold
+Revision4 nine public IDs remain W2 calculator ownership; W3 owns shared integration. Revision5 P0 methodology remains W2, competent review Work. Revision6 calendar #443–446/#451–452/#455–457 belongs exclusively to W1. Latest W1 handoff `f50f3691e3366ac354f4a2ad671b6e8527387951` is queued separately and NOT claimed integrated into this frozen source. Live429 requests remain paused. Existing209 HTTP tuples and Work26/W1four functional reports are not blindly added; exact URL deduplication remains Work/W1 coordination.
+
+Prepared CI107 runner-minute package remains HOLD. No workflow registration/dispatch/rerun/settings/ref/PR1538 changes. Any eventual CI for this new source must bind `b7cefece...`, review the new protected-source delta and obtain separate exact execution authorization; old708 receipts/authorization cannot qualify this head. No OAuth, OptionB or authority executor development.
+
+Ledger274 retained, release-ready0. #432/#440 remain held exceptions. No new authenticated acceptance, certification, publication, production SQL, deployment, secret change or cleanup. Hostinger settings were not touched; Auto-deployment must remain OFF.
