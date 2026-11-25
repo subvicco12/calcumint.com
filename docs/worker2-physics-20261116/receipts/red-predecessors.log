@@ -1,0 +1,69 @@
+
+ RUN  v3.2.7 /workspace/physics-remediation
+
+ ❯ tests/worker2-physics-20261116/defects.test.ts (3 tests | 3 failed) 24ms
+   × 324 preserves a tiny positive angle until the final representable result 12ms
+     → expected 0 to be greater than 6.833776964891651e-145
+   × 325 rounds the complete exact product instead of the leading half-gravity 8ms
+     → expected +0 to be 3.9696644133184383e-264 // Object.is equality
+   × 323 proposes one final nearest-even rounding of retained binary64 operands 3ms
+     → expected 8.987551792299997e-191 to be 8.987551792299999e-191 // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/worker2-physics-20261116/defects.test.ts > 324 preserves a tiny positive angle until the final representable result
+AssertionError: expected 0 to be greater than 6.833776964891651e-145
+ ❯ tests/worker2-physics-20261116/defects.test.ts:9:17
+      7| it('324 preserves a tiny positive angle until the final representable …
+      8|   const value = calculateProjectileScaled({ speed: 2 ** 300, angle: Nu…
+      9|   expect(value).toBeGreaterThan((2 ** -474) / 30);
+       |                 ^
+     10|   expect(value).toBeLessThan((2 ** -474) * 2 / 45);
+     11| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  tests/worker2-physics-20261116/defects.test.ts > 325 rounds the complete exact product instead of the leading half-gravity
+AssertionError: expected +0 to be 3.9696644133184383e-264 // Object.is equality
+
+- Expected
++ Received
+
+- 3.9696644133184383e-264
++ 0
+
+ ❯ tests/worker2-physics-20261116/defects.test.ts:13:97
+     11| });
+     12| it('325 rounds the complete exact product instead of the leading half-…
+     13|   expect(freeFallCalculator.calculate({ gravity: Number.MIN_VALUE, tim…
+       |                                                                                                 ^
+     14| });
+     15| it('323 proposes one final nearest-even rounding of retained binary64 …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  tests/worker2-physics-20261116/defects.test.ts > 323 proposes one final nearest-even rounding of retained binary64 operands
+AssertionError: expected 8.987551792299997e-191 to be 8.987551792299999e-191 // Object.is equality
+
+- Expected
++ Received
+
+- 8.987551792299999e-191
++ 8.987551792299997e-191
+
+ ❯ tests/worker2-physics-20261116/defects.test.ts:16:96
+     14| });
+     15| it('323 proposes one final nearest-even rounding of retained binary64 …
+     16|   expect(calculateCoulombScaled({ charge1: 1e-200, charge2: 1e-200, di…
+       |                                                                                                ^
+     17| });
+     18| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  02:29:52
+   Duration  1.17s (transform 211ms, setup 0ms, collect 387ms, tests 24ms, environment 0ms, prepare 348ms)
+

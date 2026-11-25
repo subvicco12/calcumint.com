@@ -1,0 +1,210 @@
+
+ RUN  v3.2.7 /workspace/physics-remediation
+
+ ❯ tests/worker2-physics-20261116/oracle.test.ts (134 tests | 7 failed) 544ms
+   ✓ single-round factor arithmetic boundaries > agrees with independent reference for [1,1.0000000000000002] / [1] 4ms
+   ✓ single-round factor arithmetic boundaries > agrees with independent reference for [1.0000000000000002,1.0000000000000002] / [1] 1ms
+   ✓ single-round factor arithmetic boundaries > agrees with independent reference for [5e-324,3] / [2] 4ms
+   ✓ single-round factor arithmetic boundaries > agrees with independent reference for [5e-324,5] / [2] 2ms
+   ✓ single-round factor arithmetic boundaries > agrees with independent reference for [5e-324] / [2] 4ms
+   ✓ single-round factor arithmetic boundaries > agrees with independent reference for [5e-324,1.0000000000000002] / [2] 2ms
+   ✓ single-round factor arithmetic boundaries > agrees with independent reference for [2.2250738585072014e-308,0.9999999999999999] / [] 2ms
+   ✓ single-round factor arithmetic boundaries > agrees with independent reference for [1.7976931348623157e+308] / [1] 2ms
+   ✓ single-round factor arithmetic boundaries > agrees with independent reference for [1.7976931348623157e+308,1.0000000000000002] / [] 2ms
+   ✓ single-round factor arithmetic boundaries > agrees with independent reference for [0,1.7976931348623157e+308] / [5e-324] 3ms
+   ✓ single-round factor arithmetic boundaries > agrees with independent reference for [-5e-324,3] / [2] 3ms
+   ✓ single-round factor arithmetic boundaries > agrees with independent reference for [1,7,13,9.332636185032189e-302] / [3,11] 1ms
+   ✓ single-round factor arithmetic boundaries > rejects invalid factors before handling an annihilating zero 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":1e-323,"charge2":1.2881965719497502e-30,"distance":5e-324} 4ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":2.422720764234334e-211,"charge2":9.70874506504651e-302,"distance":2.813930107280612} 5ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":1.4838231730821484e+30,"charge2":8.018598830332465e-31,"distance":3.9959814217872918} 2ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":2.479054516729366e-308,"charge2":2.6975443404862335e-308,"distance":4.889190565660394e-151} 6ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-2.3822445366982808e+30,"charge2":1.3493477167552897e-301,"distance":3.153723759504335e-211} 8ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-2.9990339619107544,"charge2":1.379765428592148e+30,"distance":2.0821909321438687e+30} 4ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":1.5e-323,"charge2":2.380272587896412e-211,"distance":1.4659884471911937} 4ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":2.635039971693328e-308,"charge2":4.040434445394912e+90,"distance":3.2447976962874408e-211} 9ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":2.9409070100034586e+60,"charge2":3.8792142042125334e+90,"distance":5e-324} 3ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":1.2114130568754277e-30,"charge2":5.703791875257639e-151,"distance":1.4273771816304774e+30} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":4.2393469341267247e-308,"charge2":2.311425471814857e+30,"distance":1.3290578757890262e-301} 3ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-2.4507187127771123e-211,"charge2":3.479015924036503,"distance":2e-323} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-1.7766395768642987e+30,"charge2":1.5e-323,"distance":3.4472606052923937e-308} 3ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-2e-323,"charge2":2.3574899723753333,"distance":3.4560424214278513e-211} 3ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":1.0302707743830979,"charge2":1.8271800314332727e+60,"distance":3.538993201806087e-151} 3ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-1.9497679190244526,"charge2":6.484368851406841e-91,"distance":4.370860279911059e-308} 9ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-5e-324,"charge2":5e-324,"distance":1.7508351168971545e-301} 12ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":9.203844883625367e-91,"charge2":3.1678897323168916e+60,"distance":1.7719464171751333e+60} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-9.092894275745662e-91,"charge2":0.8350563681451604,"distance":6.244023050377491e-91} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-2.4267577840946615,"charge2":2.191572356969118,"distance":3.14774785656482} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":1.555073251010795e+30,"charge2":1.2555506980229915e-30,"distance":2.18075898749761e+60} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-2.8161006094473493e+60,"charge2":3.651049611743549e-211,"distance":1.179416915226896e-30} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-2.2108298674452686e+30,"charge2":2.382276990397178e-308,"distance":1e-323} 4ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-9.179846868946365e-91,"charge2":1e-323,"distance":2.3904135106131434} 4ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-2.7649814542438446e+90,"charge2":2.5194369947991864e+60,"distance":3.1838883994792266e+60} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":5.619425881648455e-91,"charge2":2.3726183538473004e+90,"distance":1.595025966084864e+30} 0ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-1.7420630282722414,"charge2":1.860612091751995e-301,"distance":2.699414469986255e-308} 6ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":1.6794646390123733e+60,"charge2":8.256783200650956e-91,"distance":3.510665053408449e-151} 2ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-1.6924458412709305e+30,"charge2":1.5e-323,"distance":1e-323} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-2.5136040414003583e+60,"charge2":1.57390308821099e+30,"distance":5.665301596068464e-151} 2ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-1.5553749208338559,"charge2":5e-324,"distance":2.8319878293418526e-308} 4ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-3.306226726155728,"charge2":9.223035750508799e-91,"distance":2.583708725247945e+60} 0ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-1.915904434335098e+60,"charge2":1.5727252385113388,"distance":2.8354473033174316e-211} 2ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-1.3780979097355157,"charge2":4.644105512877791e-151,"distance":2.251274930890734e+60} 0ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-2.2493576420322532e+60,"charge2":6.623794461852234e-91,"distance":1.0547683349278325e-30} 0ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-7.091553808509439e-91,"charge2":1.7312797712905377e-301,"distance":3.898957658672488e+90} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-1.3220362865717406e-30,"charge2":3.270556554778025e+90,"distance":1.462040025437408e+30} 0ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-1.868423942498006e+60,"charge2":1e-323,"distance":0.7761999340727925} 0ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-1.5414984043145357e-30,"charge2":1.3817043479066342,"distance":0.7448858829448} 0ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":3.634674639438423e-308,"charge2":2.217645782411329e-211,"distance":3.5145948631688952} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":2.596355702728033,"charge2":3.5593634267473392e-211,"distance":1.771248871009761e-301} 3ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-1.8420463218861574e-301,"charge2":2.075377105212601e+90,"distance":5e-324} 2ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":1e-323,"charge2":1.9369975738797514e+60,"distance":3.320241465270441e-308} 5ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-5e-324,"charge2":1.6013049518434492e-301,"distance":2.232196056588141e-308} 4ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":5.4934880975885525e-151,"charge2":1.9770259146097202e+30,"distance":1.3006998739879266e-301} 2ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":3.094104161921321e-308,"charge2":1.5651630454350309e-301,"distance":0.9415909498929977} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-1.5e-323,"charge2":1e-323,"distance":4.954250843000009e-151} 3ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":1.0384662409486611e-30,"charge2":3.2417887506983507e+90,"distance":3.735594522478827e-151} 2ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-1e-323,"charge2":2.427560622823755e+90,"distance":1e-323} 2ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":3.2135625262908576e-308,"charge2":7.957154203288779e-31,"distance":2.3273756708949804} 2ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":1.6807514814295202e+60,"charge2":0.9004726110724732,"distance":3.6376140500068584e-151} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":1e-323,"charge2":3.6897500087541667e-151,"distance":1.959207643765758e+60} 2ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":2.8838226660565733e+60,"charge2":1.842710718510274e-301,"distance":2.969367344795595e+90} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":5.465640719460979e-151,"charge2":3.4869184270633633e+90,"distance":0.6268738536164165} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":1.5e-323,"charge2":2.1475857281258672e-211,"distance":6.654991715201765e-91} 2ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-3.1905303503898205e+60,"charge2":2.2808037224457816e+60,"distance":3.354569243248276e-151} 2ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-5e-324,"charge2":2.1886430395173605e+30,"distance":2.6259352121411387e-211} 2ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":3.2821588709461746e-211,"charge2":4.5101895176145e-151,"distance":2.7327061332488397e+60} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-2.6270978458242604e-211,"charge2":2.0254105795448653e-211,"distance":1.7279935070830408e+60} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-3.147913715630648e-211,"charge2":1.5e-323,"distance":1.5668540433331414e-301} 6ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":3.113157818093896,"charge2":1e-323,"distance":3.89089377343301e-151} 2ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-4.3174379101174407e-308,"charge2":1.2092749658040702,"distance":3.7465641086419226e-211} 2ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":1.7825334300287068,"charge2":2.8737187759168878e+60,"distance":2.5253301366513703e-211} 2ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-1.2810284688330593e-301,"charge2":1.080389242841423e-30,"distance":1.2940337131731212} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-2.3589487075805664,"charge2":2.0838903970742245e+60,"distance":7.66085554693887e-91} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-1.3370444667130394e+30,"charge2":5.551566671079569e-91,"distance":0.566288988571614} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":2.7699610676708694e+60,"charge2":3.261520022689271e+90,"distance":9.564679268571472e-91} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":9.419760105784518e-302,"charge2":4.140358343095281e-308,"distance":1.003672525600928e-30} 3ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-0.6716088256798685,"charge2":1.0651520606024013e-30,"distance":1.5e-323} 3ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":1.081634231867253e-30,"charge2":0.6454629346262664,"distance":1.0571877225233445e-30} 4ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-1e-323,"charge2":1.5e-323,"distance":3.2071030804652537e-211} 4ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":5e-324,"charge2":3.555878034340214e+90,"distance":3.3692702168249645e+90} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":1.3332730780876963e-301,"charge2":0.5319840126903728,"distance":0.5277882287045941} 3ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":0.6982047004858032,"charge2":2.648597425352805e+90,"distance":2.270354865455603e+30} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":3.7357193156234926e-151,"charge2":1.7283005209174007,"distance":4.1660321021339015e-151} 4ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-3.189539508462696e-211,"charge2":5e-324,"distance":3.108217154555829e+60} 2ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":3.6979503101838526e-308,"charge2":0.7425326701486483,"distance":8.855559720718141e-91} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":8.04626188950058e-31,"charge2":1.5e-323,"distance":1e-323} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":5e-324,"charge2":1.4007235535017992e-30,"distance":9.560965845993732e-31} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":9.462744486941845e-91,"charge2":9.222879371545873e-91,"distance":3.0234721191455903e+60} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":0.8805759605020285,"charge2":3.4411982707391715e-211,"distance":5.506974098131776e-91} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-4.42902804960796e-151,"charge2":0.8201689359266311,"distance":1.7945802987777953e+60} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":3.507907106541097,"charge2":7.817354290371202e-91,"distance":1.405027744718796e-30} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":1.5579570240806788,"charge2":5.186042540201418e-151,"distance":3.2855658109934543e-211} 3ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-2.9779302408336043e+90,"charge2":3.3091450042747054e-308,"distance":1.809771868333725e+60} 2ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-2.5797503965919707e+90,"charge2":2.0753601366611357e+60,"distance":5e-324} 2ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":1e-323,"charge2":1.8620861205726757e+30,"distance":0.5014008140424266} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":1.705102920299396,"charge2":9.246951115769537e-91,"distance":1.0101079685238603e-30} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":0.672684513963759,"charge2":3.9602337048601714e-308,"distance":2.10719226631303e-211} 3ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-2.6807519086621416e-308,"charge2":3.1493208789124533e-211,"distance":1.671847828629933e-301} 4ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-8.129464299843453e-31,"charge2":4.075642629614282e-151,"distance":1.6261824769803922e+30} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-1.593169500125075e-301,"charge2":2.7126507461071014,"distance":1.3750268500798096e-30} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-3.2795356456190348,"charge2":1e-323,"distance":1.4438500197138637} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-1.5227409864310175,"charge2":3.9944075549292877e+90,"distance":2.7908074936486484e-308} 4ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-0.8178709673229605,"charge2":2.3331710941308005e+60,"distance":3.4514897451736033} 1ms
+   ✓ 323 candidate same binary64 constant and exact operands > agrees with decimal oracle for {"charge1":-1.1974698135163635,"charge2":8.477578496100182e-91,"distance":1.6579810502676643e+30} 2ms
+   ✓ 323 candidate same binary64 constant and exact operands > is charge-swap invariant and preserves signs for {"charge1":1e-200,"charge2":1e-200,"distance":1e-100} 0ms
+   ✓ 323 candidate same binary64 constant and exact operands > is charge-swap invariant and preserves signs for {"charge1":-0.000001,"charge2":0.000003,"distance":7} 2ms
+   × 323 candidate same binary64 constant and exact operands > is charge-swap invariant and preserves signs for {"charge1":5e-324,"charge2":1e+100,"distance":1e-100} 9ms
+     → [
+  {
+    "origin": "number",
+    "code": "too_big",
+    "maximum": 1e+100,
+    "inclusive": true,
+    "path": [
+      "charge2"
+    ],
+    "message": "Too big: expected number to be <=1e+100"
+  }
+]
+   ✓ 325 complete product including subnormal gravity > agrees with independent product for gravity5e-324/time1 1ms
+   ✓ 325 complete product including subnormal gravity > agrees with independent product for gravity5e-324/time2 2ms
+   ✓ 325 complete product including subnormal gravity > agrees with independent product for gravity5e-324/time1.2676506002282294e+30 1ms
+   ✓ 325 complete product including subnormal gravity > agrees with independent product for gravity5e-324/time2.037035976334486e+90 3ms
+   ✓ 325 complete product including subnormal gravity > agrees with independent product for gravity9.332636185032189e-302/time2.037035976334486e+90 1ms
+   ✓ 325 complete product including subnormal gravity > agrees with independent product for gravity9.8/time2 0ms
+   ✓ 325 complete product including subnormal gravity > agrees with independent product for gravity0/time1e+100 0ms
+   ✓ 325 complete product including subnormal gravity > agrees with independent product for gravity1e+100/time0 0ms
+   ✓ 325 complete product including subnormal gravity > agrees with independent product for gravity1e+100/time1e+100 0ms
+   ✓ 325 complete product including subnormal gravity > agrees with independent product for gravity1e-200/time1e-200 1ms
+   × 324 tiny angle uses an independent high precision sine reference > angle5e-324 remains recoverable 3ms
+     → [DecimalError] Precision limit exceeded
+   × 324 tiny angle uses an independent high precision sine reference > angle1e-323 remains recoverable 1ms
+     → [DecimalError] Precision limit exceeded
+   × 324 tiny angle uses an independent high precision sine reference > angle2.2250738585072014e-308 remains recoverable 5ms
+     → [DecimalError] Precision limit exceeded
+   × 324 tiny angle uses an independent high precision sine reference > angle9.332636185032189e-302 remains recoverable 1ms
+     → [DecimalError] Precision limit exceeded
+   × 324 tiny angle uses an independent high precision sine reference > angle1.90109156629516e-211 remains recoverable 1ms
+     → [DecimalError] Precision limit exceeded
+   × 324 tiny angle uses an independent high precision sine reference > angle3.054936363499605e-151 remains recoverable 1ms
+     → [DecimalError] Precision limit exceeded
+   ✓ 324 tiny angle uses an independent high precision sine reference > retains the libm operand outside the tiny branch for {"speed":2.037035976334486e+90,"angle":3.0549363634996054e-151,"gravity":1} 3ms
+   ✓ 324 tiny angle uses an independent high precision sine reference > retains the libm operand outside the tiny branch for {"speed":1e-200,"angle":45,"gravity":1e-300} 163ms
+   ✓ 324 tiny angle uses an independent high precision sine reference > retains the libm operand outside the tiny branch for {"speed":1e-200,"angle":45,"gravity":1e-80} 49ms
+   ✓ 324 tiny angle uses an independent high precision sine reference > retains the libm operand outside the tiny branch for {"speed":10,"angle":30,"gravity":9.8} 30ms
+   ✓ 324 tiny angle uses an independent high precision sine reference > retains the libm operand outside the tiny branch for {"speed":10,"angle":90,"gravity":10} 0ms
+   ✓ 324 tiny angle uses an independent high precision sine reference > retains exact input zeros, final-range refusals and the positive endpoint residual 1ms
+ ✓ tests/worker2-physics-20261116/defects.test.ts (3 tests) 28ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/worker2-physics-20261116/oracle.test.ts > 323 candidate same binary64 constant and exact operands > is charge-swap invariant and preserves signs for {"charge1":5e-324,"charge2":1e+100,"distance":1e-100}
+ZodError: [
+  {
+    "origin": "number",
+    "code": "too_big",
+    "maximum": 1e+100,
+    "inclusive": true,
+    "path": [
+      "charge2"
+    ],
+    "message": "Too big: expected number to be <=1e+100"
+  }
+]
+ ❯ calculateCoulombCandidate tests/worker2-physics-20261116/candidates.ts:16:33
+     14| 
+     15| export function calculateCoulombCandidate(input: unknown) {
+     16|   const x = coulombScaledSchema.parse(input);
+       |                                 ^
+     17|   // Same binary64 constant as the retained implementation; no physica…
+     18|   return { value: roundFactorRatio([8.9875517923e9, x.charge1, x.charg…
+ ❯ tests/worker2-physics-20261116/oracle.test.ts:63:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  tests/worker2-physics-20261116/oracle.test.ts > 324 tiny angle uses an independent high precision sine reference > angle5e-324 remains recoverable
+ FAIL  tests/worker2-physics-20261116/oracle.test.ts > 324 tiny angle uses an independent high precision sine reference > angle1e-323 remains recoverable
+ FAIL  tests/worker2-physics-20261116/oracle.test.ts > 324 tiny angle uses an independent high precision sine reference > angle2.2250738585072014e-308 remains recoverable
+ FAIL  tests/worker2-physics-20261116/oracle.test.ts > 324 tiny angle uses an independent high precision sine reference > angle9.332636185032189e-302 remains recoverable
+ FAIL  tests/worker2-physics-20261116/oracle.test.ts > 324 tiny angle uses an independent high precision sine reference > angle1.90109156629516e-211 remains recoverable
+ FAIL  tests/worker2-physics-20261116/oracle.test.ts > 324 tiny angle uses an independent high precision sine reference > angle3.054936363499605e-151 remains recoverable
+Error: [DecimalError] Precision limit exceeded
+ ❯ getPi ../physics-qualification/node_modules/decimal.js/decimal.mjs:3164:32
+ ❯ toLessThanHalfPi ../physics-qualification/node_modules/decimal.js/decimal.mjs:3762:10
+ ❯ Decimal.P.sine.P.sin [as sin] ../physics-qualification/node_modules/decimal.js/decimal.mjs:1700:18
+ ❯ tests/worker2-physics-20261116/oracle.test.ts:81:49
+     79|     const x = { speed: 2 ** 300, angle, gravity: 1 };
+     80|     const r = binary(angle).mul(2).mul(binary(Math.PI)).div(180);
+     81|     const oracle = binary(x.speed).pow(2).mul(r.sin()).div(binary(x.gr…
+       |                                                 ^
+     82|     expect(calculateProjectileCandidate(x).value).toBe(oracle);
+     83|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  7 failed | 130 passed (137)
+   Start at  02:31:56
+   Duration  1.95s (transform 138ms, setup 0ms, collect 526ms, tests 572ms, environment 0ms, prepare 288ms)
+
