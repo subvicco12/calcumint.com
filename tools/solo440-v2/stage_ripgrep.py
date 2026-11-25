@@ -12,7 +12,7 @@ def stage(archive,destination):
   binary=package.extractfile(members[0]).read()
  if hashlib.sha256(binary).hexdigest()!=BINARY_SHA:raise ValueError('Pinned Ripgrep binary refused')
  destination.mkdir(mode=0o755)
- for name,content,mode in [('rg',binary,0o555),('check-ripgrep.mjs',(pathlib.Path(__file__).parent/'check-ripgrep.mjs').read_bytes(),0o444)]:
+ for name,content,mode in [('rg',binary,0o555),*[(name,(pathlib.Path(__file__).parent/name).read_bytes(),0o444) for name in ['check-ripgrep.mjs','dependency-preflight.mjs','run-mass426-successor.sh']]]:
   fd=os.open(destination/name,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,mode)
   with os.fdopen(fd,'wb') as output:output.write(content)
   (destination/name).chmod(mode)

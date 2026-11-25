@@ -15,6 +15,10 @@ SOURCE_WORKFLOW=executor.SOURCE_WORKFLOW
 DOCUMENT='1KU7fGtv86RQz_n3HCdl9HscTyN2Z7SlXz8U8EF3f3MY'
 RECOVERY_WORKFLOW='.github/workflows/solo440-hosted-recovery.yml'
 RECOVERY_REF='refs/heads/engineering/solo440-owner-v2-recovery-execution'
+FINAL_WORKFLOW='.github/workflows/solo440-hosted-final-qualification.yml'
+FINAL_REF='refs/heads/engineering/solo440-owner-v2-final-execution'
+def execution_ref(workflow):
+ return FINAL_REF if workflow==FINAL_WORKFLOW else RECOVERY_REF if workflow==RECOVERY_WORKFLOW else EXECUTION_REF
 CATEGORIES=frozenset(('github-run','github-branch','github-frozen-ruleset','github-execution-ruleset','github-environment','github-environment-branches','google-userinfo','google-drive-about','google-adoption-comment','google-authority-comment'))
 class ProviderRefusal(ValueError):
  def __init__(self,category,status,reason):
@@ -39,11 +43,11 @@ def normalize_owner(profile):
  a.require(profile.get('sub')==a.OWNER_ID and profile.get('name')==a.OWNER and profile.get('email')=='subvicco12@gmail.com' and profile.get('email_verified') is True,'Authenticated owner subject differs')
  return {'id':profile['sub'],'name':profile['name'],'email':profile['email']}
 def verify_run(env,run,workflow):
- a.require(workflow in (QUALIFICATION_WORKFLOW,SOURCE_WORKFLOW,RECOVERY_WORKFLOW),'Unapproved workflow')
- execution_ref=RECOVERY_REF if workflow==RECOVERY_WORKFLOW else EXECUTION_REF
+ a.require(workflow in (QUALIFICATION_WORKFLOW,SOURCE_WORKFLOW,RECOVERY_WORKFLOW,FINAL_WORKFLOW),'Unapproved workflow')
+ ref=execution_ref(workflow)
  sha=env.get('TRUSTED_WORKFLOW_SHA','');a.require(re.fullmatch('[0-9a-f]{40}',sha) is not None,'Protected executor SHA missing')
- for key,value in {'GITHUB_REPOSITORY':a.REPO,'GITHUB_SHA':sha,'GITHUB_WORKFLOW_SHA':sha,'GITHUB_REF':execution_ref,'GITHUB_REF_PROTECTED':'true','GITHUB_ACTOR':'subvicco12','GITHUB_RUN_ATTEMPT':'1','GITHUB_EVENT_NAME':'workflow_dispatch','GITHUB_WORKFLOW_REF':a.REPO+'/'+workflow+'@'+execution_ref}.items():a.require(env.get(key)==value,'Provider environment differs: '+key)
- a.require(str(run.get('id'))==env.get('GITHUB_RUN_ID') and type(run.get('run_attempt')) is int and run['run_attempt']==1 and run.get('head_sha')==sha and run.get('event')=='workflow_dispatch' and run.get('head_branch')==execution_ref.removeprefix('refs/heads/') and run.get('actor',{}).get('login')=='subvicco12' and run.get('repository',{}).get('full_name')==a.REPO and run.get('path','').split('@')[0]==workflow,'Authenticated hosted run differs')
+ for key,value in {'GITHUB_REPOSITORY':a.REPO,'GITHUB_SHA':sha,'GITHUB_WORKFLOW_SHA':sha,'GITHUB_REF':ref,'GITHUB_REF_PROTECTED':'true','GITHUB_ACTOR':'subvicco12','GITHUB_RUN_ATTEMPT':'1','GITHUB_EVENT_NAME':'workflow_dispatch','GITHUB_WORKFLOW_REF':a.REPO+'/'+workflow+'@'+ref}.items():a.require(env.get(key)==value,'Provider environment differs: '+key)
+ a.require(str(run.get('id'))==env.get('GITHUB_RUN_ID') and type(run.get('run_attempt')) is int and run['run_attempt']==1 and run.get('head_sha')==sha and run.get('event')=='workflow_dispatch' and run.get('head_branch')==ref.removeprefix('refs/heads/') and run.get('actor',{}).get('login')=='subvicco12' and run.get('repository',{}).get('full_name')==a.REPO and run.get('path','').split('@')[0]==workflow,'Authenticated hosted run differs')
 def verify_protection(rules,branch,sha):
  expected={27851420:'refs/heads/engineering/trusted-bootstrap-20261122',27907165:'refs/heads/engineering/trusted-bootstrap-runtime-20261123'}
  a.require(len(rules)==2 and {r.get('id') for r in rules}==set(expected),'Frozen ruleset inventory differs')
@@ -64,13 +68,13 @@ class Provider:
   adoption=self.comment(a.ADOPTION);a.verify_adoption(owner,adoption);return owner,adoption
  def execution_readback(self,workflow):
   runid=self.env.get('GITHUB_RUN_ID','');a.require(re.fullmatch('[1-9][0-9]*',runid) is not None,'Run ID malformed')
-  execution_ref=RECOVERY_REF if workflow==RECOVERY_WORKFLOW else EXECUTION_REF
+  ref=execution_ref(workflow)
   run=self.github('actions/runs/'+runid,'github-run');verify_run(self.env,run,workflow)
-  branch=self.github('branches/'+quote(execution_ref.removeprefix('refs/heads/'),safe=''),'github-branch')
+  branch=self.github('branches/'+quote(ref.removeprefix('refs/heads/'),safe=''),'github-branch')
   rules=[self.github('rulesets/'+str(i),'github-frozen-ruleset') for i in (27851420,27907165)];verify_protection(rules,branch,self.env['TRUSTED_WORKFLOW_SHA'])
   environment=self.github('environments/calcumint-source-bootstrap-runtime','github-environment')
   policies=self.github('environments/calcumint-source-bootstrap-runtime/deployment-branch-policies','github-environment-branches')
-  a.require(environment.get('name')=='calcumint-source-bootstrap-runtime' and environment.get('deployment_branch_policy',{}).get('custom_branch_policies') is True and any(p.get('name')==execution_ref.removeprefix('refs/heads/') and p.get('type')=='branch' for p in policies.get('branch_policies',[])),'Approved environment branch allowance missing')
+  a.require(environment.get('name')=='calcumint-source-bootstrap-runtime' and environment.get('deployment_branch_policy',{}).get('custom_branch_policies') is True and any(p.get('name')==ref.removeprefix('refs/heads/') and p.get('type')=='branch' for p in policies.get('branch_policies',[])),'Approved environment branch allowance missing')
   return {'run':{k:run[k] for k in ('id','head_sha','event','run_attempt','head_branch')},'branchProtected':True,'rulesets':rules,'environment':environment,'allowedBranches':policies}
  def read_authority(self):
   # Every call re-reads the provider; no mutable-source or authority cache.
@@ -85,10 +89,10 @@ class Provider:
   # This adapter does not claim the store or admit any source.
   return {'schema':'calcumint.singleton440.provider-review.v2','candidate':a.CANDIDATE,'grantSha256':a.digest(a.canonical(grant).encode()),'ownerAccepted':True,'admitted':False,'activated':False,'separateExecutionAuthorizationRequired':True}
 def main():
- parser=argparse.ArgumentParser();mode=parser.add_mutually_exclusive_group(required=True);mode.add_argument('--verify-only',action='store_true');mode.add_argument('--recovery-verify-only',action='store_true');parser.add_argument('--output',type=pathlib.Path,required=True);args=parser.parse_args()
+ parser=argparse.ArgumentParser();mode=parser.add_mutually_exclusive_group(required=True);mode.add_argument('--verify-only',action='store_true');mode.add_argument('--recovery-verify-only',action='store_true');mode.add_argument('--final-verify-only',action='store_true');parser.add_argument('--output',type=pathlib.Path,required=True);args=parser.parse_args()
  provider=Provider(os.environ)
  try:
-  a.verify_package();readback=provider.execution_readback(RECOVERY_WORKFLOW if args.recovery_verify_only else QUALIFICATION_WORKFLOW);owner,adoption=provider.identity_and_adoption()
+  a.verify_package();readback=provider.execution_readback(FINAL_WORKFLOW if args.final_verify_only else RECOVERY_WORKFLOW if args.recovery_verify_only else QUALIFICATION_WORKFLOW);owner,adoption=provider.identity_and_adoption()
  except Exception as error:
   diagnostic=error.diagnostic if isinstance(error,ProviderRefusal) else {'category':'verification-contract','httpStatus':None,'reason':'verification-refusal'}
   args.output.write_text(a.canonical({'schema':'calcumint.singleton440.provider-diagnostic.v1','passed':False,'diagnostic':diagnostic,'admitted':False,'activated':False})+'\n')
