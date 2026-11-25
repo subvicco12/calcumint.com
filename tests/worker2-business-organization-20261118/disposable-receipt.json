@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "support": "Real GoTrue sessions, PostgreSQL RLS and direct PostgREST with one unchanged access token",
+  "checks": [
+    "manager write",
+    "foreign project read and write denied",
+    "owner downgrade",
+    "viewer read only",
+    "owner revocation",
+    "stale bearer denied",
+    "owner retains project access",
+    "private history and scenario ownership",
+    "foreign personal project attachment denied",
+    "stale expected session owner denied",
+    "exact personal replay survives organization revocation"
+  ],
+  "fixtureImages": {
+    "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+    "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+    "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+  },
+  "productionEquivalence": "UNKNOWN",
+  "baseSourceCommit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+  "testSHA256": "7b35906c12d70c3fae8dc4c2da5e671f5f9cf6342a8128c663fd259e69d62659",
+  "focusedRegressions": {
+    "passed": 68,
+    "files": 6
+  }
+}

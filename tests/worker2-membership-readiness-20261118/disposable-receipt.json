@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "refused": [
+    {
+      "file": "API-RLS-HELPER-EXECUTE.sql",
+      "sha256": "11d26ff8339e614256fa2faab4c2c6f243ef1cdeec6d080d1ef08ff87f5c5ccf"
+    },
+    {
+      "file": "MEMBERSHIP-ADMIN-FENCING.sql",
+      "sha256": "441e03f864004c5abfadf6f0840e18938e793c9ce7b73c3af766d51bbfebb912"
+    },
+    {
+      "file": "20261021-v1-authentic-account-security.sql",
+      "sha256": "a4075c12645710adf1bada346c85d1115984b88760318a7ec63a6d05a4ed2bc7"
+    }
+  ],
+  "unchangedMetadata": true,
+  "effectiveAclCases": [
+    "missing intended helper",
+    "intended helper only",
+    "internal helper inherited from PUBLIC"
+  ],
+  "fixtureImages": {
+    "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+    "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+    "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+  },
+  "productionEquivalence": "UNKNOWN"
+}
