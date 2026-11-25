@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "case": "nonexec-EACCES-before",
+      "pass": true
+    },
+    {
+      "case": "denied-EACCES-before",
+      "pass": true
+    },
+    {
+      "case": "pinned-ripgrep-under-UID-GID65534",
+      "pass": true
+    },
+    {
+      "case": "full-source-enumeration-and-checksum-equivalence",
+      "pass": true
+    },
+    {
+      "case": "provider-credential-injection-refused",
+      "pass": true
+    },
+    {
+      "case": "wrong-or-inaccessible-PATH-refused",
+      "pass": true
+    },
+    {
+      "case": "readable-synthetic-Docker-path-refused-no-real-socket-exposed",
+      "pass": true
+    },
+    {
+      "case": "tampered-binary-refused-before-execution",
+      "pass": true
+    },
+    {
+      "case": "hidden-ignore-semantics-and-source-change-digest-sensitivity",
+      "pass": true
+    },
+    {
+      "case": "existing-and-symlink-destination-refused-with-valid-archive",
+      "pass": true
+    }
+  ],
+  "isolation": "rootless Bubblewrap user+PID+network namespaces; read-only filesystem; /run masked; only evidence directory writable",
+  "hostUid": 1000,
+  "hostGid": 1000,
+  "identityBoundary": "UID/GID65534 are genuine namespace IDs mapped to the existing unprivileged host account; not a GitHub-hosted or native-host UID65534 attestation",
+  "browserJourneys": 0,
+  "exports": 0,
+  "providerCalls": 0,
+  "databaseTestsRepeated": 0,
+  "engineChanged": false
+}

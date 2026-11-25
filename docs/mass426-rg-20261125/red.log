@@ -1,0 +1,29 @@
+test_existing_destination_and_symlink_refused (test_stage_ripgrep.StageRipgrepTests.test_existing_destination_and_symlink_refused) ... FAIL
+test_tampered_archive_is_refused_before_destination_creation (test_stage_ripgrep.StageRipgrepTests.test_tampered_archive_is_refused_before_destination_creation) ... FAIL
+
+======================================================================
+FAIL: test_existing_destination_and_symlink_refused (test_stage_ripgrep.StageRipgrepTests.test_existing_destination_and_symlink_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-mass426-rg-20261125/tools/solo440-v2/test_stage_ripgrep.py", line 15, in test_existing_destination_and_symlink_refused
+    m=self.module()
+      ^^^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-mass426-rg-20261125/tools/solo440-v2/test_stage_ripgrep.py", line 5, in module
+    self.assertTrue((ROOT/'stage_ripgrep.py').is_file(),'Pinned unprivileged Ripgrep staging is missing')
+AssertionError: False is not true : Pinned unprivileged Ripgrep staging is missing
+
+======================================================================
+FAIL: test_tampered_archive_is_refused_before_destination_creation (test_stage_ripgrep.StageRipgrepTests.test_tampered_archive_is_refused_before_destination_creation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-mass426-rg-20261125/tools/solo440-v2/test_stage_ripgrep.py", line 8, in test_tampered_archive_is_refused_before_destination_creation
+    m=self.module()
+      ^^^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-mass426-rg-20261125/tools/solo440-v2/test_stage_ripgrep.py", line 5, in module
+    self.assertTrue((ROOT/'stage_ripgrep.py').is_file(),'Pinned unprivileged Ripgrep staging is missing')
+AssertionError: False is not true : Pinned unprivileged Ripgrep staging is missing
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (failures=2)

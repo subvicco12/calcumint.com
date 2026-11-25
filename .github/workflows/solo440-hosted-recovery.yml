@@ -103,6 +103,10 @@ jobs:
           chmod 755 "$base"
           printf 'MASS426_BASE=%s\n' "$base" >> "$GITHUB_ENV"
           cp -a app "$base/app"
+          curl --fail --silent --show-error --proto '=https' --max-time 60 \
+            https://github.com/BurntSushi/ripgrep/releases/download/14.1.1/ripgrep-14.1.1-x86_64-unknown-linux-musl.tar.gz -o "$base/ripgrep.tar.gz"
+          python3 -I authority/tools/solo440-v2/stage_ripgrep.py "$base/ripgrep.tar.gz" "$base/tools"
+          printf 'MASS426_APP_PATH=%s\n' "$base/tools:$(dirname "$(command -v node)"):/usr/local/bin:/usr/bin:/bin" >> "$GITHUB_ENV"
           mkdir "$base/evidence" "$base/home"
           python3 app/tests/gotrue-services/write-config.py "$base/services.json"
           sudo chown -R 65534:65534 "$base/app" "$base/evidence" "$base/home" "$base/services.json"
@@ -111,13 +115,13 @@ jobs:
         run: |
           set -euo pipefail
           sudo -n setpriv --reuid=65534 --regid=65534 --clear-groups --no-new-privs env -i \
-            PATH="$PATH" HOME="$MASS426_BASE/home" \
+            PATH="$MASS426_APP_PATH" HOME="$MASS426_BASE/home" \
             APP_SOURCE="$MASS426_BASE/app" GITHUB_ACTIONS=true \
             GITHUB_RUN_ID="$GITHUB_RUN_ID" GITHUB_WORKFLOW_SHA="$GITHUB_WORKFLOW_SHA" \
             CALCUMINT_REQUIRE_SOCKET_FREE=true CALCUMINT_SERVICE_CONFIG="$MASS426_BASE/services.json" \
             WORKER2_MOBILITY_BROWSER_ARTIFACTS="$MASS426_BASE/evidence" \
             CHROMIUM_PATH="$MASS426_CHROMIUM_PATH" \
-            bash "$MASS426_BASE/app/tests/gotrue-services/run-unprivileged.sh"
+            bash -c 'node "$APP_SOURCE/../tools/check-ripgrep.mjs" && bash "$APP_SOURCE/tests/gotrue-services/run-unprivileged.sh"'
       - name: Remove private config and collect only disposable evidence
         if: always()
         shell: bash
