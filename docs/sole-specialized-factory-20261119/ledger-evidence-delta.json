@@ -1,0 +1,69 @@
+{
+  "kind": "evidence-delta-for-existing-canonical-ledger",
+  "canonicalLedger": {
+    "commit": "49ea243b5be7e1ee9f3cd8af7f936ab784402cf7",
+    "path": "docs/publication540-shared/catalog/reconciliation-540.json",
+    "sha256": "f82229888aea573f1a5e204e65e78e0cb84fec78c657087958fe17e8619f540f",
+    "bytes": 2322745
+  },
+  "priorEvidenceDelta": {
+    "commit": "ffa3e485b903cbf8c7df95e4ee4216a1ac30927f",
+    "path": "docs/sole-structured-factory-20261119/ledger-evidence-delta.json",
+    "sha256": "7a16d7c318186a7585d9a8bb7469d0190807b039f10c994c697142c77acd21b1"
+  },
+  "priorCheckpointSHA256": "7d8dc28e8c653a1c4084c8bfa3d1d1c83d3278ccdcf229d85f71c151a3fdf774",
+  "familyCheckpointSHA256": "a62a696c1df0392c4b9e2491445083436d96f04199d3e968ea92ed23b9a14840",
+  "qualificationPromotions": 0,
+  "records": [
+    {
+      "catalogId": 458,
+      "title": "Fuel Cost Calculator",
+      "engineId": "launch-fuel-cost-calculator",
+      "slug": "fuel-cost-calculator",
+      "version": 1,
+      "implementation": {
+        "commit": "SELF",
+        "path": "src/lib/sole-specialized-factory-20261119/cohort.ts"
+      },
+      "nativeAcceptance": {
+        "commit": "SELF",
+        "path": "docs/sole-specialized-factory-20261119/native-receipt.json"
+      },
+      "focusedAcceptance": {
+        "commit": "SELF",
+        "path": "docs/sole-specialized-factory-20261119/focused-tests.log"
+      },
+      "implementationStatus": "PRIVATE_IMPLEMENTED",
+      "isolatedAcceptanceStatus": "PASSED",
+      "scopedQualificationStatus": "PENDING",
+      "certificationStatus": "UNPROMOTED",
+      "publicationStatus": "published",
+      "liveObservedInBaseline": true
+    },
+    {
+      "catalogId": 252,
+      "title": "3D Function Plotter",
+      "engineId": "advanced-math.function-plotter-3d",
+      "slug": "function-plotter-3d",
+      "version": 1,
+      "implementation": {
+        "commit": "SELF",
+        "path": "src/lib/sole-specialized-factory-20261119/cohort.ts"
+      },
+      "nativeAcceptance": {
+        "commit": "SELF",
+        "path": "docs/sole-specialized-factory-20261119/native-receipt.json"
+      },
+      "focusedAcceptance": {
+        "commit": "SELF",
+        "path": "docs/sole-specialized-factory-20261119/focused-tests.log"
+      },
+      "implementationStatus": "PRIVATE_IMPLEMENTED",
+      "isolatedAcceptanceStatus": "PASSED",
+      "scopedQualificationStatus": "PENDING",
+      "certificationStatus": "UNPROMOTED",
+      "publicationStatus": "published",
+      "liveObservedInBaseline": true
+    }
+  ]
+}
