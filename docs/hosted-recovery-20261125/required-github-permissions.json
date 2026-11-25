@@ -1,0 +1,57 @@
+[
+  {
+    "permission": "actions",
+    "title": "Actions",
+    "category": "actions",
+    "slug": "get-a-workflow-run",
+    "subcategory": "workflow-runs",
+    "verb": "get",
+    "requestPath": "/repos/{owner}/{repo}/actions/runs/{run_id}",
+    "additional-permissions": false,
+    "access": "read"
+  },
+  {
+    "permission": "actions",
+    "title": "Actions",
+    "category": "deployments",
+    "slug": "get-an-environment",
+    "subcategory": "environments",
+    "verb": "get",
+    "requestPath": "/repos/{owner}/{repo}/environments/{environment_name}",
+    "additional-permissions": false,
+    "access": "read"
+  },
+  {
+    "permission": "actions",
+    "title": "Actions",
+    "category": "deployments",
+    "slug": "list-deployment-branch-policies",
+    "subcategory": "branch-policies",
+    "verb": "get",
+    "requestPath": "/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies",
+    "additional-permissions": false,
+    "access": "read"
+  },
+  {
+    "permission": "contents",
+    "title": "Contents",
+    "category": "branches",
+    "slug": "get-a-branch",
+    "subcategory": "branches",
+    "verb": "get",
+    "requestPath": "/repos/{owner}/{repo}/branches/{branch}",
+    "additional-permissions": false,
+    "access": "read"
+  },
+  {
+    "permission": "metadata",
+    "title": "Metadata",
+    "category": "repos",
+    "slug": "get-a-repository-ruleset",
+    "subcategory": "rules",
+    "verb": "get",
+    "requestPath": "/repos/{owner}/{repo}/rulesets/{ruleset_id}",
+    "additional-permissions": false,
+    "access": "read"
+  }
+]
