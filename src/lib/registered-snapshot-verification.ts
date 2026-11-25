@@ -5,12 +5,13 @@ import {verifyCookingSnapshot} from './cooking-snapshot-verification';
 import {technologyReplayBindings,verifyTechnologySnapshot} from './technology-snapshot-verification';
 import {launchReplaySlugs,verifyLaunchSnapshot} from './launch-snapshot-verification';
 import {batch22PhysicsReplayBindings,verifyBatch22PhysicsSnapshot} from './batch22-physics-replay';
-import {copyCalculationData} from './calculation-snapshot';
+import {copyCalculationData,type CalculationSnapshot} from './calculation-snapshot';
 import {batch21ReplayBindings,verifyBatch21Snapshot} from './batch21-snapshot-replay';
 import {verifyRegisteredSnapshot as verifyOriginalRegisteredSnapshot} from './registered-snapshot-replay';
 import {verifyWorkerCScienceSnapshot} from './science-worker-c-snapshot-verification';
 import {verifySurfaceAreaSnapshot} from './surface-area-snapshot-verification';
 import {verifyCidrSnapshot} from './technology-cidr-snapshot-verification';
+import {verifyWeatherSnapshot,weatherProfiles} from './calculator-factory/weather';
 
 /** Add explicit current contracts while preserving the original verifier unchanged. */
 export function verifyRegisteredSnapshot(raw:unknown){
@@ -23,6 +24,7 @@ export function verifyRegisteredSnapshot(raw:unknown){
  if(slug==='molarity-calculator'||slug==='moles-calculator'||slug==='dilution-calculator')return verifyWorkerCScienceSnapshot(clean);
  if(slug==='surface-area-calculator')return verifySurfaceAreaSnapshot(clean);
  if(slug==='cidr-calculator')return verifyCidrSnapshot(clean);
+ if(weatherProfiles.some(profile=>profile.definition.slug===slug))return verifyWeatherSnapshot(clean as CalculationSnapshot);
  if(technologyReplayBindings.some(binding=>binding.slug===slug))return verifyTechnologySnapshot(clean);
  if(typeof slug==='string'&&launchReplaySlugs.includes(slug))return verifyLaunchSnapshot(clean);
  if(batch22PhysicsReplayBindings.some(binding=>binding.slug===slug))return verifyBatch22PhysicsSnapshot(clean);

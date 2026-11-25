@@ -1,8 +1,11 @@
+import Link from 'next/link';
 import {redirect} from 'next/navigation';
 import {createSupabaseServerClient} from '@/lib/supabase/server';
 import {normalizePlan} from '@/lib/entitlements';
 import {CalculatorFactoryPortal} from '@/components/calculator-factory-portal';
 import {PrivateModelWorkbench} from '@/components/private-model-workbench';
+import {WeatherCalculatorWorkbench} from '@/components/weather-calculator-workbench';
+import {saveCalculationHistory} from '@/app/account/actions';
 export const metadata={title:'Private calculator engineering factory',robots:{index:false,follow:false}};
 export default async function CalculatorFactoryPage(){
  const supabase=await createSupabaseServerClient();
@@ -13,5 +16,5 @@ export default async function CalculatorFactoryPage(){
  if(adminError||!admin?.active||!['owner','admin','reviewer'].includes(String(admin.role)))return <section><h1>Authorized engineering review access required</h1></section>;
  const {data:profile,error:profileError}=await supabase.from('profiles').select('plan').eq('id',user.id).maybeSingle();
  if(profileError)return <section><h1>Account entitlements unavailable</h1></section>;
- return <main className="container page-top"><h1>Private calculator engineering factory</h1><p>RELEASE HOLD ACTIVE. This workspace does not certify or publish calculators.</p><CalculatorFactoryPortal ownerId={user.id} plan={normalizePlan(profile?.plan)}/><PrivateModelWorkbench/></main>;
+ return <main className="container page-top"><h1>Private calculator engineering factory</h1><p>RELEASE HOLD ACTIVE. This workspace does not certify or publish calculators.</p><CalculatorFactoryPortal ownerId={user.id} plan={normalizePlan(profile?.plan)}/><PrivateModelWorkbench/><WeatherCalculatorWorkbench ownerId={user.id} plan={normalizePlan(profile?.plan)} saveHistory={saveCalculationHistory}/><nav aria-label="Saved calculations and scenarios"><Link href="/account/history">Open calculation history</Link>{' · '}<Link href="/account/projects">Manage saved project scenarios</Link></nav></main>;
 }
