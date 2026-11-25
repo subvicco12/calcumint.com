@@ -1,0 +1,957 @@
+{
+  "repository": "subvicco12/calcumint.com",
+  "releaseHold": true,
+  "priorTransferManifest": "https://drive.google.com/file/d/1xKpAQzmWZ-IHUkETTxzZzdSZW9AGt5y-/view",
+  "restorationOrder": [
+    "cc0160cd84a106926c4c090528ef22d36ff7fecc",
+    "755b5ead2aeaa1f968373dd3a271a3c134352966",
+    "5ff1aebdb10571529fb08628ade7a92e60cb0139"
+  ],
+  "restorationInstructions": "Download the two qualified delivery bundles. Check their full SHA-256 hashes, run git bundle verify, fetch each advertised ref in order and verify its exact commit and tree. Keep the separately staged review-only branches out of this chain.",
+  "delivery": [
+    {
+      "ids": [
+        96,
+        362,
+        498
+      ],
+      "cumulative": 271,
+      "coverage": {
+        "PARTIALLY_IMPLEMENTED": 152,
+        "IMPLEMENTED_INTEGRATION_REQUIRED": 1,
+        "UNVERIFIED": 118
+      },
+      "source": {
+        "commit": "755b5ead2aeaa1f968373dd3a271a3c134352966",
+        "tree": "96e52cd1541e69fa87465cd4bee7d147ac78be91",
+        "prerequisite": "cc0160cd84a106926c4c090528ef22d36ff7fecc",
+        "ref": "refs/heads/engineering/worker2-bounded-evidence-recovery-20261124"
+      },
+      "bundle": {
+        "bytes": 3953,
+        "sha256": "1a3cfa5c9834c51b5c20c8833f63c8b1da876c628dad735fa3dcd4b72763712c"
+      },
+      "journeys": 9,
+      "exportReadbacks": 9,
+      "exactTrackedBuildFingerprints": 2182,
+      "releaseHold": true,
+      "remote": {
+        "bundle": {
+          "id": "1_EuoAarULza1iyIVDK-PVhHmKQxvnH8g",
+          "url": "https://drive.google.com/file/d/1_EuoAarULza1iyIVDK-PVhHmKQxvnH8g/view",
+          "bytes": 3953,
+          "sha256": "1a3cfa5c9834c51b5c20c8833f63c8b1da876c628dad735fa3dcd4b72763712c",
+          "name": "delivery.bundle",
+          "readback": "PASS"
+        },
+        "evidence": {
+          "id": "1uH1vYnl7a8c8cXag2MzeZAw0XIwNp1OZ",
+          "url": "https://drive.google.com/file/d/1uH1vYnl7a8c8cXag2MzeZAw0XIwNp1OZ/view",
+          "bytes": 791938,
+          "sha256": "28b3c6253deaafaee925caf16d5270a571f250dcfab8326200f4b1ce68437427",
+          "name": "delivery-evidence.tar.gz",
+          "readback": "PASS"
+        }
+      }
+    },
+    {
+      "ids": [
+        126,
+        133,
+        516
+      ],
+      "cumulative": 274,
+      "coverage": {
+        "PARTIALLY_IMPLEMENTED": 155,
+        "IMPLEMENTED_INTEGRATION_REQUIRED": 1,
+        "UNVERIFIED": 118
+      },
+      "source": {
+        "commit": "5ff1aebdb10571529fb08628ade7a92e60cb0139",
+        "tree": "77716a8062bd6546a6241987a6c3d0192208bc4d",
+        "prerequisite": "755b5ead2aeaa1f968373dd3a271a3c134352966",
+        "ref": "refs/heads/engineering/worker2-retained-source-profiles-20261124"
+      },
+      "bundle": {
+        "bytes": 3569,
+        "sha256": "4f6178195017d723fb918fddf2f459eb76d8e30816c4e4e770da9007fb1e7d24"
+      },
+      "journeys": 9,
+      "exportReadbacks": 9,
+      "exactTrackedBuildFingerprints": 2183,
+      "releaseHold": true,
+      "remote": {
+        "bundle": {
+          "id": "1x0qZpdPg9Cn3zZqsoq4wN4FMYwJ2AAxv",
+          "url": "https://drive.google.com/file/d/1x0qZpdPg9Cn3zZqsoq4wN4FMYwJ2AAxv/view",
+          "bytes": 3569,
+          "sha256": "4f6178195017d723fb918fddf2f459eb76d8e30816c4e4e770da9007fb1e7d24",
+          "name": "policy.bundle",
+          "readback": "PASS"
+        },
+        "evidence": {
+          "id": "1VDPsEjrg-73bUaXdayJ-ZWKBDZE42JI7",
+          "url": "https://drive.google.com/file/d/1VDPsEjrg-73bUaXdayJ-ZWKBDZE42JI7/view",
+          "bytes": 794818,
+          "sha256": "045393b6b64384cadda56af26bab70626e9f649361d25b10913185f9d282936c",
+          "name": "policy-evidence.tar.gz",
+          "readback": "PASS"
+        }
+      }
+    }
+  ],
+  "ledgerArchivePath": "policy-ledger.json",
+  "newlyCompleteIds": [
+    96,
+    126,
+    133,
+    362,
+    498,
+    516
+  ],
+  "cumulative": 274,
+  "coverage": {
+    "partial": {
+      "total": 271,
+      "engineering": 155,
+      "remaining": 116
+    },
+    "previouslyUnverified": {
+      "total": 187,
+      "engineering": 118,
+      "remaining": 69
+    }
+  },
+  "qualification": {
+    "focusedDeliveryTests": 8,
+    "authenticatedChromiumJourneys": 18,
+    "actualExportReadbacks": 18,
+    "retirementAgeIsolatedTests": 11
+  },
+  "archiveReconciliation": {
+    "records": [
+      {
+        "masterId": 82,
+        "title": "Retirement Age Calculator",
+        "cohort": "other-methodology-27",
+        "engineeringState": "reused-private-supplied",
+        "definitionId": "private.workflow.target-trajectory",
+        "version": 1,
+        "canonicalCompleted": false,
+        "qualifiedApproval": "PENDING",
+        "sourceEvidence": [
+          {
+            "ordinal": 28,
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator",
+            "classification": "RELEVANT_CONTENT_VERIFIED",
+            "observationRecordSHA256": "3299433117d98c96e2907cc774d879c77fdbcd1e875bb80c1a9f6303f6505871",
+            "publisherBodySHA256": null,
+            "normativeContractAccepted": false
+          }
+        ],
+        "remainingGaps": [
+          "OWNER_SELECTION_REQUIRED: complete product contract and all intended branches remain unapproved.",
+          "SOURCE_GAP: governing clause/version and scope-complete rule evidence remain incomplete.",
+          "QUALIFIED_REVIEW_REQUIRED: competent independent methodology and obligation/applicability review remain pending; no automatic exemption or mandatory external-signature assertion.",
+          "Approved catalog-to-engine/version/full-SHA binding and actual-engine boundary/rounding acceptance absent."
+        ]
+      },
+      {
+        "masterId": 96,
+        "title": "401(k) Calculator",
+        "cohort": "other-methodology-27",
+        "engineeringState": "new-private-supplied",
+        "definitionId": "private.completion.96",
+        "version": 1,
+        "canonicalCompleted": false,
+        "qualifiedApproval": "PENDING",
+        "sourceEvidence": [
+          {
+            "ordinal": 35,
+            "url": "https://www.irs.gov/retirement-plans/matching-contributions-help-you-save-more-for-retirement",
+            "classification": "RELEVANT_CONTENT_VERIFIED",
+            "observationRecordSHA256": "63469fb3f177d6276f5f413f7c9aac084eaebeab4b6e188017f97377e3b7201e",
+            "publisherBodySHA256": null,
+            "normativeContractAccepted": false
+          },
+          {
+            "ordinal": 36,
+            "url": "https://www.irs.gov/retirement-plans/plan-sponsor/401k-plan-overview",
+            "classification": "RELEVANT_CONTENT_VERIFIED",
+            "observationRecordSHA256": "5d741c5691264f0836b0650c9d464d0a666e106f362103d79d6a9d7ded4819f6",
+            "publisherBodySHA256": null,
+            "normativeContractAccepted": false
+          }
+        ],
+        "remainingGaps": [
+          "OWNER_SELECTION_REQUIRED: complete product contract and all intended branches remain unapproved.",
+          "SOURCE_GAP: governing clause/version and scope-complete rule evidence remain incomplete.",
+          "QUALIFIED_REVIEW_REQUIRED: competent independent methodology and obligation/applicability review remain pending; no automatic exemption or mandatory external-signature assertion.",
+          "Approved catalog-to-engine/version/full-SHA binding and actual-engine boundary/rounding acceptance absent."
+        ]
+      },
+      {
+        "masterId": 126,
+        "title": "GST Calculator",
+        "cohort": "component-supported-23",
+        "engineeringState": "reused-private-supplied",
+        "definitionId": "private.profile.nz-gst-prices",
+        "version": 1,
+        "canonicalCompleted": false,
+        "qualifiedApproval": "PENDING",
+        "sourceEvidence": [
+          {
+            "ordinal": 29,
+            "url": "https://www.ird.govt.nz/gst/filing-and-paying-gst-and-refunds/calculating-gst",
+            "classification": "RELEVANT_CONTENT_VERIFIED",
+            "observationRecordSHA256": "06c09e82d2a8553afca1691583dc461808504ba01371492f7f6dce10e71da3b5",
+            "publisherBodySHA256": null,
+            "normativeContractAccepted": false
+          }
+        ],
+        "remainingGaps": [
+          "OWNER_SELECTION_REQUIRED: jurisdiction/year/profile and output contract remain unselected.",
+          "SOURCE_GAP: preserve exact governing clauses/content provenance and obtain missing official boundary/exception/rounding evidence for selected profile.",
+          "Implementation mapping/full SHA, approved authoritative expected cases, actual engine execution and independent review remain pending; obligation applicability screening unresolved."
+        ]
+      },
+      {
+        "masterId": 133,
+        "title": "Property Tax Estimate Calculator",
+        "cohort": "other-methodology-27",
+        "engineeringState": "reused-private-supplied",
+        "definitionId": "private.profile.assessment-levies",
+        "version": 1,
+        "canonicalCompleted": false,
+        "qualifiedApproval": "PENDING",
+        "sourceEvidence": [
+          {
+            "ordinal": 39,
+            "url": "https://www.tax.ny.gov/pit/property/learn/proptaxcalc.htm",
+            "classification": "RELEVANT_CONTENT_VERIFIED",
+            "observationRecordSHA256": "0859496243651a11731208fe657845701d08fba31ff500a3c97564e63041dabb",
+            "publisherBodySHA256": null,
+            "normativeContractAccepted": false
+          }
+        ],
+        "remainingGaps": [
+          "OWNER_SELECTION_REQUIRED: jurisdiction/year/profile and output contract remain unselected.",
+          "SOURCE_GAP: preserve exact governing clauses/content provenance and obtain missing official boundary/exception/rounding evidence for selected profile.",
+          "Implementation mapping/full SHA, approved authoritative expected cases, actual engine execution and independent review remain pending; obligation applicability screening unresolved."
+        ]
+      },
+      {
+        "masterId": 516,
+        "title": "GPA Calculator",
+        "cohort": "component-supported-23",
+        "engineeringState": "reused-private-supplied",
+        "definitionId": "private.profile.stanford-transcript-gpa",
+        "version": 1,
+        "canonicalCompleted": false,
+        "qualifiedApproval": "PENDING",
+        "sourceEvidence": [
+          {
+            "ordinal": 7,
+            "url": "https://studentservices.stanford.edu/my-academics/evaluations-exams-grades/grades/how-do-i-calculate-my-grade-point-average-gpa",
+            "classification": "RELEVANT_CONTENT_VERIFIED",
+            "observationRecordSHA256": "4021734a19308f76230810682f8c6198a835239ec76a6138b1a4a5f9a9410c00",
+            "publisherBodySHA256": null,
+            "normativeContractAccepted": false
+          }
+        ],
+        "remainingGaps": [
+          "SOURCE_GAP",
+          "ENGINEERING_RESOLVABLE"
+        ]
+      }
+    ],
+    "archiveCommit": "3ec6805cb33f09dc41faeee333ba5fa2fcaea594",
+    "archiveTree": "82728dd4027abc133f43611fbc5114d0a2077a6c",
+    "historicalReceipt": "docs/cloud-batch03/RECEIPT.md",
+    "historicalChromiumJourneys": 18,
+    "historicalPlanSelection": "SYNTHETIC",
+    "retirementArchiveCommit": "c1d19ff55516f4a712a8a916fef28b5ddb9a7357",
+    "retirementDependencies": [
+      {
+        "path": "src/calculators/completion-contracts.ts",
+        "sha256": "86a3ee18faee1a951c6d43b63762b9158497e2885fdde83bb9e310a80c1730aa",
+        "identicalToArchive": true
+      },
+      {
+        "path": "src/calculators/retirement-contracts.ts",
+        "sha256": "87097a3cef9495f9dd699ab4afeae57de353ad5e18e73a5d5d0ed69b91709ec9",
+        "identicalToArchive": true
+      },
+      {
+        "path": "src/calculators/completion-math.ts",
+        "sha256": "2069c86d5ef7d994664037b01c719a5764f84ec4624f090c4a9478d03233b0ed",
+        "identicalToArchive": true
+      },
+      {
+        "path": "src/calculators/exact-rational.ts",
+        "sha256": "cccb4e1366200c799eb82f3542d4f90ecfc0341d8678db29f93d347f39af806a",
+        "identicalToArchive": true
+      }
+    ],
+    "scopeNotes": "Committed records verified. Publisher body and normative version remain unverified. Later review UI added tab-local snapshot restore; current work attaches authenticated delivery.",
+    "deliveryDependencies": [
+      {
+        "path": "src/calculators/source-bound-profiles.ts",
+        "archivedSha256": "f704f2e5d54097847da282ed0d3e97cb846dcb55d6d82cb5c3b07cb07d4a748d",
+        "currentSha256": "f704f2e5d54097847da282ed0d3e97cb846dcb55d6d82cb5c3b07cb07d4a748d",
+        "identical": true
+      },
+      {
+        "path": "src/calculators/source-profile-snapshot.ts",
+        "archivedSha256": "119f57f1468bd2d05fd2ea2e37e64621eaffff4a9bcfc0aeaa87ce89077da97f",
+        "currentSha256": "119f57f1468bd2d05fd2ea2e37e64621eaffff4a9bcfc0aeaa87ce89077da97f",
+        "identical": true
+      },
+      {
+        "path": "src/calculators/exact-rational.ts",
+        "archivedSha256": "cccb4e1366200c799eb82f3542d4f90ecfc0341d8678db29f93d347f39af806a",
+        "currentSha256": "cccb4e1366200c799eb82f3542d4f90ecfc0341d8678db29f93d347f39af806a",
+        "identical": true
+      },
+      {
+        "path": "data/catalog/cloud-batch03-2026-10-28/manifest.json",
+        "archivedSha256": "a262a21f06b2590c1e1cc5f25397022a1f5a9ae1ccdeaee04cccf1c90dcf7f7c",
+        "currentSha256": "a262a21f06b2590c1e1cc5f25397022a1f5a9ae1ccdeaee04cccf1c90dcf7f7c",
+        "identical": true
+      },
+      {
+        "path": "src/components/source-profile-review.tsx",
+        "archivedSha256": "c4e2d0611c43541d07b5e15a1cfb39479b112b6b970bc037a7bd6530c2475fdd",
+        "currentSha256": "708b84db803aa78c0ebe223015d4dc6a632b2a056b5d0a2c7c1454bcf248477b",
+        "identical": false
+      },
+      {
+        "path": "tests/source-profile-review/browser.mjs",
+        "archivedSha256": "3d5d547f9ebeaa27d13506638069c06470abab76b8b26b4920e5bedfee7b4b24",
+        "currentSha256": "3d5d547f9ebeaa27d13506638069c06470abab76b8b26b4920e5bedfee7b4b24",
+        "identical": true
+      }
+    ],
+    "sourceRecords": [
+      {
+        "id": "stanford-gpa",
+        "url": "https://studentservices.stanford.edu/my-academics/evaluations-exams-grades/grades/how-do-i-calculate-my-grade-point-average-gpa",
+        "path": "data/catalog/cloud-batch03-2026-10-28/stanford-gpa.md",
+        "extractedTextSHA256": "e3c9ad304b4dcd9b63b71fed083908844ca4c3287683bdde95c9a6801e99c97b",
+        "publisherBodySHA256": null,
+        "normativeVersion": null,
+        "visibleRevision": null,
+        "recordSHA256": "fd3de0579975bdc08849fd45fe68b1187921e9a4caceaf6439ad60918673cc80",
+        "committedRecordVerified": true
+      },
+      {
+        "id": "stanford-repeats",
+        "url": "https://bulletin.stanford.edu/academic-polices/grading/repeated-courses",
+        "path": "data/catalog/cloud-batch03-2026-10-28/stanford-repeats.md",
+        "extractedTextSHA256": "b70704abb9a95a45d13161de52698e6f381985ef840772bfae7f9211e24e7da4",
+        "publisherBodySHA256": null,
+        "normativeVersion": null,
+        "visibleRevision": null,
+        "recordSHA256": "df969c6af340b8f2123af434d57db4c61e25127ed155917f5c846c438e5ecc89",
+        "committedRecordVerified": true
+      },
+      {
+        "id": "stanford-grading",
+        "url": "https://studentservices.stanford.edu/my-academics/evaluations-exams-grades/grades/general-university-grading-system",
+        "path": "data/catalog/cloud-batch03-2026-10-28/stanford-grading.md",
+        "extractedTextSHA256": "46e23e04ebb467cbc18eb6ca11f17d6e91f42705bdc21554b7e137e482d5e447",
+        "publisherBodySHA256": null,
+        "normativeVersion": null,
+        "visibleRevision": null,
+        "recordSHA256": "f6c83b00f113a9f3e80397fd85772eb508f02d38684c755d0079beb8d9e2931d",
+        "committedRecordVerified": true
+      },
+      {
+        "id": "ird-gst-calculating",
+        "url": "https://www.ird.govt.nz/gst/filing-and-paying-gst-and-refunds/calculating-gst",
+        "path": "data/catalog/cloud-batch03-2026-10-28/ird-gst-calculating.md",
+        "extractedTextSHA256": "6dd4d7825af1b93dc14745429f7409ef4c14c3eb46649a8cda322ee056acd82c",
+        "publisherBodySHA256": null,
+        "normativeVersion": null,
+        "visibleRevision": null,
+        "recordSHA256": "ae1b0a049af2b849aa23a40c1f46576233dd22642ada59e8247cde83dd00320a",
+        "committedRecordVerified": true
+      },
+      {
+        "id": "ird-gst-charging",
+        "url": "https://www.ird.govt.nz/gst/charging-gst",
+        "path": "data/catalog/cloud-batch03-2026-10-28/ird-gst-charging.md",
+        "extractedTextSHA256": "cd50e591421069d2d7d01d35c978eae04b733b0ad66daf947b6ec9dee6297564",
+        "publisherBodySHA256": null,
+        "normativeVersion": null,
+        "visibleRevision": null,
+        "recordSHA256": "7fa73ae9641fb9fd64b879ebdc21c9ec8586324d2362a2894536d51f597b3c9d",
+        "committedRecordVerified": true
+      },
+      {
+        "id": "ny-property-tax",
+        "url": "https://www.tax.ny.gov/pit/property/learn/proptaxcalc.htm",
+        "path": "data/catalog/cloud-batch03-2026-10-28/ny-property-tax.md",
+        "extractedTextSHA256": "1c3e4f634fa07e282cb08ddbacfcd03466cfd385d43c9e73a54a6626ff29f313",
+        "publisherBodySHA256": null,
+        "normativeVersion": null,
+        "visibleRevision": "2020-04-03",
+        "recordSHA256": "57170a14f621693d90365e888faebdde3cfd384d6f901311af664eed8c7cad16",
+        "committedRecordVerified": true
+      }
+    ]
+  },
+  "ageReview": {
+    "commit": "dd900573b1263bf8ff007399718973d223a53c79",
+    "tree": "d85054d375ea53cf3dfb0b8671f7c7e70d4bcb1c",
+    "prerequisite": "cc0160cd84a106926c4c090528ef22d36ff7fecc",
+    "ref": "refs/heads/engineering/worker2-retirement-age-review-20261124",
+    "remote": {
+      "bundle": {
+        "id": "1s8GrMUu29OgqoEGryTrfZ11Zu11W4ahh",
+        "url": "https://drive.google.com/file/d/1s8GrMUu29OgqoEGryTrfZ11Zu11W4ahh/view",
+        "bytes": 2874,
+        "sha256": "2b1e94e2a019dd3af74fee1665c4c5014b49a0ef839abbf7e6081cc82207f35b",
+        "name": "age.bundle",
+        "readback": "PASS"
+      },
+      "evidence": {
+        "id": "1smrZBhODRuiNGaAHtehGch9xNt2wUAc8",
+        "url": "https://drive.google.com/file/d/1smrZBhODRuiNGaAHtehGch9xNt2wUAc8/view",
+        "bytes": 4579,
+        "sha256": "c44f251938f004ea5db7f2005447ecb375a128d758f9a057e710d38ea2e59fab",
+        "name": "age-review-evidence.tar.gz",
+        "readback": "PASS"
+      }
+    },
+    "disposition": "REVIEW_ONLY_NOT_ADOPTED_NOT_COUNTED"
+  },
+  "binomialReview": {
+    "commit": "10df9e107774be60158c245bad57f08c117cd333",
+    "tree": "ef239bd2d52b153816707695aa5f2bbe72769527",
+    "evidence": "https://drive.google.com/file/d/1FjNnsCBjILSK8VH2r_L-3ZkbqQZjfKfV/view",
+    "priorRetention": true,
+    "adopted": false
+  },
+  "ownerDecisions": {
+    "id": "1D6ktuAH2h7_F0f5qi_Y81iSadsHryCmI",
+    "url": "https://drive.google.com/file/d/1D6ktuAH2h7_F0f5qi_Y81iSadsHryCmI/view",
+    "bytes": 81487,
+    "sha256": "fcf22a8d48f9c8cd9a14b18fb1fe400138a81fdc5d6e3dff6681c3585976e8da",
+    "name": "owner-decisions-scope-closure-20261124.md",
+    "readback": "PASS"
+  },
+  "nextIntake": {
+    "reviewedCandidates": 30,
+    "rows": [
+      {
+        "id": 82,
+        "canonicalName": "Retirement Age Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "REVIEW_SUCCESSOR_ONLY"
+      },
+      {
+        "id": 96,
+        "canonicalName": "401(k) Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "COMPLETE_BOUNDED_PRIVATE_CONTRACT"
+      },
+      {
+        "id": 126,
+        "canonicalName": "GST Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "COMPLETE_BOUNDED_PRIVATE_CONTRACT"
+      },
+      {
+        "id": 133,
+        "canonicalName": "Property Tax Estimate Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "COMPLETE_BOUNDED_PRIVATE_CONTRACT"
+      },
+      {
+        "id": 516,
+        "canonicalName": "GPA Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "COMPLETE_BOUNDED_PRIVATE_CONTRACT"
+      },
+      {
+        "id": 362,
+        "canonicalName": "Electrical Load Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [
+          {
+            "engineId": "engineering.electrical-load",
+            "version": 1,
+            "slug": "electrical-load-calculator",
+            "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+            "sharedCatalogIds": [
+              362
+            ],
+            "exactCurrentBinding": true,
+            "identityCandidate": true,
+            "canonicalMappingApproved": false,
+            "proposedUrl": "https://calcumint.com/calculators/engineering-construction/electrical-load-calculator",
+            "lifecycle": "UNPUBLISHED_ABSENT",
+            "hostedIdentityMatches": false,
+            "httpStatus": null,
+            "observedUrl": null,
+            "displayedVersion": null,
+            "liveVerified": false,
+            "codeReviewStatus": "reviewed",
+            "certificationSoftwareIssues": [
+              "Not certified; software audit is not certification authority"
+            ]
+          }
+        ],
+        "productionRecords": [],
+        "worker": "Construction worker queue",
+        "preflight": "COMPLETE_BOUNDED_PRIVATE_CONTRACT"
+      },
+      {
+        "id": 498,
+        "canonicalName": "Ingredient Weight/Volume Converter",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "COMPLETE_BOUNDED_PRIVATE_CONTRACT"
+      },
+      {
+        "id": 21,
+        "canonicalName": "Debt Consolidation Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 32,
+        "canonicalName": "Rent vs Buy Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 35,
+        "canonicalName": "Closing Cost Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 36,
+        "canonicalName": "Rental Property Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 43,
+        "canonicalName": "Rental ROI Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 46,
+        "canonicalName": "House Flipping Profit Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 49,
+        "canonicalName": "Mortgage + Rental Combined Model",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 57,
+        "canonicalName": "Investment Growth Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 59,
+        "canonicalName": "Future Value Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 85,
+        "canonicalName": "Retirement Withdrawal Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 86,
+        "canonicalName": "Retirement Longevity Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 88,
+        "canonicalName": "FIRE Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 89,
+        "canonicalName": "Coast FIRE Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 90,
+        "canonicalName": "Lean FIRE Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 91,
+        "canonicalName": "Fat FIRE Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 125,
+        "canonicalName": "Sales Tax Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 127,
+        "canonicalName": "VAT Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 134,
+        "canonicalName": "Tax Effective Rate Calculator",
+        "primaryReadiness": "PARTIALLY_IMPLEMENTED",
+        "candidateBindings": [],
+        "productionRecords": [],
+        "worker": "Unassigned family queue",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 377,
+        "canonicalName": "Aspect Ratio Calculator",
+        "primaryReadiness": "UNVERIFIED",
+        "candidateBindings": [
+          {
+            "engineId": "technology.aspect-ratio",
+            "version": 1,
+            "slug": "aspect-ratio-calculator",
+            "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+            "sharedCatalogIds": [
+              377
+            ],
+            "exactCurrentBinding": true,
+            "identityCandidate": true,
+            "canonicalMappingApproved": false,
+            "proposedUrl": "https://calcumint.com/calculators/technology-computing/aspect-ratio-calculator",
+            "lifecycle": "UNPUBLISHED_ABSENT",
+            "hostedIdentityMatches": false,
+            "httpStatus": null,
+            "observedUrl": null,
+            "displayedVersion": null,
+            "liveVerified": false,
+            "codeReviewStatus": "reviewed",
+            "certificationSoftwareIssues": [
+              "Not certified; software audit is not certification authority"
+            ]
+          },
+          {
+            "engineId": "launch-aspect-ratio-value-calculator",
+            "version": 1,
+            "slug": "aspect-ratio-value-calculator",
+            "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+            "sharedCatalogIds": [
+              377
+            ],
+            "exactCurrentBinding": true,
+            "identityCandidate": true,
+            "canonicalMappingApproved": false,
+            "proposedUrl": "https://calcumint.com/calculators/everyday/aspect-ratio-value-calculator",
+            "lifecycle": "published",
+            "hostedIdentityMatches": true,
+            "httpStatus": 200,
+            "observedUrl": "https://calcumint.com/calculators/everyday/aspect-ratio-value-calculator",
+            "displayedVersion": 1,
+            "liveVerified": true,
+            "codeReviewStatus": "certified",
+            "certificationSoftwareIssues": []
+          }
+        ],
+        "productionRecords": [
+          {
+            "calculator_key": "launch-aspect-ratio-value-calculator",
+            "slug": "aspect-ratio-value-calculator",
+            "version": 1,
+            "published_at": "2026-09-30 18:32:02.787874+00",
+            "mapping": "CANDIDATE_ONLY",
+            "url": "https://calcumint.com/calculators/everyday/aspect-ratio-value-calculator",
+            "historicalRender": true
+          }
+        ],
+        "worker": "Portfolio readback",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 426,
+        "canonicalName": "Mass/Weight Converter",
+        "primaryReadiness": "UNVERIFIED",
+        "candidateBindings": [],
+        "productionRecords": [
+          {
+            "calculator_key": "core.unit-conversion",
+            "slug": "unit-conversion-calculator",
+            "version": 1,
+            "published_at": "2026-09-30 18:24:16.544437+00",
+            "mapping": "SUPPORT_OR_SHARED_ASSOCIATION",
+            "url": "https://calcumint.com/calculators/unit-conversions/unit-conversion-calculator",
+            "historicalRender": false
+          }
+        ],
+        "worker": "Portfolio readback",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 510,
+        "canonicalName": "Travel Time Calculator",
+        "primaryReadiness": "UNVERIFIED",
+        "candidateBindings": [
+          {
+            "engineId": "launch-time-from-distance-speed-calculator",
+            "version": 1,
+            "slug": "time-from-distance-speed-calculator",
+            "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+            "sharedCatalogIds": [
+              510
+            ],
+            "exactCurrentBinding": true,
+            "identityCandidate": true,
+            "canonicalMappingApproved": false,
+            "proposedUrl": "https://calcumint.com/calculators/science/time-from-distance-speed-calculator",
+            "lifecycle": "published",
+            "hostedIdentityMatches": true,
+            "httpStatus": 200,
+            "observedUrl": "https://calcumint.com/calculators/science/time-from-distance-speed-calculator",
+            "displayedVersion": 1,
+            "liveVerified": true,
+            "codeReviewStatus": "certified",
+            "certificationSoftwareIssues": []
+          },
+          {
+            "engineId": "travel.travel-time",
+            "version": 1,
+            "slug": "travel-time-calculator",
+            "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+            "sharedCatalogIds": [
+              510
+            ],
+            "exactCurrentBinding": true,
+            "identityCandidate": true,
+            "canonicalMappingApproved": false,
+            "proposedUrl": "https://calcumint.com/calculators/everyday/travel-time-calculator",
+            "lifecycle": "UNPUBLISHED_ABSENT",
+            "hostedIdentityMatches": false,
+            "httpStatus": null,
+            "observedUrl": null,
+            "displayedVersion": null,
+            "liveVerified": false,
+            "codeReviewStatus": "draft",
+            "certificationSoftwareIssues": [
+              "Not certified; software audit is not certification authority"
+            ]
+          }
+        ],
+        "productionRecords": [
+          {
+            "calculator_key": "launch-time-from-distance-speed-calculator",
+            "slug": "time-from-distance-speed-calculator",
+            "version": 1,
+            "published_at": "2026-09-30 18:32:02.787874+00",
+            "mapping": "CANDIDATE_ONLY",
+            "url": "https://calcumint.com/calculators/science/time-from-distance-speed-calculator",
+            "historicalRender": true
+          }
+        ],
+        "worker": "Portfolio readback",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 511,
+        "canonicalName": "Distance Calculator",
+        "primaryReadiness": "UNVERIFIED",
+        "candidateBindings": [
+          {
+            "engineId": "launch-distance-calculator",
+            "version": 1,
+            "slug": "distance-calculator",
+            "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+            "sharedCatalogIds": [
+              277,
+              511
+            ],
+            "exactCurrentBinding": true,
+            "identityCandidate": true,
+            "canonicalMappingApproved": false,
+            "proposedUrl": "https://calcumint.com/calculators/science/distance-calculator",
+            "lifecycle": "published",
+            "hostedIdentityMatches": true,
+            "httpStatus": 200,
+            "observedUrl": "https://calcumint.com/calculators/science/distance-calculator",
+            "displayedVersion": 1,
+            "liveVerified": false,
+            "codeReviewStatus": "certified",
+            "certificationSoftwareIssues": []
+          }
+        ],
+        "productionRecords": [
+          {
+            "calculator_key": "launch-distance-calculator",
+            "slug": "distance-calculator",
+            "version": 1,
+            "published_at": "2026-09-30 18:32:02.787874+00",
+            "mapping": "CANDIDATE_ONLY",
+            "url": "https://calcumint.com/calculators/science/distance-calculator",
+            "historicalRender": false
+          }
+        ],
+        "worker": "Portfolio readback",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      },
+      {
+        "id": 458,
+        "canonicalName": "Fuel Cost Calculator",
+        "primaryReadiness": "UNVERIFIED",
+        "candidateBindings": [
+          {
+            "engineId": "launch-fuel-cost-calculator",
+            "version": 1,
+            "slug": "fuel-cost-calculator",
+            "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+            "sharedCatalogIds": [
+              458
+            ],
+            "exactCurrentBinding": true,
+            "identityCandidate": true,
+            "canonicalMappingApproved": false,
+            "proposedUrl": "https://calcumint.com/calculators/everyday/fuel-cost-calculator",
+            "lifecycle": "published",
+            "hostedIdentityMatches": true,
+            "httpStatus": 200,
+            "observedUrl": "https://calcumint.com/calculators/everyday/fuel-cost-calculator",
+            "displayedVersion": 1,
+            "liveVerified": true,
+            "codeReviewStatus": "certified",
+            "certificationSoftwareIssues": []
+          }
+        ],
+        "productionRecords": [
+          {
+            "calculator_key": "launch-fuel-cost-calculator",
+            "slug": "fuel-cost-calculator",
+            "version": 1,
+            "published_at": "2026-09-30 18:32:02.787874+00",
+            "mapping": "CANDIDATE_ONLY",
+            "url": "https://calcumint.com/calculators/everyday/fuel-cost-calculator",
+            "historicalRender": true
+          }
+        ],
+        "worker": "Portfolio readback",
+        "preflight": "SCOPE_OR_EXACT_BINDING_OPEN"
+      }
+    ],
+    "unblockedBoundedDelivery": [
+      96,
+      126,
+      133,
+      362,
+      498,
+      516
+    ],
+    "separateWorkerEvidence": {
+      "construction": [
+        357,
+        358,
+        359,
+        360,
+        361
+      ],
+      "sports": [
+        521,
+        523,
+        524
+      ],
+      "constructionRef": "a802d36db823c67fcea24ec001a7dfa27d43aca5",
+      "sportsRef": "56553c471d8a944ddfcd58a2bb21399b478746e2",
+      "disposition": "Coordinator reconciliation and assigned-worker acknowledgment pending; no ownership changes or duplicate counts."
+    }
+  },
+  "worker3NewAcknowledgment": "PENDING",
+  "worker3VerifiedEarlierCheckpoint": "https://github.com/subvicco12/calcumint.com/commit/717bebf621b59837bf6cc1125fc63cb8932eb193",
+  "protectedAdmission": false,
+  "productionWrites": false
+}
