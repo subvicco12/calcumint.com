@@ -39,3 +39,27 @@ it('retries an uncertain history save with the same owner/packet request identit
  fireEvent.change(document.querySelector('input[name=old]')!,{target:{value:'200'}});fireEvent.click(screen.getByText('Calculate'));fireEvent.click(screen.getByText('Save calculation'));
  await waitFor(()=>expect(transport.save).toHaveBeenCalledTimes(3));expect(transport.save.mock.calls[2][0].requestId).not.toBe(transport.save.mock.calls[0][0].requestId);
 });
+
+it('enables direction swap for the queued converters and retains exact v1 save identity',async()=>{
+ transport.save.mockResolvedValue('saved');
+ render(<CalculatorFactoryPortal ownerId="verified-owner" plan="pro"/>);
+ const chooser=screen.getByLabelText('Engineering contract');
+ for(const id of [423,424,425,427,428,429,430,431,433,434,436,437,438,439]){
+  fireEvent.change(chooser,{target:{value:String(id)}});
+  const from=screen.getByLabelText('From unit') as HTMLSelectElement;
+  const to=screen.getByLabelText('To unit') as HTMLSelectElement;
+  const original=[from.value,to.value];
+  fireEvent.click(screen.getByRole('button',{name:'Swap units'}));
+  expect([from.value,to.value]).toEqual(original.toReversed());
+ }
+ fireEvent.change(chooser,{target:{value:'423'}});
+ fireEvent.click(screen.getByRole('button',{name:'Swap units'}));
+ fireEvent.click(screen.getByText('Calculate'));
+ fireEvent.click(screen.getByText('Save calculation'));
+ await waitFor(()=>expect(transport.save).toHaveBeenCalledTimes(1));
+ expect(transport.save.mock.calls[0][0]).toMatchObject({
+  calculatorSlug:'length-converter',calculatorVersion:1,input:{value:1,fromUnit:'km',toUnit:'m'},output:{result:1000},expectedOwnerId:'verified-owner',
+ });
+ fireEvent.change(chooser,{target:{value:'440'}});
+ expect(screen.queryByRole('button',{name:'Swap units'})).toBeNull();
+});

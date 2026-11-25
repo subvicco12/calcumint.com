@@ -17,3 +17,24 @@ it('restores verified normalized snapshots without inventing retained raw entry 
  fireEvent.click(screen.getByText('Restore normalized'));expect((screen.getByLabelText('Value') as HTMLInputElement).value).toBe('4');expect(screen.getByLabelText('Exact result').textContent).toContain('4');
  fireEvent.click(screen.getByText('Restore wrong version'));expect(screen.getByRole('alert').textContent).toContain('exact engine');
 });
+
+it('swaps opted-in unit codes without rewriting raw amounts or retaining stale exports',()=>{
+ const fields=[
+  {key:'value',label:'Value',kind:'number' as const,defaultValue:'1.250'},
+  {key:'fromUnit',label:'From unit',kind:'select' as const,options:['B','KiB'],defaultValue:'B'},
+  {key:'toUnit',label:'To unit',kind:'select' as const,options:['B','KiB'],defaultValue:'KiB'},
+ ];
+ const convert=createFactoryWorkflows({identity:{calculatorSlug:'test-conversion',calculatorVersion:1,sourceVersion:'v1'},
+  execute:raw=>({calculatorSlug:'test-conversion',calculatorVersion:1,input:{...raw},output:{direction:raw.fromUnit+' to '+raw.toUnit}})});
+ render(<CalculatorFactoryWorkbench workflows={convert} title="Converter" fields={fields} plan="pro" allowUnitSwap/>);
+ fireEvent.click(screen.getByText('Calculate'));
+ fireEvent.click(screen.getByText('Export JSON'));
+ fireEvent.click(screen.getByRole('button',{name:'Swap units'}));
+ expect((screen.getByLabelText('Value') as HTMLInputElement).value).toBe('1.250');
+ expect((screen.getByLabelText('From unit') as HTMLSelectElement).value).toBe('KiB');
+ expect((screen.getByLabelText('To unit') as HTMLSelectElement).value).toBe('B');
+ expect(screen.queryByLabelText('Exact result')).toBeNull();
+ expect(screen.queryByLabelText('Exported data')).toBeNull();
+ fireEvent.click(screen.getByText('Calculate'));
+ expect(screen.getByLabelText('Exact result').textContent).toContain('KiB to B');
+});
