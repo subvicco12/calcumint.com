@@ -1,0 +1,83 @@
+test_http_failure_is_category_and_status_only (test_recovery.RecoveryTests.test_http_failure_is_category_and_status_only) ... ERROR
+test_missing_pdf_tool_reports_before_browser (test_recovery.RecoveryTests.test_missing_pdf_tool_reports_before_browser) ... ERROR
+test_outage_diagnostic_does_not_include_url_or_exception (test_recovery.RecoveryTests.test_outage_diagnostic_does_not_include_url_or_exception) ... ERROR
+test_setup_failure_receipt_never_serializes_environment (test_recovery.RecoveryTests.test_setup_failure_receipt_never_serializes_environment) ... ERROR
+test_supported_browser_resolution_and_missing_browser_refusal (test_recovery.RecoveryTests.test_supported_browser_resolution_and_missing_browser_refusal) ... ERROR
+test_unknown_category_refused_before_network (test_recovery.RecoveryTests.test_unknown_category_refused_before_network) ... ERROR
+
+======================================================================
+ERROR: test_http_failure_is_category_and_status_only (test_recovery.RecoveryTests.test_http_failure_is_category_and_status_only)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-hosted-remediation-20261125/tools/solo440-v2/test_recovery.py", line 14, in test_http_failure_is_category_and_status_only
+    with self.assertRaises(provider.ProviderRefusal) as caught:provider.get_json(url,secret,category=category)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'provider' has no attribute 'ProviderRefusal'
+
+======================================================================
+ERROR: test_missing_pdf_tool_reports_before_browser (test_recovery.RecoveryTests.test_missing_pdf_tool_reports_before_browser)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-hosted-remediation-20261125/tools/solo440-v2/test_recovery.py", line 29, in test_missing_pdf_tool_reports_before_browser
+    m=self.setup_module()
+      ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-hosted-remediation-20261125/tools/solo440-v2/test_recovery.py", line 27, in setup_module
+    spec=importlib.util.spec_from_file_location('mass_setup',ROOT/'mass426_setup.py');m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m
+                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1132, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1190, in get_data
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/calcumint-worker3-hosted-remediation-20261125/tools/solo440-v2/mass426_setup.py'
+
+======================================================================
+ERROR: test_outage_diagnostic_does_not_include_url_or_exception (test_recovery.RecoveryTests.test_outage_diagnostic_does_not_include_url_or_exception)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-hosted-remediation-20261125/tools/solo440-v2/test_recovery.py", line 24, in test_outage_diagnostic_does_not_include_url_or_exception
+    with self.assertRaises(provider.ProviderRefusal) as caught:provider.get_json('https://api.github.com/x','secret',category='github-run')
+                           ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'provider' has no attribute 'ProviderRefusal'
+
+======================================================================
+ERROR: test_setup_failure_receipt_never_serializes_environment (test_recovery.RecoveryTests.test_setup_failure_receipt_never_serializes_environment)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-hosted-remediation-20261125/tools/solo440-v2/test_recovery.py", line 44, in test_setup_failure_receipt_never_serializes_environment
+    m=self.setup_module()
+      ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-hosted-remediation-20261125/tools/solo440-v2/test_recovery.py", line 27, in setup_module
+    spec=importlib.util.spec_from_file_location('mass_setup',ROOT/'mass426_setup.py');m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m
+                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1132, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1190, in get_data
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/calcumint-worker3-hosted-remediation-20261125/tools/solo440-v2/mass426_setup.py'
+
+======================================================================
+ERROR: test_supported_browser_resolution_and_missing_browser_refusal (test_recovery.RecoveryTests.test_supported_browser_resolution_and_missing_browser_refusal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-hosted-remediation-20261125/tools/solo440-v2/test_recovery.py", line 34, in test_supported_browser_resolution_and_missing_browser_refusal
+    m=self.setup_module()
+      ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/calcumint-worker3-hosted-remediation-20261125/tools/solo440-v2/test_recovery.py", line 27, in setup_module
+    spec=importlib.util.spec_from_file_location('mass_setup',ROOT/'mass426_setup.py');m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m
+                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1132, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1190, in get_data
+FileNotFoundError: [Errno 2] No such file or directory: '/workspace/calcumint-worker3-hosted-remediation-20261125/tools/solo440-v2/mass426_setup.py'
+
+======================================================================
+ERROR: test_unknown_category_refused_before_network (test_recovery.RecoveryTests.test_unknown_category_refused_before_network)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/calcumint-worker3-hosted-remediation-20261125/tools/solo440-v2/test_recovery.py", line 19, in test_unknown_category_refused_before_network
+    with self.assertRaises(ValueError):provider.get_json('https://api.github.com/x','secret',category='untrusted-personal-data')
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: get_json() got an unexpected keyword argument 'category'
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.003s
+
+FAILED (errors=6)
