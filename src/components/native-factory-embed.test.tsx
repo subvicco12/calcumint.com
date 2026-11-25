@@ -3,7 +3,7 @@ import {afterEach,expect,it,vi} from 'vitest';
 import {act,cleanup,fireEvent,render,screen} from '@testing-library/react';
 import {NativeFactoryEmbed} from './native-factory-embed';
 afterEach(()=>{cleanup();vi.unstubAllGlobals();});
-const props={grant:'signed-fixture',companyName:'Business owner',title:'Length Converter',engineId:'conversion.length',scope:'International lengths',fields:[{key:'value',label:'Value',defaultValue:'1'},{key:'fromUnit',label:'From unit',options:['m','km'],defaultValue:'m'},{key:'toUnit',label:'To unit',options:['m','km'],defaultValue:'km'}]};
+const props={grant:'signed-fixture',companyName:'Business owner',title:'Length Converter',engineId:'conversion.length',scope:'International lengths',primaryKey:'result',fields:[{key:'value',label:'Value',defaultValue:'1'},{key:'fromUnit',label:'From unit',options:['m','km'],defaultValue:'m'},{key:'toUnit',label:'To unit',options:['m','km'],defaultValue:'km'}]};
 it('submits exact fields without a caller-selected identity and displays native server output',async()=>{
  const fetcher=vi.fn(async()=>new Response(JSON.stringify({output:{result:0.001},methodology:[],sources:[],warnings:[],limitations:'International lengths'})));
  vi.stubGlobal('fetch',fetcher);render(<NativeFactoryEmbed {...props}/>);
@@ -32,4 +32,16 @@ it.each([['MJ',430],['MW',431],['wk',432],['kN',438]])('announces the native num
  expect(screen.getByRole('status').textContent).toContain('Source scoped meaning');
  expect(screen.getByRole('status').textContent).toContain('Existing binary64 precision');
  expect(screen.getByRole('status').textContent).toContain('Refuse unsupported codes');
+});
+
+it('announces and units the exact contract primary output for structured statistics', async () => {
+ const fetcher=vi.fn(async()=>new Response(JSON.stringify({
+  output:{expectedValue:2,result:99},unit:'points',methodology:[],sources:[],warnings:[],
+ })));
+ vi.stubGlobal('fetch',fetcher);
+ render(<NativeFactoryEmbed {...props} title="Expected Value" primaryKey="expectedValue"
+  fields={[{key:'values',label:'Outcomes',kind:'text',defaultValue:'[1,3]'}]}/>);
+ expect(screen.getByLabelText('Outcomes').getAttribute('inputmode')).not.toBe('decimal');
+ fireEvent.click(screen.getByRole('button',{name:'Calculate'}));
+ expect(await screen.findByLabelText('Calculated value')).toHaveProperty('textContent','2 points');
 });

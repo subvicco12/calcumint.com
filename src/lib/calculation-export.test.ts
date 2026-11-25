@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { serializeCalculationCsv } from "./calculation-export";
+import { serializeCalculationCsv, serializeCalculationSnapshotCsv } from "./calculation-export";
 
 describe("raw calculation CSV safety", () => {
   it.each([NaN, Infinity, -Infinity])("rejects nonfinite nested engine values %s", value => {
@@ -17,4 +17,26 @@ describe("raw calculation CSV safety", () => {
 
 it.each([new Date('2026-10-12'),{toJSON:()=>({value:0})},new Map([['value',1]]),Array(1)])('rejects values that JSON would coerce or silently omit %#',value=>{
  expect(()=>serializeCalculationCsv({}, {value})).toThrow();
+});
+
+it("retains nested signed zero in raw and versioned CSV exports", () => {
+  const input = { values: [-0, 0] };
+  const output = { schedule: [{ value: -0, note: '=literal "0"' }] };
+  const raw = serializeCalculationCsv(input, output);
+  const versioned = serializeCalculationSnapshotCsv({
+    calculatorSlug: "example",
+    calculatorVersion: 2,
+    input,
+    output,
+  });
+  for (const csv of [raw, versioned]) {
+    const rows = csv.split("\n");
+    expect(rows).toContain('"input","values","[-0,0]"');
+    const schedule = rows.find(row => row.startsWith('"output","schedule",'))!;
+    const payload = schedule.slice('"output","schedule","'.length, -1).replaceAll('""', '"');
+    const parsed = JSON.parse(payload);
+    expect(parsed[0].value).toBe(-0);
+    expect(parsed[0].note).toBe('=literal "0"');
+  }
+  expect(versioned).toContain('"identity","calculatorVersion","2"');
 });
