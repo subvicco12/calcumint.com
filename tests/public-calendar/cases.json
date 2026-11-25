@@ -1,0 +1,11 @@
+[
+  {"slug":"age-calculator","input":{"birthDate":"2000-02-29","asOfDate":"2024-02-29"},"result":"24 years","invalid":{"asOfDate":"1999-02-28"},"output":{"years":24,"months":0,"days":0}},
+  {"slug":"date-difference-calculator","input":{"startDate":"2024-03-01","endDate":"2024-02-28"},"result":"-2 days","invalid":{"endDate":"1900-02-29"},"output":{"days":-2}},
+  {"slug":"date-add-subtract-calculator","input":{"date":"2024-03-31","years":"0","months":"-1","days":"0"},"result":"2024-02-29","invalid":{"months":"1.0000000000000001"},"output":{"date":"2024-02-29"}},
+  {"slug":"day-counter","input":{"startDate":"2024-02-29","endDate":"2024-02-29"},"result":"0 days","invalid":{"startDate":"2024-02-30"},"output":{"days":0}},
+  {"slug":"day-of-week-calculator","input":{"date":"2024-02-29"},"result":"Thursday","invalid":{"date":"1900-02-29"},"output":{"dayName":"Thursday","dayIndex":4}},
+  {"slug":"week-number-calculator","input":{"date":"2021-01-01"},"result":"53","invalid":{"date":"2021-13-01"},"output":{"weekYear":2020,"weekNumber":53}},
+  {"slug":"90-day-calculator","input":{"date":"2023-12-31"},"result":"2024-03-30","invalid":{"date":"9999-12-31"},"output":{"date":"2024-03-30"}},
+  {"slug":"30-day-calculator","input":{"date":"2024-01-31"},"result":"2024-03-01","invalid":{"date":"2024-2-01"},"output":{"date":"2024-03-01"}},
+  {"slug":"60-day-calculator","input":{"date":"2024-01-01"},"result":"2024-03-01","invalid":{"date":"2024-04-31"},"output":{"date":"2024-03-01"}}
+]
