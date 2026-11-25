@@ -1,0 +1,4 @@
+import {calculatorRegistry} from '/workspace/calcumint-product-readiness-20261125/src/calculators/registry';
+import {factoryContracts} from '/workspace/calcumint-product-readiness-20261125/src/lib/calculator-factory/registry';
+const ids=[275,276,423,424,425,427,428,429,430,431,432,433,434,436,437,438,439];
+console.log(JSON.stringify(ids.map(id=>{const c=factoryContracts.find(c=>c.catalogId===id)!;const d=calculatorRegistry.getById(c.engineId)!;return {id,engineId:c.engineId,contractVersion:c.version,registryVersion:d.version,slug:d.slug,reviewStatus:d.reviewStatus,scope:c.scope,examples:d.examples.map(e=>({input:e.input,expected:e.expected,actual:d.calculate(d.inputSchema.parse(e.input),{} as never)})),unsupportedUnitRefused:'fromUnit' in (d.examples[0]?.input as object??{})?!d.inputSchema.safeParse({...d.examples[0].input,fromUnit:'UNSUPPORTED_UNIT'}).success:null}}),null,2));
