@@ -1,0 +1,187 @@
+diff --git a/.github/workflows/solo440-hosted-final-qualification.yml b/.github/workflows/solo440-hosted-final-qualification.yml
+new file mode 100644
+index 00000000..a220a30b
+--- /dev/null
++++ b/.github/workflows/solo440-hosted-final-qualification.yml
+@@ -0,0 +1,181 @@
++name: Final bounded #426 and owner readback qualification
++on:
++  workflow_dispatch:
++permissions:
++  contents: read
++  actions: read
++jobs:
++  mass426-authenticated:
++    if: >-
++      github.repository == 'subvicco12/calcumint.com' &&
++      github.ref == 'refs/heads/engineering/solo440-owner-v2-final-execution' &&
++      github.ref_protected && github.actor == 'subvicco12' && github.run_attempt == 1
++    runs-on: ubuntu-26.04
++    timeout-minutes: 20
++    environment: calcumint-source-bootstrap-runtime
++    services:
++      postgres:
++        image: postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94
++        env:
++          POSTGRES_HOST_AUTH_METHOD: trust
++        ports:
++          - '127.0.0.1:55432:5432'
++        options: --health-cmd pg_isready --health-interval 2s --health-timeout 5s --health-retries 15
++      gotrue:
++        image: supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b
++        env:
++          GOTRUE_API_HOST: 0.0.0.0
++          GOTRUE_API_PORT: '9999'
++          API_EXTERNAL_URL: http://127.0.0.1:9999
++          GOTRUE_SITE_URL: http://localhost:3000
++          GOTRUE_DB_DRIVER: postgres
++          GOTRUE_DB_DATABASE_URL: postgres://supabase_auth_admin@postgres:5432/postgres?sslmode=disable
++          GOTRUE_JWT_SECRET: calcumint-disposable-only-not-production-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
++          GOTRUE_JWT_AUD: authenticated
++          GOTRUE_JWT_DEFAULT_GROUP_NAME: authenticated
++          GOTRUE_JWT_ADMIN_ROLES: service_role
++          GOTRUE_EXTERNAL_EMAIL_ENABLED: 'true'
++          GOTRUE_MAILER_AUTOCONFIRM: 'true'
++          GOTRUE_SECURITY_REFRESH_TOKEN_ROTATION_ENABLED: 'true'
++          GOTRUE_SECURITY_REFRESH_TOKEN_REUSE_INTERVAL: '0'
++        ports:
++          - '127.0.0.1:9999:9999'
++        options: --restart=on-failure:10
++      postgrest:
++        image: postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401
++        env:
++          PGRST_DB_URI: postgres://postgres@postgres:5432/postgres
++          PGRST_DB_SCHEMAS: public
++          PGRST_DB_ANON_ROLE: anon
++          PGRST_JWT_SECRET: calcumint-disposable-only-not-production-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
++        ports:
++          - '127.0.0.1:13000:3000'
++        options: --restart=on-failure:10
++    env:
++      TRUSTED_WORKFLOW_SHA: ${{ vars.CALCUMINT_SOLO440_FINAL_WORKFLOW_SHA }}
++    steps:
++      - name: Verify exact independently configured qualification revision
++        shell: bash
++        run: |
++          set -euo pipefail
++          [[ "$TRUSTED_WORKFLOW_SHA" =~ ^[0-9a-f]{40}$ ]]
++          [[ "$GITHUB_SHA" == "$TRUSTED_WORKFLOW_SHA" && "$GITHUB_WORKFLOW_SHA" == "$TRUSTED_WORKFLOW_SHA" ]]
++          [[ "$GITHUB_WORKFLOW_REF" == "$GITHUB_REPOSITORY/.github/workflows/solo440-hosted-final-qualification.yml@$GITHUB_REF" ]]
++      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
++        with:
++          ref: bab4fd87e91309b15cce9600d81ec523f645f158
++          persist-credentials: false
++          path: app
++      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
++        with:
++          ref: ${{ github.workflow_sha }}
++          persist-credentials: false
++          path: authority
++      - name: Refuse delayed dispatch before qualification
++        env:
++          GITHUB_TOKEN: ${{ github.token }}
++        run: python3 -I authority/tools/solo440-v2/dispatch_window.py
++      - name: Provision pinned PDF tools and resolve supported browser path
++        run: bash authority/tools/solo440-v2/provision-mass426-tools.sh
++      - name: Initialize disposable authentication role before service retry
++        env:
++          POSTGRES_SERVICE_ID: ${{ job.services.postgres.id }}
++        run: psql -X -h 127.0.0.1 -p 55432 -U postgres -d postgres -v ON_ERROR_STOP=1 -v run_id="$GITHUB_RUN_ID" -v workflow_sha="$GITHUB_WORKFLOW_SHA" -v service_id="$POSTGRES_SERVICE_ID" -f app/tests/gotrue-services/bootstrap.sql
++      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
++        with:
++          node-version: '22.23.4'
++      - name: Verify unchanged pinned Node executable
++        shell: bash
++        run: |
++          set -euo pipefail
++          printf '%s  %s\n' 94efd062ed066c1a0b332e18249859c905e920eeada5df55d24c99b919629a90 "$(command -v node)" | sha256sum -c -
++      - name: Prepare private service config and unprivileged application workspace
++        env:
++          POSTGRES_SERVICE_ID: ${{ job.services.postgres.id }}
++          GOTRUE_SERVICE_ID: ${{ job.services.gotrue.id }}
++          POSTGREST_SERVICE_ID: ${{ job.services.postgrest.id }}
++          POSTGRES_PORT: '55432'
++          GOTRUE_PORT: '9999'
++          POSTGREST_PORT: '13000'
++          DISPOSABLE_JWT_SECRET: calcumint-disposable-only-not-production-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
++        shell: bash
++        run: |
++          set -euo pipefail
++          stage=private-workspace
++          trap 'printf "{\"schema\":\"calcumint.mass426.setup.v1\",\"passed\":false,\"category\":\"private-workspace\"}\n" > "$RUNNER_TEMP/mass426-setup.json"' ERR
++          base=$(mktemp -d /tmp/calcumint-mass426.XXXXXX)
++          chmod 755 "$base"
++          printf 'MASS426_BASE=%s\n' "$base" >> "$GITHUB_ENV"
++          cp -a app "$base/app"
++          curl --fail --silent --show-error --proto '=https' --max-time 60 \
++            https://github.com/BurntSushi/ripgrep/releases/download/14.1.1/ripgrep-14.1.1-x86_64-unknown-linux-musl.tar.gz -o "$base/ripgrep.tar.gz"
++          python3 -I authority/tools/solo440-v2/stage_ripgrep.py "$base/ripgrep.tar.gz" "$base/tools"
++          printf 'MASS426_APP_PATH=%s\n' "$base/tools:$(dirname "$(command -v node)"):/usr/local/bin:/usr/bin:/bin" >> "$GITHUB_ENV"
++          mkdir "$base/evidence" "$base/home"
++          python3 app/tests/gotrue-services/write-config.py "$base/services.json"
++          sudo chown -R 65534:65534 "$base/app" "$base/evidence" "$base/home" "$base/services.json"
++      - name: Run unchanged mass426 driver without Docker or provider credentials
++        shell: bash
++        run: |
++          set -euo pipefail
++          sudo -n setpriv --reuid=65534 --regid=65534 --clear-groups --no-new-privs env -i \
++            PATH="$MASS426_APP_PATH" HOME="$MASS426_BASE/home" \
++            APP_SOURCE="$MASS426_BASE/app" GITHUB_ACTIONS=true \
++            GITHUB_RUN_ID="$GITHUB_RUN_ID" GITHUB_WORKFLOW_SHA="$GITHUB_WORKFLOW_SHA" \
++            CALCUMINT_REQUIRE_SOCKET_FREE=true CALCUMINT_SERVICE_CONFIG="$MASS426_BASE/services.json" \
++            WORKER2_MOBILITY_BROWSER_ARTIFACTS="$MASS426_BASE/evidence" \
++            CHROMIUM_PATH="$MASS426_CHROMIUM_PATH" \
++            bash -c 'node "$APP_SOURCE/../tools/check-ripgrep.mjs" && bash "$APP_SOURCE/../tools/run-mass426-successor.sh"'
++      - name: Remove private config and collect only disposable evidence
++        if: always()
++        shell: bash
++        run: |
++          set -euo pipefail
++          if [[ "${MASS426_BASE:-}" == /tmp/calcumint-mass426.* ]]; then
++            rm -f "$MASS426_BASE/services.json"
++            sudo find -P "$MASS426_BASE/evidence" -type l -delete
++            sudo chown -hR "$(id -u):$(id -g)" "$MASS426_BASE/evidence"
++            mkdir -p "$RUNNER_TEMP/mass426-acceptance"
++            cp -a "$MASS426_BASE/evidence/." "$RUNNER_TEMP/mass426-acceptance/"
++          fi
++      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
++        if: always()
++        with:
++          name: mass426-authenticated-acceptance
++          path: |
++            ${{ runner.temp }}/mass426-acceptance
++            ${{ runner.temp }}/mass426-setup.json
++            ${{ runner.temp }}/final-dispatch-window.json
++          if-no-files-found: error
++  provider-readback:
++    if: >-
++      github.repository == 'subvicco12/calcumint.com' &&
++      github.ref == 'refs/heads/engineering/solo440-owner-v2-final-execution' &&
++      github.ref_protected && github.actor == 'subvicco12' && github.run_attempt == 1
++    runs-on: ubuntu-26.04
++    timeout-minutes: 10
++    environment: calcumint-source-bootstrap-runtime
++    env:
++      TRUSTED_WORKFLOW_SHA: ${{ vars.CALCUMINT_SOLO440_FINAL_WORKFLOW_SHA }}
++    steps:
++      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
++        with:
++          ref: ${{ github.workflow_sha }}
++          persist-credentials: false
++      - name: Refuse delayed dispatch before provider readback
++        env:
++          GITHUB_TOKEN: ${{ github.token }}
++        run: python3 -I tools/solo440-v2/dispatch_window.py
++      - name: Verify authenticated provider readback without source admission
++        env:
++          GITHUB_TOKEN: ${{ github.token }}
++          BOOTSTRAP_DRIVE_TOKEN: ${{ secrets.CALCUMINT_BOOTSTRAP_DRIVE_TOKEN }}
++        run: python3 -I tools/solo440-v2/provider.py --final-verify-only --output "$RUNNER_TEMP/solo440-provider-readback.json"
++      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
++        if: always()
++        with:
++          name: solo440-provider-readback
++          path: |
++            ${{ runner.temp }}/solo440-provider-readback.json
++            ${{ runner.temp }}/final-dispatch-window.json
++          if-no-files-found: error

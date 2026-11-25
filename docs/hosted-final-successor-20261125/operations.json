@@ -1,0 +1,81 @@
+{
+  "repository": "subvicco12/calcumint.com",
+  "source": "5800df3351018f41d84324f4bdf5b7cffc38376d",
+  "tree": "d9932595e69ebe9701f2d17b4402f772e22b5278",
+  "workflow": {
+    "path": ".github/workflows/solo440-hosted-final-qualification.yml",
+    "blob": "a220a30ba3093c681e430eea0fe63bf1d99b39ef",
+    "sha256": "cc2edb49017840562b980f875b6be0ad045728f79311e70443a8892e53b5235c",
+    "registrationDiff": "registration.patch",
+    "diffScope": "one added workflow file only",
+    "observedMain": "e85183ffdc3b8a3e00cb16b5b15bdce5c3b0f784"
+  },
+  "protectedRef": {
+    "name": "refs/heads/engineering/solo440-owner-v2-final-execution",
+    "sha": "5800df3351018f41d84324f4bdf5b7cffc38376d",
+    "creationOrder": "Create and verify exact active no-bypass ruleset BEFORE creating ref; STOP rather than disable protection if creation refused",
+    "ruleset": "proposed-ruleset.json"
+  },
+  "preserveRulesets": [
+    27851420,
+    27907165,
+    28001423,
+    28062693
+  ],
+  "environment": {
+    "name": "calcumint-source-bootstrap-runtime",
+    "allowanceAddition": {
+      "name": "engineering/solo440-owner-v2-final-execution",
+      "type": "branch"
+    },
+    "variable": {
+      "name": "CALCUMINT_SOLO440_FINAL_WORKFLOW_SHA",
+      "value": "5800df3351018f41d84324f4bdf5b7cffc38376d"
+    },
+    "preserveAllExistingAllowancesVariablesSecrets": true
+  },
+  "credential": {
+    "name": "CALCUMINT_BOOTSTRAP_DRIVE_TOKEN",
+    "status": "WORK_RECOVERY_REQUIRED_NO_REUSABLE_GRANT_VERIFIED",
+    "recoveryOrInstallAuthorizedByPackage": false,
+    "minimumRemainingValidityAtDispatchSeconds": 1920,
+    "maximumStartDelaySeconds": 600,
+    "clockMarginSeconds": 120,
+    "newCredentialRequest": false
+  },
+  "dispatch": {
+    "operator": "subvicco12",
+    "workflow": "solo440-hosted-final-qualification.yml",
+    "ref": "engineering/solo440-owner-v2-final-execution",
+    "inputs": {},
+    "newRunCount": 1,
+    "requiredAttempt": 1,
+    "noRetriesOrReruns": true,
+    "atomicCrossDispatchLock": false,
+    "procedure": "exclusive dispatcher, zero prior runs, authoritative reconciliation, no resend on ambiguity"
+  },
+  "jobs": {
+    "mass426-authenticated": 20,
+    "provider-readback": 10
+  },
+  "maximumRunnerMinutes": 30,
+  "postgres": "reuse original artifact14987606015 SHA256a1098236906e43035e80390bd9b1bbf8254d9873c424b929352870000f907560,12 successful cases; no cross-host inference",
+  "fixture": {
+    "commit": "bab4fd87e91309b15cce9600d81ec523f645f158",
+    "tree": "dac8a76d9ad2745e673d3194ec9da0b37905b6bb",
+    "archiveSha256": "257bf0017446c81f8039ea432e01b8daee49c99f610b2e8b5dcb34d3cb3799b2"
+  },
+  "expectedReceipts": [
+    "mass426-authenticated-acceptance/final-dispatch-window.json",
+    "mass426-authenticated-acceptance/mass426-setup.json",
+    "mass426-authenticated-acceptance/ripgrep-isolation.json",
+    "mass426-authenticated-acceptance/executable-dependency-preflight.json",
+    "mass426-authenticated-acceptance/socket-isolation.json",
+    "mass426-authenticated-acceptance/receipt.json plus actual native JSON/CSV/PDF files and readbacks, screenshots and build-source hashes",
+    "solo440-provider-readback/final-dispatch-window.json",
+    "solo440-provider-readback/solo440-provider-readback.json"
+  ],
+  "engineeringLedger": 274,
+  "executionAuthorized": false,
+  "releaseHold": true
+}
