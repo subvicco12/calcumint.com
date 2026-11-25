@@ -1,0 +1,5 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';import {sha} from '../adoption1528/bundle.mjs';import {catalogSQL} from '../adoption1528/catalog.mjs';
+import {prepareHeldSuccessor} from '../../scripts/product-p0-20261125/prepare-successor.mjs';
+test('missing raw capture cannot be replaced by production digest or approval booleans',async()=>{await assert.rejects(prepareHeldSuccessor({productionPreimage:{sha256:'8e564644aabd0db81afd5cdaf131577968b732578fd9e24f494f0ae6e4e2668a'},approved:true}),/capture|bytes|keys/i);});
+test('historical predecessor is not silently rebased to a current production preimage',async()=>{const c=JSON.parse(await readFile(new URL('../../docs/adoption1528/target-metadata.json',import.meta.url),'utf8'));c.sha256=sha(c.raw);await assert.rejects(prepareHeldSuccessor({captureQuerySHA256:sha(catalogSQL),productionPreimage:c,expectedCorePostimage:c,addonPreimage:c,expectedComposedPostimage:c}),/historical digest cannot be relabeled/);});
